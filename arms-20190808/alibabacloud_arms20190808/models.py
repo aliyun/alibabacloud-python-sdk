@@ -4716,7 +4716,13 @@ class CheckCommercialStatusRequest(TeaModel):
         region_id: str = None,
         service: str = None,
     ):
+        # The region ID. Default value: cn-hangzhou.
         self.region_id = region_id
+        # Sub-services:
+        # - apm: Application Monitoring
+        # - rum: Real User Monitoring
+        # - prometheus: Managed Service for Prometheus
+        # - xtrace: Managed Service for OpenTelemetry
         self.service = service
 
     def validate(self):
@@ -4749,8 +4755,9 @@ class CheckCommercialStatusResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The returned struct.
         self.data = data
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6388,13 +6395,14 @@ class CreateEnvironmentRequest(TeaModel):
         # The language. Valid values: zh and en. Default value: zh.
         self.aliyun_lang = aliyun_lang
         # The ID of the resource associated with the environment, such as the ACK cluster ID or VPC ID.
+        # For Cloud type environments, the current field value is RegionId.
         self.bind_resource_id = bind_resource_id
         # The name of the environment.
         self.environment_name = environment_name
         # The subtype of the environment. Valid values:
         # 
         # *   CS: Container Service for Kubernetes (ACK)
-        # *   ECS: ECS
+        # *   ECS: Elastic Compute Service (ECS)
         # *   Cloud: cloud service
         self.environment_sub_type = environment_sub_type
         # The type of the environment. Valid values:
@@ -10515,6 +10523,9 @@ class CreatePrometheusInstanceRequest(TeaModel):
         # - ecs: Prometheus for ECS
         # - global-view: Global Aggregation Instance
         # - aliyun-cs: Prometheus Instance for Container Service
+        # - cloud-product：Prometheus for cloud monitor
+        # - cloud-monitor：Prometheus for enterprise cloud monitor
+        # - flink: Prometheus for FLink
         self.cluster_type = cluster_type
         # The ID of the Grafana dedicated instance. This parameter is available if you set ClusterType to ecs.
         self.grafana_instance_id = grafana_instance_id
@@ -34114,7 +34125,41 @@ class InstallManagedPrometheusRequest(TeaModel):
         self.cluster_id = cluster_id
         # The name of the ECS instance. If you set the ClusterType parameter to ecs, you must configure this parameter.
         self.cluster_name = cluster_name
-        # The type of the monitoring object. Valid values: ask and ecs.
+        # The cluster type.
+        # 
+        # Valid values:
+        # 
+        # *   ecs
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   one
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   ask
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   pro
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.cluster_type = cluster_type
         # The ID of the Grafana workspace used by the ASK cluster or ECS instance. If you set the value to free or leave the parameter empty, a shared Grafana workspace is used.
         self.grafana_instance_id = grafana_instance_id
@@ -39939,18 +39984,19 @@ class ListInsightsEventsResponseBodyInsightsEvents(TeaModel):
         title: str = None,
         type: str = None,
     ):
-        # The time at which the event occurred. The value is a timestamp.
+        # The time when the event occurred. The value is a timestamp.
         self.date = date
-        # The ID of the application associated with the event.
+        # The description of the event.
         self.desc = desc
-        # Queries the abnormal Insights events within a specified period of time.
+        # The severity of the event.
         self.level = level
-        # auditing
+        # The ID of the application associated with the event.
         self.pid = pid
+        # Problem identification.
         self.problem_id = problem_id
-        # The overall response time of the \[HTTP] service of the application \[sd] spikes at \[2022-07-27 10:57:00]
+        # The title of the event.
         self.title = title
-        # The time at which the event occurred. The value is a timestamp.
+        # The type of the event.
         self.type = type
 
     def validate(self):
@@ -40003,7 +40049,7 @@ class ListInsightsEventsResponseBody(TeaModel):
         insights_events: List[ListInsightsEventsResponseBodyInsightsEvents] = None,
         request_id: str = None,
     ):
-        # The description of the event.
+        # The event details.
         self.insights_events = insights_events
         # The title of the event.
         self.request_id = request_id
@@ -44820,6 +44866,10 @@ class ListTraceAppsRequest(TeaModel):
         resource_group_id: str = None,
         tags: List[ListTraceAppsRequestTags] = None,
     ):
+        # The type of the application that is associated with the alert rule. Valid values:
+        # 
+        # *   `TRACE`: Application Monitoring
+        # *   `EBPF`: Application Monitoring eBPF Edition
         self.app_type = app_type
         # The region ID.
         self.region = region
@@ -44935,12 +44985,15 @@ class ListTraceAppsResponseBodyTraceApps(TeaModel):
         self.app_id = app_id
         # The name of the application.
         self.app_name = app_name
+        # The cluster ID.
         self.cluster_id = cluster_id
         # The time when the monitoring task was created. The value is a timestamp. Unit: milliseconds.
         self.create_time = create_time
-        # The labels of the application.
+        # The tags of the application.
         self.labels = labels
+        # The language.
         self.language = language
+        # The namespace.
         self.namespace = namespace
         # The process identifier (PID) of the application.
         self.pid = pid
@@ -44953,7 +45006,7 @@ class ListTraceAppsResponseBodyTraceApps(TeaModel):
         # *   `true`: yes
         # *   `false`: no
         self.show = show
-        # The application source.
+        # The source of the application.
         self.source = source
         # The tags.
         self.tags = tags
@@ -44966,7 +45019,9 @@ class ListTraceAppsResponseBodyTraceApps(TeaModel):
         self.update_time = update_time
         # The user ID.
         self.user_id = user_id
+        # The type of the workload.
         self.workload_kind = workload_kind
+        # The name of the workload.
         self.workload_name = workload_name
 
     def validate(self):
@@ -45090,7 +45145,7 @@ class ListTraceAppsResponseBody(TeaModel):
         # *   `true`: The call was successful.
         # *   `false`: The call failed.
         self.success = success
-        # The list of Application Monitoring tasks.
+        # The queried application monitoring tasks.
         self.trace_apps = trace_apps
 
     def validate(self):
@@ -57947,7 +58002,6 @@ class UpdateTimingSyntheticTaskRequest(TeaModel):
         common_setting: UpdateTimingSyntheticTaskRequestCommonSetting = None,
         custom_period: UpdateTimingSyntheticTaskRequestCustomPeriod = None,
         frequency: str = None,
-        monitor_category: int = None,
         monitor_conf: UpdateTimingSyntheticTaskRequestMonitorConf = None,
         monitors: List[UpdateTimingSyntheticTaskRequestMonitors] = None,
         name: str = None,
@@ -57955,7 +58009,6 @@ class UpdateTimingSyntheticTaskRequest(TeaModel):
         resource_group_id: str = None,
         tags: List[UpdateTimingSyntheticTaskRequestTags] = None,
         task_id: str = None,
-        task_type: int = None,
     ):
         # The list of assertions.
         self.available_assertions = available_assertions
@@ -57965,8 +58018,6 @@ class UpdateTimingSyntheticTaskRequest(TeaModel):
         self.custom_period = custom_period
         # The detection frequency. Valid values: 1m, 5m, 10m, 15m, 20m, 30m, 1h, 2h, 3h, 4h, 6h, 8h, 12h, and 24h.
         self.frequency = frequency
-        # The detection point type. 1: PC. 2: mobile device.
-        self.monitor_category = monitor_category
         # The monitoring configurations.
         self.monitor_conf = monitor_conf
         # The list of monitoring points.
@@ -57981,10 +58032,6 @@ class UpdateTimingSyntheticTaskRequest(TeaModel):
         self.tags = tags
         # The ID of the synthetic monitoring task.
         self.task_id = task_id
-        # The type of the task. Valid values:
-        # 
-        # 1: ICMP. 2: TCP. 3: DNS. 4: HTTP. 5: website speed measurement. 6: file download.
-        self.task_type = task_type
 
     def validate(self):
         if self.available_assertions:
@@ -58022,8 +58069,6 @@ class UpdateTimingSyntheticTaskRequest(TeaModel):
             result['CustomPeriod'] = self.custom_period.to_map()
         if self.frequency is not None:
             result['Frequency'] = self.frequency
-        if self.monitor_category is not None:
-            result['MonitorCategory'] = self.monitor_category
         if self.monitor_conf is not None:
             result['MonitorConf'] = self.monitor_conf.to_map()
         result['Monitors'] = []
@@ -58042,8 +58087,6 @@ class UpdateTimingSyntheticTaskRequest(TeaModel):
                 result['Tags'].append(k.to_map() if k else None)
         if self.task_id is not None:
             result['TaskId'] = self.task_id
-        if self.task_type is not None:
-            result['TaskType'] = self.task_type
         return result
 
     def from_map(self, m: dict = None):
@@ -58061,8 +58104,6 @@ class UpdateTimingSyntheticTaskRequest(TeaModel):
             self.custom_period = temp_model.from_map(m['CustomPeriod'])
         if m.get('Frequency') is not None:
             self.frequency = m.get('Frequency')
-        if m.get('MonitorCategory') is not None:
-            self.monitor_category = m.get('MonitorCategory')
         if m.get('MonitorConf') is not None:
             temp_model = UpdateTimingSyntheticTaskRequestMonitorConf()
             self.monitor_conf = temp_model.from_map(m['MonitorConf'])
@@ -58084,8 +58125,6 @@ class UpdateTimingSyntheticTaskRequest(TeaModel):
                 self.tags.append(temp_model.from_map(k))
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
-        if m.get('TaskType') is not None:
-            self.task_type = m.get('TaskType')
         return self
 
 
@@ -58096,7 +58135,6 @@ class UpdateTimingSyntheticTaskShrinkRequest(TeaModel):
         common_setting_shrink: str = None,
         custom_period_shrink: str = None,
         frequency: str = None,
-        monitor_category: int = None,
         monitor_conf_shrink: str = None,
         monitors_shrink: str = None,
         name: str = None,
@@ -58104,7 +58142,6 @@ class UpdateTimingSyntheticTaskShrinkRequest(TeaModel):
         resource_group_id: str = None,
         tags_shrink: str = None,
         task_id: str = None,
-        task_type: int = None,
     ):
         # The list of assertions.
         self.available_assertions_shrink = available_assertions_shrink
@@ -58114,8 +58151,6 @@ class UpdateTimingSyntheticTaskShrinkRequest(TeaModel):
         self.custom_period_shrink = custom_period_shrink
         # The detection frequency. Valid values: 1m, 5m, 10m, 15m, 20m, 30m, 1h, 2h, 3h, 4h, 6h, 8h, 12h, and 24h.
         self.frequency = frequency
-        # The detection point type. 1: PC. 2: mobile device.
-        self.monitor_category = monitor_category
         # The monitoring configurations.
         self.monitor_conf_shrink = monitor_conf_shrink
         # The list of monitoring points.
@@ -58130,10 +58165,6 @@ class UpdateTimingSyntheticTaskShrinkRequest(TeaModel):
         self.tags_shrink = tags_shrink
         # The ID of the synthetic monitoring task.
         self.task_id = task_id
-        # The type of the task. Valid values:
-        # 
-        # 1: ICMP. 2: TCP. 3: DNS. 4: HTTP. 5: website speed measurement. 6: file download.
-        self.task_type = task_type
 
     def validate(self):
         pass
@@ -58152,8 +58183,6 @@ class UpdateTimingSyntheticTaskShrinkRequest(TeaModel):
             result['CustomPeriod'] = self.custom_period_shrink
         if self.frequency is not None:
             result['Frequency'] = self.frequency
-        if self.monitor_category is not None:
-            result['MonitorCategory'] = self.monitor_category
         if self.monitor_conf_shrink is not None:
             result['MonitorConf'] = self.monitor_conf_shrink
         if self.monitors_shrink is not None:
@@ -58168,8 +58197,6 @@ class UpdateTimingSyntheticTaskShrinkRequest(TeaModel):
             result['Tags'] = self.tags_shrink
         if self.task_id is not None:
             result['TaskId'] = self.task_id
-        if self.task_type is not None:
-            result['TaskType'] = self.task_type
         return result
 
     def from_map(self, m: dict = None):
@@ -58182,8 +58209,6 @@ class UpdateTimingSyntheticTaskShrinkRequest(TeaModel):
             self.custom_period_shrink = m.get('CustomPeriod')
         if m.get('Frequency') is not None:
             self.frequency = m.get('Frequency')
-        if m.get('MonitorCategory') is not None:
-            self.monitor_category = m.get('MonitorCategory')
         if m.get('MonitorConf') is not None:
             self.monitor_conf_shrink = m.get('MonitorConf')
         if m.get('Monitors') is not None:
@@ -58198,8 +58223,6 @@ class UpdateTimingSyntheticTaskShrinkRequest(TeaModel):
             self.tags_shrink = m.get('Tags')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
-        if m.get('TaskType') is not None:
-            self.task_type = m.get('TaskType')
         return self
 
 

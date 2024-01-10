@@ -1426,6 +1426,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.CheckCommercialStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.CheckCommercialStatusResponse:
+        """
+        You can call this operation to check whether ARMS is available for commercial use in a region.
+        
+        @param request: CheckCommercialStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckCommercialStatusResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1452,6 +1459,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.CheckCommercialStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.CheckCommercialStatusResponse:
+        """
+        You can call this operation to check whether ARMS is available for commercial use in a region.
+        
+        @param request: CheckCommercialStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckCommercialStatusResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1477,6 +1491,12 @@ class Client(OpenApiClient):
         self,
         request: arms20190808_models.CheckCommercialStatusRequest,
     ) -> arms20190808_models.CheckCommercialStatusResponse:
+        """
+        You can call this operation to check whether ARMS is available for commercial use in a region.
+        
+        @param request: CheckCommercialStatusRequest
+        @return: CheckCommercialStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_commercial_status_with_options(request, runtime)
 
@@ -1484,6 +1504,12 @@ class Client(OpenApiClient):
         self,
         request: arms20190808_models.CheckCommercialStatusRequest,
     ) -> arms20190808_models.CheckCommercialStatusResponse:
+        """
+        You can call this operation to check whether ARMS is available for commercial use in a region.
+        
+        @param request: CheckCommercialStatusRequest
+        @return: CheckCommercialStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_commercial_status_with_options_async(request, runtime)
 
@@ -19116,8 +19142,6 @@ class Client(OpenApiClient):
             query['CustomPeriod'] = request.custom_period_shrink
         if not UtilClient.is_unset(request.frequency):
             query['Frequency'] = request.frequency
-        if not UtilClient.is_unset(request.monitor_category):
-            query['MonitorCategory'] = request.monitor_category
         if not UtilClient.is_unset(request.monitor_conf_shrink):
             query['MonitorConf'] = request.monitor_conf_shrink
         if not UtilClient.is_unset(request.monitors_shrink):
@@ -19132,8 +19156,6 @@ class Client(OpenApiClient):
             query['Tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
-        if not UtilClient.is_unset(request.task_type):
-            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -19182,8 +19204,6 @@ class Client(OpenApiClient):
             query['CustomPeriod'] = request.custom_period_shrink
         if not UtilClient.is_unset(request.frequency):
             query['Frequency'] = request.frequency
-        if not UtilClient.is_unset(request.monitor_category):
-            query['MonitorCategory'] = request.monitor_category
         if not UtilClient.is_unset(request.monitor_conf_shrink):
             query['MonitorConf'] = request.monitor_conf_shrink
         if not UtilClient.is_unset(request.monitors_shrink):
@@ -19198,8 +19218,6 @@ class Client(OpenApiClient):
             query['Tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
-        if not UtilClient.is_unset(request.task_type):
-            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
