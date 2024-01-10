@@ -1,3 +1,6 @@
+2024-01-10 Version: 3.3.2
+- DeleteStackInstances supports specifying account ids in resource directory mode.
+
 2023-10-19 Version: 3.3.1
 - The input parameter SourceResources of CreateTemplateScratch has added RegionId, which only takes effect when TemplateScratchType is ArchitectureDetection.
 
