@@ -5007,9 +5007,9 @@ class CommentListReportResponse(TeaModel):
 class CreateDeliveryPlanHeadersAccountContext(TeaModel):
     def __init__(
         self,
-        account_id: str = None,
+        user_token: str = None,
     ):
-        self.account_id = account_id
+        self.user_token = user_token
 
     def validate(self):
         pass
@@ -5020,14 +5020,14 @@ class CreateDeliveryPlanHeadersAccountContext(TeaModel):
             return _map
 
         result = dict()
-        if self.account_id is not None:
-            result['accountId'] = self.account_id
+        if self.user_token is not None:
+            result['userToken'] = self.user_token
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('accountId') is not None:
-            self.account_id = m.get('accountId')
+        if m.get('userToken') is not None:
+            self.user_token = m.get('userToken')
         return self
 
 
@@ -31973,12 +31973,16 @@ class ListEventsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
         sync_token: str = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
     ):
         self.events = events
         self.next_token = next_token
         # requestId
         self.request_id = request_id
         self.sync_token = sync_token
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
 
     def validate(self):
         if self.events:
@@ -32002,6 +32006,10 @@ class ListEventsResponseBody(TeaModel):
             result['requestId'] = self.request_id
         if self.sync_token is not None:
             result['syncToken'] = self.sync_token
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
         return result
 
     def from_map(self, m: dict = None):
@@ -32017,6 +32025,10 @@ class ListEventsResponseBody(TeaModel):
             self.request_id = m.get('requestId')
         if m.get('syncToken') is not None:
             self.sync_token = m.get('syncToken')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
         return self
 
 
