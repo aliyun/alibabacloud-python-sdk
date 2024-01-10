@@ -1,3 +1,6 @@
+2024-01-10 Version: 5.0.0
+- Generated python 2018-01-20 for Iot.
+
 2023-09-22 Version: 4.2.0
 - Add Api ResetDeviceTimeline.
 
