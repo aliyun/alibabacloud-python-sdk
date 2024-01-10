@@ -2014,6 +2014,64 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_saved_search_with_options_async(project, request, headers, runtime)
 
+    def create_ticket_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateTicketResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CreateTicket',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/tickets',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateTicketResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_ticket_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateTicketResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CreateTicket',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/tickets',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateTicketResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_ticket(self) -> sls_20201230_models.CreateTicketResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_ticket_with_options(headers, runtime)
+
+    async def create_ticket_async(self) -> sls_20201230_models.CreateTicketResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_ticket_with_options_async(headers, runtime)
+
     def delete_annotation_data_with_options(
         self,
         dataset_id: str,
