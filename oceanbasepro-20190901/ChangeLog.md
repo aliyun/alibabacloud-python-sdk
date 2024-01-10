@@ -1,3 +1,6 @@
+2024-01-10 Version: 2.2.0
+- Generated python 2019-09-01 for OceanBasePro.
+
 2024-01-05 Version: 2.1.0
 - Generated python 2019-09-01 for OceanBasePro.
 
