@@ -1010,11 +1010,13 @@ class SubmitCopyrightExtractRequest(TeaModel):
         self,
         call_back: str = None,
         input: str = None,
+        params: str = None,
         url: str = None,
         user_data: str = None,
     ):
         self.call_back = call_back
         self.input = input
+        self.params = params
         self.url = url
         self.user_data = user_data
 
@@ -1031,6 +1033,8 @@ class SubmitCopyrightExtractRequest(TeaModel):
             result['CallBack'] = self.call_back
         if self.input is not None:
             result['Input'] = self.input
+        if self.params is not None:
+            result['Params'] = self.params
         if self.url is not None:
             result['Url'] = self.url
         if self.user_data is not None:
@@ -1043,6 +1047,8 @@ class SubmitCopyrightExtractRequest(TeaModel):
             self.call_back = m.get('CallBack')
         if m.get('Input') is not None:
             self.input = m.get('Input')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
         if m.get('Url') is not None:
             self.url = m.get('Url')
         if m.get('UserData') is not None:
@@ -1746,11 +1752,13 @@ class SubmitTraceExtractRequest(TeaModel):
         self,
         call_back: str = None,
         input: str = None,
+        params: str = None,
         url: str = None,
         user_data: str = None,
     ):
         self.call_back = call_back
         self.input = input
+        self.params = params
         self.url = url
         self.user_data = user_data
 
@@ -1767,6 +1775,8 @@ class SubmitTraceExtractRequest(TeaModel):
             result['CallBack'] = self.call_back
         if self.input is not None:
             result['Input'] = self.input
+        if self.params is not None:
+            result['Params'] = self.params
         if self.url is not None:
             result['Url'] = self.url
         if self.user_data is not None:
@@ -1779,6 +1789,8 @@ class SubmitTraceExtractRequest(TeaModel):
             self.call_back = m.get('CallBack')
         if m.get('Input') is not None:
             self.input = m.get('Input')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
         if m.get('Url') is not None:
             self.url = m.get('Url')
         if m.get('UserData') is not None:
@@ -1910,11 +1922,13 @@ class SubmitTracemuRequest(TeaModel):
         key_uri: str = None,
         media_id: str = None,
         output: str = None,
+        params: str = None,
         trace: str = None,
     ):
         self.key_uri = key_uri
         self.media_id = media_id
         self.output = output
+        self.params = params
         self.trace = trace
 
     def validate(self):
@@ -1932,6 +1946,8 @@ class SubmitTracemuRequest(TeaModel):
             result['MediaId'] = self.media_id
         if self.output is not None:
             result['Output'] = self.output
+        if self.params is not None:
+            result['Params'] = self.params
         if self.trace is not None:
             result['Trace'] = self.trace
         return result
@@ -1944,6 +1960,8 @@ class SubmitTracemuRequest(TeaModel):
             self.media_id = m.get('MediaId')
         if m.get('Output') is not None:
             self.output = m.get('Output')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
         if m.get('Trace') is not None:
             self.trace = m.get('Trace')
         return self

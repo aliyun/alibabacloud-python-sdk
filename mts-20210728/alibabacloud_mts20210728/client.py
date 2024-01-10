@@ -85,22 +85,6 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def query_copyright(
-        self,
-        request: mts_20210728_models.QueryCopyrightRequest,
-    ) -> mts_20210728_models.QueryCopyrightResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.query_copyright_with_options(request, headers, runtime)
-
-    async def query_copyright_async(
-        self,
-        request: mts_20210728_models.QueryCopyrightRequest,
-    ) -> mts_20210728_models.QueryCopyrightResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.query_copyright_with_options_async(request, headers, runtime)
-
     def query_copyright_with_options(
         self,
         request: mts_20210728_models.QueryCopyrightRequest,
@@ -181,21 +165,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def query_copyright_extract(
+    def query_copyright(
         self,
-        request: mts_20210728_models.QueryCopyrightExtractRequest,
-    ) -> mts_20210728_models.QueryCopyrightExtractResponse:
+        request: mts_20210728_models.QueryCopyrightRequest,
+    ) -> mts_20210728_models.QueryCopyrightResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.query_copyright_extract_with_options(request, headers, runtime)
+        return self.query_copyright_with_options(request, headers, runtime)
 
-    async def query_copyright_extract_async(
+    async def query_copyright_async(
         self,
-        request: mts_20210728_models.QueryCopyrightExtractRequest,
-    ) -> mts_20210728_models.QueryCopyrightExtractResponse:
+        request: mts_20210728_models.QueryCopyrightRequest,
+    ) -> mts_20210728_models.QueryCopyrightResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.query_copyright_extract_with_options_async(request, headers, runtime)
+        return await self.query_copyright_with_options_async(request, headers, runtime)
 
     def query_copyright_extract_with_options(
         self,
@@ -257,21 +241,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def query_trace_ab(
+    def query_copyright_extract(
         self,
-        request: mts_20210728_models.QueryTraceAbRequest,
-    ) -> mts_20210728_models.QueryTraceAbResponse:
+        request: mts_20210728_models.QueryCopyrightExtractRequest,
+    ) -> mts_20210728_models.QueryCopyrightExtractResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.query_trace_ab_with_options(request, headers, runtime)
+        return self.query_copyright_extract_with_options(request, headers, runtime)
 
-    async def query_trace_ab_async(
+    async def query_copyright_extract_async(
         self,
-        request: mts_20210728_models.QueryTraceAbRequest,
-    ) -> mts_20210728_models.QueryTraceAbResponse:
+        request: mts_20210728_models.QueryCopyrightExtractRequest,
+    ) -> mts_20210728_models.QueryCopyrightExtractResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.query_trace_ab_with_options_async(request, headers, runtime)
+        return await self.query_copyright_extract_with_options_async(request, headers, runtime)
 
     def query_trace_ab_with_options(
         self,
@@ -337,21 +321,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def query_trace_extract(
+    def query_trace_ab(
         self,
-        request: mts_20210728_models.QueryTraceExtractRequest,
-    ) -> mts_20210728_models.QueryTraceExtractResponse:
+        request: mts_20210728_models.QueryTraceAbRequest,
+    ) -> mts_20210728_models.QueryTraceAbResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.query_trace_extract_with_options(request, headers, runtime)
+        return self.query_trace_ab_with_options(request, headers, runtime)
 
-    async def query_trace_extract_async(
+    async def query_trace_ab_async(
         self,
-        request: mts_20210728_models.QueryTraceExtractRequest,
-    ) -> mts_20210728_models.QueryTraceExtractResponse:
+        request: mts_20210728_models.QueryTraceAbRequest,
+    ) -> mts_20210728_models.QueryTraceAbResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.query_trace_extract_with_options_async(request, headers, runtime)
+        return await self.query_trace_ab_with_options_async(request, headers, runtime)
 
     def query_trace_extract_with_options(
         self,
@@ -413,21 +397,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def query_trace_mu(
+    def query_trace_extract(
         self,
-        request: mts_20210728_models.QueryTraceMuRequest,
-    ) -> mts_20210728_models.QueryTraceMuResponse:
+        request: mts_20210728_models.QueryTraceExtractRequest,
+    ) -> mts_20210728_models.QueryTraceExtractResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.query_trace_mu_with_options(request, headers, runtime)
+        return self.query_trace_extract_with_options(request, headers, runtime)
 
-    async def query_trace_mu_async(
+    async def query_trace_extract_async(
         self,
-        request: mts_20210728_models.QueryTraceMuRequest,
-    ) -> mts_20210728_models.QueryTraceMuResponse:
+        request: mts_20210728_models.QueryTraceExtractRequest,
+    ) -> mts_20210728_models.QueryTraceExtractResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.query_trace_mu_with_options_async(request, headers, runtime)
+        return await self.query_trace_extract_with_options_async(request, headers, runtime)
 
     def query_trace_mu_with_options(
         self,
@@ -513,21 +497,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def submit_copyright_extract(
+    def query_trace_mu(
         self,
-        request: mts_20210728_models.SubmitCopyrightExtractRequest,
-    ) -> mts_20210728_models.SubmitCopyrightExtractResponse:
+        request: mts_20210728_models.QueryTraceMuRequest,
+    ) -> mts_20210728_models.QueryTraceMuResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.submit_copyright_extract_with_options(request, headers, runtime)
+        return self.query_trace_mu_with_options(request, headers, runtime)
 
-    async def submit_copyright_extract_async(
+    async def query_trace_mu_async(
         self,
-        request: mts_20210728_models.SubmitCopyrightExtractRequest,
-    ) -> mts_20210728_models.SubmitCopyrightExtractResponse:
+        request: mts_20210728_models.QueryTraceMuRequest,
+    ) -> mts_20210728_models.QueryTraceMuResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.submit_copyright_extract_with_options_async(request, headers, runtime)
+        return await self.query_trace_mu_with_options_async(request, headers, runtime)
 
     def submit_copyright_extract_with_options(
         self,
@@ -541,6 +525,8 @@ class Client(OpenApiClient):
             body['CallBack'] = request.call_back
         if not UtilClient.is_unset(request.input):
             body['Input'] = request.input
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
         if not UtilClient.is_unset(request.url):
             body['Url'] = request.url
         if not UtilClient.is_unset(request.user_data):
@@ -577,6 +563,8 @@ class Client(OpenApiClient):
             body['CallBack'] = request.call_back
         if not UtilClient.is_unset(request.input):
             body['Input'] = request.input
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
         if not UtilClient.is_unset(request.url):
             body['Url'] = request.url
         if not UtilClient.is_unset(request.user_data):
@@ -601,21 +589,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def submit_copyright_job(
+    def submit_copyright_extract(
         self,
-        request: mts_20210728_models.SubmitCopyrightJobRequest,
-    ) -> mts_20210728_models.SubmitCopyrightJobResponse:
+        request: mts_20210728_models.SubmitCopyrightExtractRequest,
+    ) -> mts_20210728_models.SubmitCopyrightExtractResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.submit_copyright_job_with_options(request, headers, runtime)
+        return self.submit_copyright_extract_with_options(request, headers, runtime)
 
-    async def submit_copyright_job_async(
+    async def submit_copyright_extract_async(
         self,
-        request: mts_20210728_models.SubmitCopyrightJobRequest,
-    ) -> mts_20210728_models.SubmitCopyrightJobResponse:
+        request: mts_20210728_models.SubmitCopyrightExtractRequest,
+    ) -> mts_20210728_models.SubmitCopyrightExtractResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.submit_copyright_job_with_options_async(request, headers, runtime)
+        return await self.submit_copyright_extract_with_options_async(request, headers, runtime)
 
     def submit_copyright_job_with_options(
         self,
@@ -721,21 +709,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def submit_image_copyright(
+    def submit_copyright_job(
         self,
-        request: mts_20210728_models.SubmitImageCopyrightRequest,
-    ) -> mts_20210728_models.SubmitImageCopyrightResponse:
+        request: mts_20210728_models.SubmitCopyrightJobRequest,
+    ) -> mts_20210728_models.SubmitCopyrightJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.submit_image_copyright_with_options(request, headers, runtime)
+        return self.submit_copyright_job_with_options(request, headers, runtime)
 
-    async def submit_image_copyright_async(
+    async def submit_copyright_job_async(
         self,
-        request: mts_20210728_models.SubmitImageCopyrightRequest,
-    ) -> mts_20210728_models.SubmitImageCopyrightResponse:
+        request: mts_20210728_models.SubmitCopyrightJobRequest,
+    ) -> mts_20210728_models.SubmitCopyrightJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.submit_image_copyright_with_options_async(request, headers, runtime)
+        return await self.submit_copyright_job_with_options_async(request, headers, runtime)
 
     def submit_image_copyright_with_options(
         self,
@@ -809,21 +797,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def submit_trace_ab(
+    def submit_image_copyright(
         self,
-        request: mts_20210728_models.SubmitTraceAbRequest,
-    ) -> mts_20210728_models.SubmitTraceAbResponse:
+        request: mts_20210728_models.SubmitImageCopyrightRequest,
+    ) -> mts_20210728_models.SubmitImageCopyrightResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.submit_trace_ab_with_options(request, headers, runtime)
+        return self.submit_image_copyright_with_options(request, headers, runtime)
 
-    async def submit_trace_ab_async(
+    async def submit_image_copyright_async(
         self,
-        request: mts_20210728_models.SubmitTraceAbRequest,
-    ) -> mts_20210728_models.SubmitTraceAbResponse:
+        request: mts_20210728_models.SubmitImageCopyrightRequest,
+    ) -> mts_20210728_models.SubmitImageCopyrightResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.submit_trace_ab_with_options_async(request, headers, runtime)
+        return await self.submit_image_copyright_with_options_async(request, headers, runtime)
 
     def submit_trace_ab_with_options(
         self,
@@ -917,21 +905,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def submit_trace_extract(
+    def submit_trace_ab(
         self,
-        request: mts_20210728_models.SubmitTraceExtractRequest,
-    ) -> mts_20210728_models.SubmitTraceExtractResponse:
+        request: mts_20210728_models.SubmitTraceAbRequest,
+    ) -> mts_20210728_models.SubmitTraceAbResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.submit_trace_extract_with_options(request, headers, runtime)
+        return self.submit_trace_ab_with_options(request, headers, runtime)
 
-    async def submit_trace_extract_async(
+    async def submit_trace_ab_async(
         self,
-        request: mts_20210728_models.SubmitTraceExtractRequest,
-    ) -> mts_20210728_models.SubmitTraceExtractResponse:
+        request: mts_20210728_models.SubmitTraceAbRequest,
+    ) -> mts_20210728_models.SubmitTraceAbResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.submit_trace_extract_with_options_async(request, headers, runtime)
+        return await self.submit_trace_ab_with_options_async(request, headers, runtime)
 
     def submit_trace_extract_with_options(
         self,
@@ -945,6 +933,8 @@ class Client(OpenApiClient):
             body['CallBack'] = request.call_back
         if not UtilClient.is_unset(request.input):
             body['Input'] = request.input
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
         if not UtilClient.is_unset(request.url):
             body['Url'] = request.url
         if not UtilClient.is_unset(request.user_data):
@@ -981,6 +971,8 @@ class Client(OpenApiClient):
             body['CallBack'] = request.call_back
         if not UtilClient.is_unset(request.input):
             body['Input'] = request.input
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
         if not UtilClient.is_unset(request.url):
             body['Url'] = request.url
         if not UtilClient.is_unset(request.user_data):
@@ -1005,21 +997,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def submit_tracemu(
+    def submit_trace_extract(
         self,
-        request: mts_20210728_models.SubmitTracemuRequest,
-    ) -> mts_20210728_models.SubmitTracemuResponse:
+        request: mts_20210728_models.SubmitTraceExtractRequest,
+    ) -> mts_20210728_models.SubmitTraceExtractResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.submit_tracemu_with_options(request, headers, runtime)
+        return self.submit_trace_extract_with_options(request, headers, runtime)
 
-    async def submit_tracemu_async(
+    async def submit_trace_extract_async(
         self,
-        request: mts_20210728_models.SubmitTracemuRequest,
-    ) -> mts_20210728_models.SubmitTracemuResponse:
+        request: mts_20210728_models.SubmitTraceExtractRequest,
+    ) -> mts_20210728_models.SubmitTraceExtractResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.submit_tracemu_with_options_async(request, headers, runtime)
+        return await self.submit_trace_extract_with_options_async(request, headers, runtime)
 
     def submit_tracemu_with_options(
         self,
@@ -1035,6 +1027,8 @@ class Client(OpenApiClient):
             body['MediaId'] = request.media_id
         if not UtilClient.is_unset(request.output):
             body['Output'] = request.output
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
         if not UtilClient.is_unset(request.trace):
             body['Trace'] = request.trace
         req = open_api_models.OpenApiRequest(
@@ -1071,6 +1065,8 @@ class Client(OpenApiClient):
             body['MediaId'] = request.media_id
         if not UtilClient.is_unset(request.output):
             body['Output'] = request.output
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
         if not UtilClient.is_unset(request.trace):
             body['Trace'] = request.trace
         req = open_api_models.OpenApiRequest(
@@ -1092,3 +1088,19 @@ class Client(OpenApiClient):
             mts_20210728_models.SubmitTracemuResponse(),
             await self.call_api_async(params, req, runtime)
         )
+
+    def submit_tracemu(
+        self,
+        request: mts_20210728_models.SubmitTracemuRequest,
+    ) -> mts_20210728_models.SubmitTracemuResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.submit_tracemu_with_options(request, headers, runtime)
+
+    async def submit_tracemu_async(
+        self,
+        request: mts_20210728_models.SubmitTracemuRequest,
+    ) -> mts_20210728_models.SubmitTracemuResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.submit_tracemu_with_options_async(request, headers, runtime)
