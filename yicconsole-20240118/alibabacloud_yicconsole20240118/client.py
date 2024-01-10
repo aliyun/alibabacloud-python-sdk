@@ -41,6 +41,82 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def billing_process_message_with_options(
+        self,
+        request: yic_console_20240118_models.BillingProcessMessageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yic_console_20240118_models.BillingProcessMessageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.body):
+            query['body'] = request.body
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BillingProcessMessage',
+            version='2024-01-18',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/v1/billing/commands/lifecycle',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yic_console_20240118_models.BillingProcessMessageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def billing_process_message_with_options_async(
+        self,
+        request: yic_console_20240118_models.BillingProcessMessageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yic_console_20240118_models.BillingProcessMessageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.body):
+            query['body'] = request.body
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BillingProcessMessage',
+            version='2024-01-18',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/v1/billing/commands/lifecycle',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yic_console_20240118_models.BillingProcessMessageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def billing_process_message(
+        self,
+        request: yic_console_20240118_models.BillingProcessMessageRequest,
+    ) -> yic_console_20240118_models.BillingProcessMessageResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.billing_process_message_with_options(request, headers, runtime)
+
+    async def billing_process_message_async(
+        self,
+        request: yic_console_20240118_models.BillingProcessMessageRequest,
+    ) -> yic_console_20240118_models.BillingProcessMessageResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.billing_process_message_with_options_async(request, headers, runtime)
+
     def check_pay_order_with_options(
         self,
         request: yic_console_20240118_models.CheckPayOrderRequest,
