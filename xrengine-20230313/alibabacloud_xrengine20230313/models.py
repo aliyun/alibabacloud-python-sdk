@@ -2292,6 +2292,45 @@ class ListMotionShopTasksRequest(TeaModel):
         return self
 
 
+class ListMotionShopTasksResponseBodyDataMaterial(TeaModel):
+    def __init__(
+        self,
+        avatar_id: str = None,
+        box: List[float] = None,
+        cover_url: str = None,
+    ):
+        self.avatar_id = avatar_id
+        self.box = box
+        self.cover_url = cover_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avatar_id is not None:
+            result['AvatarId'] = self.avatar_id
+        if self.box is not None:
+            result['Box'] = self.box
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvatarId') is not None:
+            self.avatar_id = m.get('AvatarId')
+        if m.get('Box') is not None:
+            self.box = m.get('Box')
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        return self
+
+
 class ListMotionShopTasksResponseBodyDataResult(TeaModel):
     def __init__(
         self,
@@ -2334,15 +2373,19 @@ class ListMotionShopTasksResponseBodyDataResult(TeaModel):
 class ListMotionShopTasksResponseBodyData(TeaModel):
     def __init__(
         self,
+        material: ListMotionShopTasksResponseBodyDataMaterial = None,
         result: ListMotionShopTasksResponseBodyDataResult = None,
         status: str = None,
         task_id: str = None,
     ):
+        self.material = material
         self.result = result
         self.status = status
         self.task_id = task_id
 
     def validate(self):
+        if self.material:
+            self.material.validate()
         if self.result:
             self.result.validate()
 
@@ -2352,6 +2395,8 @@ class ListMotionShopTasksResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.material is not None:
+            result['Material'] = self.material.to_map()
         if self.result is not None:
             result['Result'] = self.result.to_map()
         if self.status is not None:
@@ -2362,6 +2407,9 @@ class ListMotionShopTasksResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Material') is not None:
+            temp_model = ListMotionShopTasksResponseBodyDataMaterial()
+            self.material = temp_model.from_map(m['Material'])
         if m.get('Result') is not None:
             temp_model = ListMotionShopTasksResponseBodyDataResult()
             self.result = temp_model.from_map(m['Result'])
