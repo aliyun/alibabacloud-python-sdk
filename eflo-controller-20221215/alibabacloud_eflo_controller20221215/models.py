@@ -725,13 +725,17 @@ class CreateClusterRequestNetworks(TeaModel):
         ip_allocation_policy: List[CreateClusterRequestNetworksIpAllocationPolicy] = None,
         new_vpd_info: CreateClusterRequestNetworksNewVpdInfo = None,
         security_group_id: str = None,
+        v_switch_id: str = None,
         v_switch_zone_id: str = None,
+        vpc_id: str = None,
         vpd_info: CreateClusterRequestNetworksVpdInfo = None,
     ):
         self.ip_allocation_policy = ip_allocation_policy
         self.new_vpd_info = new_vpd_info
         self.security_group_id = security_group_id
+        self.v_switch_id = v_switch_id
         self.v_switch_zone_id = v_switch_zone_id
+        self.vpc_id = vpc_id
         # 复用VPD信息
         self.vpd_info = vpd_info
 
@@ -759,8 +763,12 @@ class CreateClusterRequestNetworks(TeaModel):
             result['NewVpdInfo'] = self.new_vpd_info.to_map()
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
         if self.v_switch_zone_id is not None:
             result['VSwitchZoneId'] = self.v_switch_zone_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         if self.vpd_info is not None:
             result['VpdInfo'] = self.vpd_info.to_map()
         return result
@@ -777,8 +785,12 @@ class CreateClusterRequestNetworks(TeaModel):
             self.new_vpd_info = temp_model.from_map(m['NewVpdInfo'])
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
         if m.get('VSwitchZoneId') is not None:
             self.v_switch_zone_id = m.get('VSwitchZoneId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         if m.get('VpdInfo') is not None:
             temp_model = CreateClusterRequestNetworksVpdInfo()
             self.vpd_info = temp_model.from_map(m['VpdInfo'])
