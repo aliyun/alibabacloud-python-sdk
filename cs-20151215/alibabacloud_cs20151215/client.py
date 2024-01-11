@@ -7497,6 +7497,8 @@ class Client(OpenApiClient):
             body['instance_deletion_protection'] = request.instance_deletion_protection
         if not UtilClient.is_unset(request.maintenance_window):
             body['maintenance_window'] = request.maintenance_window
+        if not UtilClient.is_unset(request.operation_policy):
+            body['operation_policy'] = request.operation_policy
         if not UtilClient.is_unset(request.resource_group_id):
             body['resource_group_id'] = request.resource_group_id
         if not UtilClient.is_unset(request.system_events_logging):
@@ -7550,6 +7552,8 @@ class Client(OpenApiClient):
             body['instance_deletion_protection'] = request.instance_deletion_protection
         if not UtilClient.is_unset(request.maintenance_window):
             body['maintenance_window'] = request.maintenance_window
+        if not UtilClient.is_unset(request.operation_policy):
+            body['operation_policy'] = request.operation_policy
         if not UtilClient.is_unset(request.resource_group_id):
             body['resource_group_id'] = request.resource_group_id
         if not UtilClient.is_unset(request.system_events_logging):

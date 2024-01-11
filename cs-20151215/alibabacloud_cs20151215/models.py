@@ -2721,14 +2721,10 @@ class CreateClusterRequest(TeaModel):
         # 
         # Default value: `ack.standard`. If you leave this property empty, an ACK Basic cluster.is created.
         # 
-        # For more information, see [Overview of ACK Pro clusters](https://help.aliyun.com/document_detail/173290.html).
+        # For more information, see [Overview of ACK Pro clusters](~~173290~~).
         self.cluster_spec = cluster_spec
-        # The cluster type. Valid values:
-        # 
-        # *   `Kubernetes`: ACK dedicated cluster.
-        # *   `ManagedKubernetes`: ACK Basic cluster or ACK Edge cluster.
-        # *   `Ask`: ACK Serverless Basic cluster.
-        # *   `ExternalKubernetes`: external cluster that is registered to ACK.
+        # The cluster type. Valid value: ManagedKubernetes. 
+        # You can create ACK managed clusters, ACK Serverless clusters, and ACK Edge clusters.
         self.cluster_type = cluster_type
         # The CIDR block of pods. You can specify 10.0.0.0/8, 172.16-31.0.0/12-16, 192.168.0.0/16, or their subnets as the CIDR block of pods. The CIDR block of pods cannot overlap with the CIDR block of the VPC in which the cluster is deployed and the CIDR blocks of existing clusters in the VPC. You cannot modify the pod CIDR block after the cluster is created.
         # 
@@ -19864,6 +19860,68 @@ class MigrateClusterResponse(TeaModel):
         return self
 
 
+class ModifyClusterRequestOperationPolicyClusterAutoUpgrade(TeaModel):
+    def __init__(
+        self,
+        channel: str = None,
+        enabled: bool = None,
+    ):
+        self.channel = channel
+        self.enabled = enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel is not None:
+            result['channel'] = self.channel
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('channel') is not None:
+            self.channel = m.get('channel')
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        return self
+
+
+class ModifyClusterRequestOperationPolicy(TeaModel):
+    def __init__(
+        self,
+        cluster_auto_upgrade: ModifyClusterRequestOperationPolicyClusterAutoUpgrade = None,
+    ):
+        self.cluster_auto_upgrade = cluster_auto_upgrade
+
+    def validate(self):
+        if self.cluster_auto_upgrade:
+            self.cluster_auto_upgrade.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_auto_upgrade is not None:
+            result['cluster_auto_upgrade'] = self.cluster_auto_upgrade.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_auto_upgrade') is not None:
+            temp_model = ModifyClusterRequestOperationPolicyClusterAutoUpgrade()
+            self.cluster_auto_upgrade = temp_model.from_map(m['cluster_auto_upgrade'])
+        return self
+
+
 class ModifyClusterRequestSystemEventsLogging(TeaModel):
     def __init__(
         self,
@@ -19912,6 +19970,7 @@ class ModifyClusterRequest(TeaModel):
         ingress_loadbalancer_id: str = None,
         instance_deletion_protection: bool = None,
         maintenance_window: MaintenanceWindow = None,
+        operation_policy: ModifyClusterRequestOperationPolicy = None,
         resource_group_id: str = None,
         system_events_logging: ModifyClusterRequestSystemEventsLogging = None,
     ):
@@ -19958,6 +20017,7 @@ class ModifyClusterRequest(TeaModel):
         self.instance_deletion_protection = instance_deletion_protection
         # The maintenance window of the cluster. This parameter takes effect only in ACK Pro clusters.
         self.maintenance_window = maintenance_window
+        self.operation_policy = operation_policy
         # The ID of the resource group to which the cluster belongs.
         self.resource_group_id = resource_group_id
         # 系统事件存储配置。
@@ -19966,6 +20026,8 @@ class ModifyClusterRequest(TeaModel):
     def validate(self):
         if self.maintenance_window:
             self.maintenance_window.validate()
+        if self.operation_policy:
+            self.operation_policy.validate()
         if self.system_events_logging:
             self.system_events_logging.validate()
 
@@ -19995,6 +20057,8 @@ class ModifyClusterRequest(TeaModel):
             result['instance_deletion_protection'] = self.instance_deletion_protection
         if self.maintenance_window is not None:
             result['maintenance_window'] = self.maintenance_window.to_map()
+        if self.operation_policy is not None:
+            result['operation_policy'] = self.operation_policy.to_map()
         if self.resource_group_id is not None:
             result['resource_group_id'] = self.resource_group_id
         if self.system_events_logging is not None:
@@ -20024,6 +20088,9 @@ class ModifyClusterRequest(TeaModel):
         if m.get('maintenance_window') is not None:
             temp_model = MaintenanceWindow()
             self.maintenance_window = temp_model.from_map(m['maintenance_window'])
+        if m.get('operation_policy') is not None:
+            temp_model = ModifyClusterRequestOperationPolicy()
+            self.operation_policy = temp_model.from_map(m['operation_policy'])
         if m.get('resource_group_id') is not None:
             self.resource_group_id = m.get('resource_group_id')
         if m.get('system_events_logging') is not None:
@@ -21829,7 +21896,6 @@ class OpenAckServiceRequest(TeaModel):
         # 
         # *   `propayasgo`: ACK Pro
         # *   `edgepayasgo`: ACK Edge
-        # *   `gspayasgo`: ACK for Alibaba Cloud Genomics Service (AGS)
         self.type = type
 
     def validate(self):
