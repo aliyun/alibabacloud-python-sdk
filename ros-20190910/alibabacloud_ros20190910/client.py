@@ -401,8 +401,6 @@ class Client(OpenApiClient):
             query['StackPolicyDuringUpdateURL'] = request.stack_policy_during_update_url
         if not UtilClient.is_unset(request.stack_policy_url):
             query['StackPolicyURL'] = request.stack_policy_url
-        if not UtilClient.is_unset(request.template_body):
-            query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_scratch_id):
@@ -415,8 +413,12 @@ class Client(OpenApiClient):
             query['TimeoutInMinutes'] = request.timeout_in_minutes
         if not UtilClient.is_unset(request.use_previous_parameters):
             query['UsePreviousParameters'] = request.use_previous_parameters
+        body = {}
+        if not UtilClient.is_unset(request.template_body):
+            body['TemplateBody'] = request.template_body
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateChangeSet',
@@ -490,8 +492,6 @@ class Client(OpenApiClient):
             query['StackPolicyDuringUpdateURL'] = request.stack_policy_during_update_url
         if not UtilClient.is_unset(request.stack_policy_url):
             query['StackPolicyURL'] = request.stack_policy_url
-        if not UtilClient.is_unset(request.template_body):
-            query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_scratch_id):
@@ -504,8 +504,12 @@ class Client(OpenApiClient):
             query['TimeoutInMinutes'] = request.timeout_in_minutes
         if not UtilClient.is_unset(request.use_previous_parameters):
             query['UsePreviousParameters'] = request.use_previous_parameters
+        body = {}
+        if not UtilClient.is_unset(request.template_body):
+            body['TemplateBody'] = request.template_body
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateChangeSet',
@@ -687,8 +691,6 @@ class Client(OpenApiClient):
             query['StackPolicyURL'] = request.stack_policy_url
         if not UtilClient.is_unset(request.tags):
             query['Tags'] = request.tags
-        if not UtilClient.is_unset(request.template_body):
-            query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_scratch_id):
@@ -701,8 +703,12 @@ class Client(OpenApiClient):
             query['TemplateVersion'] = request.template_version
         if not UtilClient.is_unset(request.timeout_in_minutes):
             query['TimeoutInMinutes'] = request.timeout_in_minutes
+        body = {}
+        if not UtilClient.is_unset(request.template_body):
+            body['TemplateBody'] = request.template_body
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateStack',
@@ -768,8 +774,6 @@ class Client(OpenApiClient):
             query['StackPolicyURL'] = request.stack_policy_url
         if not UtilClient.is_unset(request.tags):
             query['Tags'] = request.tags
-        if not UtilClient.is_unset(request.template_body):
-            query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_scratch_id):
@@ -782,8 +786,12 @@ class Client(OpenApiClient):
             query['TemplateVersion'] = request.template_version
         if not UtilClient.is_unset(request.timeout_in_minutes):
             query['TimeoutInMinutes'] = request.timeout_in_minutes
+        body = {}
+        if not UtilClient.is_unset(request.template_body):
+            body['TemplateBody'] = request.template_body
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateStack',
@@ -882,16 +890,18 @@ class Client(OpenApiClient):
             query['StackGroupName'] = request.stack_group_name
         if not UtilClient.is_unset(request.tags):
             query['Tags'] = request.tags
-        if not UtilClient.is_unset(request.template_body):
-            query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_url):
             query['TemplateURL'] = request.template_url
         if not UtilClient.is_unset(request.template_version):
             query['TemplateVersion'] = request.template_version
+        body = {}
+        if not UtilClient.is_unset(request.template_body):
+            body['TemplateBody'] = request.template_body
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateStackGroup',
@@ -956,16 +966,18 @@ class Client(OpenApiClient):
             query['StackGroupName'] = request.stack_group_name
         if not UtilClient.is_unset(request.tags):
             query['Tags'] = request.tags
-        if not UtilClient.is_unset(request.template_body):
-            query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_url):
             query['TemplateURL'] = request.template_url
         if not UtilClient.is_unset(request.template_version):
             query['TemplateVersion'] = request.template_version
+        body = {}
+        if not UtilClient.is_unset(request.template_body):
+            body['TemplateBody'] = request.template_body
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateStackGroup',
@@ -7435,8 +7447,6 @@ class Client(OpenApiClient):
             query['StackPolicyBody'] = request.stack_policy_body
         if not UtilClient.is_unset(request.stack_policy_url):
             query['StackPolicyURL'] = request.stack_policy_url
-        if not UtilClient.is_unset(request.template_body):
-            query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_scratch_id):
@@ -7449,8 +7459,12 @@ class Client(OpenApiClient):
             query['TemplateVersion'] = request.template_version
         if not UtilClient.is_unset(request.timeout_in_minutes):
             query['TimeoutInMinutes'] = request.timeout_in_minutes
+        body = {}
+        if not UtilClient.is_unset(request.template_body):
+            body['TemplateBody'] = request.template_body
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='PreviewStack',
@@ -7502,8 +7516,6 @@ class Client(OpenApiClient):
             query['StackPolicyBody'] = request.stack_policy_body
         if not UtilClient.is_unset(request.stack_policy_url):
             query['StackPolicyURL'] = request.stack_policy_url
-        if not UtilClient.is_unset(request.template_body):
-            query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_scratch_id):
@@ -7516,8 +7528,12 @@ class Client(OpenApiClient):
             query['TemplateVersion'] = request.template_version
         if not UtilClient.is_unset(request.timeout_in_minutes):
             query['TimeoutInMinutes'] = request.timeout_in_minutes
+        body = {}
+        if not UtilClient.is_unset(request.template_body):
+            body['TemplateBody'] = request.template_body
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='PreviewStack',
@@ -8528,8 +8544,6 @@ class Client(OpenApiClient):
             query['StackPolicyURL'] = request.stack_policy_url
         if not UtilClient.is_unset(request.tags):
             query['Tags'] = request.tags
-        if not UtilClient.is_unset(request.template_body):
-            query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_url):
@@ -8540,8 +8554,12 @@ class Client(OpenApiClient):
             query['TimeoutInMinutes'] = request.timeout_in_minutes
         if not UtilClient.is_unset(request.use_previous_parameters):
             query['UsePreviousParameters'] = request.use_previous_parameters
+        body = {}
+        if not UtilClient.is_unset(request.template_body):
+            body['TemplateBody'] = request.template_body
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateStack',
@@ -8608,8 +8626,6 @@ class Client(OpenApiClient):
             query['StackPolicyURL'] = request.stack_policy_url
         if not UtilClient.is_unset(request.tags):
             query['Tags'] = request.tags
-        if not UtilClient.is_unset(request.template_body):
-            query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_url):
@@ -8620,8 +8636,12 @@ class Client(OpenApiClient):
             query['TimeoutInMinutes'] = request.timeout_in_minutes
         if not UtilClient.is_unset(request.use_previous_parameters):
             query['UsePreviousParameters'] = request.use_previous_parameters
+        body = {}
+        if not UtilClient.is_unset(request.template_body):
+            body['TemplateBody'] = request.template_body
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateStack',
@@ -8728,16 +8748,18 @@ class Client(OpenApiClient):
             query['RegionIds'] = request.region_ids_shrink
         if not UtilClient.is_unset(request.stack_group_name):
             query['StackGroupName'] = request.stack_group_name
-        if not UtilClient.is_unset(request.template_body):
-            query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_url):
             query['TemplateURL'] = request.template_url
         if not UtilClient.is_unset(request.template_version):
             query['TemplateVersion'] = request.template_version
+        body = {}
+        if not UtilClient.is_unset(request.template_body):
+            body['TemplateBody'] = request.template_body
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateStackGroup',
@@ -8812,16 +8834,18 @@ class Client(OpenApiClient):
             query['RegionIds'] = request.region_ids_shrink
         if not UtilClient.is_unset(request.stack_group_name):
             query['StackGroupName'] = request.stack_group_name
-        if not UtilClient.is_unset(request.template_body):
-            query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_url):
             query['TemplateURL'] = request.template_url
         if not UtilClient.is_unset(request.template_version):
             query['TemplateVersion'] = request.template_version
+        body = {}
+        if not UtilClient.is_unset(request.template_body):
+            body['TemplateBody'] = request.template_body
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateStackGroup',

@@ -829,10 +829,6 @@ class CreateChangeSetRequest(TeaModel):
         # *   StackPolicyDuringUpdateBody
         # *   StackPolicyDuringUpdateURL
         self.stack_policy_url = stack_policy_url
-        # The structure of the template body. The template body must be 1 to 524,288 bytes in length.\
-        # If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessive length of URLs.
-        # 
-        # You can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
         self.template_body = template_body
         # The ID of the template. This parameter applies to shared and private templates.
         # 
@@ -1456,9 +1452,6 @@ class CreateStackRequest(TeaModel):
         self.stack_policy_url = stack_policy_url
         # The tags that you want to add to the stack.
         self.tags = tags
-        # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
-        # 
-        # > You must and can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
         self.template_body = template_body
         # The template ID. This parameter applies to shared templates and private templates.
         # 
@@ -1876,9 +1869,6 @@ class CreateStackGroupRequest(TeaModel):
         self.stack_group_name = stack_group_name
         # The tags of the stack group.
         self.tags = tags
-        # The template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
-        # 
-        # > You must and can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
         self.template_body = template_body
         # The ID of the template. This parameter applies to shared and private templates.
         # 
@@ -2135,9 +2125,6 @@ class CreateStackGroupShrinkRequest(TeaModel):
         self.stack_group_name = stack_group_name
         # The tags of the stack group.
         self.tags = tags
-        # The template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
-        # 
-        # > You must and can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
         self.template_body = template_body
         # The ID of the template. This parameter applies to shared and private templates.
         # 
@@ -19930,9 +19917,6 @@ class PreviewStackRequest(TeaModel):
         # 
         # The URL can be up to 1,350 bytes in length.
         self.stack_policy_url = stack_policy_url
-        # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
-        # 
-        # > You must and can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
         self.template_body = template_body
         # The template ID. This parameter applies to shared and private templates.
         # 
@@ -21917,11 +21901,6 @@ class UpdateStackRequest(TeaModel):
         self.stack_policy_url = stack_policy_url
         # The value of tag N that you want to add to the template.
         self.tags = tags
-        # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.
-        # 
-        # If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
-        # 
-        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
         self.template_body = template_body
         # The ID of the template. This parameter applies to shared templates and private templates.
         # 
@@ -22465,9 +22444,6 @@ class UpdateStackGroupRequest(TeaModel):
         self.region_ids = region_ids
         # The region IDs of stack instances. You can specify a maximum of 20 region IDs.
         self.stack_group_name = stack_group_name
-        # The name of the RAM role to be assumed by the administrator account in ROS. This parameter is required if you want to grant self-managed permissions to the stack group. If you do not specify a value for this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
-        # 
-        # The name must be 1 to 64 characters in length, and can contain letters, digits, and hyphens (-).
         self.template_body = template_body
         # The permission model.
         # 
@@ -22722,9 +22698,6 @@ class UpdateStackGroupShrinkRequest(TeaModel):
         self.region_ids_shrink = region_ids_shrink
         # The region IDs of stack instances. You can specify a maximum of 20 region IDs.
         self.stack_group_name = stack_group_name
-        # The name of the RAM role to be assumed by the administrator account in ROS. This parameter is required if you want to grant self-managed permissions to the stack group. If you do not specify a value for this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
-        # 
-        # The name must be 1 to 64 characters in length, and can contain letters, digits, and hyphens (-).
         self.template_body = template_body
         # The permission model.
         # 

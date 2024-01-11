@@ -1,3 +1,6 @@
+2024-01-11 Version: 3.3.3
+- Adjust the parameter position of TemplateBody in CreateStack,UpdateStack,PreviewStack,CreateStackGroup,UpdateStackGroup,CreateChangeSet to adapt to large templates.
+
 2024-01-10 Version: 3.3.2
 - DeleteStackInstances supports specifying account ids in resource directory mode.
 
