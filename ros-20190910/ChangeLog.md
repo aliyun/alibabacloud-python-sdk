@@ -1,3 +1,6 @@
+2024-01-11 Version: 3.3.4
+- Generated python 2019-09-10 for ROS.
+
 2024-01-11 Version: 3.3.3
 - Adjust the parameter position of TemplateBody in CreateStack,UpdateStack,PreviewStack,CreateStackGroup,UpdateStackGroup,CreateChangeSet to adapt to large templates.
 
