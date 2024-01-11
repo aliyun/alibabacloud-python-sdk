@@ -16376,6 +16376,7 @@ class GetMergeRequestResponseBodyResultReviewers(TeaModel):
         id: int = None,
         name: str = None,
         review_opinion_status: str = None,
+        review_time: str = None,
         state: str = None,
         username: str = None,
     ):
@@ -16385,6 +16386,7 @@ class GetMergeRequestResponseBodyResultReviewers(TeaModel):
         self.id = id
         self.name = name
         self.review_opinion_status = review_opinion_status
+        self.review_time = review_time
         self.state = state
         self.username = username
 
@@ -16409,6 +16411,8 @@ class GetMergeRequestResponseBodyResultReviewers(TeaModel):
             result['name'] = self.name
         if self.review_opinion_status is not None:
             result['reviewOpinionStatus'] = self.review_opinion_status
+        if self.review_time is not None:
+            result['reviewTime'] = self.review_time
         if self.state is not None:
             result['state'] = self.state
         if self.username is not None:
@@ -16429,6 +16433,8 @@ class GetMergeRequestResponseBodyResultReviewers(TeaModel):
             self.name = m.get('name')
         if m.get('reviewOpinionStatus') is not None:
             self.review_opinion_status = m.get('reviewOpinionStatus')
+        if m.get('reviewTime') is not None:
+            self.review_time = m.get('reviewTime')
         if m.get('state') is not None:
             self.state = m.get('state')
         if m.get('username') is not None:
@@ -19094,11 +19100,13 @@ class GetProjectMemberResponseBodyResult(TeaModel):
         self,
         access_level: int = None,
         avatar_url: str = None,
+        email: str = None,
         id: int = None,
         name: str = None,
     ):
         self.access_level = access_level
         self.avatar_url = avatar_url
+        self.email = email
         self.id = id
         self.name = name
 
@@ -19115,6 +19123,8 @@ class GetProjectMemberResponseBodyResult(TeaModel):
             result['accessLevel'] = self.access_level
         if self.avatar_url is not None:
             result['avatarUrl'] = self.avatar_url
+        if self.email is not None:
+            result['email'] = self.email
         if self.id is not None:
             result['id'] = self.id
         if self.name is not None:
@@ -19127,6 +19137,8 @@ class GetProjectMemberResponseBodyResult(TeaModel):
             self.access_level = m.get('accessLevel')
         if m.get('avatarUrl') is not None:
             self.avatar_url = m.get('avatarUrl')
+        if m.get('email') is not None:
+            self.email = m.get('email')
         if m.get('id') is not None:
             self.id = m.get('id')
         if m.get('name') is not None:
@@ -28062,6 +28074,7 @@ class ListMergeRequestsResponseBodyResultReviewers(TeaModel):
         email: str = None,
         id: int = None,
         name: str = None,
+        review_time: str = None,
         state: str = None,
         status: str = None,
         username: str = None,
@@ -28070,6 +28083,7 @@ class ListMergeRequestsResponseBodyResultReviewers(TeaModel):
         self.email = email
         self.id = id
         self.name = name
+        self.review_time = review_time
         self.state = state
         self.status = status
         self.username = username
@@ -28091,6 +28105,8 @@ class ListMergeRequestsResponseBodyResultReviewers(TeaModel):
             result['id'] = self.id
         if self.name is not None:
             result['name'] = self.name
+        if self.review_time is not None:
+            result['reviewTime'] = self.review_time
         if self.state is not None:
             result['state'] = self.state
         if self.status is not None:
@@ -28109,6 +28125,8 @@ class ListMergeRequestsResponseBodyResultReviewers(TeaModel):
             self.id = m.get('id')
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('reviewTime') is not None:
+            self.review_time = m.get('reviewTime')
         if m.get('state') is not None:
             self.state = m.get('state')
         if m.get('status') is not None:
