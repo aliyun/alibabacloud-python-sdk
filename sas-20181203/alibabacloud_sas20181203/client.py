@@ -42649,6 +42649,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.operate_task_id):
             query['OperateTaskId'] = request.operate_task_id
         if not UtilClient.is_unset(request.page_size):
@@ -42683,6 +42685,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.operate_task_id):
             query['OperateTaskId'] = request.operate_task_id
         if not UtilClient.is_unset(request.page_size):
