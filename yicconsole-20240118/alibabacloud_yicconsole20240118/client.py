@@ -48,12 +48,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yic_console_20240118_models.BillingProcessMessageResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.body):
-            query['body'] = request.body
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='BillingProcessMessage',
@@ -78,12 +75,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yic_console_20240118_models.BillingProcessMessageResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.body):
-            query['body'] = request.body
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='BillingProcessMessage',
