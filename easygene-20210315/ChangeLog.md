@@ -1,3 +1,6 @@
+2024-01-12 Version: 1.1.2
+- Generated python 2021-03-15 for EasyGene.
+
 2022-11-18 Version: 1.1.1
 - CreateRun with Role.
 

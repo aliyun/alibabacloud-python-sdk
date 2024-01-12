@@ -298,6 +298,8 @@ class Client(OpenApiClient):
             query['Path'] = request.path
         if not UtilClient.is_unset(request.revision_comment):
             query['RevisionComment'] = request.revision_comment
+        if not UtilClient.is_unset(request.revision_tag):
+            query['RevisionTag'] = request.revision_tag
         if not UtilClient.is_unset(request.workspace):
             query['Workspace'] = request.workspace
         body = {}
@@ -360,6 +362,8 @@ class Client(OpenApiClient):
             query['Path'] = request.path
         if not UtilClient.is_unset(request.revision_comment):
             query['RevisionComment'] = request.revision_comment
+        if not UtilClient.is_unset(request.revision_tag):
+            query['RevisionTag'] = request.revision_tag
         if not UtilClient.is_unset(request.workspace):
             query['Workspace'] = request.workspace
         body = {}
@@ -530,6 +534,8 @@ class Client(OpenApiClient):
             query['Labels'] = request.labels
         if not UtilClient.is_unset(request.output_folder):
             query['OutputFolder'] = request.output_folder
+        if not UtilClient.is_unset(request.revision_tag):
+            query['RevisionTag'] = request.revision_tag
         if not UtilClient.is_unset(request.role):
             query['Role'] = request.role
         if not UtilClient.is_unset(request.run_name):
@@ -586,6 +592,8 @@ class Client(OpenApiClient):
             query['Labels'] = request.labels
         if not UtilClient.is_unset(request.output_folder):
             query['OutputFolder'] = request.output_folder
+        if not UtilClient.is_unset(request.revision_tag):
+            query['RevisionTag'] = request.revision_tag
         if not UtilClient.is_unset(request.role):
             query['Role'] = request.role
         if not UtilClient.is_unset(request.run_name):
@@ -658,6 +666,8 @@ class Client(OpenApiClient):
             query['Outputs'] = request.outputs
         if not UtilClient.is_unset(request.revision):
             query['Revision'] = request.revision
+        if not UtilClient.is_unset(request.revision_tag):
+            query['RevisionTag'] = request.revision_tag
         if not UtilClient.is_unset(request.workspace):
             query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
@@ -712,6 +722,8 @@ class Client(OpenApiClient):
             query['Outputs'] = request.outputs
         if not UtilClient.is_unset(request.revision):
             query['Revision'] = request.revision
+        if not UtilClient.is_unset(request.revision_tag):
+            query['RevisionTag'] = request.revision_tag
         if not UtilClient.is_unset(request.workspace):
             query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
@@ -770,6 +782,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.labels):
             query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.revision_tag):
+            query['RevisionTag'] = request.revision_tag
         if not UtilClient.is_unset(request.root_entity):
             query['RootEntity'] = request.root_entity
         if not UtilClient.is_unset(request.template_name):
@@ -824,6 +838,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.labels):
             query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.revision_tag):
+            query['RevisionTag'] = request.revision_tag
         if not UtilClient.is_unset(request.root_entity):
             query['RootEntity'] = request.root_entity
         if not UtilClient.is_unset(request.template_name):
@@ -1516,6 +1532,8 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not UtilClient.is_unset(request.revision):
             query['Revision'] = request.revision
+        if not UtilClient.is_unset(request.revision_tag):
+            query['RevisionTag'] = request.revision_tag
         if not UtilClient.is_unset(request.workspace):
             query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
@@ -1548,6 +1566,8 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not UtilClient.is_unset(request.revision):
             query['Revision'] = request.revision
+        if not UtilClient.is_unset(request.revision_tag):
+            query['RevisionTag'] = request.revision_tag
         if not UtilClient.is_unset(request.workspace):
             query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
@@ -3526,6 +3546,14 @@ class Client(OpenApiClient):
         tmp_req: easy_gene_20210315_models.UpdateEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.UpdateEntityResponse:
+        """
+        @deprecated
+        
+        @param tmp_req: UpdateEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEntityResponse
+        Deprecated
+        """
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.UpdateEntityShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3564,6 +3592,14 @@ class Client(OpenApiClient):
         tmp_req: easy_gene_20210315_models.UpdateEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.UpdateEntityResponse:
+        """
+        @deprecated
+        
+        @param tmp_req: UpdateEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEntityResponse
+        Deprecated
+        """
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.UpdateEntityShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3601,6 +3637,13 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.UpdateEntityRequest,
     ) -> easy_gene_20210315_models.UpdateEntityResponse:
+        """
+        @deprecated
+        
+        @param request: UpdateEntityRequest
+        @return: UpdateEntityResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_entity_with_options(request, runtime)
 
@@ -3608,6 +3651,13 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.UpdateEntityRequest,
     ) -> easy_gene_20210315_models.UpdateEntityResponse:
+        """
+        @deprecated
+        
+        @param request: UpdateEntityRequest
+        @return: UpdateEntityResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_entity_with_options_async(request, runtime)
 

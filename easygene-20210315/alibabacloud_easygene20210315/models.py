@@ -434,6 +434,7 @@ class CreateAppRequest(TeaModel):
         language_version: str = None,
         path: str = None,
         revision_comment: str = None,
+        revision_tag: str = None,
         workspace: str = None,
     ):
         self.app_name = app_name
@@ -449,6 +450,7 @@ class CreateAppRequest(TeaModel):
         self.language_version = language_version
         self.path = path
         self.revision_comment = revision_comment
+        self.revision_tag = revision_tag
         self.workspace = workspace
 
     def validate(self):
@@ -497,6 +499,8 @@ class CreateAppRequest(TeaModel):
             result['Path'] = self.path
         if self.revision_comment is not None:
             result['RevisionComment'] = self.revision_comment
+        if self.revision_tag is not None:
+            result['RevisionTag'] = self.revision_tag
         if self.workspace is not None:
             result['Workspace'] = self.workspace
         return result
@@ -535,6 +539,8 @@ class CreateAppRequest(TeaModel):
             self.path = m.get('Path')
         if m.get('RevisionComment') is not None:
             self.revision_comment = m.get('RevisionComment')
+        if m.get('RevisionTag') is not None:
+            self.revision_tag = m.get('RevisionTag')
         if m.get('Workspace') is not None:
             self.workspace = m.get('Workspace')
         return self
@@ -556,6 +562,7 @@ class CreateAppShrinkRequest(TeaModel):
         language_version: str = None,
         path: str = None,
         revision_comment: str = None,
+        revision_tag: str = None,
         workspace: str = None,
     ):
         self.app_name = app_name
@@ -571,6 +578,7 @@ class CreateAppShrinkRequest(TeaModel):
         self.language_version = language_version
         self.path = path
         self.revision_comment = revision_comment
+        self.revision_tag = revision_tag
         self.workspace = workspace
 
     def validate(self):
@@ -608,6 +616,8 @@ class CreateAppShrinkRequest(TeaModel):
             result['Path'] = self.path
         if self.revision_comment is not None:
             result['RevisionComment'] = self.revision_comment
+        if self.revision_tag is not None:
+            result['RevisionTag'] = self.revision_tag
         if self.workspace is not None:
             result['Workspace'] = self.workspace
         return result
@@ -640,6 +650,8 @@ class CreateAppShrinkRequest(TeaModel):
             self.path = m.get('Path')
         if m.get('RevisionComment') is not None:
             self.revision_comment = m.get('RevisionComment')
+        if m.get('RevisionTag') is not None:
+            self.revision_tag = m.get('RevisionTag')
         if m.get('Workspace') is not None:
             self.workspace = m.get('Workspace')
         return self
@@ -652,12 +664,14 @@ class CreateAppResponseBody(TeaModel):
         host_id: str = None,
         request_id: str = None,
         revision: str = None,
+        revision_tag: str = None,
         workspace: str = None,
     ):
         self.app_name = app_name
         self.host_id = host_id
         self.request_id = request_id
         self.revision = revision
+        self.revision_tag = revision_tag
         self.workspace = workspace
 
     def validate(self):
@@ -677,6 +691,8 @@ class CreateAppResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.revision is not None:
             result['Revision'] = self.revision
+        if self.revision_tag is not None:
+            result['RevisionTag'] = self.revision_tag
         if self.workspace is not None:
             result['Workspace'] = self.workspace
         return result
@@ -691,6 +707,8 @@ class CreateAppResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('Revision') is not None:
             self.revision = m.get('Revision')
+        if m.get('RevisionTag') is not None:
+            self.revision_tag = m.get('RevisionTag')
         if m.get('Workspace') is not None:
             self.workspace = m.get('Workspace')
         return self
@@ -1018,6 +1036,7 @@ class CreateRunRequest(TeaModel):
         inputs: str = None,
         labels: str = None,
         output_folder: str = None,
+        revision_tag: str = None,
         role: str = None,
         run_name: str = None,
         workspace: str = None,
@@ -1032,6 +1051,7 @@ class CreateRunRequest(TeaModel):
         self.inputs = inputs
         self.labels = labels
         self.output_folder = output_folder
+        self.revision_tag = revision_tag
         self.role = role
         self.run_name = run_name
         self.workspace = workspace
@@ -1066,6 +1086,8 @@ class CreateRunRequest(TeaModel):
             result['Labels'] = self.labels
         if self.output_folder is not None:
             result['OutputFolder'] = self.output_folder
+        if self.revision_tag is not None:
+            result['RevisionTag'] = self.revision_tag
         if self.role is not None:
             result['Role'] = self.role
         if self.run_name is not None:
@@ -1097,6 +1119,8 @@ class CreateRunRequest(TeaModel):
             self.labels = m.get('Labels')
         if m.get('OutputFolder') is not None:
             self.output_folder = m.get('OutputFolder')
+        if m.get('RevisionTag') is not None:
+            self.revision_tag = m.get('RevisionTag')
         if m.get('Role') is not None:
             self.role = m.get('Role')
         if m.get('RunName') is not None:
@@ -1119,6 +1143,7 @@ class CreateRunShrinkRequest(TeaModel):
         inputs: str = None,
         labels: str = None,
         output_folder: str = None,
+        revision_tag: str = None,
         role: str = None,
         run_name: str = None,
         workspace: str = None,
@@ -1133,6 +1158,7 @@ class CreateRunShrinkRequest(TeaModel):
         self.inputs = inputs
         self.labels = labels
         self.output_folder = output_folder
+        self.revision_tag = revision_tag
         self.role = role
         self.run_name = run_name
         self.workspace = workspace
@@ -1166,6 +1192,8 @@ class CreateRunShrinkRequest(TeaModel):
             result['Labels'] = self.labels
         if self.output_folder is not None:
             result['OutputFolder'] = self.output_folder
+        if self.revision_tag is not None:
+            result['RevisionTag'] = self.revision_tag
         if self.role is not None:
             result['Role'] = self.role
         if self.run_name is not None:
@@ -1196,6 +1224,8 @@ class CreateRunShrinkRequest(TeaModel):
             self.labels = m.get('Labels')
         if m.get('OutputFolder') is not None:
             self.output_folder = m.get('OutputFolder')
+        if m.get('RevisionTag') is not None:
+            self.revision_tag = m.get('RevisionTag')
         if m.get('Role') is not None:
             self.role = m.get('Role')
         if m.get('RunName') is not None:
@@ -1308,6 +1338,7 @@ class CreateSubmissionRequest(TeaModel):
         output_folder: str = None,
         outputs: str = None,
         revision: str = None,
+        revision_tag: str = None,
         workspace: str = None,
     ):
         self.app_name = app_name
@@ -1321,6 +1352,7 @@ class CreateSubmissionRequest(TeaModel):
         self.output_folder = output_folder
         self.outputs = outputs
         self.revision = revision
+        self.revision_tag = revision_tag
         self.workspace = workspace
 
     def validate(self):
@@ -1354,6 +1386,8 @@ class CreateSubmissionRequest(TeaModel):
             result['Outputs'] = self.outputs
         if self.revision is not None:
             result['Revision'] = self.revision
+        if self.revision_tag is not None:
+            result['RevisionTag'] = self.revision_tag
         if self.workspace is not None:
             result['Workspace'] = self.workspace
         return result
@@ -1382,6 +1416,8 @@ class CreateSubmissionRequest(TeaModel):
             self.outputs = m.get('Outputs')
         if m.get('Revision') is not None:
             self.revision = m.get('Revision')
+        if m.get('RevisionTag') is not None:
+            self.revision_tag = m.get('RevisionTag')
         if m.get('Workspace') is not None:
             self.workspace = m.get('Workspace')
         return self
@@ -1401,6 +1437,7 @@ class CreateSubmissionShrinkRequest(TeaModel):
         output_folder: str = None,
         outputs: str = None,
         revision: str = None,
+        revision_tag: str = None,
         workspace: str = None,
     ):
         self.app_name = app_name
@@ -1414,6 +1451,7 @@ class CreateSubmissionShrinkRequest(TeaModel):
         self.output_folder = output_folder
         self.outputs = outputs
         self.revision = revision
+        self.revision_tag = revision_tag
         self.workspace = workspace
 
     def validate(self):
@@ -1447,6 +1485,8 @@ class CreateSubmissionShrinkRequest(TeaModel):
             result['Outputs'] = self.outputs
         if self.revision is not None:
             result['Revision'] = self.revision
+        if self.revision_tag is not None:
+            result['RevisionTag'] = self.revision_tag
         if self.workspace is not None:
             result['Workspace'] = self.workspace
         return result
@@ -1475,6 +1515,8 @@ class CreateSubmissionShrinkRequest(TeaModel):
             self.outputs = m.get('Outputs')
         if m.get('Revision') is not None:
             self.revision = m.get('Revision')
+        if m.get('RevisionTag') is not None:
+            self.revision_tag = m.get('RevisionTag')
         if m.get('Workspace') is not None:
             self.workspace = m.get('Workspace')
         return self
@@ -1705,6 +1747,7 @@ class CreateTemplateRequest(TeaModel):
         inputs_expression: List[CreateTemplateRequestInputsExpression] = None,
         labels: str = None,
         outputs_expression: List[CreateTemplateRequestOutputsExpression] = None,
+        revision_tag: str = None,
         root_entity: str = None,
         template_name: str = None,
         workspace: str = None,
@@ -1716,6 +1759,7 @@ class CreateTemplateRequest(TeaModel):
         self.inputs_expression = inputs_expression
         self.labels = labels
         self.outputs_expression = outputs_expression
+        self.revision_tag = revision_tag
         self.root_entity = root_entity
         self.template_name = template_name
         self.workspace = workspace
@@ -1754,6 +1798,8 @@ class CreateTemplateRequest(TeaModel):
         if self.outputs_expression is not None:
             for k in self.outputs_expression:
                 result['OutputsExpression'].append(k.to_map() if k else None)
+        if self.revision_tag is not None:
+            result['RevisionTag'] = self.revision_tag
         if self.root_entity is not None:
             result['RootEntity'] = self.root_entity
         if self.template_name is not None:
@@ -1784,6 +1830,8 @@ class CreateTemplateRequest(TeaModel):
             for k in m.get('OutputsExpression'):
                 temp_model = CreateTemplateRequestOutputsExpression()
                 self.outputs_expression.append(temp_model.from_map(k))
+        if m.get('RevisionTag') is not None:
+            self.revision_tag = m.get('RevisionTag')
         if m.get('RootEntity') is not None:
             self.root_entity = m.get('RootEntity')
         if m.get('TemplateName') is not None:
@@ -1803,6 +1851,7 @@ class CreateTemplateShrinkRequest(TeaModel):
         inputs_expression_shrink: str = None,
         labels: str = None,
         outputs_expression_shrink: str = None,
+        revision_tag: str = None,
         root_entity: str = None,
         template_name: str = None,
         workspace: str = None,
@@ -1814,6 +1863,7 @@ class CreateTemplateShrinkRequest(TeaModel):
         self.inputs_expression_shrink = inputs_expression_shrink
         self.labels = labels
         self.outputs_expression_shrink = outputs_expression_shrink
+        self.revision_tag = revision_tag
         self.root_entity = root_entity
         self.template_name = template_name
         self.workspace = workspace
@@ -1841,6 +1891,8 @@ class CreateTemplateShrinkRequest(TeaModel):
             result['Labels'] = self.labels
         if self.outputs_expression_shrink is not None:
             result['OutputsExpression'] = self.outputs_expression_shrink
+        if self.revision_tag is not None:
+            result['RevisionTag'] = self.revision_tag
         if self.root_entity is not None:
             result['RootEntity'] = self.root_entity
         if self.template_name is not None:
@@ -1865,6 +1917,8 @@ class CreateTemplateShrinkRequest(TeaModel):
             self.labels = m.get('Labels')
         if m.get('OutputsExpression') is not None:
             self.outputs_expression_shrink = m.get('OutputsExpression')
+        if m.get('RevisionTag') is not None:
+            self.revision_tag = m.get('RevisionTag')
         if m.get('RootEntity') is not None:
             self.root_entity = m.get('RootEntity')
         if m.get('TemplateName') is not None:
@@ -2980,10 +3034,12 @@ class GetAppRequest(TeaModel):
         self,
         app_name: str = None,
         revision: str = None,
+        revision_tag: str = None,
         workspace: str = None,
     ):
         self.app_name = app_name
         self.revision = revision
+        self.revision_tag = revision_tag
         self.workspace = workspace
 
     def validate(self):
@@ -2999,6 +3055,8 @@ class GetAppRequest(TeaModel):
             result['AppName'] = self.app_name
         if self.revision is not None:
             result['Revision'] = self.revision
+        if self.revision_tag is not None:
+            result['RevisionTag'] = self.revision_tag
         if self.workspace is not None:
             result['Workspace'] = self.workspace
         return result
@@ -3009,6 +3067,8 @@ class GetAppRequest(TeaModel):
             self.app_name = m.get('AppName')
         if m.get('Revision') is not None:
             self.revision = m.get('Revision')
+        if m.get('RevisionTag') is not None:
+            self.revision_tag = m.get('RevisionTag')
         if m.get('Workspace') is not None:
             self.workspace = m.get('Workspace')
         return self
@@ -3212,10 +3272,12 @@ class GetAppResponseBodyRevisions(TeaModel):
         create_time: str = None,
         revision: str = None,
         revision_comment: str = None,
+        revision_tag: str = None,
     ):
         self.create_time = create_time
         self.revision = revision
         self.revision_comment = revision_comment
+        self.revision_tag = revision_tag
 
     def validate(self):
         pass
@@ -3232,6 +3294,8 @@ class GetAppResponseBodyRevisions(TeaModel):
             result['Revision'] = self.revision
         if self.revision_comment is not None:
             result['RevisionComment'] = self.revision_comment
+        if self.revision_tag is not None:
+            result['RevisionTag'] = self.revision_tag
         return result
 
     def from_map(self, m: dict = None):
@@ -3242,6 +3306,8 @@ class GetAppResponseBodyRevisions(TeaModel):
             self.revision = m.get('Revision')
         if m.get('RevisionComment') is not None:
             self.revision_comment = m.get('RevisionComment')
+        if m.get('RevisionTag') is not None:
+            self.revision_tag = m.get('RevisionTag')
         return self
 
 
@@ -3267,6 +3333,7 @@ class GetAppResponseBody(TeaModel):
         request_id: str = None,
         revision: str = None,
         revision_comment: str = None,
+        revision_tag: str = None,
         revisions: List[GetAppResponseBodyRevisions] = None,
         scope: str = None,
         source: str = None,
@@ -3293,6 +3360,7 @@ class GetAppResponseBody(TeaModel):
         self.request_id = request_id
         self.revision = revision
         self.revision_comment = revision_comment
+        self.revision_tag = revision_tag
         self.revisions = revisions
         self.scope = scope
         self.source = source
@@ -3374,6 +3442,8 @@ class GetAppResponseBody(TeaModel):
             result['Revision'] = self.revision
         if self.revision_comment is not None:
             result['RevisionComment'] = self.revision_comment
+        if self.revision_tag is not None:
+            result['RevisionTag'] = self.revision_tag
         result['Revisions'] = []
         if self.revisions is not None:
             for k in self.revisions:
@@ -3442,6 +3512,8 @@ class GetAppResponseBody(TeaModel):
             self.revision = m.get('Revision')
         if m.get('RevisionComment') is not None:
             self.revision_comment = m.get('RevisionComment')
+        if m.get('RevisionTag') is not None:
+            self.revision_tag = m.get('RevisionTag')
         self.revisions = []
         if m.get('Revisions') is not None:
             for k in m.get('Revisions'):
@@ -5118,6 +5190,7 @@ class GetTemplateResponseBody(TeaModel):
         last_modified_time: str = None,
         outputs_expression: List[GetTemplateResponseBodyOutputsExpression] = None,
         request_id: str = None,
+        revision_tag: str = None,
         root_entity: str = None,
         source: str = None,
         template_name: str = None,
@@ -5133,6 +5206,7 @@ class GetTemplateResponseBody(TeaModel):
         self.last_modified_time = last_modified_time
         self.outputs_expression = outputs_expression
         self.request_id = request_id
+        self.revision_tag = revision_tag
         self.root_entity = root_entity
         self.source = source
         self.template_name = template_name
@@ -5178,6 +5252,8 @@ class GetTemplateResponseBody(TeaModel):
                 result['OutputsExpression'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.revision_tag is not None:
+            result['RevisionTag'] = self.revision_tag
         if self.root_entity is not None:
             result['RootEntity'] = self.root_entity
         if self.source is not None:
@@ -5216,6 +5292,8 @@ class GetTemplateResponseBody(TeaModel):
                 self.outputs_expression.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('RevisionTag') is not None:
+            self.revision_tag = m.get('RevisionTag')
         if m.get('RootEntity') is not None:
             self.root_entity = m.get('RootEntity')
         if m.get('Source') is not None:
@@ -5740,6 +5818,7 @@ class ListAppsRequest(TeaModel):
         self.label_selector = label_selector
         self.language = language
         self.max_results = max_results
+        # Next Token
         self.next_token = next_token
         self.order_by = order_by
         self.scope = scope
@@ -5896,6 +5975,7 @@ class ListAppsResponseBody(TeaModel):
         self.apps = apps
         self.host_id = host_id
         self.max_results = max_results
+        # Next Token
         self.next_token = next_token
         self.request_id = request_id
         self.total_count = total_count
@@ -8473,6 +8553,7 @@ class ListSubmissionsRequest(TeaModel):
     ):
         self.is_reversed = is_reversed
         self.max_results = max_results
+        # Next Token
         self.next_token = next_token
         self.order_by = order_by
         self.search = search
@@ -9499,6 +9580,7 @@ class ListWorkspacesRequest(TeaModel):
         self.is_reversed = is_reversed
         self.label_selector = label_selector
         self.max_results = max_results
+        # NextToken
         self.next_token = next_token
         self.order_by = order_by
         self.search = search
@@ -9565,6 +9647,7 @@ class ListWorkspacesResponseBodyWorkspaces(TeaModel):
         self.labels = labels
         self.last_modified_time = last_modified_time
         self.location = location
+        # RAM Role
         self.role = role
         self.status = status
         self.storage = storage
