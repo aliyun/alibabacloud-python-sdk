@@ -243,6 +243,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_query_motion_shop_task_status_with_options_async(request, runtime)
 
+    def create_avatar_talk_project_with_options(
+        self,
+        request: xr_engine_20230313_models.CreateAvatarTalkProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.CreateAvatarTalkProjectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.avatar_project_id):
+            body['AvatarProjectId'] = request.avatar_project_id
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        if not UtilClient.is_unset(request.tts_voice):
+            body['TtsVoice'] = request.tts_voice
+        if not UtilClient.is_unset(request.txt_content):
+            body['TxtContent'] = request.txt_content
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAvatarTalkProject',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.CreateAvatarTalkProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_avatar_talk_project_with_options_async(
+        self,
+        request: xr_engine_20230313_models.CreateAvatarTalkProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.CreateAvatarTalkProjectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.avatar_project_id):
+            body['AvatarProjectId'] = request.avatar_project_id
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        if not UtilClient.is_unset(request.tts_voice):
+            body['TtsVoice'] = request.tts_voice
+        if not UtilClient.is_unset(request.txt_content):
+            body['TxtContent'] = request.txt_content
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAvatarTalkProject',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.CreateAvatarTalkProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_avatar_talk_project(
+        self,
+        request: xr_engine_20230313_models.CreateAvatarTalkProjectRequest,
+    ) -> xr_engine_20230313_models.CreateAvatarTalkProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_avatar_talk_project_with_options(request, runtime)
+
+    async def create_avatar_talk_project_async(
+        self,
+        request: xr_engine_20230313_models.CreateAvatarTalkProjectRequest,
+    ) -> xr_engine_20230313_models.CreateAvatarTalkProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_avatar_talk_project_with_options_async(request, runtime)
+
     def create_digital_human_project_with_options(
         self,
         request: xr_engine_20230313_models.CreateDigitalHumanProjectRequest,

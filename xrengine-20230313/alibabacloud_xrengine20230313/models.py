@@ -418,6 +418,181 @@ class BatchQueryMotionShopTaskStatusResponse(TeaModel):
         return self
 
 
+class CreateAvatarTalkProjectRequest(TeaModel):
+    def __init__(
+        self,
+        avatar_project_id: str = None,
+        jwt_token: str = None,
+        title: str = None,
+        tts_voice: str = None,
+        txt_content: str = None,
+    ):
+        self.avatar_project_id = avatar_project_id
+        self.jwt_token = jwt_token
+        self.title = title
+        self.tts_voice = tts_voice
+        self.txt_content = txt_content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avatar_project_id is not None:
+            result['AvatarProjectId'] = self.avatar_project_id
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.tts_voice is not None:
+            result['TtsVoice'] = self.tts_voice
+        if self.txt_content is not None:
+            result['TxtContent'] = self.txt_content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvatarProjectId') is not None:
+            self.avatar_project_id = m.get('AvatarProjectId')
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('TtsVoice') is not None:
+            self.tts_voice = m.get('TtsVoice')
+        if m.get('TxtContent') is not None:
+            self.txt_content = m.get('TxtContent')
+        return self
+
+
+class CreateAvatarTalkProjectResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class CreateAvatarTalkProjectResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateAvatarTalkProjectResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreateAvatarTalkProjectResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateAvatarTalkProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAvatarTalkProjectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAvatarTalkProjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDigitalHumanProjectRequest(TeaModel):
     def __init__(
         self,
