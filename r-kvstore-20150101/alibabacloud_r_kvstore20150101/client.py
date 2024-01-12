@@ -1303,6 +1303,8 @@ class Client(OpenApiClient):
             query['Capacity'] = request.capacity
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.cluster_backup_id):
+            query['ClusterBackupId'] = request.cluster_backup_id
         if not UtilClient.is_unset(request.connection_string_prefix):
             query['ConnectionStringPrefix'] = request.connection_string_prefix
         if not UtilClient.is_unset(request.coupon_no):
@@ -1425,6 +1427,8 @@ class Client(OpenApiClient):
             query['Capacity'] = request.capacity
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.cluster_backup_id):
+            query['ClusterBackupId'] = request.cluster_backup_id
         if not UtilClient.is_unset(request.connection_string_prefix):
             query['ConnectionStringPrefix'] = request.connection_string_prefix
         if not UtilClient.is_unset(request.coupon_no):
@@ -1735,6 +1739,8 @@ class Client(OpenApiClient):
             query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cluster_backup_id):
+            query['ClusterBackupId'] = request.cluster_backup_id
         if not UtilClient.is_unset(request.coupon_no):
             query['CouponNo'] = request.coupon_no
         if not UtilClient.is_unset(request.dry_run):
@@ -1849,6 +1855,8 @@ class Client(OpenApiClient):
             query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cluster_backup_id):
+            query['ClusterBackupId'] = request.cluster_backup_id
         if not UtilClient.is_unset(request.coupon_no):
             query['CouponNo'] = request.coupon_no
         if not UtilClient.is_unset(request.dry_run):
@@ -3389,6 +3397,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.backup_id):
             query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.backup_job_id):
+            query['BackupJobId'] = request.backup_job_id
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.instance_id):
@@ -3447,6 +3457,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.backup_id):
             query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.backup_job_id):
+            query['BackupJobId'] = request.backup_job_id
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.instance_id):
@@ -3807,6 +3819,72 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cache_analysis_report_list_with_options_async(request, runtime)
+
+    def describe_cluster_backup_list_with_options(
+        self,
+        request: r_kvstore_20150101_models.DescribeClusterBackupListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeClusterBackupListResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeClusterBackupList',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeClusterBackupListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cluster_backup_list_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeClusterBackupListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeClusterBackupListResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeClusterBackupList',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeClusterBackupListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cluster_backup_list(
+        self,
+        request: r_kvstore_20150101_models.DescribeClusterBackupListRequest,
+    ) -> r_kvstore_20150101_models.DescribeClusterBackupListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cluster_backup_list_with_options(request, runtime)
+
+    async def describe_cluster_backup_list_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeClusterBackupListRequest,
+    ) -> r_kvstore_20150101_models.DescribeClusterBackupListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cluster_backup_list_with_options_async(request, runtime)
 
     def describe_cluster_member_info_with_options(
         self,
@@ -11750,7 +11828,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifySecurityGroupConfigurationResponse:
         """
-        > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the *SecurityGroupId** parameter are added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](~~148267~~).
+        > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the *SecurityGroupId** parameter is added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](~~148267~~).
         
         @param request: ModifySecurityGroupConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11797,7 +11875,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifySecurityGroupConfigurationResponse:
         """
-        > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the *SecurityGroupId** parameter are added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](~~148267~~).
+        > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the *SecurityGroupId** parameter is added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](~~148267~~).
         
         @param request: ModifySecurityGroupConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11843,7 +11921,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifySecurityGroupConfigurationRequest,
     ) -> r_kvstore_20150101_models.ModifySecurityGroupConfigurationResponse:
         """
-        > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the *SecurityGroupId** parameter are added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](~~148267~~).
+        > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the *SecurityGroupId** parameter is added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](~~148267~~).
         
         @param request: ModifySecurityGroupConfigurationRequest
         @return: ModifySecurityGroupConfigurationResponse
@@ -11856,7 +11934,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifySecurityGroupConfigurationRequest,
     ) -> r_kvstore_20150101_models.ModifySecurityGroupConfigurationResponse:
         """
-        > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the *SecurityGroupId** parameter are added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](~~148267~~).
+        > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the *SecurityGroupId** parameter is added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](~~148267~~).
         
         @param request: ModifySecurityGroupConfigurationRequest
         @return: ModifySecurityGroupConfigurationResponse

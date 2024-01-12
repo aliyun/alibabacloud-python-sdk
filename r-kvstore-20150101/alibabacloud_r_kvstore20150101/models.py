@@ -32,6 +32,10 @@ class AddShardingNodeRequest(TeaModel):
         self.business_info = business_info
         # The ID of the coupon.
         self.coupon_no = coupon_no
+        # Specifies whether to enable forced transmission during a configuration change. Valid values:
+        # 
+        # *   **false** (default): Before the configuration change, the system checks the minor version of the instance. If the minor version of the instance is outdated, an error is reported. You must update the minor version of the instance and try again.
+        # *   **true**: The system skips the version check and directly performs the configuration change.
         self.force_trans = force_trans
         # The ID of the instance.
         self.instance_id = instance_id
@@ -42,12 +46,11 @@ class AddShardingNodeRequest(TeaModel):
         self.security_token = security_token
         # The number of data shards that you want to add. Default value: **1**.
         # 
-        # > 
-        # 
-        # *   A cluster instance must contain 2 to 256 data shards. You can add a maximum of 64 data shards at a time.
+        # >  The instance can contain 2 to 256 data shards. You can add up to 64 data shards at a time. Make sure that the number of shards does not exceed this limit.
         self.shard_count = shard_count
         # The source of the operation. This parameter is used only for internal maintenance. You do not need to specify this parameter.
         self.source_biz = source_biz
+        # The vSwitch ID. You can specify a different vSwitch within the same virtual private cloud (VPC). In this case, the new data shards are created in the specified vSwitch. If you do not specify this parameter, the new data shards are created in the original vSwitch.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -1527,6 +1530,7 @@ class CreateInstanceRequest(TeaModel):
         business_info: str = None,
         capacity: int = None,
         charge_type: str = None,
+        cluster_backup_id: str = None,
         connection_string_prefix: str = None,
         coupon_no: str = None,
         dedicated_host_group_id: str = None,
@@ -1601,6 +1605,7 @@ class CreateInstanceRequest(TeaModel):
         # *   **PrePaid**: subscription
         # *   **PostPaid**: pay-as-you-go
         self.charge_type = charge_type
+        self.cluster_backup_id = cluster_backup_id
         # The operation that you want to perform. Set the value to **AllocateInstancePublicConnection**.
         self.connection_string_prefix = connection_string_prefix
         # The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
@@ -1726,6 +1731,8 @@ class CreateInstanceRequest(TeaModel):
             result['Capacity'] = self.capacity
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
+        if self.cluster_backup_id is not None:
+            result['ClusterBackupId'] = self.cluster_backup_id
         if self.connection_string_prefix is not None:
             result['ConnectionStringPrefix'] = self.connection_string_prefix
         if self.coupon_no is not None:
@@ -1818,6 +1825,8 @@ class CreateInstanceRequest(TeaModel):
             self.capacity = m.get('Capacity')
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
+        if m.get('ClusterBackupId') is not None:
+            self.cluster_backup_id = m.get('ClusterBackupId')
         if m.get('ConnectionStringPrefix') is not None:
             self.connection_string_prefix = m.get('ConnectionStringPrefix')
         if m.get('CouponNo') is not None:
@@ -2424,6 +2433,7 @@ class CreateTairInstanceRequest(TeaModel):
         business_info: str = None,
         charge_type: str = None,
         client_token: str = None,
+        cluster_backup_id: str = None,
         coupon_no: str = None,
         dry_run: bool = None,
         engine_version: str = None,
@@ -2485,6 +2495,7 @@ class CreateTairInstanceRequest(TeaModel):
         self.charge_type = charge_type
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the token is unique among different requests. The token is case-sensitive. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        self.cluster_backup_id = cluster_backup_id
         # The coupon code.
         self.coupon_no = coupon_no
         # Specifies whether to perform a dry run. Default value: false. Valid values:
@@ -2616,6 +2627,8 @@ class CreateTairInstanceRequest(TeaModel):
             result['ChargeType'] = self.charge_type
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.cluster_backup_id is not None:
+            result['ClusterBackupId'] = self.cluster_backup_id
         if self.coupon_no is not None:
             result['CouponNo'] = self.coupon_no
         if self.dry_run is not None:
@@ -2700,6 +2713,8 @@ class CreateTairInstanceRequest(TeaModel):
             self.charge_type = m.get('ChargeType')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('ClusterBackupId') is not None:
+            self.cluster_backup_id = m.get('ClusterBackupId')
         if m.get('CouponNo') is not None:
             self.coupon_no = m.get('CouponNo')
         if m.get('DryRun') is not None:
@@ -3387,6 +3402,10 @@ class DeleteShardingNodeRequest(TeaModel):
         security_token: str = None,
         shard_count: int = None,
     ):
+        # Specifies whether to enable forced transmission during a configuration change. Valid values:
+        # 
+        # *   **false** (default): Before the configuration change, the system checks the minor version of the instance. If the minor version of the instance is outdated, an error is reported. You must update the minor version of the instance and try again.
+        # *   **true**: The system skips the version check and directly performs the configuration change.
         self.force_trans = force_trans
         # The ID of the instance.
         self.instance_id = instance_id
@@ -6213,6 +6232,7 @@ class DescribeBackupsRequest(TeaModel):
     def __init__(
         self,
         backup_id: int = None,
+        backup_job_id: int = None,
         end_time: str = None,
         instance_id: str = None,
         need_aof: str = None,
@@ -6227,6 +6247,7 @@ class DescribeBackupsRequest(TeaModel):
     ):
         # The ID of the backup file.
         self.backup_id = backup_id
+        self.backup_job_id = backup_job_id
         # The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
         self.end_time = end_time
         # The ID of the instance whose backup files you want to query.
@@ -6261,6 +6282,8 @@ class DescribeBackupsRequest(TeaModel):
         result = dict()
         if self.backup_id is not None:
             result['BackupId'] = self.backup_id
+        if self.backup_job_id is not None:
+            result['BackupJobId'] = self.backup_job_id
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.instance_id is not None:
@@ -6289,6 +6312,8 @@ class DescribeBackupsRequest(TeaModel):
         m = m or dict()
         if m.get('BackupId') is not None:
             self.backup_id = m.get('BackupId')
+        if m.get('BackupJobId') is not None:
+            self.backup_job_id = m.get('BackupJobId')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('InstanceId') is not None:
@@ -7208,6 +7233,413 @@ class DescribeCacheAnalysisReportListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeCacheAnalysisReportListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeClusterBackupListRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_backup_id: str = None,
+        end_time: str = None,
+        instance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        start_time: str = None,
+    ):
+        self.cluster_backup_id = cluster_backup_id
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_backup_id is not None:
+            result['ClusterBackupId'] = self.cluster_backup_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterBackupId') is not None:
+            self.cluster_backup_id = m.get('ClusterBackupId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeClusterBackupListResponseBodyClusterBackupsBackupsExtraInfo(TeaModel):
+    def __init__(
+        self,
+        custins_db_version: str = None,
+    ):
+        self.custins_db_version = custins_db_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custins_db_version is not None:
+            result['CustinsDbVersion'] = self.custins_db_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustinsDbVersion') is not None:
+            self.custins_db_version = m.get('CustinsDbVersion')
+        return self
+
+
+class DescribeClusterBackupListResponseBodyClusterBackupsBackups(TeaModel):
+    def __init__(
+        self,
+        backup_download_url: str = None,
+        backup_end_time: str = None,
+        backup_id: str = None,
+        backup_intranet_download_url: str = None,
+        backup_name: str = None,
+        backup_size: str = None,
+        backup_start_time: str = None,
+        backup_status: str = None,
+        engine: str = None,
+        extra_info: DescribeClusterBackupListResponseBodyClusterBackupsBackupsExtraInfo = None,
+        instance_name: str = None,
+        is_avail: str = None,
+    ):
+        self.backup_download_url = backup_download_url
+        self.backup_end_time = backup_end_time
+        self.backup_id = backup_id
+        self.backup_intranet_download_url = backup_intranet_download_url
+        self.backup_name = backup_name
+        self.backup_size = backup_size
+        self.backup_start_time = backup_start_time
+        self.backup_status = backup_status
+        self.engine = engine
+        self.extra_info = extra_info
+        self.instance_name = instance_name
+        self.is_avail = is_avail
+
+    def validate(self):
+        if self.extra_info:
+            self.extra_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backup_download_url is not None:
+            result['BackupDownloadURL'] = self.backup_download_url
+        if self.backup_end_time is not None:
+            result['BackupEndTime'] = self.backup_end_time
+        if self.backup_id is not None:
+            result['BackupId'] = self.backup_id
+        if self.backup_intranet_download_url is not None:
+            result['BackupIntranetDownloadURL'] = self.backup_intranet_download_url
+        if self.backup_name is not None:
+            result['BackupName'] = self.backup_name
+        if self.backup_size is not None:
+            result['BackupSize'] = self.backup_size
+        if self.backup_start_time is not None:
+            result['BackupStartTime'] = self.backup_start_time
+        if self.backup_status is not None:
+            result['BackupStatus'] = self.backup_status
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.extra_info is not None:
+            result['ExtraInfo'] = self.extra_info.to_map()
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.is_avail is not None:
+            result['IsAvail'] = self.is_avail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackupDownloadURL') is not None:
+            self.backup_download_url = m.get('BackupDownloadURL')
+        if m.get('BackupEndTime') is not None:
+            self.backup_end_time = m.get('BackupEndTime')
+        if m.get('BackupId') is not None:
+            self.backup_id = m.get('BackupId')
+        if m.get('BackupIntranetDownloadURL') is not None:
+            self.backup_intranet_download_url = m.get('BackupIntranetDownloadURL')
+        if m.get('BackupName') is not None:
+            self.backup_name = m.get('BackupName')
+        if m.get('BackupSize') is not None:
+            self.backup_size = m.get('BackupSize')
+        if m.get('BackupStartTime') is not None:
+            self.backup_start_time = m.get('BackupStartTime')
+        if m.get('BackupStatus') is not None:
+            self.backup_status = m.get('BackupStatus')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('ExtraInfo') is not None:
+            temp_model = DescribeClusterBackupListResponseBodyClusterBackupsBackupsExtraInfo()
+            self.extra_info = temp_model.from_map(m['ExtraInfo'])
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('IsAvail') is not None:
+            self.is_avail = m.get('IsAvail')
+        return self
+
+
+class DescribeClusterBackupListResponseBodyClusterBackups(TeaModel):
+    def __init__(
+        self,
+        backups: List[DescribeClusterBackupListResponseBodyClusterBackupsBackups] = None,
+        cluster_backup_end_time: str = None,
+        cluster_backup_id: str = None,
+        cluster_backup_mode: str = None,
+        cluster_backup_size: str = None,
+        cluster_backup_start_time: str = None,
+        cluster_backup_status: str = None,
+        is_avail: int = None,
+        progress: str = None,
+        shard_class_memory: int = None,
+    ):
+        self.backups = backups
+        self.cluster_backup_end_time = cluster_backup_end_time
+        self.cluster_backup_id = cluster_backup_id
+        self.cluster_backup_mode = cluster_backup_mode
+        self.cluster_backup_size = cluster_backup_size
+        self.cluster_backup_start_time = cluster_backup_start_time
+        self.cluster_backup_status = cluster_backup_status
+        self.is_avail = is_avail
+        self.progress = progress
+        self.shard_class_memory = shard_class_memory
+
+    def validate(self):
+        if self.backups:
+            for k in self.backups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Backups'] = []
+        if self.backups is not None:
+            for k in self.backups:
+                result['Backups'].append(k.to_map() if k else None)
+        if self.cluster_backup_end_time is not None:
+            result['ClusterBackupEndTime'] = self.cluster_backup_end_time
+        if self.cluster_backup_id is not None:
+            result['ClusterBackupId'] = self.cluster_backup_id
+        if self.cluster_backup_mode is not None:
+            result['ClusterBackupMode'] = self.cluster_backup_mode
+        if self.cluster_backup_size is not None:
+            result['ClusterBackupSize'] = self.cluster_backup_size
+        if self.cluster_backup_start_time is not None:
+            result['ClusterBackupStartTime'] = self.cluster_backup_start_time
+        if self.cluster_backup_status is not None:
+            result['ClusterBackupStatus'] = self.cluster_backup_status
+        if self.is_avail is not None:
+            result['IsAvail'] = self.is_avail
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.shard_class_memory is not None:
+            result['ShardClassMemory'] = self.shard_class_memory
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.backups = []
+        if m.get('Backups') is not None:
+            for k in m.get('Backups'):
+                temp_model = DescribeClusterBackupListResponseBodyClusterBackupsBackups()
+                self.backups.append(temp_model.from_map(k))
+        if m.get('ClusterBackupEndTime') is not None:
+            self.cluster_backup_end_time = m.get('ClusterBackupEndTime')
+        if m.get('ClusterBackupId') is not None:
+            self.cluster_backup_id = m.get('ClusterBackupId')
+        if m.get('ClusterBackupMode') is not None:
+            self.cluster_backup_mode = m.get('ClusterBackupMode')
+        if m.get('ClusterBackupSize') is not None:
+            self.cluster_backup_size = m.get('ClusterBackupSize')
+        if m.get('ClusterBackupStartTime') is not None:
+            self.cluster_backup_start_time = m.get('ClusterBackupStartTime')
+        if m.get('ClusterBackupStatus') is not None:
+            self.cluster_backup_status = m.get('ClusterBackupStatus')
+        if m.get('IsAvail') is not None:
+            self.is_avail = m.get('IsAvail')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('ShardClassMemory') is not None:
+            self.shard_class_memory = m.get('ShardClassMemory')
+        return self
+
+
+class DescribeClusterBackupListResponseBody(TeaModel):
+    def __init__(
+        self,
+        cluster_backups: List[DescribeClusterBackupListResponseBodyClusterBackups] = None,
+        max_results: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+    ):
+        self.cluster_backups = cluster_backups
+        self.max_results = max_results
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+
+    def validate(self):
+        if self.cluster_backups:
+            for k in self.cluster_backups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ClusterBackups'] = []
+        if self.cluster_backups is not None:
+            for k in self.cluster_backups:
+                result['ClusterBackups'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cluster_backups = []
+        if m.get('ClusterBackups') is not None:
+            for k in m.get('ClusterBackups'):
+                temp_model = DescribeClusterBackupListResponseBodyClusterBackups()
+                self.cluster_backups.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeClusterBackupListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeClusterBackupListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeClusterBackupListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13765,6 +14197,9 @@ class DescribeIntranetAttributeResponseBody(TeaModel):
         # 
         # > If no extra internal bandwidth is purchased, this parameter is not returned.
         self.bandwidth_expire_time = bandwidth_expire_time
+        # The billing methods of unexpired bandwith plans. Valid values:
+        # - **0**: Pay-as-you-go
+        # - **1**: Subscription
         self.bandwidth_pre_paid = bandwidth_pre_paid
         # The time when the extra internal bandwidth that you purchased for temporary use expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         # 
@@ -15690,6 +16125,7 @@ class DescribePriceResponseBodyOrder(TeaModel):
         self.original_amount = original_amount
         # Details about promotion rule IDs.
         self.rule_ids = rule_ids
+        # Indicates whether the discount information is displayed.
         self.show_discount_info = show_discount_info
         # The transaction price of the order.
         self.trade_amount = trade_amount
@@ -15864,9 +16300,9 @@ class DescribePriceResponseBodySubOrdersSubOrder(TeaModel):
         self.discount_amount = discount_amount
         # The instance ID.
         self.instance_id = instance_id
-        # The list price of the order.
+        # The original price of the order.
         self.original_amount = original_amount
-        # The ID of the promotion rule.
+        # The rule IDs.
         self.rule_ids = rule_ids
         # The final price of the order.
         self.trade_amount = trade_amount
@@ -18343,6 +18779,7 @@ class DescribeZonesResponseBody(TeaModel):
         request_id: str = None,
         zones: DescribeZonesResponseBodyZones = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
         # The queried zones.
         self.zones = zones
