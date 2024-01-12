@@ -2907,22 +2907,6 @@ class CreateTemplateRequest(TeaModel):
         self.resource_group_id = resource_group_id
         # The tags of the template.
         self.tags = tags
-        # The structure of the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
-        # 
-        # > You must specify TemplateBody or TemplateURL.
-        # 
-        # You can create a Terraform template based on your business requirements. The following sample code provides an example on how to create a Terraform template:
-        # 
-        #     {
-        #       "ROSTemplateFormatVersion": "2015-09-01",
-        #       "Transform": "Aliyun::Terraform-v1.0",
-        #       "Workspace": {
-        #         "main.tf": "variable  \"name\" {  default = \"auto_provisioning_group\"}"
-        #       },
-        #       "Outputs": {}
-        #     }
-        # 
-        # For more information about Terraform templates, see [Structure of Terraform templates](~~184397~~).
         self.template_body = template_body
         # The name of the template.\
         # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or a letter.
@@ -8084,9 +8068,6 @@ class GetServiceProvisionsRequest(TeaModel):
         self.region_id = region_id
         # The services.
         self.services = services
-        # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
-        # 
-        # You must and can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and Services.
         self.template_body = template_body
         # The template ID. This parameter applies to shared and private templates.
         # 
@@ -16499,9 +16480,6 @@ class ListStackOperationRisksRequest(TeaModel):
         self.retain_resources = retain_resources
         # The ID of the stack.
         self.stack_id = stack_id
-        # The template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
-        # 
-        # > You must specify one of TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
         self.template_body = template_body
         # The ID of the template. This parameter applies to shared and private templates.
         # 
@@ -23590,11 +23568,6 @@ class UpdateTemplateRequest(TeaModel):
     ):
         # The description of the template. It can be up to 256 characters in length.
         self.description = description
-        # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.
-        # 
-        # If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
-        # 
-        # You can specify only one of the TemplateBody and TemplateURL parameters.
         self.template_body = template_body
         # The ID of the template. This parameter applies to shared and private templates.
         self.template_id = template_id

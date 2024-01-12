@@ -1211,14 +1211,16 @@ class Client(OpenApiClient):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.tags):
             query['Tags'] = request.tags
-        if not UtilClient.is_unset(request.template_body):
-            query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_name):
             query['TemplateName'] = request.template_name
         if not UtilClient.is_unset(request.template_url):
             query['TemplateURL'] = request.template_url
+        body = {}
+        if not UtilClient.is_unset(request.template_body):
+            body['TemplateBody'] = request.template_body
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateTemplate',
@@ -1256,14 +1258,16 @@ class Client(OpenApiClient):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.tags):
             query['Tags'] = request.tags
-        if not UtilClient.is_unset(request.template_body):
-            query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_name):
             query['TemplateName'] = request.template_name
         if not UtilClient.is_unset(request.template_url):
             query['TemplateURL'] = request.template_url
+        body = {}
+        if not UtilClient.is_unset(request.template_body):
+            body['TemplateBody'] = request.template_body
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateTemplate',
@@ -3453,16 +3457,18 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.services):
             query['Services'] = request.services
-        if not UtilClient.is_unset(request.template_body):
-            query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_url):
             query['TemplateURL'] = request.template_url
         if not UtilClient.is_unset(request.template_version):
             query['TemplateVersion'] = request.template_version
+        body = {}
+        if not UtilClient.is_unset(request.template_body):
+            body['TemplateBody'] = request.template_body
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetServiceProvisions',
@@ -3502,16 +3508,18 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.services):
             query['Services'] = request.services
-        if not UtilClient.is_unset(request.template_body):
-            query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_url):
             query['TemplateURL'] = request.template_url
         if not UtilClient.is_unset(request.template_version):
             query['TemplateVersion'] = request.template_version
+        body = {}
+        if not UtilClient.is_unset(request.template_body):
+            body['TemplateBody'] = request.template_body
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetServiceProvisions',
@@ -6225,16 +6233,18 @@ class Client(OpenApiClient):
             query['RetainResources'] = request.retain_resources
         if not UtilClient.is_unset(request.stack_id):
             query['StackId'] = request.stack_id
-        if not UtilClient.is_unset(request.template_body):
-            query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_url):
             query['TemplateURL'] = request.template_url
         if not UtilClient.is_unset(request.template_version):
             query['TemplateVersion'] = request.template_version
+        body = {}
+        if not UtilClient.is_unset(request.template_body):
+            body['TemplateBody'] = request.template_body
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListStackOperationRisks',
@@ -6282,16 +6292,18 @@ class Client(OpenApiClient):
             query['RetainResources'] = request.retain_resources
         if not UtilClient.is_unset(request.stack_id):
             query['StackId'] = request.stack_id
-        if not UtilClient.is_unset(request.template_body):
-            query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_url):
             query['TemplateURL'] = request.template_url
         if not UtilClient.is_unset(request.template_version):
             query['TemplateVersion'] = request.template_version
+        body = {}
+        if not UtilClient.is_unset(request.template_body):
+            body['TemplateBody'] = request.template_body
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListStackOperationRisks',
@@ -9182,16 +9194,18 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.template_body):
-            query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_name):
             query['TemplateName'] = request.template_name
         if not UtilClient.is_unset(request.template_url):
             query['TemplateURL'] = request.template_url
+        body = {}
+        if not UtilClient.is_unset(request.template_body):
+            body['TemplateBody'] = request.template_body
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateTemplate',
@@ -9228,16 +9242,18 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.template_body):
-            query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_name):
             query['TemplateName'] = request.template_name
         if not UtilClient.is_unset(request.template_url):
             query['TemplateURL'] = request.template_url
+        body = {}
+        if not UtilClient.is_unset(request.template_body):
+            body['TemplateBody'] = request.template_body
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateTemplate',
