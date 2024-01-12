@@ -620,9 +620,9 @@ class CreateQuotaApplicationsForTemplateRequest(TeaModel):
         quota_category: str = None,
         reason: str = None,
     ):
-        # The Alibaba Cloud accounts for which the quotas are applied.
+        # The Alibaba Cloud accounts that correspond to the resource directory member accounts for which the quotas are applied.
         # 
-        # >  For more information about the members of a resource directory, see [Query all the members in a resource directory](~~604207~~).
+        # >  You can apply for a quota increase for up to 50 member accounts in each request. For more information about the member accounts in a resource directory, see [ListAccounts](~~604207~~).
         self.aliyun_uids = aliyun_uids
         # The requested value of the quota.
         # 
@@ -739,7 +739,9 @@ class CreateQuotaApplicationsForTemplateResponseBodyFailResults(TeaModel):
         aliyun_uid: str = None,
         reason: str = None,
     ):
+        # The Alibaba Cloud account of the members in a resource directory whose quota increase request is rejected.
         self.aliyun_uid = aliyun_uid
+        # The reason for the rejection.
         self.reason = reason
 
     def validate(self):
@@ -778,6 +780,7 @@ class CreateQuotaApplicationsForTemplateResponseBody(TeaModel):
         self.aliyun_uids = aliyun_uids
         # The ID of the quota application batch.
         self.batch_quota_application_id = batch_quota_application_id
+        # The Alibaba Cloud accounts of the members in a resource directory whose quota increase request is rejected, and the reason for the rejection.
         self.fail_results = fail_results
         # The request ID.
         self.request_id = request_id
@@ -3966,6 +3969,10 @@ class ListProductQuotasResponseBodyQuotas(TeaModel):
         self.effective_time = effective_time
         # The end time of the validity period of the quota. The value is displayed in UTC.
         self.expire_time = expire_time
+        # Indicates whether the quota is a global quota. Valid values:
+        # 
+        # *   true: The quota is shared in all regions.
+        # *   false: The quota is independently used in a region.
         self.global_quota = global_quota
         # The calculation cycle of the quota.
         self.period = period
@@ -5305,6 +5312,7 @@ class ListQuotaApplicationsRequestDimensions(TeaModel):
 class ListQuotaApplicationsRequest(TeaModel):
     def __init__(
         self,
+        accept_language: str = None,
         dimensions: List[ListQuotaApplicationsRequestDimensions] = None,
         key_word: str = None,
         max_results: int = None,
@@ -5314,6 +5322,7 @@ class ListQuotaApplicationsRequest(TeaModel):
         quota_category: str = None,
         status: str = None,
     ):
+        self.accept_language = accept_language
         # The quota dimensions.
         self.dimensions = dimensions
         # The keyword that you want to use to search for the application.
@@ -5356,6 +5365,8 @@ class ListQuotaApplicationsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
         result['Dimensions'] = []
         if self.dimensions is not None:
             for k in self.dimensions:
@@ -5378,6 +5389,8 @@ class ListQuotaApplicationsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
         self.dimensions = []
         if m.get('Dimensions') is not None:
             for k in m.get('Dimensions'):
@@ -6283,6 +6296,7 @@ class ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications(TeaMode
         quota_category: str = None,
         reason: str = None,
     ):
+        # The Alibaba Cloud accounts for which the quotas are applied.
         self.aliyun_uids = aliyun_uids
         # The time when the quota increase application was submitted. The value is displayed in UTC.
         self.apply_time = apply_time
@@ -6310,6 +6324,7 @@ class ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications(TeaMode
         # *   FlowControl: API rate limit
         # *   WhiteListLabel: privilege
         self.quota_category = quota_category
+        # The reason for the quota increase application.
         self.reason = reason
 
     def validate(self):
