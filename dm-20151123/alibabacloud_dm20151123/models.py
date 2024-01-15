@@ -2222,11 +2222,13 @@ class DescDomainRequest(TeaModel):
         self,
         domain_id: int = None,
         owner_id: int = None,
+        require_real_time_dns_records: bool = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
         self.domain_id = domain_id
         self.owner_id = owner_id
+        self.require_real_time_dns_records = require_real_time_dns_records
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -2243,6 +2245,8 @@ class DescDomainRequest(TeaModel):
             result['DomainId'] = self.domain_id
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.require_real_time_dns_records is not None:
+            result['RequireRealTimeDnsRecords'] = self.require_real_time_dns_records
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -2255,6 +2259,8 @@ class DescDomainRequest(TeaModel):
             self.domain_id = m.get('DomainId')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('RequireRealTimeDnsRecords') is not None:
+            self.require_real_time_dns_records = m.get('RequireRealTimeDnsRecords')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -2273,6 +2279,10 @@ class DescDomainResponseBody(TeaModel):
         dkim_auth_status: str = None,
         dkim_public_key: str = None,
         dkim_rr: str = None,
+        dmarc_auth_status: int = None,
+        dmarc_host_record: str = None,
+        dmarc_record: str = None,
+        dns_dmarc: str = None,
         dns_mx: str = None,
         dns_spf: str = None,
         dns_txt: str = None,
@@ -2299,6 +2309,10 @@ class DescDomainResponseBody(TeaModel):
         self.dkim_auth_status = dkim_auth_status
         self.dkim_public_key = dkim_public_key
         self.dkim_rr = dkim_rr
+        self.dmarc_auth_status = dmarc_auth_status
+        self.dmarc_host_record = dmarc_host_record
+        self.dmarc_record = dmarc_record
+        self.dns_dmarc = dns_dmarc
         self.dns_mx = dns_mx
         self.dns_spf = dns_spf
         self.dns_txt = dns_txt
@@ -2342,6 +2356,14 @@ class DescDomainResponseBody(TeaModel):
             result['DkimPublicKey'] = self.dkim_public_key
         if self.dkim_rr is not None:
             result['DkimRR'] = self.dkim_rr
+        if self.dmarc_auth_status is not None:
+            result['DmarcAuthStatus'] = self.dmarc_auth_status
+        if self.dmarc_host_record is not None:
+            result['DmarcHostRecord'] = self.dmarc_host_record
+        if self.dmarc_record is not None:
+            result['DmarcRecord'] = self.dmarc_record
+        if self.dns_dmarc is not None:
+            result['DnsDmarc'] = self.dns_dmarc
         if self.dns_mx is not None:
             result['DnsMx'] = self.dns_mx
         if self.dns_spf is not None:
@@ -2396,6 +2418,14 @@ class DescDomainResponseBody(TeaModel):
             self.dkim_public_key = m.get('DkimPublicKey')
         if m.get('DkimRR') is not None:
             self.dkim_rr = m.get('DkimRR')
+        if m.get('DmarcAuthStatus') is not None:
+            self.dmarc_auth_status = m.get('DmarcAuthStatus')
+        if m.get('DmarcHostRecord') is not None:
+            self.dmarc_host_record = m.get('DmarcHostRecord')
+        if m.get('DmarcRecord') is not None:
+            self.dmarc_record = m.get('DmarcRecord')
+        if m.get('DnsDmarc') is not None:
+            self.dns_dmarc = m.get('DnsDmarc')
         if m.get('DnsMx') is not None:
             self.dns_mx = m.get('DnsMx')
         if m.get('DnsSpf') is not None:
