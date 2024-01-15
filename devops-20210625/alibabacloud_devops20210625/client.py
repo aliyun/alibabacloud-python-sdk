@@ -9121,6 +9121,80 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_workitem_comment_list_with_options_async(organization_id, workitem_id, headers, runtime)
 
+    def get_workitem_file_with_options(
+        self,
+        organization_id: str,
+        workitem_identifier: str,
+        file_identifier: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetWorkitemFileResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetWorkitemFile',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/workitem/{OpenApiUtilClient.get_encode_param(workitem_identifier)}/files/{OpenApiUtilClient.get_encode_param(file_identifier)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetWorkitemFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_workitem_file_with_options_async(
+        self,
+        organization_id: str,
+        workitem_identifier: str,
+        file_identifier: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetWorkitemFileResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetWorkitemFile',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/workitem/{OpenApiUtilClient.get_encode_param(workitem_identifier)}/files/{OpenApiUtilClient.get_encode_param(file_identifier)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetWorkitemFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_workitem_file(
+        self,
+        organization_id: str,
+        workitem_identifier: str,
+        file_identifier: str,
+    ) -> devops_20210625_models.GetWorkitemFileResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_workitem_file_with_options(organization_id, workitem_identifier, file_identifier, headers, runtime)
+
+    async def get_workitem_file_async(
+        self,
+        organization_id: str,
+        workitem_identifier: str,
+        file_identifier: str,
+    ) -> devops_20210625_models.GetWorkitemFileResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_workitem_file_with_options_async(organization_id, workitem_identifier, file_identifier, headers, runtime)
+
     def get_workitem_relations_with_options(
         self,
         organization_id: str,
