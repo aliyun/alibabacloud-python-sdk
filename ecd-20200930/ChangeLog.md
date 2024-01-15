@@ -1,3 +1,6 @@
+2024-01-15 Version: 3.0.0
+- Generated python 2020-09-30 for ecd.
+
 2023-08-01 Version: 2.0.16
 - ADD DomianResolve.
 
