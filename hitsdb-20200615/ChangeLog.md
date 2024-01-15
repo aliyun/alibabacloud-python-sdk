@@ -1,3 +1,6 @@
+2024-01-15 Version: 4.3.0
+- Generated python 2020-06-15 for hitsdb.
+
 2023-12-12 Version: 4.2.0
 - Generated python 2020-06-15 for hitsdb.
 
