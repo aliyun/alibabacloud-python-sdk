@@ -281,6 +281,7 @@ class OperatorBasicInfoParam(TeaModel):
         phrase: str = None,
         pkey: str = None,
         poutput_type: int = None,
+        pvalues: List[str] = None,
         question_threshold: str = None,
         references: List[str] = None,
         regex: str = None,
@@ -334,6 +335,7 @@ class OperatorBasicInfoParam(TeaModel):
         self.phrase = phrase
         self.pkey = pkey
         self.poutput_type = poutput_type
+        self.pvalues = pvalues
         self.question_threshold = question_threshold
         self.references = references
         self.regex = regex
@@ -435,6 +437,8 @@ class OperatorBasicInfoParam(TeaModel):
             result['Pkey'] = self.pkey
         if self.poutput_type is not None:
             result['Poutput_type'] = self.poutput_type
+        if self.pvalues is not None:
+            result['Pvalues'] = self.pvalues
         if self.question_threshold is not None:
             result['QuestionThreshold'] = self.question_threshold
         if self.references is not None:
@@ -544,6 +548,8 @@ class OperatorBasicInfoParam(TeaModel):
             self.pkey = m.get('Pkey')
         if m.get('Poutput_type') is not None:
             self.poutput_type = m.get('Poutput_type')
+        if m.get('Pvalues') is not None:
+            self.pvalues = m.get('Pvalues')
         if m.get('QuestionThreshold') is not None:
             self.question_threshold = m.get('QuestionThreshold')
         if m.get('References') is not None:
@@ -2312,8 +2318,11 @@ class TaskGraphFlow(TeaModel):
 class AddBusinessCategoryRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -2325,12 +2334,16 @@ class AddBusinessCategoryRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -2434,8 +2447,11 @@ class AddBusinessCategoryResponse(TeaModel):
 class AddRuleCategoryRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -2447,12 +2463,16 @@ class AddRuleCategoryRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -2585,9 +2605,12 @@ class AddRuleCategoryResponse(TeaModel):
 class AddRuleV4Request(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         is_copy: bool = None,
         json_str_for_rule: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.is_copy = is_copy
         self.json_str_for_rule = json_str_for_rule
 
@@ -2600,6 +2623,8 @@ class AddRuleV4Request(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.is_copy is not None:
             result['IsCopy'] = self.is_copy
         if self.json_str_for_rule is not None:
@@ -2608,6 +2633,8 @@ class AddRuleV4Request(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('IsCopy') is not None:
             self.is_copy = m.get('IsCopy')
         if m.get('JsonStrForRule') is not None:
@@ -2754,8 +2781,11 @@ class AddRuleV4Response(TeaModel):
 class AddThesaurusForApiRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -2767,12 +2797,16 @@ class AddThesaurusForApiRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -2876,8 +2910,11 @@ class AddThesaurusForApiResponse(TeaModel):
 class AssignReviewerRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -2889,12 +2926,16 @@ class AssignReviewerRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -2992,8 +3033,11 @@ class AssignReviewerResponse(TeaModel):
 class AssignReviewerBySessionGroupRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -3005,12 +3049,16 @@ class AssignReviewerBySessionGroupRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['jsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('jsonStr') is not None:
             self.json_str = m.get('jsonStr')
         return self
@@ -3149,8 +3197,11 @@ class AssignReviewerBySessionGroupResponse(TeaModel):
 class BatchSubmitReviewInfoRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -3162,12 +3213,16 @@ class BatchSubmitReviewInfoRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['jsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('jsonStr') is not None:
             self.json_str = m.get('jsonStr')
         return self
@@ -3306,8 +3361,11 @@ class BatchSubmitReviewInfoResponse(TeaModel):
 class CreateAsrVocabRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -3319,12 +3377,16 @@ class CreateAsrVocabRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -3428,8 +3490,11 @@ class CreateAsrVocabResponse(TeaModel):
 class CreateCheckTypeToSchemeRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -3441,12 +3506,16 @@ class CreateCheckTypeToSchemeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['jsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('jsonStr') is not None:
             self.json_str = m.get('jsonStr')
         return self
@@ -3591,8 +3660,11 @@ class CreateCheckTypeToSchemeResponse(TeaModel):
 class CreateQualityCheckSchemeRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -3604,12 +3676,16 @@ class CreateQualityCheckSchemeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['jsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('jsonStr') is not None:
             self.json_str = m.get('jsonStr')
         return self
@@ -3754,8 +3830,11 @@ class CreateQualityCheckSchemeResponse(TeaModel):
 class CreateSchemeTaskConfigRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -3767,12 +3846,16 @@ class CreateSchemeTaskConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['jsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('jsonStr') is not None:
             self.json_str = m.get('jsonStr')
         return self
@@ -3917,8 +4000,11 @@ class CreateSchemeTaskConfigResponse(TeaModel):
 class CreateSkillGroupConfigRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -3930,12 +4016,16 @@ class CreateSkillGroupConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -4039,8 +4129,11 @@ class CreateSkillGroupConfigResponse(TeaModel):
 class CreateTaskAssignRuleRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -4052,12 +4145,16 @@ class CreateTaskAssignRuleRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -4161,8 +4258,11 @@ class CreateTaskAssignRuleResponse(TeaModel):
 class CreateUserRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -4174,12 +4274,16 @@ class CreateUserRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -4277,8 +4381,11 @@ class CreateUserResponse(TeaModel):
 class CreateWarningConfigRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -4290,12 +4397,16 @@ class CreateWarningConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -4399,8 +4510,10 @@ class CreateWarningConfigResponse(TeaModel):
 class CreateWarningStrategyConfigRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -4412,12 +4525,16 @@ class CreateWarningStrategyConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -4521,8 +4638,11 @@ class CreateWarningStrategyConfigResponse(TeaModel):
 class DelRuleCategoryRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -4534,12 +4654,16 @@ class DelRuleCategoryRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -4672,8 +4796,11 @@ class DelRuleCategoryResponse(TeaModel):
 class DelThesaurusForApiRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -4685,12 +4812,16 @@ class DelThesaurusForApiRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -4788,8 +4919,11 @@ class DelThesaurusForApiResponse(TeaModel):
 class DeleteAsrVocabRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -4801,12 +4935,16 @@ class DeleteAsrVocabRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -4910,8 +5048,11 @@ class DeleteAsrVocabResponse(TeaModel):
 class DeleteBusinessCategoryRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -4923,12 +5064,16 @@ class DeleteBusinessCategoryRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -5032,8 +5177,11 @@ class DeleteBusinessCategoryResponse(TeaModel):
 class DeleteCustomizationConfigRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -5045,12 +5193,16 @@ class DeleteCustomizationConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -5154,8 +5306,11 @@ class DeleteCustomizationConfigResponse(TeaModel):
 class DeleteDataSetRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -5167,12 +5322,16 @@ class DeleteDataSetRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -5270,8 +5429,11 @@ class DeleteDataSetResponse(TeaModel):
 class DeletePrecisionTaskRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -5283,12 +5445,16 @@ class DeletePrecisionTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -5386,8 +5552,11 @@ class DeletePrecisionTaskResponse(TeaModel):
 class DeleteQualityCheckSchemeRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -5399,12 +5568,16 @@ class DeleteQualityCheckSchemeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['jsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('jsonStr') is not None:
             self.json_str = m.get('jsonStr')
         return self
@@ -5543,10 +5716,13 @@ class DeleteQualityCheckSchemeResponse(TeaModel):
 class DeleteRuleRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         force_delete: bool = None,
         is_scheme_data: int = None,
         rule_id: int = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.force_delete = force_delete
         self.is_scheme_data = is_scheme_data
         self.rule_id = rule_id
@@ -5560,6 +5736,8 @@ class DeleteRuleRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.force_delete is not None:
             result['ForceDelete'] = self.force_delete
         if self.is_scheme_data is not None:
@@ -5570,6 +5748,8 @@ class DeleteRuleRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('ForceDelete') is not None:
             self.force_delete = m.get('ForceDelete')
         if m.get('IsSchemeData') is not None:
@@ -5712,9 +5892,12 @@ class DeleteRuleResponse(TeaModel):
 class DeleteRuleV4Request(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         force_delete: bool = None,
         rule_id: int = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.force_delete = force_delete
         self.rule_id = rule_id
 
@@ -5727,6 +5910,8 @@ class DeleteRuleV4Request(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.force_delete is not None:
             result['ForceDelete'] = self.force_delete
         if self.rule_id is not None:
@@ -5735,6 +5920,8 @@ class DeleteRuleV4Request(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('ForceDelete') is not None:
             self.force_delete = m.get('ForceDelete')
         if m.get('RuleId') is not None:
@@ -5875,8 +6062,11 @@ class DeleteRuleV4Response(TeaModel):
 class DeleteSchemeTaskConfigRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -5888,12 +6078,16 @@ class DeleteSchemeTaskConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['jsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('jsonStr') is not None:
             self.json_str = m.get('jsonStr')
         return self
@@ -6032,8 +6226,11 @@ class DeleteSchemeTaskConfigResponse(TeaModel):
 class DeleteScoreForApiRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -6045,12 +6242,16 @@ class DeleteScoreForApiRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -6148,8 +6349,11 @@ class DeleteScoreForApiResponse(TeaModel):
 class DeleteSkillGroupConfigRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -6161,12 +6365,16 @@ class DeleteSkillGroupConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -6264,8 +6472,11 @@ class DeleteSkillGroupConfigResponse(TeaModel):
 class DeleteSubScoreForApiRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -6277,12 +6488,16 @@ class DeleteSubScoreForApiRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -6380,8 +6595,11 @@ class DeleteSubScoreForApiResponse(TeaModel):
 class DeleteTaskAssignRuleRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -6393,12 +6611,16 @@ class DeleteTaskAssignRuleRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -6496,8 +6718,11 @@ class DeleteTaskAssignRuleResponse(TeaModel):
 class DeleteUserRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -6509,12 +6734,16 @@ class DeleteUserRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -6612,8 +6841,11 @@ class DeleteUserResponse(TeaModel):
 class DeleteWarningConfigRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -6625,12 +6857,16 @@ class DeleteWarningConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -6728,8 +6964,10 @@ class DeleteWarningConfigResponse(TeaModel):
 class DeleteWarningStrategyConfigRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -6741,12 +6979,16 @@ class DeleteWarningStrategyConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -6850,8 +7092,11 @@ class DeleteWarningStrategyConfigResponse(TeaModel):
 class EditThesaurusForApiRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -6863,12 +7108,16 @@ class EditThesaurusForApiRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -6972,8 +7221,11 @@ class EditThesaurusForApiResponse(TeaModel):
 class GetAsrVocabRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -6985,12 +7237,16 @@ class GetAsrVocabRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -7199,8 +7455,10 @@ class GetAsrVocabResponse(TeaModel):
 class GetBusinessCategoryListRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -7212,12 +7470,16 @@ class GetBusinessCategoryListRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -7397,8 +7659,11 @@ class GetBusinessCategoryListResponse(TeaModel):
 class GetCustomizationConfigListRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -7410,12 +7675,16 @@ class GetCustomizationConfigListRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -7613,8 +7882,11 @@ class GetCustomizationConfigListResponse(TeaModel):
 class GetHitResultRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -7626,12 +7898,16 @@ class GetHitResultRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -7823,8 +8099,11 @@ class GetHitResultResponse(TeaModel):
 class GetNextResultToVerifyRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -7836,12 +8115,16 @@ class GetNextResultToVerifyRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -8399,8 +8682,11 @@ class GetNextResultToVerifyResponse(TeaModel):
 class GetPrecisionTaskRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -8412,12 +8698,16 @@ class GetPrecisionTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -8704,8 +8994,11 @@ class GetPrecisionTaskResponse(TeaModel):
 class GetQualityCheckSchemeRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -8717,12 +9010,16 @@ class GetQualityCheckSchemeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['jsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('jsonStr') is not None:
             self.json_str = m.get('jsonStr')
         return self
@@ -9031,8 +9328,11 @@ class GetQualityCheckSchemeResponse(TeaModel):
 class GetResultRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -9044,12 +9344,16 @@ class GetResultRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -9183,6 +9487,834 @@ class GetResultResponseBodyDataResultInfoAsrResult(TeaModel):
             for k in m.get('AsrResult'):
                 temp_model = GetResultResponseBodyDataResultInfoAsrResultAsrResult()
                 self.asr_result.append(temp_model.from_map(k))
+        return self
+
+
+class GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsCheckRangeAnchor(TeaModel):
+    def __init__(
+        self,
+        cid: str = None,
+        hit_time: int = None,
+        location: str = None,
+    ):
+        # 条件ID
+        self.cid = cid
+        # 命中次数
+        self.hit_time = hit_time
+        # 位置
+        self.location = location
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cid is not None:
+            result['Cid'] = self.cid
+        if self.hit_time is not None:
+            result['Hit_time'] = self.hit_time
+        if self.location is not None:
+            result['Location'] = self.location
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cid') is not None:
+            self.cid = m.get('Cid')
+        if m.get('Hit_time') is not None:
+            self.hit_time = m.get('Hit_time')
+        if m.get('Location') is not None:
+            self.location = m.get('Location')
+        return self
+
+
+class GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsCheckRangeRange(TeaModel):
+    def __init__(
+        self,
+        from_: int = None,
+        to: int = None,
+    ):
+        # 对话开始索引
+        self.from_ = from_
+        # 对话结束索引
+        self.to = to
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.from_ is not None:
+            result['From'] = self.from_
+        if self.to is not None:
+            result['To'] = self.to
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('From') is not None:
+            self.from_ = m.get('From')
+        if m.get('To') is not None:
+            self.to = m.get('To')
+        return self
+
+
+class GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsCheckRangeTimeRange(TeaModel):
+    def __init__(
+        self,
+        from_: int = None,
+        to: int = None,
+    ):
+        self.from_ = from_
+        self.to = to
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.from_ is not None:
+            result['From'] = self.from_
+        if self.to is not None:
+            result['To'] = self.to
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('From') is not None:
+            self.from_ = m.get('From')
+        if m.get('To') is not None:
+            self.to = m.get('To')
+        return self
+
+
+class GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsCheckRange(TeaModel):
+    def __init__(
+        self,
+        absolute: bool = None,
+        all_sentences_satisfy: bool = None,
+        anchor: GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsCheckRangeAnchor = None,
+        range: GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsCheckRangeRange = None,
+        role: str = None,
+        role_id: int = None,
+        time_range: GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsCheckRangeTimeRange = None,
+    ):
+        # false: 相对位置; 会结合anchor以及角色来决定句子位置
+        self.absolute = absolute
+        # true: 每句话都必须满足条件；
+        self.all_sentences_satisfy = all_sentences_satisfy
+        # 前置后置条件
+        self.anchor = anchor
+        # 相对范围
+        self.range = range
+        # 对应 RoleType.type
+        self.role = role
+        # 对应 RoleType.id
+        self.role_id = role_id
+        self.time_range = time_range
+
+    def validate(self):
+        if self.anchor:
+            self.anchor.validate()
+        if self.range:
+            self.range.validate()
+        if self.time_range:
+            self.time_range.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.absolute is not None:
+            result['Absolute'] = self.absolute
+        if self.all_sentences_satisfy is not None:
+            result['AllSentencesSatisfy'] = self.all_sentences_satisfy
+        if self.anchor is not None:
+            result['Anchor'] = self.anchor.to_map()
+        if self.range is not None:
+            result['Range'] = self.range.to_map()
+        if self.role is not None:
+            result['Role'] = self.role
+        if self.role_id is not None:
+            result['RoleId'] = self.role_id
+        if self.time_range is not None:
+            result['TimeRange'] = self.time_range.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Absolute') is not None:
+            self.absolute = m.get('Absolute')
+        if m.get('AllSentencesSatisfy') is not None:
+            self.all_sentences_satisfy = m.get('AllSentencesSatisfy')
+        if m.get('Anchor') is not None:
+            temp_model = GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsCheckRangeAnchor()
+            self.anchor = temp_model.from_map(m['Anchor'])
+        if m.get('Range') is not None:
+            temp_model = GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsCheckRangeRange()
+            self.range = temp_model.from_map(m['Range'])
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        if m.get('RoleId') is not None:
+            self.role_id = m.get('RoleId')
+        if m.get('TimeRange') is not None:
+            temp_model = GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsCheckRangeTimeRange()
+            self.time_range = temp_model.from_map(m['TimeRange'])
+        return self
+
+
+class GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamExcludes(TeaModel):
+    def __init__(
+        self,
+        exclude: List[str] = None,
+    ):
+        self.exclude = exclude
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exclude is not None:
+            result['Exclude'] = self.exclude
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Exclude') is not None:
+            self.exclude = m.get('Exclude')
+        return self
+
+
+class GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamFlowNodePrerequisiteParam(TeaModel):
+    def __init__(
+        self,
+        node_id: int = None,
+        node_match_status: int = None,
+        node_name: str = None,
+    ):
+        # 节点id
+        self.node_id = node_id
+        # 节点匹配状态。
+        self.node_match_status = node_match_status
+        # 冗余的节点名称
+        self.node_name = node_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.node_match_status is not None:
+            result['NodeMatchStatus'] = self.node_match_status
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('NodeMatchStatus') is not None:
+            self.node_match_status = m.get('NodeMatchStatus')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
+        return self
+
+
+class GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamIntentModelCheckParmIntentsIntent(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        name: str = None,
+    ):
+        # 意图模型ID
+        self.id = id
+        # 意图模型名称
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamIntentModelCheckParmIntents(TeaModel):
+    def __init__(
+        self,
+        intent: List[GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamIntentModelCheckParmIntentsIntent] = None,
+    ):
+        self.intent = intent
+
+    def validate(self):
+        if self.intent:
+            for k in self.intent:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Intent'] = []
+        if self.intent is not None:
+            for k in self.intent:
+                result['Intent'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.intent = []
+        if m.get('Intent') is not None:
+            for k in m.get('Intent'):
+                temp_model = GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamIntentModelCheckParmIntentsIntent()
+                self.intent.append(temp_model.from_map(k))
+        return self
+
+
+class GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamIntentModelCheckParm(TeaModel):
+    def __init__(
+        self,
+        intents: GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamIntentModelCheckParmIntents = None,
+        model_scene: str = None,
+    ):
+        # 引用的意图模型
+        self.intents = intents
+        # 模型应用的场景 AGENT:客户场景、CUSTOMER:客服场景 (CUSTOMER: 客户场景, AGENT: 坐席场景)
+        self.model_scene = model_scene
+
+    def validate(self):
+        if self.intents:
+            self.intents.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.intents is not None:
+            result['Intents'] = self.intents.to_map()
+        if self.model_scene is not None:
+            result['ModelScene'] = self.model_scene
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Intents') is not None:
+            temp_model = GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamIntentModelCheckParmIntents()
+            self.intents = temp_model.from_map(m['Intents'])
+        if m.get('ModelScene') is not None:
+            self.model_scene = m.get('ModelScene')
+        return self
+
+
+class GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamKeywords(TeaModel):
+    def __init__(
+        self,
+        keyword: List[str] = None,
+    ):
+        self.keyword = keyword
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        return self
+
+
+class GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParam(TeaModel):
+    def __init__(
+        self,
+        average: bool = None,
+        begin_type: str = None,
+        case_sensitive: bool = None,
+        check_first_sentence: bool = None,
+        check_type: int = None,
+        compare_operator: str = None,
+        context_chat_match: bool = None,
+        delay_time: int = None,
+        end_type: str = None,
+        excludes: GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamExcludes = None,
+        flow_node_prerequisite_param: GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamFlowNodePrerequisiteParam = None,
+        from_: int = None,
+        from_end: bool = None,
+        hit_time: int = None,
+        in_sentence: bool = None,
+        intent_model_check_parm: GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamIntentModelCheckParm = None,
+        interval: int = None,
+        interval_end: int = None,
+        keyword_extension: int = None,
+        keyword_match_size: int = None,
+        keywords: GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamKeywords = None,
+        max_emotion_change_value: int = None,
+        min_word_size: int = None,
+        near_dialogue: bool = None,
+        not_regex: str = None,
+        phrase: str = None,
+        regex: str = None,
+        target: int = None,
+        threshold: float = None,
+    ):
+        # 语速检测，是否计算整个对话平均语速，默认false
+        self.average = average
+        # 时长算子，时长计算开始类型，录音开始，还是某句对话开始
+        self.begin_type = begin_type
+        # 区分大小写
+        self.case_sensitive = case_sensitive
+        # 静音检测：要不要检测第一句话
+        self.check_first_sentence = check_first_sentence
+        # 检测方式，1 相邻句能量波动 2 最大能量跨度 默认1
+        self.check_type = check_type
+        # 大于，还是小于，gt/lt
+        self.compare_operator = compare_operator
+        # 是否单句话匹配；
+        self.context_chat_match = context_chat_match
+        # 抢话算子 延时时长
+        self.delay_time = delay_time
+        # 时长算子，时长计算结束类型，录音结束，还是某句对话结束
+        self.end_type = end_type
+        # 上下文重复算子：排除掉某些对话
+        self.excludes = excludes
+        # 流程节点前置条件参数
+        self.flow_node_prerequisite_param = flow_node_prerequisite_param
+        # 上下文重复算子：检测当前句的前from句是否有重复；0表示前面的所有句
+        self.from_ = from_
+        # from_end
+        self.from_end = from_end
+        # 上下文重复算子：重复几次
+        self.hit_time = hit_time
+        # 生效句子， true单个句子，false多个句子
+        self.in_sentence = in_sentence
+        # 意图模型检查参数
+        self.intent_model_check_parm = intent_model_check_parm
+        # interval代表区间范围开始
+        self.interval = interval
+        # intervalEnd 代表区间范围结束
+        self.interval_end = interval_end
+        # 关键字扩展
+        self.keyword_extension = keyword_extension
+        # 匹配到的关键字数量
+        self.keyword_match_size = keyword_match_size
+        # 关键词
+        self.keywords = keywords
+        # 能量值变化，默认3, 1~9
+        self.max_emotion_change_value = max_emotion_change_value
+        # 句子中最少字数，小于此字数的句子不检查
+        self.min_word_size = min_word_size
+        # true表示取不同角色相邻的两句话，false表示取不同角色的第一句话比较响应时间（默认）
+        self.near_dialogue = near_dialogue
+        # 排除的正则表达式
+        self.not_regex = not_regex
+        # 语句
+        self.phrase = phrase
+        # 正则表达式
+        self.regex = regex
+        # target
+        self.target = target
+        # 阈值
+        self.threshold = threshold
+
+    def validate(self):
+        if self.excludes:
+            self.excludes.validate()
+        if self.flow_node_prerequisite_param:
+            self.flow_node_prerequisite_param.validate()
+        if self.intent_model_check_parm:
+            self.intent_model_check_parm.validate()
+        if self.keywords:
+            self.keywords.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.average is not None:
+            result['Average'] = self.average
+        if self.begin_type is not None:
+            result['BeginType'] = self.begin_type
+        if self.case_sensitive is not None:
+            result['Case_sensitive'] = self.case_sensitive
+        if self.check_first_sentence is not None:
+            result['CheckFirstSentence'] = self.check_first_sentence
+        if self.check_type is not None:
+            result['CheckType'] = self.check_type
+        if self.compare_operator is not None:
+            result['CompareOperator'] = self.compare_operator
+        if self.context_chat_match is not None:
+            result['ContextChatMatch'] = self.context_chat_match
+        if self.delay_time is not None:
+            result['DelayTime'] = self.delay_time
+        if self.end_type is not None:
+            result['EndType'] = self.end_type
+        if self.excludes is not None:
+            result['Excludes'] = self.excludes.to_map()
+        if self.flow_node_prerequisite_param is not None:
+            result['FlowNodePrerequisiteParam'] = self.flow_node_prerequisite_param.to_map()
+        if self.from_ is not None:
+            result['From'] = self.from_
+        if self.from_end is not None:
+            result['From_end'] = self.from_end
+        if self.hit_time is not None:
+            result['Hit_time'] = self.hit_time
+        if self.in_sentence is not None:
+            result['In_sentence'] = self.in_sentence
+        if self.intent_model_check_parm is not None:
+            result['IntentModelCheckParm'] = self.intent_model_check_parm.to_map()
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.interval_end is not None:
+            result['IntervalEnd'] = self.interval_end
+        if self.keyword_extension is not None:
+            result['KeywordExtension'] = self.keyword_extension
+        if self.keyword_match_size is not None:
+            result['KeywordMatchSize'] = self.keyword_match_size
+        if self.keywords is not None:
+            result['Keywords'] = self.keywords.to_map()
+        if self.max_emotion_change_value is not None:
+            result['MaxEmotionChangeValue'] = self.max_emotion_change_value
+        if self.min_word_size is not None:
+            result['MinWordSize'] = self.min_word_size
+        if self.near_dialogue is not None:
+            result['Near_dialogue'] = self.near_dialogue
+        if self.not_regex is not None:
+            result['NotRegex'] = self.not_regex
+        if self.phrase is not None:
+            result['Phrase'] = self.phrase
+        if self.regex is not None:
+            result['Regex'] = self.regex
+        if self.target is not None:
+            result['Target'] = self.target
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Average') is not None:
+            self.average = m.get('Average')
+        if m.get('BeginType') is not None:
+            self.begin_type = m.get('BeginType')
+        if m.get('Case_sensitive') is not None:
+            self.case_sensitive = m.get('Case_sensitive')
+        if m.get('CheckFirstSentence') is not None:
+            self.check_first_sentence = m.get('CheckFirstSentence')
+        if m.get('CheckType') is not None:
+            self.check_type = m.get('CheckType')
+        if m.get('CompareOperator') is not None:
+            self.compare_operator = m.get('CompareOperator')
+        if m.get('ContextChatMatch') is not None:
+            self.context_chat_match = m.get('ContextChatMatch')
+        if m.get('DelayTime') is not None:
+            self.delay_time = m.get('DelayTime')
+        if m.get('EndType') is not None:
+            self.end_type = m.get('EndType')
+        if m.get('Excludes') is not None:
+            temp_model = GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamExcludes()
+            self.excludes = temp_model.from_map(m['Excludes'])
+        if m.get('FlowNodePrerequisiteParam') is not None:
+            temp_model = GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamFlowNodePrerequisiteParam()
+            self.flow_node_prerequisite_param = temp_model.from_map(m['FlowNodePrerequisiteParam'])
+        if m.get('From') is not None:
+            self.from_ = m.get('From')
+        if m.get('From_end') is not None:
+            self.from_end = m.get('From_end')
+        if m.get('Hit_time') is not None:
+            self.hit_time = m.get('Hit_time')
+        if m.get('In_sentence') is not None:
+            self.in_sentence = m.get('In_sentence')
+        if m.get('IntentModelCheckParm') is not None:
+            temp_model = GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamIntentModelCheckParm()
+            self.intent_model_check_parm = temp_model.from_map(m['IntentModelCheckParm'])
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('IntervalEnd') is not None:
+            self.interval_end = m.get('IntervalEnd')
+        if m.get('KeywordExtension') is not None:
+            self.keyword_extension = m.get('KeywordExtension')
+        if m.get('KeywordMatchSize') is not None:
+            self.keyword_match_size = m.get('KeywordMatchSize')
+        if m.get('Keywords') is not None:
+            temp_model = GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamKeywords()
+            self.keywords = temp_model.from_map(m['Keywords'])
+        if m.get('MaxEmotionChangeValue') is not None:
+            self.max_emotion_change_value = m.get('MaxEmotionChangeValue')
+        if m.get('MinWordSize') is not None:
+            self.min_word_size = m.get('MinWordSize')
+        if m.get('Near_dialogue') is not None:
+            self.near_dialogue = m.get('Near_dialogue')
+        if m.get('NotRegex') is not None:
+            self.not_regex = m.get('NotRegex')
+        if m.get('Phrase') is not None:
+            self.phrase = m.get('Phrase')
+        if m.get('Regex') is not None:
+            self.regex = m.get('Regex')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        return self
+
+
+class GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperator(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        name: str = None,
+        oid: str = None,
+        param: GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParam = None,
+        type: str = None,
+    ):
+        # 主键id
+        self.id = id
+        # 算子名
+        self.name = name
+        # 可能是主键id，也可能是前端生成的id
+        self.oid = oid
+        # 算子参数
+        self.param = param
+        # 算子类别
+        self.type = type
+
+    def validate(self):
+        if self.param:
+            self.param.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.oid is not None:
+            result['Oid'] = self.oid
+        if self.param is not None:
+            result['Param'] = self.param.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Oid') is not None:
+            self.oid = m.get('Oid')
+        if m.get('Param') is not None:
+            temp_model = GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParam()
+            self.param = temp_model.from_map(m['Param'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperators(TeaModel):
+    def __init__(
+        self,
+        operator: List[GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperator] = None,
+    ):
+        self.operator = operator
+
+    def validate(self):
+        if self.operator:
+            for k in self.operator:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Operator'] = []
+        if self.operator is not None:
+            for k in self.operator:
+                result['Operator'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.operator = []
+        if m.get('Operator') is not None:
+            for k in m.get('Operator'):
+                temp_model = GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperator()
+                self.operator.append(temp_model.from_map(k))
+        return self
+
+
+class GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditions(TeaModel):
+    def __init__(
+        self,
+        check_range: GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsCheckRange = None,
+        cid: str = None,
+        exclusion: int = None,
+        id: int = None,
+        lambda_: str = None,
+        operators: GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperators = None,
+        rid: str = None,
+    ):
+        # 检测范围
+        self.check_range = check_range
+        # 条件id，可能是db中的主键，也可能是转换成的a, b, c
+        self.cid = cid
+        # 排除
+        self.exclusion = exclusion
+        # 在db中的主键
+        self.id = id
+        # Lambda表达式：例如:a&&b
+        self.lambda_ = lambda_
+        # 算子列表
+        self.operators = operators
+        # 条件所属的规则id
+        self.rid = rid
+
+    def validate(self):
+        if self.check_range:
+            self.check_range.validate()
+        if self.operators:
+            self.operators.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_range is not None:
+            result['Check_range'] = self.check_range.to_map()
+        if self.cid is not None:
+            result['Cid'] = self.cid
+        if self.exclusion is not None:
+            result['Exclusion'] = self.exclusion
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.lambda_ is not None:
+            result['Lambda'] = self.lambda_
+        if self.operators is not None:
+            result['Operators'] = self.operators.to_map()
+        if self.rid is not None:
+            result['Rid'] = self.rid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Check_range') is not None:
+            temp_model = GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsCheckRange()
+            self.check_range = temp_model.from_map(m['Check_range'])
+        if m.get('Cid') is not None:
+            self.cid = m.get('Cid')
+        if m.get('Exclusion') is not None:
+            self.exclusion = m.get('Exclusion')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Lambda') is not None:
+            self.lambda_ = m.get('Lambda')
+        if m.get('Operators') is not None:
+            temp_model = GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperators()
+            self.operators = temp_model.from_map(m['Operators'])
+        if m.get('Rid') is not None:
+            self.rid = m.get('Rid')
+        return self
+
+
+class GetResultResponseBodyDataResultInfoHitResultHitResultConditions(TeaModel):
+    def __init__(
+        self,
+        conditions: List[GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditions] = None,
+    ):
+        self.conditions = conditions
+
+    def validate(self):
+        if self.conditions:
+            for k in self.conditions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Conditions'] = []
+        if self.conditions is not None:
+            for k in self.conditions:
+                result['Conditions'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.conditions = []
+        if m.get('Conditions') is not None:
+            for k in m.get('Conditions'):
+                temp_model = GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditions()
+                self.conditions.append(temp_model.from_map(k))
         return self
 
 
@@ -9429,6 +10561,7 @@ class GetResultResponseBodyDataResultInfoHitResultHitResultHits(TeaModel):
 class GetResultResponseBodyDataResultInfoHitResultHitResult(TeaModel):
     def __init__(
         self,
+        conditions: GetResultResponseBodyDataResultInfoHitResultHitResultConditions = None,
         hits: GetResultResponseBodyDataResultInfoHitResultHitResultHits = None,
         name: str = None,
         review_result: int = None,
@@ -9437,6 +10570,7 @@ class GetResultResponseBodyDataResultInfoHitResultHitResult(TeaModel):
         scheme_version: int = None,
         type: str = None,
     ):
+        self.conditions = conditions
         self.hits = hits
         self.name = name
         self.review_result = review_result
@@ -9446,6 +10580,8 @@ class GetResultResponseBodyDataResultInfoHitResultHitResult(TeaModel):
         self.type = type
 
     def validate(self):
+        if self.conditions:
+            self.conditions.validate()
         if self.hits:
             self.hits.validate()
 
@@ -9455,6 +10591,8 @@ class GetResultResponseBodyDataResultInfoHitResultHitResult(TeaModel):
             return _map
 
         result = dict()
+        if self.conditions is not None:
+            result['Conditions'] = self.conditions.to_map()
         if self.hits is not None:
             result['Hits'] = self.hits.to_map()
         if self.name is not None:
@@ -9473,6 +10611,9 @@ class GetResultResponseBodyDataResultInfoHitResultHitResult(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Conditions') is not None:
+            temp_model = GetResultResponseBodyDataResultInfoHitResultHitResultConditions()
+            self.conditions = temp_model.from_map(m['Conditions'])
         if m.get('Hits') is not None:
             temp_model = GetResultResponseBodyDataResultInfoHitResultHitResultHits()
             self.hits = temp_model.from_map(m['Hits'])
@@ -9634,6 +10775,8 @@ class GetResultResponseBodyDataResultInfoRecording(TeaModel):
         remark_7: str = None,
         remark_8: str = None,
         remark_9: str = None,
+        task_config_id: int = None,
+        task_config_name: str = None,
         url: str = None,
     ):
         self.business = business
@@ -9661,6 +10804,8 @@ class GetResultResponseBodyDataResultInfoRecording(TeaModel):
         self.remark_7 = remark_7
         self.remark_8 = remark_8
         self.remark_9 = remark_9
+        self.task_config_id = task_config_id
+        self.task_config_name = task_config_name
         self.url = url
 
     def validate(self):
@@ -9722,6 +10867,10 @@ class GetResultResponseBodyDataResultInfoRecording(TeaModel):
             result['Remark8'] = self.remark_8
         if self.remark_9 is not None:
             result['Remark9'] = self.remark_9
+        if self.task_config_id is not None:
+            result['TaskConfigId'] = self.task_config_id
+        if self.task_config_name is not None:
+            result['TaskConfigName'] = self.task_config_name
         if self.url is not None:
             result['Url'] = self.url
         return result
@@ -9778,6 +10927,10 @@ class GetResultResponseBodyDataResultInfoRecording(TeaModel):
             self.remark_8 = m.get('Remark8')
         if m.get('Remark9') is not None:
             self.remark_9 = m.get('Remark9')
+        if m.get('TaskConfigId') is not None:
+            self.task_config_id = m.get('TaskConfigId')
+        if m.get('TaskConfigName') is not None:
+            self.task_config_name = m.get('TaskConfigName')
         if m.get('Url') is not None:
             self.url = m.get('Url')
         return self
@@ -10181,8 +11334,12 @@ class GetResultResponse(TeaModel):
 class GetResultCallbackRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
+        # jsonStr
         self.json_str = json_str
 
     def validate(self):
@@ -10194,12 +11351,16 @@ class GetResultCallbackRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -10297,8 +11458,11 @@ class GetResultCallbackResponse(TeaModel):
 class GetResultToReviewRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -10310,12 +11474,16 @@ class GetResultToReviewRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -11456,8 +12624,11 @@ class GetResultToReviewResponse(TeaModel):
 class GetRuleRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -11469,12 +12640,16 @@ class GetRuleRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -11826,8 +13001,11 @@ class GetRuleResponse(TeaModel):
 class GetRuleByIdRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         rule_id: int = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.rule_id = rule_id
 
     def validate(self):
@@ -11839,12 +13017,16 @@ class GetRuleByIdRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('RuleId') is not None:
             self.rule_id = m.get('RuleId')
         return self
@@ -11962,8 +13144,11 @@ class GetRuleByIdResponse(TeaModel):
 class GetRuleCategoryRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -11975,12 +13160,16 @@ class GetRuleCategoryRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -12160,8 +13349,11 @@ class GetRuleCategoryResponse(TeaModel):
 class GetRuleDetailRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -12173,12 +13365,16 @@ class GetRuleDetailRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -13334,9 +14530,144 @@ class GetRuleV4Response(TeaModel):
         return self
 
 
+class GetRuleV4StrRequest(TeaModel):
+    def __init__(
+        self,
+        is_scheme_data: int = None,
+        rule_id: int = None,
+    ):
+        self.is_scheme_data = is_scheme_data
+        self.rule_id = rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_scheme_data is not None:
+            result['IsSchemeData'] = self.is_scheme_data
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsSchemeData') is not None:
+            self.is_scheme_data = m.get('IsSchemeData')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        return self
+
+
+class GetRuleV4StrResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetRuleV4StrResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetRuleV4StrResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetRuleV4StrResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetRulesCountListRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         business_name: str = None,
         business_range: int = None,
         category_name: str = None,
@@ -13363,6 +14694,8 @@ class GetRulesCountListRequest(TeaModel):
         update_start_time: str = None,
         update_user_id: int = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.business_name = business_name
         self.business_range = business_range
         self.category_name = category_name
@@ -13398,6 +14731,8 @@ class GetRulesCountListRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.business_name is not None:
             result['BusinessName'] = self.business_name
         if self.business_range is not None:
@@ -13452,6 +14787,8 @@ class GetRulesCountListRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('BusinessName') is not None:
             self.business_name = m.get('BusinessName')
         if m.get('BusinessRange') is not None:
@@ -13710,8 +15047,11 @@ class GetRulesCountListResponse(TeaModel):
 class GetScoreInfoRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -13723,12 +15063,16 @@ class GetScoreInfoRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -13990,8 +15334,11 @@ class GetScoreInfoResponse(TeaModel):
 class GetSkillGroupConfigRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -14003,12 +15350,16 @@ class GetSkillGroupConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -14396,8 +15747,11 @@ class GetSkillGroupConfigResponse(TeaModel):
 class GetSyncResultRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -14409,12 +15763,16 @@ class GetSyncResultRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -15120,8 +16478,11 @@ class GetSyncResultResponse(TeaModel):
 class GetThesaurusBySynonymForApiRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -15133,12 +16494,16 @@ class GetThesaurusBySynonymForApiRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -15347,8 +16712,10 @@ class GetThesaurusBySynonymForApiResponse(TeaModel):
 class GetWarningStrategyConfigRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -15360,12 +16727,16 @@ class GetWarningStrategyConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -15687,8 +17058,11 @@ class GetWarningStrategyConfigResponse(TeaModel):
 class HandleComplaintRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -15700,12 +17074,16 @@ class HandleComplaintRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -15809,8 +17187,11 @@ class HandleComplaintResponse(TeaModel):
 class InsertScoreForApiRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -15822,12 +17203,16 @@ class InsertScoreForApiRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -15966,8 +17351,11 @@ class InsertScoreForApiResponse(TeaModel):
 class InsertSubScoreForApiRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -15979,12 +17367,16 @@ class InsertSubScoreForApiRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -16123,8 +17515,11 @@ class InsertSubScoreForApiResponse(TeaModel):
 class InvalidRuleRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -16136,12 +17531,16 @@ class InvalidRuleRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -16245,8 +17644,11 @@ class InvalidRuleResponse(TeaModel):
 class ListAsrVocabRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -16258,12 +17660,16 @@ class ListAsrVocabRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -16714,8 +18120,11 @@ class ListBusinessSpacesResponse(TeaModel):
 class ListDataSetRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -16727,12 +18136,16 @@ class ListDataSetRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -17098,8 +18511,11 @@ class ListDataSetResponse(TeaModel):
 class ListHotWordsTasksRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -17111,12 +18527,16 @@ class ListHotWordsTasksRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -17487,8 +18907,11 @@ class ListHotWordsTasksResponse(TeaModel):
 class ListPrecisionTaskRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -17500,12 +18923,16 @@ class ListPrecisionTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -17857,8 +19284,11 @@ class ListPrecisionTaskResponse(TeaModel):
 class ListQualityCheckSchemeRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -17870,12 +19300,16 @@ class ListQualityCheckSchemeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -18288,8 +19722,11 @@ class ListQualityCheckSchemeResponse(TeaModel):
 class ListRolesRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -18301,12 +19738,16 @@ class ListRolesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -18504,8 +19945,11 @@ class ListRolesResponse(TeaModel):
 class ListRulesRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -18517,12 +19961,16 @@ class ListRulesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -18721,6 +20169,7 @@ class ListRulesResponse(TeaModel):
 class ListRulesV4Request(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         business_name: str = None,
         business_range: int = None,
         category_name: str = None,
@@ -18747,6 +20196,8 @@ class ListRulesV4Request(TeaModel):
         update_start_time: str = None,
         update_user_id: int = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.business_name = business_name
         self.business_range = business_range
         self.category_name = category_name
@@ -18782,6 +20233,8 @@ class ListRulesV4Request(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.business_name is not None:
             result['BusinessName'] = self.business_name
         if self.business_range is not None:
@@ -18836,6 +20289,8 @@ class ListRulesV4Request(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('BusinessName') is not None:
             self.business_name = m.get('BusinessName')
         if m.get('BusinessRange') is not None:
@@ -19043,8 +20498,11 @@ class ListRulesV4Response(TeaModel):
 class ListSchemeTaskConfigRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -19056,12 +20514,16 @@ class ListSchemeTaskConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['jsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('jsonStr') is not None:
             self.json_str = m.get('jsonStr')
         return self
@@ -19786,8 +21248,11 @@ class ListSchemeTaskConfigResponse(TeaModel):
 class ListSessionGroupRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -19799,12 +21264,16 @@ class ListSessionGroupRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['jsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('jsonStr') is not None:
             self.json_str = m.get('jsonStr')
         return self
@@ -20361,8 +21830,11 @@ class ListSessionGroupResponse(TeaModel):
 class ListSkillGroupConfigRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -20374,12 +21846,16 @@ class ListSkillGroupConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -20897,8 +22373,11 @@ class ListSkillGroupConfigResponse(TeaModel):
 class ListTaskAssignRulesRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -20910,12 +22389,16 @@ class ListTaskAssignRulesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -21634,8 +23117,11 @@ class ListTaskAssignRulesResponse(TeaModel):
 class ListUsersRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -21647,12 +23133,16 @@ class ListUsersRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -21886,8 +23376,11 @@ class ListUsersResponse(TeaModel):
 class ListWarningConfigRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -21899,12 +23392,16 @@ class ListWarningConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -22285,8 +23782,10 @@ class ListWarningConfigResponse(TeaModel):
 class ListWarningStrategyConfigRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -22298,12 +23797,16 @@ class ListWarningStrategyConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -22507,8 +24010,11 @@ class ListWarningStrategyConfigResponse(TeaModel):
 class RestartAsrTaskRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -22520,12 +24026,16 @@ class RestartAsrTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -22705,8 +24215,11 @@ class RestartAsrTaskResponse(TeaModel):
 class RevertAssignedSessionRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -22718,12 +24231,16 @@ class RevertAssignedSessionRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['jsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('jsonStr') is not None:
             self.json_str = m.get('jsonStr')
         return self
@@ -22862,8 +24379,11 @@ class RevertAssignedSessionResponse(TeaModel):
 class RevertAssignedSessionGroupRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -22875,12 +24395,16 @@ class RevertAssignedSessionGroupRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['jsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('jsonStr') is not None:
             self.json_str = m.get('jsonStr')
         return self
@@ -23019,8 +24543,11 @@ class RevertAssignedSessionGroupResponse(TeaModel):
 class SaveConfigDataSetRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -23032,12 +24559,16 @@ class SaveConfigDataSetRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -23135,8 +24666,11 @@ class SaveConfigDataSetResponse(TeaModel):
 class SubmitComplaintRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -23148,12 +24682,16 @@ class SubmitComplaintRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -23257,8 +24795,11 @@ class SubmitComplaintResponse(TeaModel):
 class SubmitPrecisionTaskRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -23270,12 +24811,16 @@ class SubmitPrecisionTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -23379,8 +24924,11 @@ class SubmitPrecisionTaskResponse(TeaModel):
 class SubmitQualityCheckTaskRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -23392,12 +24940,16 @@ class SubmitQualityCheckTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -23501,8 +25053,11 @@ class SubmitQualityCheckTaskResponse(TeaModel):
 class SubmitReviewInfoRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -23514,12 +25069,16 @@ class SubmitReviewInfoRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -23623,8 +25182,11 @@ class SubmitReviewInfoResponse(TeaModel):
 class SyncQualityCheckRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -23636,12 +25198,16 @@ class SyncQualityCheckRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -24014,11 +25580,759 @@ class SyncQualityCheckResponse(TeaModel):
         return self
 
 
+class TestRuleV4Request(TeaModel):
+    def __init__(
+        self,
+        is_scheme_data: int = None,
+        test_json: str = None,
+    ):
+        self.is_scheme_data = is_scheme_data
+        self.test_json = test_json
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_scheme_data is not None:
+            result['IsSchemeData'] = self.is_scheme_data
+        if self.test_json is not None:
+            result['TestJson'] = self.test_json
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsSchemeData') is not None:
+            self.is_scheme_data = m.get('IsSchemeData')
+        if m.get('TestJson') is not None:
+            self.test_json = m.get('TestJson')
+        return self
+
+
+class TestRuleV4ResponseBodyDataHitRuleReviewInfoListBranchInfoList(TeaModel):
+    def __init__(
+        self,
+        check_type: int = None,
+        index: int = None,
+        lambda_: str = None,
+        name: str = None,
+        next_node_id: int = None,
+        situation: NextNodeSituations = None,
+        triggers: List[str] = None,
+    ):
+        self.check_type = check_type
+        self.index = index
+        self.lambda_ = lambda_
+        self.name = name
+        self.next_node_id = next_node_id
+        self.situation = situation
+        self.triggers = triggers
+
+    def validate(self):
+        if self.situation:
+            self.situation.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_type is not None:
+            result['CheckType'] = self.check_type
+        if self.index is not None:
+            result['Index'] = self.index
+        if self.lambda_ is not None:
+            result['Lambda'] = self.lambda_
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.next_node_id is not None:
+            result['NextNodeId'] = self.next_node_id
+        if self.situation is not None:
+            result['Situation'] = self.situation.to_map()
+        if self.triggers is not None:
+            result['Triggers'] = self.triggers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckType') is not None:
+            self.check_type = m.get('CheckType')
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        if m.get('Lambda') is not None:
+            self.lambda_ = m.get('Lambda')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NextNodeId') is not None:
+            self.next_node_id = m.get('NextNodeId')
+        if m.get('Situation') is not None:
+            temp_model = NextNodeSituations()
+            self.situation = temp_model.from_map(m['Situation'])
+        if m.get('Triggers') is not None:
+            self.triggers = m.get('Triggers')
+        return self
+
+
+class TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoListKeyWords(TeaModel):
+    def __init__(
+        self,
+        cid: str = None,
+        customize_code: str = None,
+        from_: int = None,
+        oid: str = None,
+        operator_key: str = None,
+        pid: int = None,
+        similar_phrase: str = None,
+        tid: str = None,
+        to: int = None,
+        uuid: str = None,
+        val: str = None,
+    ):
+        self.cid = cid
+        self.customize_code = customize_code
+        self.from_ = from_
+        self.oid = oid
+        self.operator_key = operator_key
+        self.pid = pid
+        self.similar_phrase = similar_phrase
+        self.tid = tid
+        self.to = to
+        self.uuid = uuid
+        self.val = val
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cid is not None:
+            result['Cid'] = self.cid
+        if self.customize_code is not None:
+            result['CustomizeCode'] = self.customize_code
+        if self.from_ is not None:
+            result['From'] = self.from_
+        if self.oid is not None:
+            result['Oid'] = self.oid
+        if self.operator_key is not None:
+            result['OperatorKey'] = self.operator_key
+        if self.pid is not None:
+            result['Pid'] = self.pid
+        if self.similar_phrase is not None:
+            result['SimilarPhrase'] = self.similar_phrase
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        if self.to is not None:
+            result['To'] = self.to
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        if self.val is not None:
+            result['Val'] = self.val
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cid') is not None:
+            self.cid = m.get('Cid')
+        if m.get('CustomizeCode') is not None:
+            self.customize_code = m.get('CustomizeCode')
+        if m.get('From') is not None:
+            self.from_ = m.get('From')
+        if m.get('Oid') is not None:
+            self.oid = m.get('Oid')
+        if m.get('OperatorKey') is not None:
+            self.operator_key = m.get('OperatorKey')
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
+        if m.get('SimilarPhrase') is not None:
+            self.similar_phrase = m.get('SimilarPhrase')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        if m.get('To') is not None:
+            self.to = m.get('To')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        if m.get('Val') is not None:
+            self.val = m.get('Val')
+        return self
+
+
+class TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoListPhrase(TeaModel):
+    def __init__(
+        self,
+        begin: int = None,
+        begin_time: str = None,
+        channel_id: int = None,
+        emotion_fine_grained_value: int = None,
+        emotion_value: int = None,
+        end: int = None,
+        hit_status: int = None,
+        hour_min_sec: str = None,
+        identity: str = None,
+        pid: int = None,
+        renter_id: int = None,
+        role: str = None,
+        sid: int = None,
+        silence_duration: int = None,
+        speech_rate: int = None,
+        uuid: str = None,
+        words: str = None,
+    ):
+        self.begin = begin
+        self.begin_time = begin_time
+        self.channel_id = channel_id
+        self.emotion_fine_grained_value = emotion_fine_grained_value
+        self.emotion_value = emotion_value
+        self.end = end
+        self.hit_status = hit_status
+        self.hour_min_sec = hour_min_sec
+        self.identity = identity
+        self.pid = pid
+        self.renter_id = renter_id
+        self.role = role
+        self.sid = sid
+        self.silence_duration = silence_duration
+        self.speech_rate = speech_rate
+        self.uuid = uuid
+        self.words = words
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.begin is not None:
+            result['Begin'] = self.begin
+        if self.begin_time is not None:
+            result['BeginTime'] = self.begin_time
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.emotion_fine_grained_value is not None:
+            result['EmotionFineGrainedValue'] = self.emotion_fine_grained_value
+        if self.emotion_value is not None:
+            result['EmotionValue'] = self.emotion_value
+        if self.end is not None:
+            result['End'] = self.end
+        if self.hit_status is not None:
+            result['HitStatus'] = self.hit_status
+        if self.hour_min_sec is not None:
+            result['HourMinSec'] = self.hour_min_sec
+        if self.identity is not None:
+            result['Identity'] = self.identity
+        if self.pid is not None:
+            result['Pid'] = self.pid
+        if self.renter_id is not None:
+            result['RenterId'] = self.renter_id
+        if self.role is not None:
+            result['Role'] = self.role
+        if self.sid is not None:
+            result['Sid'] = self.sid
+        if self.silence_duration is not None:
+            result['SilenceDuration'] = self.silence_duration
+        if self.speech_rate is not None:
+            result['SpeechRate'] = self.speech_rate
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        if self.words is not None:
+            result['Words'] = self.words
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Begin') is not None:
+            self.begin = m.get('Begin')
+        if m.get('BeginTime') is not None:
+            self.begin_time = m.get('BeginTime')
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('EmotionFineGrainedValue') is not None:
+            self.emotion_fine_grained_value = m.get('EmotionFineGrainedValue')
+        if m.get('EmotionValue') is not None:
+            self.emotion_value = m.get('EmotionValue')
+        if m.get('End') is not None:
+            self.end = m.get('End')
+        if m.get('HitStatus') is not None:
+            self.hit_status = m.get('HitStatus')
+        if m.get('HourMinSec') is not None:
+            self.hour_min_sec = m.get('HourMinSec')
+        if m.get('Identity') is not None:
+            self.identity = m.get('Identity')
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
+        if m.get('RenterId') is not None:
+            self.renter_id = m.get('RenterId')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        if m.get('Sid') is not None:
+            self.sid = m.get('Sid')
+        if m.get('SilenceDuration') is not None:
+            self.silence_duration = m.get('SilenceDuration')
+        if m.get('SpeechRate') is not None:
+            self.speech_rate = m.get('SpeechRate')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        if m.get('Words') is not None:
+            self.words = m.get('Words')
+        return self
+
+
+class TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoList(TeaModel):
+    def __init__(
+        self,
+        cid: List[str] = None,
+        key_words: List[TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoListKeyWords] = None,
+        phrase: TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoListPhrase = None,
+    ):
+        self.cid = cid
+        self.key_words = key_words
+        self.phrase = phrase
+
+    def validate(self):
+        if self.key_words:
+            for k in self.key_words:
+                if k:
+                    k.validate()
+        if self.phrase:
+            self.phrase.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cid is not None:
+            result['Cid'] = self.cid
+        result['KeyWords'] = []
+        if self.key_words is not None:
+            for k in self.key_words:
+                result['KeyWords'].append(k.to_map() if k else None)
+        if self.phrase is not None:
+            result['Phrase'] = self.phrase.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cid') is not None:
+            self.cid = m.get('Cid')
+        self.key_words = []
+        if m.get('KeyWords') is not None:
+            for k in m.get('KeyWords'):
+                temp_model = TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoListKeyWords()
+                self.key_words.append(temp_model.from_map(k))
+        if m.get('Phrase') is not None:
+            temp_model = TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoListPhrase()
+            self.phrase = temp_model.from_map(m['Phrase'])
+        return self
+
+
+class TestRuleV4ResponseBodyDataHitRuleReviewInfoList(TeaModel):
+    def __init__(
+        self,
+        branch_hit_id: int = None,
+        branch_info_list: List[TestRuleV4ResponseBodyDataHitRuleReviewInfoListBranchInfoList] = None,
+        condition_hit_info_list: List[TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoList] = None,
+        condition_info_list: List[ConditionBasicInfo] = None,
+        judge_node_name: str = None,
+        lambda_: str = None,
+        matched: bool = None,
+        node_type: str = None,
+        rid: int = None,
+        rule_name: str = None,
+        rule_score_type: int = None,
+        score_num_type: int = None,
+        task_flow_id: int = None,
+    ):
+        self.branch_hit_id = branch_hit_id
+        self.branch_info_list = branch_info_list
+        self.condition_hit_info_list = condition_hit_info_list
+        self.condition_info_list = condition_info_list
+        self.judge_node_name = judge_node_name
+        self.lambda_ = lambda_
+        self.matched = matched
+        self.node_type = node_type
+        self.rid = rid
+        self.rule_name = rule_name
+        self.rule_score_type = rule_score_type
+        self.score_num_type = score_num_type
+        self.task_flow_id = task_flow_id
+
+    def validate(self):
+        if self.branch_info_list:
+            for k in self.branch_info_list:
+                if k:
+                    k.validate()
+        if self.condition_hit_info_list:
+            for k in self.condition_hit_info_list:
+                if k:
+                    k.validate()
+        if self.condition_info_list:
+            for k in self.condition_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.branch_hit_id is not None:
+            result['BranchHitId'] = self.branch_hit_id
+        result['BranchInfoList'] = []
+        if self.branch_info_list is not None:
+            for k in self.branch_info_list:
+                result['BranchInfoList'].append(k.to_map() if k else None)
+        result['ConditionHitInfoList'] = []
+        if self.condition_hit_info_list is not None:
+            for k in self.condition_hit_info_list:
+                result['ConditionHitInfoList'].append(k.to_map() if k else None)
+        result['ConditionInfoList'] = []
+        if self.condition_info_list is not None:
+            for k in self.condition_info_list:
+                result['ConditionInfoList'].append(k.to_map() if k else None)
+        if self.judge_node_name is not None:
+            result['JudgeNodeName'] = self.judge_node_name
+        if self.lambda_ is not None:
+            result['Lambda'] = self.lambda_
+        if self.matched is not None:
+            result['Matched'] = self.matched
+        if self.node_type is not None:
+            result['NodeType'] = self.node_type
+        if self.rid is not None:
+            result['Rid'] = self.rid
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.rule_score_type is not None:
+            result['RuleScoreType'] = self.rule_score_type
+        if self.score_num_type is not None:
+            result['ScoreNumType'] = self.score_num_type
+        if self.task_flow_id is not None:
+            result['TaskFlowId'] = self.task_flow_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BranchHitId') is not None:
+            self.branch_hit_id = m.get('BranchHitId')
+        self.branch_info_list = []
+        if m.get('BranchInfoList') is not None:
+            for k in m.get('BranchInfoList'):
+                temp_model = TestRuleV4ResponseBodyDataHitRuleReviewInfoListBranchInfoList()
+                self.branch_info_list.append(temp_model.from_map(k))
+        self.condition_hit_info_list = []
+        if m.get('ConditionHitInfoList') is not None:
+            for k in m.get('ConditionHitInfoList'):
+                temp_model = TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoList()
+                self.condition_hit_info_list.append(temp_model.from_map(k))
+        self.condition_info_list = []
+        if m.get('ConditionInfoList') is not None:
+            for k in m.get('ConditionInfoList'):
+                temp_model = ConditionBasicInfo()
+                self.condition_info_list.append(temp_model.from_map(k))
+        if m.get('JudgeNodeName') is not None:
+            self.judge_node_name = m.get('JudgeNodeName')
+        if m.get('Lambda') is not None:
+            self.lambda_ = m.get('Lambda')
+        if m.get('Matched') is not None:
+            self.matched = m.get('Matched')
+        if m.get('NodeType') is not None:
+            self.node_type = m.get('NodeType')
+        if m.get('Rid') is not None:
+            self.rid = m.get('Rid')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('RuleScoreType') is not None:
+            self.rule_score_type = m.get('RuleScoreType')
+        if m.get('ScoreNumType') is not None:
+            self.score_num_type = m.get('ScoreNumType')
+        if m.get('TaskFlowId') is not None:
+            self.task_flow_id = m.get('TaskFlowId')
+        return self
+
+
+class TestRuleV4ResponseBodyDataHitTaskFlowList(TeaModel):
+    def __init__(
+        self,
+        graph_flow: TaskGraphFlow = None,
+        rid: int = None,
+        task_flow_type: int = None,
+    ):
+        self.graph_flow = graph_flow
+        self.rid = rid
+        self.task_flow_type = task_flow_type
+
+    def validate(self):
+        if self.graph_flow:
+            self.graph_flow.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.graph_flow is not None:
+            result['GraphFlow'] = self.graph_flow.to_map()
+        if self.rid is not None:
+            result['Rid'] = self.rid
+        if self.task_flow_type is not None:
+            result['TaskFlowType'] = self.task_flow_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GraphFlow') is not None:
+            temp_model = TaskGraphFlow()
+            self.graph_flow = temp_model.from_map(m['GraphFlow'])
+        if m.get('Rid') is not None:
+            self.rid = m.get('Rid')
+        if m.get('TaskFlowType') is not None:
+            self.task_flow_type = m.get('TaskFlowType')
+        return self
+
+
+class TestRuleV4ResponseBodyDataUnhitRuleReviewInfoList(TeaModel):
+    def __init__(
+        self,
+        condition_info_list: List[ConditionBasicInfo] = None,
+        matched: bool = None,
+        rid: int = None,
+        task_flow_type: int = None,
+    ):
+        self.condition_info_list = condition_info_list
+        self.matched = matched
+        self.rid = rid
+        self.task_flow_type = task_flow_type
+
+    def validate(self):
+        if self.condition_info_list:
+            for k in self.condition_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ConditionInfoList'] = []
+        if self.condition_info_list is not None:
+            for k in self.condition_info_list:
+                result['ConditionInfoList'].append(k.to_map() if k else None)
+        if self.matched is not None:
+            result['Matched'] = self.matched
+        if self.rid is not None:
+            result['Rid'] = self.rid
+        if self.task_flow_type is not None:
+            result['TaskFlowType'] = self.task_flow_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.condition_info_list = []
+        if m.get('ConditionInfoList') is not None:
+            for k in m.get('ConditionInfoList'):
+                temp_model = ConditionBasicInfo()
+                self.condition_info_list.append(temp_model.from_map(k))
+        if m.get('Matched') is not None:
+            self.matched = m.get('Matched')
+        if m.get('Rid') is not None:
+            self.rid = m.get('Rid')
+        if m.get('TaskFlowType') is not None:
+            self.task_flow_type = m.get('TaskFlowType')
+        return self
+
+
+class TestRuleV4ResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        hit_rule_review_info_list: List[TestRuleV4ResponseBodyDataHitRuleReviewInfoList] = None,
+        hit_task_flow_list: List[TestRuleV4ResponseBodyDataHitTaskFlowList] = None,
+        unhit_rule_review_info_list: List[TestRuleV4ResponseBodyDataUnhitRuleReviewInfoList] = None,
+    ):
+        self.hit_rule_review_info_list = hit_rule_review_info_list
+        self.hit_task_flow_list = hit_task_flow_list
+        self.unhit_rule_review_info_list = unhit_rule_review_info_list
+
+    def validate(self):
+        if self.hit_rule_review_info_list:
+            for k in self.hit_rule_review_info_list:
+                if k:
+                    k.validate()
+        if self.hit_task_flow_list:
+            for k in self.hit_task_flow_list:
+                if k:
+                    k.validate()
+        if self.unhit_rule_review_info_list:
+            for k in self.unhit_rule_review_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['HitRuleReviewInfoList'] = []
+        if self.hit_rule_review_info_list is not None:
+            for k in self.hit_rule_review_info_list:
+                result['HitRuleReviewInfoList'].append(k.to_map() if k else None)
+        result['HitTaskFlowList'] = []
+        if self.hit_task_flow_list is not None:
+            for k in self.hit_task_flow_list:
+                result['HitTaskFlowList'].append(k.to_map() if k else None)
+        result['UnhitRuleReviewInfoList'] = []
+        if self.unhit_rule_review_info_list is not None:
+            for k in self.unhit_rule_review_info_list:
+                result['UnhitRuleReviewInfoList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.hit_rule_review_info_list = []
+        if m.get('HitRuleReviewInfoList') is not None:
+            for k in m.get('HitRuleReviewInfoList'):
+                temp_model = TestRuleV4ResponseBodyDataHitRuleReviewInfoList()
+                self.hit_rule_review_info_list.append(temp_model.from_map(k))
+        self.hit_task_flow_list = []
+        if m.get('HitTaskFlowList') is not None:
+            for k in m.get('HitTaskFlowList'):
+                temp_model = TestRuleV4ResponseBodyDataHitTaskFlowList()
+                self.hit_task_flow_list.append(temp_model.from_map(k))
+        self.unhit_rule_review_info_list = []
+        if m.get('UnhitRuleReviewInfoList') is not None:
+            for k in m.get('UnhitRuleReviewInfoList'):
+                temp_model = TestRuleV4ResponseBodyDataUnhitRuleReviewInfoList()
+                self.unhit_rule_review_info_list.append(temp_model.from_map(k))
+        return self
+
+
+class TestRuleV4ResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: TestRuleV4ResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = TestRuleV4ResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class TestRuleV4Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TestRuleV4ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TestRuleV4ResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateAsrVocabRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -24030,12 +26344,16 @@ class UpdateAsrVocabRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -24139,8 +26457,11 @@ class UpdateAsrVocabResponse(TeaModel):
 class UpdateCheckTypeToSchemeRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -24152,12 +26473,16 @@ class UpdateCheckTypeToSchemeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['jsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('jsonStr') is not None:
             self.json_str = m.get('jsonStr')
         return self
@@ -24302,8 +26627,11 @@ class UpdateCheckTypeToSchemeResponse(TeaModel):
 class UpdateQualityCheckDataRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -24315,12 +26643,16 @@ class UpdateQualityCheckDataRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -24418,8 +26750,11 @@ class UpdateQualityCheckDataResponse(TeaModel):
 class UpdateQualityCheckSchemeRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -24431,12 +26766,16 @@ class UpdateQualityCheckSchemeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['jsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('jsonStr') is not None:
             self.json_str = m.get('jsonStr')
         return self
@@ -24575,8 +26914,11 @@ class UpdateQualityCheckSchemeResponse(TeaModel):
 class UpdateRuleRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -24588,12 +26930,16 @@ class UpdateRuleRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -24697,11 +27043,14 @@ class UpdateRuleResponse(TeaModel):
 class UpdateRuleByIdRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         is_copy: bool = None,
         json_str_for_rule: str = None,
         return_related_schemes: bool = None,
         rule_id: int = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.is_copy = is_copy
         self.json_str_for_rule = json_str_for_rule
         self.return_related_schemes = return_related_schemes
@@ -24716,6 +27065,8 @@ class UpdateRuleByIdRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.is_copy is not None:
             result['IsCopy'] = self.is_copy
         if self.json_str_for_rule is not None:
@@ -24728,6 +27079,8 @@ class UpdateRuleByIdRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('IsCopy') is not None:
             self.is_copy = m.get('IsCopy')
         if m.get('JsonStrForRule') is not None:
@@ -24872,8 +27225,11 @@ class UpdateRuleByIdResponse(TeaModel):
 class UpdateRuleToSchemeRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -24885,12 +27241,16 @@ class UpdateRuleToSchemeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['jsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('jsonStr') is not None:
             self.json_str = m.get('jsonStr')
         return self
@@ -25035,9 +27395,12 @@ class UpdateRuleToSchemeResponse(TeaModel):
 class UpdateRuleV4Request(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str_for_rule: str = None,
         rule_id: int = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str_for_rule = json_str_for_rule
         self.rule_id = rule_id
 
@@ -25050,6 +27413,8 @@ class UpdateRuleV4Request(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str_for_rule is not None:
             result['JsonStrForRule'] = self.json_str_for_rule
         if self.rule_id is not None:
@@ -25058,6 +27423,8 @@ class UpdateRuleV4Request(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStrForRule') is not None:
             self.json_str_for_rule = m.get('JsonStrForRule')
         if m.get('RuleId') is not None:
@@ -25204,8 +27571,11 @@ class UpdateRuleV4Response(TeaModel):
 class UpdateSchemeTaskConfigRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -25217,12 +27587,16 @@ class UpdateSchemeTaskConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['jsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('jsonStr') is not None:
             self.json_str = m.get('jsonStr')
         return self
@@ -25361,8 +27735,11 @@ class UpdateSchemeTaskConfigResponse(TeaModel):
 class UpdateScoreForApiRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -25374,12 +27751,16 @@ class UpdateScoreForApiRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -25477,8 +27858,11 @@ class UpdateScoreForApiResponse(TeaModel):
 class UpdateSkillGroupConfigRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -25490,12 +27874,16 @@ class UpdateSkillGroupConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -25593,8 +27981,11 @@ class UpdateSkillGroupConfigResponse(TeaModel):
 class UpdateSubScoreForApiRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -25606,12 +27997,16 @@ class UpdateSubScoreForApiRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -25709,8 +28104,11 @@ class UpdateSubScoreForApiResponse(TeaModel):
 class UpdateSyncQualityCheckDataRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -25722,12 +28120,16 @@ class UpdateSyncQualityCheckDataRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -25866,8 +28268,11 @@ class UpdateSyncQualityCheckDataResponse(TeaModel):
 class UpdateTaskAssignRuleRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -25879,12 +28284,16 @@ class UpdateTaskAssignRuleRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -25982,8 +28391,11 @@ class UpdateTaskAssignRuleResponse(TeaModel):
 class UpdateUserRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -25995,12 +28407,16 @@ class UpdateUserRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -26098,8 +28514,11 @@ class UpdateUserResponse(TeaModel):
 class UpdateUserConfigRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -26111,12 +28530,16 @@ class UpdateUserConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -26214,8 +28637,11 @@ class UpdateUserConfigResponse(TeaModel):
 class UpdateWarningConfigRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -26227,12 +28653,16 @@ class UpdateWarningConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -26330,8 +28760,10 @@ class UpdateWarningConfigResponse(TeaModel):
 class UpdateWarningStrategyConfigRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -26343,12 +28775,16 @@ class UpdateWarningStrategyConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -26452,8 +28888,10 @@ class UpdateWarningStrategyConfigResponse(TeaModel):
 class UploadAudioDataRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -26465,12 +28903,16 @@ class UploadAudioDataRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -26574,8 +29016,11 @@ class UploadAudioDataResponse(TeaModel):
 class UploadDataRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -26587,12 +29032,16 @@ class UploadDataRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -26696,8 +29145,11 @@ class UploadDataResponse(TeaModel):
 class UploadDataSyncRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -26709,12 +29161,16 @@ class UploadDataSyncRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -27322,11 +29778,13 @@ class UploadDataSyncResponse(TeaModel):
         return self
 
 
-class UploadRuleRequest(TeaModel):
+class UploadDataV4Request(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -27338,12 +29796,145 @@ class UploadRuleRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
+        if m.get('JsonStr') is not None:
+            self.json_str = m.get('JsonStr')
+        return self
+
+
+class UploadDataV4ResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UploadDataV4Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UploadDataV4ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UploadDataV4ResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UploadRuleRequest(TeaModel):
+    def __init__(
+        self,
+        base_me_agent_id: int = None,
+        json_str: str = None,
+    ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
+        self.json_str = json_str
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
+        if self.json_str is not None:
+            result['JsonStr'] = self.json_str
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -27476,8 +30067,11 @@ class UploadRuleResponse(TeaModel):
 class VerifyFileRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -27489,12 +30083,16 @@ class VerifyFileRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -27598,8 +30196,11 @@ class VerifyFileResponse(TeaModel):
 class VerifySentenceRequest(TeaModel):
     def __init__(
         self,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # baseMeAgentId
+        self.base_me_agent_id = base_me_agent_id
         self.json_str = json_str
 
     def validate(self):
@@ -27611,12 +30212,16 @@ class VerifySentenceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self

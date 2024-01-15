@@ -48,6 +48,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.AddBusinessCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -76,6 +78,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.AddBusinessCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -118,6 +122,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.AddRuleCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -146,6 +152,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.AddRuleCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -187,12 +195,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.AddRuleV4Response:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         body = {}
         if not UtilClient.is_unset(request.is_copy):
             body['IsCopy'] = request.is_copy
         if not UtilClient.is_unset(request.json_str_for_rule):
             body['JsonStrForRule'] = request.json_str_for_rule
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -217,12 +229,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.AddRuleV4Response:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         body = {}
         if not UtilClient.is_unset(request.is_copy):
             body['IsCopy'] = request.is_copy
         if not UtilClient.is_unset(request.json_str_for_rule):
             body['JsonStrForRule'] = request.json_str_for_rule
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -262,6 +278,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.AddThesaurusForApiResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -290,6 +308,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.AddThesaurusForApiResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -332,6 +352,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.AssignReviewerResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -360,6 +382,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.AssignReviewerResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -402,6 +426,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.AssignReviewerBySessionGroupResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -430,6 +456,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.AssignReviewerBySessionGroupResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -472,6 +500,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.BatchSubmitReviewInfoResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -500,6 +530,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.BatchSubmitReviewInfoResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -542,6 +574,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.CreateAsrVocabResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -570,6 +604,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.CreateAsrVocabResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -612,6 +648,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.CreateCheckTypeToSchemeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -640,6 +678,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.CreateCheckTypeToSchemeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -682,6 +722,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.CreateQualityCheckSchemeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -710,6 +752,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.CreateQualityCheckSchemeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -752,6 +796,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.CreateSchemeTaskConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -780,6 +826,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.CreateSchemeTaskConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -822,6 +870,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.CreateSkillGroupConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -850,6 +900,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.CreateSkillGroupConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -892,6 +944,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.CreateTaskAssignRuleResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -920,6 +974,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.CreateTaskAssignRuleResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -960,8 +1016,18 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.CreateUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.CreateUserResponse:
+        """
+        @deprecated
+        
+        @param request: CreateUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUserResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -988,8 +1054,18 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.CreateUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.CreateUserResponse:
+        """
+        @deprecated
+        
+        @param request: CreateUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUserResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -1015,6 +1091,13 @@ class Client(OpenApiClient):
         self,
         request: qualitycheck_20190115_models.CreateUserRequest,
     ) -> qualitycheck_20190115_models.CreateUserResponse:
+        """
+        @deprecated
+        
+        @param request: CreateUserRequest
+        @return: CreateUserResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_user_with_options(request, runtime)
 
@@ -1022,6 +1105,13 @@ class Client(OpenApiClient):
         self,
         request: qualitycheck_20190115_models.CreateUserRequest,
     ) -> qualitycheck_20190115_models.CreateUserResponse:
+        """
+        @deprecated
+        
+        @param request: CreateUserRequest
+        @return: CreateUserResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_user_with_options_async(request, runtime)
 
@@ -1032,6 +1122,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.CreateWarningConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -1060,6 +1152,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.CreateWarningConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -1102,6 +1196,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.CreateWarningStrategyConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -1130,6 +1226,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.CreateWarningStrategyConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -1172,6 +1270,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DelRuleCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -1200,6 +1300,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DelRuleCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -1242,6 +1344,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DelThesaurusForApiResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -1270,6 +1374,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DelThesaurusForApiResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -1312,6 +1418,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DeleteAsrVocabResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -1340,6 +1448,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DeleteAsrVocabResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -1382,6 +1492,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DeleteBusinessCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -1410,6 +1522,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DeleteBusinessCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -1452,6 +1566,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DeleteCustomizationConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -1480,6 +1596,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DeleteCustomizationConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -1522,6 +1640,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DeleteDataSetResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -1550,6 +1670,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DeleteDataSetResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -1592,6 +1714,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DeletePrecisionTaskResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -1620,6 +1744,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DeletePrecisionTaskResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -1662,6 +1788,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DeleteQualityCheckSchemeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -1690,6 +1818,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DeleteQualityCheckSchemeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -1731,6 +1861,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.DeleteRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         body = {}
         if not UtilClient.is_unset(request.force_delete):
             body['ForceDelete'] = request.force_delete
@@ -1739,6 +1872,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.rule_id):
             body['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1763,6 +1897,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.DeleteRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         body = {}
         if not UtilClient.is_unset(request.force_delete):
             body['ForceDelete'] = request.force_delete
@@ -1771,6 +1908,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.rule_id):
             body['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1809,12 +1947,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.DeleteRuleV4Response:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         body = {}
         if not UtilClient.is_unset(request.force_delete):
             body['ForceDelete'] = request.force_delete
         if not UtilClient.is_unset(request.rule_id):
             body['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1839,12 +1981,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.DeleteRuleV4Response:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         body = {}
         if not UtilClient.is_unset(request.force_delete):
             body['ForceDelete'] = request.force_delete
         if not UtilClient.is_unset(request.rule_id):
             body['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1884,6 +2030,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DeleteSchemeTaskConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -1912,6 +2060,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DeleteSchemeTaskConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -1954,6 +2104,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DeleteScoreForApiResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -1982,6 +2134,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DeleteScoreForApiResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -2024,6 +2178,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DeleteSkillGroupConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -2052,6 +2208,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DeleteSkillGroupConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -2094,6 +2252,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DeleteSubScoreForApiResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -2122,6 +2282,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DeleteSubScoreForApiResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -2164,6 +2326,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DeleteTaskAssignRuleResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -2192,6 +2356,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DeleteTaskAssignRuleResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -2232,8 +2398,18 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.DeleteUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.DeleteUserResponse:
+        """
+        @deprecated
+        
+        @param request: DeleteUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -2260,8 +2436,18 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.DeleteUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.DeleteUserResponse:
+        """
+        @deprecated
+        
+        @param request: DeleteUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -2287,6 +2473,13 @@ class Client(OpenApiClient):
         self,
         request: qualitycheck_20190115_models.DeleteUserRequest,
     ) -> qualitycheck_20190115_models.DeleteUserResponse:
+        """
+        @deprecated
+        
+        @param request: DeleteUserRequest
+        @return: DeleteUserResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_user_with_options(request, runtime)
 
@@ -2294,6 +2487,13 @@ class Client(OpenApiClient):
         self,
         request: qualitycheck_20190115_models.DeleteUserRequest,
     ) -> qualitycheck_20190115_models.DeleteUserResponse:
+        """
+        @deprecated
+        
+        @param request: DeleteUserRequest
+        @return: DeleteUserResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_user_with_options_async(request, runtime)
 
@@ -2304,6 +2504,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DeleteWarningConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -2332,6 +2534,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DeleteWarningConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -2374,6 +2578,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DeleteWarningStrategyConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -2402,6 +2608,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DeleteWarningStrategyConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -2444,6 +2652,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.EditThesaurusForApiResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -2472,6 +2682,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.EditThesaurusForApiResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -2514,6 +2726,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetAsrVocabResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -2542,6 +2756,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetAsrVocabResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -2584,6 +2800,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetBusinessCategoryListResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -2612,6 +2830,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetBusinessCategoryListResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -2654,6 +2874,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetCustomizationConfigListResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -2682,6 +2904,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetCustomizationConfigListResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -2724,6 +2948,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetHitResultResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -2752,6 +2978,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetHitResultResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -2794,6 +3022,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetNextResultToVerifyResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -2822,6 +3052,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetNextResultToVerifyResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -2864,6 +3096,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetPrecisionTaskResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -2892,6 +3126,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetPrecisionTaskResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -2934,6 +3170,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetQualityCheckSchemeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -2962,6 +3200,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetQualityCheckSchemeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -3004,6 +3244,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetResultResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -3032,6 +3274,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetResultResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -3072,8 +3316,18 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.GetResultCallbackRequest,
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.GetResultCallbackResponse:
+        """
+        @deprecated
+        
+        @param request: GetResultCallbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResultCallbackResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -3100,8 +3354,18 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.GetResultCallbackRequest,
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.GetResultCallbackResponse:
+        """
+        @deprecated
+        
+        @param request: GetResultCallbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResultCallbackResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -3127,6 +3391,13 @@ class Client(OpenApiClient):
         self,
         request: qualitycheck_20190115_models.GetResultCallbackRequest,
     ) -> qualitycheck_20190115_models.GetResultCallbackResponse:
+        """
+        @deprecated
+        
+        @param request: GetResultCallbackRequest
+        @return: GetResultCallbackResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_result_callback_with_options(request, runtime)
 
@@ -3134,6 +3405,13 @@ class Client(OpenApiClient):
         self,
         request: qualitycheck_20190115_models.GetResultCallbackRequest,
     ) -> qualitycheck_20190115_models.GetResultCallbackResponse:
+        """
+        @deprecated
+        
+        @param request: GetResultCallbackRequest
+        @return: GetResultCallbackResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_result_callback_with_options_async(request, runtime)
 
@@ -3144,6 +3422,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetResultToReviewResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -3172,6 +3452,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetResultToReviewResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -3214,6 +3496,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetRuleResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -3242,6 +3526,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetRuleResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -3283,10 +3569,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.GetRuleByIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         body = {}
         if not UtilClient.is_unset(request.rule_id):
             body['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -3311,10 +3601,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.GetRuleByIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         body = {}
         if not UtilClient.is_unset(request.rule_id):
             body['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -3354,6 +3648,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetRuleCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -3382,6 +3678,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetRuleCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -3424,6 +3722,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetRuleDetailResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -3452,6 +3752,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetRuleDetailResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -3557,12 +3859,119 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_rule_v4with_options_async(request, runtime)
 
+    def get_rule_v4str_with_options(
+        self,
+        request: qualitycheck_20190115_models.GetRuleV4StrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> qualitycheck_20190115_models.GetRuleV4StrResponse:
+        """
+        @deprecated : GetRuleV4Str is deprecated, please use Qualitycheck::2019-01-15::GetRuleV4 instead.
+        
+        @param request: GetRuleV4StrRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRuleV4StrResponse
+        Deprecated
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.is_scheme_data):
+            body['IsSchemeData'] = request.is_scheme_data
+        if not UtilClient.is_unset(request.rule_id):
+            body['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetRuleV4Str',
+            version='2019-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            qualitycheck_20190115_models.GetRuleV4StrResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_rule_v4str_with_options_async(
+        self,
+        request: qualitycheck_20190115_models.GetRuleV4StrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> qualitycheck_20190115_models.GetRuleV4StrResponse:
+        """
+        @deprecated : GetRuleV4Str is deprecated, please use Qualitycheck::2019-01-15::GetRuleV4 instead.
+        
+        @param request: GetRuleV4StrRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRuleV4StrResponse
+        Deprecated
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.is_scheme_data):
+            body['IsSchemeData'] = request.is_scheme_data
+        if not UtilClient.is_unset(request.rule_id):
+            body['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetRuleV4Str',
+            version='2019-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            qualitycheck_20190115_models.GetRuleV4StrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_rule_v4str(
+        self,
+        request: qualitycheck_20190115_models.GetRuleV4StrRequest,
+    ) -> qualitycheck_20190115_models.GetRuleV4StrResponse:
+        """
+        @deprecated : GetRuleV4Str is deprecated, please use Qualitycheck::2019-01-15::GetRuleV4 instead.
+        
+        @param request: GetRuleV4StrRequest
+        @return: GetRuleV4StrResponse
+        Deprecated
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_rule_v4str_with_options(request, runtime)
+
+    async def get_rule_v4str_async(
+        self,
+        request: qualitycheck_20190115_models.GetRuleV4StrRequest,
+    ) -> qualitycheck_20190115_models.GetRuleV4StrResponse:
+        """
+        @deprecated : GetRuleV4Str is deprecated, please use Qualitycheck::2019-01-15::GetRuleV4 instead.
+        
+        @param request: GetRuleV4StrRequest
+        @return: GetRuleV4StrResponse
+        Deprecated
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_rule_v4str_with_options_async(request, runtime)
+
     def get_rules_count_list_with_options(
         self,
         request: qualitycheck_20190115_models.GetRulesCountListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.GetRulesCountListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         body = {}
         if not UtilClient.is_unset(request.business_name):
             body['BusinessName'] = request.business_name
@@ -3615,6 +4024,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.update_user_id):
             body['UpdateUserId'] = request.update_user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -3639,6 +4049,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.GetRulesCountListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         body = {}
         if not UtilClient.is_unset(request.business_name):
             body['BusinessName'] = request.business_name
@@ -3691,6 +4104,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.update_user_id):
             body['UpdateUserId'] = request.update_user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -3730,6 +4144,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetScoreInfoResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -3758,6 +4174,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetScoreInfoResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -3800,6 +4218,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetSkillGroupConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -3828,6 +4248,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetSkillGroupConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -3870,6 +4292,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetSyncResultResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -3898,6 +4322,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetSyncResultResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -3940,6 +4366,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetThesaurusBySynonymForApiResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -3968,6 +4396,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetThesaurusBySynonymForApiResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -4010,6 +4440,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetWarningStrategyConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -4038,6 +4470,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.GetWarningStrategyConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -4080,6 +4514,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.HandleComplaintResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -4108,6 +4544,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.HandleComplaintResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -4150,6 +4588,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.InsertScoreForApiResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -4178,6 +4618,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.InsertScoreForApiResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -4220,6 +4662,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.InsertSubScoreForApiResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -4248,6 +4692,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.InsertSubScoreForApiResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -4290,6 +4736,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.InvalidRuleResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -4318,6 +4766,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.InvalidRuleResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -4360,6 +4810,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.ListAsrVocabResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -4388,6 +4840,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.ListAsrVocabResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -4428,6 +4882,14 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.ListBusinessSpacesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.ListBusinessSpacesResponse:
+        """
+        @deprecated
+        
+        @param request: ListBusinessSpacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBusinessSpacesResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.json_str):
@@ -4456,6 +4918,14 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.ListBusinessSpacesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.ListBusinessSpacesResponse:
+        """
+        @deprecated
+        
+        @param request: ListBusinessSpacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBusinessSpacesResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.json_str):
@@ -4483,6 +4953,13 @@ class Client(OpenApiClient):
         self,
         request: qualitycheck_20190115_models.ListBusinessSpacesRequest,
     ) -> qualitycheck_20190115_models.ListBusinessSpacesResponse:
+        """
+        @deprecated
+        
+        @param request: ListBusinessSpacesRequest
+        @return: ListBusinessSpacesResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_business_spaces_with_options(request, runtime)
 
@@ -4490,6 +4967,13 @@ class Client(OpenApiClient):
         self,
         request: qualitycheck_20190115_models.ListBusinessSpacesRequest,
     ) -> qualitycheck_20190115_models.ListBusinessSpacesResponse:
+        """
+        @deprecated
+        
+        @param request: ListBusinessSpacesRequest
+        @return: ListBusinessSpacesResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_business_spaces_with_options_async(request, runtime)
 
@@ -4500,6 +4984,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.ListDataSetResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -4528,6 +5014,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.ListDataSetResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -4570,6 +5058,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.ListHotWordsTasksResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -4598,6 +5088,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.ListHotWordsTasksResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -4640,6 +5132,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.ListPrecisionTaskResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -4668,6 +5162,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.ListPrecisionTaskResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -4710,6 +5206,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.ListQualityCheckSchemeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -4738,6 +5236,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.ListQualityCheckSchemeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -4780,6 +5280,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.ListRolesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -4808,6 +5310,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.ListRolesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -4850,6 +5354,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.ListRulesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -4878,6 +5384,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.ListRulesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -4919,6 +5427,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.ListRulesV4Response:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         body = {}
         if not UtilClient.is_unset(request.business_name):
             body['BusinessName'] = request.business_name
@@ -4971,6 +5482,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.update_user_id):
             body['UpdateUserId'] = request.update_user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -4995,6 +5507,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.ListRulesV4Response:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         body = {}
         if not UtilClient.is_unset(request.business_name):
             body['BusinessName'] = request.business_name
@@ -5047,6 +5562,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.update_user_id):
             body['UpdateUserId'] = request.update_user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -5086,6 +5602,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.ListSchemeTaskConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -5114,6 +5632,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.ListSchemeTaskConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -5156,6 +5676,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.ListSessionGroupResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -5184,6 +5706,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.ListSessionGroupResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -5226,6 +5750,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.ListSkillGroupConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -5254,6 +5780,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.ListSkillGroupConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -5296,6 +5824,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.ListTaskAssignRulesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -5324,6 +5854,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.ListTaskAssignRulesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -5366,6 +5898,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.ListUsersResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -5394,6 +5928,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.ListUsersResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -5436,6 +5972,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.ListWarningConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -5464,6 +6002,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.ListWarningConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -5506,6 +6046,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.ListWarningStrategyConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -5534,6 +6076,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.ListWarningStrategyConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -5576,6 +6120,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.RestartAsrTaskResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -5604,6 +6150,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.RestartAsrTaskResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -5646,6 +6194,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.RevertAssignedSessionResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -5674,6 +6224,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.RevertAssignedSessionResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -5716,6 +6268,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.RevertAssignedSessionGroupResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -5744,6 +6298,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.RevertAssignedSessionGroupResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -5786,6 +6342,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.SaveConfigDataSetResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -5814,6 +6372,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.SaveConfigDataSetResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -5856,6 +6416,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.SubmitComplaintResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -5884,6 +6446,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.SubmitComplaintResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -5926,6 +6490,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.SubmitPrecisionTaskResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -5954,6 +6520,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.SubmitPrecisionTaskResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -5996,6 +6564,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.SubmitQualityCheckTaskResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -6024,6 +6594,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.SubmitQualityCheckTaskResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -6066,6 +6638,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.SubmitReviewInfoResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -6094,6 +6668,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.SubmitReviewInfoResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -6136,6 +6712,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.SyncQualityCheckResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -6164,6 +6742,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.SyncQualityCheckResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -6199,6 +6779,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.sync_quality_check_with_options_async(request, runtime)
 
+    def test_rule_v4with_options(
+        self,
+        request: qualitycheck_20190115_models.TestRuleV4Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> qualitycheck_20190115_models.TestRuleV4Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.is_scheme_data):
+            body['IsSchemeData'] = request.is_scheme_data
+        if not UtilClient.is_unset(request.test_json):
+            body['TestJson'] = request.test_json
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TestRuleV4',
+            version='2019-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            qualitycheck_20190115_models.TestRuleV4Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def test_rule_v4with_options_async(
+        self,
+        request: qualitycheck_20190115_models.TestRuleV4Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> qualitycheck_20190115_models.TestRuleV4Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.is_scheme_data):
+            body['IsSchemeData'] = request.is_scheme_data
+        if not UtilClient.is_unset(request.test_json):
+            body['TestJson'] = request.test_json
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TestRuleV4',
+            version='2019-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            qualitycheck_20190115_models.TestRuleV4Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def test_rule_v4(
+        self,
+        request: qualitycheck_20190115_models.TestRuleV4Request,
+    ) -> qualitycheck_20190115_models.TestRuleV4Response:
+        runtime = util_models.RuntimeOptions()
+        return self.test_rule_v4with_options(request, runtime)
+
+    async def test_rule_v4_async(
+        self,
+        request: qualitycheck_20190115_models.TestRuleV4Request,
+    ) -> qualitycheck_20190115_models.TestRuleV4Response:
+        runtime = util_models.RuntimeOptions()
+        return await self.test_rule_v4with_options_async(request, runtime)
+
     def update_asr_vocab_with_options(
         self,
         request: qualitycheck_20190115_models.UpdateAsrVocabRequest,
@@ -6206,6 +6860,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateAsrVocabResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -6234,6 +6890,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateAsrVocabResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -6276,6 +6934,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateCheckTypeToSchemeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -6304,6 +6964,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateCheckTypeToSchemeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -6346,6 +7008,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateQualityCheckDataResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -6374,6 +7038,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateQualityCheckDataResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -6416,6 +7082,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateQualityCheckSchemeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -6444,6 +7112,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateQualityCheckSchemeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -6486,6 +7156,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateRuleResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -6514,6 +7186,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateRuleResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -6555,6 +7229,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.UpdateRuleByIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         body = {}
         if not UtilClient.is_unset(request.is_copy):
             body['IsCopy'] = request.is_copy
@@ -6565,6 +7242,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.rule_id):
             body['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -6589,6 +7267,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.UpdateRuleByIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         body = {}
         if not UtilClient.is_unset(request.is_copy):
             body['IsCopy'] = request.is_copy
@@ -6599,6 +7280,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.rule_id):
             body['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -6638,6 +7320,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateRuleToSchemeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -6666,6 +7350,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateRuleToSchemeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -6707,12 +7393,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.UpdateRuleV4Response:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         body = {}
         if not UtilClient.is_unset(request.json_str_for_rule):
             body['JsonStrForRule'] = request.json_str_for_rule
         if not UtilClient.is_unset(request.rule_id):
             body['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -6737,12 +7427,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.UpdateRuleV4Response:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         body = {}
         if not UtilClient.is_unset(request.json_str_for_rule):
             body['JsonStrForRule'] = request.json_str_for_rule
         if not UtilClient.is_unset(request.rule_id):
             body['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -6782,6 +7476,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateSchemeTaskConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -6810,6 +7506,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateSchemeTaskConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['jsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -6852,6 +7550,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateScoreForApiResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -6880,6 +7580,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateScoreForApiResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -6922,6 +7624,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateSkillGroupConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -6950,6 +7654,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateSkillGroupConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -6992,6 +7698,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateSubScoreForApiResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -7020,6 +7728,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateSubScoreForApiResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -7062,6 +7772,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateSyncQualityCheckDataResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -7090,6 +7802,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateSyncQualityCheckDataResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -7132,6 +7846,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateTaskAssignRuleResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -7160,6 +7876,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateTaskAssignRuleResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -7202,6 +7920,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateUserResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -7230,6 +7950,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateUserResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -7272,6 +7994,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateUserConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -7300,6 +8024,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateUserConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -7342,6 +8068,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateWarningConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -7370,6 +8098,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateWarningConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -7412,6 +8142,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateWarningStrategyConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -7440,6 +8172,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UpdateWarningStrategyConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -7482,6 +8216,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UploadAudioDataResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -7510,6 +8246,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UploadAudioDataResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -7550,8 +8288,18 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.UploadDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.UploadDataResponse:
+        """
+        @deprecated : UploadData is deprecated, please use Qualitycheck::2019-01-15::UploadDataV4 instead.
+        
+        @param request: UploadDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadDataResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -7578,8 +8326,18 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.UploadDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.UploadDataResponse:
+        """
+        @deprecated : UploadData is deprecated, please use Qualitycheck::2019-01-15::UploadDataV4 instead.
+        
+        @param request: UploadDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadDataResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -7605,6 +8363,13 @@ class Client(OpenApiClient):
         self,
         request: qualitycheck_20190115_models.UploadDataRequest,
     ) -> qualitycheck_20190115_models.UploadDataResponse:
+        """
+        @deprecated : UploadData is deprecated, please use Qualitycheck::2019-01-15::UploadDataV4 instead.
+        
+        @param request: UploadDataRequest
+        @return: UploadDataResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.upload_data_with_options(request, runtime)
 
@@ -7612,6 +8377,13 @@ class Client(OpenApiClient):
         self,
         request: qualitycheck_20190115_models.UploadDataRequest,
     ) -> qualitycheck_20190115_models.UploadDataResponse:
+        """
+        @deprecated : UploadData is deprecated, please use Qualitycheck::2019-01-15::UploadDataV4 instead.
+        
+        @param request: UploadDataRequest
+        @return: UploadDataResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upload_data_with_options_async(request, runtime)
 
@@ -7622,6 +8394,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UploadDataSyncResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -7650,6 +8424,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UploadDataSyncResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -7685,6 +8461,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.upload_data_sync_with_options_async(request, runtime)
 
+    def upload_data_v4with_options(
+        self,
+        request: qualitycheck_20190115_models.UploadDataV4Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> qualitycheck_20190115_models.UploadDataV4Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not UtilClient.is_unset(request.json_str):
+            body['JsonStr'] = request.json_str
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UploadDataV4',
+            version='2019-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            qualitycheck_20190115_models.UploadDataV4Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upload_data_v4with_options_async(
+        self,
+        request: qualitycheck_20190115_models.UploadDataV4Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> qualitycheck_20190115_models.UploadDataV4Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not UtilClient.is_unset(request.json_str):
+            body['JsonStr'] = request.json_str
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UploadDataV4',
+            version='2019-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            qualitycheck_20190115_models.UploadDataV4Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upload_data_v4(
+        self,
+        request: qualitycheck_20190115_models.UploadDataV4Request,
+    ) -> qualitycheck_20190115_models.UploadDataV4Response:
+        runtime = util_models.RuntimeOptions()
+        return self.upload_data_v4with_options(request, runtime)
+
+    async def upload_data_v4_async(
+        self,
+        request: qualitycheck_20190115_models.UploadDataV4Request,
+    ) -> qualitycheck_20190115_models.UploadDataV4Response:
+        runtime = util_models.RuntimeOptions()
+        return await self.upload_data_v4with_options_async(request, runtime)
+
     def upload_rule_with_options(
         self,
         request: qualitycheck_20190115_models.UploadRuleRequest,
@@ -7692,6 +8542,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UploadRuleResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -7720,6 +8572,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.UploadRuleResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -7762,6 +8616,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.VerifyFileResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -7790,6 +8646,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.VerifyFileResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -7832,6 +8690,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.VerifySentenceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
@@ -7860,6 +8720,8 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.VerifySentenceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
         if not UtilClient.is_unset(request.json_str):
             query['JsonStr'] = request.json_str
         req = open_api_models.OpenApiRequest(
