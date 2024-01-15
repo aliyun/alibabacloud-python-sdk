@@ -18959,6 +18959,7 @@ class PopSubmitAITryOnJobRequest(TeaModel):
         self,
         bottoms_id: str = None,
         clothing_type: str = None,
+        generate_picture_num: int = None,
         jwt_token: str = None,
         model_id: str = None,
         shoe_type: str = None,
@@ -18967,6 +18968,7 @@ class PopSubmitAITryOnJobRequest(TeaModel):
     ):
         self.bottoms_id = bottoms_id
         self.clothing_type = clothing_type
+        self.generate_picture_num = generate_picture_num
         self.jwt_token = jwt_token
         self.model_id = model_id
         self.shoe_type = shoe_type
@@ -18986,6 +18988,8 @@ class PopSubmitAITryOnJobRequest(TeaModel):
             result['BottomsId'] = self.bottoms_id
         if self.clothing_type is not None:
             result['ClothingType'] = self.clothing_type
+        if self.generate_picture_num is not None:
+            result['GeneratePictureNum'] = self.generate_picture_num
         if self.jwt_token is not None:
             result['JwtToken'] = self.jwt_token
         if self.model_id is not None:
@@ -19004,6 +19008,8 @@ class PopSubmitAITryOnJobRequest(TeaModel):
             self.bottoms_id = m.get('BottomsId')
         if m.get('ClothingType') is not None:
             self.clothing_type = m.get('ClothingType')
+        if m.get('GeneratePictureNum') is not None:
+            self.generate_picture_num = m.get('GeneratePictureNum')
         if m.get('JwtToken') is not None:
             self.jwt_token = m.get('JwtToken')
         if m.get('ModelId') is not None:
