@@ -1,3 +1,6 @@
+2024-01-15 Version: 1.2.0
+- Generated python 2017-06-22 for Dm.
+
 2023-11-20 Version: 1.1.0
 - Generated python 2017-06-22 for Dm.
 
