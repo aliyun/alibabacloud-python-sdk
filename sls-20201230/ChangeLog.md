@@ -1,3 +1,6 @@
+2024-01-15 Version: 4.4.0
+- Generated python 2020-12-30 for Sls.
+
 2024-01-10 Version: 4.3.0
 - Generated python 2020-12-30 for Sls.
 

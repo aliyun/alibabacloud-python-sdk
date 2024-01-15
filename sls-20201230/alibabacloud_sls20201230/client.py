@@ -235,6 +235,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ConsumerGroupHeartBeatResponse:
+        """
+        ### Usage notes
+        *   Connections between consumers and servers are established by sending heartbeats at regular intervals. If a server does not receive heartbeats from a consumer on schedule, the server deletes the consumer.
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ConsumerGroupHeartBeatRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConsumerGroupHeartBeatResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -272,6 +282,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ConsumerGroupHeartBeatResponse:
+        """
+        ### Usage notes
+        *   Connections between consumers and servers are established by sending heartbeats at regular intervals. If a server does not receive heartbeats from a consumer on schedule, the server deletes the consumer.
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ConsumerGroupHeartBeatRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConsumerGroupHeartBeatResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -307,6 +327,14 @@ class Client(OpenApiClient):
         consumer_group: str,
         request: sls_20201230_models.ConsumerGroupHeartBeatRequest,
     ) -> sls_20201230_models.ConsumerGroupHeartBeatResponse:
+        """
+        ### Usage notes
+        *   Connections between consumers and servers are established by sending heartbeats at regular intervals. If a server does not receive heartbeats from a consumer on schedule, the server deletes the consumer.
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ConsumerGroupHeartBeatRequest
+        @return: ConsumerGroupHeartBeatResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.consumer_group_heart_beat_with_options(project, logstore, consumer_group, request, headers, runtime)
@@ -318,9 +346,97 @@ class Client(OpenApiClient):
         consumer_group: str,
         request: sls_20201230_models.ConsumerGroupHeartBeatRequest,
     ) -> sls_20201230_models.ConsumerGroupHeartBeatResponse:
+        """
+        ### Usage notes
+        *   Connections between consumers and servers are established by sending heartbeats at regular intervals. If a server does not receive heartbeats from a consumer on schedule, the server deletes the consumer.
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ConsumerGroupHeartBeatRequest
+        @return: ConsumerGroupHeartBeatResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.consumer_group_heart_beat_with_options_async(project, logstore, consumer_group, request, headers, runtime)
+
+    def create_alert_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateAlertRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateAlertResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreateAlert',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/alerts',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='any'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateAlertResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_alert_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateAlertRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateAlertResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreateAlert',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/alerts',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='any'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateAlertResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_alert(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateAlertRequest,
+    ) -> sls_20201230_models.CreateAlertResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_alert_with_options(project, request, headers, runtime)
+
+    async def create_alert_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateAlertRequest,
+    ) -> sls_20201230_models.CreateAlertResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_alert_with_options_async(project, request, headers, runtime)
 
     def create_annotation_data_set_with_options(
         self,
@@ -477,6 +593,20 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateConfigResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](~~48984~~).
+        *   You can create up to 100 Logtail configurations in a project.
+        *   The Logtail configuration is planned out. For more information, see [Logtail configurations](~~29058~~).
+        
+        @param request: CreateConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConfigResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -508,6 +638,20 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateConfigResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](~~48984~~).
+        *   You can create up to 100 Logtail configurations in a project.
+        *   The Logtail configuration is planned out. For more information, see [Logtail configurations](~~29058~~).
+        
+        @param request: CreateConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConfigResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -537,6 +681,18 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.CreateConfigRequest,
     ) -> sls_20201230_models.CreateConfigResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](~~48984~~).
+        *   You can create up to 100 Logtail configurations in a project.
+        *   The Logtail configuration is planned out. For more information, see [Logtail configurations](~~29058~~).
+        
+        @param request: CreateConfigRequest
+        @return: CreateConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_config_with_options(project, request, headers, runtime)
@@ -546,6 +702,18 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.CreateConfigRequest,
     ) -> sls_20201230_models.CreateConfigResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](~~48984~~).
+        *   You can create up to 100 Logtail configurations in a project.
+        *   The Logtail configuration is planned out. For more information, see [Logtail configurations](~~29058~~).
+        
+        @param request: CreateConfigRequest
+        @return: CreateConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_config_with_options_async(project, request, headers, runtime)
@@ -695,6 +863,18 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateDashboardResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        
+        @param request: CreateDashboardRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDashboardResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -726,6 +906,18 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateDashboardResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        
+        @param request: CreateDashboardRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDashboardResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -755,6 +947,16 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.CreateDashboardRequest,
     ) -> sls_20201230_models.CreateDashboardResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        
+        @param request: CreateDashboardRequest
+        @return: CreateDashboardResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_dashboard_with_options(project, request, headers, runtime)
@@ -764,6 +966,16 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.CreateDashboardRequest,
     ) -> sls_20201230_models.CreateDashboardResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        
+        @param request: CreateDashboardRequest
+        @return: CreateDashboardResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_dashboard_with_options_async(project, request, headers, runtime)
@@ -1311,6 +1523,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateLogtailPipelineConfigResponse:
+        """
+        The UK (London) region is supported. Supported regions are constantly updated.
+        
+        @param request: CreateLogtailPipelineConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLogtailPipelineConfigResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -1357,6 +1577,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateLogtailPipelineConfigResponse:
+        """
+        The UK (London) region is supported. Supported regions are constantly updated.
+        
+        @param request: CreateLogtailPipelineConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLogtailPipelineConfigResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -1401,6 +1629,12 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.CreateLogtailPipelineConfigRequest,
     ) -> sls_20201230_models.CreateLogtailPipelineConfigResponse:
+        """
+        The UK (London) region is supported. Supported regions are constantly updated.
+        
+        @param request: CreateLogtailPipelineConfigRequest
+        @return: CreateLogtailPipelineConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_logtail_pipeline_config_with_options(project, request, headers, runtime)
@@ -1410,6 +1644,12 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.CreateLogtailPipelineConfigRequest,
     ) -> sls_20201230_models.CreateLogtailPipelineConfigResponse:
+        """
+        The UK (London) region is supported. Supported regions are constantly updated.
+        
+        @param request: CreateLogtailPipelineConfigRequest
+        @return: CreateLogtailPipelineConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_logtail_pipeline_config_with_options_async(project, request, headers, runtime)
@@ -1556,6 +1796,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateOssExternalStoreResponse:
         """
+        ### [](#)Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
         
         @param request: CreateOssExternalStoreRequest
@@ -1602,6 +1843,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateOssExternalStoreResponse:
         """
+        ### [](#)Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
         
         @param request: CreateOssExternalStoreRequest
@@ -1646,6 +1888,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.CreateOssExternalStoreRequest,
     ) -> sls_20201230_models.CreateOssExternalStoreResponse:
         """
+        ### [](#)Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
         
         @param request: CreateOssExternalStoreRequest
@@ -1661,6 +1904,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.CreateOssExternalStoreRequest,
     ) -> sls_20201230_models.CreateOssExternalStoreResponse:
         """
+        ### [](#)Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
         
         @param request: CreateOssExternalStoreRequest
@@ -2072,6 +2316,82 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_ticket_with_options_async(headers, runtime)
 
+    def delete_alert_with_options(
+        self,
+        project: str,
+        alert_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteAlertResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteAlert',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/alerts/{alert_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='any'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteAlertResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def delete_alert_with_options_async(
+        self,
+        project: str,
+        alert_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteAlertResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteAlert',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/alerts/{alert_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='any'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteAlertResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def delete_alert(
+        self,
+        project: str,
+        alert_name: str,
+    ) -> sls_20201230_models.DeleteAlertResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_alert_with_options(project, alert_name, headers, runtime)
+
+    async def delete_alert_async(
+        self,
+        project: str,
+        alert_name: str,
+    ) -> sls_20201230_models.DeleteAlertResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_alert_with_options_async(project, alert_name, headers, runtime)
+
     def delete_annotation_data_with_options(
         self,
         dataset_id: str,
@@ -2148,6 +2468,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteAnnotationDataSetResponse:
+        """
+        You can delete a dataset only if no data exists in the dataset.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAnnotationDataSetResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2173,6 +2500,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteAnnotationDataSetResponse:
+        """
+        You can delete a dataset only if no data exists in the dataset.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAnnotationDataSetResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2196,6 +2530,11 @@ class Client(OpenApiClient):
         self,
         dataset_id: str,
     ) -> sls_20201230_models.DeleteAnnotationDataSetResponse:
+        """
+        You can delete a dataset only if no data exists in the dataset.
+        
+        @return: DeleteAnnotationDataSetResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_annotation_data_set_with_options(dataset_id, headers, runtime)
@@ -2204,6 +2543,11 @@ class Client(OpenApiClient):
         self,
         dataset_id: str,
     ) -> sls_20201230_models.DeleteAnnotationDataSetResponse:
+        """
+        You can delete a dataset only if no data exists in the dataset.
+        
+        @return: DeleteAnnotationDataSetResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_annotation_data_set_with_options_async(dataset_id, headers, runtime)
@@ -2214,6 +2558,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteAnnotationLabelResponse:
+        """
+        Only non-built-in tags can be deleted.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAnnotationLabelResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2239,6 +2590,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteAnnotationLabelResponse:
+        """
+        Only non-built-in tags can be deleted.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAnnotationLabelResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2262,6 +2620,11 @@ class Client(OpenApiClient):
         self,
         label_id: str,
     ) -> sls_20201230_models.DeleteAnnotationLabelResponse:
+        """
+        Only non-built-in tags can be deleted.
+        
+        @return: DeleteAnnotationLabelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_annotation_label_with_options(label_id, headers, runtime)
@@ -2270,6 +2633,11 @@ class Client(OpenApiClient):
         self,
         label_id: str,
     ) -> sls_20201230_models.DeleteAnnotationLabelResponse:
+        """
+        Only non-built-in tags can be deleted.
+        
+        @return: DeleteAnnotationLabelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_annotation_label_with_options_async(label_id, headers, runtime)
@@ -2365,6 +2733,19 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteConfigResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   If a Logtail configuration is applied to a machine group, you cannot collect data from the machine group after you delete the Logtail configuration.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        *   The name of the required Logtail configuration is obtained. For more information, see [ListConfig](~~29043~~).
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConfigResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -2394,6 +2775,19 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteConfigResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   If a Logtail configuration is applied to a machine group, you cannot collect data from the machine group after you delete the Logtail configuration.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        *   The name of the required Logtail configuration is obtained. For more information, see [ListConfig](~~29043~~).
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConfigResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -2421,6 +2815,17 @@ class Client(OpenApiClient):
         project: str,
         config_name: str,
     ) -> sls_20201230_models.DeleteConfigResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   If a Logtail configuration is applied to a machine group, you cannot collect data from the machine group after you delete the Logtail configuration.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        *   The name of the required Logtail configuration is obtained. For more information, see [ListConfig](~~29043~~).
+        
+        @return: DeleteConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_config_with_options(project, config_name, headers, runtime)
@@ -2430,6 +2835,17 @@ class Client(OpenApiClient):
         project: str,
         config_name: str,
     ) -> sls_20201230_models.DeleteConfigResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   If a Logtail configuration is applied to a machine group, you cannot collect data from the machine group after you delete the Logtail configuration.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        *   The name of the required Logtail configuration is obtained. For more information, see [ListConfig](~~29043~~).
+        
+        @return: DeleteConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_config_with_options_async(project, config_name, headers, runtime)
@@ -2545,6 +2961,17 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteDashboardResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDashboardResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -2574,6 +3001,17 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteDashboardResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDashboardResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -2601,6 +3039,15 @@ class Client(OpenApiClient):
         project: str,
         dashboard_name: str,
     ) -> sls_20201230_models.DeleteDashboardResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        
+        @return: DeleteDashboardResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_dashboard_with_options(project, dashboard_name, headers, runtime)
@@ -2610,6 +3057,15 @@ class Client(OpenApiClient):
         project: str,
         dashboard_name: str,
     ) -> sls_20201230_models.DeleteDashboardResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        
+        @return: DeleteDashboardResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_dashboard_with_options_async(project, dashboard_name, headers, runtime)
@@ -3101,6 +3557,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteLogtailPipelineConfigResponse:
+        """
+        The UK (London) region is supported. Supported regions are constantly updated.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLogtailPipelineConfigResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -3130,6 +3593,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteLogtailPipelineConfigResponse:
+        """
+        The UK (London) region is supported. Supported regions are constantly updated.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLogtailPipelineConfigResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -3157,6 +3627,11 @@ class Client(OpenApiClient):
         project: str,
         config_name: str,
     ) -> sls_20201230_models.DeleteLogtailPipelineConfigResponse:
+        """
+        The UK (London) region is supported. Supported regions are constantly updated.
+        
+        @return: DeleteLogtailPipelineConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_logtail_pipeline_config_with_options(project, config_name, headers, runtime)
@@ -3166,6 +3641,11 @@ class Client(OpenApiClient):
         project: str,
         config_name: str,
     ) -> sls_20201230_models.DeleteLogtailPipelineConfigResponse:
+        """
+        The UK (London) region is supported. Supported regions are constantly updated.
+        
+        @return: DeleteLogtailPipelineConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_logtail_pipeline_config_with_options_async(project, config_name, headers, runtime)
@@ -3653,6 +4133,234 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_shipper_with_options_async(project, logstore, shipper_name, headers, runtime)
+
+    def disable_alert_with_options(
+        self,
+        project: str,
+        alert_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DisableAlertResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DisableAlert',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/alerts/{alert_name}?action=disable',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='any'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DisableAlertResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def disable_alert_with_options_async(
+        self,
+        project: str,
+        alert_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DisableAlertResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DisableAlert',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/alerts/{alert_name}?action=disable',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='any'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DisableAlertResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def disable_alert(
+        self,
+        project: str,
+        alert_name: str,
+    ) -> sls_20201230_models.DisableAlertResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.disable_alert_with_options(project, alert_name, headers, runtime)
+
+    async def disable_alert_async(
+        self,
+        project: str,
+        alert_name: str,
+    ) -> sls_20201230_models.DisableAlertResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.disable_alert_with_options_async(project, alert_name, headers, runtime)
+
+    def enable_alert_with_options(
+        self,
+        project: str,
+        alert_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.EnableAlertResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='EnableAlert',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/alerts/{alert_name}?action=enable',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='any'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.EnableAlertResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def enable_alert_with_options_async(
+        self,
+        project: str,
+        alert_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.EnableAlertResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='EnableAlert',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/alerts/{alert_name}?action=enable',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='any'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.EnableAlertResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def enable_alert(
+        self,
+        project: str,
+        alert_name: str,
+    ) -> sls_20201230_models.EnableAlertResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.enable_alert_with_options(project, alert_name, headers, runtime)
+
+    async def enable_alert_async(
+        self,
+        project: str,
+        alert_name: str,
+    ) -> sls_20201230_models.EnableAlertResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.enable_alert_with_options_async(project, alert_name, headers, runtime)
+
+    def get_alert_with_options(
+        self,
+        project: str,
+        alert_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetAlertResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetAlert',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/alerts/{alert_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetAlertResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_alert_with_options_async(
+        self,
+        project: str,
+        alert_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetAlertResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetAlert',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/alerts/{alert_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetAlertResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_alert(
+        self,
+        project: str,
+        alert_name: str,
+    ) -> sls_20201230_models.GetAlertResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_alert_with_options(project, alert_name, headers, runtime)
+
+    async def get_alert_async(
+        self,
+        project: str,
+        alert_name: str,
+    ) -> sls_20201230_models.GetAlertResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_alert_with_options_async(project, alert_name, headers, runtime)
 
     def get_annotation_data_with_options(
         self,
@@ -4269,6 +4977,18 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetConfigResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        *   The name of the required Logtail configuration is obtained. For more information, see [ListConfig](~~29043~~).
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConfigResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -4298,6 +5018,18 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetConfigResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        *   The name of the required Logtail configuration is obtained. For more information, see [ListConfig](~~29043~~).
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConfigResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -4325,6 +5057,16 @@ class Client(OpenApiClient):
         project: str,
         config_name: str,
     ) -> sls_20201230_models.GetConfigResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        *   The name of the required Logtail configuration is obtained. For more information, see [ListConfig](~~29043~~).
+        
+        @return: GetConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_config_with_options(project, config_name, headers, runtime)
@@ -4334,6 +5076,16 @@ class Client(OpenApiClient):
         project: str,
         config_name: str,
     ) -> sls_20201230_models.GetConfigResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        *   The name of the required Logtail configuration is obtained. For more information, see [ListConfig](~~29043~~).
+        
+        @return: GetConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_config_with_options_async(project, config_name, headers, runtime)
@@ -4719,6 +5471,17 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetDashboardResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDashboardResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -4748,6 +5511,17 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetDashboardResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDashboardResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -4775,6 +5549,15 @@ class Client(OpenApiClient):
         project: str,
         dashboard_name: str,
     ) -> sls_20201230_models.GetDashboardResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        
+        @return: GetDashboardResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_dashboard_with_options(project, dashboard_name, headers, runtime)
@@ -4784,6 +5567,15 @@ class Client(OpenApiClient):
         project: str,
         dashboard_name: str,
     ) -> sls_20201230_models.GetDashboardResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        
+        @return: GetDashboardResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_dashboard_with_options_async(project, dashboard_name, headers, runtime)
@@ -5811,6 +6603,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetLogtailPipelineConfigResponse:
+        """
+        The UK (London) region is supported. Supported regions are constantly updated.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLogtailPipelineConfigResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -5840,6 +6639,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetLogtailPipelineConfigResponse:
+        """
+        The UK (London) region is supported. Supported regions are constantly updated.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLogtailPipelineConfigResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -5867,6 +6673,11 @@ class Client(OpenApiClient):
         project: str,
         config_name: str,
     ) -> sls_20201230_models.GetLogtailPipelineConfigResponse:
+        """
+        The UK (London) region is supported. Supported regions are constantly updated.
+        
+        @return: GetLogtailPipelineConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_logtail_pipeline_config_with_options(project, config_name, headers, runtime)
@@ -5876,6 +6687,11 @@ class Client(OpenApiClient):
         project: str,
         config_name: str,
     ) -> sls_20201230_models.GetLogtailPipelineConfigResponse:
+        """
+        The UK (London) region is supported. Supported regions are constantly updated.
+        
+        @return: GetLogtailPipelineConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_logtail_pipeline_config_with_options_async(project, config_name, headers, runtime)
@@ -6642,6 +7458,100 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_shipper_status_with_options_async(project, logstore, shipper_name, request, headers, runtime)
 
+    def list_alerts_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.ListAlertsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListAlertsResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.logstore):
+            query['logstore'] = request.logstore
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAlerts',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/alerts',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListAlertsResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_alerts_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.ListAlertsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListAlertsResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.logstore):
+            query['logstore'] = request.logstore
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAlerts',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/alerts',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListAlertsResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_alerts(
+        self,
+        project: str,
+        request: sls_20201230_models.ListAlertsRequest,
+    ) -> sls_20201230_models.ListAlertsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_alerts_with_options(project, request, headers, runtime)
+
+    async def list_alerts_async(
+        self,
+        project: str,
+        request: sls_20201230_models.ListAlertsRequest,
+    ) -> sls_20201230_models.ListAlertsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_alerts_with_options_async(project, request, headers, runtime)
+
     def list_annotation_data_with_options(
         self,
         dataset_id: str,
@@ -7001,6 +7911,18 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListConfigResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        
+        @param request: ListConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConfigResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -7041,6 +7963,18 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListConfigResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        
+        @param request: ListConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConfigResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -7079,6 +8013,16 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.ListConfigRequest,
     ) -> sls_20201230_models.ListConfigResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        
+        @param request: ListConfigRequest
+        @return: ListConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_config_with_options(project, request, headers, runtime)
@@ -7088,6 +8032,16 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.ListConfigRequest,
     ) -> sls_20201230_models.ListConfigResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        
+        @param request: ListConfigRequest
+        @return: ListConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_config_with_options_async(project, request, headers, runtime)
@@ -7203,6 +8157,18 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListDashboardResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        
+        @param request: ListDashboardRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDashboardResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -7239,6 +8205,18 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListDashboardResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        
+        @param request: ListDashboardRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDashboardResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -7273,6 +8251,16 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.ListDashboardRequest,
     ) -> sls_20201230_models.ListDashboardResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        
+        @param request: ListDashboardRequest
+        @return: ListDashboardResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_dashboard_with_options(project, request, headers, runtime)
@@ -7282,6 +8270,16 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.ListDashboardRequest,
     ) -> sls_20201230_models.ListDashboardResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        
+        @param request: ListDashboardRequest
+        @return: ListDashboardResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_dashboard_with_options_async(project, request, headers, runtime)
@@ -7543,7 +8541,15 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.ListLogStoresResponse:
         """
         ### Usage notes
-        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        * An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        * The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        ### Authentication resources
+        The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+        |Action|Resource|
+        |:---|:---|
+        |`log:ListLogStores`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/*`|
         
         @param request: ListLogStoresRequest
         @param headers: map
@@ -7594,7 +8600,15 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.ListLogStoresResponse:
         """
         ### Usage notes
-        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        * An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        * The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        ### Authentication resources
+        The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+        |Action|Resource|
+        |:---|:---|
+        |`log:ListLogStores`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/*`|
         
         @param request: ListLogStoresRequest
         @param headers: map
@@ -7643,7 +8657,15 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.ListLogStoresResponse:
         """
         ### Usage notes
-        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        * An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        * The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        ### Authentication resources
+        The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+        |Action|Resource|
+        |:---|:---|
+        |`log:ListLogStores`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/*`|
         
         @param request: ListLogStoresRequest
         @return: ListLogStoresResponse
@@ -7659,7 +8681,15 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.ListLogStoresResponse:
         """
         ### Usage notes
-        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        * An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        * The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        ### Authentication resources
+        The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+        |Action|Resource|
+        |:---|:---|
+        |`log:ListLogStores`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/*`|
         
         @param request: ListLogStoresRequest
         @return: ListLogStoresResponse
@@ -7675,6 +8705,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListLogtailPipelineConfigResponse:
+        """
+        The UK (London) region is supported. Supported regions are constantly updated.
+        
+        @param request: ListLogtailPipelineConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLogtailPipelineConfigResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -7715,6 +8753,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListLogtailPipelineConfigResponse:
+        """
+        The UK (London) region is supported. Supported regions are constantly updated.
+        
+        @param request: ListLogtailPipelineConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLogtailPipelineConfigResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -7753,6 +8799,12 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.ListLogtailPipelineConfigRequest,
     ) -> sls_20201230_models.ListLogtailPipelineConfigResponse:
+        """
+        The UK (London) region is supported. Supported regions are constantly updated.
+        
+        @param request: ListLogtailPipelineConfigRequest
+        @return: ListLogtailPipelineConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_logtail_pipeline_config_with_options(project, request, headers, runtime)
@@ -7762,6 +8814,12 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.ListLogtailPipelineConfigRequest,
     ) -> sls_20201230_models.ListLogtailPipelineConfigResponse:
+        """
+        The UK (London) region is supported. Supported regions are constantly updated.
+        
+        @param request: ListLogtailPipelineConfigRequest
+        @return: ListLogtailPipelineConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_logtail_pipeline_config_with_options_async(project, request, headers, runtime)
@@ -8017,7 +9075,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListProjectResponse:
         """
-        ### Usage notes
+        ### [](#)Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
         
         @param request: ListProjectRequest
@@ -8062,7 +9120,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListProjectResponse:
         """
-        ### Usage notes
+        ### [](#)Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
         
         @param request: ListProjectRequest
@@ -8105,7 +9163,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.ListProjectRequest,
     ) -> sls_20201230_models.ListProjectResponse:
         """
-        ### Usage notes
+        ### [](#)Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
         
         @param request: ListProjectRequest
@@ -8120,7 +9178,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.ListProjectRequest,
     ) -> sls_20201230_models.ListProjectResponse:
         """
-        ### Usage notes
+        ### [](#)Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
         
         @param request: ListProjectRequest
@@ -8870,6 +9928,21 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.PutWebtrackingResponse:
+        """
+        ### [](#)Usage notes
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](~~48984~~) and [Manage a Logstore](~~48990~~).
+        *   You can call this operation to collect logs from web pages or clients.
+        *   If you use web tracking to collect logs and you do not call this operation, you can send only one log to Simple Log Service in a request. For more information, see [Use web tracking to collect logs](~~31752~~).
+        *   If you want to collect a large amount of log data, you can call this operation to send multiple logs to Simple Log Service in one request.
+        *   Before you can call this operation to send logs to a Logstore, you must enable web tracking for the Logstore. For more information, see [Use web tracking to collect logs](~~31752~~).
+        *   You cannot call this operation to send the logs of multiple topics to Simple Log Service at a time.
+        *   If you call this operation, anonymous users from the Internet are granted the write permissions on the Logstore. This may generate dirty data because AccessKey pair-based authentication is not performed.
+        
+        @param request: PutWebtrackingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutWebtrackingResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -8911,6 +9984,21 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.PutWebtrackingResponse:
+        """
+        ### [](#)Usage notes
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](~~48984~~) and [Manage a Logstore](~~48990~~).
+        *   You can call this operation to collect logs from web pages or clients.
+        *   If you use web tracking to collect logs and you do not call this operation, you can send only one log to Simple Log Service in a request. For more information, see [Use web tracking to collect logs](~~31752~~).
+        *   If you want to collect a large amount of log data, you can call this operation to send multiple logs to Simple Log Service in one request.
+        *   Before you can call this operation to send logs to a Logstore, you must enable web tracking for the Logstore. For more information, see [Use web tracking to collect logs](~~31752~~).
+        *   You cannot call this operation to send the logs of multiple topics to Simple Log Service at a time.
+        *   If you call this operation, anonymous users from the Internet are granted the write permissions on the Logstore. This may generate dirty data because AccessKey pair-based authentication is not performed.
+        
+        @param request: PutWebtrackingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutWebtrackingResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -8950,6 +10038,19 @@ class Client(OpenApiClient):
         logstore_name: str,
         request: sls_20201230_models.PutWebtrackingRequest,
     ) -> sls_20201230_models.PutWebtrackingResponse:
+        """
+        ### [](#)Usage notes
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](~~48984~~) and [Manage a Logstore](~~48990~~).
+        *   You can call this operation to collect logs from web pages or clients.
+        *   If you use web tracking to collect logs and you do not call this operation, you can send only one log to Simple Log Service in a request. For more information, see [Use web tracking to collect logs](~~31752~~).
+        *   If you want to collect a large amount of log data, you can call this operation to send multiple logs to Simple Log Service in one request.
+        *   Before you can call this operation to send logs to a Logstore, you must enable web tracking for the Logstore. For more information, see [Use web tracking to collect logs](~~31752~~).
+        *   You cannot call this operation to send the logs of multiple topics to Simple Log Service at a time.
+        *   If you call this operation, anonymous users from the Internet are granted the write permissions on the Logstore. This may generate dirty data because AccessKey pair-based authentication is not performed.
+        
+        @param request: PutWebtrackingRequest
+        @return: PutWebtrackingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.put_webtracking_with_options(project, logstore_name, request, headers, runtime)
@@ -8960,6 +10061,19 @@ class Client(OpenApiClient):
         logstore_name: str,
         request: sls_20201230_models.PutWebtrackingRequest,
     ) -> sls_20201230_models.PutWebtrackingResponse:
+        """
+        ### [](#)Usage notes
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](~~48984~~) and [Manage a Logstore](~~48990~~).
+        *   You can call this operation to collect logs from web pages or clients.
+        *   If you use web tracking to collect logs and you do not call this operation, you can send only one log to Simple Log Service in a request. For more information, see [Use web tracking to collect logs](~~31752~~).
+        *   If you want to collect a large amount of log data, you can call this operation to send multiple logs to Simple Log Service in one request.
+        *   Before you can call this operation to send logs to a Logstore, you must enable web tracking for the Logstore. For more information, see [Use web tracking to collect logs](~~31752~~).
+        *   You cannot call this operation to send the logs of multiple topics to Simple Log Service at a time.
+        *   If you call this operation, anonymous users from the Internet are granted the write permissions on the Logstore. This may generate dirty data because AccessKey pair-based authentication is not performed.
+        
+        @param request: PutWebtrackingRequest
+        @return: PutWebtrackingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.put_webtracking_with_options_async(project, logstore_name, request, headers, runtime)
@@ -9552,6 +10666,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.untag_resources_with_options_async(request, headers, runtime)
 
+    def update_alert_with_options(
+        self,
+        project: str,
+        alert_name: str,
+        request: sls_20201230_models.UpdateAlertRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateAlertResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateAlert',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/alerts/{alert_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='any'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateAlertResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def update_alert_with_options_async(
+        self,
+        project: str,
+        alert_name: str,
+        request: sls_20201230_models.UpdateAlertRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateAlertResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateAlert',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/alerts/{alert_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='any'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateAlertResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def update_alert(
+        self,
+        project: str,
+        alert_name: str,
+        request: sls_20201230_models.UpdateAlertRequest,
+    ) -> sls_20201230_models.UpdateAlertResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_alert_with_options(project, alert_name, request, headers, runtime)
+
+    async def update_alert_async(
+        self,
+        project: str,
+        alert_name: str,
+        request: sls_20201230_models.UpdateAlertRequest,
+    ) -> sls_20201230_models.UpdateAlertResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_alert_with_options_async(project, alert_name, request, headers, runtime)
+
     def update_annotation_data_set_with_options(
         self,
         dataset_id: str,
@@ -9632,6 +10830,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateAnnotationLabelResponse:
+        """
+        You can update only the names of the tags in a tag set.
+        
+        @param request: UpdateAnnotationLabelRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAnnotationLabelResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -9659,6 +10865,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateAnnotationLabelResponse:
+        """
+        You can update only the names of the tags in a tag set.
+        
+        @param request: UpdateAnnotationLabelRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAnnotationLabelResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -9684,6 +10898,12 @@ class Client(OpenApiClient):
         self,
         request: sls_20201230_models.UpdateAnnotationLabelRequest,
     ) -> sls_20201230_models.UpdateAnnotationLabelResponse:
+        """
+        You can update only the names of the tags in a tag set.
+        
+        @param request: UpdateAnnotationLabelRequest
+        @return: UpdateAnnotationLabelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_annotation_label_with_options(request, headers, runtime)
@@ -9692,6 +10912,12 @@ class Client(OpenApiClient):
         self,
         request: sls_20201230_models.UpdateAnnotationLabelRequest,
     ) -> sls_20201230_models.UpdateAnnotationLabelResponse:
+        """
+        You can update only the names of the tags in a tag set.
+        
+        @param request: UpdateAnnotationLabelRequest
+        @return: UpdateAnnotationLabelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_annotation_label_with_options_async(request, headers, runtime)
@@ -9704,6 +10930,20 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateConfigResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   After you update a Logtail configuration that is applied to a machine group, the new configuration immediately takes effect.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        *   The Logtail configuration is planned out. For more information, see [Logtail configurations](~~29058~~).
+        
+        @param request: UpdateConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConfigResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -9736,6 +10976,20 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateConfigResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   After you update a Logtail configuration that is applied to a machine group, the new configuration immediately takes effect.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        *   The Logtail configuration is planned out. For more information, see [Logtail configurations](~~29058~~).
+        
+        @param request: UpdateConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConfigResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -9766,6 +11020,18 @@ class Client(OpenApiClient):
         config_name: str,
         request: sls_20201230_models.UpdateConfigRequest,
     ) -> sls_20201230_models.UpdateConfigResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   After you update a Logtail configuration that is applied to a machine group, the new configuration immediately takes effect.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        *   The Logtail configuration is planned out. For more information, see [Logtail configurations](~~29058~~).
+        
+        @param request: UpdateConfigRequest
+        @return: UpdateConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_config_with_options(project, config_name, request, headers, runtime)
@@ -9776,6 +11042,18 @@ class Client(OpenApiClient):
         config_name: str,
         request: sls_20201230_models.UpdateConfigRequest,
     ) -> sls_20201230_models.UpdateConfigResponse:
+        """
+        ### [](#)Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   After you update a Logtail configuration that is applied to a machine group, the new configuration immediately takes effect.
+        *   An AccessKey pair is created and obtained. For more information, see [AccessKey pair](~~29009~~).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](~~47664~~).
+        *   The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](~~48984~~).
+        *   The Logtail configuration is planned out. For more information, see [Logtail configurations](~~29058~~).
+        
+        @param request: UpdateConfigRequest
+        @return: UpdateConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_config_with_options_async(project, config_name, request, headers, runtime)
@@ -9918,6 +11196,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateDashboardResponse:
+        """
+        ### [](#)Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateDashboardRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDashboardResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -9961,6 +11248,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateDashboardResponse:
+        """
+        ### [](#)Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateDashboardRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDashboardResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -10002,6 +11298,13 @@ class Client(OpenApiClient):
         dashboard_name: str,
         request: sls_20201230_models.UpdateDashboardRequest,
     ) -> sls_20201230_models.UpdateDashboardResponse:
+        """
+        ### [](#)Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateDashboardRequest
+        @return: UpdateDashboardResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_dashboard_with_options(project, dashboard_name, request, headers, runtime)
@@ -10012,6 +11315,13 @@ class Client(OpenApiClient):
         dashboard_name: str,
         request: sls_20201230_models.UpdateDashboardRequest,
     ) -> sls_20201230_models.UpdateDashboardResponse:
+        """
+        ### [](#)Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateDashboardRequest
+        @return: UpdateDashboardResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_dashboard_with_options_async(project, dashboard_name, request, headers, runtime)
@@ -10548,6 +11858,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateLogtailPipelineConfigResponse:
+        """
+        The UK (London) region is supported. Supported regions are constantly updated.
+        
+        @param request: UpdateLogtailPipelineConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLogtailPipelineConfigResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -10595,6 +11913,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateLogtailPipelineConfigResponse:
+        """
+        The UK (London) region is supported. Supported regions are constantly updated.
+        
+        @param request: UpdateLogtailPipelineConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLogtailPipelineConfigResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -10640,6 +11966,12 @@ class Client(OpenApiClient):
         config_name: str,
         request: sls_20201230_models.UpdateLogtailPipelineConfigRequest,
     ) -> sls_20201230_models.UpdateLogtailPipelineConfigResponse:
+        """
+        The UK (London) region is supported. Supported regions are constantly updated.
+        
+        @param request: UpdateLogtailPipelineConfigRequest
+        @return: UpdateLogtailPipelineConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_logtail_pipeline_config_with_options(project, config_name, request, headers, runtime)
@@ -10650,6 +11982,12 @@ class Client(OpenApiClient):
         config_name: str,
         request: sls_20201230_models.UpdateLogtailPipelineConfigRequest,
     ) -> sls_20201230_models.UpdateLogtailPipelineConfigResponse:
+        """
+        The UK (London) region is supported. Supported regions are constantly updated.
+        
+        @param request: UpdateLogtailPipelineConfigRequest
+        @return: UpdateLogtailPipelineConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_logtail_pipeline_config_with_options_async(project, config_name, request, headers, runtime)
@@ -10917,6 +12255,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateOssExternalStoreResponse:
         """
+        ### [](#)Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
         
         @param request: UpdateOssExternalStoreRequest
@@ -10964,6 +12303,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateOssExternalStoreResponse:
         """
+        ### [](#)Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
         
         @param request: UpdateOssExternalStoreRequest
@@ -11009,6 +12349,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.UpdateOssExternalStoreRequest,
     ) -> sls_20201230_models.UpdateOssExternalStoreResponse:
         """
+        ### [](#)Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
         
         @param request: UpdateOssExternalStoreRequest
@@ -11025,6 +12366,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.UpdateOssExternalStoreRequest,
     ) -> sls_20201230_models.UpdateOssExternalStoreResponse:
         """
+        ### [](#)Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
         
         @param request: UpdateOssExternalStoreRequest
