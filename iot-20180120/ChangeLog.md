@@ -1,3 +1,6 @@
+2024-01-15 Version: 5.0.1
+- BatchPub Support MQTT5.
+
 2024-01-10 Version: 5.0.0
 - Generated python 2018-01-20 for Iot.
 
