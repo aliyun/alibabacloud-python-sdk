@@ -6388,6 +6388,7 @@ class CreateEnvironmentRequest(TeaModel):
         environment_name: str = None,
         environment_sub_type: str = None,
         environment_type: str = None,
+        managed_type: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         tags: List[CreateEnvironmentRequestTags] = None,
@@ -6411,6 +6412,11 @@ class CreateEnvironmentRequest(TeaModel):
         # *   ECS: Elastic Compute Service
         # *   Cloud: cloud service
         self.environment_type = environment_type
+        # type of managed：
+        # - none： not managed. default value of prometheus for ACK.
+        # - agent：managed agent. default value of  promehtues for ASK/ACS/AckOne.
+        # - agent-exproter： maanged agent and exporter. default of prometheus for Cloud.
+        self.managed_type = managed_type
         # The region ID.
         self.region_id = region_id
         # The ID of the resource group.
@@ -6440,6 +6446,8 @@ class CreateEnvironmentRequest(TeaModel):
             result['EnvironmentSubType'] = self.environment_sub_type
         if self.environment_type is not None:
             result['EnvironmentType'] = self.environment_type
+        if self.managed_type is not None:
+            result['ManagedType'] = self.managed_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -6462,6 +6470,8 @@ class CreateEnvironmentRequest(TeaModel):
             self.environment_sub_type = m.get('EnvironmentSubType')
         if m.get('EnvironmentType') is not None:
             self.environment_type = m.get('EnvironmentType')
+        if m.get('ManagedType') is not None:
+            self.managed_type = m.get('ManagedType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -6563,6 +6573,300 @@ class CreateEnvironmentResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateEnvironmentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateGrafanaWorkspaceRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateGrafanaWorkspaceRequest(TeaModel):
+    def __init__(
+        self,
+        aliyun_lang: str = None,
+        description: str = None,
+        grafana_version: str = None,
+        grafana_workspace_edition: str = None,
+        grafana_workspace_name: str = None,
+        password: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        tags: List[CreateGrafanaWorkspaceRequestTags] = None,
+    ):
+        self.aliyun_lang = aliyun_lang
+        self.description = description
+        self.grafana_version = grafana_version
+        self.grafana_workspace_edition = grafana_workspace_edition
+        self.grafana_workspace_name = grafana_workspace_name
+        self.password = password
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.tags = tags
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_lang is not None:
+            result['AliyunLang'] = self.aliyun_lang
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.grafana_version is not None:
+            result['GrafanaVersion'] = self.grafana_version
+        if self.grafana_workspace_edition is not None:
+            result['GrafanaWorkspaceEdition'] = self.grafana_workspace_edition
+        if self.grafana_workspace_name is not None:
+            result['GrafanaWorkspaceName'] = self.grafana_workspace_name
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliyunLang') is not None:
+            self.aliyun_lang = m.get('AliyunLang')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GrafanaVersion') is not None:
+            self.grafana_version = m.get('GrafanaVersion')
+        if m.get('GrafanaWorkspaceEdition') is not None:
+            self.grafana_workspace_edition = m.get('GrafanaWorkspaceEdition')
+        if m.get('GrafanaWorkspaceName') is not None:
+            self.grafana_workspace_name = m.get('GrafanaWorkspaceName')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreateGrafanaWorkspaceRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
+class CreateGrafanaWorkspaceShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        aliyun_lang: str = None,
+        description: str = None,
+        grafana_version: str = None,
+        grafana_workspace_edition: str = None,
+        grafana_workspace_name: str = None,
+        password: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        tags_shrink: str = None,
+    ):
+        self.aliyun_lang = aliyun_lang
+        self.description = description
+        self.grafana_version = grafana_version
+        self.grafana_workspace_edition = grafana_workspace_edition
+        self.grafana_workspace_name = grafana_workspace_name
+        self.password = password
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.tags_shrink = tags_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_lang is not None:
+            result['AliyunLang'] = self.aliyun_lang
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.grafana_version is not None:
+            result['GrafanaVersion'] = self.grafana_version
+        if self.grafana_workspace_edition is not None:
+            result['GrafanaWorkspaceEdition'] = self.grafana_workspace_edition
+        if self.grafana_workspace_name is not None:
+            result['GrafanaWorkspaceName'] = self.grafana_workspace_name
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliyunLang') is not None:
+            self.aliyun_lang = m.get('AliyunLang')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GrafanaVersion') is not None:
+            self.grafana_version = m.get('GrafanaVersion')
+        if m.get('GrafanaWorkspaceEdition') is not None:
+            self.grafana_workspace_edition = m.get('GrafanaWorkspaceEdition')
+        if m.get('GrafanaWorkspaceName') is not None:
+            self.grafana_workspace_name = m.get('GrafanaWorkspaceName')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
+        return self
+
+
+class CreateGrafanaWorkspaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GrafanaWorkspace = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GrafanaWorkspace()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class CreateGrafanaWorkspaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateGrafanaWorkspaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateGrafanaWorkspaceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -16201,6 +16505,140 @@ class DeleteGrafanaResourceResponse(TeaModel):
         return self
 
 
+class DeleteGrafanaWorkspaceRequest(TeaModel):
+    def __init__(
+        self,
+        grafana_workspace_id: str = None,
+        region_id: str = None,
+    ):
+        self.grafana_workspace_id = grafana_workspace_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.grafana_workspace_id is not None:
+            result['GrafanaWorkspaceId'] = self.grafana_workspace_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GrafanaWorkspaceId') is not None:
+            self.grafana_workspace_id = m.get('GrafanaWorkspaceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DeleteGrafanaWorkspaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: bool = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class DeleteGrafanaWorkspaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteGrafanaWorkspaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteGrafanaWorkspaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteIMRobotRequest(TeaModel):
     def __init__(
         self,
@@ -24965,6 +25403,149 @@ class GetExploreUrlResponse(TeaModel):
         return self
 
 
+class GetGrafanaWorkspaceRequest(TeaModel):
+    def __init__(
+        self,
+        aliyun_lang: str = None,
+        grafana_workspace_id: str = None,
+        region_id: str = None,
+    ):
+        self.aliyun_lang = aliyun_lang
+        self.grafana_workspace_id = grafana_workspace_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_lang is not None:
+            result['AliyunLang'] = self.aliyun_lang
+        if self.grafana_workspace_id is not None:
+            result['GrafanaWorkspaceId'] = self.grafana_workspace_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliyunLang') is not None:
+            self.aliyun_lang = m.get('AliyunLang')
+        if m.get('GrafanaWorkspaceId') is not None:
+            self.grafana_workspace_id = m.get('GrafanaWorkspaceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class GetGrafanaWorkspaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GrafanaWorkspace = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GrafanaWorkspace()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class GetGrafanaWorkspaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetGrafanaWorkspaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetGrafanaWorkspaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetIntegrationStateRequest(TeaModel):
     def __init__(
         self,
@@ -33258,12 +33839,14 @@ class InitEnvironmentRequest(TeaModel):
         self,
         aliyun_lang: str = None,
         environment_id: str = None,
+        managed_type: str = None,
         region_id: str = None,
     ):
         # Locale, the default is Chinese zh.
         self.aliyun_lang = aliyun_lang
         # Environment ID.
         self.environment_id = environment_id
+        self.managed_type = managed_type
         # The region ID.
         self.region_id = region_id
 
@@ -33280,6 +33863,8 @@ class InitEnvironmentRequest(TeaModel):
             result['AliyunLang'] = self.aliyun_lang
         if self.environment_id is not None:
             result['EnvironmentId'] = self.environment_id
+        if self.managed_type is not None:
+            result['ManagedType'] = self.managed_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -33290,6 +33875,8 @@ class InitEnvironmentRequest(TeaModel):
             self.aliyun_lang = m.get('AliyunLang')
         if m.get('EnvironmentId') is not None:
             self.environment_id = m.get('EnvironmentId')
+        if m.get('ManagedType') is not None:
+            self.managed_type = m.get('ManagedType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -55052,6 +55639,306 @@ class UpdateEnvironmentResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateEnvironmentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateGrafanaWorkspaceRequest(TeaModel):
+    def __init__(
+        self,
+        aliyun_lang: str = None,
+        description: str = None,
+        grafana_workspace_id: str = None,
+        grafana_workspace_name: str = None,
+        region_id: str = None,
+    ):
+        self.aliyun_lang = aliyun_lang
+        self.description = description
+        self.grafana_workspace_id = grafana_workspace_id
+        self.grafana_workspace_name = grafana_workspace_name
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_lang is not None:
+            result['AliyunLang'] = self.aliyun_lang
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.grafana_workspace_id is not None:
+            result['GrafanaWorkspaceId'] = self.grafana_workspace_id
+        if self.grafana_workspace_name is not None:
+            result['GrafanaWorkspaceName'] = self.grafana_workspace_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliyunLang') is not None:
+            self.aliyun_lang = m.get('AliyunLang')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GrafanaWorkspaceId') is not None:
+            self.grafana_workspace_id = m.get('GrafanaWorkspaceId')
+        if m.get('GrafanaWorkspaceName') is not None:
+            self.grafana_workspace_name = m.get('GrafanaWorkspaceName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class UpdateGrafanaWorkspaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: bool = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class UpdateGrafanaWorkspaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateGrafanaWorkspaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateGrafanaWorkspaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateGrafanaWorkspaceVersionRequest(TeaModel):
+    def __init__(
+        self,
+        aliyun_lang: str = None,
+        grafana_version: str = None,
+        grafana_workspace_id: str = None,
+        region_id: str = None,
+    ):
+        self.aliyun_lang = aliyun_lang
+        self.grafana_version = grafana_version
+        self.grafana_workspace_id = grafana_workspace_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_lang is not None:
+            result['AliyunLang'] = self.aliyun_lang
+        if self.grafana_version is not None:
+            result['GrafanaVersion'] = self.grafana_version
+        if self.grafana_workspace_id is not None:
+            result['GrafanaWorkspaceId'] = self.grafana_workspace_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliyunLang') is not None:
+            self.aliyun_lang = m.get('AliyunLang')
+        if m.get('GrafanaVersion') is not None:
+            self.grafana_version = m.get('GrafanaVersion')
+        if m.get('GrafanaWorkspaceId') is not None:
+            self.grafana_workspace_id = m.get('GrafanaWorkspaceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class UpdateGrafanaWorkspaceVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: bool = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class UpdateGrafanaWorkspaceVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateGrafanaWorkspaceVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateGrafanaWorkspaceVersionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
