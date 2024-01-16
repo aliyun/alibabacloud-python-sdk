@@ -2356,6 +2356,7 @@ class CreateGbDeviceRequest(TeaModel):
     def __init__(
         self,
         description: str = None,
+        device_name: str = None,
         device_type: int = None,
         gb_id: str = None,
         iot_instance_id: str = None,
@@ -2365,6 +2366,7 @@ class CreateGbDeviceRequest(TeaModel):
         sub_product_key: str = None,
     ):
         self.description = description
+        self.device_name = device_name
         self.device_type = device_type
         self.gb_id = gb_id
         self.iot_instance_id = iot_instance_id
@@ -2384,6 +2386,8 @@ class CreateGbDeviceRequest(TeaModel):
         result = dict()
         if self.description is not None:
             result['Description'] = self.description
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
         if self.device_type is not None:
             result['DeviceType'] = self.device_type
         if self.gb_id is not None:
@@ -2404,6 +2408,8 @@ class CreateGbDeviceRequest(TeaModel):
         m = m or dict()
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DeviceName') is not None:
+            self.device_name = m.get('DeviceName')
         if m.get('DeviceType') is not None:
             self.device_type = m.get('DeviceType')
         if m.get('GbId') is not None:
@@ -4831,6 +4837,140 @@ class DeleteFaceUserPictureResponse(TeaModel):
         return self
 
 
+class DeleteGbDeviceRequest(TeaModel):
+    def __init__(
+        self,
+        device_name: str = None,
+        iot_id: str = None,
+        iot_instance_id: str = None,
+        product_key: str = None,
+    ):
+        self.device_name = device_name
+        self.iot_id = iot_id
+        self.iot_instance_id = iot_instance_id
+        self.product_key = product_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
+        if self.iot_id is not None:
+            result['IotId'] = self.iot_id
+        if self.iot_instance_id is not None:
+            result['IotInstanceId'] = self.iot_instance_id
+        if self.product_key is not None:
+            result['ProductKey'] = self.product_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceName') is not None:
+            self.device_name = m.get('DeviceName')
+        if m.get('IotId') is not None:
+            self.iot_id = m.get('IotId')
+        if m.get('IotInstanceId') is not None:
+            self.iot_instance_id = m.get('IotInstanceId')
+        if m.get('ProductKey') is not None:
+            self.product_key = m.get('ProductKey')
+        return self
+
+
+class DeleteGbDeviceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteGbDeviceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteGbDeviceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteGbDeviceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteLocalFileUploadJobRequest(TeaModel):
     def __init__(
         self,
@@ -6250,6 +6390,187 @@ class DetectUserFaceByUrlResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectUserFaceByUrlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EnableGbSubDeviceRequest(TeaModel):
+    def __init__(
+        self,
+        device_name: str = None,
+        iot_id: str = None,
+        iot_instance_id: str = None,
+        product_key: str = None,
+        sub_device_id: str = None,
+    ):
+        self.device_name = device_name
+        self.iot_id = iot_id
+        self.iot_instance_id = iot_instance_id
+        self.product_key = product_key
+        self.sub_device_id = sub_device_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
+        if self.iot_id is not None:
+            result['IotId'] = self.iot_id
+        if self.iot_instance_id is not None:
+            result['IotInstanceId'] = self.iot_instance_id
+        if self.product_key is not None:
+            result['ProductKey'] = self.product_key
+        if self.sub_device_id is not None:
+            result['SubDeviceId'] = self.sub_device_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceName') is not None:
+            self.device_name = m.get('DeviceName')
+        if m.get('IotId') is not None:
+            self.iot_id = m.get('IotId')
+        if m.get('IotInstanceId') is not None:
+            self.iot_instance_id = m.get('IotInstanceId')
+        if m.get('ProductKey') is not None:
+            self.product_key = m.get('ProductKey')
+        if m.get('SubDeviceId') is not None:
+            self.sub_device_id = m.get('SubDeviceId')
+        return self
+
+
+class EnableGbSubDeviceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        device_name: str = None,
+        product_key: str = None,
+    ):
+        self.device_name = device_name
+        self.product_key = product_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
+        if self.product_key is not None:
+            result['ProductKey'] = self.product_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceName') is not None:
+            self.device_name = m.get('DeviceName')
+        if m.get('ProductKey') is not None:
+            self.product_key = m.get('ProductKey')
+        return self
+
+
+class EnableGbSubDeviceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: EnableGbSubDeviceResponseBodyData = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = EnableGbSubDeviceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class EnableGbSubDeviceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableGbSubDeviceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableGbSubDeviceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12927,6 +13248,252 @@ class QueryFaceUserIdByCustomUserIdResponse(TeaModel):
         return self
 
 
+class QueryGbSubDeviceListRequest(TeaModel):
+    def __init__(
+        self,
+        device_name: str = None,
+        iot_id: str = None,
+        iot_instance_id: str = None,
+        page_size: int = None,
+        page_start: int = None,
+        product_key: str = None,
+    ):
+        self.device_name = device_name
+        self.iot_id = iot_id
+        self.iot_instance_id = iot_instance_id
+        self.page_size = page_size
+        self.page_start = page_start
+        self.product_key = product_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
+        if self.iot_id is not None:
+            result['IotId'] = self.iot_id
+        if self.iot_instance_id is not None:
+            result['IotInstanceId'] = self.iot_instance_id
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.page_start is not None:
+            result['PageStart'] = self.page_start
+        if self.product_key is not None:
+            result['ProductKey'] = self.product_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceName') is not None:
+            self.device_name = m.get('DeviceName')
+        if m.get('IotId') is not None:
+            self.iot_id = m.get('IotId')
+        if m.get('IotInstanceId') is not None:
+            self.iot_instance_id = m.get('IotInstanceId')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PageStart') is not None:
+            self.page_start = m.get('PageStart')
+        if m.get('ProductKey') is not None:
+            self.product_key = m.get('ProductKey')
+        return self
+
+
+class QueryGbSubDeviceListResponseBodyDataGbSubDeviceList(TeaModel):
+    def __init__(
+        self,
+        device_enable: int = None,
+        device_id: str = None,
+        device_name: str = None,
+        iot_id: str = None,
+        product_key: str = None,
+    ):
+        self.device_enable = device_enable
+        self.device_id = device_id
+        self.device_name = device_name
+        self.iot_id = iot_id
+        self.product_key = product_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_enable is not None:
+            result['DeviceEnable'] = self.device_enable
+        if self.device_id is not None:
+            result['DeviceId'] = self.device_id
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
+        if self.iot_id is not None:
+            result['IotId'] = self.iot_id
+        if self.product_key is not None:
+            result['ProductKey'] = self.product_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceEnable') is not None:
+            self.device_enable = m.get('DeviceEnable')
+        if m.get('DeviceId') is not None:
+            self.device_id = m.get('DeviceId')
+        if m.get('DeviceName') is not None:
+            self.device_name = m.get('DeviceName')
+        if m.get('IotId') is not None:
+            self.iot_id = m.get('IotId')
+        if m.get('ProductKey') is not None:
+            self.product_key = m.get('ProductKey')
+        return self
+
+
+class QueryGbSubDeviceListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        gb_sub_device_list: List[QueryGbSubDeviceListResponseBodyDataGbSubDeviceList] = None,
+        total: int = None,
+    ):
+        self.gb_sub_device_list = gb_sub_device_list
+        self.total = total
+
+    def validate(self):
+        if self.gb_sub_device_list:
+            for k in self.gb_sub_device_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['GbSubDeviceList'] = []
+        if self.gb_sub_device_list is not None:
+            for k in self.gb_sub_device_list:
+                result['GbSubDeviceList'].append(k.to_map() if k else None)
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.gb_sub_device_list = []
+        if m.get('GbSubDeviceList') is not None:
+            for k in m.get('GbSubDeviceList'):
+                temp_model = QueryGbSubDeviceListResponseBodyDataGbSubDeviceList()
+                self.gb_sub_device_list.append(temp_model.from_map(k))
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class QueryGbSubDeviceListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: QueryGbSubDeviceListResponseBodyData = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = QueryGbSubDeviceListResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryGbSubDeviceListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryGbSubDeviceListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryGbSubDeviceListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryLiveStreamingRequest(TeaModel):
     def __init__(
         self,
@@ -18886,6 +19453,140 @@ class QueryVoiceIntercomResponse(TeaModel):
         return self
 
 
+class RefreshGbSubDeviceListRequest(TeaModel):
+    def __init__(
+        self,
+        device_name: str = None,
+        iot_id: str = None,
+        iot_instance_id: str = None,
+        product_key: str = None,
+    ):
+        self.device_name = device_name
+        self.iot_id = iot_id
+        self.iot_instance_id = iot_instance_id
+        self.product_key = product_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
+        if self.iot_id is not None:
+            result['IotId'] = self.iot_id
+        if self.iot_instance_id is not None:
+            result['IotInstanceId'] = self.iot_instance_id
+        if self.product_key is not None:
+            result['ProductKey'] = self.product_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceName') is not None:
+            self.device_name = m.get('DeviceName')
+        if m.get('IotId') is not None:
+            self.iot_id = m.get('IotId')
+        if m.get('IotInstanceId') is not None:
+            self.iot_instance_id = m.get('IotInstanceId')
+        if m.get('ProductKey') is not None:
+            self.product_key = m.get('ProductKey')
+        return self
+
+
+class RefreshGbSubDeviceListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class RefreshGbSubDeviceListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RefreshGbSubDeviceListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RefreshGbSubDeviceListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RemoveFaceDeviceFromDeviceGroupRequest(TeaModel):
     def __init__(
         self,
@@ -20855,6 +21556,158 @@ class UpdateFaceUserGroupAndDeviceGroupRelationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateFaceUserGroupAndDeviceGroupRelationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateGbDeviceRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        device_name: str = None,
+        gb_id: str = None,
+        iot_id: str = None,
+        iot_instance_id: str = None,
+        password: str = None,
+        product_key: str = None,
+    ):
+        self.description = description
+        self.device_name = device_name
+        self.gb_id = gb_id
+        self.iot_id = iot_id
+        self.iot_instance_id = iot_instance_id
+        self.password = password
+        self.product_key = product_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
+        if self.gb_id is not None:
+            result['GbId'] = self.gb_id
+        if self.iot_id is not None:
+            result['IotId'] = self.iot_id
+        if self.iot_instance_id is not None:
+            result['IotInstanceId'] = self.iot_instance_id
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.product_key is not None:
+            result['ProductKey'] = self.product_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DeviceName') is not None:
+            self.device_name = m.get('DeviceName')
+        if m.get('GbId') is not None:
+            self.gb_id = m.get('GbId')
+        if m.get('IotId') is not None:
+            self.iot_id = m.get('IotId')
+        if m.get('IotInstanceId') is not None:
+            self.iot_instance_id = m.get('IotInstanceId')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('ProductKey') is not None:
+            self.product_key = m.get('ProductKey')
+        return self
+
+
+class UpdateGbDeviceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateGbDeviceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateGbDeviceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateGbDeviceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
