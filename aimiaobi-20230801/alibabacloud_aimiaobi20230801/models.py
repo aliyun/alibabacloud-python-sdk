@@ -69,7 +69,7 @@ class CreateTokenResponseBody(TeaModel):
         self,
         code: str = None,
         data: CreateTokenResponseBodyData = None,
-        http_status_code: str = None,
+        http_status_code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
