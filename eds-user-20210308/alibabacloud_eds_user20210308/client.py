@@ -597,6 +597,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
         body = {}
+        if not UtilClient.is_unset(request.biz_type):
+            body['BizType'] = request.biz_type
         if not UtilClient.is_unset(request.end_user_ids):
             body['EndUserIds'] = request.end_user_ids
         if not UtilClient.is_unset(request.exclude_end_user_ids):
@@ -605,6 +607,8 @@ class Client(OpenApiClient):
             body['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.org_id):
             body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.solution_id):
+            body['SolutionId'] = request.solution_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
@@ -639,6 +643,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
         body = {}
+        if not UtilClient.is_unset(request.biz_type):
+            body['BizType'] = request.biz_type
         if not UtilClient.is_unset(request.end_user_ids):
             body['EndUserIds'] = request.end_user_ids
         if not UtilClient.is_unset(request.exclude_end_user_ids):
@@ -647,6 +653,8 @@ class Client(OpenApiClient):
             body['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.org_id):
             body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.solution_id):
+            body['SolutionId'] = request.solution_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)

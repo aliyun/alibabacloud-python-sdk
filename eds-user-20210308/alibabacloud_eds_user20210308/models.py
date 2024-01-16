@@ -4,6 +4,45 @@ from Tea.model import TeaModel
 from typing import List, Dict
 
 
+class GroupResources(TeaModel):
+    def __init__(
+        self,
+        region: str = None,
+        resource_id: str = None,
+        resource_type: str = None,
+    ):
+        self.region = region
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
 class WaIdPermissions(TeaModel):
     def __init__(
         self,
@@ -571,6 +610,7 @@ class CreateUsersRequestUsers(TeaModel):
         owner_type: str = None,
         password: str = None,
         phone: str = None,
+        real_nick_name: str = None,
         remark: str = None,
     ):
         # The email address of the end user. The email address is used to receive notifications about events such as desktop assignment. You must specify an email address or a mobile number to receive notifications.
@@ -585,6 +625,7 @@ class CreateUsersRequestUsers(TeaModel):
         self.password = password
         # Mobile numbers are not supported on the international site (alibabacloud.com).
         self.phone = phone
+        self.real_nick_name = real_nick_name
         # The remarks of the end user.
         self.remark = remark
 
@@ -609,6 +650,8 @@ class CreateUsersRequestUsers(TeaModel):
             result['Password'] = self.password
         if self.phone is not None:
             result['Phone'] = self.phone
+        if self.real_nick_name is not None:
+            result['RealNickName'] = self.real_nick_name
         if self.remark is not None:
             result['Remark'] = self.remark
         return result
@@ -627,6 +670,8 @@ class CreateUsersRequestUsers(TeaModel):
             self.password = m.get('Password')
         if m.get('Phone') is not None:
             self.phone = m.get('Phone')
+        if m.get('RealNickName') is not None:
+            self.real_nick_name = m.get('RealNickName')
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
         return self
@@ -687,6 +732,7 @@ class CreateUsersResponseBodyCreateResultCreatedUsers(TeaModel):
         email: str = None,
         end_user_id: str = None,
         phone: str = None,
+        real_nick_name: str = None,
         remark: str = None,
     ):
         # The email address of the end user.
@@ -695,6 +741,7 @@ class CreateUsersResponseBodyCreateResultCreatedUsers(TeaModel):
         self.end_user_id = end_user_id
         # The mobile number of the end user.
         self.phone = phone
+        self.real_nick_name = real_nick_name
         # The remarks of the end user.
         self.remark = remark
 
@@ -713,6 +760,8 @@ class CreateUsersResponseBodyCreateResultCreatedUsers(TeaModel):
             result['EndUserId'] = self.end_user_id
         if self.phone is not None:
             result['Phone'] = self.phone
+        if self.real_nick_name is not None:
+            result['RealNickName'] = self.real_nick_name
         if self.remark is not None:
             result['Remark'] = self.remark
         return result
@@ -725,6 +774,8 @@ class CreateUsersResponseBodyCreateResultCreatedUsers(TeaModel):
             self.end_user_id = m.get('EndUserId')
         if m.get('Phone') is not None:
             self.phone = m.get('Phone')
+        if m.get('RealNickName') is not None:
+            self.real_nick_name = m.get('RealNickName')
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
         return self
@@ -1273,6 +1324,7 @@ class DescribeMfaDevicesResponse(TeaModel):
 class DescribeUsersRequest(TeaModel):
     def __init__(
         self,
+        biz_type: str = None,
         end_user_ids: List[str] = None,
         exclude_end_user_ids: List[str] = None,
         filter: str = None,
@@ -1280,7 +1332,9 @@ class DescribeUsersRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
         org_id: str = None,
+        solution_id: str = None,
     ):
+        self.biz_type = biz_type
         # The list of usernames that must be exactly matched.
         self.end_user_ids = end_user_ids
         # The list of usernames to be exactly excluded.
@@ -1298,6 +1352,7 @@ class DescribeUsersRequest(TeaModel):
         self.next_token = next_token
         # The ID of the organization in which you want to query users.
         self.org_id = org_id
+        self.solution_id = solution_id
 
     def validate(self):
         pass
@@ -1308,6 +1363,8 @@ class DescribeUsersRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
         if self.end_user_ids is not None:
             result['EndUserIds'] = self.end_user_ids
         if self.exclude_end_user_ids is not None:
@@ -1322,10 +1379,14 @@ class DescribeUsersRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.org_id is not None:
             result['OrgId'] = self.org_id
+        if self.solution_id is not None:
+            result['SolutionId'] = self.solution_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
         if m.get('EndUserIds') is not None:
             self.end_user_ids = m.get('EndUserIds')
         if m.get('ExcludeEndUserIds') is not None:
@@ -1340,6 +1401,8 @@ class DescribeUsersRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('OrgId') is not None:
             self.org_id = m.get('OrgId')
+        if m.get('SolutionId') is not None:
+            self.solution_id = m.get('SolutionId')
         return self
 
 
@@ -2277,6 +2340,7 @@ class FilterUsersResponseBodyUsers(TeaModel):
         is_tenant_manager: bool = None,
         owner_type: str = None,
         phone: str = None,
+        real_nick_name: str = None,
         remark: str = None,
         status: int = None,
         user_set_properties_models: List[FilterUsersResponseBodyUsersUserSetPropertiesModels] = None,
@@ -2363,6 +2427,7 @@ class FilterUsersResponseBodyUsers(TeaModel):
         self.owner_type = owner_type
         # The mobile number.
         self.phone = phone
+        self.real_nick_name = real_nick_name
         # The remarks.
         self.remark = remark
         # The user status.
@@ -2422,6 +2487,8 @@ class FilterUsersResponseBodyUsers(TeaModel):
             result['OwnerType'] = self.owner_type
         if self.phone is not None:
             result['Phone'] = self.phone
+        if self.real_nick_name is not None:
+            result['RealNickName'] = self.real_nick_name
         if self.remark is not None:
             result['Remark'] = self.remark
         if self.status is not None:
@@ -2455,6 +2522,8 @@ class FilterUsersResponseBodyUsers(TeaModel):
             self.owner_type = m.get('OwnerType')
         if m.get('Phone') is not None:
             self.phone = m.get('Phone')
+        if m.get('RealNickName') is not None:
+            self.real_nick_name = m.get('RealNickName')
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
         if m.get('Status') is not None:
@@ -2695,7 +2764,9 @@ class ListPropertyResponseBodyPropertiesPropertyValues(TeaModel):
         property_value: str = None,
         property_value_id: int = None,
     ):
+        # The value of the property.
         self.property_value = property_value
+        # The ID of the property value.
         self.property_value_id = property_value_id
 
     def validate(self):
@@ -2729,11 +2800,11 @@ class ListPropertyResponseBodyProperties(TeaModel):
         property_key: str = None,
         property_values: List[ListPropertyResponseBodyPropertiesPropertyValues] = None,
     ):
-        # The operation that you want to perform. Set the value to **ListProperty**.
+        # The ID of the property.
         self.property_id = property_id
-        # Queries all user properties within an Alibaba Cloud account.
+        # The name of the property.
         self.property_key = property_key
-        # ListProperty
+        # Details about the property values.
         self.property_values = property_values
 
     def validate(self):
@@ -2779,11 +2850,11 @@ class ListPropertyResponseBody(TeaModel):
         properties: List[ListPropertyResponseBodyProperties] = None,
         request_id: str = None,
     ):
-        # The information about the properties.
+        # The token that is used for the next query. If this parameter is empty, all results have been returned.
         self.next_token = next_token
-        # The ID of the request.
+        # The information about the properties.
         self.properties = properties
-        # The ID of the property.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2871,7 +2942,7 @@ class ListPropertyValueRequest(TeaModel):
         self,
         property_id: int = None,
     ):
-        # Queries property values of a user property.
+        # The ID of the property. You can call the [ListProperty](~~410890~~) operation to query the property ID.
         self.property_id = property_id
 
     def validate(self):
@@ -2900,7 +2971,9 @@ class ListPropertyValueResponseBodyPropertyValueInfos(TeaModel):
         property_value: str = None,
         property_value_id: int = None,
     ):
+        # The value of the property.
         self.property_value = property_value
+        # The ID of the property value.
         self.property_value_id = property_value_id
 
     def validate(self):
@@ -2933,8 +3006,9 @@ class ListPropertyValueResponseBody(TeaModel):
         property_value_infos: List[ListPropertyValueResponseBodyPropertyValueInfos] = None,
         request_id: str = None,
     ):
+        # Details about property values.
         self.property_value_infos = property_value_infos
-        # ListPropertyValue
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4701,9 +4775,9 @@ class UpdatePropertyRequestPropertyValues(TeaModel):
         property_value: str = None,
         property_value_id: int = None,
     ):
-        # The error code.
+        # The new property value.
         self.property_value = property_value
-        # The ID of the property that you want to modify. You can call the [ListProperty](~~410890~~) operation to query the property ID.
+        # The ID of property value that you want to modify. You can call the [ListProperty](~~410890~~) operation to query the property value ID.
         self.property_value_id = property_value_id
 
     def validate(self):
@@ -4737,11 +4811,11 @@ class UpdatePropertyRequest(TeaModel):
         property_key: str = None,
         property_values: List[UpdatePropertyRequestPropertyValues] = None,
     ):
-        # The operation that you want to perform. Set the value to **UpdateProperty**.
+        # The ID of the property that you want to modify. You can call the [ListProperty](~~410890~~) operation to query the property ID.
         self.property_id = property_id
-        # The property values that failed to be modified.
+        # The new property name.
         self.property_key = property_key
-        # The new property value N.
+        # The values of property.
         self.property_values = property_values
 
     def validate(self):
@@ -4788,9 +4862,13 @@ class UpdatePropertyResponseBodyUpdateResultSavePropertyValueModelFailedProperty
         property_id: int = None,
         property_value: str = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The ID of the property.
         self.property_id = property_id
+        # The value of the property.
         self.property_value = property_value
 
     def validate(self):
@@ -4831,9 +4909,9 @@ class UpdatePropertyResponseBodyUpdateResultSavePropertyValueModelSavePropertyVa
         property_value: str = None,
         property_value_id: int = None,
     ):
-        # Modifies a user property.
-        self.property_value = property_value
         # The value of the property.
+        self.property_value = property_value
+        # The ID of the property value.
         self.property_value_id = property_value_id
 
     def validate(self):
@@ -4866,9 +4944,9 @@ class UpdatePropertyResponseBodyUpdateResultSavePropertyValueModel(TeaModel):
         failed_property_values: List[UpdatePropertyResponseBodyUpdateResultSavePropertyValueModelFailedPropertyValues] = None,
         save_property_values: List[UpdatePropertyResponseBodyUpdateResultSavePropertyValueModelSavePropertyValues] = None,
     ):
-        # UpdateProperty
+        # The property values that failed to be modified.
         self.failed_property_values = failed_property_values
-        # The ID of the request.
+        # The property values that were modified.
         self.save_property_values = save_property_values
 
     def validate(self):
@@ -4921,9 +4999,9 @@ class UpdatePropertyResponseBodyUpdateResult(TeaModel):
     ):
         # The ID of the property.
         self.property_id = property_id
-        # The ID of property value N that you want to modify. You can call the [ListProperty](~~410890~~) operation to query the property value ID.
+        # The name of the property.
         self.property_key = property_key
-        # The property values that were modified.
+        # The result of the property value modification.
         self.save_property_value_model = save_property_value_model
 
     def validate(self):
@@ -4962,9 +5040,9 @@ class UpdatePropertyResponseBody(TeaModel):
         request_id: str = None,
         update_result: UpdatePropertyResponseBodyUpdateResult = None,
     ):
-        # The name of the property.
+        # The ID of the request.
         self.request_id = request_id
-        # The ID of the property.
+        # The result of the modification.
         self.update_result = update_result
 
     def validate(self):

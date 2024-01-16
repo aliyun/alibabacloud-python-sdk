@@ -1,3 +1,6 @@
+2024-01-16 Version: 1.1.1
+- Generated python 2021-03-08 for eds-user.
+
 2023-09-25 Version: 1.1.0
 - Generated python 2021-03-08 for eds-user.
 
