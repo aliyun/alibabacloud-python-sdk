@@ -2664,6 +2664,8 @@ class Client(OpenApiClient):
     ) -> sophonsoar_20220728_models.ModifyPlaybookInputOutputResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.exe_config):
+            body['ExeConfig'] = request.exe_config
         if not UtilClient.is_unset(request.input_params):
             body['InputParams'] = request.input_params
         if not UtilClient.is_unset(request.lang):
@@ -2700,6 +2702,8 @@ class Client(OpenApiClient):
     ) -> sophonsoar_20220728_models.ModifyPlaybookInputOutputResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.exe_config):
+            body['ExeConfig'] = request.exe_config
         if not UtilClient.is_unset(request.input_params):
             body['InputParams'] = request.input_params
         if not UtilClient.is_unset(request.lang):
@@ -3130,6 +3134,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.RunPython3ScriptRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.RunPython3ScriptResponse:
+        """
+        Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+        
+        @param request: RunPython3ScriptRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunPython3ScriptResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.node_name):
@@ -3164,6 +3175,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.RunPython3ScriptRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.RunPython3ScriptResponse:
+        """
+        Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+        
+        @param request: RunPython3ScriptRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunPython3ScriptResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.node_name):
@@ -3197,6 +3215,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.RunPython3ScriptRequest,
     ) -> sophonsoar_20220728_models.RunPython3ScriptResponse:
+        """
+        Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+        
+        @param request: RunPython3ScriptRequest
+        @return: RunPython3ScriptResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.run_python_3script_with_options(request, runtime)
 
@@ -3204,6 +3228,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.RunPython3ScriptRequest,
     ) -> sophonsoar_20220728_models.RunPython3ScriptResponse:
+        """
+        Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+        
+        @param request: RunPython3ScriptRequest
+        @return: RunPython3ScriptResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.run_python_3script_with_options_async(request, runtime)
 
@@ -3212,6 +3242,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.TriggerPlaybookRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.TriggerPlaybookResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+        
+        @param request: TriggerPlaybookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TriggerPlaybookResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.input_param):
@@ -3242,6 +3279,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.TriggerPlaybookRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.TriggerPlaybookResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+        
+        @param request: TriggerPlaybookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TriggerPlaybookResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.input_param):
@@ -3271,6 +3315,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.TriggerPlaybookRequest,
     ) -> sophonsoar_20220728_models.TriggerPlaybookResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+        
+        @param request: TriggerPlaybookRequest
+        @return: TriggerPlaybookResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.trigger_playbook_with_options(request, runtime)
 
@@ -3278,6 +3328,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.TriggerPlaybookRequest,
     ) -> sophonsoar_20220728_models.TriggerPlaybookResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+        
+        @param request: TriggerPlaybookRequest
+        @return: TriggerPlaybookResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.trigger_playbook_with_options_async(request, runtime)
 
@@ -3364,6 +3420,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.TriggerSophonPlaybookRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.TriggerSophonPlaybookResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+        
+        @param request: TriggerSophonPlaybookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TriggerSophonPlaybookResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.command_name):
@@ -3400,6 +3463,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.TriggerSophonPlaybookRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.TriggerSophonPlaybookResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+        
+        @param request: TriggerSophonPlaybookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TriggerSophonPlaybookResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.command_name):
@@ -3435,6 +3505,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.TriggerSophonPlaybookRequest,
     ) -> sophonsoar_20220728_models.TriggerSophonPlaybookResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+        
+        @param request: TriggerSophonPlaybookRequest
+        @return: TriggerSophonPlaybookResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.trigger_sophon_playbook_with_options(request, runtime)
 
@@ -3442,6 +3518,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.TriggerSophonPlaybookRequest,
     ) -> sophonsoar_20220728_models.TriggerSophonPlaybookResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+        
+        @param request: TriggerSophonPlaybookRequest
+        @return: TriggerSophonPlaybookResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.trigger_sophon_playbook_with_options_async(request, runtime)
 
