@@ -7927,6 +7927,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_port_auto_cc_status_with_options_async(request, runtime)
 
+    def describe_port_cc_attack_top_ipwith_options(
+        self,
+        request: ddoscoo_20200101_models.DescribePortCcAttackTopIPRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribePortCcAttackTopIPResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.start_timestamp):
+            query['StartTimestamp'] = request.start_timestamp
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePortCcAttackTopIP',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribePortCcAttackTopIPResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_port_cc_attack_top_ipwith_options_async(
+        self,
+        request: ddoscoo_20200101_models.DescribePortCcAttackTopIPRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribePortCcAttackTopIPResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.start_timestamp):
+            query['StartTimestamp'] = request.start_timestamp
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePortCcAttackTopIP',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribePortCcAttackTopIPResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_port_cc_attack_top_ip(
+        self,
+        request: ddoscoo_20200101_models.DescribePortCcAttackTopIPRequest,
+    ) -> ddoscoo_20200101_models.DescribePortCcAttackTopIPResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_port_cc_attack_top_ipwith_options(request, runtime)
+
+    async def describe_port_cc_attack_top_ip_async(
+        self,
+        request: ddoscoo_20200101_models.DescribePortCcAttackTopIPRequest,
+    ) -> ddoscoo_20200101_models.DescribePortCcAttackTopIPResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_port_cc_attack_top_ipwith_options_async(request, runtime)
+
     def describe_port_conns_count_with_options(
         self,
         request: ddoscoo_20200101_models.DescribePortConnsCountRequest,
@@ -10852,6 +10934,96 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeWebPreciseAccessRuleResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_web_precise_access_rule_with_options_async(request, runtime)
+
+    def describe_web_report_top_ip_with_options(
+        self,
+        request: ddoscoo_20200101_models.DescribeWebReportTopIpRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeWebReportTopIpResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.query_type):
+            query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.top):
+            query['Top'] = request.top
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWebReportTopIp',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeWebReportTopIpResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_web_report_top_ip_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeWebReportTopIpRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeWebReportTopIpResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.query_type):
+            query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.top):
+            query['Top'] = request.top
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWebReportTopIp',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeWebReportTopIpResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_web_report_top_ip(
+        self,
+        request: ddoscoo_20200101_models.DescribeWebReportTopIpRequest,
+    ) -> ddoscoo_20200101_models.DescribeWebReportTopIpResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_web_report_top_ip_with_options(request, runtime)
+
+    async def describe_web_report_top_ip_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeWebReportTopIpRequest,
+    ) -> ddoscoo_20200101_models.DescribeWebReportTopIpResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_web_report_top_ip_with_options_async(request, runtime)
 
     def describe_web_rules_with_options(
         self,

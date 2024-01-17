@@ -1,3 +1,6 @@
+2024-01-17 Version: 1.2.0
+- Generated python 2020-01-01 for ddoscoo.
+
 2023-11-13 Version: 1.1.0
 - Generated python 2020-01-01 for ddoscoo.
 
