@@ -2875,7 +2875,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeBatchResultDetailResponse:
         """
-        Before you call this operation, make sure that the batch tasks have been executed.
+        *Before you call this operation, make sure that the batch operation task is complete.
         
         @param request: DescribeBatchResultDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2920,7 +2920,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeBatchResultDetailResponse:
         """
-        Before you call this operation, make sure that the batch tasks have been executed.
+        *Before you call this operation, make sure that the batch operation task is complete.
         
         @param request: DescribeBatchResultDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2964,7 +2964,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeBatchResultDetailRequest,
     ) -> alidns_20150109_models.DescribeBatchResultDetailResponse:
         """
-        Before you call this operation, make sure that the batch tasks have been executed.
+        *Before you call this operation, make sure that the batch operation task is complete.
         
         @param request: DescribeBatchResultDetailRequest
         @return: DescribeBatchResultDetailResponse
@@ -2977,7 +2977,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeBatchResultDetailRequest,
     ) -> alidns_20150109_models.DescribeBatchResultDetailResponse:
         """
-        Before you call this operation, make sure that the batch tasks have been executed.
+        *Before you call this operation, make sure that the batch operation task is complete.
         
         @param request: DescribeBatchResultDetailRequest
         @return: DescribeBatchResultDetailResponse
@@ -5343,7 +5343,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainInfoResponse:
         """
-        In this example, the domain name is bound to an Alibaba Cloud DNS instance of Enterprise Ultimate Edition. For more information about valid lines, see the return values of the RecordLines parameter.
+        In this example, the domain name is bound to an instance of Alibaba Cloud DNS Enterprise Ultimate Edition. For more information about valid Domain Name System (DNS) request lines, see the return values of the RecordLines parameter.
         
         @param request: DescribeDomainInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5382,7 +5382,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainInfoResponse:
         """
-        In this example, the domain name is bound to an Alibaba Cloud DNS instance of Enterprise Ultimate Edition. For more information about valid lines, see the return values of the RecordLines parameter.
+        In this example, the domain name is bound to an instance of Alibaba Cloud DNS Enterprise Ultimate Edition. For more information about valid Domain Name System (DNS) request lines, see the return values of the RecordLines parameter.
         
         @param request: DescribeDomainInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5420,7 +5420,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainInfoRequest,
     ) -> alidns_20150109_models.DescribeDomainInfoResponse:
         """
-        In this example, the domain name is bound to an Alibaba Cloud DNS instance of Enterprise Ultimate Edition. For more information about valid lines, see the return values of the RecordLines parameter.
+        In this example, the domain name is bound to an instance of Alibaba Cloud DNS Enterprise Ultimate Edition. For more information about valid Domain Name System (DNS) request lines, see the return values of the RecordLines parameter.
         
         @param request: DescribeDomainInfoRequest
         @return: DescribeDomainInfoResponse
@@ -5433,7 +5433,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainInfoRequest,
     ) -> alidns_20150109_models.DescribeDomainInfoResponse:
         """
-        In this example, the domain name is bound to an Alibaba Cloud DNS instance of Enterprise Ultimate Edition. For more information about valid lines, see the return values of the RecordLines parameter.
+        In this example, the domain name is bound to an instance of Alibaba Cloud DNS Enterprise Ultimate Edition. For more information about valid Domain Name System (DNS) request lines, see the return values of the RecordLines parameter.
         
         @param request: DescribeDomainInfoRequest
         @return: DescribeDomainInfoResponse
@@ -5545,7 +5545,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainNsResponse:
         """
-        > This operation queries the authoritative servers of a domain name registry to obtain the name servers for a domain name. If the domain name is in an invalid state, such as serverHold or clientHold, an error may be returned.
+        >  You can call this operation to query the authoritative servers of a domain name registry to obtain the name servers for a domain name. If the domain name is in an invalid state, such as serverHold or clientHold, an error may be returned.
         
         @param request: DescribeDomainNsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5582,7 +5582,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainNsResponse:
         """
-        > This operation queries the authoritative servers of a domain name registry to obtain the name servers for a domain name. If the domain name is in an invalid state, such as serverHold or clientHold, an error may be returned.
+        >  You can call this operation to query the authoritative servers of a domain name registry to obtain the name servers for a domain name. If the domain name is in an invalid state, such as serverHold or clientHold, an error may be returned.
         
         @param request: DescribeDomainNsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5618,7 +5618,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainNsRequest,
     ) -> alidns_20150109_models.DescribeDomainNsResponse:
         """
-        > This operation queries the authoritative servers of a domain name registry to obtain the name servers for a domain name. If the domain name is in an invalid state, such as serverHold or clientHold, an error may be returned.
+        >  You can call this operation to query the authoritative servers of a domain name registry to obtain the name servers for a domain name. If the domain name is in an invalid state, such as serverHold or clientHold, an error may be returned.
         
         @param request: DescribeDomainNsRequest
         @return: DescribeDomainNsResponse
@@ -5631,7 +5631,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainNsRequest,
     ) -> alidns_20150109_models.DescribeDomainNsResponse:
         """
-        > This operation queries the authoritative servers of a domain name registry to obtain the name servers for a domain name. If the domain name is in an invalid state, such as serverHold or clientHold, an error may be returned.
+        >  You can call this operation to query the authoritative servers of a domain name registry to obtain the name servers for a domain name. If the domain name is in an invalid state, such as serverHold or clientHold, an error may be returned.
         
         @param request: DescribeDomainNsRequest
         @return: DescribeDomainNsResponse
@@ -5753,9 +5753,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainRecordsResponse:
         """
-        You can specify the DomainName, PageNumber, and PageSize parameters to query the DNS records of a domain name.
-        *   You can also specify the RRKeyWord, TypeKeyWord, or ValueKeyWord parameter to query the DNS records that contain the specified keyword.
+        You can specify DomainName, PageNumber, and PageSize to query the DNS records of the specified domain names.
+        *   You can also specify RRKeyWord, TypeKeyWord, or ValueKeyWord to query the DNS records that contain the specified keyword.
         *   By default, the DNS records are sorted in reverse chronological order based on the time when they were added.
+        *   You can specify GroupId to query the DNS records of the specified domain names based on the group ID. You can query the DNS records of all domain names and the domain names in the default group.
         
         @param request: DescribeDomainRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5818,9 +5819,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainRecordsResponse:
         """
-        You can specify the DomainName, PageNumber, and PageSize parameters to query the DNS records of a domain name.
-        *   You can also specify the RRKeyWord, TypeKeyWord, or ValueKeyWord parameter to query the DNS records that contain the specified keyword.
+        You can specify DomainName, PageNumber, and PageSize to query the DNS records of the specified domain names.
+        *   You can also specify RRKeyWord, TypeKeyWord, or ValueKeyWord to query the DNS records that contain the specified keyword.
         *   By default, the DNS records are sorted in reverse chronological order based on the time when they were added.
+        *   You can specify GroupId to query the DNS records of the specified domain names based on the group ID. You can query the DNS records of all domain names and the domain names in the default group.
         
         @param request: DescribeDomainRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5882,9 +5884,10 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainRecordsRequest,
     ) -> alidns_20150109_models.DescribeDomainRecordsResponse:
         """
-        You can specify the DomainName, PageNumber, and PageSize parameters to query the DNS records of a domain name.
-        *   You can also specify the RRKeyWord, TypeKeyWord, or ValueKeyWord parameter to query the DNS records that contain the specified keyword.
+        You can specify DomainName, PageNumber, and PageSize to query the DNS records of the specified domain names.
+        *   You can also specify RRKeyWord, TypeKeyWord, or ValueKeyWord to query the DNS records that contain the specified keyword.
         *   By default, the DNS records are sorted in reverse chronological order based on the time when they were added.
+        *   You can specify GroupId to query the DNS records of the specified domain names based on the group ID. You can query the DNS records of all domain names and the domain names in the default group.
         
         @param request: DescribeDomainRecordsRequest
         @return: DescribeDomainRecordsResponse
@@ -5897,9 +5900,10 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainRecordsRequest,
     ) -> alidns_20150109_models.DescribeDomainRecordsResponse:
         """
-        You can specify the DomainName, PageNumber, and PageSize parameters to query the DNS records of a domain name.
-        *   You can also specify the RRKeyWord, TypeKeyWord, or ValueKeyWord parameter to query the DNS records that contain the specified keyword.
+        You can specify DomainName, PageNumber, and PageSize to query the DNS records of the specified domain names.
+        *   You can also specify RRKeyWord, TypeKeyWord, or ValueKeyWord to query the DNS records that contain the specified keyword.
         *   By default, the DNS records are sorted in reverse chronological order based on the time when they were added.
+        *   You can specify GroupId to query the DNS records of the specified domain names based on the group ID. You can query the DNS records of all domain names and the domain names in the default group.
         
         @param request: DescribeDomainRecordsRequest
         @return: DescribeDomainRecordsResponse
