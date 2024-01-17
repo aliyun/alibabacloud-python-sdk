@@ -615,7 +615,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.CreateNatFirewallControlPolicyResponse:
         """
-        You can use this operation to create an access control policy to allow, deny, or monitor traffic that passes through a NAT firewall.
+        You can call this operation to create a policy that allows, denies, or monitors the traffic that passes through the NAT firewall.
         
         @param request: CreateNatFirewallControlPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -696,7 +696,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.CreateNatFirewallControlPolicyResponse:
         """
-        You can use this operation to create an access control policy to allow, deny, or monitor traffic that passes through a NAT firewall.
+        You can call this operation to create a policy that allows, denies, or monitors the traffic that passes through the NAT firewall.
         
         @param request: CreateNatFirewallControlPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -776,7 +776,7 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.CreateNatFirewallControlPolicyRequest,
     ) -> cloudfw_20171207_models.CreateNatFirewallControlPolicyResponse:
         """
-        You can use this operation to create an access control policy to allow, deny, or monitor traffic that passes through a NAT firewall.
+        You can call this operation to create a policy that allows, denies, or monitors the traffic that passes through the NAT firewall.
         
         @param request: CreateNatFirewallControlPolicyRequest
         @return: CreateNatFirewallControlPolicyResponse
@@ -789,7 +789,7 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.CreateNatFirewallControlPolicyRequest,
     ) -> cloudfw_20171207_models.CreateNatFirewallControlPolicyResponse:
         """
-        You can use this operation to create an access control policy to allow, deny, or monitor traffic that passes through a NAT firewall.
+        You can call this operation to create a policy that allows, denies, or monitors the traffic that passes through the NAT firewall.
         
         @param request: CreateNatFirewallControlPolicyRequest
         @return: CreateNatFirewallControlPolicyResponse
@@ -9144,6 +9144,76 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.put_enable_fw_switch_with_options_async(request, runtime)
+
+    def release_post_instance_with_options(
+        self,
+        request: cloudfw_20171207_models.ReleasePostInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ReleasePostInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReleasePostInstance',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ReleasePostInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def release_post_instance_with_options_async(
+        self,
+        request: cloudfw_20171207_models.ReleasePostInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ReleasePostInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReleasePostInstance',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ReleasePostInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def release_post_instance(
+        self,
+        request: cloudfw_20171207_models.ReleasePostInstanceRequest,
+    ) -> cloudfw_20171207_models.ReleasePostInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.release_post_instance_with_options(request, runtime)
+
+    async def release_post_instance_async(
+        self,
+        request: cloudfw_20171207_models.ReleasePostInstanceRequest,
+    ) -> cloudfw_20171207_models.ReleasePostInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.release_post_instance_with_options_async(request, runtime)
 
     def reset_vpc_firewall_rule_hit_count_with_options(
         self,

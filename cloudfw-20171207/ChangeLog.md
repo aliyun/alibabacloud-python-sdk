@@ -1,3 +1,6 @@
+2024-01-17 Version: 3.1.0
+- Generated python 2017-12-07 for Cloudfw.
+
 2023-12-08 Version: 3.0.0
 - Generated python 2017-12-07 for Cloudfw.
 

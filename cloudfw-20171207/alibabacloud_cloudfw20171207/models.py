@@ -960,12 +960,15 @@ class CreateNatFirewallControlPolicyRequest(TeaModel):
         # 
         # *   **out**: outbound traffic
         self.direction = direction
-        # The domain name resolution method of the access control policy. By default, an access control policy is enabled after it is created. Valid values:
+        # The domain name resolution method of the access control policy. By default, the access control policy is enabled after the policy is created. Valid values:
         # 
-        # *   **0**: Fully qualified domain name (FQDN)-based resolution
+        # *   **0**: fully qualified domain name (FQDN)-based resolution
         # *   **1**: Domain Name System (DNS)-based dynamic resolution
         # *   **2**: FQDN and DNS-based dynamic resolution
         self.domain_resolve_type = domain_resolve_type
+        # The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the value of StartTime.
+        # 
+        # >  If RepeatType is set to Permanent, EndTime is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, this parameter must be specified.
         self.end_time = end_time
         # The IP version supported by the access control policy. Valid values:
         # 
@@ -980,7 +983,7 @@ class CreateNatFirewallControlPolicyRequest(TeaModel):
         self.lang = lang
         # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
-        # The new priority of the access control policy.
+        # The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority.
         self.new_order = new_order
         # The protocol type in the access control policy.
         # 
@@ -996,9 +999,32 @@ class CreateNatFirewallControlPolicyRequest(TeaModel):
         # *   **true**\
         # *   **false**\
         self.release = release
+        # The days of a week or of a month on which the access control policy takes effect.
+        # 
+        # *   If RepeatType is set to `Permanent`, `None`, or `Daily`, RepeatDays is left empty. Example: \[].
+        # *   If RepeatType is set to Weekly, RepeatDays must be specified. Example: \[0, 6].
+        # 
+        # >  If RepeatType is set to Weekly, the fields in the value of RepeatDays cannot be repeated.
+        # 
+        # *   If RepeatType is set to `Monthly`, RepeatDays must be specified. Example: \[1, 31].
+        # 
+        # >  If RepeatType is set to Monthly, the fields in the value of RepeatDays cannot be repeated.
         self.repeat_days = repeat_days
+        # The point in time when the recurrence ends. Example: 23:30. The value must be on the hour or on the half hour, and at least 30 minutes later than the value of RepeatStartTime.
+        # 
+        # >  If RepeatType is set to Permanent or None, RepeatEndTime is left empty. If RepeatType is set to Daily, Weekly, or Monthly, this parameter must be specified.
         self.repeat_end_time = repeat_end_time
+        # The point in time when the recurrence starts. Example: 08:00. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of RepeatEndTime.
+        # 
+        # >  If RepeatType is set to Permanent or None, RepeatStartTime is left empty. If RepeatType is set to Daily, Weekly, or Monthly, this parameter must be specified.
         self.repeat_start_time = repeat_start_time
+        # The recurrence type for the access control policy to take effect. Valid values:
+        # 
+        # *   **Permanent** (default): The policy always takes effect.
+        # *   **None**: The policy takes effect for only once.
+        # *   **Daily**: The policy takes effect on a daily basis.
+        # *   **Weekly**: The policy takes effect on a weekly basis.
+        # *   **Monthly**: The policy takes effect on a monthly basis.
         self.repeat_type = repeat_type
         # The source address in the access control policy.
         # 
@@ -1019,6 +1045,9 @@ class CreateNatFirewallControlPolicyRequest(TeaModel):
         # *   **net**: source CIDR block
         # *   **group**: source address book
         self.source_type = source_type
+        # The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of EndTime.
+        # 
+        # >  If RepeatType is set to Permanent, StartTime is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, this parameter must be specified.
         self.start_time = start_time
 
     def validate(self):
@@ -1139,9 +1168,9 @@ class CreateNatFirewallControlPolicyResponseBody(TeaModel):
         acl_uuid: str = None,
         request_id: str = None,
     ):
-        # The UUID of the access control policy.
+        # The unique ID of the access control policy.
         # 
-        # > If you want to modify an access control policy, you must provide the UUID of the policy. You can call the DescribeNatFirewallControlPolicy operation to query the UUIDs of access control policies.
+        # >  To modify an access control policy, you must specify the unique ID of the policy. You can call the DescribeNatFirewallControlPolicy operation to obtain the ID.
         self.acl_uuid = acl_uuid
         # The request ID.
         self.request_id = request_id
@@ -10085,8 +10114,14 @@ class DescribeTrFirewallPolicyBackUpAssociationListRequest(TeaModel):
         lang: str = None,
         tr_firewall_route_policy_id: str = None,
     ):
+        # The instance ID of the VPC firewall.
         self.firewall_id = firewall_id
+        # The language of the content within the response. Valid values:
+        # 
+        # *   **zh** (default): Chinese
+        # *   **en**: English
         self.lang = lang
+        # The ID of the routing policy.
         self.tr_firewall_route_policy_id = tr_firewall_route_policy_id
 
     def validate(self):
@@ -10126,10 +10161,15 @@ class DescribeTrFirewallPolicyBackUpAssociationListResponseBodyPolicyAssociation
         current_route_table_id: str = None,
         original_route_table_id: str = None,
     ):
+        # The ID of the traffic redirection instance.
         self.candidate_id = candidate_id
+        # The name of the traffic redirection instance.
         self.candidate_name = candidate_name
+        # The type of the traffic redirection instance.
         self.candidate_type = candidate_type
+        # The route table that is used after traffic redirection.
         self.current_route_table_id = current_route_table_id
+        # The ID of the route table.
         self.original_route_table_id = original_route_table_id
 
     def validate(self):
@@ -10174,7 +10214,9 @@ class DescribeTrFirewallPolicyBackUpAssociationListResponseBody(TeaModel):
         policy_association_backup_configs: List[DescribeTrFirewallPolicyBackUpAssociationListResponseBodyPolicyAssociationBackupConfigs] = None,
         request_id: str = None,
     ):
+        # The route tables.
         self.policy_association_backup_configs = policy_association_backup_configs
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -13352,11 +13394,18 @@ class DescribeVpcFirewallControlPolicyRequest(TeaModel):
         # 
         # > If you do not specify this parameter, access control policies of all protocol types are queried.
         self.proto = proto
-        # Specifies whether the access control policy is enabled. By default, an access control policy is enabled after the policy is created. Valid values:
+        # The status of the access control policy. Valid values:
         # 
-        # *   **true**: The access control policy is enabled.
-        # *   **false**: The access control policy is disabled.
+        # *   **true**: enabled
+        # *   **false**: disabled
         self.release = release
+        # The recurrence type for the access control policy to take effect. Valid values:
+        # 
+        # *   **Permanent** (default): The policy always takes effect.
+        # *   **None**: The policy takes effect for only once.
+        # *   **Daily**: The policy takes effect on a daily basis.
+        # *   **Weekly**: The policy takes effect on a weekly basis.
+        # *   **Monthly**: The policy takes effect on a monthly basis.
         self.repeat_type = repeat_type
         # The source address in the access control policy. Fuzzy match is supported.
         # 
@@ -13478,14 +13527,14 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
         # The action that Cloud Firewall performs on the traffic. Valid values:
         # 
         # *   **accept**: allows the traffic.
-        # *   **drop**: blocks the traffic.
+        # *   **drop**: denies the traffic.
         # *   **log**: monitors the traffic.
         self.acl_action = acl_action
-        # The unique ID of the access control policy.
+        # The UUID of the access control policy.
         self.acl_uuid = acl_uuid
         # The application ID in the access control policy.
         self.application_id = application_id
-        # The application type in the access control policy. Valid values:
+        # The application types supported by the access control policy. We recommend that you specify ApplicationNameList. Valid values:
         # 
         # *   **HTTP**\
         # *   **HTTPS**\
@@ -13502,7 +13551,9 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
         # *   **SSL**\
         # *   **ANY**: all application types
         self.application_name = application_name
+        # The application types supported by the access control policy.
         self.application_name_list = application_name_list
+        # The time when the access control policy was created. The value is a UNIX timestamp. Unit: seconds.
         self.create_time = create_time
         # The description of the access control policy.
         self.description = description
@@ -13510,7 +13561,7 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
         self.dest_port = dest_port
         # The name of the destination port address book in the access control policy.
         self.dest_port_group = dest_port_group
-        # An array that consists of the ports in the destination port address book of the access control policy.
+        # The ports in the destination port address book of the access control policy.
         self.dest_port_group_ports = dest_port_group_ports
         # The type of the destination port in the access control policy. Valid values:
         # 
@@ -13523,7 +13574,7 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
         # *   If **DestinationType** is set to `domain`, the value of this parameter is a domain name.
         # *   If **DestinationType** is set to `group`, the value of this parameter is an address book name.
         self.destination = destination
-        # An array that consists of the CIDR blocks in the destination address book of the access control policy.
+        # The CIDR blocks in the destination address book of the access control policy.
         self.destination_group_cidrs = destination_group_cidrs
         # The type of the destination address book in the access control policy. Valid values:
         # 
@@ -13536,12 +13587,17 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
         # *   **group**: address book
         # *   **domain**: domain name
         self.destination_type = destination_type
+        # The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the value of StartTime.
+        # 
+        # >  If RepeatType is set to Permanent, EndTime is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, EndTime must be specified.
         self.end_time = end_time
+        # The time when the access control policy was last hit. The value is a UNIX timestamp. Unit: seconds.
         self.hit_last_time = hit_last_time
         # The number of hits for the access control policy.
         self.hit_times = hit_times
         # The UID of the member that is managed by your Alibaba Cloud account.
         self.member_uid = member_uid
+        # The time when the access control policy was modified. The value is a UNIX timestamp. Unit: seconds.
         self.modify_time = modify_time
         # The priority of the access control policy.
         # 
@@ -13554,30 +13610,57 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
         # *   **ICMP**\
         # *   **ANY**: all protocol types
         self.proto = proto
-        # Indicates whether the access control policy is enabled. By default, an access control policy is enabled after the policy is created. Valid values:
+        # Indicates whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values:
         # 
-        # *   **true**: The access control policy is enabled.
-        # *   **false**: The access control policy is disabled.
+        # *   **true**\
+        # *   **false**\
         self.release = release
+        # The days of a week or of a month on which the access control policy takes effect.
+        # 
+        # *   If RepeatType is set to `Permanent`, `None`, or `Daily`, RepeatDays is left empty. Example: \[].
+        # *   If RepeatType is set to Weekly, RepeatDays must be specified. Example: \[0, 6].
+        # 
+        # >  If RepeatType is set to Weekly, the fields in the value of RepeatDays cannot be repeated.
+        # 
+        # *   If RepeatType is set to `Monthly`, RepeatDays must be specified. Example: \[1, 31].
+        # 
+        # >  If RepeatType is set to Monthly, the fields in the value of RepeatDays cannot be repeated.
         self.repeat_days = repeat_days
+        # The point in time when the recurrence ends. Example: 23:30. The value must be on the hour or on the half hour, and at least 30 minutes later than the value of RepeatStartTime.
+        # 
+        # >  If RepeatType is set to Permanent or None, RepeatEndTime is left empty. If RepeatType is set to Daily, Weekly, or Monthly, RepeatEndTime must be specified.
         self.repeat_end_time = repeat_end_time
+        # The point in time when the recurrence starts. Example: 08:00. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of RepeatEndTime.
+        # 
+        # >  If RepeatType is set to Permanent or None, RepeatStartTime is left empty. If RepeatType is set to Daily, Weekly, or Monthly, this parameter must be specified.
         self.repeat_start_time = repeat_start_time
+        # The recurrence type for the access control policy to take effect. Valid values:
+        # 
+        # *   **Permanent** (default): The policy always takes effect.
+        # *   **None**: The policy takes effect for only once.
+        # *   **Daily**: The policy takes effect on a daily basis.
+        # *   **Weekly**: The policy takes effect on a weekly basis.
+        # *   **Monthly**: The policy takes effect on a monthly basis.
         self.repeat_type = repeat_type
         # The source address in the access control policy. Valid values:
         # 
         # *   If **SourceType** is set to `net`, the value of this parameter is a CIDR block.
         # *   If **SourceType** is set to `group`, the value of this parameter is an address book name.
         self.source = source
-        # An array that consists of the CIDR blocks in the source address book of the access control policy.
+        # The CIDR blocks in the source address book of the access control policy.
         self.source_group_cidrs = source_group_cidrs
-        # The type of the source address in the access control policy. The value is fixed as **ip**. The value indicates an address book that includes one or more CIDR blocks.
+        # The type of the source address book in the access control policy. The value is fixed as **ip**. The value indicates an address book that includes one or more CIDR blocks.
         self.source_group_type = source_group_type
         # The type of the source address in the access control policy. Valid values:
         # 
         # *   **net**: CIDR block
         # *   **group**: address book
         self.source_type = source_type
+        # The total quota consumed by the returned access control policies, which is the sum of the quota consumed by each policy. The quota that is consumed by an access control policy is calculated by using the following formula: Quota that is consumed by an access control policy = Number of source addresses × Number of destination addresses (number of CIDR blocks or domain names) × Number of applications × Number of port ranges.
         self.spread_cnt = spread_cnt
+        # The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of EndTime.
+        # 
+        # >  If RepeatType is set to Permanent, StartTime is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, StartTime must be specified.
         self.start_time = start_time
 
     def validate(self):
@@ -13735,7 +13818,7 @@ class DescribeVpcFirewallControlPolicyResponseBody(TeaModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The information about the access control policies.
+        # The access control policies.
         self.policys = policys
         # The ID of the request.
         self.request_id = request_id
@@ -16725,10 +16808,24 @@ class ModifyFirewallV2RoutePolicySwitchRequest(TeaModel):
         tr_firewall_route_policy_id: str = None,
         tr_firewall_route_policy_switch_status: str = None,
     ):
+        # The instance ID of the virtual private cloud (VPC) firewall.
         self.firewall_id = firewall_id
+        # The language of the content within the response. Valid values:
+        # 
+        # *   **zh** (default): Chinese
+        # *   **en**: English
         self.lang = lang
+        # Specifies whether to restore the traffic redirection configurations. Valid values:
+        # 
+        # *   true: roll back
+        # *   false: withdraw
         self.should_recover = should_recover
+        # The ID of the routing policy.
         self.tr_firewall_route_policy_id = tr_firewall_route_policy_id
+        # The status of the routing policy. Valid values:
+        # 
+        # *   open: enabled
+        # *   close: disabled
         self.tr_firewall_route_policy_switch_status = tr_firewall_route_policy_switch_status
 
     def validate(self):
@@ -16772,6 +16869,7 @@ class ModifyFirewallV2RoutePolicySwitchResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -18486,7 +18584,7 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
         # 
         # If you want to modify the configurations of an access control policy, you must provide the unique ID of the policy. You can call the [DescribeVpcFirewallControlPolicy](~~159758~~) operation to query the ID.
         self.acl_uuid = acl_uuid
-        # The application type in the access control policy.
+        # The application type used in the access control policy.
         # 
         # Valid values:
         # 
@@ -18507,6 +18605,7 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
         # *   SSL
         # *   ANY: all application types
         self.application_name = application_name
+        # The application names.
         self.application_name_list = application_name_list
         # The description of the access control policy.
         self.description = description
@@ -18541,6 +18640,9 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
         # *   **group**: address book
         # *   **domain**: domain name
         self.destination_type = destination_type
+        # The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the value of StartTime.
+        # 
+        # >  If you set RepeatType to Permanent, leave this parameter empty. If you set RepeatType to None, Daily, Weekly, or Monthly, you must specify this parameter.
         self.end_time = end_time
         # The language of the content within the response.
         # 
@@ -18563,9 +18665,32 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
         # *   **true**: enables the access control policy.
         # *   **false**: disables the access control policy.
         self.release = release
+        # The days of a week or of a month on which the access control policy takes effect.
+        # 
+        # *   If you set RepeatType to `Permanent`, `None`, or `Daily`, the value of this parameter is an empty array. Example: \[].
+        # *   If you set RepeatType to Weekly, you must specify this parameter. Example: \[0, 6].
+        # 
+        # >  If you set RepeatType to Weekly, the fields in the value of this parameter cannot be repeated.
+        # 
+        # *   If you set RepeatType to `Monthly`, you must specify this parameter. Example: \[1, 31].
+        # 
+        # >  If you set RepeatType to Monthly, the fields in the value of this parameter cannot be repeated.
         self.repeat_days = repeat_days
+        # The point in time when the recurrence ends. Example: 23:30. The value must be on the hour or on the half hour, and at least 30 minutes later than the value of RepeatStartTime.
+        # 
+        # >  If you set RepeatType to Permanent or None, leave this parameter empty. If you set RepeatType to Daily, Weekly, or Monthly, you must specify this parameter.
         self.repeat_end_time = repeat_end_time
+        # The point in time when the recurrence starts. Example: 08:00. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of RepeatEndTime.
+        # 
+        # >  If you set RepeatType to Permanent or None, leave this parameter empty. If you set RepeatType to Daily, Weekly, or Monthly, you must specify this parameter.
         self.repeat_start_time = repeat_start_time
+        # The recurrence type for the access control policy to take effect. Valid values:
+        # 
+        # *   **Permanent** (default): The policy always takes effect.
+        # *   **None**: The policy takes effect for only once.
+        # *   **Daily**: The policy takes effect on a daily basis.
+        # *   **Weekly**: The policy takes effect on a weekly basis.
+        # *   **Monthly**: The policy takes effect on a monthly basis.
         self.repeat_type = repeat_type
         # The source address in the access control policy.
         # 
@@ -18586,6 +18711,9 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
         # *   **net**: CIDR block
         # *   **group**: address book
         self.source_type = source_type
+        # The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of EndTime.
+        # 
+        # >  If you set RepeatType to Permanent, leave this parameter empty. If you set RepeatType to None, Daily, Weekly, or Monthly, you must specify this parameter.
         self.start_time = start_time
         # The instance ID of the VPC firewall. You can call the [DescribeVpcFirewallAclGroupList](~~159760~~) operation to query the ID.
         # 
@@ -19786,6 +19914,122 @@ class PutEnableFwSwitchResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PutEnableFwSwitchResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ReleasePostInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class ReleasePostInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        http_status_code: int = None,
+        release_status: bool = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.http_status_code = http_status_code
+        self.release_status = release_status
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.release_status is not None:
+            result['ReleaseStatus'] = self.release_status
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('ReleaseStatus') is not None:
+            self.release_status = m.get('ReleaseStatus')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ReleasePostInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ReleasePostInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ReleasePostInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
