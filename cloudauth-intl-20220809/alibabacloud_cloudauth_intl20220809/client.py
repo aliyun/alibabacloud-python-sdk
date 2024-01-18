@@ -1656,6 +1656,8 @@ class Client(OpenApiClient):
             query['IdFaceQuality'] = request.id_face_quality
         if not UtilClient.is_unset(request.id_spoof):
             query['IdSpoof'] = request.id_spoof
+        if not UtilClient.is_unset(request.language_config):
+            query['LanguageConfig'] = request.language_config
         if not UtilClient.is_unset(request.merchant_biz_id):
             query['MerchantBizId'] = request.merchant_biz_id
         if not UtilClient.is_unset(request.merchant_user_id):
@@ -1728,6 +1730,8 @@ class Client(OpenApiClient):
             query['IdFaceQuality'] = request.id_face_quality
         if not UtilClient.is_unset(request.id_spoof):
             query['IdSpoof'] = request.id_spoof
+        if not UtilClient.is_unset(request.language_config):
+            query['LanguageConfig'] = request.language_config
         if not UtilClient.is_unset(request.merchant_biz_id):
             query['MerchantBizId'] = request.merchant_biz_id
         if not UtilClient.is_unset(request.merchant_user_id):

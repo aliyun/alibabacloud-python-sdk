@@ -4159,6 +4159,7 @@ class InitializeRequest(TeaModel):
         flow_type: str = None,
         id_face_quality: str = None,
         id_spoof: str = None,
+        language_config: str = None,
         merchant_biz_id: str = None,
         merchant_user_id: str = None,
         meta_info: str = None,
@@ -4183,6 +4184,7 @@ class InitializeRequest(TeaModel):
         self.flow_type = flow_type
         self.id_face_quality = id_face_quality
         self.id_spoof = id_spoof
+        self.language_config = language_config
         self.merchant_biz_id = merchant_biz_id
         self.merchant_user_id = merchant_user_id
         self.meta_info = meta_info
@@ -4228,6 +4230,8 @@ class InitializeRequest(TeaModel):
             result['IdFaceQuality'] = self.id_face_quality
         if self.id_spoof is not None:
             result['IdSpoof'] = self.id_spoof
+        if self.language_config is not None:
+            result['LanguageConfig'] = self.language_config
         if self.merchant_biz_id is not None:
             result['MerchantBizId'] = self.merchant_biz_id
         if self.merchant_user_id is not None:
@@ -4278,6 +4282,8 @@ class InitializeRequest(TeaModel):
             self.id_face_quality = m.get('IdFaceQuality')
         if m.get('IdSpoof') is not None:
             self.id_spoof = m.get('IdSpoof')
+        if m.get('LanguageConfig') is not None:
+            self.language_config = m.get('LanguageConfig')
         if m.get('MerchantBizId') is not None:
             self.merchant_biz_id = m.get('MerchantBizId')
         if m.get('MerchantUserId') is not None:
