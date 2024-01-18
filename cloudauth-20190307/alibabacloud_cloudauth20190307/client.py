@@ -1494,6 +1494,8 @@ class Client(OpenApiClient):
             query['ProcedurePriority'] = request.procedure_priority
         if not UtilClient.is_unset(request.product_code):
             query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.rarely_characters):
+            query['RarelyCharacters'] = request.rarely_characters
         if not UtilClient.is_unset(request.read_img):
             query['ReadImg'] = request.read_img
         if not UtilClient.is_unset(request.return_url):
@@ -1586,6 +1588,8 @@ class Client(OpenApiClient):
             query['ProcedurePriority'] = request.procedure_priority
         if not UtilClient.is_unset(request.product_code):
             query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.rarely_characters):
+            query['RarelyCharacters'] = request.rarely_characters
         if not UtilClient.is_unset(request.read_img):
             query['ReadImg'] = request.read_img
         if not UtilClient.is_unset(request.return_url):

@@ -1395,6 +1395,7 @@ class DescribeFaceVerifyResponseBodyResultObject(TeaModel):
         passed: str = None,
         sub_code: str = None,
         success: str = None,
+        user_info: str = None,
     ):
         self.device_risk = device_risk
         self.device_token = device_token
@@ -1403,6 +1404,7 @@ class DescribeFaceVerifyResponseBodyResultObject(TeaModel):
         self.passed = passed
         self.sub_code = sub_code
         self.success = success
+        self.user_info = user_info
 
     def validate(self):
         pass
@@ -1427,6 +1429,8 @@ class DescribeFaceVerifyResponseBodyResultObject(TeaModel):
             result['SubCode'] = self.sub_code
         if self.success is not None:
             result['Success'] = self.success
+        if self.user_info is not None:
+            result['UserInfo'] = self.user_info
         return result
 
     def from_map(self, m: dict = None):
@@ -1445,6 +1449,8 @@ class DescribeFaceVerifyResponseBodyResultObject(TeaModel):
             self.sub_code = m.get('SubCode')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('UserInfo') is not None:
+            self.user_info = m.get('UserInfo')
         return self
 
 
@@ -3187,6 +3193,7 @@ class InitFaceVerifyRequest(TeaModel):
         outer_order_no: str = None,
         procedure_priority: str = None,
         product_code: str = None,
+        rarely_characters: str = None,
         read_img: str = None,
         return_url: str = None,
         scene_id: int = None,
@@ -3220,6 +3227,7 @@ class InitFaceVerifyRequest(TeaModel):
         self.outer_order_no = outer_order_no
         self.procedure_priority = procedure_priority
         self.product_code = product_code
+        self.rarely_characters = rarely_characters
         self.read_img = read_img
         self.return_url = return_url
         self.scene_id = scene_id
@@ -3287,6 +3295,8 @@ class InitFaceVerifyRequest(TeaModel):
             result['ProcedurePriority'] = self.procedure_priority
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
+        if self.rarely_characters is not None:
+            result['RarelyCharacters'] = self.rarely_characters
         if self.read_img is not None:
             result['ReadImg'] = self.read_img
         if self.return_url is not None:
@@ -3355,6 +3365,8 @@ class InitFaceVerifyRequest(TeaModel):
             self.procedure_priority = m.get('ProcedurePriority')
         if m.get('ProductCode') is not None:
             self.product_code = m.get('ProductCode')
+        if m.get('RarelyCharacters') is not None:
+            self.rarely_characters = m.get('RarelyCharacters')
         if m.get('ReadImg') is not None:
             self.read_img = m.get('ReadImg')
         if m.get('ReturnUrl') is not None:
