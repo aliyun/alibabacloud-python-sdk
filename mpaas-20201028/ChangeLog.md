@@ -1,3 +1,6 @@
+2024-01-18 Version: 1.2.1
+- Generated python 2020-10-28 for mPaaS.
+
 2023-12-05 Version: 1.2.0
 - Generated python 2020-10-28 for mPaaS.
 

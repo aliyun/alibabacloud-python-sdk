@@ -7328,6 +7328,10 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.third_channel_category):
             request.third_channel_category_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.third_channel_category, 'ThirdChannelCategory', 'json')
         body = {}
+        if not UtilClient.is_unset(request.activity_content_state):
+            body['ActivityContentState'] = request.activity_content_state
+        if not UtilClient.is_unset(request.activity_event):
+            body['ActivityEvent'] = request.activity_event
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
         if not UtilClient.is_unset(request.channel_id):
@@ -7336,6 +7340,8 @@ class Client(OpenApiClient):
             body['Classification'] = request.classification
         if not UtilClient.is_unset(request.delivery_type):
             body['DeliveryType'] = request.delivery_type
+        if not UtilClient.is_unset(request.dismissal_date):
+            body['DismissalDate'] = request.dismissal_date
         if not UtilClient.is_unset(request.expired_seconds):
             body['ExpiredSeconds'] = request.expired_seconds
         if not UtilClient.is_unset(request.extended_params):
@@ -7392,6 +7398,10 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.third_channel_category):
             request.third_channel_category_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.third_channel_category, 'ThirdChannelCategory', 'json')
         body = {}
+        if not UtilClient.is_unset(request.activity_content_state):
+            body['ActivityContentState'] = request.activity_content_state
+        if not UtilClient.is_unset(request.activity_event):
+            body['ActivityEvent'] = request.activity_event
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
         if not UtilClient.is_unset(request.channel_id):
@@ -7400,6 +7410,8 @@ class Client(OpenApiClient):
             body['Classification'] = request.classification
         if not UtilClient.is_unset(request.delivery_type):
             body['DeliveryType'] = request.delivery_type
+        if not UtilClient.is_unset(request.dismissal_date):
+            body['DismissalDate'] = request.dismissal_date
         if not UtilClient.is_unset(request.expired_seconds):
             body['ExpiredSeconds'] = request.expired_seconds
         if not UtilClient.is_unset(request.extended_params):
@@ -7588,6 +7600,10 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.third_channel_category):
             request.third_channel_category_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.third_channel_category, 'ThirdChannelCategory', 'json')
         body = {}
+        if not UtilClient.is_unset(request.activity_content_state):
+            body['ActivityContentState'] = request.activity_content_state
+        if not UtilClient.is_unset(request.activity_event):
+            body['ActivityEvent'] = request.activity_event
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
         if not UtilClient.is_unset(request.channel_id):
@@ -7598,6 +7614,8 @@ class Client(OpenApiClient):
             body['Content'] = request.content
         if not UtilClient.is_unset(request.delivery_type):
             body['DeliveryType'] = request.delivery_type
+        if not UtilClient.is_unset(request.dismissal_date):
+            body['DismissalDate'] = request.dismissal_date
         if not UtilClient.is_unset(request.expired_seconds):
             body['ExpiredSeconds'] = request.expired_seconds
         if not UtilClient.is_unset(request.extended_params):
@@ -7670,6 +7688,10 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.third_channel_category):
             request.third_channel_category_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.third_channel_category, 'ThirdChannelCategory', 'json')
         body = {}
+        if not UtilClient.is_unset(request.activity_content_state):
+            body['ActivityContentState'] = request.activity_content_state
+        if not UtilClient.is_unset(request.activity_event):
+            body['ActivityEvent'] = request.activity_event
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
         if not UtilClient.is_unset(request.channel_id):
@@ -7680,6 +7702,8 @@ class Client(OpenApiClient):
             body['Content'] = request.content
         if not UtilClient.is_unset(request.delivery_type):
             body['DeliveryType'] = request.delivery_type
+        if not UtilClient.is_unset(request.dismissal_date):
+            body['DismissalDate'] = request.dismissal_date
         if not UtilClient.is_unset(request.expired_seconds):
             body['ExpiredSeconds'] = request.expired_seconds
         if not UtilClient.is_unset(request.extended_params):
@@ -7766,6 +7790,10 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.third_channel_category):
             request.third_channel_category_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.third_channel_category, 'ThirdChannelCategory', 'json')
         body = {}
+        if not UtilClient.is_unset(request.activity_content_state):
+            body['ActivityContentState'] = request.activity_content_state
+        if not UtilClient.is_unset(request.activity_event):
+            body['ActivityEvent'] = request.activity_event
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
         if not UtilClient.is_unset(request.channel_id):
@@ -7774,6 +7802,8 @@ class Client(OpenApiClient):
             body['Classification'] = request.classification
         if not UtilClient.is_unset(request.delivery_type):
             body['DeliveryType'] = request.delivery_type
+        if not UtilClient.is_unset(request.dismissal_date):
+            body['DismissalDate'] = request.dismissal_date
         if not UtilClient.is_unset(request.expired_seconds):
             body['ExpiredSeconds'] = request.expired_seconds
         if not UtilClient.is_unset(request.extended_params):
@@ -7840,6 +7870,10 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.third_channel_category):
             request.third_channel_category_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.third_channel_category, 'ThirdChannelCategory', 'json')
         body = {}
+        if not UtilClient.is_unset(request.activity_content_state):
+            body['ActivityContentState'] = request.activity_content_state
+        if not UtilClient.is_unset(request.activity_event):
+            body['ActivityEvent'] = request.activity_event
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
         if not UtilClient.is_unset(request.channel_id):
@@ -7848,6 +7882,8 @@ class Client(OpenApiClient):
             body['Classification'] = request.classification
         if not UtilClient.is_unset(request.delivery_type):
             body['DeliveryType'] = request.delivery_type
+        if not UtilClient.is_unset(request.dismissal_date):
+            body['DismissalDate'] = request.dismissal_date
         if not UtilClient.is_unset(request.expired_seconds):
             body['ExpiredSeconds'] = request.expired_seconds
         if not UtilClient.is_unset(request.extended_params):

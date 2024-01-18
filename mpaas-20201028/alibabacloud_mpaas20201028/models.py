@@ -20129,10 +20129,13 @@ class PushMultipleRequestTargetMsg(TeaModel):
 class PushMultipleRequest(TeaModel):
     def __init__(
         self,
+        activity_content_state: Any = None,
+        activity_event: str = None,
         app_id: str = None,
         channel_id: str = None,
         classification: str = None,
         delivery_type: int = None,
+        dismissal_date: int = None,
         expired_seconds: int = None,
         extended_params: str = None,
         mi_channel_id: str = None,
@@ -20147,10 +20150,13 @@ class PushMultipleRequest(TeaModel):
         third_channel_category: Dict[str, Any] = None,
         workspace_id: str = None,
     ):
+        self.activity_content_state = activity_content_state
+        self.activity_event = activity_event
         self.app_id = app_id
         self.channel_id = channel_id
         self.classification = classification
         self.delivery_type = delivery_type
+        self.dismissal_date = dismissal_date
         self.expired_seconds = expired_seconds
         self.extended_params = extended_params
         self.mi_channel_id = mi_channel_id
@@ -20177,6 +20183,10 @@ class PushMultipleRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.activity_content_state is not None:
+            result['ActivityContentState'] = self.activity_content_state
+        if self.activity_event is not None:
+            result['ActivityEvent'] = self.activity_event
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.channel_id is not None:
@@ -20185,6 +20195,8 @@ class PushMultipleRequest(TeaModel):
             result['Classification'] = self.classification
         if self.delivery_type is not None:
             result['DeliveryType'] = self.delivery_type
+        if self.dismissal_date is not None:
+            result['DismissalDate'] = self.dismissal_date
         if self.expired_seconds is not None:
             result['ExpiredSeconds'] = self.expired_seconds
         if self.extended_params is not None:
@@ -20217,6 +20229,10 @@ class PushMultipleRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ActivityContentState') is not None:
+            self.activity_content_state = m.get('ActivityContentState')
+        if m.get('ActivityEvent') is not None:
+            self.activity_event = m.get('ActivityEvent')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('ChannelId') is not None:
@@ -20225,6 +20241,8 @@ class PushMultipleRequest(TeaModel):
             self.classification = m.get('Classification')
         if m.get('DeliveryType') is not None:
             self.delivery_type = m.get('DeliveryType')
+        if m.get('DismissalDate') is not None:
+            self.dismissal_date = m.get('DismissalDate')
         if m.get('ExpiredSeconds') is not None:
             self.expired_seconds = m.get('ExpiredSeconds')
         if m.get('ExtendedParams') is not None:
@@ -20305,10 +20323,13 @@ class PushMultipleShrinkRequestTargetMsg(TeaModel):
 class PushMultipleShrinkRequest(TeaModel):
     def __init__(
         self,
+        activity_content_state: Any = None,
+        activity_event: str = None,
         app_id: str = None,
         channel_id: str = None,
         classification: str = None,
         delivery_type: int = None,
+        dismissal_date: int = None,
         expired_seconds: int = None,
         extended_params: str = None,
         mi_channel_id: str = None,
@@ -20323,10 +20344,13 @@ class PushMultipleShrinkRequest(TeaModel):
         third_channel_category_shrink: str = None,
         workspace_id: str = None,
     ):
+        self.activity_content_state = activity_content_state
+        self.activity_event = activity_event
         self.app_id = app_id
         self.channel_id = channel_id
         self.classification = classification
         self.delivery_type = delivery_type
+        self.dismissal_date = dismissal_date
         self.expired_seconds = expired_seconds
         self.extended_params = extended_params
         self.mi_channel_id = mi_channel_id
@@ -20353,6 +20377,10 @@ class PushMultipleShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.activity_content_state is not None:
+            result['ActivityContentState'] = self.activity_content_state
+        if self.activity_event is not None:
+            result['ActivityEvent'] = self.activity_event
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.channel_id is not None:
@@ -20361,6 +20389,8 @@ class PushMultipleShrinkRequest(TeaModel):
             result['Classification'] = self.classification
         if self.delivery_type is not None:
             result['DeliveryType'] = self.delivery_type
+        if self.dismissal_date is not None:
+            result['DismissalDate'] = self.dismissal_date
         if self.expired_seconds is not None:
             result['ExpiredSeconds'] = self.expired_seconds
         if self.extended_params is not None:
@@ -20393,6 +20423,10 @@ class PushMultipleShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ActivityContentState') is not None:
+            self.activity_content_state = m.get('ActivityContentState')
+        if m.get('ActivityEvent') is not None:
+            self.activity_event = m.get('ActivityEvent')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('ChannelId') is not None:
@@ -20401,6 +20435,8 @@ class PushMultipleShrinkRequest(TeaModel):
             self.classification = m.get('Classification')
         if m.get('DeliveryType') is not None:
             self.delivery_type = m.get('DeliveryType')
+        if m.get('DismissalDate') is not None:
+            self.dismissal_date = m.get('DismissalDate')
         if m.get('ExpiredSeconds') is not None:
             self.expired_seconds = m.get('ExpiredSeconds')
         if m.get('ExtendedParams') is not None:
@@ -20795,11 +20831,14 @@ class PushReportResponse(TeaModel):
 class PushSimpleRequest(TeaModel):
     def __init__(
         self,
+        activity_content_state: Any = None,
+        activity_event: str = None,
         app_id: str = None,
         channel_id: str = None,
         classification: str = None,
         content: str = None,
         delivery_type: int = None,
+        dismissal_date: int = None,
         expired_seconds: int = None,
         extended_params: str = None,
         icon_urls: str = None,
@@ -20822,11 +20861,14 @@ class PushSimpleRequest(TeaModel):
         uri: str = None,
         workspace_id: str = None,
     ):
+        self.activity_content_state = activity_content_state
+        self.activity_event = activity_event
         self.app_id = app_id
         self.channel_id = channel_id
         self.classification = classification
         self.content = content
         self.delivery_type = delivery_type
+        self.dismissal_date = dismissal_date
         self.expired_seconds = expired_seconds
         self.extended_params = extended_params
         self.icon_urls = icon_urls
@@ -20858,6 +20900,10 @@ class PushSimpleRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.activity_content_state is not None:
+            result['ActivityContentState'] = self.activity_content_state
+        if self.activity_event is not None:
+            result['ActivityEvent'] = self.activity_event
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.channel_id is not None:
@@ -20868,6 +20914,8 @@ class PushSimpleRequest(TeaModel):
             result['Content'] = self.content
         if self.delivery_type is not None:
             result['DeliveryType'] = self.delivery_type
+        if self.dismissal_date is not None:
+            result['DismissalDate'] = self.dismissal_date
         if self.expired_seconds is not None:
             result['ExpiredSeconds'] = self.expired_seconds
         if self.extended_params is not None:
@@ -20914,6 +20962,10 @@ class PushSimpleRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ActivityContentState') is not None:
+            self.activity_content_state = m.get('ActivityContentState')
+        if m.get('ActivityEvent') is not None:
+            self.activity_event = m.get('ActivityEvent')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('ChannelId') is not None:
@@ -20924,6 +20976,8 @@ class PushSimpleRequest(TeaModel):
             self.content = m.get('Content')
         if m.get('DeliveryType') is not None:
             self.delivery_type = m.get('DeliveryType')
+        if m.get('DismissalDate') is not None:
+            self.dismissal_date = m.get('DismissalDate')
         if m.get('ExpiredSeconds') is not None:
             self.expired_seconds = m.get('ExpiredSeconds')
         if m.get('ExtendedParams') is not None:
@@ -20972,11 +21026,14 @@ class PushSimpleRequest(TeaModel):
 class PushSimpleShrinkRequest(TeaModel):
     def __init__(
         self,
+        activity_content_state: Any = None,
+        activity_event: str = None,
         app_id: str = None,
         channel_id: str = None,
         classification: str = None,
         content: str = None,
         delivery_type: int = None,
+        dismissal_date: int = None,
         expired_seconds: int = None,
         extended_params: str = None,
         icon_urls: str = None,
@@ -20999,11 +21056,14 @@ class PushSimpleShrinkRequest(TeaModel):
         uri: str = None,
         workspace_id: str = None,
     ):
+        self.activity_content_state = activity_content_state
+        self.activity_event = activity_event
         self.app_id = app_id
         self.channel_id = channel_id
         self.classification = classification
         self.content = content
         self.delivery_type = delivery_type
+        self.dismissal_date = dismissal_date
         self.expired_seconds = expired_seconds
         self.extended_params = extended_params
         self.icon_urls = icon_urls
@@ -21035,6 +21095,10 @@ class PushSimpleShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.activity_content_state is not None:
+            result['ActivityContentState'] = self.activity_content_state
+        if self.activity_event is not None:
+            result['ActivityEvent'] = self.activity_event
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.channel_id is not None:
@@ -21045,6 +21109,8 @@ class PushSimpleShrinkRequest(TeaModel):
             result['Content'] = self.content
         if self.delivery_type is not None:
             result['DeliveryType'] = self.delivery_type
+        if self.dismissal_date is not None:
+            result['DismissalDate'] = self.dismissal_date
         if self.expired_seconds is not None:
             result['ExpiredSeconds'] = self.expired_seconds
         if self.extended_params is not None:
@@ -21091,6 +21157,10 @@ class PushSimpleShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ActivityContentState') is not None:
+            self.activity_content_state = m.get('ActivityContentState')
+        if m.get('ActivityEvent') is not None:
+            self.activity_event = m.get('ActivityEvent')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('ChannelId') is not None:
@@ -21101,6 +21171,8 @@ class PushSimpleShrinkRequest(TeaModel):
             self.content = m.get('Content')
         if m.get('DeliveryType') is not None:
             self.delivery_type = m.get('DeliveryType')
+        if m.get('DismissalDate') is not None:
+            self.dismissal_date = m.get('DismissalDate')
         if m.get('ExpiredSeconds') is not None:
             self.expired_seconds = m.get('ExpiredSeconds')
         if m.get('ExtendedParams') is not None:
@@ -21279,10 +21351,13 @@ class PushSimpleResponse(TeaModel):
 class PushTemplateRequest(TeaModel):
     def __init__(
         self,
+        activity_content_state: Any = None,
+        activity_event: str = None,
         app_id: str = None,
         channel_id: str = None,
         classification: str = None,
         delivery_type: int = None,
+        dismissal_date: int = None,
         expired_seconds: int = None,
         extended_params: str = None,
         mi_channel_id: str = None,
@@ -21302,10 +21377,13 @@ class PushTemplateRequest(TeaModel):
         third_channel_category: Dict[str, Any] = None,
         workspace_id: str = None,
     ):
+        self.activity_content_state = activity_content_state
+        self.activity_event = activity_event
         self.app_id = app_id
         self.channel_id = channel_id
         self.classification = classification
         self.delivery_type = delivery_type
+        self.dismissal_date = dismissal_date
         self.expired_seconds = expired_seconds
         self.extended_params = extended_params
         self.mi_channel_id = mi_channel_id
@@ -21334,6 +21412,10 @@ class PushTemplateRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.activity_content_state is not None:
+            result['ActivityContentState'] = self.activity_content_state
+        if self.activity_event is not None:
+            result['ActivityEvent'] = self.activity_event
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.channel_id is not None:
@@ -21342,6 +21424,8 @@ class PushTemplateRequest(TeaModel):
             result['Classification'] = self.classification
         if self.delivery_type is not None:
             result['DeliveryType'] = self.delivery_type
+        if self.dismissal_date is not None:
+            result['DismissalDate'] = self.dismissal_date
         if self.expired_seconds is not None:
             result['ExpiredSeconds'] = self.expired_seconds
         if self.extended_params is not None:
@@ -21382,6 +21466,10 @@ class PushTemplateRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ActivityContentState') is not None:
+            self.activity_content_state = m.get('ActivityContentState')
+        if m.get('ActivityEvent') is not None:
+            self.activity_event = m.get('ActivityEvent')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('ChannelId') is not None:
@@ -21390,6 +21478,8 @@ class PushTemplateRequest(TeaModel):
             self.classification = m.get('Classification')
         if m.get('DeliveryType') is not None:
             self.delivery_type = m.get('DeliveryType')
+        if m.get('DismissalDate') is not None:
+            self.dismissal_date = m.get('DismissalDate')
         if m.get('ExpiredSeconds') is not None:
             self.expired_seconds = m.get('ExpiredSeconds')
         if m.get('ExtendedParams') is not None:
@@ -21432,10 +21522,13 @@ class PushTemplateRequest(TeaModel):
 class PushTemplateShrinkRequest(TeaModel):
     def __init__(
         self,
+        activity_content_state: Any = None,
+        activity_event: str = None,
         app_id: str = None,
         channel_id: str = None,
         classification: str = None,
         delivery_type: int = None,
+        dismissal_date: int = None,
         expired_seconds: int = None,
         extended_params: str = None,
         mi_channel_id: str = None,
@@ -21455,10 +21548,13 @@ class PushTemplateShrinkRequest(TeaModel):
         third_channel_category_shrink: str = None,
         workspace_id: str = None,
     ):
+        self.activity_content_state = activity_content_state
+        self.activity_event = activity_event
         self.app_id = app_id
         self.channel_id = channel_id
         self.classification = classification
         self.delivery_type = delivery_type
+        self.dismissal_date = dismissal_date
         self.expired_seconds = expired_seconds
         self.extended_params = extended_params
         self.mi_channel_id = mi_channel_id
@@ -21487,6 +21583,10 @@ class PushTemplateShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.activity_content_state is not None:
+            result['ActivityContentState'] = self.activity_content_state
+        if self.activity_event is not None:
+            result['ActivityEvent'] = self.activity_event
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.channel_id is not None:
@@ -21495,6 +21595,8 @@ class PushTemplateShrinkRequest(TeaModel):
             result['Classification'] = self.classification
         if self.delivery_type is not None:
             result['DeliveryType'] = self.delivery_type
+        if self.dismissal_date is not None:
+            result['DismissalDate'] = self.dismissal_date
         if self.expired_seconds is not None:
             result['ExpiredSeconds'] = self.expired_seconds
         if self.extended_params is not None:
@@ -21535,6 +21637,10 @@ class PushTemplateShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ActivityContentState') is not None:
+            self.activity_content_state = m.get('ActivityContentState')
+        if m.get('ActivityEvent') is not None:
+            self.activity_event = m.get('ActivityEvent')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('ChannelId') is not None:
@@ -21543,6 +21649,8 @@ class PushTemplateShrinkRequest(TeaModel):
             self.classification = m.get('Classification')
         if m.get('DeliveryType') is not None:
             self.delivery_type = m.get('DeliveryType')
+        if m.get('DismissalDate') is not None:
+            self.dismissal_date = m.get('DismissalDate')
         if m.get('ExpiredSeconds') is not None:
             self.expired_seconds = m.get('ExpiredSeconds')
         if m.get('ExtendedParams') is not None:
