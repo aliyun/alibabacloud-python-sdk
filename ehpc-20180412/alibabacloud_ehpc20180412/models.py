@@ -217,23 +217,24 @@ class AddExistedNodesRequest(TeaModel):
         self.cluster_id = cluster_id
         # The ID of the image that is specified for the compute nodes. The image must meet the following requirements:
         # 
-        # *   The operating system that is specified by the image must be the same as that of the existing cluster nodes. For example, if the operating system of the cluster nodes is CentOS, you can select only a CentOS image.
+        # *   The operating system that is specified for the image must be the same as that of the existing cluster nodes. For example, if the operating system of the cluster nodes is CentOS, you can select only a CentOS image.
         # 
-        # > If you add nodes to a hybrid cloud cluster that supports multiple operating systems, you can select a Windows Server image or a CentOS image when the operating system of the cluster nodes is Windows.
+        # >  If you add nodes to a hybrid cloud cluster that supports multiple operating systems, you can select a Windows Server image or a CentOS image when the operating system of the cluster nodes is Windows.
         # 
-        # *   The major version of the image specified for the compute nodes that you want to add is the same as that of the image of the cluster. For example, if the version of the cluster image is CentOS 7.x, the version of the image specified for the compute nodes must be CentOS 7.x.
+        # *   The major version of the image specified for the compute nodes that you want to add must be the same as that of the image of the cluster. For example, if the version of the cluster image is CentOS 7.x, the version of the image specified for the compute nodes must be CentOS 7.x.
         # 
         # You can call the [ListImages](~~87213~~) and [ListCustomImages](~~87215~~) operations to query the image ID.
         self.image_id = image_id
-        # The type of the image. Valid values:
+        # The type of the images. Valid values:
         # 
-        # *   system: public image
+        # *   system: public image.
         # *   self: custom image
         # *   others: shared image
         # *   marketplace: Alibaba Cloud Marketplace image
         # 
-        # Default value: system
+        # Default value: system.
         self.image_owner_alias = image_owner_alias
+        # The information about the node that you want to add.
         self.instance = instance
         # The queue in the cluster to which the node is to be added.
         self.job_queue = job_queue
@@ -288,9 +289,9 @@ class AddExistedNodesResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -1541,19 +1542,19 @@ class ApplyNodesRequestInstanceTypeModel(TeaModel):
         max_price: float = None,
         target_image_id: str = None,
     ):
-        # The instance type of the compute node. The default value is the instance type that was specified when you created the cluster or the last time when you added compute nodes.
+        # The instance type of the compute node. The default value is the instance type that was specified when you created the cluster or the last time you added compute nodes.
         # 
-        # Valid values of N: 1 to 10
+        # Valid values of N: 1 to 10.
         self.instance_type = instance_type
         # The maximum hourly price that you can pay for the preemptible node. The value is a floating-point number that supports up to three decimal places.
         # 
         # The parameter takes effect only when ComputeSpotStrategy is set to SpotWithPriceLimit.
         # 
-        # Valid values of N: 1 to 10
+        # Valid values of N: 1 to 10.
         self.max_price = max_price
         # The image ID of the compute node. You must select a Windows image.
         # 
-        # Valid values of N: 1 to 10
+        # Valid values of N: 1 to 10.
         self.target_image_id = target_image_id
 
     def validate(self):
@@ -1590,13 +1591,13 @@ class ApplyNodesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the compute node that you want to attach. Valid values of N: 1 to 20. The tag key cannot be an empty string. It can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain http:// or https://.
+        # The tag key of the compute node that you want to add. Valid values of N: 1 to 20. The tag key cannot be an empty string. It can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain http:// or https://.
         # 
-        # Valid values of N: 1 to 10
+        # Valid values of N: 1 to 10.
         self.key = key
-        # The tag value of the compute node that you want to add. Valid values of N: 1 to 20. The tag value can be an empty string. It can be up to 128 characters in length and cannot start with acs: or contain http:// or https://.
+        # The tag value of the compute node that you want to add. You can specify 1 to 20 tag values. The tag value can be an empty string. It can be up to 128 characters in length and cannot start with acs: or contain http:// or https://.
         # 
-        # Valid values of N: 1 to 10
+        # Valid values of N: 1 to 10.
         self.value = value
 
     def validate(self):
@@ -1631,7 +1632,7 @@ class ApplyNodesRequestZoneInfos(TeaModel):
     ):
         # The ID of the vSwitch. Valid values of N: 1 to 10.
         self.v_switch_id = v_switch_id
-        # The ID of the zone to which the cluster belongs. Valid values of N: 1 to 10.
+        # The ID of the zone to which the node belongs. Valid values of N: 1 to 10.
         # 
         # >  Each zone ID must be unique.
         self.zone_id = zone_id
@@ -1696,27 +1697,27 @@ class ApplyNodesRequest(TeaModel):
         # *   true: A public IP address is allocated to the compute nodes.
         # *   false: A public IP address is not allocated to the compute nodes.
         # 
-        # Default value: false
+        # Default value: false.
         self.allocate_public_address = allocate_public_address
-        # The ID of the cluster.
+        # The ID of the E-HPC cluster.
         # 
         # You can call the [ListClusters](~~87126~~) operation to query the cluster ID.
         self.cluster_id = cluster_id
         # The maximum hourly price of the compute nodes. The value is a floating-point number that supports up to three decimal places. The parameter takes effect only when ComputeSpotStrategy is set to SpotWithPriceLimit.
         # 
-        # If ComputeSpotPriceLimit and InstanceTypeModel.N.MaxPrice are specified at the same time, compute nodes are created based on the smaller value of these parameters.
+        # If ComputeSpotPriceLimit and InstanceTypeModel.N.MaxPrice are specified at the same time, compute nodes are created based on the smaller value of the two parameters.
         self.compute_spot_price_limit = compute_spot_price_limit
         # The preemption policy of the compute nodes. Valid values:
         # 
-        # *   NoSpot: The compute nodes use the pay-as-you-go billing method.
+        # *   NoSpot: The compute nodes are pay-as-you-go instances.
         # *   SpotWithPriceLimit: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
         # *   SpotAsPriceGo: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
         # 
-        # Default value: NoSpot
+        # Default value: NoSpot.
         self.compute_spot_strategy = compute_spot_strategy
         # The number of vCPUs. The parameter is required when the ResourceAmountType parameter is set to Cores.
         # 
-        # You can set Cores, vCPU, and Memory to query node specifications. For example, you can query the available compute nodes that have 2 vCPUs and 16 GB of memory by setting vCPU to 2 and Memory to 16. You can also query compute nodes by zone. Query results are sorted by price.
+        # You can set vCPU and Memory to query node specifications. For example, you can query the available compute nodes that have 2 vCPUs and 16 GB of memory by setting vCPU to 2 and Memory to 16. You can also query compute nodes by node specification and zone. Query results are sorted by price. The nodes that have the lowest price are created.
         self.cores = cores
         # The prefix of the hostname. You can specify the parameter to manage the compute nodes in an efficient manner.
         self.host_name_prefix = host_name_prefix
@@ -1730,12 +1731,13 @@ class ApplyNodesRequest(TeaModel):
         self.image_id = image_id
         # The level of the instance family. The parameter takes effect only when Cores and Memory are specified. Valid values:
         # 
-        # *   EntryLevel.
-        # *   EnterpriseLevel.
-        # *   CreditEntryLevel. For more information, see [What are burstable instances?](~~59977~~)
+        # *   EntryLevel
+        # *   EnterpriseLevel
+        # *   CreditEntryLevel For more information, see [Overview of burstable instances](~~59977~~).
         # 
-        # Default value: EnterpriseLevel
+        # Default value: EnterpriseLevel.
         self.instance_family_level = instance_family_level
+        # The information about the preemptible instance.
         self.instance_type_model = instance_type_model
         # The billing method of the elastic IP address (EIP). Valid values:
         # 
@@ -1745,15 +1747,15 @@ class ApplyNodesRequest(TeaModel):
         # The maximum inbound public bandwidth. Unit: Mbit/s. Valid values:
         # 
         # *   If the purchased outbound public bandwidth is less than or equal to 10 Mbit/s, the valid values of the parameter are 1 to 10 and the default value is 10.
-        # *   If the purchased outbound public bandwidth is greater than 10 Mbit/s, the valid values of this parameter are 1 to the amount of the outbound bandwidth that is purchased.
+        # *   If the purchased outbound public bandwidth is greater than 10 Mbit/s, the valid values of this parameter are 1 to the amount of the outbound bandwidth that is purchased. The default value is the value of the InternetMaxBandWidthOut parameter.
         self.internet_max_band_width_in = internet_max_band_width_in
         # The maximum outbound public bandwidth. Unit: Mbit/s. Valid values: 0 to 100.
         # 
-        # Default value: 0
+        # Default value: 0.
         self.internet_max_band_width_out = internet_max_band_width_out
         # The interval between two consecutive batches. Valid values: 60 to 600. Unit: seconds.
         # 
-        # Default value: 60
+        # Default value: 60.
         self.interval = interval
         # The queue to which the compute nodes are added.
         # 
@@ -1761,73 +1763,73 @@ class ApplyNodesRequest(TeaModel):
         self.job_queue = job_queue
         # The memory capacity. The parameter is required when the ResourceAmountType parameter is set to Cores. Unit: GB.
         # 
-        # You can set Cores, vCPU, and Memory to query node specifications. For example, you can query the available compute nodes that have 2 vCPUs and 16 GB of memory by setting vCPU to 2 and Memory to 16. You can also query compute nodes by zone. Query results are sorted by price.
+        # You can set vCPU and Memory to query node specifications. For example, you can query the available compute nodes that have 2 vCPUs and 16 GB of memory by setting vCPU to 2 and Memory to 16. You can also query compute nodes by node specification and zone. Query results are sorted by price. The nodes that have the lowest price are created.
         self.memory = memory
         # The application policy of the preemptible nodes. Valid values:
         # 
-        # *   LowPriceResourcePlanning: Preemptible nodes are created based on the unit prices of vCPUs in ascending order. Preemptible nodes are created first when preemptible instance types are specified.
+        # *   LowPriceResourcePlanning: Preemptible nodes are created based on the unit prices of vCPUs in ascending order. Preemptible nodes are created first when multiple preemptible instance types are specified.
         # *   CapacityOptResourcePlanning: Preemptible nodes are created based on the prices and release rates in ascending order.
         # *   CustomizedResourcePlanning: Nodes are added based on the predefined value of the ZoneIds.N parameter. Instances of a zone that has a higher priority are used first.
         self.priority_strategy = priority_strategy
-        # The type of the resource to be added. Valid values:
+        # The type of the resource that you want to add. Valid values:
         # 
-        # *   Instances: compute node
+        # *   Instances: the ECS instances that are used as compute nodes
         # *   Cores: vCPU and memory
         # 
-        # Default value: Instances
+        # Default value: Instances.
         self.resource_amount_type = resource_amount_type
         # The total number of batches to create nodes. Valid values: 1 to 10.
         # 
-        # Default value: 1
+        # Default value: 1.
         self.round = round
         # Specifies whether to strictly meet the requirements of the TargetCapacity parameter. The parameter takes effect only when StrictSatisfiedTargetCapacity is set to true. Valid values:
         # 
         # *   true: Check the inventory of the resources. Compute nodes are created based on the value of the TargetCapacity parameter only when the available resources are sufficient. Otherwise, no compute nodes are created.
-        # *   false: Check the inventory of the resources. Compute nodes are created only when the available resources are sufficient. However, some compute nodes may fail to be created because resources become insufficient after the inventory is checked.
+        # *   false: Check the inventory of the resources. Compute nodes are created only when the available resources are sufficient. However, some compute nodes may fail to be created because resources become insufficient after the inventory query.
         # 
-        # Default value: false
+        # Default value: false.
         self.strict_resource_provision = strict_resource_provision
         # Specifies whether to meet the requirements of the TargetCapacity parameter. Valid values:
         # 
         # *   true: If the available resources are fewer than the resources that you want to add, no compute nodes are created and an error is returned. If the available resources are more than the resources that you want to add, the following cases may occur:
         # 
         #     *   If StrictResourceProvision is set to true, check the inventory of the resources. Compute nodes are created based on the value of the TargetCapacity parameter only when the available resources are sufficient. Otherwise, no compute nodes are created.
-        #     *   If StrictResourceProvision is set to false, check the inventory of the resources. Compute nodes are created only when the available resources are sufficient. However, some compute nodes may fail to be created because resources become insufficient after the inventory is checked.
+        #     *   If StrictResourceProvision is set to false, check the inventory of the resources. Compute nodes are created only when the available resources are sufficient. However, some compute nodes may fail to be created because resources become insufficient after the inventory query.
         # 
         # *   false: If the available resources are insufficient, compute nodes are created based on the inventory of the resources.
         # 
-        # Default value: true
+        # Default value: true.
         self.strict_satisfied_target_capacity = strict_satisfied_target_capacity
-        # The performance level of the ESSD used as the system disk. Valid values:
+        # The performance level of the ESSD that you want to use as the system disk. Valid values:
         # 
         # *   PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
-        # *   PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
+        # *   PL1: A single ESSD can deliver up to 50,000 IOPS of random read/write.
         # *   PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
         # *   PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
         # 
-        # Default value: PL0
-        # 
-        # For more information, see [ESSDs](~~122389~~).
+        # Default value: PL0. For more information, see [ESSDs](~~122389~~).
         self.system_disk_level = system_disk_level
         # The size of the system disk. Unit: GB.
         # 
-        # Valid values: 40 to 500
+        # Valid values: 40 to 500.
         # 
-        # Default value: 40
+        # Default value: 40.
         self.system_disk_size = system_disk_size
         # The type of the system disk. Valid values:
         # 
-        # *   cloud_efficiency: ultra disk.
-        # *   cloud_ssd: SSD.
-        # *   cloud_essd: ESSD.
+        # *   cloud_efficiency: ultra disk
+        # *   cloud_ssd: SSD
+        # *   cloud_essd: enhanced SSD (ESSD)
         # *   cloud: basic disk. Disks of this type are retired.
         self.system_disk_type = system_disk_type
+        # The tag to add to the instance.
         self.tag = tag
-        # The number of the resource that you want to add. The specific number depends on the value of the ResourceAmountType parameter:
+        # The amount of the resource that you want to add. The specific number depends on the value of the ResourceAmountType parameter:
         # 
         # *   If ResourceAmountType is set to Instance, the value range of TargetCapacity is 1 to 200.
         # *   If ResourceAmountType is set to Cores, the value range of TargetCapacity is 1 to 1,000.
         self.target_capacity = target_capacity
+        # The details of the zones. You can specify up to 10 zones.
         self.zone_infos = zone_infos
 
     def validate(self):
@@ -2018,15 +2020,12 @@ class ApplyNodesResponseBody(TeaModel):
     ):
         # The detailed result of the request.
         self.detail = detail
-        # The ID of the Elastic Compute Service (ECS) instance.
-        # 
-        # >  AddNodes is an asynchronous API operation. If a request succeeds, a response is immediately generated before ECS instances are created. Therefore, the value of the parameter is null. You can call the [ListNodes](~~87161~~) operation to query the ID of the ECS instance.
         self.instance_ids = instance_ids
-        # The ID of the request.
+        # The task ID.
         self.request_id = request_id
-        # The number of the compute nodes that were created.
+        # The number of the compute nodes that are created.
         self.satisfied_amount = satisfied_amount
-        # The ID of the task.
+        # The request ID.
         self.task_id = task_id
 
     def validate(self):
@@ -4975,11 +4974,11 @@ class DeleteClusterRequest(TeaModel):
     ):
         # The ID of the cluster.
         # 
-        # You can call the [ListClusters](~~87116~~) operation to query the cluster ID.
+        # You can call the [ListClusters](~~87116~~) operation to obtain cluster IDs.
         self.cluster_id = cluster_id
         # Specifies whether to release Elastic Compute Service (ECS) instances that are created by using Elastic High Performance Computing (E-HPC).
         # 
-        # Default value: true
+        # Default value: true.
         self.release_instance = release_instance
 
     def validate(self):
@@ -5012,9 +5011,9 @@ class DeleteClusterResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -6656,7 +6655,10 @@ class DescribeClusterRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
-        # The cluster ID. You can call the [ListClusters](~~87116~~) operation to query the list of clusters in a region.
+        # The type of the protocol that is used by the file system. Valid values:
+        # 
+        # *   nfs
+        # *   smb
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -6688,22 +6690,29 @@ class DescribeClusterResponseBodyClusterInfoAddOnsInfoAddOnsInfo(TeaModel):
         status: str = None,
         url: str = None,
     ):
-        # The deployment mode of the custom component. Valid values:
+        # Specifies whether to enable auto-renewal. The parameter takes effect only when EcsChargeType is set to PrePaid. Valid values:
         # 
-        # *   local
-        # *   ecs
+        # *   true: enables auto-renewal.
+        # *   false: disables auto-renewal.
+        # 
+        # Default value: true.
         self.deploy_mode = deploy_mode
-        # The TCP port number of the custom component.
-        self.port = port
-        # The software ID of the component.
-        self.software_id = software_id
-        # The running status of the custom component. Valid values:
+        # The bidding method of the compute node. Valid values:
         # 
-        # *   running
-        # *   stopped
-        # *   exception
+        # *   NoSpot: The instance is created as a pay-as-you-go instance.
+        # *   SpotWithPriceLimit: The instance is created as a preemptible instance with a user-defined maximum hourly price.
+        # *   SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is automatically used as the bidding price.
+        self.port = port
+        # The auto-renewal period of the subscription compute nodes. The parameter takes effect when AutoRenew is set to true.
+        # 
+        # *   If PeriodUnit is set to Week, the valid values of the AutoRenewPeriod parameter are 1, 2, and 3.
+        # *   If PeriodUnit is set to Month, the valid values of the AutoRenewPeriod parameter are 1, 2, 3, 6, and 12.
+        # 
+        # Default value: 1.
+        self.software_id = software_id
+        # The maximum hourly price of the compute nodes. A maximum of three decimal places can be used in the value of the parameter. The parameter is valid only when the ComputeSpotStrategy parameter is set to SpotWithPriceLimit.
         self.status = status
-        # The endpoint of the custom component service.
+        # The information of the on-premises node in the cluster.
         self.url = url
 
     def validate(self):
@@ -6784,11 +6793,11 @@ class DescribeClusterResponseBodyClusterInfoApplicationsApplicationInfo(TeaModel
         tag: str = None,
         version: str = None,
     ):
-        # The name of the software.
+        # The number of compute nodes in the cluster.
         self.name = name
-        # The tag of the software.
+        # The instance type of the compute nodes.
         self.tag = tag
-        # The version of the software.
+        # The list of logon nodes.
         self.version = version
 
     def validate(self):
@@ -6860,9 +6869,9 @@ class DescribeClusterResponseBodyClusterInfoEcsInfoCompute(TeaModel):
         count: int = None,
         instance_type: str = None,
     ):
-        # The number of compute nodes in the cluster.
+        # The software ID of the component.
         self.count = count
-        # The instance type of the compute nodes.
+        # The information about the custom component service.
         self.instance_type = instance_type
 
     def validate(self):
@@ -6895,9 +6904,13 @@ class DescribeClusterResponseBodyClusterInfoEcsInfoLogin(TeaModel):
         count: int = None,
         instance_type: str = None,
     ):
-        # The number of logon nodes in the cluster.
+        # The running status of the custom component. Valid values:
+        # 
+        # *   running
+        # *   stopped
+        # *   exception
         self.count = count
-        # The instance type of the logon nodes.
+        # The TCP port number of the custom component.
         self.instance_type = instance_type
 
     def validate(self):
@@ -6930,9 +6943,13 @@ class DescribeClusterResponseBodyClusterInfoEcsInfoManager(TeaModel):
         count: int = None,
         instance_type: str = None,
     ):
-        # The number of management nodes.
+        # The hostname of the on-premises management nodes.
         self.count = count
-        # The instance type of the management nodes.
+        # The type of on-premises management nodes. Valid values:
+        # 
+        # *   scheduler
+        # *   account
+        # *   account, scheduler
         self.instance_type = instance_type
 
     def validate(self):
@@ -6965,9 +6982,9 @@ class DescribeClusterResponseBodyClusterInfoEcsInfoProxyMgr(TeaModel):
         count: int = None,
         instance_type: str = None,
     ):
-        # The number of proxy nodes.
+        # Specifies whether to not install the agent.
         self.count = count
-        # The instance type of the proxy node.
+        # The version of the E-HPC cluster.
         self.instance_type = instance_type
 
     def validate(self):
@@ -7002,15 +7019,18 @@ class DescribeClusterResponseBodyClusterInfoEcsInfo(TeaModel):
         manager: DescribeClusterResponseBodyClusterInfoEcsInfoManager = None,
         proxy_mgr: DescribeClusterResponseBodyClusterInfoEcsInfoProxyMgr = None,
     ):
-        # The list of compute nodes.
+        # The IP address of the on-premises management nodes.
         self.compute = compute
-        # The list of logon nodes.
+        # The deployment mode of the custom component. Valid values:
+        # 
+        # *   local
+        # *   ecs
         self.login = login
-        # The information of management nodes.
-        self.manager = manager
-        # The list of proxy nodes on the cloud.
+        # The list of on-premises management nodes.
         # 
         # This parameter is returned only when the cluster is deployed across hybrid environments and the hybrid-cloud proxy mode is enabled for the cluster.
+        self.manager = manager
+        # The endpoint of the custom component service.
         self.proxy_mgr = proxy_mgr
 
     def validate(self):
@@ -7063,16 +7083,8 @@ class DescribeClusterResponseBodyClusterInfoInitialImage(TeaModel):
         image_owner_alias: str = None,
         os_tag: str = None,
     ):
-        # The image ID.
         self.image_id = image_id
-        # The type of the image. Valid values:
-        # 
-        # *   system: public image
-        # *   self: custom image
-        # *   others: shared image
-        # *   marketplace: Alibaba Cloud Marketplace image
         self.image_owner_alias = image_owner_alias
-        # An array of OS images that are supported by E-HPC.
         self.os_tag = os_tag
 
     def validate(self):
@@ -7113,33 +7125,11 @@ class DescribeClusterResponseBodyClusterInfoNodesNodesInfo(TeaModel):
         role: str = None,
         scheduler_type: str = None,
     ):
-        # The service type of the domain account to which the on-premises node in the cluster belongs. Valid values:
-        # 
-        # *   nis
-        # *   ldap
-        # 
-        # Default value: nis.
         self.account_type = account_type
-        # The directory of the on-premises node in the cluster.
         self.dir = dir
-        # The hostname of the on-premises node in the cluster.
         self.host_name = host_name
-        # The IP address of the on-premises node in the cluster.
         self.ip_address = ip_address
-        # The role of the on-premises node in the cluster. Valid values:
-        # 
-        # *   Manager: management node
-        # *   Login: logon node
-        # *   Compute: compute node
         self.role = role
-        # The scheduler type of the on-premises node in the cluster. Valid values:
-        # 
-        # *   pbs
-        # *   slurm
-        # *   opengridscheduler
-        # *   deadline
-        # 
-        # Default value: pbs.
         self.scheduler_type = scheduler_type
 
     def validate(self):
@@ -7224,15 +7214,13 @@ class DescribeClusterResponseBodyClusterInfoOnPremiseInfoOnPremiseInfo(TeaModel)
         ip: str = None,
         type: str = None,
     ):
-        # The hostname of the on-premises management nodes.
+        # The parameter that is used to connect to the OpenLDAP server.
         self.host_name = host_name
-        # The IP address of the on-premises management nodes.
+        # The parameter that is used to connect to the Windows AD server.
         self.ip = ip
-        # The type of on-premises management nodes. Valid values:
+        # The domain name of the on-premises E-HPC cluster.
         # 
-        # *   scheduler
-        # *   account
-        # *   account, scheduler
+        # This parameter takes effect only when the AccoutType parameter is set to Idap.
         self.type = type
 
     def validate(self):
@@ -7304,9 +7292,11 @@ class DescribeClusterResponseBodyClusterInfoPostInstallScriptsPostInstallScriptI
         args: str = None,
         url: str = None,
     ):
-        # The runtime parameters of the script.
+        # The instance type of the proxy node.
         self.args = args
-        # The URL used to download the script.
+        # The list of proxy nodes on the cloud.
+        # 
+        # This parameter is returned only when the cluster is deployed across hybrid environments and the hybrid-cloud proxy mode is enabled for the cluster.
         self.url = url
 
     def validate(self):
@@ -7412,6 +7402,7 @@ class DescribeClusterResponseBodyClusterInfo(TeaModel):
         scc_cluster_id: str = None,
         scheduler_pre_install: int = None,
         scheduler_type: str = None,
+        scheduler_version: str = None,
         security_group_id: str = None,
         status: str = None,
         v_switch_id: str = None,
@@ -7424,103 +7415,13 @@ class DescribeClusterResponseBodyClusterInfo(TeaModel):
         without_agent: int = None,
         zone_id: str = None,
     ):
-        # The server type of the account. Valid values:
-        # 
-        # *   nis
-        # *   ldap
-        self.account_type = account_type
-        # The information about the custom component service.
-        self.add_ons_info = add_ons_info
-        # The array of the software in the cluster. The array contains the name and version of the software.
-        self.applications = applications
-        # Specifies whether to enable auto-renewal. The parameter takes effect only when EcsChargeType is set to PrePaid. Valid values:
-        # 
-        # *   true: enables auto-renewal.
-        # *   false: disables auto-renewal.
-        # 
-        # Default value: true.
-        self.auto_renew = auto_renew
-        # The auto-renewal period of the subscription compute nodes. The parameter takes effect when AutoRenew is set to true.
-        # 
-        # *   If PeriodUnit is set to Week, the valid values of the AutoRenewPeriod parameter are 1, 2, and 3.
-        # *   If PeriodUnit is set to Month, the valid values of the AutoRenewPeriod parameter are 1, 2, 3, 6, and 12.
-        # 
-        # Default value: 1.
-        self.auto_renew_period = auto_renew_period
-        # The image of the cluster.
-        self.base_os_tag = base_os_tag
-        # The version of the E-HPC client.
-        self.client_version = client_version
-        # The version of the E-HPC cluster.
-        self.cluster_version = cluster_version
-        # The maximum hourly price of the compute nodes. A maximum of three decimal places can be used in the value of the parameter. The parameter is valid only when the ComputeSpotStrategy parameter is set to SpotWithPriceLimit.
-        self.compute_spot_price_limit = compute_spot_price_limit
-        # The bidding method of the compute node. Valid values:
-        # 
-        # *   NoSpot: The instance is created as a pay-as-you-go instance.
-        # *   SpotWithPriceLimit: The instance is created as a preemptible instance with a user-defined maximum hourly price.
-        # *   SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is automatically used as the bidding price.
-        self.compute_spot_strategy = compute_spot_strategy
-        # The time at which the instance is created.
-        self.create_time = create_time
-        # The mode in which the cluster is deployed. Valid values:
-        # 
-        # *   Standard: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
-        # *   Advanced: Two high availability (HA) account nodes, two HA scheduler nodes, one logon node, and multiple compute nodes are separately deployed.
-        # *   Simple: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
-        # *   Tiny: The account node, scheduling node, and logon node are deployed on one node. The compute node is separately deployed.
-        self.deploy_mode = deploy_mode
-        # The description of the cluster.
-        self.description = description
-        # The domain name of the on-premises E-HPC cluster.
-        # 
-        # This parameter takes effect only when the AccoutType parameter is set to Idap.
-        self.domain = domain
-        # The billing method of the nodes in the cluster. Valid values:
-        # 
-        # *   PostPaid: pay-as-you-go
-        # *   PrePaid: subscription
-        self.ecs_charge_type = ecs_charge_type
-        # The list of ECS instance specifications and quantity.
-        self.ecs_info = ecs_info
-        # Specifies whether to enable the high availability feature.
-        # 
-        # >  If high availability is enabled, each management role in the cluster uses both primary and secondary instances.
-        self.ha_enable = ha_enable
-        # The instance ID.
-        self.id = id
-        # The image ID.
-        self.image_id = image_id
-        # The image name.
-        self.image_name = image_name
         # The image type. Valid values:
         # 
         # *   system: public image
         # *   self: custom image
         # *   others: shared image
         # *   marketplace: Alibaba Cloud Marketplace image
-        self.image_owner_alias = image_owner_alias
-        # The image information of the operating systems.
-        self.initial_image = initial_image
-        # The name of the AccessKey pair.
-        self.key_pair_name = key_pair_name
-        # The location where the cluster is deployed. Valid values:
-        # 
-        # *   OnPremise: The node is deployed on a hybrid cloud.
-        # *   PublicCloud: The cluster is deployed on a public cloud.
-        self.location = location
-        # The name of the cluster.
-        self.name = name
-        # The information of the on-premises node in the cluster.
-        self.nodes = nodes
-        # The list of on-premises management nodes.
-        # 
-        # This parameter is returned only when the cluster is deployed across hybrid environments and the hybrid-cloud proxy mode is enabled for the cluster.
-        self.on_premise_info = on_premise_info
-        # The parameter that is used to connect to the OpenLDAP server.
-        self.openldap_par = openldap_par
-        # The operating system tag of the image.
-        self.os_tag = os_tag
+        self.account_type = account_type
         # The duration of the subscription. The unit of the duration is specified by the `PeriodUnit` parameter.
         # 
         # *   If you set PriceUnit to Year, the valid values of the Period parameter are 1, 2, and 3.
@@ -7528,15 +7429,59 @@ class DescribeClusterResponseBodyClusterInfo(TeaModel):
         # *   If you set PriceUnit to Hour, the valid value of the Period parameter is 1.
         # 
         # Default value: 1.
-        self.period = period
-        # The unit of the subscription duration. Valid value:
+        self.add_ons_info = add_ons_info
+        # The number of management nodes.
+        self.applications = applications
+        self.auto_renew = auto_renew
+        # The image ID.
+        self.auto_renew_period = auto_renew_period
+        # The vSwitch ID. E-HPC can be deployed only in VPCs.
+        self.base_os_tag = base_os_tag
+        # The URL used to download the script.
+        self.client_version = client_version
+        # The role of the on-premises node in the cluster. Valid values:
         # 
-        # *   Year
-        # *   Month
-        # *   Hour
+        # *   Manager: management node
+        # *   Login: logon node
+        # *   Compute: compute node
+        self.cluster_version = cluster_version
+        self.compute_spot_price_limit = compute_spot_price_limit
+        self.compute_spot_strategy = compute_spot_strategy
+        # The mode in which the cluster is deployed. Valid values:
         # 
-        # Default value: Month.
-        self.period_unit = period_unit
+        # *   Standard: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
+        # *   Advanced: Two high availability (HA) account nodes, two HA scheduler nodes, one logon node, and multiple compute nodes are separately deployed.
+        # *   Simple: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
+        # *   Tiny: The account node, scheduling node, and logon node are deployed on one node. The compute node is separately deployed.
+        self.create_time = create_time
+        # The instance ID.
+        self.deploy_mode = deploy_mode
+        # The mount target of the NAS file system. The mount target is of the VPC type. Mount targets cannot be automatically created for NAS file systems.
+        self.description = description
+        # The directory of the on-premises node in the cluster.
+        self.domain = domain
+        # The image ID.
+        self.ecs_charge_type = ecs_charge_type
+        # The number of proxy nodes.
+        self.ecs_info = ecs_info
+        # The region ID.
+        self.ha_enable = ha_enable
+        # The list of post-installation scripts
+        self.id = id
+        # The type of the network shared storage. Valid value: NAS.
+        self.image_id = image_id
+        # The tag of the software.
+        self.image_name = image_name
+        # The version of the E-HPC client.
+        self.image_owner_alias = image_owner_alias
+        self.initial_image = initial_image
+        # The name of the cluster.
+        self.key_pair_name = key_pair_name
+        # The version of the software.
+        self.location = location
+        # The image name.
+        self.name = name
+        self.nodes = nodes
         # The mode configurations of the plug-in. This parameter takes effect only when the SchedulerType parameter is set to custom.
         # 
         # The value must be a JSON string. The parameter contains the following parameters: pluginMod, pluginLocalPath, and pluginOssPath.
@@ -7549,64 +7494,85 @@ class DescribeClusterResponseBodyClusterInfo(TeaModel):
         # *   pluginLocalPath: the local path where the plug-in is stored. We recommend that you select a shared directory in the oss mode and a non-shared directory in the image mode.
         # 
         # *   pluginOssPath: the remote path where the plug-in is stored in OSS. This parameter takes effect only if you set the pluginMod parameter to oss.
-        self.plugin = plugin
-        # The list of post-installation scripts
-        self.post_install_scripts = post_install_scripts
-        # The node type details of the instance RAM role.
-        self.ram_node_types = ram_node_types
-        # The name of the instance Resource Access Management (RAM) role.
-        self.ram_role_name = ram_role_name
-        # The region ID.
-        self.region_id = region_id
-        # The remote directory on which the file system is mounted.
-        self.remote_directory = remote_directory
-        # The resource group ID.
-        self.resource_group_id = resource_group_id
-        # The ID of the Super Computing Cluster (SCC) instance. If the cluster is not an SCC instance, a null string is returned.
-        self.scc_cluster_id = scc_cluster_id
-        # Specifies whether the scheduler is preinstalled for the image. Valid values:
+        self.on_premise_info = on_premise_info
+        # The scheduler type of the on-premises node in the cluster. Valid values:
         # 
-        # *   true: The scheduler is preinstalled. When you create a node or scale out a cluster, you do not need to install the scheduler.
-        # *   false: The scheduler is not preinstalled. When you create or add a cluster, you must install the scheduler.
+        # *   pbs
+        # *   slurm
+        # *   opengridscheduler
+        # *   deadline
+        # 
+        # Default value: pbs.
+        self.openldap_par = openldap_par
+        # The zone ID.
+        self.os_tag = os_tag
+        # An array of OS images that are supported by E-HPC.
+        self.period = period
+        # The type of the image. Valid values:
+        # 
+        # *   system: public image
+        # *   self: custom image
+        # *   others: shared image
+        # *   marketplace: Alibaba Cloud Marketplace image
+        self.period_unit = period_unit
+        # The IP address of the on-premises node in the cluster.
+        self.plugin = plugin
+        # The instance type of the logon nodes.
+        self.post_install_scripts = post_install_scripts
+        # The instance type of the management nodes.
+        self.ram_node_types = ram_node_types
+        # The information of management nodes.
+        self.ram_role_name = ram_role_name
+        # The node type details of the instance RAM role.
+        self.region_id = region_id
+        # The name of the instance Resource Access Management (RAM) role.
+        self.remote_directory = remote_directory
+        # The list of ECS instance specifications and quantity.
+        self.resource_group_id = resource_group_id
+        # The version of the scheduler.
+        self.scc_cluster_id = scc_cluster_id
+        # The service type of the domain account to which the on-premises node in the cluster belongs. Valid values:
+        # 
+        # *   nis
+        # *   ldap
+        # 
+        # Default value: nis.
         self.scheduler_pre_install = scheduler_pre_install
+        # The location where the cluster is deployed. Valid values:
+        # 
+        # *   OnPremise: The node is deployed on a hybrid cloud.
+        # *   PublicCloud: The cluster is deployed on a public cloud.
+        self.scheduler_type = scheduler_type
+        # The version of the scheduler.
+        self.scheduler_version = scheduler_version
         # The type of the scheduler. Valid values:
         # 
         # *   pbs
         # *   slurm
         # *   opengridscheduler
         # *   deadline
-        self.scheduler_type = scheduler_type
-        # The ID of the security group.
         self.security_group_id = security_group_id
-        # The status of the cluster. Valid values:
+        # Specifies whether to enable the high availability feature.
         # 
-        # *   uninit: The cluster is not initialized.
-        # *   creating: The cluster is being created.
-        # *   init: The cluster is being initialized.
-        # *   running: The cluster is running.
-        # *   exception: The cluster encounters an exception.
-        # *   releasing: The cluster is being released.
+        # >  If high availability is enabled, each management role in the cluster uses both primary and secondary instances.
         self.status = status
-        # The vSwitch ID. E-HPC can be deployed only in VPCs.
+        # The array of the software in the cluster. The array contains the name and version of the software.
         self.v_switch_id = v_switch_id
-        # The ID of the Apsara File Storage NAS file system. NAS file systems cannot be automatically created.
+        # The remote directory on which the file system is mounted.
         self.volume_id = volume_id
-        # The mount target of the NAS file system. The mount target is of the VPC type. Mount targets cannot be automatically created for NAS file systems.
+        # The resource group ID.
         self.volume_mountpoint = volume_mountpoint
-        # The type of the protocol that is used by the file system. Valid values:
-        # 
-        # *   nfs
-        # *   smb
+        # The operating system tag of the image.
         self.volume_protocol = volume_protocol
-        # The type of the network shared storage. Valid value: NAS.
+        # The name of the software.
         self.volume_type = volume_type
-        # The VPC ID of the node.
+        # The image of the cluster.
         self.vpc_id = vpc_id
-        # The parameter that is used to connect to the Windows AD server.
+        # The image information of the operating systems.
         self.win_ad_par = win_ad_par
-        # Specifies whether to not install the agent.
+        # The hostname of the on-premises node in the cluster.
         self.without_agent = without_agent
-        # The zone ID.
+        # The runtime parameter of the script.
         self.zone_id = zone_id
 
     def validate(self):
@@ -7713,6 +7679,8 @@ class DescribeClusterResponseBodyClusterInfo(TeaModel):
             result['SchedulerPreInstall'] = self.scheduler_pre_install
         if self.scheduler_type is not None:
             result['SchedulerType'] = self.scheduler_type
+        if self.scheduler_version is not None:
+            result['SchedulerVersion'] = self.scheduler_version
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
         if self.status is not None:
@@ -7828,6 +7796,8 @@ class DescribeClusterResponseBodyClusterInfo(TeaModel):
             self.scheduler_pre_install = m.get('SchedulerPreInstall')
         if m.get('SchedulerType') is not None:
             self.scheduler_type = m.get('SchedulerType')
+        if m.get('SchedulerVersion') is not None:
+            self.scheduler_version = m.get('SchedulerVersion')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('Status') is not None:
@@ -7859,9 +7829,9 @@ class DescribeClusterResponseBody(TeaModel):
         cluster_info: DescribeClusterResponseBodyClusterInfo = None,
         request_id: str = None,
     ):
-        # The cluster information.
+        # The ID of the Apsara File Storage NAS file system. NAS file systems cannot be automatically created.
         self.cluster_info = cluster_info
-        # The request ID.
+        # The description of the cluster.
         self.request_id = request_id
 
     def validate(self):
@@ -10014,14 +9984,17 @@ class DescribeJobRequest(TeaModel):
         cluster_id: str = None,
         job_id: str = None,
     ):
+        # Specifies whether to use an asynchronous link to stop the job.
+        # 
+        # Default value: false.
         self.async_ = async_
-        # The ID of the cluster.
+        # The ID of the E-HPC cluster.
         # 
-        # You can call the [ListClusters](~~87116~~) operation to query the cluster ID.
+        # You can call the [ListClusters](~~87116~~) operation to obtain the cluster ID.
         self.cluster_id = cluster_id
-        # The ID of the job.
+        # The job ID.
         # 
-        # You can call the [ListJobs](~~87251~~) operation to query the job ID.
+        # You can call the [ListJobs](~~87251~~) operation to obtain the job ID.
         self.job_id = job_id
 
     def validate(self):
@@ -10088,7 +10061,7 @@ class DescribeJobResponseBody(TeaModel):
     ):
         # The list of returned job information.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11063,7 +11036,7 @@ class DescribeServerlessJobsResponseBodyJobInfosContainerGroupsContainersEnviron
         value: str = None,
         value_from: DescribeServerlessJobsResponseBodyJobInfosContainerGroupsContainersEnvironmentVarsValueFrom = None,
     ):
-        # The key of the environment variable.
+        # The name of the environment variable.
         self.key = key
         # The value of the environment variable.
         self.value = value
@@ -11191,19 +11164,19 @@ class DescribeServerlessJobsResponseBodyJobInfosContainerGroupsContainersLivenes
     ):
         # The commands that are run.
         self.execs = execs
-        # The minimum number of consecutive failures that must occur for the probe to be considered failed. Default value: 3.
+        # The minimum number of consecutive failures that must occur for the probe to be considered as failed. Default value: 3.
         self.failure_threshold = failure_threshold
         # The HTTP GET method that is used to check the container.
         self.http_get = http_get
-        # The number of seconds between the time when the startup of the container ends and the time when the check starts.
+        # The number of seconds after the container is started and before a liveness probe is initiated.
         self.initial_delay_seconds = initial_delay_seconds
         # The interval at which the probe is run. Unit: seconds. Default value: 10. Minimum value: 1.
         self.period_seconds = period_seconds
-        # The minimum number of consecutive successes for the probe to be considered successful after having failed. Default value: 1. Set the value to 1.
+        # The minimum number of consecutive successes that must occur for the check to be considered successful. Default value: 1. Set the value to 1.
         self.success_threshold = success_threshold
         # The TCP socket method that is used to check the container.
         self.tcp_socket = tcp_socket
-        # The timeout period of a readiness probe. Default value: 1. Minimum value: 1. Unit: seconds.
+        # The timeout period of the check. Default value: 1. Minimum value: 1.
         self.timeout_seconds = timeout_seconds
 
     def validate(self):
@@ -11466,15 +11439,15 @@ class DescribeServerlessJobsResponseBodyJobInfosContainerGroupsContainersReadine
     ):
         # The commands that are run in the container when you use the command line interface (CLI) to perform health checks.
         self.execs = execs
-        # The minimum number of consecutive failures that must occur for the check to be considered failure. Default value: 3.
+        # The minimum number of consecutive failures that must occur for the check to be considered as failed. Default value: 3.
         self.failure_threshold = failure_threshold
         # The HTTP GET method that is used to check the container.
         self.http_get = http_get
-        # The number of seconds between the time when the startup of the container ends and the time when the check starts.
+        # The number of seconds after the container is started and before a liveness probe is initiated.
         self.initial_delay_seconds = initial_delay_seconds
-        # The interval at which the check is performed. Unit: seconds. Default value: 10. Minimum value: 1.
+        # The interval at which the container is checked. Unit: seconds. Default value: 10. Minimum value: 1.
         self.period_seconds = period_seconds
-        # The minimum number of consecutive successes that must occur for the check to be considered successful. Default value: 1. Set the value to 1.
+        # The minimum number of consecutive successes for a failed liveness probe to be considered successful. Default value: 1. Set the value to 1.
         self.success_threshold = success_threshold
         # The TCP socket method that is used to check the container.
         self.tcp_socket = tcp_socket
@@ -11573,7 +11546,7 @@ class DescribeServerlessJobsResponseBodyJobInfosContainerGroupsContainersSecurit
         self.capability = capability
         # Indicates whether the root file system is set to the read-only mode. The only valid value is true.
         self.read_only_root_filesystem = read_only_root_filesystem
-        # The UID that is used to run the entry point of the container process.
+        # The user ID (UID) that is used to run the entry point of the container process.
         self.run_as_user = run_as_user
 
     def validate(self):
@@ -11696,7 +11669,7 @@ class DescribeServerlessJobsResponseBodyJobInfosContainerGroupsContainers(TeaMod
         self.args = args
         # The startup command of the container.
         self.commands = commands
-        # The number of vCPUs of the container.
+        # The number of vCPUs.
         self.cpu = cpu
         # The current status of the container.
         self.current_state = current_state
@@ -11706,7 +11679,7 @@ class DescribeServerlessJobsResponseBodyJobInfosContainerGroupsContainers(TeaMod
         self.gpu = gpu
         # The image of the container.
         self.image = image
-        # The policy for image pulling. Valid values:
+        # The policy to pull images. Valid values:
         # 
         # *   Always: Each time instances are created, image pulling is performed.
         # *   IfNotPresent: On-premises images are preferentially used. If no on-premises images are available, image pulling is performed.
@@ -11730,9 +11703,9 @@ class DescribeServerlessJobsResponseBodyJobInfosContainerGroupsContainers(TeaMod
         self.restart_count = restart_count
         # The security context of the container.
         self.security_context = security_context
-        # Indicates whether the container allocates buffer resources to standard input streams when the container runs. If you do not specify this parameter, an EOF error may occur when standard input streams in the init container are read. Default value: false.
+        # Indicates whether the container allocates buffer resources to standard input streams when the container runs. If you do not specify this parameter, an end-of-file (EOF) error may occur when standard input streams in the container are read. Default value: false.
         self.stdin = stdin
-        # Indicates whether the container runtime closes the stdin channel after the stdin channel has been opened by a single attach session. If stdin is true, the stdin stream remains open across multiple attach sessions. If StdinOnce is set to true, stdin is opened on container start, remains empty until the first client attaches to stdin, and then is open and receives data until the client disconnects. When the client disconnects, stdin is closed and remains closed until the container is restarted.
+        # Indicates whether the container runtime closes the stdin channel after the stdin channel has been opened by a single attach session. If stdin is true, the stdin stream remains open across multiple attach sessions. If StdinOnce is set to true, stdin is opened on container start, but remains empty until the first client attaches to stdin, and then remains open and receives data until the client disconnects. When the client disconnects, stdin is closed and remains closed until the container is restarted.
         self.stdin_once = stdin_once
         # Indicates whether interaction is enabled. Default value: false. If the value of the Command parameter is /bin/bash, the value of this parameter must be set to true.
         self.tty = tty
@@ -12061,7 +12034,7 @@ class DescribeServerlessJobsResponseBodyJobInfosContainerGroupsEvents(TeaModel):
         self.last_timestamp = last_timestamp
         # The message about the event.
         self.message = message
-        # The name of the object to which the event belongs.
+        # The name of the category to which the event belongs.
         self.name = name
         # The name of the event.
         self.reason = reason
@@ -12123,7 +12096,7 @@ class DescribeServerlessJobsResponseBodyJobInfosContainerGroupsHostAliases(TeaMo
     ):
         # The information about the host.
         self.hostnames = hostnames
-        # The IP address of the host.
+        # The IP address.
         self.ip = ip
 
     def validate(self):
@@ -12168,7 +12141,7 @@ class DescribeServerlessJobsResponseBodyJobInfosContainerGroupsInitContainersCur
         self.exit_code = exit_code
         # The time when the container stopped running.
         self.finish_time = finish_time
-        # The message of the event.
+        # The message about the event.
         self.message = message
         # The reason why the container is in this state.
         self.reason = reason
@@ -12296,7 +12269,7 @@ class DescribeServerlessJobsResponseBodyJobInfosContainerGroupsInitContainersEnv
         value: str = None,
         value_from: DescribeServerlessJobsResponseBodyJobInfosContainerGroupsInitContainersEnvironmentVarsValueFrom = None,
     ):
-        # The key of the environment variable.
+        # The name of the environment variable.
         self.key = key
         # The value of the environment variable.
         self.value = value
@@ -12605,9 +12578,9 @@ class DescribeServerlessJobsResponseBodyJobInfosContainerGroupsInitContainers(Te
         self.environment_vars = environment_vars
         # The number of GPUs.
         self.gpu = gpu
-        # The image of the container.
+        # The image.
         self.image = image
-        # The policy for image pulling.
+        # The policy to pull images.
         self.image_pull_policy = image_pull_policy
         # The size of memory that is allocated to the init container. Unit: GiB.
         self.memory = memory
@@ -12838,12 +12811,12 @@ class DescribeServerlessJobsResponseBodyJobInfosContainerGroupsVolumes(TeaModel)
         self.config_file_volume_config_file_to_paths = config_file_volume_config_file_to_paths
         # The ID of the disk volume if you set Type to DiskVolume.
         self.disk_volume_disk_id = disk_volume_disk_id
-        # The file system type of the disk volume.
+        # The type of the volume.
         self.disk_volume_fs_type = disk_volume_fs_type
-        # The storage media of emptyDir volume N. This parameter is empty by default, which indicates that the node file system is used as the storage media. Valid values:
+        # The storage media for the emptyDir volume. This parameter is empty by default, which indicates that the node file system is used as the storage media. Valid values:
         # 
         # *   Memory: uses memory as the storage media.
-        # *   LocalRaid0: forms local disks into RAID 0. This value is applicable only to scenarios in which an elastic container instance that has local disks mounted is created. For more information, see [Create an elastic container instance that has local disks mounted](~~114664~~).
+        # *   LocalRaid0: forms local disks into RAID 0. This value is valid only if an elastic container instance that has local disks mounted is created. For more information, see [Create an elastic container instance that has local disks mounted](~~114664~~).
         self.empty_dir_volume_medium = empty_dir_volume_medium
         # The storage size of the emptyDir volume. If you specify this parameter, include the unit in the value. We recommend that you use Gi or Mi.
         self.empty_dir_volume_size_limit = empty_dir_volume_size_limit
@@ -12853,11 +12826,11 @@ class DescribeServerlessJobsResponseBodyJobInfosContainerGroupsVolumes(TeaModel)
         self.flex_volume_fs_type = flex_volume_fs_type
         # The FlexVolume options.
         self.flex_volume_options = flex_volume_options
-        # The path to the NFS volume.
+        # The path of the Network File System (NFS) volume.
         self.nfsvolume_path = nfsvolume_path
         # Indicates whether the NFS volume is read-only.
         self.nfsvolume_read_only = nfsvolume_read_only
-        # The endpoint of the server when you set the Type parameter to NFSVolume.
+        # The endpoint of the server if you set Type to NFSVolume.
         self.nfsvolume_server = nfsvolume_server
         # The name of the volume.
         self.name = name
@@ -13009,7 +12982,7 @@ class DescribeServerlessJobsResponseBodyJobInfosContainerGroups(TeaModel):
         self.ephemeral_storage = ephemeral_storage
         # The event information. Up to 50 events can be returned.
         self.events = events
-        # The time when the instance failed to run due to overdue payments. The beginning of the time range to query. Specify the time in the RFC 3339 standard. The time must be in UTC.
+        # The time when the instance failed to run due to overdue payments. The time follows the RFC 3339 standard and must be in UTC.
         self.expired_time = expired_time
         # The time when the instance failed to run. The time follows the RFC 3339 standard and must be in UTC.
         self.failed_time = failed_time
@@ -13025,33 +12998,33 @@ class DescribeServerlessJobsResponseBodyJobInfosContainerGroups(TeaModel):
         self.intranet_ip = intranet_ip
         # The IPv6 address.
         self.ipv_6address = ipv_6address
-        # The memory size of the instance. Unit: GiB.
+        # The memory size of the elastic container instance. Unit: GiB.
         self.memory = memory
         # The name of the instance RAM role. You can use an instance RAM role to access both elastic container instances and ECS instances. For more information, see [Use the instance RAM role by calling APIs](~~61178~~).
         self.ram_role_name = ram_role_name
         # The ID of the region in which the instance resides.
         self.region_id = region_id
-        # The ID of the resource group to which the instance belongs. If you do not specify a resource group when you create an elastic container instance, the system automatically adds the instance to the default resource group in your account.
+        # The ID of the resource group to which the cluster belongs. If you do not specify a resource group when you create an elastic container instance, the system automatically adds the instance to the default resource group in your account.
         self.resource_group_id = resource_group_id
         # The instance restart policy. Valid values:
         # 
         # *   Always: Always restarts the instance if a container in the instance exits upon termination.
         # *   Never: Never restarts the instance if a container in the instance exits upon termination.
-        # *   OnFailure: Restarts the instance only if a container in the instance exists upon failure with a status code of non-zero.
+        # *   OnFailure: Restarts the instance when the last start failed.
         self.restart_policy = restart_policy
-        # The ID of the security group to which the instances belong.
+        # The ID of the security group.
         self.security_group_id = security_group_id
         # The maximum hourly price for the preemptible instance.
         # 
-        # This parameter is returned only if you set SpotStrategy to SpotWithPriceLimit.
+        # This parameter is returned only if you set the SpotStrategy parameter to SpotWithPriceLimit.
         self.spot_price_limit = spot_price_limit
-        # The bidding policy for the instance. Valid values:
+        # The bidding policy of the instance. Valid values:
         # 
-        # *   NoSpot: The node is a regular pay-as-you-go instance.
-        # *   SpotWithPriceLimit: The node is a preemptible instance that has a user-defined maximum hourly price.
-        # *   SpotAsPriceGo: The node is a preemptible instance for which the market price at the time of purchase is automatically used as the bidding price.
+        # *   NoSpot: The instance is a regular pay-as-you-go instance.
+        # *   SpotWithPriceLimit: The instance is a preemptible instance that has a user-defined maximum hourly price.
+        # *   SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is automatically used as the bidding price.
         self.spot_strategy = spot_strategy
-        # The status of the instance. Valid value:
+        # The status of the instance. Valid values:
         # 
         # *   Pending: The instance is being started.
         # *   Running: The instance is running.
@@ -13064,7 +13037,7 @@ class DescribeServerlessJobsResponseBodyJobInfosContainerGroups(TeaModel):
         # *   Terminating: The instance is being terminated.
         # *   Expired: The instance expires.
         self.status = status
-        # The time when all containers exited on success. The beginning of the time range to query. Specify the time in the RFC 3339 standard. The time must be in UTC.
+        # The time when all containers exited on success. The time follows the RFC 3339 standard and must be in UTC.
         self.succeeded_time = succeeded_time
         # The tags of the instances.
         self.tags = tags
@@ -13080,7 +13053,7 @@ class DescribeServerlessJobsResponseBodyJobInfosContainerGroups(TeaModel):
         self.v_switch_id = v_switch_id
         # The information about volumes.
         self.volumes = volumes
-        # The ID of the VPC to which the elastic container instances belong.
+        # The ID of the virtual private cloud (VPC) to which the elastic container instance belongs.
         self.vpc_id = vpc_id
         # The ID of the zone in which the elastic container instance is deployed.
         self.zone_id = zone_id
@@ -15609,9 +15582,13 @@ class GetCommonImageRequest(TeaModel):
         image_name: str = None,
         region_id: str = None,
     ):
+        # The ID of the cluster to which you want to store the image.
         self.cluster_id = cluster_id
+        # The image type.
         self.contain_type = contain_type
+        # The name of the image that you want to obtain.
         self.image_name = image_name
+        # The region ID of the cluster. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -16405,7 +16382,7 @@ class GetSchedulerInfoRequestScheduler(TeaModel):
         self,
         sched_name: str = None,
     ):
-        # The name of the scheduler. Valid values:
+        # The scheduler name. Valid values:
         # 
         # *   pbs
         # *   pbs19
@@ -16413,7 +16390,7 @@ class GetSchedulerInfoRequestScheduler(TeaModel):
         # *   slurm19
         # *   slurm20
         # 
-        # Valid values of N: 0 to 100
+        # Valid values of N: 0 to 100.
         self.sched_name = sched_name
 
     def validate(self):
@@ -16443,10 +16420,11 @@ class GetSchedulerInfoRequest(TeaModel):
         region_id: str = None,
         scheduler: List[GetSchedulerInfoRequestScheduler] = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # The ID of the region.
+        # The region ID of the cluster.
         self.region_id = region_id
+        # The detailed settings of the scheduler.
         self.scheduler = scheduler
 
     def validate(self):
@@ -16526,7 +16504,7 @@ class GetSchedulerInfoResponseBody(TeaModel):
         request_id: str = None,
         sched_info: List[GetSchedulerInfoResponseBodySchedInfo] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The settings of the scheduler.
         self.sched_info = sched_info
@@ -16855,11 +16833,13 @@ class InitializeEHPCRequest(TeaModel):
     def __init__(
         self,
         region_id: str = None,
+        service_name: str = None,
     ):
         # The ID of the region where the service-linked role is created.
         # 
         # You can call the [ListRegions](~~188593~~) operation to obtain the IDs of regions supported by E-HPC.
         self.region_id = region_id
+        self.service_name = service_name
 
     def validate(self):
         pass
@@ -16872,12 +16852,16 @@ class InitializeEHPCRequest(TeaModel):
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
         return self
 
 
@@ -16886,7 +16870,7 @@ class InitializeEHPCResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17094,9 +17078,9 @@ class InspectImageResponseBody(TeaModel):
         image_status: InspectImageResponseBodyImageStatus = None,
         request_id: str = None,
     ):
-        # The status of the image.
+        # The state of the container image.
         self.image_status = image_status
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -18752,6 +18736,7 @@ class ListClustersResponseBodyClustersClusterInfoSimple(TeaModel):
         self.os_tag = os_tag
         # The ID of the region.
         self.region_id = region_id
+        # The resource group ID.You can call the ListResourceGroups operation to query the IDs of resource groups.
         self.resource_group_id = resource_group_id
         # The type of the scheduler. Valid values:
         # 
@@ -19124,6 +19109,7 @@ class ListClustersMetaResponseBodyClustersClusterInfoSimple(TeaModel):
         client_version: str = None,
         deploy_mode: str = None,
         description: str = None,
+        ehpc_version: str = None,
         has_plugin: bool = None,
         id: str = None,
         is_compute_ess: bool = None,
@@ -19150,6 +19136,8 @@ class ListClustersMetaResponseBodyClustersClusterInfoSimple(TeaModel):
         self.deploy_mode = deploy_mode
         # The description of the cluster.
         self.description = description
+        # The version of E-HPC.
+        self.ehpc_version = ehpc_version
         # Indicates whether the cluster uses a plug-in. Valid values:
         # 
         # *   true
@@ -19209,6 +19197,8 @@ class ListClustersMetaResponseBodyClustersClusterInfoSimple(TeaModel):
             result['DeployMode'] = self.deploy_mode
         if self.description is not None:
             result['Description'] = self.description
+        if self.ehpc_version is not None:
+            result['EhpcVersion'] = self.ehpc_version
         if self.has_plugin is not None:
             result['HasPlugin'] = self.has_plugin
         if self.id is not None:
@@ -19239,6 +19229,8 @@ class ListClustersMetaResponseBodyClustersClusterInfoSimple(TeaModel):
             self.deploy_mode = m.get('DeployMode')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('EhpcVersion') is not None:
+            self.ehpc_version = m.get('EhpcVersion')
         if m.get('HasPlugin') is not None:
             self.has_plugin = m.get('HasPlugin')
         if m.get('Id') is not None:
@@ -19697,7 +19689,7 @@ class ListCommunityImagesResponseBodyImagesImageInfoBaseOsTag(TeaModel):
         # *   i386
         # *   x86\_64
         self.architecture = architecture
-        # The tag of the OS image.
+        # The operating system tag of the image.
         self.os_tag = os_tag
         # The distribution of the operating system. Valid values:
         # 
@@ -19765,9 +19757,9 @@ class ListCommunityImagesResponseBodyImagesImageInfoOsTag(TeaModel):
         self.architecture = architecture
         # The tag of the BOS image.
         self.base_os_tag = base_os_tag
-        # The tag of the OS image.
+        # The operating system tag of the image.
         self.os_tag = os_tag
-        # The operating system.
+        # The OS.
         self.platform = platform
         # The version of the operating system.
         self.version = version
@@ -19829,11 +19821,11 @@ class ListCommunityImagesResponseBodyImagesImageInfo(TeaModel):
         self.base_os_tag = base_os_tag
         # The description of the image.
         self.description = description
-        # The ID of the image.
+        # The image ID.
         self.image_id = image_id
-        # The name of the image.
+        # The image name.
         self.image_name = image_name
-        # The type of the image. Valid values:
+        # The image type. Valid values:
         # 
         # *   self: custom image
         # *   others: shared image
@@ -19848,7 +19840,7 @@ class ListCommunityImagesResponseBodyImagesImageInfo(TeaModel):
         # *   Month
         # *   Year
         self.pricing_cycle = pricing_cycle
-        # The Alibaba Cloud Marketplace product code of the image.
+        # The product code in Alibaba Cloud Marketplace.
         self.product_code = product_code
         # The size of the image. Unit: GiB.
         self.size = size
@@ -19857,12 +19849,12 @@ class ListCommunityImagesResponseBodyImagesImageInfo(TeaModel):
         # *   ECS: pay-as-you-go
         # *   package: subscription
         self.sku_code = sku_code
-        # The status of the image. Valid values:
+        # The state of the image. Valid values:
         # 
-        # *   UnAvailable: The image is unavailable.
-        # *   Available: The image is available.
-        # *   Creating: The image is being created.
-        # *   CreateFailed: The image failed to be created.
+        # *   UnAvailable
+        # *   Available
+        # *   Creating
+        # *   CreateFailed
         self.status = status
         # The owner of the image.
         self.uid = uid
@@ -19981,9 +19973,9 @@ class ListCommunityImagesResponseBody(TeaModel):
         images: ListCommunityImagesResponseBodyImages = None,
         request_id: str = None,
     ):
-        # The list of community images, including custom images and shared images.
+        # The list of custom images and shared images that are supported by the E-HPC.
         self.images = images
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -24772,14 +24764,15 @@ class ListNodesByQueueRequest(TeaModel):
         page_size: int = None,
         queue_name: str = None,
     ):
+        # Specifies whether to enable asynchronous query.
         self.async_ = async_
-        # The ID of the cluster.
+        # The ID of the E-HPC cluster.
         self.cluster_id = cluster_id
         # The number of the page to return. Pages start from page 1.
         self.page_number = page_number
         # The number of entries to return on each page. Valid values: 1 to 50.
         # 
-        # Default value: 10
+        # Default value: 10.
         self.page_size = page_size
         # The name of the queue.
         self.queue_name = queue_name
@@ -24934,9 +24927,9 @@ class ListNodesByQueueResponseBodyNodesNodeInfo(TeaModel):
     ):
         # The time when the node was added to the cluster.
         self.add_time = add_time
-        # The mode in which the node was added. Valid values:
+        # The mode in which the node is created. Valid values:
         # 
-        # *   manual: The node was manually added.
+        # *   manual: The node is manually added.
         # *   autoscale: The node is automatically added.
         self.create_mode = create_mode
         # Indicates whether the node was created by using E-HPC.
@@ -24945,13 +24938,13 @@ class ListNodesByQueueResponseBodyNodesNodeInfo(TeaModel):
         self.expired = expired
         # The time when the subscription instance expires. If the node is a pay-as-you-go node, a null value is returned.
         self.expired_time = expired_time
-        # The name of the node.
+        # The node name.
         self.host_name = host_name
         # Indicates whether Hyper-Threading (HT) is enabled.
         self.ht_enabled = ht_enabled
-        # The ID of the ECS instance.
+        # The ID of the instance.
         self.id = id
-        # The ID of the image.
+        # The image ID.
         self.image_id = image_id
         # The type of the image. Valid values:
         # 
@@ -24964,27 +24957,27 @@ class ListNodesByQueueResponseBodyNodesNodeInfo(TeaModel):
         self.ip_address = ip_address
         # The location where the node is deployed. Valid values:
         # 
-        # *   OnPremise: The node is deployed on a hybrid cloud.
-        # *   PublicCloud: The node is deployed on a public cloud.
+        # *   OnPremise: The cluster is deployed on a hybrid cloud.
+        # *   PublicCloud: The cluster is deployed on a public cloud.
         self.location = location
         # The reason why the node is locked. Valid values:
         # 
-        # *   financial: The node is locked due to overdue payments.
-        # *   security: The node is locked due to security reasons.
-        # *   recycling: The preemptible node is locked and pending release.
-        # *   dedicatedhostfinancial: The node is locked due to the overdue payments of the dedicated host.
+        # *   financial: The instance is locked due to overdue payments.
+        # *   security: The node is locked for security reasons.
+        # *   recycling: The preemptible instance is locked and pending release.
+        # *   dedicatedhostfinancial: The ECS instance is locked due to overdue payments of the dedicated host.
         # 
         # By default, an empty string is returned.
         self.lock_reason = lock_reason
         # The public IP address of the node.
         self.public_ip_address = public_ip_address
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
-        # The preemption policy for the Elastic Compute Service (ECS) instance. Valid values:
+        # The preemption policy of the instance. Valid values:
         # 
-        # *   NoSpot: applies to regular pay-as-you-go instances.
-        # *   SpotWithPriceLimit: The instances of the compute node are preemptible instances. These types of instances have a specified maximum hourly price.
-        # *   SpotAsPriceGo: The instances of the compute node are preemptible instances. The price of these instances is based on the current market price.
+        # *   NoSpot: The instance is created as a pay-as-you-go instance.
+        # *   SpotWithPriceLimit: The instance is created as a preemptible instance with a user-defined maximum hourly price.
+        # *   SpotAsPriceGo: The instance is created as a preemptible instance for which the market price at the time of purchase is automatically used as the bid price.
         self.spot_strategy = spot_strategy
         # The status of the node displayed on the scheduler. The status varies with the scheduler.
         self.state_in_sched = state_in_sched
@@ -24993,21 +24986,21 @@ class ListNodesByQueueResponseBodyNodesNodeInfo(TeaModel):
         # *   uninit: The node is not initialized.
         # *   init: The node is being initialized.
         # *   ready: The node is ready.
-        # *   running: The node is running.
-        # *   exception: An exception has occurred on the node.
+        # *   running: The cluster is running.
+        # *   exception: An exception occurred on the node.
         # *   untracking: The node is not added to the cluster.
         self.status = status
         # The number of all resources in the cluster.
         self.total_resources = total_resources
         # The usage of the compute nodes in the cluster. For other types of nodes, an empty value is returned.
         self.used_resources = used_resources
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
         # The version of the E-HPC client.
         self.version = version
-        # The ID of the virtual private cloud (VPC).
+        # The VPC ID of the node.
         self.vpc_id = vpc_id
-        # The ID of the zone.
+        # The zone ID of the node.
         self.zone_id = zone_id
 
     def validate(self):
@@ -25177,7 +25170,7 @@ class ListNodesByQueueResponseBody(TeaModel):
         self.page_number = page_number
         # The number of entries returned per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of returned entries.
         self.total_count = total_count
@@ -25284,14 +25277,14 @@ class ListNodesNoPagingRequest(TeaModel):
         # *   Login: logon node
         # *   Compute: compute node
         # 
-        # Default value: Compute
+        # Default value: Compute.
         self.role = role
         # The sorting method of the node list. Valid values:
         # 
         # *   Forward: sorts the nodes in chronological order.
         # *   Backward: sorts the nodes in reverse chronological order.
         # 
-        # Default value: Forward
+        # Default value: Forward.
         self.sequence = sequence
 
     def validate(self):
@@ -25335,18 +25328,18 @@ class ListNodesNoPagingResponseBodyNodesNodeInfo(TeaModel):
         instance_type: str = None,
         status: str = None,
     ):
-        # The name of the node.
+        # The node name.
         self.host_name = host_name
-        # The ID of the node.
+        # The node ID.
         self.id = id
-        # The ID of the image.
+        # The image ID.
         self.image_id = image_id
-        # The instance type of the node.
+        # The node type.
         self.instance_type = instance_type
         # The status of the node. Valid values:
         # 
         # *   uninit: The node is being installed.
-        # *   exception: An exception has occurred on the node.
+        # *   exception: An exception occurred on the node.
         # *   running: The node is running.
         # *   initing: The node is being initialized.
         # *   releasing: The node is being released.
@@ -25431,9 +25424,9 @@ class ListNodesNoPagingResponseBody(TeaModel):
         nodes: ListNodesNoPagingResponseBodyNodes = None,
         request_id: str = None,
     ):
-        # The information about nodes.
+        # The list of nodes.
         self.nodes = nodes
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -26552,18 +26545,18 @@ class ListServerlessJobsRequest(TeaModel):
         self.job_ids = job_ids
         # The names of the serverless jobs.
         self.job_names = job_names
-        # The number of the page to return. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Maximum value: 100. Default value: 20.
         self.page_size = page_size
         # The region ID. You can call the [ListRegions](~~188593~~) operation to query the list of regions where E-HPC is supported.
         self.region_id = region_id
-        # Specifies whether to sort the serverless jobs by the job start time. Valid value:
+        # Specifies whether to sort the serverless jobs by the job start time. Valid values:
         # 
-        # *   Asc: ascending order
-        # *   Desc: descending order
+        # *   Asc: ascending order.
+        # *   Desc: descending order.
         self.start_order = start_order
-        # The status of the serverless job. Valid value:
+        # The status of the serverless job. Valid values:
         # 
         # *   All
         # *   Pending
@@ -26574,10 +26567,10 @@ class ListServerlessJobsRequest(TeaModel):
         # 
         # Default value: All.
         self.state = state
-        # Specifies whether to sort the serverless jobs by the job submission time. Valid value:
+        # Specifies whether to sort the serverless jobs by the job submission time. Valid values:
         # 
-        # *   Asc: ascending order
-        # *   Desc: descending order
+        # *   Asc: ascending order.
+        # *   Desc: descending order.
         self.submit_order = submit_order
         # The latest time at which the job is submitted.
         # 
@@ -26669,7 +26662,7 @@ class ListServerlessJobsResponseBodyJobs(TeaModel):
         # *   True: yes
         # *   False: no
         self.is_array_job = is_array_job
-        # The ID of the serverless job or subtask (array job).
+        # The ID of the serverless job or the subtask (array job).
         self.job_id = job_id
         # The name of the serverless job.
         self.job_name = job_name
@@ -28170,9 +28163,17 @@ class ListUsersAsyncRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The ID of the asynchronous task.
         self.async_id = async_id
+        # The ID of the E-HPC cluster. You can call the [ListClusters](~~87116~~) operation to query the cluster ID.
         self.cluster_id = cluster_id
+        # The page number.\
+        # Pages start from page 1.\
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries returned per page.\
+        # Valid values: 1 to 50.\
+        # Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -28216,10 +28217,15 @@ class ListUsersAsyncResponseBodyUsersUserInfo(TeaModel):
         name: str = None,
         user_id: str = None,
     ):
+        # The time when the user was created.
         self.add_time = add_time
+        # The user groups.
         self.group = group
+        # The user group ID.
         self.group_id = group_id
+        # The username of the account.
         self.name = name
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -28304,12 +28310,19 @@ class ListUsersAsyncResponseBody(TeaModel):
         total_count: int = None,
         users: ListUsersAsyncResponseBodyUsers = None,
     ):
+        # The ID of the asynchronous task.
         self.async_id = async_id
+        # The status of the asynchronous task.
         self.async_status = async_status
+        # The number of the page returned. Pages start from page 1.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of users.
         self.total_count = total_count
+        # The list of users.
         self.users = users
 
     def validate(self):
@@ -29193,7 +29206,7 @@ class ModifyImageGatewayConfigRequest(TeaModel):
         self.default_repo_location = default_repo_location
         # The timeout period for deleting images.
         self.image_expiration_timeout = image_expiration_timeout
-        # The timeout period for pulling images.
+        # The timeout period for pulling images. Unit: seconds.
         self.pull_update_timeout = pull_update_timeout
         # The information about the repository.
         self.repo = repo
@@ -30725,25 +30738,23 @@ class RunCloudMetricProfilingRequest(TeaModel):
         process_id: int = None,
         region_id: str = None,
     ):
-        # The ID of the cluster.
+        # The ID of the E-HPC cluster.
         self.cluster_id = cluster_id
         # The duration of the profiling process. Unit: seconds.
         # 
-        # Value values: 10 to 300
+        # Value values: 10 to 300.
         # 
-        # Default value: 30
+        # Default value: 30.
         self.duration = duration
-        # The sampling frequency. Unit: Hz
+        # The sampling frequency. Unit: Hz. Valid values: 1 to 2000.
         # 
-        # Valid values: 1 to 2000
-        # 
-        # Default value: 2000
+        # Default value: 2000.
         self.freq = freq
-        # The name of the host.
+        # The hostname.
         self.host_name = host_name
         # The ID of the profiling process.
         self.process_id = process_id
-        # The ID of the region where the cluster resides.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -30791,7 +30802,7 @@ class RunCloudMetricProfilingResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -32420,13 +32431,13 @@ class SetSchedulerInfoRequestPbsInfo(TeaModel):
         sched_max_jobs: int = None,
         sched_max_queued_jobs: int = None,
     ):
+        # The information about limits on the queue.
         self.acl_limit = acl_limit
-        # The retention period of jobs. After the retention period is exceeded, job data is deleted. Unit: days.
-        # 
-        # Valid values: 1 to 30
-        # 
-        # Default value: 14
+        # The retention period of jobs. After the retention period is exceeded, job data is deleted. Unit: days.\
+        # Valid values: 1 to 30.\
+        # Default value: 14.
         self.job_history_duration = job_history_duration
+        # The information about the nodes that are used by cluster users.
         self.resource_limit = resource_limit
         # PbsInfo specifies the number of PBS schedulers that can be configured in the cluster. Valid values of N: 0 to 100.
         # 
@@ -32434,7 +32445,7 @@ class SetSchedulerInfoRequestPbsInfo(TeaModel):
         # 
         # A scheduling period is the interval between two consecutive running jobs. If you set SchedInterval to 60, another job can be run 60 seconds after a job starts running.
         # 
-        # Default value: 60
+        # Default value: 60.
         self.sched_interval = sched_interval
         # The maximum number of jobs that can be scheduled in the cluster. If the total number of running jobs and queuing jobs exceeds the value, no more jobs can be submitted. Default value: 20000.
         self.sched_max_jobs = sched_max_jobs
@@ -32511,7 +32522,7 @@ class SetSchedulerInfoRequestScheduler(TeaModel):
         # *   slurm19
         # *   slurm20
         # 
-        # >  If you set Scheduler.N.SchedName to pbs or pbs19, you must specify at least one of the PbsInfo.N.SchedInterval, PbsInfo.N.JobHistoryDuration, and PbsInfo.N.AclLimit parameters. If you set Scheduler.N.SchedName to slurm, slurm19, or slurm20, you must specify at least one of the SlurmInfo.N.SchedInterval and SlurmInfo.N.BackfillInterval parameters.
+        # >  If you set Scheduler.N.SchedName to pbs or pbs19, you must specify at least one of the PbsInfo.N.SchedInterval, PbsInfo.N.JobHistoryDuration, PbsInfo.N.ResourceLimit, and PbsInfo.N.AclLimit parameters. If you set Scheduler.N.SchedName to slurm, slurm19, or slurm20, you must specify at least one of the SlurmInfo.N.SchedInterval and SlurmInfo.N.BackfillInterval parameters.
         self.sched_name = sched_name
 
     def validate(self):
@@ -32542,13 +32553,13 @@ class SetSchedulerInfoRequestSlurmInfo(TeaModel):
     ):
         # The backfill scheduling period. Unit: seconds.
         # 
-        # Default value: 60
+        # Default value: 60.
         self.backfill_interval = backfill_interval
         # SlurmInfo specifies the number of Slurm schedulers that can be configured in the cluster. Valid values of N: 0 to 100.
         # 
         # SchedInterval specifies the scheduling period. Unit: seconds.
         # 
-        # Default value: 60
+        # Default value: 60.
         self.sched_interval = sched_interval
 
     def validate(self):
@@ -32584,16 +32595,19 @@ class SetSchedulerInfoRequest(TeaModel):
         scheduler: List[SetSchedulerInfoRequestScheduler] = None,
         slurm_info: List[SetSchedulerInfoRequestSlurmInfo] = None,
     ):
-        # The ID of the cluster.
+        # The ID of the E-HPC cluster.
         # 
         # You can call the [ListClusters](~~87116~~) operation to query the cluster ID.
         self.cluster_id = cluster_id
+        # The information about PBS schedulers.
         self.pbs_info = pbs_info
-        # The ID of the region.
+        # The region ID.
         # 
         # You can call the [ListRegions](~~188593~~) operation to obtain the IDs of regions supported by Elastic High Performance Computing (E-HPC).
         self.region_id = region_id
+        # The scheduler information.
         self.scheduler = scheduler
+        # The information about Slurm schedulers.
         self.slurm_info = slurm_info
 
     def validate(self):
@@ -32664,9 +32678,9 @@ class SetSchedulerInfoResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The response message.
+        # The data returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -33743,10 +33757,7 @@ class StopServerlessJobsRequest(TeaModel):
         self.cluster_id = cluster_id
         # The serverless job IDs or subtask IDs (array jobs).
         # 
-        # > 
-        # 
         # *   If you specify the job ID of an array job, all subtasks under the array job are stopped.
-        # 
         # *   If you specify the ID of a subtask of an array job, only the subtask is stopped.
         self.job_ids = job_ids
 
@@ -34386,9 +34397,9 @@ class SubmitServerlessJobRequestContainerEnvironmentVar(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # 环境变量名。长度为1~128位。格式要求：[0-9a-zA-Z]，以及下划线，不能以数字开头。
+        # The name of the environment variable. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (\_). The name cannot start with a digit. Specify the name in the \[0-9a-zA-Z] format.
         self.key = key
-        # The value of the environment variable for the container. The value must be 0 to 256 characters in length.
+        # The value of the environment variable. The value can be up to 256 characters in length.
         self.value = value
 
     def validate(self):
@@ -34422,17 +34433,16 @@ class SubmitServerlessJobRequestContainerVolumeMount(TeaModel):
         flex_volume_options: str = None,
         mount_path: str = None,
     ):
-        # 使用FlexVolume插件挂载数据卷时的驱动类型。取值范围如下：
+        # The driver type when you use the FlexVolume plug-in to mount the volume. Valid values:
         # 
-        # alicloud/nas：挂载NAS。
-        # 
-        # alicloud/oss：挂载OSS。
+        # *   alicloud/nas: a NAS driver.
+        # *   alicloud/oss: an OSS driver.
         self.flex_volume_driver = flex_volume_driver
-        # FlexVolume对象选项列表。为KV形式，采用JSON传递。
+        # The options when you set the Type parameter to FlexVolume. Each option is a key-value pair in a JSON string.
         self.flex_volume_options = flex_volume_options
         # The directory to which the volume is mounted.
         # 
-        # > The data stored in this directory is overwritten by the data on the volume. Specify this parameter with caution.
+        # >  The data stored in this directory is overwritten by the data on the volume. Specify the parameter with caution.
         self.mount_path = mount_path
 
     def validate(self):
@@ -34478,13 +34488,13 @@ class SubmitServerlessJobRequestContainer(TeaModel):
         self.arg = arg
         # The container startup commands.
         self.command = command
-        # The environment variable of the container.
+        # The value of the environment variable for the container.
         self.environment_var = environment_var
         # The number of GPUs of the container.
         self.gpu = gpu
         # The image of the container.
         self.image = image
-        # The data volumes mounted to the container.
+        # The data volumes that are mounted to the container.
         self.volume_mount = volume_mount
         # The working directory of the container.
         self.working_dir = working_dir
@@ -34598,7 +34608,12 @@ class SubmitServerlessJobRequestRetryStrategyEvaluateOnExit(TeaModel):
         action: str = None,
         on_exit_code: str = None,
     ):
+        # The action that you want to take on the job. Valid values:
+        # 
+        # *   Retry: The job starts a retry when a specific exit code is hit.
+        # *   Exit: The job exits when a specific exit code is hit.
         self.action = action
+        # The job exit code, which is used together with the Action parameter as a job retry rule. Valid values: 0 to 255.
         self.on_exit_code = on_exit_code
 
     def validate(self):
@@ -34631,7 +34646,9 @@ class SubmitServerlessJobRequestRetryStrategy(TeaModel):
         attempts: int = None,
         evaluate_on_exit: List[SubmitServerlessJobRequestRetryStrategyEvaluateOnExit] = None,
     ):
+        # The number of retries for the serverless job. Valid values: 1 to 10.
         self.attempts = attempts
+        # The list of retry rules for the serverless job. You can specify up to 10 rules.
         self.evaluate_on_exit = evaluate_on_exit
 
     def validate(self):
@@ -34688,9 +34705,7 @@ class SubmitServerlessJobRequest(TeaModel):
     ):
         # The configuration of the array job.
         # 
-        # > 
-        # 
-        # *   The index value of an array job is passed to the serverless job container by using the environment variable **EHPC_JOB_ARRAY_INDEX** to allow access to the array job from business programs.
+        # >  The index value of an array job is passed to the serverless job container by using the environment variable **EHPC_JOB_ARRAY_INDEX** to allow access to the array job from business programs.
         self.array_properties = array_properties
         # The ID of the E-HPC cluster.
         # 
@@ -34709,6 +34724,8 @@ class SubmitServerlessJobRequest(TeaModel):
         # The ECS instance types used by the serverless job container.
         self.instance_type = instance_type
         # The name of the serverless job.
+        # 
+        # >  The name can contain lowercase letters, digits, and hyphens (-). It cannot start or end with a hyphen.
         self.job_name = job_name
         # The scheduling priority of the serverless job. Valid values: 0 to 999. A greater value indicates a higher priority.
         self.job_priority = job_priority
@@ -34716,6 +34733,7 @@ class SubmitServerlessJobRequest(TeaModel):
         self.memory = memory
         # The name of the RAM role that is associated with the serverless job container.
         self.ram_role_name = ram_role_name
+        # The retry policy for the serverless job.
         self.retry_strategy = retry_strategy
         # The maximum hourly price of the preemptible instance. The value can contain up to three decimal places.
         # 
@@ -34853,9 +34871,7 @@ class SubmitServerlessJobShrinkRequest(TeaModel):
     ):
         # The configuration of the array job.
         # 
-        # > 
-        # 
-        # *   The index value of an array job is passed to the serverless job container by using the environment variable **EHPC_JOB_ARRAY_INDEX** to allow access to the array job from business programs.
+        # >  The index value of an array job is passed to the serverless job container by using the environment variable **EHPC_JOB_ARRAY_INDEX** to allow access to the array job from business programs.
         self.array_properties_shrink = array_properties_shrink
         # The ID of the E-HPC cluster.
         # 
@@ -34874,6 +34890,8 @@ class SubmitServerlessJobShrinkRequest(TeaModel):
         # The ECS instance types used by the serverless job container.
         self.instance_type_shrink = instance_type_shrink
         # The name of the serverless job.
+        # 
+        # >  The name can contain lowercase letters, digits, and hyphens (-). It cannot start or end with a hyphen.
         self.job_name = job_name
         # The scheduling priority of the serverless job. Valid values: 0 to 999. A greater value indicates a higher priority.
         self.job_priority = job_priority
@@ -34881,6 +34899,7 @@ class SubmitServerlessJobShrinkRequest(TeaModel):
         self.memory = memory
         # The name of the RAM role that is associated with the serverless job container.
         self.ram_role_name = ram_role_name
+        # The retry policy for the serverless job.
         self.retry_strategy_shrink = retry_strategy_shrink
         # The maximum hourly price of the preemptible instance. The value can contain up to three decimal places.
         # 
@@ -35817,7 +35836,7 @@ class UpdateClusterVolumesRequestAdditionalVolumesRoles(TeaModel):
         self,
         name: str = None,
     ):
-        # The node type on which the additional mounted file system N is mounted. Valid values:
+        # The node type on which the additional mounted file system is mounted. Valid values:
         # 
         # *   Manager: management node
         # *   Login: logon node
@@ -35858,32 +35877,31 @@ class UpdateClusterVolumesRequestAdditionalVolumes(TeaModel):
         volume_protocol: str = None,
         volume_type: str = None,
     ):
-        # The queue name of the additional mounted file system N.
+        # The queue name of the attached mounted file system.
         self.job_queue = job_queue
-        # The on-premises mount directory for the additional mounted file system N.
+        # The on-premises mount directory for the additional mounted file system.
         self.local_directory = local_directory
-        # The storage location of the additional mounted file system N. Valid values:
+        # The storage location of the attached mounted file system. Valid values:
         # 
         # *   OnPremise: The cluster is deployed on a hybrid cloud.
         # *   PublicCloud: The cluster is deployed on a public cloud.
         self.location = location
-        # The remote directory to be mounted by the additional mounted file system N.
+        # The remote directory to be mounted by the additional mounted file system.
         self.remote_directory = remote_directory
         # The array of the node on which the file system is mounted.
         self.roles = roles
-        # The ID of the additional mounted file system N.
+        # The ID of the additional mounted file system.
         self.volume_id = volume_id
+        # The mount option of the attached mounted file system.
         self.volume_mount_option = volume_mount_option
-        # The domain name of the mount target for the additional mounted file system N.
+        # The domain name of the mount target for the additional mounted file system.
         self.volume_mountpoint = volume_mountpoint
-        # The protocol type of the additional mounted file system N. Valid values:
+        # The protocol type of the additional mounted file system. Valid values:
         # 
         # *   NFS
         # *   SMB
         self.volume_protocol = volume_protocol
-        # The type of the additional mounted file system N. Currently, only NAS is supported.
-        # 
-        # Valid values of N: 1 to 10.
+        # The type of the additional mounted file system. Only NAS is supported.
         self.volume_type = volume_type
 
     def validate(self):
@@ -36085,6 +36103,10 @@ class UpdateQueueConfigRequest(TeaModel):
         self.compute_instance_type = compute_instance_type
         # The ID of the deployment set. You can obtain the deployment set ID by calling the [DescribeDeploymentSets](~~91313~~) operation. Only the deployment sets that use low latency policy are supported.
         self.deployment_set_id = deployment_set_id
+        # The communication model of the ENI. Valid values:
+        # 
+        # *   Standard: uses the TCP communication mode.
+        # *   HighPerformance: uses the remote direct memory access (RDMA) communication mode with the Elastic RDMA Interface (ERI) enabled.
         self.network_interface_traffic_mode = network_interface_traffic_mode
         # The name of the queue.
         self.queue_name = queue_name

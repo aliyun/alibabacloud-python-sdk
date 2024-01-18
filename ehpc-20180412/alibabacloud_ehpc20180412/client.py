@@ -569,6 +569,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ApplyNodesResponse:
         """
+        ## [](#)Description
         You can call the ApplyNodes operation to specify the number of compute nodes, the number of vCPUs, and the memory size when you add nodes to a cluster.
         
         @param request: ApplyNodesRequest
@@ -602,6 +603,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ApplyNodesResponse:
         """
+        ## [](#)Description
         You can call the ApplyNodes operation to specify the number of compute nodes, the number of vCPUs, and the memory size when you add nodes to a cluster.
         
         @param request: ApplyNodesRequest
@@ -634,6 +636,7 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ApplyNodesRequest,
     ) -> ehpc20180412_models.ApplyNodesResponse:
         """
+        ## [](#)Description
         You can call the ApplyNodes operation to specify the number of compute nodes, the number of vCPUs, and the memory size when you add nodes to a cluster.
         
         @param request: ApplyNodesRequest
@@ -647,6 +650,7 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ApplyNodesRequest,
     ) -> ehpc20180412_models.ApplyNodesResponse:
         """
+        ## [](#)Description
         You can call the ApplyNodes operation to specify the number of compute nodes, the number of vCPUs, and the memory size when you add nodes to a cluster.
         
         @param request: ApplyNodesRequest
@@ -1149,7 +1153,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DeleteClusterResponse:
         """
-        After a cluster is released, the pay-as-you-go nodes and the subscription nodes that have expired are automatically released. The subscription nodes that have not expired are retained. If you need to release the subscription nodes that have not expired, change their billing method to pay-as-you-go. Before you release a cluster, make sure that you will no longer use the cluster.
+        After a cluster is released, the pay-as-you-go nodes and the subscription nodes that are expired are automatically released. The subscription nodes that are expired are retained. If you need to release subscription nodes that are not expired, change the billing method to pay-as-you-go. Before you release a cluster, make sure that you no longer use the cluster.
         
         @param request: DeleteClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1182,7 +1186,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DeleteClusterResponse:
         """
-        After a cluster is released, the pay-as-you-go nodes and the subscription nodes that have expired are automatically released. The subscription nodes that have not expired are retained. If you need to release the subscription nodes that have not expired, change their billing method to pay-as-you-go. Before you release a cluster, make sure that you will no longer use the cluster.
+        After a cluster is released, the pay-as-you-go nodes and the subscription nodes that are expired are automatically released. The subscription nodes that are expired are retained. If you need to release subscription nodes that are not expired, change the billing method to pay-as-you-go. Before you release a cluster, make sure that you no longer use the cluster.
         
         @param request: DeleteClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1214,7 +1218,7 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DeleteClusterRequest,
     ) -> ehpc20180412_models.DeleteClusterResponse:
         """
-        After a cluster is released, the pay-as-you-go nodes and the subscription nodes that have expired are automatically released. The subscription nodes that have not expired are retained. If you need to release the subscription nodes that have not expired, change their billing method to pay-as-you-go. Before you release a cluster, make sure that you will no longer use the cluster.
+        After a cluster is released, the pay-as-you-go nodes and the subscription nodes that are expired are automatically released. The subscription nodes that are expired are retained. If you need to release subscription nodes that are not expired, change the billing method to pay-as-you-go. Before you release a cluster, make sure that you no longer use the cluster.
         
         @param request: DeleteClusterRequest
         @return: DeleteClusterResponse
@@ -1227,7 +1231,7 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DeleteClusterRequest,
     ) -> ehpc20180412_models.DeleteClusterResponse:
         """
-        After a cluster is released, the pay-as-you-go nodes and the subscription nodes that have expired are automatically released. The subscription nodes that have not expired are retained. If you need to release the subscription nodes that have not expired, change their billing method to pay-as-you-go. Before you release a cluster, make sure that you will no longer use the cluster.
+        After a cluster is released, the pay-as-you-go nodes and the subscription nodes that are expired are automatically released. The subscription nodes that are expired are retained. If you need to release subscription nodes that are not expired, change the billing method to pay-as-you-go. Before you release a cluster, make sure that you no longer use the cluster.
         
         @param request: DeleteClusterRequest
         @return: DeleteClusterResponse
