@@ -1,3 +1,6 @@
+2024-01-18 Version: 2.0.0
+- Generated python 2021-06-01 for ComputeNest.
+
 2022-11-24 Version: 1.2.1
 - Support setting name of service instance.
 

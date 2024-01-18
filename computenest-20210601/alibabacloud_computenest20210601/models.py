@@ -1,21 +1,21 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, Any, List
+from typing import Dict, List, Any
 
 
-class ContinueDeployServiceInstanceRequest(TeaModel):
+class ChangeResourceGroupRequest(TeaModel):
     def __init__(
         self,
-        client_token: str = None,
-        parameters: str = None,
+        new_resource_group_id: str = None,
         region_id: str = None,
-        service_instance_id: str = None,
+        resource_id: str = None,
+        resource_type: str = None,
     ):
-        self.client_token = client_token
-        self.parameters = parameters
+        self.new_resource_group_id = new_resource_group_id
         self.region_id = region_id
-        self.service_instance_id = service_instance_id
+        self.resource_id = resource_id
+        self.resource_type = resource_type
 
     def validate(self):
         pass
@@ -26,30 +26,30 @@ class ContinueDeployServiceInstanceRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
-        if self.parameters is not None:
-            result['Parameters'] = self.parameters
+        if self.new_resource_group_id is not None:
+            result['NewResourceGroupId'] = self.new_resource_group_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.service_instance_id is not None:
-            result['ServiceInstanceId'] = self.service_instance_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
-        if m.get('Parameters') is not None:
-            self.parameters = m.get('Parameters')
+        if m.get('NewResourceGroupId') is not None:
+            self.new_resource_group_id = m.get('NewResourceGroupId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('ServiceInstanceId') is not None:
-            self.service_instance_id = m.get('ServiceInstanceId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         return self
 
 
-class ContinueDeployServiceInstanceResponseBody(TeaModel):
+class ChangeResourceGroupResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
@@ -73,6 +73,187 @@ class ContinueDeployServiceInstanceResponseBody(TeaModel):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        return self
+
+
+class ChangeResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ChangeResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ChangeResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ContinueDeployServiceInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dry_run: bool = None,
+        option: List[str] = None,
+        parameters: str = None,
+        region_id: str = None,
+        service_instance_id: str = None,
+    ):
+        self.client_token = client_token
+        self.dry_run = dry_run
+        self.option = option
+        self.parameters = parameters
+        self.region_id = region_id
+        self.service_instance_id = service_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.option is not None:
+            result['Option'] = self.option
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.service_instance_id is not None:
+            result['ServiceInstanceId'] = self.service_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('Option') is not None:
+            self.option = m.get('Option')
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ServiceInstanceId') is not None:
+            self.service_instance_id = m.get('ServiceInstanceId')
+        return self
+
+
+class ContinueDeployServiceInstanceResponseBodyDryRunResult(TeaModel):
+    def __init__(
+        self,
+        parameters_allowed_to_be_modified: List[str] = None,
+        parameters_conditionally_allowed_to_be_modified: List[str] = None,
+        parameters_not_allowed_to_be_modified: List[str] = None,
+    ):
+        self.parameters_allowed_to_be_modified = parameters_allowed_to_be_modified
+        self.parameters_conditionally_allowed_to_be_modified = parameters_conditionally_allowed_to_be_modified
+        self.parameters_not_allowed_to_be_modified = parameters_not_allowed_to_be_modified
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.parameters_allowed_to_be_modified is not None:
+            result['ParametersAllowedToBeModified'] = self.parameters_allowed_to_be_modified
+        if self.parameters_conditionally_allowed_to_be_modified is not None:
+            result['ParametersConditionallyAllowedToBeModified'] = self.parameters_conditionally_allowed_to_be_modified
+        if self.parameters_not_allowed_to_be_modified is not None:
+            result['ParametersNotAllowedToBeModified'] = self.parameters_not_allowed_to_be_modified
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParametersAllowedToBeModified') is not None:
+            self.parameters_allowed_to_be_modified = m.get('ParametersAllowedToBeModified')
+        if m.get('ParametersConditionallyAllowedToBeModified') is not None:
+            self.parameters_conditionally_allowed_to_be_modified = m.get('ParametersConditionallyAllowedToBeModified')
+        if m.get('ParametersNotAllowedToBeModified') is not None:
+            self.parameters_not_allowed_to_be_modified = m.get('ParametersNotAllowedToBeModified')
+        return self
+
+
+class ContinueDeployServiceInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        dry_run_result: ContinueDeployServiceInstanceResponseBodyDryRunResult = None,
+        request_id: str = None,
+        service_instance_id: str = None,
+    ):
+        self.dry_run_result = dry_run_result
+        self.request_id = request_id
+        self.service_instance_id = service_instance_id
+
+    def validate(self):
+        if self.dry_run_result:
+            self.dry_run_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dry_run_result is not None:
+            result['DryRunResult'] = self.dry_run_result.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.service_instance_id is not None:
+            result['ServiceInstanceId'] = self.service_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DryRunResult') is not None:
+            temp_model = ContinueDeployServiceInstanceResponseBodyDryRunResult()
+            self.dry_run_result = temp_model.from_map(m['DryRunResult'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ServiceInstanceId') is not None:
+            self.service_instance_id = m.get('ServiceInstanceId')
         return self
 
 
@@ -120,15 +301,50 @@ class ContinueDeployServiceInstanceResponse(TeaModel):
         return self
 
 
+class CreateServiceInstanceRequestCommodity(TeaModel):
+    def __init__(
+        self,
+        pay_period: int = None,
+        pay_period_unit: str = None,
+    ):
+        self.pay_period = pay_period
+        self.pay_period_unit = pay_period_unit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pay_period is not None:
+            result['PayPeriod'] = self.pay_period
+        if self.pay_period_unit is not None:
+            result['PayPeriodUnit'] = self.pay_period_unit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PayPeriod') is not None:
+            self.pay_period = m.get('PayPeriod')
+        if m.get('PayPeriodUnit') is not None:
+            self.pay_period_unit = m.get('PayPeriodUnit')
+        return self
+
+
 class CreateServiceInstanceRequestOperationMetadata(TeaModel):
     def __init__(
         self,
         end_time: str = None,
+        extra_info: str = None,
         resources: str = None,
         service_instance_id: str = None,
         start_time: str = None,
     ):
         self.end_time = end_time
+        self.extra_info = extra_info
         self.resources = resources
         self.service_instance_id = service_instance_id
         self.start_time = start_time
@@ -144,6 +360,8 @@ class CreateServiceInstanceRequestOperationMetadata(TeaModel):
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.extra_info is not None:
+            result['ExtraInfo'] = self.extra_info
         if self.resources is not None:
             result['Resources'] = self.resources
         if self.service_instance_id is not None:
@@ -156,6 +374,8 @@ class CreateServiceInstanceRequestOperationMetadata(TeaModel):
         m = m or dict()
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('ExtraInfo') is not None:
+            self.extra_info = m.get('ExtraInfo')
         if m.get('Resources') is not None:
             self.resources = m.get('Resources')
         if m.get('ServiceInstanceId') is not None:
@@ -171,7 +391,9 @@ class CreateServiceInstanceRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # 标签键。
         self.key = key
+        # 标签值。
         self.value = value
 
     def validate(self):
@@ -202,13 +424,14 @@ class CreateServiceInstanceRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
+        commodity: CreateServiceInstanceRequestCommodity = None,
         contact_group: str = None,
         dry_run: bool = None,
         enable_instance_ops: bool = None,
+        enable_user_prometheus: bool = None,
         name: str = None,
         operation_metadata: CreateServiceInstanceRequestOperationMetadata = None,
         parameters: Dict[str, Any] = None,
-        pay_type: int = None,
         region_id: str = None,
         resource_group_id: str = None,
         service_id: str = None,
@@ -220,24 +443,40 @@ class CreateServiceInstanceRequest(TeaModel):
         trial_type: str = None,
     ):
         self.client_token = client_token
+        self.commodity = commodity
+        # 接收告警的云监控联系人组。
         self.contact_group = contact_group
         self.dry_run = dry_run
         self.enable_instance_ops = enable_instance_ops
+        self.enable_user_prometheus = enable_user_prometheus
+        # 服务实例名称。格式要求如下：
+        # 
+        # - 长度不超过64个字符。
+        # 
+        # - 必须以数字或英文字母开头，可包含数字、英文字母、短划线（-）和下划线（_）。
         self.name = name
         self.operation_metadata = operation_metadata
         self.parameters = parameters
-        self.pay_type = pay_type
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.service_id = service_id
         self.service_version = service_version
         self.specification_code = specification_code
+        # 套餐规格名称。
         self.specification_name = specification_name
+        # 用户自定义标签。
         self.tag = tag
         self.template_name = template_name
+        # 使用类型。可选值：
+        # 
+        # - Trial：支持试用。
+        # 
+        # - NotTrial：不支持试用。
         self.trial_type = trial_type
 
     def validate(self):
+        if self.commodity:
+            self.commodity.validate()
         if self.operation_metadata:
             self.operation_metadata.validate()
         if self.tag:
@@ -253,20 +492,22 @@ class CreateServiceInstanceRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.commodity is not None:
+            result['Commodity'] = self.commodity.to_map()
         if self.contact_group is not None:
             result['ContactGroup'] = self.contact_group
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
         if self.enable_instance_ops is not None:
             result['EnableInstanceOps'] = self.enable_instance_ops
+        if self.enable_user_prometheus is not None:
+            result['EnableUserPrometheus'] = self.enable_user_prometheus
         if self.name is not None:
             result['Name'] = self.name
         if self.operation_metadata is not None:
             result['OperationMetadata'] = self.operation_metadata.to_map()
         if self.parameters is not None:
             result['Parameters'] = self.parameters
-        if self.pay_type is not None:
-            result['PayType'] = self.pay_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -293,12 +534,17 @@ class CreateServiceInstanceRequest(TeaModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('Commodity') is not None:
+            temp_model = CreateServiceInstanceRequestCommodity()
+            self.commodity = temp_model.from_map(m['Commodity'])
         if m.get('ContactGroup') is not None:
             self.contact_group = m.get('ContactGroup')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
         if m.get('EnableInstanceOps') is not None:
             self.enable_instance_ops = m.get('EnableInstanceOps')
+        if m.get('EnableUserPrometheus') is not None:
+            self.enable_user_prometheus = m.get('EnableUserPrometheus')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('OperationMetadata') is not None:
@@ -306,8 +552,6 @@ class CreateServiceInstanceRequest(TeaModel):
             self.operation_metadata = temp_model.from_map(m['OperationMetadata'])
         if m.get('Parameters') is not None:
             self.parameters = m.get('Parameters')
-        if m.get('PayType') is not None:
-            self.pay_type = m.get('PayType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -332,15 +576,50 @@ class CreateServiceInstanceRequest(TeaModel):
         return self
 
 
+class CreateServiceInstanceShrinkRequestCommodity(TeaModel):
+    def __init__(
+        self,
+        pay_period: int = None,
+        pay_period_unit: str = None,
+    ):
+        self.pay_period = pay_period
+        self.pay_period_unit = pay_period_unit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pay_period is not None:
+            result['PayPeriod'] = self.pay_period
+        if self.pay_period_unit is not None:
+            result['PayPeriodUnit'] = self.pay_period_unit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PayPeriod') is not None:
+            self.pay_period = m.get('PayPeriod')
+        if m.get('PayPeriodUnit') is not None:
+            self.pay_period_unit = m.get('PayPeriodUnit')
+        return self
+
+
 class CreateServiceInstanceShrinkRequestOperationMetadata(TeaModel):
     def __init__(
         self,
         end_time: str = None,
+        extra_info: str = None,
         resources: str = None,
         service_instance_id: str = None,
         start_time: str = None,
     ):
         self.end_time = end_time
+        self.extra_info = extra_info
         self.resources = resources
         self.service_instance_id = service_instance_id
         self.start_time = start_time
@@ -356,6 +635,8 @@ class CreateServiceInstanceShrinkRequestOperationMetadata(TeaModel):
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.extra_info is not None:
+            result['ExtraInfo'] = self.extra_info
         if self.resources is not None:
             result['Resources'] = self.resources
         if self.service_instance_id is not None:
@@ -368,6 +649,8 @@ class CreateServiceInstanceShrinkRequestOperationMetadata(TeaModel):
         m = m or dict()
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('ExtraInfo') is not None:
+            self.extra_info = m.get('ExtraInfo')
         if m.get('Resources') is not None:
             self.resources = m.get('Resources')
         if m.get('ServiceInstanceId') is not None:
@@ -383,7 +666,9 @@ class CreateServiceInstanceShrinkRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # 标签键。
         self.key = key
+        # 标签值。
         self.value = value
 
     def validate(self):
@@ -414,13 +699,14 @@ class CreateServiceInstanceShrinkRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
+        commodity: CreateServiceInstanceShrinkRequestCommodity = None,
         contact_group: str = None,
         dry_run: bool = None,
         enable_instance_ops: bool = None,
+        enable_user_prometheus: bool = None,
         name: str = None,
         operation_metadata: CreateServiceInstanceShrinkRequestOperationMetadata = None,
         parameters_shrink: str = None,
-        pay_type: int = None,
         region_id: str = None,
         resource_group_id: str = None,
         service_id: str = None,
@@ -432,24 +718,40 @@ class CreateServiceInstanceShrinkRequest(TeaModel):
         trial_type: str = None,
     ):
         self.client_token = client_token
+        self.commodity = commodity
+        # 接收告警的云监控联系人组。
         self.contact_group = contact_group
         self.dry_run = dry_run
         self.enable_instance_ops = enable_instance_ops
+        self.enable_user_prometheus = enable_user_prometheus
+        # 服务实例名称。格式要求如下：
+        # 
+        # - 长度不超过64个字符。
+        # 
+        # - 必须以数字或英文字母开头，可包含数字、英文字母、短划线（-）和下划线（_）。
         self.name = name
         self.operation_metadata = operation_metadata
         self.parameters_shrink = parameters_shrink
-        self.pay_type = pay_type
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.service_id = service_id
         self.service_version = service_version
         self.specification_code = specification_code
+        # 套餐规格名称。
         self.specification_name = specification_name
+        # 用户自定义标签。
         self.tag = tag
         self.template_name = template_name
+        # 使用类型。可选值：
+        # 
+        # - Trial：支持试用。
+        # 
+        # - NotTrial：不支持试用。
         self.trial_type = trial_type
 
     def validate(self):
+        if self.commodity:
+            self.commodity.validate()
         if self.operation_metadata:
             self.operation_metadata.validate()
         if self.tag:
@@ -465,20 +767,22 @@ class CreateServiceInstanceShrinkRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.commodity is not None:
+            result['Commodity'] = self.commodity.to_map()
         if self.contact_group is not None:
             result['ContactGroup'] = self.contact_group
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
         if self.enable_instance_ops is not None:
             result['EnableInstanceOps'] = self.enable_instance_ops
+        if self.enable_user_prometheus is not None:
+            result['EnableUserPrometheus'] = self.enable_user_prometheus
         if self.name is not None:
             result['Name'] = self.name
         if self.operation_metadata is not None:
             result['OperationMetadata'] = self.operation_metadata.to_map()
         if self.parameters_shrink is not None:
             result['Parameters'] = self.parameters_shrink
-        if self.pay_type is not None:
-            result['PayType'] = self.pay_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -505,12 +809,17 @@ class CreateServiceInstanceShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('Commodity') is not None:
+            temp_model = CreateServiceInstanceShrinkRequestCommodity()
+            self.commodity = temp_model.from_map(m['Commodity'])
         if m.get('ContactGroup') is not None:
             self.contact_group = m.get('ContactGroup')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
         if m.get('EnableInstanceOps') is not None:
             self.enable_instance_ops = m.get('EnableInstanceOps')
+        if m.get('EnableUserPrometheus') is not None:
+            self.enable_user_prometheus = m.get('EnableUserPrometheus')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('OperationMetadata') is not None:
@@ -518,8 +827,6 @@ class CreateServiceInstanceShrinkRequest(TeaModel):
             self.operation_metadata = temp_model.from_map(m['OperationMetadata'])
         if m.get('Parameters') is not None:
             self.parameters_shrink = m.get('Parameters')
-        if m.get('PayType') is not None:
-            self.pay_type = m.get('PayType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -547,10 +854,12 @@ class CreateServiceInstanceShrinkRequest(TeaModel):
 class CreateServiceInstanceResponseBody(TeaModel):
     def __init__(
         self,
+        market_instance_id: str = None,
         request_id: str = None,
         service_instance_id: str = None,
         status: str = None,
     ):
+        self.market_instance_id = market_instance_id
         self.request_id = request_id
         self.service_instance_id = service_instance_id
         self.status = status
@@ -564,6 +873,8 @@ class CreateServiceInstanceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.market_instance_id is not None:
+            result['MarketInstanceId'] = self.market_instance_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.service_instance_id is not None:
@@ -574,6 +885,8 @@ class CreateServiceInstanceResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MarketInstanceId') is not None:
+            self.market_instance_id = m.get('MarketInstanceId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('ServiceInstanceId') is not None:
@@ -740,9 +1053,11 @@ class DeleteServiceInstancesResponse(TeaModel):
 class GetServiceInstanceRequest(TeaModel):
     def __init__(
         self,
+        market_instance_id: str = None,
         region_id: str = None,
         service_instance_id: str = None,
     ):
+        self.market_instance_id = market_instance_id
         self.region_id = region_id
         self.service_instance_id = service_instance_id
 
@@ -755,6 +1070,8 @@ class GetServiceInstanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.market_instance_id is not None:
+            result['MarketInstanceId'] = self.market_instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.service_instance_id is not None:
@@ -763,6 +1080,8 @@ class GetServiceInstanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MarketInstanceId') is not None:
+            self.market_instance_id = m.get('MarketInstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ServiceInstanceId') is not None:
@@ -770,14 +1089,29 @@ class GetServiceInstanceRequest(TeaModel):
         return self
 
 
-class GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnections(TeaModel):
+class GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnectionsConnectionConfigs(TeaModel):
     def __init__(
         self,
-        endpoint_id: str = None,
-        private_zone_id: str = None,
+        connect_bandwidth: int = None,
+        domain_name: str = None,
+        endpoint_ips: List[str] = None,
+        ingress_endpoint_status: str = None,
+        network_service_status: str = None,
+        region_id: str = None,
+        security_groups: List[str] = None,
+        v_switches: List[str] = None,
+        vpc_id: str = None,
     ):
-        self.endpoint_id = endpoint_id
-        self.private_zone_id = private_zone_id
+        self.connect_bandwidth = connect_bandwidth
+        # 域名名称。
+        self.domain_name = domain_name
+        self.endpoint_ips = endpoint_ips
+        self.ingress_endpoint_status = ingress_endpoint_status
+        self.network_service_status = network_service_status
+        self.region_id = region_id
+        self.security_groups = security_groups
+        self.v_switches = v_switches
+        self.vpc_id = vpc_id
 
     def validate(self):
         pass
@@ -788,18 +1122,105 @@ class GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnections(TeaModel)
             return _map
 
         result = dict()
-        if self.endpoint_id is not None:
-            result['EndpointId'] = self.endpoint_id
-        if self.private_zone_id is not None:
-            result['PrivateZoneId'] = self.private_zone_id
+        if self.connect_bandwidth is not None:
+            result['ConnectBandwidth'] = self.connect_bandwidth
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.endpoint_ips is not None:
+            result['EndpointIps'] = self.endpoint_ips
+        if self.ingress_endpoint_status is not None:
+            result['IngressEndpointStatus'] = self.ingress_endpoint_status
+        if self.network_service_status is not None:
+            result['NetworkServiceStatus'] = self.network_service_status
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.security_groups is not None:
+            result['SecurityGroups'] = self.security_groups
+        if self.v_switches is not None:
+            result['VSwitches'] = self.v_switches
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ConnectBandwidth') is not None:
+            self.connect_bandwidth = m.get('ConnectBandwidth')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('EndpointIps') is not None:
+            self.endpoint_ips = m.get('EndpointIps')
+        if m.get('IngressEndpointStatus') is not None:
+            self.ingress_endpoint_status = m.get('IngressEndpointStatus')
+        if m.get('NetworkServiceStatus') is not None:
+            self.network_service_status = m.get('NetworkServiceStatus')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecurityGroups') is not None:
+            self.security_groups = m.get('SecurityGroups')
+        if m.get('VSwitches') is not None:
+            self.v_switches = m.get('VSwitches')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnections(TeaModel):
+    def __init__(
+        self,
+        connection_configs: List[GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnectionsConnectionConfigs] = None,
+        endpoint_id: str = None,
+        private_zone_id: str = None,
+        private_zone_name: str = None,
+        region_id: str = None,
+    ):
+        self.connection_configs = connection_configs
+        self.endpoint_id = endpoint_id
+        self.private_zone_id = private_zone_id
+        self.private_zone_name = private_zone_name
+        self.region_id = region_id
+
+    def validate(self):
+        if self.connection_configs:
+            for k in self.connection_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ConnectionConfigs'] = []
+        if self.connection_configs is not None:
+            for k in self.connection_configs:
+                result['ConnectionConfigs'].append(k.to_map() if k else None)
+        if self.endpoint_id is not None:
+            result['EndpointId'] = self.endpoint_id
+        if self.private_zone_id is not None:
+            result['PrivateZoneId'] = self.private_zone_id
+        if self.private_zone_name is not None:
+            result['PrivateZoneName'] = self.private_zone_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.connection_configs = []
+        if m.get('ConnectionConfigs') is not None:
+            for k in m.get('ConnectionConfigs'):
+                temp_model = GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnectionsConnectionConfigs()
+                self.connection_configs.append(temp_model.from_map(k))
         if m.get('EndpointId') is not None:
             self.endpoint_id = m.get('EndpointId')
         if m.get('PrivateZoneId') is not None:
             self.private_zone_id = m.get('PrivateZoneId')
+        if m.get('PrivateZoneName') is not None:
+            self.private_zone_name = m.get('PrivateZoneName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -1092,11 +1513,15 @@ class GetServiceInstanceResponseBodyTags(TeaModel):
 class GetServiceInstanceResponseBody(TeaModel):
     def __init__(
         self,
+        biz_status: str = None,
+        components: str = None,
         create_time: str = None,
         enable_instance_ops: bool = None,
+        enable_user_prometheus: bool = None,
         end_time: str = None,
         is_operated: bool = None,
         license_end_time: str = None,
+        market_instance_id: str = None,
         name: str = None,
         network_config: GetServiceInstanceResponseBodyNetworkConfig = None,
         operated_service_instance_id: str = None,
@@ -1105,8 +1530,10 @@ class GetServiceInstanceResponseBody(TeaModel):
         outputs: str = None,
         parameters: str = None,
         pay_type: str = None,
+        predefined_parameter_name: str = None,
         progress: int = None,
         request_id: str = None,
+        resource_group_id: str = None,
         resources: str = None,
         service: GetServiceInstanceResponseBodyService = None,
         service_instance_id: str = None,
@@ -1120,11 +1547,16 @@ class GetServiceInstanceResponseBody(TeaModel):
         update_time: str = None,
         user_id: int = None,
     ):
+        self.biz_status = biz_status
+        # 云市场额外计费项。
+        self.components = components
         self.create_time = create_time
         self.enable_instance_ops = enable_instance_ops
+        self.enable_user_prometheus = enable_user_prometheus
         self.end_time = end_time
         self.is_operated = is_operated
         self.license_end_time = license_end_time
+        self.market_instance_id = market_instance_id
         self.name = name
         self.network_config = network_config
         self.operated_service_instance_id = operated_service_instance_id
@@ -1133,8 +1565,11 @@ class GetServiceInstanceResponseBody(TeaModel):
         self.outputs = outputs
         self.parameters = parameters
         self.pay_type = pay_type
+        # 套餐名称。
+        self.predefined_parameter_name = predefined_parameter_name
         self.progress = progress
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
         self.resources = resources
         self.service = service
         self.service_instance_id = service_instance_id
@@ -1164,16 +1599,24 @@ class GetServiceInstanceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.biz_status is not None:
+            result['BizStatus'] = self.biz_status
+        if self.components is not None:
+            result['Components'] = self.components
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.enable_instance_ops is not None:
             result['EnableInstanceOps'] = self.enable_instance_ops
+        if self.enable_user_prometheus is not None:
+            result['EnableUserPrometheus'] = self.enable_user_prometheus
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.is_operated is not None:
             result['IsOperated'] = self.is_operated
         if self.license_end_time is not None:
             result['LicenseEndTime'] = self.license_end_time
+        if self.market_instance_id is not None:
+            result['MarketInstanceId'] = self.market_instance_id
         if self.name is not None:
             result['Name'] = self.name
         if self.network_config is not None:
@@ -1190,10 +1633,14 @@ class GetServiceInstanceResponseBody(TeaModel):
             result['Parameters'] = self.parameters
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
+        if self.predefined_parameter_name is not None:
+            result['PredefinedParameterName'] = self.predefined_parameter_name
         if self.progress is not None:
             result['Progress'] = self.progress
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resources is not None:
             result['Resources'] = self.resources
         if self.service is not None:
@@ -1224,16 +1671,24 @@ class GetServiceInstanceResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BizStatus') is not None:
+            self.biz_status = m.get('BizStatus')
+        if m.get('Components') is not None:
+            self.components = m.get('Components')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('EnableInstanceOps') is not None:
             self.enable_instance_ops = m.get('EnableInstanceOps')
+        if m.get('EnableUserPrometheus') is not None:
+            self.enable_user_prometheus = m.get('EnableUserPrometheus')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('IsOperated') is not None:
             self.is_operated = m.get('IsOperated')
         if m.get('LicenseEndTime') is not None:
             self.license_end_time = m.get('LicenseEndTime')
+        if m.get('MarketInstanceId') is not None:
+            self.market_instance_id = m.get('MarketInstanceId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('NetworkConfig') is not None:
@@ -1251,10 +1706,14 @@ class GetServiceInstanceResponseBody(TeaModel):
             self.parameters = m.get('Parameters')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
+        if m.get('PredefinedParameterName') is not None:
+            self.predefined_parameter_name = m.get('PredefinedParameterName')
         if m.get('Progress') is not None:
             self.progress = m.get('Progress')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Resources') is not None:
             self.resources = m.get('Resources')
         if m.get('Service') is not None:
@@ -1330,14 +1789,353 @@ class GetServiceInstanceResponse(TeaModel):
         return self
 
 
+class GetServiceTemplateParameterConstraintsRequestParameters(TeaModel):
+    def __init__(
+        self,
+        parameter_key: str = None,
+        parameter_value: str = None,
+    ):
+        self.parameter_key = parameter_key
+        self.parameter_value = parameter_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.parameter_key is not None:
+            result['ParameterKey'] = self.parameter_key
+        if self.parameter_value is not None:
+            result['ParameterValue'] = self.parameter_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParameterKey') is not None:
+            self.parameter_key = m.get('ParameterKey')
+        if m.get('ParameterValue') is not None:
+            self.parameter_value = m.get('ParameterValue')
+        return self
+
+
+class GetServiceTemplateParameterConstraintsRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        deploy_region_id: str = None,
+        enable_private_vpc_connection: bool = None,
+        parameters: List[GetServiceTemplateParameterConstraintsRequestParameters] = None,
+        region_id: str = None,
+        service_id: str = None,
+        service_instance_id: str = None,
+        service_version: str = None,
+        specification_name: str = None,
+        template_name: str = None,
+        trial_type: str = None,
+    ):
+        self.client_token = client_token
+        self.deploy_region_id = deploy_region_id
+        self.enable_private_vpc_connection = enable_private_vpc_connection
+        self.parameters = parameters
+        self.region_id = region_id
+        self.service_id = service_id
+        self.service_instance_id = service_instance_id
+        self.service_version = service_version
+        self.specification_name = specification_name
+        self.template_name = template_name
+        self.trial_type = trial_type
+
+    def validate(self):
+        if self.parameters:
+            for k in self.parameters:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.deploy_region_id is not None:
+            result['DeployRegionId'] = self.deploy_region_id
+        if self.enable_private_vpc_connection is not None:
+            result['EnablePrivateVpcConnection'] = self.enable_private_vpc_connection
+        result['Parameters'] = []
+        if self.parameters is not None:
+            for k in self.parameters:
+                result['Parameters'].append(k.to_map() if k else None)
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.service_instance_id is not None:
+            result['ServiceInstanceId'] = self.service_instance_id
+        if self.service_version is not None:
+            result['ServiceVersion'] = self.service_version
+        if self.specification_name is not None:
+            result['SpecificationName'] = self.specification_name
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        if self.trial_type is not None:
+            result['TrialType'] = self.trial_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DeployRegionId') is not None:
+            self.deploy_region_id = m.get('DeployRegionId')
+        if m.get('EnablePrivateVpcConnection') is not None:
+            self.enable_private_vpc_connection = m.get('EnablePrivateVpcConnection')
+        self.parameters = []
+        if m.get('Parameters') is not None:
+            for k in m.get('Parameters'):
+                temp_model = GetServiceTemplateParameterConstraintsRequestParameters()
+                self.parameters.append(temp_model.from_map(k))
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('ServiceInstanceId') is not None:
+            self.service_instance_id = m.get('ServiceInstanceId')
+        if m.get('ServiceVersion') is not None:
+            self.service_version = m.get('ServiceVersion')
+        if m.get('SpecificationName') is not None:
+            self.specification_name = m.get('SpecificationName')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        if m.get('TrialType') is not None:
+            self.trial_type = m.get('TrialType')
+        return self
+
+
+class GetServiceTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints(TeaModel):
+    def __init__(
+        self,
+        allowed_values: List[str] = None,
+        property_name: str = None,
+        resource_name: str = None,
+        resource_type: str = None,
+    ):
+        self.allowed_values = allowed_values
+        self.property_name = property_name
+        self.resource_name = resource_name
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allowed_values is not None:
+            result['AllowedValues'] = self.allowed_values
+        if self.property_name is not None:
+            result['PropertyName'] = self.property_name
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowedValues') is not None:
+            self.allowed_values = m.get('AllowedValues')
+        if m.get('PropertyName') is not None:
+            self.property_name = m.get('PropertyName')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class GetServiceTemplateParameterConstraintsResponseBodyParameterConstraints(TeaModel):
+    def __init__(
+        self,
+        allowed_values: List[str] = None,
+        association_parameter_names: List[str] = None,
+        behavior: str = None,
+        behavior_reason: str = None,
+        original_constraints: List[GetServiceTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints] = None,
+        parameter_key: str = None,
+        type: str = None,
+    ):
+        self.allowed_values = allowed_values
+        self.association_parameter_names = association_parameter_names
+        self.behavior = behavior
+        self.behavior_reason = behavior_reason
+        self.original_constraints = original_constraints
+        self.parameter_key = parameter_key
+        self.type = type
+
+    def validate(self):
+        if self.original_constraints:
+            for k in self.original_constraints:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allowed_values is not None:
+            result['AllowedValues'] = self.allowed_values
+        if self.association_parameter_names is not None:
+            result['AssociationParameterNames'] = self.association_parameter_names
+        if self.behavior is not None:
+            result['Behavior'] = self.behavior
+        if self.behavior_reason is not None:
+            result['BehaviorReason'] = self.behavior_reason
+        result['OriginalConstraints'] = []
+        if self.original_constraints is not None:
+            for k in self.original_constraints:
+                result['OriginalConstraints'].append(k.to_map() if k else None)
+        if self.parameter_key is not None:
+            result['ParameterKey'] = self.parameter_key
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowedValues') is not None:
+            self.allowed_values = m.get('AllowedValues')
+        if m.get('AssociationParameterNames') is not None:
+            self.association_parameter_names = m.get('AssociationParameterNames')
+        if m.get('Behavior') is not None:
+            self.behavior = m.get('Behavior')
+        if m.get('BehaviorReason') is not None:
+            self.behavior_reason = m.get('BehaviorReason')
+        self.original_constraints = []
+        if m.get('OriginalConstraints') is not None:
+            for k in m.get('OriginalConstraints'):
+                temp_model = GetServiceTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints()
+                self.original_constraints.append(temp_model.from_map(k))
+        if m.get('ParameterKey') is not None:
+            self.parameter_key = m.get('ParameterKey')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetServiceTemplateParameterConstraintsResponseBody(TeaModel):
+    def __init__(
+        self,
+        family_constraints: List[str] = None,
+        parameter_constraints: List[GetServiceTemplateParameterConstraintsResponseBodyParameterConstraints] = None,
+        request_id: str = None,
+    ):
+        self.family_constraints = family_constraints
+        self.parameter_constraints = parameter_constraints
+        self.request_id = request_id
+
+    def validate(self):
+        if self.parameter_constraints:
+            for k in self.parameter_constraints:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.family_constraints is not None:
+            result['FamilyConstraints'] = self.family_constraints
+        result['ParameterConstraints'] = []
+        if self.parameter_constraints is not None:
+            for k in self.parameter_constraints:
+                result['ParameterConstraints'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FamilyConstraints') is not None:
+            self.family_constraints = m.get('FamilyConstraints')
+        self.parameter_constraints = []
+        if m.get('ParameterConstraints') is not None:
+            for k in m.get('ParameterConstraints'):
+                temp_model = GetServiceTemplateParameterConstraintsResponseBodyParameterConstraints()
+                self.parameter_constraints.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetServiceTemplateParameterConstraintsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetServiceTemplateParameterConstraintsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetServiceTemplateParameterConstraintsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListServiceInstanceLogsRequest(TeaModel):
     def __init__(
         self,
-        max_results: str = None,
+        log_source: str = None,
+        logstore: str = None,
+        max_results: int = None,
         next_token: str = None,
         region_id: str = None,
         service_instance_id: str = None,
     ):
+        self.log_source = log_source
+        self.logstore = logstore
         self.max_results = max_results
         self.next_token = next_token
         self.region_id = region_id
@@ -1352,6 +2150,10 @@ class ListServiceInstanceLogsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.log_source is not None:
+            result['LogSource'] = self.log_source
+        if self.logstore is not None:
+            result['Logstore'] = self.logstore
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -1364,6 +2166,10 @@ class ListServiceInstanceLogsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('LogSource') is not None:
+            self.log_source = m.get('LogSource')
+        if m.get('Logstore') is not None:
+            self.logstore = m.get('Logstore')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -1382,7 +2188,6 @@ class ListServiceInstanceLogsResponseBodyServiceInstancesLogs(TeaModel):
         log_type: str = None,
         resource_id: str = None,
         resource_type: str = None,
-        service_instance_id: str = None,
         source: str = None,
         status: str = None,
         timestamp: str = None,
@@ -1391,7 +2196,6 @@ class ListServiceInstanceLogsResponseBodyServiceInstancesLogs(TeaModel):
         self.log_type = log_type
         self.resource_id = resource_id
         self.resource_type = resource_type
-        self.service_instance_id = service_instance_id
         self.source = source
         self.status = status
         self.timestamp = timestamp
@@ -1413,8 +2217,6 @@ class ListServiceInstanceLogsResponseBodyServiceInstancesLogs(TeaModel):
             result['ResourceId'] = self.resource_id
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
-        if self.service_instance_id is not None:
-            result['ServiceInstanceId'] = self.service_instance_id
         if self.source is not None:
             result['Source'] = self.source
         if self.status is not None:
@@ -1433,8 +2235,6 @@ class ListServiceInstanceLogsResponseBodyServiceInstancesLogs(TeaModel):
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
-        if m.get('ServiceInstanceId') is not None:
-            self.service_instance_id = m.get('ServiceInstanceId')
         if m.get('Source') is not None:
             self.source = m.get('Source')
         if m.get('Status') is not None:
@@ -1447,7 +2247,7 @@ class ListServiceInstanceLogsResponseBodyServiceInstancesLogs(TeaModel):
 class ListServiceInstanceLogsResponseBody(TeaModel):
     def __init__(
         self,
-        max_results: str = None,
+        max_results: int = None,
         next_token: str = None,
         request_id: str = None,
         service_instances_logs: List[ListServiceInstanceLogsResponseBodyServiceInstancesLogs] = None,
@@ -1579,11 +2379,13 @@ class ListServiceInstanceResourcesRequest(TeaModel):
         self,
         expire_time_end: str = None,
         expire_time_start: str = None,
-        max_results: str = None,
+        max_results: int = None,
         next_token: str = None,
         pay_type: str = None,
+        region_id: str = None,
         resource_arn: List[str] = None,
         service_instance_id: str = None,
+        service_instance_resource_type: str = None,
         tag: List[ListServiceInstanceResourcesRequestTag] = None,
     ):
         self.expire_time_end = expire_time_end
@@ -1591,8 +2393,10 @@ class ListServiceInstanceResourcesRequest(TeaModel):
         self.max_results = max_results
         self.next_token = next_token
         self.pay_type = pay_type
+        self.region_id = region_id
         self.resource_arn = resource_arn
         self.service_instance_id = service_instance_id
+        self.service_instance_resource_type = service_instance_resource_type
         self.tag = tag
 
     def validate(self):
@@ -1617,10 +2421,14 @@ class ListServiceInstanceResourcesRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_arn is not None:
             result['ResourceARN'] = self.resource_arn
         if self.service_instance_id is not None:
             result['ServiceInstanceId'] = self.service_instance_id
+        if self.service_instance_resource_type is not None:
+            result['ServiceInstanceResourceType'] = self.service_instance_resource_type
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -1639,10 +2447,14 @@ class ListServiceInstanceResourcesRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceARN') is not None:
             self.resource_arn = m.get('ResourceARN')
         if m.get('ServiceInstanceId') is not None:
             self.service_instance_id = m.get('ServiceInstanceId')
+        if m.get('ServiceInstanceResourceType') is not None:
+            self.service_instance_resource_type = m.get('ServiceInstanceResourceType')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -1663,6 +2475,7 @@ class ListServiceInstanceResourcesResponseBodyResources(TeaModel):
         renewal_period: int = None,
         renewal_period_unit: str = None,
         resource_arn: str = None,
+        status: str = None,
     ):
         self.create_time = create_time
         self.expire_time = expire_time
@@ -1673,6 +2486,7 @@ class ListServiceInstanceResourcesResponseBodyResources(TeaModel):
         self.renewal_period = renewal_period
         self.renewal_period_unit = renewal_period_unit
         self.resource_arn = resource_arn
+        self.status = status
 
     def validate(self):
         pass
@@ -1701,6 +2515,8 @@ class ListServiceInstanceResourcesResponseBodyResources(TeaModel):
             result['RenewalPeriodUnit'] = self.renewal_period_unit
         if self.resource_arn is not None:
             result['ResourceARN'] = self.resource_arn
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
@@ -1723,13 +2539,15 @@ class ListServiceInstanceResourcesResponseBodyResources(TeaModel):
             self.renewal_period_unit = m.get('RenewalPeriodUnit')
         if m.get('ResourceARN') is not None:
             self.resource_arn = m.get('ResourceARN')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
 class ListServiceInstanceResourcesResponseBody(TeaModel):
     def __init__(
         self,
-        max_results: str = None,
+        max_results: int = None,
         next_token: str = None,
         request_id: str = None,
         resources: List[ListServiceInstanceResourcesResponseBodyResources] = None,
@@ -1893,15 +2711,17 @@ class ListServiceInstancesRequest(TeaModel):
     def __init__(
         self,
         filter: List[ListServiceInstancesRequestFilter] = None,
-        max_results: str = None,
+        max_results: int = None,
         next_token: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         tag: List[ListServiceInstancesRequestTag] = None,
     ):
         self.filter = filter
         self.max_results = max_results
         self.next_token = next_token
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.tag = tag
 
     def validate(self):
@@ -1930,6 +2750,8 @@ class ListServiceInstancesRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -1949,6 +2771,8 @@ class ListServiceInstancesRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -2127,6 +2951,7 @@ class ListServiceInstancesResponseBodyServiceInstancesTags(TeaModel):
 class ListServiceInstancesResponseBodyServiceInstances(TeaModel):
     def __init__(
         self,
+        biz_status: str = None,
         create_time: str = None,
         enable_instance_ops: bool = None,
         end_time: str = None,
@@ -2139,6 +2964,7 @@ class ListServiceInstancesResponseBodyServiceInstances(TeaModel):
         parameters: str = None,
         pay_type: str = None,
         progress: int = None,
+        resource_group_id: str = None,
         resources: str = None,
         service: ListServiceInstancesResponseBodyServiceInstancesService = None,
         service_instance_id: str = None,
@@ -2150,6 +2976,7 @@ class ListServiceInstancesResponseBodyServiceInstances(TeaModel):
         template_name: str = None,
         update_time: str = None,
     ):
+        self.biz_status = biz_status
         self.create_time = create_time
         self.enable_instance_ops = enable_instance_ops
         self.end_time = end_time
@@ -2162,6 +2989,7 @@ class ListServiceInstancesResponseBodyServiceInstances(TeaModel):
         self.parameters = parameters
         self.pay_type = pay_type
         self.progress = progress
+        self.resource_group_id = resource_group_id
         self.resources = resources
         self.service = service
         self.service_instance_id = service_instance_id
@@ -2187,6 +3015,8 @@ class ListServiceInstancesResponseBodyServiceInstances(TeaModel):
             return _map
 
         result = dict()
+        if self.biz_status is not None:
+            result['BizStatus'] = self.biz_status
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.enable_instance_ops is not None:
@@ -2211,6 +3041,8 @@ class ListServiceInstancesResponseBodyServiceInstances(TeaModel):
             result['PayType'] = self.pay_type
         if self.progress is not None:
             result['Progress'] = self.progress
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resources is not None:
             result['Resources'] = self.resources
         if self.service is not None:
@@ -2237,6 +3069,8 @@ class ListServiceInstancesResponseBodyServiceInstances(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BizStatus') is not None:
+            self.biz_status = m.get('BizStatus')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('EnableInstanceOps') is not None:
@@ -2261,6 +3095,8 @@ class ListServiceInstancesResponseBodyServiceInstances(TeaModel):
             self.pay_type = m.get('PayType')
         if m.get('Progress') is not None:
             self.progress = m.get('Progress')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Resources') is not None:
             self.resources = m.get('Resources')
         if m.get('Service') is not None:
@@ -2291,7 +3127,7 @@ class ListServiceInstancesResponseBodyServiceInstances(TeaModel):
 class ListServiceInstancesResponseBody(TeaModel):
     def __init__(
         self,
-        max_results: str = None,
+        max_results: int = None,
         next_token: str = None,
         request_id: str = None,
         service_instances: List[ListServiceInstancesResponseBodyServiceInstances] = None,
