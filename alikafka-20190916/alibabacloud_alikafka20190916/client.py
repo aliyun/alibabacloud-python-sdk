@@ -2409,6 +2409,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_topic_remark_with_options_async(request, runtime)
 
+    def query_message_with_options(
+        self,
+        request: alikafka_20190916_models.QueryMessageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.QueryMessageResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryMessage',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.QueryMessageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_message_with_options_async(
+        self,
+        request: alikafka_20190916_models.QueryMessageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.QueryMessageResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryMessage',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.QueryMessageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_message(
+        self,
+        request: alikafka_20190916_models.QueryMessageRequest,
+    ) -> alikafka_20190916_models.QueryMessageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_message_with_options(request, runtime)
+
+    async def query_message_async(
+        self,
+        request: alikafka_20190916_models.QueryMessageRequest,
+    ) -> alikafka_20190916_models.QueryMessageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_message_with_options_async(request, runtime)
+
     def release_instance_with_options(
         self,
         request: alikafka_20190916_models.ReleaseInstanceRequest,
@@ -3211,6 +3277,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_instance_config_with_options_async(request, runtime)
 
+    def update_topic_config_with_options(
+        self,
+        request: alikafka_20190916_models.UpdateTopicConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.UpdateTopicConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.topic):
+            query['Topic'] = request.topic
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTopicConfig',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.UpdateTopicConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_topic_config_with_options_async(
+        self,
+        request: alikafka_20190916_models.UpdateTopicConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.UpdateTopicConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.topic):
+            query['Topic'] = request.topic
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTopicConfig',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.UpdateTopicConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_topic_config(
+        self,
+        request: alikafka_20190916_models.UpdateTopicConfigRequest,
+    ) -> alikafka_20190916_models.UpdateTopicConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_topic_config_with_options(request, runtime)
+
+    async def update_topic_config_async(
+        self,
+        request: alikafka_20190916_models.UpdateTopicConfigRequest,
+    ) -> alikafka_20190916_models.UpdateTopicConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_topic_config_with_options_async(request, runtime)
+
     def upgrade_instance_version_with_options(
         self,
         request: alikafka_20190916_models.UpgradeInstanceVersionRequest,
@@ -3218,7 +3370,7 @@ class Client(OpenApiClient):
     ) -> alikafka_20190916_models.UpgradeInstanceVersionResponse:
         """
         ## *Permissions**\
-        A RAM user must be granted the required permissions before the RAM user call the **UpgradeInstanceVersion** operation. For information about how to grant permissions, see [RAM policies](~~185815~~).
+        A RAM user must be granted the required permissions before the RAM user calls the **UpgradeInstanceVersion** operation. For information about how to grant permissions, see [RAM policies](~~185815~~).
         |API|Action|Resource|
         |---|---|---|
         |UpgradeInstanceVersion|UpdateInstance|acs:alikafka:*:*:{instanceId}|
@@ -3263,7 +3415,7 @@ class Client(OpenApiClient):
     ) -> alikafka_20190916_models.UpgradeInstanceVersionResponse:
         """
         ## *Permissions**\
-        A RAM user must be granted the required permissions before the RAM user call the **UpgradeInstanceVersion** operation. For information about how to grant permissions, see [RAM policies](~~185815~~).
+        A RAM user must be granted the required permissions before the RAM user calls the **UpgradeInstanceVersion** operation. For information about how to grant permissions, see [RAM policies](~~185815~~).
         |API|Action|Resource|
         |---|---|---|
         |UpgradeInstanceVersion|UpdateInstance|acs:alikafka:*:*:{instanceId}|
@@ -3307,7 +3459,7 @@ class Client(OpenApiClient):
     ) -> alikafka_20190916_models.UpgradeInstanceVersionResponse:
         """
         ## *Permissions**\
-        A RAM user must be granted the required permissions before the RAM user call the **UpgradeInstanceVersion** operation. For information about how to grant permissions, see [RAM policies](~~185815~~).
+        A RAM user must be granted the required permissions before the RAM user calls the **UpgradeInstanceVersion** operation. For information about how to grant permissions, see [RAM policies](~~185815~~).
         |API|Action|Resource|
         |---|---|---|
         |UpgradeInstanceVersion|UpdateInstance|acs:alikafka:*:*:{instanceId}|
@@ -3326,7 +3478,7 @@ class Client(OpenApiClient):
     ) -> alikafka_20190916_models.UpgradeInstanceVersionResponse:
         """
         ## *Permissions**\
-        A RAM user must be granted the required permissions before the RAM user call the **UpgradeInstanceVersion** operation. For information about how to grant permissions, see [RAM policies](~~185815~~).
+        A RAM user must be granted the required permissions before the RAM user calls the **UpgradeInstanceVersion** operation. For information about how to grant permissions, see [RAM policies](~~185815~~).
         |API|Action|Resource|
         |---|---|---|
         |UpgradeInstanceVersion|UpdateInstance|acs:alikafka:*:*:{instanceId}|

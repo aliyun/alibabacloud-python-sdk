@@ -483,17 +483,15 @@ class CreateConsumerGroupRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N.
+        # The tag key.
         # 
-        # *   Valid values of N: 1 to 20.
         # *   You must specify this parameter.
-        # *   The tag key can be up to 128 characters in length and cannot contain [http:// or https://](http://https://。). The tag key cannot start with acs: or aliyun.
+        # *   The tag key can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain `http://` or `https://`.
         self.key = key
-        # The value of tag N.
+        # The tag value.
         # 
-        # *   Valid values of N: 1 to 20.
         # *   You can leave this parameter empty.
-        # *   The tag value can be 1 to 128 characters in length and cannot start with acs: or aliyun or contain [http:// or https://.](http://https://。)
+        # *   The tag value can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -1421,17 +1419,15 @@ class CreateTopicRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N.
+        # The tag key.
         # 
-        # *   Valid values of N: 1 to 20.
-        # *   If this parameter is left empty, the keys of all tags are matched.
-        # *   The tag key can be up to 128 characters in length. It cannot start with acs: or aliyun or contain [http:// or https://.](http://https://。)
+        # *   If you do not specify this parameter, the keys of all tags are matched.
+        # *   The tag key must be 1 to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
         self.key = key
-        # The value of tag N.
+        # The tag value.
         # 
-        # *   Valid values of N: 1 to 20.
-        # *   This parameter can be left empty.
-        # *   The tag value can be up to 128 characters in length. It cannot start with acs: or aliyun or contain [http:// or https://.](http://https://。)
+        # *   You can leave this parameter empty.
+        # *   The tag value must be 1 to 128 characters in length and cannot contain http:// or https://. The tag value cannot start with aliyun or acs:.
         self.value = value
 
     def validate(self):
@@ -1518,7 +1514,7 @@ class CreateTopicRequest(TeaModel):
         # 
         # > If you set this parameter to **1**, data loss may occur. Exercise caution when you configure this parameter.
         self.replication_factor = replication_factor
-        # The tags.
+        # The tags that you want to add to the topic.
         self.tag = tag
         # The topic name.
         # 
@@ -4250,9 +4246,9 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         # *   **4**: the Internet and VPCs
         # *   **5**: VPCs
         self.deploy_type = deploy_type
-        # The disk size of the instance.
+        # The disk size of the instance. Unit: GB
         self.disk_size = disk_size
-        # The disk type of the instance. Unit: GB Valid values:
+        # The disk type. Valid values:
         # 
         # *   **0**: ultra disk
         # *   **1**: standard SSD
@@ -4269,7 +4265,7 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         # *   Endpoints in domain name mode: An endpoint in this mode consists of the domain name of the instance and a port number. The format of an endpoint in this mode is `{Instance domain name}:{Port number}`.
         # *   Endpoints in IP address mode: An endpoint in this mode consists of the IP address of the broker and a port number. The format of an endpoint in this mode is `{Broker IP address}:{Port number}`.
         self.end_point = end_point
-        # The expiration time. Unit: milliseconds.
+        # The time when the instance expires. Unit: milliseconds.
         self.expired_time = expired_time
         # The instance ID.
         self.instance_id = instance_id
@@ -4299,7 +4295,7 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         self.sasl_domain_endpoint = sasl_domain_endpoint
         # The security group to which the instance belongs.
         # 
-        # *   If the instance is deployed by using the ApsaraMQ for Kafka console or calling the [StartInstance](~~157786~~) operation without a security group configured, the returned value is empty.
+        # *   If the instance is deployed by using the ApsaraMQ for Kafka console or calling the [StartInstance](~~157786~~) operation without a security group configured, no value is returned.
         # *   If the instance is deployed by calling the [StartInstance](~~157786~~) operation with a security group configured, the return value is the configured security group.
         self.security_group = security_group
         # The status of the instance. Valid values:
@@ -4349,9 +4345,9 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         self.used_topic_count = used_topic_count
         # The vSwitch ID of the instance.
         self.v_switch_id = v_switch_id
-        # The ID of the virtual private cloud (VPC) to which the instance belongs.
+        # The ID of the virtual private cloud (VPC) in which the instance is deployed.
         self.vpc_id = vpc_id
-        # The zone ID of the instance.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -5583,15 +5579,13 @@ class ListTagResourcesRequestTag(TeaModel):
     ):
         # The tag key.
         # 
-        # *   Valid values of N: 1 to 20.
-        # *   If this parameter is not configured, all tag keys are matched.
-        # *   The tag key can be up to 128 characters in length. The tag value cannot start with acs: or aliyun or contain [http:// or https://.](http://https://。)
+        # *   If you leave this parameter empty, the keys of all tags are matched.
+        # *   The tag key must be 1 to 128 characters in length and cannot start with acs: or aliyun. The tag key cannot contain http:// or https://.
         self.key = key
         # The tag value.
         # 
-        # *   Valid values of N: 1 to 20.
-        # *   If the Key parameter is not configured, you cannot configure this parameter. If this parameter is not configured, all tag values are matched.
-        # *   The tag value can be 1 to 128 characters in length. The tag value cannot start with acs: or aliyun or contain [http:// or https://.](http://https://。)
+        # *   If you do not specify the tag key, you cannot specify the tag value. If you leave this parameter empty, the values of all tags are matched.
+        # *   The tag value must be 1 to 128 characters in length and cannot start with acs: or aliyun. The tag value cannot contain http:// or https://.
         self.value = value
 
     def validate(self):
@@ -5631,15 +5625,15 @@ class ListTagResourcesRequest(TeaModel):
         self.next_token = next_token
         # The ID of the region in which the resource is deployed.
         self.region_id = region_id
-        # The ID of the resource. A resource ID complies with the following rules:
+        # The resource ID. The following items describe the formats of resource IDs:
         # 
-        # *   The resource ID of an instance is the value of the instanceId parameter.
-        # *   The resource ID of a topic is the value of the Kafka_alikafka_instanceId_topic parameter.
-        # *   The resource ID of a group is the value of the Kafka_alikafka_instanceId_consumerGroup parameter.
+        # *   Instance ID: instanceId
+        # *   Topic ID: Kafka_alikafka_instanceId_topic
+        # *   Group ID: Kafka_alikafka_instanceId_consumerGroup
         # 
-        # For example, the resources whose tags you want to query include the alikafka_post-cn-v0h1fgs2xxxx instance, the test-topic topic, and the test-consumer-group group. In this case, their resource IDs are alikafka_post-cn-v0h1fgs2xxxx, Kafka_alikafka_post-cn-v0h1fgs2xxxx_test-topic, and Kafka_alikafka_post-cn-v0h1fgs2xxxx_test-consumer-group.
+        # For example, you create an instance whose ID is alikafka_post-cn-v0h1fgs2xxxx, a topic whose name is test-topic, and a group whose ID is test-consumer-group. In this case, the resource IDs are alikafka_post-cn-v0h1fgs2xxxx, Kafka_alikafka_post-cn-v0h1fgs2xxxx_test-topic, and Kafka_alikafka_post-cn-v0h1fgs2xxxx_test-consumer-group.
         # 
-        # >  You must set at least one of the **ResourceId** and **Tag** parameters to query the tags of a specified resource. Otherwise, the request fails.
+        # >  You must specify one of the **ResourceId** and **Tag** parameters to query the tags that are attached to a resource. Otherwise, the call fails.
         self.resource_id = resource_id
         # The type of the resource whose tags you want to query. The value is an enumerated value. Valid values:
         # 
@@ -5647,7 +5641,7 @@ class ListTagResourcesRequest(TeaModel):
         # *   **TOPIC**\
         # *   **CONSUMERGROUP**\
         self.resource_type = resource_type
-        # The tag list.
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -5885,10 +5879,10 @@ class ModifyInstanceNameRequest(TeaModel):
     ):
         # The ID of the instance.
         self.instance_id = instance_id
-        # The name of the instance. Valid values:
+        # The instance name. Valid values:
         # 
         # *   The name can contain only letters, digits, hyphens (-), and underscores (\_).
-        # *   The name must be 3 to 64 characters in length. If the name that you specify contains more than 64 characters, the system automatically truncates the name to 64 characters.
+        # *   The name must be 3 to 64 characters in length. A name that contains more than 64 characters is automatically truncated.
         self.instance_name = instance_name
         # The region ID of the instance.
         self.region_id = region_id
@@ -5929,13 +5923,13 @@ class ModifyInstanceNameResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+        # The HTTP status code. The status code 200 indicates that the call is successful.
         self.code = code
         # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the call is successful.
         self.success = success
 
     def validate(self):
@@ -6302,6 +6296,277 @@ class ModifyTopicRemarkResponse(TeaModel):
         return self
 
 
+class QueryMessageRequest(TeaModel):
+    def __init__(
+        self,
+        begin_time: int = None,
+        instance_id: str = None,
+        offset: str = None,
+        partition: str = None,
+        query_type: str = None,
+        region_id: str = None,
+        topic: str = None,
+    ):
+        self.begin_time = begin_time
+        self.instance_id = instance_id
+        self.offset = offset
+        self.partition = partition
+        self.query_type = query_type
+        self.region_id = region_id
+        self.topic = topic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.begin_time is not None:
+            result['BeginTime'] = self.begin_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.offset is not None:
+            result['Offset'] = self.offset
+        if self.partition is not None:
+            result['Partition'] = self.partition
+        if self.query_type is not None:
+            result['QueryType'] = self.query_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeginTime') is not None:
+            self.begin_time = m.get('BeginTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Offset') is not None:
+            self.offset = m.get('Offset')
+        if m.get('Partition') is not None:
+            self.partition = m.get('Partition')
+        if m.get('QueryType') is not None:
+            self.query_type = m.get('QueryType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        return self
+
+
+class QueryMessageResponseBodyMessageList(TeaModel):
+    def __init__(
+        self,
+        checksum: int = None,
+        key: str = None,
+        key_truncated: bool = None,
+        offset: int = None,
+        partition: int = None,
+        serialized_key_size: int = None,
+        serialized_value_size: int = None,
+        timestamp: int = None,
+        timestamp_type: str = None,
+        topic: str = None,
+        truncated_key_size: int = None,
+        truncated_value_size: int = None,
+        value: str = None,
+        value_truncated: bool = None,
+    ):
+        self.checksum = checksum
+        self.key = key
+        self.key_truncated = key_truncated
+        self.offset = offset
+        self.partition = partition
+        self.serialized_key_size = serialized_key_size
+        self.serialized_value_size = serialized_value_size
+        self.timestamp = timestamp
+        self.timestamp_type = timestamp_type
+        self.topic = topic
+        self.truncated_key_size = truncated_key_size
+        self.truncated_value_size = truncated_value_size
+        self.value = value
+        self.value_truncated = value_truncated
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.checksum is not None:
+            result['Checksum'] = self.checksum
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.key_truncated is not None:
+            result['KeyTruncated'] = self.key_truncated
+        if self.offset is not None:
+            result['Offset'] = self.offset
+        if self.partition is not None:
+            result['Partition'] = self.partition
+        if self.serialized_key_size is not None:
+            result['SerializedKeySize'] = self.serialized_key_size
+        if self.serialized_value_size is not None:
+            result['SerializedValueSize'] = self.serialized_value_size
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        if self.timestamp_type is not None:
+            result['TimestampType'] = self.timestamp_type
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.truncated_key_size is not None:
+            result['TruncatedKeySize'] = self.truncated_key_size
+        if self.truncated_value_size is not None:
+            result['TruncatedValueSize'] = self.truncated_value_size
+        if self.value is not None:
+            result['Value'] = self.value
+        if self.value_truncated is not None:
+            result['ValueTruncated'] = self.value_truncated
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Checksum') is not None:
+            self.checksum = m.get('Checksum')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('KeyTruncated') is not None:
+            self.key_truncated = m.get('KeyTruncated')
+        if m.get('Offset') is not None:
+            self.offset = m.get('Offset')
+        if m.get('Partition') is not None:
+            self.partition = m.get('Partition')
+        if m.get('SerializedKeySize') is not None:
+            self.serialized_key_size = m.get('SerializedKeySize')
+        if m.get('SerializedValueSize') is not None:
+            self.serialized_value_size = m.get('SerializedValueSize')
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        if m.get('TimestampType') is not None:
+            self.timestamp_type = m.get('TimestampType')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('TruncatedKeySize') is not None:
+            self.truncated_key_size = m.get('TruncatedKeySize')
+        if m.get('TruncatedValueSize') is not None:
+            self.truncated_value_size = m.get('TruncatedValueSize')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        if m.get('ValueTruncated') is not None:
+            self.value_truncated = m.get('ValueTruncated')
+        return self
+
+
+class QueryMessageResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        message_list: List[QueryMessageResponseBodyMessageList] = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.message_list = message_list
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.message_list:
+            for k in self.message_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        result['MessageList'] = []
+        if self.message_list is not None:
+            for k in self.message_list:
+                result['MessageList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        self.message_list = []
+        if m.get('MessageList') is not None:
+            for k in m.get('MessageList'):
+                temp_model = QueryMessageResponseBodyMessageList()
+                self.message_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryMessageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryMessageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryMessageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ReleaseInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -6464,26 +6729,32 @@ class StartInstanceRequest(TeaModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The initial configuration of the instance. The value must be a valid JSON string.
+        # The initial configurations of ApsaraMQ for Kafka. The value must be a valid JSON string.
         # 
-        # If you do not specify a value for this parameter, the value is left empty by default.
+        # If you do not specify this parameter, it is left empty.
         # 
         # The following parameters can be configured for **Config**:
         # 
         # *   **enable.vpc_sasl_ssl**: specifies whether to enable VPC transmission encryption. Valid values:
         # 
-        #     *   **true**: enables VPC transmission encryption. If VPC transmission encryption is enabled, you must also enable the access control list (ACL) feature.
-        #     *   **false**: disables VPC transmission encryption. This is the default value.
+        #     *   **true**: enables VPC transmission encryption. If you enable VPC transmission encryption, you must also enable access control list (ACL).
+        #     *   **false**: disables VPC transmission encryption. By default, VPC transmission encryption is disabled.
         # 
         # *   **enable.acl**: specifies whether to enable ACL. Valid values:
         # 
-        #     *   **true**: enables the ACL feature.
-        #     *   **false**: disables the ACL feature. This is the default value.
+        #     *   **true**: enables ACL.
+        #     *   **false**: disables ACL. By default, ACL is disabled.
         # 
-        # *   **kafka.log.retention.hours**: the maximum period for which messages can be retained when the remaining disk space is sufficient. Unit: hours. Valid values: 24 to 480. Default value: **72**. When the disk usage reaches 85%, the system deletes messages in the order in which they are stored, starting from the earliest stored message. This ensures that the performance of the service is not degraded.
+        # *   **kafka.log.retention.hours**: the maximum message retention period when the disk capacity is sufficient. Unit: hours. Valid values: 24 to 480. Default value: **72**. When the disk usage reaches 85%, the disk capacity is considered insufficient and the system deletes messages in the order in which they are stored to ensure service availability.
         # 
-        # *   **kafka.message.max.bytes**: the maximum size of messages that Message Queue for Apache Kafka can send and receive. Unit: bytes. Valid values: 1048576 to 10485760. Default value: **1048576**. Before you change the maximum message size to a new value, make sure that the new value matches the configuration on the producers and consumers in the instance.
+        # *   **kafka.message.max.bytes**: the maximum size of messages that ApsaraMQ for Kafka can send and receive. Unit: bytes. Valid values: 1048576 to 10485760. Default value: **1048576**. Before you change the value of this parameter, make sure that the new value matches the corresponding configurations on the producers and consumers.
         self.config = config
+        # Specifies whether cross-zone deployment is required. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: true.
         self.cross_zone = cross_zone
         # The deployment mode of the instance. Valid values:
         # 
@@ -6528,11 +6799,19 @@ class StartInstanceRequest(TeaModel):
         self.region_id = region_id
         # The security group of the instance.
         # 
-        # If you do not configure this parameter, Message Queue for Apache Kafka automatically configures a security group for the instance. If you want to configure this parameter, you must create a security group for the instance in advance. For more information, see [Create a security group](~~25468~~).
+        # If you do not specify this parameter, ApsaraMQ for Kafka automatically configures a security group for your instance. If you specify this parameter, you must create a security group in advance. For more information, see [Create a security group](~~25468~~).
         self.security_group = security_group
-        # The zones among which you want to deploy the instance.
+        # The two-dimensional arrays that consist of the candidate set for primary zones and the candidate set for secondary zones.
+        # 
+        # *   If you set CrossZone to true and specify Zone H and Zone F as the candidate set for primary zones and Zone K as the candidate set for secondary zones, set this parameter to `[[\"zoneh\",\"zonef\"],[\"zonek\"]]`.
+        # 
+        #     **\
+        # 
+        #     **Note** If you specify multiple zones as the primary or secondary zones, the system deploys the instance in one of the zones without prioritizing them. For example, if you set this parameter to `[[\"zoneh\",\"zonef\"],[\"zonek\"]]`, the primary zone in which the instance is deployed can be Zone H or Zone F, and the secondary zone is Zone K.
+        # 
+        # *   If you set CrossZone to false and want to deploy the instance in Zone K, set this parameter to `[[\"zonek\"],[]]`. In this case, the value of this parameter must still be two-dimensional arrays, but the array that specifies the candidate for secondary zones is left empty.
         self.selected_zones = selected_zones
-        # The version number of the instance. Valid values: 0.10.2 and 2.2.0.
+        # The version of ApsaraMQ for Kafka. Valid values: 0.10.2 and 2.2.0.
         self.service_version = service_version
         # The mobile phone number of the alert contact.
         self.user_phone_num = user_phone_num
@@ -6745,7 +7024,15 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
+        # 
+        # *   You must specify this parameter.
+        # *   The tag key must be 1 to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value.
+        # 
+        # *   You can leave this parameter empty.
+        # *   The tag value must be 1 to 128 characters in length and cannot start with acs: or aliyun. The tag key cannot contain http:// or https://.
         self.value = value
 
     def validate(self):
@@ -6795,7 +7082,7 @@ class TagResourcesRequest(TeaModel):
         # 
         # >  The value of this parameter is not case-sensitive.
         self.resource_type = resource_type
-        # The list of tags that you want to associate with the instances.
+        # The tags that you want to add.
         self.tag = tag
 
     def validate(self):
@@ -6937,7 +7224,7 @@ class UntagResourcesRequest(TeaModel):
         # 
         # >  The value of this parameter is not case-sensitive.
         self.resource_type = resource_type
-        # The key of the tag that you want to attach to the specified resource.
+        # The tag key.
         self.tag_key = tag_key
 
     def validate(self):
@@ -7539,7 +7826,7 @@ class UpdateInstanceConfigRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The configuration of the instance that you want to update. The value must be a valid JSON string.
+        # The configurations that you want to update for the ApsaraMQ for Kafka instance. The value must be a valid JSON string.
         self.config = config
         # The instance ID.
         self.instance_id = instance_id
@@ -7582,13 +7869,13 @@ class UpdateInstanceConfigResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+        # The HTTP status code. The status code 200 indicates that the call is successful.
         self.code = code
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the call is successful.
         self.success = success
 
     def validate(self):
@@ -7663,6 +7950,153 @@ class UpdateInstanceConfigResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateInstanceConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateTopicConfigRequest(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+        topic: str = None,
+        value: str = None,
+    ):
+        self.config = config
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.topic = topic
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class UpdateTopicConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateTopicConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateTopicConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateTopicConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
