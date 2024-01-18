@@ -15122,6 +15122,56 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_field_statistics_with_options_async(request, runtime)
 
+    def describe_fix_used_count_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeFixUsedCountResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeFixUsedCount',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeFixUsedCountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_fix_used_count_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeFixUsedCountResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeFixUsedCount',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeFixUsedCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_fix_used_count(self) -> sas_20181203_models.DescribeFixUsedCountResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_fix_used_count_with_options(runtime)
+
+    async def describe_fix_used_count_async(self) -> sas_20181203_models.DescribeFixUsedCountResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_fix_used_count_with_options_async(runtime)
+
     def describe_front_vul_patch_list_with_options(
         self,
         request: sas_20181203_models.DescribeFrontVulPatchListRequest,
@@ -29255,6 +29305,8 @@ class Client(OpenApiClient):
             query['Dealed'] = request.dealed
         if not UtilClient.is_unset(request.export_type):
             query['ExportType'] = request.export_type
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.is_cleartext_pwd):
             query['IsCleartextPwd'] = request.is_cleartext_pwd
         if not UtilClient.is_unset(request.is_summary_export):
@@ -29311,6 +29363,8 @@ class Client(OpenApiClient):
             query['Dealed'] = request.dealed
         if not UtilClient.is_unset(request.export_type):
             query['ExportType'] = request.export_type
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.is_cleartext_pwd):
             query['IsCleartextPwd'] = request.is_cleartext_pwd
         if not UtilClient.is_unset(request.is_summary_export):
@@ -47203,6 +47257,8 @@ class Client(OpenApiClient):
             query['TagId'] = request.tag_id
         if not UtilClient.is_unset(request.tag_list):
             query['TagList'] = request.tag_list
+        if not UtilClient.is_unset(request.target):
+            query['Target'] = request.target
         if not UtilClient.is_unset(request.uuid_list):
             query['UuidList'] = request.uuid_list
         req = open_api_models.OpenApiRequest(
@@ -47237,6 +47293,8 @@ class Client(OpenApiClient):
             query['TagId'] = request.tag_id
         if not UtilClient.is_unset(request.tag_list):
             query['TagList'] = request.tag_list
+        if not UtilClient.is_unset(request.target):
+            query['Target'] = request.target
         if not UtilClient.is_unset(request.uuid_list):
             query['UuidList'] = request.uuid_list
         req = open_api_models.OpenApiRequest(
