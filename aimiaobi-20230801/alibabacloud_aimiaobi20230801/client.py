@@ -2331,6 +2331,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_async_task_with_options_async(request, runtime)
 
+    def update_generated_content_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.UpdateGeneratedContentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.UpdateGeneratedContentResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.UpdateGeneratedContentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.keywords):
+            request.keywords_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.keywords, 'Keywords', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.content_text):
+            body['ContentText'] = request.content_text
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.keywords_shrink):
+            body['Keywords'] = request.keywords_shrink
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateGeneratedContent',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.UpdateGeneratedContentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_generated_content_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.UpdateGeneratedContentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.UpdateGeneratedContentResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.UpdateGeneratedContentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.keywords):
+            request.keywords_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.keywords, 'Keywords', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.content_text):
+            body['ContentText'] = request.content_text
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.keywords_shrink):
+            body['Keywords'] = request.keywords_shrink
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateGeneratedContent',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.UpdateGeneratedContentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_generated_content(
+        self,
+        request: ai_miao_bi_20230801_models.UpdateGeneratedContentRequest,
+    ) -> ai_miao_bi_20230801_models.UpdateGeneratedContentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_generated_content_with_options(request, runtime)
+
+    async def update_generated_content_async(
+        self,
+        request: ai_miao_bi_20230801_models.UpdateGeneratedContentRequest,
+    ) -> ai_miao_bi_20230801_models.UpdateGeneratedContentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_generated_content_with_options_async(request, runtime)
+
     def update_material_document_with_options(
         self,
         tmp_req: ai_miao_bi_20230801_models.UpdateMaterialDocumentRequest,
