@@ -1423,6 +1423,104 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_token_with_options_async(request, headers, runtime)
 
+    def luggage_direct_with_options(
+        self,
+        tmp_req: airticket_open_20230117_models.LuggageDirectRequest,
+        headers: airticket_open_20230117_models.LuggageDirectHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> airticket_open_20230117_models.LuggageDirectResponse:
+        UtilClient.validate_model(tmp_req)
+        request = airticket_open_20230117_models.LuggageDirectShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.flight_segment_param_list):
+            request.flight_segment_param_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.flight_segment_param_list, 'flight_segment_param_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.flight_segment_param_list_shrink):
+            body['flight_segment_param_list'] = request.flight_segment_param_list_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_airticket_access_token):
+            real_headers['x-acs-airticket-access-token'] = UtilClient.to_jsonstring(headers.x_acs_airticket_access_token)
+        if not UtilClient.is_unset(headers.x_acs_airticket_language):
+            real_headers['x-acs-airticket-language'] = UtilClient.to_jsonstring(headers.x_acs_airticket_language)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='LuggageDirect',
+            version='2023-01-17',
+            protocol='HTTPS',
+            pathname=f'/airticket/v1/flight-data/luggage-direct',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airticket_open_20230117_models.LuggageDirectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def luggage_direct_with_options_async(
+        self,
+        tmp_req: airticket_open_20230117_models.LuggageDirectRequest,
+        headers: airticket_open_20230117_models.LuggageDirectHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> airticket_open_20230117_models.LuggageDirectResponse:
+        UtilClient.validate_model(tmp_req)
+        request = airticket_open_20230117_models.LuggageDirectShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.flight_segment_param_list):
+            request.flight_segment_param_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.flight_segment_param_list, 'flight_segment_param_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.flight_segment_param_list_shrink):
+            body['flight_segment_param_list'] = request.flight_segment_param_list_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_airticket_access_token):
+            real_headers['x-acs-airticket-access-token'] = UtilClient.to_jsonstring(headers.x_acs_airticket_access_token)
+        if not UtilClient.is_unset(headers.x_acs_airticket_language):
+            real_headers['x-acs-airticket-language'] = UtilClient.to_jsonstring(headers.x_acs_airticket_language)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='LuggageDirect',
+            version='2023-01-17',
+            protocol='HTTPS',
+            pathname=f'/airticket/v1/flight-data/luggage-direct',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airticket_open_20230117_models.LuggageDirectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def luggage_direct(
+        self,
+        request: airticket_open_20230117_models.LuggageDirectRequest,
+    ) -> airticket_open_20230117_models.LuggageDirectResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = airticket_open_20230117_models.LuggageDirectHeaders()
+        return self.luggage_direct_with_options(request, headers, runtime)
+
+    async def luggage_direct_async(
+        self,
+        request: airticket_open_20230117_models.LuggageDirectRequest,
+    ) -> airticket_open_20230117_models.LuggageDirectResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = airticket_open_20230117_models.LuggageDirectHeaders()
+        return await self.luggage_direct_with_options_async(request, headers, runtime)
+
     def order_detail_with_options(
         self,
         request: airticket_open_20230117_models.OrderDetailRequest,
@@ -2320,3 +2418,101 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.TicketingCheckHeaders()
         return await self.ticketing_check_with_options_async(request, headers, runtime)
+
+    def transit_visa_with_options(
+        self,
+        tmp_req: airticket_open_20230117_models.TransitVisaRequest,
+        headers: airticket_open_20230117_models.TransitVisaHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> airticket_open_20230117_models.TransitVisaResponse:
+        UtilClient.validate_model(tmp_req)
+        request = airticket_open_20230117_models.TransitVisaShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.flight_segment_param_list):
+            request.flight_segment_param_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.flight_segment_param_list, 'flight_segment_param_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.flight_segment_param_list_shrink):
+            body['flight_segment_param_list'] = request.flight_segment_param_list_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_airticket_access_token):
+            real_headers['x-acs-airticket-access-token'] = UtilClient.to_jsonstring(headers.x_acs_airticket_access_token)
+        if not UtilClient.is_unset(headers.x_acs_airticket_language):
+            real_headers['x-acs-airticket-language'] = UtilClient.to_jsonstring(headers.x_acs_airticket_language)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TransitVisa',
+            version='2023-01-17',
+            protocol='HTTPS',
+            pathname=f'/airticket/v1/flight-data/transit-visa',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airticket_open_20230117_models.TransitVisaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def transit_visa_with_options_async(
+        self,
+        tmp_req: airticket_open_20230117_models.TransitVisaRequest,
+        headers: airticket_open_20230117_models.TransitVisaHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> airticket_open_20230117_models.TransitVisaResponse:
+        UtilClient.validate_model(tmp_req)
+        request = airticket_open_20230117_models.TransitVisaShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.flight_segment_param_list):
+            request.flight_segment_param_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.flight_segment_param_list, 'flight_segment_param_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.flight_segment_param_list_shrink):
+            body['flight_segment_param_list'] = request.flight_segment_param_list_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_airticket_access_token):
+            real_headers['x-acs-airticket-access-token'] = UtilClient.to_jsonstring(headers.x_acs_airticket_access_token)
+        if not UtilClient.is_unset(headers.x_acs_airticket_language):
+            real_headers['x-acs-airticket-language'] = UtilClient.to_jsonstring(headers.x_acs_airticket_language)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TransitVisa',
+            version='2023-01-17',
+            protocol='HTTPS',
+            pathname=f'/airticket/v1/flight-data/transit-visa',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airticket_open_20230117_models.TransitVisaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def transit_visa(
+        self,
+        request: airticket_open_20230117_models.TransitVisaRequest,
+    ) -> airticket_open_20230117_models.TransitVisaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = airticket_open_20230117_models.TransitVisaHeaders()
+        return self.transit_visa_with_options(request, headers, runtime)
+
+    async def transit_visa_async(
+        self,
+        request: airticket_open_20230117_models.TransitVisaRequest,
+    ) -> airticket_open_20230117_models.TransitVisaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = airticket_open_20230117_models.TransitVisaHeaders()
+        return await self.transit_visa_with_options_async(request, headers, runtime)

@@ -8191,6 +8191,349 @@ class GetTokenResponse(TeaModel):
         return self
 
 
+class LuggageDirectHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_airticket_access_token: str = None,
+        x_acs_airticket_language: str = None,
+    ):
+        self.common_headers = common_headers
+        # access_token
+        self.x_acs_airticket_access_token = x_acs_airticket_access_token
+        self.x_acs_airticket_language = x_acs_airticket_language
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_airticket_access_token is not None:
+            result['x-acs-airticket-access-token'] = self.x_acs_airticket_access_token
+        if self.x_acs_airticket_language is not None:
+            result['x-acs-airticket-language'] = self.x_acs_airticket_language
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-airticket-access-token') is not None:
+            self.x_acs_airticket_access_token = m.get('x-acs-airticket-access-token')
+        if m.get('x-acs-airticket-language') is not None:
+            self.x_acs_airticket_language = m.get('x-acs-airticket-language')
+        return self
+
+
+class LuggageDirectRequestFlightSegmentParamList(TeaModel):
+    def __init__(
+        self,
+        arrival_airport: str = None,
+        arrival_terminal: str = None,
+        arrival_time: int = None,
+        code_share: bool = None,
+        departure_airport: str = None,
+        departure_terminal: str = None,
+        departure_time: int = None,
+        marketing_airline: str = None,
+        marketing_flight_no: str = None,
+        operating_airline: str = None,
+        stop_city_list: str = None,
+        ticketing_airline: str = None,
+    ):
+        self.arrival_airport = arrival_airport
+        self.arrival_terminal = arrival_terminal
+        self.arrival_time = arrival_time
+        self.code_share = code_share
+        self.departure_airport = departure_airport
+        self.departure_terminal = departure_terminal
+        self.departure_time = departure_time
+        self.marketing_airline = marketing_airline
+        self.marketing_flight_no = marketing_flight_no
+        self.operating_airline = operating_airline
+        self.stop_city_list = stop_city_list
+        self.ticketing_airline = ticketing_airline
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arrival_airport is not None:
+            result['arrival_airport'] = self.arrival_airport
+        if self.arrival_terminal is not None:
+            result['arrival_terminal'] = self.arrival_terminal
+        if self.arrival_time is not None:
+            result['arrival_time'] = self.arrival_time
+        if self.code_share is not None:
+            result['code_share'] = self.code_share
+        if self.departure_airport is not None:
+            result['departure_airport'] = self.departure_airport
+        if self.departure_terminal is not None:
+            result['departure_terminal'] = self.departure_terminal
+        if self.departure_time is not None:
+            result['departure_time'] = self.departure_time
+        if self.marketing_airline is not None:
+            result['marketing_airline'] = self.marketing_airline
+        if self.marketing_flight_no is not None:
+            result['marketing_flight_no'] = self.marketing_flight_no
+        if self.operating_airline is not None:
+            result['operating_airline'] = self.operating_airline
+        if self.stop_city_list is not None:
+            result['stop_city_list'] = self.stop_city_list
+        if self.ticketing_airline is not None:
+            result['ticketing_airline'] = self.ticketing_airline
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('arrival_airport') is not None:
+            self.arrival_airport = m.get('arrival_airport')
+        if m.get('arrival_terminal') is not None:
+            self.arrival_terminal = m.get('arrival_terminal')
+        if m.get('arrival_time') is not None:
+            self.arrival_time = m.get('arrival_time')
+        if m.get('code_share') is not None:
+            self.code_share = m.get('code_share')
+        if m.get('departure_airport') is not None:
+            self.departure_airport = m.get('departure_airport')
+        if m.get('departure_terminal') is not None:
+            self.departure_terminal = m.get('departure_terminal')
+        if m.get('departure_time') is not None:
+            self.departure_time = m.get('departure_time')
+        if m.get('marketing_airline') is not None:
+            self.marketing_airline = m.get('marketing_airline')
+        if m.get('marketing_flight_no') is not None:
+            self.marketing_flight_no = m.get('marketing_flight_no')
+        if m.get('operating_airline') is not None:
+            self.operating_airline = m.get('operating_airline')
+        if m.get('stop_city_list') is not None:
+            self.stop_city_list = m.get('stop_city_list')
+        if m.get('ticketing_airline') is not None:
+            self.ticketing_airline = m.get('ticketing_airline')
+        return self
+
+
+class LuggageDirectRequest(TeaModel):
+    def __init__(
+        self,
+        flight_segment_param_list: List[LuggageDirectRequestFlightSegmentParamList] = None,
+    ):
+        self.flight_segment_param_list = flight_segment_param_list
+
+    def validate(self):
+        if self.flight_segment_param_list:
+            for k in self.flight_segment_param_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['flight_segment_param_list'] = []
+        if self.flight_segment_param_list is not None:
+            for k in self.flight_segment_param_list:
+                result['flight_segment_param_list'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.flight_segment_param_list = []
+        if m.get('flight_segment_param_list') is not None:
+            for k in m.get('flight_segment_param_list'):
+                temp_model = LuggageDirectRequestFlightSegmentParamList()
+                self.flight_segment_param_list.append(temp_model.from_map(k))
+        return self
+
+
+class LuggageDirectShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        flight_segment_param_list_shrink: str = None,
+    ):
+        self.flight_segment_param_list_shrink = flight_segment_param_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.flight_segment_param_list_shrink is not None:
+            result['flight_segment_param_list'] = self.flight_segment_param_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('flight_segment_param_list') is not None:
+            self.flight_segment_param_list_shrink = m.get('flight_segment_param_list')
+        return self
+
+
+class LuggageDirectResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        city_code: str = None,
+        direct_type: int = None,
+    ):
+        self.city_code = city_code
+        self.direct_type = direct_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.city_code is not None:
+            result['city_code'] = self.city_code
+        if self.direct_type is not None:
+            result['direct_type'] = self.direct_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('city_code') is not None:
+            self.city_code = m.get('city_code')
+        if m.get('direct_type') is not None:
+            self.direct_type = m.get('direct_type')
+        return self
+
+
+class LuggageDirectResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: List[LuggageDirectResponseBodyData] = None,
+        error_code: str = None,
+        error_data: Any = None,
+        error_msg: str = None,
+        status: int = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+        self.error_code = error_code
+        self.error_data = error_data
+        self.error_msg = error_msg
+        self.status = status
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['error_code'] = self.error_code
+        if self.error_data is not None:
+            result['error_data'] = self.error_data
+        if self.error_msg is not None:
+            result['error_msg'] = self.error_msg
+        if self.status is not None:
+            result['status'] = self.status
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = LuggageDirectResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('error_code') is not None:
+            self.error_code = m.get('error_code')
+        if m.get('error_data') is not None:
+            self.error_data = m.get('error_data')
+        if m.get('error_msg') is not None:
+            self.error_msg = m.get('error_msg')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class LuggageDirectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: LuggageDirectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = LuggageDirectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class OrderDetailHeaders(TeaModel):
     def __init__(
         self,
@@ -10812,12 +11155,14 @@ class PricingResponseBodyData(TeaModel):
         changed_price_info: PricingResponseBodyDataChangedPriceInfo = None,
         is_changed: bool = None,
         original_price_info: PricingResponseBodyDataOriginalPriceInfo = None,
+        remain_seats: str = None,
         solution: PricingResponseBodyDataSolution = None,
     ):
         self.changed_price_info = changed_price_info
         self.is_changed = is_changed
         # 变价之前价格信息 isChanged = true 时，才有值
         self.original_price_info = original_price_info
+        self.remain_seats = remain_seats
         # solution
         self.solution = solution
 
@@ -10841,6 +11186,8 @@ class PricingResponseBodyData(TeaModel):
             result['is_changed'] = self.is_changed
         if self.original_price_info is not None:
             result['original_price_info'] = self.original_price_info.to_map()
+        if self.remain_seats is not None:
+            result['remain_seats'] = self.remain_seats
         if self.solution is not None:
             result['solution'] = self.solution.to_map()
         return result
@@ -10855,6 +11202,8 @@ class PricingResponseBodyData(TeaModel):
         if m.get('original_price_info') is not None:
             temp_model = PricingResponseBodyDataOriginalPriceInfo()
             self.original_price_info = temp_model.from_map(m['original_price_info'])
+        if m.get('remain_seats') is not None:
+            self.remain_seats = m.get('remain_seats')
         if m.get('solution') is not None:
             temp_model = PricingResponseBodyDataSolution()
             self.solution = temp_model.from_map(m['solution'])
@@ -13838,6 +14187,349 @@ class TicketingCheckResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TicketingCheckResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TransitVisaHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_airticket_access_token: str = None,
+        x_acs_airticket_language: str = None,
+    ):
+        self.common_headers = common_headers
+        # access_token
+        self.x_acs_airticket_access_token = x_acs_airticket_access_token
+        self.x_acs_airticket_language = x_acs_airticket_language
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_airticket_access_token is not None:
+            result['x-acs-airticket-access-token'] = self.x_acs_airticket_access_token
+        if self.x_acs_airticket_language is not None:
+            result['x-acs-airticket-language'] = self.x_acs_airticket_language
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-airticket-access-token') is not None:
+            self.x_acs_airticket_access_token = m.get('x-acs-airticket-access-token')
+        if m.get('x-acs-airticket-language') is not None:
+            self.x_acs_airticket_language = m.get('x-acs-airticket-language')
+        return self
+
+
+class TransitVisaRequestFlightSegmentParamList(TeaModel):
+    def __init__(
+        self,
+        arrival_airport: str = None,
+        arrival_terminal: str = None,
+        arrival_time: int = None,
+        code_share: bool = None,
+        departure_airport: str = None,
+        departure_terminal: str = None,
+        departure_time: int = None,
+        marketing_airline: str = None,
+        marketing_flight_no: str = None,
+        operating_airline: str = None,
+        stop_city_list: str = None,
+        ticketing_airline: str = None,
+    ):
+        self.arrival_airport = arrival_airport
+        self.arrival_terminal = arrival_terminal
+        self.arrival_time = arrival_time
+        self.code_share = code_share
+        self.departure_airport = departure_airport
+        self.departure_terminal = departure_terminal
+        self.departure_time = departure_time
+        self.marketing_airline = marketing_airline
+        self.marketing_flight_no = marketing_flight_no
+        self.operating_airline = operating_airline
+        self.stop_city_list = stop_city_list
+        self.ticketing_airline = ticketing_airline
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arrival_airport is not None:
+            result['arrival_airport'] = self.arrival_airport
+        if self.arrival_terminal is not None:
+            result['arrival_terminal'] = self.arrival_terminal
+        if self.arrival_time is not None:
+            result['arrival_time'] = self.arrival_time
+        if self.code_share is not None:
+            result['code_share'] = self.code_share
+        if self.departure_airport is not None:
+            result['departure_airport'] = self.departure_airport
+        if self.departure_terminal is not None:
+            result['departure_terminal'] = self.departure_terminal
+        if self.departure_time is not None:
+            result['departure_time'] = self.departure_time
+        if self.marketing_airline is not None:
+            result['marketing_airline'] = self.marketing_airline
+        if self.marketing_flight_no is not None:
+            result['marketing_flight_no'] = self.marketing_flight_no
+        if self.operating_airline is not None:
+            result['operating_airline'] = self.operating_airline
+        if self.stop_city_list is not None:
+            result['stop_city_list'] = self.stop_city_list
+        if self.ticketing_airline is not None:
+            result['ticketing_airline'] = self.ticketing_airline
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('arrival_airport') is not None:
+            self.arrival_airport = m.get('arrival_airport')
+        if m.get('arrival_terminal') is not None:
+            self.arrival_terminal = m.get('arrival_terminal')
+        if m.get('arrival_time') is not None:
+            self.arrival_time = m.get('arrival_time')
+        if m.get('code_share') is not None:
+            self.code_share = m.get('code_share')
+        if m.get('departure_airport') is not None:
+            self.departure_airport = m.get('departure_airport')
+        if m.get('departure_terminal') is not None:
+            self.departure_terminal = m.get('departure_terminal')
+        if m.get('departure_time') is not None:
+            self.departure_time = m.get('departure_time')
+        if m.get('marketing_airline') is not None:
+            self.marketing_airline = m.get('marketing_airline')
+        if m.get('marketing_flight_no') is not None:
+            self.marketing_flight_no = m.get('marketing_flight_no')
+        if m.get('operating_airline') is not None:
+            self.operating_airline = m.get('operating_airline')
+        if m.get('stop_city_list') is not None:
+            self.stop_city_list = m.get('stop_city_list')
+        if m.get('ticketing_airline') is not None:
+            self.ticketing_airline = m.get('ticketing_airline')
+        return self
+
+
+class TransitVisaRequest(TeaModel):
+    def __init__(
+        self,
+        flight_segment_param_list: List[TransitVisaRequestFlightSegmentParamList] = None,
+    ):
+        self.flight_segment_param_list = flight_segment_param_list
+
+    def validate(self):
+        if self.flight_segment_param_list:
+            for k in self.flight_segment_param_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['flight_segment_param_list'] = []
+        if self.flight_segment_param_list is not None:
+            for k in self.flight_segment_param_list:
+                result['flight_segment_param_list'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.flight_segment_param_list = []
+        if m.get('flight_segment_param_list') is not None:
+            for k in m.get('flight_segment_param_list'):
+                temp_model = TransitVisaRequestFlightSegmentParamList()
+                self.flight_segment_param_list.append(temp_model.from_map(k))
+        return self
+
+
+class TransitVisaShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        flight_segment_param_list_shrink: str = None,
+    ):
+        self.flight_segment_param_list_shrink = flight_segment_param_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.flight_segment_param_list_shrink is not None:
+            result['flight_segment_param_list'] = self.flight_segment_param_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('flight_segment_param_list') is not None:
+            self.flight_segment_param_list_shrink = m.get('flight_segment_param_list')
+        return self
+
+
+class TransitVisaResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        city_code: str = None,
+        visa_type: int = None,
+    ):
+        self.city_code = city_code
+        self.visa_type = visa_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.city_code is not None:
+            result['city_code'] = self.city_code
+        if self.visa_type is not None:
+            result['visa_type'] = self.visa_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('city_code') is not None:
+            self.city_code = m.get('city_code')
+        if m.get('visa_type') is not None:
+            self.visa_type = m.get('visa_type')
+        return self
+
+
+class TransitVisaResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: List[TransitVisaResponseBodyData] = None,
+        error_code: str = None,
+        error_data: Any = None,
+        error_msg: str = None,
+        status: int = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+        self.error_code = error_code
+        self.error_data = error_data
+        self.error_msg = error_msg
+        self.status = status
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['error_code'] = self.error_code
+        if self.error_data is not None:
+            result['error_data'] = self.error_data
+        if self.error_msg is not None:
+            result['error_msg'] = self.error_msg
+        if self.status is not None:
+            result['status'] = self.status
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = TransitVisaResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('error_code') is not None:
+            self.error_code = m.get('error_code')
+        if m.get('error_data') is not None:
+            self.error_data = m.get('error_data')
+        if m.get('error_msg') is not None:
+            self.error_msg = m.get('error_msg')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class TransitVisaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TransitVisaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TransitVisaResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
