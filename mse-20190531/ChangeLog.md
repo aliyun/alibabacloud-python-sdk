@@ -1,3 +1,6 @@
+2024-01-18 Version: 5.2.8
+- Generated python 2019-05-31 for mse.
+
 2023-12-20 Version: 5.2.7
 - Generated python 2019-05-31 for mse.
 
