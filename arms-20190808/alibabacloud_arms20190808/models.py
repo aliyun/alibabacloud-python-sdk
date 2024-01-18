@@ -6395,8 +6395,7 @@ class CreateEnvironmentRequest(TeaModel):
     ):
         # The language. Valid values: zh and en. Default value: zh.
         self.aliyun_lang = aliyun_lang
-        # The ID of the resource associated with the environment, such as the ACK cluster ID or VPC ID.
-        # For Cloud type environments, the current field value is RegionId.
+        # The ID of the resource bound to the environment, such as the container ID or VPC ID. For a Cloud environment, specify the region ID.
         self.bind_resource_id = bind_resource_id
         # The name of the environment.
         self.environment_name = environment_name
@@ -6413,15 +6412,15 @@ class CreateEnvironmentRequest(TeaModel):
         # *   Cloud: cloud service
         self.environment_type = environment_type
         # type of managed：
-        # - none： not managed. default value of prometheus for ACK.
-        # - agent：managed agent. default value of  promehtues for ASK/ACS/AckOne.
-        # - agent-exproter： maanged agent and exporter. default of prometheus for Cloud.
+        # - none: not managed. default value of prometheus for ACK.
+        # - agent: managed agent. default value of  promehtues for ASK/ACS/AckOne.
+        # - agent-exproter: maanged agent and exporter. default of prometheus for Cloud.
         self.managed_type = managed_type
         # The region ID.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The tags to add to the instance.
+        # The tags of the instance. You can specify this parameter to manage tags for the instance.
         self.tags = tags
 
     def validate(self):
@@ -10827,8 +10826,8 @@ class CreatePrometheusInstanceRequest(TeaModel):
         # - ecs: Prometheus for ECS
         # - global-view: Global Aggregation Instance
         # - aliyun-cs: Prometheus Instance for Container Service
-        # - cloud-product：Prometheus for cloud monitor
-        # - cloud-monitor：Prometheus for enterprise cloud monitor
+        # - cloud-product: Prometheus for cloud monitor
+        # - cloud-monitor: Prometheus for enterprise cloud monitor
         # - flink: Prometheus for FLink
         self.cluster_type = cluster_type
         # The ID of the Grafana dedicated instance. This parameter is available if you set ClusterType to ecs.
@@ -33842,10 +33841,15 @@ class InitEnvironmentRequest(TeaModel):
         managed_type: str = None,
         region_id: str = None,
     ):
-        # Locale, the default is Chinese zh.
+        # The language. Valid values: zh and en. Default value: zh.
         self.aliyun_lang = aliyun_lang
-        # Environment ID.
+        # The ID of the environment instance.
         self.environment_id = environment_id
+        # type of managed:
+        # 
+        # - none: not managed. default value of prometheus for ACK.
+        # - agent: managed agent. default value of promehtues for ASK/ACS/AckOne.
+        # - agent-exproter: maanged agent and exporter. default of prometheus for Cloud.
         self.managed_type = managed_type
         # The region ID.
         self.region_id = region_id
@@ -33890,13 +33894,13 @@ class InitEnvironmentResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The status code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The data returned.
+        # The result of the operation.
         self.data = data
-        # The message returned.
+        # The returned message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
