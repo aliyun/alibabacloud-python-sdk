@@ -18059,6 +18059,8 @@ class GetSparkAppAttemptLogRequest(TeaModel):
         self,
         attempt_id: str = None,
         log_length: int = None,
+        page_number: int = None,
+        page_size: str = None,
     ):
         # The ID of the log.
         # 
@@ -18066,6 +18068,8 @@ class GetSparkAppAttemptLogRequest(TeaModel):
         self.attempt_id = attempt_id
         # The number of log entries to return. Valid values: 1 to 500. Default value: 300.
         self.log_length = log_length
+        self.page_number = page_number
+        self.page_size = page_size
 
     def validate(self):
         pass
@@ -18080,6 +18084,10 @@ class GetSparkAppAttemptLogRequest(TeaModel):
             result['AttemptId'] = self.attempt_id
         if self.log_length is not None:
             result['LogLength'] = self.log_length
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         return result
 
     def from_map(self, m: dict = None):
@@ -18088,6 +18096,10 @@ class GetSparkAppAttemptLogRequest(TeaModel):
             self.attempt_id = m.get('AttemptId')
         if m.get('LogLength') is not None:
             self.log_length = m.get('LogLength')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         return self
 
 
@@ -18097,6 +18109,7 @@ class GetSparkAppAttemptLogResponseBodyData(TeaModel):
         app_id: str = None,
         dbcluster_id: str = None,
         log_content: str = None,
+        log_size: int = None,
         message: str = None,
     ):
         # The application ID.
@@ -18105,6 +18118,7 @@ class GetSparkAppAttemptLogResponseBodyData(TeaModel):
         self.dbcluster_id = dbcluster_id
         # The content of the log.
         self.log_content = log_content
+        self.log_size = log_size
         # The alert message returned for the request, such as task execution failure or insufficient resources. If no alert occurs, null is returned.
         self.message = message
 
@@ -18123,6 +18137,8 @@ class GetSparkAppAttemptLogResponseBodyData(TeaModel):
             result['DBClusterId'] = self.dbcluster_id
         if self.log_content is not None:
             result['LogContent'] = self.log_content
+        if self.log_size is not None:
+            result['LogSize'] = self.log_size
         if self.message is not None:
             result['Message'] = self.message
         return result
@@ -18135,6 +18151,8 @@ class GetSparkAppAttemptLogResponseBodyData(TeaModel):
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('LogContent') is not None:
             self.log_content = m.get('LogContent')
+        if m.get('LogSize') is not None:
+            self.log_size = m.get('LogSize')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         return self
@@ -18360,6 +18378,8 @@ class GetSparkAppLogRequest(TeaModel):
         app_id: str = None,
         dbcluster_id: str = None,
         log_length: int = None,
+        page_number: int = None,
+        page_size: int = None,
     ):
         # The Spark application ID.
         # 
@@ -18371,6 +18391,8 @@ class GetSparkAppLogRequest(TeaModel):
         self.dbcluster_id = dbcluster_id
         # The number of log entries to return. Valid values: 1 to 500. Default value: 300.
         self.log_length = log_length
+        self.page_number = page_number
+        self.page_size = page_size
 
     def validate(self):
         pass
@@ -18387,6 +18409,10 @@ class GetSparkAppLogRequest(TeaModel):
             result['DBClusterId'] = self.dbcluster_id
         if self.log_length is not None:
             result['LogLength'] = self.log_length
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         return result
 
     def from_map(self, m: dict = None):
@@ -18397,6 +18423,10 @@ class GetSparkAppLogRequest(TeaModel):
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('LogLength') is not None:
             self.log_length = m.get('LogLength')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         return self
 
 
@@ -18405,12 +18435,14 @@ class GetSparkAppLogResponseBodyData(TeaModel):
         self,
         dbcluster_id: str = None,
         log_content: str = None,
+        log_size: int = None,
         message: str = None,
     ):
         # The ID of the Data Lakehouse Edition (V3.0) cluster.
         self.dbcluster_id = dbcluster_id
         # The content of the log.
         self.log_content = log_content
+        self.log_size = log_size
         # The alert message returned for the request, such as task execution failure or insufficient resources. If no alert occurs, null is returned.
         self.message = message
 
@@ -18427,6 +18459,8 @@ class GetSparkAppLogResponseBodyData(TeaModel):
             result['DBClusterId'] = self.dbcluster_id
         if self.log_content is not None:
             result['LogContent'] = self.log_content
+        if self.log_size is not None:
+            result['LogSize'] = self.log_size
         if self.message is not None:
             result['Message'] = self.message
         return result
@@ -18437,6 +18471,8 @@ class GetSparkAppLogResponseBodyData(TeaModel):
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('LogContent') is not None:
             self.log_content = m.get('LogContent')
+        if m.get('LogSize') is not None:
+            self.log_size = m.get('LogSize')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         return self
