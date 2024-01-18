@@ -152,6 +152,152 @@ class AllocateInstancePublicConnectionResponse(TeaModel):
         return self
 
 
+class CancelUploadDocumentJobRequest(TeaModel):
+    def __init__(
+        self,
+        collection: str = None,
+        dbinstance_id: str = None,
+        job_id: str = None,
+        namespace: str = None,
+        namespace_password: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+    ):
+        self.collection = collection
+        self.dbinstance_id = dbinstance_id
+        self.job_id = job_id
+        self.namespace = namespace
+        self.namespace_password = namespace_password
+        self.owner_id = owner_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.collection is not None:
+            result['Collection'] = self.collection
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.namespace_password is not None:
+            result['NamespacePassword'] = self.namespace_password
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Collection') is not None:
+            self.collection = m.get('Collection')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NamespacePassword') is not None:
+            self.namespace_password = m.get('NamespacePassword')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class CancelUploadDocumentJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class CancelUploadDocumentJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CancelUploadDocumentJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CancelUploadDocumentJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CancelUpsertCollectionDataJobRequest(TeaModel):
     def __init__(
         self,
@@ -17766,6 +17912,302 @@ class DownloadSQLLogsRecordsResponse(TeaModel):
         return self
 
 
+class GetUploadDocumentJobRequest(TeaModel):
+    def __init__(
+        self,
+        collection: str = None,
+        dbinstance_id: str = None,
+        job_id: str = None,
+        namespace: str = None,
+        namespace_password: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+    ):
+        self.collection = collection
+        self.dbinstance_id = dbinstance_id
+        self.job_id = job_id
+        self.namespace = namespace
+        self.namespace_password = namespace_password
+        self.owner_id = owner_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.collection is not None:
+            result['Collection'] = self.collection
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.namespace_password is not None:
+            result['NamespacePassword'] = self.namespace_password
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Collection') is not None:
+            self.collection = m.get('Collection')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NamespacePassword') is not None:
+            self.namespace_password = m.get('NamespacePassword')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class GetUploadDocumentJobResponseBodyChunkResult(TeaModel):
+    def __init__(
+        self,
+        chunk_file_url: str = None,
+        plain_chunk_file_url: str = None,
+    ):
+        self.chunk_file_url = chunk_file_url
+        self.plain_chunk_file_url = plain_chunk_file_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.chunk_file_url is not None:
+            result['ChunkFileUrl'] = self.chunk_file_url
+        if self.plain_chunk_file_url is not None:
+            result['PlainChunkFileUrl'] = self.plain_chunk_file_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChunkFileUrl') is not None:
+            self.chunk_file_url = m.get('ChunkFileUrl')
+        if m.get('PlainChunkFileUrl') is not None:
+            self.plain_chunk_file_url = m.get('PlainChunkFileUrl')
+        return self
+
+
+class GetUploadDocumentJobResponseBodyJob(TeaModel):
+    def __init__(
+        self,
+        completed: bool = None,
+        create_time: str = None,
+        error: str = None,
+        id: str = None,
+        progress: int = None,
+        status: str = None,
+        update_time: str = None,
+    ):
+        self.completed = completed
+        self.create_time = create_time
+        self.error = error
+        # Job ID。
+        self.id = id
+        self.progress = progress
+        self.status = status
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.completed is not None:
+            result['Completed'] = self.completed
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.error is not None:
+            result['Error'] = self.error
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Completed') is not None:
+            self.completed = m.get('Completed')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Error') is not None:
+            self.error = m.get('Error')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class GetUploadDocumentJobResponseBodyUsage(TeaModel):
+    def __init__(
+        self,
+        embedding_tokens: int = None,
+    ):
+        self.embedding_tokens = embedding_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.embedding_tokens is not None:
+            result['EmbeddingTokens'] = self.embedding_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EmbeddingTokens') is not None:
+            self.embedding_tokens = m.get('EmbeddingTokens')
+        return self
+
+
+class GetUploadDocumentJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        chunk_result: GetUploadDocumentJobResponseBodyChunkResult = None,
+        job: GetUploadDocumentJobResponseBodyJob = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+        usage: GetUploadDocumentJobResponseBodyUsage = None,
+    ):
+        self.chunk_result = chunk_result
+        self.job = job
+        self.message = message
+        self.request_id = request_id
+        self.status = status
+        self.usage = usage
+
+    def validate(self):
+        if self.chunk_result:
+            self.chunk_result.validate()
+        if self.job:
+            self.job.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.chunk_result is not None:
+            result['ChunkResult'] = self.chunk_result.to_map()
+        if self.job is not None:
+            result['Job'] = self.job.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.usage is not None:
+            result['Usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChunkResult') is not None:
+            temp_model = GetUploadDocumentJobResponseBodyChunkResult()
+            self.chunk_result = temp_model.from_map(m['ChunkResult'])
+        if m.get('Job') is not None:
+            temp_model = GetUploadDocumentJobResponseBodyJob()
+            self.job = temp_model.from_map(m['Job'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Usage') is not None:
+            temp_model = GetUploadDocumentJobResponseBodyUsage()
+            self.usage = temp_model.from_map(m['Usage'])
+        return self
+
+
+class GetUploadDocumentJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetUploadDocumentJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetUploadDocumentJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetUpsertCollectionDataJobRequest(TeaModel):
     def __init__(
         self,
@@ -24850,6 +25292,446 @@ class UpgradeDBVersionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpgradeDBVersionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UploadDocumentAsyncRequest(TeaModel):
+    def __init__(
+        self,
+        chunk_overlap: int = None,
+        chunk_size: int = None,
+        collection: str = None,
+        dbinstance_id: str = None,
+        document_loader_name: str = None,
+        dry_run: bool = None,
+        file_name: str = None,
+        file_url: str = None,
+        metadata: Dict[str, Any] = None,
+        namespace: str = None,
+        namespace_password: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        separators: List[str] = None,
+        text_splitter_name: str = None,
+        zh_title_enhance: bool = None,
+    ):
+        self.chunk_overlap = chunk_overlap
+        self.chunk_size = chunk_size
+        self.collection = collection
+        self.dbinstance_id = dbinstance_id
+        self.document_loader_name = document_loader_name
+        self.dry_run = dry_run
+        self.file_name = file_name
+        self.file_url = file_url
+        self.metadata = metadata
+        self.namespace = namespace
+        self.namespace_password = namespace_password
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.separators = separators
+        self.text_splitter_name = text_splitter_name
+        self.zh_title_enhance = zh_title_enhance
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.chunk_overlap is not None:
+            result['ChunkOverlap'] = self.chunk_overlap
+        if self.chunk_size is not None:
+            result['ChunkSize'] = self.chunk_size
+        if self.collection is not None:
+            result['Collection'] = self.collection
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.document_loader_name is not None:
+            result['DocumentLoaderName'] = self.document_loader_name
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.namespace_password is not None:
+            result['NamespacePassword'] = self.namespace_password
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.separators is not None:
+            result['Separators'] = self.separators
+        if self.text_splitter_name is not None:
+            result['TextSplitterName'] = self.text_splitter_name
+        if self.zh_title_enhance is not None:
+            result['ZhTitleEnhance'] = self.zh_title_enhance
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChunkOverlap') is not None:
+            self.chunk_overlap = m.get('ChunkOverlap')
+        if m.get('ChunkSize') is not None:
+            self.chunk_size = m.get('ChunkSize')
+        if m.get('Collection') is not None:
+            self.collection = m.get('Collection')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('DocumentLoaderName') is not None:
+            self.document_loader_name = m.get('DocumentLoaderName')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('Metadata') is not None:
+            self.metadata = m.get('Metadata')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NamespacePassword') is not None:
+            self.namespace_password = m.get('NamespacePassword')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Separators') is not None:
+            self.separators = m.get('Separators')
+        if m.get('TextSplitterName') is not None:
+            self.text_splitter_name = m.get('TextSplitterName')
+        if m.get('ZhTitleEnhance') is not None:
+            self.zh_title_enhance = m.get('ZhTitleEnhance')
+        return self
+
+
+class UploadDocumentAsyncAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        chunk_overlap: int = None,
+        chunk_size: int = None,
+        collection: str = None,
+        dbinstance_id: str = None,
+        document_loader_name: str = None,
+        dry_run: bool = None,
+        file_name: str = None,
+        file_url_object: BinaryIO = None,
+        metadata: Dict[str, Any] = None,
+        namespace: str = None,
+        namespace_password: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        separators: List[str] = None,
+        text_splitter_name: str = None,
+        zh_title_enhance: bool = None,
+    ):
+        self.chunk_overlap = chunk_overlap
+        self.chunk_size = chunk_size
+        self.collection = collection
+        self.dbinstance_id = dbinstance_id
+        self.document_loader_name = document_loader_name
+        self.dry_run = dry_run
+        self.file_name = file_name
+        self.file_url_object = file_url_object
+        self.metadata = metadata
+        self.namespace = namespace
+        self.namespace_password = namespace_password
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.separators = separators
+        self.text_splitter_name = text_splitter_name
+        self.zh_title_enhance = zh_title_enhance
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.chunk_overlap is not None:
+            result['ChunkOverlap'] = self.chunk_overlap
+        if self.chunk_size is not None:
+            result['ChunkSize'] = self.chunk_size
+        if self.collection is not None:
+            result['Collection'] = self.collection
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.document_loader_name is not None:
+            result['DocumentLoaderName'] = self.document_loader_name
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_url_object is not None:
+            result['FileUrl'] = self.file_url_object
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.namespace_password is not None:
+            result['NamespacePassword'] = self.namespace_password
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.separators is not None:
+            result['Separators'] = self.separators
+        if self.text_splitter_name is not None:
+            result['TextSplitterName'] = self.text_splitter_name
+        if self.zh_title_enhance is not None:
+            result['ZhTitleEnhance'] = self.zh_title_enhance
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChunkOverlap') is not None:
+            self.chunk_overlap = m.get('ChunkOverlap')
+        if m.get('ChunkSize') is not None:
+            self.chunk_size = m.get('ChunkSize')
+        if m.get('Collection') is not None:
+            self.collection = m.get('Collection')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('DocumentLoaderName') is not None:
+            self.document_loader_name = m.get('DocumentLoaderName')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileUrl') is not None:
+            self.file_url_object = m.get('FileUrl')
+        if m.get('Metadata') is not None:
+            self.metadata = m.get('Metadata')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NamespacePassword') is not None:
+            self.namespace_password = m.get('NamespacePassword')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Separators') is not None:
+            self.separators = m.get('Separators')
+        if m.get('TextSplitterName') is not None:
+            self.text_splitter_name = m.get('TextSplitterName')
+        if m.get('ZhTitleEnhance') is not None:
+            self.zh_title_enhance = m.get('ZhTitleEnhance')
+        return self
+
+
+class UploadDocumentAsyncShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        chunk_overlap: int = None,
+        chunk_size: int = None,
+        collection: str = None,
+        dbinstance_id: str = None,
+        document_loader_name: str = None,
+        dry_run: bool = None,
+        file_name: str = None,
+        file_url: str = None,
+        metadata_shrink: str = None,
+        namespace: str = None,
+        namespace_password: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        separators_shrink: str = None,
+        text_splitter_name: str = None,
+        zh_title_enhance: bool = None,
+    ):
+        self.chunk_overlap = chunk_overlap
+        self.chunk_size = chunk_size
+        self.collection = collection
+        self.dbinstance_id = dbinstance_id
+        self.document_loader_name = document_loader_name
+        self.dry_run = dry_run
+        self.file_name = file_name
+        self.file_url = file_url
+        self.metadata_shrink = metadata_shrink
+        self.namespace = namespace
+        self.namespace_password = namespace_password
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.separators_shrink = separators_shrink
+        self.text_splitter_name = text_splitter_name
+        self.zh_title_enhance = zh_title_enhance
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.chunk_overlap is not None:
+            result['ChunkOverlap'] = self.chunk_overlap
+        if self.chunk_size is not None:
+            result['ChunkSize'] = self.chunk_size
+        if self.collection is not None:
+            result['Collection'] = self.collection
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.document_loader_name is not None:
+            result['DocumentLoaderName'] = self.document_loader_name
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.metadata_shrink is not None:
+            result['Metadata'] = self.metadata_shrink
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.namespace_password is not None:
+            result['NamespacePassword'] = self.namespace_password
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.separators_shrink is not None:
+            result['Separators'] = self.separators_shrink
+        if self.text_splitter_name is not None:
+            result['TextSplitterName'] = self.text_splitter_name
+        if self.zh_title_enhance is not None:
+            result['ZhTitleEnhance'] = self.zh_title_enhance
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChunkOverlap') is not None:
+            self.chunk_overlap = m.get('ChunkOverlap')
+        if m.get('ChunkSize') is not None:
+            self.chunk_size = m.get('ChunkSize')
+        if m.get('Collection') is not None:
+            self.collection = m.get('Collection')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('DocumentLoaderName') is not None:
+            self.document_loader_name = m.get('DocumentLoaderName')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('Metadata') is not None:
+            self.metadata_shrink = m.get('Metadata')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NamespacePassword') is not None:
+            self.namespace_password = m.get('NamespacePassword')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Separators') is not None:
+            self.separators_shrink = m.get('Separators')
+        if m.get('TextSplitterName') is not None:
+            self.text_splitter_name = m.get('TextSplitterName')
+        if m.get('ZhTitleEnhance') is not None:
+            self.zh_title_enhance = m.get('ZhTitleEnhance')
+        return self
+
+
+class UploadDocumentAsyncResponseBody(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.job_id = job_id
+        self.message = message
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class UploadDocumentAsyncResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UploadDocumentAsyncResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UploadDocumentAsyncResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
