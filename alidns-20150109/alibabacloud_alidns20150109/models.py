@@ -16052,10 +16052,12 @@ class DescribeDomainStatisticsResponseBodyStatisticsStatistic(TeaModel):
     def __init__(
         self,
         count: int = None,
+        domain_name: str = None,
         timestamp: int = None,
     ):
         # The number of DNS requests.
         self.count = count
+        self.domain_name = domain_name
         # The statistical timestamp. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.timestamp = timestamp
 
@@ -16070,6 +16072,8 @@ class DescribeDomainStatisticsResponseBodyStatisticsStatistic(TeaModel):
         result = dict()
         if self.count is not None:
             result['Count'] = self.count
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
         if self.timestamp is not None:
             result['Timestamp'] = self.timestamp
         return result
@@ -16078,6 +16082,8 @@ class DescribeDomainStatisticsResponseBodyStatisticsStatistic(TeaModel):
         m = m or dict()
         if m.get('Count') is not None:
             self.count = m.get('Count')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
         if m.get('Timestamp') is not None:
             self.timestamp = m.get('Timestamp')
         return self
@@ -16289,12 +16295,14 @@ class DescribeDomainStatisticsSummaryResponseBodyStatisticsStatistic(TeaModel):
         count: int = None,
         domain_name: str = None,
         domain_type: str = None,
+        resolve_analysis_status: str = None,
     ):
         # The number of queries.
         self.count = count
         # The domain name.
         self.domain_name = domain_name
         self.domain_type = domain_type
+        self.resolve_analysis_status = resolve_analysis_status
 
     def validate(self):
         pass
@@ -16311,6 +16319,8 @@ class DescribeDomainStatisticsSummaryResponseBodyStatisticsStatistic(TeaModel):
             result['DomainName'] = self.domain_name
         if self.domain_type is not None:
             result['DomainType'] = self.domain_type
+        if self.resolve_analysis_status is not None:
+            result['resolveAnalysisStatus'] = self.resolve_analysis_status
         return result
 
     def from_map(self, m: dict = None):
@@ -16321,6 +16331,8 @@ class DescribeDomainStatisticsSummaryResponseBodyStatisticsStatistic(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('DomainType') is not None:
             self.domain_type = m.get('DomainType')
+        if m.get('resolveAnalysisStatus') is not None:
+            self.resolve_analysis_status = m.get('resolveAnalysisStatus')
         return self
 
 
