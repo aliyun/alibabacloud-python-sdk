@@ -1,3 +1,6 @@
+2024-01-19 Version: 2.23.0
+- Generated python 2018-12-03 for Sas.
+
 2024-01-18 Version: 2.22.0
 - Generated python 2018-12-03 for Sas.
 
