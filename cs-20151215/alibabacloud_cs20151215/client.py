@@ -304,6 +304,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelClusterUpgradeResponse:
+        """
+        @deprecated
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelClusterUpgradeResponse
+        Deprecated
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -329,6 +337,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelClusterUpgradeResponse:
+        """
+        @deprecated
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelClusterUpgradeResponse
+        Deprecated
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -352,6 +368,12 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.CancelClusterUpgradeResponse:
+        """
+        @deprecated
+        
+        @return: CancelClusterUpgradeResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.cancel_cluster_upgrade_with_options(cluster_id, headers, runtime)
@@ -360,6 +382,12 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.CancelClusterUpgradeResponse:
+        """
+        @deprecated
+        
+        @return: CancelClusterUpgradeResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.cancel_cluster_upgrade_with_options_async(cluster_id, headers, runtime)
@@ -855,9 +883,9 @@ class Client(OpenApiClient):
         *   [Create an ACK managed cluster](~~90776~~)
         *   [Create an ACK dedicated cluster](~~197620~~)
         *   [Create an ACK Serverless cluster](~~144246~~)
-        *   [Create an ACK Edge cluster](128204)
+        *   [Create an ACK Edge cluster](~~128204~~)
         *   [Create an ACK Basic cluster that supports sandboxed containers](~~196321~~)
-        *   [Create an ACK Pro cluster that supports sandboxed containers](140623)
+        *   [Create an ACK Pro cluster that supports sandboxed containers](~~140623~~)
         
         @param request: CreateClusterRequest
         @param headers: map
@@ -1077,9 +1105,9 @@ class Client(OpenApiClient):
         *   [Create an ACK managed cluster](~~90776~~)
         *   [Create an ACK dedicated cluster](~~197620~~)
         *   [Create an ACK Serverless cluster](~~144246~~)
-        *   [Create an ACK Edge cluster](128204)
+        *   [Create an ACK Edge cluster](~~128204~~)
         *   [Create an ACK Basic cluster that supports sandboxed containers](~~196321~~)
-        *   [Create an ACK Pro cluster that supports sandboxed containers](140623)
+        *   [Create an ACK Pro cluster that supports sandboxed containers](~~140623~~)
         
         @param request: CreateClusterRequest
         @param headers: map
@@ -1297,9 +1325,9 @@ class Client(OpenApiClient):
         *   [Create an ACK managed cluster](~~90776~~)
         *   [Create an ACK dedicated cluster](~~197620~~)
         *   [Create an ACK Serverless cluster](~~144246~~)
-        *   [Create an ACK Edge cluster](128204)
+        *   [Create an ACK Edge cluster](~~128204~~)
         *   [Create an ACK Basic cluster that supports sandboxed containers](~~196321~~)
-        *   [Create an ACK Pro cluster that supports sandboxed containers](140623)
+        *   [Create an ACK Pro cluster that supports sandboxed containers](~~140623~~)
         
         @param request: CreateClusterRequest
         @return: CreateClusterResponse
@@ -1317,9 +1345,9 @@ class Client(OpenApiClient):
         *   [Create an ACK managed cluster](~~90776~~)
         *   [Create an ACK dedicated cluster](~~197620~~)
         *   [Create an ACK Serverless cluster](~~144246~~)
-        *   [Create an ACK Edge cluster](128204)
+        *   [Create an ACK Edge cluster](~~128204~~)
         *   [Create an ACK Basic cluster that supports sandboxed containers](~~196321~~)
-        *   [Create an ACK Pro cluster that supports sandboxed containers](140623)
+        *   [Create an ACK Pro cluster that supports sandboxed containers](~~140623~~)
         
         @param request: CreateClusterRequest
         @return: CreateClusterResponse
@@ -2854,6 +2882,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeAddonsResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeAddonsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAddonsResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_profile):
@@ -2892,6 +2929,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeAddonsResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeAddonsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAddonsResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_profile):
@@ -2928,6 +2974,13 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.DescribeAddonsRequest,
     ) -> cs20151215_models.DescribeAddonsResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeAddonsRequest
+        @return: DescribeAddonsResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_addons_with_options(request, headers, runtime)
@@ -2936,6 +2989,13 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.DescribeAddonsRequest,
     ) -> cs20151215_models.DescribeAddonsResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeAddonsRequest
+        @return: DescribeAddonsResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_addons_with_options_async(request, headers, runtime)
@@ -2947,6 +3007,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonInstanceResponse:
+        """
+        @deprecated
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterAddonInstanceResponse
+        Deprecated
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2973,6 +3041,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonInstanceResponse:
+        """
+        @deprecated
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterAddonInstanceResponse
+        Deprecated
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2997,6 +3073,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         addon_name: str,
     ) -> cs20151215_models.DescribeClusterAddonInstanceResponse:
+        """
+        @deprecated
+        
+        @return: DescribeClusterAddonInstanceResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_cluster_addon_instance_with_options(cluster_id, addon_name, headers, runtime)
@@ -3006,6 +3088,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         addon_name: str,
     ) -> cs20151215_models.DescribeClusterAddonInstanceResponse:
+        """
+        @deprecated
+        
+        @return: DescribeClusterAddonInstanceResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_cluster_addon_instance_with_options_async(cluster_id, addon_name, headers, runtime)
@@ -3018,6 +3106,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonMetadataResponse:
+        """
+        @deprecated
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterAddonMetadataResponse
+        Deprecated
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3045,6 +3141,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonMetadataResponse:
+        """
+        @deprecated
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterAddonMetadataResponse
+        Deprecated
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3070,6 +3174,12 @@ class Client(OpenApiClient):
         component_id: str,
         version: str,
     ) -> cs20151215_models.DescribeClusterAddonMetadataResponse:
+        """
+        @deprecated
+        
+        @return: DescribeClusterAddonMetadataResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_cluster_addon_metadata_with_options(cluster_id, component_id, version, headers, runtime)
@@ -3080,6 +3190,12 @@ class Client(OpenApiClient):
         component_id: str,
         version: str,
     ) -> cs20151215_models.DescribeClusterAddonMetadataResponse:
+        """
+        @deprecated
+        
+        @return: DescribeClusterAddonMetadataResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_cluster_addon_metadata_with_options_async(cluster_id, component_id, version, headers, runtime)
@@ -3189,6 +3305,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonsUpgradeStatusResponse:
+        """
+        @deprecated
+        
+        @param tmp_req: DescribeClusterAddonsUpgradeStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterAddonsUpgradeStatusResponse
+        Deprecated
+        """
         UtilClient.validate_model(tmp_req)
         request = cs20151215_models.DescribeClusterAddonsUpgradeStatusShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3224,6 +3349,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonsUpgradeStatusResponse:
+        """
+        @deprecated
+        
+        @param tmp_req: DescribeClusterAddonsUpgradeStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterAddonsUpgradeStatusResponse
+        Deprecated
+        """
         UtilClient.validate_model(tmp_req)
         request = cs20151215_models.DescribeClusterAddonsUpgradeStatusShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3257,6 +3391,13 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.DescribeClusterAddonsUpgradeStatusRequest,
     ) -> cs20151215_models.DescribeClusterAddonsUpgradeStatusResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeClusterAddonsUpgradeStatusRequest
+        @return: DescribeClusterAddonsUpgradeStatusResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_cluster_addons_upgrade_status_with_options(cluster_id, request, headers, runtime)
@@ -3266,6 +3407,13 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.DescribeClusterAddonsUpgradeStatusRequest,
     ) -> cs20151215_models.DescribeClusterAddonsUpgradeStatusResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeClusterAddonsUpgradeStatusRequest
+        @return: DescribeClusterAddonsUpgradeStatusResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_cluster_addons_upgrade_status_with_options_async(cluster_id, request, headers, runtime)
@@ -3276,6 +3424,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonsVersionResponse:
+        """
+        @deprecated
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterAddonsVersionResponse
+        Deprecated
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3301,6 +3457,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonsVersionResponse:
+        """
+        @deprecated
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterAddonsVersionResponse
+        Deprecated
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3324,6 +3488,12 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.DescribeClusterAddonsVersionResponse:
+        """
+        @deprecated
+        
+        @return: DescribeClusterAddonsVersionResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_cluster_addons_version_with_options(cluster_id, headers, runtime)
@@ -3332,6 +3502,12 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.DescribeClusterAddonsVersionResponse:
+        """
+        @deprecated
+        
+        @return: DescribeClusterAddonsVersionResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_cluster_addons_version_with_options_async(cluster_id, headers, runtime)
@@ -8312,6 +8488,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.PauseClusterUpgradeResponse:
+        """
+        @deprecated
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PauseClusterUpgradeResponse
+        Deprecated
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8337,6 +8521,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.PauseClusterUpgradeResponse:
+        """
+        @deprecated
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PauseClusterUpgradeResponse
+        Deprecated
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8360,6 +8552,12 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.PauseClusterUpgradeResponse:
+        """
+        @deprecated
+        
+        @return: PauseClusterUpgradeResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.pause_cluster_upgrade_with_options(cluster_id, headers, runtime)
@@ -8368,6 +8566,12 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.PauseClusterUpgradeResponse:
+        """
+        @deprecated
+        
+        @return: PauseClusterUpgradeResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.pause_cluster_upgrade_with_options_async(cluster_id, headers, runtime)
@@ -9092,6 +9296,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ResumeUpgradeClusterResponse:
+        """
+        @deprecated
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeUpgradeClusterResponse
+        Deprecated
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9117,6 +9329,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ResumeUpgradeClusterResponse:
+        """
+        @deprecated
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeUpgradeClusterResponse
+        Deprecated
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9140,6 +9360,12 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.ResumeUpgradeClusterResponse:
+        """
+        @deprecated
+        
+        @return: ResumeUpgradeClusterResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.resume_upgrade_cluster_with_options(cluster_id, headers, runtime)
@@ -9148,6 +9374,12 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.ResumeUpgradeClusterResponse:
+        """
+        @deprecated
+        
+        @return: ResumeUpgradeClusterResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.resume_upgrade_cluster_with_options_async(cluster_id, headers, runtime)
@@ -10778,7 +11010,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='none'
+            body_type='json'
         )
         return TeaCore.from_map(
             cs20151215_models.UpgradeClusterResponse(),
@@ -10815,7 +11047,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='none'
+            body_type='json'
         )
         return TeaCore.from_map(
             cs20151215_models.UpgradeClusterResponse(),

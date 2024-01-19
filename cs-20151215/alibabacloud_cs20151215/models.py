@@ -2684,7 +2684,7 @@ class CreateClusterRequest(TeaModel):
         # 
         # **Event center**: optional. By default, the event center feature is enabled.
         # 
-        # You can use Kubernetes event centers to store and query events, and configure alert rules. You can use the Logstores that are associated with Kubernetes event centers for free within 90 days. For more information, see [Create and use an event center](https://help.aliyun.com/document_detail/150476.html#task-2389213).
+        # You can use Kubernetes event centers to store and query events, and configure alert rules. You can use the Logstores that are associated with Kubernetes event centers for free within 90 days. For more information, see [Create and use an event center](~~150476~~).
         # 
         # Enable the ack-node-problem-detector component in the following format: \[{"name":"ack-node-problem-detector","config":"{"sls_project_name":"your_sls_project_name"}"}].
         self.addons = addons
@@ -2981,7 +2981,7 @@ class CreateClusterRequest(TeaModel):
         self.resource_group_id = resource_group_id
         # The container runtime. The default container runtime is Docker. containerd and Sandboxed-Container are also supported.
         # 
-        # For more information about how to select a proper container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://help.aliyun.com/document_detail/160313.html).
+        # For more information about how to select a proper container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](~~160313~~).
         self.runtime = runtime
         # The ID of an existing security group. You need to choose between this parameter and the `is_enterprise_security_group` parameter. Cluster nodes are automatically added to the security group.
         self.security_group_id = security_group_id
@@ -4908,10 +4908,12 @@ class CreateClusterNodePoolResponseBody(TeaModel):
     def __init__(
         self,
         nodepool_id: str = None,
+        request_id: str = None,
         task_id: str = None,
     ):
         # The node pool ID.
         self.nodepool_id = nodepool_id
+        self.request_id = request_id
         # The ID of the task.
         self.task_id = task_id
 
@@ -4926,6 +4928,8 @@ class CreateClusterNodePoolResponseBody(TeaModel):
         result = dict()
         if self.nodepool_id is not None:
             result['nodepool_id'] = self.nodepool_id
+        if self.request_id is not None:
+            result['request_id'] = self.request_id
         if self.task_id is not None:
             result['task_id'] = self.task_id
         return result
@@ -4934,6 +4938,8 @@ class CreateClusterNodePoolResponseBody(TeaModel):
         m = m or dict()
         if m.get('nodepool_id') is not None:
             self.nodepool_id = m.get('nodepool_id')
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
         if m.get('task_id') is not None:
             self.task_id = m.get('task_id')
         return self
@@ -20496,6 +20502,7 @@ class ModifyClusterNodePoolRequestKubernetesConfig(TeaModel):
         runtime: str = None,
         runtime_version: str = None,
         taints: List[Taint] = None,
+        unschedulable: bool = None,
         user_data: str = None,
     ):
         # Specifies whether to install the CloudMonitor agent on ECS nodes. After the CloudMonitor agent is installed on ECS nodes, you can view monitoring information about the instances in the CloudMonitor console. We recommend that you install the CloudMonitor agent. Valid values:
@@ -20523,6 +20530,7 @@ class ModifyClusterNodePoolRequestKubernetesConfig(TeaModel):
         self.runtime_version = runtime_version
         # The configurations of node taints.
         self.taints = taints
+        self.unschedulable = unschedulable
         # The user-defined data of the node pool. For more information, see [Prepare user data](~~49121~~).
         self.user_data = user_data
 
@@ -20558,6 +20566,8 @@ class ModifyClusterNodePoolRequestKubernetesConfig(TeaModel):
         if self.taints is not None:
             for k in self.taints:
                 result['taints'].append(k.to_map() if k else None)
+        if self.unschedulable is not None:
+            result['unschedulable'] = self.unschedulable
         if self.user_data is not None:
             result['user_data'] = self.user_data
         return result
@@ -20582,6 +20592,8 @@ class ModifyClusterNodePoolRequestKubernetesConfig(TeaModel):
             for k in m.get('taints'):
                 temp_model = Taint()
                 self.taints.append(temp_model.from_map(k))
+        if m.get('unschedulable') is not None:
+            self.unschedulable = m.get('unschedulable')
         if m.get('user_data') is not None:
             self.user_data = m.get('user_data')
         return self
@@ -21464,10 +21476,12 @@ class ModifyClusterNodePoolResponseBody(TeaModel):
     def __init__(
         self,
         nodepool_id: str = None,
+        request_id: str = None,
         task_id: str = None,
     ):
         # The node pool ID.
         self.nodepool_id = nodepool_id
+        self.request_id = request_id
         # The task ID.
         self.task_id = task_id
 
@@ -21482,6 +21496,8 @@ class ModifyClusterNodePoolResponseBody(TeaModel):
         result = dict()
         if self.nodepool_id is not None:
             result['nodepool_id'] = self.nodepool_id
+        if self.request_id is not None:
+            result['request_id'] = self.request_id
         if self.task_id is not None:
             result['task_id'] = self.task_id
         return result
@@ -21490,6 +21506,8 @@ class ModifyClusterNodePoolResponseBody(TeaModel):
         m = m or dict()
         if m.get('nodepool_id') is not None:
             self.nodepool_id = m.get('nodepool_id')
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
         if m.get('task_id') is not None:
             self.task_id = m.get('task_id')
         return self
@@ -24928,18 +24946,62 @@ class UpgradeClusterRequest(TeaModel):
         return self
 
 
+class UpgradeClusterResponseBody(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['cluster_id'] = self.cluster_id
+        if self.request_id is not None:
+            result['request_id'] = self.request_id
+        if self.task_id is not None:
+            result['task_id'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
+        return self
+
+
 class UpgradeClusterResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
+        body: UpgradeClusterResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
         self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -24951,6 +25013,8 @@ class UpgradeClusterResponse(TeaModel):
             result['headers'] = self.headers
         if self.status_code is not None:
             result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -24959,6 +25023,9 @@ class UpgradeClusterResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpgradeClusterResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
