@@ -1789,6 +1789,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_project_with_options_async(organization_id, request, headers, runtime)
 
+    def create_project_label_with_options(
+        self,
+        request: devops_20210625_models.CreateProjectLabelRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.CreateProjectLabelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.repository_identity):
+            query['repositoryIdentity'] = request.repository_identity
+        body = {}
+        if not UtilClient.is_unset(request.color):
+            body['color'] = request.color
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateProjectLabel',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/projects/labels',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.CreateProjectLabelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_project_label_with_options_async(
+        self,
+        request: devops_20210625_models.CreateProjectLabelRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.CreateProjectLabelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.repository_identity):
+            query['repositoryIdentity'] = request.repository_identity
+        body = {}
+        if not UtilClient.is_unset(request.color):
+            body['color'] = request.color
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateProjectLabel',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/projects/labels',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.CreateProjectLabelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_project_label(
+        self,
+        request: devops_20210625_models.CreateProjectLabelRequest,
+    ) -> devops_20210625_models.CreateProjectLabelResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_project_label_with_options(request, headers, runtime)
+
+    async def create_project_label_async(
+        self,
+        request: devops_20210625_models.CreateProjectLabelRequest,
+    ) -> devops_20210625_models.CreateProjectLabelResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_project_label_with_options_async(request, headers, runtime)
+
     def create_protectd_branch_with_options(
         self,
         repository_id: str,
@@ -4740,6 +4840,94 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_project_with_options_async(organization_id, request, headers, runtime)
+
+    def delete_project_label_with_options(
+        self,
+        label_id: str,
+        request: devops_20210625_models.DeleteProjectLabelRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.DeleteProjectLabelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.repository_identity):
+            query['repositoryIdentity'] = request.repository_identity
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteProjectLabel',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/projects/labels/{OpenApiUtilClient.get_encode_param(label_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.DeleteProjectLabelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_project_label_with_options_async(
+        self,
+        label_id: str,
+        request: devops_20210625_models.DeleteProjectLabelRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.DeleteProjectLabelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.repository_identity):
+            query['repositoryIdentity'] = request.repository_identity
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteProjectLabel',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/projects/labels/{OpenApiUtilClient.get_encode_param(label_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.DeleteProjectLabelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_project_label(
+        self,
+        label_id: str,
+        request: devops_20210625_models.DeleteProjectLabelRequest,
+    ) -> devops_20210625_models.DeleteProjectLabelResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_project_label_with_options(label_id, request, headers, runtime)
+
+    async def delete_project_label_async(
+        self,
+        label_id: str,
+        request: devops_20210625_models.DeleteProjectLabelRequest,
+    ) -> devops_20210625_models.DeleteProjectLabelResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_project_label_with_options_async(label_id, request, headers, runtime)
 
     def delete_protected_branch_with_options(
         self,
@@ -9495,6 +9683,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.join_pipeline_group_with_options_async(organization_id, request, headers, runtime)
 
+    def link_merge_request_label_with_options(
+        self,
+        request: devops_20210625_models.LinkMergeRequestLabelRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.LinkMergeRequestLabelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.local_id):
+            query['localId'] = request.local_id
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.repository_identity):
+            query['repositoryIdentity'] = request.repository_identity
+        body = {}
+        if not UtilClient.is_unset(request.label_ids):
+            body['labelIds'] = request.label_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='LinkMergeRequestLabel',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/projects/merge_requests/link_labels',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.LinkMergeRequestLabelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def link_merge_request_label_with_options_async(
+        self,
+        request: devops_20210625_models.LinkMergeRequestLabelRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.LinkMergeRequestLabelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.local_id):
+            query['localId'] = request.local_id
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.repository_identity):
+            query['repositoryIdentity'] = request.repository_identity
+        body = {}
+        if not UtilClient.is_unset(request.label_ids):
+            body['labelIds'] = request.label_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='LinkMergeRequestLabel',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/projects/merge_requests/link_labels',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.LinkMergeRequestLabelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def link_merge_request_label(
+        self,
+        request: devops_20210625_models.LinkMergeRequestLabelRequest,
+    ) -> devops_20210625_models.LinkMergeRequestLabelResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.link_merge_request_label_with_options(request, headers, runtime)
+
+    async def link_merge_request_label_async(
+        self,
+        request: devops_20210625_models.LinkMergeRequestLabelRequest,
+    ) -> devops_20210625_models.LinkMergeRequestLabelResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.link_merge_request_label_with_options_async(request, headers, runtime)
+
     def list_application_members_with_options(
         self,
         app_name: str,
@@ -10332,6 +10616,94 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_merge_request_files_reads_with_options_async(request, headers, runtime)
+
+    def list_merge_request_labels_with_options(
+        self,
+        request: devops_20210625_models.ListMergeRequestLabelsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListMergeRequestLabelsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.local_id):
+            query['localId'] = request.local_id
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.repository_identity):
+            query['repositoryIdentity'] = request.repository_identity
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMergeRequestLabels',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/projects/merge_requests/labels',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListMergeRequestLabelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_merge_request_labels_with_options_async(
+        self,
+        request: devops_20210625_models.ListMergeRequestLabelsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListMergeRequestLabelsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.local_id):
+            query['localId'] = request.local_id
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.repository_identity):
+            query['repositoryIdentity'] = request.repository_identity
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMergeRequestLabels',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/projects/merge_requests/labels',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListMergeRequestLabelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_merge_request_labels(
+        self,
+        request: devops_20210625_models.ListMergeRequestLabelsRequest,
+    ) -> devops_20210625_models.ListMergeRequestLabelsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_merge_request_labels_with_options(request, headers, runtime)
+
+    async def list_merge_request_labels_async(
+        self,
+        request: devops_20210625_models.ListMergeRequestLabelsRequest,
+    ) -> devops_20210625_models.ListMergeRequestLabelsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_merge_request_labels_with_options_async(request, headers, runtime)
 
     def list_merge_request_patch_sets_with_options(
         self,
@@ -11416,6 +11788,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_pipelines_with_options_async(organization_id, request, headers, runtime)
+
+    def list_project_labels_with_options(
+        self,
+        request: devops_20210625_models.ListProjectLabelsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListProjectLabelsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.order_by):
+            query['orderBy'] = request.order_by
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repository_identity):
+            query['repositoryIdentity'] = request.repository_identity
+        if not UtilClient.is_unset(request.search):
+            query['search'] = request.search
+        if not UtilClient.is_unset(request.sort):
+            query['sort'] = request.sort
+        if not UtilClient.is_unset(request.with_counts):
+            query['withCounts'] = request.with_counts
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListProjectLabels',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/projects/labels',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListProjectLabelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_project_labels_with_options_async(
+        self,
+        request: devops_20210625_models.ListProjectLabelsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListProjectLabelsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.order_by):
+            query['orderBy'] = request.order_by
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repository_identity):
+            query['repositoryIdentity'] = request.repository_identity
+        if not UtilClient.is_unset(request.search):
+            query['search'] = request.search
+        if not UtilClient.is_unset(request.sort):
+            query['sort'] = request.sort
+        if not UtilClient.is_unset(request.with_counts):
+            query['withCounts'] = request.with_counts
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListProjectLabels',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/projects/labels',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListProjectLabelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_project_labels(
+        self,
+        request: devops_20210625_models.ListProjectLabelsRequest,
+    ) -> devops_20210625_models.ListProjectLabelsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_project_labels_with_options(request, headers, runtime)
+
+    async def list_project_labels_async(
+        self,
+        request: devops_20210625_models.ListProjectLabelsRequest,
+    ) -> devops_20210625_models.ListProjectLabelsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_project_labels_with_options_async(request, headers, runtime)
 
     def list_project_members_with_options(
         self,
@@ -17516,6 +17996,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_project_field_with_options_async(organization_id, identifier, request, headers, runtime)
+
+    def update_project_label_with_options(
+        self,
+        label_id: str,
+        request: devops_20210625_models.UpdateProjectLabelRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.UpdateProjectLabelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.repository_identity):
+            query['repositoryIdentity'] = request.repository_identity
+        body = {}
+        if not UtilClient.is_unset(request.color):
+            body['color'] = request.color
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateProjectLabel',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/projects/labels/{OpenApiUtilClient.get_encode_param(label_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.UpdateProjectLabelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_project_label_with_options_async(
+        self,
+        label_id: str,
+        request: devops_20210625_models.UpdateProjectLabelRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.UpdateProjectLabelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.repository_identity):
+            query['repositoryIdentity'] = request.repository_identity
+        body = {}
+        if not UtilClient.is_unset(request.color):
+            body['color'] = request.color
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateProjectLabel',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/projects/labels/{OpenApiUtilClient.get_encode_param(label_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.UpdateProjectLabelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_project_label(
+        self,
+        label_id: str,
+        request: devops_20210625_models.UpdateProjectLabelRequest,
+    ) -> devops_20210625_models.UpdateProjectLabelResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_project_label_with_options(label_id, request, headers, runtime)
+
+    async def update_project_label_async(
+        self,
+        label_id: str,
+        request: devops_20210625_models.UpdateProjectLabelRequest,
+    ) -> devops_20210625_models.UpdateProjectLabelResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_project_label_with_options_async(label_id, request, headers, runtime)
 
     def update_project_member_with_options(
         self,

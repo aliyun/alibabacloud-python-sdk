@@ -1,3 +1,6 @@
+2024-01-19 Version: 4.8.0
+- Generated python 2021-06-25 for devops.
+
 2024-01-15 Version: 4.7.0
 - Generated python 2021-06-25 for devops.
 
