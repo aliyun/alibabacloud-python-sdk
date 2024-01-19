@@ -141,6 +141,184 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_desensitization_rule_with_options_async(request, runtime)
 
+    def add_instance_with_options(
+        self,
+        request: dms_enterprise_20181101_models.AddInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.AddInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_link_name):
+            query['DataLinkName'] = request.data_link_name
+        if not UtilClient.is_unset(request.database_password):
+            query['DatabasePassword'] = request.database_password
+        if not UtilClient.is_unset(request.database_user):
+            query['DatabaseUser'] = request.database_user
+        if not UtilClient.is_unset(request.dba_id):
+            query['DbaId'] = request.dba_id
+        if not UtilClient.is_unset(request.ddl_online):
+            query['DdlOnline'] = request.ddl_online
+        if not UtilClient.is_unset(request.ecs_instance_id):
+            query['EcsInstanceId'] = request.ecs_instance_id
+        if not UtilClient.is_unset(request.ecs_region):
+            query['EcsRegion'] = request.ecs_region
+        if not UtilClient.is_unset(request.enable_sell_common):
+            query['EnableSellCommon'] = request.enable_sell_common
+        if not UtilClient.is_unset(request.enable_sell_sitd):
+            query['EnableSellSitd'] = request.enable_sell_sitd
+        if not UtilClient.is_unset(request.enable_sell_stable):
+            query['EnableSellStable'] = request.enable_sell_stable
+        if not UtilClient.is_unset(request.enable_sell_trust):
+            query['EnableSellTrust'] = request.enable_sell_trust
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.export_timeout):
+            query['ExportTimeout'] = request.export_timeout
+        if not UtilClient.is_unset(request.host):
+            query['Host'] = request.host
+        if not UtilClient.is_unset(request.instance_alias):
+            query['InstanceAlias'] = request.instance_alias
+        if not UtilClient.is_unset(request.instance_source):
+            query['InstanceSource'] = request.instance_source
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.network_type):
+            query['NetworkType'] = request.network_type
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.query_timeout):
+            query['QueryTimeout'] = request.query_timeout
+        if not UtilClient.is_unset(request.safe_rule):
+            query['SafeRule'] = request.safe_rule
+        if not UtilClient.is_unset(request.sid):
+            query['Sid'] = request.sid
+        if not UtilClient.is_unset(request.skip_test):
+            query['SkipTest'] = request.skip_test
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.use_dsql):
+            query['UseDsql'] = request.use_dsql
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddInstance',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.AddInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_instance_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.AddInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.AddInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_link_name):
+            query['DataLinkName'] = request.data_link_name
+        if not UtilClient.is_unset(request.database_password):
+            query['DatabasePassword'] = request.database_password
+        if not UtilClient.is_unset(request.database_user):
+            query['DatabaseUser'] = request.database_user
+        if not UtilClient.is_unset(request.dba_id):
+            query['DbaId'] = request.dba_id
+        if not UtilClient.is_unset(request.ddl_online):
+            query['DdlOnline'] = request.ddl_online
+        if not UtilClient.is_unset(request.ecs_instance_id):
+            query['EcsInstanceId'] = request.ecs_instance_id
+        if not UtilClient.is_unset(request.ecs_region):
+            query['EcsRegion'] = request.ecs_region
+        if not UtilClient.is_unset(request.enable_sell_common):
+            query['EnableSellCommon'] = request.enable_sell_common
+        if not UtilClient.is_unset(request.enable_sell_sitd):
+            query['EnableSellSitd'] = request.enable_sell_sitd
+        if not UtilClient.is_unset(request.enable_sell_stable):
+            query['EnableSellStable'] = request.enable_sell_stable
+        if not UtilClient.is_unset(request.enable_sell_trust):
+            query['EnableSellTrust'] = request.enable_sell_trust
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.export_timeout):
+            query['ExportTimeout'] = request.export_timeout
+        if not UtilClient.is_unset(request.host):
+            query['Host'] = request.host
+        if not UtilClient.is_unset(request.instance_alias):
+            query['InstanceAlias'] = request.instance_alias
+        if not UtilClient.is_unset(request.instance_source):
+            query['InstanceSource'] = request.instance_source
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.network_type):
+            query['NetworkType'] = request.network_type
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.query_timeout):
+            query['QueryTimeout'] = request.query_timeout
+        if not UtilClient.is_unset(request.safe_rule):
+            query['SafeRule'] = request.safe_rule
+        if not UtilClient.is_unset(request.sid):
+            query['Sid'] = request.sid
+        if not UtilClient.is_unset(request.skip_test):
+            query['SkipTest'] = request.skip_test
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.use_dsql):
+            query['UseDsql'] = request.use_dsql
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddInstance',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.AddInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_instance(
+        self,
+        request: dms_enterprise_20181101_models.AddInstanceRequest,
+    ) -> dms_enterprise_20181101_models.AddInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_instance_with_options(request, runtime)
+
+    async def add_instance_async(
+        self,
+        request: dms_enterprise_20181101_models.AddInstanceRequest,
+    ) -> dms_enterprise_20181101_models.AddInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_instance_with_options_async(request, runtime)
+
     def add_lh_members_with_options(
         self,
         tmp_req: dms_enterprise_20181101_models.AddLhMembersRequest,
@@ -4636,6 +4814,80 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_scenario_with_options_async(request, runtime)
+
+    def delete_standard_group_with_options(
+        self,
+        request: dms_enterprise_20181101_models.DeleteStandardGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DeleteStandardGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteStandardGroup',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DeleteStandardGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_standard_group_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.DeleteStandardGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DeleteStandardGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteStandardGroup',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DeleteStandardGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_standard_group(
+        self,
+        request: dms_enterprise_20181101_models.DeleteStandardGroupRequest,
+    ) -> dms_enterprise_20181101_models.DeleteStandardGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_standard_group_with_options(request, runtime)
+
+    async def delete_standard_group_async(
+        self,
+        request: dms_enterprise_20181101_models.DeleteStandardGroupRequest,
+    ) -> dms_enterprise_20181101_models.DeleteStandardGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_standard_group_with_options_async(request, runtime)
 
     def delete_task_with_options(
         self,
@@ -9448,6 +9700,80 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_sqlreview_optimize_detail_with_options_async(request, runtime)
+
+    def get_standard_group_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetStandardGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetStandardGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetStandardGroup',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetStandardGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_standard_group_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetStandardGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetStandardGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetStandardGroup',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetStandardGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_standard_group(
+        self,
+        request: dms_enterprise_20181101_models.GetStandardGroupRequest,
+    ) -> dms_enterprise_20181101_models.GetStandardGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_standard_group_with_options(request, runtime)
+
+    async def get_standard_group_async(
+        self,
+        request: dms_enterprise_20181101_models.GetStandardGroupRequest,
+    ) -> dms_enterprise_20181101_models.GetStandardGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_standard_group_with_options_async(request, runtime)
 
     def get_struct_sync_exec_sql_detail_with_options(
         self,
@@ -15473,6 +15799,188 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_desensitization_strategy_with_options_async(request, runtime)
 
+    def modify_instance_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ModifyInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ModifyInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_link_name):
+            query['DataLinkName'] = request.data_link_name
+        if not UtilClient.is_unset(request.database_password):
+            query['DatabasePassword'] = request.database_password
+        if not UtilClient.is_unset(request.database_user):
+            query['DatabaseUser'] = request.database_user
+        if not UtilClient.is_unset(request.dba_id):
+            query['DbaId'] = request.dba_id
+        if not UtilClient.is_unset(request.ddl_online):
+            query['DdlOnline'] = request.ddl_online
+        if not UtilClient.is_unset(request.ecs_instance_id):
+            query['EcsInstanceId'] = request.ecs_instance_id
+        if not UtilClient.is_unset(request.ecs_region):
+            query['EcsRegion'] = request.ecs_region
+        if not UtilClient.is_unset(request.enable_sell_common):
+            query['EnableSellCommon'] = request.enable_sell_common
+        if not UtilClient.is_unset(request.enable_sell_sitd):
+            query['EnableSellSitd'] = request.enable_sell_sitd
+        if not UtilClient.is_unset(request.enable_sell_stable):
+            query['EnableSellStable'] = request.enable_sell_stable
+        if not UtilClient.is_unset(request.enable_sell_trust):
+            query['EnableSellTrust'] = request.enable_sell_trust
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.export_timeout):
+            query['ExportTimeout'] = request.export_timeout
+        if not UtilClient.is_unset(request.host):
+            query['Host'] = request.host
+        if not UtilClient.is_unset(request.instance_alias):
+            query['InstanceAlias'] = request.instance_alias
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_source):
+            query['InstanceSource'] = request.instance_source
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.network_type):
+            query['NetworkType'] = request.network_type
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.query_timeout):
+            query['QueryTimeout'] = request.query_timeout
+        if not UtilClient.is_unset(request.safe_rule):
+            query['SafeRule'] = request.safe_rule
+        if not UtilClient.is_unset(request.sid):
+            query['Sid'] = request.sid
+        if not UtilClient.is_unset(request.skip_test):
+            query['SkipTest'] = request.skip_test
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.use_dsql):
+            query['UseDsql'] = request.use_dsql
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstance',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ModifyInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_instance_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ModifyInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ModifyInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_link_name):
+            query['DataLinkName'] = request.data_link_name
+        if not UtilClient.is_unset(request.database_password):
+            query['DatabasePassword'] = request.database_password
+        if not UtilClient.is_unset(request.database_user):
+            query['DatabaseUser'] = request.database_user
+        if not UtilClient.is_unset(request.dba_id):
+            query['DbaId'] = request.dba_id
+        if not UtilClient.is_unset(request.ddl_online):
+            query['DdlOnline'] = request.ddl_online
+        if not UtilClient.is_unset(request.ecs_instance_id):
+            query['EcsInstanceId'] = request.ecs_instance_id
+        if not UtilClient.is_unset(request.ecs_region):
+            query['EcsRegion'] = request.ecs_region
+        if not UtilClient.is_unset(request.enable_sell_common):
+            query['EnableSellCommon'] = request.enable_sell_common
+        if not UtilClient.is_unset(request.enable_sell_sitd):
+            query['EnableSellSitd'] = request.enable_sell_sitd
+        if not UtilClient.is_unset(request.enable_sell_stable):
+            query['EnableSellStable'] = request.enable_sell_stable
+        if not UtilClient.is_unset(request.enable_sell_trust):
+            query['EnableSellTrust'] = request.enable_sell_trust
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.export_timeout):
+            query['ExportTimeout'] = request.export_timeout
+        if not UtilClient.is_unset(request.host):
+            query['Host'] = request.host
+        if not UtilClient.is_unset(request.instance_alias):
+            query['InstanceAlias'] = request.instance_alias
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_source):
+            query['InstanceSource'] = request.instance_source
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.network_type):
+            query['NetworkType'] = request.network_type
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.query_timeout):
+            query['QueryTimeout'] = request.query_timeout
+        if not UtilClient.is_unset(request.safe_rule):
+            query['SafeRule'] = request.safe_rule
+        if not UtilClient.is_unset(request.sid):
+            query['Sid'] = request.sid
+        if not UtilClient.is_unset(request.skip_test):
+            query['SkipTest'] = request.skip_test
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.use_dsql):
+            query['UseDsql'] = request.use_dsql
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstance',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ModifyInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_instance(
+        self,
+        request: dms_enterprise_20181101_models.ModifyInstanceRequest,
+    ) -> dms_enterprise_20181101_models.ModifyInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_instance_with_options(request, runtime)
+
+    async def modify_instance_async(
+        self,
+        request: dms_enterprise_20181101_models.ModifyInstanceRequest,
+    ) -> dms_enterprise_20181101_models.ModifyInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_instance_with_options_async(request, runtime)
+
     def move_task_flow_to_scenario_with_options(
         self,
         request: dms_enterprise_20181101_models.MoveTaskFlowToScenarioRequest,
@@ -18432,6 +18940,88 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.UpdateScenarioResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_scenario_with_options_async(request, runtime)
+
+    def update_standard_group_with_options(
+        self,
+        request: dms_enterprise_20181101_models.UpdateStandardGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateStandardGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateStandardGroup',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateStandardGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_standard_group_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateStandardGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateStandardGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateStandardGroup',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateStandardGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_standard_group(
+        self,
+        request: dms_enterprise_20181101_models.UpdateStandardGroupRequest,
+    ) -> dms_enterprise_20181101_models.UpdateStandardGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_standard_group_with_options(request, runtime)
+
+    async def update_standard_group_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateStandardGroupRequest,
+    ) -> dms_enterprise_20181101_models.UpdateStandardGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_standard_group_with_options_async(request, runtime)
 
     def update_task_config_with_options(
         self,
