@@ -1124,21 +1124,59 @@ class Binding(TeaModel):
         return self
 
 
+class PointInt64(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
 class Boundary(TeaModel):
     def __init__(
         self,
         height: int = None,
         left: int = None,
+        polygon: List[PointInt64] = None,
         top: int = None,
         width: int = None,
     ):
         self.height = height
         self.left = left
+        self.polygon = polygon
         self.top = top
         self.width = width
 
     def validate(self):
-        pass
+        if self.polygon:
+            for k in self.polygon:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1150,6 +1188,10 @@ class Boundary(TeaModel):
             result['Height'] = self.height
         if self.left is not None:
             result['Left'] = self.left
+        result['Polygon'] = []
+        if self.polygon is not None:
+            for k in self.polygon:
+                result['Polygon'].append(k.to_map() if k else None)
         if self.top is not None:
             result['Top'] = self.top
         if self.width is not None:
@@ -1162,6 +1204,11 @@ class Boundary(TeaModel):
             self.height = m.get('Height')
         if m.get('Left') is not None:
             self.left = m.get('Left')
+        self.polygon = []
+        if m.get('Polygon') is not None:
+            for k in m.get('Polygon'):
+                temp_model = PointInt64()
+                self.polygon.append(temp_model.from_map(k))
         if m.get('Top') is not None:
             self.top = m.get('Top')
         if m.get('Width') is not None:
@@ -2025,6 +2072,80 @@ class Dataset(TeaModel):
         return self
 
 
+class ElementContent(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        type: str = None,
+        url: str = None,
+    ):
+        self.content = content
+        self.type = type
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.url is not None:
+            result['URL'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('URL') is not None:
+            self.url = m.get('URL')
+        return self
+
+
+class Element(TeaModel):
+    def __init__(
+        self,
+        element_contents: List[ElementContent] = None,
+    ):
+        self.element_contents = element_contents
+
+    def validate(self):
+        if self.element_contents:
+            for k in self.element_contents:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ElementContents'] = []
+        if self.element_contents is not None:
+            for k in self.element_contents:
+                result['ElementContents'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.element_contents = []
+        if m.get('ElementContents') is not None:
+            for k in m.get('ElementContents'):
+                temp_model = ElementContent()
+                self.element_contents.append(temp_model.from_map(k))
+        return self
+
+
 class HeadPose(TeaModel):
     def __init__(
         self,
@@ -2763,6 +2884,7 @@ class File(TeaModel):
         duration: float = None,
         etag: str = None,
         exif: str = None,
+        elements: List[Element] = None,
         figure_count: int = None,
         figures: List[Figure] = None,
         file_access_time: str = None,
@@ -2780,6 +2902,7 @@ class File(TeaModel):
         lat_long: str = None,
         media_type: str = None,
         ocrcontents: List[OCRContents] = None,
+        ocrtexts: str = None,
         osscrc64: str = None,
         ossdelete_marker: str = None,
         ossexpiration: str = None,
@@ -2800,6 +2923,7 @@ class File(TeaModel):
         produce_time: str = None,
         program_count: int = None,
         project_name: str = None,
+        semantic_types: List[str] = None,
         server_side_data_encryption: str = None,
         server_side_encryption: str = None,
         server_side_encryption_customer_algorithm: str = None,
@@ -2841,6 +2965,7 @@ class File(TeaModel):
         self.duration = duration
         self.etag = etag
         self.exif = exif
+        self.elements = elements
         self.figure_count = figure_count
         self.figures = figures
         self.file_access_time = file_access_time
@@ -2858,6 +2983,7 @@ class File(TeaModel):
         self.lat_long = lat_long
         self.media_type = media_type
         self.ocrcontents = ocrcontents
+        self.ocrtexts = ocrtexts
         self.osscrc64 = osscrc64
         self.ossdelete_marker = ossdelete_marker
         self.ossexpiration = ossexpiration
@@ -2878,6 +3004,7 @@ class File(TeaModel):
         self.produce_time = produce_time
         self.program_count = program_count
         self.project_name = project_name
+        self.semantic_types = semantic_types
         self.server_side_data_encryption = server_side_data_encryption
         self.server_side_encryption = server_side_encryption
         self.server_side_encryption_customer_algorithm = server_side_encryption_customer_algorithm
@@ -2910,6 +3037,10 @@ class File(TeaModel):
                     k.validate()
         if self.cropping_suggestions:
             for k in self.cropping_suggestions:
+                if k:
+                    k.validate()
+        if self.elements:
+            for k in self.elements:
                 if k:
                     k.validate()
         if self.figures:
@@ -2997,6 +3128,10 @@ class File(TeaModel):
             result['ETag'] = self.etag
         if self.exif is not None:
             result['EXIF'] = self.exif
+        result['Elements'] = []
+        if self.elements is not None:
+            for k in self.elements:
+                result['Elements'].append(k.to_map() if k else None)
         if self.figure_count is not None:
             result['FigureCount'] = self.figure_count
         result['Figures'] = []
@@ -3037,6 +3172,8 @@ class File(TeaModel):
         if self.ocrcontents is not None:
             for k in self.ocrcontents:
                 result['OCRContents'].append(k.to_map() if k else None)
+        if self.ocrtexts is not None:
+            result['OCRTexts'] = self.ocrtexts
         if self.osscrc64 is not None:
             result['OSSCRC64'] = self.osscrc64
         if self.ossdelete_marker is not None:
@@ -3077,6 +3214,8 @@ class File(TeaModel):
             result['ProgramCount'] = self.program_count
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
+        if self.semantic_types is not None:
+            result['SemanticTypes'] = self.semantic_types
         if self.server_side_data_encryption is not None:
             result['ServerSideDataEncryption'] = self.server_side_data_encryption
         if self.server_side_encryption is not None:
@@ -3177,6 +3316,11 @@ class File(TeaModel):
             self.etag = m.get('ETag')
         if m.get('EXIF') is not None:
             self.exif = m.get('EXIF')
+        self.elements = []
+        if m.get('Elements') is not None:
+            for k in m.get('Elements'):
+                temp_model = Element()
+                self.elements.append(temp_model.from_map(k))
         if m.get('FigureCount') is not None:
             self.figure_count = m.get('FigureCount')
         self.figures = []
@@ -3221,6 +3365,8 @@ class File(TeaModel):
             for k in m.get('OCRContents'):
                 temp_model = OCRContents()
                 self.ocrcontents.append(temp_model.from_map(k))
+        if m.get('OCRTexts') is not None:
+            self.ocrtexts = m.get('OCRTexts')
         if m.get('OSSCRC64') is not None:
             self.osscrc64 = m.get('OSSCRC64')
         if m.get('OSSDeleteMarker') is not None:
@@ -3261,6 +3407,8 @@ class File(TeaModel):
             self.program_count = m.get('ProgramCount')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
+        if m.get('SemanticTypes') is not None:
+            self.semantic_types = m.get('SemanticTypes')
         if m.get('ServerSideDataEncryption') is not None:
             self.server_side_data_encryption = m.get('ServerSideDataEncryption')
         if m.get('ServerSideEncryption') is not None:
@@ -16055,10 +16203,12 @@ class ExtractDocumentTextRequest(TeaModel):
         self,
         credential_config: CredentialConfig = None,
         project_name: str = None,
+        source_type: str = None,
         source_uri: str = None,
     ):
         self.credential_config = credential_config
         self.project_name = project_name
+        self.source_type = source_type
         self.source_uri = source_uri
 
     def validate(self):
@@ -16075,6 +16225,8 @@ class ExtractDocumentTextRequest(TeaModel):
             result['CredentialConfig'] = self.credential_config.to_map()
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
         if self.source_uri is not None:
             result['SourceURI'] = self.source_uri
         return result
@@ -16086,6 +16238,8 @@ class ExtractDocumentTextRequest(TeaModel):
             self.credential_config = temp_model.from_map(m['CredentialConfig'])
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
         if m.get('SourceURI') is not None:
             self.source_uri = m.get('SourceURI')
         return self
@@ -16096,10 +16250,12 @@ class ExtractDocumentTextShrinkRequest(TeaModel):
         self,
         credential_config_shrink: str = None,
         project_name: str = None,
+        source_type: str = None,
         source_uri: str = None,
     ):
         self.credential_config_shrink = credential_config_shrink
         self.project_name = project_name
+        self.source_type = source_type
         self.source_uri = source_uri
 
     def validate(self):
@@ -16115,6 +16271,8 @@ class ExtractDocumentTextShrinkRequest(TeaModel):
             result['CredentialConfig'] = self.credential_config_shrink
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
         if self.source_uri is not None:
             result['SourceURI'] = self.source_uri
         return result
@@ -16125,6 +16283,8 @@ class ExtractDocumentTextShrinkRequest(TeaModel):
             self.credential_config_shrink = m.get('CredentialConfig')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
         if m.get('SourceURI') is not None:
             self.source_uri = m.get('SourceURI')
         return self

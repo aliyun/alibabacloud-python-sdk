@@ -5031,6 +5031,8 @@ class Client(OpenApiClient):
             query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
         if not UtilClient.is_unset(request.source_uri):
             query['SourceURI'] = request.source_uri
         req = open_api_models.OpenApiRequest(
@@ -5067,6 +5069,8 @@ class Client(OpenApiClient):
             query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
         if not UtilClient.is_unset(request.source_uri):
             query['SourceURI'] = request.source_uri
         req = open_api_models.OpenApiRequest(
