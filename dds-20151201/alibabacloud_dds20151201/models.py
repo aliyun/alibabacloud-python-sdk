@@ -3751,11 +3751,11 @@ class DescribeActiveOperationTasksRequest(TeaModel):
         status: int = None,
         task_type: str = None,
     ):
-        # Specifies whether the task can be canceled.
+        # Specifies whether the task can be canceled. Valid values: -**0**: The task cannot be canceled. -**1**: The task can be canceled.
         self.allow_cancel = allow_cancel
-        # Specifies whether the time can be changed. Valid values: -**0**: The time cannot be changed. **1**: The time can be changed.
+        # Specifies whether the time can be modified. Valid values: -**0**: The time cannot be modified. -**1**: The time can be modified.
         self.allow_change = allow_change
-        # The change type.
+        # The type of configuration change. Valid values: -**all** (default): All O\&M tasks are returned. -**S0**: O\&M tasks that are executed for exception fixing are returned. -**S1**: O\&M tasks that are executed for regular O\&M are returned.
         self.change_level = change_level
         # The type of the database engine.
         self.db_type = db_type
@@ -3763,13 +3763,13 @@ class DescribeActiveOperationTasksRequest(TeaModel):
         self.ins_name = ins_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return.
+        # The page number of the page to return.
         self.page_number = page_number
-        # The number of entries to return per page. Valid values: **30, 50, and 100**. Default value: **30**.
+        # The number of entries to return on each page. Valid values: **30, 50, and 100**. Default value: **30**.
         self.page_size = page_size
         # The ID of the service.
         self.product_id = product_id
-        # The region of the instance.
+        # The region of the instance. If you set the Region parameter to all, all tasks created within your Alibaba Cloud account are queried. In this case, you must also set the TaskType parameter to all.
         self.region = region
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -3884,60 +3884,60 @@ class DescribeActiveOperationTasksResponseBodyItems(TeaModel):
         task_type_en: str = None,
         task_type_zh: str = None,
     ):
-        # N/A
+        # None
         self.allow_cancel = allow_cancel
-        # Indicates whether the time can be changed. Valid values:
+        # Indicates whether the change is allowed.
         # 
-        # *   **0**: The time cannot be changed.
-        # *   **1**: The time can be changed.
+        # *   **0**: The change is not allowed.
+        # *   **1**: The change is allowed.
         self.allow_change = allow_change
-        # The change type.
+        # The change level of the O\&M task.
         self.change_level = change_level
-        # N/A
+        # None
         self.change_level_en = change_level_en
-        # The change type in Chinese.
+        # The task type in English.
         self.change_level_zh = change_level_zh
         # The time when the task was created.
         self.created_time = created_time
-        # N/A
+        # None
         self.current_avz = current_avz
         # The type of the database engine.
         self.db_type = db_type
         # The version of the database engine.
         self.db_version = db_version
-        # The end time of the task.
+        # The end time of the O\&M task.
         self.deadline = deadline
-        # The ID of the task.
+        # The task ID.
         self.id = id
-        # N/A
+        # None
         self.impact_en = impact_en
-        # N/A
+        # None
         self.impact_zh = impact_zh
-        # The description of the task.
+        # The description of the instance.
         self.ins_comment = ins_comment
-        # The ID of the node.
+        # The node ID.
         self.ins_name = ins_name
-        # The time when the task was modified. The time is displayed in the *yyyy-mm-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the O\&M task was modified. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm:ss*z format. The time is displayed in UTC.
         self.modified_time = modified_time
         # The required preparation period between the task start time and the switchover time. The time is displayed in the *HH:mm:ss* format.
         self.prepare_interval = prepare_interval
         # The region of the instance.
         self.region = region
-        # The result information. This parameter can be ignored.
+        # The result information. The value of this parameter can be ignored.
         self.result_info = result_info
-        # The start time of the task. The time is displayed in the *yyyy-mm-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the O\&M task started to run. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm:ss*z format. The time is displayed in UTC.
         self.start_time = start_time
-        # N/A
+        # None
         self.status = status
-        # The names of the subinstances.
+        # The subinstances.
         self.sub_ins_names = sub_ins_names
-        # The time when the task was interrupted. The time is displayed in the *yyyy-mm-dd*T*hh:mm:ss*Z format. The time is displayed in Coordinated Universal Time (UTC).
+        # The point in time when the switchover is performed. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm:ss*z format. The time is displayed in UTC. Service interruptions may occur during switchover.
         self.switch_time = switch_time
-        # The type of the task.
+        # The task type.
         self.task_type = task_type
-        # N/A
+        # None
         self.task_type_en = task_type_en
-        # The type of the task in Chinese.
+        # The task type in Chinese.
         self.task_type_zh = task_type_zh
 
     def validate(self):
@@ -4069,7 +4069,7 @@ class DescribeActiveOperationTasksResponseBody(TeaModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The list of O\&M tasks.
+        # The O\&M tasks.
         self.items = items
         # The number of the returned page.
         self.page_number = page_number
@@ -4468,6 +4468,7 @@ class DescribeAuditRecordsRequest(TeaModel):
         database: str = None,
         end_time: str = None,
         form: str = None,
+        logical_operator: str = None,
         node_id: str = None,
         order_type: str = None,
         owner_account: str = None,
@@ -4480,24 +4481,29 @@ class DescribeAuditRecordsRequest(TeaModel):
         start_time: str = None,
         user: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # > If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
         self.dbinstance_id = dbinstance_id
         # The name of the database to be queried. By default, all databases are queried.
         self.database = database
-        # The end of the time range to query. The end time must be later than the start time. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         # 
         # > The end time must be within 24 hours from the start time. Otherwise, the query fails.
         self.end_time = end_time
-        # The form of the audit log that the operation returns. Default value: File. Valid values:
+        # The form of the audit log that the operation returns. Valid values:
         # 
-        # *   **File** triggers the generation of audit logs. If this parameter is set to File, only common parameters are returned.
-        # *   **Stream**: returns data streams.
+        # *   **File**: triggers the generation of audit logs. If this parameter is set to File, only common parameters are returned.
+        # *   **Stream** (default): returns data streams.
         self.form = form
-        # The ID of the mongos node or shard node whose parameter modification records you want to query in the instance. If the instance is a sharded cluster instance, you must specify this parameter.
+        # The logical relationship between multiple keywords. Valid values:
         # 
-        # > This parameter is valid only when you specify the **DBInstanceId** parameter to the ID of a sharded cluster instance.
+        # *   **or**\
+        # *   **and** (default value)
+        self.logical_operator = logical_operator
+        # The ID of the mongos node or shard node in the instance.
+        # 
+        # > This parameter takes effect only when you set the **DBInstanceId** parameter to the ID of a sharded cluster instance.
         self.node_id = node_id
         # The order of time in which the log entries to return are sorted. Valid values:
         # 
@@ -4506,17 +4512,17 @@ class DescribeAuditRecordsRequest(TeaModel):
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Pages start from page 1. Valid values: any non-zero positive integer. Default value: 1.
+        # The page number of the page to return. The valid value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: 1.
         self.page_number = page_number
         # The number of entries to return per page. Default value: 30. Valid values: **30**, **50**, and **100**.
         self.page_size = page_size
-        # The keywords that are used for queries. Separate multiple keywords with spaces. The maximum number of keywords is 10.
+        # The keywords used for query. You can enter up to 10 keywords at a time. If you enter multiple keywords, separate the keywords with spaces.
         self.query_keywords = query_keywords
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         self.start_time = start_time
-        # The account of the database. If you do not specify this parameter, this operation returns records of all accounts.
+        # The user of the database. If you do not specify this parameter, this operation returns records of all users.
         self.user = user
 
     def validate(self):
@@ -4536,6 +4542,8 @@ class DescribeAuditRecordsRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.form is not None:
             result['Form'] = self.form
+        if self.logical_operator is not None:
+            result['LogicalOperator'] = self.logical_operator
         if self.node_id is not None:
             result['NodeId'] = self.node_id
         if self.order_type is not None:
@@ -4570,6 +4578,8 @@ class DescribeAuditRecordsRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('Form') is not None:
             self.form = m.get('Form')
+        if m.get('LogicalOperator') is not None:
+            self.logical_operator = m.get('LogicalOperator')
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
         if m.get('OrderType') is not None:
@@ -4612,7 +4622,7 @@ class DescribeAuditRecordsResponseBodyItemsSQLRecord(TeaModel):
         self.account_name = account_name
         # The name of the database.
         self.dbname = dbname
-        # The time when the statement was executed. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the statement was executed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.execute_time = execute_time
         # The IP addresses of the client.
         self.host_address = host_address
@@ -4624,7 +4634,7 @@ class DescribeAuditRecordsResponseBodyItemsSQLRecord(TeaModel):
         self.table_name = table_name
         # The ID of the thread.
         self.thread_id = thread_id
-        # The execution time of the statement. Unit: microseconds.
+        # The duration of the statement execution. Unit: microseconds.
         self.total_execution_times = total_execution_times
 
     def validate(self):
@@ -4729,7 +4739,7 @@ class DescribeAuditRecordsResponseBody(TeaModel):
         self.page_number = page_number
         # The maximum number of entries on the current page.
         self.page_record_count = page_record_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of returned entries.
         self.total_record_count = total_record_count
@@ -4867,13 +4877,16 @@ class DescribeAvailabilityZonesRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the latest available regions.
         self.region_id = region_id
-        # 节点数，只适用于副本集。
+        # The number of nodes. This parameter is available only for replica set instances.
         self.replication_factor = replication_factor
         # The ID of the resource group. For more information, see [View basic information of a resource group](~~151181~~).
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The storage type of the instance. cloud: The system displays only zones in which cloud disk-based instances can be deployed. local: The system displays only zones in which local disk-based instances can be deployed. default or null: The system displays only zones in which cloud disk-based and local disk-based instances can be deployed.
+        # The storage type of the instance. 
+        # - **cloud**: The system displays only zones in which cloud disk-based instances can be deployed. 
+        # - **local**: The system displays only zones in which local disk-based instances can be deployed. 
+        # - **default** or null: The system displays only zones in which cloud disk-based and local disk-based instances can be deployed.
         self.storage_support = storage_support
         # The storage type of the instance. Valid values:
         # 
@@ -4882,11 +4895,8 @@ class DescribeAvailabilityZonesRequest(TeaModel):
         # *   **cloud_essd3**: PL3 ESSD
         # *   **local_ssd**: Local SSD
         # 
-        # > 
-        # 
-        # *   Instances that run MongoDB 4.4 or later support only cloud disks. **cloud_essd1** is selected if you leave this parameter empty.
-        # 
-        # *   Instances that run MongoDB 4.2 and earlier support only local disks. **local_ssd** is selected if you leave this parameter empty.
+        # > *   Instances that run MongoDB 4.4 or later support only cloud disks. **cloud_essd1** is selected if you leave this parameter empty.
+        # > *   Instances that run MongoDB 4.2 and earlier support only local disks. **local_ssd** is selected if you leave this parameter empty.
         self.storage_type = storage_type
         # The zone ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query available zones.
         self.zone_id = zone_id
@@ -4994,7 +5004,7 @@ class DescribeAvailabilityZonesResponseBodyAvailableZones(TeaModel):
         # 
         # The return value of the ZoneName parameter is in the language that is specified by the **AcceptLanguage** parameter. For example, if the value of the ZoneId parameter in the response is **cn-hangzhou-h**, the following values are returned for the ZoneName parameter:
         # 
-        # *   If the value of the **AcceptLanguage** parameter is **zh**, ** H** is returned for the ZoneName parameter.
+        # *   If the value of the **AcceptLanguage** parameter is **zh**, **H** is returned for the ZoneName parameter.
         # *   If the value of the **AcceptLanguage** parameter is **en**, **Hangzhou Zone H** is returned for the ZoneName parameter.
         self.zone_name = zone_name
 
@@ -6455,7 +6465,7 @@ class DescribeBackupsRequest(TeaModel):
     ):
         # The ID of the backup set. You can call the [CreateBackup](~~62171~~) operation to obtain the value of this parameter.
         # 
-        # If you set the DBInstanceId parameter to the ID of a sharded cluster instance, the number of backup IDs is the same as the number of shards. Multiple , with commas (,) in the middle.
+        # If you set the DBInstanceId parameter to the ID of a sharded cluster instance, the number of backup IDs is the same as the number of shards. Separate them with commas (,) in the middle.
         self.backup_id = backup_id
         # The ID of the instance.
         # 
@@ -7134,7 +7144,7 @@ class DescribeClusterBackupsResponseBody(TeaModel):
         self.max_results = max_results
         # The page number of the page returned.
         self.page_number = page_number
-        # The maximum number of entries returned.
+        # The number of entries to return on each page.
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
@@ -7292,7 +7302,7 @@ class DescribeClusterRecoverTimeResponseBodyRestoreRanges(TeaModel):
         self.restore_end_time = restore_end_time
         # The method used to restore data. Valid values:
         # 
-        # *   \*\* PointInTime\*\* (default): Data is restored based on point in time
+        # *   **PointInTime** (default): Data is restored based on point in time
         self.restore_type = restore_type
 
     def validate(self):
@@ -8904,7 +8914,7 @@ class DescribeDBInstanceMonitorRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -8953,9 +8963,9 @@ class DescribeDBInstanceMonitorResponseBody(TeaModel):
         granularity: str = None,
         request_id: str = None,
     ):
-        # The collection frequency of monitoring data. The value is **1** or **300**. Unit: seconds.
+        # The collection frequency of monitoring data for the instance. Valid value: **5**. Unit: seconds.
         self.granularity = granularity
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10553,7 +10563,7 @@ class DescribeDBInstancesResponseBodyDBInstancesDBInstance(TeaModel):
         # *   **eu-central-1c**: Frankfurt Zone C.
         # 
         # > *   This parameter is returned if the instance is a replica set or sharded cluster instance that runs MongoDB 4.4 or 5.0 and uses multi-zone deployment.
-        # > *   This parameter is returned only if you use the Chine site (aliyun.com).
+        # > *   This parameter is returned only if you use the China site (aliyun.com).
         self.hidden_zone_id = hidden_zone_id
         # The kind code of the instance. Valid values:
         # 
@@ -10612,7 +10622,7 @@ class DescribeDBInstancesResponseBodyDBInstancesDBInstance(TeaModel):
         # *   **eu-central-1c**: Frankfurt Zone C.
         # 
         # > *   This parameter is returned if the instance is a replica set or sharded cluster instance that runs MongoDB 4.4 or 5.0 and uses multi-zone deployment.
-        # > *   This parameter is returned only if you use the Chine site (aliyun.com).
+        # > *   This parameter is returned only if you use the China site (aliyun.com).
         self.secondary_zone_id = secondary_zone_id
         # The details of the shard node.
         # 
@@ -11554,11 +11564,13 @@ class DescribeErrorLogRecordsRequest(TeaModel):
         dbinstance_id: str = None,
         dbname: str = None,
         end_time: str = None,
+        logical_operator: str = None,
         node_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
         page_number: int = None,
         page_size: int = None,
+        query_keywords: str = None,
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -11573,6 +11585,11 @@ class DescribeErrorLogRecordsRequest(TeaModel):
         self.dbname = dbname
         # The end of the time range to query. The end time must be later than the start time and within 24 hours from the start time. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
         self.end_time = end_time
+        # The logical relationship between multiple keywords. Valid values:
+        # 
+        # *   **or**\
+        # *   **and** (default value)
+        self.logical_operator = logical_operator
         # The ID of the mongos node or shard node whose error logs you want to query in the instance. If the instance is a sharded cluster instance, you must specify this parameter.
         # 
         # >  This parameter is valid only when **DBInstanceId** is set to the ID of a sharded cluster instance.
@@ -11583,6 +11600,8 @@ class DescribeErrorLogRecordsRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return on each page. Valid values: **30** to **100**.
         self.page_size = page_size
+        # The keywords used for query. You can enter up to 10 keywords at a time. If you enter multiple keywords, separate the keywords with spaces.
+        self.query_keywords = query_keywords
         # The ID of the resource group. For more information, see [View basic information of a resource group](~~151181~~).
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
@@ -11612,6 +11631,8 @@ class DescribeErrorLogRecordsRequest(TeaModel):
             result['DBName'] = self.dbname
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.logical_operator is not None:
+            result['LogicalOperator'] = self.logical_operator
         if self.node_id is not None:
             result['NodeId'] = self.node_id
         if self.owner_account is not None:
@@ -11622,6 +11643,8 @@ class DescribeErrorLogRecordsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.query_keywords is not None:
+            result['QueryKeywords'] = self.query_keywords
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
@@ -11642,6 +11665,8 @@ class DescribeErrorLogRecordsRequest(TeaModel):
             self.dbname = m.get('DBName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('LogicalOperator') is not None:
+            self.logical_operator = m.get('LogicalOperator')
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
         if m.get('OwnerAccount') is not None:
@@ -11652,6 +11677,8 @@ class DescribeErrorLogRecordsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('QueryKeywords') is not None:
+            self.query_keywords = m.get('QueryKeywords')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
@@ -11690,7 +11717,7 @@ class DescribeErrorLogRecordsResponseBodyItemsLogRecords(TeaModel):
         self.conn_info = conn_info
         # The content of the log entry.
         self.content = content
-        # The time when the log entry was generated. The time is in the *yyyy-MM-dd*T*HH:mm:ss***Z format. The time is displayed in UTC.
+        # The time when the log entry was generated. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.create_time = create_time
         # The ID of the log entry.
         self.id = id
@@ -13731,7 +13758,7 @@ class DescribeMongoDBLogConfigResponseBody(TeaModel):
         used_storage_for_trail: int = None,
         user_project_name: str = None,
     ):
-        # Indicates whether the audit log feature is enabled. Valid values:
+        # Indicates whether to enable the audit log feature.
         # 
         # *   **true**: The audit log feature is enabled.
         # *   **false**: The audit log feature is disabled.
@@ -16877,12 +16904,14 @@ class DescribeRunningLogRecordsRequest(TeaModel):
         dbinstance_id: str = None,
         dbname: str = None,
         end_time: str = None,
+        logical_operator: str = None,
         node_id: str = None,
         order_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
         page_number: int = None,
         page_size: int = None,
+        query_keywords: str = None,
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -16900,6 +16929,11 @@ class DescribeRunningLogRecordsRequest(TeaModel):
         # 
         # >  The end time must be later than the start time and within 24 hours from the start time. Otherwise, the query fails.
         self.end_time = end_time
+        # The logical relationship among multiple keywords.
+        # 
+        # *   **or**\
+        # *   **and** (default value)
+        self.logical_operator = logical_operator
         # The ID of the mongos node or shard node whose operational logs you want to query in the instance. If the instance is a sharded cluster instance, you must specify this parameter.
         # 
         # >  This parameter is valid only when **DBInstanceId** is set to the ID of a sharded cluster instance.
@@ -16915,6 +16949,8 @@ class DescribeRunningLogRecordsRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return on each page. Valid values: **30** to **100**.
         self.page_size = page_size
+        # The keywords used for query. You can enter up to 10 keywords at a time. If you enter multiple keywords, separate the keywords with spaces.
+        self.query_keywords = query_keywords
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
@@ -16946,6 +16982,8 @@ class DescribeRunningLogRecordsRequest(TeaModel):
             result['DBName'] = self.dbname
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.logical_operator is not None:
+            result['LogicalOperator'] = self.logical_operator
         if self.node_id is not None:
             result['NodeId'] = self.node_id
         if self.order_type is not None:
@@ -16958,6 +16996,8 @@ class DescribeRunningLogRecordsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.query_keywords is not None:
+            result['QueryKeywords'] = self.query_keywords
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
@@ -16980,6 +17020,8 @@ class DescribeRunningLogRecordsRequest(TeaModel):
             self.dbname = m.get('DBName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('LogicalOperator') is not None:
+            self.logical_operator = m.get('LogicalOperator')
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
         if m.get('OrderType') is not None:
@@ -16992,6 +17034,8 @@ class DescribeRunningLogRecordsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('QueryKeywords') is not None:
+            self.query_keywords = m.get('QueryKeywords')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
@@ -17015,7 +17059,7 @@ class DescribeRunningLogRecordsResponseBodyItemsLogRecords(TeaModel):
         content: str = None,
         create_time: str = None,
     ):
-        # The category of the log entry. Valid values:
+        # The category of the log entry.
         self.category = category
         # The connection information of the log entry.
         self.conn_info = conn_info
@@ -18049,24 +18093,26 @@ class DescribeSlowLogRecordsRequest(TeaModel):
         dbinstance_id: str = None,
         dbname: str = None,
         end_time: str = None,
+        logical_operator: str = None,
         node_id: str = None,
         order_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
         page_number: int = None,
         page_size: int = None,
+        query_keywords: str = None,
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         start_time: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # > If you set this parameter to the ID of a sharded cluster instance, you must also specify the `NodeId` parameter.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
         self.dbname = dbname
-        # The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
         # 
         # > 
         # 
@@ -18074,6 +18120,11 @@ class DescribeSlowLogRecordsRequest(TeaModel):
         # 
         # *   The end time must be within 24 hours from the start time. Otherwise, the query fails.
         self.end_time = end_time
+        # The logical relationship among multiple keywords.
+        # 
+        # *   **or**\
+        # *   **and** (default value)
+        self.logical_operator = logical_operator
         # The ID of the shard node.
         # 
         # > This parameter is required only when you specify the `DBInstanceId` parameter to the ID of a sharded cluster instance.
@@ -18085,15 +18136,17 @@ class DescribeSlowLogRecordsRequest(TeaModel):
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. The value of this parameter must be an integer that is greater than 0. Default value: **1**.
+        # The page number of the page to return. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
         self.page_number = page_number
         # The number of entries to return on each page. Valid values: **30** to **100**.
         self.page_size = page_size
-        # The ID of the resource group.
+        # The keywords used for query. You can enter up to 10 keywords at a time. If you enter multiple keywords, separate the keywords with spaces.
+        self.query_keywords = query_keywords
+        # The ID of the resource group to which the instances you want to query belong.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -18111,6 +18164,8 @@ class DescribeSlowLogRecordsRequest(TeaModel):
             result['DBName'] = self.dbname
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.logical_operator is not None:
+            result['LogicalOperator'] = self.logical_operator
         if self.node_id is not None:
             result['NodeId'] = self.node_id
         if self.order_type is not None:
@@ -18123,6 +18178,8 @@ class DescribeSlowLogRecordsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.query_keywords is not None:
+            result['QueryKeywords'] = self.query_keywords
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
@@ -18141,6 +18198,8 @@ class DescribeSlowLogRecordsRequest(TeaModel):
             self.dbname = m.get('DBName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('LogicalOperator') is not None:
+            self.logical_operator = m.get('LogicalOperator')
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
         if m.get('OrderType') is not None:
@@ -18153,6 +18212,8 @@ class DescribeSlowLogRecordsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('QueryKeywords') is not None:
+            self.query_keywords = m.get('QueryKeywords')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
@@ -18184,7 +18245,7 @@ class DescribeSlowLogRecordsResponseBodyItemsLogRecords(TeaModel):
         self.dbname = dbname
         # The number of documents that are scanned during the operation.
         self.docs_examined = docs_examined
-        # The start time of the operation. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The start time of the operation. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.execution_start_time = execution_start_time
         # The host IP address that is used to connect to the database.
         self.host_address = host_address
@@ -18302,13 +18363,13 @@ class DescribeSlowLogRecordsResponseBody(TeaModel):
     ):
         # The database engine.
         self.engine = engine
-        # Details of the slow query logs.
+        # An array that consists of the information about each slow query.
         self.items = items
-        # The page number of the returned page. The value must be an integer that is greater than 0. Default value: **1**.
+        # The page number of the returned page. The value is a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
         self.page_number = page_number
         # The number of slow query log entries returned on the page.
         self.page_record_count = page_record_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of returned entries.
         self.total_record_count = total_record_count
@@ -20114,7 +20175,7 @@ class ModifyAuditPolicyRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The type of the audit log feature. Valid values:
         # 
-        # *   **Trail**: the free trial edition
+        # *   **Trial**: the free trial edition
         # *   **Standard**: the official edition
         # 
         # >  Default value: **Trial**. Starting from January 6, 2022, the official edition of the audit log feature has been launched in all regions, and new applications for the free trial edition have ended. We recommend that you set this parameter to **Standard**.
@@ -20485,8 +20546,8 @@ class ModifyDBInstanceConnectionStringRequest(TeaModel):
         # 
         # >  You need only to specify the prefix of the connection string. The content other than the prefix cannot be modified.
         self.new_connection_string = new_connection_string
-        # this parameter can be used. The new port should be within the range of 1000 to 65535.
-        # >When the DBInstanceId parameter is passed in as a cloud disk instance ID
+        # The new port. The new port ranges from 1000 to 65535.
+        # >This parameter is available only when the DBInstanceId parameter is set to a cloud-disk instance ID.
         self.new_port = new_port
         # The ID of the mongos in the specified sharded cluster instance. Only one mongos ID can be specified in each call.
         # 
@@ -21379,7 +21440,7 @@ class ModifyDBInstanceSSLRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The operation on the SSL feature. Valid values: Valid values:
+        # The operation on the SSL feature. Valid values:
         # 
         # *   **Open**: enables SSL encryption.
         # *   **Close**: disables SSL encryption.
@@ -25447,7 +25508,7 @@ class TransformToPrePaidRequest(TeaModel):
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The subscription duration of the instance. Unit: months. Valid values: **1, 2, 3, 4, 5, 6, 7, 8, 9******, **12**, **24**, and **36**.
+        # The subscription duration of the instance. Unit: months. Valid values: **1**, **2**, **3**, **4**, **5**, **6**, **7**, **8**, **9**, **12**, **24**, and **36**.
         self.period = period
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
