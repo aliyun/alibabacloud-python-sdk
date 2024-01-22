@@ -1741,6 +1741,128 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.allocate_eip_segment_address_with_options_async(request, runtime)
 
+    def allocate_ipv_6address_with_options(
+        self,
+        request: vpc_20160428_models.AllocateIpv6AddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.AllocateIpv6AddressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ipv_6address):
+            query['Ipv6Address'] = request.ipv_6address
+        if not UtilClient.is_unset(request.ipv_6address_description):
+            query['Ipv6AddressDescription'] = request.ipv_6address_description
+        if not UtilClient.is_unset(request.ipv_6address_name):
+            query['Ipv6AddressName'] = request.ipv_6address_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AllocateIpv6Address',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.AllocateIpv6AddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def allocate_ipv_6address_with_options_async(
+        self,
+        request: vpc_20160428_models.AllocateIpv6AddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.AllocateIpv6AddressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ipv_6address):
+            query['Ipv6Address'] = request.ipv_6address
+        if not UtilClient.is_unset(request.ipv_6address_description):
+            query['Ipv6AddressDescription'] = request.ipv_6address_description
+        if not UtilClient.is_unset(request.ipv_6address_name):
+            query['Ipv6AddressName'] = request.ipv_6address_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AllocateIpv6Address',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.AllocateIpv6AddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def allocate_ipv_6address(
+        self,
+        request: vpc_20160428_models.AllocateIpv6AddressRequest,
+    ) -> vpc_20160428_models.AllocateIpv6AddressResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.allocate_ipv_6address_with_options(request, runtime)
+
+    async def allocate_ipv_6address_async(
+        self,
+        request: vpc_20160428_models.AllocateIpv6AddressRequest,
+    ) -> vpc_20160428_models.AllocateIpv6AddressResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.allocate_ipv_6address_with_options_async(request, runtime)
+
     def allocate_ipv_6internet_bandwidth_with_options(
         self,
         request: vpc_20160428_models.AllocateIpv6InternetBandwidthRequest,
@@ -9371,6 +9493,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_protection_types):
+            query['SecurityProtectionTypes'] = request.security_protection_types
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.zones):
@@ -9432,6 +9556,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_protection_types):
+            query['SecurityProtectionTypes'] = request.security_protection_types
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.zones):
@@ -32734,6 +32860,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_protection_enabled):
+            query['SecurityProtectionEnabled'] = request.security_protection_enabled
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.tags):
@@ -32788,6 +32916,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_protection_enabled):
+            query['SecurityProtectionEnabled'] = request.security_protection_enabled
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.tags):
@@ -42068,6 +42198,108 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.release_eip_segment_address_with_options_async(request, runtime)
+
+    def release_ipv_6address_with_options(
+        self,
+        request: vpc_20160428_models.ReleaseIpv6AddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ReleaseIpv6AddressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ipv_6address_id):
+            query['Ipv6AddressId'] = request.ipv_6address_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReleaseIpv6Address',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ReleaseIpv6AddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def release_ipv_6address_with_options_async(
+        self,
+        request: vpc_20160428_models.ReleaseIpv6AddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ReleaseIpv6AddressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ipv_6address_id):
+            query['Ipv6AddressId'] = request.ipv_6address_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReleaseIpv6Address',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ReleaseIpv6AddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def release_ipv_6address(
+        self,
+        request: vpc_20160428_models.ReleaseIpv6AddressRequest,
+    ) -> vpc_20160428_models.ReleaseIpv6AddressResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.release_ipv_6address_with_options(request, runtime)
+
+    async def release_ipv_6address_async(
+        self,
+        request: vpc_20160428_models.ReleaseIpv6AddressRequest,
+    ) -> vpc_20160428_models.ReleaseIpv6AddressResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.release_ipv_6address_with_options_async(request, runtime)
 
     def remove_common_bandwidth_package_ip_with_options(
         self,
