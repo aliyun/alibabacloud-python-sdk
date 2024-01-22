@@ -30857,6 +30857,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.GetCheckSummaryResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.is_item_statistic):
+            query['IsItemStatistic'] = request.is_item_statistic
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.resource_directory_account_id):
@@ -30889,6 +30891,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.GetCheckSummaryResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.is_item_statistic):
+            query['IsItemStatistic'] = request.is_item_statistic
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.resource_directory_account_id):
