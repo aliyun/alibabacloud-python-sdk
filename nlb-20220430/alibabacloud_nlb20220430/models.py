@@ -727,8 +727,20 @@ class CreateListenerRequestProxyProtocolV2Config(TeaModel):
         ppv_2private_link_eps_id_enabled: bool = None,
         ppv_2vpc_id_enabled: bool = None,
     ):
+        # Specifies whether to use the Proxy protocol to pass the Ppv2PrivateLinkEpId parameter to backend servers. Valid values:
+        # 
+        # *   **true**\
+        # *   **false** (default)
         self.ppv_2private_link_ep_id_enabled = ppv_2private_link_ep_id_enabled
+        # Specifies whether to use the Proxy protocol to pass the PrivateLinkEpsId parameter to backend servers. Valid values:
+        # 
+        # *   **true**\
+        # *   **false** (default)
         self.ppv_2private_link_eps_id_enabled = ppv_2private_link_eps_id_enabled
+        # Specifies whether to use the Proxy protocol to pass the VpcId parameter to backend servers. Valid values:
+        # 
+        # *   **true**\
+        # *   **false** (default)
         self.ppv_2vpc_id_enabled = ppv_2vpc_id_enabled
 
     def validate(self):
@@ -892,6 +904,7 @@ class CreateListenerRequest(TeaModel):
         # *   **true**\
         # *   **false** (default)
         self.proxy_protocol_enabled = proxy_protocol_enabled
+        # Specifies that the Proxy protocol passes the VpcId, PrivateLinkEpId, and PrivateLinkEpsId parameters to backend servers.
         self.proxy_protocol_v2config = proxy_protocol_v2config
         # The region ID of the NLB instance.
         # 
@@ -1169,6 +1182,7 @@ class CreateListenerShrinkRequest(TeaModel):
         # *   **true**\
         # *   **false** (default)
         self.proxy_protocol_enabled = proxy_protocol_enabled
+        # Specifies that the Proxy protocol passes the VpcId, PrivateLinkEpId, and PrivateLinkEpsId parameters to backend servers.
         self.proxy_protocol_v2config_shrink = proxy_protocol_v2config_shrink
         # The region ID of the NLB instance.
         # 
@@ -4184,8 +4198,20 @@ class GetListenerAttributeResponseBodyProxyProtocolV2Config(TeaModel):
         ppv_2private_link_eps_id_enabled: bool = None,
         ppv_2vpc_id_enabled: bool = None,
     ):
+        # Indicates whether the Proxy protocol passes the PrivateLinkEpId parameter to backend servers. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.ppv_2private_link_ep_id_enabled = ppv_2private_link_ep_id_enabled
+        # Indicates whether the Proxy protocol passes the PrivateLinkEpsId parameter to backend servers. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.ppv_2private_link_eps_id_enabled = ppv_2private_link_eps_id_enabled
+        # Indicates whether the Proxy protocol passes the VpcId parameter to backend servers. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.ppv_2vpc_id_enabled = ppv_2vpc_id_enabled
 
     def validate(self):
@@ -4222,9 +4248,9 @@ class GetListenerAttributeResponseBodyTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of the tag that you want to remove. You can remove up to 20 tags in each call.
+        # The tag key.
         self.tag_key = tag_key
-        # The value of the tag.
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -4342,6 +4368,7 @@ class GetListenerAttributeResponseBody(TeaModel):
         # *   **true**: yes
         # *   **false**: no
         self.proxy_protocol_enabled = proxy_protocol_enabled
+        # Indicates whether the Proxy protocol passes the VpcId, PrivateLinkEpId, and PrivateLinkEpsId parameters to backend servers.
         self.proxy_protocol_v2config = proxy_protocol_v2config
         # The ID of the region where the NLB instance is deployed.
         self.region_id = region_id
@@ -5968,8 +5995,20 @@ class ListListenersResponseBodyListenersProxyProtocolV2Config(TeaModel):
         ppv_2private_link_eps_id_enabled: bool = None,
         ppv_2vpc_id_enabled: bool = None,
     ):
+        # Indicates whether the Proxy protocol passes the PrivateLinkEpId parameter to backend servers. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.ppv_2private_link_ep_id_enabled = ppv_2private_link_ep_id_enabled
+        # Indicates whether the Proxy protocol passes the PrivateLinkEpsId parameter to backend servers. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.ppv_2private_link_eps_id_enabled = ppv_2private_link_eps_id_enabled
+        # Indicates whether the Proxy protocol passes the VpcId parameter to backend servers. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.ppv_2vpc_id_enabled = ppv_2vpc_id_enabled
 
     def validate(self):
@@ -6006,11 +6045,9 @@ class ListListenersResponseBodyListenersTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag option.
-        # 
-        # The value can be up to 128 characters in length. It cannot start with `acs:` and cannot contain `http://` or `https://`.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -6066,8 +6103,8 @@ class ListListenersResponseBodyListeners(TeaModel):
     ):
         # Indicates whether Application-Layer Protocol Negotiation (ALPN) is enabled. Valid values:
         # 
-        # *   **true**: enabled
-        # *   **false**: disabled
+        # *   **true**\
+        # *   **false**\
         self.alpn_enabled = alpn_enabled
         # The ALPN policy. Valid values:
         # 
@@ -6076,74 +6113,75 @@ class ListListenersResponseBodyListeners(TeaModel):
         # *   **HTTP2Preferred**\
         # *   **HTTP2Optional**\
         self.alpn_policy = alpn_policy
-        # The list of CA certificates.
+        # A list of CA certificates.
         # 
         # >  This parameter takes effect only for listeners that use SSL over TCP.
         self.ca_certificate_ids = ca_certificate_ids
         # Indicates whether mutual authentication is enabled. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         self.ca_enabled = ca_enabled
-        # The list of server certificates.
+        # The server certificate.
         # 
         # >  This parameter takes effect only for listeners that use SSL over TCP.
         self.certificate_ids = certificate_ids
         # The maximum number of connections that can be created per second on the NLB instance. Valid values: **0** to **1000000**. **0** indicates that the number of connections is unlimited.
         self.cps = cps
-        # The last port in the listening port range.
+        # The last port in the listener port range.
         self.end_port = end_port
-        # The timeout period of an idle connection. Unit: seconds. Valid values: **1** to **900**. Default value: **900**.
+        # The timeout period of idle connections. Unit: seconds. Valid values: **1** to **900**. Default value: **900**.
         self.idle_timeout = idle_timeout
         # The name of the listener.
         # 
         # The name must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
         self.listener_description = listener_description
-        # The ID of the listener.
+        # The listener ID.
         self.listener_id = listener_id
-        # The listening port.
+        # The information about the listener port of your server.
         self.listener_port = listener_port
-        # The listening protocol. Valid values: **TCP**, **UDP**, and **TCPSSL**.
+        # The listener protocol. Valid values: **TCP**, **UDP**, and **TCPSSL**.
         self.listener_protocol = listener_protocol
         # The status of the listener. Valid values:
         # 
-        # *   **Provisioning**\
-        # *   **Running**\
-        # *   **Configuring**\
-        # *   **Stopping**\
-        # *   **Stopped**\
-        # *   **Starting**\
-        # *   **Deleting**\
-        # *   **Deleted**\
+        # *   **Provisioning**: The listener is being created.
+        # *   **Running**: The listener is running.
+        # *   **Configuring**: The listener is being configured.
+        # *   **Stopping**: The listener is being stopped.
+        # *   **Stopped**: The listener is stopped.
+        # *   **Starting**: The listener is being started.
+        # *   **Deleting**: The listener is being deleted.
+        # *   **Deleted**: The listener is deleted.
         self.listener_status = listener_status
-        # The ID of the NLB instance.
+        # The CLB instance ID.
         self.load_balancer_id = load_balancer_id
-        # The maximum size of a TCP segment. Unit: bytes. Valid values: **0** to **1500**. **0** indicates that the maximum segment size remains unchanged.
+        # The size of the largest TCP packet segment. Unit: bytes. Valid values: **0** to **1500**. **0** indicates that the Mss value of TCP packets remains unchanged.
         # 
-        # >  This parameter is supported only by listeners that use SSL over TCP.
+        # >  This parameter takes effect only for listeners that use SSL over TCP.
         self.mss = mss
-        # Indicates whether the Proxy protocol is used to pass client IP addresses to backend servers. Valid values:
+        # Indicates whether the Proxy protocol passes source client IP addresses to backend servers. Valid values:
         # 
-        # *   **true**: enabled
-        # *   **false**: disabled
+        # *   **true**\
+        # *   **false**\
         self.proxy_protocol_enabled = proxy_protocol_enabled
+        # Indicates whether the Proxy protocol passes the VpcId, PrivateLinkEpId, and PrivateLinkEpsId parameters to backend servers.
         self.proxy_protocol_v2config = proxy_protocol_v2config
-        # The ID of the region where the NLB instance is deployed.
+        # The region ID of the NLB instance.
         self.region_id = region_id
         # Indicates whether fine-grained monitoring is enabled. Valid values:
         # 
-        # *   **true**: enabled
-        # *   **false**: disabled
+        # *   **true**\
+        # *   **false**\
         self.sec_sensor_enabled = sec_sensor_enabled
         # The ID of the security policy.
         # 
         # >  This parameter takes effect only for listeners that use SSL over TCP.
         self.security_policy_id = security_policy_id
-        # The ID of the server group.
+        # The server group ID.
         self.server_group_id = server_group_id
-        # The first port in the listening port range.
+        # The first port in the listener port range.
         self.start_port = start_port
-        # The tag key.
+        # A list of tags.
         self.tags = tags
 
     def validate(self):
@@ -6274,7 +6312,7 @@ class ListListenersResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of listeners.
+        # A list of listeners.
         self.listeners = listeners
         # The number of entries returned per page.
         self.max_results = max_results
@@ -10590,8 +10628,20 @@ class UpdateListenerAttributeRequestProxyProtocolV2Config(TeaModel):
         ppv_2private_link_eps_id_enabled: bool = None,
         ppv_2vpc_id_enabled: bool = None,
     ):
+        # Specifies whether to use the Proxy protocol to pass the PrivateLinkEpId parameter to backend servers. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.ppv_2private_link_ep_id_enabled = ppv_2private_link_ep_id_enabled
+        # Specifies whether to use the Proxy protocol to pass the PrivateLinkEpsId parameter to backend servers. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.ppv_2private_link_eps_id_enabled = ppv_2private_link_eps_id_enabled
+        # Specifies whether to use the Proxy protocol to pass the VpcId parameter to backend servers. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.ppv_2vpc_id_enabled = ppv_2vpc_id_enabled
 
     def validate(self):
@@ -10697,6 +10747,7 @@ class UpdateListenerAttributeRequest(TeaModel):
         # *   **true**: yes
         # *   **false**: no
         self.proxy_protocol_enabled = proxy_protocol_enabled
+        # Specifies that the Proxy protocol passes the VpcId, PrivateLinkEpId, and PrivateLinkEpsId parameters to backend servers.
         self.proxy_protocol_v2config = proxy_protocol_v2config
         # The ID of the region where the NLB instance is deployed.
         # 
@@ -10879,6 +10930,7 @@ class UpdateListenerAttributeShrinkRequest(TeaModel):
         # *   **true**: yes
         # *   **false**: no
         self.proxy_protocol_enabled = proxy_protocol_enabled
+        # Specifies that the Proxy protocol passes the VpcId, PrivateLinkEpId, and PrivateLinkEpsId parameters to backend servers.
         self.proxy_protocol_v2config_shrink = proxy_protocol_v2config_shrink
         # The ID of the region where the NLB instance is deployed.
         # 
