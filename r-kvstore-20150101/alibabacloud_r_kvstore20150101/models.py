@@ -6577,6 +6577,9 @@ class DescribeBackupsResponseBody(TeaModel):
         self,
         access_denied_detail: DescribeBackupsResponseBodyAccessDeniedDetail = None,
         backups: DescribeBackupsResponseBodyBackups = None,
+        free_size: int = None,
+        full_storage_size: int = None,
+        log_storage_size: int = None,
         page_number: int = None,
         page_size: int = None,
         request_id: str = None,
@@ -6585,6 +6588,9 @@ class DescribeBackupsResponseBody(TeaModel):
         self.access_denied_detail = access_denied_detail
         # Details of the backup files.
         self.backups = backups
+        self.free_size = free_size
+        self.full_storage_size = full_storage_size
+        self.log_storage_size = log_storage_size
         # The page number of the returned page.
         self.page_number = page_number
         # The number of entries returned on each page.
@@ -6610,6 +6616,12 @@ class DescribeBackupsResponseBody(TeaModel):
             result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.backups is not None:
             result['Backups'] = self.backups.to_map()
+        if self.free_size is not None:
+            result['FreeSize'] = self.free_size
+        if self.full_storage_size is not None:
+            result['FullStorageSize'] = self.full_storage_size
+        if self.log_storage_size is not None:
+            result['LogStorageSize'] = self.log_storage_size
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -6628,6 +6640,12 @@ class DescribeBackupsResponseBody(TeaModel):
         if m.get('Backups') is not None:
             temp_model = DescribeBackupsResponseBodyBackups()
             self.backups = temp_model.from_map(m['Backups'])
+        if m.get('FreeSize') is not None:
+            self.free_size = m.get('FreeSize')
+        if m.get('FullStorageSize') is not None:
+            self.full_storage_size = m.get('FullStorageSize')
+        if m.get('LogStorageSize') is not None:
+            self.log_storage_size = m.get('LogStorageSize')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -7545,12 +7563,18 @@ class DescribeClusterBackupListResponseBody(TeaModel):
     def __init__(
         self,
         cluster_backups: List[DescribeClusterBackupListResponseBodyClusterBackups] = None,
+        free_size: int = None,
+        full_storage_size: int = None,
+        log_storage_size: int = None,
         max_results: int = None,
         page_number: int = None,
         page_size: int = None,
         request_id: str = None,
     ):
         self.cluster_backups = cluster_backups
+        self.free_size = free_size
+        self.full_storage_size = full_storage_size
+        self.log_storage_size = log_storage_size
         self.max_results = max_results
         self.page_number = page_number
         self.page_size = page_size
@@ -7572,6 +7596,12 @@ class DescribeClusterBackupListResponseBody(TeaModel):
         if self.cluster_backups is not None:
             for k in self.cluster_backups:
                 result['ClusterBackups'].append(k.to_map() if k else None)
+        if self.free_size is not None:
+            result['FreeSize'] = self.free_size
+        if self.full_storage_size is not None:
+            result['FullStorageSize'] = self.full_storage_size
+        if self.log_storage_size is not None:
+            result['LogStorageSize'] = self.log_storage_size
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.page_number is not None:
@@ -7589,6 +7619,12 @@ class DescribeClusterBackupListResponseBody(TeaModel):
             for k in m.get('ClusterBackups'):
                 temp_model = DescribeClusterBackupListResponseBodyClusterBackups()
                 self.cluster_backups.append(temp_model.from_map(k))
+        if m.get('FreeSize') is not None:
+            self.free_size = m.get('FreeSize')
+        if m.get('FullStorageSize') is not None:
+            self.full_storage_size = m.get('FullStorageSize')
+        if m.get('LogStorageSize') is not None:
+            self.log_storage_size = m.get('LogStorageSize')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('PageNumber') is not None:
