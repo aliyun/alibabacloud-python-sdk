@@ -2017,9 +2017,8 @@ class CheckInstanceExistResponseBody(TeaModel):
         request_id: str = None,
     ):
         # Indicates whether the instance exists. Valid values:
-        # 
-        # *   **true**: The instance exists.
-        # *   **false**: The instance does not exist.
+        # - **true**: The instance exists.
+        # - **false**: The instance does not exist.
         self.is_exist_instance = is_exist_instance
         # The ID of the request.
         self.request_id = request_id
@@ -8833,8 +8832,8 @@ class CreateMigrateTaskRequest(TeaModel):
         self.backup_mode = backup_mode
         # The consistency check method for the database. Valid values:
         # 
-        # *   **SyncExecuteDBCheck**: synchronous database check
-        # *   **AsyncExecuteDBCheck**: asynchronous database check
+        # *   **SyncExecuteDBCheck**: synchronous database check.
+        # *   **AsyncExecuteDBCheck**: asynchronous database check.
         # 
         # Default value: **AsyncExecuteDBCheck** (compatible with SQL Server 2008 R2).
         # 
@@ -8849,9 +8848,9 @@ class CreateMigrateTaskRequest(TeaModel):
         # *   **True**\
         # *   **False**\
         # 
-        # > Set the value to **True** for instances that run SQL Server 2008 R2.
+        # >  Set the value to **True** for instances that run SQL Server 2008 R2.
         self.is_online_db = is_online_db
-        # The ID of the migration task.
+        # The migration task ID.
         # 
         # *   If you set **BackupMode** to **FULL**, the value of this parameter is empty. The full backup mode is compatible with instance that runs SQL Server 2008 R2.
         # *   If you set **BackupMode** to **UPDF**, the value of this parameter is the ID of the required full migration task.
@@ -8865,9 +8864,7 @@ class CreateMigrateTaskRequest(TeaModel):
         # 
         # >  This parameter is required for instances that run SQL Server 2008 R2.
         self.ossurls = ossurls
-        # The information about the backup file in the OSS bucket.
-        # 
-        # The values consist of three parts that are separated by colons (:):
+        # The information about the backup file in the OSS bucket. The values consist of three parts that are separated by colons (:):
         # 
         # *   OSS endpoint: oss-ap-southeast-1.aliyuncs.com.
         # *   Name of the OSS bucket: rdsmssqlsingapore.
@@ -10238,6 +10235,13 @@ class CreatePostgresExtensionsRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # There are security risks associated with installing certain plug-ins on an instance of a minor version that is too low, and you can install it after confirming the risk. 
+        # 
+        # Valid values:
+        # - true
+        # - false
+        # 
+        # > For more information about the risks, see [Limits on extension creation for ApsaraDB RDS for PostgreSQL instances](~~2587815~~).
         self.risk_confirmed = risk_confirmed
         # The source database from which you want to synchronize the extension to the destination database. If you do not specify the **Extensions** parameter, you must specify this parameter.
         self.source_database = source_database
@@ -15948,9 +15952,7 @@ class DescribeAvailableClassesRequest(TeaModel):
         #     *   **serverless_standard**: RDS High-availability Edition for ApsaraDB RDS for MySQL.
         #     *   **serverless_ha**: RDS High-availability Edition for ApsaraDB RDS for SQL Server.
         # 
-        #     **\
-        # 
-        #     **Note** If you create a serverless instance, you must specify this parameter.
+        #     > If you create a serverless instance, you must specify this parameter.
         self.category = category
         # The commodity code of the instance. Valid values:
         # 
@@ -16001,9 +16003,7 @@ class DescribeAvailableClassesRequest(TeaModel):
         #     *   Valid values if you set Engine to SQLServer: **2016\_std_sl**, **2017\_std_sl**, and **2019\_std_sl**\
         #     *   Valid value if you set Engine to PostgreSQL: **14.0**\
         # 
-        #     **\
-        # 
-        #     **Note** ApsaraDB RDS for MariaDB does not support serverless instances.
+        #     > ApsaraDB RDS for MariaDB does not support serverless instances.
         self.engine_version = engine_version
         # The billing method of the instance. Valid values:
         # 
@@ -29187,12 +29187,12 @@ class DescribeDBInstancesAsCsvRequest(TeaModel):
     ):
         # A deprecated parameter. You do not need to configure this parameter.
         self.cached_async = cached_async
-        # The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
+        # The instance ID. You can call the DescribeDBInstances operation to query the ID of the instance.
         self.dbinstance_id = dbinstance_id
         # A deprecated parameter. You do not need to configure this parameter.
         self.export_key = export_key
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](~~610399~~) operation to query the most recent region list.
+        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -31252,6 +31252,7 @@ class DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems(TeaModel):
         self.engine = engine
         # The database engine version that corresponds to the minor engine version.
         self.engine_version = engine_version
+        # The expiration time of the minor engine version.
         self.expire_date = expire_date
         # The expiration status of the minor engine version. Valid values:
         # 
@@ -31266,9 +31267,9 @@ class DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems(TeaModel):
         self.minor_version = minor_version
         # The RDS edition of the instance that runs the minor engine version. Valid values:
         # 
-        # *   **Basic**: RDS Basic Edition
-        # *   **HighAvailability**: RDS High-availability Edition
-        # *   **Finance**: RDS Enterprise Edition
+        # *   **Basic**: RDS Basic Edition.
+        # *   **HighAvailability**: RDS High-availability Edition.
+        # *   **Finance**: RDS Enterprise Edition.
         self.node_type = node_type
         # The URL of the release notes for the minor engine version.
         self.release_note = release_note
@@ -31279,8 +31280,8 @@ class DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems(TeaModel):
         self.release_type = release_type
         # The status of the minor engine version. Valid values:
         # 
-        # *   **Offline**: Discontinued
-        # *   **online**: Available
+        # *   **Offline**\
+        # *   **online**\
         # 
         # >  If the minor engine version is in the Offline state, the minor engine version is discontinued. In this case, ignore the expiration status. If the minor engine version is in the Online state and the expiration state is expired, the minor engine version expires. If the expiration state is vaild, the minor engine version is still in its lifecycle.
         self.status_desc = status_desc
@@ -31578,30 +31579,30 @@ class DescribeDBProxyResponseBodyDBProxyConnectStringItemsDBProxyConnectStringIt
         dbproxy_vpc_instance_id: str = None,
         dbproxy_vswitch_id: str = None,
     ):
-        # The endpoint of the proxy terminal.
+        # The database proxy endpoint.
         self.dbproxy_connect_string = dbproxy_connect_string
-        # The network type of the proxy endpoint.
+        # The network type of the database proxy endpoint. A database proxy endpoint is formerly referred to as a proxy terminal. Valid values:
         # 
         # *   OuterString: Internet
         # *   InnerString: internal network
         self.dbproxy_connect_string_net_type = dbproxy_connect_string_net_type
-        # The network type of the database proxy.
+        # The network type of the database proxy. Valid values:
         # 
         # *   0: Internet
         # *   1: classic network
         # *   2: virtual private cloud (VPC)
         self.dbproxy_connect_string_net_work_type = dbproxy_connect_string_net_work_type
-        # The port number that is associated with the proxy endpoint.
+        # The port that is associated with the database proxy endpoint.
         self.dbproxy_connect_string_port = dbproxy_connect_string_port
-        # The ID of the proxy terminal to which the proxy endpoint belongs.
+        # The ID of the backend database proxy endpoint.
         self.dbproxy_endpoint_id = dbproxy_endpoint_id
-        # The name of the proxy terminal to which the proxy endpoint belongs.
+        # The name of the database proxy endpoint. The name can be replaced by the ID of the database proxy endpoint.
         self.dbproxy_endpoint_name = dbproxy_endpoint_name
-        # The VPC that is associated with the proxy endpoint.
+        # The VPC of the database proxy.
         self.dbproxy_vpc_id = dbproxy_vpc_id
-        # The proxy instance ID.
+        # The ID of the database proxy instance.
         self.dbproxy_vpc_instance_id = dbproxy_vpc_instance_id
-        # The vSwitch of the proxy service.
+        # The vSwitch of the database proxy.
         self.dbproxy_vswitch_id = dbproxy_vswitch_id
 
     def validate(self):
@@ -31699,19 +31700,19 @@ class DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems(TeaMod
         db_proxy_endpoint_type: str = None,
         db_proxy_read_write_mode: str = None,
     ):
-        # The description of the proxy terminal.
+        # The description of the database proxy endpoint.
         self.db_proxy_endpoint_aliases = db_proxy_endpoint_aliases
-        # The proxy terminal ID.
+        # The ID of the database proxy endpoint.
         self.db_proxy_endpoint_name = db_proxy_endpoint_name
-        # The proxy terminal type. Valid values:
+        # The type of the database proxy endpoint. Valid values:
         # 
-        # *   Custom: custom proxy terminal
-        # *   RWSplit: default proxy terminal
+        # *   Custom: custom database proxy endpoint
+        # *   RWSplit: default database proxy endpoint
         self.db_proxy_endpoint_type = db_proxy_endpoint_type
-        # The read and write attributes of the proxy terminal. Valid values:
+        # The read and write attributes of the database proxy endpoint.
         # 
-        # *   ReadOnly: The proxy terminal supports only read requests.
-        # *   ReadWrite: The proxy terminal supports read and write requests.
+        # *   ReadOnly
+        # *   ReadWrite
         self.db_proxy_read_write_mode = db_proxy_read_write_mode
 
     def validate(self):
@@ -31834,6 +31835,12 @@ class DescribeDBProxyResponseBody(TeaModel):
         # 
         # >  ApsaraDB RDS for PostgreSQL instances support only dedicated proxies.
         self.dbproxy_instance_type = dbproxy_instance_type
+        # Connection Persistence State. 
+        # 
+        # Valid values:
+        # - Enabled: Enabled
+        # - Disabled: Disabled
+        # - Unsupported: The instance does not support connection persistence
         self.dbproxy_persistent_connection_status = dbproxy_persistent_connection_status
         # The status of the database proxy.
         # 
@@ -32165,7 +32172,7 @@ class DescribeDBProxyEndpointResponseBody(TeaModel):
         # *   **TransactionReadSqlRouteOptimizeStatus**: the status of the transaction splitting feature. Valid values: **0** and **1**. The value 0 indicates that the feature is disabled. The value 1 indicates that the feature is enabled.
         # *   **ConnectionPersist**: the status of the connection pooling feature. Valid values: **0**, **1**, and **2**. The value 0 indicates that the connection pooling feature is disabled. The value 1 indicates that the session connection pooling feature is enabled. The value 2 indicates that the transaction connection pooling feature is enabled.
         # *   **ReadWriteSpliting**: the status of the read/write splitting feature. Valid values: **0** and **1**. The value 0 indicates that the feature is disabled. The value 1 indicates that the feature is enabled.
-        # *   **PinPreparedStmt**: an internal field that is available only for ApsaraDB RDS for PostgrSQL instances.
+        # *   **PinPreparedStmt**: an internal field that is available only for ApsaraDB RDS for PostgreSQL instances.
         # 
         # >  If the instance runs PostgreSQL, you can change only the value of the **ReadWriteSpliting** field. The **TransactionReadSqlRouteOptimizeStatus** and **PinPreparedStmt** fields are set to their default values 1.
         self.dbproxy_features = dbproxy_features
@@ -36152,46 +36159,42 @@ class DescribeHistoryEventsRequest(TeaModel):
         task_id: str = None,
         to_start_time: str = None,
     ):
-        # Archive status.
+        # The resource status. Valid values: **importing**, failed, checksuccess, and deleted.
         self.archive_status = archive_status
-        # Event category.
+        # The system event category. For more information, see [View the event history of an ApsaraDB RDS instance](~~129759~~).
         self.event_category = event_category
         # The event ID.
         self.event_id = event_id
-        # Event Level.
+        # The event level. Valid values: ***high***, **medium**, and **low**.
         self.event_level = event_level
         # The status of the exception. Valid values:
         # 
-        # *   **1**: pending handling
-        # *   **2**: ignored
-        # *   **4**: confirmed
-        # *   **8**: marked as a false positive
-        # *   **16**: handling
-        # *   **32**: handled
-        # *   **64**: expired
+        # *   1: pending
+        # *   2: ignored
+        # *   4: confirmed
+        # *   8: marked as false positive
+        # *   16: handling
+        # *   32: handled
+        # *   64: expired
         self.event_status = event_status
-        # The type of the system event.
-        # 
-        # You can call the DescribeSystemEventMetaList operation to obtain the value of the response parameter `EventType`. The value of the EventType parameter indicates the types of system events that occurred for all cloud services in your Alibaba Cloud account. For more information, see [DescribeSystemEventMetaList](~~114972~~).
+        # The system event type. This parameter takes effect only when InstanceEventType.N is not specified. Valid values: SystemMaintenance.Reboot: The instance is restarted due to system maintenance. SystemMaintenance.Redeploy: The instance is redeployed due to system maintenance. SystemFailure.Reboot: The instance is restarted due to a system error. SystemFailure.Redeploy: The instance is redeployed due to a system error. SystemFailure.Delete: The instance is released due to an instance creation failure. InstanceFailure.Reboot: The instance is restarted due to an instance error. InstanceExpiration.Stop: The subscription instance is stopped due to expiration. InstanceExpiration.Delete: The subscription instance is released due to expiration. AccountUnbalanced.Stop: The pay-as-you-go instance is stopped due to an overdue payment. AccountUnbalanced.Delete: The pay-as-you-go instance is released due to an overdue payment. For more information, see Overview. The values of this parameter are applicable only to instance system events, but not to disk system events.
         self.event_type = event_type
-        # The beginning of the time range to query. Only tasks that have a start time later than or equal to the time specified by this parameter are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The start time can be up to 30 days earlier than the current time. If you set this parameter to a time more than 30 days earlier than the current time, the specified time is automatically converted to a time that is exactly 30 days earlier than the current time.
+        # The beginning of the time range to query. Only tasks that have a start time later than or equal to the time specified by this parameter are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The start time can be up to 30 days earlier than the current time. If you set this parameter to a time more than 30 days earlier than the current time, this time is automatically converted to a time that is exactly 30 days earlier than the current time.
         self.from_start_time = from_start_time
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The number of the page to return. Valid values: any non-zero positive integer.
-        # 
-        # Default value: **1**.
+        # The page number. Valid values: any non-zero positive integer. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid value: **30 to 200**. Default value: **30**.
+        # The number of entries per page. Default value: 30.
         self.page_size = page_size
-        # The region ID.
+        # The region ID. You can call the [DescribeRegions](~~610399~~) operation to query the most recent region list.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The type of resource. Set the value to INSTANCE.
+        # The resource type. Set the value to **INSTANCE**.
         self.resource_type = resource_type
         self.security_token = security_token
-        # The task ID.
+        # The task ID. This value is used to query the data of a specific task.
         self.task_id = task_id
         # The end of the time range to query. Only tasks that have a start time earlier than or equal to the time specified by this parameter are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.to_start_time = to_start_time
@@ -36307,73 +36310,67 @@ class DescribeHistoryEventsResponseBodyItemsData(TeaModel):
         start_time: str = None,
         uid: str = None,
     ):
-        # product.
+        # The cloud service type of the application group. Valid values: **web** and native. The value web indicates a web application. The value **native** indicates a local application.
         self.cms_product = cms_product
-        # The type of the database engine.
+        # The database engine.
         self.db_type = db_type
-        # Detail impact.
+        # The pagination parameter.
         self.detail_impact = detail_impact
-        # Detail reason.
+        # The details of the instance operation.
         self.detail_reason = detail_reason
-        # The end date of the query.
+        # The time when the alert was closed. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm*z format. The time is displayed in UTC.
         self.end_time = end_time
-        # Event category.
+        # The system event category. For more information, see [View the event history of an ApsaraDB RDS instance](~~129759~~).
         self.event_category = event_category
-        # The code of the extension point event.
+        # The event code.
         self.event_code = event_code
-        # The output names of the current file.
-        # 
-        # This parameter is equivalent to the Output Name parameter under Output in the Dependencies section of the Properties panel in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # The event details.
         self.event_detail = event_detail
-        # The ID of the custom event.
+        # The event ID.
         self.event_id = event_id
-        # Event impact.
+        # The event impact.
         self.event_impact = event_impact
-        # Event level.
+        # The event level. For more information, see [View the event history of an ApsaraDB RDS instance](~~129759~~).
         self.event_level = event_level
-        # The cause of the event.
+        # The event source.
         self.event_reason = event_reason
-        # The status of the exception. Valid values:
+        # The status of the alert event. Valid values:
         # 
-        # *   **1**: pending handling
+        # *   **1**: pending
         # *   **2**: ignored
         # *   **4**: confirmed
-        # *   **8**: marked as a false positive
+        # *   **8**: marked as false positive
         # *   **16**: handling
         # *   **32**: handled
         # *   **64**: expired
         self.event_status = event_status
-        # The alert type.
-        # 
-        # *   Set the value to **sensitiveFile**.
+        # The event type. Valid values:
         self.event_type = event_type
-        # The time when the instance is created. The time is in the yyyy-MM-dd HH:mm:ss format.
+        # The creation time. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm*z format. The time is displayed in UTC.
         self.gmt_created = gmt_created
-        # The time when the export task was modified.
+        # The update time. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm*z format. The time is displayed in UTC.
         self.gmt_modified = gmt_modified
-        # Processing status.
+        # The handling status.
         self.handle_status = handle_status
-        # Is there a lifecycle.
+        # Indicates whether the event has a lifecycle.
         self.has_life_cycle = has_life_cycle
-        # The instance ID. Separate multiple instance IDs with commas (,). You can specify up to 30 instance IDs. This parameter is empty by default, which indicates that you can specify an unlimited number of instance IDs.
+        # The instance ID.
         self.instance_id = instance_id
-        # The name of the instance.
+        # The instance name.
         self.instance_name = instance_name
-        # Whether to close.
+        # Indicates whether the alert is closed. Valid values: **0**: closed. **1**: not closed.
         self.is_closed = is_closed
-        # The name of the cloud service in which the system event occurred.
-        # 
-        # You can call the DescribeSystemEventMetaList operation to obtain the value of the response parameter `Product`. The value of the Product parameter indicates the names of all cloud services in which the system events of your Alibaba Cloud account occurred. For more information, see [DescribeSystemEventMetaList](~~114972~~).
+        # The service name.
         self.product = product
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
-        # The type of resource. Set the value to INSTANCE.
+        # The resource type. The value is fixed as **INSTANCE**.
         self.resource_type = resource_type
-        # The type of the source resource.
+        # The type of the source data.
         self.source_type = source_type
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # The start time. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm*z format. The time is displayed in UTC.
         self.start_time = start_time
-        # The account ID. You can view the ID of the **logon account** by moving the pointer over the profile in the Alibaba Cloud console.
+        # The ID of the resource owner.
         self.uid = uid
 
     def validate(self):
@@ -36512,47 +36509,21 @@ class DescribeHistoryEventsResponseBodyItems(TeaModel):
         time: str = None,
         type: str = None,
     ):
-        # The data returned.
+        # The details of the data.
         self.data = data
-        # The ID of the task.
+        # The task ID
         self.id = id
-        # The region of the instance.
+        # The region ID.
         self.region = region
-        # The instance username.
+        # The event source.
         self.source = source
-        # Specversion.
+        # The database engine version.
         self.specversion = specversion
-        # The subject of the certificate, which is in the DN format.
+        # The name of the pending event.
         self.subject = subject
-        # The time when the log was generated. The time is displayed in UTC.
+        # The amount of time that has elapsed from the start time of the query. Unit: seconds.
         self.time = time
-        # The notification type.
-        # 
-        # Valid values:
-        # 
-        # *   Sell
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Operation
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Promotion
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The event type. For more information, see [View the event history of an ApsaraDB RDS instance](~~129759~~).
         self.type = type
 
     def validate(self):
@@ -36614,17 +36585,15 @@ class DescribeHistoryEventsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details of the task execution.
+        # The events.
         self.items = items
-        # The number of the page to return. Valid values: any non-zero positive integer.
-        # 
-        # Default value: **1**.
+        # The page number. Valid values: any non-zero positive integer. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page. Default value: 30.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of tasks that meet these constraints without taking pagination into account.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -36724,11 +36693,11 @@ class DescribeHistoryEventsStatRequest(TeaModel):
         security_token: str = None,
         to_start_time: str = None,
     ):
-        # Archive status.
+        # The status of the asset instance. Valid values: **starting**, **running**, **stopping**, and **stopped**.
         self.archive_status = archive_status
         # The beginning of the time range to query. Only tasks that have a start time later than or equal to the time specified by this parameter are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The start time can be up to 30 days earlier than the current time. If you set this parameter to a time more than 30 days earlier than the current time, this time is automatically converted to a time that is exactly 30 days earlier than the current time.
         self.from_start_time = from_start_time
-        # The ID of the region where the global active database clusters that you want to query reside. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
         self.security_token = security_token
         # The end of the time range to query. Only tasks that have a start time earlier than or equal to the time specified by this parameter are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -36776,9 +36745,9 @@ class DescribeHistoryEventsStatResponseBodyItems(TeaModel):
         event_category: str = None,
         total_count: int = None,
     ):
-        # Event category.
+        # The system event category. For more information, see [View the event history of an ApsaraDB RDS instance](~~129759~~).
         self.event_category = event_category
-        # The total number of tasks that meet these constraints without taking pagination into account.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -36811,7 +36780,7 @@ class DescribeHistoryEventsStatResponseBody(TeaModel):
         items: List[DescribeHistoryEventsStatResponseBodyItems] = None,
         request_id: str = None,
     ):
-        # The migration tasks.
+        # The event.
         self.items = items
         # The request ID.
         self.request_id = request_id
@@ -37358,19 +37327,19 @@ class DescribeHistoryTasksStatRequest(TeaModel):
     ):
         # The minimum execution duration of a task. This parameter is used to filter tasks whose execution duration is longer than the minimum execution duration. Unit: seconds. The default value is 0, which indicates that no limit is imposed.
         self.from_exec_time = from_exec_time
-        # The beginning of the time range to query. Only tasks that have a start time later than or equal to the time specified by this parameter are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The start time can be up to 30 days earlier than the current time. If you set this parameter to a time more than 30 days earlier than the current time, the specified time is automatically converted to a time that is exactly 30 days earlier than the current time.
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*t*HH:mm:ss*z format. The time must be in UTC.
         self.from_start_time = from_start_time
-        # The instance ID. Separate multiple instance IDs with commas (,). You can specify up to 30 instance IDs. This parameter is empty by default, which indicates that you can specify an unlimited number of instance IDs.
+        # The instance ID.
         self.instance_id = instance_id
         self.owner_id = owner_id
-        # The region ID.
+        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The status of the task. Valid values:
+        # The task status. Valid values:
         # 
         # *   Scheduled
         # *   Running
@@ -37384,7 +37353,7 @@ class DescribeHistoryTasksStatRequest(TeaModel):
         self.status = status
         # The task ID.
         self.task_id = task_id
-        # The type of tasks.
+        # The task type.
         self.task_type = task_type
         # The maximum execution duration of a task. This parameter is used to filter tasks whose execution duration is shorter than or equal to the maximum execution duration. Unit: seconds. The default value is 0, which indicates that no limit is imposed.
         self.to_exec_time = to_exec_time
@@ -37469,15 +37438,17 @@ class DescribeHistoryTasksStatResponseBodyItems(TeaModel):
         status: str = None,
         total_count: int = None,
     ):
-        # The status of the migration task. Valid values:
+        # The task status. Valid values:
         # 
-        # *   **NoStart**: The task is not started.
-        # *   **Running**:The task is in progress.
-        # *   **Success**: The task is successful.
-        # *   **Failed**: The task failed.
-        # *   **Waiting**: The task is waiting for an incremental backup file to be imported.
+        # *   Scheduled
+        # *   Running
+        # *   Succeed
+        # *   Failed
+        # *   Cancelling
+        # *   Canceled
+        # *   Waiting
         self.status = status
-        # The total number of tasks that meet these constraints without taking pagination into account.
+        # The total number of tasks.
         self.total_count = total_count
 
     def validate(self):
@@ -37510,9 +37481,9 @@ class DescribeHistoryTasksStatResponseBody(TeaModel):
         items: List[DescribeHistoryTasksStatResponseBodyItems] = None,
         request_id: str = None,
     ):
-        # The details of the instance.
+        # The information about the task.
         self.items = items
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -43934,7 +43905,7 @@ class DescribePriceRequest(TeaModel):
         self.dbinstance_class = dbinstance_class
         # The ID of the instance for which you want to change the specifications or the instance that you want to renew.
         # 
-        # > *   If you want to query the price of an specification change order or a renewal order, you must specify this parameter.
+        # > *   If you want to query the price of a specification change order or a renewal order, you must specify this parameter.
         # > *   If the instance is a read-only instance, you must set this parameter to the ID of its primary instance.
         self.dbinstance_id = dbinstance_id
         # The storage capacity of the instance. Unit: GB. You can increase the storage capacity at a step size of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~).
@@ -44172,7 +44143,7 @@ class DescribePriceShrinkRequest(TeaModel):
         self.dbinstance_class = dbinstance_class
         # The ID of the instance for which you want to change the specifications or the instance that you want to renew.
         # 
-        # > *   If you want to query the price of an specification change order or a renewal order, you must specify this parameter.
+        # > *   If you want to query the price of a specification change order or a renewal order, you must specify this parameter.
         # > *   If the instance is a read-only instance, you must set this parameter to the ID of its primary instance.
         self.dbinstance_id = dbinstance_id
         # The storage capacity of the instance. Unit: GB. You can increase the storage capacity at a step size of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~).
@@ -48397,6 +48368,7 @@ class DescribeSecretsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
@@ -48425,6 +48397,7 @@ class DescribeSecretsRequest(TeaModel):
         self.page_size = page_size
         # The region ID. You can call the DescribeDBInstanceAttribute operation to query the region ID.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -48455,6 +48428,8 @@ class DescribeSecretsRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -48481,6 +48456,8 @@ class DescribeSecretsRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -48796,7 +48773,7 @@ class DescribeSecurityGroupConfigurationResponseBody(TeaModel):
         self.dbinstance_name = dbinstance_name
         # The information about the ECS security group.
         self.items = items
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -51171,7 +51148,7 @@ class DescribeUpgradeMajorVersionPrecheckTaskResponseBody(TeaModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_record_count = page_record_count
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of entries in the upgrade check report.
         self.total_record_count = total_record_count
@@ -52157,7 +52134,7 @@ class DescribeWhitelistTemplateLinkedInstanceRequest(TeaModel):
         resource_owner_id: int = None,
         template_id: int = None,
     ):
-        # 资源组ID，可以为空。
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -57058,7 +57035,7 @@ class ModifyCollationTimeZoneRequest(TeaModel):
         # 
         # > You must specify one of the **Collation** and **Timezone** parameters.
         self.collation = collation
-        # The ID of the instance.
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -57119,13 +57096,13 @@ class ModifyCollationTimeZoneResponseBody(TeaModel):
     ):
         # The character set collation of the instance.
         self.collation = collation
-        # The ID of the instance.
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
-        # The time zone of the instance.
+        # The time zone.
         self.timezone = timezone
 
     def validate(self):
@@ -59533,7 +59510,7 @@ class ModifyDBInstanceMonitorResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -60598,7 +60575,7 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         self.dbinstance_class = dbinstance_class
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         self.dbinstance_id = dbinstance_id
-        # The new storage capacity of the instance. Unit: GB. You can increase the storage capacity in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~). You can also call the DescribeAvailableClasses operation to query the storage capacity range that is that is supported by the new instance type.
+        # The new storage capacity of the instance. Unit: GB. You can increase the storage capacity in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~). You can also call the DescribeAvailableClasses operation to query the storage capacity range that is supported by the new instance type.
         # 
         # > *   You must specify at least one of the DBInstanceStorage and **DBInstanceClass**.
         # > *   You can call the DescribeDBInstanceAttribute to query the current storage capacity of the instance.
@@ -60866,7 +60843,7 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         self.dbinstance_class = dbinstance_class
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         self.dbinstance_id = dbinstance_id
-        # The new storage capacity of the instance. Unit: GB. You can increase the storage capacity in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~). You can also call the DescribeAvailableClasses operation to query the storage capacity range that is that is supported by the new instance type.
+        # The new storage capacity of the instance. Unit: GB. You can increase the storage capacity in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~). You can also call the DescribeAvailableClasses operation to query the storage capacity range that is supported by the new instance type.
         # 
         # > *   You must specify at least one of the DBInstanceStorage and **DBInstanceClass**.
         # > *   You can call the DescribeDBInstanceAttribute to query the current storage capacity of the instance.
@@ -61810,6 +61787,13 @@ class ModifyDBProxyRequest(TeaModel):
         # > This parameter is required if you enable the database proxy feature for an ApsaraDB RDS for MySQL instance that uses cloud disks or an ApsaraDB RDS for PostgreSQL instance.
         self.instance_network_type = instance_network_type
         self.owner_id = owner_id
+        # Whether to enable connection keep. Valid values:
+        # 
+        # - Enabled: enables connection keeping
+        # - Disabled: disables connection hold
+        # 
+        # > - This parameter is supported only for an ApsaraDB RDS for MySQL.
+        # > - When you modify the connection persistence state, the value of **ConfigDBProxyService** is modify.
         self.persistent_connection_status = persistent_connection_status
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
@@ -62008,11 +61992,8 @@ class ModifyDBProxyEndpointRequest(TeaModel):
         self.dbinstance_id = dbinstance_id
         # The proxy endpoint ID. You can call the DescribeDBProxyEndpoint operation to query the proxy endpoint ID.
         # 
-        # > 
-        # 
-        # *   If the instance runs MySQL and you set **DbEndpointOperator** to **Delete** or **Modify**, you must specify DBProxyEndpointId.
-        # 
-        # *   If the instance runs PostgreSQL and you set **DbEndpointOperator** to **Delete**, **Modify**, or **Create**, you must specify DBProxyEndpointId.
+        # > *   If the instance runs MySQL and you set **DbEndpointOperator** to **Delete** or **Modify**, you must specify DBProxyEndpointId.
+        # > *   If the instance runs PostgreSQL and you set **DbEndpointOperator** to **Delete**, **Modify**, or **Create**, you must specify DBProxyEndpointId.
         self.dbproxy_endpoint_id = dbproxy_endpoint_id
         # A reserved parameter. You do not need to specify this parameter.
         self.dbproxy_engine_type = dbproxy_engine_type
@@ -62056,9 +62037,7 @@ class ModifyDBProxyEndpointRequest(TeaModel):
         # 
         #     Example: `{"rr-tfhfgk5****":"200","DBClusterNode":{"rn-2z****":"0","rn-2z****":"400","rn-2z****":"400"...}}`
         # 
-        #     **\
-        # 
-        #     **Note** **DBClusterNode** is required if the instance runs RDS Cluster Edition. The DBClusterNode parameter includes information about **IDs** and **weights** of the primary and secondary nodes..
+        #     > **DBClusterNode** is required if the instance runs RDS Cluster Edition. The DBClusterNode parameter includes information about **IDs** and **weights** of the primary and secondary nodes..
         self.read_only_instance_weight = read_only_instance_weight
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
@@ -63198,11 +63177,11 @@ class ModifyEventInfoRequest(TeaModel):
         region_id: str = None,
         security_token: str = None,
     ):
-        # Action params.
+        # The action parameter. Set this value in the JSON string format.
         self.action_params = action_params
-        # Event action.
+        # The event handling action. Set this value to archive or undo.
         self.event_action = event_action
-        # The event ID.
+        # The event ID. Separate multiple event IDs with commas (,). You can configure up to 20 event IDs.
         self.event_id = event_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
@@ -63253,15 +63232,15 @@ class ModifyEventInfoResponseBody(TeaModel):
         success_count: int = None,
         success_event_id: str = None,
     ):
-        # The error code returned.
+        # The error code.
         self.error_code = error_code
-        # Error eventId.
+        # The error ID.
         self.error_event_id = error_event_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The number of devices that were created.
+        # The number of successful records.
         self.success_count = success_count
-        # Success eventId.
+        # The ID of the successful event.
         self.success_event_id = success_event_id
 
     def validate(self):
@@ -65689,12 +65668,13 @@ class ModifySecurityIpsRequest(TeaModel):
         # The network type of the IP address whitelist. Valid values:
         # 
         # *   **Classic**: classic network in enhanced whitelist mode
-        # *   **VPC**: virtual private cloud (VPC) in enhanced whitelist mode
+        # *   **VPC**: virtual private cloud (VPC) network type in enhanced whitelist mode.
         # *   **MIX**: standard whitelist mode
         # 
         # Default value: **MIX**.
         # 
-        # > In standard whitelist mode, IP addresses and CIDR blocks are added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks are added to the IP address whitelists of the classic network type and the VPC network type.
+        # > *   In standard whitelist mode, IP addresses and CIDR blocks are added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks are added to the IP address whitelists of the classic network type and the VPC network type.
+        # > *   If your RDS instance runs PostgreSQL and uses cloud disks, set this parameter to MIX. If you set it to another value, the system automatically changes the value to MIX.
         self.whitelist_network_type = whitelist_network_type
 
     def validate(self):
@@ -65840,16 +65820,16 @@ class ModifyTaskInfoRequest(TeaModel):
         task_action: str = None,
         task_id: str = None,
     ):
-        # Action params.
+        # The action parameter.
         self.action_params = action_params
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # Step name.
+        # The name of the execution step.
         self.step_name = step_name
-        # The name of the operation that generates the task. Valid values:
+        # The name of the operation that you can call to execute the task. Valid values:
         # 
         # *   ImportImage
         # *   ExportImage
@@ -65915,9 +65895,9 @@ class ModifyTaskInfoResponseBody(TeaModel):
         request_id: str = None,
         success_count: str = None,
     ):
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
-        # Error taskId.
+        # The ID of the failed task. This parameter is returned when a task fails.
         self.error_task_id = error_task_id
         # The request ID.
         self.request_id = request_id
@@ -73084,11 +73064,8 @@ class UpgradeDBProxyInstanceKernelVersionRequest(TeaModel):
         # *   **Immediate**: performs the upgrade immediately.
         # *   **SpecificTime**: performs the upgrade at a specified point in time.
         # 
-        # > 
-        # 
-        # *   If the instance runs MySQL, you can set this parameter to **MaintainTime**, **Immediate**, or **SpecificTime**.
-        # 
-        # *   If the instance runs PostgreSQL, you can set this parameter to **MaintainTime** or **Immediate**.
+        # > *   If the instance runs MySQL, you can set this parameter to **MaintainTime**, **Immediate**, or **SpecificTime**.
+        # > *   If the instance runs PostgreSQL, you can set this parameter to **MaintainTime** or **Immediate**.
         self.upgrade_time = upgrade_time
 
     def validate(self):
