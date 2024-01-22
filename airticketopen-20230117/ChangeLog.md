@@ -1,3 +1,6 @@
+2024-01-22 Version: 3.4.0
+- Generated python 2023-01-17 for airticketOpen.
+
 2024-01-22 Version: 3.3.0
 - Generated python 2023-01-17 for airticketOpen.
 

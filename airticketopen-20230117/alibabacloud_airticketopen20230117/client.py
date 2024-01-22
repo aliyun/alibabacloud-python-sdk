@@ -1434,9 +1434,9 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.flight_segment_param_list):
             request.flight_segment_param_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.flight_segment_param_list, 'flight_segment_param_list', 'json')
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.flight_segment_param_list_shrink):
-            body['flight_segment_param_list'] = request.flight_segment_param_list_shrink
+            query['flight_segment_param_list'] = request.flight_segment_param_list_shrink
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -1446,7 +1446,7 @@ class Client(OpenApiClient):
             real_headers['x-acs-airticket-language'] = UtilClient.to_jsonstring(headers.x_acs_airticket_language)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='LuggageDirect',
@@ -1456,7 +1456,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='ROA',
-            req_body_type='formData',
+            req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1475,9 +1475,9 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.flight_segment_param_list):
             request.flight_segment_param_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.flight_segment_param_list, 'flight_segment_param_list', 'json')
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.flight_segment_param_list_shrink):
-            body['flight_segment_param_list'] = request.flight_segment_param_list_shrink
+            query['flight_segment_param_list'] = request.flight_segment_param_list_shrink
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -1487,7 +1487,7 @@ class Client(OpenApiClient):
             real_headers['x-acs-airticket-language'] = UtilClient.to_jsonstring(headers.x_acs_airticket_language)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='LuggageDirect',
@@ -1497,7 +1497,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='ROA',
-            req_body_type='formData',
+            req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2430,9 +2430,9 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.flight_segment_param_list):
             request.flight_segment_param_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.flight_segment_param_list, 'flight_segment_param_list', 'json')
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.flight_segment_param_list_shrink):
-            body['flight_segment_param_list'] = request.flight_segment_param_list_shrink
+            query['flight_segment_param_list'] = request.flight_segment_param_list_shrink
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -2442,7 +2442,7 @@ class Client(OpenApiClient):
             real_headers['x-acs-airticket-language'] = UtilClient.to_jsonstring(headers.x_acs_airticket_language)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='TransitVisa',
@@ -2452,7 +2452,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='ROA',
-            req_body_type='formData',
+            req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2471,9 +2471,9 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.flight_segment_param_list):
             request.flight_segment_param_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.flight_segment_param_list, 'flight_segment_param_list', 'json')
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.flight_segment_param_list_shrink):
-            body['flight_segment_param_list'] = request.flight_segment_param_list_shrink
+            query['flight_segment_param_list'] = request.flight_segment_param_list_shrink
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -2483,7 +2483,7 @@ class Client(OpenApiClient):
             real_headers['x-acs-airticket-language'] = UtilClient.to_jsonstring(headers.x_acs_airticket_language)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='TransitVisa',
@@ -2493,7 +2493,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='ROA',
-            req_body_type='formData',
+            req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
