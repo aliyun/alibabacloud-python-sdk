@@ -1,3 +1,6 @@
+2024-01-22 Version: 1.4.2
+- Generated python 2022-08-09 for Cloudauth-intl.
+
 2024-01-18 Version: 1.4.1
 - Generated python 2022-08-09 for Cloudauth-intl.
 
