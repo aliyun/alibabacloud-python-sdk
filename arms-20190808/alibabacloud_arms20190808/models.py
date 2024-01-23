@@ -6411,7 +6411,7 @@ class CreateEnvironmentRequest(TeaModel):
         # *   ECS: Elastic Compute Service
         # *   Cloud: cloud service
         self.environment_type = environment_type
-        # type of managed：
+        # type of managed: 
         # - none: not managed. default value of prometheus for ACK.
         # - agent: managed agent. default value of  promehtues for ASK/ACS/AckOne.
         # - agent-exproter: maanged agent and exporter. default of prometheus for Cloud.
@@ -19086,6 +19086,7 @@ class DescribeAddonReleaseResponseBodyDataRelease(TeaModel):
         have_config: bool = None,
         install_user_id: str = None,
         language: str = None,
+        managed: bool = None,
         region_id: str = None,
         release_id: str = None,
         release_name: str = None,
@@ -19115,6 +19116,7 @@ class DescribeAddonReleaseResponseBodyDataRelease(TeaModel):
         self.install_user_id = install_user_id
         # Language.
         self.language = language
+        self.managed = managed
         # The region ID.
         self.region_id = region_id
         # Release ID.
@@ -19166,6 +19168,8 @@ class DescribeAddonReleaseResponseBodyDataRelease(TeaModel):
             result['InstallUserId'] = self.install_user_id
         if self.language is not None:
             result['Language'] = self.language
+        if self.managed is not None:
+            result['Managed'] = self.managed
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.release_id is not None:
@@ -19209,6 +19213,8 @@ class DescribeAddonReleaseResponseBodyDataRelease(TeaModel):
             self.install_user_id = m.get('InstallUserId')
         if m.get('Language') is not None:
             self.language = m.get('Language')
+        if m.get('Managed') is not None:
+            self.managed = m.get('Managed')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ReleaseId') is not None:
@@ -21500,6 +21506,7 @@ class DescribeEnvironmentFeatureResponseBodyDataFeature(TeaModel):
         icon: str = None,
         language: str = None,
         latest_version: str = None,
+        managed: bool = None,
         name: str = None,
         status: str = None,
         version: str = None,
@@ -21518,6 +21525,7 @@ class DescribeEnvironmentFeatureResponseBodyDataFeature(TeaModel):
         self.language = language
         # This is the latest version of Feature.
         self.latest_version = latest_version
+        self.managed = managed
         # Name of Feature.
         self.name = name
         # Installation status of Feature.
@@ -21548,6 +21556,8 @@ class DescribeEnvironmentFeatureResponseBodyDataFeature(TeaModel):
             result['Language'] = self.language
         if self.latest_version is not None:
             result['LatestVersion'] = self.latest_version
+        if self.managed is not None:
+            result['Managed'] = self.managed
         if self.name is not None:
             result['Name'] = self.name
         if self.status is not None:
@@ -21572,6 +21582,8 @@ class DescribeEnvironmentFeatureResponseBodyDataFeature(TeaModel):
             self.language = m.get('Language')
         if m.get('LatestVersion') is not None:
             self.latest_version = m.get('LatestVersion')
+        if m.get('Managed') is not None:
+            self.managed = m.get('Managed')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Status') is not None:
@@ -33846,7 +33858,6 @@ class InitEnvironmentRequest(TeaModel):
         # The ID of the environment instance.
         self.environment_id = environment_id
         # type of managed:
-        # 
         # - none: not managed. default value of prometheus for ACK.
         # - agent: managed agent. default value of promehtues for ASK/ACS/AckOne.
         # - agent-exproter: maanged agent and exporter. default of prometheus for Cloud.
@@ -34132,6 +34143,7 @@ class InstallAddonResponseBodyData(TeaModel):
         have_config: bool = None,
         install_user_id: str = None,
         language: str = None,
+        managed: bool = None,
         region_id: str = None,
         release_id: str = None,
         release_name: str = None,
@@ -34161,6 +34173,7 @@ class InstallAddonResponseBodyData(TeaModel):
         self.install_user_id = install_user_id
         # Language.
         self.language = language
+        self.managed = managed
         # The region ID.
         self.region_id = region_id
         # Release ID.
@@ -34212,6 +34225,8 @@ class InstallAddonResponseBodyData(TeaModel):
             result['InstallUserId'] = self.install_user_id
         if self.language is not None:
             result['Language'] = self.language
+        if self.managed is not None:
+            result['Managed'] = self.managed
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.release_id is not None:
@@ -34255,6 +34270,8 @@ class InstallAddonResponseBodyData(TeaModel):
             self.install_user_id = m.get('InstallUserId')
         if m.get('Language') is not None:
             self.language = m.get('Language')
+        if m.get('Managed') is not None:
+            self.managed = m.get('Managed')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ReleaseId') is not None:
@@ -35418,6 +35435,7 @@ class ListAddonReleasesResponseBodyDataReleases(TeaModel):
         have_config: bool = None,
         install_user_id: str = None,
         language: str = None,
+        managed: bool = None,
         region_id: str = None,
         release_id: str = None,
         release_name: str = None,
@@ -35447,6 +35465,7 @@ class ListAddonReleasesResponseBodyDataReleases(TeaModel):
         self.install_user_id = install_user_id
         # Language.
         self.language = language
+        self.managed = managed
         # The ID of the region.
         self.region_id = region_id
         # Release ID.
@@ -35498,6 +35517,8 @@ class ListAddonReleasesResponseBodyDataReleases(TeaModel):
             result['InstallUserId'] = self.install_user_id
         if self.language is not None:
             result['Language'] = self.language
+        if self.managed is not None:
+            result['Managed'] = self.managed
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.release_id is not None:
@@ -35541,6 +35562,8 @@ class ListAddonReleasesResponseBodyDataReleases(TeaModel):
             self.install_user_id = m.get('InstallUserId')
         if m.get('Language') is not None:
             self.language = m.get('Language')
+        if m.get('Managed') is not None:
+            self.managed = m.get('Managed')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ReleaseId') is not None:
@@ -39014,6 +39037,7 @@ class ListEnvironmentFeaturesResponseBodyData(TeaModel):
         icon: str = None,
         language: str = None,
         latest_version: str = None,
+        managed: bool = None,
         name: str = None,
         status: str = None,
         version: str = None,
@@ -39025,6 +39049,7 @@ class ListEnvironmentFeaturesResponseBodyData(TeaModel):
         self.icon = icon
         self.language = language
         self.latest_version = latest_version
+        self.managed = managed
         self.name = name
         self.status = status
         self.version = version
@@ -39052,6 +39077,8 @@ class ListEnvironmentFeaturesResponseBodyData(TeaModel):
             result['Language'] = self.language
         if self.latest_version is not None:
             result['LatestVersion'] = self.latest_version
+        if self.managed is not None:
+            result['Managed'] = self.managed
         if self.name is not None:
             result['Name'] = self.name
         if self.status is not None:
@@ -39076,6 +39103,8 @@ class ListEnvironmentFeaturesResponseBodyData(TeaModel):
             self.language = m.get('Language')
         if m.get('LatestVersion') is not None:
             self.latest_version = m.get('LatestVersion')
+        if m.get('Managed') is not None:
+            self.managed = m.get('Managed')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Status') is not None:
@@ -39495,6 +39524,7 @@ class ListEnvironmentsResponseBodyDataEnvironments(TeaModel):
         grafana_folder_title: str = None,
         grafana_folder_uid: str = None,
         latest_release_create_time: str = None,
+        managed_type: str = None,
         prometheus_id: int = None,
         prometheus_instance_id: str = None,
         region_id: str = None,
@@ -39533,6 +39563,7 @@ class ListEnvironmentsResponseBodyDataEnvironments(TeaModel):
         self.grafana_folder_uid = grafana_folder_uid
         # Latest Release create time.
         self.latest_release_create_time = latest_release_create_time
+        self.managed_type = managed_type
         # Prometheus ID.
         self.prometheus_id = prometheus_id
         # Prometheus instance ID.
@@ -39602,6 +39633,8 @@ class ListEnvironmentsResponseBodyDataEnvironments(TeaModel):
             result['GrafanaFolderUid'] = self.grafana_folder_uid
         if self.latest_release_create_time is not None:
             result['LatestReleaseCreateTime'] = self.latest_release_create_time
+        if self.managed_type is not None:
+            result['ManagedType'] = self.managed_type
         if self.prometheus_id is not None:
             result['PrometheusId'] = self.prometheus_id
         if self.prometheus_instance_id is not None:
@@ -39658,6 +39691,8 @@ class ListEnvironmentsResponseBodyDataEnvironments(TeaModel):
             self.grafana_folder_uid = m.get('GrafanaFolderUid')
         if m.get('LatestReleaseCreateTime') is not None:
             self.latest_release_create_time = m.get('LatestReleaseCreateTime')
+        if m.get('ManagedType') is not None:
+            self.managed_type = m.get('ManagedType')
         if m.get('PrometheusId') is not None:
             self.prometheus_id = m.get('PrometheusId')
         if m.get('PrometheusInstanceId') is not None:
