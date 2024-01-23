@@ -1,7 +1,123 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict, Any
+from typing import Dict, List, Any
+
+
+class ApplyScalingGroupRequest(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        format: str = None,
+        region_id: str = None,
+    ):
+        self.content = content
+        self.format = format
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.format is not None:
+            result['Format'] = self.format
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Format') is not None:
+            self.format = m.get('Format')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ApplyScalingGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        scaling_group_id: str = None,
+    ):
+        self.request_id = request_id
+        self.scaling_group_id = scaling_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.scaling_group_id is not None:
+            result['ScalingGroupId'] = self.scaling_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ScalingGroupId') is not None:
+            self.scaling_group_id = m.get('ScalingGroupId')
+        return self
+
+
+class ApplyScalingGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ApplyScalingGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ApplyScalingGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
 
 
 class AttachAlbServerGroupsRequestAlbServerGroups(TeaModel):
@@ -2430,6 +2546,20 @@ class CreateEciScalingConfigurationRequestContainers(TeaModel):
         gpu: int = None,
         image: str = None,
         image_pull_policy: str = None,
+        lifecycle_post_start_handler_execs: List[str] = None,
+        lifecycle_post_start_handler_http_get_host: str = None,
+        lifecycle_post_start_handler_http_get_path: str = None,
+        lifecycle_post_start_handler_http_get_port: int = None,
+        lifecycle_post_start_handler_http_get_scheme: str = None,
+        lifecycle_post_start_handler_tcp_socket_host: str = None,
+        lifecycle_post_start_handler_tcp_socket_port: int = None,
+        lifecycle_pre_stop_handler_execs: List[str] = None,
+        lifecycle_pre_stop_handler_http_get_host: str = None,
+        lifecycle_pre_stop_handler_http_get_path: str = None,
+        lifecycle_pre_stop_handler_http_get_port: int = None,
+        lifecycle_pre_stop_handler_http_get_scheme: str = None,
+        lifecycle_pre_stop_handler_tcp_socket_host: str = None,
+        lifecycle_pre_stop_handler_tcp_socket_port: int = None,
         memory: float = None,
         name: str = None,
         ports: List[CreateEciScalingConfigurationRequestContainersPorts] = None,
@@ -2460,6 +2590,20 @@ class CreateEciScalingConfigurationRequestContainers(TeaModel):
         # *   IfNotPresent: pulls images only if no on-premises images are available. On-premises images are preferentially used. If no on-premises images are available, image pulling is performed.
         # *   Never: never pulls images. On-premises images are always used.
         self.image_pull_policy = image_pull_policy
+        self.lifecycle_post_start_handler_execs = lifecycle_post_start_handler_execs
+        self.lifecycle_post_start_handler_http_get_host = lifecycle_post_start_handler_http_get_host
+        self.lifecycle_post_start_handler_http_get_path = lifecycle_post_start_handler_http_get_path
+        self.lifecycle_post_start_handler_http_get_port = lifecycle_post_start_handler_http_get_port
+        self.lifecycle_post_start_handler_http_get_scheme = lifecycle_post_start_handler_http_get_scheme
+        self.lifecycle_post_start_handler_tcp_socket_host = lifecycle_post_start_handler_tcp_socket_host
+        self.lifecycle_post_start_handler_tcp_socket_port = lifecycle_post_start_handler_tcp_socket_port
+        self.lifecycle_pre_stop_handler_execs = lifecycle_pre_stop_handler_execs
+        self.lifecycle_pre_stop_handler_http_get_host = lifecycle_pre_stop_handler_http_get_host
+        self.lifecycle_pre_stop_handler_http_get_path = lifecycle_pre_stop_handler_http_get_path
+        self.lifecycle_pre_stop_handler_http_get_port = lifecycle_pre_stop_handler_http_get_port
+        self.lifecycle_pre_stop_handler_http_get_scheme = lifecycle_pre_stop_handler_http_get_scheme
+        self.lifecycle_pre_stop_handler_tcp_socket_host = lifecycle_pre_stop_handler_tcp_socket_host
+        self.lifecycle_pre_stop_handler_tcp_socket_port = lifecycle_pre_stop_handler_tcp_socket_port
         # The memory size of the container. Unit: GiB.
         self.memory = memory
         # The name of the container image.
@@ -2536,6 +2680,34 @@ class CreateEciScalingConfigurationRequestContainers(TeaModel):
             result['Image'] = self.image
         if self.image_pull_policy is not None:
             result['ImagePullPolicy'] = self.image_pull_policy
+        if self.lifecycle_post_start_handler_execs is not None:
+            result['LifecyclePostStartHandlerExecs'] = self.lifecycle_post_start_handler_execs
+        if self.lifecycle_post_start_handler_http_get_host is not None:
+            result['LifecyclePostStartHandlerHttpGetHost'] = self.lifecycle_post_start_handler_http_get_host
+        if self.lifecycle_post_start_handler_http_get_path is not None:
+            result['LifecyclePostStartHandlerHttpGetPath'] = self.lifecycle_post_start_handler_http_get_path
+        if self.lifecycle_post_start_handler_http_get_port is not None:
+            result['LifecyclePostStartHandlerHttpGetPort'] = self.lifecycle_post_start_handler_http_get_port
+        if self.lifecycle_post_start_handler_http_get_scheme is not None:
+            result['LifecyclePostStartHandlerHttpGetScheme'] = self.lifecycle_post_start_handler_http_get_scheme
+        if self.lifecycle_post_start_handler_tcp_socket_host is not None:
+            result['LifecyclePostStartHandlerTcpSocketHost'] = self.lifecycle_post_start_handler_tcp_socket_host
+        if self.lifecycle_post_start_handler_tcp_socket_port is not None:
+            result['LifecyclePostStartHandlerTcpSocketPort'] = self.lifecycle_post_start_handler_tcp_socket_port
+        if self.lifecycle_pre_stop_handler_execs is not None:
+            result['LifecyclePreStopHandlerExecs'] = self.lifecycle_pre_stop_handler_execs
+        if self.lifecycle_pre_stop_handler_http_get_host is not None:
+            result['LifecyclePreStopHandlerHttpGetHost'] = self.lifecycle_pre_stop_handler_http_get_host
+        if self.lifecycle_pre_stop_handler_http_get_path is not None:
+            result['LifecyclePreStopHandlerHttpGetPath'] = self.lifecycle_pre_stop_handler_http_get_path
+        if self.lifecycle_pre_stop_handler_http_get_port is not None:
+            result['LifecyclePreStopHandlerHttpGetPort'] = self.lifecycle_pre_stop_handler_http_get_port
+        if self.lifecycle_pre_stop_handler_http_get_scheme is not None:
+            result['LifecyclePreStopHandlerHttpGetScheme'] = self.lifecycle_pre_stop_handler_http_get_scheme
+        if self.lifecycle_pre_stop_handler_tcp_socket_host is not None:
+            result['LifecyclePreStopHandlerTcpSocketHost'] = self.lifecycle_pre_stop_handler_tcp_socket_host
+        if self.lifecycle_pre_stop_handler_tcp_socket_port is not None:
+            result['LifecyclePreStopHandlerTcpSocketPort'] = self.lifecycle_pre_stop_handler_tcp_socket_port
         if self.memory is not None:
             result['Memory'] = self.memory
         if self.name is not None:
@@ -2586,6 +2758,34 @@ class CreateEciScalingConfigurationRequestContainers(TeaModel):
             self.image = m.get('Image')
         if m.get('ImagePullPolicy') is not None:
             self.image_pull_policy = m.get('ImagePullPolicy')
+        if m.get('LifecyclePostStartHandlerExecs') is not None:
+            self.lifecycle_post_start_handler_execs = m.get('LifecyclePostStartHandlerExecs')
+        if m.get('LifecyclePostStartHandlerHttpGetHost') is not None:
+            self.lifecycle_post_start_handler_http_get_host = m.get('LifecyclePostStartHandlerHttpGetHost')
+        if m.get('LifecyclePostStartHandlerHttpGetPath') is not None:
+            self.lifecycle_post_start_handler_http_get_path = m.get('LifecyclePostStartHandlerHttpGetPath')
+        if m.get('LifecyclePostStartHandlerHttpGetPort') is not None:
+            self.lifecycle_post_start_handler_http_get_port = m.get('LifecyclePostStartHandlerHttpGetPort')
+        if m.get('LifecyclePostStartHandlerHttpGetScheme') is not None:
+            self.lifecycle_post_start_handler_http_get_scheme = m.get('LifecyclePostStartHandlerHttpGetScheme')
+        if m.get('LifecyclePostStartHandlerTcpSocketHost') is not None:
+            self.lifecycle_post_start_handler_tcp_socket_host = m.get('LifecyclePostStartHandlerTcpSocketHost')
+        if m.get('LifecyclePostStartHandlerTcpSocketPort') is not None:
+            self.lifecycle_post_start_handler_tcp_socket_port = m.get('LifecyclePostStartHandlerTcpSocketPort')
+        if m.get('LifecyclePreStopHandlerExecs') is not None:
+            self.lifecycle_pre_stop_handler_execs = m.get('LifecyclePreStopHandlerExecs')
+        if m.get('LifecyclePreStopHandlerHttpGetHost') is not None:
+            self.lifecycle_pre_stop_handler_http_get_host = m.get('LifecyclePreStopHandlerHttpGetHost')
+        if m.get('LifecyclePreStopHandlerHttpGetPath') is not None:
+            self.lifecycle_pre_stop_handler_http_get_path = m.get('LifecyclePreStopHandlerHttpGetPath')
+        if m.get('LifecyclePreStopHandlerHttpGetPort') is not None:
+            self.lifecycle_pre_stop_handler_http_get_port = m.get('LifecyclePreStopHandlerHttpGetPort')
+        if m.get('LifecyclePreStopHandlerHttpGetScheme') is not None:
+            self.lifecycle_pre_stop_handler_http_get_scheme = m.get('LifecyclePreStopHandlerHttpGetScheme')
+        if m.get('LifecyclePreStopHandlerTcpSocketHost') is not None:
+            self.lifecycle_pre_stop_handler_tcp_socket_host = m.get('LifecyclePreStopHandlerTcpSocketHost')
+        if m.get('LifecyclePreStopHandlerTcpSocketPort') is not None:
+            self.lifecycle_pre_stop_handler_tcp_socket_port = m.get('LifecyclePreStopHandlerTcpSocketPort')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
         if m.get('Name') is not None:
@@ -10174,6 +10374,20 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainer
         gpu: int = None,
         image: str = None,
         image_pull_policy: str = None,
+        lifecycle_post_start_handler_execs: List[str] = None,
+        lifecycle_post_start_handler_http_get_host: str = None,
+        lifecycle_post_start_handler_http_get_path: str = None,
+        lifecycle_post_start_handler_http_get_port: int = None,
+        lifecycle_post_start_handler_http_get_scheme: str = None,
+        lifecycle_post_start_handler_tcp_socket_host: str = None,
+        lifecycle_post_start_handler_tcp_socket_port: int = None,
+        lifecycle_pre_stop_handler_execs: List[str] = None,
+        lifecycle_pre_stop_handler_http_get_host: str = None,
+        lifecycle_pre_stop_handler_http_get_path: str = None,
+        lifecycle_pre_stop_handler_http_get_port: int = None,
+        lifecycle_pre_stop_handler_http_get_scheme: str = None,
+        lifecycle_pre_stop_handler_tcp_socket_host: str = None,
+        lifecycle_pre_stop_handler_tcp_socket_port: int = None,
         liveness_probe_exec_commands: List[str] = None,
         liveness_probe_failure_threshold: int = None,
         liveness_probe_http_get_path: str = None,
@@ -10224,6 +10438,20 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainer
         # *   IfNotPresent: Image pulling is performed only if on-premises images are unavailable. On-premises images are preferentially used. If no on-premises images are available, image pulling is performed.
         # *   Never: On-premises images are always used. Image pulling is not performed.
         self.image_pull_policy = image_pull_policy
+        self.lifecycle_post_start_handler_execs = lifecycle_post_start_handler_execs
+        self.lifecycle_post_start_handler_http_get_host = lifecycle_post_start_handler_http_get_host
+        self.lifecycle_post_start_handler_http_get_path = lifecycle_post_start_handler_http_get_path
+        self.lifecycle_post_start_handler_http_get_port = lifecycle_post_start_handler_http_get_port
+        self.lifecycle_post_start_handler_http_get_scheme = lifecycle_post_start_handler_http_get_scheme
+        self.lifecycle_post_start_handler_tcp_socket_host = lifecycle_post_start_handler_tcp_socket_host
+        self.lifecycle_post_start_handler_tcp_socket_port = lifecycle_post_start_handler_tcp_socket_port
+        self.lifecycle_pre_stop_handler_execs = lifecycle_pre_stop_handler_execs
+        self.lifecycle_pre_stop_handler_http_get_host = lifecycle_pre_stop_handler_http_get_host
+        self.lifecycle_pre_stop_handler_http_get_path = lifecycle_pre_stop_handler_http_get_path
+        self.lifecycle_pre_stop_handler_http_get_port = lifecycle_pre_stop_handler_http_get_port
+        self.lifecycle_pre_stop_handler_http_get_scheme = lifecycle_pre_stop_handler_http_get_scheme
+        self.lifecycle_pre_stop_handler_tcp_socket_host = lifecycle_pre_stop_handler_tcp_socket_host
+        self.lifecycle_pre_stop_handler_tcp_socket_port = lifecycle_pre_stop_handler_tcp_socket_port
         # The commands that are run in the container when you use the CLI to perform probes.
         self.liveness_probe_exec_commands = liveness_probe_exec_commands
         # The minimum number of consecutive failures for a probe to be considered failed after having been successful.
@@ -10344,6 +10572,34 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainer
             result['Image'] = self.image
         if self.image_pull_policy is not None:
             result['ImagePullPolicy'] = self.image_pull_policy
+        if self.lifecycle_post_start_handler_execs is not None:
+            result['LifecyclePostStartHandlerExecs'] = self.lifecycle_post_start_handler_execs
+        if self.lifecycle_post_start_handler_http_get_host is not None:
+            result['LifecyclePostStartHandlerHttpGetHost'] = self.lifecycle_post_start_handler_http_get_host
+        if self.lifecycle_post_start_handler_http_get_path is not None:
+            result['LifecyclePostStartHandlerHttpGetPath'] = self.lifecycle_post_start_handler_http_get_path
+        if self.lifecycle_post_start_handler_http_get_port is not None:
+            result['LifecyclePostStartHandlerHttpGetPort'] = self.lifecycle_post_start_handler_http_get_port
+        if self.lifecycle_post_start_handler_http_get_scheme is not None:
+            result['LifecyclePostStartHandlerHttpGetScheme'] = self.lifecycle_post_start_handler_http_get_scheme
+        if self.lifecycle_post_start_handler_tcp_socket_host is not None:
+            result['LifecyclePostStartHandlerTcpSocketHost'] = self.lifecycle_post_start_handler_tcp_socket_host
+        if self.lifecycle_post_start_handler_tcp_socket_port is not None:
+            result['LifecyclePostStartHandlerTcpSocketPort'] = self.lifecycle_post_start_handler_tcp_socket_port
+        if self.lifecycle_pre_stop_handler_execs is not None:
+            result['LifecyclePreStopHandlerExecs'] = self.lifecycle_pre_stop_handler_execs
+        if self.lifecycle_pre_stop_handler_http_get_host is not None:
+            result['LifecyclePreStopHandlerHttpGetHost'] = self.lifecycle_pre_stop_handler_http_get_host
+        if self.lifecycle_pre_stop_handler_http_get_path is not None:
+            result['LifecyclePreStopHandlerHttpGetPath'] = self.lifecycle_pre_stop_handler_http_get_path
+        if self.lifecycle_pre_stop_handler_http_get_port is not None:
+            result['LifecyclePreStopHandlerHttpGetPort'] = self.lifecycle_pre_stop_handler_http_get_port
+        if self.lifecycle_pre_stop_handler_http_get_scheme is not None:
+            result['LifecyclePreStopHandlerHttpGetScheme'] = self.lifecycle_pre_stop_handler_http_get_scheme
+        if self.lifecycle_pre_stop_handler_tcp_socket_host is not None:
+            result['LifecyclePreStopHandlerTcpSocketHost'] = self.lifecycle_pre_stop_handler_tcp_socket_host
+        if self.lifecycle_pre_stop_handler_tcp_socket_port is not None:
+            result['LifecyclePreStopHandlerTcpSocketPort'] = self.lifecycle_pre_stop_handler_tcp_socket_port
         if self.liveness_probe_exec_commands is not None:
             result['LivenessProbeExecCommands'] = self.liveness_probe_exec_commands
         if self.liveness_probe_failure_threshold is not None:
@@ -10431,6 +10687,34 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainer
             self.image = m.get('Image')
         if m.get('ImagePullPolicy') is not None:
             self.image_pull_policy = m.get('ImagePullPolicy')
+        if m.get('LifecyclePostStartHandlerExecs') is not None:
+            self.lifecycle_post_start_handler_execs = m.get('LifecyclePostStartHandlerExecs')
+        if m.get('LifecyclePostStartHandlerHttpGetHost') is not None:
+            self.lifecycle_post_start_handler_http_get_host = m.get('LifecyclePostStartHandlerHttpGetHost')
+        if m.get('LifecyclePostStartHandlerHttpGetPath') is not None:
+            self.lifecycle_post_start_handler_http_get_path = m.get('LifecyclePostStartHandlerHttpGetPath')
+        if m.get('LifecyclePostStartHandlerHttpGetPort') is not None:
+            self.lifecycle_post_start_handler_http_get_port = m.get('LifecyclePostStartHandlerHttpGetPort')
+        if m.get('LifecyclePostStartHandlerHttpGetScheme') is not None:
+            self.lifecycle_post_start_handler_http_get_scheme = m.get('LifecyclePostStartHandlerHttpGetScheme')
+        if m.get('LifecyclePostStartHandlerTcpSocketHost') is not None:
+            self.lifecycle_post_start_handler_tcp_socket_host = m.get('LifecyclePostStartHandlerTcpSocketHost')
+        if m.get('LifecyclePostStartHandlerTcpSocketPort') is not None:
+            self.lifecycle_post_start_handler_tcp_socket_port = m.get('LifecyclePostStartHandlerTcpSocketPort')
+        if m.get('LifecyclePreStopHandlerExecs') is not None:
+            self.lifecycle_pre_stop_handler_execs = m.get('LifecyclePreStopHandlerExecs')
+        if m.get('LifecyclePreStopHandlerHttpGetHost') is not None:
+            self.lifecycle_pre_stop_handler_http_get_host = m.get('LifecyclePreStopHandlerHttpGetHost')
+        if m.get('LifecyclePreStopHandlerHttpGetPath') is not None:
+            self.lifecycle_pre_stop_handler_http_get_path = m.get('LifecyclePreStopHandlerHttpGetPath')
+        if m.get('LifecyclePreStopHandlerHttpGetPort') is not None:
+            self.lifecycle_pre_stop_handler_http_get_port = m.get('LifecyclePreStopHandlerHttpGetPort')
+        if m.get('LifecyclePreStopHandlerHttpGetScheme') is not None:
+            self.lifecycle_pre_stop_handler_http_get_scheme = m.get('LifecyclePreStopHandlerHttpGetScheme')
+        if m.get('LifecyclePreStopHandlerTcpSocketHost') is not None:
+            self.lifecycle_pre_stop_handler_tcp_socket_host = m.get('LifecyclePreStopHandlerTcpSocketHost')
+        if m.get('LifecyclePreStopHandlerTcpSocketPort') is not None:
+            self.lifecycle_pre_stop_handler_tcp_socket_port = m.get('LifecyclePreStopHandlerTcpSocketPort')
         if m.get('LivenessProbeExecCommands') is not None:
             self.liveness_probe_exec_commands = m.get('LivenessProbeExecCommands')
         if m.get('LivenessProbeFailureThreshold') is not None:
@@ -20796,6 +21080,20 @@ class ModifyEciScalingConfigurationRequestContainers(TeaModel):
         gpu: int = None,
         image: str = None,
         image_pull_policy: str = None,
+        lifecycle_post_start_handler_execs: List[str] = None,
+        lifecycle_post_start_handler_http_get_host: str = None,
+        lifecycle_post_start_handler_http_get_path: str = None,
+        lifecycle_post_start_handler_http_get_port: int = None,
+        lifecycle_post_start_handler_http_get_scheme: str = None,
+        lifecycle_post_start_handler_tcp_socket_host: str = None,
+        lifecycle_post_start_handler_tcp_socket_port: int = None,
+        lifecycle_pre_stop_handler_execs: List[str] = None,
+        lifecycle_pre_stop_handler_http_get_host: str = None,
+        lifecycle_pre_stop_handler_http_get_path: str = None,
+        lifecycle_pre_stop_handler_http_get_port: int = None,
+        lifecycle_pre_stop_handler_http_get_scheme: str = None,
+        lifecycle_pre_stop_handler_tcp_socket_host: str = None,
+        lifecycle_pre_stop_handler_tcp_socket_port: int = None,
         memory: float = None,
         name: str = None,
         ports: List[ModifyEciScalingConfigurationRequestContainersPorts] = None,
@@ -20826,6 +21124,20 @@ class ModifyEciScalingConfigurationRequestContainers(TeaModel):
         # *   IfNotPresent: pulls images only if no on-premises images are available. On-premises images are preferentially used. If no on-premises images are available, image pulling is performed.
         # *   Never: never pulls images. On-premises images are always used.
         self.image_pull_policy = image_pull_policy
+        self.lifecycle_post_start_handler_execs = lifecycle_post_start_handler_execs
+        self.lifecycle_post_start_handler_http_get_host = lifecycle_post_start_handler_http_get_host
+        self.lifecycle_post_start_handler_http_get_path = lifecycle_post_start_handler_http_get_path
+        self.lifecycle_post_start_handler_http_get_port = lifecycle_post_start_handler_http_get_port
+        self.lifecycle_post_start_handler_http_get_scheme = lifecycle_post_start_handler_http_get_scheme
+        self.lifecycle_post_start_handler_tcp_socket_host = lifecycle_post_start_handler_tcp_socket_host
+        self.lifecycle_post_start_handler_tcp_socket_port = lifecycle_post_start_handler_tcp_socket_port
+        self.lifecycle_pre_stop_handler_execs = lifecycle_pre_stop_handler_execs
+        self.lifecycle_pre_stop_handler_http_get_host = lifecycle_pre_stop_handler_http_get_host
+        self.lifecycle_pre_stop_handler_http_get_path = lifecycle_pre_stop_handler_http_get_path
+        self.lifecycle_pre_stop_handler_http_get_port = lifecycle_pre_stop_handler_http_get_port
+        self.lifecycle_pre_stop_handler_http_get_scheme = lifecycle_pre_stop_handler_http_get_scheme
+        self.lifecycle_pre_stop_handler_tcp_socket_host = lifecycle_pre_stop_handler_tcp_socket_host
+        self.lifecycle_pre_stop_handler_tcp_socket_port = lifecycle_pre_stop_handler_tcp_socket_port
         # The memory size of the container. Unit: GiB.
         self.memory = memory
         # The name of the container image.
@@ -20897,6 +21209,34 @@ class ModifyEciScalingConfigurationRequestContainers(TeaModel):
             result['Image'] = self.image
         if self.image_pull_policy is not None:
             result['ImagePullPolicy'] = self.image_pull_policy
+        if self.lifecycle_post_start_handler_execs is not None:
+            result['LifecyclePostStartHandlerExecs'] = self.lifecycle_post_start_handler_execs
+        if self.lifecycle_post_start_handler_http_get_host is not None:
+            result['LifecyclePostStartHandlerHttpGetHost'] = self.lifecycle_post_start_handler_http_get_host
+        if self.lifecycle_post_start_handler_http_get_path is not None:
+            result['LifecyclePostStartHandlerHttpGetPath'] = self.lifecycle_post_start_handler_http_get_path
+        if self.lifecycle_post_start_handler_http_get_port is not None:
+            result['LifecyclePostStartHandlerHttpGetPort'] = self.lifecycle_post_start_handler_http_get_port
+        if self.lifecycle_post_start_handler_http_get_scheme is not None:
+            result['LifecyclePostStartHandlerHttpGetScheme'] = self.lifecycle_post_start_handler_http_get_scheme
+        if self.lifecycle_post_start_handler_tcp_socket_host is not None:
+            result['LifecyclePostStartHandlerTcpSocketHost'] = self.lifecycle_post_start_handler_tcp_socket_host
+        if self.lifecycle_post_start_handler_tcp_socket_port is not None:
+            result['LifecyclePostStartHandlerTcpSocketPort'] = self.lifecycle_post_start_handler_tcp_socket_port
+        if self.lifecycle_pre_stop_handler_execs is not None:
+            result['LifecyclePreStopHandlerExecs'] = self.lifecycle_pre_stop_handler_execs
+        if self.lifecycle_pre_stop_handler_http_get_host is not None:
+            result['LifecyclePreStopHandlerHttpGetHost'] = self.lifecycle_pre_stop_handler_http_get_host
+        if self.lifecycle_pre_stop_handler_http_get_path is not None:
+            result['LifecyclePreStopHandlerHttpGetPath'] = self.lifecycle_pre_stop_handler_http_get_path
+        if self.lifecycle_pre_stop_handler_http_get_port is not None:
+            result['LifecyclePreStopHandlerHttpGetPort'] = self.lifecycle_pre_stop_handler_http_get_port
+        if self.lifecycle_pre_stop_handler_http_get_scheme is not None:
+            result['LifecyclePreStopHandlerHttpGetScheme'] = self.lifecycle_pre_stop_handler_http_get_scheme
+        if self.lifecycle_pre_stop_handler_tcp_socket_host is not None:
+            result['LifecyclePreStopHandlerTcpSocketHost'] = self.lifecycle_pre_stop_handler_tcp_socket_host
+        if self.lifecycle_pre_stop_handler_tcp_socket_port is not None:
+            result['LifecyclePreStopHandlerTcpSocketPort'] = self.lifecycle_pre_stop_handler_tcp_socket_port
         if self.memory is not None:
             result['Memory'] = self.memory
         if self.name is not None:
@@ -20947,6 +21287,34 @@ class ModifyEciScalingConfigurationRequestContainers(TeaModel):
             self.image = m.get('Image')
         if m.get('ImagePullPolicy') is not None:
             self.image_pull_policy = m.get('ImagePullPolicy')
+        if m.get('LifecyclePostStartHandlerExecs') is not None:
+            self.lifecycle_post_start_handler_execs = m.get('LifecyclePostStartHandlerExecs')
+        if m.get('LifecyclePostStartHandlerHttpGetHost') is not None:
+            self.lifecycle_post_start_handler_http_get_host = m.get('LifecyclePostStartHandlerHttpGetHost')
+        if m.get('LifecyclePostStartHandlerHttpGetPath') is not None:
+            self.lifecycle_post_start_handler_http_get_path = m.get('LifecyclePostStartHandlerHttpGetPath')
+        if m.get('LifecyclePostStartHandlerHttpGetPort') is not None:
+            self.lifecycle_post_start_handler_http_get_port = m.get('LifecyclePostStartHandlerHttpGetPort')
+        if m.get('LifecyclePostStartHandlerHttpGetScheme') is not None:
+            self.lifecycle_post_start_handler_http_get_scheme = m.get('LifecyclePostStartHandlerHttpGetScheme')
+        if m.get('LifecyclePostStartHandlerTcpSocketHost') is not None:
+            self.lifecycle_post_start_handler_tcp_socket_host = m.get('LifecyclePostStartHandlerTcpSocketHost')
+        if m.get('LifecyclePostStartHandlerTcpSocketPort') is not None:
+            self.lifecycle_post_start_handler_tcp_socket_port = m.get('LifecyclePostStartHandlerTcpSocketPort')
+        if m.get('LifecyclePreStopHandlerExecs') is not None:
+            self.lifecycle_pre_stop_handler_execs = m.get('LifecyclePreStopHandlerExecs')
+        if m.get('LifecyclePreStopHandlerHttpGetHost') is not None:
+            self.lifecycle_pre_stop_handler_http_get_host = m.get('LifecyclePreStopHandlerHttpGetHost')
+        if m.get('LifecyclePreStopHandlerHttpGetPath') is not None:
+            self.lifecycle_pre_stop_handler_http_get_path = m.get('LifecyclePreStopHandlerHttpGetPath')
+        if m.get('LifecyclePreStopHandlerHttpGetPort') is not None:
+            self.lifecycle_pre_stop_handler_http_get_port = m.get('LifecyclePreStopHandlerHttpGetPort')
+        if m.get('LifecyclePreStopHandlerHttpGetScheme') is not None:
+            self.lifecycle_pre_stop_handler_http_get_scheme = m.get('LifecyclePreStopHandlerHttpGetScheme')
+        if m.get('LifecyclePreStopHandlerTcpSocketHost') is not None:
+            self.lifecycle_pre_stop_handler_tcp_socket_host = m.get('LifecyclePreStopHandlerTcpSocketHost')
+        if m.get('LifecyclePreStopHandlerTcpSocketPort') is not None:
+            self.lifecycle_pre_stop_handler_tcp_socket_port = m.get('LifecyclePreStopHandlerTcpSocketPort')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
         if m.get('Name') is not None:
