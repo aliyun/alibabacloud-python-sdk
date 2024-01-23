@@ -317,12 +317,46 @@ class AssociateResourceShareRequestResources(TeaModel):
         return self
 
 
+class AssociateResourceShareRequestTargetProperties(TeaModel):
+    def __init__(
+        self,
+        property: str = None,
+        target_id: str = None,
+    ):
+        self.property = property
+        self.target_id = target_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.property is not None:
+            result['Property'] = self.property
+        if self.target_id is not None:
+            result['TargetId'] = self.target_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Property') is not None:
+            self.property = m.get('Property')
+        if m.get('TargetId') is not None:
+            self.target_id = m.get('TargetId')
+        return self
+
+
 class AssociateResourceShareRequest(TeaModel):
     def __init__(
         self,
         permission_names: List[str] = None,
         resource_share_id: str = None,
         resources: List[AssociateResourceShareRequestResources] = None,
+        target_properties: List[AssociateResourceShareRequestTargetProperties] = None,
         targets: List[str] = None,
     ):
         # The information about the permissions. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share. For more information, see [Permission library](~~465474~~).
@@ -331,12 +365,17 @@ class AssociateResourceShareRequest(TeaModel):
         self.resource_share_id = resource_share_id
         # The information about the resources.
         self.resources = resources
+        self.target_properties = target_properties
         # The information about the principals.
         self.targets = targets
 
     def validate(self):
         if self.resources:
             for k in self.resources:
+                if k:
+                    k.validate()
+        if self.target_properties:
+            for k in self.target_properties:
                 if k:
                     k.validate()
 
@@ -354,6 +393,10 @@ class AssociateResourceShareRequest(TeaModel):
         if self.resources is not None:
             for k in self.resources:
                 result['Resources'].append(k.to_map() if k else None)
+        result['TargetProperties'] = []
+        if self.target_properties is not None:
+            for k in self.target_properties:
+                result['TargetProperties'].append(k.to_map() if k else None)
         if self.targets is not None:
             result['Targets'] = self.targets
         return result
@@ -369,6 +412,11 @@ class AssociateResourceShareRequest(TeaModel):
             for k in m.get('Resources'):
                 temp_model = AssociateResourceShareRequestResources()
                 self.resources.append(temp_model.from_map(k))
+        self.target_properties = []
+        if m.get('TargetProperties') is not None:
+            for k in m.get('TargetProperties'):
+                temp_model = AssociateResourceShareRequestTargetProperties()
+                self.target_properties.append(temp_model.from_map(k))
         if m.get('Targets') is not None:
             self.targets = m.get('Targets')
         return self
@@ -932,6 +980,39 @@ class CreateResourceShareRequestResources(TeaModel):
         return self
 
 
+class CreateResourceShareRequestTargetProperties(TeaModel):
+    def __init__(
+        self,
+        property: str = None,
+        target_id: str = None,
+    ):
+        self.property = property
+        self.target_id = target_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.property is not None:
+            result['Property'] = self.property
+        if self.target_id is not None:
+            result['TargetId'] = self.target_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Property') is not None:
+            self.property = m.get('Property')
+        if m.get('TargetId') is not None:
+            self.target_id = m.get('TargetId')
+        return self
+
+
 class CreateResourceShareRequest(TeaModel):
     def __init__(
         self,
@@ -939,6 +1020,7 @@ class CreateResourceShareRequest(TeaModel):
         permission_names: List[str] = None,
         resource_share_name: str = None,
         resources: List[CreateResourceShareRequestResources] = None,
+        target_properties: List[CreateResourceShareRequestTargetProperties] = None,
         targets: List[str] = None,
     ):
         # Specifies whether resources in the resource share can be shared with accounts outside the resource directory. Valid values:
@@ -956,12 +1038,17 @@ class CreateResourceShareRequest(TeaModel):
         self.resource_share_name = resource_share_name
         # The information about the shared resources.
         self.resources = resources
+        self.target_properties = target_properties
         # The information about the principals.
         self.targets = targets
 
     def validate(self):
         if self.resources:
             for k in self.resources:
+                if k:
+                    k.validate()
+        if self.target_properties:
+            for k in self.target_properties:
                 if k:
                     k.validate()
 
@@ -981,6 +1068,10 @@ class CreateResourceShareRequest(TeaModel):
         if self.resources is not None:
             for k in self.resources:
                 result['Resources'].append(k.to_map() if k else None)
+        result['TargetProperties'] = []
+        if self.target_properties is not None:
+            for k in self.target_properties:
+                result['TargetProperties'].append(k.to_map() if k else None)
         if self.targets is not None:
             result['Targets'] = self.targets
         return result
@@ -998,6 +1089,11 @@ class CreateResourceShareRequest(TeaModel):
             for k in m.get('Resources'):
                 temp_model = CreateResourceShareRequestResources()
                 self.resources.append(temp_model.from_map(k))
+        self.target_properties = []
+        if m.get('TargetProperties') is not None:
+            for k in m.get('TargetProperties'):
+                temp_model = CreateResourceShareRequestTargetProperties()
+                self.target_properties.append(temp_model.from_map(k))
         if m.get('Targets') is not None:
             self.targets = m.get('Targets')
         return self

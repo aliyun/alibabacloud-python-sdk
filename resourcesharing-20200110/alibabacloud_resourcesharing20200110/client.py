@@ -169,6 +169,8 @@ class Client(OpenApiClient):
             query['ResourceShareId'] = request.resource_share_id
         if not UtilClient.is_unset(request.resources):
             query['Resources'] = request.resources
+        if not UtilClient.is_unset(request.target_properties):
+            query['TargetProperties'] = request.target_properties
         if not UtilClient.is_unset(request.targets):
             query['Targets'] = request.targets
         req = open_api_models.OpenApiRequest(
@@ -210,6 +212,8 @@ class Client(OpenApiClient):
             query['ResourceShareId'] = request.resource_share_id
         if not UtilClient.is_unset(request.resources):
             query['Resources'] = request.resources
+        if not UtilClient.is_unset(request.target_properties):
+            query['TargetProperties'] = request.target_properties
         if not UtilClient.is_unset(request.targets):
             query['Targets'] = request.targets
         req = open_api_models.OpenApiRequest(
@@ -512,6 +516,8 @@ class Client(OpenApiClient):
             query['ResourceShareName'] = request.resource_share_name
         if not UtilClient.is_unset(request.resources):
             query['Resources'] = request.resources
+        if not UtilClient.is_unset(request.target_properties):
+            query['TargetProperties'] = request.target_properties
         if not UtilClient.is_unset(request.targets):
             query['Targets'] = request.targets
         req = open_api_models.OpenApiRequest(
@@ -556,6 +562,8 @@ class Client(OpenApiClient):
             query['ResourceShareName'] = request.resource_share_name
         if not UtilClient.is_unset(request.resources):
             query['Resources'] = request.resources
+        if not UtilClient.is_unset(request.target_properties):
+            query['TargetProperties'] = request.target_properties
         if not UtilClient.is_unset(request.targets):
             query['Targets'] = request.targets
         req = open_api_models.OpenApiRequest(
