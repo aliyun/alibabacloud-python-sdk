@@ -711,6 +711,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_jmeter_logs_with_options_async(request, runtime)
 
+    def get_jmeter_report_details_with_options(
+        self,
+        request: pts20201020_models.GetJMeterReportDetailsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pts20201020_models.GetJMeterReportDetailsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetJMeterReportDetails',
+            version='2020-10-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pts20201020_models.GetJMeterReportDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_jmeter_report_details_with_options_async(
+        self,
+        request: pts20201020_models.GetJMeterReportDetailsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pts20201020_models.GetJMeterReportDetailsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetJMeterReportDetails',
+            version='2020-10-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pts20201020_models.GetJMeterReportDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_jmeter_report_details(
+        self,
+        request: pts20201020_models.GetJMeterReportDetailsRequest,
+    ) -> pts20201020_models.GetJMeterReportDetailsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_jmeter_report_details_with_options(request, runtime)
+
+    async def get_jmeter_report_details_async(
+        self,
+        request: pts20201020_models.GetJMeterReportDetailsRequest,
+    ) -> pts20201020_models.GetJMeterReportDetailsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_jmeter_report_details_with_options_async(request, runtime)
+
     def get_jmeter_sample_metrics_with_options(
         self,
         request: pts20201020_models.GetJMeterSampleMetricsRequest,
