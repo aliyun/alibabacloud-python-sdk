@@ -1,6 +1,9 @@
 2024-01-23 Version: 2.0.1
 - Generated python 2022-01-01 for VpcPeer.
 
+2024-01-23 Version: 2.0.1
+- Generated python 2022-01-01 for VpcPeer.
+
 2023-11-28 Version: 2.0.0
 - Generated python 2022-01-01 for VpcPeer.
 
