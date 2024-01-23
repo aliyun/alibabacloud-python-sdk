@@ -28866,6 +28866,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.export_file_type):
+            query['ExportFileType'] = request.export_file_type
         if not UtilClient.is_unset(request.export_type):
             query['ExportType'] = request.export_type
         if not UtilClient.is_unset(request.lang):
@@ -28909,6 +28911,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.export_file_type):
+            query['ExportFileType'] = request.export_file_type
         if not UtilClient.is_unset(request.export_type):
             query['ExportType'] = request.export_type
         if not UtilClient.is_unset(request.lang):
