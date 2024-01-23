@@ -4651,6 +4651,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.post_msconv_search_token_generated_with_options_async(runtime)
 
+    def post_msdata_processing_count_with_options(
+        self,
+        tmp_req: alinlp_20200629_models.PostMSDataProcessingCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.PostMSDataProcessingCountResponse:
+        UtilClient.validate_model(tmp_req)
+        request = alinlp_20200629_models.PostMSDataProcessingCountShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_ids):
+            request.data_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_ids, 'DataIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.data_ids_shrink):
+            body['DataIds'] = request.data_ids_shrink
+        if not UtilClient.is_unset(request.data_import_id):
+            body['DataImportId'] = request.data_import_id
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PostMSDataProcessingCount',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.PostMSDataProcessingCountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def post_msdata_processing_count_with_options_async(
+        self,
+        tmp_req: alinlp_20200629_models.PostMSDataProcessingCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.PostMSDataProcessingCountResponse:
+        UtilClient.validate_model(tmp_req)
+        request = alinlp_20200629_models.PostMSDataProcessingCountShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_ids):
+            request.data_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_ids, 'DataIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.data_ids_shrink):
+            body['DataIds'] = request.data_ids_shrink
+        if not UtilClient.is_unset(request.data_import_id):
+            body['DataImportId'] = request.data_import_id
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PostMSDataProcessingCount',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.PostMSDataProcessingCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def post_msdata_processing_count(
+        self,
+        request: alinlp_20200629_models.PostMSDataProcessingCountRequest,
+    ) -> alinlp_20200629_models.PostMSDataProcessingCountResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.post_msdata_processing_count_with_options(request, runtime)
+
+    async def post_msdata_processing_count_async(
+        self,
+        request: alinlp_20200629_models.PostMSDataProcessingCountRequest,
+    ) -> alinlp_20200629_models.PostMSDataProcessingCountResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.post_msdata_processing_count_with_options_async(request, runtime)
+
     def post_mssearch_enhance_with_options(
         self,
         tmp_req: alinlp_20200629_models.PostMSSearchEnhanceRequest,
