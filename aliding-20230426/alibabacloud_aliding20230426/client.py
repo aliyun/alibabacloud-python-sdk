@@ -2741,6 +2741,144 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.CreateOrgHonorTemplateHeaders()
         return await self.create_org_honor_template_with_options_async(request, headers, runtime)
 
+    def create_personal_todo_task_with_options(
+        self,
+        tmp_req: aliding_20230426_models.CreatePersonalTodoTaskRequest,
+        tmp_header: aliding_20230426_models.CreatePersonalTodoTaskHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CreatePersonalTodoTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.CreatePersonalTodoTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.CreatePersonalTodoTaskShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.executor_ids):
+            request.executor_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.executor_ids, 'ExecutorIds', 'json')
+        if not UtilClient.is_unset(tmp_req.notify_configs):
+            request.notify_configs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notify_configs, 'NotifyConfigs', 'json')
+        if not UtilClient.is_unset(tmp_req.participant_ids):
+            request.participant_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.participant_ids, 'ParticipantIds', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.due_time):
+            body['DueTime'] = request.due_time
+        if not UtilClient.is_unset(request.executor_ids_shrink):
+            body['ExecutorIds'] = request.executor_ids_shrink
+        if not UtilClient.is_unset(request.notify_configs_shrink):
+            body['NotifyConfigs'] = request.notify_configs_shrink
+        if not UtilClient.is_unset(request.participant_ids_shrink):
+            body['ParticipantIds'] = request.participant_ids_shrink
+        if not UtilClient.is_unset(request.subject):
+            body['Subject'] = request.subject
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreatePersonalTodoTask',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/task/createPersonalTodoTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CreatePersonalTodoTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_personal_todo_task_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.CreatePersonalTodoTaskRequest,
+        tmp_header: aliding_20230426_models.CreatePersonalTodoTaskHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CreatePersonalTodoTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.CreatePersonalTodoTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.CreatePersonalTodoTaskShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.executor_ids):
+            request.executor_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.executor_ids, 'ExecutorIds', 'json')
+        if not UtilClient.is_unset(tmp_req.notify_configs):
+            request.notify_configs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notify_configs, 'NotifyConfigs', 'json')
+        if not UtilClient.is_unset(tmp_req.participant_ids):
+            request.participant_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.participant_ids, 'ParticipantIds', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.due_time):
+            body['DueTime'] = request.due_time
+        if not UtilClient.is_unset(request.executor_ids_shrink):
+            body['ExecutorIds'] = request.executor_ids_shrink
+        if not UtilClient.is_unset(request.notify_configs_shrink):
+            body['NotifyConfigs'] = request.notify_configs_shrink
+        if not UtilClient.is_unset(request.participant_ids_shrink):
+            body['ParticipantIds'] = request.participant_ids_shrink
+        if not UtilClient.is_unset(request.subject):
+            body['Subject'] = request.subject
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreatePersonalTodoTask',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/task/createPersonalTodoTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CreatePersonalTodoTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_personal_todo_task(
+        self,
+        request: aliding_20230426_models.CreatePersonalTodoTaskRequest,
+    ) -> aliding_20230426_models.CreatePersonalTodoTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CreatePersonalTodoTaskHeaders()
+        return self.create_personal_todo_task_with_options(request, headers, runtime)
+
+    async def create_personal_todo_task_async(
+        self,
+        request: aliding_20230426_models.CreatePersonalTodoTaskRequest,
+    ) -> aliding_20230426_models.CreatePersonalTodoTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CreatePersonalTodoTaskHeaders()
+        return await self.create_personal_todo_task_with_options_async(request, headers, runtime)
+
     def create_report_with_options(
         self,
         tmp_req: aliding_20230426_models.CreateReportRequest,
