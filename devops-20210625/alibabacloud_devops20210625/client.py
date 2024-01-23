@@ -10809,6 +10809,8 @@ class Client(OpenApiClient):
             query['filter'] = request.filter
         if not UtilClient.is_unset(request.group_ids):
             query['groupIds'] = request.group_ids
+        if not UtilClient.is_unset(request.label_ids):
+            query['labelIds'] = request.label_ids
         if not UtilClient.is_unset(request.order_by):
             query['orderBy'] = request.order_by
         if not UtilClient.is_unset(request.organization_id):
@@ -10863,6 +10865,8 @@ class Client(OpenApiClient):
             query['filter'] = request.filter
         if not UtilClient.is_unset(request.group_ids):
             query['groupIds'] = request.group_ids
+        if not UtilClient.is_unset(request.label_ids):
+            query['labelIds'] = request.label_ids
         if not UtilClient.is_unset(request.order_by):
             query['orderBy'] = request.order_by
         if not UtilClient.is_unset(request.organization_id):
