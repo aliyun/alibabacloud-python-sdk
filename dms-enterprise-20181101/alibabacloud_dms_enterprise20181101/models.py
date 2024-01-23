@@ -14849,9 +14849,7 @@ class GetDBTopologyRequest(TeaModel):
         logic_db_id: int = None,
         tid: int = None,
     ):
-        # The ID of the logical database.
-        # 
-        # > You can call the [ListLogicDatabases](~~141874~~) operation to query the ID of the logical database.
+        # The ID of the logical database. You can call the [ListLogicDatabases](https://www.alibabacloud.com/help/en/data-management-service/latest/listlogicdatabases) or [SearchDatabase](https://www.alibabacloud.com/help/en/data-management-service/latest/searchdatabase) operation to query the ID of the logical database.
         self.logic_db_id = logic_db_id
         # The ID of the tenant.
         # 
@@ -14900,40 +14898,31 @@ class GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList(TeaModel):
         # 
         # > If the database is a PostgreSQL database, the value of this parameter is the name of the database.
         self.catalog_name = catalog_name
-        # The ID of the logical database.
+        # The ID of the database for which the schema design is executed.
         self.db_id = db_id
-        # The type of the database. For more information about the valid values of this parameter, see [DbType parameter](~~198106~~).
+        # The type of the database engine.
         self.db_type = db_type
-        # The type of the environment to which the logical database belongs. Valid values:
+        # The type of the environment to which the database belongs. Valid values:
         # 
-        # *   **product**: production environment
-        # *   **dev**: development environment
-        # *   **pre**: pre-release environment
-        # *   **test**: test environment
-        # *   **sit**: SIT environment
-        # *   **uat**: UAT environment
-        # *   **pet**: stress testing environment
-        # *   **stag**: staging environment
-        # 
-        # > For more information, see [Change the environment type of an instance](~~163309~~).
+        # *   product: production environment
+        # *   dev: development environment
+        # *   pre: staging environment
+        # *   test: test environment
+        # *   sit: SIT environment
+        # *   uat: user acceptance testing (UAT) environment
+        # *   pet: stress testing environment
+        # *   stag: STAG environment
         self.env_type = env_type
-        # The ID of the instance in which the logical database resides.
+        # The ID of the instance. The valid value is returned if you call the ListInstances operation. The instance ID is not the ID of the RDS instance.
         self.instance_id = instance_id
-        # The ID of the resource related to the instance. The resource corresponds with the database instance type returned in the InstanceSource parameter.
-        # 
-        # *   If the value of the InstanceSource parameter is RDS, the ID of an ApsaraDB RDS instance is returned.
-        # *   If the value of the InstanceSource parameter is ECS_OWN, the ID of a self-managed database that is hosted on an Elastic Compute Service (ECS) instance is returned.
-        # *   If the value of the InstanceSource parameter is PUBLIC_OWN, an empty string is returned.
-        # *   If the value of the InstanceSource parameter is VPC_ID, the ID of a self-managed database instance in a virtual private cloud (VPC) that is connected over Express Connect circuits is returned.
-        # *   If the value of the InstanceSource parameter is GATEWAY, the ID of a database instance connected by using a database gateway is returned.
+        # Instance resource ID.
         self.instance_resource_id = instance_resource_id
-        # The type of the database instance. Valid values:
+        # The source of the database instance. Valid values:
         # 
-        # *   **RDS**: an ApsaraDB RDS instance.
-        # *   **ECS_OWN**: a self-managed database that is hosted on an ECS instance.
-        # *   **PUBLIC_OWN**: a self-managed database instance that is connected over the Internet.
-        # *   **VPC_ID**: a self-managed database instance in a VPC that is connected over Express Connect circuits.
-        # *   **GATEWAY**: a database instance connected by using a database gateway.
+        # *   **PUBLIC_OWN:** a self-managed database instance that is deployed on the Internet
+        # *   **RDS:** an ApsaraDB RDS instance
+        # *   **ECS_OWN:** a self-managed database that is deployed on an Elastic Compute Service (ECS) instance
+        # *   **VPC_IDC:** a self-managed database instance that is deployed in a data center connected over a virtual private cloud (VPC)
         self.instance_source = instance_source
         # The ID of the region in which the instance resides.
         self.region_id = region_id
@@ -14941,7 +14930,7 @@ class GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList(TeaModel):
         # 
         # > If the database is a PostgreSQL database, the value of this parameter is the name of the database schema.
         self.schema_name = schema_name
-        # The name that is used to search for the database.
+        # The name of the saved search.
         self.search_name = search_name
 
     def validate(self):
@@ -15011,30 +15000,28 @@ class GetDBTopologyResponseBodyDBTopology(TeaModel):
         logic_db_name: str = None,
         search_name: str = None,
     ):
-        # The alias of the logical database.
+        # The alias of the access point.
         self.alias = alias
-        # The topologies of the physical database shards.
+        # The list of database splitting topology information.
         self.dbtopology_info_list = dbtopology_info_list
-        # The type of the database. For more information about the valid values of this parameter, see [DbType parameter](~~198106~~).
+        # The type of the database engine.
         self.db_type = db_type
-        # The type of the environment to which the logical database belongs. Valid values:
+        # The type of the environment in which the database instance is deployed. Valid values:
         # 
-        # *   **product**: production environment
-        # *   **dev**: development environment
-        # *   **pre**: pre-release environment
-        # *   **test**: test environment
-        # *   **sit**: system integration testing (SIT) environment
-        # *   **uat**: user acceptance testing (UAT) environment
-        # *   **pet**: stress testing environment
-        # *   **stag**: staging environment
-        # 
-        # > For more information, see [Change the environment type of an instance](~~163309~~).
+        # *   product: production environment
+        # *   dev: development environment
+        # *   pre: pre-release environment
+        # *   test: test environment
+        # *   sit: system integration testing (SIT) environment
+        # *   uat: user acceptance testing (UAT) environment
+        # *   pet: stress testing environment
+        # *   stag: staging environment
         self.env_type = env_type
         # The ID of the logical database.
         self.logic_db_id = logic_db_id
-        # The name of the logical database.
+        # Logical database name.
         self.logic_db_name = logic_db_name
-        # The name that is used to search for the logical database.
+        # The name of the saved search.
         self.search_name = search_name
 
     def validate(self):
@@ -15098,15 +15085,18 @@ class GetDBTopologyResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The topology of the logical database.
+        # The topology of the data table.
         self.dbtopology = dbtopology
         # The error code.
         self.error_code = error_code
-        # The error message.
+        # The error message returned if the request failed.
         self.error_message = error_message
         # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   **true**: The request is successful.
+        # *   **false**: The request fails.
         self.success = success
 
     def validate(self):
