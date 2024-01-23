@@ -2788,6 +2788,8 @@ class Client(OpenApiClient):
             query['OutputCharInfo'] = request.output_char_info
         if not UtilClient.is_unset(request.output_table):
             query['OutputTable'] = request.output_table
+        if not UtilClient.is_unset(request.paragraph):
+            query['Paragraph'] = request.paragraph
         if not UtilClient.is_unset(request.url):
             query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
@@ -2826,6 +2828,8 @@ class Client(OpenApiClient):
             query['OutputCharInfo'] = request.output_char_info
         if not UtilClient.is_unset(request.output_table):
             query['OutputTable'] = request.output_table
+        if not UtilClient.is_unset(request.paragraph):
+            query['Paragraph'] = request.paragraph
         if not UtilClient.is_unset(request.url):
             query['Url'] = request.url
         req = open_api_models.OpenApiRequest(

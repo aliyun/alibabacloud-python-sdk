@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_ocr-api20210707.
 
-Created on 09/01/2024
+Created on 23/01/2024
 
 @author: Alibaba Cloud SDK
 """

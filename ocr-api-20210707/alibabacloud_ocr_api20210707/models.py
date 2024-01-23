@@ -7140,6 +7140,7 @@ class RecognizeHandwritingRequest(TeaModel):
         need_sort_page: bool = None,
         output_char_info: bool = None,
         output_table: bool = None,
+        paragraph: bool = None,
         url: str = None,
         body: BinaryIO = None,
     ):
@@ -7147,6 +7148,7 @@ class RecognizeHandwritingRequest(TeaModel):
         self.need_sort_page = need_sort_page
         self.output_char_info = output_char_info
         self.output_table = output_table
+        self.paragraph = paragraph
         self.url = url
         self.body = body
 
@@ -7167,6 +7169,8 @@ class RecognizeHandwritingRequest(TeaModel):
             result['OutputCharInfo'] = self.output_char_info
         if self.output_table is not None:
             result['OutputTable'] = self.output_table
+        if self.paragraph is not None:
+            result['Paragraph'] = self.paragraph
         if self.url is not None:
             result['Url'] = self.url
         if self.body is not None:
@@ -7183,6 +7187,8 @@ class RecognizeHandwritingRequest(TeaModel):
             self.output_char_info = m.get('OutputCharInfo')
         if m.get('OutputTable') is not None:
             self.output_table = m.get('OutputTable')
+        if m.get('Paragraph') is not None:
+            self.paragraph = m.get('Paragraph')
         if m.get('Url') is not None:
             self.url = m.get('Url')
         if m.get('body') is not None:
