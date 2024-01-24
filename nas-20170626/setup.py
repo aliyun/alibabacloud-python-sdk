@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_nas20170626.
 
-Created on 26/12/2023
+Created on 24/01/2024
 
 @author: Alibaba Cloud SDK
 """
