@@ -3647,6 +3647,39 @@ class CreateQuotaResponse(TeaModel):
         return self
 
 
+class CreateResourceGroupRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateResourceGroupRequest(TeaModel):
     def __init__(
         self,
@@ -3654,15 +3687,21 @@ class CreateResourceGroupRequest(TeaModel):
         description: str = None,
         name: str = None,
         resource_type: str = None,
+        tag: List[CreateResourceGroupRequestTag] = None,
         user_vpc: UserVpc = None,
     ):
         self.computing_resource_provider = computing_resource_provider
         self.description = description
         self.name = name
         self.resource_type = resource_type
+        self.tag = tag
         self.user_vpc = user_vpc
 
     def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
         if self.user_vpc:
             self.user_vpc.validate()
 
@@ -3680,6 +3719,10 @@ class CreateResourceGroupRequest(TeaModel):
             result['Name'] = self.name
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.user_vpc is not None:
             result['UserVpc'] = self.user_vpc.to_map()
         return result
@@ -3694,6 +3737,11 @@ class CreateResourceGroupRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateResourceGroupRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('UserVpc') is not None:
             temp_model = UserVpc()
             self.user_vpc = temp_model.from_map(m['UserVpc'])
@@ -4052,6 +4100,51 @@ class CreateTrainingJobRequestScheduler(TeaModel):
         return self
 
 
+class CreateTrainingJobRequestSettings(TeaModel):
+    def __init__(
+        self,
+        aimaster_type: str = None,
+        enable_error_monitoring_in_aimaster: bool = None,
+        error_monitoring_args: str = None,
+        priority: int = None,
+    ):
+        self.aimaster_type = aimaster_type
+        self.enable_error_monitoring_in_aimaster = enable_error_monitoring_in_aimaster
+        self.error_monitoring_args = error_monitoring_args
+        self.priority = priority
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aimaster_type is not None:
+            result['AIMasterType'] = self.aimaster_type
+        if self.enable_error_monitoring_in_aimaster is not None:
+            result['EnableErrorMonitoringInAIMaster'] = self.enable_error_monitoring_in_aimaster
+        if self.error_monitoring_args is not None:
+            result['ErrorMonitoringArgs'] = self.error_monitoring_args
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AIMasterType') is not None:
+            self.aimaster_type = m.get('AIMasterType')
+        if m.get('EnableErrorMonitoringInAIMaster') is not None:
+            self.enable_error_monitoring_in_aimaster = m.get('EnableErrorMonitoringInAIMaster')
+        if m.get('ErrorMonitoringArgs') is not None:
+            self.error_monitoring_args = m.get('ErrorMonitoringArgs')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        return self
+
+
 class CreateTrainingJobRequestUserVpc(TeaModel):
     def __init__(
         self,
@@ -4118,6 +4211,7 @@ class CreateTrainingJobRequest(TeaModel):
         output_channels: List[CreateTrainingJobRequestOutputChannels] = None,
         role_arn: str = None,
         scheduler: CreateTrainingJobRequestScheduler = None,
+        settings: CreateTrainingJobRequestSettings = None,
         training_job_description: str = None,
         training_job_name: str = None,
         user_vpc: CreateTrainingJobRequestUserVpc = None,
@@ -4135,6 +4229,7 @@ class CreateTrainingJobRequest(TeaModel):
         self.output_channels = output_channels
         self.role_arn = role_arn
         self.scheduler = scheduler
+        self.settings = settings
         self.training_job_description = training_job_description
         self.training_job_name = training_job_name
         self.user_vpc = user_vpc
@@ -4165,6 +4260,8 @@ class CreateTrainingJobRequest(TeaModel):
                     k.validate()
         if self.scheduler:
             self.scheduler.validate()
+        if self.settings:
+            self.settings.validate()
         if self.user_vpc:
             self.user_vpc.validate()
 
@@ -4206,6 +4303,8 @@ class CreateTrainingJobRequest(TeaModel):
             result['RoleArn'] = self.role_arn
         if self.scheduler is not None:
             result['Scheduler'] = self.scheduler.to_map()
+        if self.settings is not None:
+            result['Settings'] = self.settings.to_map()
         if self.training_job_description is not None:
             result['TrainingJobDescription'] = self.training_job_description
         if self.training_job_name is not None:
@@ -4258,6 +4357,9 @@ class CreateTrainingJobRequest(TeaModel):
         if m.get('Scheduler') is not None:
             temp_model = CreateTrainingJobRequestScheduler()
             self.scheduler = temp_model.from_map(m['Scheduler'])
+        if m.get('Settings') is not None:
+            temp_model = CreateTrainingJobRequestSettings()
+            self.settings = temp_model.from_map(m['Settings'])
         if m.get('TrainingJobDescription') is not None:
             self.training_job_description = m.get('TrainingJobDescription')
         if m.get('TrainingJobName') is not None:
@@ -5450,12 +5552,88 @@ class GetQuotaResponse(TeaModel):
         return self
 
 
+class GetResourceGroupRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class GetResourceGroupRequest(TeaModel):
     def __init__(
         self,
         is_aiworkspace_data_enabled: bool = None,
+        tag: List[GetResourceGroupRequestTag] = None,
     ):
         self.is_aiworkspace_data_enabled = is_aiworkspace_data_enabled
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_aiworkspace_data_enabled is not None:
+            result['IsAIWorkspaceDataEnabled'] = self.is_aiworkspace_data_enabled
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsAIWorkspaceDataEnabled') is not None:
+            self.is_aiworkspace_data_enabled = m.get('IsAIWorkspaceDataEnabled')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = GetResourceGroupRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class GetResourceGroupShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        is_aiworkspace_data_enabled: bool = None,
+        tag_shrink: str = None,
+    ):
+        self.is_aiworkspace_data_enabled = is_aiworkspace_data_enabled
+        self.tag_shrink = tag_shrink
 
     def validate(self):
         pass
@@ -5468,12 +5646,49 @@ class GetResourceGroupRequest(TeaModel):
         result = dict()
         if self.is_aiworkspace_data_enabled is not None:
             result['IsAIWorkspaceDataEnabled'] = self.is_aiworkspace_data_enabled
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('IsAIWorkspaceDataEnabled') is not None:
             self.is_aiworkspace_data_enabled = m.get('IsAIWorkspaceDataEnabled')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
+        return self
+
+
+class GetResourceGroupResponseBodyTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
         return self
 
 
@@ -5483,6 +5698,7 @@ class GetResourceGroupResponseBody(TeaModel):
         cluster_id: str = None,
         computing_resource_provider: str = None,
         creator_id: str = None,
+        description: str = None,
         gmt_created_time: str = None,
         gmt_modified_time: str = None,
         name: str = None,
@@ -5490,12 +5706,14 @@ class GetResourceGroupResponseBody(TeaModel):
         resource_type: str = None,
         status: str = None,
         support_rdma: bool = None,
+        tags: List[GetResourceGroupResponseBodyTags] = None,
         user_vpc: UserVpc = None,
         workspace_id: str = None,
     ):
         self.cluster_id = cluster_id
         self.computing_resource_provider = computing_resource_provider
         self.creator_id = creator_id
+        self.description = description
         self.gmt_created_time = gmt_created_time
         self.gmt_modified_time = gmt_modified_time
         self.name = name
@@ -5503,10 +5721,15 @@ class GetResourceGroupResponseBody(TeaModel):
         self.resource_type = resource_type
         self.status = status
         self.support_rdma = support_rdma
+        self.tags = tags
         self.user_vpc = user_vpc
         self.workspace_id = workspace_id
 
     def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
         if self.user_vpc:
             self.user_vpc.validate()
 
@@ -5522,6 +5745,8 @@ class GetResourceGroupResponseBody(TeaModel):
             result['ComputingResourceProvider'] = self.computing_resource_provider
         if self.creator_id is not None:
             result['CreatorID'] = self.creator_id
+        if self.description is not None:
+            result['Description'] = self.description
         if self.gmt_created_time is not None:
             result['GmtCreatedTime'] = self.gmt_created_time
         if self.gmt_modified_time is not None:
@@ -5536,6 +5761,10 @@ class GetResourceGroupResponseBody(TeaModel):
             result['Status'] = self.status
         if self.support_rdma is not None:
             result['SupportRDMA'] = self.support_rdma
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.user_vpc is not None:
             result['UserVpc'] = self.user_vpc.to_map()
         if self.workspace_id is not None:
@@ -5550,6 +5779,8 @@ class GetResourceGroupResponseBody(TeaModel):
             self.computing_resource_provider = m.get('ComputingResourceProvider')
         if m.get('CreatorID') is not None:
             self.creator_id = m.get('CreatorID')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('GmtCreatedTime') is not None:
             self.gmt_created_time = m.get('GmtCreatedTime')
         if m.get('GmtModifiedTime') is not None:
@@ -5564,6 +5795,11 @@ class GetResourceGroupResponseBody(TeaModel):
             self.status = m.get('Status')
         if m.get('SupportRDMA') is not None:
             self.support_rdma = m.get('SupportRDMA')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetResourceGroupResponseBodyTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('UserVpc') is not None:
             temp_model = UserVpc()
             self.user_vpc = temp_model.from_map(m['UserVpc'])
@@ -5616,6 +5852,134 @@ class GetResourceGroupResponse(TeaModel):
         return self
 
 
+class GetResourceGroupMachineGroupRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetResourceGroupMachineGroupRequest(TeaModel):
+    def __init__(
+        self,
+        tag: List[GetResourceGroupMachineGroupRequestTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = GetResourceGroupMachineGroupRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class GetResourceGroupMachineGroupShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        tag_shrink: str = None,
+    ):
+        self.tag_shrink = tag_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
+        return self
+
+
+class GetResourceGroupMachineGroupResponseBodyTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
 class GetResourceGroupMachineGroupResponseBody(TeaModel):
     def __init__(
         self,
@@ -5631,6 +5995,7 @@ class GetResourceGroupMachineGroupResponseBody(TeaModel):
         gpu_type: str = None,
         machine_group_id: str = None,
         memory: str = None,
+        name: str = None,
         payment_duration: str = None,
         payment_duration_unit: str = None,
         payment_type: str = None,
@@ -5638,6 +6003,7 @@ class GetResourceGroupMachineGroupResponseBody(TeaModel):
         resource_group_id: str = None,
         status: str = None,
         supported_drivers: List[str] = None,
+        tags: List[GetResourceGroupMachineGroupResponseBodyTags] = None,
     ):
         self.cpu = cpu
         self.default_driver = default_driver
@@ -5651,6 +6017,7 @@ class GetResourceGroupMachineGroupResponseBody(TeaModel):
         self.gpu_type = gpu_type
         self.machine_group_id = machine_group_id
         self.memory = memory
+        self.name = name
         self.payment_duration = payment_duration
         self.payment_duration_unit = payment_duration_unit
         self.payment_type = payment_type
@@ -5658,9 +6025,13 @@ class GetResourceGroupMachineGroupResponseBody(TeaModel):
         self.resource_group_id = resource_group_id
         self.status = status
         self.supported_drivers = supported_drivers
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5692,6 +6063,8 @@ class GetResourceGroupMachineGroupResponseBody(TeaModel):
             result['MachineGroupID'] = self.machine_group_id
         if self.memory is not None:
             result['Memory'] = self.memory
+        if self.name is not None:
+            result['Name'] = self.name
         if self.payment_duration is not None:
             result['PaymentDuration'] = self.payment_duration
         if self.payment_duration_unit is not None:
@@ -5706,6 +6079,10 @@ class GetResourceGroupMachineGroupResponseBody(TeaModel):
             result['Status'] = self.status
         if self.supported_drivers is not None:
             result['SupportedDrivers'] = self.supported_drivers
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -5734,6 +6111,8 @@ class GetResourceGroupMachineGroupResponseBody(TeaModel):
             self.machine_group_id = m.get('MachineGroupID')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('PaymentDuration') is not None:
             self.payment_duration = m.get('PaymentDuration')
         if m.get('PaymentDurationUnit') is not None:
@@ -5748,6 +6127,11 @@ class GetResourceGroupMachineGroupResponseBody(TeaModel):
             self.status = m.get('Status')
         if m.get('SupportedDrivers') is not None:
             self.supported_drivers = m.get('SupportedDrivers')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetResourceGroupMachineGroupResponseBodyTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -6539,6 +6923,51 @@ class GetTrainingJobResponseBodyScheduler(TeaModel):
         return self
 
 
+class GetTrainingJobResponseBodySettings(TeaModel):
+    def __init__(
+        self,
+        aimaster_type: str = None,
+        enable_error_monitoring_in_aimaster: bool = None,
+        error_monitoring_args: str = None,
+        priority: int = None,
+    ):
+        self.aimaster_type = aimaster_type
+        self.enable_error_monitoring_in_aimaster = enable_error_monitoring_in_aimaster
+        self.error_monitoring_args = error_monitoring_args
+        self.priority = priority
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aimaster_type is not None:
+            result['AIMasterType'] = self.aimaster_type
+        if self.enable_error_monitoring_in_aimaster is not None:
+            result['EnableErrorMonitoringInAIMaster'] = self.enable_error_monitoring_in_aimaster
+        if self.error_monitoring_args is not None:
+            result['ErrorMonitoringArgs'] = self.error_monitoring_args
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AIMasterType') is not None:
+            self.aimaster_type = m.get('AIMasterType')
+        if m.get('EnableErrorMonitoringInAIMaster') is not None:
+            self.enable_error_monitoring_in_aimaster = m.get('EnableErrorMonitoringInAIMaster')
+        if m.get('ErrorMonitoringArgs') is not None:
+            self.error_monitoring_args = m.get('ErrorMonitoringArgs')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        return self
+
+
 class GetTrainingJobResponseBodyStatusTransitions(TeaModel):
     def __init__(
         self,
@@ -6660,6 +7089,7 @@ class GetTrainingJobResponseBody(TeaModel):
         request_id: str = None,
         role_arn: str = None,
         scheduler: GetTrainingJobResponseBodyScheduler = None,
+        settings: GetTrainingJobResponseBodySettings = None,
         status: str = None,
         status_transitions: List[GetTrainingJobResponseBodyStatusTransitions] = None,
         training_job_description: str = None,
@@ -6692,6 +7122,7 @@ class GetTrainingJobResponseBody(TeaModel):
         self.request_id = request_id
         self.role_arn = role_arn
         self.scheduler = scheduler
+        self.settings = settings
         self.status = status
         self.status_transitions = status_transitions
         self.training_job_description = training_job_description
@@ -6737,6 +7168,8 @@ class GetTrainingJobResponseBody(TeaModel):
             self.output_model.validate()
         if self.scheduler:
             self.scheduler.validate()
+        if self.settings:
+            self.settings.validate()
         if self.status_transitions:
             for k in self.status_transitions:
                 if k:
@@ -6806,6 +7239,8 @@ class GetTrainingJobResponseBody(TeaModel):
             result['RoleArn'] = self.role_arn
         if self.scheduler is not None:
             result['Scheduler'] = self.scheduler.to_map()
+        if self.settings is not None:
+            result['Settings'] = self.settings.to_map()
         if self.status is not None:
             result['Status'] = self.status
         result['StatusTransitions'] = []
@@ -6897,6 +7332,9 @@ class GetTrainingJobResponseBody(TeaModel):
         if m.get('Scheduler') is not None:
             temp_model = GetTrainingJobResponseBodyScheduler()
             self.scheduler = temp_model.from_map(m['Scheduler'])
+        if m.get('Settings') is not None:
+            temp_model = GetTrainingJobResponseBodySettings()
+            self.settings = temp_model.from_map(m['Settings'])
         if m.get('Status') is not None:
             self.status = m.get('Status')
         self.status_transitions = []
@@ -7549,6 +7987,7 @@ class ListQuotasRequest(TeaModel):
     def __init__(
         self,
         labels: str = None,
+        layout_mode: str = None,
         order: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -7561,6 +8000,7 @@ class ListQuotasRequest(TeaModel):
         workspace_ids: str = None,
     ):
         self.labels = labels
+        self.layout_mode = layout_mode
         self.order = order
         self.page_number = page_number
         self.page_size = page_size
@@ -7583,6 +8023,8 @@ class ListQuotasRequest(TeaModel):
         result = dict()
         if self.labels is not None:
             result['Labels'] = self.labels
+        if self.layout_mode is not None:
+            result['LayoutMode'] = self.layout_mode
         if self.order is not None:
             result['Order'] = self.order
         if self.page_number is not None:
@@ -7609,6 +8051,8 @@ class ListQuotasRequest(TeaModel):
         m = m or dict()
         if m.get('Labels') is not None:
             self.labels = m.get('Labels')
+        if m.get('LayoutMode') is not None:
+            self.layout_mode = m.get('LayoutMode')
         if m.get('Order') is not None:
             self.order = m.get('Order')
         if m.get('PageNumber') is not None:
@@ -9827,9 +10271,13 @@ class UpdateQuotaResponse(TeaModel):
 class UpdateResourceGroupRequest(TeaModel):
     def __init__(
         self,
+        description: str = None,
+        name: str = None,
         unbind: bool = None,
         user_vpc: UserVpc = None,
     ):
+        self.description = description
+        self.name = name
         self.unbind = unbind
         self.user_vpc = user_vpc
 
@@ -9843,6 +10291,10 @@ class UpdateResourceGroupRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
         if self.unbind is not None:
             result['Unbind'] = self.unbind
         if self.user_vpc is not None:
@@ -9851,6 +10303,10 @@ class UpdateResourceGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('Unbind') is not None:
             self.unbind = m.get('Unbind')
         if m.get('UserVpc') is not None:

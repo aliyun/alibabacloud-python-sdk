@@ -367,6 +367,8 @@ class Client(OpenApiClient):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.resource_type):
             body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         if not UtilClient.is_unset(request.user_vpc):
             body['UserVpc'] = request.user_vpc
         req = open_api_models.OpenApiRequest(
@@ -405,6 +407,8 @@ class Client(OpenApiClient):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.resource_type):
             body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         if not UtilClient.is_unset(request.user_vpc):
             body['UserVpc'] = request.user_vpc
         req = open_api_models.OpenApiRequest(
@@ -475,6 +479,8 @@ class Client(OpenApiClient):
             body['RoleArn'] = request.role_arn
         if not UtilClient.is_unset(request.scheduler):
             body['Scheduler'] = request.scheduler
+        if not UtilClient.is_unset(request.settings):
+            body['Settings'] = request.settings
         if not UtilClient.is_unset(request.training_job_description):
             body['TrainingJobDescription'] = request.training_job_description
         if not UtilClient.is_unset(request.training_job_name):
@@ -535,6 +541,8 @@ class Client(OpenApiClient):
             body['RoleArn'] = request.role_arn
         if not UtilClient.is_unset(request.scheduler):
             body['Scheduler'] = request.scheduler
+        if not UtilClient.is_unset(request.settings):
+            body['Settings'] = request.settings
         if not UtilClient.is_unset(request.training_job_description):
             body['TrainingJobDescription'] = request.training_job_description
         if not UtilClient.is_unset(request.training_job_name):
@@ -1218,14 +1226,20 @@ class Client(OpenApiClient):
     def get_resource_group_with_options(
         self,
         resource_group_id: str,
-        request: pai_studio_20220112_models.GetResourceGroupRequest,
+        tmp_req: pai_studio_20220112_models.GetResourceGroupRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetResourceGroupResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = pai_studio_20220112_models.GetResourceGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.is_aiworkspace_data_enabled):
             query['IsAIWorkspaceDataEnabled'] = request.is_aiworkspace_data_enabled
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1249,14 +1263,20 @@ class Client(OpenApiClient):
     async def get_resource_group_with_options_async(
         self,
         resource_group_id: str,
-        request: pai_studio_20220112_models.GetResourceGroupRequest,
+        tmp_req: pai_studio_20220112_models.GetResourceGroupRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetResourceGroupResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = pai_studio_20220112_models.GetResourceGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.is_aiworkspace_data_enabled):
             query['IsAIWorkspaceDataEnabled'] = request.is_aiworkspace_data_enabled
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1299,11 +1319,21 @@ class Client(OpenApiClient):
         self,
         machine_group_id: str,
         resource_group_id: str,
+        tmp_req: pai_studio_20220112_models.GetResourceGroupMachineGroupRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetResourceGroupMachineGroupResponse:
+        UtilClient.validate_model(tmp_req)
+        request = pai_studio_20220112_models.GetResourceGroupMachineGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetResourceGroupMachineGroup',
@@ -1325,11 +1355,21 @@ class Client(OpenApiClient):
         self,
         machine_group_id: str,
         resource_group_id: str,
+        tmp_req: pai_studio_20220112_models.GetResourceGroupMachineGroupRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetResourceGroupMachineGroupResponse:
+        UtilClient.validate_model(tmp_req)
+        request = pai_studio_20220112_models.GetResourceGroupMachineGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetResourceGroupMachineGroup',
@@ -1351,19 +1391,21 @@ class Client(OpenApiClient):
         self,
         machine_group_id: str,
         resource_group_id: str,
+        request: pai_studio_20220112_models.GetResourceGroupMachineGroupRequest,
     ) -> pai_studio_20220112_models.GetResourceGroupMachineGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_resource_group_machine_group_with_options(machine_group_id, resource_group_id, headers, runtime)
+        return self.get_resource_group_machine_group_with_options(machine_group_id, resource_group_id, request, headers, runtime)
 
     async def get_resource_group_machine_group_async(
         self,
         machine_group_id: str,
         resource_group_id: str,
+        request: pai_studio_20220112_models.GetResourceGroupMachineGroupRequest,
     ) -> pai_studio_20220112_models.GetResourceGroupMachineGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_resource_group_machine_group_with_options_async(machine_group_id, resource_group_id, headers, runtime)
+        return await self.get_resource_group_machine_group_with_options_async(machine_group_id, resource_group_id, request, headers, runtime)
 
     def get_resource_group_request_with_options(
         self,
@@ -1881,6 +1923,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.labels):
             query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.layout_mode):
+            query['LayoutMode'] = request.layout_mode
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
@@ -1931,6 +1975,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.labels):
             query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.layout_mode):
+            query['LayoutMode'] = request.layout_mode
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
@@ -2974,6 +3020,10 @@ class Client(OpenApiClient):
     ) -> pai_studio_20220112_models.UpdateResourceGroupResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
         if not UtilClient.is_unset(request.unbind):
             body['Unbind'] = request.unbind
         if not UtilClient.is_unset(request.user_vpc):
@@ -3007,6 +3057,10 @@ class Client(OpenApiClient):
     ) -> pai_studio_20220112_models.UpdateResourceGroupResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
         if not UtilClient.is_unset(request.unbind):
             body['Unbind'] = request.unbind
         if not UtilClient.is_unset(request.user_vpc):
