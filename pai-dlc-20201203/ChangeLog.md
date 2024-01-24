@@ -1,3 +1,6 @@
+2024-01-24 Version: 1.4.1
+- Generated python 2020-12-03 for pai-dlc.
+
 2024-01-08 Version: 1.4.0
 - Generated python 2020-12-03 for pai-dlc.
 

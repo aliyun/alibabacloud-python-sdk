@@ -1417,12 +1417,16 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accelerator_type):
             query['AcceleratorType'] = request.accelerator_type
+        if not UtilClient.is_unset(request.instance_types):
+            query['InstanceTypes'] = request.instance_types
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
         req = open_api_models.OpenApiRequest(
@@ -1455,12 +1459,16 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accelerator_type):
             query['AcceleratorType'] = request.accelerator_type
+        if not UtilClient.is_unset(request.instance_types):
+            query['InstanceTypes'] = request.instance_types
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
         req = open_api_models.OpenApiRequest(
@@ -1627,6 +1635,8 @@ class Client(OpenApiClient):
             query['Tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.user_id_for_filter):
             query['UserIdForFilter'] = request.user_id_for_filter
+        if not UtilClient.is_unset(request.username):
+            query['Username'] = request.username
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -1697,6 +1707,8 @@ class Client(OpenApiClient):
             query['Tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.user_id_for_filter):
             query['UserIdForFilter'] = request.user_id_for_filter
+        if not UtilClient.is_unset(request.username):
+            query['Username'] = request.username
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(

@@ -724,6 +724,7 @@ class EcsSpec(TeaModel):
         instance_type: str = None,
         is_available: bool = None,
         memory: int = None,
+        resource_type: str = None,
     ):
         self.accelerator_type = accelerator_type
         self.cpu = cpu
@@ -732,6 +733,7 @@ class EcsSpec(TeaModel):
         self.instance_type = instance_type
         self.is_available = is_available
         self.memory = memory
+        self.resource_type = resource_type
 
     def validate(self):
         pass
@@ -756,6 +758,8 @@ class EcsSpec(TeaModel):
             result['IsAvailable'] = self.is_available
         if self.memory is not None:
             result['Memory'] = self.memory
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         return result
 
     def from_map(self, m: dict = None):
@@ -774,6 +778,8 @@ class EcsSpec(TeaModel):
             self.is_available = m.get('IsAvailable')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         return self
 
 
@@ -1718,13 +1724,16 @@ class JobItem(TeaModel):
         resource_id: str = None,
         resource_level: str = None,
         resource_name: str = None,
+        resource_type: str = None,
         settings: JobSettings = None,
         status: str = None,
         sub_status: str = None,
         thirdparty_lib_dir: str = None,
         thirdparty_libs: List[str] = None,
+        use_oversold_resource: bool = None,
         user_command: str = None,
         user_id: str = None,
+        username: str = None,
         workspace_id: str = None,
         workspace_name: str = None,
     ):
@@ -1750,13 +1759,16 @@ class JobItem(TeaModel):
         self.resource_id = resource_id
         self.resource_level = resource_level
         self.resource_name = resource_name
+        self.resource_type = resource_type
         self.settings = settings
         self.status = status
         self.sub_status = sub_status
         self.thirdparty_lib_dir = thirdparty_lib_dir
         self.thirdparty_libs = thirdparty_libs
+        self.use_oversold_resource = use_oversold_resource
         self.user_command = user_command
         self.user_id = user_id
+        self.username = username
         self.workspace_id = workspace_id
         self.workspace_name = workspace_name
 
@@ -1828,6 +1840,8 @@ class JobItem(TeaModel):
             result['ResourceLevel'] = self.resource_level
         if self.resource_name is not None:
             result['ResourceName'] = self.resource_name
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         if self.settings is not None:
             result['Settings'] = self.settings.to_map()
         if self.status is not None:
@@ -1838,10 +1852,14 @@ class JobItem(TeaModel):
             result['ThirdpartyLibDir'] = self.thirdparty_lib_dir
         if self.thirdparty_libs is not None:
             result['ThirdpartyLibs'] = self.thirdparty_libs
+        if self.use_oversold_resource is not None:
+            result['UseOversoldResource'] = self.use_oversold_resource
         if self.user_command is not None:
             result['UserCommand'] = self.user_command
         if self.user_id is not None:
             result['UserId'] = self.user_id
+        if self.username is not None:
+            result['Username'] = self.username
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         if self.workspace_name is not None:
@@ -1901,6 +1919,8 @@ class JobItem(TeaModel):
             self.resource_level = m.get('ResourceLevel')
         if m.get('ResourceName') is not None:
             self.resource_name = m.get('ResourceName')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         if m.get('Settings') is not None:
             temp_model = JobSettings()
             self.settings = temp_model.from_map(m['Settings'])
@@ -1912,10 +1932,14 @@ class JobItem(TeaModel):
             self.thirdparty_lib_dir = m.get('ThirdpartyLibDir')
         if m.get('ThirdpartyLibs') is not None:
             self.thirdparty_libs = m.get('ThirdpartyLibs')
+        if m.get('UseOversoldResource') is not None:
+            self.use_oversold_resource = m.get('UseOversoldResource')
         if m.get('UserCommand') is not None:
             self.user_command = m.get('UserCommand')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         if m.get('WorkspaceName') is not None:
@@ -3975,6 +3999,7 @@ class GetJobResponseBody(TeaModel):
         request_id: str = None,
         resource_id: str = None,
         resource_level: str = None,
+        resource_type: str = None,
         restart_times: str = None,
         settings: JobSettings = None,
         status: str = None,
@@ -4013,6 +4038,7 @@ class GetJobResponseBody(TeaModel):
         self.request_id = request_id
         self.resource_id = resource_id
         self.resource_level = resource_level
+        self.resource_type = resource_type
         self.restart_times = restart_times
         self.settings = settings
         self.status = status
@@ -4112,6 +4138,8 @@ class GetJobResponseBody(TeaModel):
             result['ResourceId'] = self.resource_id
         if self.resource_level is not None:
             result['ResourceLevel'] = self.resource_level
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         if self.restart_times is not None:
             result['RestartTimes'] = self.restart_times
         if self.settings is not None:
@@ -4203,6 +4231,8 @@ class GetJobResponseBody(TeaModel):
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceLevel') is not None:
             self.resource_level = m.get('ResourceLevel')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         if m.get('RestartTimes') is not None:
             self.restart_times = m.get('RestartTimes')
         if m.get('Settings') is not None:
@@ -5376,15 +5406,19 @@ class ListEcsSpecsRequest(TeaModel):
     def __init__(
         self,
         accelerator_type: str = None,
+        instance_types: str = None,
         order: str = None,
         page_number: int = None,
         page_size: int = None,
+        resource_type: str = None,
         sort_by: str = None,
     ):
         self.accelerator_type = accelerator_type
+        self.instance_types = instance_types
         self.order = order
         self.page_number = page_number
         self.page_size = page_size
+        self.resource_type = resource_type
         self.sort_by = sort_by
 
     def validate(self):
@@ -5398,12 +5432,16 @@ class ListEcsSpecsRequest(TeaModel):
         result = dict()
         if self.accelerator_type is not None:
             result['AcceleratorType'] = self.accelerator_type
+        if self.instance_types is not None:
+            result['InstanceTypes'] = self.instance_types
         if self.order is not None:
             result['Order'] = self.order
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
         return result
@@ -5412,12 +5450,16 @@ class ListEcsSpecsRequest(TeaModel):
         m = m or dict()
         if m.get('AcceleratorType') is not None:
             self.accelerator_type = m.get('AcceleratorType')
+        if m.get('InstanceTypes') is not None:
+            self.instance_types = m.get('InstanceTypes')
         if m.get('Order') is not None:
             self.order = m.get('Order')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
         return self
@@ -5660,6 +5702,7 @@ class ListJobsRequest(TeaModel):
         status: str = None,
         tags: Dict[str, str] = None,
         user_id_for_filter: str = None,
+        username: str = None,
         workspace_id: str = None,
     ):
         self.business_user_id = business_user_id
@@ -5680,6 +5723,7 @@ class ListJobsRequest(TeaModel):
         self.status = status
         self.tags = tags
         self.user_id_for_filter = user_id_for_filter
+        self.username = username
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -5727,6 +5771,8 @@ class ListJobsRequest(TeaModel):
             result['Tags'] = self.tags
         if self.user_id_for_filter is not None:
             result['UserIdForFilter'] = self.user_id_for_filter
+        if self.username is not None:
+            result['Username'] = self.username
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -5769,6 +5815,8 @@ class ListJobsRequest(TeaModel):
             self.tags = m.get('Tags')
         if m.get('UserIdForFilter') is not None:
             self.user_id_for_filter = m.get('UserIdForFilter')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -5795,6 +5843,7 @@ class ListJobsShrinkRequest(TeaModel):
         status: str = None,
         tags_shrink: str = None,
         user_id_for_filter: str = None,
+        username: str = None,
         workspace_id: str = None,
     ):
         self.business_user_id = business_user_id
@@ -5815,6 +5864,7 @@ class ListJobsShrinkRequest(TeaModel):
         self.status = status
         self.tags_shrink = tags_shrink
         self.user_id_for_filter = user_id_for_filter
+        self.username = username
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -5862,6 +5912,8 @@ class ListJobsShrinkRequest(TeaModel):
             result['Tags'] = self.tags_shrink
         if self.user_id_for_filter is not None:
             result['UserIdForFilter'] = self.user_id_for_filter
+        if self.username is not None:
+            result['Username'] = self.username
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -5904,6 +5956,8 @@ class ListJobsShrinkRequest(TeaModel):
             self.tags_shrink = m.get('Tags')
         if m.get('UserIdForFilter') is not None:
             self.user_id_for_filter = m.get('UserIdForFilter')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
