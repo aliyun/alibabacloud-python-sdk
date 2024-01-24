@@ -15,12 +15,19 @@ class DataValue(TeaModel):
         deleted: int = None,
         create_timestamp: int = None,
     ):
+        # The Alibaba Cloud account ID or Resource Access Management (RAM) user to which the AccessKey pair that is used to create the static username and password belongs.
         self.master_uid = master_uid
+        # The ID of the ApsaraMQ for RabbitMQ instance.
         self.c_instance_id = c_instance_id
+        # The AccessKey ID that is used to create the static username and password.
         self.access_key = access_key
+        # The static username.
         self.user_name = user_name
+        # The static password.
         self.password = password
+        # The timestamp that indicates when the static username and password were deleted. Unit: milliseconds.
         self.deleted = deleted
+        # The timestamp that indicates when the static username and password were created. Unit: milliseconds.
         self.create_timestamp = create_timestamp
 
     def validate(self):
@@ -77,11 +84,27 @@ class CreateAccountRequest(TeaModel):
         signature: str = None,
         user_name: str = None,
     ):
+        # The AccessKey ID of your Alibaba Cloud account or RAM user. For information about how to obtain an AccessKey pair, see [Create an AccessKey pair](~~116401~~).
+        # 
+        # >  If you use the pair of static username and password that is created by using the Accesskey pair of a RAM user to access ApsaraMQ for RabbitMQ to send and receive messages, make sure that the RAM user is granted the required permissions. For more information, see [RAM policies](~~146559~~).
         self.account_access_key = account_access_key
+        # The timestamp that indicates when the password is created. Unit: milliseconds.
+        # 
+        # >  This timestamp is specified by you and is used to generate a static password. The timestamp is not the timestamp that indicates when the system generates the password.
         self.create_timestamp = create_timestamp
+        # The ID of the instance for which you want to create a pair of static username and password.
         self.instance_id = instance_id
+        # The AccessKey secret signature. The system generates a static password based on the signature in the request, the AccessKey secret signature, and the username.
+        # 
+        # The system uses the HMAC-SHA1 algorithm to generate the AccessKey secret signature based on the timestamp that indicates when the username is created and the AccessKey ID. For more information, see the **"Sample code on how to generate a signature"** section of this topic.
         self.secret_sign = secret_sign
+        # The signature. The system generates a static password based on the signature in the request, the AccessKey secret signature, and the username.
+        # 
+        # The system uses the HMAC-SHA1 algorithm to generate the signature based on the timestamp that indicates when the username is created and the AccessKey ID. For more information, see the **"Sample code on how to generate a signature"** section of this topic.
         self.signature = signature
+        # The static username that you want to create.
+        # 
+        # The value of this parameter is a Base64-encoded string that is generated based on the instance ID and AccessKey ID. For more information, see the "**Sample code on how to generate a username**" section of this topic.
         self.user_name = user_name
 
     def validate(self):
@@ -134,12 +157,17 @@ class CreateAccountResponseBodyData(TeaModel):
         password: str = None,
         user_name: str = None,
     ):
-        # AccessKey ID。
+        # The AccessKey ID that is used to create the password.
         self.access_key = access_key
+        # The timestamp that indicates when the password was created. Unit: milliseconds.
         self.create_time_stamp = create_time_stamp
+        # The ID of the ApsaraMQ for RabbitMQ instance.
         self.instance_id = instance_id
+        # The Alibaba Cloud account ID or RAM user to which the AccessKey pair that is used to create the static username and password belongs.
         self.master_uid = master_uid
+        # The created static password.
         self.password = password
+        # The created static username.
         self.user_name = user_name
 
     def validate(self):
@@ -191,10 +219,15 @@ class CreateAccountResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request was successful.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call is successful.
         self.success = success
 
     def validate(self):
@@ -290,12 +323,38 @@ class CreateBindingRequest(TeaModel):
         source_exchange: str = None,
         virtual_host: str = None,
     ):
+        # The key-value pairs that are configured for the headers attributes of a message. One or more key-value pairs can be concatenated to configure the headers attributes of a message. You must specify the x-match attribute as one of the valid values. You can specify custom values for other attributes. Valid values of the x-match attribute:
+        # 
+        # *   \*\*all: \*\*A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message. This value is the default value.
+        # *   \*\*any: \*\*A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
+        # 
+        # Separate the attributes with semicolons (;). Separate the key and value of an attribute with a colon (:). Example: x-match:all;type:report;format:pdf. This parameter is available for only headers exchanges. You can set this parameter to an arbitrary value for other types of exchanges.
         self.argument = argument
+        # The binding key.
+        # 
+        # *   If the source exchange is not a topic exchange, the binding key must meet the following conventions:
+        # 
+        #     *   The binding key can contain only letters, digits, hyphens (-), underscores (\_), periods (.), forward slashes (/), and at signs (@).
+        #     *   The binding key must be 1 to 255 characters in length.
+        # 
+        # *   If the source exchange is a topic exchange, the binding key must meet the following conventions:
+        # 
+        #     *   The binding key can contain letters, digits, hyphens (-), underscores (\_), asterisks (\*), periods (.), number signs (#), forward slashes (/), and at signs (@).
+        #     *   The binding key cannot start or end with a period (.). If a binding key starts with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be followed by a period (.). If the binding key ends with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be preceded by a period (.). If a number sign (#) or an asterisk (\*) is used in the middle of a binding key, the number sign (#) or asterisk (\*) must be preceded and followed by a period (.).
+        #     *   The binding key must be 1 to 255 characters in length.
         self.binding_key = binding_key
+        # The type of the object that you want to bind to the source exchange. Valid values:
+        # 
+        # *   \*\*0: \*\*Queue
+        # *   \*\*1: \*\*Exchange
         self.binding_type = binding_type
+        # The name of the object that you want to bind to the source exchange. You must create the object in the ApsaraMQ for RabbitMQ console in advance. The vhost of the object is the same as the vhost to which the source exchange specified by **SourceExchange** belongs. The vhost of the source exchange is the one specified by **VirtualHost**.
         self.destination_name = destination_name
+        # The ID of the ApsaraMQ for RabbitMQ instance.
         self.instance_id = instance_id
+        # The name of the source exchange. You must create the source exchange in the ApsaraMQ for RabbitMQ console in advance.
         self.source_exchange = source_exchange
+        # The virtual host (vhost) name. You must create the vhost in the ApsaraMQ for RabbitMQ console in advance. The object specified by **DestinationName** and the source exchange specified by **SourceExchange** must belong to the vhost.
         self.virtual_host = virtual_host
 
     def validate(self):
@@ -347,6 +406,7 @@ class CreateBindingResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -424,12 +484,34 @@ class CreateExchangeRequest(TeaModel):
         internal: bool = None,
         virtual_host: str = None,
     ):
+        # The alternate exchange. An alternate exchange is used to receive messages that fail to be routed to queues from the current exchange.
         self.alternate_exchange = alternate_exchange
+        # Specifies whether to automatically delete the exchange. Valid values:
+        # 
+        # *   **true**: If the last queue that is bound to the exchange is unbound, the exchange is automatically deleted.
+        # *   **false**: If the last queue that is bound to the exchange is unbound, the exchange is not automatically deleted.
         self.auto_delete_state = auto_delete_state
+        # The name of the exchange that you want to create. The exchange name must meet the following conventions:
+        # 
+        # *   The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+        # *   After the exchange is created, you cannot change its name. If you want to change its name, delete the exchange and create another exchange.
         self.exchange_name = exchange_name
+        # The exchange type. Valid values:
+        # 
+        # *   **DIRECT**: An exchange of this type routes a message to the queue whose binding key is exactly the same as the routing key of the message.
+        # *   **TOPIC**: This type of exchange is similar to direct exchanges. An exchange of this type routes a message to one or more queues based on the results of the fuzzy match or multi-condition match between the routing key of the message and the binding keys of the current exchange.
+        # *   **FANOUT**: An exchange of this type routes all received messages to all queues bound to this exchange. You can use a fanout exchange to broadcast messages.
+        # *   **HEADERS**: This type of exchange is similar to direct exchanges. The only difference is that a headers exchange routes messages based on the headers attributes instead of routing keys. When you bind a headers exchange to a queue, you must configure binding attributes in the key-value format for the binding. When you send a message to a headers exchange, you must configure the headers attributes in the key-value format for the message. After a headers exchange receives a message, the exchange routes the message based on the matching results between the headers attributes of the message and the binding attributes of the bound queues.
+        # *   **X-CONSISTENT-HASH**: An exchange of this type allows you to perform hash calculations on routing keys or header values and use consistent hashing to route a message to different queues.
         self.exchange_type = exchange_type
+        # The ID of the ApsaraMQ for RabbitMQ for which you want to create an exchange.
         self.instance_id = instance_id
+        # Specifies whether the exchange is an internal exchange. Valid values:
+        # 
+        # *   **false**\
+        # *   **true**\
         self.internal = internal
+        # The name of the vhost to which the exchange that you want to create belongs.
         self.virtual_host = virtual_host
 
     def validate(self):
@@ -481,6 +563,7 @@ class CreateExchangeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -553,6 +636,7 @@ class CreateInstanceRequest(TeaModel):
         auto_renew: bool = None,
         auto_renew_period: int = None,
         client_token: str = None,
+        instance_name: str = None,
         instance_type: str = None,
         max_connections: int = None,
         max_eip_tps: int = None,
@@ -561,6 +645,8 @@ class CreateInstanceRequest(TeaModel):
         period: int = None,
         period_cycle: str = None,
         queue_capacity: int = None,
+        renew_status: str = None,
+        renewal_duration_unit: str = None,
         storage_size: int = None,
         support_eip: bool = None,
         support_tracing: bool = None,
@@ -569,6 +655,7 @@ class CreateInstanceRequest(TeaModel):
         self.auto_renew = auto_renew
         self.auto_renew_period = auto_renew_period
         self.client_token = client_token
+        self.instance_name = instance_name
         self.instance_type = instance_type
         self.max_connections = max_connections
         self.max_eip_tps = max_eip_tps
@@ -577,6 +664,8 @@ class CreateInstanceRequest(TeaModel):
         self.period = period
         self.period_cycle = period_cycle
         self.queue_capacity = queue_capacity
+        self.renew_status = renew_status
+        self.renewal_duration_unit = renewal_duration_unit
         self.storage_size = storage_size
         self.support_eip = support_eip
         self.support_tracing = support_tracing
@@ -597,6 +686,8 @@ class CreateInstanceRequest(TeaModel):
             result['AutoRenewPeriod'] = self.auto_renew_period
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
         if self.max_connections is not None:
@@ -613,6 +704,10 @@ class CreateInstanceRequest(TeaModel):
             result['PeriodCycle'] = self.period_cycle
         if self.queue_capacity is not None:
             result['QueueCapacity'] = self.queue_capacity
+        if self.renew_status is not None:
+            result['RenewStatus'] = self.renew_status
+        if self.renewal_duration_unit is not None:
+            result['RenewalDurationUnit'] = self.renewal_duration_unit
         if self.storage_size is not None:
             result['StorageSize'] = self.storage_size
         if self.support_eip is not None:
@@ -631,6 +726,8 @@ class CreateInstanceRequest(TeaModel):
             self.auto_renew_period = m.get('AutoRenewPeriod')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
         if m.get('MaxConnections') is not None:
@@ -647,6 +744,10 @@ class CreateInstanceRequest(TeaModel):
             self.period_cycle = m.get('PeriodCycle')
         if m.get('QueueCapacity') is not None:
             self.queue_capacity = m.get('QueueCapacity')
+        if m.get('RenewStatus') is not None:
+            self.renew_status = m.get('RenewStatus')
+        if m.get('RenewalDurationUnit') is not None:
+            self.renewal_duration_unit = m.get('RenewalDurationUnit')
         if m.get('StorageSize') is not None:
             self.storage_size = m.get('StorageSize')
         if m.get('SupportEip') is not None:
@@ -768,16 +869,47 @@ class CreateQueueRequest(TeaModel):
         queue_name: str = None,
         virtual_host: str = None,
     ):
+        # Specifies whether to automatically delete the queue. Valid values:
+        # 
+        # *   true: The queue is automatically deleted. After the last consumer unsubscribes from the queue, the queue is automatically deleted.
+        # *   false: The queue is not automatically deleted.
         self.auto_delete_state = auto_delete_state
+        # The validity period after which the queue is automatically deleted. If the queue is not accessed within the specified period of time, the queue is automatically deleted.
+        # 
+        # Unit: milliseconds.
+        # 
+        # >  You can use the feature that corresponds to this parameter only after you enable the feature. To enable the feature, [submit a ticket](https://ticket-intl.console.aliyun.com/#/ticket/createIndex).
         self.auto_expire_state = auto_expire_state
+        # The dead-letter exchange. A dead-letter exchange is used to receive rejected messages.
+        # 
+        # If a consumer rejects a message that cannot be redelivered, ApsaraMQ for RabbitMQ routes the message to the specified dead-letter exchange. Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange for storage.
         self.dead_letter_exchange = dead_letter_exchange
+        # The dead-letter routing key. The key must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
         self.dead_letter_routing_key = dead_letter_routing_key
+        # Specifies whether the exchange is an exclusive exchange. Valid values:
+        # 
+        # *   true: The exchange is an exclusive exchange. Only the connection that declares the exclusive exchange can use the exclusive exchange. After the connection is closed, the exclusive exchange is automatically deleted.
+        # *   false: The exchange is not an exclusive exchange.
         self.exclusive_state = exclusive_state
+        # The ID of the ApsaraMQ for RabbitMQ instance on which you want to create a queue.
         self.instance_id = instance_id
+        # This parameter is unavailable in the current version of ApsaraMQ for RabbitMQ.
+        # 
+        # The maximum number of messages that can be stored in the queue. If this threshold is exceeded, the earliest stored messages in the queue are deleted.
         self.max_length = max_length
+        # Queue priorities are not supported. The value does not affect the call or return results.
         self.maximum_priority = maximum_priority
+        # The message time to live (TTL) of the queue.
+        # 
+        # *   If the retention period of a message in the queue exceeds the message TTL of the queue, the message expires.
+        # *   The message TTL must be set to a non-negative integer. The maximum message TTL is one day. Unit: milliseconds. For example, if the message TTL is 1,000 milliseconds, the message can be retained for up to 1 second in the queue.
         self.message_ttl = message_ttl
+        # The name of the queue that you want to create.
+        # 
+        # *   The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+        # *   After the queue is created, you cannot change the name of the queue. If you want to change the name of the queue, delete the queue and create another queue.
         self.queue_name = queue_name
+        # The name of the vhost to which the queue that you want to create belongs. The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
         self.virtual_host = virtual_host
 
     def validate(self):
@@ -845,6 +977,7 @@ class CreateQueueResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -917,7 +1050,13 @@ class CreateVirtualHostRequest(TeaModel):
         instance_id: str = None,
         virtual_host: str = None,
     ):
+        # The ID of the ApsaraMQ for RabbitMQ instance.
         self.instance_id = instance_id
+        # The name of the vhost that you want to create. Valid values:
+        # 
+        # *   The name can contain letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slash (/), and at signs (@).
+        # *   The name must be 1 to 255 characters in length.
+        # *   After the vhost is created, you cannot change its name. If you want to change the name of a vhost, delete the vhost and create another vhost.
         self.virtual_host = virtual_host
 
     def validate(self):
@@ -949,6 +1088,7 @@ class CreateVirtualHostResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1021,7 +1161,11 @@ class DeleteAccountRequest(TeaModel):
         create_timestamp: int = None,
         user_name: str = None,
     ):
+        # The timestamp that indicates when the pair of static username and password that you want to delete was created. Unit: milliseconds.
+        # 
+        # You can call the [ListAccounts](~~472730~~) operation to view the timestamp.
         self.create_timestamp = create_timestamp
+        # The pair of username and password that you want to delete.
         self.user_name = user_name
 
     def validate(self):
@@ -1057,10 +1201,15 @@ class DeleteAccountResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request is successful.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -1153,11 +1302,20 @@ class DeleteBindingRequest(TeaModel):
         source_exchange: str = None,
         virtual_host: str = None,
     ):
+        # The binding key.
         self.binding_key = binding_key
+        # The type of the object that you want to unbind from the source exchange. Valid values:
+        # 
+        # *   **QUEUE**\
+        # *   **EXCHANGE**\
         self.binding_type = binding_type
+        # The name of the object that you want to unbind from the source exchange.
         self.destination_name = destination_name
+        # The instance ID.
         self.instance_id = instance_id
+        # The name of the source exchange.
         self.source_exchange = source_exchange
+        # The vhost name.
         self.virtual_host = virtual_host
 
     def validate(self):
@@ -1205,6 +1363,7 @@ class DeleteBindingResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1278,8 +1437,11 @@ class DeleteExchangeRequest(TeaModel):
         instance_id: str = None,
         virtual_host: str = None,
     ):
+        # The name of the exchange that you want to delete.
         self.exchange_name = exchange_name
+        # The ID of the ApsaraMQ for RabbitMQ instance whose exchange you want to delete.
         self.instance_id = instance_id
+        # The vhost to which the exchange that you want to delete belongs.
         self.virtual_host = virtual_host
 
     def validate(self):
@@ -1315,6 +1477,7 @@ class DeleteExchangeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1388,8 +1551,11 @@ class DeleteQueueRequest(TeaModel):
         queue_name: str = None,
         virtual_host: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The queue name.
         self.queue_name = queue_name
+        # The vhost name.
         self.virtual_host = virtual_host
 
     def validate(self):
@@ -1425,6 +1591,7 @@ class DeleteQueueResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1497,7 +1664,9 @@ class DeleteVirtualHostRequest(TeaModel):
         instance_id: str = None,
         virtual_host: str = None,
     ):
+        # The ID of the ApsaraMQ for RabbitMQ instance to which the vhost you want to delete belongs.
         self.instance_id = instance_id
+        # The name of the vhost that you want to delete.
         self.virtual_host = virtual_host
 
     def validate(self):
@@ -1529,6 +1698,7 @@ class DeleteVirtualHostResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1600,6 +1770,7 @@ class GetMetadataAmountRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # The ID of the ApsaraMQ for RabbitMQ instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -1632,11 +1803,17 @@ class GetMetadataAmountResponseBodyData(TeaModel):
         max_queues: int = None,
         max_virtual_hosts: int = None,
     ):
+        # The number of created exchanges on the ApsaraMQ for RabbitMQ instance.
         self.current_exchanges = current_exchanges
+        # The number of created queues on the ApsaraMQ for RabbitMQ instance.
         self.current_queues = current_queues
+        # The number of created vhosts on the ApsaraMQ for RabbitMQ instance.
         self.current_virtual_hosts = current_virtual_hosts
+        # The maximum number of exchanges that can be created on the ApsaraMQ for RabbitMQ instance.
         self.max_exchanges = max_exchanges
+        # The maximum number of queues that can be created on the ApsaraMQ for RabbitMQ instance.
         self.max_queues = max_queues
+        # The maximum number of vhosts that can be created on the ApsaraMQ for RabbitMQ instance.
         self.max_virtual_hosts = max_virtual_hosts
 
     def validate(self):
@@ -1685,7 +1862,9 @@ class GetMetadataAmountResponseBody(TeaModel):
         data: GetMetadataAmountResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1763,6 +1942,7 @@ class ListAccountsRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # The ID of the ApsaraMQ for RabbitMQ instance for which you want to query the static username and password.
         self.instance_id = instance_id
 
     def validate(self):
@@ -1794,10 +1974,15 @@ class ListAccountsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the call is successful.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call is successful.
         self.success = success
 
     def validate(self):
@@ -1821,7 +2006,7 @@ class ListAccountsResponseBody(TeaModel):
                 l1 = []
                 for k1 in v:
                     l1.append(k1.to_map() if k1 else None)
-                result['data'][k] = l1
+                result['Data'][k] = l1
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
@@ -1903,9 +2088,15 @@ class ListBindingsRequest(TeaModel):
         next_token: str = None,
         virtual_host: str = None,
     ):
+        # The ID of the ApsaraMQ for RabbitMQ instance.
         self.instance_id = instance_id
+        # The maximum number of entries to return. Valid values:
+        # 
+        # **1 to 100**\
         self.max_results = max_results
+        # The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
         self.next_token = next_token
+        # The vhost name.
         self.virtual_host = virtual_host
 
     def validate(self):
@@ -1949,10 +2140,34 @@ class ListBindingsResponseBodyDataBindings(TeaModel):
         destination_name: str = None,
         source_exchange: str = None,
     ):
+        # The x-match attribute. Valid values:
+        # 
+        # *   **all:** A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message. This value is the default value.
+        # *   **any:** A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
+        # 
+        # This parameter is available only for headers exchanges.
         self.argument = argument
+        # The binding key.
+        # 
+        # *   If the source exchange is not a topic exchange, the binding key must meet the following conventions:
+        # 
+        #     *   The binding key can contain only letters, digits, hyphens (-), underscores (\_), periods (.), forward slashes (/), and at signs (@).
+        #     *   The binding key must be 1 to 255 characters in length.
+        # 
+        # *   If the source exchange is a topic exchange, the binding key must meet the following conventions:
+        # 
+        #     *   The binding key can contain letters, digits, hyphens (-), underscores (\_), asterisks (\*), periods (.), number signs (#), forward slashes (/), and at signs (@).
+        #     *   The binding key cannot start or end with a period (.). If a binding key starts with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be followed by a period (.). If the binding key ends with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be preceded by a period (.). If a number sign (#) or an asterisk (\*) is used in the middle of a binding key, the number sign (#) or asterisk (\*) must be preceded and followed by a period (.).
+        #     *   The binding key must be 1 to 255 characters in length.
         self.binding_key = binding_key
+        # The type of the object to which the source exchange is bound. Valid values:
+        # 
+        # *   **QUEUE**\
+        # *   **EXCHANGE**\
         self.binding_type = binding_type
+        # The name of the object to which the source exchange is bound.
         self.destination_name = destination_name
+        # The name of the source exchange.
         self.source_exchange = source_exchange
 
     def validate(self):
@@ -1998,8 +2213,11 @@ class ListBindingsResponseBodyData(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The bindings.
         self.bindings = bindings
+        # The maximum number of entries returned.
         self.max_results = max_results
+        # The token that marks the end of the current returned page. If this parameter is empty, all data is retrieved.
         self.next_token = next_token
 
     def validate(self):
@@ -2044,7 +2262,9 @@ class ListBindingsResponseBody(TeaModel):
         data: ListBindingsResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2126,10 +2346,15 @@ class ListDownStreamBindingsRequest(TeaModel):
         next_token: str = None,
         virtual_host: str = None,
     ):
+        # The exchange name.
         self.exchange_name = exchange_name
+        # The ID of the ApsaraMQ for RabbitMQ instance to which the exchange belongs.
         self.instance_id = instance_id
+        # The maximum number of entries to return.
         self.max_results = max_results
+        # The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
         self.next_token = next_token
+        # The name of the vhost to which the exchange belongs.
         self.virtual_host = virtual_host
 
     def validate(self):
@@ -2177,10 +2402,34 @@ class ListDownStreamBindingsResponseBodyDataBindings(TeaModel):
         destination_name: str = None,
         source_exchange: str = None,
     ):
+        # The x-match attribute. Valid values:
+        # 
+        # *   **all:** A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message. This value is the default value.
+        # *   **any:** A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
+        # 
+        # This parameter is available only for headers exchanges.
         self.argument = argument
+        # The binding key.
+        # 
+        # *   If the source exchange is not a topic exchange, the binding key must meet the following conventions:
+        # 
+        #     *   The binding key can contain only letters, digits, hyphens (-), underscores (\_), periods (.), forward slashes (/), and at signs (@).
+        #     *   The binding key must be 1 to 255 characters in length.
+        # 
+        # *   If the source exchange is a topic exchange, the binding key must meet the following conventions:
+        # 
+        #     *   The binding key can contain letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+        #     *   The binding key cannot start or end with a period (.). If a binding key starts with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be followed by a period (.). If the binding key ends with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be preceded by a period (.). If a number sign (#) or an asterisk (\*) is used in the middle of a binding key, the number sign (#) or asterisk (\*) must be preceded and followed by a period (.).
+        #     *   The binding key must be 1 to 255 characters in length.
         self.binding_key = binding_key
+        # The type of the object to which the source exchange is bound. Valid values:
+        # 
+        # *   **QUEUE**\
+        # *   **EXCHANGE**\
         self.binding_type = binding_type
+        # The name of the object to which the source exchange is bound.
         self.destination_name = destination_name
+        # The name of the source exchange.
         self.source_exchange = source_exchange
 
     def validate(self):
@@ -2226,8 +2475,11 @@ class ListDownStreamBindingsResponseBodyData(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The bindings.
         self.bindings = bindings
+        # The maximum number of entries returned.
         self.max_results = max_results
+        # The token that marks the end of the current returned page. If this parameter is empty, all data is retrieved.
         self.next_token = next_token
 
     def validate(self):
@@ -2275,10 +2527,15 @@ class ListDownStreamBindingsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request is successful.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -2372,10 +2629,15 @@ class ListExchangeUpStreamBindingsRequest(TeaModel):
         next_token: str = None,
         virtual_host: str = None,
     ):
+        # The exchange name.
         self.exchange_name = exchange_name
+        # The ID of the ApsaraMQ for RabbitMQ instance.
         self.instance_id = instance_id
+        # The maximum number of entries to return.
         self.max_results = max_results
+        # The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
         self.next_token = next_token
+        # The virtual host (vhost) name.
         self.virtual_host = virtual_host
 
     def validate(self):
@@ -2423,10 +2685,34 @@ class ListExchangeUpStreamBindingsResponseBodyDataBindings(TeaModel):
         destination_name: str = None,
         source_exchange: str = None,
     ):
+        # The x-match attribute. Valid values:
+        # 
+        # *   **all:** A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message. This value is the default value.
+        # *   **any:** A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
+        # 
+        # This parameter is available only for headers exchanges.
         self.argument = argument
+        # The binding key.
+        # 
+        # *   If the source exchange is not a topic exchange, the binding key must meet the following conventions:
+        # 
+        #     *   The binding key can contain only letters, digits, hyphens (-), underscores (\_), periods (.), forward slashes (/), and at signs (@).
+        #     *   The binding key must be 1 to 255 characters in length.
+        # 
+        # *   If the source exchange is a topic exchange, the binding key must meet the following conventions:
+        # 
+        #     *   The binding key can contain letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+        #     *   The binding key cannot start or end with a period (.). If a binding key starts with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be followed by a period (.). If the binding key ends with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be preceded by a period (.). If a number sign (#) or an asterisk (\*) is used in the middle of a binding key, the number sign (#) or asterisk (\*) must be preceded and followed by a period (.).
+        #     *   The binding key must be 1 to 255 characters in length.
         self.binding_key = binding_key
+        # The type of the object to which the source exchange is bound. Valid values:
+        # 
+        # *   **QUEUE**\
+        # *   **EXCHANGE**\
         self.binding_type = binding_type
+        # The name of the object to which the source exchange is bound.
         self.destination_name = destination_name
+        # The name of the source exchange.
         self.source_exchange = source_exchange
 
     def validate(self):
@@ -2472,8 +2758,11 @@ class ListExchangeUpStreamBindingsResponseBodyData(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The bindings.
         self.bindings = bindings
+        # The maximum number of entries returned.
         self.max_results = max_results
+        # The token that marks the end of the current returned page. If this parameter is empty, all data is retrieved.
         self.next_token = next_token
 
     def validate(self):
@@ -2521,10 +2810,15 @@ class ListExchangeUpStreamBindingsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request is successful.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -2617,9 +2911,16 @@ class ListExchangesRequest(TeaModel):
         next_token: str = None,
         virtual_host: str = None,
     ):
+        # The ID of the ApsaraMQ for RabbitMQ instance.
         self.instance_id = instance_id
+        # The maximum number of entries to return. Valid values: **1 to 100**\
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If you call this operation for the first time or a next query is not required, leave this parameter empty.
+        # *   If a next query is to be sent, set the value to the value of `NextToken` that is returned from the previous request.
         self.next_token = next_token
+        # The vhost name.
         self.virtual_host = virtual_host
 
     def validate(self):
@@ -2664,11 +2965,17 @@ class ListExchangesResponseBodyDataExchanges(TeaModel):
         name: str = None,
         vhost_name: str = None,
     ):
+        # The attributes. This parameter is unavailable in the current version.
         self.attributes = attributes
+        # Indicates whether the exchange was automatically deleted.
         self.auto_delete_state = auto_delete_state
+        # The timestamp that indicates when the exchange was created. Unit: milliseconds.
         self.create_time = create_time
+        # The exchange type.
         self.exchange_type = exchange_type
+        # The exchange name.
         self.name = name
+        # The vhost name.
         self.vhost_name = vhost_name
 
     def validate(self):
@@ -2718,9 +3025,14 @@ class ListExchangesResponseBodyData(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # Exchange。
+        # The exchanges.
         self.exchanges = exchanges
+        # The maximum number of entries returned.
         self.max_results = max_results
+        # The token that marks the end of the current returned page.``
+        # 
+        # *   If the value of this parameter is empty, the next query is not required and the token used to start the next query is unavailable.``
+        # *   If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.``
         self.next_token = next_token
 
     def validate(self):
@@ -2765,7 +3077,9 @@ class ListExchangesResponseBody(TeaModel):
         data: ListExchangesResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2844,7 +3158,9 @@ class ListInstancesRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The maximum number of entries to return. Valid values: 1 to 100.
         self.max_results = max_results
+        # The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
         self.next_token = next_token
 
     def validate(self):
@@ -2877,7 +3193,9 @@ class ListInstancesResponseBodyDataInstancesTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # 标签键。
         self.key = key
+        # 标签值。
         self.value = value
 
     def validate(self):
@@ -2926,23 +3244,55 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
         support_eip: bool = None,
         tags: List[ListInstancesResponseBodyDataInstancesTags] = None,
     ):
+        # Indicates whether the instance is automatically renewed.
         self.auto_renew_instance = auto_renew_instance
+        # The endpoint that is used to access the instance over the classic network. This parameter is no longer available.
         self.classic_endpoint = classic_endpoint
+        # The timestamp that indicates when the instance expires. Unit: milliseconds.
         self.expire_time = expire_time
+        # The instance ID
         self.instance_id = instance_id
+        # The instance name.
         self.instance_name = instance_name
+        # The instance type.
+        # 
+        # *   PROFESSIONAL: Professional Edition
+        # *   ENTERPRISE: Enterprise Edition
+        # *   VIP: Enterprise Platinum Edition
         self.instance_type = instance_type
+        # The maximum number of Internet-based transactions per second (TPS) for the instance.
         self.max_eip_tps = max_eip_tps
+        # The maximum number of queues on the instance.
         self.max_queue = max_queue
+        # The maximum number of VPC-based TPS for the instance.
         self.max_tps = max_tps
+        # The maximum number of vhosts on the instance.
         self.max_vhost = max_vhost
+        # The timestamp that indicates when the order was created. Unit: milliseconds.
         self.order_create_time = order_create_time
+        # The billing method. Valid values:
+        # 
+        # *   PrePaid: the subscription billing method.
+        # *   POST_PAID: the pay-as-you-go billing method.
         self.order_type = order_type
+        # The virtual private cloud (VPC) endpoint of the instance.
         self.private_endpoint = private_endpoint
+        # The public endpoint of the instance.
         self.public_endpoint = public_endpoint
+        # The instance status. Valid values:
+        # 
+        # *   DEPLOYING: The instance is being deployed.
+        # *   EXPIRED: The instance is expired.
+        # *   SERVING: The instance is running.
+        # *   RELEASED: The instance is released.
         self.status = status
+        # The disk size. Unit: GB.
+        # 
+        # >  For Professional Edition instances and Enterprise Edition instances, this parameter is unavailable and \*\*-1\*\* is returned.
         self.storage_size = storage_size
+        # Indicates whether the instance supports elastic IP addresses (EIPs).
         self.support_eip = support_eip
+        # 标签列表。
         self.tags = tags
 
     def validate(self):
@@ -3048,8 +3398,11 @@ class ListInstancesResponseBodyData(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The instances.
         self.instances = instances
+        # The maximum number of entries returned.
         self.max_results = max_results
+        # The token that marks the end of the current returned page. If this parameter is empty, all data is retrieved.
         self.next_token = next_token
 
     def validate(self):
@@ -3094,7 +3447,9 @@ class ListInstancesResponseBody(TeaModel):
         data: ListInstancesResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3176,10 +3531,17 @@ class ListQueueConsumersRequest(TeaModel):
         queue: str = None,
         virtual_host: str = None,
     ):
+        # The ID of the ApsaraMQ for RabbitMQ instance.
         self.instance_id = instance_id
+        # The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
         self.next_token = next_token
+        # The number of data entries to return. If you do not configure this parameter, the default value 1 is used.
+        # 
+        # Valid values: 1 to 100.
         self.query_count = query_count
+        # The name of the queue for which you want to query online consumers.
         self.queue = queue
+        # The virtual host (vhost) name.
         self.virtual_host = virtual_host
 
     def validate(self):
@@ -3223,6 +3585,7 @@ class ListQueueConsumersResponseBodyDataConsumers(TeaModel):
         self,
         consumer_tag: str = None,
     ):
+        # The consumer tag.
         self.consumer_tag = consumer_tag
 
     def validate(self):
@@ -3252,8 +3615,11 @@ class ListQueueConsumersResponseBodyData(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The consumers.
         self.consumers = consumers
+        # The maximum number of entries returned.
         self.max_results = max_results
+        # The token that marks the end of the current returned page. If this parameter is empty, all data is retrieved.
         self.next_token = next_token
 
     def validate(self):
@@ -3298,7 +3664,9 @@ class ListQueueConsumersResponseBody(TeaModel):
         data: ListQueueConsumersResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3380,10 +3748,15 @@ class ListQueueUpStreamBindingsRequest(TeaModel):
         queue_name: str = None,
         virtual_host: str = None,
     ):
+        # The ID of the ApsaraMQ for RabbitMQ instance.
         self.instance_id = instance_id
+        # The maximum number of entries to return.
         self.max_results = max_results
+        # The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
         self.next_token = next_token
+        # The queue name.
         self.queue_name = queue_name
+        # The virtual host (vhost) name.
         self.virtual_host = virtual_host
 
     def validate(self):
@@ -3431,10 +3804,34 @@ class ListQueueUpStreamBindingsResponseBodyDataBindings(TeaModel):
         destination_name: str = None,
         source_exchange: str = None,
     ):
+        # The x-match attribute. Valid values:
+        # 
+        # *   **all:** A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message. This value is the default value.
+        # *   **any:** A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
+        # 
+        # This parameter is available for only headers exchanges.
         self.argument = argument
+        # The binding key.
+        # 
+        # *   If the source exchange is not a topic exchange, the binding key must meet the following conventions:
+        # 
+        #     *   The binding key can contain only letters, digits, hyphens (-), underscores (\_), periods (.), forward slashes (/), and at signs (@).
+        #     *   The binding key must be 1 to 255 characters in length.
+        # 
+        # *   If the source exchange is a topic exchange, the binding key must meet the following conventions:
+        # 
+        #     *   The binding key can contain letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+        #     *   The binding key cannot start or end with a period (.). If a binding key starts with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be followed by a period (.). If the binding key ends with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be preceded by a period (.). If a number sign (#) or an asterisk (\*) is used in the middle of a binding key, the number sign (#) or asterisk (\*) must be preceded and followed by a period (.).
+        #     *   The binding key must be 1 to 255 characters in length.
         self.binding_key = binding_key
+        # The type of the object to which the source exchange is bound. Valid values:
+        # 
+        # *   **QUEUE**\
+        # *   **EXCHANGE**\
         self.binding_type = binding_type
+        # The name of the object to which the source exchange is bound.
         self.destination_name = destination_name
+        # The name of the source exchange.
         self.source_exchange = source_exchange
 
     def validate(self):
@@ -3480,8 +3877,11 @@ class ListQueueUpStreamBindingsResponseBodyData(TeaModel):
         max_results: str = None,
         next_token: str = None,
     ):
+        # The bindings.
         self.bindings = bindings
+        # The maximum number of entries returned.
         self.max_results = max_results
+        # The token that marks the end of the current returned page. If this parameter is empty, all data is retrieved.
         self.next_token = next_token
 
     def validate(self):
@@ -3526,7 +3926,9 @@ class ListQueueUpStreamBindingsResponseBody(TeaModel):
         data: ListQueueUpStreamBindingsResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3607,9 +4009,13 @@ class ListQueuesRequest(TeaModel):
         next_token: str = None,
         virtual_host: str = None,
     ):
+        # The ID of the ApsaraMQ for RabbitMQ instance.
         self.instance_id = instance_id
+        # The maximum number of entries to return.
         self.max_results = max_results
+        # The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
         self.next_token = next_token
+        # The virtual host (vhost) name.
         self.virtual_host = virtual_host
 
     def validate(self):
@@ -3656,13 +4062,21 @@ class ListQueuesResponseBodyDataQueues(TeaModel):
         owner_id: str = None,
         vhost_name: str = None,
     ):
+        # The attributes.
         self.attributes = attributes
+        # Indicates whether the queue was automatically deleted.
         self.auto_delete_state = auto_delete_state
+        # The time when the queue was created.
         self.create_time = create_time
+        # Indicates whether the queue is an exclusive queue.
         self.exclusive_state = exclusive_state
+        # The time when messages in the queue were last consumed.
         self.last_consume_time = last_consume_time
+        # The queue name.
         self.name = name
+        # The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
         self.owner_id = owner_id
+        # The vhost name.
         self.vhost_name = vhost_name
 
     def validate(self):
@@ -3720,9 +4134,11 @@ class ListQueuesResponseBodyData(TeaModel):
         next_token: str = None,
         queues: List[ListQueuesResponseBodyDataQueues] = None,
     ):
+        # The maximum number of entries returned.
         self.max_results = max_results
+        # The token that marks the end of the current returned page. If this parameter is empty, all data is retrieved.
         self.next_token = next_token
-        # Queue。
+        # The queues.
         self.queues = queues
 
     def validate(self):
@@ -3767,7 +4183,9 @@ class ListQueuesResponseBody(TeaModel):
         data: ListQueuesResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3847,8 +4265,11 @@ class ListVirtualHostsRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The ID of the ApsaraMQ for RabbitMQ instance.
         self.instance_id = instance_id
+        # The maximum number of entries to return. Valid values: **1 to 100**\
         self.max_results = max_results
+        # The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
         self.next_token = next_token
 
     def validate(self):
@@ -3884,6 +4305,7 @@ class ListVirtualHostsResponseBodyDataVirtualHosts(TeaModel):
         self,
         name: str = None,
     ):
+        # The vhost name.
         self.name = name
 
     def validate(self):
@@ -3913,9 +4335,11 @@ class ListVirtualHostsResponseBodyData(TeaModel):
         next_token: str = None,
         virtual_hosts: List[ListVirtualHostsResponseBodyDataVirtualHosts] = None,
     ):
+        # The maximum number of entries returned.
         self.max_results = max_results
+        # The token that marks the end of the current returned page. If this parameter is empty, all data is retrieved.
         self.next_token = next_token
-        # Vhost。
+        # The vhosts.
         self.virtual_hosts = virtual_hosts
 
     def validate(self):
@@ -3960,7 +4384,9 @@ class ListVirtualHostsResponseBody(TeaModel):
         data: ListVirtualHostsResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4039,7 +4465,9 @@ class UpdateInstanceNameRequest(TeaModel):
         instance_id: str = None,
         instance_name: str = None,
     ):
+        # The ID of the ApsaraMQ for RabbitMQ instance for which you want to update the name.
         self.instance_id = instance_id
+        # The new name of the instance. No limits are imposed on the value. We recommend that you set this parameter to a maximum of 64 characters in length.
         self.instance_name = instance_name
 
     def validate(self):
@@ -4075,10 +4503,15 @@ class UpdateInstanceNameResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned HTTP status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message that is returned when an error occurs during the update of the instance name.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The returned message that indicates the request is successful.
         self.success = success
 
     def validate(self):

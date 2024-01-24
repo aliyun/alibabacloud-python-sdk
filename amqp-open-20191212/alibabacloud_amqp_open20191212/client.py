@@ -46,6 +46,12 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.CreateAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.CreateAccountResponse:
+        """
+        
+        @param request: CreateAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_access_key):
@@ -84,6 +90,12 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.CreateAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.CreateAccountResponse:
+        """
+        
+        @param request: CreateAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_access_key):
@@ -121,6 +133,11 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.CreateAccountRequest,
     ) -> amqp_open_20191212_models.CreateAccountResponse:
+        """
+        
+        @param request: CreateAccountRequest
+        @return: CreateAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_account_with_options(request, runtime)
 
@@ -128,6 +145,11 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.CreateAccountRequest,
     ) -> amqp_open_20191212_models.CreateAccountResponse:
+        """
+        
+        @param request: CreateAccountRequest
+        @return: CreateAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_account_with_options_async(request, runtime)
 
@@ -332,6 +354,8 @@ class Client(OpenApiClient):
             query['AutoRenewPeriod'] = request.auto_renew_period
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.instance_type):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.max_connections):
@@ -348,6 +372,10 @@ class Client(OpenApiClient):
             query['PeriodCycle'] = request.period_cycle
         if not UtilClient.is_unset(request.queue_capacity):
             query['QueueCapacity'] = request.queue_capacity
+        if not UtilClient.is_unset(request.renew_status):
+            query['RenewStatus'] = request.renew_status
+        if not UtilClient.is_unset(request.renewal_duration_unit):
+            query['RenewalDurationUnit'] = request.renewal_duration_unit
         if not UtilClient.is_unset(request.storage_size):
             query['StorageSize'] = request.storage_size
         if not UtilClient.is_unset(request.support_eip):
@@ -388,6 +416,8 @@ class Client(OpenApiClient):
             query['AutoRenewPeriod'] = request.auto_renew_period
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.instance_type):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.max_connections):
@@ -404,6 +434,10 @@ class Client(OpenApiClient):
             query['PeriodCycle'] = request.period_cycle
         if not UtilClient.is_unset(request.queue_capacity):
             query['QueueCapacity'] = request.queue_capacity
+        if not UtilClient.is_unset(request.renew_status):
+            query['RenewStatus'] = request.renew_status
+        if not UtilClient.is_unset(request.renewal_duration_unit):
+            query['RenewalDurationUnit'] = request.renewal_duration_unit
         if not UtilClient.is_unset(request.storage_size):
             query['StorageSize'] = request.storage_size
         if not UtilClient.is_unset(request.support_eip):
@@ -798,6 +832,15 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.DeleteExchangeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.DeleteExchangeResponse:
+        """
+        ## [](#)Usage notes
+        *   You cannot delete exchanges of the **headers** and **x-jms-topic** types.
+        *   You cannot delete built-in exchanges in a vhost. These exchanges are amq.direct, amq.topic, and amq.fanout.
+        
+        @param request: DeleteExchangeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteExchangeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.exchange_name):
@@ -830,6 +873,15 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.DeleteExchangeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.DeleteExchangeResponse:
+        """
+        ## [](#)Usage notes
+        *   You cannot delete exchanges of the **headers** and **x-jms-topic** types.
+        *   You cannot delete built-in exchanges in a vhost. These exchanges are amq.direct, amq.topic, and amq.fanout.
+        
+        @param request: DeleteExchangeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteExchangeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.exchange_name):
@@ -861,6 +913,14 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.DeleteExchangeRequest,
     ) -> amqp_open_20191212_models.DeleteExchangeResponse:
+        """
+        ## [](#)Usage notes
+        *   You cannot delete exchanges of the **headers** and **x-jms-topic** types.
+        *   You cannot delete built-in exchanges in a vhost. These exchanges are amq.direct, amq.topic, and amq.fanout.
+        
+        @param request: DeleteExchangeRequest
+        @return: DeleteExchangeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_exchange_with_options(request, runtime)
 
@@ -868,6 +928,14 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.DeleteExchangeRequest,
     ) -> amqp_open_20191212_models.DeleteExchangeResponse:
+        """
+        ## [](#)Usage notes
+        *   You cannot delete exchanges of the **headers** and **x-jms-topic** types.
+        *   You cannot delete built-in exchanges in a vhost. These exchanges are amq.direct, amq.topic, and amq.fanout.
+        
+        @param request: DeleteExchangeRequest
+        @return: DeleteExchangeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_exchange_with_options_async(request, runtime)
 
@@ -954,6 +1022,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.DeleteVirtualHostRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.DeleteVirtualHostResponse:
+        """
+        Before you delete a vhost, make sure that all exchanges and queues in the vhost are deleted.
+        
+        @param request: DeleteVirtualHostRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVirtualHostResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -984,6 +1059,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.DeleteVirtualHostRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.DeleteVirtualHostResponse:
+        """
+        Before you delete a vhost, make sure that all exchanges and queues in the vhost are deleted.
+        
+        @param request: DeleteVirtualHostRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVirtualHostResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1013,6 +1095,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.DeleteVirtualHostRequest,
     ) -> amqp_open_20191212_models.DeleteVirtualHostResponse:
+        """
+        Before you delete a vhost, make sure that all exchanges and queues in the vhost are deleted.
+        
+        @param request: DeleteVirtualHostRequest
+        @return: DeleteVirtualHostResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_virtual_host_with_options(request, runtime)
 
@@ -1020,6 +1108,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.DeleteVirtualHostRequest,
     ) -> amqp_open_20191212_models.DeleteVirtualHostResponse:
+        """
+        Before you delete a vhost, make sure that all exchanges and queues in the vhost are deleted.
+        
+        @param request: DeleteVirtualHostRequest
+        @return: DeleteVirtualHostResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_virtual_host_with_options_async(request, runtime)
 
@@ -1494,6 +1588,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.ListQueueConsumersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.ListQueueConsumersResponse:
+        """
+        ApsaraMQ for RabbitMQ allows you to query only online consumers.
+        
+        @param request: ListQueueConsumersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQueueConsumersResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1520,6 +1621,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.ListQueueConsumersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.ListQueueConsumersResponse:
+        """
+        ApsaraMQ for RabbitMQ allows you to query only online consumers.
+        
+        @param request: ListQueueConsumersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQueueConsumersResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1545,6 +1653,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.ListQueueConsumersRequest,
     ) -> amqp_open_20191212_models.ListQueueConsumersResponse:
+        """
+        ApsaraMQ for RabbitMQ allows you to query only online consumers.
+        
+        @param request: ListQueueConsumersRequest
+        @return: ListQueueConsumersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_queue_consumers_with_options(request, runtime)
 
@@ -1552,6 +1666,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.ListQueueConsumersRequest,
     ) -> amqp_open_20191212_models.ListQueueConsumersResponse:
+        """
+        ApsaraMQ for RabbitMQ allows you to query only online consumers.
+        
+        @param request: ListQueueConsumersRequest
+        @return: ListQueueConsumersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_queue_consumers_with_options_async(request, runtime)
 
