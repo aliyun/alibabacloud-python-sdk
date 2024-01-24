@@ -60,8 +60,6 @@ class Client(OpenApiClient):
             query['DocType'] = request.doc_type
         if not UtilClient.is_unset(request.id_face_quality):
             query['IdFaceQuality'] = request.id_face_quality
-        if not UtilClient.is_unset(request.id_ocr_picture_base_64):
-            query['IdOcrPictureBase64'] = request.id_ocr_picture_base_64
         if not UtilClient.is_unset(request.id_ocr_picture_url):
             query['IdOcrPictureUrl'] = request.id_ocr_picture_url
         if not UtilClient.is_unset(request.merchant_biz_id):
@@ -74,8 +72,12 @@ class Client(OpenApiClient):
             query['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.spoof):
             query['Spoof'] = request.spoof
+        body = {}
+        if not UtilClient.is_unset(request.id_ocr_picture_base_64):
+            body['IdOcrPictureBase64'] = request.id_ocr_picture_base_64
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CardOcr',
@@ -112,8 +114,6 @@ class Client(OpenApiClient):
             query['DocType'] = request.doc_type
         if not UtilClient.is_unset(request.id_face_quality):
             query['IdFaceQuality'] = request.id_face_quality
-        if not UtilClient.is_unset(request.id_ocr_picture_base_64):
-            query['IdOcrPictureBase64'] = request.id_ocr_picture_base_64
         if not UtilClient.is_unset(request.id_ocr_picture_url):
             query['IdOcrPictureUrl'] = request.id_ocr_picture_url
         if not UtilClient.is_unset(request.merchant_biz_id):
@@ -126,8 +126,12 @@ class Client(OpenApiClient):
             query['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.spoof):
             query['Spoof'] = request.spoof
+        body = {}
+        if not UtilClient.is_unset(request.id_ocr_picture_base_64):
+            body['IdOcrPictureBase64'] = request.id_ocr_picture_base_64
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CardOcr',
