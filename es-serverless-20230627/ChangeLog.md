@@ -1,3 +1,6 @@
+2024-01-24 Version: 1.0.2
+- Generated python 2023-06-27 for es-serverless.
+
 2023-10-19 Version: 1.0.1
 - Generated python 2023-06-27 for es-serverless.
 

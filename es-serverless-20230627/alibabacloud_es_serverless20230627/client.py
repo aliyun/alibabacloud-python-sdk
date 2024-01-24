@@ -62,6 +62,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not UtilClient.is_unset(request.network):
             body['network'] = request.network
+        if not UtilClient.is_unset(request.private_network):
+            body['privateNetwork'] = request.private_network
         if not UtilClient.is_unset(request.quota_info):
             body['quotaInfo'] = request.quota_info
         if not UtilClient.is_unset(request.region_id):
@@ -110,6 +112,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not UtilClient.is_unset(request.network):
             body['network'] = request.network
+        if not UtilClient.is_unset(request.private_network):
+            body['privateNetwork'] = request.private_network
         if not UtilClient.is_unset(request.quota_info):
             body['quotaInfo'] = request.quota_info
         if not UtilClient.is_unset(request.region_id):
@@ -544,12 +548,20 @@ class Client(OpenApiClient):
     ) -> es_serverless_20230627_models.UpdateAppResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.apply_reason):
+            body['applyReason'] = request.apply_reason
         if not UtilClient.is_unset(request.authentication):
             body['authentication'] = request.authentication
+        if not UtilClient.is_unset(request.contact_info):
+            body['contactInfo'] = request.contact_info
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.limiter_info):
+            body['limiterInfo'] = request.limiter_info
         if not UtilClient.is_unset(request.network):
             body['network'] = request.network
+        if not UtilClient.is_unset(request.private_network):
+            body['privateNetwork'] = request.private_network
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -579,12 +591,20 @@ class Client(OpenApiClient):
     ) -> es_serverless_20230627_models.UpdateAppResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.apply_reason):
+            body['applyReason'] = request.apply_reason
         if not UtilClient.is_unset(request.authentication):
             body['authentication'] = request.authentication
+        if not UtilClient.is_unset(request.contact_info):
+            body['contactInfo'] = request.contact_info
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.limiter_info):
+            body['limiterInfo'] = request.limiter_info
         if not UtilClient.is_unset(request.network):
             body['network'] = request.network
+        if not UtilClient.is_unset(request.private_network):
+            body['privateNetwork'] = request.private_network
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
