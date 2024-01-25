@@ -1,3 +1,6 @@
+2024-01-25 Version: 1.0.2
+- Generated python 2019-06-20 for gpdb.
+
 2023-09-04 Version: 1.0.1
 - Generated python 2019-06-20 for gpdb.
 
