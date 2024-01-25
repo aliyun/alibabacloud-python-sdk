@@ -14,11 +14,27 @@ class ListResourceRelationshipsRequest(TeaModel):
         source_resource_type: str = None,
         target_resource_type: List[str] = None,
     ):
+        # The maximum number of entries to return on each page.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 20.
         self.max_results = max_results
+        # The token that is used to initiate the next request.
+        # 
+        # If the total number of entries returned for the current request exceeds the value of the `MaxResults` parameter, the entries are truncated. In this case, you can use the token to initiate another request and obtain the remaining entries.
         self.next_token = next_token
+        # The region ID of the resource whose associated resources you want to query.
         self.source_region_id = source_region_id
+        # The IDs of the resource whose associated resources you want to query.
+        # 
+        # You can specify a maximum of 10 resource IDs.
         self.source_resource_id = source_resource_id
+        # The type of the resource whose associated resources you want to query.
         self.source_resource_type = source_resource_type
+        # The types of the associated resources that you want to query.
+        # 
+        # You can specify a maximum of 10 resource types.
         self.target_resource_type = target_resource_type
 
     def validate(self):
@@ -72,12 +88,19 @@ class ListResourceRelationshipsResponseBodyResourceRelationships(TeaModel):
         target_resource_id: str = None,
         target_resource_type: str = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.account_id = account_id
+        # The region ID of the specified resource.
         self.source_region_id = source_region_id
+        # The ID of the specified resource.
         self.source_resource_id = source_resource_id
+        # The type of the specified resource.
         self.source_resource_type = source_resource_type
+        # The region ID of the associated resource.
         self.target_region_id = target_region_id
+        # The ID of the associated resource.
         self.target_resource_id = target_resource_id
+        # The type of the associated resource.
         self.target_resource_type = target_resource_type
 
     def validate(self):
@@ -132,9 +155,13 @@ class ListResourceRelationshipsResponseBody(TeaModel):
         request_id: str = None,
         resource_relationships: List[ListResourceRelationshipsResponseBodyResourceRelationships] = None,
     ):
+        # The maximum number of entries returned per page.
         self.max_results = max_results
+        # The token that is used to initiate the next request.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The information of the associated resources.
         self.resource_relationships = resource_relationships
 
     def validate(self):
@@ -189,9 +216,6 @@ class ListResourceRelationshipsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -228,8 +252,17 @@ class SearchResourcesRequestFilter(TeaModel):
         match_type: str = None,
         value: List[str] = None,
     ):
+        # The key of the filter condition. Valid values:
+        # 
+        # *   ResourceType: resource type
+        # *   RegionId: region ID
+        # *   ResourceId: resource ID
+        # *   ResourceGroupId: resource group ID
+        # *   ResourceName: resource name
         self.key = key
+        # The matching method. Set the value to Equals. This value indicates that resources that match the filter conditions are queried.
         self.match_type = match_type
+        # The values of the filter condition.
         self.value = value
 
     def validate(self):
@@ -266,7 +299,14 @@ class SearchResourcesRequestSortCriterion(TeaModel):
         key: str = None,
         order: str = None,
     ):
+        # The attribute based on which the entries are sorted.
+        # 
+        # The value `CreateTime` indicates the creation time of resources.
         self.key = key
+        # The order in which the entries are sorted. Valid values:
+        # 
+        # *   ASC: The entries are sorted in ascending order. This value is the default value.
+        # *   DESC: The entries are sorted in descending order.
         self.order = order
 
     def validate(self):
@@ -302,10 +342,21 @@ class SearchResourcesRequest(TeaModel):
         resource_group_id: str = None,
         sort_criterion: SearchResourcesRequestSortCriterion = None,
     ):
+        # The filter conditions.
         self.filter = filter
+        # The maximum number of entries to return on each page.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 20.
         self.max_results = max_results
+        # The token that is used to initiate the next request.
+        # 
+        # If the total number of entries returned for the current request exceeds the value of the `MaxResults` parameter, the entries are truncated. In this case, you can use the token to initiate another request and obtain the remaining entries.
         self.next_token = next_token
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The method that is used to sort the entries.
         self.sort_criterion = sort_criterion
 
     def validate(self):
@@ -362,8 +413,11 @@ class SearchResourcesResponseBodyFilters(TeaModel):
         match_type: str = None,
         values: List[str] = None,
     ):
+        # The key of the filter condition.
         self.key = key
+        # The matching method.
         self.match_type = match_type
+        # The values of the filter condition.
         self.values = values
 
     def validate(self):
@@ -400,7 +454,9 @@ class SearchResourcesResponseBodyResourcesTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -441,15 +497,31 @@ class SearchResourcesResponseBodyResources(TeaModel):
         tags: List[SearchResourcesResponseBodyResourcesTags] = None,
         zone_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.account_id = account_id
+        # The time when the resource was created.
+        # 
+        # >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
         self.create_time = create_time
+        # The IP addresses.
+        # 
+        # >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
         self.ip_addresses = ip_addresses
+        # The region ID.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The ID of the resource.
         self.resource_id = resource_id
+        # The name of the resource.
         self.resource_name = resource_name
+        # The type of the resource.
         self.resource_type = resource_type
+        # The tags.
         self.tags = tags
+        # The zone ID.
+        # 
+        # >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
         self.zone_id = zone_id
 
     def validate(self):
@@ -525,10 +597,15 @@ class SearchResourcesResponseBody(TeaModel):
         request_id: str = None,
         resources: List[SearchResourcesResponseBodyResources] = None,
     ):
+        # The filter conditions.
         self.filters = filters
+        # The maximum number of entries returned per page.
         self.max_results = max_results
+        # The token that is used to initiate the next request.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The information of the resources.
         self.resources = resources
 
     def validate(self):
@@ -596,9 +673,6 @@ class SearchResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

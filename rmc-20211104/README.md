@@ -28,7 +28,7 @@ pip install alibabacloud_rmc20211104
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/rmc-20211104/ChangeLog.md).
 
 ## References
 
