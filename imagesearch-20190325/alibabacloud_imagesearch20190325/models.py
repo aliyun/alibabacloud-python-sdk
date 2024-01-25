@@ -175,14 +175,14 @@ class AddImageResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: AddImageResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -194,6 +194,8 @@ class AddImageResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -202,6 +204,8 @@ class AddImageResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AddImageResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -296,14 +300,14 @@ class DeleteImageResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteImageResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -315,6 +319,8 @@ class DeleteImageResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -323,6 +329,8 @@ class DeleteImageResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteImageResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -424,6 +432,7 @@ class SearchImageResponseBodyAuctions(TeaModel):
         int_attr: int = None,
         pic_name: str = None,
         product_id: str = None,
+        score: float = None,
         sort_expr_values: str = None,
         str_attr: str = None,
     ):
@@ -432,6 +441,7 @@ class SearchImageResponseBodyAuctions(TeaModel):
         self.int_attr = int_attr
         self.pic_name = pic_name
         self.product_id = product_id
+        self.score = score
         self.sort_expr_values = sort_expr_values
         self.str_attr = str_attr
 
@@ -454,6 +464,8 @@ class SearchImageResponseBodyAuctions(TeaModel):
             result['PicName'] = self.pic_name
         if self.product_id is not None:
             result['ProductId'] = self.product_id
+        if self.score is not None:
+            result['Score'] = self.score
         if self.sort_expr_values is not None:
             result['SortExprValues'] = self.sort_expr_values
         if self.str_attr is not None:
@@ -472,6 +484,8 @@ class SearchImageResponseBodyAuctions(TeaModel):
             self.pic_name = m.get('PicName')
         if m.get('ProductId') is not None:
             self.product_id = m.get('ProductId')
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
         if m.get('SortExprValues') is not None:
             self.sort_expr_values = m.get('SortExprValues')
         if m.get('StrAttr') is not None:
@@ -551,20 +565,53 @@ class SearchImageResponseBodyPicInfoAllCategories(TeaModel):
         return self
 
 
+class SearchImageResponseBodyPicInfoMultiRegion(TeaModel):
+    def __init__(
+        self,
+        region: str = None,
+    ):
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region is not None:
+            result['Region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        return self
+
+
 class SearchImageResponseBodyPicInfo(TeaModel):
     def __init__(
         self,
         all_categories: List[SearchImageResponseBodyPicInfoAllCategories] = None,
         category_id: int = None,
+        multi_region: List[SearchImageResponseBodyPicInfoMultiRegion] = None,
         region: str = None,
     ):
         self.all_categories = all_categories
         self.category_id = category_id
+        self.multi_region = multi_region
         self.region = region
 
     def validate(self):
         if self.all_categories:
             for k in self.all_categories:
+                if k:
+                    k.validate()
+        if self.multi_region:
+            for k in self.multi_region:
                 if k:
                     k.validate()
 
@@ -580,6 +627,10 @@ class SearchImageResponseBodyPicInfo(TeaModel):
                 result['AllCategories'].append(k.to_map() if k else None)
         if self.category_id is not None:
             result['CategoryId'] = self.category_id
+        result['MultiRegion'] = []
+        if self.multi_region is not None:
+            for k in self.multi_region:
+                result['MultiRegion'].append(k.to_map() if k else None)
         if self.region is not None:
             result['Region'] = self.region
         return result
@@ -593,6 +644,11 @@ class SearchImageResponseBodyPicInfo(TeaModel):
                 self.all_categories.append(temp_model.from_map(k))
         if m.get('CategoryId') is not None:
             self.category_id = m.get('CategoryId')
+        self.multi_region = []
+        if m.get('MultiRegion') is not None:
+            for k in m.get('MultiRegion'):
+                temp_model = SearchImageResponseBodyPicInfoMultiRegion()
+                self.multi_region.append(temp_model.from_map(k))
         if m.get('Region') is not None:
             self.region = m.get('Region')
         return self
@@ -679,14 +735,14 @@ class SearchImageResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: SearchImageResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -698,6 +754,8 @@ class SearchImageResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -706,6 +764,8 @@ class SearchImageResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SearchImageResponseBody()
             self.body = temp_model.from_map(m['body'])

@@ -41,22 +41,6 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def add_image(
-        self,
-        request: image_search_20190325_models.AddImageRequest,
-    ) -> image_search_20190325_models.AddImageResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.add_image_with_options(request, headers, runtime)
-
-    async def add_image_async(
-        self,
-        request: image_search_20190325_models.AddImageRequest,
-    ) -> image_search_20190325_models.AddImageResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.add_image_with_options_async(request, headers, runtime)
-
     def add_image_with_options(
         self,
         request: image_search_20190325_models.AddImageRequest,
@@ -89,9 +73,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='AddImage',
+            version='2019-03-25',
+            protocol='HTTPS',
+            pathname=f'/v2/image/add',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
             image_search_20190325_models.AddImageResponse(),
-            self.do_roarequest_with_form('AddImage', '2019-03-25', 'HTTPS', 'POST', 'AK', f'/v2/image/add', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_image_with_options_async(
@@ -126,26 +121,37 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='AddImage',
+            version='2019-03-25',
+            protocol='HTTPS',
+            pathname=f'/v2/image/add',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
             image_search_20190325_models.AddImageResponse(),
-            await self.do_roarequest_with_form_async('AddImage', '2019-03-25', 'HTTPS', 'POST', 'AK', f'/v2/image/add', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def delete_image(
+    def add_image(
         self,
-        request: image_search_20190325_models.DeleteImageRequest,
-    ) -> image_search_20190325_models.DeleteImageResponse:
+        request: image_search_20190325_models.AddImageRequest,
+    ) -> image_search_20190325_models.AddImageResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_image_with_options(request, headers, runtime)
+        return self.add_image_with_options(request, headers, runtime)
 
-    async def delete_image_async(
+    async def add_image_async(
         self,
-        request: image_search_20190325_models.DeleteImageRequest,
-    ) -> image_search_20190325_models.DeleteImageResponse:
+        request: image_search_20190325_models.AddImageRequest,
+    ) -> image_search_20190325_models.AddImageResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_image_with_options_async(request, headers, runtime)
+        return await self.add_image_with_options_async(request, headers, runtime)
 
     def delete_image_with_options(
         self,
@@ -165,9 +171,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='DeleteImage',
+            version='2019-03-25',
+            protocol='HTTPS',
+            pathname=f'/v2/image/delete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
             image_search_20190325_models.DeleteImageResponse(),
-            self.do_roarequest_with_form('DeleteImage', '2019-03-25', 'HTTPS', 'POST', 'AK', f'/v2/image/delete', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_image_with_options_async(
@@ -188,26 +205,37 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='DeleteImage',
+            version='2019-03-25',
+            protocol='HTTPS',
+            pathname=f'/v2/image/delete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
             image_search_20190325_models.DeleteImageResponse(),
-            await self.do_roarequest_with_form_async('DeleteImage', '2019-03-25', 'HTTPS', 'POST', 'AK', f'/v2/image/delete', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def search_image(
+    def delete_image(
         self,
-        request: image_search_20190325_models.SearchImageRequest,
-    ) -> image_search_20190325_models.SearchImageResponse:
+        request: image_search_20190325_models.DeleteImageRequest,
+    ) -> image_search_20190325_models.DeleteImageResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.search_image_with_options(request, headers, runtime)
+        return self.delete_image_with_options(request, headers, runtime)
 
-    async def search_image_async(
+    async def delete_image_async(
         self,
-        request: image_search_20190325_models.SearchImageRequest,
-    ) -> image_search_20190325_models.SearchImageResponse:
+        request: image_search_20190325_models.DeleteImageRequest,
+    ) -> image_search_20190325_models.DeleteImageResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.search_image_with_options_async(request, headers, runtime)
+        return await self.delete_image_with_options_async(request, headers, runtime)
 
     def search_image_with_options(
         self,
@@ -243,9 +271,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='SearchImage',
+            version='2019-03-25',
+            protocol='HTTPS',
+            pathname=f'/v2/image/search',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
             image_search_20190325_models.SearchImageResponse(),
-            self.do_roarequest_with_form('SearchImage', '2019-03-25', 'HTTPS', 'POST', 'AK', f'/v2/image/search', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def search_image_with_options_async(
@@ -282,7 +321,34 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='SearchImage',
+            version='2019-03-25',
+            protocol='HTTPS',
+            pathname=f'/v2/image/search',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
             image_search_20190325_models.SearchImageResponse(),
-            await self.do_roarequest_with_form_async('SearchImage', '2019-03-25', 'HTTPS', 'POST', 'AK', f'/v2/image/search', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
+
+    def search_image(
+        self,
+        request: image_search_20190325_models.SearchImageRequest,
+    ) -> image_search_20190325_models.SearchImageResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.search_image_with_options(request, headers, runtime)
+
+    async def search_image_async(
+        self,
+        request: image_search_20190325_models.SearchImageRequest,
+    ) -> image_search_20190325_models.SearchImageResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.search_image_with_options_async(request, headers, runtime)
