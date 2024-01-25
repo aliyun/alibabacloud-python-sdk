@@ -1,3 +1,7 @@
+2024-01-25 Version: 1.0.3
+- Update API DescribeBidByUserIdForInneradd SecurityToken param.
+
+
 2024-01-22 Version: 1.0.2
 - Generated python 2016-02-01 for CloudAPI.
 
