@@ -28,7 +28,7 @@ pip install alibabacloud_aiearth_meteorology20210928
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/aiearth-meteorology-20210928/ChangeLog.md).
 
 ## References
 

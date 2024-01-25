@@ -16,21 +16,13 @@ class GridQueryRequest(TeaModel):
         product: str = None,
         report_timestamp: str = None,
     ):
-        # 要素
         self.element = element
-        # 预报时间
         self.forecast_timestamp = forecast_timestamp
-        # 纬度
         self.latitude = latitude
-        # 经度
         self.longitude = longitude
-        # 分页编号
         self.page_no = page_no
-        # 分页大小
         self.page_size = page_size
-        # 产品
         self.product = product
-        # 起报时间
         self.report_timestamp = report_timestamp
 
     def validate(self):
@@ -93,21 +85,13 @@ class GridQueryResponseBodyModuleList(TeaModel):
         report_timestamp: str = None,
         value: float = None,
     ):
-        # 数据类型
         self.data_type = data_type
-        # 要素
         self.element = element
-        # 要素单位
         self.element_unit = element_unit
-        # 预报时间
         self.forecast_timestamp = forecast_timestamp
-        # 查询点纬度
         self.latitude = latitude
-        # 查询点经度
         self.longitude = longitude
-        # 起报时间
         self.report_timestamp = report_timestamp
-        # 当前网格值
         self.value = value
 
     def validate(self):
@@ -165,11 +149,8 @@ class GridQueryResponseBodyModule(TeaModel):
         page_no: int = None,
         page_size: int = None,
     ):
-        # 分页结果列表
         self.list = list
-        # 分页编号
         self.page_no = page_no
-        # 分页大小
         self.page_size = page_size
 
     def validate(self):
@@ -217,15 +198,10 @@ class GridQueryResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 响应码
         self.code = code
-        # 响应信息
         self.message = message
-        # 响应结果
         self.module = module
-        # Id of the request
         self.request_id = request_id
-        # 请求是否成功
         self.success = success
 
     def validate(self):
@@ -270,14 +246,14 @@ class GridQueryResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GridQueryResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -289,6 +265,8 @@ class GridQueryResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -297,6 +275,8 @@ class GridQueryResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GridQueryResponseBody()
             self.body = temp_model.from_map(m['body'])

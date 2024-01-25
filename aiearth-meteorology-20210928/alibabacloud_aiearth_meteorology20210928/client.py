@@ -41,6 +41,96 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def grid_query_with_options(
+        self,
+        data_type: str,
+        request: aiearth__meteorology_20210928_models.GridQueryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiearth__meteorology_20210928_models.GridQueryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.element):
+            query['element'] = request.element
+        if not UtilClient.is_unset(request.forecast_timestamp):
+            query['forecastTimestamp'] = request.forecast_timestamp
+        if not UtilClient.is_unset(request.latitude):
+            query['latitude'] = request.latitude
+        if not UtilClient.is_unset(request.longitude):
+            query['longitude'] = request.longitude
+        if not UtilClient.is_unset(request.page_no):
+            query['pageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product):
+            query['product'] = request.product
+        if not UtilClient.is_unset(request.report_timestamp):
+            query['reportTimestamp'] = request.report_timestamp
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GridQuery',
+            version='2021-09-28',
+            protocol='HTTPS',
+            pathname=f'/grid/{OpenApiUtilClient.get_encode_param(data_type)}/v1',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiearth__meteorology_20210928_models.GridQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def grid_query_with_options_async(
+        self,
+        data_type: str,
+        request: aiearth__meteorology_20210928_models.GridQueryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiearth__meteorology_20210928_models.GridQueryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.element):
+            query['element'] = request.element
+        if not UtilClient.is_unset(request.forecast_timestamp):
+            query['forecastTimestamp'] = request.forecast_timestamp
+        if not UtilClient.is_unset(request.latitude):
+            query['latitude'] = request.latitude
+        if not UtilClient.is_unset(request.longitude):
+            query['longitude'] = request.longitude
+        if not UtilClient.is_unset(request.page_no):
+            query['pageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product):
+            query['product'] = request.product
+        if not UtilClient.is_unset(request.report_timestamp):
+            query['reportTimestamp'] = request.report_timestamp
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GridQuery',
+            version='2021-09-28',
+            protocol='HTTPS',
+            pathname=f'/grid/{OpenApiUtilClient.get_encode_param(data_type)}/v1',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiearth__meteorology_20210928_models.GridQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def grid_query(
         self,
         data_type: str,
@@ -58,73 +148,3 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.grid_query_with_options_async(data_type, request, headers, runtime)
-
-    def grid_query_with_options(
-        self,
-        data_type: str,
-        request: aiearth__meteorology_20210928_models.GridQueryRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiearth__meteorology_20210928_models.GridQueryResponse:
-        UtilClient.validate_model(request)
-        data_type = OpenApiUtilClient.get_encode_param(data_type)
-        query = {}
-        if not UtilClient.is_unset(request.element):
-            query['element'] = request.element
-        if not UtilClient.is_unset(request.forecast_timestamp):
-            query['forecastTimestamp'] = request.forecast_timestamp
-        if not UtilClient.is_unset(request.latitude):
-            query['latitude'] = request.latitude
-        if not UtilClient.is_unset(request.longitude):
-            query['longitude'] = request.longitude
-        if not UtilClient.is_unset(request.page_no):
-            query['pageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.product):
-            query['product'] = request.product
-        if not UtilClient.is_unset(request.report_timestamp):
-            query['reportTimestamp'] = request.report_timestamp
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return TeaCore.from_map(
-            aiearth__meteorology_20210928_models.GridQueryResponse(),
-            self.do_roarequest('GridQuery', '2021-09-28', 'HTTPS', 'GET', 'AK', f'/grid/{data_type}/v1', 'json', req, runtime)
-        )
-
-    async def grid_query_with_options_async(
-        self,
-        data_type: str,
-        request: aiearth__meteorology_20210928_models.GridQueryRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiearth__meteorology_20210928_models.GridQueryResponse:
-        UtilClient.validate_model(request)
-        data_type = OpenApiUtilClient.get_encode_param(data_type)
-        query = {}
-        if not UtilClient.is_unset(request.element):
-            query['element'] = request.element
-        if not UtilClient.is_unset(request.forecast_timestamp):
-            query['forecastTimestamp'] = request.forecast_timestamp
-        if not UtilClient.is_unset(request.latitude):
-            query['latitude'] = request.latitude
-        if not UtilClient.is_unset(request.longitude):
-            query['longitude'] = request.longitude
-        if not UtilClient.is_unset(request.page_no):
-            query['pageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.product):
-            query['product'] = request.product
-        if not UtilClient.is_unset(request.report_timestamp):
-            query['reportTimestamp'] = request.report_timestamp
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return TeaCore.from_map(
-            aiearth__meteorology_20210928_models.GridQueryResponse(),
-            await self.do_roarequest_async('GridQuery', '2021-09-28', 'HTTPS', 'GET', 'AK', f'/grid/{data_type}/v1', 'json', req, runtime)
-        )
