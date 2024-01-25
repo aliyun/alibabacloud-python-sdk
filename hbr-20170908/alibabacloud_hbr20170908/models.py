@@ -345,9 +345,6 @@ class AddContainerClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -491,9 +488,6 @@ class AttachNasFileSystemResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -622,9 +616,6 @@ class CancelBackupJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -753,9 +744,6 @@ class CancelRestoreJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -895,9 +883,6 @@ class ChangeResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1023,9 +1008,6 @@ class CheckRoleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1065,6 +1047,7 @@ class CreateBackupJobRequest(TeaModel):
         cross_account_role_name: str = None,
         cross_account_type: str = None,
         cross_account_user_id: int = None,
+        detail: Dict[str, Any] = None,
         exclude: str = None,
         include: str = None,
         initiated_by_ack: bool = None,
@@ -1096,6 +1079,7 @@ class CreateBackupJobRequest(TeaModel):
         self.cross_account_type = cross_account_type
         # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_user_id = cross_account_user_id
+        self.detail = detail
         # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE**. This parameter specifies the paths to the files that are excluded from the backup job. The value must be 1 to 255 characters in length.
         self.exclude = exclude
         # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE**. This parameter specifies the paths to the files that you want to back up. The value must be 1 to 255 characters in length.
@@ -1152,6 +1136,8 @@ class CreateBackupJobRequest(TeaModel):
             result['CrossAccountType'] = self.cross_account_type
         if self.cross_account_user_id is not None:
             result['CrossAccountUserId'] = self.cross_account_user_id
+        if self.detail is not None:
+            result['Detail'] = self.detail
         if self.exclude is not None:
             result['Exclude'] = self.exclude
         if self.include is not None:
@@ -1190,6 +1176,172 @@ class CreateBackupJobRequest(TeaModel):
             self.cross_account_type = m.get('CrossAccountType')
         if m.get('CrossAccountUserId') is not None:
             self.cross_account_user_id = m.get('CrossAccountUserId')
+        if m.get('Detail') is not None:
+            self.detail = m.get('Detail')
+        if m.get('Exclude') is not None:
+            self.exclude = m.get('Exclude')
+        if m.get('Include') is not None:
+            self.include = m.get('Include')
+        if m.get('InitiatedByAck') is not None:
+            self.initiated_by_ack = m.get('InitiatedByAck')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('JobName') is not None:
+            self.job_name = m.get('JobName')
+        if m.get('Options') is not None:
+            self.options = m.get('Options')
+        if m.get('Retention') is not None:
+            self.retention = m.get('Retention')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        if m.get('SpeedLimit') is not None:
+            self.speed_limit = m.get('SpeedLimit')
+        if m.get('VaultId') is not None:
+            self.vault_id = m.get('VaultId')
+        return self
+
+
+class CreateBackupJobShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        backup_type: str = None,
+        cluster_id: str = None,
+        container_cluster_id: str = None,
+        container_resources: str = None,
+        cross_account_role_name: str = None,
+        cross_account_type: str = None,
+        cross_account_user_id: int = None,
+        detail_shrink: str = None,
+        exclude: str = None,
+        include: str = None,
+        initiated_by_ack: bool = None,
+        instance_id: str = None,
+        job_name: str = None,
+        options: str = None,
+        retention: int = None,
+        source_type: str = None,
+        speed_limit: str = None,
+        vault_id: str = None,
+    ):
+        # The backup type. Valid values:
+        # 
+        # *   **COMPLETE**: full backup
+        # *   **INCREMENTAL**: incremental backup
+        self.backup_type = backup_type
+        # The ID of the cluster.
+        self.cluster_id = cluster_id
+        # The ID of the cluster. This parameter is required only if you set the **SourceType** parameter to **CONTAINER**.
+        self.container_cluster_id = container_cluster_id
+        # The cluster resources. This parameter is required only if you set the **SourceType** parameter to **CONTAINER**.
+        self.container_resources = container_resources
+        # The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+        self.cross_account_role_name = cross_account_role_name
+        # Specifies whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
+        # 
+        # *   SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
+        # *   CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+        self.cross_account_type = cross_account_type
+        # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+        self.cross_account_user_id = cross_account_user_id
+        self.detail_shrink = detail_shrink
+        # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE**. This parameter specifies the paths to the files that are excluded from the backup job. The value must be 1 to 255 characters in length.
+        self.exclude = exclude
+        # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE**. This parameter specifies the paths to the files that you want to back up. The value must be 1 to 255 characters in length.
+        self.include = include
+        # This parameter specifies whether to initiate the request by using Container Service for Kubernetes (ACK). Default value: false.
+        self.initiated_by_ack = initiated_by_ack
+        # This parameter is required only if you set the **SourceType** parameter to **UDM_ECS**. This parameter specifies the ID of the ECS instance.
+        self.instance_id = instance_id
+        # The name of the backup job.
+        self.job_name = job_name
+        # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE**. This parameter specifies whether to use Windows Volume Shadow Copy Service (VSS) to define a source path.
+        # 
+        # *   This parameter is available only for Windows ECS instances.
+        # *   If data changes occur in the backup source, the source data must be the same as the data to be backed up before you can set this parameter to `["UseVSS":true]`.
+        # *   If you use VSS, you cannot back up data from multiple directories.
+        self.options = options
+        # The retention period of the backup data. Unit: days.
+        self.retention = retention
+        # The type of the data source. Valid values:
+        # 
+        # *   **ECS_FILE**: Elastic Compute Service (ECS) files
+        # *   **UDM_ECS**: ECS instances
+        # *   **CONTAINER**: containers
+        self.source_type = source_type
+        # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE**. This parameter specifies the throttling rules. Format: `{start}|{end}|{bandwidth}`. Separate multiple throttling rules with vertical bars (|). A specified time range cannot overlap with another time range.
+        # 
+        # *   **start**: the start hour.
+        # *   **end**: the end hour.
+        # *   **bandwidth**: the bandwidth. Unit: KB/s.
+        self.speed_limit = speed_limit
+        # The ID of the backup vault.
+        self.vault_id = vault_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backup_type is not None:
+            result['BackupType'] = self.backup_type
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.container_cluster_id is not None:
+            result['ContainerClusterId'] = self.container_cluster_id
+        if self.container_resources is not None:
+            result['ContainerResources'] = self.container_resources
+        if self.cross_account_role_name is not None:
+            result['CrossAccountRoleName'] = self.cross_account_role_name
+        if self.cross_account_type is not None:
+            result['CrossAccountType'] = self.cross_account_type
+        if self.cross_account_user_id is not None:
+            result['CrossAccountUserId'] = self.cross_account_user_id
+        if self.detail_shrink is not None:
+            result['Detail'] = self.detail_shrink
+        if self.exclude is not None:
+            result['Exclude'] = self.exclude
+        if self.include is not None:
+            result['Include'] = self.include
+        if self.initiated_by_ack is not None:
+            result['InitiatedByAck'] = self.initiated_by_ack
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.job_name is not None:
+            result['JobName'] = self.job_name
+        if self.options is not None:
+            result['Options'] = self.options
+        if self.retention is not None:
+            result['Retention'] = self.retention
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        if self.speed_limit is not None:
+            result['SpeedLimit'] = self.speed_limit
+        if self.vault_id is not None:
+            result['VaultId'] = self.vault_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackupType') is not None:
+            self.backup_type = m.get('BackupType')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ContainerClusterId') is not None:
+            self.container_cluster_id = m.get('ContainerClusterId')
+        if m.get('ContainerResources') is not None:
+            self.container_resources = m.get('ContainerResources')
+        if m.get('CrossAccountRoleName') is not None:
+            self.cross_account_role_name = m.get('CrossAccountRoleName')
+        if m.get('CrossAccountType') is not None:
+            self.cross_account_type = m.get('CrossAccountType')
+        if m.get('CrossAccountUserId') is not None:
+            self.cross_account_user_id = m.get('CrossAccountUserId')
+        if m.get('Detail') is not None:
+            self.detail_shrink = m.get('Detail')
         if m.get('Exclude') is not None:
             self.exclude = m.get('Exclude')
         if m.get('Include') is not None:
@@ -1284,9 +1436,6 @@ class CreateBackupJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1432,7 +1581,7 @@ class CreateBackupPlanRequest(TeaModel):
         self.backup_type = backup_type
         # This parameter is required only if the **SourceType** parameter is set to **OSS**. This parameter specifies the name of the OSS bucket.
         self.bucket = bucket
-        # 增量文件同步列表的配置。（仅同步需要）
+        # The configurations of the incremental file synchronization. This parameter is required for data synchronization only.
         self.change_list_path = change_list_path
         # This parameter is required only if the **SourceType** parameter is set to **NAS**. This parameter specifies the time to create the file system. The value must be a UNIX timestamp. Unit: seconds.
         self.create_time = create_time
@@ -1771,7 +1920,7 @@ class CreateBackupPlanShrinkRequest(TeaModel):
         self.backup_type = backup_type
         # This parameter is required only if the **SourceType** parameter is set to **OSS**. This parameter specifies the name of the OSS bucket.
         self.bucket = bucket
-        # 增量文件同步列表的配置。（仅同步需要）
+        # The configurations of the incremental file synchronization. This parameter is required for data synchronization only.
         self.change_list_path = change_list_path
         # This parameter is required only if the **SourceType** parameter is set to **NAS**. This parameter specifies the time to create the file system. The value must be a UNIX timestamp. Unit: seconds.
         self.create_time = create_time
@@ -2062,9 +2211,6 @@ class CreateBackupPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2306,9 +2452,6 @@ class CreateClientsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2493,9 +2636,6 @@ class CreateHanaBackupPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2703,9 +2843,6 @@ class CreateHanaInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2958,9 +3095,6 @@ class CreateHanaRestoreResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3524,9 +3658,6 @@ class CreatePolicyBindingsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3856,9 +3987,6 @@ class CreatePolicyV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4041,9 +4169,6 @@ class CreateReplicationVaultResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4592,9 +4717,6 @@ class CreateRestoreJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4765,9 +4887,6 @@ class CreateTempFileUploadUrlResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4951,9 +5070,6 @@ class CreateVaultResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5075,9 +5191,6 @@ class DeleteBackupClientResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5112,7 +5225,7 @@ class DeleteBackupClientResourceRequest(TeaModel):
         self,
         client_ids: Dict[str, Any] = None,
     ):
-        # The IDs of HBR clients. You can specify a maximum of 100 client IDs.
+        # The IDs of HBR clients. The value can be a JSON array that consists of up to 100 client IDs. Separate the IDs with commas (,).
         self.client_ids = client_ids
 
     def validate(self):
@@ -5140,7 +5253,7 @@ class DeleteBackupClientResourceShrinkRequest(TeaModel):
         self,
         client_ids_shrink: str = None,
     ):
-        # The IDs of HBR clients. You can specify a maximum of 100 client IDs.
+        # The IDs of HBR clients. The value can be a JSON array that consists of up to 100 client IDs. Separate the IDs with commas (,).
         self.client_ids_shrink = client_ids_shrink
 
     def validate(self):
@@ -5227,9 +5340,6 @@ class DeleteBackupClientResourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5371,9 +5481,6 @@ class DeleteBackupPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5499,9 +5606,6 @@ class DeleteClientResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5644,9 +5748,6 @@ class DeleteHanaBackupPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5789,9 +5890,6 @@ class DeleteHanaInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5973,9 +6071,6 @@ class DeletePolicyBindingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6097,9 +6192,6 @@ class DeletePolicyV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6270,9 +6362,6 @@ class DeleteSnapshotResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6408,9 +6497,6 @@ class DeleteVaultResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7179,9 +7265,6 @@ class DescribeBackupClientsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8046,9 +8129,6 @@ class DescribeBackupJobs2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8974,9 +9054,6 @@ class DescribeBackupPlansResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9364,9 +9441,6 @@ class DescribeClientsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9629,9 +9703,6 @@ class DescribeContainerClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9875,9 +9946,6 @@ class DescribeCrossAccountsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10193,9 +10261,6 @@ class DescribeHanaBackupPlansResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10426,9 +10491,6 @@ class DescribeHanaBackupSettingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10689,9 +10751,6 @@ class DescribeHanaBackupsAsyncResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10972,9 +11031,6 @@ class DescribeHanaDatabasesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11431,9 +11487,6 @@ class DescribeHanaInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11925,9 +11978,6 @@ class DescribeHanaRestoresResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12111,9 +12161,6 @@ class DescribeHanaRetentionSettingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12536,9 +12583,6 @@ class DescribeOtsTableSnapshotsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12936,9 +12980,6 @@ class DescribePoliciesV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13719,9 +13760,6 @@ class DescribePolicyBindingsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13909,9 +13947,6 @@ class DescribeRecoverableOtsInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14119,9 +14154,6 @@ class DescribeRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14866,9 +14898,6 @@ class DescribeRestoreJobs2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15058,9 +15087,6 @@ class DescribeTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15716,9 +15742,6 @@ class DescribeUdmSnapshotsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15883,9 +15906,6 @@ class DescribeVaultReplicationRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16690,9 +16710,6 @@ class DescribeVaultsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16852,9 +16869,6 @@ class DetachNasFileSystemResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16994,9 +17008,6 @@ class DisableBackupPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17139,9 +17150,6 @@ class DisableHanaBackupPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17281,9 +17289,6 @@ class EnableBackupPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17426,9 +17431,6 @@ class EnableHanaBackupPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17582,9 +17584,6 @@ class ExecuteBackupPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17722,9 +17721,6 @@ class ExecutePolicyV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17880,9 +17876,6 @@ class GenerateRamPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18011,9 +18004,6 @@ class GetTempFileDownloadLinkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18283,9 +18273,6 @@ class InstallBackupClientsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18362,9 +18349,6 @@ class OpenHbrServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19078,9 +19062,6 @@ class SearchHistoricalSnapshotsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19223,9 +19204,6 @@ class StartHanaDatabaseAsyncResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19368,9 +19346,6 @@ class StopHanaDatabaseAsyncResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19654,9 +19629,6 @@ class UninstallBackupClientsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19799,9 +19771,6 @@ class UninstallClientResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19932,6 +19901,7 @@ class UpdateBackupPlanRequest(TeaModel):
         update_paths: bool = None,
         vault_id: str = None,
     ):
+        # The configurations of the incremental file synchronization. This parameter is required for data synchronization only.
         self.change_list_path = change_list_path
         # The details about ECS instance backup. The value is a JSON string.
         # 
@@ -20196,6 +20166,7 @@ class UpdateBackupPlanShrinkRequest(TeaModel):
         update_paths: bool = None,
         vault_id: str = None,
     ):
+        # The configurations of the incremental file synchronization. This parameter is required for data synchronization only.
         self.change_list_path = change_list_path
         # The details about ECS instance backup. The value is a JSON string.
         # 
@@ -20420,9 +20391,6 @@ class UpdateBackupPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20646,9 +20614,6 @@ class UpdateClientSettingsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20798,9 +20763,6 @@ class UpdateContainerClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20967,9 +20929,6 @@ class UpdateHanaBackupPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21163,9 +21122,6 @@ class UpdateHanaBackupSettingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21363,9 +21319,6 @@ class UpdateHanaInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21528,9 +21481,6 @@ class UpdateHanaRetentionSettingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21982,9 +21932,6 @@ class UpdatePolicyBindingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22342,9 +22289,6 @@ class UpdatePolicyV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22476,9 +22420,6 @@ class UpdateVaultResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22762,9 +22703,6 @@ class UpgradeBackupClientsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22907,9 +22845,6 @@ class UpgradeClientResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
