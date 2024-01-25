@@ -28,7 +28,7 @@ pip install alibabacloud_pts20201020
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/pts-20201020/ChangeLog.md).
 
 ## References
 
