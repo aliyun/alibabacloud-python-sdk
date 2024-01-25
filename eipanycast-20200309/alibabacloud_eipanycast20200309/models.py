@@ -22,13 +22,13 @@ class AllocateAnycastEipAddressRequest(TeaModel):
         # 
         # Default value: **1000**.
         # 
-        # >  The maximum bandwidth value is not a guaranteed value. It indicates the upper limit of bandwidth and is for reference only.
+        # > The maximum bandwidth is not a guaranteed service and is for reference only.
         self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **ClientToken**. The value of **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The description of the Anycast EIP.
         # 
@@ -46,10 +46,11 @@ class AllocateAnycastEipAddressRequest(TeaModel):
         # 
         # The name must be 0 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
         self.name = name
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
         # The access area of the Anycast EIP.
         # 
-        # Set the value to **international**, which specifies the regions outside the Chinese mainland.
+        # Set the value to **international**, which specifies the areas outside the Chinese mainland.
         self.service_location = service_location
 
     def validate(self):
@@ -109,9 +110,9 @@ class AllocateAnycastEipAddressResponseBody(TeaModel):
     ):
         # The ID of the Anycast EIP.
         self.anycast_id = anycast_id
-        # The ID of the order.
+        # The order ID.
         self.order_id = order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -154,9 +155,6 @@ class AllocateAnycastEipAddressResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -191,9 +189,9 @@ class AssociateAnycastEipAddressRequestPopLocations(TeaModel):
         self,
         pop_location: str = None,
     ):
-        # The information about the access points in associated access areas when you associate an Anycast EIP with a cloud resource.
+        # The information about the access points in associated access areas when you associate an Anycast EIP with an endpoint.
         # 
-        # If this is your first time to associate an Anycast EIP with a cloud resource, ignore this parameter. The system automatically associates all access areas.
+        # If this is your first time to associate an Anycast EIP with an endpoint, ignore this parameter. The system automatically associates all access areas.
         # 
         # You can call the [DescribeAnycastPopLocations](~~171938~~) operation to query information about access points in supported access areas.
         self.pop_location = pop_location
@@ -235,39 +233,40 @@ class AssociateAnycastEipAddressRequest(TeaModel):
         self.anycast_id = anycast_id
         # The association mode. Valid values:
         # 
-        # *   **Default**: the default mode. In this mode, cloud resources to be associated are set as default origin servers.
-        # *   **Normal**: the standard mode. In this mode, cloud resources to be associated are set as standard origin servers.
+        # *   **Default**: the default mode. In this mode, the endpoint to be associated serves as the default origin server.
+        # *   **Normal**: the standard mode. In this mode, the endpoint to be associated serves as a standard origin server.
         # 
-        # > You can associate an Anycast EIP with cloud resources in multiple regions. However, you can set only one cloud resource as the default origin server. Other cloud resources are set as standard origin servers. If you do not specify or add an access point, requests are forwarded to the default origin server.
+        # > You can associate endpoints in multiple regions with an Anycast EIP. However, only one endpoint can serve as the default origin server. Others serve as standard origin servers. If you do not specify or add an access point, requests are forwarded to the default origin server.\
         # 
-        # *   If this is your first time to associate an Anycast EIP with a cloud resource, set the value to **Default**.
+        # 
+        # *   If this is your first time to associate an Anycast EIP with an endpoint, set the value to **Default**.
         # *   If not, you can also set the value to **Default**, which specifies a new default origin server. In this case, the previous origin server functions as a standard origin server.
         self.association_mode = association_mode
-        # The ID of the cloud resource with which you want to associate the Anycast EIP.
+        # The ID of the endpoint with which you want to associate the Anycast EIP.
         self.bind_instance_id = bind_instance_id
-        # The ID of the region where the cloud resource is deployed.
+        # The ID of the region where the endpoint is deployed.
         # 
-        # You can associate Anycast EIPs only with cloud resources in specific regions. You can call the [DescribeAnycastServerRegions](~~171939~~) operation to query the region IDs.
+        # You can associate Anycast EIPs only with endpoints in specific regions. You can call the [DescribeAnycastServerRegions](~~171939~~) operation to query the region IDs.
         self.bind_instance_region_id = bind_instance_region_id
-        # The type of cloud resource with which you want to associate the Anycast EIP. Valid values:
+        # The type of endpoint with which you want to associate the Anycast EIP. Valid values:
         # 
-        # *   **SlbInstance**: an internal-facing Server Load Balancer (SLB) instance that is deployed in a virtual private cloud (VPC)
-        # *   **NetworkInterface**: an elastic network interface (ENI)
+        # *   **SlbInstance**: internal-facing Server Load Balancer (SLB) instance that is deployed in a virtual private cloud (VPC)
+        # *   **NetworkInterface**: elastic network interface (ENI)
         self.bind_instance_type = bind_instance_type
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         # 
-        # >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether to only precheck the request. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: prechecks the request. After the request passes the precheck, the Anycast EIP is not associated with the instance. The system checks the required parameters, request syntax, and limits. If the request fails to pass the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the API request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The information about the access points in associated access areas when you associate an Anycast EIP with a cloud resource.
+        # The information about the access points in associated access areas when you associate an Anycast EIP with an endpoint.
         # 
-        # If this is your first time to associate an Anycast EIP with a cloud resource, ignore this parameter. The system automatically associates all access areas.
+        # If this is your first time to associate an Anycast EIP with an endpoint, ignore this parameter. The system automatically associates all access areas.
         # 
         # You can call the [DescribeAnycastPopLocations](~~171938~~) operation to query information about access points in supported access areas.
         self.pop_locations = pop_locations
@@ -341,7 +340,7 @@ class AssociateAnycastEipAddressResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -376,9 +375,6 @@ class AssociateAnycastEipAddressResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -417,13 +413,13 @@ class DescribeAnycastEipAddressRequest(TeaModel):
     ):
         # The ID of the Anycast EIP.
         # 
-        # >  You must specify at least one of **Ip** and **AnycastId**.
+        # > You must specify **Ip** or **AnycastId**.
         self.anycast_id = anycast_id
-        # The ID of the cloud resource with which the Anycast EIP is associated.
+        # The ID of the endpoint with which the Anycast EIP is associated.
         self.bind_instance_id = bind_instance_id
         # The IP address of the Anycast EIP.
         # 
-        # >  You must specify at least one of **Ip** and **AnycastId**.
+        # > You must specify **Ip** or **AnycastId**.
         self.ip = ip
 
     def validate(self):
@@ -461,7 +457,7 @@ class DescribeAnycastEipAddressResponseBodyAnycastEipBindInfoListPopLocations(Te
     ):
         # The information about the access points in associated access areas when you associate an Anycast EIP with a cloud resource.
         # 
-        # If this is your first time associating an Anycast EIP with a cloud resource, the system returns information about access points in all access areas.
+        # If this is your first time associating an Anycast EIP with an endpoint, the system returns information about access points in all access areas.
         self.pop_location = pop_location
 
     def validate(self):
@@ -498,31 +494,31 @@ class DescribeAnycastEipAddressResponseBodyAnycastEipBindInfoList(TeaModel):
     ):
         # The association mode. Valid values:
         # 
-        # *   **Default**: the default mode. In this mode, associated cloud resources are set as default origin servers.
-        # *   **Normal**: the standard mode. In this mode, associated cloud resources are set as standard origin servers.
+        # *   **Default**: the default mode. In this mode, the associated endpoint serves as the default origin server.
+        # *   **Normal**: the standard mode. In this mode, the associated endpoint serves as a standard origin server.
         self.association_mode = association_mode
-        # The ID of the cloud resource with which the Anycast EIP is associated.
+        # The ID of the endpoint with which the Anycast EIP is associated.
         self.bind_instance_id = bind_instance_id
-        # The ID of the region in which the cloud resource is deployed.
+        # The ID of the region in which the endpoint is deployed.
         self.bind_instance_region_id = bind_instance_region_id
-        # The type of cloud resource with which the Anycast EIP is associated. Valid values:
+        # The type of endpoint with which the Anycast EIP is associated. Valid values:
         # 
-        # *   **SlbInstance**: an internal-facing Server Load Balancer (SLB) instance that is deployed in a virtual private cloud (VPC)
-        # *   **NetworkInterface**: an elastic network interface (ENI)
+        # *   **SlbInstance**: a CLB instance in a VPC.
+        # *   **NetworkInterface**: an elastic network interface (ENI).
         self.bind_instance_type = bind_instance_type
         # The time when the Anycast EIP was associated.
         # 
-        # The time follows the ISO8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+        # The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
         self.bind_time = bind_time
         # The information about the access points in associated access areas when you associate an Anycast EIP with a cloud resource.
         # 
-        # If this is your first time associating an Anycast EIP with a cloud resource, the system returns information about access points in all access areas.
+        # If this is your first time associating an Anycast EIP with an endpoint, the system returns information about access points in all access areas.
         self.pop_locations = pop_locations
         # The secondary private IP address of the associated ENI.
         # 
         # This parameter is valid only when **BindInstanceType** is set to **NetworkInterface**.
         self.private_ip_address = private_ip_address
-        # The status of the cloud resource. Valid values:
+        # The status of the endpoint. Valid values:
         # 
         # *   **BINDING**\
         # *   **BINDED**\
@@ -645,7 +641,7 @@ class DescribeAnycastEipAddressResponseBody(TeaModel):
     ):
         # The ID of the account to which the Anycast EIP belongs.
         self.ali_uid = ali_uid
-        # The information about the cloud resource with which the Anycast EIP is associated.
+        # The information about the endpoint with which the Anycast EIP is associated.
         self.anycast_eip_bind_info_list = anycast_eip_bind_info_list
         # The ID of the Anycast EIP.
         self.anycast_id = anycast_id
@@ -658,7 +654,7 @@ class DescribeAnycastEipAddressResponseBody(TeaModel):
         # *   **Normal**\
         # *   **FinancialLocked**\
         self.business_status = business_status
-        # The time when the Anycast EIP was created.
+        # The point in time at which the Anycast EIP was created.
         # 
         # The time follows the ISO8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.create_time = create_time
@@ -678,12 +674,13 @@ class DescribeAnycastEipAddressResponseBody(TeaModel):
         self.name = name
         # The request ID.
         self.request_id = request_id
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # The area from which you can use the Anycast EIP to access the backend server over the Internet.
+        # The access area of the Anycast EIP.
         # 
         # Only **international** may be returned, which indicates the areas outside the Chinese mainland.
         self.service_location = service_location
-        # The status of the Anycast EIP. Valid values:
+        # The status of the Anycast EIP.
         # 
         # *   **Associating**\
         # *   **Unassociating**\
@@ -693,7 +690,7 @@ class DescribeAnycastEipAddressResponseBody(TeaModel):
         # *   **Releasing**\
         # *   **Released**\
         self.status = status
-        # The tag information.
+        # The information about the tags.
         self.tags = tags
 
     def validate(self):
@@ -809,9 +806,6 @@ class DescribeAnycastEipAddressResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -848,7 +842,7 @@ class DescribeAnycastPopLocationsRequest(TeaModel):
     ):
         # The access area of the Anycast elastic IP address (EIP).
         # 
-        # Set the value to **international**, which specifies the regions outside the Chinese mainland.
+        # Set the value to **international**, which specifies the areas outside the Chinese mainland.
         self.service_location = service_location
 
     def validate(self):
@@ -917,7 +911,7 @@ class DescribeAnycastPopLocationsResponseBody(TeaModel):
         self.anycast_pop_location_list = anycast_pop_location_list
         # The number of access points.
         self.count = count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -968,9 +962,6 @@ class DescribeAnycastPopLocationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1007,7 +998,7 @@ class DescribeAnycastServerRegionsRequest(TeaModel):
     ):
         # The access area from which you use the Anycast EIP to communicate with the Internet.
         # 
-        # Set the value to **international**, which specifies the regions outside the Chinese mainland.
+        # Set the value to **international**, which specifies the areas outside the Chinese mainland.
         self.service_location = service_location
 
     def validate(self):
@@ -1072,11 +1063,11 @@ class DescribeAnycastServerRegionsResponseBody(TeaModel):
         count: str = None,
         request_id: str = None,
     ):
-        # The list of regions where you can associate Anycast EIPs with backend servers.
+        # The list of regions where you can associate Anycast EIPs with endpoints.
         self.anycast_server_region_list = anycast_server_region_list
-        # The total number of entries returned.
+        # The number of returned entries.
         self.count = count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1127,9 +1118,6 @@ class DescribeAnycastServerRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1686,9 +1674,6 @@ class ListAnycastEipAddressesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1724,17 +1709,17 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N to add to the resource. You can specify up to 20 tag keys. It cannot be an empty string.
+        # The key of tag N. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # The tag key can be a up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
         # 
-        # >  Specify at least one of **ResourceId.N** or **Tag.N** (**Tag.N.Key** and **Tag.N.Value**).
+        # > You must specify **ResourceId.N** or **Tag.N** (**Tag.N.Key** or **Tag.N.Value**).
         self.key = key
-        # The value of tag N to add to the resource. You can specify up to 20 tag values. It can be an empty string.
+        # The value of tag N. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter but cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
+        # It can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
         # 
-        # >  Specify at least one of **ResourceId.N** or **Tag.N** (**Tag.N.Key** and **Tag.N.Value**).
+        # > You must specify **ResourceId.N** or **Tag.N** (**Tag.N.Key** or **Tag.N.Value**).
         self.value = value
 
     def validate(self):
@@ -1770,18 +1755,18 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
-        # The number of entries to return on each page. Valid values:**1** to **50**. Default value: **50**.
+        # The number of entries per page. Valid values: **1** to **50**. Default value: **50**.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If this is your first query or no subsequent query is to be sent, ignore this parameter.
-        # *   If a next query is to be sent, set the value to the value of **NextToken** that is returned in the last call.
+        # *   If this is your first query or no next queries are to be sent, ignore this parameter.
+        # *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
         self.next_token = next_token
-        # The ID of the resource.
+        # The resource IDs.
         self.resource_id = resource_id
         # The resource type. Set the value to **ANYCASTEIPADDRESS**.
         self.resource_type = resource_type
-        # The tags
+        # The tag information.
         self.tag = tag
 
     def validate(self):
@@ -1838,11 +1823,11 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
     ):
         # The resource ID.
         self.resource_id = resource_id
-        # The resource type. Set the value to **ANYCASTEIPADDRESS**.
+        # The resource type. Only **ANYCASTEIPADDRESS** may be returned.
         self.resource_type = resource_type
-        # The tag key.
+        # The key of tag N.
         self.tag_key = tag_key
-        # The tag value.
+        # The value of tag N.
         self.tag_value = tag_value
 
     def validate(self):
@@ -1884,10 +1869,10 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
     ):
-        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If the **NextToken** parameter is empty, no next page exists.
-        # *   If the return value of **NextToken** is not empty, the value indicates the token that is used for the next query.
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -1942,9 +1927,6 @@ class ListTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2025,7 +2007,7 @@ class ModifyAnycastEipAddressAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2060,9 +2042,6 @@ class ModifyAnycastEipAddressAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2134,7 +2113,7 @@ class ModifyAnycastEipAddressSpecResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2169,9 +2148,6 @@ class ModifyAnycastEipAddressSpecResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2211,7 +2187,7 @@ class ReleaseAnycastEipAddressRequest(TeaModel):
         self.anycast_id = anycast_id
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value. Make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -2243,7 +2219,7 @@ class ReleaseAnycastEipAddressResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2278,9 +2254,6 @@ class ReleaseAnycastEipAddressResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2318,15 +2291,15 @@ class TagResourcesRequestTag(TeaModel):
     ):
         # The key of tag N to add to the resource. You must enter at least one tag key and at most 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # The tag key can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain `http://` or `https://`.
         # 
-        # >  When you call this operation, you must specify **Tag.N.Key**.
+        # > When you call this operation, **Tag.N.Key** is required.
         self.key = key
         # The value of tag N to add to the resource. You must enter at least one tag value and at most 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # It can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
         # 
-        # >  When you call this operation, you must specify **Tag.N.Value**.
+        # > When you call this operation, **Tag.N.Value** is required.
         self.value = value
 
     def validate(self):
@@ -2360,11 +2333,11 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
-        # The list of resource IDs.
+        # The resource ID. You can specify at most 20 IDs.
         self.resource_id = resource_id
         # The resource type. Set the value to **ANYCASTEIPADDRESS**.
         self.resource_type = resource_type
-        # The tags.
+        # The tag information.
         self.tag = tag
 
     def validate(self):
@@ -2454,9 +2427,6 @@ class TagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2499,29 +2469,29 @@ class UnassociateAnycastEipAddressRequest(TeaModel):
     ):
         # The ID of the Anycast EIP.
         self.anycast_id = anycast_id
-        # The ID of the cloud resource from which you want to disassociate the Anycast EIP.
+        # The ID of the endpoint from which you want to disassociate the Anycast EIP.
         self.bind_instance_id = bind_instance_id
-        # The region where the cloud resource is deployed.
+        # The region where the endpoint is deployed.
         self.bind_instance_region_id = bind_instance_region_id
-        # The type of cloud resource from which you want to disassociate the Anycast EIP. Valid values:
+        # The type of endpoint from which you want to disassociate the Anycast EIP. Valid values:
         # 
         # *   **SlbInstance**: an internal-facing Server Load Balancer (SLB) instance that is deployed in a virtual private cloud (VPC)
-        # *   **NetworkInterface**: an elastic network interface (ENI)
+        # *   **NetworkInterface**: elastic network interface (ENI)
         self.bind_instance_type = bind_instance_type
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         # 
-        # >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether to only precheck the request. Valid values:
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: prechecks the request without disassociating the Anycast EIP. The system checks the required parameters, request syntax, and limits. If the request fails to pass the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the API request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The secondary private IP address of the ENI from which you want to disassociate the Anycast EIP.
         # 
-        # This parameter is valid only when you set **BindInstanceType** to **NetworkInterface**. If you do not set this parameter, the primary private IP address of the ENI is returned.
+        # This parameter is valid only when you set **BindInstanceType** to **NetworkInterface**. If you do not specify this parameter, the primary private IP address of the ENI is used.
         self.private_ip_address = private_ip_address
 
     def validate(self):
@@ -2573,7 +2543,7 @@ class UnassociateAnycastEipAddressResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2608,9 +2578,6 @@ class UnassociateAnycastEipAddressResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2647,11 +2614,13 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # The ID of the resource.
+        # The resource ID. You can specify up to 20 resource IDs.
         self.resource_id = resource_id
         # The resource type. Set the value to **ANYCASTEIPADDRESS**.
         self.resource_type = resource_type
-        # The tag keys of the resource.
+        # The key of the tag that you want to remove. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # A tag key can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain `http://` or `https://`.
         self.tag_key = tag_key
 
     def validate(self):
@@ -2690,7 +2659,7 @@ class UntagResourcesResponseBody(TeaModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the operation is successful. Valid values:
         # 
         # **true**\
         # 
@@ -2733,9 +2702,6 @@ class UntagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2962,9 +2928,6 @@ class UpdateAnycastEipAddressAssociationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
