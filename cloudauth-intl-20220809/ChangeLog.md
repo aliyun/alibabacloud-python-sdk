@@ -1,3 +1,8 @@
+2024-01-25 Version: 1.4.4
+- Update API CardOcrupdate IdOcrPictureBase64 param.
+- Update API FaceLivenessupdate FacePictureBase64 param.
+
+
 2024-01-24 Version: 1.4.3
 - Generated python 2022-08-09 for Cloudauth-intl.
 
