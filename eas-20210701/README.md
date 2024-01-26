@@ -28,7 +28,7 @@ pip install alibabacloud_eas20210701
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/eas-20210701/ChangeLog.md).
 
 ## References
 

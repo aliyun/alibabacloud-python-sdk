@@ -1029,9 +1029,6 @@ class CommitServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1073,13 +1070,31 @@ class CreateAppServiceRequest(TeaModel):
         service_name: str = None,
         service_spec: str = None,
     ):
+        # The quota ID.
         self.quota_id = quota_id
+        # The workspace ID.
         self.workspace_id = workspace_id
+        # The application service type.
+        # 
+        # Valid values:
+        # 
+        # *   LLM
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.app_type = app_type
+        # The application version.
         self.app_version = app_version
+        # Additional configurations that are required for the service deployment.
         self.config = config
+        # The number of instances.
         self.replicas = replicas
+        # The service name.
         self.service_name = service_name
+        # The service specifications.
         self.service_spec = service_spec
 
     def validate(self):
@@ -1141,12 +1156,19 @@ class CreateAppServiceResponseBody(TeaModel):
         service_name: str = None,
         status: str = None,
     ):
+        # The public endpoint of the service.
         self.internet_endpoint = internet_endpoint
+        # The internal endpoint of the service.
         self.intranet_endpoint = intranet_endpoint
+        # The region ID of the service.
         self.region = region
+        # The request ID.
         self.request_id = request_id
+        # The service ID.
         self.service_id = service_id
+        # The service name.
         self.service_name = service_name
+        # The service state.
         self.status = status
 
     def validate(self):
@@ -1205,9 +1227,6 @@ class CreateAppServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1242,6 +1261,7 @@ class CreateBenchmarkTaskRequest(TeaModel):
         self,
         body: str = None,
     ):
+        # The request body. The body includes the parameters that are set to create a stress testing task.
         self.body = body
 
     def validate(self):
@@ -1272,9 +1292,13 @@ class CreateBenchmarkTaskResponseBody(TeaModel):
         request_id: str = None,
         task_name: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The ID of the region where the stress testing task is performed.
         self.region = region
+        # The request ID.
         self.request_id = request_id
+        # The name of the stress testing task.
         self.task_name = task_name
 
     def validate(self):
@@ -1321,9 +1345,6 @@ class CreateBenchmarkTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1362,10 +1383,33 @@ class CreateGatewayRequest(TeaModel):
         instance_type: str = None,
         name: str = None,
     ):
+        # The name of the resource group.
         self.resource_name = resource_name
+        # Specifies whether to enable Internet access. Default value: false.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.enable_internet = enable_internet
+        # Specifies whether to enable internal network access. Default value: true.
         self.enable_intranet = enable_intranet
+        # The instance type used for the private gateway.
         self.instance_type = instance_type
+        # The private gateway alias.
         self.name = name
 
     def validate(self):
@@ -1412,9 +1456,13 @@ class CreateGatewayResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The region ID of the private gateway.
         self.cluster_id = cluster_id
+        # The private gateway ID.
         self.gateway_id = gateway_id
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1461,9 +1509,6 @@ class CreateGatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1499,7 +1544,9 @@ class CreateGatewayIntranetLinkedVpcRequest(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -1533,8 +1580,11 @@ class CreateGatewayIntranetLinkedVpcResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The private gateway ID.
         self.gateway_id = gateway_id
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1577,9 +1627,6 @@ class CreateGatewayIntranetLinkedVpcResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1617,9 +1664,13 @@ class CreateResourceRequestSelfManagedResourceOptionsNodeTolerations(TeaModel):
         operator: str = None,
         value: str = None,
     ):
+        # 效果
         self.effect = effect
+        # 键名
         self.key = key
+        # 键名和键值的关系
         self.operator = operator
+        # 键值
         self.value = value
 
     def validate(self):
@@ -1662,9 +1713,13 @@ class CreateResourceRequestSelfManagedResourceOptions(TeaModel):
         node_tolerations: List[CreateResourceRequestSelfManagedResourceOptionsNodeTolerations] = None,
         role_name: str = None,
     ):
+        # 自运维集群Id
         self.external_cluster_id = external_cluster_id
+        # 节点的标签键值对集合
         self.node_match_labels = node_match_labels
+        # 节点污点的容忍度列表
         self.node_tolerations = node_tolerations
+        # 授予云服务PAI-EAS相关权限的RAM角色名称
         self.role_name = role_name
 
     def validate(self):
@@ -1719,13 +1774,25 @@ class CreateResourceRequest(TeaModel):
         system_disk_size: int = None,
         zone: str = None,
     ):
+        # Specifies whether to enable auto-renewal. Valid values: false (default)
+        # 
+        # *   true
         self.auto_renewal = auto_renewal
+        # The billing method of the instance. Valid values:
+        # 
+        # *   PrePaid: the subscription billing method.
+        # *   PostPaid: the pay-as-you-go billing method.
         self.charge_type = charge_type
+        # The number of ECS instances.
         self.ecs_instance_count = ecs_instance_count
+        # The type of the Elastic Compute Service (ECS) instance.
         self.ecs_instance_type = ecs_instance_type
         self.resource_type = resource_type
+        # 自运维资源组配置选项
         self.self_managed_resource_options = self_managed_resource_options
+        # The size of the system disk. Unit: GiB. Valid values: 200 to 2000. Default value: 200.
         self.system_disk_size = system_disk_size
+        # The zone to which the instance belongs.
         self.zone = zone
 
     def validate(self):
@@ -1847,9 +1914,6 @@ class CreateResourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1993,9 +2057,6 @@ class CreateResourceInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2103,9 +2164,6 @@ class CreateResourceLogResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2143,6 +2201,25 @@ class CreateServiceRequest(TeaModel):
         workspace_id: str = None,
         body: str = None,
     ):
+        # Specifies whether to enter development mode.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.develop = develop
         self.labels = labels
         self.workspace_id = workspace_id
@@ -2188,6 +2265,25 @@ class CreateServiceShrinkRequest(TeaModel):
         workspace_id: str = None,
         body: str = None,
     ):
+        # Specifies whether to enter development mode.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.develop = develop
         self.labels_shrink = labels_shrink
         self.workspace_id = workspace_id
@@ -2300,9 +2396,6 @@ class CreateServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2338,7 +2431,9 @@ class CreateServiceAutoScalerRequestBehaviorOnZero(TeaModel):
         scale_down_grace_period_seconds: int = None,
         scale_up_activation_replicas: int = None,
     ):
+        # The time window that is required before the number of instances is reduced to 0. The number of instances can be reduced to 0 only if no request is available or no traffic exists in the specified time window. Default value: 600.
         self.scale_down_grace_period_seconds = scale_down_grace_period_seconds
+        # The number of instances that you want to create at a time if the number of instances is scaled out from 0. Default value: 1.
         self.scale_up_activation_replicas = scale_up_activation_replicas
 
     def validate(self):
@@ -2370,6 +2465,7 @@ class CreateServiceAutoScalerRequestBehaviorScaleDown(TeaModel):
         self,
         stabilization_window_seconds: int = None,
     ):
+        # The time window that is required before the scale-in operation is performed. The scale-in operation can be performed only if the specified metric drops below the specified threshold in the specified time window. Default value: 300.
         self.stabilization_window_seconds = stabilization_window_seconds
 
     def validate(self):
@@ -2397,6 +2493,7 @@ class CreateServiceAutoScalerRequestBehaviorScaleUp(TeaModel):
         self,
         stabilization_window_seconds: int = None,
     ):
+        # The time window that is required before the scale-out operation is performed. The scale-out operation can be performed only if the specified metric exceeds the specified threshold in the specified time window. Default value: 0.
         self.stabilization_window_seconds = stabilization_window_seconds
 
     def validate(self):
@@ -2426,8 +2523,11 @@ class CreateServiceAutoScalerRequestBehavior(TeaModel):
         scale_down: CreateServiceAutoScalerRequestBehaviorScaleDown = None,
         scale_up: CreateServiceAutoScalerRequestBehaviorScaleUp = None,
     ):
+        # The operation that reduces the number of instances to 0.
         self.on_zero = on_zero
+        # The scale-in operation.
         self.scale_down = scale_down
+        # The scale-out operation.
         self.scale_up = scale_up
 
     def validate(self):
@@ -2473,8 +2573,17 @@ class CreateServiceAutoScalerRequestScaleStrategies(TeaModel):
         service: str = None,
         threshold: float = None,
     ):
+        # The name of the metric for triggering auto scaling. Valid values:
+        # 
+        # *   QPS: the queries per second (QPS) for an individual instance.
+        # *   CPU: the CPU utilization.
         self.metric_name = metric_name
+        # The service for which the metric is specified. If you do not set this parameter, the current service is specified by default.
         self.service = service
+        # The threshold of the metric that triggers auto scaling.
+        # 
+        # *   If you set metricName to QPS, scale-out is triggered when the average QPS for a single instance is greater than this threshold.
+        # *   If you set metricName to CPU, scale-out is triggered when the average CPU utilization for a single instance is greater than this threshold.
         self.threshold = threshold
 
     def validate(self):
@@ -2513,9 +2622,13 @@ class CreateServiceAutoScalerRequest(TeaModel):
         min: int = None,
         scale_strategies: List[CreateServiceAutoScalerRequestScaleStrategies] = None,
     ):
+        # The Autoscaler operation.
         self.behavior = behavior
+        # The maximum number of instances. The value must be greater than that of the min parameter.
         self.max = max
+        # The minimum number of instances. The value must be greater than 0.
         self.min = min
+        # The Autoscaler strategies.
         self.scale_strategies = scale_strategies
 
     def validate(self):
@@ -2606,9 +2719,6 @@ class CreateServiceAutoScalerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2763,9 +2873,6 @@ class CreateServiceCronScalerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2873,9 +2980,6 @@ class CreateServiceMirrorResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2911,7 +3015,9 @@ class DeleteBenchmarkTaskResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2950,9 +3056,6 @@ class DeleteBenchmarkTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2989,8 +3092,11 @@ class DeleteGatewayResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The private gateway ID.
         self.gateway_id = gateway_id
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3033,9 +3139,6 @@ class DeleteGatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3071,7 +3174,9 @@ class DeleteGatewayIntranetLinkedVpcRequest(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
+        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -3105,8 +3210,11 @@ class DeleteGatewayIntranetLinkedVpcResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The private gateway ID.
         self.gateway_id = gateway_id
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3149,9 +3257,6 @@ class DeleteGatewayIntranetLinkedVpcResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3226,9 +3331,6 @@ class DeleteResourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3303,9 +3405,6 @@ class DeleteResourceDLinkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3413,9 +3512,6 @@ class DeleteResourceInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3451,7 +3547,9 @@ class DeleteResourceLogResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3490,9 +3588,6 @@ class DeleteResourceLogResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3567,9 +3662,6 @@ class DeleteServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3644,9 +3736,6 @@ class DeleteServiceAutoScalerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3721,9 +3810,6 @@ class DeleteServiceCronScalerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3760,8 +3846,10 @@ class DeleteServiceInstancesRequest(TeaModel):
         instance_list: str = None,
         soft_restart: bool = None,
     ):
+        # The name of the container whose process needs to be restarted. This parameter takes effect only if the SoftRestart parameter is set to true.
         self.container = container
         self.instance_list = instance_list
+        # Specifies whether to restart only the container process without recreating the instance. Default value: false. Valid values: true and false.
         self.soft_restart = soft_restart
 
     def validate(self):
@@ -3837,9 +3925,6 @@ class DeleteServiceInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3874,6 +3959,7 @@ class DeleteServiceLabelRequest(TeaModel):
         self,
         keys: List[str] = None,
     ):
+        # The service tags that you want to delete.
         self.keys = keys
 
     def validate(self):
@@ -3901,6 +3987,7 @@ class DeleteServiceLabelShrinkRequest(TeaModel):
         self,
         keys_shrink: str = None,
     ):
+        # The service tags that you want to delete.
         self.keys_shrink = keys_shrink
 
     def validate(self):
@@ -3929,7 +4016,9 @@ class DeleteServiceLabelResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3968,9 +4057,6 @@ class DeleteServiceLabelResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4045,9 +4131,6 @@ class DeleteServiceMirrorResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4094,25 +4177,105 @@ class DescribeBenchmarkTaskResponseBody(TeaModel):
         task_name: str = None,
         token: str = None,
     ):
+        # The number of instances that you can test.
         self.available_agent = available_agent
-        # 压测任务的状态。
+        # The ID of the operation caller.
         self.caller_uid = caller_uid
-        # 预期的压测实例个数。
+        # The number of instances that you want to test.
         self.desired_agent = desired_agent
+        # The endpoint of the service gateway.
         self.endpoint = endpoint
+        # The returned message.
         self.message = message
+        # The ID of the Alibaba Cloud account that is used to call the operation.
         self.parent_uid = parent_uid
+        # The event or reason that causes the current state of the stress testing task.
         self.reason = reason
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
-        # 访问eas服务的鉴权token。
+        # The name of the service that you want to test.
         self.service_name = service_name
+        # The state of the stress testing task.
+        # 
+        # Valid values:
+        # 
+        # *   Creating
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Starting
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   DeleteFailed
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Running
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Stopping
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Error
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Updating
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Deleting
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   CreateFailed
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.status = status
-        # 压测任务ID。
+        # The ID of the stress testing task.
         self.task_id = task_id
-        # 当前压测任务状态产生的原因。
+        # The name of the stress testing task.
         self.task_name = task_name
-        # 资源拥有者的UID。
+        # The token for authentication when a stress testing task is created.
         self.token = token
 
     def validate(self):
@@ -4195,9 +4358,6 @@ class DescribeBenchmarkTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4305,9 +4465,6 @@ class DescribeBenchmarkTaskReportResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4344,8 +4501,29 @@ class DescribeGatewayResponseBodyInternetAclPolicyList(TeaModel):
         entry: str = None,
         status: str = None,
     ):
+        # The description.
         self.comment = comment
+        # The accessible CIDR block.
         self.entry = entry
+        # The state of the private gateway.
+        # 
+        # Valid values:
+        # 
+        # *   Creating
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Running
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.status = status
 
     def validate(self):
@@ -4385,10 +4563,33 @@ class DescribeGatewayResponseBodyIntranetLinkedVpcList(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The IP address.
         self.ip = ip
+        # The ID of the security group.
         self.security_group_id = security_group_id
+        # The state of the private gateway.
+        # 
+        # Valid values:
+        # 
+        # *   Creating
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Running
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.status = status
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -4457,6 +4658,7 @@ class DescribeGatewayResponseBody(TeaModel):
         self.gateway_name = gateway_name
         # 网关创建的实例种类
         self.instance_type = instance_type
+        # The Internet access control policies.
         self.internet_acl_policy_list = internet_acl_policy_list
         # 网关内部域名
         self.internet_domain = internet_domain
@@ -4588,9 +4790,6 @@ class DescribeGatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4632,9 +4831,6 @@ class DescribeGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4684,21 +4880,40 @@ class DescribeResourceResponseBody(TeaModel):
         status: str = None,
         update_time: str = None,
     ):
+        # The ID of the cluster to which the resource group belongs.
         self.cluster_id = cluster_id
+        # The total number of CPU cores.
         self.cpu_count = cpu_count
+        # The time when the resource group was created.
         self.create_time = create_time
+        # The additional information, such as the connection status of a virtual private cloud (VPC) and the log status of Log Service.
         self.extra_data = extra_data
+        # The total number of GPUs.
         self.gpu_count = gpu_count
+        # The total number of instances in the resource group.
         self.instance_count = instance_count
+        # The returned message.
         self.message = message
+        # The ID of the resource group owner.
         self.owner_uid = owner_uid
+        # The total number of pay-as-you-go instances in the resource group.
         self.post_paid_instance_count = post_paid_instance_count
+        # The total number of subscription instances in the resource group.
         self.pre_paid_instance_count = pre_paid_instance_count
+        # The request ID.
         self.request_id = request_id
+        # The ID of the Elastic Algorithm Service (EAS) resource.
         self.resource_id = resource_id
+        # The name of the EAS resource.
         self.resource_name = resource_name
+        # The type of the resource. Valid values:
+        # 
+        # - Dedicated
+        # - SelfManaged
         self.resource_type = resource_type
+        # The state of the resource group.
         self.status = status
+        # The time when the resource group was last updated.
         self.update_time = update_time
 
     def validate(self):
@@ -4793,9 +5008,6 @@ class DescribeResourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4836,6 +5048,7 @@ class DescribeResourceDLinkResponseBody(TeaModel):
         vpc_id: str = None,
     ):
         self.aux_vswitch_list = aux_vswitch_list
+        # The CIDR blocks of the clients that you want to connect to. The CIDR blocks are added to the back-to-origin route of the server.
         self.destination_cidrs = destination_cidrs
         self.request_id = request_id
         self.security_group_id = security_group_id
@@ -4894,9 +5107,6 @@ class DescribeResourceDLinkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4989,9 +5199,6 @@ class DescribeResourceLogResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5033,9 +5240,6 @@ class DescribeServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5235,9 +5439,6 @@ class DescribeServiceAutoScalerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5395,9 +5596,6 @@ class DescribeServiceCronScalerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5519,9 +5717,6 @@ class DescribeServiceDiagnosisResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5724,9 +5919,6 @@ class DescribeServiceEventResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5842,9 +6034,6 @@ class DescribeServiceInstanceDiagnosisResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5887,7 +6076,6 @@ class DescribeServiceLogRequest(TeaModel):
         previous: bool = None,
         start_time: str = None,
     ):
-        # 服务实例的容器名称。
         self.container_name = container_name
         self.end_time = end_time
         self.instance_name = instance_name
@@ -6013,9 +6201,6 @@ class DescribeServiceLogResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6102,9 +6287,6 @@ class DescribeServiceMirrorResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6139,6 +6321,10 @@ class DevelopServiceRequest(TeaModel):
         self,
         exit: str = None,
     ):
+        # Specifies whether to exit development mode. Valid values:
+        # 
+        # *   true
+        # *   false (default)
         self.exit = exit
 
     def validate(self):
@@ -6206,9 +6392,6 @@ class DevelopServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6246,9 +6429,13 @@ class ListBenchmarkTaskRequest(TeaModel):
         page_size: str = None,
         service_name: str = None,
     ):
+        # The keyword used to query required stress testing tasks. If this parameter is specified, the system returns stress testing tasks based on the names of the stress testing tasks in the matched Elastic Algorithm service (EAS).
         self.filter = filter
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 100.
         self.page_size = page_size
+        # The name of the EAS service that corresponds to the stress testing task. For more information about how to query the service name, see [ListServices](~~412109~~).
         self.service_name = service_name
 
     def validate(self):
@@ -6367,10 +6554,15 @@ class ListBenchmarkTaskResponseBody(TeaModel):
         tasks: List[ListBenchmarkTaskResponseBodyTasks] = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The time when the stress testing task was updated.
         self.tasks = tasks
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -6429,9 +6621,6 @@ class ListBenchmarkTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6470,10 +6659,41 @@ class ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The IP address.
         self.ip = ip
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The state of the private gateway.
+        # 
+        # Valid values:
+        # 
+        # *   Creating
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     The private gateway is being created.
+        # 
+        #     <!-- -->
+        # 
+        # *   Running
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     The private gateway is running.
+        # 
+        #     <!-- -->
         self.status = status
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -6519,8 +6739,11 @@ class ListGatewayIntranetLinkedVpcResponseBody(TeaModel):
         intranet_linked_vpc_list: List[ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList] = None,
         request_id: str = None,
     ):
+        # The private gateway ID.
         self.gateway_id = gateway_id
+        # The internal endpoints.
         self.intranet_linked_vpc_list = intranet_linked_vpc_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6571,9 +6794,6 @@ class ListGatewayIntranetLinkedVpcResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6719,9 +6939,6 @@ class ListGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6757,7 +6974,9 @@ class ListResourceInstanceWorkerRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 100.
         self.page_size = page_size
 
     def validate(self):
@@ -6793,10 +7012,15 @@ class ListResourceInstanceWorkerResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The workers.
         self.pods = pods
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -6855,9 +7079,6 @@ class ListResourceInstanceWorkerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7039,9 +7260,6 @@ class ListResourceInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7077,7 +7295,9 @@ class ListResourceServicesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 100.
         self.page_size = page_size
 
     def validate(self):
@@ -7113,10 +7333,15 @@ class ListResourceServicesResponseBody(TeaModel):
         services: List[Service] = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The services.
         self.services = services
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -7175,9 +7400,6 @@ class ListResourceServicesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7216,9 +7438,13 @@ class ListResourcesRequest(TeaModel):
         resource_name: str = None,
         resource_type: str = None,
     ):
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 100.
         self.page_size = page_size
+        # The ID of the resource group. You can call the [CreateResource](~~412111~~) operation to query the ID of the resource group.
         self.resource_id = resource_id
+        # The name of the resource group. You can call the [CreateResource](~~412111~~) operation to query the name of the resource group.
         self.resource_name = resource_name
         self.resource_type = resource_type
 
@@ -7267,10 +7493,15 @@ class ListResourcesResponseBody(TeaModel):
         resources: List[Resource] = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The resource groups.
         self.resources = resources
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -7329,9 +7560,6 @@ class ListResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7368,6 +7596,7 @@ class ListServiceContainersResponseBody(TeaModel):
         request_id: str = None,
         service_name: str = None,
     ):
+        # The containers of the service.
         self.containers = containers
         self.request_id = request_id
         self.service_name = service_name
@@ -7420,9 +7649,6 @@ class ListServiceContainersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7476,6 +7702,27 @@ class ListServiceInstancesRequest(TeaModel):
         self.instance_status = instance_status
         self.instance_type = instance_type
         self.is_spot = is_spot
+        # The sorting order.
+        # 
+        # Valid values:
+        # 
+        # *   asc: The instances are sorted in ascending order.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   desc
+        # 
+        #     <!-- -->
+        # 
+        #     : The instances are sorted in descending order.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.order = order
         self.page_number = page_number
         self.page_size = page_size
@@ -7622,9 +7869,6 @@ class ListServiceInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7694,12 +7938,14 @@ class ListServiceVersionsResponseBodyVersions(TeaModel):
         image_available: str = None,
         image_id: int = None,
         message: str = None,
+        service_config: str = None,
         service_runnable: str = None,
     ):
         self.build_time = build_time
         self.image_available = image_available
         self.image_id = image_id
         self.message = message
+        self.service_config = service_config
         self.service_runnable = service_runnable
 
     def validate(self):
@@ -7719,6 +7965,8 @@ class ListServiceVersionsResponseBodyVersions(TeaModel):
             result['ImageId'] = self.image_id
         if self.message is not None:
             result['Message'] = self.message
+        if self.service_config is not None:
+            result['ServiceConfig'] = self.service_config
         if self.service_runnable is not None:
             result['ServiceRunnable'] = self.service_runnable
         return result
@@ -7733,6 +7981,8 @@ class ListServiceVersionsResponseBodyVersions(TeaModel):
             self.image_id = m.get('ImageId')
         if m.get('Message') is not None:
             self.message = m.get('Message')
+        if m.get('ServiceConfig') is not None:
+            self.service_config = m.get('ServiceConfig')
         if m.get('ServiceRunnable') is not None:
             self.service_runnable = m.get('ServiceRunnable')
         return self
@@ -7809,9 +8059,6 @@ class ListServiceVersionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7851,6 +8098,7 @@ class ListServicesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         parent_service_uid: str = None,
+        quota_id: str = None,
         resource_name: str = None,
         service_name: str = None,
         service_status: str = None,
@@ -7923,6 +8171,7 @@ class ListServicesRequest(TeaModel):
         self.page_number = page_number
         self.page_size = page_size
         self.parent_service_uid = parent_service_uid
+        self.quota_id = quota_id
         # 服务所属的资源组名称或ID。
         self.resource_name = resource_name
         # 服务名。
@@ -7958,6 +8207,8 @@ class ListServicesRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.parent_service_uid is not None:
             result['ParentServiceUid'] = self.parent_service_uid
+        if self.quota_id is not None:
+            result['QuotaId'] = self.quota_id
         if self.resource_name is not None:
             result['ResourceName'] = self.resource_name
         if self.service_name is not None:
@@ -7990,6 +8241,8 @@ class ListServicesRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('ParentServiceUid') is not None:
             self.parent_service_uid = m.get('ParentServiceUid')
+        if m.get('QuotaId') is not None:
+            self.quota_id = m.get('QuotaId')
         if m.get('ResourceName') is not None:
             self.resource_name = m.get('ResourceName')
         if m.get('ServiceName') is not None:
@@ -8017,6 +8270,7 @@ class ListServicesShrinkRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         parent_service_uid: str = None,
+        quota_id: str = None,
         resource_name: str = None,
         service_name: str = None,
         service_status: str = None,
@@ -8089,6 +8343,7 @@ class ListServicesShrinkRequest(TeaModel):
         self.page_number = page_number
         self.page_size = page_size
         self.parent_service_uid = parent_service_uid
+        self.quota_id = quota_id
         # 服务所属的资源组名称或ID。
         self.resource_name = resource_name
         # 服务名。
@@ -8124,6 +8379,8 @@ class ListServicesShrinkRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.parent_service_uid is not None:
             result['ParentServiceUid'] = self.parent_service_uid
+        if self.quota_id is not None:
+            result['QuotaId'] = self.quota_id
         if self.resource_name is not None:
             result['ResourceName'] = self.resource_name
         if self.service_name is not None:
@@ -8156,6 +8413,8 @@ class ListServicesShrinkRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('ParentServiceUid') is not None:
             self.parent_service_uid = m.get('ParentServiceUid')
+        if m.get('QuotaId') is not None:
+            self.quota_id = m.get('QuotaId')
         if m.get('ResourceName') is not None:
             self.resource_name = m.get('ResourceName')
         if m.get('ServiceName') is not None:
@@ -8247,9 +8506,6 @@ class ListServicesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8357,9 +8613,6 @@ class ReleaseServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8395,7 +8648,9 @@ class RestartServiceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8434,9 +8689,6 @@ class RestartServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8472,7 +8724,9 @@ class StartBenchmarkTaskResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8511,9 +8765,6 @@ class StartBenchmarkTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8588,9 +8839,6 @@ class StartServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8626,7 +8874,9 @@ class StopBenchmarkTaskResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8665,9 +8915,6 @@ class StopBenchmarkTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8742,9 +8989,6 @@ class StopServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8782,15 +9026,36 @@ class UpdateAppServiceRequest(TeaModel):
         app_type: str = None,
         app_version: str = None,
         config: Dict[str, Any] = None,
-        replicas: str = None,
+        replicas: int = None,
         service_spec: str = None,
     ):
+        # The quota ID.
         self.quota_id = quota_id
+        # The workspace ID.
         self.workspace_id = workspace_id
+        # The application type.
+        # 
+        # Valid values:
+        # 
+        # *   LLM
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     the large language model (LLM) application
+        # 
+        #     <!-- -->
         self.app_type = app_type
+        # The application version.
         self.app_version = app_version
+        # Additional configurations that are required for the service deployment.
         self.config = config
+        # The number of instances.
         self.replicas = replicas
+        # The service specifications.
         self.service_spec = service_spec
 
     def validate(self):
@@ -8843,6 +9108,7 @@ class UpdateAppServiceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
         self.request_id = request_id
 
@@ -8882,9 +9148,6 @@ class UpdateAppServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8919,6 +9182,7 @@ class UpdateBenchmarkTaskRequest(TeaModel):
         self,
         body: str = None,
     ):
+        # The request body. The body includes the parameters that are set to create a stress testing task.
         self.body = body
 
     def validate(self):
@@ -8947,7 +9211,9 @@ class UpdateBenchmarkTaskResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8986,9 +9252,6 @@ class UpdateBenchmarkTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9026,9 +9289,31 @@ class UpdateGatewayRequest(TeaModel):
         instance_type: str = None,
         name: str = None,
     ):
+        # Specifies whether to enable Internet access. Default value: false.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.enable_internet = enable_internet
+        # Specifies whether to enable internal network access. Default value: true.
         self.enable_intranet = enable_intranet
+        # The instance type used for the private gateway.
         self.instance_type = instance_type
+        # The private gateway alias.
         self.name = name
 
     def validate(self):
@@ -9070,8 +9355,11 @@ class UpdateGatewayResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The ID of the gateway.
         self.gateway_id = gateway_id
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9114,9 +9402,6 @@ class UpdateGatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9154,9 +9439,21 @@ class UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations(TeaModel):
         operator: str = None,
         value: str = None,
     ):
+        # The effect.
+        # 
+        # Valid values:
+        # - PreferNoSchedule
+        # - NoSchedule
+        # - NoExecute
         self.effect = effect
+        # The name of the key.
         self.key = key
+        # Relationship between key names and key values.
+        # Valid values:
+        # - Equal
+        # - Exists
         self.operator = operator
+        # The name of the value.
         self.value = value
 
     def validate(self):
@@ -9197,7 +9494,9 @@ class UpdateResourceRequestSelfManagedResourceOptions(TeaModel):
         node_match_labels: Dict[str, str] = None,
         node_tolerations: List[UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations] = None,
     ):
+        # The key-value pairs for matched nodes.
         self.node_match_labels = node_match_labels
+        # Tolerations for nodes.
         self.node_tolerations = node_tolerations
 
     def validate(self):
@@ -9238,7 +9537,9 @@ class UpdateResourceRequest(TeaModel):
         resource_name: str = None,
         self_managed_resource_options: UpdateResourceRequestSelfManagedResourceOptions = None,
     ):
+        # The new name of the resource group after the update. The name can be up to 27 characters in length.
         self.resource_name = resource_name
+        # The configurable options for self managed resource group.
         self.self_managed_resource_options = self_managed_resource_options
 
     def validate(self):
@@ -9274,8 +9575,11 @@ class UpdateResourceResponseBody(TeaModel):
         resource_id: str = None,
         resource_name: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The ID of the resource group.
         self.resource_id = resource_id
+        # The name of the resource group.
         self.resource_name = resource_name
 
     def validate(self):
@@ -9318,9 +9622,6 @@ class UpdateResourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9358,9 +9659,13 @@ class UpdateResourceDLinkRequest(TeaModel):
         v_switch_id: str = None,
         v_switch_id_list: List[str] = None,
     ):
+        # The CIDR blocks of the clients that you want to connect to. After this parameter is specified, the CIDR blocks are added to the back-to-origin route of the server. Either this parameter or the VSwitchIdList parameter can be used to determine CIDR blocks.
         self.destination_cidrs = destination_cidrs
+        # The ID of the security group to which the Elastic Compute Service (ECS) instance belongs.
         self.security_group_id = security_group_id
+        # The ID of the peer primary vSwitch. After this parameter is specified, an elastic network interface (ENI) is created in the VSwitch.
         self.v_switch_id = v_switch_id
+        # The vSwitches of the clients that you want to connect to. After this parameter is specified, the CIDR blocks of these vSwitches are added to the back-to-origin route of the server.
         self.v_switch_id_list = v_switch_id_list
 
     def validate(self):
@@ -9401,7 +9706,9 @@ class UpdateResourceDLinkResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9440,9 +9747,6 @@ class UpdateResourceDLinkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9550,9 +9854,6 @@ class UpdateResourceInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9585,8 +9886,14 @@ class UpdateResourceInstanceResponse(TeaModel):
 class UpdateServiceRequest(TeaModel):
     def __init__(
         self,
+        update_type: str = None,
         body: str = None,
     ):
+        # The type of the service update. Valid values: merge and replace. By default, merge is used if you do not specify this parameter.
+        # 
+        # *   merge: If the JSON string configured for the existing service is `{"a":"b"}` and the JSON string specified in the body parameter is `{"c":"d"}`, the JSON string is `{"a":"b","c":"d"}` after the service update.
+        # *   replace: If the JSON string configured for the existing service is `{"a":"b"}` and the JSON string specified in the body parameter is `{"c":"d"}`, the JSON string is `{"c":"d"}` after the service update.
+        self.update_type = update_type
         self.body = body
 
     def validate(self):
@@ -9598,12 +9905,16 @@ class UpdateServiceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.update_type is not None:
+            result['UpdateType'] = self.update_type
         if self.body is not None:
             result['body'] = self.body
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('UpdateType') is not None:
+            self.update_type = m.get('UpdateType')
         if m.get('body') is not None:
             self.body = m.get('body')
         return self
@@ -9654,9 +9965,6 @@ class UpdateServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9960,9 +10268,6 @@ class UpdateServiceAutoScalerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10117,9 +10422,6 @@ class UpdateServiceCronScalerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10154,6 +10456,7 @@ class UpdateServiceInstanceRequest(TeaModel):
         self,
         isolate: bool = None,
     ):
+        # Specifies whether to isolate the service instance.
         self.isolate = isolate
 
     def validate(self):
@@ -10182,7 +10485,9 @@ class UpdateServiceInstanceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10221,9 +10526,6 @@ class UpdateServiceInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10258,6 +10560,7 @@ class UpdateServiceLabelRequest(TeaModel):
         self,
         labels: Dict[str, str] = None,
     ):
+        # The custom service tags.
         self.labels = labels
 
     def validate(self):
@@ -10286,7 +10589,9 @@ class UpdateServiceLabelResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10325,9 +10630,6 @@ class UpdateServiceLabelResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10435,9 +10737,6 @@ class UpdateServiceMirrorResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10472,6 +10771,11 @@ class UpdateServiceSafetyLockRequest(TeaModel):
         self,
         lock: str = None,
     ):
+        # The lock scope. Valid values:
+        # 
+        # *   all: locks all operations.
+        # *   dangerous: locks high-risk operations such as delete and stop operations.
+        # *   none: locks no operations.
         self.lock = lock
 
     def validate(self):
@@ -10539,9 +10843,6 @@ class UpdateServiceSafetyLockResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10643,9 +10944,6 @@ class UpdateServiceVersionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

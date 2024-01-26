@@ -1,3 +1,11 @@
+2024-01-26 Version: 4.0.1
+- Update API ListResourceInstanceWorkerupdate response param.
+- Update API ListServiceVersionsupdate response param.
+- Update API ListServicesadd QuotaId param.
+- Update API UpdateAppServiceupdate body param.
+- Update API UpdateServiceadd UpdateType param.
+
+
 2023-11-17 Version: 4.0.0
 - Generated python 2021-07-01 for eas.
 
