@@ -1,3 +1,11 @@
+2024-01-26 Version: 1.2.8
+- Update API CreateDBResourceGroupadd EnableSpot param.
+- Update API DescribeApsActionLogsupdate response param.
+- Update API DescribeClusterResourceDetailupdate response param.
+- Update API DescribeDBResourceGroupupdate response param.
+- Update API ModifyDBResourceGroupadd EnableSpot param.
+
+
 2024-01-18 Version: 1.2.7
 - Generated python 2021-12-01 for adb.
 
