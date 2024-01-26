@@ -330,9 +330,6 @@ class ActivateOfficeSiteResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -481,9 +478,6 @@ class AddDesktopOversoldUserGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -598,9 +592,6 @@ class AddDevicesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1016,9 +1007,6 @@ class AddFilePermissionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1144,9 +1132,6 @@ class AddUserToDesktopGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1260,9 +1245,6 @@ class AddUserToDesktopOversoldUserGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1374,9 +1356,6 @@ class ApplyAutoSnapshotPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1504,9 +1483,6 @@ class ApplyCoordinatePrivilegeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1934,9 +1910,6 @@ class ApplyCoordinationForMonitoringResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2048,9 +2021,6 @@ class ApproveFotaUpdateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2162,9 +2132,6 @@ class AssociateNetworkPackageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2293,9 +2260,6 @@ class AttachCenResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2441,9 +2405,6 @@ class AttachEndUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2480,7 +2441,7 @@ class CancelAutoSnapshotPolicyRequest(TeaModel):
         policy_id: str = None,
         region_id: str = None,
     ):
-        # The IDs of the cloud desktops. Valid values of N: 1 to 50. You cannot leave this parameter empty. The value can be up to 64 characters in length and cannot start with acs: or aliyun. It cannot contain [http:// or https://.](http://https://。)
+        # The IDs of the cloud desktops. Valid values of N: 1 to 50. You cannot leave this parameter empty. The value can be up to 64 characters in length and cannot start with acs: or aliyun. It cannot contain `http://` or `https://`.
         self.desktop_id = desktop_id
         # The ID of the automatic snapshot policy.
         self.policy_id = policy_id
@@ -2555,9 +2516,6 @@ class CancelAutoSnapshotPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2708,9 +2666,6 @@ class CancelCdsFileShareLinkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2824,9 +2779,6 @@ class CancelCoordinationForMonitoringResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2931,9 +2883,6 @@ class CancelCopyImageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3052,9 +3001,6 @@ class ClonePolicyGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3186,9 +3132,6 @@ class CompleteCdsFileResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3337,9 +3280,6 @@ class ConfigADConnectorTrustResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3467,9 +3407,6 @@ class ConfigADConnectorUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3725,9 +3662,6 @@ class CopyCdsFileResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3853,9 +3787,6 @@ class CopyImageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3904,7 +3835,7 @@ class CreateADConnectorDirectoryRequest(TeaModel):
     ):
         # The method that is used to connect the client to cloud desktops.
         self.desktop_access_type = desktop_access_type
-        # The name of the AD directory. The name must be 2 to 255 characters in length, and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        # The directory name. The name must be 2 to 255 characters in length, and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
         self.directory_name = directory_name
         # Details of the IP addresses of the Domain Name System (DNS) servers of the enterprise AD system. You can specify only one IP address. Make sure that the specified IP address is accessible in the network of the selected vSwitch.
         self.dns_address = dns_address
@@ -4097,9 +4028,6 @@ class CreateADConnectorDirectoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4355,9 +4283,6 @@ class CreateADConnectorOfficeSiteResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4495,9 +4420,6 @@ class CreateAndBindNasFileSystemResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4626,9 +4548,6 @@ class CreateAutoSnapshotPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4818,9 +4737,6 @@ class CreateBundleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5103,9 +5019,6 @@ class CreateCdsFileResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5431,9 +5344,6 @@ class CreateCdsFileShareLinkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5631,9 +5541,6 @@ class CreateCloudDriveServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5752,9 +5659,6 @@ class CreateCloudDriveUsersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6160,9 +6064,6 @@ class CreateDesktopGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6377,9 +6278,6 @@ class CreateDesktopOversoldGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7007,9 +6905,6 @@ class CreateDesktopsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7117,9 +7012,6 @@ class CreateDiskEncryptionServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7269,9 +7161,6 @@ class CreateImageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7421,9 +7310,6 @@ class CreateNASFileSystemResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7599,9 +7485,6 @@ class CreateNetworkPackageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8134,6 +8017,8 @@ class CreatePolicyGroupRequest(TeaModel):
         recording_expires: int = None,
         recording_fps: int = None,
         recording_start_time: str = None,
+        recording_user_notify: str = None,
+        recording_user_notify_message: str = None,
         region_id: str = None,
         remote_coordinate: str = None,
         scope: str = None,
@@ -8143,10 +8028,12 @@ class CreatePolicyGroupRequest(TeaModel):
         video_redirect: str = None,
         visual_quality: str = None,
         watermark: str = None,
+        watermark_anti_cam: str = None,
         watermark_color: int = None,
         watermark_degree: float = None,
         watermark_font_size: int = None,
         watermark_font_style: str = None,
+        watermark_power: str = None,
         watermark_row_amount: int = None,
         watermark_security: str = None,
         watermark_transparency: str = None,
@@ -8506,23 +8393,15 @@ class CreatePolicyGroupRequest(TeaModel):
         self.recording_fps = recording_fps
         # The time when screen recording starts. Specify the value in the HH:MM:SS format. The value of this parameter is valid only if you set the Recording parameter to PERIOD.
         self.recording_start_time = recording_start_time
+        self.recording_user_notify = recording_user_notify
+        self.recording_user_notify_message = recording_user_notify_message
         # The ID of the region.
         self.region_id = region_id
         # The permission to control the keyboard and the mouse during remote assistance.
         # 
         # Valid values:
         # 
-        # *   \-\
-        # 
-        #     <!-- -->
-        # 
-        #     optionalControl
-        # 
-        #     <!-- -->
-        # 
-        #     : By default, this feature is disabled. You can enable it by applying permissions.
-        # 
-        #     <!-- -->
+        # *    optionalControl: By default, this feature is disabled. You can enable it by applying permissions.
         # 
         # *   fullControl: The permission is granted.
         # 
@@ -8630,6 +8509,7 @@ class CreatePolicyGroupRequest(TeaModel):
         # 
         #     <!-- -->
         self.watermark = watermark
+        self.watermark_anti_cam = watermark_anti_cam
         # The font color of the watermark. Valid values: 0 to 16777215.
         self.watermark_color = watermark_color
         # The inclination angle of the watermark. Valid values: -10 to -30.
@@ -8641,6 +8521,7 @@ class CreatePolicyGroupRequest(TeaModel):
         # *   plain
         # *   bold
         self.watermark_font_style = watermark_font_style
+        self.watermark_power = watermark_power
         # The number of watermark rows. This parameter is now invalid.
         self.watermark_row_amount = watermark_row_amount
         # The security priority for invisible watermarks. Valid values: on and off.
@@ -8794,6 +8675,10 @@ class CreatePolicyGroupRequest(TeaModel):
             result['RecordingFps'] = self.recording_fps
         if self.recording_start_time is not None:
             result['RecordingStartTime'] = self.recording_start_time
+        if self.recording_user_notify is not None:
+            result['RecordingUserNotify'] = self.recording_user_notify
+        if self.recording_user_notify_message is not None:
+            result['RecordingUserNotifyMessage'] = self.recording_user_notify_message
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.remote_coordinate is not None:
@@ -8814,6 +8699,8 @@ class CreatePolicyGroupRequest(TeaModel):
             result['VisualQuality'] = self.visual_quality
         if self.watermark is not None:
             result['Watermark'] = self.watermark
+        if self.watermark_anti_cam is not None:
+            result['WatermarkAntiCam'] = self.watermark_anti_cam
         if self.watermark_color is not None:
             result['WatermarkColor'] = self.watermark_color
         if self.watermark_degree is not None:
@@ -8822,6 +8709,8 @@ class CreatePolicyGroupRequest(TeaModel):
             result['WatermarkFontSize'] = self.watermark_font_size
         if self.watermark_font_style is not None:
             result['WatermarkFontStyle'] = self.watermark_font_style
+        if self.watermark_power is not None:
+            result['WatermarkPower'] = self.watermark_power
         if self.watermark_row_amount is not None:
             result['WatermarkRowAmount'] = self.watermark_row_amount
         if self.watermark_security is not None:
@@ -8910,6 +8799,10 @@ class CreatePolicyGroupRequest(TeaModel):
             self.recording_fps = m.get('RecordingFps')
         if m.get('RecordingStartTime') is not None:
             self.recording_start_time = m.get('RecordingStartTime')
+        if m.get('RecordingUserNotify') is not None:
+            self.recording_user_notify = m.get('RecordingUserNotify')
+        if m.get('RecordingUserNotifyMessage') is not None:
+            self.recording_user_notify_message = m.get('RecordingUserNotifyMessage')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('RemoteCoordinate') is not None:
@@ -8931,6 +8824,8 @@ class CreatePolicyGroupRequest(TeaModel):
             self.visual_quality = m.get('VisualQuality')
         if m.get('Watermark') is not None:
             self.watermark = m.get('Watermark')
+        if m.get('WatermarkAntiCam') is not None:
+            self.watermark_anti_cam = m.get('WatermarkAntiCam')
         if m.get('WatermarkColor') is not None:
             self.watermark_color = m.get('WatermarkColor')
         if m.get('WatermarkDegree') is not None:
@@ -8939,6 +8834,8 @@ class CreatePolicyGroupRequest(TeaModel):
             self.watermark_font_size = m.get('WatermarkFontSize')
         if m.get('WatermarkFontStyle') is not None:
             self.watermark_font_style = m.get('WatermarkFontStyle')
+        if m.get('WatermarkPower') is not None:
+            self.watermark_power = m.get('WatermarkPower')
         if m.get('WatermarkRowAmount') is not None:
             self.watermark_row_amount = m.get('WatermarkRowAmount')
         if m.get('WatermarkSecurity') is not None:
@@ -8999,9 +8896,6 @@ class CreatePolicyGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9154,9 +9048,6 @@ class CreateRAMDirectoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9358,9 +9249,6 @@ class CreateSimpleOfficeSiteResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9497,9 +9385,6 @@ class CreateSnapshotResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9604,9 +9489,6 @@ class DeleteAutoSnapshotPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9709,9 +9591,6 @@ class DeleteBundlesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9901,9 +9780,6 @@ class DeleteCdsFileResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10043,9 +9919,6 @@ class DeleteCloudDriveGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10153,9 +10026,6 @@ class DeleteCloudDriveUsersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10257,9 +10127,6 @@ class DeleteDesktopGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10364,9 +10231,6 @@ class DeleteDesktopsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10491,9 +10355,6 @@ class DeleteDevicesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10598,9 +10459,6 @@ class DeleteDirectoriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10702,9 +10560,6 @@ class DeleteEduRoomResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10816,9 +10671,6 @@ class DeleteImagesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10923,9 +10775,6 @@ class DeleteNASFileSystemsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11030,9 +10879,6 @@ class DeleteNetworkPackagesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11137,9 +10983,6 @@ class DeleteOfficeSitesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11241,9 +11084,6 @@ class DeletePolicyGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11348,9 +11188,6 @@ class DeleteSnapshotResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11457,9 +11294,6 @@ class DeleteVirtualMFADeviceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11660,9 +11494,6 @@ class DescribeAclEntriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11907,9 +11738,6 @@ class DescribeAutoSnapshotPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12468,9 +12296,6 @@ class DescribeBundlesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12653,9 +12478,6 @@ class DescribeCdsFileShareLinksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12972,9 +12794,6 @@ class DescribeCensResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13376,9 +13195,6 @@ class DescribeClientEventsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13750,9 +13566,6 @@ class DescribeCloudDriveGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13901,9 +13714,6 @@ class DescribeCloudDrivePermissionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14106,9 +13916,6 @@ class DescribeCloudDriveUsersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14269,9 +14076,6 @@ class DescribeCustomizedListHeadersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15281,9 +15085,6 @@ class DescribeDesktopGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15496,9 +15297,6 @@ class DescribeDesktopInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15755,9 +15553,6 @@ class DescribeDesktopOversoldGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15960,9 +15755,6 @@ class DescribeDesktopOversoldUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16153,9 +15945,6 @@ class DescribeDesktopOversoldUserGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16476,9 +16265,6 @@ class DescribeDesktopSessionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16766,9 +16552,6 @@ class DescribeDesktopTypesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17807,9 +17590,6 @@ class DescribeDesktopsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18696,9 +18476,6 @@ class DescribeDesktopsInGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18965,9 +18742,6 @@ class DescribeDevicesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19494,9 +19268,6 @@ class DescribeDirectoriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19634,9 +19405,6 @@ class DescribeFlowMetricResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19845,9 +19613,6 @@ class DescribeFlowStatisticResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20126,9 +19891,6 @@ class DescribeFotaPendingDesktopsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20449,9 +20211,6 @@ class DescribeFotaTasksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20761,9 +20520,6 @@ class DescribeGuestApplicationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20977,9 +20733,6 @@ class DescribeImageModifiedRecordsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21091,9 +20844,6 @@ class DescribeImagePermissionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21485,9 +21235,6 @@ class DescribeImagesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21952,9 +21699,6 @@ class DescribeInvocationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22130,9 +21874,6 @@ class DescribeKmsKeysResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22507,9 +22248,6 @@ class DescribeNASFileSystemsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22809,9 +22547,6 @@ class DescribeNetworkPackagesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23722,9 +23457,6 @@ class DescribeOfficeSitesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24402,6 +24134,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         recording_expires: int = None,
         recording_fps: int = None,
         recording_start_time: str = None,
+        recording_user_notify: str = None,
+        recording_user_notify_message: str = None,
         remote_coordinate: str = None,
         scope: str = None,
         scope_value: List[str] = None,
@@ -24410,11 +24144,13 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         video_redirect: str = None,
         visual_quality: str = None,
         watermark: str = None,
+        watermark_anti_cam: str = None,
         watermark_color: int = None,
         watermark_custom_text: str = None,
         watermark_degree: float = None,
         watermark_font_size: int = None,
         watermark_font_style: str = None,
+        watermark_power: str = None,
         watermark_row_amount: int = None,
         watermark_security: str = None,
         watermark_transparency: str = None,
@@ -24794,6 +24530,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         self.recording_fps = recording_fps
         # The time when the screen recording was started. The value is in the HH:MM:SS format. The value of this parameter is valid only if Recording is set to PERIOD.
         self.recording_start_time = recording_start_time
+        self.recording_user_notify = recording_user_notify
+        self.recording_user_notify_message = recording_user_notify_message
         # The permissions on the keyboard and mouse to control the cloud desktop during remote assistance. Valid values:
         # 
         # *   fullControl: The keyboard and mouse are fully controlled.
@@ -24903,6 +24641,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         # 
         #     <!-- -->
         self.watermark = watermark
+        self.watermark_anti_cam = watermark_anti_cam
         # The font color of the watermark. Valid values: 0 to 16777215.
         self.watermark_color = watermark_color
         # This parameter is unavailable for public use.
@@ -24916,6 +24655,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         # *   plain
         # *   bold
         self.watermark_font_style = watermark_font_style
+        self.watermark_power = watermark_power
         # The number of watermark rows. This parameter is now invalid.
         self.watermark_row_amount = watermark_row_amount
         self.watermark_security = watermark_security
@@ -25124,6 +24864,10 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['RecordingFps'] = self.recording_fps
         if self.recording_start_time is not None:
             result['RecordingStartTime'] = self.recording_start_time
+        if self.recording_user_notify is not None:
+            result['RecordingUserNotify'] = self.recording_user_notify
+        if self.recording_user_notify_message is not None:
+            result['RecordingUserNotifyMessage'] = self.recording_user_notify_message
         if self.remote_coordinate is not None:
             result['RemoteCoordinate'] = self.remote_coordinate
         if self.scope is not None:
@@ -25142,6 +24886,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['VisualQuality'] = self.visual_quality
         if self.watermark is not None:
             result['Watermark'] = self.watermark
+        if self.watermark_anti_cam is not None:
+            result['WatermarkAntiCam'] = self.watermark_anti_cam
         if self.watermark_color is not None:
             result['WatermarkColor'] = self.watermark_color
         if self.watermark_custom_text is not None:
@@ -25152,6 +24898,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['WatermarkFontSize'] = self.watermark_font_size
         if self.watermark_font_style is not None:
             result['WatermarkFontStyle'] = self.watermark_font_style
+        if self.watermark_power is not None:
+            result['WatermarkPower'] = self.watermark_power
         if self.watermark_row_amount is not None:
             result['WatermarkRowAmount'] = self.watermark_row_amount
         if self.watermark_security is not None:
@@ -25277,6 +25025,10 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.recording_fps = m.get('RecordingFps')
         if m.get('RecordingStartTime') is not None:
             self.recording_start_time = m.get('RecordingStartTime')
+        if m.get('RecordingUserNotify') is not None:
+            self.recording_user_notify = m.get('RecordingUserNotify')
+        if m.get('RecordingUserNotifyMessage') is not None:
+            self.recording_user_notify_message = m.get('RecordingUserNotifyMessage')
         if m.get('RemoteCoordinate') is not None:
             self.remote_coordinate = m.get('RemoteCoordinate')
         if m.get('Scope') is not None:
@@ -25296,6 +25048,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.visual_quality = m.get('VisualQuality')
         if m.get('Watermark') is not None:
             self.watermark = m.get('Watermark')
+        if m.get('WatermarkAntiCam') is not None:
+            self.watermark_anti_cam = m.get('WatermarkAntiCam')
         if m.get('WatermarkColor') is not None:
             self.watermark_color = m.get('WatermarkColor')
         if m.get('WatermarkCustomText') is not None:
@@ -25306,6 +25060,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.watermark_font_size = m.get('WatermarkFontSize')
         if m.get('WatermarkFontStyle') is not None:
             self.watermark_font_style = m.get('WatermarkFontStyle')
+        if m.get('WatermarkPower') is not None:
+            self.watermark_power = m.get('WatermarkPower')
         if m.get('WatermarkRowAmount') is not None:
             self.watermark_row_amount = m.get('WatermarkRowAmount')
         if m.get('WatermarkSecurity') is not None:
@@ -25381,9 +25137,6 @@ class DescribePolicyGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26020,9 +25773,6 @@ class DescribePriceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26189,9 +25939,6 @@ class DescribePriceForCreateDesktopOversoldGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26334,9 +26081,6 @@ class DescribePriceForModifyDesktopOversoldGroupSaleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26479,9 +26223,6 @@ class DescribePriceForRenewDesktopOversoldGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26640,9 +26381,6 @@ class DescribeRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26835,9 +26573,6 @@ class DescribeSessionStatisticResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27221,9 +26956,6 @@ class DescribeSnapshotsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27444,9 +27176,6 @@ class DescribeUserConnectTimeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27716,9 +27445,6 @@ class DescribeUserConnectionRecordsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28077,9 +27803,6 @@ class DescribeUserProfilePathRulesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28543,9 +28266,6 @@ class DescribeUsersInGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28707,9 +28427,6 @@ class DescribeUsersPasswordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28960,9 +28677,6 @@ class DescribeVirtualMFADevicesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29110,9 +28824,6 @@ class DescribeZonesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29217,9 +28928,6 @@ class DetachCenResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29352,9 +29060,6 @@ class DetachEndUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29466,9 +29171,6 @@ class DisableDesktopsInGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29573,9 +29275,6 @@ class DissociateNetworkPackageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29779,9 +29478,6 @@ class ExportClientEventsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29965,9 +29661,6 @@ class ExportDesktopGroupInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30230,9 +29923,6 @@ class ExportDesktopListInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30464,9 +30154,6 @@ class GetAsyncTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30702,9 +30389,6 @@ class GetConnectionTicketResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30898,9 +30582,6 @@ class GetCoordinateTicketResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -31896,9 +31577,6 @@ class GetDesktopGroupDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -32010,9 +31688,6 @@ class GetOfficeSiteSsoStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -32131,9 +31806,6 @@ class GetSpMetadataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -32238,9 +31910,6 @@ class HibernateDesktopsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -32974,9 +32643,6 @@ class ListCdsFilesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -33170,9 +32836,6 @@ class ListDirectoryUsersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -33313,9 +32976,6 @@ class ListFilePermissionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -33585,9 +33245,6 @@ class ListOfficeSiteOverviewResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -33781,9 +33438,6 @@ class ListOfficeSiteUsersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -34030,9 +33684,6 @@ class ListTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -34222,9 +33873,6 @@ class ListUserAdOrganizationUnitsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -34331,9 +33979,6 @@ class LockVirtualMFADeviceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -34445,9 +34090,6 @@ class MigrateDesktopsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -34561,9 +34203,6 @@ class MigrateImageProtocolResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -34725,9 +34364,6 @@ class ModifyADConnectorDirectoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -34889,9 +34525,6 @@ class ModifyADConnectorOfficeSiteResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -35054,9 +34687,6 @@ class ModifyAclEntriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -35099,7 +34729,7 @@ class ModifyAutoSnapshotPolicyRequest(TeaModel):
         self.cron_expression = cron_expression
         # The ID of the automatic snapshot policy.
         self.policy_id = policy_id
-        # The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-). It must start with a letter but cannot start with [http:// or https://. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-). Default value: null.](http://https://。、（:）、（\_）（-）。：。)
+        # The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-). It must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-). Default value: null.
         self.policy_name = policy_name
         # The ID of the region where the automatic snapshot policy is created.
         self.region_id = region_id
@@ -35185,9 +34815,6 @@ class ModifyAutoSnapshotPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -35330,9 +34957,6 @@ class ModifyBundleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -35576,9 +35200,6 @@ class ModifyCdsFileResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -35917,9 +35538,6 @@ class ModifyCdsFileShareLinkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -36078,9 +35696,6 @@ class ModifyCloudDriveGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -36199,9 +35814,6 @@ class ModifyCloudDrivePermissionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -36349,9 +35961,6 @@ class ModifyCloudDriveUsersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -36506,9 +36115,6 @@ class ModifyCustomizedListHeadersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -36672,9 +36278,6 @@ class ModifyDesktopChargeTypeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -36952,9 +36555,6 @@ class ModifyDesktopGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -37069,9 +36669,6 @@ class ModifyDesktopHostNameResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -37187,9 +36784,6 @@ class ModifyDesktopNameResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -37368,9 +36962,6 @@ class ModifyDesktopOversoldGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -37519,9 +37110,6 @@ class ModifyDesktopOversoldGroupSaleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -37676,9 +37264,6 @@ class ModifyDesktopOversoldUserGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -37729,7 +37314,7 @@ class ModifyDesktopSpecRequest(TeaModel):
         self.auto_pay = auto_pay
         # The ID of the cloud desktop.
         self.desktop_id = desktop_id
-        # The new cloud desktop type. You can call the [DescribeDesktopTypes](~~188882~~) operation to query the IDs of supported cloud desktop types.
+        # The desktop type. You can call the [DescribeDesktopTypes](~~188882~~) operation to query the IDs of supported desktop types.
         self.desktop_type = desktop_type
         # The ID of the sales promotion.
         self.promotion_id = promotion_id
@@ -37847,9 +37432,6 @@ class ModifyDesktopSpecResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -38195,9 +37777,6 @@ class ModifyDesktopTimerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -38373,9 +37952,6 @@ class ModifyDesktopsPolicyGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -38530,9 +38106,6 @@ class ModifyDiskSpecResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -38644,9 +38217,6 @@ class ModifyEntitlementResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -38765,9 +38335,6 @@ class ModifyImageAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -38886,9 +38453,6 @@ class ModifyImagePermissionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -39000,9 +38564,6 @@ class ModifyNASDefaultMountTargetResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -39140,9 +38701,6 @@ class ModifyNetworkPackageBandwidthResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -39257,9 +38815,6 @@ class ModifyNetworkPackageEnabledResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -39407,9 +38962,6 @@ class ModifyOfficeSiteAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -39524,9 +39076,6 @@ class ModifyOfficeSiteCrossDesktopAccessResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -39641,9 +39190,6 @@ class ModifyOfficeSiteMfaEnabledResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -40151,6 +39697,8 @@ class ModifyPolicyGroupRequest(TeaModel):
         recording_expires: int = None,
         recording_fps: int = None,
         recording_start_time: str = None,
+        recording_user_notify: str = None,
+        recording_user_notify_message: str = None,
         region_id: str = None,
         remote_coordinate: str = None,
         revoke_access_policy_rule: List[ModifyPolicyGroupRequestRevokeAccessPolicyRule] = None,
@@ -40162,10 +39710,12 @@ class ModifyPolicyGroupRequest(TeaModel):
         video_redirect: str = None,
         visual_quality: str = None,
         watermark: str = None,
+        watermark_anti_cam: str = None,
         watermark_color: int = None,
         watermark_degree: float = None,
         watermark_font_size: int = None,
         watermark_font_style: str = None,
+        watermark_power: str = None,
         watermark_row_amount: int = None,
         watermark_security: str = None,
         watermark_transparency: str = None,
@@ -40309,6 +39859,8 @@ class ModifyPolicyGroupRequest(TeaModel):
         self.recording_fps = recording_fps
         # The time when the screen recording starts. Specify the value in the HH:MM:SS format. The value is valid only when you set the Recording parameter to PERIOD.
         self.recording_start_time = recording_start_time
+        self.recording_user_notify = recording_user_notify
+        self.recording_user_notify_message = recording_user_notify_message
         # The ID of the region where the cloud desktop resides.
         self.region_id = region_id
         # The permissions on the keyboard and mouse to control the cloud desktop during remote assistance. Valid values:
@@ -40349,6 +39901,7 @@ class ModifyPolicyGroupRequest(TeaModel):
         # *   on: enables watermarking.
         # *   off: disables watermarking.
         self.watermark = watermark
+        self.watermark_anti_cam = watermark_anti_cam
         # The font color of the watermark. Valid values: 0 to 16777215.
         self.watermark_color = watermark_color
         # The inclination angle of the watermark. Value values: -10 to -30.
@@ -40360,6 +39913,7 @@ class ModifyPolicyGroupRequest(TeaModel):
         # * plain
         # * bold
         self.watermark_font_style = watermark_font_style
+        self.watermark_power = watermark_power
         # The number of watermark rows. This parameter is not in use.
         self.watermark_row_amount = watermark_row_amount
         # The security priority rule for invisible watermarks. Valid values: on and off.
@@ -40486,6 +40040,10 @@ class ModifyPolicyGroupRequest(TeaModel):
             result['RecordingFps'] = self.recording_fps
         if self.recording_start_time is not None:
             result['RecordingStartTime'] = self.recording_start_time
+        if self.recording_user_notify is not None:
+            result['RecordingUserNotify'] = self.recording_user_notify
+        if self.recording_user_notify_message is not None:
+            result['RecordingUserNotifyMessage'] = self.recording_user_notify_message
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.remote_coordinate is not None:
@@ -40514,6 +40072,8 @@ class ModifyPolicyGroupRequest(TeaModel):
             result['VisualQuality'] = self.visual_quality
         if self.watermark is not None:
             result['Watermark'] = self.watermark
+        if self.watermark_anti_cam is not None:
+            result['WatermarkAntiCam'] = self.watermark_anti_cam
         if self.watermark_color is not None:
             result['WatermarkColor'] = self.watermark_color
         if self.watermark_degree is not None:
@@ -40522,6 +40082,8 @@ class ModifyPolicyGroupRequest(TeaModel):
             result['WatermarkFontSize'] = self.watermark_font_size
         if self.watermark_font_style is not None:
             result['WatermarkFontStyle'] = self.watermark_font_style
+        if self.watermark_power is not None:
+            result['WatermarkPower'] = self.watermark_power
         if self.watermark_row_amount is not None:
             result['WatermarkRowAmount'] = self.watermark_row_amount
         if self.watermark_security is not None:
@@ -40612,6 +40174,10 @@ class ModifyPolicyGroupRequest(TeaModel):
             self.recording_fps = m.get('RecordingFps')
         if m.get('RecordingStartTime') is not None:
             self.recording_start_time = m.get('RecordingStartTime')
+        if m.get('RecordingUserNotify') is not None:
+            self.recording_user_notify = m.get('RecordingUserNotify')
+        if m.get('RecordingUserNotifyMessage') is not None:
+            self.recording_user_notify_message = m.get('RecordingUserNotifyMessage')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('RemoteCoordinate') is not None:
@@ -40643,6 +40209,8 @@ class ModifyPolicyGroupRequest(TeaModel):
             self.visual_quality = m.get('VisualQuality')
         if m.get('Watermark') is not None:
             self.watermark = m.get('Watermark')
+        if m.get('WatermarkAntiCam') is not None:
+            self.watermark_anti_cam = m.get('WatermarkAntiCam')
         if m.get('WatermarkColor') is not None:
             self.watermark_color = m.get('WatermarkColor')
         if m.get('WatermarkDegree') is not None:
@@ -40651,6 +40219,8 @@ class ModifyPolicyGroupRequest(TeaModel):
             self.watermark_font_size = m.get('WatermarkFontSize')
         if m.get('WatermarkFontStyle') is not None:
             self.watermark_font_style = m.get('WatermarkFontStyle')
+        if m.get('WatermarkPower') is not None:
+            self.watermark_power = m.get('WatermarkPower')
         if m.get('WatermarkRowAmount') is not None:
             self.watermark_row_amount = m.get('WatermarkRowAmount')
         if m.get('WatermarkSecurity') is not None:
@@ -40704,9 +40274,6 @@ class ModifyPolicyGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -40825,9 +40392,6 @@ class ModifyUserEntitlementResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -40946,9 +40510,6 @@ class ModifyUserToDesktopGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -41238,9 +40799,6 @@ class MoveCdsFileResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -41345,9 +40903,6 @@ class RebootDesktopsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -41540,9 +41095,6 @@ class RebuildDesktopsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -42002,9 +41554,6 @@ class RemoveFilePermissionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -42123,9 +41672,6 @@ class RemoveUserFromDesktopGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -42239,9 +41785,6 @@ class RemoveUserFromDesktopOversoldUserGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -42390,9 +41933,6 @@ class RenewDesktopOversoldGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -42577,9 +42117,6 @@ class RenewDesktopsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -42733,9 +42270,6 @@ class RenewNetworkPackagesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -42870,9 +42404,6 @@ class ResetDesktopsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -42977,9 +42508,6 @@ class ResetNASDefaultMountTargetResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -43084,9 +42612,6 @@ class ResetSnapshotResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -43214,9 +42739,6 @@ class RevokeCoordinatePrivilegeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -43376,9 +42898,6 @@ class RunCommandResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -43495,9 +43014,6 @@ class SendVerifyCodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -43694,9 +43210,6 @@ class SetDesktopGroupScaleTimerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -43829,9 +43342,6 @@ class SetDesktopGroupTimerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -43950,9 +43460,6 @@ class SetDesktopGroupTimerStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -44067,9 +43574,6 @@ class SetDirectorySsoStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -44195,9 +43699,6 @@ class SetIdpMetadataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -44327,9 +43828,6 @@ class SetOfficeSiteSsoStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -44709,9 +44207,6 @@ class SetUserProfilePathRulesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -44816,9 +44311,6 @@ class StartDesktopsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -44935,9 +44427,6 @@ class StopDesktopsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -45048,9 +44537,6 @@ class StopInvocationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -45214,9 +44700,6 @@ class TagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -45323,9 +44806,6 @@ class UnlockVirtualMFADeviceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -45451,9 +44931,6 @@ class UntagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -45561,9 +45038,6 @@ class UpdateFotaTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -45753,9 +45227,6 @@ class UploadImageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -45972,9 +45443,6 @@ class VerifyCenResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -46076,9 +45544,6 @@ class WakeupDesktopsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

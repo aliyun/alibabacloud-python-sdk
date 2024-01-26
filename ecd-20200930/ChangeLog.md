@@ -1,3 +1,15 @@
+2024-01-26 Version: 3.0.1
+- Update API CreatePolicyGroupadd RecordingUserNotify param.
+add RecordingUserNotifyMessage param.
+add WatermarkAntiCam param.
+add WatermarkPower param.
+- Update API DescribePolicyGroupsupdate response param.
+- Update API ModifyPolicyGroupadd RecordingUserNotify param.
+add RecordingUserNotifyMessage param.
+add WatermarkAntiCam param.
+add WatermarkPower param.
+
+
 2024-01-15 Version: 3.0.0
 - Generated python 2020-09-30 for ecd.
 
