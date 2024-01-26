@@ -1,3 +1,12 @@
+2024-01-26 Version: 1.10.3
+- Update API ApplyAddupdate external_traveler_list param.
+- Update API ApplyModifyupdate external_traveler_list param.
+- Update API FlightItineraryScanQueryupdate response param.
+- Update API FlightOrderQueryupdate response param.
+- Update API IeHotelBillSettlementQueryupdate category param.
+- Update API TrainTicketScanQueryupdate response param.
+
+
 2023-12-22 Version: 1.10.2
 - Generated python 2022-05-20 for btripOpen.
 

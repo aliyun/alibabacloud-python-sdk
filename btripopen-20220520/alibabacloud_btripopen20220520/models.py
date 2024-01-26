@@ -5181,9 +5181,6 @@ class AccessTokenResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5464,9 +5461,6 @@ class AddInvoiceEntityResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5732,9 +5726,6 @@ class AddressGetResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5988,9 +5979,6 @@ class AirportSearchResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6223,9 +6211,6 @@ class AllBaseCityInfoQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6325,8 +6310,10 @@ class ApplyAddRequestExternalTravelerList(TeaModel):
     def __init__(
         self,
         user_name: str = None,
+        user_name_en: str = None,
     ):
         self.user_name = user_name
+        self.user_name_en = user_name_en
 
     def validate(self):
         pass
@@ -6339,12 +6326,16 @@ class ApplyAddRequestExternalTravelerList(TeaModel):
         result = dict()
         if self.user_name is not None:
             result['user_name'] = self.user_name
+        if self.user_name_en is not None:
+            result['user_name_en'] = self.user_name_en
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('user_name') is not None:
             self.user_name = m.get('user_name')
+        if m.get('user_name_en') is not None:
+            self.user_name_en = m.get('user_name_en')
         return self
 
 
@@ -7614,9 +7605,6 @@ class ApplyAddResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7812,9 +7800,6 @@ class ApplyApproveResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8157,9 +8142,6 @@ class ApplyInvoiceTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9017,9 +8999,6 @@ class ApplyListQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9119,8 +9098,10 @@ class ApplyModifyRequestExternalTravelerList(TeaModel):
     def __init__(
         self,
         user_name: str = None,
+        user_name_en: str = None,
     ):
         self.user_name = user_name
+        self.user_name_en = user_name_en
 
     def validate(self):
         pass
@@ -9133,12 +9114,16 @@ class ApplyModifyRequestExternalTravelerList(TeaModel):
         result = dict()
         if self.user_name is not None:
             result['user_name'] = self.user_name
+        if self.user_name_en is not None:
+            result['user_name_en'] = self.user_name_en
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('user_name') is not None:
             self.user_name = m.get('user_name')
+        if m.get('user_name_en') is not None:
+            self.user_name_en = m.get('user_name_en')
         return self
 
 
@@ -10376,9 +10361,6 @@ class ApplyModifyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11540,9 +11522,6 @@ class ApplyQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11761,9 +11740,6 @@ class BaseCityInfoSearchResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11946,9 +11922,6 @@ class BtripBillInfoAdjustResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12408,9 +12381,6 @@ class CarApplyAddResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12594,9 +12564,6 @@ class CarApplyModifyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13172,9 +13139,6 @@ class CarApplyQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13891,9 +13855,6 @@ class CarBillSettlementQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14639,9 +14600,6 @@ class CarOrderListQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15388,9 +15346,6 @@ class CarOrderQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15570,9 +15525,6 @@ class CarSceneQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15808,9 +15760,6 @@ class CitySearchResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16070,9 +16019,6 @@ class CommonApplyQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16262,9 +16208,6 @@ class CommonApplySyncResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16481,9 +16424,6 @@ class CorpAuthLinkInfoQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16739,9 +16679,6 @@ class CorpTokenResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16895,9 +16832,6 @@ class CostCenterDeleteResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17080,9 +17014,6 @@ class CostCenterModifyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17421,9 +17352,6 @@ class CostCenterQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17642,9 +17570,6 @@ class CostCenterSaveResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17844,9 +17769,6 @@ class CreateSubCorpResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18133,9 +18055,6 @@ class DeleteInvoiceEntityResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18393,9 +18312,6 @@ class DepartmentSaveResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18670,9 +18586,6 @@ class EntityAddResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18965,9 +18878,6 @@ class EntityDeleteResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19254,9 +19164,6 @@ class EntitySetResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19803,9 +19710,6 @@ class EstimatedPriceQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19995,9 +19899,6 @@ class ExceedApplySyncResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20846,9 +20747,6 @@ class FlightBillSettlementQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21054,9 +20952,6 @@ class FlightCancelOrderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21259,9 +21154,6 @@ class FlightCancelOrderV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21879,9 +21771,6 @@ class FlightCreateOrderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22434,9 +22323,6 @@ class FlightCreateOrderV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22911,9 +22797,6 @@ class FlightExceedApplyQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23148,6 +23031,7 @@ class FlightItineraryScanQueryResponseBodyModuleItems(TeaModel):
     def __init__(
         self,
         agent_code: str = None,
+        apply_id: str = None,
         bill_date: str = None,
         build: str = None,
         cost_center: str = None,
@@ -23174,6 +23058,7 @@ class FlightItineraryScanQueryResponseBodyModuleItems(TeaModel):
     ):
         # 销售单位代号
         self.agent_code = agent_code
+        self.apply_id = apply_id
         self.bill_date = bill_date
         self.build = build
         self.cost_center = cost_center
@@ -23218,6 +23103,8 @@ class FlightItineraryScanQueryResponseBodyModuleItems(TeaModel):
         result = dict()
         if self.agent_code is not None:
             result['agent_code'] = self.agent_code
+        if self.apply_id is not None:
+            result['apply_id'] = self.apply_id
         if self.bill_date is not None:
             result['bill_date'] = self.bill_date
         if self.build is not None:
@@ -23272,6 +23159,8 @@ class FlightItineraryScanQueryResponseBodyModuleItems(TeaModel):
         m = m or dict()
         if m.get('agent_code') is not None:
             self.agent_code = m.get('agent_code')
+        if m.get('apply_id') is not None:
+            self.apply_id = m.get('apply_id')
         if m.get('bill_date') is not None:
             self.bill_date = m.get('bill_date')
         if m.get('build') is not None:
@@ -23456,9 +23345,6 @@ class FlightItineraryScanQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25317,9 +25203,6 @@ class FlightListingSearchResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25777,7 +25660,7 @@ class FlightListingSearchV2ResponseBodyModuleFlightItemListBestPriceItem(TeaMode
                 l1 = []
                 for k1 in v:
                     l1.append(k1.to_map() if k1 else None)
-                result['subItemPositionMap'][k] = l1
+                result['sub_item_position_map'][k] = l1
         result['sub_items'] = []
         if self.sub_items is not None:
             for k in self.sub_items:
@@ -26542,7 +26425,7 @@ class FlightListingSearchV2ResponseBodyModuleFlightItemListItemList(TeaModel):
                 l1 = []
                 for k1 in v:
                     l1.append(k1.to_map() if k1 else None)
-                result['subItemPositionMap'][k] = l1
+                result['sub_item_position_map'][k] = l1
         result['sub_items'] = []
         if self.sub_items is not None:
             for k in self.sub_items:
@@ -26759,9 +26642,6 @@ class FlightListingSearchV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27160,9 +27040,6 @@ class FlightModifyApplyV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27348,9 +27225,6 @@ class FlightModifyCancelV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29406,9 +29280,6 @@ class FlightModifyListingSearchV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30166,9 +30037,6 @@ class FlightModifyOrderDetailV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30767,7 +30635,7 @@ class FlightModifyOtaSearchV2ResponseBodyModuleAgentInfo(TeaModel):
                 l1 = []
                 for k1 in v:
                     l1.append(k1.to_map() if k1 else None)
-                result['attributeShowInfoMap'][k] = l1
+                result['attribute_show_info_map'][k] = l1
         if self.best_discount is not None:
             result['best_discount'] = self.best_discount
         if self.cabin_class_info is not None:
@@ -31369,7 +31237,7 @@ class FlightModifyOtaSearchV2ResponseBodyModule(TeaModel):
                 l1 = []
                 for k1 in k:
                     l1.append(k1.to_map() if k1 else None)
-                result['flightSegmentInfos'].append(l1)
+                result['flight_segment_infos'].append(l1)
         if self.passenger_count is not None:
             result['passenger_count'] = self.passenger_count.to_map()
         if self.session_id is not None:
@@ -31473,9 +31341,6 @@ class FlightModifyOtaSearchV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -31736,9 +31601,6 @@ class FlightModifyPayV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -32405,9 +32267,6 @@ class FlightOrderDetailInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -33933,9 +33792,6 @@ class FlightOrderDetailV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -34746,9 +34602,6 @@ class FlightOrderListQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -34848,6 +34701,8 @@ class FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList(TeaModel):
     def __init__(
         self,
         apply_id: str = None,
+        arr_airport: str = None,
+        arr_city: str = None,
         arr_time: str = None,
         change_cabin: str = None,
         change_cabin_level: str = None,
@@ -34856,17 +34711,23 @@ class FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList(TeaModel):
         change_order_id: int = None,
         change_reason: str = None,
         change_type: int = None,
+        dep_airport: str = None,
+        dep_city: str = None,
         dep_time: str = None,
+        discount: str = None,
         gmt_create: str = None,
         gmt_modify: str = None,
         origin_ticket_no: str = None,
         out_apply_id: str = None,
+        stop_city: str = None,
         ticket_no: str = None,
         ticket_status: str = None,
         ticket_status_code: int = None,
         upgrade_fee: float = None,
     ):
         self.apply_id = apply_id
+        self.arr_airport = arr_airport
+        self.arr_city = arr_city
         self.arr_time = arr_time
         self.change_cabin = change_cabin
         self.change_cabin_level = change_cabin_level
@@ -34875,11 +34736,15 @@ class FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList(TeaModel):
         self.change_order_id = change_order_id
         self.change_reason = change_reason
         self.change_type = change_type
+        self.dep_airport = dep_airport
+        self.dep_city = dep_city
         self.dep_time = dep_time
+        self.discount = discount
         self.gmt_create = gmt_create
         self.gmt_modify = gmt_modify
         self.origin_ticket_no = origin_ticket_no
         self.out_apply_id = out_apply_id
+        self.stop_city = stop_city
         self.ticket_no = ticket_no
         self.ticket_status = ticket_status
         self.ticket_status_code = ticket_status_code
@@ -34896,6 +34761,10 @@ class FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList(TeaModel):
         result = dict()
         if self.apply_id is not None:
             result['apply_id'] = self.apply_id
+        if self.arr_airport is not None:
+            result['arr_airport'] = self.arr_airport
+        if self.arr_city is not None:
+            result['arr_city'] = self.arr_city
         if self.arr_time is not None:
             result['arr_time'] = self.arr_time
         if self.change_cabin is not None:
@@ -34912,8 +34781,14 @@ class FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList(TeaModel):
             result['change_reason'] = self.change_reason
         if self.change_type is not None:
             result['change_type'] = self.change_type
+        if self.dep_airport is not None:
+            result['dep_airport'] = self.dep_airport
+        if self.dep_city is not None:
+            result['dep_city'] = self.dep_city
         if self.dep_time is not None:
             result['dep_time'] = self.dep_time
+        if self.discount is not None:
+            result['discount'] = self.discount
         if self.gmt_create is not None:
             result['gmt_create'] = self.gmt_create
         if self.gmt_modify is not None:
@@ -34922,6 +34797,8 @@ class FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList(TeaModel):
             result['origin_ticket_no'] = self.origin_ticket_no
         if self.out_apply_id is not None:
             result['out_apply_id'] = self.out_apply_id
+        if self.stop_city is not None:
+            result['stop_city'] = self.stop_city
         if self.ticket_no is not None:
             result['ticket_no'] = self.ticket_no
         if self.ticket_status is not None:
@@ -34936,6 +34813,10 @@ class FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList(TeaModel):
         m = m or dict()
         if m.get('apply_id') is not None:
             self.apply_id = m.get('apply_id')
+        if m.get('arr_airport') is not None:
+            self.arr_airport = m.get('arr_airport')
+        if m.get('arr_city') is not None:
+            self.arr_city = m.get('arr_city')
         if m.get('arr_time') is not None:
             self.arr_time = m.get('arr_time')
         if m.get('change_cabin') is not None:
@@ -34952,8 +34833,14 @@ class FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList(TeaModel):
             self.change_reason = m.get('change_reason')
         if m.get('change_type') is not None:
             self.change_type = m.get('change_type')
+        if m.get('dep_airport') is not None:
+            self.dep_airport = m.get('dep_airport')
+        if m.get('dep_city') is not None:
+            self.dep_city = m.get('dep_city')
         if m.get('dep_time') is not None:
             self.dep_time = m.get('dep_time')
+        if m.get('discount') is not None:
+            self.discount = m.get('discount')
         if m.get('gmt_create') is not None:
             self.gmt_create = m.get('gmt_create')
         if m.get('gmt_modify') is not None:
@@ -34962,6 +34849,8 @@ class FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList(TeaModel):
             self.origin_ticket_no = m.get('origin_ticket_no')
         if m.get('out_apply_id') is not None:
             self.out_apply_id = m.get('out_apply_id')
+        if m.get('stop_city') is not None:
+            self.stop_city = m.get('stop_city')
         if m.get('ticket_no') is not None:
             self.ticket_no = m.get('ticket_no')
         if m.get('ticket_status') is not None:
@@ -35106,6 +34995,11 @@ class FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList(TeaModel):
     def __init__(
         self,
         apply_id: str = None,
+        arr_airport: str = None,
+        arr_city: str = None,
+        dep_airport: str = None,
+        dep_city: str = None,
+        flight_no: str = None,
         gmt_create: str = None,
         gmt_modify: str = None,
         out_apply_id: str = None,
@@ -35116,6 +35010,11 @@ class FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList(TeaModel):
         ticket_no: str = None,
     ):
         self.apply_id = apply_id
+        self.arr_airport = arr_airport
+        self.arr_city = arr_city
+        self.dep_airport = dep_airport
+        self.dep_city = dep_city
+        self.flight_no = flight_no
         self.gmt_create = gmt_create
         self.gmt_modify = gmt_modify
         self.out_apply_id = out_apply_id
@@ -35136,6 +35035,16 @@ class FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList(TeaModel):
         result = dict()
         if self.apply_id is not None:
             result['apply_id'] = self.apply_id
+        if self.arr_airport is not None:
+            result['arr_airport'] = self.arr_airport
+        if self.arr_city is not None:
+            result['arr_city'] = self.arr_city
+        if self.dep_airport is not None:
+            result['dep_airport'] = self.dep_airport
+        if self.dep_city is not None:
+            result['dep_city'] = self.dep_city
+        if self.flight_no is not None:
+            result['flight_no'] = self.flight_no
         if self.gmt_create is not None:
             result['gmt_create'] = self.gmt_create
         if self.gmt_modify is not None:
@@ -35158,6 +35067,16 @@ class FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList(TeaModel):
         m = m or dict()
         if m.get('apply_id') is not None:
             self.apply_id = m.get('apply_id')
+        if m.get('arr_airport') is not None:
+            self.arr_airport = m.get('arr_airport')
+        if m.get('arr_city') is not None:
+            self.arr_city = m.get('arr_city')
+        if m.get('dep_airport') is not None:
+            self.dep_airport = m.get('dep_airport')
+        if m.get('dep_city') is not None:
+            self.dep_city = m.get('dep_city')
+        if m.get('flight_no') is not None:
+            self.flight_no = m.get('flight_no')
         if m.get('gmt_create') is not None:
             self.gmt_create = m.get('gmt_create')
         if m.get('gmt_modify') is not None:
@@ -35853,9 +35772,6 @@ class FlightOrderQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -36875,9 +36791,6 @@ class FlightOtaItemDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -40153,9 +40066,6 @@ class FlightOtaSearchResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -41196,7 +41106,7 @@ class FlightOtaSearchV2ResponseBodyModuleItemList(TeaModel):
                 l1 = []
                 for k1 in v:
                     l1.append(k1.to_map() if k1 else None)
-                result['subItemPositionMap'][k] = l1
+                result['sub_item_position_map'][k] = l1
         result['sub_items'] = []
         if self.sub_items is not None:
             for k in self.sub_items:
@@ -41369,9 +41279,6 @@ class FlightOtaSearchV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -41652,9 +41559,6 @@ class FlightPayOrderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -41869,9 +41773,6 @@ class FlightPayOrderV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -42313,9 +42214,6 @@ class FlightRefundApplyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -42723,9 +42621,6 @@ class FlightRefundApplyV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -43026,9 +42921,6 @@ class FlightRefundDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -43703,9 +43595,6 @@ class FlightRefundDetailV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -44158,9 +44047,6 @@ class FlightRefundPreCalResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -44616,9 +44502,6 @@ class FlightRefundPreCalV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -49431,9 +49314,6 @@ class FlightSearchListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -49641,9 +49521,6 @@ class GroupCorpTokenResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -49895,9 +49772,6 @@ class GroupDepartSaveResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -50310,9 +50184,6 @@ class GroupUserSaveResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -50730,9 +50601,6 @@ class HotelAskingPriceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -51455,9 +51323,6 @@ class HotelBillSettlementQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -51751,9 +51616,6 @@ class HotelCityCodeListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -52072,9 +51934,6 @@ class HotelExceedApplyQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -53192,9 +53051,6 @@ class HotelGoodsQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -53453,9 +53309,6 @@ class HotelIndexInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -53668,9 +53521,6 @@ class HotelOrderCancelResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -54489,9 +54339,6 @@ class HotelOrderCreateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -55504,9 +55351,6 @@ class HotelOrderDetailInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -56233,9 +56077,6 @@ class HotelOrderListQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -56432,9 +56273,6 @@ class HotelOrderPayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -57311,9 +57149,6 @@ class HotelOrderPreValidateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -57953,9 +57788,6 @@ class HotelOrderQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -58700,9 +58532,6 @@ class HotelPricePullResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -59133,9 +58962,6 @@ class HotelRoomInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -59839,9 +59665,6 @@ class HotelSearchResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -60618,9 +60441,6 @@ class HotelStaticInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -61415,9 +61235,6 @@ class IeFlightBillSettlementQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -62199,9 +62016,6 @@ class IeHotelBillSettlementQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -62805,9 +62619,6 @@ class InsInvoiceScanQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -63090,9 +62901,6 @@ class InsureOrderApplyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -63263,9 +63071,6 @@ class InsureOrderCancelResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -63903,9 +63708,6 @@ class InsureOrderCreateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -64427,9 +64229,6 @@ class InsureOrderDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -64618,9 +64417,6 @@ class InsureOrderPayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -64972,9 +64768,6 @@ class InsureOrderRefundResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -65106,9 +64899,6 @@ class InsureOrderUrlDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -65761,9 +65551,6 @@ class InsureRefundDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -67042,9 +66829,6 @@ class IntlFlightListingSearchResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -67996,7 +67780,7 @@ class IntlFlightOtaItemDetailResponseBodyModuleGroupItemSubItemsBaggageRule(TeaM
                 l1 = []
                 for k1 in v:
                     l1.append(k1.to_map() if k1 else None)
-                result['baggageInfoMap'][k] = l1
+                result['baggage_info_map'][k] = l1
         if self.structured_baggage is not None:
             result['structured_baggage'] = self.structured_baggage
         return result
@@ -68056,7 +67840,7 @@ class IntlFlightOtaItemDetailResponseBodyModuleGroupItemSubItemsRefundChangeRule
                 l1 = []
                 for k1 in v:
                     l1.append(k1.to_map() if k1 else None)
-                result['offerPenaltyInfoMap'][k] = l1
+                result['offer_penalty_info_map'][k] = l1
         if self.refund_change_digest is not None:
             result['refund_change_digest'] = self.refund_change_digest
         if self.structured_refund is not None:
@@ -68209,7 +67993,7 @@ class IntlFlightOtaItemDetailResponseBodyModuleGroupItem(TeaModel):
                 l1 = []
                 for k1 in v:
                     l1.append(k1.to_map() if k1 else None)
-                result['subItemPositionMap'][k] = l1
+                result['sub_item_position_map'][k] = l1
         result['sub_items'] = []
         if self.sub_items is not None:
             for k in self.sub_items:
@@ -68417,9 +68201,6 @@ class IntlFlightOtaItemDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -69672,7 +69453,7 @@ class IntlFlightOtaSearchResponseBodyModuleItemListSubItemsBaggageRule(TeaModel)
                 l1 = []
                 for k1 in v:
                     l1.append(k1.to_map() if k1 else None)
-                result['baggageInfoMap'][k] = l1
+                result['baggage_info_map'][k] = l1
         if self.structured_baggage is not None:
             result['structured_baggage'] = self.structured_baggage
         return result
@@ -69732,7 +69513,7 @@ class IntlFlightOtaSearchResponseBodyModuleItemListSubItemsRefundChangeRule(TeaM
                 l1 = []
                 for k1 in v:
                     l1.append(k1.to_map() if k1 else None)
-                result['offerPenaltyInfoMap'][k] = l1
+                result['offer_penalty_info_map'][k] = l1
         if self.refund_change_digest is not None:
             result['refund_change_digest'] = self.refund_change_digest
         if self.structured_refund is not None:
@@ -69885,7 +69666,7 @@ class IntlFlightOtaSearchResponseBodyModuleItemList(TeaModel):
                 l1 = []
                 for k1 in v:
                     l1.append(k1.to_map() if k1 else None)
-                result['subItemPositionMap'][k] = l1
+                result['sub_item_position_map'][k] = l1
         result['sub_items'] = []
         if self.sub_items is not None:
             for k in self.sub_items:
@@ -70046,9 +69827,6 @@ class IntlFlightOtaSearchResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -70250,9 +70028,6 @@ class InvoiceAddResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -70406,9 +70181,6 @@ class InvoiceDeleteResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -70610,9 +70382,6 @@ class InvoiceModifyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -70893,9 +70662,6 @@ class InvoiceRuleAddResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -71182,9 +70948,6 @@ class InvoiceRuleDeleteResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -71488,9 +71251,6 @@ class InvoiceRuleSaveResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -71704,9 +71464,6 @@ class InvoiceSearchResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -71995,9 +71752,6 @@ class IsvRuleSaveResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -72386,9 +72140,6 @@ class IsvUserSaveResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -72547,9 +72298,6 @@ class MonthBillConfirmResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -72860,9 +72608,6 @@ class MonthBillGetResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -73051,9 +72796,6 @@ class ProjectAddResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -73212,9 +72954,6 @@ class ProjectDeleteResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -73397,9 +73136,6 @@ class ProjectModifyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -74013,9 +73749,6 @@ class QueryReimbursementOrderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -74321,9 +74054,6 @@ class SyncSingleUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -74494,9 +74224,6 @@ class SyncThirdUserMappingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -74663,9 +74390,6 @@ class TBAccountInfoQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -74797,9 +74521,6 @@ class TBAccountUnbindResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -75300,9 +75021,6 @@ class TicketChangingApplyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -75508,9 +75226,6 @@ class TicketChangingCancelResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -76111,9 +75826,6 @@ class TicketChangingDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -77689,9 +77401,6 @@ class TicketChangingEnquiryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -78538,9 +78247,6 @@ class TicketChangingFlightListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -78839,9 +78545,6 @@ class TicketChangingPayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -79552,9 +79255,6 @@ class TrainBillSettlementQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -79909,9 +79609,6 @@ class TrainExceedApplyQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -80680,9 +80377,6 @@ class TrainOrderListQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -81669,9 +81363,6 @@ class TrainOrderQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -82915,9 +82606,6 @@ class TrainOrderQueryV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -83147,9 +82835,6 @@ class TrainStationSearchResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -83278,6 +82963,7 @@ class TrainTicketScanQueryRequest(TeaModel):
 class TrainTicketScanQueryResponseBodyModuleItems(TeaModel):
     def __init__(
         self,
+        apply_id: str = None,
         arr_station: str = None,
         bill_date: str = None,
         coach_name: str = None,
@@ -83300,6 +82986,7 @@ class TrainTicketScanQueryResponseBodyModuleItems(TeaModel):
         ticket_no: str = None,
         train_no: str = None,
     ):
+        self.apply_id = apply_id
         self.arr_station = arr_station
         self.bill_date = bill_date
         self.coach_name = coach_name
@@ -83333,6 +83020,8 @@ class TrainTicketScanQueryResponseBodyModuleItems(TeaModel):
             return _map
 
         result = dict()
+        if self.apply_id is not None:
+            result['apply_id'] = self.apply_id
         if self.arr_station is not None:
             result['arr_station'] = self.arr_station
         if self.bill_date is not None:
@@ -83379,6 +83068,8 @@ class TrainTicketScanQueryResponseBodyModuleItems(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('apply_id') is not None:
+            self.apply_id = m.get('apply_id')
         if m.get('arr_station') is not None:
             self.arr_station = m.get('arr_station')
         if m.get('bill_date') is not None:
@@ -83556,9 +83247,6 @@ class TrainTicketScanQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -83836,9 +83524,6 @@ class UserQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -84388,9 +84073,6 @@ class VatInvoiceScanQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -84700,9 +84382,6 @@ class WaitApplyInvoiceTaskDetailQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

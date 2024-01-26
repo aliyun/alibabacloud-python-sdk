@@ -28,7 +28,7 @@ pip install alibabacloud_btripopen20220520
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/btripopen-20220520/ChangeLog.md).
 
 ## References
 
