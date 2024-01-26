@@ -1,3 +1,7 @@
+2024-01-26 Version: 4.2.0
+- Support API ListEnvironmentDashboards.
+
+
 2024-01-23 Version: 4.1.2
 - Generated python 2019-08-08 for ARMS.
 
