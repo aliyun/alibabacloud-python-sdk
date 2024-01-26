@@ -8822,6 +8822,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_vpc_honey_pot_with_options_async(request, runtime)
 
+    def delete_vul_auto_repair_config_with_options(
+        self,
+        request: sas_20181203_models.DeleteVulAutoRepairConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteVulAutoRepairConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alias_name):
+            query['AliasName'] = request.alias_name
+        if not UtilClient.is_unset(request.config_id_list):
+            query['ConfigIdList'] = request.config_id_list
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteVulAutoRepairConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteVulAutoRepairConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_vul_auto_repair_config_with_options_async(
+        self,
+        request: sas_20181203_models.DeleteVulAutoRepairConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteVulAutoRepairConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alias_name):
+            query['AliasName'] = request.alias_name
+        if not UtilClient.is_unset(request.config_id_list):
+            query['ConfigIdList'] = request.config_id_list
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteVulAutoRepairConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteVulAutoRepairConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_vul_auto_repair_config(
+        self,
+        request: sas_20181203_models.DeleteVulAutoRepairConfigRequest,
+    ) -> sas_20181203_models.DeleteVulAutoRepairConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_vul_auto_repair_config_with_options(request, runtime)
+
+    async def delete_vul_auto_repair_config_async(
+        self,
+        request: sas_20181203_models.DeleteVulAutoRepairConfigRequest,
+    ) -> sas_20181203_models.DeleteVulAutoRepairConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_vul_auto_repair_config_with_options_async(request, runtime)
+
     def delete_vul_whitelist_with_options(
         self,
         request: sas_20181203_models.DeleteVulWhitelistRequest,

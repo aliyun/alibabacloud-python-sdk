@@ -1,3 +1,9 @@
+2024-01-26 Version: 2.26.0
+- Support API DeleteVulAutoRepairConfig.
+- Update API DescribeSuspEventDetailupdate Lang param.
+- Update API DescribeSuspEventsupdate Lang param.
+
+
 2024-01-23 Version: 2.25.0
 - Generated python 2018-12-03 for Sas.
 
