@@ -1,3 +1,9 @@
+2024-01-26 Version: 2.1.1
+- Update API GetMediaProducingJobupdate response param.
+- Update API ListPublicMediaBasicInfosadd BusinessType param.
+- Update API SubmitDynamicChartJobupdate RegionId param.
+
+
 2023-11-23 Version: 2.1.0
 - Generated python 2020-11-09 for ICE.
 
