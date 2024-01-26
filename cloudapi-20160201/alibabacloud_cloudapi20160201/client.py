@@ -504,6 +504,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.aone_app_name):
             query['AoneAppName'] = request.aone_app_name
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -532,6 +534,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.aone_app_name):
             query['AoneAppName'] = request.aone_app_name
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

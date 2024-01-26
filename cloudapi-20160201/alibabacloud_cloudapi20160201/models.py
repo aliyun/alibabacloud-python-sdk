@@ -549,8 +549,10 @@ class CheckAoneAppAuditRequest(TeaModel):
     def __init__(
         self,
         aone_app_name: str = None,
+        security_token: str = None,
     ):
         self.aone_app_name = aone_app_name
+        self.security_token = security_token
 
     def validate(self):
         pass
@@ -563,12 +565,16 @@ class CheckAoneAppAuditRequest(TeaModel):
         result = dict()
         if self.aone_app_name is not None:
             result['AoneAppName'] = self.aone_app_name
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AoneAppName') is not None:
             self.aone_app_name = m.get('AoneAppName')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
         return self
 
 
