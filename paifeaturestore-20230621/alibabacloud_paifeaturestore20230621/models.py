@@ -162,9 +162,6 @@ class ChangeProjectFeatureEntityHotIdVersionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -278,9 +275,6 @@ class CheckInstanceDatasourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -406,9 +400,6 @@ class CreateDatasourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -522,9 +513,6 @@ class CreateFeatureEntityResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -739,9 +727,6 @@ class CreateFeatureViewResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -849,9 +834,6 @@ class CreateInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1018,9 +1000,6 @@ class CreateLabelTableResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1199,9 +1178,6 @@ class CreateModelFeatureResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1333,9 +1309,6 @@ class CreateProjectResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1443,9 +1416,6 @@ class CreateServiceIdentityRoleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1514,9 +1484,6 @@ class DeleteDatasourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1585,9 +1552,6 @@ class DeleteFeatureEntityResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1656,9 +1620,6 @@ class DeleteFeatureViewResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1727,9 +1688,6 @@ class DeleteLabelTableResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1798,9 +1756,6 @@ class DeleteModelFeatureResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1869,9 +1824,6 @@ class DeleteProjectResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2059,9 +2011,6 @@ class ExportModelFeatureTrainingSetTableResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2096,6 +2045,8 @@ class GetDatasourceResponseBody(TeaModel):
         self,
         config: str = None,
         datasource_id: str = None,
+        gmt_create_time: str = None,
+        gmt_modified_time: str = None,
         name: str = None,
         request_id: str = None,
         type: str = None,
@@ -2104,6 +2055,8 @@ class GetDatasourceResponseBody(TeaModel):
     ):
         self.config = config
         self.datasource_id = datasource_id
+        self.gmt_create_time = gmt_create_time
+        self.gmt_modified_time = gmt_modified_time
         self.name = name
         self.request_id = request_id
         self.type = type
@@ -2123,6 +2076,10 @@ class GetDatasourceResponseBody(TeaModel):
             result['Config'] = self.config
         if self.datasource_id is not None:
             result['DatasourceId'] = self.datasource_id
+        if self.gmt_create_time is not None:
+            result['GmtCreateTime'] = self.gmt_create_time
+        if self.gmt_modified_time is not None:
+            result['GmtModifiedTime'] = self.gmt_modified_time
         if self.name is not None:
             result['Name'] = self.name
         if self.request_id is not None:
@@ -2141,6 +2098,10 @@ class GetDatasourceResponseBody(TeaModel):
             self.config = m.get('Config')
         if m.get('DatasourceId') is not None:
             self.datasource_id = m.get('DatasourceId')
+        if m.get('GmtCreateTime') is not None:
+            self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('GmtModifiedTime') is not None:
+            self.gmt_modified_time = m.get('GmtModifiedTime')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('RequestId') is not None:
@@ -2166,9 +2127,6 @@ class GetDatasourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2296,9 +2254,6 @@ class GetDatasourceTableResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2403,9 +2358,6 @@ class GetFeatureEntityResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2490,6 +2442,7 @@ class GetFeatureViewResponseBody(TeaModel):
         owner: str = None,
         project_id: str = None,
         project_name: str = None,
+        publish_table_script: str = None,
         register_datasource_id: str = None,
         register_datasource_name: str = None,
         register_table: str = None,
@@ -2513,6 +2466,7 @@ class GetFeatureViewResponseBody(TeaModel):
         self.owner = owner
         self.project_id = project_id
         self.project_name = project_name
+        self.publish_table_script = publish_table_script
         self.register_datasource_id = register_datasource_id
         self.register_datasource_name = register_datasource_name
         self.register_table = register_table
@@ -2563,6 +2517,8 @@ class GetFeatureViewResponseBody(TeaModel):
             result['ProjectId'] = self.project_id
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
+        if self.publish_table_script is not None:
+            result['PublishTableScript'] = self.publish_table_script
         if self.register_datasource_id is not None:
             result['RegisterDatasourceId'] = self.register_datasource_id
         if self.register_datasource_name is not None:
@@ -2614,6 +2570,8 @@ class GetFeatureViewResponseBody(TeaModel):
             self.project_id = m.get('ProjectId')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
+        if m.get('PublishTableScript') is not None:
+            self.publish_table_script = m.get('PublishTableScript')
         if m.get('RegisterDatasourceId') is not None:
             self.register_datasource_id = m.get('RegisterDatasourceId')
         if m.get('RegisterDatasourceName') is not None:
@@ -2647,9 +2605,6 @@ class GetFeatureViewResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2760,9 +2715,6 @@ class GetInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2938,9 +2890,6 @@ class GetLabelTableResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3153,6 +3102,7 @@ class GetModelFeatureResponseBodyRelations(TeaModel):
 class GetModelFeatureResponseBody(TeaModel):
     def __init__(
         self,
+        export_training_set_table_script: str = None,
         features: List[GetModelFeatureResponseBodyFeatures] = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
@@ -3167,6 +3117,7 @@ class GetModelFeatureResponseBody(TeaModel):
         training_set_fgtable: str = None,
         training_set_table: str = None,
     ):
+        self.export_training_set_table_script = export_training_set_table_script
         self.features = features
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
@@ -3195,6 +3146,8 @@ class GetModelFeatureResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.export_training_set_table_script is not None:
+            result['ExportTrainingSetTableScript'] = self.export_training_set_table_script
         result['Features'] = []
         if self.features is not None:
             for k in self.features:
@@ -3227,6 +3180,8 @@ class GetModelFeatureResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExportTrainingSetTableScript') is not None:
+            self.export_training_set_table_script = m.get('ExportTrainingSetTableScript')
         self.features = []
         if m.get('Features') is not None:
             for k in m.get('Features'):
@@ -3272,9 +3227,6 @@ class GetModelFeatureResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3433,9 +3385,6 @@ class GetProjectResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3534,9 +3483,6 @@ class GetProjectFeatureEntityResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3623,9 +3569,6 @@ class GetProjectFeatureEntityHotIdsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3855,9 +3798,6 @@ class GetProjectFeatureViewResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4069,9 +4009,6 @@ class GetProjectModelFeatureResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4152,9 +4089,6 @@ class GetServiceIdentityRoleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4295,9 +4229,6 @@ class GetTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4405,9 +4336,6 @@ class ListDatasourceTablesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4628,9 +4556,6 @@ class ListDatasourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4920,9 +4845,6 @@ class ListFeatureEntitiesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5091,9 +5013,6 @@ class ListFeatureViewFieldRelationshipsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5256,9 +5175,6 @@ class ListFeatureViewRelationshipsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5620,9 +5536,6 @@ class ListFeatureViewsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5819,9 +5732,6 @@ class ListInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6123,9 +6033,6 @@ class ListLabelTablesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6421,9 +6328,6 @@ class ListModelFeaturesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6498,9 +6402,6 @@ class ListProjectFeatureViewOwnersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6575,9 +6476,6 @@ class ListProjectFeatureViewTagsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6752,9 +6650,6 @@ class ListProjectFeatureViewsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7098,9 +6993,6 @@ class ListProjectsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7214,9 +7106,6 @@ class ListTaskLogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7524,9 +7413,6 @@ class ListTasksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7652,9 +7538,6 @@ class PublishFeatureViewTableResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7762,9 +7645,6 @@ class UpdateDatasourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7919,9 +7799,6 @@ class UpdateLabelTableResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8082,9 +7959,6 @@ class UpdateModelFeatureResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8186,9 +8060,6 @@ class UpdateProjectResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8343,9 +8214,6 @@ class WriteFeatureViewTableResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8447,9 +8315,6 @@ class WriteProjectFeatureEntityHotIdsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
