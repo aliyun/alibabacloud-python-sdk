@@ -28,7 +28,7 @@ pip install alibabacloud_easygene20210315
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/easygene-20210315/ChangeLog.md).
 
 ## References
 

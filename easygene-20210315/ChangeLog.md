@@ -1,3 +1,8 @@
+2024-01-29 Version: 1.2.0
+- Support API TagApp.
+- Update API ListTemplatesupdate response param.
+
+
 2024-01-12 Version: 1.1.2
 - Generated python 2021-03-15 for EasyGene.
 

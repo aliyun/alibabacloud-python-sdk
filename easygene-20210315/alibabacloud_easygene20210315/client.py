@@ -3541,6 +3541,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.resume_submission_with_options_async(request, runtime)
 
+    def tag_app_with_options(
+        self,
+        request: easy_gene_20210315_models.TagAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> easy_gene_20210315_models.TagAppResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.app_revision):
+            query['AppRevision'] = request.app_revision
+        if not UtilClient.is_unset(request.revision_tag):
+            query['RevisionTag'] = request.revision_tag
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagApp',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            easy_gene_20210315_models.TagAppResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_app_with_options_async(
+        self,
+        request: easy_gene_20210315_models.TagAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> easy_gene_20210315_models.TagAppResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.app_revision):
+            query['AppRevision'] = request.app_revision
+        if not UtilClient.is_unset(request.revision_tag):
+            query['RevisionTag'] = request.revision_tag
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagApp',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            easy_gene_20210315_models.TagAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_app(
+        self,
+        request: easy_gene_20210315_models.TagAppRequest,
+    ) -> easy_gene_20210315_models.TagAppResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.tag_app_with_options(request, runtime)
+
+    async def tag_app_async(
+        self,
+        request: easy_gene_20210315_models.TagAppRequest,
+    ) -> easy_gene_20210315_models.TagAppResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.tag_app_with_options_async(request, runtime)
+
     def update_entity_with_options(
         self,
         tmp_req: easy_gene_20210315_models.UpdateEntityRequest,
