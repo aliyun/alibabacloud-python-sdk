@@ -28,7 +28,7 @@ pip install alibabacloud_mse20190531
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/mse-20190531/ChangeLog.md).
 
 ## References
 

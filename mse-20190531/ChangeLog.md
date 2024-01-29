@@ -1,3 +1,7 @@
+2024-01-29 Version: 5.2.11
+- Update API GetGatewayRouteDetailupdate response param.
+
+
 2024-01-25 Version: 5.2.10
 - Generated python 2019-05-31 for mse.
 
