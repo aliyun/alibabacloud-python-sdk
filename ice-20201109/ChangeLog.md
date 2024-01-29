@@ -1,3 +1,11 @@
+2024-01-29 Version: 2.2.0
+- Support API GetBatchMediaProducingJob.
+- Support API SubmitBatchMediaProducingJob.
+- Update API GetMediaProducingJobupdate response param.
+- Update API ListPublicMediaBasicInfosadd BusinessType param.
+- Update API SubmitDynamicChartJobupdate RegionId param.
+
+
 2024-01-26 Version: 2.1.1
 - Update API GetMediaProducingJobupdate response param.
 - Update API ListPublicMediaBasicInfosadd BusinessType param.

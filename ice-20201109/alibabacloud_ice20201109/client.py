@@ -4554,6 +4554,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_avatar_training_job_with_options_async(request, runtime)
 
+    def get_batch_media_producing_job_with_options(
+        self,
+        request: ice20201109_models.GetBatchMediaProducingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetBatchMediaProducingJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBatchMediaProducingJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetBatchMediaProducingJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_batch_media_producing_job_with_options_async(
+        self,
+        request: ice20201109_models.GetBatchMediaProducingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetBatchMediaProducingJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBatchMediaProducingJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetBatchMediaProducingJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_batch_media_producing_job(
+        self,
+        request: ice20201109_models.GetBatchMediaProducingJobRequest,
+    ) -> ice20201109_models.GetBatchMediaProducingJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_batch_media_producing_job_with_options(request, runtime)
+
+    async def get_batch_media_producing_job_async(
+        self,
+        request: ice20201109_models.GetBatchMediaProducingJobRequest,
+    ) -> ice20201109_models.GetBatchMediaProducingJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_batch_media_producing_job_with_options_async(request, runtime)
+
     def get_categories_with_options(
         self,
         request: ice20201109_models.GetCategoriesRequest,
@@ -12233,6 +12303,96 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SubmitAvatarVideoJobResponse:
         runtime = util_models.RuntimeOptions()
         return await self.submit_avatar_video_job_with_options_async(request, runtime)
+
+    def submit_batch_media_producing_job_with_options(
+        self,
+        request: ice20201109_models.SubmitBatchMediaProducingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitBatchMediaProducingJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.output_config):
+            query['OutputConfig'] = request.output_config
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        body = {}
+        if not UtilClient.is_unset(request.editing_config):
+            body['EditingConfig'] = request.editing_config
+        if not UtilClient.is_unset(request.input_config):
+            body['InputConfig'] = request.input_config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitBatchMediaProducingJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitBatchMediaProducingJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_batch_media_producing_job_with_options_async(
+        self,
+        request: ice20201109_models.SubmitBatchMediaProducingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitBatchMediaProducingJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.output_config):
+            query['OutputConfig'] = request.output_config
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        body = {}
+        if not UtilClient.is_unset(request.editing_config):
+            body['EditingConfig'] = request.editing_config
+        if not UtilClient.is_unset(request.input_config):
+            body['InputConfig'] = request.input_config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitBatchMediaProducingJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitBatchMediaProducingJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_batch_media_producing_job(
+        self,
+        request: ice20201109_models.SubmitBatchMediaProducingJobRequest,
+    ) -> ice20201109_models.SubmitBatchMediaProducingJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_batch_media_producing_job_with_options(request, runtime)
+
+    async def submit_batch_media_producing_job_async(
+        self,
+        request: ice20201109_models.SubmitBatchMediaProducingJobRequest,
+    ) -> ice20201109_models.SubmitBatchMediaProducingJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_batch_media_producing_job_with_options_async(request, runtime)
 
     def submit_customized_voice_job_with_options(
         self,
