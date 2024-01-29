@@ -10805,6 +10805,10 @@ class Client(OpenApiClient):
             query['accessToken'] = request.access_token
         if not UtilClient.is_unset(request.author_ids):
             query['authorIds'] = request.author_ids
+        if not UtilClient.is_unset(request.created_after):
+            query['createdAfter'] = request.created_after
+        if not UtilClient.is_unset(request.created_before):
+            query['createdBefore'] = request.created_before
         if not UtilClient.is_unset(request.filter):
             query['filter'] = request.filter
         if not UtilClient.is_unset(request.group_ids):
@@ -10861,6 +10865,10 @@ class Client(OpenApiClient):
             query['accessToken'] = request.access_token
         if not UtilClient.is_unset(request.author_ids):
             query['authorIds'] = request.author_ids
+        if not UtilClient.is_unset(request.created_after):
+            query['createdAfter'] = request.created_after
+        if not UtilClient.is_unset(request.created_before):
+            query['createdBefore'] = request.created_before
         if not UtilClient.is_unset(request.filter):
             query['filter'] = request.filter
         if not UtilClient.is_unset(request.group_ids):
