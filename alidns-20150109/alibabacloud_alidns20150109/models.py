@@ -10,9 +10,9 @@ class AddCustomLineRequestIpSegment(TeaModel):
         end_ip: str = None,
         start_ip: str = None,
     ):
-        # The start IP address of the CIDR block.
+        # The end IP address of the CIDR block.
         self.end_ip = end_ip
-        # The unique ID of the custom line.
+        # The start IP address of the CIDR block.
         self.start_ip = start_ip
 
     def validate(self):
@@ -47,12 +47,13 @@ class AddCustomLineRequest(TeaModel):
         lang: str = None,
         line_name: str = None,
     ):
-        # The name of the custom line.
+        # The domain name.
         self.domain_name = domain_name
+        # The CIDR blocks.
         self.ip_segment = ip_segment
-        # The domain name for which you configure the custom line.
+        # The language.
         self.lang = lang
-        # The end IP address of the CIDR block.
+        # The name of the custom line.
         self.line_name = line_name
 
     def validate(self):
@@ -102,10 +103,11 @@ class AddCustomLineResponseBody(TeaModel):
         line_id: int = None,
         request_id: str = None,
     ):
-        self.line_code = line_code
-        # The ID of the request.
-        self.line_id = line_id
         # The code of the custom line.
+        self.line_code = line_code
+        # The unique ID of the custom line.
+        self.line_id = line_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -148,9 +150,6 @@ class AddCustomLineResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -347,9 +346,6 @@ class AddDnsCacheDomainResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -674,9 +670,6 @@ class AddDnsGtmAccessStrategyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1057,9 +1050,6 @@ class AddDnsGtmAddressPoolResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1307,9 +1297,6 @@ class AddDnsGtmMonitorResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1499,9 +1486,6 @@ class AddDomainResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1630,9 +1614,6 @@ class AddDomainBackupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1750,9 +1731,6 @@ class AddDomainGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1919,9 +1897,6 @@ class AddDomainRecordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2063,9 +2038,6 @@ class AddGtmAccessStrategyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2391,9 +2363,6 @@ class AddGtmAddressPoolResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2619,9 +2588,6 @@ class AddGtmMonitorResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2747,9 +2713,6 @@ class AddGtmRecoveryPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2877,9 +2840,6 @@ class BindInstanceDomainsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3005,9 +2965,6 @@ class ChangeDomainGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3140,9 +3097,6 @@ class ChangeDomainOfDnsProductResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3261,9 +3215,6 @@ class CopyGtmConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3359,9 +3310,6 @@ class CreatePdnsAppKeyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3475,9 +3423,6 @@ class CreatePdnsUdpIpSegmentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3582,9 +3527,6 @@ class DeleteCustomLinesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3686,9 +3628,6 @@ class DeleteDnsCacheDomainResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3793,9 +3732,6 @@ class DeleteDnsGtmAccessStrategyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3900,9 +3836,6 @@ class DeleteDnsGtmAddressPoolResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4014,9 +3947,6 @@ class DeleteDomainResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4128,9 +4058,6 @@ class DeleteDomainGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4251,9 +4178,6 @@ class DeleteDomainRecordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4358,9 +4282,6 @@ class DeleteGtmAccessStrategyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4465,9 +4386,6 @@ class DeleteGtmAddressPoolResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4572,9 +4490,6 @@ class DeleteGtmRecoveryPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4718,9 +4633,6 @@ class DeleteSubDomainRecordsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4893,9 +4805,6 @@ class DescribeBatchResultCountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5231,9 +5140,6 @@ class DescribeBatchResultDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5416,9 +5322,6 @@ class DescribeCustomLineResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5609,9 +5512,6 @@ class DescribeCustomLinesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5933,9 +5833,6 @@ class DescribeDNSSLBSubDomainsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6239,9 +6136,6 @@ class DescribeDnsCacheDomainsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6709,9 +6603,6 @@ class DescribeDnsGtmAccessStrategiesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7287,9 +7178,6 @@ class DescribeDnsGtmAccessStrategyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7880,9 +7768,6 @@ class DescribeDnsGtmAccessStrategyAvailableConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8135,9 +8020,6 @@ class DescribeDnsGtmAddrAttributeInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8342,9 +8224,6 @@ class DescribeDnsGtmAddressPoolAvailableConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8449,9 +8328,6 @@ class DescribeDnsGtmAvailableAlertGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8892,9 +8768,6 @@ class DescribeDnsGtmInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9233,9 +9106,6 @@ class DescribeDnsGtmInstanceAddressPoolResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9535,9 +9405,6 @@ class DescribeDnsGtmInstanceAddressPoolsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9573,9 +9440,9 @@ class DescribeDnsGtmInstanceStatusRequest(TeaModel):
         instance_id: str = None,
         lang: str = None,
     ):
-        # The number of unavailable addresses.
-        self.instance_id = instance_id
         # The ID of the instance.
+        self.instance_id = instance_id
+        # The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
 
     def validate(self):
@@ -9612,16 +9479,17 @@ class DescribeDnsGtmInstanceStatusResponseBody(TeaModel):
         strategy_not_available_num: int = None,
         switch_to_failover_strategy_num: int = None,
     ):
-        # The number of unavailable address pool groups.
-        self.addr_available_num = addr_available_num
-        # The ID of the request.
-        self.addr_not_available_num = addr_not_available_num
-        # The number of access policies switched to the secondary address pool group.
-        self.addr_pool_group_not_available_num = addr_pool_group_not_available_num
-        # The number of access policies that are unavailable in the current active address pool group.
-        self.request_id = request_id
         # The number of available addresses.
+        self.addr_available_num = addr_available_num
+        # The number of unavailable addresses.
+        self.addr_not_available_num = addr_not_available_num
+        # The number of unavailable address pool groups.
+        self.addr_pool_group_not_available_num = addr_pool_group_not_available_num
+        # The ID of the request.
+        self.request_id = request_id
+        # The number of access policies that are unavailable in the current active address pool group.
         self.strategy_not_available_num = strategy_not_available_num
+        # The number of access policies switched to the secondary address pool group.
         self.switch_to_failover_strategy_num = switch_to_failover_strategy_num
 
     def validate(self):
@@ -9676,9 +9544,6 @@ class DescribeDnsGtmInstanceStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9790,9 +9655,6 @@ class DescribeDnsGtmInstanceSystemCnameResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10287,9 +10149,6 @@ class DescribeDnsGtmInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10578,9 +10437,6 @@ class DescribeDnsGtmLogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11293,9 +11149,6 @@ class DescribeDnsGtmMonitorAvailableConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11628,9 +11481,6 @@ class DescribeDnsGtmMonitorConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12024,9 +11874,6 @@ class DescribeDnsProductInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12068,18 +11915,31 @@ class DescribeDnsProductInstancesRequest(TeaModel):
         user_client_ip: str = None,
         version_code: str = None,
     ):
+        # The Sorting direction. Values:
+        # * **DESC**: Descending (if not specified, the default is descending order)
+        # * **ASC**: Ascending
         self.direction = direction
+        # The type of the domain name. Valid values:
+        # 
+        # *   PUBLIC (default): hosted public domain name
+        # *   CACHE: cached public domain name
         self.domain_type = domain_type
-        # The version code of the Alibaba Cloud DNS instance.
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh** : Chinese
+        # *   **en** (default) : English
         self.lang = lang
+        # The Sorting parameter. Values:
+        # * createDate: Sort by creation time (if not specified, the default is to sort by creation time)
+        # * expireDate: Sort by expiration time
         self.order_by = order_by
-        # The number of entries returned per page.
+        # The number of the page to return. Pages start from page **1**. Default value: **1**.
         self.page_number = page_number
-        # The ID of the request.
+        # The number of entries to return on each page. Maximum value: **100**. Default value: **20**.
         self.page_size = page_size
-        # The total number of domain names.
+        # The IP address of the client.
         self.user_client_ip = user_client_ip
-        # The page number of the returned page.
+        # The version code of the Alibaba Cloud DNS instance.
         self.version_code = version_code
 
     def validate(self):
@@ -12167,69 +12027,82 @@ class DescribeDnsProductInstancesResponseBodyDnsProductsDnsProduct(TeaModel):
         version_code: str = None,
         version_name: str = None,
     ):
+        # Indicates whether auto-renewal is enabled for the extra internal bandwidth that you purchased. Valid values:
+        # 
+        # *   **true**: Auto-renewal is enabled.
+        # *   **false**: Auto-renewal is disabled.
+        # 
+        # > If no extra internal bandwidth is purchased, this parameter is not returned.
         self.auto_renewal = auto_renewal
-        # The time when the DNS instance was purchased.
+        # The number of times you can change domain names that are bound to the DNS instance. It can be specified by the user who uses Alibaba Cloud DNS of the custom version.
         self.bind_count = bind_count
-        # Indicates whether regional lines were allowed.
-        self.bind_domain_count = bind_domain_count
-        # The list of search engine lines.
-        self.bind_domain_used_count = bind_domain_used_count
-        # The URL forwarding quantity.
-        self.bind_used_count = bind_used_count
-        # The time at which the instance expired.
-        self.ddos_defend_flow = ddos_defend_flow
-        # The number of subdomain name levels.
-        self.ddos_defend_query = ddos_defend_query
-        self.dns_slbcount = dns_slbcount
-        self.dns_security = dns_security
-        # The UNIX timestamp representing when the DNS instance was purchased.
-        self.domain = domain
-        # Indicates whether global server load balancing (GSLB) was allowed.
-        self.end_time = end_time
-        # The number of times you have changed domain names that are bound to the DNS instance. It can be specified by the user who uses Alibaba Cloud DNS of the custom version.
-        self.end_timestamp = end_timestamp
-        self.gslb = gslb
-        # The version code of the Alibaba Cloud DNS instance.
-        self.isplines = isplines
-        # The UNIX timestamp representing the expiration time of the instance.
-        self.ispregion_lines = ispregion_lines
-        # The list of ISP lines.
-        self.in_black_hole = in_black_hole
-        # The ID of the Alibaba Cloud DNS instance.
-        self.in_clean = in_clean
         # The number of domain names that can be bound to the DNS instance.
-        self.instance_id = instance_id
+        self.bind_domain_count = bind_domain_count
+        # The number of domain names that have been bound to the DNS instance.
+        self.bind_domain_used_count = bind_domain_used_count
+        # The number of times you have changed domain names that are bound to the DNS instance. It can be specified by the user who uses Alibaba Cloud DNS of the custom version.
+        self.bind_used_count = bind_used_count
+        # The DDoS protection traffic. Unit: GB.
+        self.ddos_defend_flow = ddos_defend_flow
         # The DDoS protection frequency. Unit: 10,000 QPS.
-        self.monitor_frequency = monitor_frequency
-        # The minimum TTL. Unit: seconds.
-        self.monitor_node_count = monitor_node_count
-        # Indicates whether the request for domain name resolution was being cleared.
-        self.monitor_task_count = monitor_task_count
+        self.ddos_defend_query = ddos_defend_query
         # The number of IP addresses supported by a domain name or line.
-        self.oversea_ddos_defend_flow = oversea_ddos_defend_flow
-        # The list of ISP line subdivisions.
-        self.oversea_line = oversea_line
-        self.payment_type = payment_type
-        self.region_lines = region_lines
-        # The number of monitoring tasks.
-        self.search_engine_lines = search_engine_lines
+        self.dns_slbcount = dns_slbcount
         # The DNS security policy. Valid values:
         # 
         # *   **no**: not required.
         # *   **basic**: anti-DDoS basic.
         # *   **advanced**: anti-DDoS advanced.
-        self.start_time = start_time
-        # The number of times you can change domain names that are bound to the DNS instance. It can be specified by the user who uses Alibaba Cloud DNS of the custom version.
-        self.start_timestamp = start_timestamp
-        # DDoS protection traffic outside China. Unit: GB.
-        self.sub_domain_level = sub_domain_level
-        # The version name of the Alibaba Cloud DNS instance.
-        self.ttlmin_value = ttlmin_value
-        # The DDoS protection traffic. Unit: GB.
-        self.urlforward_count = urlforward_count
-        # The monitoring frequency. Unit: minutes.
-        self.version_code = version_code
+        self.dns_security = dns_security
         # The bound domain name.
+        self.domain = domain
+        # The time at which the instance expired.
+        self.end_time = end_time
+        # The UNIX timestamp representing the expiration time of the instance.
+        self.end_timestamp = end_timestamp
+        # Indicates whether global server load balancing (GSLB) was allowed.
+        self.gslb = gslb
+        # The list of ISP lines.
+        self.isplines = isplines
+        # The list of ISP line subdivisions.
+        self.ispregion_lines = ispregion_lines
+        # Indicates whether the request for domain name resolution was in the black hole.
+        self.in_black_hole = in_black_hole
+        # Indicates whether the request for domain name resolution was being cleared.
+        self.in_clean = in_clean
+        # The ID of the Alibaba Cloud DNS instance.
+        self.instance_id = instance_id
+        # The monitoring frequency. Unit: minutes.
+        self.monitor_frequency = monitor_frequency
+        # The number of monitored nodes.
+        self.monitor_node_count = monitor_node_count
+        # The number of monitoring tasks.
+        self.monitor_task_count = monitor_task_count
+        # DDoS protection traffic outside China. Unit: GB.
+        self.oversea_ddos_defend_flow = oversea_ddos_defend_flow
+        # The type of the overseas line.
+        self.oversea_line = oversea_line
+        # The billing method. Valid value:
+        # 
+        # *   Subscription: You can pay in advance for the use of resources.
+        self.payment_type = payment_type
+        # Indicates whether regional lines were allowed.
+        self.region_lines = region_lines
+        # The list of search engine lines.
+        self.search_engine_lines = search_engine_lines
+        # The time when the DNS instance was purchased.
+        self.start_time = start_time
+        # The UNIX timestamp representing when the DNS instance was purchased.
+        self.start_timestamp = start_timestamp
+        # The number of subdomain name levels.
+        self.sub_domain_level = sub_domain_level
+        # The minimum TTL. Unit: seconds.
+        self.ttlmin_value = ttlmin_value
+        # The URL forwarding quantity.
+        self.urlforward_count = urlforward_count
+        # The version code of the Alibaba Cloud DNS instance.
+        self.version_code = version_code
+        # The version name of the Alibaba Cloud DNS instance.
         self.version_name = version_name
 
     def validate(self):
@@ -12425,16 +12298,20 @@ class DescribeDnsProductInstancesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The number of domain names that have been bound to the DNS instance.
-        self.dns_products = dns_products
-        self.domain_type = domain_type
-        # Indicates whether the request for domain name resolution was in the black hole.
-        self.page_number = page_number
-        # The type of the overseas line.
-        self.page_size = page_size
-        # The number of monitored nodes.
-        self.request_id = request_id
         # The list of Alibaba Cloud DNS instances obtained by this operation.
+        self.dns_products = dns_products
+        # The type of the domain name. Valid values:
+        # 
+        # *   PUBLIC (default): hosted public domain name
+        # *   CACHE: cached public domain name
+        self.domain_type = domain_type
+        # The page number of the returned page.
+        self.page_number = page_number
+        # The number of entries returned per page.
+        self.page_size = page_size
+        # The ID of the request.
+        self.request_id = request_id
+        # The total number of domain names.
         self.total_count = total_count
 
     def validate(self):
@@ -12491,9 +12368,6 @@ class DescribeDnsProductInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12687,9 +12561,6 @@ class DescribeDohAccountStatisticsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12890,9 +12761,6 @@ class DescribeDohDomainStatisticsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13156,9 +13024,6 @@ class DescribeDohDomainStatisticsSummaryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13359,9 +13224,6 @@ class DescribeDohSubDomainStatisticsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13632,9 +13494,6 @@ class DescribeDohSubDomainStatisticsSummaryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13771,9 +13630,6 @@ class DescribeDohUserInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13944,9 +13800,6 @@ class DescribeDomainDnssecInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14172,9 +14025,6 @@ class DescribeDomainGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14600,9 +14450,6 @@ class DescribeDomainInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14887,9 +14734,6 @@ class DescribeDomainLogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15088,9 +14932,6 @@ class DescribeDomainNsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15309,9 +15150,6 @@ class DescribeDomainRecordInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15710,9 +15548,6 @@ class DescribeDomainRecordsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15953,9 +15788,6 @@ class DescribeDomainResolveStatisticsSummaryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16173,9 +16005,6 @@ class DescribeDomainStatisticsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16448,9 +16277,6 @@ class DescribeDomainStatisticsSummaryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16928,9 +16754,6 @@ class DescribeDomainsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17360,9 +17183,6 @@ class DescribeGtmAccessStrategiesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17661,9 +17481,6 @@ class DescribeGtmAccessStrategyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17964,9 +17781,6 @@ class DescribeGtmAccessStrategyAvailableConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18071,9 +17885,6 @@ class DescribeGtmAvailableAlertGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18303,9 +18114,6 @@ class DescribeGtmInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18637,9 +18445,6 @@ class DescribeGtmInstanceAddressPoolResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18944,9 +18749,6 @@ class DescribeGtmInstanceAddressPoolsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19099,9 +18901,6 @@ class DescribeGtmInstanceStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19213,9 +19012,6 @@ class DescribeGtmInstanceSystemCnameResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19559,9 +19355,6 @@ class DescribeGtmInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19857,9 +19650,6 @@ class DescribeGtmLogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20085,9 +19875,6 @@ class DescribeGtmMonitorAvailableConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20388,9 +20175,6 @@ class DescribeGtmMonitorConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20757,9 +20541,6 @@ class DescribeGtmRecoveryPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21015,9 +20796,6 @@ class DescribeGtmRecoveryPlanAvailableConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21324,9 +21102,6 @@ class DescribeGtmRecoveryPlansResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21517,9 +21292,6 @@ class DescribeInstanceDomainsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21799,9 +21571,6 @@ class DescribeIspFlushCacheInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21903,9 +21672,6 @@ class DescribeIspFlushCacheRemainQuotaResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22208,9 +21974,6 @@ class DescribeIspFlushCacheTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22455,9 +22218,6 @@ class DescribeIspFlushCacheTasksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22636,9 +22396,6 @@ class DescribePdnsAccountSummaryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22793,9 +22550,6 @@ class DescribePdnsAppKeyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22944,9 +22698,6 @@ class DescribePdnsAppKeysResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23155,9 +22906,6 @@ class DescribePdnsOperateLogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23390,9 +23138,6 @@ class DescribePdnsRequestStatisticResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23726,9 +23471,6 @@ class DescribePdnsRequestStatisticsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23955,9 +23697,6 @@ class DescribePdnsThreatLogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24142,9 +23881,6 @@ class DescribePdnsThreatStatisticResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24431,9 +24167,6 @@ class DescribePdnsThreatStatisticsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24630,9 +24363,6 @@ class DescribePdnsUdpIpSegmentsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24787,9 +24517,6 @@ class DescribePdnsUserInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25057,9 +24784,6 @@ class DescribeRecordLogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25331,9 +25055,6 @@ class DescribeRecordResolveStatisticsSummaryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25550,9 +25271,6 @@ class DescribeRecordStatisticsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25830,9 +25548,6 @@ class DescribeRecordStatisticsSummaryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26157,9 +25872,6 @@ class DescribeSubDomainRecordsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26364,9 +26076,6 @@ class DescribeSupportLinesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26555,9 +26264,6 @@ class DescribeTagsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26825,9 +26531,6 @@ class DescribeTransferDomainsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26932,9 +26635,6 @@ class ExecuteGtmRecoveryPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27060,9 +26760,6 @@ class GetMainDomainNameResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27202,9 +26899,6 @@ class GetTxtRecordForVerifyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27444,9 +27138,6 @@ class ListTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27631,9 +27322,6 @@ class ModifyHichinaDomainDNSResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27745,9 +27433,6 @@ class MoveDomainResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27855,9 +27540,6 @@ class MoveGtmResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28087,9 +27769,6 @@ class OperateBatchDomainResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28191,9 +27870,6 @@ class PausePdnsServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28505,9 +28181,6 @@ class PreviewGtmRecoveryPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28609,9 +28282,6 @@ class RemovePdnsAppKeyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28713,9 +28383,6 @@ class RemovePdnsUdpIpSegmentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28817,9 +28484,6 @@ class ResumePdnsServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28924,9 +28588,6 @@ class RetrieveDomainResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29031,9 +28692,6 @@ class RollbackGtmRecoveryPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29190,9 +28848,6 @@ class SetDNSSLBStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29308,9 +28963,6 @@ class SetDnsGtmAccessModeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29425,9 +29077,6 @@ class SetDnsGtmMonitorStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29542,9 +29191,6 @@ class SetDomainDnssecStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29680,9 +29326,6 @@ class SetDomainRecordStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29798,9 +29441,6 @@ class SetGtmAccessModeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29915,9 +29555,6 @@ class SetGtmMonitorStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30031,9 +29668,6 @@ class SubmitIspFlushCacheTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30148,9 +29782,6 @@ class SwitchDnsGtmInstanceStrategyModeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30312,9 +29943,6 @@ class TagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30443,9 +30071,6 @@ class TransferDomainResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30573,9 +30198,6 @@ class UnbindInstanceDomainsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30614,16 +30236,15 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
+        # Specifies whether to remove all tags. Default value: false. This parameter is valid only when TagKey is left empty. Valid values: true and false.
         self.all = all
+        # The language.
         self.lang = lang
-        # The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages.
+        # The resource ID.
         self.resource_id = resource_id
-        # Resource Type
+        # The resource type.
         self.resource_type = resource_type
-        # Specifies whether to remove all tags from the specified resource. Default value: false. This parameter takes effect only when the TagKey.N parameter is not specified. Valid values:
-        # 
-        # *   true
-        # *   false
+        # The tags added to the resource.
         self.tag_key = tag_key
 
     def validate(self):
@@ -30667,7 +30288,7 @@ class UntagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # "dns-example.com","dns-test.com"
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -30702,9 +30323,6 @@ class UntagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30812,9 +30430,6 @@ class UpdateAppKeyStateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30975,9 +30590,6 @@ class UpdateCustomLineResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -31110,9 +30722,6 @@ class UpdateDNSSLBWeightResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -31302,9 +30911,6 @@ class UpdateDnsCacheDomainResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -31412,9 +31018,6 @@ class UpdateDnsCacheDomainRemarkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -31735,9 +31338,6 @@ class UpdateDnsGtmAccessStrategyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -31944,9 +31544,6 @@ class UpdateDnsGtmAddressPoolResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -32183,9 +31780,6 @@ class UpdateDnsGtmInstanceGlobalConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -32426,9 +32020,6 @@ class UpdateDnsGtmMonitorResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -32554,9 +32145,6 @@ class UpdateDomainGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -32721,9 +32309,6 @@ class UpdateDomainRecordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -32842,9 +32427,6 @@ class UpdateDomainRecordRemarkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -32956,9 +32538,6 @@ class UpdateDomainRemarkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -33091,9 +32670,6 @@ class UpdateGtmAccessStrategyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -33279,9 +32855,6 @@ class UpdateGtmAddressPoolResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -33449,9 +33022,6 @@ class UpdateGtmInstanceGlobalConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -33662,9 +33232,6 @@ class UpdateGtmMonitorResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -33790,9 +33357,6 @@ class UpdateGtmRecoveryPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -33900,9 +33464,6 @@ class UpdateIspFlushCacheInstanceConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -34028,9 +33589,6 @@ class ValidateDnsGtmCnameRrCanUseResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -34132,9 +33690,6 @@ class ValidatePdnsUdpIpSegmentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
