@@ -29,7 +29,7 @@ pip install alibabacloud_config20200907
 
 ## 发行说明
 
-每个版本的详细更改记录在[发行说明](./ChangeLog.md)中。
+每个版本的详细更改记录在[发行说明](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/config-20200907/ChangeLog.md)中。
 
 ## 相关
 
