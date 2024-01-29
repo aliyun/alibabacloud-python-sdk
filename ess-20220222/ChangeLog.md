@@ -1,3 +1,9 @@
+2024-01-29 Version: 1.1.1
+- Update API CreateScalingConfigurationadd CustomPriorities param.
+- Update API DescribeScalingConfigurationsupdate response param.
+- Update API ModifyScalingConfigurationadd CustomPriorities param.
+
+
 2024-01-23 Version: 1.1.0
 - Generated python 2022-02-22 for Ess.
 

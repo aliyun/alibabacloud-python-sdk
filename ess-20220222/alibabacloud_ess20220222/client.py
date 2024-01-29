@@ -1983,6 +1983,8 @@ class Client(OpenApiClient):
             query['Cpu'] = request.cpu
         if not UtilClient.is_unset(request.credit_specification):
             query['CreditSpecification'] = request.credit_specification
+        if not UtilClient.is_unset(request.custom_priorities):
+            query['CustomPriorities'] = request.custom_priorities
         if not UtilClient.is_unset(request.data_disks):
             query['DataDisks'] = request.data_disks
         if not UtilClient.is_unset(request.dedicated_host_id):
@@ -2134,6 +2136,8 @@ class Client(OpenApiClient):
             query['Cpu'] = request.cpu
         if not UtilClient.is_unset(request.credit_specification):
             query['CreditSpecification'] = request.credit_specification
+        if not UtilClient.is_unset(request.custom_priorities):
+            query['CustomPriorities'] = request.custom_priorities
         if not UtilClient.is_unset(request.data_disks):
             query['DataDisks'] = request.data_disks
         if not UtilClient.is_unset(request.dedicated_host_id):
@@ -7935,6 +7939,8 @@ class Client(OpenApiClient):
             query['Cpu'] = request.cpu
         if not UtilClient.is_unset(request.credit_specification):
             query['CreditSpecification'] = request.credit_specification
+        if not UtilClient.is_unset(request.custom_priorities):
+            query['CustomPriorities'] = request.custom_priorities
         if not UtilClient.is_unset(request.data_disks):
             query['DataDisks'] = request.data_disks
         if not UtilClient.is_unset(request.dedicated_host_id):
@@ -8072,6 +8078,8 @@ class Client(OpenApiClient):
             query['Cpu'] = request.cpu
         if not UtilClient.is_unset(request.credit_specification):
             query['CreditSpecification'] = request.credit_specification
+        if not UtilClient.is_unset(request.custom_priorities):
+            query['CustomPriorities'] = request.custom_priorities
         if not UtilClient.is_unset(request.data_disks):
             query['DataDisks'] = request.data_disks
         if not UtilClient.is_unset(request.dedicated_host_id):

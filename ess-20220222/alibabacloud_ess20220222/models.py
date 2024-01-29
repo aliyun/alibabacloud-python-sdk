@@ -88,9 +88,6 @@ class ApplyScalingGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -294,9 +291,6 @@ class AttachAlbServerGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -441,9 +435,6 @@ class AttachDBInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -626,9 +617,6 @@ class AttachInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -835,9 +823,6 @@ class AttachLoadBalancersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1053,9 +1038,6 @@ class AttachServerGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1295,9 +1277,6 @@ class AttachVServerGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1423,9 +1402,6 @@ class ChangeResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1582,9 +1558,6 @@ class CompleteLifecycleActionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1895,9 +1868,6 @@ class CreateAlarmResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4196,9 +4166,6 @@ class CreateEciScalingConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4409,9 +4376,6 @@ class CreateLifecycleHookResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4555,9 +4519,6 @@ class CreateNotificationConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4794,6 +4755,39 @@ class CreateScalingConfigurationRequestSystemDisk(TeaModel):
             self.provisioned_iops = m.get('ProvisionedIops')
         if m.get('Size') is not None:
             self.size = m.get('Size')
+        return self
+
+
+class CreateScalingConfigurationRequestCustomPriorities(TeaModel):
+    def __init__(
+        self,
+        instance_type: str = None,
+        vswitch_id: str = None,
+    ):
+        self.instance_type = instance_type
+        self.vswitch_id = vswitch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.vswitch_id is not None:
+            result['VswitchId'] = self.vswitch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('VswitchId') is not None:
+            self.vswitch_id = m.get('VswitchId')
         return self
 
 
@@ -5171,6 +5165,7 @@ class CreateScalingConfigurationRequest(TeaModel):
         client_token: str = None,
         cpu: int = None,
         credit_specification: str = None,
+        custom_priorities: List[CreateScalingConfigurationRequestCustomPriorities] = None,
         data_disks: List[CreateScalingConfigurationRequestDataDisks] = None,
         dedicated_host_id: str = None,
         deletion_protection: bool = None,
@@ -5244,6 +5239,7 @@ class CreateScalingConfigurationRequest(TeaModel):
         # 
         # For more information, see the "Performance modes" section in the "[Overview](~~59977~~)" topic.
         self.credit_specification = credit_specification
+        self.custom_priorities = custom_priorities
         # The data disks.
         self.data_disks = data_disks
         # The ID of the dedicated host on which you want to create an ECS instance. You cannot create preemptible instances on dedicated hosts. If you specify DedicatedHostId, SpotStrategy and SpotPriceLimit are ignored.
@@ -5414,6 +5410,10 @@ class CreateScalingConfigurationRequest(TeaModel):
             self.private_pool_options.validate()
         if self.system_disk:
             self.system_disk.validate()
+        if self.custom_priorities:
+            for k in self.custom_priorities:
+                if k:
+                    k.validate()
         if self.data_disks:
             for k in self.data_disks:
                 if k:
@@ -5451,6 +5451,10 @@ class CreateScalingConfigurationRequest(TeaModel):
             result['Cpu'] = self.cpu
         if self.credit_specification is not None:
             result['CreditSpecification'] = self.credit_specification
+        result['CustomPriorities'] = []
+        if self.custom_priorities is not None:
+            for k in self.custom_priorities:
+                result['CustomPriorities'].append(k.to_map() if k else None)
         result['DataDisks'] = []
         if self.data_disks is not None:
             for k in self.data_disks:
@@ -5574,6 +5578,11 @@ class CreateScalingConfigurationRequest(TeaModel):
             self.cpu = m.get('Cpu')
         if m.get('CreditSpecification') is not None:
             self.credit_specification = m.get('CreditSpecification')
+        self.custom_priorities = []
+        if m.get('CustomPriorities') is not None:
+            for k in m.get('CustomPriorities'):
+                temp_model = CreateScalingConfigurationRequestCustomPriorities()
+                self.custom_priorities.append(temp_model.from_map(k))
         self.data_disks = []
         if m.get('DataDisks') is not None:
             for k in m.get('DataDisks'):
@@ -5890,6 +5899,39 @@ class CreateScalingConfigurationShrinkRequestSystemDisk(TeaModel):
             self.provisioned_iops = m.get('ProvisionedIops')
         if m.get('Size') is not None:
             self.size = m.get('Size')
+        return self
+
+
+class CreateScalingConfigurationShrinkRequestCustomPriorities(TeaModel):
+    def __init__(
+        self,
+        instance_type: str = None,
+        vswitch_id: str = None,
+    ):
+        self.instance_type = instance_type
+        self.vswitch_id = vswitch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.vswitch_id is not None:
+            result['VswitchId'] = self.vswitch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('VswitchId') is not None:
+            self.vswitch_id = m.get('VswitchId')
         return self
 
 
@@ -6267,6 +6309,7 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
         client_token: str = None,
         cpu: int = None,
         credit_specification: str = None,
+        custom_priorities: List[CreateScalingConfigurationShrinkRequestCustomPriorities] = None,
         data_disks: List[CreateScalingConfigurationShrinkRequestDataDisks] = None,
         dedicated_host_id: str = None,
         deletion_protection: bool = None,
@@ -6340,6 +6383,7 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
         # 
         # For more information, see the "Performance modes" section in the "[Overview](~~59977~~)" topic.
         self.credit_specification = credit_specification
+        self.custom_priorities = custom_priorities
         # The data disks.
         self.data_disks = data_disks
         # The ID of the dedicated host on which you want to create an ECS instance. You cannot create preemptible instances on dedicated hosts. If you specify DedicatedHostId, SpotStrategy and SpotPriceLimit are ignored.
@@ -6510,6 +6554,10 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
             self.private_pool_options.validate()
         if self.system_disk:
             self.system_disk.validate()
+        if self.custom_priorities:
+            for k in self.custom_priorities:
+                if k:
+                    k.validate()
         if self.data_disks:
             for k in self.data_disks:
                 if k:
@@ -6547,6 +6595,10 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
             result['Cpu'] = self.cpu
         if self.credit_specification is not None:
             result['CreditSpecification'] = self.credit_specification
+        result['CustomPriorities'] = []
+        if self.custom_priorities is not None:
+            for k in self.custom_priorities:
+                result['CustomPriorities'].append(k.to_map() if k else None)
         result['DataDisks'] = []
         if self.data_disks is not None:
             for k in self.data_disks:
@@ -6670,6 +6722,11 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
             self.cpu = m.get('Cpu')
         if m.get('CreditSpecification') is not None:
             self.credit_specification = m.get('CreditSpecification')
+        self.custom_priorities = []
+        if m.get('CustomPriorities') is not None:
+            for k in m.get('CustomPriorities'):
+                temp_model = CreateScalingConfigurationShrinkRequestCustomPriorities()
+                self.custom_priorities.append(temp_model.from_map(k))
         self.data_disks = []
         if m.get('DataDisks') is not None:
             for k in m.get('DataDisks'):
@@ -6826,9 +6883,6 @@ class CreateScalingConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7796,9 +7850,6 @@ class CreateScalingGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8226,9 +8277,6 @@ class CreateScalingRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8476,9 +8524,6 @@ class CreateScheduledTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8592,9 +8637,6 @@ class DeactivateScalingConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8718,9 +8760,6 @@ class DeleteAlarmResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8843,9 +8882,6 @@ class DeleteEciScalingConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8977,9 +9013,6 @@ class DeleteLifecycleHookResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9114,9 +9147,6 @@ class DeleteNotificationConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9232,9 +9262,6 @@ class DeleteScalingConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9372,9 +9399,6 @@ class DeleteScalingGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9497,9 +9521,6 @@ class DeleteScalingRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9622,9 +9643,6 @@ class DeleteScheduledTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10042,9 +10060,6 @@ class DescribeAlarmsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12036,9 +12051,6 @@ class DescribeEciScalingConfigurationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12279,9 +12291,6 @@ class DescribeLifecycleActionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12532,9 +12541,6 @@ class DescribeLifecycleHooksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12720,9 +12726,6 @@ class DescribeLimitationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12916,9 +12919,6 @@ class DescribeNotificationConfigurationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13037,9 +13037,6 @@ class DescribeNotificationTypesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13237,9 +13234,6 @@ class DescribeRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13643,9 +13637,6 @@ class DescribeScalingActivitiesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13775,9 +13766,6 @@ class DescribeScalingActivityDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13899,6 +13887,39 @@ class DescribeScalingConfigurationsRequest(TeaModel):
             self.scaling_configuration_names = m.get('ScalingConfigurationNames')
         if m.get('ScalingGroupId') is not None:
             self.scaling_group_id = m.get('ScalingGroupId')
+        return self
+
+
+class DescribeScalingConfigurationsResponseBodyScalingConfigurationsCustomPriorities(TeaModel):
+    def __init__(
+        self,
+        instance_type: str = None,
+        vswitch_id: str = None,
+    ):
+        self.instance_type = instance_type
+        self.vswitch_id = vswitch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.vswitch_id is not None:
+            result['VswitchId'] = self.vswitch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('VswitchId') is not None:
+            self.vswitch_id = m.get('VswitchId')
         return self
 
 
@@ -14252,6 +14273,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         cpu: int = None,
         creation_time: str = None,
         credit_specification: str = None,
+        custom_priorities: List[DescribeScalingConfigurationsResponseBodyScalingConfigurationsCustomPriorities] = None,
         data_disks: List[DescribeScalingConfigurationsResponseBodyScalingConfigurationsDataDisks] = None,
         dedicated_host_id: str = None,
         deletion_protection: bool = None,
@@ -14332,6 +14354,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         # *   Standard: standard mode. For more information, see the "Standard mode" section in the [Burstable instances](~~59977~~) topic.
         # *   Unlimited: unlimited mode. For more information, see the "Unlimited mode" section in the [Burstable instances](~~59977~~) topic.
         self.credit_specification = credit_specification
+        self.custom_priorities = custom_priorities
         # Details of the data disks.
         self.data_disks = data_disks
         # The ID of the dedicated host on which the ECS instance is created. Preemptible instances cannot be created on dedicated hosts. If you specify the DedicatedHostId parameter, the SpotStrategy and SpotPriceLimit parameters are ignored.
@@ -14514,6 +14537,10 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         self.zone_id = zone_id
 
     def validate(self):
+        if self.custom_priorities:
+            for k in self.custom_priorities:
+                if k:
+                    k.validate()
         if self.data_disks:
             for k in self.data_disks:
                 if k:
@@ -14547,6 +14574,10 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
             result['CreationTime'] = self.creation_time
         if self.credit_specification is not None:
             result['CreditSpecification'] = self.credit_specification
+        result['CustomPriorities'] = []
+        if self.custom_priorities is not None:
+            for k in self.custom_priorities:
+                result['CustomPriorities'].append(k.to_map() if k else None)
         result['DataDisks'] = []
         if self.data_disks is not None:
             for k in self.data_disks:
@@ -14689,6 +14720,11 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
             self.creation_time = m.get('CreationTime')
         if m.get('CreditSpecification') is not None:
             self.credit_specification = m.get('CreditSpecification')
+        self.custom_priorities = []
+        if m.get('CustomPriorities') is not None:
+            for k in m.get('CustomPriorities'):
+                temp_model = DescribeScalingConfigurationsResponseBodyScalingConfigurationsCustomPriorities()
+                self.custom_priorities.append(temp_model.from_map(k))
         self.data_disks = []
         if m.get('DataDisks') is not None:
             for k in m.get('DataDisks'):
@@ -14903,9 +14939,6 @@ class DescribeScalingConfigurationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15843,9 +15876,6 @@ class DescribeScalingGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16204,9 +16234,6 @@ class DescribeScalingInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16894,9 +16921,6 @@ class DescribeScalingRulesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17189,9 +17213,6 @@ class DescribeScheduledTasksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17386,9 +17407,6 @@ class DetachAlbServerGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17533,9 +17551,6 @@ class DetachDBInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17711,9 +17726,6 @@ class DetachInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17857,9 +17869,6 @@ class DetachLoadBalancersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18066,9 +18075,6 @@ class DetachServerGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18299,9 +18305,6 @@ class DetachVServerGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18418,9 +18421,6 @@ class DisableAlarmResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18542,9 +18542,6 @@ class DisableScalingGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18661,9 +18658,6 @@ class EnableAlarmResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18914,9 +18908,6 @@ class EnableScalingGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19048,9 +19039,6 @@ class EnterStandbyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19209,9 +19197,6 @@ class ExecuteScalingRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19363,9 +19348,6 @@ class ExitStandbyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19519,9 +19501,6 @@ class ListTagKeysResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19765,9 +19744,6 @@ class ListTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19926,9 +19902,6 @@ class ListTagValuesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20406,9 +20379,6 @@ class ModifyAlarmResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22755,9 +22725,6 @@ class ModifyEciScalingConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22968,9 +22935,6 @@ class ModifyLifecycleHookResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23114,9 +23078,6 @@ class ModifyNotificationConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23347,6 +23308,39 @@ class ModifyScalingConfigurationRequestSystemDisk(TeaModel):
             self.provisioned_iops = m.get('ProvisionedIops')
         if m.get('Size') is not None:
             self.size = m.get('Size')
+        return self
+
+
+class ModifyScalingConfigurationRequestCustomPriorities(TeaModel):
+    def __init__(
+        self,
+        instance_type: str = None,
+        vswitch_id: str = None,
+    ):
+        self.instance_type = instance_type
+        self.vswitch_id = vswitch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.vswitch_id is not None:
+            result['VswitchId'] = self.vswitch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('VswitchId') is not None:
+            self.vswitch_id = m.get('VswitchId')
         return self
 
 
@@ -23719,6 +23713,7 @@ class ModifyScalingConfigurationRequest(TeaModel):
         affinity: str = None,
         cpu: int = None,
         credit_specification: str = None,
+        custom_priorities: List[ModifyScalingConfigurationRequestCustomPriorities] = None,
         data_disks: List[ModifyScalingConfigurationRequestDataDisks] = None,
         dedicated_host_id: str = None,
         deletion_protection: bool = None,
@@ -23783,6 +23778,7 @@ class ModifyScalingConfigurationRequest(TeaModel):
         # *   Standard: standard mode. For more information, see the "Standard mode" section in the [Burstable instances](~~59977~~) topic.
         # *   Unlimited: unlimited mode. For more information, see the "Unlimited mode" section in the [Burstable instances](~~59977~~) topic.
         self.credit_specification = credit_specification
+        self.custom_priorities = custom_priorities
         # The data disks.
         self.data_disks = data_disks
         # The ID of the dedicated host on which you want to create ECS instances. You cannot create preemptible instances on dedicated hosts. If you specify DedicatedHostId, SpotStrategy and SpotPriceLimit are ignored.
@@ -23925,6 +23921,10 @@ class ModifyScalingConfigurationRequest(TeaModel):
             self.private_pool_options.validate()
         if self.system_disk:
             self.system_disk.validate()
+        if self.custom_priorities:
+            for k in self.custom_priorities:
+                if k:
+                    k.validate()
         if self.data_disks:
             for k in self.data_disks:
                 if k:
@@ -23960,6 +23960,10 @@ class ModifyScalingConfigurationRequest(TeaModel):
             result['Cpu'] = self.cpu
         if self.credit_specification is not None:
             result['CreditSpecification'] = self.credit_specification
+        result['CustomPriorities'] = []
+        if self.custom_priorities is not None:
+            for k in self.custom_priorities:
+                result['CustomPriorities'].append(k.to_map() if k else None)
         result['DataDisks'] = []
         if self.data_disks is not None:
             for k in self.data_disks:
@@ -24075,6 +24079,11 @@ class ModifyScalingConfigurationRequest(TeaModel):
             self.cpu = m.get('Cpu')
         if m.get('CreditSpecification') is not None:
             self.credit_specification = m.get('CreditSpecification')
+        self.custom_priorities = []
+        if m.get('CustomPriorities') is not None:
+            for k in m.get('CustomPriorities'):
+                temp_model = ModifyScalingConfigurationRequestCustomPriorities()
+                self.custom_priorities.append(temp_model.from_map(k))
         self.data_disks = []
         if m.get('DataDisks') is not None:
             for k in m.get('DataDisks'):
@@ -24379,6 +24388,39 @@ class ModifyScalingConfigurationShrinkRequestSystemDisk(TeaModel):
             self.provisioned_iops = m.get('ProvisionedIops')
         if m.get('Size') is not None:
             self.size = m.get('Size')
+        return self
+
+
+class ModifyScalingConfigurationShrinkRequestCustomPriorities(TeaModel):
+    def __init__(
+        self,
+        instance_type: str = None,
+        vswitch_id: str = None,
+    ):
+        self.instance_type = instance_type
+        self.vswitch_id = vswitch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.vswitch_id is not None:
+            result['VswitchId'] = self.vswitch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('VswitchId') is not None:
+            self.vswitch_id = m.get('VswitchId')
         return self
 
 
@@ -24751,6 +24793,7 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         affinity: str = None,
         cpu: int = None,
         credit_specification: str = None,
+        custom_priorities: List[ModifyScalingConfigurationShrinkRequestCustomPriorities] = None,
         data_disks: List[ModifyScalingConfigurationShrinkRequestDataDisks] = None,
         dedicated_host_id: str = None,
         deletion_protection: bool = None,
@@ -24815,6 +24858,7 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         # *   Standard: standard mode. For more information, see the "Standard mode" section in the [Burstable instances](~~59977~~) topic.
         # *   Unlimited: unlimited mode. For more information, see the "Unlimited mode" section in the [Burstable instances](~~59977~~) topic.
         self.credit_specification = credit_specification
+        self.custom_priorities = custom_priorities
         # The data disks.
         self.data_disks = data_disks
         # The ID of the dedicated host on which you want to create ECS instances. You cannot create preemptible instances on dedicated hosts. If you specify DedicatedHostId, SpotStrategy and SpotPriceLimit are ignored.
@@ -24957,6 +25001,10 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
             self.private_pool_options.validate()
         if self.system_disk:
             self.system_disk.validate()
+        if self.custom_priorities:
+            for k in self.custom_priorities:
+                if k:
+                    k.validate()
         if self.data_disks:
             for k in self.data_disks:
                 if k:
@@ -24992,6 +25040,10 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
             result['Cpu'] = self.cpu
         if self.credit_specification is not None:
             result['CreditSpecification'] = self.credit_specification
+        result['CustomPriorities'] = []
+        if self.custom_priorities is not None:
+            for k in self.custom_priorities:
+                result['CustomPriorities'].append(k.to_map() if k else None)
         result['DataDisks'] = []
         if self.data_disks is not None:
             for k in self.data_disks:
@@ -25107,6 +25159,11 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
             self.cpu = m.get('Cpu')
         if m.get('CreditSpecification') is not None:
             self.credit_specification = m.get('CreditSpecification')
+        self.custom_priorities = []
+        if m.get('CustomPriorities') is not None:
+            for k in m.get('CustomPriorities'):
+                temp_model = ModifyScalingConfigurationShrinkRequestCustomPriorities()
+                self.custom_priorities.append(temp_model.from_map(k))
         self.data_disks = []
         if m.get('DataDisks') is not None:
             for k in m.get('DataDisks'):
@@ -25250,9 +25307,6 @@ class ModifyScalingConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25683,9 +25737,6 @@ class ModifyScalingGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26064,9 +26115,6 @@ class ModifyScalingRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26309,9 +26357,6 @@ class ModifyScheduledTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26447,9 +26492,6 @@ class RebalanceInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26590,9 +26632,6 @@ class RecordLifecycleActionHeartbeatResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26748,9 +26787,6 @@ class RemoveInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26883,9 +26919,6 @@ class ResumeProcessesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27310,9 +27343,6 @@ class ScaleWithAdjustmentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27439,9 +27469,6 @@ class SetGroupDeletionProtectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27567,9 +27594,6 @@ class SetInstanceHealthResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27696,9 +27720,6 @@ class SetInstancesProtectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27839,9 +27860,6 @@ class SuspendProcessesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28031,9 +28049,6 @@ class TagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28176,9 +28191,6 @@ class UntagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28298,9 +28310,6 @@ class VerifyAuthenticationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28414,9 +28423,6 @@ class VerifyUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

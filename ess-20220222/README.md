@@ -28,7 +28,7 @@ pip install alibabacloud_ess20220222
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/ess-20220222/ChangeLog.md).
 
 ## References
 
