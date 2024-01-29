@@ -28,7 +28,7 @@ pip install alibabacloud_r_kvstore20150101
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/r-kvstore-20150101/ChangeLog.md).
 
 ## References
 

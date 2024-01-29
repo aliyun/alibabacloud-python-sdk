@@ -1,3 +1,10 @@
+2024-01-29 Version: 2.25.4
+- Update API CreateTairInstanceadd SlaveReadOnlyCount param.
+- Update API DescribeBackupsupdate response param.
+- Update API DescribeClusterBackupListupdate response param.
+- Update API ModifyInstanceSpecadd SlaveReadOnlyCount param.
+
+
 2024-01-22 Version: 2.25.3
 - Generated python 2015-01-01 for R-kvstore.
 

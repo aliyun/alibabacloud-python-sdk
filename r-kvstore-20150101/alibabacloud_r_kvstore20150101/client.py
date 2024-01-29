@@ -1712,10 +1712,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateTairInstanceResponse:
         """
-        For more information about instance selection, see [Select an ApsaraDB for Redis instance](~~223808~~).
+        For information about instance selection, see [Select an ApsaraDB for Redis instance](~~223808~~).
         Before you call this operation, make sure that you are familiar with the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        > *   For more information about how to create an ApsaraDB for Redis Enhanced Edition (Tair) instance that uses cloud disks in the ApsaraDB for Redis console, see [Create an ApsaraDB for Redis instance](~~443863~~).
-        >*   To create an instance of another edition or series such as a Community Edition instance or Tair [DRAM-based instance](~~126164~~) that uses local disks, call [CreateInstance](~~60873~~).
+        >
+        *   For information about how to create a Tair instance in the Tair console, see [Create a Tair instance](~~443863~~).
+        *   If you want to create other types of instances, such as Community Edition instances or [Tair DRAM-based](~~126164~~) instances, you can call the [CreateInstance](~~60873~~) operation.
         
         @param request: CreateTairInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1789,6 +1790,8 @@ class Client(OpenApiClient):
             query['ShardCount'] = request.shard_count
         if not UtilClient.is_unset(request.shard_type):
             query['ShardType'] = request.shard_type
+        if not UtilClient.is_unset(request.slave_read_only_count):
+            query['SlaveReadOnlyCount'] = request.slave_read_only_count
         if not UtilClient.is_unset(request.src_dbinstance_id):
             query['SrcDBInstanceId'] = request.src_dbinstance_id
         if not UtilClient.is_unset(request.storage):
@@ -1828,10 +1831,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateTairInstanceResponse:
         """
-        For more information about instance selection, see [Select an ApsaraDB for Redis instance](~~223808~~).
+        For information about instance selection, see [Select an ApsaraDB for Redis instance](~~223808~~).
         Before you call this operation, make sure that you are familiar with the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        > *   For more information about how to create an ApsaraDB for Redis Enhanced Edition (Tair) instance that uses cloud disks in the ApsaraDB for Redis console, see [Create an ApsaraDB for Redis instance](~~443863~~).
-        >*   To create an instance of another edition or series such as a Community Edition instance or Tair [DRAM-based instance](~~126164~~) that uses local disks, call [CreateInstance](~~60873~~).
+        >
+        *   For information about how to create a Tair instance in the Tair console, see [Create a Tair instance](~~443863~~).
+        *   If you want to create other types of instances, such as Community Edition instances or [Tair DRAM-based](~~126164~~) instances, you can call the [CreateInstance](~~60873~~) operation.
         
         @param request: CreateTairInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1905,6 +1909,8 @@ class Client(OpenApiClient):
             query['ShardCount'] = request.shard_count
         if not UtilClient.is_unset(request.shard_type):
             query['ShardType'] = request.shard_type
+        if not UtilClient.is_unset(request.slave_read_only_count):
+            query['SlaveReadOnlyCount'] = request.slave_read_only_count
         if not UtilClient.is_unset(request.src_dbinstance_id):
             query['SrcDBInstanceId'] = request.src_dbinstance_id
         if not UtilClient.is_unset(request.storage):
@@ -1943,10 +1949,11 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateTairInstanceRequest,
     ) -> r_kvstore_20150101_models.CreateTairInstanceResponse:
         """
-        For more information about instance selection, see [Select an ApsaraDB for Redis instance](~~223808~~).
+        For information about instance selection, see [Select an ApsaraDB for Redis instance](~~223808~~).
         Before you call this operation, make sure that you are familiar with the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        > *   For more information about how to create an ApsaraDB for Redis Enhanced Edition (Tair) instance that uses cloud disks in the ApsaraDB for Redis console, see [Create an ApsaraDB for Redis instance](~~443863~~).
-        >*   To create an instance of another edition or series such as a Community Edition instance or Tair [DRAM-based instance](~~126164~~) that uses local disks, call [CreateInstance](~~60873~~).
+        >
+        *   For information about how to create a Tair instance in the Tair console, see [Create a Tair instance](~~443863~~).
+        *   If you want to create other types of instances, such as Community Edition instances or [Tair DRAM-based](~~126164~~) instances, you can call the [CreateInstance](~~60873~~) operation.
         
         @param request: CreateTairInstanceRequest
         @return: CreateTairInstanceResponse
@@ -1959,10 +1966,11 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateTairInstanceRequest,
     ) -> r_kvstore_20150101_models.CreateTairInstanceResponse:
         """
-        For more information about instance selection, see [Select an ApsaraDB for Redis instance](~~223808~~).
+        For information about instance selection, see [Select an ApsaraDB for Redis instance](~~223808~~).
         Before you call this operation, make sure that you are familiar with the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        > *   For more information about how to create an ApsaraDB for Redis Enhanced Edition (Tair) instance that uses cloud disks in the ApsaraDB for Redis console, see [Create an ApsaraDB for Redis instance](~~443863~~).
-        >*   To create an instance of another edition or series such as a Community Edition instance or Tair [DRAM-based instance](~~126164~~) that uses local disks, call [CreateInstance](~~60873~~).
+        >
+        *   For information about how to create a Tair instance in the Tair console, see [Create a Tair instance](~~443863~~).
+        *   If you want to create other types of instances, such as Community Edition instances or [Tair DRAM-based](~~126164~~) instances, you can call the [CreateInstance](~~60873~~) operation.
         
         @param request: CreateTairInstanceRequest
         @return: CreateTairInstanceResponse
@@ -3385,14 +3393,6 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeBackupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeBackupsResponse:
-        """
-        ## Debugging
-        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=R-kvstore\\&api=DescribeBackups\\&type=RPC\\&version=2015-01-01)
-        
-        @param request: DescribeBackupsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeBackupsResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_id):
@@ -3445,14 +3445,6 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeBackupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeBackupsResponse:
-        """
-        ## Debugging
-        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=R-kvstore\\&api=DescribeBackups\\&type=RPC\\&version=2015-01-01)
-        
-        @param request: DescribeBackupsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeBackupsResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_id):
@@ -3504,13 +3496,6 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeBackupsRequest,
     ) -> r_kvstore_20150101_models.DescribeBackupsResponse:
-        """
-        ## Debugging
-        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=R-kvstore\\&api=DescribeBackups\\&type=RPC\\&version=2015-01-01)
-        
-        @param request: DescribeBackupsRequest
-        @return: DescribeBackupsResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.describe_backups_with_options(request, runtime)
 
@@ -3518,13 +3503,6 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeBackupsRequest,
     ) -> r_kvstore_20150101_models.DescribeBackupsResponse:
-        """
-        ## Debugging
-        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=R-kvstore\\&api=DescribeBackups\\&type=RPC\\&version=2015-01-01)
-        
-        @param request: DescribeBackupsRequest
-        @return: DescribeBackupsResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_backups_with_options_async(request, runtime)
 
@@ -7938,8 +7916,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.EnableAdditionalBandwidthResponse:
         """
-        For more information about the fees, limits, and answers to some frequently asked questions about bandwidth adjustments, see [Adjust the bandwidth of an ApsaraDB for Redis instance](~~102588~~).
-        >  Before you call this operation, you can call the [DescribeRoleZoneInfo](~~190794~~) operation to query the bandwidth of each data shard in the instance.
+        When you call this operation, make sure that your instance is an ApsaraDB for Redis Community Edition instance or an ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](~~126164~~), and that the instance is deployed in classic mode. For more information, see [Comparison between cloud-native instances and classic instances](~~188068~~).
+        If you enable the bandwidth auto scaling feature and call this operation at the same time, bandwidth auto scaling takes precedence. During bandwidth scale-back, the instance is scaled back to the default bandwidth of the instance type. For more information about the limits, costs, and FAQ about this feature, see [Adjust the bandwidth of an instance](~~102588~~).
+        >  Before you call this operation, you can call the [DescribeRoleZoneInfo](~~190794~~) operation to query the current bandwidth of each data node in an instance.
         
         @param request: EnableAdditionalBandwidthRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8002,8 +7981,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.EnableAdditionalBandwidthResponse:
         """
-        For more information about the fees, limits, and answers to some frequently asked questions about bandwidth adjustments, see [Adjust the bandwidth of an ApsaraDB for Redis instance](~~102588~~).
-        >  Before you call this operation, you can call the [DescribeRoleZoneInfo](~~190794~~) operation to query the bandwidth of each data shard in the instance.
+        When you call this operation, make sure that your instance is an ApsaraDB for Redis Community Edition instance or an ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](~~126164~~), and that the instance is deployed in classic mode. For more information, see [Comparison between cloud-native instances and classic instances](~~188068~~).
+        If you enable the bandwidth auto scaling feature and call this operation at the same time, bandwidth auto scaling takes precedence. During bandwidth scale-back, the instance is scaled back to the default bandwidth of the instance type. For more information about the limits, costs, and FAQ about this feature, see [Adjust the bandwidth of an instance](~~102588~~).
+        >  Before you call this operation, you can call the [DescribeRoleZoneInfo](~~190794~~) operation to query the current bandwidth of each data node in an instance.
         
         @param request: EnableAdditionalBandwidthRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8065,8 +8045,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.EnableAdditionalBandwidthRequest,
     ) -> r_kvstore_20150101_models.EnableAdditionalBandwidthResponse:
         """
-        For more information about the fees, limits, and answers to some frequently asked questions about bandwidth adjustments, see [Adjust the bandwidth of an ApsaraDB for Redis instance](~~102588~~).
-        >  Before you call this operation, you can call the [DescribeRoleZoneInfo](~~190794~~) operation to query the bandwidth of each data shard in the instance.
+        When you call this operation, make sure that your instance is an ApsaraDB for Redis Community Edition instance or an ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](~~126164~~), and that the instance is deployed in classic mode. For more information, see [Comparison between cloud-native instances and classic instances](~~188068~~).
+        If you enable the bandwidth auto scaling feature and call this operation at the same time, bandwidth auto scaling takes precedence. During bandwidth scale-back, the instance is scaled back to the default bandwidth of the instance type. For more information about the limits, costs, and FAQ about this feature, see [Adjust the bandwidth of an instance](~~102588~~).
+        >  Before you call this operation, you can call the [DescribeRoleZoneInfo](~~190794~~) operation to query the current bandwidth of each data node in an instance.
         
         @param request: EnableAdditionalBandwidthRequest
         @return: EnableAdditionalBandwidthResponse
@@ -8079,8 +8060,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.EnableAdditionalBandwidthRequest,
     ) -> r_kvstore_20150101_models.EnableAdditionalBandwidthResponse:
         """
-        For more information about the fees, limits, and answers to some frequently asked questions about bandwidth adjustments, see [Adjust the bandwidth of an ApsaraDB for Redis instance](~~102588~~).
-        >  Before you call this operation, you can call the [DescribeRoleZoneInfo](~~190794~~) operation to query the bandwidth of each data shard in the instance.
+        When you call this operation, make sure that your instance is an ApsaraDB for Redis Community Edition instance or an ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](~~126164~~), and that the instance is deployed in classic mode. For more information, see [Comparison between cloud-native instances and classic instances](~~188068~~).
+        If you enable the bandwidth auto scaling feature and call this operation at the same time, bandwidth auto scaling takes precedence. During bandwidth scale-back, the instance is scaled back to the default bandwidth of the instance type. For more information about the limits, costs, and FAQ about this feature, see [Adjust the bandwidth of an instance](~~102588~~).
+        >  Before you call this operation, you can call the [DescribeRoleZoneInfo](~~190794~~) operation to query the current bandwidth of each data node in an instance.
         
         @param request: EnableAdditionalBandwidthRequest
         @return: EnableAdditionalBandwidthResponse
@@ -11190,6 +11172,8 @@ class Client(OpenApiClient):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.shard_count):
             query['ShardCount'] = request.shard_count
+        if not UtilClient.is_unset(request.slave_read_only_count):
+            query['SlaveReadOnlyCount'] = request.slave_read_only_count
         if not UtilClient.is_unset(request.source_biz):
             query['SourceBiz'] = request.source_biz
         req = open_api_models.OpenApiRequest(
@@ -11263,6 +11247,8 @@ class Client(OpenApiClient):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.shard_count):
             query['ShardCount'] = request.shard_count
+        if not UtilClient.is_unset(request.slave_read_only_count):
+            query['SlaveReadOnlyCount'] = request.slave_read_only_count
         if not UtilClient.is_unset(request.source_biz):
             query['SourceBiz'] = request.source_biz
         req = open_api_models.OpenApiRequest(
