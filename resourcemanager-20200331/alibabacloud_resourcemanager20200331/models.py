@@ -190,9 +190,6 @@ class AcceptHandshakeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -301,9 +298,6 @@ class AttachControlPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -447,9 +441,6 @@ class AttachPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -569,9 +560,6 @@ class BindSecureMobilePhoneResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -669,9 +657,6 @@ class CancelChangeAccountEmailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -769,9 +754,6 @@ class CancelCreateCloudAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -985,9 +967,6 @@ class CancelHandshakeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1085,9 +1064,6 @@ class CancelPromoteResourceAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1194,9 +1170,6 @@ class ChangeAccountEmailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1294,9 +1267,6 @@ class CheckAccountDeleteResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1535,9 +1505,6 @@ class CreateCloudAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1759,9 +1726,6 @@ class CreateControlPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1926,9 +1890,6 @@ class CreateFolderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2114,9 +2075,6 @@ class CreatePolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2288,9 +2246,6 @@ class CreatePolicyVersionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2588,9 +2543,6 @@ class CreateResourceAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2626,7 +2578,13 @@ class CreateResourceGroupRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag. 
+        # 
+        # The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
         self.key = key
+        # The value of the tag. 
+        # 
+        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
         self.value = value
 
     def validate(self):
@@ -2660,12 +2618,15 @@ class CreateResourceGroupRequest(TeaModel):
         name: str = None,
         tag: List[CreateResourceGroupRequestTag] = None,
     ):
-        # The ID of the request.
-        self.display_name = display_name
         # The display name of the resource group.
         # 
         # The name must be 1 to 50 characters in length.
+        self.display_name = display_name
+        # The unique identifier of the resource group.
+        # 
+        # The identifier must be 3 to 50 characters in length and can contain letters, digits, and hyphens (-). The identifier must start with a letter.
         self.name = name
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -2710,9 +2671,12 @@ class CreateResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus(Tea
         region_id: str = None,
         status: str = None,
     ):
-        # The ID of the Alibaba Cloud account to which the resource group belongs.
-        self.region_id = region_id
         # The region ID.
+        self.region_id = region_id
+        # The status of the resource group. Valid values:
+        # 
+        # *   Creating: The resource group is being created.
+        # *   OK: The resource group is created.
         self.status = status
 
     def validate(self):
@@ -2785,24 +2749,22 @@ class CreateResourceGroupResponseBodyResourceGroup(TeaModel):
         region_statuses: CreateResourceGroupResponseBodyResourceGroupRegionStatuses = None,
         status: str = None,
     ):
-        # The unique identifier of the resource group.
+        # The ID of the Alibaba Cloud account to which the resource group belongs.
         self.account_id = account_id
-        # The ID of the resource group.
-        self.create_date = create_date
-        # The status of the resource group. Valid values:
-        # 
-        # *   Creating: The resource group is being created.
-        # *   OK: The resource group is created.
-        self.display_name = display_name
-        self.id = id
         # The time when the resource group was created. The time is displayed in UTC.
+        self.create_date = create_date
+        # The display name of the resource group.
+        self.display_name = display_name
+        # The ID of the resource group.
+        self.id = id
+        # The unique identifier of the resource group.
         self.name = name
+        # The status of the resource group in all regions.
+        self.region_statuses = region_statuses
         # The status of the resource group. Valid values:
         # 
         # *   Creating: The resource group is being created.
         # *   OK: The resource group is created.
-        self.region_statuses = region_statuses
-        # The status of the resource group in all regions.
         self.status = status
 
     def validate(self):
@@ -2857,9 +2819,9 @@ class CreateResourceGroupResponseBody(TeaModel):
         request_id: str = None,
         resource_group: CreateResourceGroupResponseBodyResourceGroup = None,
     ):
-        # The information of the resource group.
+        # The ID of the request.
         self.request_id = request_id
-        # The display name of the resource group.
+        # The information of the resource group.
         self.resource_group = resource_group
 
     def validate(self):
@@ -2900,9 +2862,6 @@ class CreateResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3117,9 +3076,6 @@ class CreateRoleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3330,9 +3286,6 @@ class CreateServiceLinkedRoleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3546,9 +3499,6 @@ class DeclineHandshakeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3697,9 +3647,6 @@ class DeleteAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3797,9 +3744,6 @@ class DeleteControlPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3897,9 +3841,6 @@ class DeleteFolderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3999,9 +3940,6 @@ class DeletePolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4110,9 +4048,6 @@ class DeletePolicyVersionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4372,9 +4307,6 @@ class DeleteResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4474,9 +4406,6 @@ class DeleteRoleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4581,9 +4510,6 @@ class DeleteServiceLinkedRoleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4690,9 +4616,6 @@ class DeregisterDelegatedAdministratorResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4762,9 +4685,6 @@ class DestroyResourceDirectoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4873,9 +4793,6 @@ class DetachControlPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5012,9 +4929,6 @@ class DetachPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5049,6 +4963,7 @@ class DisableAssociatedTransferResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5083,9 +4998,6 @@ class DisableAssociatedTransferResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5167,9 +5079,6 @@ class DisableControlPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5204,6 +5113,7 @@ class EnableAssociatedTransferResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5238,9 +5148,6 @@ class EnableAssociatedTransferResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5322,9 +5229,6 @@ class EnableControlPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5521,9 +5425,6 @@ class EnableResourceDirectoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5829,9 +5730,6 @@ class GetAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6098,9 +5996,6 @@ class GetAccountDeletionCheckResultResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6322,9 +6217,6 @@ class GetAccountDeletionStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6534,9 +6426,6 @@ class GetControlPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6618,9 +6507,6 @@ class GetControlPolicyEnablementStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6783,9 +6669,6 @@ class GetFolderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7017,9 +6900,6 @@ class GetHandshakeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7131,9 +7011,6 @@ class GetPayerForAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7343,9 +7220,6 @@ class GetPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7520,9 +7394,6 @@ class GetPolicyVersionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7686,9 +7557,6 @@ class GetResourceDirectoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8035,9 +7903,6 @@ class GetResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8292,9 +8157,6 @@ class GetRoleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8550,9 +8412,6 @@ class GetServiceLinkedRoleDeletionStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8687,9 +8546,6 @@ class InitResourceDirectoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8972,9 +8828,6 @@ class InviteAccountToResourceDirectoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9392,9 +9245,6 @@ class ListAccountsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9822,9 +9672,6 @@ class ListAccountsForParentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10008,9 +9855,6 @@ class ListAncestorsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10049,10 +9893,18 @@ class ListAssociatedTransferSettingResponseBodyAssociatedTransferSettingRuleSett
         master_service: str = None,
         status: str = None,
     ):
+        # The type of the associated resource.
         self.associated_resource_type = associated_resource_type
+        # The service code of the associated resource.
         self.associated_service = associated_service
+        # The type of the primary resource.
         self.master_resource_type = master_resource_type
+        # The service code of the primary resource.
         self.master_service = master_service
+        # The status of the Transfer Associated Resources feature. Valid values:
+        # 
+        # - Enable: enabled
+        # - Disable: disabled
         self.status = status
 
     def validate(self):
@@ -10095,11 +9947,19 @@ class ListAssociatedTransferSettingResponseBodyAssociatedTransferSetting(TeaMode
     def __init__(
         self,
         account_id: str = None,
+        enable_existing_resources_transfer: str = None,
         rule_settings: List[ListAssociatedTransferSettingResponseBodyAssociatedTransferSettingRuleSettings] = None,
         status: str = None,
     ):
+        # The settings of the Transfer Associated Resources feature.
         self.account_id = account_id
+        self.enable_existing_resources_transfer = enable_existing_resources_transfer
+        # The settings of the transfer rules.
         self.rule_settings = rule_settings
+        # The status of the Transfer Associated Resources feature. Valid values:
+        # 
+        # - Enable: enabled
+        # - Disable: disabled
         self.status = status
 
     def validate(self):
@@ -10116,6 +9976,8 @@ class ListAssociatedTransferSettingResponseBodyAssociatedTransferSetting(TeaMode
         result = dict()
         if self.account_id is not None:
             result['AccountId'] = self.account_id
+        if self.enable_existing_resources_transfer is not None:
+            result['EnableExistingResourcesTransfer'] = self.enable_existing_resources_transfer
         result['RuleSettings'] = []
         if self.rule_settings is not None:
             for k in self.rule_settings:
@@ -10128,6 +9990,8 @@ class ListAssociatedTransferSettingResponseBodyAssociatedTransferSetting(TeaMode
         m = m or dict()
         if m.get('AccountId') is not None:
             self.account_id = m.get('AccountId')
+        if m.get('EnableExistingResourcesTransfer') is not None:
+            self.enable_existing_resources_transfer = m.get('EnableExistingResourcesTransfer')
         self.rule_settings = []
         if m.get('RuleSettings') is not None:
             for k in m.get('RuleSettings'):
@@ -10144,7 +10008,9 @@ class ListAssociatedTransferSettingResponseBody(TeaModel):
         associated_transfer_setting: ListAssociatedTransferSettingResponseBodyAssociatedTransferSetting = None,
         request_id: str = None,
     ):
+        # The settings of the Transfer Associated Resources feature.
         self.associated_transfer_setting = associated_transfer_setting
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10185,9 +10051,6 @@ class ListAssociatedTransferSettingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10467,9 +10330,6 @@ class ListControlPoliciesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10697,9 +10557,6 @@ class ListControlPolicyAttachmentsForTargetResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10941,9 +10798,6 @@ class ListDelegatedAdministratorsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11132,9 +10986,6 @@ class ListDelegatedServicesForAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11368,9 +11219,6 @@ class ListFoldersForParentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11651,9 +11499,6 @@ class ListHandshakesForAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11934,9 +11779,6 @@ class ListHandshakesForResourceDirectoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12204,9 +12046,6 @@ class ListPoliciesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12512,9 +12351,6 @@ class ListPolicyAttachmentsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12710,9 +12546,6 @@ class ListPolicyVersionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13145,9 +12978,6 @@ class ListResourceGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13487,9 +13317,6 @@ class ListResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13802,9 +13629,6 @@ class ListRolesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13980,9 +13804,6 @@ class ListTagKeysResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14233,9 +14054,6 @@ class ListTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14418,9 +14236,6 @@ class ListTagValuesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14654,9 +14469,6 @@ class ListTargetAttachmentsForControlPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14877,9 +14689,6 @@ class ListTrustedServiceStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14984,9 +14793,6 @@ class MoveAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15249,9 +15055,6 @@ class MoveResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15482,9 +15285,6 @@ class PromoteResourceAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15591,9 +15391,6 @@ class RegisterDelegatedAdministratorResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15691,9 +15488,6 @@ class RemoveCloudAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15914,9 +15708,6 @@ class ResendCreateCloudAccountEmailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16140,9 +15931,6 @@ class ResendPromoteResourceAccountEmailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16240,9 +16028,6 @@ class RetryChangeAccountEmailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16358,9 +16143,6 @@ class SendVerificationCodeForBindSecureMobilePhoneResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16462,9 +16244,6 @@ class SendVerificationCodeForEnableRDResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16571,9 +16350,6 @@ class SetDefaultPolicyVersionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16698,9 +16474,6 @@ class SetMemberDeletionPermissionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16864,9 +16637,6 @@ class TagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16999,9 +16769,6 @@ class UntagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17231,9 +16998,6 @@ class UpdateAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17272,10 +17036,26 @@ class UpdateAssociatedTransferSettingRequestRuleSettings(TeaModel):
         master_service: str = None,
         status: str = None,
     ):
+        # The type of the associated resource.
+        # 
+        # You can obtain the resource type from the **Resource type** column in [Services that work with Resource Group](~~94479~~).
         self.associated_resource_type = associated_resource_type
+        # The service code of the associated resource.
+        # 
+        # You can obtain the service code from the **Service code** column in [Services that work with Resource Group](~~94479~~).
         self.associated_service = associated_service
+        # The type of the primary resource.
+        # 
+        # You can obtain the resource type from the **Resource type** column in [Services that work with Resource Group](~~94479~~).
         self.master_resource_type = master_resource_type
+        # The service code of the primary resource.
+        # 
+        # You can obtain the service code from the **Service code** column in [Services that work with Resource Group](~~94479~~).
         self.master_service = master_service
+        # The status of the Transfer Associated Resources feature. Valid values:
+        # 
+        # - Enable: enabled
+        # - Disable: disabled
         self.status = status
 
     def validate(self):
@@ -17317,8 +17097,11 @@ class UpdateAssociatedTransferSettingRequestRuleSettings(TeaModel):
 class UpdateAssociatedTransferSettingRequest(TeaModel):
     def __init__(
         self,
+        enable_existing_resources_transfer: str = None,
         rule_settings: List[UpdateAssociatedTransferSettingRequestRuleSettings] = None,
     ):
+        self.enable_existing_resources_transfer = enable_existing_resources_transfer
+        # The settings of the transfer rules.
         self.rule_settings = rule_settings
 
     def validate(self):
@@ -17333,6 +17116,8 @@ class UpdateAssociatedTransferSettingRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.enable_existing_resources_transfer is not None:
+            result['EnableExistingResourcesTransfer'] = self.enable_existing_resources_transfer
         result['RuleSettings'] = []
         if self.rule_settings is not None:
             for k in self.rule_settings:
@@ -17341,6 +17126,8 @@ class UpdateAssociatedTransferSettingRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EnableExistingResourcesTransfer') is not None:
+            self.enable_existing_resources_transfer = m.get('EnableExistingResourcesTransfer')
         self.rule_settings = []
         if m.get('RuleSettings') is not None:
             for k in m.get('RuleSettings'):
@@ -17354,6 +17141,7 @@ class UpdateAssociatedTransferSettingResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17388,9 +17176,6 @@ class UpdateAssociatedTransferSettingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17611,9 +17396,6 @@ class UpdateControlPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17778,9 +17560,6 @@ class UpdateFolderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17954,9 +17733,6 @@ class UpdateResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18176,9 +17952,6 @@ class UpdateRoleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

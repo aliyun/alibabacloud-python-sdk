@@ -1,3 +1,9 @@
+2024-01-29 Version: 2.3.1
+- Update API EnableAssociatedTransferupdate response param.
+- Update API ListAssociatedTransferSettingupdate response param.
+- Update API UpdateAssociatedTransferSettingadd EnableExistingResourcesTransfer param.
+
+
 2023-12-14 Version: 2.3.0
 - Generated python 2020-03-31 for ResourceManager.
 

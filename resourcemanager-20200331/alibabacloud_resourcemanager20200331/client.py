@@ -1575,7 +1575,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.CreateResourceGroupResponse:
         """
-        For more information about common request parameters, see [Common parameters](~~159973~~).
+        >  A maximum of 30 resource groups can be created within an Alibaba Cloud account.
         
         @param request: CreateResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1614,7 +1614,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.CreateResourceGroupResponse:
         """
-        For more information about common request parameters, see [Common parameters](~~159973~~).
+        >  A maximum of 30 resource groups can be created within an Alibaba Cloud account.
         
         @param request: CreateResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1652,7 +1652,7 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.CreateResourceGroupRequest,
     ) -> resource_manager_20200331_models.CreateResourceGroupResponse:
         """
-        For more information about common request parameters, see [Common parameters](~~159973~~).
+        >  A maximum of 30 resource groups can be created within an Alibaba Cloud account.
         
         @param request: CreateResourceGroupRequest
         @return: CreateResourceGroupResponse
@@ -1665,7 +1665,7 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.CreateResourceGroupRequest,
     ) -> resource_manager_20200331_models.CreateResourceGroupResponse:
         """
-        For more information about common request parameters, see [Common parameters](~~159973~~).
+        >  A maximum of 30 resource groups can be created within an Alibaba Cloud account.
         
         @param request: CreateResourceGroupRequest
         @return: CreateResourceGroupResponse
@@ -8330,8 +8330,17 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.UpdateAssociatedTransferSettingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.UpdateAssociatedTransferSettingResponse:
+        """
+        For information about the resources that support the Transfer Associated Resources feature, see [Use the Transfer Associated Resources feature](~~2639129~~).
+        
+        @param request: UpdateAssociatedTransferSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAssociatedTransferSettingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.enable_existing_resources_transfer):
+            query['EnableExistingResourcesTransfer'] = request.enable_existing_resources_transfer
         if not UtilClient.is_unset(request.rule_settings):
             query['RuleSettings'] = request.rule_settings
         req = open_api_models.OpenApiRequest(
@@ -8358,8 +8367,17 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.UpdateAssociatedTransferSettingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.UpdateAssociatedTransferSettingResponse:
+        """
+        For information about the resources that support the Transfer Associated Resources feature, see [Use the Transfer Associated Resources feature](~~2639129~~).
+        
+        @param request: UpdateAssociatedTransferSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAssociatedTransferSettingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.enable_existing_resources_transfer):
+            query['EnableExistingResourcesTransfer'] = request.enable_existing_resources_transfer
         if not UtilClient.is_unset(request.rule_settings):
             query['RuleSettings'] = request.rule_settings
         req = open_api_models.OpenApiRequest(
@@ -8385,6 +8403,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.UpdateAssociatedTransferSettingRequest,
     ) -> resource_manager_20200331_models.UpdateAssociatedTransferSettingResponse:
+        """
+        For information about the resources that support the Transfer Associated Resources feature, see [Use the Transfer Associated Resources feature](~~2639129~~).
+        
+        @param request: UpdateAssociatedTransferSettingRequest
+        @return: UpdateAssociatedTransferSettingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_associated_transfer_setting_with_options(request, runtime)
 
@@ -8392,6 +8416,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.UpdateAssociatedTransferSettingRequest,
     ) -> resource_manager_20200331_models.UpdateAssociatedTransferSettingResponse:
+        """
+        For information about the resources that support the Transfer Associated Resources feature, see [Use the Transfer Associated Resources feature](~~2639129~~).
+        
+        @param request: UpdateAssociatedTransferSettingRequest
+        @return: UpdateAssociatedTransferSettingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_associated_transfer_setting_with_options_async(request, runtime)
 
