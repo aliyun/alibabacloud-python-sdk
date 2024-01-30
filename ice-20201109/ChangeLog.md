@@ -1,3 +1,6 @@
+2024-01-30 Version: 2.2.1
+- Generated python 2020-11-09 for ICE.
+
 2024-01-29 Version: 2.2.0
 - Support API GetBatchMediaProducingJob.
 - Support API SubmitBatchMediaProducingJob.
