@@ -1,3 +1,7 @@
+2024-01-30 Version: 1.3.0
+- Support API DeleteEntity.
+
+
 2024-01-29 Version: 1.2.0
 - Support API TagApp.
 - Update API ListTemplatesupdate response param.
