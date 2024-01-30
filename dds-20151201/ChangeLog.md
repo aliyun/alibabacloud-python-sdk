@@ -1,3 +1,7 @@
+2024-01-30 Version: 5.0.5
+- Update API DescribeDBInstancesupdate ExpireTime param.
+
+
 2024-01-22 Version: 5.0.4
 - Generated python 2015-12-01 for Dds.
 
