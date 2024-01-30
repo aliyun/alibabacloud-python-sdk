@@ -28,7 +28,7 @@ pip install alibabacloud_ros20190910
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/ros-20190910/ChangeLog.md).
 
 ## References
 
