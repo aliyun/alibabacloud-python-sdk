@@ -41,6 +41,150 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def app_fail_back_with_options(
+        self,
+        request: bpstudio_20210931_models.AppFailBackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.AppFailBackResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.application_id):
+            body['ApplicationId'] = request.application_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AppFailBack',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.AppFailBackResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def app_fail_back_with_options_async(
+        self,
+        request: bpstudio_20210931_models.AppFailBackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.AppFailBackResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.application_id):
+            body['ApplicationId'] = request.application_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AppFailBack',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.AppFailBackResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def app_fail_back(
+        self,
+        request: bpstudio_20210931_models.AppFailBackRequest,
+    ) -> bpstudio_20210931_models.AppFailBackResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.app_fail_back_with_options(request, runtime)
+
+    async def app_fail_back_async(
+        self,
+        request: bpstudio_20210931_models.AppFailBackRequest,
+    ) -> bpstudio_20210931_models.AppFailBackResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.app_fail_back_with_options_async(request, runtime)
+
+    def app_fail_over_with_options(
+        self,
+        request: bpstudio_20210931_models.AppFailOverRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.AppFailOverResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.application_id):
+            body['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.fail_zone):
+            body['FailZone'] = request.fail_zone
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AppFailOver',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.AppFailOverResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def app_fail_over_with_options_async(
+        self,
+        request: bpstudio_20210931_models.AppFailOverRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.AppFailOverResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.application_id):
+            body['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.fail_zone):
+            body['FailZone'] = request.fail_zone
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AppFailOver',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.AppFailOverResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def app_fail_over(
+        self,
+        request: bpstudio_20210931_models.AppFailOverRequest,
+    ) -> bpstudio_20210931_models.AppFailOverResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.app_fail_over_with_options(request, runtime)
+
+    async def app_fail_over_async(
+        self,
+        request: bpstudio_20210931_models.AppFailOverRequest,
+    ) -> bpstudio_20210931_models.AppFailOverResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.app_fail_over_with_options_async(request, runtime)
+
     def change_resource_group_with_options(
         self,
         request: bpstudio_20210931_models.ChangeResourceGroupRequest,
@@ -653,6 +797,150 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_execute_operation_result_with_options_async(request, runtime)
 
+    def get_fo_task_status_with_options(
+        self,
+        request: bpstudio_20210931_models.GetFoTaskStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.GetFoTaskStatusResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFoTaskStatus',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.GetFoTaskStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_fo_task_status_with_options_async(
+        self,
+        request: bpstudio_20210931_models.GetFoTaskStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.GetFoTaskStatusResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFoTaskStatus',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.GetFoTaskStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_fo_task_status(
+        self,
+        request: bpstudio_20210931_models.GetFoTaskStatusRequest,
+    ) -> bpstudio_20210931_models.GetFoTaskStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_fo_task_status_with_options(request, runtime)
+
+    async def get_fo_task_status_async(
+        self,
+        request: bpstudio_20210931_models.GetFoTaskStatusRequest,
+    ) -> bpstudio_20210931_models.GetFoTaskStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_fo_task_status_with_options_async(request, runtime)
+
+    def get_potential_fail_zones_with_options(
+        self,
+        request: bpstudio_20210931_models.GetPotentialFailZonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.GetPotentialFailZonesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.is_plan_id):
+            body['IsPlanId'] = request.is_plan_id
+        if not UtilClient.is_unset(request.object_id):
+            body['ObjectId'] = request.object_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetPotentialFailZones',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.GetPotentialFailZonesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_potential_fail_zones_with_options_async(
+        self,
+        request: bpstudio_20210931_models.GetPotentialFailZonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.GetPotentialFailZonesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.is_plan_id):
+            body['IsPlanId'] = request.is_plan_id
+        if not UtilClient.is_unset(request.object_id):
+            body['ObjectId'] = request.object_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetPotentialFailZones',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.GetPotentialFailZonesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_potential_fail_zones(
+        self,
+        request: bpstudio_20210931_models.GetPotentialFailZonesRequest,
+    ) -> bpstudio_20210931_models.GetPotentialFailZonesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_potential_fail_zones_with_options(request, runtime)
+
+    async def get_potential_fail_zones_async(
+        self,
+        request: bpstudio_20210931_models.GetPotentialFailZonesRequest,
+    ) -> bpstudio_20210931_models.GetPotentialFailZonesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_potential_fail_zones_with_options_async(request, runtime)
+
     def get_template_with_options(
         self,
         request: bpstudio_20210931_models.GetTemplateRequest,
@@ -835,6 +1123,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_token_with_options_async(request, runtime)
 
+    def init_app_fail_over_with_options(
+        self,
+        request: bpstudio_20210931_models.InitAppFailOverRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.InitAppFailOverResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.application_id):
+            body['ApplicationId'] = request.application_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InitAppFailOver',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.InitAppFailOverResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def init_app_fail_over_with_options_async(
+        self,
+        request: bpstudio_20210931_models.InitAppFailOverRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.InitAppFailOverResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.application_id):
+            body['ApplicationId'] = request.application_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InitAppFailOver',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.InitAppFailOverResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def init_app_fail_over(
+        self,
+        request: bpstudio_20210931_models.InitAppFailOverRequest,
+    ) -> bpstudio_20210931_models.InitAppFailOverResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.init_app_fail_over_with_options(request, runtime)
+
+    async def init_app_fail_over_async(
+        self,
+        request: bpstudio_20210931_models.InitAppFailOverRequest,
+    ) -> bpstudio_20210931_models.InitAppFailOverResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.init_app_fail_over_with_options_async(request, runtime)
+
     def list_application_with_options(
         self,
         request: bpstudio_20210931_models.ListApplicationRequest,
@@ -852,8 +1210,12 @@ class Client(OpenApiClient):
             body['OrderType'] = request.order_type
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            body['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.status):
             body['Status'] = request.status
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -890,8 +1252,12 @@ class Client(OpenApiClient):
             body['OrderType'] = request.order_type
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            body['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.status):
             body['Status'] = request.status
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
