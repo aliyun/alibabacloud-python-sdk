@@ -20814,6 +20814,7 @@ class ModifyAuditLogConfigResponse(TeaModel):
 class ModifyBackupPolicyRequest(TeaModel):
     def __init__(
         self,
+        backup_retention_period: int = None,
         enable_backup_log: int = None,
         instance_id: str = None,
         owner_account: str = None,
@@ -20824,6 +20825,7 @@ class ModifyBackupPolicyRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        self.backup_retention_period = backup_retention_period
         # Enables or disables the data flashback feature for the instance. Valid values:
         # 
         # *   **1**: enables the data flashback feature. You must also enable AOF persistence by setting `appendonly` to `yes` in the parameter settings of the instance. Then, you can use the data flashback feature.
@@ -20866,6 +20868,8 @@ class ModifyBackupPolicyRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.backup_retention_period is not None:
+            result['BackupRetentionPeriod'] = self.backup_retention_period
         if self.enable_backup_log is not None:
             result['EnableBackupLog'] = self.enable_backup_log
         if self.instance_id is not None:
@@ -20888,6 +20892,8 @@ class ModifyBackupPolicyRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BackupRetentionPeriod') is not None:
+            self.backup_retention_period = m.get('BackupRetentionPeriod')
         if m.get('EnableBackupLog') is not None:
             self.enable_backup_log = m.get('EnableBackupLog')
         if m.get('InstanceId') is not None:
@@ -24731,6 +24737,7 @@ class RenewInstanceRequest(TeaModel):
     def __init__(
         self,
         auto_pay: bool = None,
+        auto_renew: bool = None,
         business_info: str = None,
         capacity: str = None,
         client_token: str = None,
@@ -24752,6 +24759,7 @@ class RenewInstanceRequest(TeaModel):
         # 
         # If you select false, you must choose **Expenses** > **Renewal Management** in the top navigation bar. In the left-side navigation pane, click **Orders**. Find the specified order and pay for it.
         self.auto_pay = auto_pay
+        self.auto_renew = auto_renew
         # The ID of the promotional event or business information.
         self.business_info = business_info
         # The storage capacity of the instance. Unit: MB. When you renew the instance, you can specify this parameter to change specifications of the instance.
@@ -24789,6 +24797,8 @@ class RenewInstanceRequest(TeaModel):
         result = dict()
         if self.auto_pay is not None:
             result['AutoPay'] = self.auto_pay
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
         if self.business_info is not None:
             result['BusinessInfo'] = self.business_info
         if self.capacity is not None:
@@ -24821,6 +24831,8 @@ class RenewInstanceRequest(TeaModel):
         m = m or dict()
         if m.get('AutoPay') is not None:
             self.auto_pay = m.get('AutoPay')
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
         if m.get('BusinessInfo') is not None:
             self.business_info = m.get('BusinessInfo')
         if m.get('Capacity') is not None:
