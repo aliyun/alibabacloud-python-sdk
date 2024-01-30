@@ -28,7 +28,7 @@ pip install alibabacloud_hbr20170908
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/hbr-20170908/ChangeLog.md).
 
 ## References
 

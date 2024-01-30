@@ -1558,6 +1558,7 @@ class CreateBackupPlanRequest(TeaModel):
         dest_data_source_id: str = None,
         dest_source_type: str = None,
         detail: Dict[str, Any] = None,
+        disabled: bool = None,
         exclude: str = None,
         file_system_id: str = None,
         include: str = None,
@@ -1604,6 +1605,7 @@ class CreateBackupPlanRequest(TeaModel):
         # *   preScriptPath: the path to the prescript file.
         # *   postScriptPath: the path to the postscript file.
         self.detail = detail
+        self.disabled = disabled
         # This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that are excluded from the backup job. The value can be up to 255 characters in length.
         self.exclude = exclude
         # This parameter is required only if the **SourceType** parameter is set to **NAS**. This parameter specifies the ID of the NAS file system.
@@ -1697,6 +1699,8 @@ class CreateBackupPlanRequest(TeaModel):
             result['DestSourceType'] = self.dest_source_type
         if self.detail is not None:
             result['Detail'] = self.detail
+        if self.disabled is not None:
+            result['Disabled'] = self.disabled
         if self.exclude is not None:
             result['Exclude'] = self.exclude
         if self.file_system_id is not None:
@@ -1761,6 +1765,8 @@ class CreateBackupPlanRequest(TeaModel):
             self.dest_source_type = m.get('DestSourceType')
         if m.get('Detail') is not None:
             self.detail = m.get('Detail')
+        if m.get('Disabled') is not None:
+            self.disabled = m.get('Disabled')
         if m.get('Exclude') is not None:
             self.exclude = m.get('Exclude')
         if m.get('FileSystemId') is not None:
@@ -1897,6 +1903,7 @@ class CreateBackupPlanShrinkRequest(TeaModel):
         dest_data_source_id: str = None,
         dest_source_type: str = None,
         detail_shrink: str = None,
+        disabled: bool = None,
         exclude: str = None,
         file_system_id: str = None,
         include: str = None,
@@ -1943,6 +1950,7 @@ class CreateBackupPlanShrinkRequest(TeaModel):
         # *   preScriptPath: the path to the prescript file.
         # *   postScriptPath: the path to the postscript file.
         self.detail_shrink = detail_shrink
+        self.disabled = disabled
         # This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that are excluded from the backup job. The value can be up to 255 characters in length.
         self.exclude = exclude
         # This parameter is required only if the **SourceType** parameter is set to **NAS**. This parameter specifies the ID of the NAS file system.
@@ -2034,6 +2042,8 @@ class CreateBackupPlanShrinkRequest(TeaModel):
             result['DestSourceType'] = self.dest_source_type
         if self.detail_shrink is not None:
             result['Detail'] = self.detail_shrink
+        if self.disabled is not None:
+            result['Disabled'] = self.disabled
         if self.exclude is not None:
             result['Exclude'] = self.exclude
         if self.file_system_id is not None:
@@ -2098,6 +2108,8 @@ class CreateBackupPlanShrinkRequest(TeaModel):
             self.dest_source_type = m.get('DestSourceType')
         if m.get('Detail') is not None:
             self.detail_shrink = m.get('Detail')
+        if m.get('Disabled') is not None:
+            self.disabled = m.get('Disabled')
         if m.get('Exclude') is not None:
             self.exclude = m.get('Exclude')
         if m.get('FileSystemId') is not None:
@@ -5373,11 +5385,13 @@ class DeleteBackupPlanRequest(TeaModel):
     def __init__(
         self,
         plan_id: str = None,
+        require_no_running_jobs: bool = None,
         source_type: str = None,
         vault_id: str = None,
     ):
         # The ID of the backup plan.
         self.plan_id = plan_id
+        self.require_no_running_jobs = require_no_running_jobs
         # The type of the data source. Valid values:
         # 
         # *   **ECS_FILE**: Elastic Compute Service (ECS) files
@@ -5400,6 +5414,8 @@ class DeleteBackupPlanRequest(TeaModel):
         result = dict()
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
+        if self.require_no_running_jobs is not None:
+            result['RequireNoRunningJobs'] = self.require_no_running_jobs
         if self.source_type is not None:
             result['SourceType'] = self.source_type
         if self.vault_id is not None:
@@ -5410,6 +5426,8 @@ class DeleteBackupPlanRequest(TeaModel):
         m = m or dict()
         if m.get('PlanId') is not None:
             self.plan_id = m.get('PlanId')
+        if m.get('RequireNoRunningJobs') is not None:
+            self.require_no_running_jobs = m.get('RequireNoRunningJobs')
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')
         if m.get('VaultId') is not None:
@@ -8623,6 +8641,7 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlan(TeaModel):
         instance_id: str = None,
         instance_name: str = None,
         keep_latest_snapshots: int = None,
+        latest_execute_job_id: str = None,
         options: str = None,
         ots_detail: DescribeBackupPlansResponseBodyBackupPlansBackupPlanOtsDetail = None,
         paths: DescribeBackupPlansResponseBodyBackupPlansBackupPlanPaths = None,
@@ -8695,6 +8714,7 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlan(TeaModel):
         # *   0: The feature is disabled.
         # *   1: The feature is enabled.
         self.keep_latest_snapshots = keep_latest_snapshots
+        self.latest_execute_job_id = latest_execute_job_id
         # This parameter is valid only if **SourceType** is set to **ECS_FILE**. This parameter indicates whether Windows Volume Shadow Copy Service (VSS) is used to define a source path.
         self.options = options
         # The details about the Tablestore instance.
@@ -8805,6 +8825,8 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlan(TeaModel):
             result['InstanceName'] = self.instance_name
         if self.keep_latest_snapshots is not None:
             result['KeepLatestSnapshots'] = self.keep_latest_snapshots
+        if self.latest_execute_job_id is not None:
+            result['LatestExecuteJobId'] = self.latest_execute_job_id
         if self.options is not None:
             result['Options'] = self.options
         if self.ots_detail is not None:
@@ -8887,6 +8909,8 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlan(TeaModel):
             self.instance_name = m.get('InstanceName')
         if m.get('KeepLatestSnapshots') is not None:
             self.keep_latest_snapshots = m.get('KeepLatestSnapshots')
+        if m.get('LatestExecuteJobId') is not None:
+            self.latest_execute_job_id = m.get('LatestExecuteJobId')
         if m.get('Options') is not None:
             self.options = m.get('Options')
         if m.get('OtsDetail') is not None:
