@@ -242,6 +242,14 @@ class Client(OpenApiClient):
         request: arms20190808_models.AddIntegrationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.AddIntegrationResponse:
+        """
+        @deprecated : AddIntegration is deprecated, please use ARMS::2019-08-08::InstallAddon instead.
+        
+        @param request: AddIntegrationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddIntegrationResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -274,6 +282,14 @@ class Client(OpenApiClient):
         request: arms20190808_models.AddIntegrationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.AddIntegrationResponse:
+        """
+        @deprecated : AddIntegration is deprecated, please use ARMS::2019-08-08::InstallAddon instead.
+        
+        @param request: AddIntegrationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddIntegrationResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -305,6 +321,13 @@ class Client(OpenApiClient):
         self,
         request: arms20190808_models.AddIntegrationRequest,
     ) -> arms20190808_models.AddIntegrationResponse:
+        """
+        @deprecated : AddIntegration is deprecated, please use ARMS::2019-08-08::InstallAddon instead.
+        
+        @param request: AddIntegrationRequest
+        @return: AddIntegrationResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_integration_with_options(request, runtime)
 
@@ -312,6 +335,13 @@ class Client(OpenApiClient):
         self,
         request: arms20190808_models.AddIntegrationRequest,
     ) -> arms20190808_models.AddIntegrationResponse:
+        """
+        @deprecated : AddIntegration is deprecated, please use ARMS::2019-08-08::InstallAddon instead.
+        
+        @param request: AddIntegrationRequest
+        @return: AddIntegrationResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_integration_with_options_async(request, runtime)
 
@@ -2615,6 +2645,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.CreateIntegrationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.auto_recover):
             body['AutoRecover'] = request.auto_recover
@@ -2627,6 +2660,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.recover_time):
             body['RecoverTime'] = request.recover_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2651,6 +2685,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.CreateIntegrationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.auto_recover):
             body['AutoRecover'] = request.auto_recover
@@ -2663,6 +2700,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.recover_time):
             body['RecoverTime'] = request.recover_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -5892,6 +5930,14 @@ class Client(OpenApiClient):
         request: arms20190808_models.DeleteIntegrationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DeleteIntegrationResponse:
+        """
+        @deprecated : DeleteIntegration is deprecated, please use ARMS::2019-08-08::DeleteAddonRelease instead.
+        
+        @param request: DeleteIntegrationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIntegrationResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5924,6 +5970,14 @@ class Client(OpenApiClient):
         request: arms20190808_models.DeleteIntegrationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DeleteIntegrationResponse:
+        """
+        @deprecated : DeleteIntegration is deprecated, please use ARMS::2019-08-08::DeleteAddonRelease instead.
+        
+        @param request: DeleteIntegrationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIntegrationResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5955,6 +6009,13 @@ class Client(OpenApiClient):
         self,
         request: arms20190808_models.DeleteIntegrationRequest,
     ) -> arms20190808_models.DeleteIntegrationResponse:
+        """
+        @deprecated : DeleteIntegration is deprecated, please use ARMS::2019-08-08::DeleteAddonRelease instead.
+        
+        @param request: DeleteIntegrationRequest
+        @return: DeleteIntegrationResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_integration_with_options(request, runtime)
 
@@ -5962,6 +6023,13 @@ class Client(OpenApiClient):
         self,
         request: arms20190808_models.DeleteIntegrationRequest,
     ) -> arms20190808_models.DeleteIntegrationResponse:
+        """
+        @deprecated : DeleteIntegration is deprecated, please use ARMS::2019-08-08::DeleteAddonRelease instead.
+        
+        @param request: DeleteIntegrationRequest
+        @return: DeleteIntegrationResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_integration_with_options_async(request, runtime)
 
@@ -9020,6 +9088,14 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetIntegrationStateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetIntegrationStateResponse:
+        """
+        @deprecated : GetIntegrationState is deprecated, please use ARMS::2019-08-08::DescribeAddonRelease instead.
+        
+        @param request: GetIntegrationStateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIntegrationStateResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -9052,6 +9128,14 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetIntegrationStateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetIntegrationStateResponse:
+        """
+        @deprecated : GetIntegrationState is deprecated, please use ARMS::2019-08-08::DescribeAddonRelease instead.
+        
+        @param request: GetIntegrationStateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIntegrationStateResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -9083,6 +9167,13 @@ class Client(OpenApiClient):
         self,
         request: arms20190808_models.GetIntegrationStateRequest,
     ) -> arms20190808_models.GetIntegrationStateResponse:
+        """
+        @deprecated : GetIntegrationState is deprecated, please use ARMS::2019-08-08::DescribeAddonRelease instead.
+        
+        @param request: GetIntegrationStateRequest
+        @return: GetIntegrationStateResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_integration_state_with_options(request, runtime)
 
@@ -9090,6 +9181,13 @@ class Client(OpenApiClient):
         self,
         request: arms20190808_models.GetIntegrationStateRequest,
     ) -> arms20190808_models.GetIntegrationStateResponse:
+        """
+        @deprecated : GetIntegrationState is deprecated, please use ARMS::2019-08-08::DescribeAddonRelease instead.
+        
+        @param request: GetIntegrationStateRequest
+        @return: GetIntegrationStateResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_integration_state_with_options_async(request, runtime)
 
@@ -12762,6 +12860,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.addon_name):
             query['AddonName'] = request.addon_name
+        if not UtilClient.is_unset(request.bind_resource_id):
+            query['BindResourceId'] = request.bind_resource_id
         if not UtilClient.is_unset(request.environment_type):
             query['EnvironmentType'] = request.environment_type
         if not UtilClient.is_unset(request.region_id):
@@ -12802,6 +12902,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.addon_name):
             query['AddonName'] = request.addon_name
+        if not UtilClient.is_unset(request.bind_resource_id):
+            query['BindResourceId'] = request.bind_resource_id
         if not UtilClient.is_unset(request.environment_type):
             query['EnvironmentType'] = request.environment_type
         if not UtilClient.is_unset(request.region_id):

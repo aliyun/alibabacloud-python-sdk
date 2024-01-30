@@ -1,3 +1,9 @@
+2024-01-30 Version: 4.2.1
+- Update API CreateIntegrationadd RegionId param.
+- Update API DescribeEnvironmentupdate response param.
+- Update API ListEnvironmentsadd BindResourceId param.
+
+
 2024-01-26 Version: 4.2.0
 - Support API ListEnvironmentDashboards.
 

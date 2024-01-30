@@ -6791,12 +6791,14 @@ class CreateIntegrationRequest(TeaModel):
         integration_name: str = None,
         integration_product_type: str = None,
         recover_time: int = None,
+        region_id: str = None,
     ):
         self.auto_recover = auto_recover
         self.description = description
         self.integration_name = integration_name
         self.integration_product_type = integration_product_type
         self.recover_time = recover_time
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -6817,6 +6819,8 @@ class CreateIntegrationRequest(TeaModel):
             result['IntegrationProductType'] = self.integration_product_type
         if self.recover_time is not None:
             result['RecoverTime'] = self.recover_time
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -6831,6 +6835,8 @@ class CreateIntegrationRequest(TeaModel):
             self.integration_product_type = m.get('IntegrationProductType')
         if m.get('RecoverTime') is not None:
             self.recover_time = m.get('RecoverTime')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -20923,6 +20929,7 @@ class DescribeEnvironmentResponseBodyData(TeaModel):
         grafana_folder_title: str = None,
         grafana_folder_uid: str = None,
         grafana_folder_url: str = None,
+        managed_type: str = None,
         prometheus_instance_id: str = None,
         prometheus_instance_name: str = None,
         region_id: str = None,
@@ -20968,6 +20975,7 @@ class DescribeEnvironmentResponseBodyData(TeaModel):
         self.grafana_folder_uid = grafana_folder_uid
         # The URL of the Grafana directory.
         self.grafana_folder_url = grafana_folder_url
+        self.managed_type = managed_type
         # The ID of the Prometheus instance.
         self.prometheus_instance_id = prometheus_instance_id
         # The name of the Prometheus instance.
@@ -21025,6 +21033,8 @@ class DescribeEnvironmentResponseBodyData(TeaModel):
             result['GrafanaFolderUid'] = self.grafana_folder_uid
         if self.grafana_folder_url is not None:
             result['GrafanaFolderUrl'] = self.grafana_folder_url
+        if self.managed_type is not None:
+            result['ManagedType'] = self.managed_type
         if self.prometheus_instance_id is not None:
             result['PrometheusInstanceId'] = self.prometheus_instance_id
         if self.prometheus_instance_name is not None:
@@ -21075,6 +21085,8 @@ class DescribeEnvironmentResponseBodyData(TeaModel):
             self.grafana_folder_uid = m.get('GrafanaFolderUid')
         if m.get('GrafanaFolderUrl') is not None:
             self.grafana_folder_url = m.get('GrafanaFolderUrl')
+        if m.get('ManagedType') is not None:
+            self.managed_type = m.get('ManagedType')
         if m.get('PrometheusInstanceId') is not None:
             self.prometheus_instance_id = m.get('PrometheusInstanceId')
         if m.get('PrometheusInstanceName') is not None:
@@ -39070,6 +39082,7 @@ class ListEnvironmentsRequest(TeaModel):
     def __init__(
         self,
         addon_name: str = None,
+        bind_resource_id: str = None,
         environment_type: str = None,
         region_id: str = None,
         resource_group_id: str = None,
@@ -39077,6 +39090,7 @@ class ListEnvironmentsRequest(TeaModel):
     ):
         # Name of Addon.
         self.addon_name = addon_name
+        self.bind_resource_id = bind_resource_id
         # Environment type, AddonName or EnvironmentType must be at least one.
         self.environment_type = environment_type
         # The region ID.
@@ -39100,6 +39114,8 @@ class ListEnvironmentsRequest(TeaModel):
         result = dict()
         if self.addon_name is not None:
             result['AddonName'] = self.addon_name
+        if self.bind_resource_id is not None:
+            result['BindResourceId'] = self.bind_resource_id
         if self.environment_type is not None:
             result['EnvironmentType'] = self.environment_type
         if self.region_id is not None:
@@ -39116,6 +39132,8 @@ class ListEnvironmentsRequest(TeaModel):
         m = m or dict()
         if m.get('AddonName') is not None:
             self.addon_name = m.get('AddonName')
+        if m.get('BindResourceId') is not None:
+            self.bind_resource_id = m.get('BindResourceId')
         if m.get('EnvironmentType') is not None:
             self.environment_type = m.get('EnvironmentType')
         if m.get('RegionId') is not None:
@@ -39134,6 +39152,7 @@ class ListEnvironmentsShrinkRequest(TeaModel):
     def __init__(
         self,
         addon_name: str = None,
+        bind_resource_id: str = None,
         environment_type: str = None,
         region_id: str = None,
         resource_group_id: str = None,
@@ -39141,6 +39160,7 @@ class ListEnvironmentsShrinkRequest(TeaModel):
     ):
         # Name of Addon.
         self.addon_name = addon_name
+        self.bind_resource_id = bind_resource_id
         # Environment type, AddonName or EnvironmentType must be at least one.
         self.environment_type = environment_type
         # The region ID.
@@ -39161,6 +39181,8 @@ class ListEnvironmentsShrinkRequest(TeaModel):
         result = dict()
         if self.addon_name is not None:
             result['AddonName'] = self.addon_name
+        if self.bind_resource_id is not None:
+            result['BindResourceId'] = self.bind_resource_id
         if self.environment_type is not None:
             result['EnvironmentType'] = self.environment_type
         if self.region_id is not None:
@@ -39175,6 +39197,8 @@ class ListEnvironmentsShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('AddonName') is not None:
             self.addon_name = m.get('AddonName')
+        if m.get('BindResourceId') is not None:
+            self.bind_resource_id = m.get('BindResourceId')
         if m.get('EnvironmentType') is not None:
             self.environment_type = m.get('EnvironmentType')
         if m.get('RegionId') is not None:
