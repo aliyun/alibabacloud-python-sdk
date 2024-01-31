@@ -1,3 +1,7 @@
+2024-01-31 Version: 3.0.5
+- Update API DescribeBackupPolicyupdate response param.
+
+
 2024-01-23 Version: 3.0.4
 - Generated python 2014-08-15 for Rds.
 

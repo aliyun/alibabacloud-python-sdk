@@ -28,7 +28,7 @@ pip install alibabacloud_rds20140815
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/rds-20140815/ChangeLog.md).
 
 ## References
 
