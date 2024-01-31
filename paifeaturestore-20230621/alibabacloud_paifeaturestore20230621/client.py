@@ -789,6 +789,76 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_model_feature_with_options_async(instance_id, request, headers, runtime)
 
+    def create_model_feature_training_set_fgtable_with_options(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.CreateModelFeatureTrainingSetFGTableResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CreateModelFeatureTrainingSetFGTable',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/modelfeatures/{OpenApiUtilClient.get_encode_param(model_feature_id)}/trainingsetfgtable',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.CreateModelFeatureTrainingSetFGTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_model_feature_training_set_fgtable_with_options_async(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.CreateModelFeatureTrainingSetFGTableResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CreateModelFeatureTrainingSetFGTable',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/modelfeatures/{OpenApiUtilClient.get_encode_param(model_feature_id)}/trainingsetfgtable',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.CreateModelFeatureTrainingSetFGTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_model_feature_training_set_fgtable(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+    ) -> pai_feature_store_20230621_models.CreateModelFeatureTrainingSetFGTableResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_model_feature_training_set_fgtable_with_options(instance_id, model_feature_id, headers, runtime)
+
+    async def create_model_feature_training_set_fgtable_async(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+    ) -> pai_feature_store_20230621_models.CreateModelFeatureTrainingSetFGTableResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_model_feature_training_set_fgtable_with_options_async(instance_id, model_feature_id, headers, runtime)
+
     def create_project_with_options(
         self,
         instance_id: str,
@@ -1385,6 +1455,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_project_with_options_async(instance_id, project_id, headers, runtime)
 
+    def export_model_feature_training_set_fgtable_with_options(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+        request: pai_feature_store_20230621_models.ExportModelFeatureTrainingSetFGTableRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.ExportModelFeatureTrainingSetFGTableResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.training_set_fg_config):
+            body['TrainingSetFgConfig'] = request.training_set_fg_config
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportModelFeatureTrainingSetFGTable',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/modelfeatures/{OpenApiUtilClient.get_encode_param(model_feature_id)}/action/exporttrainingsetfgtable',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.ExportModelFeatureTrainingSetFGTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_model_feature_training_set_fgtable_with_options_async(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+        request: pai_feature_store_20230621_models.ExportModelFeatureTrainingSetFGTableRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.ExportModelFeatureTrainingSetFGTableResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.training_set_fg_config):
+            body['TrainingSetFgConfig'] = request.training_set_fg_config
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportModelFeatureTrainingSetFGTable',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/modelfeatures/{OpenApiUtilClient.get_encode_param(model_feature_id)}/action/exporttrainingsetfgtable',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.ExportModelFeatureTrainingSetFGTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_model_feature_training_set_fgtable(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+        request: pai_feature_store_20230621_models.ExportModelFeatureTrainingSetFGTableRequest,
+    ) -> pai_feature_store_20230621_models.ExportModelFeatureTrainingSetFGTableResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.export_model_feature_training_set_fgtable_with_options(instance_id, model_feature_id, request, headers, runtime)
+
+    async def export_model_feature_training_set_fgtable_async(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+        request: pai_feature_store_20230621_models.ExportModelFeatureTrainingSetFGTableRequest,
+    ) -> pai_feature_store_20230621_models.ExportModelFeatureTrainingSetFGTableResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.export_model_feature_training_set_fgtable_with_options_async(instance_id, model_feature_id, request, headers, runtime)
+
     def export_model_feature_training_set_table_with_options(
         self,
         instance_id: str,
@@ -1966,6 +2120,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_model_feature_with_options_async(instance_id, model_feature_id, headers, runtime)
+
+    def get_model_feature_fgfeature_with_options(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.GetModelFeatureFGFeatureResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetModelFeatureFGFeature',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/modelfeatures/{OpenApiUtilClient.get_encode_param(model_feature_id)}/fgfeature',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.GetModelFeatureFGFeatureResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_model_feature_fgfeature_with_options_async(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.GetModelFeatureFGFeatureResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetModelFeatureFGFeature',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/modelfeatures/{OpenApiUtilClient.get_encode_param(model_feature_id)}/fgfeature',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.GetModelFeatureFGFeatureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_model_feature_fgfeature(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+    ) -> pai_feature_store_20230621_models.GetModelFeatureFGFeatureResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_model_feature_fgfeature_with_options(instance_id, model_feature_id, headers, runtime)
+
+    async def get_model_feature_fgfeature_async(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+    ) -> pai_feature_store_20230621_models.GetModelFeatureFGFeatureResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_model_feature_fgfeature_with_options_async(instance_id, model_feature_id, headers, runtime)
+
+    def get_model_feature_fginfo_with_options(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.GetModelFeatureFGInfoResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetModelFeatureFGInfo',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/modelfeatures/{OpenApiUtilClient.get_encode_param(model_feature_id)}/fginfo',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.GetModelFeatureFGInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_model_feature_fginfo_with_options_async(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.GetModelFeatureFGInfoResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetModelFeatureFGInfo',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/modelfeatures/{OpenApiUtilClient.get_encode_param(model_feature_id)}/fginfo',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.GetModelFeatureFGInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_model_feature_fginfo(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+    ) -> pai_feature_store_20230621_models.GetModelFeatureFGInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_model_feature_fginfo_with_options(instance_id, model_feature_id, headers, runtime)
+
+    async def get_model_feature_fginfo_async(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+    ) -> pai_feature_store_20230621_models.GetModelFeatureFGInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_model_feature_fginfo_with_options_async(instance_id, model_feature_id, headers, runtime)
 
     def get_project_with_options(
         self,
@@ -3257,6 +3551,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_label_tables_with_options_async(instance_id, request, headers, runtime)
 
+    def list_model_feature_available_features_with_options(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+        request: pai_feature_store_20230621_models.ListModelFeatureAvailableFeaturesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.ListModelFeatureAvailableFeaturesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.feature_name):
+            query['FeatureName'] = request.feature_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListModelFeatureAvailableFeatures',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/modelfeatures/{OpenApiUtilClient.get_encode_param(model_feature_id)}/availablefeatures',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.ListModelFeatureAvailableFeaturesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_model_feature_available_features_with_options_async(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+        request: pai_feature_store_20230621_models.ListModelFeatureAvailableFeaturesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.ListModelFeatureAvailableFeaturesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.feature_name):
+            query['FeatureName'] = request.feature_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListModelFeatureAvailableFeatures',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/modelfeatures/{OpenApiUtilClient.get_encode_param(model_feature_id)}/availablefeatures',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.ListModelFeatureAvailableFeaturesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_model_feature_available_features(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+        request: pai_feature_store_20230621_models.ListModelFeatureAvailableFeaturesRequest,
+    ) -> pai_feature_store_20230621_models.ListModelFeatureAvailableFeaturesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_model_feature_available_features_with_options(instance_id, model_feature_id, request, headers, runtime)
+
+    async def list_model_feature_available_features_async(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+        request: pai_feature_store_20230621_models.ListModelFeatureAvailableFeaturesRequest,
+    ) -> pai_feature_store_20230621_models.ListModelFeatureAvailableFeaturesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_model_feature_available_features_with_options_async(instance_id, model_feature_id, request, headers, runtime)
+
     def list_model_features_with_options(
         self,
         instance_id: str,
@@ -4278,6 +4656,186 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_model_feature_with_options_async(instance_id, model_feature_id, request, headers, runtime)
+
+    def update_model_feature_fgfeature_with_options(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+        request: pai_feature_store_20230621_models.UpdateModelFeatureFGFeatureRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.UpdateModelFeatureFGFeatureResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.lookup_features):
+            body['LookupFeatures'] = request.lookup_features
+        if not UtilClient.is_unset(request.raw_features):
+            body['RawFeatures'] = request.raw_features
+        if not UtilClient.is_unset(request.reserves):
+            body['Reserves'] = request.reserves
+        if not UtilClient.is_unset(request.sequence_features):
+            body['SequenceFeatures'] = request.sequence_features
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateModelFeatureFGFeature',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/modelfeatures/{OpenApiUtilClient.get_encode_param(model_feature_id)}/fgfeature',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.UpdateModelFeatureFGFeatureResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_model_feature_fgfeature_with_options_async(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+        request: pai_feature_store_20230621_models.UpdateModelFeatureFGFeatureRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.UpdateModelFeatureFGFeatureResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.lookup_features):
+            body['LookupFeatures'] = request.lookup_features
+        if not UtilClient.is_unset(request.raw_features):
+            body['RawFeatures'] = request.raw_features
+        if not UtilClient.is_unset(request.reserves):
+            body['Reserves'] = request.reserves
+        if not UtilClient.is_unset(request.sequence_features):
+            body['SequenceFeatures'] = request.sequence_features
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateModelFeatureFGFeature',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/modelfeatures/{OpenApiUtilClient.get_encode_param(model_feature_id)}/fgfeature',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.UpdateModelFeatureFGFeatureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_model_feature_fgfeature(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+        request: pai_feature_store_20230621_models.UpdateModelFeatureFGFeatureRequest,
+    ) -> pai_feature_store_20230621_models.UpdateModelFeatureFGFeatureResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_model_feature_fgfeature_with_options(instance_id, model_feature_id, request, headers, runtime)
+
+    async def update_model_feature_fgfeature_async(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+        request: pai_feature_store_20230621_models.UpdateModelFeatureFGFeatureRequest,
+    ) -> pai_feature_store_20230621_models.UpdateModelFeatureFGFeatureResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_model_feature_fgfeature_with_options_async(instance_id, model_feature_id, request, headers, runtime)
+
+    def update_model_feature_fginfo_with_options(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+        request: pai_feature_store_20230621_models.UpdateModelFeatureFGInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.UpdateModelFeatureFGInfoResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateModelFeatureFGInfo',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/modelfeatures/{OpenApiUtilClient.get_encode_param(model_feature_id)}/fginfo',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.UpdateModelFeatureFGInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_model_feature_fginfo_with_options_async(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+        request: pai_feature_store_20230621_models.UpdateModelFeatureFGInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.UpdateModelFeatureFGInfoResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateModelFeatureFGInfo',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/modelfeatures/{OpenApiUtilClient.get_encode_param(model_feature_id)}/fginfo',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.UpdateModelFeatureFGInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_model_feature_fginfo(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+        request: pai_feature_store_20230621_models.UpdateModelFeatureFGInfoRequest,
+    ) -> pai_feature_store_20230621_models.UpdateModelFeatureFGInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_model_feature_fginfo_with_options(instance_id, model_feature_id, request, headers, runtime)
+
+    async def update_model_feature_fginfo_async(
+        self,
+        instance_id: str,
+        model_feature_id: str,
+        request: pai_feature_store_20230621_models.UpdateModelFeatureFGInfoRequest,
+    ) -> pai_feature_store_20230621_models.UpdateModelFeatureFGInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_model_feature_fginfo_with_options_async(instance_id, model_feature_id, request, headers, runtime)
 
     def update_project_with_options(
         self,

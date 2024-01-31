@@ -1,3 +1,13 @@
+2024-01-31 Version: 3.1.0
+- Support API CreateModelFeatureTrainingSetFGTable.
+- Support API ExportModelFeatureTrainingSetFGTable.
+- Support API GetModelFeatureFGFeature.
+- Support API GetModelFeatureFGInfo.
+- Support API ListModelFeatureAvailableFeatures.
+- Support API UpdateModelFeatureFGFeature.
+- Support API UpdateModelFeatureFGInfo.
+
+
 2024-01-29 Version: 3.0.3
 - Update API GetDatasourceupdate response param.
 - Update API GetFeatureViewupdate response param.
