@@ -329,6 +329,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_upload_token_with_options_async(runtime)
 
+    def describe_url_moderation_result_with_options(
+        self,
+        request: green_20220302_models.DescribeUrlModerationResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220302_models.DescribeUrlModerationResultResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.req_id):
+            body['ReqId'] = request.req_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeUrlModerationResult',
+            version='2022-03-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220302_models.DescribeUrlModerationResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_url_moderation_result_with_options_async(
+        self,
+        request: green_20220302_models.DescribeUrlModerationResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220302_models.DescribeUrlModerationResultResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.req_id):
+            body['ReqId'] = request.req_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeUrlModerationResult',
+            version='2022-03-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220302_models.DescribeUrlModerationResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_url_moderation_result(
+        self,
+        request: green_20220302_models.DescribeUrlModerationResultRequest,
+    ) -> green_20220302_models.DescribeUrlModerationResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_url_moderation_result_with_options(request, runtime)
+
+    async def describe_url_moderation_result_async(
+        self,
+        request: green_20220302_models.DescribeUrlModerationResultRequest,
+    ) -> green_20220302_models.DescribeUrlModerationResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_url_moderation_result_with_options_async(request, runtime)
+
     def file_moderation_with_options(
         self,
         request: green_20220302_models.FileModerationRequest,
@@ -698,6 +768,80 @@ class Client(OpenApiClient):
     ) -> green_20220302_models.TextModerationPlusResponse:
         runtime = util_models.RuntimeOptions()
         return await self.text_moderation_plus_with_options_async(request, runtime)
+
+    def url_async_moderation_with_options(
+        self,
+        request: green_20220302_models.UrlAsyncModerationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220302_models.UrlAsyncModerationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.service):
+            query['Service'] = request.service
+        if not UtilClient.is_unset(request.service_parameters):
+            query['ServiceParameters'] = request.service_parameters
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UrlAsyncModeration',
+            version='2022-03-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220302_models.UrlAsyncModerationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def url_async_moderation_with_options_async(
+        self,
+        request: green_20220302_models.UrlAsyncModerationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220302_models.UrlAsyncModerationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.service):
+            query['Service'] = request.service
+        if not UtilClient.is_unset(request.service_parameters):
+            query['ServiceParameters'] = request.service_parameters
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UrlAsyncModeration',
+            version='2022-03-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220302_models.UrlAsyncModerationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def url_async_moderation(
+        self,
+        request: green_20220302_models.UrlAsyncModerationRequest,
+    ) -> green_20220302_models.UrlAsyncModerationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.url_async_moderation_with_options(request, runtime)
+
+    async def url_async_moderation_async(
+        self,
+        request: green_20220302_models.UrlAsyncModerationRequest,
+    ) -> green_20220302_models.UrlAsyncModerationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.url_async_moderation_with_options_async(request, runtime)
 
     def video_moderation_with_options(
         self,
