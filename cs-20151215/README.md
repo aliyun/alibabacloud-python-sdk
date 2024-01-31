@@ -28,7 +28,7 @@ pip install alibabacloud_cs20151215
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/cs-20151215/ChangeLog.md).
 
 ## References
 
