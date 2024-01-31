@@ -1,3 +1,6 @@
+2024-01-31 Version: 4.12.1
+- Generated python 2021-06-25 for devops.
+
 2024-01-31 Version: 4.12.0
 - Support API CreateCheckRun.
 - Support API GetCheckRun.
