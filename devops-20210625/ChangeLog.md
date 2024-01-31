@@ -1,3 +1,10 @@
+2024-01-31 Version: 4.12.0
+- Support API CreateCheckRun.
+- Support API GetCheckRun.
+- Support API ListCheckRuns.
+- Support API UpdateCheckRun.
+
+
 2024-01-29 Version: 4.11.1
 - Update API GetMergeRequestupdate response param.
 - Update API GetOrganizationMemberupdate response param.
