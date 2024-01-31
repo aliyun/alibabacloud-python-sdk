@@ -1,3 +1,11 @@
+2024-01-31 Version: 1.6.0
+- Support API CreateAppStreamingOutTemplate.
+- Support API DeleteAppStreamingOutTemplate.
+- Support API DescribeAppStreamingOutTemplates.
+- Support API ModifyAppStreamingOutTemplate.
+- Update API DescribeAppsupdate response param.
+
+
 2023-12-28 Version: 1.5.0
 - Generated python 2018-01-11 for rtc.
 

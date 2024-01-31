@@ -399,9 +399,6 @@ class AddRecordTemplateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -427,6 +424,194 @@ class AddRecordTemplateResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AddRecordTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateAppStreamingOutTemplateRequestStreamingOutTemplate(TeaModel):
+    def __init__(
+        self,
+        enable_vad: bool = None,
+        layout_ids: List[str] = None,
+        media_encode: int = None,
+        name: str = None,
+    ):
+        self.enable_vad = enable_vad
+        self.layout_ids = layout_ids
+        self.media_encode = media_encode
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_vad is not None:
+            result['EnableVad'] = self.enable_vad
+        if self.layout_ids is not None:
+            result['LayoutIds'] = self.layout_ids
+        if self.media_encode is not None:
+            result['MediaEncode'] = self.media_encode
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableVad') is not None:
+            self.enable_vad = m.get('EnableVad')
+        if m.get('LayoutIds') is not None:
+            self.layout_ids = m.get('LayoutIds')
+        if m.get('MediaEncode') is not None:
+            self.media_encode = m.get('MediaEncode')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class CreateAppStreamingOutTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        streaming_out_template: CreateAppStreamingOutTemplateRequestStreamingOutTemplate = None,
+    ):
+        self.app_id = app_id
+        self.streaming_out_template = streaming_out_template
+
+    def validate(self):
+        if self.streaming_out_template:
+            self.streaming_out_template.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.streaming_out_template is not None:
+            result['StreamingOutTemplate'] = self.streaming_out_template.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('StreamingOutTemplate') is not None:
+            temp_model = CreateAppStreamingOutTemplateRequestStreamingOutTemplate()
+            self.streaming_out_template = temp_model.from_map(m['StreamingOutTemplate'])
+        return self
+
+
+class CreateAppStreamingOutTemplateShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        streaming_out_template_shrink: str = None,
+    ):
+        self.app_id = app_id
+        self.streaming_out_template_shrink = streaming_out_template_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.streaming_out_template_shrink is not None:
+            result['StreamingOutTemplate'] = self.streaming_out_template_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('StreamingOutTemplate') is not None:
+            self.streaming_out_template_shrink = m.get('StreamingOutTemplate')
+        return self
+
+
+class CreateAppStreamingOutTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        template_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class CreateAppStreamingOutTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAppStreamingOutTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAppStreamingOutTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -545,9 +730,6 @@ class CreateAutoLiveStreamRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -697,9 +879,6 @@ class CreateEventSubscribeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -896,9 +1075,6 @@ class CreateMPULayoutResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -924,6 +1100,170 @@ class CreateMPULayoutResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateMPULayoutResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteAppStreamingOutTemplateRequestStreamingOutTemplate(TeaModel):
+    def __init__(
+        self,
+        template_id: str = None,
+    ):
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class DeleteAppStreamingOutTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        streaming_out_template: DeleteAppStreamingOutTemplateRequestStreamingOutTemplate = None,
+    ):
+        self.app_id = app_id
+        self.streaming_out_template = streaming_out_template
+
+    def validate(self):
+        if self.streaming_out_template:
+            self.streaming_out_template.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.streaming_out_template is not None:
+            result['StreamingOutTemplate'] = self.streaming_out_template.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('StreamingOutTemplate') is not None:
+            temp_model = DeleteAppStreamingOutTemplateRequestStreamingOutTemplate()
+            self.streaming_out_template = temp_model.from_map(m['StreamingOutTemplate'])
+        return self
+
+
+class DeleteAppStreamingOutTemplateShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        streaming_out_template_shrink: str = None,
+    ):
+        self.app_id = app_id
+        self.streaming_out_template_shrink = streaming_out_template_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.streaming_out_template_shrink is not None:
+            result['StreamingOutTemplate'] = self.streaming_out_template_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('StreamingOutTemplate') is not None:
+            self.streaming_out_template_shrink = m.get('StreamingOutTemplate')
+        return self
+
+
+class DeleteAppStreamingOutTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteAppStreamingOutTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAppStreamingOutTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAppStreamingOutTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1006,9 +1346,6 @@ class DeleteAutoLiveStreamRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1116,9 +1453,6 @@ class DeleteChannelResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1226,9 +1560,6 @@ class DeleteEventSubscribeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1336,9 +1667,6 @@ class DeleteMPULayoutResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1447,9 +1775,6 @@ class DeleteRecordTemplateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1558,9 +1883,6 @@ class DescribeAppKeyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1586,6 +1908,283 @@ class DescribeAppKeyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeAppKeyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAppStreamingOutTemplatesRequestCondition(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        template_id: str = None,
+    ):
+        self.name = name
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class DescribeAppStreamingOutTemplatesRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        condition: DescribeAppStreamingOutTemplatesRequestCondition = None,
+        page_num: int = None,
+        page_size: int = None,
+    ):
+        self.app_id = app_id
+        self.condition = condition
+        self.page_num = page_num
+        self.page_size = page_size
+
+    def validate(self):
+        if self.condition:
+            self.condition.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.condition is not None:
+            result['Condition'] = self.condition.to_map()
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Condition') is not None:
+            temp_model = DescribeAppStreamingOutTemplatesRequestCondition()
+            self.condition = temp_model.from_map(m['Condition'])
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeAppStreamingOutTemplatesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        condition_shrink: str = None,
+        page_num: int = None,
+        page_size: int = None,
+    ):
+        self.app_id = app_id
+        self.condition_shrink = condition_shrink
+        self.page_num = page_num
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.condition_shrink is not None:
+            result['Condition'] = self.condition_shrink
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Condition') is not None:
+            self.condition_shrink = m.get('Condition')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeAppStreamingOutTemplatesResponseBodyTemplates(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        enable_vad: bool = None,
+        layout_ids: List[str] = None,
+        media_encode: int = None,
+        name: str = None,
+        template_id: str = None,
+    ):
+        self.create_time = create_time
+        self.enable_vad = enable_vad
+        self.layout_ids = layout_ids
+        self.media_encode = media_encode
+        self.name = name
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.enable_vad is not None:
+            result['EnableVad'] = self.enable_vad
+        if self.layout_ids is not None:
+            result['LayoutIds'] = self.layout_ids
+        if self.media_encode is not None:
+            result['MediaEncode'] = self.media_encode
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('EnableVad') is not None:
+            self.enable_vad = m.get('EnableVad')
+        if m.get('LayoutIds') is not None:
+            self.layout_ids = m.get('LayoutIds')
+        if m.get('MediaEncode') is not None:
+            self.media_encode = m.get('MediaEncode')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class DescribeAppStreamingOutTemplatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        templates: List[DescribeAppStreamingOutTemplatesResponseBodyTemplates] = None,
+        total_num: int = None,
+        total_page: int = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.templates = templates
+        self.total_num = total_num
+        self.total_page = total_page
+
+    def validate(self):
+        if self.templates:
+            for k in self.templates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Templates'] = []
+        if self.templates is not None:
+            for k in self.templates:
+                result['Templates'].append(k.to_map() if k else None)
+        if self.total_num is not None:
+            result['TotalNum'] = self.total_num
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.templates = []
+        if m.get('Templates') is not None:
+            for k in m.get('Templates'):
+                temp_model = DescribeAppStreamingOutTemplatesResponseBodyTemplates()
+                self.templates.append(temp_model.from_map(k))
+        if m.get('TotalNum') is not None:
+            self.total_num = m.get('TotalNum')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        return self
+
+
+class DescribeAppStreamingOutTemplatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAppStreamingOutTemplatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAppStreamingOutTemplatesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1682,18 +2281,18 @@ class DescribeAppsResponseBodyAppListApp(TeaModel):
         app_type: str = None,
         bill_type: str = None,
         create_time: str = None,
-        region: str = None,
         service_areas: DescribeAppsResponseBodyAppListAppServiceAreas = None,
         status: int = None,
+        version: str = None,
     ):
         self.app_id = app_id
         self.app_name = app_name
         self.app_type = app_type
         self.bill_type = bill_type
         self.create_time = create_time
-        self.region = region
         self.service_areas = service_areas
         self.status = status
+        self.version = version
 
     def validate(self):
         if self.service_areas:
@@ -1715,12 +2314,12 @@ class DescribeAppsResponseBodyAppListApp(TeaModel):
             result['BillType'] = self.bill_type
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
-        if self.region is not None:
-            result['Region'] = self.region
         if self.service_areas is not None:
             result['ServiceAreas'] = self.service_areas.to_map()
         if self.status is not None:
             result['Status'] = self.status
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -1735,13 +2334,13 @@ class DescribeAppsResponseBodyAppListApp(TeaModel):
             self.bill_type = m.get('BillType')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
-        if m.get('Region') is not None:
-            self.region = m.get('Region')
         if m.get('ServiceAreas') is not None:
             temp_model = DescribeAppsResponseBodyAppListAppServiceAreas()
             self.service_areas = temp_model.from_map(m['ServiceAreas'])
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -1839,9 +2438,6 @@ class DescribeAppsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2032,9 +2628,6 @@ class DescribeAutoLiveStreamRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2484,9 +3077,6 @@ class DescribeCallResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2739,9 +3329,6 @@ class DescribeCallListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2927,9 +3514,6 @@ class DescribeChannelAreaDistributionStatDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3103,9 +3687,6 @@ class DescribeChannelDistributionStatDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3440,9 +4021,6 @@ class DescribeChannelOverallDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3621,9 +4199,6 @@ class DescribeChannelParticipantsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3856,9 +4431,6 @@ class DescribeChannelTopPubUserListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4127,9 +4699,6 @@ class DescribeChannelUserMetricsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4291,9 +4860,6 @@ class DescribeChannelUsersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4555,9 +5121,6 @@ class DescribeEndPointEventListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4897,9 +5460,6 @@ class DescribeEndPointMetricDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5061,9 +5621,6 @@ class DescribeFaultDiagnosisFactorDistributionStatResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5308,9 +5865,6 @@ class DescribeFaultDiagnosisOverallDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6013,9 +6567,6 @@ class DescribeFaultDiagnosisUserDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6278,9 +6829,6 @@ class DescribeFaultDiagnosisUserListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6606,9 +7154,6 @@ class DescribeMPULayoutInfoListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7080,9 +7625,6 @@ class DescribePubUserListBySubUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7392,9 +7934,6 @@ class DescribeQoeMetricDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7610,9 +8149,6 @@ class DescribeQualityAreaDistributionStatDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7828,9 +8364,6 @@ class DescribeQualityDistributionStatDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8046,9 +8579,6 @@ class DescribeQualityOsSdkVersionDistributionStatDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8257,9 +8787,6 @@ class DescribeQualityOverallDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8492,9 +9019,6 @@ class DescribeRecordFilesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8985,9 +9509,6 @@ class DescribeRecordTemplatesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9272,9 +9793,6 @@ class DescribeRtcChannelListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9631,9 +10149,6 @@ class DescribeRtcChannelMetricResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9865,9 +10380,6 @@ class DescribeRtcDurationDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10075,9 +10587,6 @@ class DescribeRtcPeakChannelCntDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10279,9 +10788,6 @@ class DescribeRtcUserCntDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10455,9 +10961,6 @@ class DescribeUsageAreaDistributionStatDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10637,9 +11140,6 @@ class DescribeUsageDistributionStatDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10819,9 +11319,6 @@ class DescribeUsageOsSdkVersionDistributionStatDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11024,9 +11521,6 @@ class DescribeUsageOverallDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11211,9 +11705,6 @@ class DescribeUserInfoInChannelResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11321,9 +11812,6 @@ class DisableAutoLiveStreamRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11431,9 +11919,6 @@ class EnableAutoLiveStreamRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11547,9 +12032,6 @@ class GetMPUTaskStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11657,9 +12139,6 @@ class ModifyAppResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11685,6 +12164,200 @@ class ModifyAppResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyAppResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyAppStreamingOutTemplateRequestStreamingOutTemplate(TeaModel):
+    def __init__(
+        self,
+        enable_vad: bool = None,
+        layout_ids: List[str] = None,
+        media_encode: int = None,
+        name: str = None,
+        template_id: str = None,
+    ):
+        self.enable_vad = enable_vad
+        self.layout_ids = layout_ids
+        self.media_encode = media_encode
+        self.name = name
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_vad is not None:
+            result['EnableVad'] = self.enable_vad
+        if self.layout_ids is not None:
+            result['LayoutIds'] = self.layout_ids
+        if self.media_encode is not None:
+            result['MediaEncode'] = self.media_encode
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableVad') is not None:
+            self.enable_vad = m.get('EnableVad')
+        if m.get('LayoutIds') is not None:
+            self.layout_ids = m.get('LayoutIds')
+        if m.get('MediaEncode') is not None:
+            self.media_encode = m.get('MediaEncode')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class ModifyAppStreamingOutTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        streaming_out_template: ModifyAppStreamingOutTemplateRequestStreamingOutTemplate = None,
+    ):
+        self.app_id = app_id
+        self.streaming_out_template = streaming_out_template
+
+    def validate(self):
+        if self.streaming_out_template:
+            self.streaming_out_template.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.streaming_out_template is not None:
+            result['StreamingOutTemplate'] = self.streaming_out_template.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('StreamingOutTemplate') is not None:
+            temp_model = ModifyAppStreamingOutTemplateRequestStreamingOutTemplate()
+            self.streaming_out_template = temp_model.from_map(m['StreamingOutTemplate'])
+        return self
+
+
+class ModifyAppStreamingOutTemplateShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        streaming_out_template_shrink: str = None,
+    ):
+        self.app_id = app_id
+        self.streaming_out_template_shrink = streaming_out_template_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.streaming_out_template_shrink is not None:
+            result['StreamingOutTemplate'] = self.streaming_out_template_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('StreamingOutTemplate') is not None:
+            self.streaming_out_template_shrink = m.get('StreamingOutTemplate')
+        return self
+
+
+class ModifyAppStreamingOutTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        template_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class ModifyAppStreamingOutTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyAppStreamingOutTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyAppStreamingOutTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11856,9 +12529,6 @@ class ModifyMPULayoutResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12054,9 +12724,6 @@ class RemoveTerminalsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12852,9 +13519,6 @@ class StartMPUTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13266,9 +13930,6 @@ class StartRecordTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13376,9 +14037,6 @@ class StopMPUTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13486,9 +14144,6 @@ class StopRecordTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13632,9 +14287,6 @@ class UpdateAutoLiveStreamRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14346,9 +14998,6 @@ class UpdateMPUTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14742,9 +15391,6 @@ class UpdateRecordTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15175,9 +15821,6 @@ class UpdateRecordTemplateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
