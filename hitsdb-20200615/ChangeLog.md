@@ -1,3 +1,8 @@
+2024-01-31 Version: 4.4.0
+- Support API GetClientSourceIp.
+- Support API OpenComputeEngine.
+
+
 2024-01-15 Version: 4.3.0
 - Generated python 2020-06-15 for hitsdb.
 

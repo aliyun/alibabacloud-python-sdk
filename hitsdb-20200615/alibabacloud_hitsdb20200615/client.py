@@ -693,6 +693,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
+    def get_client_source_ip_with_options(
+        self,
+        request: hitsdb_20200615_models.GetClientSourceIpRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.GetClientSourceIpResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetClientSourceIp',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetClientSourceIpResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_client_source_ip_with_options_async(
+        self,
+        request: hitsdb_20200615_models.GetClientSourceIpRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.GetClientSourceIpResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetClientSourceIp',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetClientSourceIpResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_client_source_ip(
+        self,
+        request: hitsdb_20200615_models.GetClientSourceIpRequest,
+    ) -> hitsdb_20200615_models.GetClientSourceIpResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_client_source_ip_with_options(request, runtime)
+
+    async def get_client_source_ip_async(
+        self,
+        request: hitsdb_20200615_models.GetClientSourceIpRequest,
+    ) -> hitsdb_20200615_models.GetClientSourceIpResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_client_source_ip_with_options_async(request, runtime)
+
     def get_engine_default_auth_with_options(
         self,
         request: hitsdb_20200615_models.GetEngineDefaultAuthRequest,
@@ -1903,6 +1997,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_pay_type_with_options_async(request, runtime)
 
+    def open_compute_engine_with_options(
+        self,
+        request: hitsdb_20200615_models.OpenComputeEngineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.OpenComputeEngineResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cpu_limit):
+            query['CpuLimit'] = request.cpu_limit
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.memory_limit):
+            query['MemoryLimit'] = request.memory_limit
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenComputeEngine',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.OpenComputeEngineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def open_compute_engine_with_options_async(
+        self,
+        request: hitsdb_20200615_models.OpenComputeEngineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.OpenComputeEngineResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cpu_limit):
+            query['CpuLimit'] = request.cpu_limit
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.memory_limit):
+            query['MemoryLimit'] = request.memory_limit
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenComputeEngine',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.OpenComputeEngineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def open_compute_engine(
+        self,
+        request: hitsdb_20200615_models.OpenComputeEngineRequest,
+    ) -> hitsdb_20200615_models.OpenComputeEngineResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.open_compute_engine_with_options(request, runtime)
+
+    async def open_compute_engine_async(
+        self,
+        request: hitsdb_20200615_models.OpenComputeEngineRequest,
+    ) -> hitsdb_20200615_models.OpenComputeEngineResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.open_compute_engine_with_options_async(request, runtime)
+
     def release_lindorm_instance_with_options(
         self,
         request: hitsdb_20200615_models.ReleaseLindormInstanceRequest,
@@ -2232,6 +2424,16 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.SwitchLSQLV3MySQLServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.SwitchLSQLV3MySQLServiceResponse:
+        """
+        Prerequisites
+        *   The LindormTable version of your instance is 2.6.0 or later.
+        *   The LindormTable of your instance supports LindormSQL V3. The value of the EnableLsqlVersionV3 parameter in the response of the GetLindormInstance operation is true for Lindorm instances purchased after Oct 24, 2023, which indicates that LindormSQL is supported by these instances by default. If you want to enable LindormSQL for instances purchased before Oct 24, 2023, contact the on-duty technical support.
+        You can enable the MySQL compatibility feature for a Lindorm instance only when the instance meets the preceding requirements.
+        
+        @param request: SwitchLSQLV3MySQLServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchLSQLV3MySQLServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.action_type):
@@ -2272,6 +2474,16 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.SwitchLSQLV3MySQLServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.SwitchLSQLV3MySQLServiceResponse:
+        """
+        Prerequisites
+        *   The LindormTable version of your instance is 2.6.0 or later.
+        *   The LindormTable of your instance supports LindormSQL V3. The value of the EnableLsqlVersionV3 parameter in the response of the GetLindormInstance operation is true for Lindorm instances purchased after Oct 24, 2023, which indicates that LindormSQL is supported by these instances by default. If you want to enable LindormSQL for instances purchased before Oct 24, 2023, contact the on-duty technical support.
+        You can enable the MySQL compatibility feature for a Lindorm instance only when the instance meets the preceding requirements.
+        
+        @param request: SwitchLSQLV3MySQLServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchLSQLV3MySQLServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.action_type):
@@ -2311,6 +2523,15 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.SwitchLSQLV3MySQLServiceRequest,
     ) -> hitsdb_20200615_models.SwitchLSQLV3MySQLServiceResponse:
+        """
+        Prerequisites
+        *   The LindormTable version of your instance is 2.6.0 or later.
+        *   The LindormTable of your instance supports LindormSQL V3. The value of the EnableLsqlVersionV3 parameter in the response of the GetLindormInstance operation is true for Lindorm instances purchased after Oct 24, 2023, which indicates that LindormSQL is supported by these instances by default. If you want to enable LindormSQL for instances purchased before Oct 24, 2023, contact the on-duty technical support.
+        You can enable the MySQL compatibility feature for a Lindorm instance only when the instance meets the preceding requirements.
+        
+        @param request: SwitchLSQLV3MySQLServiceRequest
+        @return: SwitchLSQLV3MySQLServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.switch_lsqlv3my_sqlservice_with_options(request, runtime)
 
@@ -2318,6 +2539,15 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.SwitchLSQLV3MySQLServiceRequest,
     ) -> hitsdb_20200615_models.SwitchLSQLV3MySQLServiceResponse:
+        """
+        Prerequisites
+        *   The LindormTable version of your instance is 2.6.0 or later.
+        *   The LindormTable of your instance supports LindormSQL V3. The value of the EnableLsqlVersionV3 parameter in the response of the GetLindormInstance operation is true for Lindorm instances purchased after Oct 24, 2023, which indicates that LindormSQL is supported by these instances by default. If you want to enable LindormSQL for instances purchased before Oct 24, 2023, contact the on-duty technical support.
+        You can enable the MySQL compatibility feature for a Lindorm instance only when the instance meets the preceding requirements.
+        
+        @param request: SwitchLSQLV3MySQLServiceRequest
+        @return: SwitchLSQLV3MySQLServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.switch_lsqlv3my_sqlservice_with_options_async(request, runtime)
 
