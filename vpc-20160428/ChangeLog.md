@@ -1,3 +1,20 @@
+2024-02-01 Version: 6.4.0
+- Support API AllocateIpv6Address.
+- Support API ReleaseIpv6Address.
+- Update API CreatePublicIpAddressPooladd SecurityProtectionTypes param.
+- Update API CreateVpnPbrRouteEntryupdate response param.
+- Update API DescribePhysicalConnectionsupdate response param.
+- Update API DescribeRouteEntryListupdate response param.
+- Update API DescribeRouteTableListupdate response param.
+- Update API DescribeVpcAttributeupdate response param.
+- Update API ListPublicIpAddressPoolsadd SecurityProtectionEnabled param.
+update response param.
+- Update API ModifyNatGatewayAttributeupdate response param.
+- Update API ModifySnatEntryupdate response param.
+- Update API ModifyTunnelAttributeupdate response param.
+- Update API ModifyVpnConnectionAttributeupdate TunnelOptionsSpecification param.
+
+
 2024-01-22 Version: 6.3.0
 - Generated python 2016-04-28 for Vpc.
 

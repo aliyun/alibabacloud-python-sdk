@@ -99,9 +99,6 @@ class ActivateRouterInterfaceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -240,9 +237,6 @@ class ActiveFlowLogResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -398,9 +392,6 @@ class AddBgpNetworkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -558,9 +549,6 @@ class AddCommonBandwidthPackageIpResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -718,9 +706,6 @@ class AddCommonBandwidthPackageIpsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -860,9 +845,6 @@ class AddGlobalAccelerationInstanceIpResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1014,9 +996,6 @@ class AddIPv6TranslatorAclListEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1186,9 +1165,6 @@ class AddPublicIpAddressPoolCidrBlockResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1349,9 +1325,6 @@ class AddSourcesToTrafficMirrorSessionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1708,9 +1681,6 @@ class AllocateEipAddressResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2030,9 +2000,6 @@ class AllocateEipAddressProResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2256,9 +2223,6 @@ class AllocateEipSegmentAddressResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2485,9 +2449,6 @@ class AllocateIpv6AddressResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2665,9 +2626,6 @@ class AllocateIpv6InternetBandwidthResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2841,9 +2799,6 @@ class AllocateVpcIpv6CidrResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3110,9 +3065,6 @@ class ApplyPhysicalConnectionLOAResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3321,9 +3273,6 @@ class AssociateEipAddressResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3487,9 +3436,6 @@ class AssociateEipAddressBatchResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3648,9 +3594,6 @@ class AssociateHaVipResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3736,6 +3679,7 @@ class AssociateNetworkAclRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request.
         self.dry_run = dry_run
         # The ID of the network ACL.
         self.network_acl_id = network_acl_id
@@ -3848,9 +3792,6 @@ class AssociateNetworkAclResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4079,9 +4020,6 @@ class AssociatePhysicalConnectionToVirtualBorderRouterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4230,9 +4168,6 @@ class AssociateRouteTableResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4400,9 +4335,6 @@ class AssociateRouteTableWithGatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4559,9 +4491,6 @@ class AssociateRouteTablesWithVpcGatewayEndpointResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4749,9 +4678,6 @@ class AssociateVpcCidrBlockResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4898,9 +4824,6 @@ class AssociateVpnGatewayWithCertificateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5058,9 +4981,6 @@ class AttachDhcpOptionsSetToVpcResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5200,9 +5120,6 @@ class AttachVbrToVpconnResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5338,9 +5255,6 @@ class CancelCommonBandwidthPackageIpBandwidthResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5480,9 +5394,6 @@ class CancelPhysicalConnectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5609,9 +5520,6 @@ class ChangeResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5769,9 +5677,6 @@ class CheckCanAllocateVpcPrivateIpAddressResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5910,9 +5815,6 @@ class CheckVpnBgpEnabledResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6097,9 +5999,6 @@ class CompletePhysicalConnectionLOAResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6241,9 +6140,6 @@ class ConfirmPhysicalConnectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6368,9 +6264,6 @@ class ConnectRouterInterfaceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6507,9 +6400,6 @@ class ConvertBandwidthPackageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6666,9 +6556,6 @@ class CopyNetworkAclEntriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6891,9 +6778,6 @@ class CreateBgpGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7080,9 +6964,6 @@ class CreateBgpPeerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7321,9 +7202,6 @@ class CreateCommonBandwidthPackageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7613,9 +7491,6 @@ class CreateCustomerGatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7773,9 +7648,6 @@ class CreateDefaultVSwitchResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7957,9 +7829,6 @@ class CreateDefaultVpcResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8240,9 +8109,6 @@ class CreateDhcpOptionsSetResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8462,9 +8328,6 @@ class CreateExpressCloudConnectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8626,9 +8489,6 @@ class CreateFailoverTestJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8910,9 +8770,6 @@ class CreateFlowLogResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9134,9 +8991,6 @@ class CreateForwardEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9356,9 +9210,6 @@ class CreateFullNatEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9554,9 +9405,6 @@ class CreateGlobalAccelerationInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9798,9 +9646,6 @@ class CreateHaVipResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10264,9 +10109,6 @@ class CreateHighReliablePhysicalConnectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10483,9 +10325,6 @@ class CreateIPv6TranslatorResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10627,9 +10466,6 @@ class CreateIPv6TranslatorAclListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10849,9 +10685,6 @@ class CreateIPv6TranslatorEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11099,9 +10932,6 @@ class CreateIpsecServerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11137,7 +10967,13 @@ class CreateIpv4GatewayRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
+        # The value of tag N to add to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
         self.value = value
 
     def validate(self):
@@ -11209,6 +11045,7 @@ class CreateIpv4GatewayRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tags of the resource.
         self.tag = tag
         # The ID of the VPC where you want to create the IPv4 gateway.
         # 
@@ -11341,9 +11178,6 @@ class CreateIpv4GatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11526,9 +11360,6 @@ class CreateIpv6EgressOnlyRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11761,9 +11592,6 @@ class CreateIpv6GatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12203,9 +12031,6 @@ class CreateNatGatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12405,9 +12230,6 @@ class CreateNatIpResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12598,9 +12420,6 @@ class CreateNatIpCidrResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12636,7 +12455,13 @@ class CreateNetworkAclRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
+        # The value of tag N to add to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
         self.value = value
 
     def validate(self):
@@ -12680,18 +12505,22 @@ class CreateNetworkAclRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The description of the network ACL.
         # 
-        # The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+        # The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         self.description = description
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The name of the network ACL.
         # 
-        # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         self.network_acl_name = network_acl_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -12701,6 +12530,7 @@ class CreateNetworkAclRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tags of the resource.
         self.tag = tag
         # The ID of the virtual private cloud (VPC) to which the network ACL belongs.
         # 
@@ -12711,7 +12541,7 @@ class CreateNetworkAclRequest(TeaModel):
         # *   For more information about how to upgrade an ECS instance, see [Upgrade subscription instances](~~25438~~) and [Change the specifications of pay-as-you-go instances](~~60051~~).
         # *   For more information about how to release an ECS instance, see [Release an ECS instance](~~25442~~).
         # 
-        # >  If your VPC contains ECS instances of the preceding instance families and you create a network ACL for the VPC, you must upgrade the ECS instances. Otherwise, the network ACL cannot work as expected.
+        # >  If the VPC contains an ECS instance that does not support network ACLs, upgrade the ECS instance.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -12801,23 +12631,23 @@ class CreateNetworkAclResponseBodyNetworkAclAttributeEgressAclEntriesEgressAclEn
         self.network_acl_entry_id = network_acl_entry_id
         # The name of the outbound rule.
         self.network_acl_entry_name = network_acl_entry_name
-        # The action that is performed on network traffic that matches the rule. Valid values:
+        # The action to be performed on network traffic that matches the rule. Valid values:
         # 
-        # - **accept**: allows the network traffic.
-        # - **drop**: blocks the network traffic.
+        # *   **accept**\
+        # *   **drop**\
         self.policy = policy
-        # The destination port range of the outbound rule. 
+        # The destination port range of the outbound traffic.
         # 
-        # - If **Protocol** of the outbound rule is set to **all**, **icmp**, or **gre**, the port range is **-1/-1**, which indicates all ports.
-        # - If **Protocol** of the outbound rule is set to **tcp** or **udp**, the port range is in the following format: **1/200** or **80/80**. 1/200 indicates port 1 to port 200. 80/80 indicates port 80. Valid values for a port: **1** to **65535**.
+        # *   If the **protocol** of the outbound rule is set to **all**, **icmp**, or **gre**, the port range is -1/-1, which specified all ports.
+        # *   If the **protocol** of the outbound rule is set to **tcp** or **udp**, set the port range in the following format: **1/200** or **80/80**, which specifies port 1 to port 200 or port 80. Valid values for a port: **1** to **65535**.
         self.port = port
-        # The protocol type. Valid values:
+        # The protocol. Valid values:
         # 
-        # - **icmp**: ICMP
-        # - **gre**: GRE
-        # - **tcp**: TCP
-        # - **udp**: UDP
-        # - **all**: all protocols
+        # *   **icmp**\
+        # *   **gre**\
+        # *   **tcp**\
+        # *   **udp**\
+        # *   **all**\
         self.protocol = protocol
 
     def validate(self):
@@ -12916,23 +12746,23 @@ class CreateNetworkAclResponseBodyNetworkAclAttributeIngressAclEntriesIngressAcl
         self.network_acl_entry_id = network_acl_entry_id
         # The name of the inbound rule.
         self.network_acl_entry_name = network_acl_entry_name
-        # The action that is performed on network traffic that matches the rule. Valid values:
+        # The action to be performed on network traffic that matches the rule. Valid values:
         # 
-        # *   **accept**: allows the network traffic.
-        # *   **drop**: blocks the network traffic.
+        # *   **accept**\
+        # *   **drop**\
         self.policy = policy
-        # The destination port range of the inbound rule.
+        # The destination port range of the inbound traffic.
         # 
-        # *   If **Protocol** of the inbound rule is set to **all**, **icmp**, or **gre**, the port range is **-1/-1**, which indicates all ports.
-        # *   If **Protocol** of the inbound rule is set to **tcp** or **udp**, the port range is in the following format: **1/200** or **80/80**. 1/200 indicates port 1 to port 200. 80/80 indicates port 80. Valid values for a port: **1** to **65535**.
+        # *   If the **protocol** of the inbound rule is set to **all**, **icmp**, or **gre**, the port range is -1/-1, which specifies all ports.
+        # *   If the **protocol** of the inbound rule is set to **tcp** or **udp**, set the port range in the following format: **1/200** or **80/80**, which specifies port 1 to port 200 or port 80. Valid ports: **1** to **65535**.
         self.port = port
-        # The protocol type. Valid values:
+        # The protocol. Valid values:
         # 
-        # *   **icmp**: ICMP
-        # *   **gre**: GRE
-        # *   **tcp**: TCP
-        # *   **udp**: UDP
-        # *   **all**: all protocols
+        # *   **icmp**\
+        # *   **gre**\
+        # *   **tcp**\
+        # *   **udp**\
+        # *   **all**\
         self.protocol = protocol
         # The source CIDR block.
         self.source_cidr_ip = source_cidr_ip
@@ -13025,13 +12855,13 @@ class CreateNetworkAclResponseBodyNetworkAclAttributeResourcesResource(TeaModel)
     ):
         # The ID of the associated resource.
         self.resource_id = resource_id
-        # The type of the associated resource.
+        # The type of resource with which you want to associate the network ACL.
         self.resource_type = resource_type
         # The association status of the resource. Valid values:
         # 
-        # - **BINDED**: The resource is associated with the network ACL.
-        # - **BINDING**: The resource is being associated with the network ACL.
-        # - **UNBINDING**: The resource is disassociated from the network ACL.
+        # *   **BINDED**\
+        # *   **BINDING**\
+        # *   **UNBINDING**\
         self.status = status
 
     def validate(self):
@@ -13115,9 +12945,9 @@ class CreateNetworkAclResponseBodyNetworkAclAttribute(TeaModel):
         self.creation_time = creation_time
         # The description of the network ACL.
         self.description = description
-        # The details about the outbound rule.
+        # The outbound rules.
         self.egress_acl_entries = egress_acl_entries
-        # The details about the inbound rule.
+        # The inbound rules.
         self.ingress_acl_entries = ingress_acl_entries
         # The ID of the network ACL.
         self.network_acl_id = network_acl_id
@@ -13125,12 +12955,12 @@ class CreateNetworkAclResponseBodyNetworkAclAttribute(TeaModel):
         self.network_acl_name = network_acl_name
         # The region ID of the network ACL.
         self.region_id = region_id
-        # The details about the resource that is associated with the network ACL.
+        # The information about the associated resources.
         self.resources = resources
         # The status of the network ACL. Valid values:
         # 
-        # *   **Available**: The network ACL is available.
-        # *   **Modifying**: The network ACL is being configured.
+        # *   **Available**\
+        # *   **Modifying**\
         self.status = status
         # The ID of the VPC to which the network ACL belongs.
         self.vpc_id = vpc_id
@@ -13210,7 +13040,7 @@ class CreateNetworkAclResponseBody(TeaModel):
         self.network_acl_attribute = network_acl_attribute
         # The ID of the network ACL.
         self.network_acl_id = network_acl_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -13255,9 +13085,6 @@ class CreateNetworkAclResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13560,9 +13387,6 @@ class CreatePhysicalConnectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13778,9 +13602,6 @@ class CreatePhysicalConnectionOccupancyOrderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13984,9 +13805,6 @@ class CreatePhysicalConnectionSetupOrderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14268,9 +14086,6 @@ class CreatePublicIpAddressPoolResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14584,9 +14399,6 @@ class CreateRouteEntriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14844,9 +14656,6 @@ class CreateRouteEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14882,13 +14691,13 @@ class CreateRouteTableRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
         # The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
+        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
         self.value = value
 
     def validate(self):
@@ -14957,7 +14766,7 @@ class CreateRouteTableRequest(TeaModel):
         # 
         # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         self.route_table_name = route_table_name
-        # The tags.
+        # The tags of the resource.
         self.tag = tag
         # The ID of the VPC to which the custom route table belongs.
         # 
@@ -15088,9 +14897,6 @@ class CreateRouteTableResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15517,9 +15323,6 @@ class CreateRouterInterfaceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15750,9 +15553,6 @@ class CreateSnatEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15917,9 +15717,6 @@ class CreateSslVpnClientCertResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16176,9 +15973,6 @@ class CreateSslVpnServerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16382,13 +16176,13 @@ class CreateTrafficMirrorFilterRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N to add to the resource. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+        # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
         # 
-        # You can add up to 20 tags in each call.
+        # The tag key can be up to 128 characters in length. The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The value of tag N that is added to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+        # The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
         # 
-        # The value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter but cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -16443,7 +16237,9 @@ class CreateTrafficMirrorFilterRequest(TeaModel):
         # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false**: performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed. This is the default value.
         self.dry_run = dry_run
+        # The list of outbound rules.
         self.egress_rules = egress_rules
+        # The list of inbound rules.
         self.ingress_rules = ingress_rules
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -16455,7 +16251,7 @@ class CreateTrafficMirrorFilterRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tags.
+        # The tag of the resource.
         self.tag = tag
         # The description of the filter.
         # 
@@ -16614,9 +16410,6 @@ class CreateTrafficMirrorFilterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16835,7 +16628,9 @@ class CreateTrafficMirrorFilterRulesRequest(TeaModel):
         # *   **true**: checks the request without performing the operation. The system checks the required parameters, request format, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
         # *   **false** (default): sends the request. After the request passes the check, the operation is performed.
         self.dry_run = dry_run
+        # The list of outbound rules.
         self.egress_rules = egress_rules
+        # The list of inbound rules.
         self.ingress_rules = ingress_rules
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -17048,9 +16843,6 @@ class CreateTrafficMirrorFilterRulesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17086,11 +16878,13 @@ class CreateTrafficMirrorSessionRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value. The format of Tag.N.Value when you call the operation. Valid values of N: 1 to 20. It cannot be an empty string. It can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain http:// or https://.
+        # The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -17158,7 +16952,9 @@ class CreateTrafficMirrorSessionRequest(TeaModel):
         self.enabled = enabled
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The maximum transmission unit (MTU). Default value: **1500**.
+        # The maximum transmission unit.
+        # 
+        # Valid values: **64 to 9600**. Default value: **1500**.
         self.packet_length = packet_length
         # The priority of the traffic mirror session. Valid values: **1** to **32766**.
         # 
@@ -17170,6 +16966,7 @@ class CreateTrafficMirrorSessionRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tag of the resource.
         self.tag = tag
         # The ID of the filter.
         self.traffic_mirror_filter_id = traffic_mirror_filter_id
@@ -17181,6 +16978,7 @@ class CreateTrafficMirrorSessionRequest(TeaModel):
         # 
         # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         self.traffic_mirror_session_name = traffic_mirror_session_name
+        # The ID of the traffic mirror source. You can specify only an elastic network interface (ENI) as the traffic mirror source. The default value of **N** is **1**, which indicates that you can add only one traffic mirror source to a traffic mirror session.
         self.traffic_mirror_source_ids = traffic_mirror_source_ids
         # The ID of the traffic mirror destination. You can specify only an elastic network interface (ENI) or a Server Load Balancer (SLB) instance as a traffic mirror destination.
         self.traffic_mirror_target_id = traffic_mirror_target_id
@@ -17348,9 +17146,6 @@ class CreateTrafficMirrorSessionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17605,9 +17400,6 @@ class CreateVSwitchResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17881,9 +17673,6 @@ class CreateVSwitchCidrReservationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18061,9 +17850,6 @@ class CreateVbrHaResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18302,9 +18088,6 @@ class CreateVcoRouteEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18637,9 +18420,6 @@ class CreateVirtualBorderRouterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18893,9 +18673,6 @@ class CreateVirtualPhysicalConnectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19206,9 +18983,6 @@ class CreateVpcResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19493,9 +19267,6 @@ class CreateVpcGatewayEndpointResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19795,9 +19566,6 @@ class CreateVpcPrefixListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19940,9 +19708,6 @@ class CreateVpconnFromVbrResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20377,9 +20142,6 @@ class CreateVpnAttachmentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21145,9 +20907,6 @@ class CreateVpnConnectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21441,9 +21200,6 @@ class CreateVpnGatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21733,9 +21489,6 @@ class CreateVpnPbrRouteEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21991,9 +21744,6 @@ class CreateVpnRouteEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22118,9 +21868,6 @@ class DeactivateRouterInterfaceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22259,9 +22006,6 @@ class DeactiveFlowLogResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22403,9 +22147,6 @@ class DeleteBgpGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22554,9 +22295,6 @@ class DeleteBgpNetworkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22698,9 +22436,6 @@ class DeleteBgpPeerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22841,9 +22576,6 @@ class DeleteCommonBandwidthPackageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22983,9 +22715,6 @@ class DeleteCustomerGatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23136,9 +22865,6 @@ class DeleteDhcpOptionsSetResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23264,9 +22990,6 @@ class DeleteFailoverTestJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23405,9 +23128,6 @@ class DeleteFlowLogResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23556,9 +23276,6 @@ class DeleteForwardEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23717,9 +23434,6 @@ class DeleteFullNatEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23850,9 +23564,6 @@ class DeleteGlobalAccelerationInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23992,9 +23703,6 @@ class DeleteHaVipResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24132,9 +23840,6 @@ class DeleteIPv6TranslatorResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24272,9 +23977,6 @@ class DeleteIPv6TranslatorAclListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24421,9 +24123,6 @@ class DeleteIPv6TranslatorEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24549,9 +24248,6 @@ class DeleteIpsecServerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24703,9 +24399,6 @@ class DeleteIpv4GatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24756,7 +24449,7 @@ class DeleteIpv6EgressOnlyRuleRequest(TeaModel):
         self.ipv_6egress_only_rule_id = ipv_6egress_only_rule_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the IPv6 gateway.
+        # The region ID of the IPv6 gateway. You can call the [DescribeRegions](~~448570~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -24845,9 +24538,6 @@ class DeleteIpv6EgressOnlyRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24976,9 +24666,6 @@ class DeleteIpv6GatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25021,17 +24708,15 @@ class DeleteIpv6InternetBandwidthRequest(TeaModel):
     ):
         # The ID of the IPv6 address.
         # 
-        # >  You must set one of the **Ipv6AddressId** and **Ipv6InternetBandwidthId** parameters.
+        # >  You must specify one of **Ipv6AddressId** and **Ipv6InternetBandwidthId**.
         self.ipv_6address_id = ipv_6address_id
-        # The ID of the Internet bandwidth that you purchase for the IPv6 gateway.
-        # 
-        # >  You must set one of the **Ipv6AddressId** and **Ipv6InternetBandwidthId** parameters.
+        # The instance ID of the Internet bandwidth of the IPv6 address.
         self.ipv_6internet_bandwidth_id = ipv_6internet_bandwidth_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the IPv6 gateway is deployed.
+        # The region ID of the IPv6 gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -25085,7 +24770,7 @@ class DeleteIpv6InternetBandwidthResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -25120,9 +24805,6 @@ class DeleteIpv6InternetBandwidthResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25274,9 +24956,6 @@ class DeleteNatGatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25428,9 +25107,6 @@ class DeleteNatIpResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25592,9 +25268,6 @@ class DeleteNatIpCidrResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25747,9 +25420,6 @@ class DeleteNetworkAclResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25889,9 +25559,6 @@ class DeletePhysicalConnectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26039,9 +25706,6 @@ class DeletePublicIpAddressPoolResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26196,9 +25860,6 @@ class DeletePublicIpAddressPoolCidrBlockResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26477,9 +26138,6 @@ class DeleteRouteEntriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26684,9 +26342,6 @@ class DeleteRouteEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26817,9 +26472,6 @@ class DeleteRouteTableResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26961,9 +26613,6 @@ class DeleteRouterInterfaceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27112,9 +26761,6 @@ class DeleteSnatEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27256,9 +26902,6 @@ class DeleteSslVpnClientCertResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27400,9 +27043,6 @@ class DeleteSslVpnServerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27552,9 +27192,6 @@ class DeleteTrafficMirrorFilterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27616,6 +27253,7 @@ class DeleteTrafficMirrorFilterRulesRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The ID of the filter.
         self.traffic_mirror_filter_id = traffic_mirror_filter_id
+        # The ID of the inbound or outbound rule.
         self.traffic_mirror_filter_rule_ids = traffic_mirror_filter_rule_ids
 
     def validate(self):
@@ -27710,9 +27348,6 @@ class DeleteTrafficMirrorFilterRulesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27862,9 +27497,6 @@ class DeleteTrafficMirrorSessionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27995,9 +27627,6 @@ class DeleteVSwitchResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28128,9 +27757,6 @@ class DeleteVSwitchCidrReservationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28268,9 +27894,6 @@ class DeleteVbrHaResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28437,9 +28060,6 @@ class DeleteVcoRouteEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28577,9 +28197,6 @@ class DeleteVirtualBorderRouterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28735,9 +28352,6 @@ class DeleteVpcResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28887,9 +28501,6 @@ class DeleteVpcGatewayEndpointResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29041,9 +28652,6 @@ class DeleteVpcPrefixListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29203,9 +28811,6 @@ class DeleteVpnAttachmentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29347,9 +28952,6 @@ class DeleteVpnConnectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29491,9 +29093,6 @@ class DeleteVpnGatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29681,9 +29280,6 @@ class DeleteVpnPbrRouteEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29854,9 +29450,6 @@ class DeleteVpnRouteEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30011,9 +29604,6 @@ class DeletionProtectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30381,9 +29971,6 @@ class DescribeAccessPointsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30737,9 +30324,6 @@ class DescribeBgpGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30998,9 +30582,6 @@ class DescribeBgpNetworksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -31427,9 +31008,6 @@ class DescribeBgpPeersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -32173,9 +31751,6 @@ class DescribeCommonBandwidthPackagesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -32445,9 +32020,6 @@ class DescribeCustomerGatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -32890,9 +32462,6 @@ class DescribeCustomerGatewaysResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -33174,9 +32743,6 @@ class DescribeEcGrantRelationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -34200,9 +33766,6 @@ class DescribeEipAddressesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -34431,9 +33994,6 @@ class DescribeEipGatewayInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -34696,9 +34256,6 @@ class DescribeEipMonitorDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -35005,9 +34562,6 @@ class DescribeEipSegmentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -35222,9 +34776,6 @@ class DescribeFailoverTestJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -35522,9 +35073,6 @@ class DescribeFailoverTestJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -36170,9 +35718,6 @@ class DescribeFlowLogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -36568,9 +36113,6 @@ class DescribeForwardTableEntriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -37146,9 +36688,6 @@ class DescribeGlobalAccelerationInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -37427,9 +36966,6 @@ class DescribeGrantRulesToCenResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -38025,9 +37561,6 @@ class DescribeHaVipsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -38203,9 +37736,6 @@ class DescribeHighDefinitionMonitorLogAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -38469,9 +37999,6 @@ class DescribeIPv6TranslatorAclListAttributesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -38721,9 +38248,6 @@ class DescribeIPv6TranslatorAclListsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -39147,9 +38671,6 @@ class DescribeIPv6TranslatorEntriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -39581,9 +39102,6 @@ class DescribeIPv6TranslatorsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -39619,7 +39137,15 @@ class DescribeIpv6AddressesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
         self.key = key
+        # The value of tag N.
+        # 
+        # The tag value can be up to 128 characters in length. It can be an empty string. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
+        # 
+        # Each tag key corresponds to one tag value. You can specify at most 20 tag values at a time.
         self.value = value
 
     def validate(self):
@@ -39671,9 +39197,9 @@ class DescribeIpv6AddressesRequest(TeaModel):
     ):
         # The ID of the instance that is assigned the IPv6 address.
         self.associated_instance_id = associated_instance_id
-        # The type of the instance that is assigned the IPv6 address.
+        # The type of instance associated with the IPv6 address. Valid values:
         # 
-        # Set the value to **EcsInstance**, which specifies an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC). This is the default value.
+        # **EcsInstance**: Elastic Compute Service (ECS) instance in a virtual private cloud (VPC).
         self.associated_instance_type = associated_instance_type
         # Specifies whether to return information about pending orders. Valid values:
         # 
@@ -39703,9 +39229,11 @@ class DescribeIpv6AddressesRequest(TeaModel):
         self.page_size = page_size
         # The ID of the region in which you want to query IPv6 addresses. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource group to which the IPv6 gateway belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tag list.
         self.tag = tag
         # The ID of the vSwitch to which the IPv6 address belongs.
         self.v_switch_id = v_switch_id
@@ -39826,7 +39354,7 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandw
         reservation_internet_charge_type: str = None,
         reservation_order_type: str = None,
     ):
-        # The exclusive Internet bandwidth of the IPv6 address. Unit: Mbit/s.
+        # The dedicated Internet bandwidth of the IPv6 address. Unit: Mbit/s.
         self.bandwidth = bandwidth
         # The status of the Internet bandwidth of the IPv6 address. Valid values:
         # 
@@ -39834,29 +39362,29 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandw
         # *   **FinancialLocked**\
         # *   **SecurityLocked**\
         self.business_status = business_status
-        # Indicates whether renewal data is included.
+        # Indicates whether renewal data is included. Valid values:
         # 
         # *   **false**\
-        # *   **true** This parameter returns **true** only if **IncludeReservationData** is set to **true** and some orders have not taken effect.
+        # *   **true** **true** is returned only when **IncludeReservationData** is set to **true** and some orders have not taken effect.
         self.has_reservation_data = has_reservation_data
-        # The billing method of the Internet bandwidth of the IPv6 address.
+        # The billing method of the Internet bandwidth of the IPv6 address. Valid values:
         # 
         # Only **PostPaid** may be returned, which indicates the pay-as-you-go billing method.
         self.instance_charge_type = instance_charge_type
         # The billing method of the Internet bandwidth of the IPv6 address. Valid values:
         # 
-        # *   **PayByTraffic**: pay-by-data-transfer
+        # *   **PayByTraffic**\
         # *   **PayByBandwidth**: pay-by-bandwidth
         self.internet_charge_type = internet_charge_type
-        # The instance ID of the Internet bandwidth of the IPv6 address.
+        # The Internet bandwidth ID of the IPv6 address.
         self.ipv_6internet_bandwidth_id = ipv_6internet_bandwidth_id
-        # The time when the renewal took effect. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format.
+        # The time when the renewal took effect. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.reservation_active_time = reservation_active_time
         # The maximum bandwidth after the renewal takes effect. Unit: Mbit/s.
         self.reservation_bandwidth = reservation_bandwidth
         # The metering method that is used after the renewal takes effect.
         # 
-        # *   **PayByTraffic**: pay-by-data-transfer
+        # *   **PayByTraffic**\
         # *   **PayByBandwidth**: pay-by-bandwidth
         self.reservation_internet_charge_type = reservation_internet_charge_type
         # The type of the renewal order. Only **RENEW** may be returned, which indicates that the order is placed for service renewal.
@@ -39924,7 +39452,15 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressTagsTag(TeaModel)
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
+        # The value of tag N.
+        # 
+        # The tag value can be up to 128 characters in length. It can be an empty string. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # 
+        # Each tag key corresponds to one tag value. You can specify at most 20 tag values at a time.
         self.value = value
 
     def validate(self):
@@ -40009,12 +39545,13 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(TeaModel):
     ):
         # The time when the IPv6 address was created.
         self.allocation_time = allocation_time
-        # The ID of the instance that is assigned the IPv6 address.
+        # The ID of the instance associated with the IPv6 address.
         self.associated_instance_id = associated_instance_id
-        # The type of the instance that is assigned the IPv6 address.
+        # The type of instance associated with the IPv6 address.
         self.associated_instance_type = associated_instance_type
-        # The IPv6 address of the instance.
+        # The IPv6 address.
         self.ipv_6address = ipv_6address
+        # The description of the IPv6 address.
         self.ipv_6address_description = ipv_6address_description
         # The ID of the IPv6 address.
         self.ipv_6address_id = ipv_6address_id
@@ -40022,32 +39559,30 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(TeaModel):
         self.ipv_6address_name = ipv_6address_name
         # The ID of the IPv6 gateway to which the IPv6 address belongs.
         self.ipv_6gateway_id = ipv_6gateway_id
-        # The information about the Internet bandwidth of the IPv6 address.
+        # The Internet bandwidth of the IPv6 address.
         self.ipv_6internet_bandwidth = ipv_6internet_bandwidth
-        # The service provider of the IPv6 address. Valid values:
+        # The ISP of the IPv6 address.
         # 
         # *   **BGP** (default)
         # *   **ChinaMobile**\
         # *   **ChinaUnicom**\
         # *   **ChinaTelecom**\
         self.ipv_6isp = ipv_6isp
-        # The type of communication supported by the IPv6 address. Valid values:
+        # The type of connection supported by the IPv6 address. Valid values:
         # 
         # *   **Private**\
         # *   **Public**\
         self.network_type = network_type
-        # The maximum bandwidth value of the IPv6 address.
-        # 
-        # *   If the IPv6 address is associated with an EIP bandwidth plan, the value of **RealBandwidth** is the maximum bandwidth value of the EIP bandwidth plan.
-        # *   If the IPv6 address is not associated with an EIP bandwidth plan, the value of **RealBandwidth** is the maximum bandwidth value of the Internet bandwidth of the IPv6 address.
-        # *   If the IPv6 address is not associated with an EIP bandwidth plan or an Internet bandwidth plan, the values of **RealBandwidth** and **Bandwidth** are both 0.
+        # The peak bandwidth of the IPv6 address.
         self.real_bandwidth = real_bandwidth
+        # The ID of the resource group to which the IPv6 gateway belongs.
         self.resource_group_id = resource_group_id
-        # The status of the IPv6 address. Valid values:
+        # The status of the IPv6 address.
         # 
         # *   **Pending**\
         # *   **Available**\
         self.status = status
+        # The tag list.
         self.tags = tags
         # The ID of the vSwitch to which the IPv6 address belongs.
         self.v_switch_id = v_switch_id
@@ -40187,7 +39722,7 @@ class DescribeIpv6AddressesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details about the IPv6 addresses.
+        # The details of the IPv6 address.
         self.ipv_6addresses = ipv_6addresses
         # The page number of the returned page. Default value: **1**.
         self.page_number = page_number
@@ -40248,9 +39783,6 @@ class DescribeIpv6AddressesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -40551,9 +40083,6 @@ class DescribeIpv6EgressOnlyRulesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -40742,6 +40271,9 @@ class DescribeIpv6GatewayAttributeResponseBody(TeaModel):
         self.description = description
         # The time when the IPv6 gateway expires.
         self.expired_time = expired_time
+        # The ID of the gateway route table associated with the IPv6 gateway.
+        # 
+        # >  This parameter is available only when the IPv6 gateway is associated with a gateway route table.
         self.gateway_route_table_id = gateway_route_table_id
         # The metering method of the IPv6 gateway.
         self.instance_charge_type = instance_charge_type
@@ -40851,9 +40383,6 @@ class DescribeIpv6GatewayAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -41324,9 +40853,6 @@ class DescribeIpv6GatewaysResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -42292,9 +41818,6 @@ class DescribeNatGatewaysResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -42337,9 +41860,9 @@ class DescribeNetworkAclAttributesRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system sets **ClientToken** to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The ID of the network ACL.
         self.network_acl_id = network_acl_id
@@ -42413,7 +41936,16 @@ class DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeEgressAclEntrie
         self.description = description
         # The destination CIDR block.
         self.destination_cidr_ip = destination_cidr_ip
+        # The type of the inbound rule.
+        # 
+        # - **custom**\
+        # 
+        # - **system**\
         self.entry_type = entry_type
+        # The IP version. Valid values:
+        # 
+        # *   **IPv4**\
+        # *   **IPv6**\
         self.ip_version = ip_version
         # The ID of the outbound rule.
         self.network_acl_entry_id = network_acl_entry_id
@@ -42421,21 +41953,21 @@ class DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeEgressAclEntrie
         self.network_acl_entry_name = network_acl_entry_name
         # The action to be performed on network traffic that matches the rule. Valid values:
         # 
-        # - **accept**: allows network traffic.
-        # - **drop**: blocks network traffic.
+        # *   **accept**\
+        # *   **drop**\
         self.policy = policy
-        # The destination port range of the outbound traffic. 
+        # The destination port range of the outbound traffic.
         # 
-        # - If **Protocol** of the outbound rule is set to **all**, **icmp**, or **gre**, the port range is **-1/-1**, which indicates all ports.
-        # - If **Protocol** of the outbound rule is set to **tcp** or **udp**, the port range is in the following format: **1/200** or **80/80**, which indicates port 1 to port 200, or port 80. Valid values for a port: **1** to **65535**.
+        # *   If the **protocol** of the outbound rule is set to **all**, **icmp**, or **gre**, the port range is -1/-1, which specified all ports.
+        # *   If the **protocol** of the outbound rule is set to **tcp** or **udp**, set the port range in the following format: **1/200** or **80/80**, which specifies port 1 to port 200 or port 80. Valid values for a port: **1** to **65535**.
         self.port = port
-        # The protocol. Valid values:
+        # The protocol type. Valid values:
         # 
-        # - **icmp**: ICMP
-        # - **gre**: GRE
-        # - **tcp**: TCP
-        # - **udp**: UDP
-        # - **all**: all protocols
+        # *   **icmp**\
+        # *   **gre**\
+        # *   **tcp**\
+        # *   **udp**\
+        # *   **all**\
         self.protocol = protocol
 
     def validate(self):
@@ -42540,7 +42072,16 @@ class DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeIngressAclEntri
     ):
         # The description of the inbound rule.
         self.description = description
+        # The type of the inbound rule.
+        # 
+        # - **custom**\
+        # 
+        # - **system**\
         self.entry_type = entry_type
+        # The IP version. Valid values:
+        # 
+        # *   **IPv4**\
+        # *   **IPv6**\
         self.ip_version = ip_version
         # The ID of the inbound rule.
         self.network_acl_entry_id = network_acl_entry_id
@@ -42548,21 +42089,21 @@ class DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeIngressAclEntri
         self.network_acl_entry_name = network_acl_entry_name
         # The action to be performed on network traffic that matches the rule. Valid values:
         # 
-        # *   **accept**: allows network traffic.
-        # *   **drop**: blocks network traffic.
+        # *   **accept**\
+        # *   **drop**\
         self.policy = policy
         # The destination port range of the inbound traffic.
         # 
-        # *   If **Protocol** of the inbound rule is set to **all**, **icmp**, or **gre**, the port range is **-1/-1**, which indicates all ports.
-        # *   If **Protocol** of the inbound rule is set to **tcp** or **udp**, the port range is in the following format: **1/200** or **80/80**, which indicates port 1 to port 200, or port 80. Valid values for a port: **1** to **65535**.
+        # *   If the **protocol** of the inbound rule is set to **all**, **icmp**, or **gre**, the port range is -1/-1, which specifies all ports.
+        # *   If the **protocol** of the inbound rule is set to **tcp** or **udp**, set the port range in the following format: **1/200** or **80/80**, which specifies port 1 to port 200 or port 80. Valid ports: **1** to **65535**.
         self.port = port
-        # The protocol. Valid values:
+        # The protocol type. Valid values:
         # 
-        # *   **icmp**: ICMP
-        # *   **gre**: GRE
-        # *   **tcp**: TCP
-        # *   **udp**: UDP
-        # *   **all**: all protocols
+        # *   **icmp**\
+        # *   **gre**\
+        # *   **tcp**\
+        # *   **udp**\
+        # *   **all**\
         self.protocol = protocol
         # The source CIDR block.
         self.source_cidr_ip = source_cidr_ip
@@ -42665,11 +42206,11 @@ class DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeResourcesResour
         self.resource_id = resource_id
         # The type of resource with which you want to associate the network ACL. The value is set to **VSwitch**.
         self.resource_type = resource_type
-        # The status of the associated resource. Valid values:
+        # The association status of the resource. Valid values:
         # 
-        # - **BINDED**: The resource is associated with the network ACL.
-        # - **BINDING**: The resource is being associated with the network ACL.
-        # - **UNBINDING**: The resource is disassociated from the network ACL.
+        # *   **BINDED**\
+        # *   **BINDING**\
+        # *   **UNBINDING**\
         self.status = status
 
     def validate(self):
@@ -42741,9 +42282,9 @@ class DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeTagsTag(TeaMode
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of tag N added to the resource.
         self.key = key
-        # The tag value.
+        # The value of tag N added to the resource.
         self.value = value
 
     def validate(self):
@@ -42837,16 +42378,16 @@ class DescribeNetworkAclAttributesResponseBodyNetworkAclAttribute(TeaModel):
         self.owner_id = owner_id
         # The region ID of the network ACL.
         self.region_id = region_id
-        # The details about the resource that is associated with the network ACL.
+        # The resources that are associated with the network ACL.
         self.resources = resources
-        # The status of the associated resource. Valid values:
+        # The association status of the resource. Valid values:
         # 
         # *   **Available**\
         # *   **Modifying**\
         self.status = status
-        # The tag list.
+        # The information about the tags.
         self.tags = tags
-        # The ID of the virtual private cloud (VPC) with which the network ACL is associated.
+        # The ID of the VPC to which the network ACL belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -42930,9 +42471,9 @@ class DescribeNetworkAclAttributesResponseBody(TeaModel):
         network_acl_attribute: DescribeNetworkAclAttributesResponseBodyNetworkAclAttribute = None,
         request_id: str = None,
     ):
-        # The details about the network ACL.
+        # The details of the network ACLs.
         self.network_acl_attribute = network_acl_attribute
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -42973,9 +42514,6 @@ class DescribeNetworkAclAttributesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -43011,13 +42549,13 @@ class DescribeNetworkAclsRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can specify at most 20 tag keys. It cannot be an empty string.
+        # The key of tag N to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value. You can specify at most 20 tag values. It can be an empty string.
+        # The value of tag N to add to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
         self.value = value
 
     def validate(self):
@@ -43062,11 +42600,11 @@ class DescribeNetworkAclsRequest(TeaModel):
         tags: List[DescribeNetworkAclsRequestTags] = None,
         vpc_id: str = None,
     ):
-        # The client token that you want to use to ensure the idempotence of the request.
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system sets **ClientToken** to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The ID of the network ACL.
         self.network_acl_id = network_acl_id
@@ -43076,9 +42614,9 @@ class DescribeNetworkAclsRequest(TeaModel):
         self.network_acl_name = network_acl_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The region ID of the network ACL.
         # 
@@ -43090,10 +42628,11 @@ class DescribeNetworkAclsRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The type of the associated instance. Set the value to **VSwitch**.
         # 
-        # This parameter is valid only if **ResourceType** and **ResourceId** are both set.
+        # This parameter is valid only if **ResourceType** and **ResourceId** are both specified.
         self.resource_type = resource_type
+        # The tag list.
         self.tags = tags
-        # The ID of the virtual private cloud (VPC) to which the network ACL belongs.
+        # The ID of the VPC to which the network ACL belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -43193,7 +42732,16 @@ class DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclEgressAclEntriesEgress
         self.description = description
         # The destination CIDR block.
         self.destination_cidr_ip = destination_cidr_ip
+        # The type of the inbound rule.
+        # 
+        # - **custom**\
+        # 
+        # - **system**\
         self.entry_type = entry_type
+        # The IP version. 
+        # 
+        # *   **IPv4**\
+        # *   **IPv6**\
         self.ip_version = ip_version
         # The ID of the outbound rule.
         self.network_acl_entry_id = network_acl_entry_id
@@ -43201,21 +42749,21 @@ class DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclEgressAclEntriesEgress
         self.network_acl_entry_name = network_acl_entry_name
         # The action to be performed on network traffic that matches the rule. Valid values:
         # 
-        # - **accept**: allows network traffic.
-        # - **drop**: blocks network traffic.
+        # *   **accept**\
+        # *   **drop**\
         self.policy = policy
-        # The destination port range of the outbound traffic. 
+        # The destination port range of the outbound traffic.
         # 
-        # - If **Protocol** of the outbound rule is set to **all**, **icmp**, or **gre**, the port range is **-1/-1**, which specifies all ports.
-        # - If **Protocol** of the outbound rule is set to **tcp** or **udp**, the port range is in the following format: **1/200** or **80/80**. 1/200 indicates port 1 to port 200. 80/80 indicates port 80. Valid values for a port: **1** to **65535**.
+        # *   If the **protocol** of the outbound rule is set to **all**, **icmp**, or **gre**, the port range is -1/-1, which specified all ports.
+        # *   If the **protocol** of the outbound rule is set to **tcp** or **udp**, set the port range in the following format: **1/200** or **80/80**, which specifies port 1 to port 200 or port 80. Valid values for a port: **1** to **65535**.
         self.port = port
         # The protocol. Valid values:
         # 
-        # - **icmp**: ICMP
-        # - **gre**: GRE
-        # - **tcp**: TCP
-        # - **udp**: UDP
-        # - **all**: all protocols
+        # *   **icmp**\
+        # *   **gre**\
+        # *   **tcp**\
+        # *   **udp**\
+        # *   **all**\
         self.protocol = protocol
 
     def validate(self):
@@ -43320,7 +42868,16 @@ class DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclIngressAclEntriesIngre
     ):
         # The description of the inbound rule.
         self.description = description
+        # The type of the inbound rule.
+        # 
+        # - **custom**\
+        # 
+        # - **system**\
         self.entry_type = entry_type
+        # The IP version. 
+        # 
+        # *   **IPv4**\
+        # *   **IPv6**\
         self.ip_version = ip_version
         # The ID of the inbound rule.
         self.network_acl_entry_id = network_acl_entry_id
@@ -43328,21 +42885,21 @@ class DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclIngressAclEntriesIngre
         self.network_acl_entry_name = network_acl_entry_name
         # The action to be performed on network traffic that matches the rule. Valid values:
         # 
-        # *   **accept**: allows network traffic.
-        # *   **drop**: blocks network traffic.
+        # *   **accept**\
+        # *   **drop**\
         self.policy = policy
         # The destination port range of the inbound traffic.
         # 
-        # *   If **Protocol** of the inbound rule is set to **all**, **icmp**, or **gre**, the port range is **-1/-1**, which indicates all ports.
-        # *   If **Protocol** of the inbound rule is set to **tcp** or **udp**, the port range is in the following format: **1/200** or **80/80**. 1/200 indicates port 1 to port 200. 80/80 indicates port 80. Valid values for a port: **1** to **65535**.
+        # *   If the **protocol** of the inbound rule is set to **all**, **icmp**, or **gre**, the port range is -1/-1, which specifies all ports.
+        # *   If the **protocol** of the inbound rule is set to **tcp** or **udp**, set the port range in the following format: **1/200** or **80/80**, which specifies port 1 to port 200 or port 80. Valid ports: **1** to **65535**.
         self.port = port
         # The protocol. Valid values:
         # 
-        # *   **icmp**: ICMP
-        # *   **gre**: GRE
-        # *   **tcp**: TCP
-        # *   **udp**: UDP
-        # *   **all**: all protocols
+        # *   **icmp**\
+        # *   **gre**\
+        # *   **tcp**\
+        # *   **udp**\
+        # *   **all**\
         self.protocol = protocol
         # The source CIDR block.
         self.source_cidr_ip = source_cidr_ip
@@ -43443,13 +43000,13 @@ class DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclResourcesResource(TeaM
     ):
         # The ID of the associated resource.
         self.resource_id = resource_id
-        # The type of the associated resource.
+        # The type of resource with which you want to associate the network ACL.
         self.resource_type = resource_type
         # The association status of the resource. Valid values:
         # 
-        # - **BINDED**: associated
-        # - **BINDING**: being associated
-        # - **UNBINDING**: disassociated
+        # *   **BINDED**\
+        # *   **BINDING**\
+        # *   **UNBINDING**\
         self.status = status
 
     def validate(self):
@@ -43521,9 +43078,9 @@ class DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclTagsTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of tag N added to the resource.
         self.key = key
-        # The tag value.
+        # The value of tag N added to the resource.
         self.value = value
 
     def validate(self):
@@ -43607,7 +43164,7 @@ class DescribeNetworkAclsResponseBodyNetworkAclsNetworkAcl(TeaModel):
         self.description = description
         # The outbound rules.
         self.egress_acl_entries = egress_acl_entries
-        # The inbound rules.
+        # The configurations of the inbound rules.
         self.ingress_acl_entries = ingress_acl_entries
         # The ID of the network ACL.
         self.network_acl_id = network_acl_id
@@ -43624,7 +43181,7 @@ class DescribeNetworkAclsResponseBodyNetworkAclsNetworkAcl(TeaModel):
         # *   **Available**\
         # *   **Modifying**\
         self.status = status
-        # The tag list.
+        # The information about the tags.
         self.tags = tags
         # The ID of the associated VPC.
         self.vpc_id = vpc_id
@@ -43748,15 +43305,15 @@ class DescribeNetworkAclsResponseBody(TeaModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The details about the network ACL.
+        # The details of the network ACLs.
         self.network_acls = network_acls
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned on each page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -43809,9 +43366,6 @@ class DescribeNetworkAclsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -44192,9 +43746,6 @@ class DescribePhysicalConnectionLOAResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -44572,6 +44123,7 @@ class DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnec
         port_number: str = None,
         port_type: str = None,
         product_type: str = None,
+        qos_id: str = None,
         redundant_physical_connection_id: str = None,
         reservation_active_time: str = None,
         reservation_internet_charge_type: str = None,
@@ -44679,6 +44231,7 @@ class DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnec
         # *   **VirtualPhysicalConnection**: shared Express Connect circuit
         # *   **PhysicalConnection**: dedicated Express Connect circuit
         self.product_type = product_type
+        self.qos_id = qos_id
         # The ID of the redundant Express Connect circuit.
         self.redundant_physical_connection_id = redundant_physical_connection_id
         # The time when the pending order takes effect.
@@ -44786,6 +44339,8 @@ class DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnec
             result['PortType'] = self.port_type
         if self.product_type is not None:
             result['ProductType'] = self.product_type
+        if self.qos_id is not None:
+            result['QosId'] = self.qos_id
         if self.redundant_physical_connection_id is not None:
             result['RedundantPhysicalConnectionId'] = self.redundant_physical_connection_id
         if self.reservation_active_time is not None:
@@ -44864,6 +44419,8 @@ class DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnec
             self.port_type = m.get('PortType')
         if m.get('ProductType') is not None:
             self.product_type = m.get('ProductType')
+        if m.get('QosId') is not None:
+            self.qos_id = m.get('QosId')
         if m.get('RedundantPhysicalConnectionId') is not None:
             self.redundant_physical_connection_id = m.get('RedundantPhysicalConnectionId')
         if m.get('ReservationActiveTime') is not None:
@@ -44997,9 +44554,6 @@ class DescribePhysicalConnectionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -45196,9 +44750,6 @@ class DescribePublicIpAddressResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -45416,9 +44967,6 @@ class DescribeRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -45988,9 +45536,6 @@ class DescribeRouteEntryListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -46580,9 +46125,6 @@ class DescribeRouteTableListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -47208,9 +46750,6 @@ class DescribeRouteTablesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -47813,9 +47352,6 @@ class DescribeRouterInterfaceAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -48557,9 +48093,6 @@ class DescribeRouterInterfacesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -48793,9 +48326,6 @@ class DescribeServerRelatedGlobalAccelerationInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -49140,9 +48670,6 @@ class DescribeSnatTableEntriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -49367,9 +48894,6 @@ class DescribeSslVpnClientCertResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -49690,9 +49214,6 @@ class DescribeSslVpnClientCertsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -49970,9 +49491,6 @@ class DescribeSslVpnClientsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -50364,9 +49882,6 @@ class DescribeSslVpnServersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -50627,9 +50142,6 @@ class DescribeTagKeysResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -50880,9 +50392,6 @@ class DescribeTagKeysForExpressConnectResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -51186,9 +50695,6 @@ class DescribeTagsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -51497,9 +51003,6 @@ class DescribeVRoutersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -51892,9 +51395,6 @@ class DescribeVSwitchAttributesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -52499,9 +51999,6 @@ class DescribeVSwitchesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -52717,9 +52214,6 @@ class DescribeVbrHaResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -53020,9 +52514,6 @@ class DescribeVcoRouteEntriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -54028,9 +53519,6 @@ class DescribeVirtualBorderRoutersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -54499,9 +53987,6 @@ class DescribeVirtualBorderRoutersForPhysicalConnectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -55335,9 +54820,6 @@ class DescribeVpcAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -55373,7 +54855,13 @@ class DescribeVpcsRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N to add to the resource. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
+        # The value of tag N to add to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
         self.value = value
 
     def validate(self):
@@ -55421,21 +54909,21 @@ class DescribeVpcsRequest(TeaModel):
     ):
         # The ID of the DHCP options set.
         self.dhcp_options_set_id = dhcp_options_set_id
-        # Specifies whether to check the request without performing the operation. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: checks the request but does not query VPCs. The system checks whether your AccessKey pair is valid, whether the Resource Access Management (RAM) user is authorized, and whether the required parameters are set. If the request fails to pass the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+        # *   **true**: performs only a dry run. The system prechecks whether your AccessKey pair is valid, whether the RAM user is authorized, and whether the required parameters are specified. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false** (default): sends the request. If the request passes the check, a 2xx HTTP status code is returned and VPCs are queried.
         self.dry_run = dry_run
         # Specifies whether to query the default VPC in the specified region. Valid values:
         # 
-        # *   **true** (default): yes
-        # *   **false**: no
+        # *   **true** (default)
+        # *   **false**\
         self.is_default = is_default
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The number of the page to return. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return per page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The region ID of the VPC.
         # 
@@ -55445,8 +54933,9 @@ class DescribeVpcsRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tags of the resource.
         self.tag = tag
-        # The ID of the VPC.
+        # The VPC ID.
         # 
         # You can specify up to 20 VPC IDs. Separate multiple IDs with commas (,).
         self.vpc_id = vpc_id
@@ -55549,12 +55038,12 @@ class DescribeVpcsResponseBodyVpcsVpcIpv6CidrBlocksIpv6CidrBlock(TeaModel):
         self.ipv_6cidr_block = ipv_6cidr_block
         # The type of IPv6 CIDR block. Valid values:
         # 
-        # - **BGP**: an IPv6 CIDR block provided by Alibaba Cloud over Border Gateway Protocol (BGP)
-        # - **ChinaMobile**: an IPv6 CIDR block provided by China Mobile (single ISP)
-        # - **ChinaUnicom**: an IPv6 CIDR block provided by China Unicom (single ISP)
-        # - **ChinaTelecom**: an IPv6 CIDR block provided by China Telecom (single ISP)
+        # *   **BGP**\
+        # *   **ChinaMobile**\
+        # *   **ChinaUnicom**\
+        # *   **ChinaTelecom**\
         # 
-        # >  If your Alibaba Cloud account is allowed to activate single-ISP bandwidth, valid values are: **ChinaTelecom**, **ChinaUnicom**, and **ChinaMobile**.
+        # >  If your Alibaba Cloud account is allowed to activate single-ISP bandwidth, you can set this parameter to **ChinaTelecom**, **ChinaUnicom**, or **ChinaMobile**.
         self.ipv_6isp = ipv_6isp
 
     def validate(self):
@@ -55703,9 +55192,9 @@ class DescribeVpcsResponseBodyVpcsVpcTagsTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag that is added to the VPC.
+        # The key of tag N.
         self.key = key
-        # The value of the tag that is added to the VPC.
+        # The value of tag N.
         self.value = value
 
     def validate(self):
@@ -55847,9 +55336,7 @@ class DescribeVpcsResponseBodyVpcsVpc(TeaModel):
         vpc_id: str = None,
         vpc_name: str = None,
     ):
-        # The status of the Cloud Enterprise Network (CEN) instance to which the VPC is attached.
-        # 
-        # **Attached** is returned only if the VPC is attached to a CEN instance.
+        # The status of the Cloud Enterprise Network (CEN) instance to which the VPC is attached. **Attached** is returned only if the VPC is attached to a CEN instance.
         self.cen_status = cen_status
         # The IPv4 CIDR block of the VPC.
         self.cidr_block = cidr_block
@@ -55861,21 +55348,21 @@ class DescribeVpcsResponseBodyVpcsVpc(TeaModel):
         self.dhcp_options_set_id = dhcp_options_set_id
         # The status of the DHCP options set. Valid values:
         # 
-        # *   **Available**: available
-        # *   **InUse**: in use
-        # *   **Deleted**: deleted
-        # *   **Pending**: being configured
+        # *   **Available**\
+        # *   **InUse**\
+        # *   **Deleted**\
+        # *   **Pending**\
         self.dhcp_options_set_status = dhcp_options_set_status
         # The IPv6 CIDR block of the VPC.
         self.ipv_6cidr_block = ipv_6cidr_block
-        # The IPv6 CIDR blocks of the VPC.
+        # The IPv6 CIDR block of the VPC.
         self.ipv_6cidr_blocks = ipv_6cidr_blocks
         # Indicates whether the VPC is the default VPC in the region. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         self.is_default = is_default
-        # The IDs of the NAT gateways.
+        # The ID of the Internet NAT gateway.
         self.nat_gateway_ids = nat_gateway_ids
         # The ID of the Alibaba Cloud account to which the VPC belongs.
         self.owner_id = owner_id
@@ -55883,14 +55370,14 @@ class DescribeVpcsResponseBodyVpcsVpc(TeaModel):
         self.region_id = region_id
         # The ID of the resource group to which the VPC belongs.
         self.resource_group_id = resource_group_id
-        # The IDs of the route tables.
+        # The information about the route table.
         self.router_table_ids = router_table_ids
-        # The secondary CIDR blocks of the VPC.
+        # The information about the secondary CIDR block.
         self.secondary_cidr_blocks = secondary_cidr_blocks
         # The status of the VPC. Valid values:
         # 
-        # *   **Pending**: being configured
-        # *   **Available**: available
+        # *   **Pending**\
+        # *   **Available**\
         self.status = status
         # The tag information about the VPC.
         self.tags = tags
@@ -55898,11 +55385,11 @@ class DescribeVpcsResponseBodyVpcsVpc(TeaModel):
         self.user_cidrs = user_cidrs
         # The ID of the vRouter.
         self.vrouter_id = vrouter_id
-        # The vSwitches in the VPC. 
+        # The vSwitches in the VPC.
         # 
-        # You can query up to 300 vSwitches in the VPC. The information about the latest vSwitches is returned. If you want to query the information about all vSwitches in a VPC, call the [DescribeVSwitches](/help/en/virtual-private-cloud/latest/describevswitches) operation.
+        # You can query up to 300 vSwitches in the VPC. The information about the latest vSwitches is returned. If you want to query the information about all vSwitches in a VPC, call the [DescribeVSwitches](~~35748~~) operation.
         self.v_switch_ids = v_switch_ids
-        # The ID of the VPC.
+        # The VPC ID.
         self.vpc_id = vpc_id
         # The name of the VPC.
         self.vpc_name = vpc_name
@@ -56075,15 +55562,15 @@ class DescribeVpcsResponseBody(TeaModel):
         total_count: int = None,
         vpcs: DescribeVpcsResponseBodyVpcs = None,
     ):
-        # The number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The number of entries returned.
         self.total_count = total_count
-        # The details of the VPCs.
+        # The details about the VPC.
         self.vpcs = vpcs
 
     def validate(self):
@@ -56136,9 +55623,6 @@ class DescribeVpcsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -56403,9 +55887,6 @@ class DescribeVpnAttachmentsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -57569,9 +57050,6 @@ class DescribeVpnConnectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -57819,9 +57297,6 @@ class DescribeVpnConnectionLogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -59153,9 +58628,6 @@ class DescribeVpnConnectionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -59408,9 +58880,6 @@ class DescribeVpnCrossAccountAuthorizationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -59963,9 +59432,6 @@ class DescribeVpnGatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -60150,9 +59616,6 @@ class DescribeVpnGatewayAvailableZonesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -60906,9 +60369,6 @@ class DescribeVpnGatewaysResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -61218,9 +60678,6 @@ class DescribeVpnPbrRouteEntriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -61550,9 +61007,6 @@ class DescribeVpnRouteEntriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -61798,9 +61252,6 @@ class DescribeVpnSslServerLogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -62026,9 +61477,6 @@ class DescribeZonesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -62186,9 +61634,6 @@ class DetachDhcpOptionsSetFromVpcResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -62427,9 +61872,6 @@ class DiagnoseVpnConnectionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -62580,9 +62022,6 @@ class DiagnoseVpnGatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -62698,9 +62137,6 @@ class DisableNatGatewayEcsMetricResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -62842,9 +62278,6 @@ class DisableVpcClassicLinkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -63010,9 +62443,6 @@ class DissociateRouteTableFromGatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -63169,9 +62599,6 @@ class DissociateRouteTablesFromVpcGatewayEndpointResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -63318,9 +62745,6 @@ class DissociateVpnGatewayWithCertificateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -63908,9 +63332,6 @@ class DownloadVpnConnectionConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -64026,9 +63447,6 @@ class EnableNatGatewayEcsMetricResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -64180,9 +63598,6 @@ class EnablePhysicalConnectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -64324,9 +63739,6 @@ class EnableVpcClassicLinkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -64485,9 +63897,6 @@ class EnableVpcIpv4GatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -64677,7 +64086,9 @@ class GetDhcpOptionsSetResponseBodyTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -64732,6 +64143,7 @@ class GetDhcpOptionsSetResponseBody(TeaModel):
         self.owner_id = owner_id
         # The ID of the request.
         self.request_id = request_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The status of the DHCP options set. Valid values:
         # 
@@ -64740,6 +64152,7 @@ class GetDhcpOptionsSetResponseBody(TeaModel):
         # *   **Deleted**: deleted
         # *   **Pending**: being configured
         self.status = status
+        # The tag list.
         self.tags = tags
 
     def validate(self):
@@ -64830,9 +64243,6 @@ class GetDhcpOptionsSetResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -64977,9 +64387,6 @@ class GetFlowLogServiceStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -65233,9 +64640,6 @@ class GetIpv4GatewayAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -65870,9 +65274,6 @@ class GetNatGatewayAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -66006,9 +65407,6 @@ class GetPhysicalConnectionServiceStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -66153,9 +65551,6 @@ class GetTrafficMirrorServiceStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -66405,9 +65800,6 @@ class GetVSwitchCidrReservationUsageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -66665,9 +66057,6 @@ class GetVpcGatewayEndpointAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -66941,9 +66330,6 @@ class GetVpcPrefixListAssociationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -67179,9 +66565,6 @@ class GetVpcPrefixListEntriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -67431,9 +66814,6 @@ class GetVpcRouteEntrySummaryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -67739,9 +67119,6 @@ class GetVpnGatewayDiagnoseResultResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -67907,9 +67284,6 @@ class GrantInstanceToCenResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -68115,9 +67489,6 @@ class GrantInstanceToVbrResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -68321,9 +67692,6 @@ class ListBusinessAccessPointsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -68758,9 +68126,6 @@ class ListDhcpOptionsSetsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -68993,9 +68358,6 @@ class ListEnhanhcedNatGatewayAvailableZonesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -69389,9 +68751,6 @@ class ListFullNatEntriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -69727,9 +69086,6 @@ class ListGatewayRouteTableEntriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -69813,9 +69169,6 @@ class ListGeographicSubRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -70003,9 +69356,6 @@ class ListIpsecServerLogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -70487,9 +69837,6 @@ class ListIpsecServersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -70597,6 +69944,7 @@ class ListIpv4GatewaysRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tags of the resource.
         self.tags = tags
         # The ID of the virtual private cloud (VPC) with which the IPv4 gateway is associated.
         self.vpc_id = vpc_id
@@ -70888,9 +70236,6 @@ class ListIpv4GatewaysResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -71199,9 +70544,6 @@ class ListNatIpCidrsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -71521,9 +70863,6 @@ class ListNatIpsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -71964,9 +71303,6 @@ class ListPrefixListsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -72228,9 +71564,6 @@ class ListPublicIpAddressPoolCidrBlocksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -72753,9 +72086,6 @@ class ListPublicIpAddressPoolsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -73091,9 +72421,6 @@ class ListTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -73413,9 +72740,6 @@ class ListTagResourcesForExpressConnectResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -73451,13 +72775,13 @@ class ListTrafficMirrorFiltersRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N to add to the resource. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be at most 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The value of tag N to add to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
+        # The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -73518,7 +72842,9 @@ class ListTrafficMirrorFiltersRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tag list.
         self.tags = tags
+        # The ID of the traffic mirror filter. The maximum value of **N** is **100**, which specifies that you can query up to 100 filters at a time.
         self.traffic_mirror_filter_ids = traffic_mirror_filter_ids
         # The name of the filter.
         self.traffic_mirror_filter_name = traffic_mirror_filter_name
@@ -73825,9 +73151,9 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N.
+        # The tag key.
         self.key = key
-        # The value of tag N.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -73869,19 +73195,19 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters(TeaModel):
     ):
         # The time when the filter is created.
         self.creation_time = creation_time
-        # The details about the outbound rules.
+        # The information about the outbound rules.
         self.egress_rules = egress_rules
-        # The details about the inbound rules.
+        # The information about the inbound rules.
         self.ingress_rules = ingress_rules
-        # The ID of the resource group.
+        # The ID of the resource group to which the traffic mirror session belongs.
         self.resource_group_id = resource_group_id
-        # The list of tags.
+        # The tag list.
         self.tags = tags
         # The description of the filter.
         self.traffic_mirror_filter_description = traffic_mirror_filter_description
-        # The ID of the traffic mirror filter.
+        # The ID of the filter.
         self.traffic_mirror_filter_id = traffic_mirror_filter_id
-        # The name of the filter.
+        # The filter name.
         self.traffic_mirror_filter_name = traffic_mirror_filter_name
         # The status of the filter. Valid values:
         # 
@@ -73992,7 +73318,7 @@ class ListTrafficMirrorFiltersResponseBody(TeaModel):
         self.request_id = request_id
         # The number of entries returned.
         self.total_count = total_count
-        # The details about the filters.
+        # The information about the filters.
         self.traffic_mirror_filters = traffic_mirror_filters
 
     def validate(self):
@@ -74055,9 +73381,6 @@ class ListTrafficMirrorFiltersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -74542,9 +73865,6 @@ class ListTrafficMirrorSessionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -74974,9 +74294,6 @@ class ListVSwitchCidrReservationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -75592,9 +74909,6 @@ class ListVirtualPhysicalConnectionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -75840,9 +75154,6 @@ class ListVpcEndpointServicesByEndUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -76256,9 +75567,6 @@ class ListVpcGatewayEndpointsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -76503,9 +75811,6 @@ class ListVpnCertificateAssociationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -76721,9 +76026,6 @@ class ModifyBgpGroupAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -76898,9 +76200,6 @@ class ModifyBgpPeerAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -77045,9 +76344,6 @@ class ModifyCommonBandwidthPackageAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -77190,9 +76486,6 @@ class ModifyCommonBandwidthPackageIpBandwidthResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -77332,9 +76625,6 @@ class ModifyCommonBandwidthPackageSpecResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -77547,9 +76837,6 @@ class ModifyCustomerGatewayAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -77708,9 +76995,6 @@ class ModifyEipAddressAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -77874,9 +77158,6 @@ class ModifyExpressCloudConnectionAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -78012,9 +77293,6 @@ class ModifyExpressCloudConnectionBandwidthResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -78180,9 +77458,6 @@ class ModifyFlowLogAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -78398,9 +77673,6 @@ class ModifyForwardEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -78622,9 +77894,6 @@ class ModifyFullNatEntryAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -78773,9 +78042,6 @@ class ModifyGlobalAccelerationInstanceAttributesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -78913,9 +78179,6 @@ class ModifyGlobalAccelerationInstanceSpecResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -79075,9 +78338,6 @@ class ModifyHaVipAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -79222,9 +78482,6 @@ class ModifyIPv6TranslatorAclAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -79369,9 +78626,6 @@ class ModifyIPv6TranslatorAclListEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -79523,9 +78777,6 @@ class ModifyIPv6TranslatorAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -79687,9 +78938,6 @@ class ModifyIPv6TranslatorBandwidthResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -79902,9 +79150,6 @@ class ModifyIPv6TranslatorEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -80051,9 +79296,6 @@ class ModifyIpv6AddressAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -80101,11 +79343,11 @@ class ModifyIpv6GatewayAttributeRequest(TeaModel):
         self.ipv_6gateway_id = ipv_6gateway_id
         # The name of the IPv6 gateway.
         # 
-        # It must be 2 to 256 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter. The name must start with a letter but cannot start with `http://` or `https://`.
+        # It must be 2 to 256 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the IPv6 gateway is deployed. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region ID of the IPv6 gateway. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -80163,7 +79405,7 @@ class ModifyIpv6GatewayAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -80198,9 +79440,6 @@ class ModifyIpv6GatewayAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -80243,7 +79482,10 @@ class ModifyIpv6InternetBandwidthRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The Internet bandwidth for the IPv6 CIDR block. Unit: Mbit/s. Valid values: **1** to **5000**.
+        # The Internet bandwidth value of the IPv6 address. Unit: Mbit/s.
+        # 
+        # *   If the billing method is pay-by-data-transfer, valid values are **1** to **1000**.
+        # *   If the billing method is pay-by-bandwidth, valid values are **1** to **2000**.
         self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -80255,9 +79497,7 @@ class ModifyIpv6InternetBandwidthRequest(TeaModel):
         # 
         # >  You must specify one of **Ipv6AddressId** and **Ipv6InternetBandwidthId**.
         self.ipv_6address_id = ipv_6address_id
-        # The ID of the Internet bandwidth that you purchased for the IPv6 CIDR block.
-        # 
-        # >  You must specify one of **Ipv6AddressId** and **Ipv6InternetBandwidthId**.
+        # The instance ID of the Internet bandwidth of the IPv6 address.
         self.ipv_6internet_bandwidth_id = ipv_6internet_bandwidth_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -80358,9 +79598,6 @@ class ModifyIpv6InternetBandwidthResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -80535,9 +79772,6 @@ class ModifyNatGatewayAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -80698,9 +79932,6 @@ class ModifyNatGatewaySpecResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -80870,9 +80101,6 @@ class ModifyNatIpAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -81049,9 +80277,6 @@ class ModifyNatIpCidrAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -81217,9 +80442,6 @@ class ModifyNetworkAclAttributesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -81438,9 +80660,6 @@ class ModifyPhysicalConnectionAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -81603,9 +80822,6 @@ class ModifyRouteEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -81754,9 +80970,6 @@ class ModifyRouteTableAttributesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -81974,9 +81187,6 @@ class ModifyRouterInterfaceAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -82160,9 +81370,6 @@ class ModifyRouterInterfaceSpecResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -82331,9 +81538,6 @@ class ModifySnatEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -82498,9 +81702,6 @@ class ModifySslVpnClientCertResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -82857,9 +82058,6 @@ class ModifySslVpnServerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -83605,9 +82803,6 @@ class ModifyTunnelAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -83756,9 +82951,6 @@ class ModifyVRouterAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -83933,9 +83125,6 @@ class ModifyVSwitchAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -84084,9 +83273,6 @@ class ModifyVSwitchCidrReservationAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -84263,9 +83449,6 @@ class ModifyVcoRouteEntryWeightResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -84555,9 +83738,6 @@ class ModifyVirtualBorderRouterAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -84748,9 +83928,6 @@ class ModifyVpcAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -85035,9 +84212,6 @@ class ModifyVpcPrefixListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -85831,9 +85005,6 @@ class ModifyVpnAttachmentAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -87305,9 +86476,6 @@ class ModifyVpnConnectionAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -87634,9 +86802,6 @@ class ModifyVpnGatewayAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -87841,9 +87006,6 @@ class ModifyVpnPbrRouteEntryAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -88031,9 +87193,6 @@ class ModifyVpnPbrRouteEntryPriorityResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -88234,9 +87393,6 @@ class ModifyVpnPbrRouteEntryWeightResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -88417,9 +87573,6 @@ class ModifyVpnRouteEntryWeightResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -88580,9 +87733,6 @@ class MoveResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -88737,9 +87887,6 @@ class MoveVpnResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -88888,9 +88035,6 @@ class OpenFlowLogServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -89014,9 +88158,6 @@ class OpenPhysicalConnectionServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -89165,9 +88306,6 @@ class OpenTrafficMirrorServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -89343,9 +88481,6 @@ class PublishVpnRouteEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -89473,9 +88608,6 @@ class RecoverPhysicalConnectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -89615,9 +88747,6 @@ class RecoverVirtualBorderRouterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -89746,9 +88875,6 @@ class ReleaseEipAddressResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -89890,9 +89016,6 @@ class ReleaseEipSegmentAddressResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -90030,9 +89153,6 @@ class ReleaseIpv6AddressResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -90183,9 +89303,6 @@ class RemoveCommonBandwidthPackageIpResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -90325,9 +89442,6 @@ class RemoveGlobalAccelerationInstanceIpResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -90472,9 +89586,6 @@ class RemoveIPv6TranslatorAclListEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -90536,6 +89647,7 @@ class RemoveSourcesFromTrafficMirrorSessionRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The ID of the traffic mirror session from which you want to delete a traffic mirror source.
         self.traffic_mirror_session_id = traffic_mirror_session_id
+        # The ID of the traffic mirror source to be deleted. Maximum value of N: 10.
         self.traffic_mirror_source_ids = traffic_mirror_source_ids
 
     def validate(self):
@@ -90630,9 +89742,6 @@ class RemoveSourcesFromTrafficMirrorSessionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -90789,9 +89898,6 @@ class ReplaceVpcDhcpOptionsSetResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -90960,9 +90066,6 @@ class RetryVpcPrefixListAssociationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -91129,9 +90232,6 @@ class RevokeInstanceFromCenResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -91337,9 +90437,6 @@ class RevokeInstanceFromVbrResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -91604,9 +90701,6 @@ class SecondApplyPhysicalConnectionLOAResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -91778,9 +90872,6 @@ class SetHighDefinitionMonitorLogStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -91906,9 +90997,6 @@ class StartFailoverTestJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -92034,9 +91122,6 @@ class StopFailoverTestJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -92240,9 +91325,6 @@ class TagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -92438,9 +91520,6 @@ class TagResourcesForExpressConnectResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -92582,9 +91661,6 @@ class TerminatePhysicalConnectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -92726,9 +91802,6 @@ class TerminateVirtualBorderRouterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -92893,9 +91966,6 @@ class UnTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -93072,9 +92142,6 @@ class UnassociateEipAddressResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -93216,9 +92283,6 @@ class UnassociateGlobalAccelerationInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -93387,9 +92451,6 @@ class UnassociateHaVipResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -93475,6 +92536,11 @@ class UnassociateNetworkAclRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # 
+        # **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the network ACL that you want to disassociate from a resource.
         self.network_acl_id = network_acl_id
@@ -93589,9 +92655,6 @@ class UnassociateNetworkAclResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -93740,9 +92803,6 @@ class UnassociatePhysicalConnectionFromVirtualBorderRouterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -93891,9 +92951,6 @@ class UnassociateRouteTableResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -94042,9 +93099,6 @@ class UnassociateVpcCidrBlockResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -94203,9 +93257,6 @@ class UntagResourcesForExpressConnectResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -94416,9 +93467,6 @@ class UpdateDhcpOptionsSetAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -94568,9 +93616,6 @@ class UpdateFailoverTestJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -94777,9 +93822,6 @@ class UpdateGatewayRouteTableEntryAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -94992,9 +94034,6 @@ class UpdateIpsecServerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -95160,9 +94199,6 @@ class UpdateIpv4GatewayAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -95331,9 +94367,6 @@ class UpdateNatGatewayNatTypeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -95738,9 +94771,6 @@ class UpdateNetworkAclEntriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -95908,9 +94938,6 @@ class UpdatePublicIpAddressPoolAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -96080,9 +95107,6 @@ class UpdateTrafficMirrorFilterAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -96295,9 +95319,6 @@ class UpdateTrafficMirrorFilterRuleAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -96526,9 +95547,6 @@ class UpdateTrafficMirrorSessionAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -96706,9 +95724,6 @@ class UpdateVirtualBorderBandwidthResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -96869,9 +95884,6 @@ class UpdateVirtualPhysicalConnectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -97050,9 +96062,6 @@ class UpdateVpcGatewayEndpointAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -97208,9 +96217,6 @@ class VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
