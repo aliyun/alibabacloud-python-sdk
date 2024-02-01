@@ -16367,6 +16367,7 @@ class DescribeVaultsResponseBodyVaultsVault(TeaModel):
         replication_source_region_id: str = None,
         replication_source_vault: bool = None,
         replication_source_vault_id: str = None,
+        replication_target_region_id: str = None,
         resource_group_id: str = None,
         retention: int = None,
         search_enabled: bool = None,
@@ -16408,6 +16409,7 @@ class DescribeVaultsResponseBodyVaultsVault(TeaModel):
         self.replication_source_region_id = replication_source_region_id
         self.replication_source_vault = replication_source_vault
         self.replication_source_vault_id = replication_source_vault_id
+        self.replication_target_region_id = replication_target_region_id
         self.resource_group_id = resource_group_id
         self.retention = retention
         self.search_enabled = search_enabled
@@ -16490,6 +16492,8 @@ class DescribeVaultsResponseBodyVaultsVault(TeaModel):
             result['ReplicationSourceVault'] = self.replication_source_vault
         if self.replication_source_vault_id is not None:
             result['ReplicationSourceVaultId'] = self.replication_source_vault_id
+        if self.replication_target_region_id is not None:
+            result['ReplicationTargetRegionId'] = self.replication_target_region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.retention is not None:
@@ -16576,6 +16580,8 @@ class DescribeVaultsResponseBodyVaultsVault(TeaModel):
             self.replication_source_vault = m.get('ReplicationSourceVault')
         if m.get('ReplicationSourceVaultId') is not None:
             self.replication_source_vault_id = m.get('ReplicationSourceVaultId')
+        if m.get('ReplicationTargetRegionId') is not None:
+            self.replication_target_region_id = m.get('ReplicationTargetRegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Retention') is not None:
