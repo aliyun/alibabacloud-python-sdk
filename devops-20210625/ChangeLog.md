@@ -1,3 +1,7 @@
+2024-02-01 Version: 4.12.2
+- Update API ListUserKeysupdate response param.
+
+
 2024-01-31 Version: 4.12.1
 - Generated python 2021-06-25 for devops.
 

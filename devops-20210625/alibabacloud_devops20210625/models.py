@@ -40407,7 +40407,7 @@ class ListUserKeysResponseBodyResult(TeaModel):
         key_scope: str = None,
         last_used_time: str = None,
         public_key: str = None,
-        tittle: str = None,
+        title: str = None,
     ):
         self.created_at = created_at
         self.expire_time = expire_time
@@ -40416,7 +40416,7 @@ class ListUserKeysResponseBodyResult(TeaModel):
         self.key_scope = key_scope
         self.last_used_time = last_used_time
         self.public_key = public_key
-        self.tittle = tittle
+        self.title = title
 
     def validate(self):
         pass
@@ -40441,8 +40441,8 @@ class ListUserKeysResponseBodyResult(TeaModel):
             result['lastUsedTime'] = self.last_used_time
         if self.public_key is not None:
             result['publicKey'] = self.public_key
-        if self.tittle is not None:
-            result['tittle'] = self.tittle
+        if self.title is not None:
+            result['title'] = self.title
         return result
 
     def from_map(self, m: dict = None):
@@ -40461,8 +40461,8 @@ class ListUserKeysResponseBodyResult(TeaModel):
             self.last_used_time = m.get('lastUsedTime')
         if m.get('publicKey') is not None:
             self.public_key = m.get('publicKey')
-        if m.get('tittle') is not None:
-            self.tittle = m.get('tittle')
+        if m.get('title') is not None:
+            self.title = m.get('title')
         return self
 
 
