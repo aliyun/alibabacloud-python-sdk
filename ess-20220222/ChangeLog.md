@@ -1,3 +1,12 @@
+2024-02-01 Version: 1.1.2
+- Update API CreateScalingConfigurationadd CustomPriorities param.
+- Update API CreateScalingGroupadd HealthCheckTypes param.
+- Update API DescribeScalingConfigurationsupdate response param.
+- Update API DescribeScalingGroupsupdate response param.
+- Update API ModifyScalingConfigurationadd CustomPriorities param.
+- Update API ModifyScalingGroupadd HealthCheckTypes param.
+
+
 2024-01-29 Version: 1.1.1
 - Update API CreateScalingConfigurationadd CustomPriorities param.
 - Update API DescribeScalingConfigurationsupdate response param.

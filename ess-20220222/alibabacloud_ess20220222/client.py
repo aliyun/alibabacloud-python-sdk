@@ -2356,6 +2356,8 @@ class Client(OpenApiClient):
             query['GroupType'] = request.group_type
         if not UtilClient.is_unset(request.health_check_type):
             query['HealthCheckType'] = request.health_check_type
+        if not UtilClient.is_unset(request.health_check_types):
+            query['HealthCheckTypes'] = request.health_check_types
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.launch_template_id):
@@ -2496,6 +2498,8 @@ class Client(OpenApiClient):
             query['GroupType'] = request.group_type
         if not UtilClient.is_unset(request.health_check_type):
             query['HealthCheckType'] = request.health_check_type
+        if not UtilClient.is_unset(request.health_check_types):
+            query['HealthCheckTypes'] = request.health_check_types
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.launch_template_id):
@@ -8224,6 +8228,24 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ModifyScalingGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ModifyScalingGroupResponse:
+        """
+        You cannot call this operation to modify the settings of the following parameters:
+        *   RegionId
+        *   LoadBalancerId
+        > If you want to change the CLB instances that are associated with your scaling group, call the AttachLoadBalancers and DetachLoadBalancers operations.
+        *   DBInstanceId
+        **\
+        **Note**If you want to change the ApsaraDB RDS instances that are associated with your scaling group, call the AttachDBInstances and DetachDBInstances operations.
+        *   You can modify only scaling groups that are in the Active or Inactive state.
+        *   If you enable a new scaling configuration, Elastic Compute Service (ECS) instances that are created based on the previous scaling configuration still run as expected in the scaling group.
+        *   If the total number of instances in the scaling group is greater than the allowed maximum number after you change the value of the MaxSize parameter, Auto Scaling automatically removes instances from the scaling group to ensure that the number of instances is within the new range.
+        *   If the total number of instances in the scaling group is less than the allowed minimum number after you change the value of the MinSize parameter, Auto Scaling automatically adds instances to the scaling group to ensure that the number of instances is within the new range.
+        *   If the total number of instances in the scaling group does not match the expected number of instances after you change the value of the DesiredCapacity parameter, Auto Scaling automatically adds instances to or removes instances from the scaling group to ensure that the number of instances matches the value of the DesiredCapacity parameter.
+        
+        @param request: ModifyScalingGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyScalingGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.active_scaling_configuration_id):
@@ -8246,6 +8268,8 @@ class Client(OpenApiClient):
             query['GroupDeletionProtection'] = request.group_deletion_protection
         if not UtilClient.is_unset(request.health_check_type):
             query['HealthCheckType'] = request.health_check_type
+        if not UtilClient.is_unset(request.health_check_types):
+            query['HealthCheckTypes'] = request.health_check_types
         if not UtilClient.is_unset(request.launch_template_id):
             query['LaunchTemplateId'] = request.launch_template_id
         if not UtilClient.is_unset(request.launch_template_overrides):
@@ -8310,6 +8334,24 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ModifyScalingGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ModifyScalingGroupResponse:
+        """
+        You cannot call this operation to modify the settings of the following parameters:
+        *   RegionId
+        *   LoadBalancerId
+        > If you want to change the CLB instances that are associated with your scaling group, call the AttachLoadBalancers and DetachLoadBalancers operations.
+        *   DBInstanceId
+        **\
+        **Note**If you want to change the ApsaraDB RDS instances that are associated with your scaling group, call the AttachDBInstances and DetachDBInstances operations.
+        *   You can modify only scaling groups that are in the Active or Inactive state.
+        *   If you enable a new scaling configuration, Elastic Compute Service (ECS) instances that are created based on the previous scaling configuration still run as expected in the scaling group.
+        *   If the total number of instances in the scaling group is greater than the allowed maximum number after you change the value of the MaxSize parameter, Auto Scaling automatically removes instances from the scaling group to ensure that the number of instances is within the new range.
+        *   If the total number of instances in the scaling group is less than the allowed minimum number after you change the value of the MinSize parameter, Auto Scaling automatically adds instances to the scaling group to ensure that the number of instances is within the new range.
+        *   If the total number of instances in the scaling group does not match the expected number of instances after you change the value of the DesiredCapacity parameter, Auto Scaling automatically adds instances to or removes instances from the scaling group to ensure that the number of instances matches the value of the DesiredCapacity parameter.
+        
+        @param request: ModifyScalingGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyScalingGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.active_scaling_configuration_id):
@@ -8332,6 +8374,8 @@ class Client(OpenApiClient):
             query['GroupDeletionProtection'] = request.group_deletion_protection
         if not UtilClient.is_unset(request.health_check_type):
             query['HealthCheckType'] = request.health_check_type
+        if not UtilClient.is_unset(request.health_check_types):
+            query['HealthCheckTypes'] = request.health_check_types
         if not UtilClient.is_unset(request.launch_template_id):
             query['LaunchTemplateId'] = request.launch_template_id
         if not UtilClient.is_unset(request.launch_template_overrides):
@@ -8395,6 +8439,23 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.ModifyScalingGroupRequest,
     ) -> ess_20220222_models.ModifyScalingGroupResponse:
+        """
+        You cannot call this operation to modify the settings of the following parameters:
+        *   RegionId
+        *   LoadBalancerId
+        > If you want to change the CLB instances that are associated with your scaling group, call the AttachLoadBalancers and DetachLoadBalancers operations.
+        *   DBInstanceId
+        **\
+        **Note**If you want to change the ApsaraDB RDS instances that are associated with your scaling group, call the AttachDBInstances and DetachDBInstances operations.
+        *   You can modify only scaling groups that are in the Active or Inactive state.
+        *   If you enable a new scaling configuration, Elastic Compute Service (ECS) instances that are created based on the previous scaling configuration still run as expected in the scaling group.
+        *   If the total number of instances in the scaling group is greater than the allowed maximum number after you change the value of the MaxSize parameter, Auto Scaling automatically removes instances from the scaling group to ensure that the number of instances is within the new range.
+        *   If the total number of instances in the scaling group is less than the allowed minimum number after you change the value of the MinSize parameter, Auto Scaling automatically adds instances to the scaling group to ensure that the number of instances is within the new range.
+        *   If the total number of instances in the scaling group does not match the expected number of instances after you change the value of the DesiredCapacity parameter, Auto Scaling automatically adds instances to or removes instances from the scaling group to ensure that the number of instances matches the value of the DesiredCapacity parameter.
+        
+        @param request: ModifyScalingGroupRequest
+        @return: ModifyScalingGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_scaling_group_with_options(request, runtime)
 
@@ -8402,6 +8463,23 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.ModifyScalingGroupRequest,
     ) -> ess_20220222_models.ModifyScalingGroupResponse:
+        """
+        You cannot call this operation to modify the settings of the following parameters:
+        *   RegionId
+        *   LoadBalancerId
+        > If you want to change the CLB instances that are associated with your scaling group, call the AttachLoadBalancers and DetachLoadBalancers operations.
+        *   DBInstanceId
+        **\
+        **Note**If you want to change the ApsaraDB RDS instances that are associated with your scaling group, call the AttachDBInstances and DetachDBInstances operations.
+        *   You can modify only scaling groups that are in the Active or Inactive state.
+        *   If you enable a new scaling configuration, Elastic Compute Service (ECS) instances that are created based on the previous scaling configuration still run as expected in the scaling group.
+        *   If the total number of instances in the scaling group is greater than the allowed maximum number after you change the value of the MaxSize parameter, Auto Scaling automatically removes instances from the scaling group to ensure that the number of instances is within the new range.
+        *   If the total number of instances in the scaling group is less than the allowed minimum number after you change the value of the MinSize parameter, Auto Scaling automatically adds instances to the scaling group to ensure that the number of instances is within the new range.
+        *   If the total number of instances in the scaling group does not match the expected number of instances after you change the value of the DesiredCapacity parameter, Auto Scaling automatically adds instances to or removes instances from the scaling group to ensure that the number of instances matches the value of the DesiredCapacity parameter.
+        
+        @param request: ModifyScalingGroupRequest
+        @return: ModifyScalingGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_scaling_group_with_options_async(request, runtime)
 
