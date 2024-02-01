@@ -1,3 +1,13 @@
+2024-02-01 Version: 2.3.0
+- Support API CreateStreamPushJob.
+- Support API CreateStreamSnapshotJob.
+- Support API DeleteStreamPushJob.
+- Support API DeleteStreamSnapshotJob.
+- Support API QueryStreamPushJob.
+- Support API QueryStreamPushJobList.
+- Support API QueryStreamSnapshotJob.
+
+
 2024-01-16 Version: 2.2.1
 - Generated python 2018-01-20 for Linkvisual.
 
