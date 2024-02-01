@@ -1,3 +1,6 @@
+2024-02-01 Version: 2.2.1
+- Generated python 2022-03-02 for Green.
+
 2024-01-31 Version: 2.2.0
 - Support API DescribeUrlModerationResult.
 - Support API UrlAsyncModeration.
