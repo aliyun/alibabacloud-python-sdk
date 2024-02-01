@@ -1,3 +1,7 @@
+2024-02-01 Version: 2.0.1
+- Update API CreateServiceInstanceadd BusinessInfo param.
+
+
 2024-01-18 Version: 2.0.0
 - Generated python 2021-06-01 for ComputeNest.
 

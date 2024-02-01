@@ -221,9 +221,13 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = compute_nest_20210601_models.CreateServiceInstanceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.business_info):
+            request.business_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.business_info, 'BusinessInfo', 'json')
         if not UtilClient.is_unset(tmp_req.parameters):
             request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
         query = {}
+        if not UtilClient.is_unset(request.business_info_shrink):
+            query['BusinessInfo'] = request.business_info_shrink
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.commodity):
@@ -287,9 +291,13 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = compute_nest_20210601_models.CreateServiceInstanceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.business_info):
+            request.business_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.business_info, 'BusinessInfo', 'json')
         if not UtilClient.is_unset(tmp_req.parameters):
             request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
         query = {}
+        if not UtilClient.is_unset(request.business_info_shrink):
+            query['BusinessInfo'] = request.business_info_shrink
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.commodity):

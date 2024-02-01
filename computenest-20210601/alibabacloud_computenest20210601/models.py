@@ -88,9 +88,6 @@ class ChangeResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -269,9 +266,6 @@ class ContinueDeployServiceInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -298,6 +292,33 @@ class ContinueDeployServiceInstanceResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = ContinueDeployServiceInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateServiceInstanceRequestBusinessInfo(TeaModel):
+    def __init__(
+        self,
+        order_params: Dict[str, str] = None,
+    ):
+        self.order_params = order_params
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_params is not None:
+            result['OrderParams'] = self.order_params
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderParams') is not None:
+            self.order_params = m.get('OrderParams')
         return self
 
 
@@ -423,6 +444,7 @@ class CreateServiceInstanceRequestTag(TeaModel):
 class CreateServiceInstanceRequest(TeaModel):
     def __init__(
         self,
+        business_info: CreateServiceInstanceRequestBusinessInfo = None,
         client_token: str = None,
         commodity: CreateServiceInstanceRequestCommodity = None,
         contact_group: str = None,
@@ -442,6 +464,7 @@ class CreateServiceInstanceRequest(TeaModel):
         template_name: str = None,
         trial_type: str = None,
     ):
+        self.business_info = business_info
         self.client_token = client_token
         self.commodity = commodity
         # 接收告警的云监控联系人组。
@@ -475,6 +498,8 @@ class CreateServiceInstanceRequest(TeaModel):
         self.trial_type = trial_type
 
     def validate(self):
+        if self.business_info:
+            self.business_info.validate()
         if self.commodity:
             self.commodity.validate()
         if self.operation_metadata:
@@ -490,6 +515,8 @@ class CreateServiceInstanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.business_info is not None:
+            result['BusinessInfo'] = self.business_info.to_map()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.commodity is not None:
@@ -532,6 +559,9 @@ class CreateServiceInstanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BusinessInfo') is not None:
+            temp_model = CreateServiceInstanceRequestBusinessInfo()
+            self.business_info = temp_model.from_map(m['BusinessInfo'])
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('Commodity') is not None:
@@ -698,6 +728,7 @@ class CreateServiceInstanceShrinkRequestTag(TeaModel):
 class CreateServiceInstanceShrinkRequest(TeaModel):
     def __init__(
         self,
+        business_info_shrink: str = None,
         client_token: str = None,
         commodity: CreateServiceInstanceShrinkRequestCommodity = None,
         contact_group: str = None,
@@ -717,6 +748,7 @@ class CreateServiceInstanceShrinkRequest(TeaModel):
         template_name: str = None,
         trial_type: str = None,
     ):
+        self.business_info_shrink = business_info_shrink
         self.client_token = client_token
         self.commodity = commodity
         # 接收告警的云监控联系人组。
@@ -765,6 +797,8 @@ class CreateServiceInstanceShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.business_info_shrink is not None:
+            result['BusinessInfo'] = self.business_info_shrink
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.commodity is not None:
@@ -807,6 +841,8 @@ class CreateServiceInstanceShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BusinessInfo') is not None:
+            self.business_info_shrink = m.get('BusinessInfo')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('Commodity') is not None:
@@ -908,9 +944,6 @@ class CreateServiceInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1018,9 +1051,6 @@ class DeleteServiceInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1757,9 +1787,6 @@ class GetServiceInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2092,9 +2119,6 @@ class GetServiceTemplateParameterConstraintsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2309,9 +2333,6 @@ class ListServiceInstanceLogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2609,9 +2630,6 @@ class ListServiceInstanceResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3195,9 +3213,6 @@ class ListServiceInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
