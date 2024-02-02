@@ -1381,6 +1381,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_attended_transfer_with_options_async(request, runtime)
 
+    def change_visibility_with_options(
+        self,
+        request: ccc20200701_models.ChangeVisibilityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ChangeVisibilityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.invisible):
+            query['Invisible'] = request.invisible
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeVisibility',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ChangeVisibilityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_visibility_with_options_async(
+        self,
+        request: ccc20200701_models.ChangeVisibilityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ChangeVisibilityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.invisible):
+            query['Invisible'] = request.invisible
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeVisibility',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ChangeVisibilityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_visibility(
+        self,
+        request: ccc20200701_models.ChangeVisibilityRequest,
+    ) -> ccc20200701_models.ChangeVisibilityResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.change_visibility_with_options(request, runtime)
+
+    async def change_visibility_async(
+        self,
+        request: ccc20200701_models.ChangeVisibilityRequest,
+    ) -> ccc20200701_models.ChangeVisibilityResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.change_visibility_with_options_async(request, runtime)
+
     def change_work_mode_with_options(
         self,
         request: ccc20200701_models.ChangeWorkModeRequest,
@@ -6214,6 +6292,14 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListAgentStatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListAgentStatesResponse:
+        """
+        @deprecated : ListAgentStates is deprecated, please use CCC::2020-07-01::ListRealtimeAgentStates instead.
+        
+        @param request: ListAgentStatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAgentStatesResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_ids):
@@ -6254,6 +6340,14 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListAgentStatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListAgentStatesResponse:
+        """
+        @deprecated : ListAgentStates is deprecated, please use CCC::2020-07-01::ListRealtimeAgentStates instead.
+        
+        @param request: ListAgentStatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAgentStatesResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_ids):
@@ -6293,6 +6387,13 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListAgentStatesRequest,
     ) -> ccc20200701_models.ListAgentStatesResponse:
+        """
+        @deprecated : ListAgentStates is deprecated, please use CCC::2020-07-01::ListRealtimeAgentStates instead.
+        
+        @param request: ListAgentStatesRequest
+        @return: ListAgentStatesResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_agent_states_with_options(request, runtime)
 
@@ -6300,6 +6401,13 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListAgentStatesRequest,
     ) -> ccc20200701_models.ListAgentStatesResponse:
+        """
+        @deprecated : ListAgentStates is deprecated, please use CCC::2020-07-01::ListRealtimeAgentStates instead.
+        
+        @param request: ListAgentStatesRequest
+        @return: ListAgentStatesResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_agent_states_with_options_async(request, runtime)
 
@@ -6308,6 +6416,14 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListAgentSummaryReportsSinceMidnightRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListAgentSummaryReportsSinceMidnightResponse:
+        """
+        @deprecated : ListAgentSummaryReportsSinceMidnight is deprecated, please use CCC::2020-07-01::ListHistoricalAgentReport instead.
+        
+        @param request: ListAgentSummaryReportsSinceMidnightRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAgentSummaryReportsSinceMidnightResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6334,6 +6450,14 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListAgentSummaryReportsSinceMidnightRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListAgentSummaryReportsSinceMidnightResponse:
+        """
+        @deprecated : ListAgentSummaryReportsSinceMidnight is deprecated, please use CCC::2020-07-01::ListHistoricalAgentReport instead.
+        
+        @param request: ListAgentSummaryReportsSinceMidnightRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAgentSummaryReportsSinceMidnightResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6359,6 +6483,13 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListAgentSummaryReportsSinceMidnightRequest,
     ) -> ccc20200701_models.ListAgentSummaryReportsSinceMidnightResponse:
+        """
+        @deprecated : ListAgentSummaryReportsSinceMidnight is deprecated, please use CCC::2020-07-01::ListHistoricalAgentReport instead.
+        
+        @param request: ListAgentSummaryReportsSinceMidnightRequest
+        @return: ListAgentSummaryReportsSinceMidnightResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_agent_summary_reports_since_midnight_with_options(request, runtime)
 
@@ -6366,6 +6497,13 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListAgentSummaryReportsSinceMidnightRequest,
     ) -> ccc20200701_models.ListAgentSummaryReportsSinceMidnightResponse:
+        """
+        @deprecated : ListAgentSummaryReportsSinceMidnight is deprecated, please use CCC::2020-07-01::ListHistoricalAgentReport instead.
+        
+        @param request: ListAgentSummaryReportsSinceMidnightRequest
+        @return: ListAgentSummaryReportsSinceMidnightResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_agent_summary_reports_since_midnight_with_options_async(request, runtime)
 
@@ -9786,6 +9924,14 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListSkillGroupStatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListSkillGroupStatesResponse:
+        """
+        @deprecated : ListSkillGroupStates is deprecated, please use CCC::2020-07-01::ListRealtimeSkillGroupStates instead.
+        
+        @param request: ListSkillGroupStatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSkillGroupStatesResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -9812,6 +9958,14 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListSkillGroupStatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListSkillGroupStatesResponse:
+        """
+        @deprecated : ListSkillGroupStates is deprecated, please use CCC::2020-07-01::ListRealtimeSkillGroupStates instead.
+        
+        @param request: ListSkillGroupStatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSkillGroupStatesResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -9837,6 +9991,13 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListSkillGroupStatesRequest,
     ) -> ccc20200701_models.ListSkillGroupStatesResponse:
+        """
+        @deprecated : ListSkillGroupStates is deprecated, please use CCC::2020-07-01::ListRealtimeSkillGroupStates instead.
+        
+        @param request: ListSkillGroupStatesRequest
+        @return: ListSkillGroupStatesResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_skill_group_states_with_options(request, runtime)
 
@@ -9844,6 +10005,13 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListSkillGroupStatesRequest,
     ) -> ccc20200701_models.ListSkillGroupStatesResponse:
+        """
+        @deprecated : ListSkillGroupStates is deprecated, please use CCC::2020-07-01::ListRealtimeSkillGroupStates instead.
+        
+        @param request: ListSkillGroupStatesRequest
+        @return: ListSkillGroupStatesResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_skill_group_states_with_options_async(request, runtime)
 
@@ -9852,6 +10020,14 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListSkillGroupSummaryReportsSinceMidnightRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListSkillGroupSummaryReportsSinceMidnightResponse:
+        """
+        @deprecated : ListSkillGroupSummaryReportsSinceMidnight is deprecated, please use CCC::2020-07-01::ListHistoricalSkillGroupReport instead.
+        
+        @param request: ListSkillGroupSummaryReportsSinceMidnightRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSkillGroupSummaryReportsSinceMidnightResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -9878,6 +10054,14 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListSkillGroupSummaryReportsSinceMidnightRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListSkillGroupSummaryReportsSinceMidnightResponse:
+        """
+        @deprecated : ListSkillGroupSummaryReportsSinceMidnight is deprecated, please use CCC::2020-07-01::ListHistoricalSkillGroupReport instead.
+        
+        @param request: ListSkillGroupSummaryReportsSinceMidnightRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSkillGroupSummaryReportsSinceMidnightResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -9903,6 +10087,13 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListSkillGroupSummaryReportsSinceMidnightRequest,
     ) -> ccc20200701_models.ListSkillGroupSummaryReportsSinceMidnightResponse:
+        """
+        @deprecated : ListSkillGroupSummaryReportsSinceMidnight is deprecated, please use CCC::2020-07-01::ListHistoricalSkillGroupReport instead.
+        
+        @param request: ListSkillGroupSummaryReportsSinceMidnightRequest
+        @return: ListSkillGroupSummaryReportsSinceMidnightResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_skill_group_summary_reports_since_midnight_with_options(request, runtime)
 
@@ -9910,6 +10101,13 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListSkillGroupSummaryReportsSinceMidnightRequest,
     ) -> ccc20200701_models.ListSkillGroupSummaryReportsSinceMidnightResponse:
+        """
+        @deprecated : ListSkillGroupSummaryReportsSinceMidnight is deprecated, please use CCC::2020-07-01::ListHistoricalSkillGroupReport instead.
+        
+        @param request: ListSkillGroupSummaryReportsSinceMidnightRequest
+        @return: ListSkillGroupSummaryReportsSinceMidnightResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_skill_group_summary_reports_since_midnight_with_options_async(request, runtime)
 
@@ -10458,6 +10656,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.masked_callee):
             query['MaskedCallee'] = request.masked_callee
+        if not UtilClient.is_unset(request.media_type):
+            query['MediaType'] = request.media_type
         if not UtilClient.is_unset(request.tags):
             query['Tags'] = request.tags
         if not UtilClient.is_unset(request.timeout_seconds):
@@ -10500,6 +10700,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.masked_callee):
             query['MaskedCallee'] = request.masked_callee
+        if not UtilClient.is_unset(request.media_type):
+            query['MediaType'] = request.media_type
         if not UtilClient.is_unset(request.tags):
             query['Tags'] = request.tags
         if not UtilClient.is_unset(request.timeout_seconds):

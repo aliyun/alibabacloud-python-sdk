@@ -1,3 +1,15 @@
+2024-02-02 Version: 2.12.0
+- Support API ChangeVisibility.
+- Update API CoachCallupdate DeviceId param.
+update response param.
+- Update API CreateUserupdate WorkMode param.
+- Update API ListCustomCallTaggingupdate CallTagNameList param.
+update SearchPattern param.
+- Update API MakeCalladd MediaType param.
+update response param.
+- Update API MuteCallupdate response param.
+
+
 2023-11-24 Version: 2.11.6
 - Generated python 2020-07-01 for CCC.
 
