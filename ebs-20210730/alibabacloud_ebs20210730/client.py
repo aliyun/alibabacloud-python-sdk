@@ -47,7 +47,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.AddDiskReplicaPairResponse:
         """
-        The region ID of the replication pair-consistent group.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
+        *   A replication pair and a replication pair-consistent group replicate in the same direction if they have the same primary region (production region), primary zone (production zone), secondary region (disaster recovery region), and secondary zone (disaster recovery zone). A replication pair can be added only to a replication pair-consistent group that replicates in the same direction as the replication pair.
+        *   Before you can add a replication pair to a replication pair-consistent group, make sure that the pair and the group are in the **Created** (`created`) or **Stopped** (`stopped`) state.
+        *   Up to 17 replication pairs can be added to a single replication pair-consistent group.
+        *   After replication pairs are added to a replication pair-consistent group, the recovery point objective (RPO) of the group takes effect on the pairs in place of their original RPOs.
         
         @param request: AddDiskReplicaPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -88,7 +93,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.AddDiskReplicaPairResponse:
         """
-        The region ID of the replication pair-consistent group.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
+        *   A replication pair and a replication pair-consistent group replicate in the same direction if they have the same primary region (production region), primary zone (production zone), secondary region (disaster recovery region), and secondary zone (disaster recovery zone). A replication pair can be added only to a replication pair-consistent group that replicates in the same direction as the replication pair.
+        *   Before you can add a replication pair to a replication pair-consistent group, make sure that the pair and the group are in the **Created** (`created`) or **Stopped** (`stopped`) state.
+        *   Up to 17 replication pairs can be added to a single replication pair-consistent group.
+        *   After replication pairs are added to a replication pair-consistent group, the recovery point objective (RPO) of the group takes effect on the pairs in place of their original RPOs.
         
         @param request: AddDiskReplicaPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -128,7 +138,12 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.AddDiskReplicaPairRequest,
     ) -> ebs_20210730_models.AddDiskReplicaPairResponse:
         """
-        The region ID of the replication pair-consistent group.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
+        *   A replication pair and a replication pair-consistent group replicate in the same direction if they have the same primary region (production region), primary zone (production zone), secondary region (disaster recovery region), and secondary zone (disaster recovery zone). A replication pair can be added only to a replication pair-consistent group that replicates in the same direction as the replication pair.
+        *   Before you can add a replication pair to a replication pair-consistent group, make sure that the pair and the group are in the **Created** (`created`) or **Stopped** (`stopped`) state.
+        *   Up to 17 replication pairs can be added to a single replication pair-consistent group.
+        *   After replication pairs are added to a replication pair-consistent group, the recovery point objective (RPO) of the group takes effect on the pairs in place of their original RPOs.
         
         @param request: AddDiskReplicaPairRequest
         @return: AddDiskReplicaPairResponse
@@ -141,7 +156,12 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.AddDiskReplicaPairRequest,
     ) -> ebs_20210730_models.AddDiskReplicaPairResponse:
         """
-        The region ID of the replication pair-consistent group.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
+        *   A replication pair and a replication pair-consistent group replicate in the same direction if they have the same primary region (production region), primary zone (production zone), secondary region (disaster recovery region), and secondary zone (disaster recovery zone). A replication pair can be added only to a replication pair-consistent group that replicates in the same direction as the replication pair.
+        *   Before you can add a replication pair to a replication pair-consistent group, make sure that the pair and the group are in the **Created** (`created`) or **Stopped** (`stopped`) state.
+        *   Up to 17 replication pairs can be added to a single replication pair-consistent group.
+        *   After replication pairs are added to a replication pair-consistent group, the recovery point objective (RPO) of the group takes effect on the pairs in place of their original RPOs.
         
         @param request: AddDiskReplicaPairRequest
         @return: AddDiskReplicaPairResponse
@@ -226,6 +246,88 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.apply_lens_service_with_options_async(runtime)
+
+    def bind_enterprise_snapshot_policy_with_options(
+        self,
+        request: ebs_20210730_models.BindEnterpriseSnapshotPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.BindEnterpriseSnapshotPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.disk_targets):
+            query['DiskTargets'] = request.disk_targets
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindEnterpriseSnapshotPolicy',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.BindEnterpriseSnapshotPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bind_enterprise_snapshot_policy_with_options_async(
+        self,
+        request: ebs_20210730_models.BindEnterpriseSnapshotPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.BindEnterpriseSnapshotPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.disk_targets):
+            query['DiskTargets'] = request.disk_targets
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindEnterpriseSnapshotPolicy',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.BindEnterpriseSnapshotPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bind_enterprise_snapshot_policy(
+        self,
+        request: ebs_20210730_models.BindEnterpriseSnapshotPolicyRequest,
+    ) -> ebs_20210730_models.BindEnterpriseSnapshotPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.bind_enterprise_snapshot_policy_with_options(request, runtime)
+
+    async def bind_enterprise_snapshot_policy_async(
+        self,
+        request: ebs_20210730_models.BindEnterpriseSnapshotPolicyRequest,
+    ) -> ebs_20210730_models.BindEnterpriseSnapshotPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.bind_enterprise_snapshot_policy_with_options_async(request, runtime)
 
     def cancel_lens_service_with_options(
         self,
@@ -553,10 +655,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.CreateDedicatedBlockStorageClusterResponse:
         """
-        Dedicated block storage clusters are physically isolated from public block storage clusters. The owner of each dedicated block storage cluster has exclusive access to all resources in the cluster. For more information, see [Overview](~~208883~~).
+        Dedicated block storage clusters are physically isolated from public block storage clusters. The owner of each dedicated block storage cluster has exclusive access to all resources in the cluster.
         Disks created in a dedicated block storage cluster can be attached only to Elastic Compute Service (ECS) instances that reside in the same zone as the cluster. Before you create a dedicated block storage cluster, decide the regions and zones in which to deploy your cloud resources.
         Dedicated block storage clusters are classified into basic and performance types. When you create a dedicated block storage cluster, select a cluster type based on your business requirements.
-        You are charged for creating dedicated block storage clusters. For more information, see [~~208884~~](~~208884~~).
+        You are charged for creating dedicated block storage clusters.
         
         @param request: CreateDedicatedBlockStorageClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -609,10 +711,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.CreateDedicatedBlockStorageClusterResponse:
         """
-        Dedicated block storage clusters are physically isolated from public block storage clusters. The owner of each dedicated block storage cluster has exclusive access to all resources in the cluster. For more information, see [Overview](~~208883~~).
+        Dedicated block storage clusters are physically isolated from public block storage clusters. The owner of each dedicated block storage cluster has exclusive access to all resources in the cluster.
         Disks created in a dedicated block storage cluster can be attached only to Elastic Compute Service (ECS) instances that reside in the same zone as the cluster. Before you create a dedicated block storage cluster, decide the regions and zones in which to deploy your cloud resources.
         Dedicated block storage clusters are classified into basic and performance types. When you create a dedicated block storage cluster, select a cluster type based on your business requirements.
-        You are charged for creating dedicated block storage clusters. For more information, see [~~208884~~](~~208884~~).
+        You are charged for creating dedicated block storage clusters.
         
         @param request: CreateDedicatedBlockStorageClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -664,10 +766,10 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.CreateDedicatedBlockStorageClusterRequest,
     ) -> ebs_20210730_models.CreateDedicatedBlockStorageClusterResponse:
         """
-        Dedicated block storage clusters are physically isolated from public block storage clusters. The owner of each dedicated block storage cluster has exclusive access to all resources in the cluster. For more information, see [Overview](~~208883~~).
+        Dedicated block storage clusters are physically isolated from public block storage clusters. The owner of each dedicated block storage cluster has exclusive access to all resources in the cluster.
         Disks created in a dedicated block storage cluster can be attached only to Elastic Compute Service (ECS) instances that reside in the same zone as the cluster. Before you create a dedicated block storage cluster, decide the regions and zones in which to deploy your cloud resources.
         Dedicated block storage clusters are classified into basic and performance types. When you create a dedicated block storage cluster, select a cluster type based on your business requirements.
-        You are charged for creating dedicated block storage clusters. For more information, see [~~208884~~](~~208884~~).
+        You are charged for creating dedicated block storage clusters.
         
         @param request: CreateDedicatedBlockStorageClusterRequest
         @return: CreateDedicatedBlockStorageClusterResponse
@@ -680,10 +782,10 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.CreateDedicatedBlockStorageClusterRequest,
     ) -> ebs_20210730_models.CreateDedicatedBlockStorageClusterResponse:
         """
-        Dedicated block storage clusters are physically isolated from public block storage clusters. The owner of each dedicated block storage cluster has exclusive access to all resources in the cluster. For more information, see [Overview](~~208883~~).
+        Dedicated block storage clusters are physically isolated from public block storage clusters. The owner of each dedicated block storage cluster has exclusive access to all resources in the cluster.
         Disks created in a dedicated block storage cluster can be attached only to Elastic Compute Service (ECS) instances that reside in the same zone as the cluster. Before you create a dedicated block storage cluster, decide the regions and zones in which to deploy your cloud resources.
         Dedicated block storage clusters are classified into basic and performance types. When you create a dedicated block storage cluster, select a cluster type based on your business requirements.
-        You are charged for creating dedicated block storage clusters. For more information, see [~~208884~~](~~208884~~).
+        You are charged for creating dedicated block storage clusters.
         
         @param request: CreateDedicatedBlockStorageClusterRequest
         @return: CreateDedicatedBlockStorageClusterResponse
@@ -697,12 +799,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.CreateDiskReplicaGroupResponse:
         """
-        The replication pair-consistent group feature allows you to batch manage multiple disks in disaster recovery scenarios. You can restore the data of all disks in the same replication pair-consistent group to the same point in time to allow for disaster recovery of one or more instances.
-        When you create a replication pair-consistent group, take note of the following items:
-        *   The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore, US (Silicon Valley), and US (Virginia) regions.
-        *   Replication pair-consistent groups support disaster recovery across zones within the same region and disaster recovery across regions.
-        *   A replication pair and a replication pair-consistent group replicate in the same direction if they have the same primary region (production region), primary zone (production zone), secondary region (disaster recovery region), and secondary zone (disaster recovery zone). Replication pairs can be added only to a replication pair-consistent group that replicates in the same direction as them.
-        *   After replication pairs are added to a replication pair-consistent group, the recovery point objective (RPO) of the group takes effect on the pairs in place of their original RPOs.
+        ## [](#)Usage notes
+        The replication pair-consistent group feature allows you to batch manage multiple disks in disaster recovery scenarios. You can restore the data of all disks in the same replication pair-consistent group to the same point in time to allow for disaster recovery of instances.
+        Take note of the following items:
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
+        *   Replication pair-consistent groups can be used to implement disaster recovery across zones within the same region and disaster recovery across regions.
+        *   A replication pair and a replication pair-consistent group can replicate in the same direction if they have the same primary region (production region), primary zone (production zone), secondary region (disaster recovery region), and secondary zone (disaster recovery zone). A replication pair can be added to only a replication pair-consistent group that replicates in the same direction as the replication pair.
+        *   After replication pairs are added to a replication pair-consistent group, the recovery point objective (RPO) of the group takes effect on the pairs instead of their original RPOs.
         
         @param request: CreateDiskReplicaGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -757,12 +860,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.CreateDiskReplicaGroupResponse:
         """
-        The replication pair-consistent group feature allows you to batch manage multiple disks in disaster recovery scenarios. You can restore the data of all disks in the same replication pair-consistent group to the same point in time to allow for disaster recovery of one or more instances.
-        When you create a replication pair-consistent group, take note of the following items:
-        *   The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore, US (Silicon Valley), and US (Virginia) regions.
-        *   Replication pair-consistent groups support disaster recovery across zones within the same region and disaster recovery across regions.
-        *   A replication pair and a replication pair-consistent group replicate in the same direction if they have the same primary region (production region), primary zone (production zone), secondary region (disaster recovery region), and secondary zone (disaster recovery zone). Replication pairs can be added only to a replication pair-consistent group that replicates in the same direction as them.
-        *   After replication pairs are added to a replication pair-consistent group, the recovery point objective (RPO) of the group takes effect on the pairs in place of their original RPOs.
+        ## [](#)Usage notes
+        The replication pair-consistent group feature allows you to batch manage multiple disks in disaster recovery scenarios. You can restore the data of all disks in the same replication pair-consistent group to the same point in time to allow for disaster recovery of instances.
+        Take note of the following items:
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
+        *   Replication pair-consistent groups can be used to implement disaster recovery across zones within the same region and disaster recovery across regions.
+        *   A replication pair and a replication pair-consistent group can replicate in the same direction if they have the same primary region (production region), primary zone (production zone), secondary region (disaster recovery region), and secondary zone (disaster recovery zone). A replication pair can be added to only a replication pair-consistent group that replicates in the same direction as the replication pair.
+        *   After replication pairs are added to a replication pair-consistent group, the recovery point objective (RPO) of the group takes effect on the pairs instead of their original RPOs.
         
         @param request: CreateDiskReplicaGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -816,12 +920,13 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.CreateDiskReplicaGroupRequest,
     ) -> ebs_20210730_models.CreateDiskReplicaGroupResponse:
         """
-        The replication pair-consistent group feature allows you to batch manage multiple disks in disaster recovery scenarios. You can restore the data of all disks in the same replication pair-consistent group to the same point in time to allow for disaster recovery of one or more instances.
-        When you create a replication pair-consistent group, take note of the following items:
-        *   The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore, US (Silicon Valley), and US (Virginia) regions.
-        *   Replication pair-consistent groups support disaster recovery across zones within the same region and disaster recovery across regions.
-        *   A replication pair and a replication pair-consistent group replicate in the same direction if they have the same primary region (production region), primary zone (production zone), secondary region (disaster recovery region), and secondary zone (disaster recovery zone). Replication pairs can be added only to a replication pair-consistent group that replicates in the same direction as them.
-        *   After replication pairs are added to a replication pair-consistent group, the recovery point objective (RPO) of the group takes effect on the pairs in place of their original RPOs.
+        ## [](#)Usage notes
+        The replication pair-consistent group feature allows you to batch manage multiple disks in disaster recovery scenarios. You can restore the data of all disks in the same replication pair-consistent group to the same point in time to allow for disaster recovery of instances.
+        Take note of the following items:
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
+        *   Replication pair-consistent groups can be used to implement disaster recovery across zones within the same region and disaster recovery across regions.
+        *   A replication pair and a replication pair-consistent group can replicate in the same direction if they have the same primary region (production region), primary zone (production zone), secondary region (disaster recovery region), and secondary zone (disaster recovery zone). A replication pair can be added to only a replication pair-consistent group that replicates in the same direction as the replication pair.
+        *   After replication pairs are added to a replication pair-consistent group, the recovery point objective (RPO) of the group takes effect on the pairs instead of their original RPOs.
         
         @param request: CreateDiskReplicaGroupRequest
         @return: CreateDiskReplicaGroupResponse
@@ -834,12 +939,13 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.CreateDiskReplicaGroupRequest,
     ) -> ebs_20210730_models.CreateDiskReplicaGroupResponse:
         """
-        The replication pair-consistent group feature allows you to batch manage multiple disks in disaster recovery scenarios. You can restore the data of all disks in the same replication pair-consistent group to the same point in time to allow for disaster recovery of one or more instances.
-        When you create a replication pair-consistent group, take note of the following items:
-        *   The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore, US (Silicon Valley), and US (Virginia) regions.
-        *   Replication pair-consistent groups support disaster recovery across zones within the same region and disaster recovery across regions.
-        *   A replication pair and a replication pair-consistent group replicate in the same direction if they have the same primary region (production region), primary zone (production zone), secondary region (disaster recovery region), and secondary zone (disaster recovery zone). Replication pairs can be added only to a replication pair-consistent group that replicates in the same direction as them.
-        *   After replication pairs are added to a replication pair-consistent group, the recovery point objective (RPO) of the group takes effect on the pairs in place of their original RPOs.
+        ## [](#)Usage notes
+        The replication pair-consistent group feature allows you to batch manage multiple disks in disaster recovery scenarios. You can restore the data of all disks in the same replication pair-consistent group to the same point in time to allow for disaster recovery of instances.
+        Take note of the following items:
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
+        *   Replication pair-consistent groups can be used to implement disaster recovery across zones within the same region and disaster recovery across regions.
+        *   A replication pair and a replication pair-consistent group can replicate in the same direction if they have the same primary region (production region), primary zone (production zone), secondary region (disaster recovery region), and secondary zone (disaster recovery zone). A replication pair can be added to only a replication pair-consistent group that replicates in the same direction as the replication pair.
+        *   After replication pairs are added to a replication pair-consistent group, the recovery point objective (RPO) of the group takes effect on the pairs instead of their original RPOs.
         
         @param request: CreateDiskReplicaGroupRequest
         @return: CreateDiskReplicaGroupResponse
@@ -1023,15 +1129,158 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_disk_replica_pair_with_options_async(request, runtime)
 
+    def create_enterprise_snapshot_policy_with_options(
+        self,
+        tmp_req: ebs_20210730_models.CreateEnterpriseSnapshotPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.CreateEnterpriseSnapshotPolicyResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ebs_20210730_models.CreateEnterpriseSnapshotPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cross_region_copy_info):
+            request.cross_region_copy_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cross_region_copy_info, 'CrossRegionCopyInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.retain_rule):
+            request.retain_rule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.retain_rule, 'RetainRule', 'json')
+        if not UtilClient.is_unset(tmp_req.schedule):
+            request.schedule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule, 'Schedule', 'json')
+        if not UtilClient.is_unset(tmp_req.special_retain_rules):
+            request.special_retain_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.special_retain_rules, 'SpecialRetainRules', 'json')
+        if not UtilClient.is_unset(tmp_req.storage_rule):
+            request.storage_rule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.storage_rule, 'StorageRule', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cross_region_copy_info_shrink):
+            query['CrossRegionCopyInfo'] = request.cross_region_copy_info_shrink
+        if not UtilClient.is_unset(request.desc):
+            query['Desc'] = request.desc
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.retain_rule_shrink):
+            query['RetainRule'] = request.retain_rule_shrink
+        if not UtilClient.is_unset(request.schedule_shrink):
+            query['Schedule'] = request.schedule_shrink
+        if not UtilClient.is_unset(request.special_retain_rules_shrink):
+            query['SpecialRetainRules'] = request.special_retain_rules_shrink
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.storage_rule_shrink):
+            query['StorageRule'] = request.storage_rule_shrink
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateEnterpriseSnapshotPolicy',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.CreateEnterpriseSnapshotPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_enterprise_snapshot_policy_with_options_async(
+        self,
+        tmp_req: ebs_20210730_models.CreateEnterpriseSnapshotPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.CreateEnterpriseSnapshotPolicyResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ebs_20210730_models.CreateEnterpriseSnapshotPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cross_region_copy_info):
+            request.cross_region_copy_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cross_region_copy_info, 'CrossRegionCopyInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.retain_rule):
+            request.retain_rule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.retain_rule, 'RetainRule', 'json')
+        if not UtilClient.is_unset(tmp_req.schedule):
+            request.schedule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule, 'Schedule', 'json')
+        if not UtilClient.is_unset(tmp_req.special_retain_rules):
+            request.special_retain_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.special_retain_rules, 'SpecialRetainRules', 'json')
+        if not UtilClient.is_unset(tmp_req.storage_rule):
+            request.storage_rule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.storage_rule, 'StorageRule', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cross_region_copy_info_shrink):
+            query['CrossRegionCopyInfo'] = request.cross_region_copy_info_shrink
+        if not UtilClient.is_unset(request.desc):
+            query['Desc'] = request.desc
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.retain_rule_shrink):
+            query['RetainRule'] = request.retain_rule_shrink
+        if not UtilClient.is_unset(request.schedule_shrink):
+            query['Schedule'] = request.schedule_shrink
+        if not UtilClient.is_unset(request.special_retain_rules_shrink):
+            query['SpecialRetainRules'] = request.special_retain_rules_shrink
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.storage_rule_shrink):
+            query['StorageRule'] = request.storage_rule_shrink
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateEnterpriseSnapshotPolicy',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.CreateEnterpriseSnapshotPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_enterprise_snapshot_policy(
+        self,
+        request: ebs_20210730_models.CreateEnterpriseSnapshotPolicyRequest,
+    ) -> ebs_20210730_models.CreateEnterpriseSnapshotPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_enterprise_snapshot_policy_with_options(request, runtime)
+
+    async def create_enterprise_snapshot_policy_async(
+        self,
+        request: ebs_20210730_models.CreateEnterpriseSnapshotPolicyRequest,
+    ) -> ebs_20210730_models.CreateEnterpriseSnapshotPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_enterprise_snapshot_policy_with_options_async(request, runtime)
+
     def delete_disk_replica_group_with_options(
         self,
         request: ebs_20210730_models.DeleteDiskReplicaGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.DeleteDiskReplicaGroupResponse:
         """
-        The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
-        *   Before you can delete a replication pair-consistent group, make sure that no replication pairs are present in the group.
-        *   The replication pair-consistent group that you want to delete must be in the **Created** (`created`), **Creation Failed** (`create_failed`), **Stopped** (`stopped`), **Failover Failed** (`failovered`), **Deleting** (`deleting`), **Deletion Failed** (`delete_failed`), or **Invalid** (`invalid`) state.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
+        *   Before you can delete a replication pair-consistent group, make sure that no replication pairs exist in the group.
+        *   The replication pair-consistent group that you want to delete must be in the **Created** (`created`), **Creation Failed** (`create_failed`), **Stopped** (`stopped`), **Failovered** (`failovered`), **Deleting** (`deleting`), **Deletion Failed** (`delete_failed`), or **Invalid** (`invalid`) state.
         
         @param request: DeleteDiskReplicaGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1070,9 +1319,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.DeleteDiskReplicaGroupResponse:
         """
-        The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
-        *   Before you can delete a replication pair-consistent group, make sure that no replication pairs are present in the group.
-        *   The replication pair-consistent group that you want to delete must be in the **Created** (`created`), **Creation Failed** (`create_failed`), **Stopped** (`stopped`), **Failover Failed** (`failovered`), **Deleting** (`deleting`), **Deletion Failed** (`delete_failed`), or **Invalid** (`invalid`) state.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
+        *   Before you can delete a replication pair-consistent group, make sure that no replication pairs exist in the group.
+        *   The replication pair-consistent group that you want to delete must be in the **Created** (`created`), **Creation Failed** (`create_failed`), **Stopped** (`stopped`), **Failovered** (`failovered`), **Deleting** (`deleting`), **Deletion Failed** (`delete_failed`), or **Invalid** (`invalid`) state.
         
         @param request: DeleteDiskReplicaGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1110,9 +1360,10 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.DeleteDiskReplicaGroupRequest,
     ) -> ebs_20210730_models.DeleteDiskReplicaGroupResponse:
         """
-        The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
-        *   Before you can delete a replication pair-consistent group, make sure that no replication pairs are present in the group.
-        *   The replication pair-consistent group that you want to delete must be in the **Created** (`created`), **Creation Failed** (`create_failed`), **Stopped** (`stopped`), **Failover Failed** (`failovered`), **Deleting** (`deleting`), **Deletion Failed** (`delete_failed`), or **Invalid** (`invalid`) state.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
+        *   Before you can delete a replication pair-consistent group, make sure that no replication pairs exist in the group.
+        *   The replication pair-consistent group that you want to delete must be in the **Created** (`created`), **Creation Failed** (`create_failed`), **Stopped** (`stopped`), **Failovered** (`failovered`), **Deleting** (`deleting`), **Deletion Failed** (`delete_failed`), or **Invalid** (`invalid`) state.
         
         @param request: DeleteDiskReplicaGroupRequest
         @return: DeleteDiskReplicaGroupResponse
@@ -1125,9 +1376,10 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.DeleteDiskReplicaGroupRequest,
     ) -> ebs_20210730_models.DeleteDiskReplicaGroupResponse:
         """
-        The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
-        *   Before you can delete a replication pair-consistent group, make sure that no replication pairs are present in the group.
-        *   The replication pair-consistent group that you want to delete must be in the **Created** (`created`), **Creation Failed** (`create_failed`), **Stopped** (`stopped`), **Failover Failed** (`failovered`), **Deleting** (`deleting`), **Deletion Failed** (`delete_failed`), or **Invalid** (`invalid`) state.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
+        *   Before you can delete a replication pair-consistent group, make sure that no replication pairs exist in the group.
+        *   The replication pair-consistent group that you want to delete must be in the **Created** (`created`), **Creation Failed** (`create_failed`), **Stopped** (`stopped`), **Failovered** (`failovered`), **Deleting** (`deleting`), **Deletion Failed** (`delete_failed`), or **Invalid** (`invalid`) state.
         
         @param request: DeleteDiskReplicaGroupRequest
         @return: DeleteDiskReplicaGroupResponse
@@ -1141,8 +1393,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.DeleteDiskReplicaPairResponse:
         """
-        The async replication feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
-        *   Only replication pairs that are in the **Stopped** (`stopped`), **Invalid** (`invalid`), or **Failed Over** (`failovered`) state can be deleted. This operation deletes only replication pairs. The primary and secondary disks in the deleted replication pairs are retained.
+        ## [](#)Usage notes
+        *   For information about the regions in which async replication is available, see [Overview](~~314563~~).
+        *   Only replication pairs that are in the **Stopped** (`stopped`), **Invalid** (`invalid`), or **Failovered** (`failovered`) state can be deleted. This operation deletes only replication pairs. The primary and secondary disks in the deleted replication pairs are retained.
         *   To delete a replication pair, you must call this operation in the region where the primary disk is located. After the replication pair is deleted, the functionality limits are lifted from the primary and secondary disks. For example, you can attach the secondary disk, resize the disk, or read data from or write data to the disk.
         
         @param request: DeleteDiskReplicaPairRequest
@@ -1182,8 +1435,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.DeleteDiskReplicaPairResponse:
         """
-        The async replication feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
-        *   Only replication pairs that are in the **Stopped** (`stopped`), **Invalid** (`invalid`), or **Failed Over** (`failovered`) state can be deleted. This operation deletes only replication pairs. The primary and secondary disks in the deleted replication pairs are retained.
+        ## [](#)Usage notes
+        *   For information about the regions in which async replication is available, see [Overview](~~314563~~).
+        *   Only replication pairs that are in the **Stopped** (`stopped`), **Invalid** (`invalid`), or **Failovered** (`failovered`) state can be deleted. This operation deletes only replication pairs. The primary and secondary disks in the deleted replication pairs are retained.
         *   To delete a replication pair, you must call this operation in the region where the primary disk is located. After the replication pair is deleted, the functionality limits are lifted from the primary and secondary disks. For example, you can attach the secondary disk, resize the disk, or read data from or write data to the disk.
         
         @param request: DeleteDiskReplicaPairRequest
@@ -1222,8 +1476,9 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.DeleteDiskReplicaPairRequest,
     ) -> ebs_20210730_models.DeleteDiskReplicaPairResponse:
         """
-        The async replication feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
-        *   Only replication pairs that are in the **Stopped** (`stopped`), **Invalid** (`invalid`), or **Failed Over** (`failovered`) state can be deleted. This operation deletes only replication pairs. The primary and secondary disks in the deleted replication pairs are retained.
+        ## [](#)Usage notes
+        *   For information about the regions in which async replication is available, see [Overview](~~314563~~).
+        *   Only replication pairs that are in the **Stopped** (`stopped`), **Invalid** (`invalid`), or **Failovered** (`failovered`) state can be deleted. This operation deletes only replication pairs. The primary and secondary disks in the deleted replication pairs are retained.
         *   To delete a replication pair, you must call this operation in the region where the primary disk is located. After the replication pair is deleted, the functionality limits are lifted from the primary and secondary disks. For example, you can attach the secondary disk, resize the disk, or read data from or write data to the disk.
         
         @param request: DeleteDiskReplicaPairRequest
@@ -1237,8 +1492,9 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.DeleteDiskReplicaPairRequest,
     ) -> ebs_20210730_models.DeleteDiskReplicaPairResponse:
         """
-        The async replication feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
-        *   Only replication pairs that are in the **Stopped** (`stopped`), **Invalid** (`invalid`), or **Failed Over** (`failovered`) state can be deleted. This operation deletes only replication pairs. The primary and secondary disks in the deleted replication pairs are retained.
+        ## [](#)Usage notes
+        *   For information about the regions in which async replication is available, see [Overview](~~314563~~).
+        *   Only replication pairs that are in the **Stopped** (`stopped`), **Invalid** (`invalid`), or **Failovered** (`failovered`) state can be deleted. This operation deletes only replication pairs. The primary and secondary disks in the deleted replication pairs are retained.
         *   To delete a replication pair, you must call this operation in the region where the primary disk is located. After the replication pair is deleted, the functionality limits are lifted from the primary and secondary disks. For example, you can attach the secondary disk, resize the disk, or read data from or write data to the disk.
         
         @param request: DeleteDiskReplicaPairRequest
@@ -1246,6 +1502,84 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_disk_replica_pair_with_options_async(request, runtime)
+
+    def delete_enterprise_snapshot_policy_with_options(
+        self,
+        request: ebs_20210730_models.DeleteEnterpriseSnapshotPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DeleteEnterpriseSnapshotPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEnterpriseSnapshotPolicy',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DeleteEnterpriseSnapshotPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_enterprise_snapshot_policy_with_options_async(
+        self,
+        request: ebs_20210730_models.DeleteEnterpriseSnapshotPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DeleteEnterpriseSnapshotPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEnterpriseSnapshotPolicy',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DeleteEnterpriseSnapshotPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_enterprise_snapshot_policy(
+        self,
+        request: ebs_20210730_models.DeleteEnterpriseSnapshotPolicyRequest,
+    ) -> ebs_20210730_models.DeleteEnterpriseSnapshotPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_enterprise_snapshot_policy_with_options(request, runtime)
+
+    async def delete_enterprise_snapshot_policy_async(
+        self,
+        request: ebs_20210730_models.DeleteEnterpriseSnapshotPolicyRequest,
+    ) -> ebs_20210730_models.DeleteEnterpriseSnapshotPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_enterprise_snapshot_policy_with_options_async(request, runtime)
 
     def describe_dedicated_block_storage_cluster_disks_with_options(
         self,
@@ -1381,9 +1715,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.DescribeDedicatedBlockStorageClustersResponse:
         """
-        >  Dedicated Block Storage Cluster is supported in the China (Heyuan), Indonesia (Jakarta), and China (Shenzhen) regions.
-        *   You can specify multiple request parameters to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
-        *   We recommend that you use the NextToken and MaxResults parameters to perform a paged query. During a paged query, when you call the DescribeDedicatedBlockStorageClusters operation to retrieve the first page of results, set MaxResults to specify the maximum number of entries to return in the call. The return value of NextToken is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeDedicatedBlockStorageClusters operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call.
+        ## [](#)Usage notes
+        >  The Dedicated Block Storage Cluster feature is available only in the China (Heyuan), Indonesia (Jakarta), and China (Shenzhen) regions.
+        *   You can specify multiple request parameters to be queried. Specified parameters are evaluated by using the AND operator. Only the specified parameters are included in the filter conditions.
+        *   We recommend that you use NextToken and MaxResults to perform paged queries. We recommend that you use MaxResults to specify the maximum number of entries to return in each request. The return value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. When you call the DescribeDedicatedBlockStorageClusters operation to retrieve a new page of results, set NextToken to the NextToken value that is returned in the previous call and specify MaxResults to limit the number of entries returned.
         
         @param request: DescribeDedicatedBlockStorageClustersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1442,9 +1777,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.DescribeDedicatedBlockStorageClustersResponse:
         """
-        >  Dedicated Block Storage Cluster is supported in the China (Heyuan), Indonesia (Jakarta), and China (Shenzhen) regions.
-        *   You can specify multiple request parameters to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
-        *   We recommend that you use the NextToken and MaxResults parameters to perform a paged query. During a paged query, when you call the DescribeDedicatedBlockStorageClusters operation to retrieve the first page of results, set MaxResults to specify the maximum number of entries to return in the call. The return value of NextToken is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeDedicatedBlockStorageClusters operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call.
+        ## [](#)Usage notes
+        >  The Dedicated Block Storage Cluster feature is available only in the China (Heyuan), Indonesia (Jakarta), and China (Shenzhen) regions.
+        *   You can specify multiple request parameters to be queried. Specified parameters are evaluated by using the AND operator. Only the specified parameters are included in the filter conditions.
+        *   We recommend that you use NextToken and MaxResults to perform paged queries. We recommend that you use MaxResults to specify the maximum number of entries to return in each request. The return value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. When you call the DescribeDedicatedBlockStorageClusters operation to retrieve a new page of results, set NextToken to the NextToken value that is returned in the previous call and specify MaxResults to limit the number of entries returned.
         
         @param request: DescribeDedicatedBlockStorageClustersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1502,9 +1838,10 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.DescribeDedicatedBlockStorageClustersRequest,
     ) -> ebs_20210730_models.DescribeDedicatedBlockStorageClustersResponse:
         """
-        >  Dedicated Block Storage Cluster is supported in the China (Heyuan), Indonesia (Jakarta), and China (Shenzhen) regions.
-        *   You can specify multiple request parameters to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
-        *   We recommend that you use the NextToken and MaxResults parameters to perform a paged query. During a paged query, when you call the DescribeDedicatedBlockStorageClusters operation to retrieve the first page of results, set MaxResults to specify the maximum number of entries to return in the call. The return value of NextToken is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeDedicatedBlockStorageClusters operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call.
+        ## [](#)Usage notes
+        >  The Dedicated Block Storage Cluster feature is available only in the China (Heyuan), Indonesia (Jakarta), and China (Shenzhen) regions.
+        *   You can specify multiple request parameters to be queried. Specified parameters are evaluated by using the AND operator. Only the specified parameters are included in the filter conditions.
+        *   We recommend that you use NextToken and MaxResults to perform paged queries. We recommend that you use MaxResults to specify the maximum number of entries to return in each request. The return value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. When you call the DescribeDedicatedBlockStorageClusters operation to retrieve a new page of results, set NextToken to the NextToken value that is returned in the previous call and specify MaxResults to limit the number of entries returned.
         
         @param request: DescribeDedicatedBlockStorageClustersRequest
         @return: DescribeDedicatedBlockStorageClustersResponse
@@ -1517,9 +1854,10 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.DescribeDedicatedBlockStorageClustersRequest,
     ) -> ebs_20210730_models.DescribeDedicatedBlockStorageClustersResponse:
         """
-        >  Dedicated Block Storage Cluster is supported in the China (Heyuan), Indonesia (Jakarta), and China (Shenzhen) regions.
-        *   You can specify multiple request parameters to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
-        *   We recommend that you use the NextToken and MaxResults parameters to perform a paged query. During a paged query, when you call the DescribeDedicatedBlockStorageClusters operation to retrieve the first page of results, set MaxResults to specify the maximum number of entries to return in the call. The return value of NextToken is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeDedicatedBlockStorageClusters operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call.
+        ## [](#)Usage notes
+        >  The Dedicated Block Storage Cluster feature is available only in the China (Heyuan), Indonesia (Jakarta), and China (Shenzhen) regions.
+        *   You can specify multiple request parameters to be queried. Specified parameters are evaluated by using the AND operator. Only the specified parameters are included in the filter conditions.
+        *   We recommend that you use NextToken and MaxResults to perform paged queries. We recommend that you use MaxResults to specify the maximum number of entries to return in each request. The return value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. When you call the DescribeDedicatedBlockStorageClusters operation to retrieve a new page of results, set NextToken to the NextToken value that is returned in the previous call and specify MaxResults to limit the number of entries returned.
         
         @param request: DescribeDedicatedBlockStorageClustersRequest
         @return: DescribeDedicatedBlockStorageClustersResponse
@@ -2119,8 +2457,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.DescribeDiskReplicaPairsResponse:
         """
-        The async replication feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore, US (Silicon Valley), and US (Virginia) regions.
-        *   When you call this operation for a specific region, if the primary disk (source disk) or secondary disk (destination disk) of a replication pair resides within the region, the information of the replication pair is displayed in the response.
+        ## [](#)Usage notes
+        *   For information about the regions in which async replication is available, see [Overview](~~314563~~).
+        *   When you call this operation for a specific region, if the primary disk (source disk) or secondary disk (destination disk) of a replication pair resides in the region, information about the replication pair is displayed in the response.
         *   If you want to perform a paged query, configure the `NextToken` and `MaxResults` parameters. During a paged query, when you call the DescribeDiskReplicaPairs operation to retrieve the first page of results, set `MaxResults` to limit the maximum number of entries to return in the call. The return value of NextToken is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeDiskReplicaPairs operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call.
         
         @param request: DescribeDiskReplicaPairsRequest
@@ -2174,8 +2513,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.DescribeDiskReplicaPairsResponse:
         """
-        The async replication feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore, US (Silicon Valley), and US (Virginia) regions.
-        *   When you call this operation for a specific region, if the primary disk (source disk) or secondary disk (destination disk) of a replication pair resides within the region, the information of the replication pair is displayed in the response.
+        ## [](#)Usage notes
+        *   For information about the regions in which async replication is available, see [Overview](~~314563~~).
+        *   When you call this operation for a specific region, if the primary disk (source disk) or secondary disk (destination disk) of a replication pair resides in the region, information about the replication pair is displayed in the response.
         *   If you want to perform a paged query, configure the `NextToken` and `MaxResults` parameters. During a paged query, when you call the DescribeDiskReplicaPairs operation to retrieve the first page of results, set `MaxResults` to limit the maximum number of entries to return in the call. The return value of NextToken is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeDiskReplicaPairs operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call.
         
         @param request: DescribeDiskReplicaPairsRequest
@@ -2228,8 +2568,9 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.DescribeDiskReplicaPairsRequest,
     ) -> ebs_20210730_models.DescribeDiskReplicaPairsResponse:
         """
-        The async replication feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore, US (Silicon Valley), and US (Virginia) regions.
-        *   When you call this operation for a specific region, if the primary disk (source disk) or secondary disk (destination disk) of a replication pair resides within the region, the information of the replication pair is displayed in the response.
+        ## [](#)Usage notes
+        *   For information about the regions in which async replication is available, see [Overview](~~314563~~).
+        *   When you call this operation for a specific region, if the primary disk (source disk) or secondary disk (destination disk) of a replication pair resides in the region, information about the replication pair is displayed in the response.
         *   If you want to perform a paged query, configure the `NextToken` and `MaxResults` parameters. During a paged query, when you call the DescribeDiskReplicaPairs operation to retrieve the first page of results, set `MaxResults` to limit the maximum number of entries to return in the call. The return value of NextToken is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeDiskReplicaPairs operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call.
         
         @param request: DescribeDiskReplicaPairsRequest
@@ -2243,8 +2584,9 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.DescribeDiskReplicaPairsRequest,
     ) -> ebs_20210730_models.DescribeDiskReplicaPairsResponse:
         """
-        The async replication feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore, US (Silicon Valley), and US (Virginia) regions.
-        *   When you call this operation for a specific region, if the primary disk (source disk) or secondary disk (destination disk) of a replication pair resides within the region, the information of the replication pair is displayed in the response.
+        ## [](#)Usage notes
+        *   For information about the regions in which async replication is available, see [Overview](~~314563~~).
+        *   When you call this operation for a specific region, if the primary disk (source disk) or secondary disk (destination disk) of a replication pair resides in the region, information about the replication pair is displayed in the response.
         *   If you want to perform a paged query, configure the `NextToken` and `MaxResults` parameters. During a paged query, when you call the DescribeDiskReplicaPairs operation to retrieve the first page of results, set `MaxResults` to limit the maximum number of entries to return in the call. The return value of NextToken is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeDiskReplicaPairs operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call.
         
         @param request: DescribeDiskReplicaPairsRequest
@@ -2252,6 +2594,112 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_disk_replica_pairs_with_options_async(request, runtime)
+
+    def describe_enterprise_snapshot_policy_with_options(
+        self,
+        request: ebs_20210730_models.DescribeEnterpriseSnapshotPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribeEnterpriseSnapshotPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.disk_ids):
+            query['DiskIds'] = request.disk_ids
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.policy_ids):
+            query['PolicyIds'] = request.policy_ids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEnterpriseSnapshotPolicy',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeEnterpriseSnapshotPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_enterprise_snapshot_policy_with_options_async(
+        self,
+        request: ebs_20210730_models.DescribeEnterpriseSnapshotPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribeEnterpriseSnapshotPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.disk_ids):
+            query['DiskIds'] = request.disk_ids
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.policy_ids):
+            query['PolicyIds'] = request.policy_ids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEnterpriseSnapshotPolicy',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeEnterpriseSnapshotPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_enterprise_snapshot_policy(
+        self,
+        request: ebs_20210730_models.DescribeEnterpriseSnapshotPolicyRequest,
+    ) -> ebs_20210730_models.DescribeEnterpriseSnapshotPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_enterprise_snapshot_policy_with_options(request, runtime)
+
+    async def describe_enterprise_snapshot_policy_async(
+        self,
+        request: ebs_20210730_models.DescribeEnterpriseSnapshotPolicyRequest,
+    ) -> ebs_20210730_models.DescribeEnterpriseSnapshotPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_enterprise_snapshot_policy_with_options_async(request, runtime)
 
     def describe_lens_service_status_with_options(
         self,
@@ -2330,6 +2778,96 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_lens_service_status_with_options_async(runtime)
+
+    def describe_metric_data_with_options(
+        self,
+        request: ebs_20210730_models.DescribeMetricDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribeMetricDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dimensions):
+            query['Dimensions'] = request.dimensions
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.metric_name):
+            query['MetricName'] = request.metric_name
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMetricData',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeMetricDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_metric_data_with_options_async(
+        self,
+        request: ebs_20210730_models.DescribeMetricDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribeMetricDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dimensions):
+            query['Dimensions'] = request.dimensions
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.metric_name):
+            query['MetricName'] = request.metric_name
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMetricData',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeMetricDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_metric_data(
+        self,
+        request: ebs_20210730_models.DescribeMetricDataRequest,
+    ) -> ebs_20210730_models.DescribeMetricDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_metric_data_with_options(request, runtime)
+
+    async def describe_metric_data_async(
+        self,
+        request: ebs_20210730_models.DescribeMetricDataRequest,
+    ) -> ebs_20210730_models.DescribeMetricDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_metric_data_with_options_async(request, runtime)
 
     def describe_pair_drills_with_options(
         self,
@@ -2603,7 +3141,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.FailoverDiskReplicaGroupResponse:
         """
-        The operation that you want to perform. Set the value to *FailoverDiskReplicaGroup**.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
+        *   The replication pair-consistent group must be in the **One-time Syncing** (`manual_syncing`), **Syncing** (`syncing`), **Normal** (`normal`), **Stopping** (`stopping`), **Stop Failed** (`stop_failed`), **Stopped** (`stopped`), **In Failover** (`failovering`), **Failover Failed** (`failover_failed`), or **Failovered** (`failovered`) state.
+        *   After a failover is performed, the replication pair-consistent group enters the **Failovered** (`failovered`) state.
+        *   Before you perform a failover, make sure that the first full data synchronization is completed between the primary site and secondary site.
         
         @param request: FailoverDiskReplicaGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2642,7 +3184,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.FailoverDiskReplicaGroupResponse:
         """
-        The operation that you want to perform. Set the value to *FailoverDiskReplicaGroup**.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
+        *   The replication pair-consistent group must be in the **One-time Syncing** (`manual_syncing`), **Syncing** (`syncing`), **Normal** (`normal`), **Stopping** (`stopping`), **Stop Failed** (`stop_failed`), **Stopped** (`stopped`), **In Failover** (`failovering`), **Failover Failed** (`failover_failed`), or **Failovered** (`failovered`) state.
+        *   After a failover is performed, the replication pair-consistent group enters the **Failovered** (`failovered`) state.
+        *   Before you perform a failover, make sure that the first full data synchronization is completed between the primary site and secondary site.
         
         @param request: FailoverDiskReplicaGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2680,7 +3226,11 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.FailoverDiskReplicaGroupRequest,
     ) -> ebs_20210730_models.FailoverDiskReplicaGroupResponse:
         """
-        The operation that you want to perform. Set the value to *FailoverDiskReplicaGroup**.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
+        *   The replication pair-consistent group must be in the **One-time Syncing** (`manual_syncing`), **Syncing** (`syncing`), **Normal** (`normal`), **Stopping** (`stopping`), **Stop Failed** (`stop_failed`), **Stopped** (`stopped`), **In Failover** (`failovering`), **Failover Failed** (`failover_failed`), or **Failovered** (`failovered`) state.
+        *   After a failover is performed, the replication pair-consistent group enters the **Failovered** (`failovered`) state.
+        *   Before you perform a failover, make sure that the first full data synchronization is completed between the primary site and secondary site.
         
         @param request: FailoverDiskReplicaGroupRequest
         @return: FailoverDiskReplicaGroupResponse
@@ -2693,7 +3243,11 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.FailoverDiskReplicaGroupRequest,
     ) -> ebs_20210730_models.FailoverDiskReplicaGroupResponse:
         """
-        The operation that you want to perform. Set the value to *FailoverDiskReplicaGroup**.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
+        *   The replication pair-consistent group must be in the **One-time Syncing** (`manual_syncing`), **Syncing** (`syncing`), **Normal** (`normal`), **Stopping** (`stopping`), **Stop Failed** (`stop_failed`), **Stopped** (`stopped`), **In Failover** (`failovering`), **Failover Failed** (`failover_failed`), or **Failovered** (`failovered`) state.
+        *   After a failover is performed, the replication pair-consistent group enters the **Failovered** (`failovered`) state.
+        *   Before you perform a failover, make sure that the first full data synchronization is completed between the primary site and secondary site.
         
         @param request: FailoverDiskReplicaGroupRequest
         @return: FailoverDiskReplicaGroupResponse
@@ -2707,7 +3261,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.FailoverDiskReplicaPairResponse:
         """
-        The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        ## [](#)Usage notes
+        *   For information about the regions in which async replication is available, see [Overview](~~314563~~).
+        *   The replication pair for which you want to enable failover cannot be in the **Invalid** (`invalid`) or **Deleted** (`deleted`) state.
+        *   After a failover is performed, the replication pair enters the **Failovered** (`failovered`) state.
         
         @param request: FailoverDiskReplicaPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2746,7 +3303,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.FailoverDiskReplicaPairResponse:
         """
-        The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        ## [](#)Usage notes
+        *   For information about the regions in which async replication is available, see [Overview](~~314563~~).
+        *   The replication pair for which you want to enable failover cannot be in the **Invalid** (`invalid`) or **Deleted** (`deleted`) state.
+        *   After a failover is performed, the replication pair enters the **Failovered** (`failovered`) state.
         
         @param request: FailoverDiskReplicaPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2784,7 +3344,10 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.FailoverDiskReplicaPairRequest,
     ) -> ebs_20210730_models.FailoverDiskReplicaPairResponse:
         """
-        The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        ## [](#)Usage notes
+        *   For information about the regions in which async replication is available, see [Overview](~~314563~~).
+        *   The replication pair for which you want to enable failover cannot be in the **Invalid** (`invalid`) or **Deleted** (`deleted`) state.
+        *   After a failover is performed, the replication pair enters the **Failovered** (`failovered`) state.
         
         @param request: FailoverDiskReplicaPairRequest
         @return: FailoverDiskReplicaPairResponse
@@ -2797,7 +3360,10 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.FailoverDiskReplicaPairRequest,
     ) -> ebs_20210730_models.FailoverDiskReplicaPairResponse:
         """
-        The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        ## [](#)Usage notes
+        *   For information about the regions in which async replication is available, see [Overview](~~314563~~).
+        *   The replication pair for which you want to enable failover cannot be in the **Invalid** (`invalid`) or **Deleted** (`deleted`) state.
+        *   After a failover is performed, the replication pair enters the **Failovered** (`failovered`) state.
         
         @param request: FailoverDiskReplicaPairRequest
         @return: FailoverDiskReplicaPairResponse
@@ -3051,7 +3617,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.ModifyDiskReplicaGroupResponse:
         """
-        The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
         *   The replication pair-consistent group must be in the **Created** (`created`) or **Stopped** (`stopped`) state.
         
         @param request: ModifyDiskReplicaGroupRequest
@@ -3099,7 +3666,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.ModifyDiskReplicaGroupResponse:
         """
-        The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
         *   The replication pair-consistent group must be in the **Created** (`created`) or **Stopped** (`stopped`) state.
         
         @param request: ModifyDiskReplicaGroupRequest
@@ -3146,7 +3714,8 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.ModifyDiskReplicaGroupRequest,
     ) -> ebs_20210730_models.ModifyDiskReplicaGroupResponse:
         """
-        The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
         *   The replication pair-consistent group must be in the **Created** (`created`) or **Stopped** (`stopped`) state.
         
         @param request: ModifyDiskReplicaGroupRequest
@@ -3160,7 +3729,8 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.ModifyDiskReplicaGroupRequest,
     ) -> ebs_20210730_models.ModifyDiskReplicaGroupResponse:
         """
-        The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
         *   The replication pair-consistent group must be in the **Created** (`created`) or **Stopped** (`stopped`) state.
         
         @param request: ModifyDiskReplicaGroupRequest
@@ -3175,7 +3745,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.ModifyDiskReplicaPairResponse:
         """
-        The name of the replication pair.
+        ## [](#)Usage notes
+        *   For information about the regions in which async replication is available, see [Overview](~~314563~~).
+        *   Only replication pairs that are in the **Created** (`created`) or **Stopped** (`stopped`) state can have their names or descriptions modified.
         
         @param request: ModifyDiskReplicaPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3222,7 +3794,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.ModifyDiskReplicaPairResponse:
         """
-        The name of the replication pair.
+        ## [](#)Usage notes
+        *   For information about the regions in which async replication is available, see [Overview](~~314563~~).
+        *   Only replication pairs that are in the **Created** (`created`) or **Stopped** (`stopped`) state can have their names or descriptions modified.
         
         @param request: ModifyDiskReplicaPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3268,7 +3842,9 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.ModifyDiskReplicaPairRequest,
     ) -> ebs_20210730_models.ModifyDiskReplicaPairResponse:
         """
-        The name of the replication pair.
+        ## [](#)Usage notes
+        *   For information about the regions in which async replication is available, see [Overview](~~314563~~).
+        *   Only replication pairs that are in the **Created** (`created`) or **Stopped** (`stopped`) state can have their names or descriptions modified.
         
         @param request: ModifyDiskReplicaPairRequest
         @return: ModifyDiskReplicaPairResponse
@@ -3281,7 +3857,9 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.ModifyDiskReplicaPairRequest,
     ) -> ebs_20210730_models.ModifyDiskReplicaPairResponse:
         """
-        The name of the replication pair.
+        ## [](#)Usage notes
+        *   For information about the regions in which async replication is available, see [Overview](~~314563~~).
+        *   Only replication pairs that are in the **Created** (`created`) or **Stopped** (`stopped`) state can have their names or descriptions modified.
         
         @param request: ModifyDiskReplicaPairRequest
         @return: ModifyDiskReplicaPairResponse
@@ -3289,13 +3867,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_disk_replica_pair_with_options_async(request, runtime)
 
+    def query_dedicated_block_storage_cluster_inventory_data_with_options(
+        self,
+        request: ebs_20210730_models.QueryDedicatedBlockStorageClusterInventoryDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.QueryDedicatedBlockStorageClusterInventoryDataResponse:
+        """
+        Period is the time interval between data retrieval points. When set to 60 (minute interval), a maximum of 1440 data points can be returned; when set to 3600 (hour interval), a maximum of 744 data points can be returned; and when set to 86400 (day interval), a maximum of 366 data points can be returned.
+        
+        @param request: QueryDedicatedBlockStorageClusterInventoryDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDedicatedBlockStorageClusterInventoryDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.dbsc_id):
+            body['DbscId'] = request.dbsc_id
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.period):
+            body['Period'] = request.period
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryDedicatedBlockStorageClusterInventoryData',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.QueryDedicatedBlockStorageClusterInventoryDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_dedicated_block_storage_cluster_inventory_data_with_options_async(
+        self,
+        request: ebs_20210730_models.QueryDedicatedBlockStorageClusterInventoryDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.QueryDedicatedBlockStorageClusterInventoryDataResponse:
+        """
+        Period is the time interval between data retrieval points. When set to 60 (minute interval), a maximum of 1440 data points can be returned; when set to 3600 (hour interval), a maximum of 744 data points can be returned; and when set to 86400 (day interval), a maximum of 366 data points can be returned.
+        
+        @param request: QueryDedicatedBlockStorageClusterInventoryDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDedicatedBlockStorageClusterInventoryDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.dbsc_id):
+            body['DbscId'] = request.dbsc_id
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.period):
+            body['Period'] = request.period
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryDedicatedBlockStorageClusterInventoryData',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.QueryDedicatedBlockStorageClusterInventoryDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_dedicated_block_storage_cluster_inventory_data(
+        self,
+        request: ebs_20210730_models.QueryDedicatedBlockStorageClusterInventoryDataRequest,
+    ) -> ebs_20210730_models.QueryDedicatedBlockStorageClusterInventoryDataResponse:
+        """
+        Period is the time interval between data retrieval points. When set to 60 (minute interval), a maximum of 1440 data points can be returned; when set to 3600 (hour interval), a maximum of 744 data points can be returned; and when set to 86400 (day interval), a maximum of 366 data points can be returned.
+        
+        @param request: QueryDedicatedBlockStorageClusterInventoryDataRequest
+        @return: QueryDedicatedBlockStorageClusterInventoryDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_dedicated_block_storage_cluster_inventory_data_with_options(request, runtime)
+
+    async def query_dedicated_block_storage_cluster_inventory_data_async(
+        self,
+        request: ebs_20210730_models.QueryDedicatedBlockStorageClusterInventoryDataRequest,
+    ) -> ebs_20210730_models.QueryDedicatedBlockStorageClusterInventoryDataResponse:
+        """
+        Period is the time interval between data retrieval points. When set to 60 (minute interval), a maximum of 1440 data points can be returned; when set to 3600 (hour interval), a maximum of 744 data points can be returned; and when set to 86400 (day interval), a maximum of 366 data points can be returned.
+        
+        @param request: QueryDedicatedBlockStorageClusterInventoryDataRequest
+        @return: QueryDedicatedBlockStorageClusterInventoryDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_dedicated_block_storage_cluster_inventory_data_with_options_async(request, runtime)
+
     def remove_disk_replica_pair_with_options(
         self,
         request: ebs_20210730_models.RemoveDiskReplicaPairRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.RemoveDiskReplicaPairResponse:
         """
-        The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
         *   The replication pair-consistent group from which you want to remove a replication pair must be in the **Created** (`created`), **Stopped** (`stopped`), or **Invalid** (`invalid`) state.
         
         @param request: RemoveDiskReplicaPairRequest
@@ -3337,7 +4036,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.RemoveDiskReplicaPairResponse:
         """
-        The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
         *   The replication pair-consistent group from which you want to remove a replication pair must be in the **Created** (`created`), **Stopped** (`stopped`), or **Invalid** (`invalid`) state.
         
         @param request: RemoveDiskReplicaPairRequest
@@ -3378,7 +4078,8 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.RemoveDiskReplicaPairRequest,
     ) -> ebs_20210730_models.RemoveDiskReplicaPairResponse:
         """
-        The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
         *   The replication pair-consistent group from which you want to remove a replication pair must be in the **Created** (`created`), **Stopped** (`stopped`), or **Invalid** (`invalid`) state.
         
         @param request: RemoveDiskReplicaPairRequest
@@ -3392,7 +4093,8 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.RemoveDiskReplicaPairRequest,
     ) -> ebs_20210730_models.RemoveDiskReplicaPairResponse:
         """
-        The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
         *   The replication pair-consistent group from which you want to remove a replication pair must be in the **Created** (`created`), **Stopped** (`stopped`), or **Invalid** (`invalid`) state.
         
         @param request: RemoveDiskReplicaPairRequest
@@ -3407,7 +4109,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.ReprotectDiskReplicaGroupResponse:
         """
-        The operation that you want to perform. Set the value to *ReprotectDiskReplicaGroup**.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
+        *   The replication pair-consistent group for which you want to enable reverse replication must be in the **Failovered** (`failovered`) state. You can call the `FailoverDiskReplicaPair` operation to enable failover.
+        *   Before a reverse replication is performed, the primary disks must be detached from its associated Elastic Compute Service (ECS) instance and must be in the Unattached state. You can call the [DetachDisk](~~25516~~) operation to detach the disks.
+        *   After you enable reverse replication, you must call the `StartDiskReplicaPair` operation again to enable the async replication feature before data can be replicated from the original secondary disks to the original primary disks.
+        *   You can set the ReverseReplicate parameter to false to cancel the **Failovered** (`failovered`) state and restore the original replication direction.
         
         @param request: ReprotectDiskReplicaGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3448,7 +4155,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.ReprotectDiskReplicaGroupResponse:
         """
-        The operation that you want to perform. Set the value to *ReprotectDiskReplicaGroup**.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
+        *   The replication pair-consistent group for which you want to enable reverse replication must be in the **Failovered** (`failovered`) state. You can call the `FailoverDiskReplicaPair` operation to enable failover.
+        *   Before a reverse replication is performed, the primary disks must be detached from its associated Elastic Compute Service (ECS) instance and must be in the Unattached state. You can call the [DetachDisk](~~25516~~) operation to detach the disks.
+        *   After you enable reverse replication, you must call the `StartDiskReplicaPair` operation again to enable the async replication feature before data can be replicated from the original secondary disks to the original primary disks.
+        *   You can set the ReverseReplicate parameter to false to cancel the **Failovered** (`failovered`) state and restore the original replication direction.
         
         @param request: ReprotectDiskReplicaGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3488,7 +4200,12 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.ReprotectDiskReplicaGroupRequest,
     ) -> ebs_20210730_models.ReprotectDiskReplicaGroupResponse:
         """
-        The operation that you want to perform. Set the value to *ReprotectDiskReplicaGroup**.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
+        *   The replication pair-consistent group for which you want to enable reverse replication must be in the **Failovered** (`failovered`) state. You can call the `FailoverDiskReplicaPair` operation to enable failover.
+        *   Before a reverse replication is performed, the primary disks must be detached from its associated Elastic Compute Service (ECS) instance and must be in the Unattached state. You can call the [DetachDisk](~~25516~~) operation to detach the disks.
+        *   After you enable reverse replication, you must call the `StartDiskReplicaPair` operation again to enable the async replication feature before data can be replicated from the original secondary disks to the original primary disks.
+        *   You can set the ReverseReplicate parameter to false to cancel the **Failovered** (`failovered`) state and restore the original replication direction.
         
         @param request: ReprotectDiskReplicaGroupRequest
         @return: ReprotectDiskReplicaGroupResponse
@@ -3501,7 +4218,12 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.ReprotectDiskReplicaGroupRequest,
     ) -> ebs_20210730_models.ReprotectDiskReplicaGroupResponse:
         """
-        The operation that you want to perform. Set the value to *ReprotectDiskReplicaGroup**.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
+        *   The replication pair-consistent group for which you want to enable reverse replication must be in the **Failovered** (`failovered`) state. You can call the `FailoverDiskReplicaPair` operation to enable failover.
+        *   Before a reverse replication is performed, the primary disks must be detached from its associated Elastic Compute Service (ECS) instance and must be in the Unattached state. You can call the [DetachDisk](~~25516~~) operation to detach the disks.
+        *   After you enable reverse replication, you must call the `StartDiskReplicaPair` operation again to enable the async replication feature before data can be replicated from the original secondary disks to the original primary disks.
+        *   You can set the ReverseReplicate parameter to false to cancel the **Failovered** (`failovered`) state and restore the original replication direction.
         
         @param request: ReprotectDiskReplicaGroupRequest
         @return: ReprotectDiskReplicaGroupResponse
@@ -3515,7 +4237,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.ReprotectDiskReplicaPairResponse:
         """
-        The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        ## [](#)Usage notes
+        *   For information about the regions in which async replication is available, see [Overview](~~314563~~).
+        *   The replication pair for which you want to enable reverse replication must be in the **Failovered** (`failovered`) state. You can call the [FailoverDiskReplicaPair](~~354358~~) operation to enable failover.
+        *   The primary disk must be detached from its associated Elastic Compute Service (ECS) instance and is in the Unattached state. You can call the [DetachDisk](~~25516~~) operation to detach the disk.
+        *   After you enable reverse replication, you must call the [StartDiskReplicaPair](~~354205~~) operation again to activate the replication pair before data can be replicated from the original secondary disk to the original primary disk.
+        *   You can set the ReverseReplicate parameter to false to cancel the **Failovered** (`failovered`) state and restore the original replication direction.
         
         @param request: ReprotectDiskReplicaPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3556,7 +4283,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.ReprotectDiskReplicaPairResponse:
         """
-        The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        ## [](#)Usage notes
+        *   For information about the regions in which async replication is available, see [Overview](~~314563~~).
+        *   The replication pair for which you want to enable reverse replication must be in the **Failovered** (`failovered`) state. You can call the [FailoverDiskReplicaPair](~~354358~~) operation to enable failover.
+        *   The primary disk must be detached from its associated Elastic Compute Service (ECS) instance and is in the Unattached state. You can call the [DetachDisk](~~25516~~) operation to detach the disk.
+        *   After you enable reverse replication, you must call the [StartDiskReplicaPair](~~354205~~) operation again to activate the replication pair before data can be replicated from the original secondary disk to the original primary disk.
+        *   You can set the ReverseReplicate parameter to false to cancel the **Failovered** (`failovered`) state and restore the original replication direction.
         
         @param request: ReprotectDiskReplicaPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3596,7 +4328,12 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.ReprotectDiskReplicaPairRequest,
     ) -> ebs_20210730_models.ReprotectDiskReplicaPairResponse:
         """
-        The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        ## [](#)Usage notes
+        *   For information about the regions in which async replication is available, see [Overview](~~314563~~).
+        *   The replication pair for which you want to enable reverse replication must be in the **Failovered** (`failovered`) state. You can call the [FailoverDiskReplicaPair](~~354358~~) operation to enable failover.
+        *   The primary disk must be detached from its associated Elastic Compute Service (ECS) instance and is in the Unattached state. You can call the [DetachDisk](~~25516~~) operation to detach the disk.
+        *   After you enable reverse replication, you must call the [StartDiskReplicaPair](~~354205~~) operation again to activate the replication pair before data can be replicated from the original secondary disk to the original primary disk.
+        *   You can set the ReverseReplicate parameter to false to cancel the **Failovered** (`failovered`) state and restore the original replication direction.
         
         @param request: ReprotectDiskReplicaPairRequest
         @return: ReprotectDiskReplicaPairResponse
@@ -3609,7 +4346,12 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.ReprotectDiskReplicaPairRequest,
     ) -> ebs_20210730_models.ReprotectDiskReplicaPairResponse:
         """
-        The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        ## [](#)Usage notes
+        *   For information about the regions in which async replication is available, see [Overview](~~314563~~).
+        *   The replication pair for which you want to enable reverse replication must be in the **Failovered** (`failovered`) state. You can call the [FailoverDiskReplicaPair](~~354358~~) operation to enable failover.
+        *   The primary disk must be detached from its associated Elastic Compute Service (ECS) instance and is in the Unattached state. You can call the [DetachDisk](~~25516~~) operation to detach the disk.
+        *   After you enable reverse replication, you must call the [StartDiskReplicaPair](~~354205~~) operation again to activate the replication pair before data can be replicated from the original secondary disk to the original primary disk.
+        *   You can set the ReverseReplicate parameter to false to cancel the **Failovered** (`failovered`) state and restore the original replication direction.
         
         @param request: ReprotectDiskReplicaPairRequest
         @return: ReprotectDiskReplicaPairResponse
@@ -3617,129 +4359,17 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.reprotect_disk_replica_pair_with_options_async(request, runtime)
 
-    def start_disk_monitor_with_options(
-        self,
-        tmp_req: ebs_20210730_models.StartDiskMonitorRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ebs_20210730_models.StartDiskMonitorResponse:
-        """
-        ## Usage notes
-        *   CloudLens for EBS is in invitational preview in the China (Hangzhou), China (Shanghai), China (Zhangjiakou), China (Shenzhen), and China (Hong Kong) regions. To use the feature, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
-        *   CloudLens for EBS can be used to monitor the performance of enhanced SSDs (ESSDs), standard SSDs, and ultra disks. After you enable CloudLens for EBS, you can enable the data collection feature to obtain the near real-time monitoring data. For more information, see [Enable near real-time monitoring for disks](~~354196~~).
-        
-        @param tmp_req: StartDiskMonitorRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: StartDiskMonitorResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = ebs_20210730_models.StartDiskMonitorShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.disk_ids):
-            request.disk_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.disk_ids, 'DiskIds', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.disk_ids_shrink):
-            query['DiskIds'] = request.disk_ids_shrink
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='StartDiskMonitor',
-            version='2021-07-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ebs_20210730_models.StartDiskMonitorResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def start_disk_monitor_with_options_async(
-        self,
-        tmp_req: ebs_20210730_models.StartDiskMonitorRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ebs_20210730_models.StartDiskMonitorResponse:
-        """
-        ## Usage notes
-        *   CloudLens for EBS is in invitational preview in the China (Hangzhou), China (Shanghai), China (Zhangjiakou), China (Shenzhen), and China (Hong Kong) regions. To use the feature, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
-        *   CloudLens for EBS can be used to monitor the performance of enhanced SSDs (ESSDs), standard SSDs, and ultra disks. After you enable CloudLens for EBS, you can enable the data collection feature to obtain the near real-time monitoring data. For more information, see [Enable near real-time monitoring for disks](~~354196~~).
-        
-        @param tmp_req: StartDiskMonitorRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: StartDiskMonitorResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = ebs_20210730_models.StartDiskMonitorShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.disk_ids):
-            request.disk_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.disk_ids, 'DiskIds', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.disk_ids_shrink):
-            query['DiskIds'] = request.disk_ids_shrink
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='StartDiskMonitor',
-            version='2021-07-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ebs_20210730_models.StartDiskMonitorResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def start_disk_monitor(
-        self,
-        request: ebs_20210730_models.StartDiskMonitorRequest,
-    ) -> ebs_20210730_models.StartDiskMonitorResponse:
-        """
-        ## Usage notes
-        *   CloudLens for EBS is in invitational preview in the China (Hangzhou), China (Shanghai), China (Zhangjiakou), China (Shenzhen), and China (Hong Kong) regions. To use the feature, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
-        *   CloudLens for EBS can be used to monitor the performance of enhanced SSDs (ESSDs), standard SSDs, and ultra disks. After you enable CloudLens for EBS, you can enable the data collection feature to obtain the near real-time monitoring data. For more information, see [Enable near real-time monitoring for disks](~~354196~~).
-        
-        @param request: StartDiskMonitorRequest
-        @return: StartDiskMonitorResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.start_disk_monitor_with_options(request, runtime)
-
-    async def start_disk_monitor_async(
-        self,
-        request: ebs_20210730_models.StartDiskMonitorRequest,
-    ) -> ebs_20210730_models.StartDiskMonitorResponse:
-        """
-        ## Usage notes
-        *   CloudLens for EBS is in invitational preview in the China (Hangzhou), China (Shanghai), China (Zhangjiakou), China (Shenzhen), and China (Hong Kong) regions. To use the feature, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
-        *   CloudLens for EBS can be used to monitor the performance of enhanced SSDs (ESSDs), standard SSDs, and ultra disks. After you enable CloudLens for EBS, you can enable the data collection feature to obtain the near real-time monitoring data. For more information, see [Enable near real-time monitoring for disks](~~354196~~).
-        
-        @param request: StartDiskMonitorRequest
-        @return: StartDiskMonitorResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.start_disk_monitor_with_options_async(request, runtime)
-
     def start_disk_replica_group_with_options(
         self,
         request: ebs_20210730_models.StartDiskReplicaGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.StartDiskReplicaGroupResponse:
         """
-        The operation that you want to perform. Set the value to *StartDiskReplicaGroup**.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
+        *   If you set the `OneShot` to `false`, the replication pair-consistent group must be in the **Created** (`created` ), **Synchronizing** (`syncing` ), **Normal** (`normal` ), or **Stopped** (`stopped`) state.
+        *   If you set `OneShot` to `true`, the replication pair-consistent group must be in the **Created** (`created` ), **One-time Syncing** (`manual_syncing` ), or **Stopped** (`stopped`) state. The time interval between two consecutive one-time synchronizations must be longer than one half of the recovery point objective (RPO).
+        *   After a replication pair-consistent group is activated, the group enters the **Initial Syncing** (`initial_syncing`) state and the system performs the first async replication to replicate all data from the primary disks to secondary disks.
         
         @param request: StartDiskReplicaGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3780,7 +4410,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.StartDiskReplicaGroupResponse:
         """
-        The operation that you want to perform. Set the value to *StartDiskReplicaGroup**.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
+        *   If you set the `OneShot` to `false`, the replication pair-consistent group must be in the **Created** (`created` ), **Synchronizing** (`syncing` ), **Normal** (`normal` ), or **Stopped** (`stopped`) state.
+        *   If you set `OneShot` to `true`, the replication pair-consistent group must be in the **Created** (`created` ), **One-time Syncing** (`manual_syncing` ), or **Stopped** (`stopped`) state. The time interval between two consecutive one-time synchronizations must be longer than one half of the recovery point objective (RPO).
+        *   After a replication pair-consistent group is activated, the group enters the **Initial Syncing** (`initial_syncing`) state and the system performs the first async replication to replicate all data from the primary disks to secondary disks.
         
         @param request: StartDiskReplicaGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3820,7 +4454,11 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.StartDiskReplicaGroupRequest,
     ) -> ebs_20210730_models.StartDiskReplicaGroupResponse:
         """
-        The operation that you want to perform. Set the value to *StartDiskReplicaGroup**.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
+        *   If you set the `OneShot` to `false`, the replication pair-consistent group must be in the **Created** (`created` ), **Synchronizing** (`syncing` ), **Normal** (`normal` ), or **Stopped** (`stopped`) state.
+        *   If you set `OneShot` to `true`, the replication pair-consistent group must be in the **Created** (`created` ), **One-time Syncing** (`manual_syncing` ), or **Stopped** (`stopped`) state. The time interval between two consecutive one-time synchronizations must be longer than one half of the recovery point objective (RPO).
+        *   After a replication pair-consistent group is activated, the group enters the **Initial Syncing** (`initial_syncing`) state and the system performs the first async replication to replicate all data from the primary disks to secondary disks.
         
         @param request: StartDiskReplicaGroupRequest
         @return: StartDiskReplicaGroupResponse
@@ -3833,7 +4471,11 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.StartDiskReplicaGroupRequest,
     ) -> ebs_20210730_models.StartDiskReplicaGroupResponse:
         """
-        The operation that you want to perform. Set the value to *StartDiskReplicaGroup**.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
+        *   If you set the `OneShot` to `false`, the replication pair-consistent group must be in the **Created** (`created` ), **Synchronizing** (`syncing` ), **Normal** (`normal` ), or **Stopped** (`stopped`) state.
+        *   If you set `OneShot` to `true`, the replication pair-consistent group must be in the **Created** (`created` ), **One-time Syncing** (`manual_syncing` ), or **Stopped** (`stopped`) state. The time interval between two consecutive one-time synchronizations must be longer than one half of the recovery point objective (RPO).
+        *   After a replication pair-consistent group is activated, the group enters the **Initial Syncing** (`initial_syncing`) state and the system performs the first async replication to replicate all data from the primary disks to secondary disks.
         
         @param request: StartDiskReplicaGroupRequest
         @return: StartDiskReplicaGroupResponse
@@ -3847,7 +4489,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.StartDiskReplicaPairResponse:
         """
-        The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        ## [](#)Usage notes
+        *   For information about the regions in which async replication is available, see [Overview](~~314563~~).
+        *   Only replication pairs that are in the **Created** (`created`) or **Stopped** (`stopped`) state can be activated.
+        *   After a replication pair is activated, it enters the **Initial Syncing** (`initial_syncing`) state and the system performs the first asynchronous replication to replicate all data from the primary disk to the secondary disk.
         
         @param request: StartDiskReplicaPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3888,7 +4533,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.StartDiskReplicaPairResponse:
         """
-        The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        ## [](#)Usage notes
+        *   For information about the regions in which async replication is available, see [Overview](~~314563~~).
+        *   Only replication pairs that are in the **Created** (`created`) or **Stopped** (`stopped`) state can be activated.
+        *   After a replication pair is activated, it enters the **Initial Syncing** (`initial_syncing`) state and the system performs the first asynchronous replication to replicate all data from the primary disk to the secondary disk.
         
         @param request: StartDiskReplicaPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3928,7 +4576,10 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.StartDiskReplicaPairRequest,
     ) -> ebs_20210730_models.StartDiskReplicaPairResponse:
         """
-        The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        ## [](#)Usage notes
+        *   For information about the regions in which async replication is available, see [Overview](~~314563~~).
+        *   Only replication pairs that are in the **Created** (`created`) or **Stopped** (`stopped`) state can be activated.
+        *   After a replication pair is activated, it enters the **Initial Syncing** (`initial_syncing`) state and the system performs the first asynchronous replication to replicate all data from the primary disk to the secondary disk.
         
         @param request: StartDiskReplicaPairRequest
         @return: StartDiskReplicaPairResponse
@@ -3941,7 +4592,10 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.StartDiskReplicaPairRequest,
     ) -> ebs_20210730_models.StartDiskReplicaPairResponse:
         """
-        The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        ## [](#)Usage notes
+        *   For information about the regions in which async replication is available, see [Overview](~~314563~~).
+        *   Only replication pairs that are in the **Created** (`created`) or **Stopped** (`stopped`) state can be activated.
+        *   After a replication pair is activated, it enters the **Initial Syncing** (`initial_syncing`) state and the system performs the first asynchronous replication to replicate all data from the primary disk to the secondary disk.
         
         @param request: StartDiskReplicaPairRequest
         @return: StartDiskReplicaPairResponse
@@ -3954,6 +4608,13 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.StartPairDrillRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.StartPairDrillResponse:
+        """
+        After the disaster recovery drill is complete on the secondary disk, a pay-as-you-go drill disk that has the same capacity and category as the secondary disk is created in the zone where the secondary disk resides. The drill disk contains last-recovery-point data that can be used to test the completeness and correctness of applications.
+        
+        @param request: StartPairDrillRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartPairDrillResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3986,6 +4647,13 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.StartPairDrillRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.StartPairDrillResponse:
+        """
+        After the disaster recovery drill is complete on the secondary disk, a pay-as-you-go drill disk that has the same capacity and category as the secondary disk is created in the zone where the secondary disk resides. The drill disk contains last-recovery-point data that can be used to test the completeness and correctness of applications.
+        
+        @param request: StartPairDrillRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartPairDrillResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -4017,6 +4685,12 @@ class Client(OpenApiClient):
         self,
         request: ebs_20210730_models.StartPairDrillRequest,
     ) -> ebs_20210730_models.StartPairDrillResponse:
+        """
+        After the disaster recovery drill is complete on the secondary disk, a pay-as-you-go drill disk that has the same capacity and category as the secondary disk is created in the zone where the secondary disk resides. The drill disk contains last-recovery-point data that can be used to test the completeness and correctness of applications.
+        
+        @param request: StartPairDrillRequest
+        @return: StartPairDrillResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_pair_drill_with_options(request, runtime)
 
@@ -4024,6 +4698,12 @@ class Client(OpenApiClient):
         self,
         request: ebs_20210730_models.StartPairDrillRequest,
     ) -> ebs_20210730_models.StartPairDrillResponse:
+        """
+        After the disaster recovery drill is complete on the secondary disk, a pay-as-you-go drill disk that has the same capacity and category as the secondary disk is created in the zone where the secondary disk resides. The drill disk contains last-recovery-point data that can be used to test the completeness and correctness of applications.
+        
+        @param request: StartPairDrillRequest
+        @return: StartPairDrillResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_pair_drill_with_options_async(request, runtime)
 
@@ -4032,6 +4712,13 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.StartReplicaGroupDrillRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.StartReplicaGroupDrillResponse:
+        """
+        After the disaster recovery drill is complete on secondary disks, a pay-as-you-go drill disk is created in the zone where the secondary disk of each replication pair resides. The latest-recovery-point data is restored to the drill disks to test the completeness and correctness of applications.
+        
+        @param request: StartReplicaGroupDrillRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartReplicaGroupDrillResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -4064,6 +4751,13 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.StartReplicaGroupDrillRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.StartReplicaGroupDrillResponse:
+        """
+        After the disaster recovery drill is complete on secondary disks, a pay-as-you-go drill disk is created in the zone where the secondary disk of each replication pair resides. The latest-recovery-point data is restored to the drill disks to test the completeness and correctness of applications.
+        
+        @param request: StartReplicaGroupDrillRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartReplicaGroupDrillResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -4095,6 +4789,12 @@ class Client(OpenApiClient):
         self,
         request: ebs_20210730_models.StartReplicaGroupDrillRequest,
     ) -> ebs_20210730_models.StartReplicaGroupDrillResponse:
+        """
+        After the disaster recovery drill is complete on secondary disks, a pay-as-you-go drill disk is created in the zone where the secondary disk of each replication pair resides. The latest-recovery-point data is restored to the drill disks to test the completeness and correctness of applications.
+        
+        @param request: StartReplicaGroupDrillRequest
+        @return: StartReplicaGroupDrillResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_replica_group_drill_with_options(request, runtime)
 
@@ -4102,120 +4802,14 @@ class Client(OpenApiClient):
         self,
         request: ebs_20210730_models.StartReplicaGroupDrillRequest,
     ) -> ebs_20210730_models.StartReplicaGroupDrillResponse:
+        """
+        After the disaster recovery drill is complete on secondary disks, a pay-as-you-go drill disk is created in the zone where the secondary disk of each replication pair resides. The latest-recovery-point data is restored to the drill disks to test the completeness and correctness of applications.
+        
+        @param request: StartReplicaGroupDrillRequest
+        @return: StartReplicaGroupDrillResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_replica_group_drill_with_options_async(request, runtime)
-
-    def stop_disk_monitor_with_options(
-        self,
-        tmp_req: ebs_20210730_models.StopDiskMonitorRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ebs_20210730_models.StopDiskMonitorResponse:
-        """
-        ## Usage notes
-        CloudLens for EBS is in invitational preview in the China (Hangzhou), China (Shanghai), China (Zhangjiakou), China (Shenzhen), and China (Hong Kong) regions. To use the feature, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
-        
-        @param tmp_req: StopDiskMonitorRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: StopDiskMonitorResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = ebs_20210730_models.StopDiskMonitorShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.disk_ids):
-            request.disk_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.disk_ids, 'DiskIds', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.disk_ids_shrink):
-            query['DiskIds'] = request.disk_ids_shrink
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='StopDiskMonitor',
-            version='2021-07-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ebs_20210730_models.StopDiskMonitorResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def stop_disk_monitor_with_options_async(
-        self,
-        tmp_req: ebs_20210730_models.StopDiskMonitorRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ebs_20210730_models.StopDiskMonitorResponse:
-        """
-        ## Usage notes
-        CloudLens for EBS is in invitational preview in the China (Hangzhou), China (Shanghai), China (Zhangjiakou), China (Shenzhen), and China (Hong Kong) regions. To use the feature, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
-        
-        @param tmp_req: StopDiskMonitorRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: StopDiskMonitorResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = ebs_20210730_models.StopDiskMonitorShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.disk_ids):
-            request.disk_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.disk_ids, 'DiskIds', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.disk_ids_shrink):
-            query['DiskIds'] = request.disk_ids_shrink
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='StopDiskMonitor',
-            version='2021-07-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ebs_20210730_models.StopDiskMonitorResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def stop_disk_monitor(
-        self,
-        request: ebs_20210730_models.StopDiskMonitorRequest,
-    ) -> ebs_20210730_models.StopDiskMonitorResponse:
-        """
-        ## Usage notes
-        CloudLens for EBS is in invitational preview in the China (Hangzhou), China (Shanghai), China (Zhangjiakou), China (Shenzhen), and China (Hong Kong) regions. To use the feature, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
-        
-        @param request: StopDiskMonitorRequest
-        @return: StopDiskMonitorResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.stop_disk_monitor_with_options(request, runtime)
-
-    async def stop_disk_monitor_async(
-        self,
-        request: ebs_20210730_models.StopDiskMonitorRequest,
-    ) -> ebs_20210730_models.StopDiskMonitorResponse:
-        """
-        ## Usage notes
-        CloudLens for EBS is in invitational preview in the China (Hangzhou), China (Shanghai), China (Zhangjiakou), China (Shenzhen), and China (Hong Kong) regions. To use the feature, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
-        
-        @param request: StopDiskMonitorRequest
-        @return: StopDiskMonitorResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.stop_disk_monitor_with_options_async(request, runtime)
 
     def stop_disk_replica_group_with_options(
         self,
@@ -4223,7 +4817,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.StopDiskReplicaGroupResponse:
         """
-        The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
         *   The replication pair-consistent group that you want to stop must be in the **One-time Syncing** (`manual_syncing`), **Syncing** (`syncing`), **Normal** (`normal`), **Stopping** (`stopping`), **Stop Failed** (`stop_failed`), or **Stopped** (`stopped`) state.
         *   When a replication pair-consistent group is stopped, it enters the **Stopped** (`stopped`) state. If a replication pair-consistent group cannot be stopped, the state of the group remains unchanged or changes to **Stop Failed** (`stop_failed`). In this case, try again later.
         
@@ -4264,7 +4859,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.StopDiskReplicaGroupResponse:
         """
-        The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
         *   The replication pair-consistent group that you want to stop must be in the **One-time Syncing** (`manual_syncing`), **Syncing** (`syncing`), **Normal** (`normal`), **Stopping** (`stopping`), **Stop Failed** (`stop_failed`), or **Stopped** (`stopped`) state.
         *   When a replication pair-consistent group is stopped, it enters the **Stopped** (`stopped`) state. If a replication pair-consistent group cannot be stopped, the state of the group remains unchanged or changes to **Stop Failed** (`stop_failed`). In this case, try again later.
         
@@ -4304,7 +4900,8 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.StopDiskReplicaGroupRequest,
     ) -> ebs_20210730_models.StopDiskReplicaGroupResponse:
         """
-        The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
         *   The replication pair-consistent group that you want to stop must be in the **One-time Syncing** (`manual_syncing`), **Syncing** (`syncing`), **Normal** (`normal`), **Stopping** (`stopping`), **Stop Failed** (`stop_failed`), or **Stopped** (`stopped`) state.
         *   When a replication pair-consistent group is stopped, it enters the **Stopped** (`stopped`) state. If a replication pair-consistent group cannot be stopped, the state of the group remains unchanged or changes to **Stop Failed** (`stop_failed`). In this case, try again later.
         
@@ -4319,7 +4916,8 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.StopDiskReplicaGroupRequest,
     ) -> ebs_20210730_models.StopDiskReplicaGroupResponse:
         """
-        The replication pair-consistent group feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
+        ## [](#)Usage notes
+        *   For information about the regions in which the replication pair-consistent group feature is available, see [Overview](~~314563~~).
         *   The replication pair-consistent group that you want to stop must be in the **One-time Syncing** (`manual_syncing`), **Syncing** (`syncing`), **Normal** (`normal`), **Stopping** (`stopping`), **Stop Failed** (`stop_failed`), or **Stopped** (`stopped`) state.
         *   When a replication pair-consistent group is stopped, it enters the **Stopped** (`stopped`) state. If a replication pair-consistent group cannot be stopped, the state of the group remains unchanged or changes to **Stop Failed** (`stop_failed`). In this case, try again later.
         
@@ -4335,8 +4933,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.StopDiskReplicaPairResponse:
         """
-        The async replication feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
-        *   Only replication pairs that are in the **Initial Syncing** (`initial_syncing`), **Syncing** (`syncing`), **One-time Syncing** (`manual_syncing`), or **Normal** (`normal`) state can be stopped. When a replication pair is stopped, it enters the Stopped (`stopped`) state. The secondary disk rolls back to the point in time when the last asynchronous replication was complete and drops all the data that is being replicated from the primary disk.
+        ## [](#)Usage notes
+        *   For information about the regions in which async replication is available, see [Overview](~~314563~~).
+        *   Only replication pairs that are in the **Initial Syncing** (`initial_syncing`), **Syncing** (`syncing`), **One-time Syncing** (`manual_syncing`), or **Normal** (`normal`) state can be stopped. When a replication pair is stopped, it enters the Stopped (`stopped`) state. The secondary disk rolls back to the point in time when the last async replication was complete and drops all the data that is being replicated from the primary disk.
         
         @param request: StopDiskReplicaPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4375,8 +4974,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.StopDiskReplicaPairResponse:
         """
-        The async replication feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
-        *   Only replication pairs that are in the **Initial Syncing** (`initial_syncing`), **Syncing** (`syncing`), **One-time Syncing** (`manual_syncing`), or **Normal** (`normal`) state can be stopped. When a replication pair is stopped, it enters the Stopped (`stopped`) state. The secondary disk rolls back to the point in time when the last asynchronous replication was complete and drops all the data that is being replicated from the primary disk.
+        ## [](#)Usage notes
+        *   For information about the regions in which async replication is available, see [Overview](~~314563~~).
+        *   Only replication pairs that are in the **Initial Syncing** (`initial_syncing`), **Syncing** (`syncing`), **One-time Syncing** (`manual_syncing`), or **Normal** (`normal`) state can be stopped. When a replication pair is stopped, it enters the Stopped (`stopped`) state. The secondary disk rolls back to the point in time when the last async replication was complete and drops all the data that is being replicated from the primary disk.
         
         @param request: StopDiskReplicaPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4414,8 +5014,9 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.StopDiskReplicaPairRequest,
     ) -> ebs_20210730_models.StopDiskReplicaPairResponse:
         """
-        The async replication feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
-        *   Only replication pairs that are in the **Initial Syncing** (`initial_syncing`), **Syncing** (`syncing`), **One-time Syncing** (`manual_syncing`), or **Normal** (`normal`) state can be stopped. When a replication pair is stopped, it enters the Stopped (`stopped`) state. The secondary disk rolls back to the point in time when the last asynchronous replication was complete and drops all the data that is being replicated from the primary disk.
+        ## [](#)Usage notes
+        *   For information about the regions in which async replication is available, see [Overview](~~314563~~).
+        *   Only replication pairs that are in the **Initial Syncing** (`initial_syncing`), **Syncing** (`syncing`), **One-time Syncing** (`manual_syncing`), or **Normal** (`normal`) state can be stopped. When a replication pair is stopped, it enters the Stopped (`stopped`) state. The secondary disk rolls back to the point in time when the last async replication was complete and drops all the data that is being replicated from the primary disk.
         
         @param request: StopDiskReplicaPairRequest
         @return: StopDiskReplicaPairResponse
@@ -4428,8 +5029,9 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.StopDiskReplicaPairRequest,
     ) -> ebs_20210730_models.StopDiskReplicaPairResponse:
         """
-        The async replication feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Heyuan), China (Chengdu), China (Hong Kong), Singapore (Singapore), US (Silicon Valley), and US (Virginia) regions.
-        *   Only replication pairs that are in the **Initial Syncing** (`initial_syncing`), **Syncing** (`syncing`), **One-time Syncing** (`manual_syncing`), or **Normal** (`normal`) state can be stopped. When a replication pair is stopped, it enters the Stopped (`stopped`) state. The secondary disk rolls back to the point in time when the last asynchronous replication was complete and drops all the data that is being replicated from the primary disk.
+        ## [](#)Usage notes
+        *   For information about the regions in which async replication is available, see [Overview](~~314563~~).
+        *   Only replication pairs that are in the **Initial Syncing** (`initial_syncing`), **Syncing** (`syncing`), **One-time Syncing** (`manual_syncing`), or **Normal** (`normal`) state can be stopped. When a replication pair is stopped, it enters the Stopped (`stopped`) state. The secondary disk rolls back to the point in time when the last async replication was complete and drops all the data that is being replicated from the primary disk.
         
         @param request: StopDiskReplicaPairRequest
         @return: StopDiskReplicaPairResponse
@@ -4548,6 +5150,88 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
+
+    def unbind_enterprise_snapshot_policy_with_options(
+        self,
+        request: ebs_20210730_models.UnbindEnterpriseSnapshotPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.UnbindEnterpriseSnapshotPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.disk_targets):
+            query['DiskTargets'] = request.disk_targets
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindEnterpriseSnapshotPolicy',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.UnbindEnterpriseSnapshotPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unbind_enterprise_snapshot_policy_with_options_async(
+        self,
+        request: ebs_20210730_models.UnbindEnterpriseSnapshotPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.UnbindEnterpriseSnapshotPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.disk_targets):
+            query['DiskTargets'] = request.disk_targets
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindEnterpriseSnapshotPolicy',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.UnbindEnterpriseSnapshotPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unbind_enterprise_snapshot_policy(
+        self,
+        request: ebs_20210730_models.UnbindEnterpriseSnapshotPolicyRequest,
+    ) -> ebs_20210730_models.UnbindEnterpriseSnapshotPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.unbind_enterprise_snapshot_policy_with_options(request, runtime)
+
+    async def unbind_enterprise_snapshot_policy_async(
+        self,
+        request: ebs_20210730_models.UnbindEnterpriseSnapshotPolicyRequest,
+    ) -> ebs_20210730_models.UnbindEnterpriseSnapshotPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.unbind_enterprise_snapshot_policy_with_options_async(request, runtime)
 
     def untag_resources_with_options(
         self,
@@ -4668,3 +5352,223 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
+
+    def update_enterprise_snapshot_policy_with_options(
+        self,
+        tmp_req: ebs_20210730_models.UpdateEnterpriseSnapshotPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.UpdateEnterpriseSnapshotPolicyResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ebs_20210730_models.UpdateEnterpriseSnapshotPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cross_region_copy_info):
+            request.cross_region_copy_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cross_region_copy_info, 'CrossRegionCopyInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.retain_rule):
+            request.retain_rule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.retain_rule, 'RetainRule', 'json')
+        if not UtilClient.is_unset(tmp_req.schedule):
+            request.schedule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule, 'Schedule', 'json')
+        if not UtilClient.is_unset(tmp_req.special_retain_rules):
+            request.special_retain_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.special_retain_rules, 'SpecialRetainRules', 'json')
+        if not UtilClient.is_unset(tmp_req.storage_rule):
+            request.storage_rule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.storage_rule, 'StorageRule', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cross_region_copy_info_shrink):
+            query['CrossRegionCopyInfo'] = request.cross_region_copy_info_shrink
+        if not UtilClient.is_unset(request.desc):
+            query['Desc'] = request.desc
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.retain_rule_shrink):
+            query['RetainRule'] = request.retain_rule_shrink
+        if not UtilClient.is_unset(request.schedule_shrink):
+            query['Schedule'] = request.schedule_shrink
+        if not UtilClient.is_unset(request.special_retain_rules_shrink):
+            query['SpecialRetainRules'] = request.special_retain_rules_shrink
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.storage_rule_shrink):
+            query['StorageRule'] = request.storage_rule_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateEnterpriseSnapshotPolicy',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.UpdateEnterpriseSnapshotPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_enterprise_snapshot_policy_with_options_async(
+        self,
+        tmp_req: ebs_20210730_models.UpdateEnterpriseSnapshotPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.UpdateEnterpriseSnapshotPolicyResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ebs_20210730_models.UpdateEnterpriseSnapshotPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cross_region_copy_info):
+            request.cross_region_copy_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cross_region_copy_info, 'CrossRegionCopyInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.retain_rule):
+            request.retain_rule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.retain_rule, 'RetainRule', 'json')
+        if not UtilClient.is_unset(tmp_req.schedule):
+            request.schedule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule, 'Schedule', 'json')
+        if not UtilClient.is_unset(tmp_req.special_retain_rules):
+            request.special_retain_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.special_retain_rules, 'SpecialRetainRules', 'json')
+        if not UtilClient.is_unset(tmp_req.storage_rule):
+            request.storage_rule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.storage_rule, 'StorageRule', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cross_region_copy_info_shrink):
+            query['CrossRegionCopyInfo'] = request.cross_region_copy_info_shrink
+        if not UtilClient.is_unset(request.desc):
+            query['Desc'] = request.desc
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.retain_rule_shrink):
+            query['RetainRule'] = request.retain_rule_shrink
+        if not UtilClient.is_unset(request.schedule_shrink):
+            query['Schedule'] = request.schedule_shrink
+        if not UtilClient.is_unset(request.special_retain_rules_shrink):
+            query['SpecialRetainRules'] = request.special_retain_rules_shrink
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.storage_rule_shrink):
+            query['StorageRule'] = request.storage_rule_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateEnterpriseSnapshotPolicy',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.UpdateEnterpriseSnapshotPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_enterprise_snapshot_policy(
+        self,
+        request: ebs_20210730_models.UpdateEnterpriseSnapshotPolicyRequest,
+    ) -> ebs_20210730_models.UpdateEnterpriseSnapshotPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_enterprise_snapshot_policy_with_options(request, runtime)
+
+    async def update_enterprise_snapshot_policy_async(
+        self,
+        request: ebs_20210730_models.UpdateEnterpriseSnapshotPolicyRequest,
+    ) -> ebs_20210730_models.UpdateEnterpriseSnapshotPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_enterprise_snapshot_policy_with_options_async(request, runtime)
+
+    def update_solution_instance_attribute_with_options(
+        self,
+        request: ebs_20210730_models.UpdateSolutionInstanceAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.UpdateSolutionInstanceAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.solution_instance_id):
+            query['SolutionInstanceId'] = request.solution_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSolutionInstanceAttribute',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.UpdateSolutionInstanceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_solution_instance_attribute_with_options_async(
+        self,
+        request: ebs_20210730_models.UpdateSolutionInstanceAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.UpdateSolutionInstanceAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.solution_instance_id):
+            query['SolutionInstanceId'] = request.solution_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSolutionInstanceAttribute',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.UpdateSolutionInstanceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_solution_instance_attribute(
+        self,
+        request: ebs_20210730_models.UpdateSolutionInstanceAttributeRequest,
+    ) -> ebs_20210730_models.UpdateSolutionInstanceAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_solution_instance_attribute_with_options(request, runtime)
+
+    async def update_solution_instance_attribute_async(
+        self,
+        request: ebs_20210730_models.UpdateSolutionInstanceAttributeRequest,
+    ) -> ebs_20210730_models.UpdateSolutionInstanceAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_solution_instance_attribute_with_options_async(request, runtime)

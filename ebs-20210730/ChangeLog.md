@@ -1,3 +1,17 @@
+2024-02-02 Version: 2.0.0
+- Support API BindEnterpriseSnapshotPolicy.
+- Support API CreateEnterpriseSnapshotPolicy.
+- Support API DeleteEnterpriseSnapshotPolicy.
+- Support API DescribeEnterpriseSnapshotPolicy.
+- Support API DescribeMetricData.
+- Support API QueryDedicatedBlockStorageClusterInventoryData.
+- Support API UnbindEnterpriseSnapshotPolicy.
+- Support API UpdateEnterpriseSnapshotPolicy.
+- Support API UpdateSolutionInstanceAttribute.
+- Delete API StartDiskMonitor.
+- Delete API StopDiskMonitor.
+
+
 2023-10-11 Version: 1.4.0
 - Generated python 2021-07-30 for ebs.
 
