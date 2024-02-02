@@ -1,3 +1,7 @@
+2024-02-02 Version: 3.1.1
+- Update API ListProjectFeatureViewsupdate response param.
+
+
 2024-01-31 Version: 3.1.0
 - Support API CreateModelFeatureTrainingSetFGTable.
 - Support API ExportModelFeatureTrainingSetFGTable.
