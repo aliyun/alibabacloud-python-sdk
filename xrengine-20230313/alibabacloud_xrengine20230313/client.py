@@ -1373,6 +1373,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.locate_with_options_async(request, runtime)
 
+    def login_hugging_face_with_options(
+        self,
+        request: xr_engine_20230313_models.LoginHuggingFaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.LoginHuggingFaceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.token):
+            body['Token'] = request.token
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='LoginHuggingFace',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.LoginHuggingFaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def login_hugging_face_with_options_async(
+        self,
+        request: xr_engine_20230313_models.LoginHuggingFaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.LoginHuggingFaceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.token):
+            body['Token'] = request.token
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='LoginHuggingFace',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.LoginHuggingFaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def login_hugging_face(
+        self,
+        request: xr_engine_20230313_models.LoginHuggingFaceRequest,
+    ) -> xr_engine_20230313_models.LoginHuggingFaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.login_hugging_face_with_options(request, runtime)
+
+    async def login_hugging_face_async(
+        self,
+        request: xr_engine_20230313_models.LoginHuggingFaceRequest,
+    ) -> xr_engine_20230313_models.LoginHuggingFaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.login_hugging_face_with_options_async(request, runtime)
+
     def login_model_scope_with_options(
         self,
         request: xr_engine_20230313_models.LoginModelScopeRequest,

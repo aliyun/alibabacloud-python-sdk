@@ -1,3 +1,7 @@
+2024-02-02 Version: 2.9.0
+- Support API LoginHuggingFace.
+
+
 2024-01-23 Version: 2.8.3
 - Generated python 2023-03-13 for xrEngine.
 
