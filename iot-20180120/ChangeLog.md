@@ -1,3 +1,7 @@
+2024-02-02 Version: 5.1.0
+- Support API UnsubscribeTopic.
+
+
 2024-01-15 Version: 5.0.1
 - BatchPub Support MQTT5.
 

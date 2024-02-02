@@ -41106,6 +41106,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.unbind_scene_rule_from_edge_instance_with_options_async(request, runtime)
 
+    def unsubscribe_topic_with_options(
+        self,
+        request: iot_20180120_models.UnsubscribeTopicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.UnsubscribeTopicResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.topic):
+            query['Topic'] = request.topic
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnsubscribeTopic',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.UnsubscribeTopicResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unsubscribe_topic_with_options_async(
+        self,
+        request: iot_20180120_models.UnsubscribeTopicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.UnsubscribeTopicResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.topic):
+            query['Topic'] = request.topic
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnsubscribeTopic',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.UnsubscribeTopicResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unsubscribe_topic(
+        self,
+        request: iot_20180120_models.UnsubscribeTopicRequest,
+    ) -> iot_20180120_models.UnsubscribeTopicResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.unsubscribe_topic_with_options(request, runtime)
+
+    async def unsubscribe_topic_async(
+        self,
+        request: iot_20180120_models.UnsubscribeTopicRequest,
+    ) -> iot_20180120_models.UnsubscribeTopicResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.unsubscribe_topic_with_options_async(request, runtime)
+
     def update_consumer_group_with_options(
         self,
         request: iot_20180120_models.UpdateConsumerGroupRequest,
