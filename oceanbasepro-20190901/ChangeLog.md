@@ -1,3 +1,17 @@
+2024-02-04 Version: 2.3.0
+- Support API DescribeSampleSqlRawTexts.
+- Update API CreateInstanceupdate InstanceClass param.
+- Update API DescribeAvailableCpuResourceupdate response param.
+- Update API DescribeDataBackupSetupdate BackupObjectType param.
+- Update API DescribeInstanceupdate response param.
+- Update API DescribeInstancesupdate response param.
+- Update API DescribeOasAnomalySQLListupdate response param.
+- Update API DescribeOasSQLHistoryListupdate response param.
+- Update API DescribeTenantupdate response param.
+- Update API DescribeTenantsupdate response param.
+- Update API ModifyTenantPrimaryZoneadd VpcId param.
+
+
 2024-01-10 Version: 2.2.0
 - Generated python 2019-09-01 for OceanBasePro.
 
