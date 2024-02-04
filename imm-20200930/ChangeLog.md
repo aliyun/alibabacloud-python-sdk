@@ -1,3 +1,7 @@
+2024-02-04 Version: 4.1.0
+- Support API DetectImageTexts.
+
+
 2024-01-22 Version: 4.0.1
 - Generated python 2020-09-30 for imm.
 

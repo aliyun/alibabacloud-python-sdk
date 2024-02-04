@@ -4856,6 +4856,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.detect_image_score_with_options_async(request, runtime)
 
+    def detect_image_texts_with_options(
+        self,
+        tmp_req: imm_20200930_models.DetectImageTextsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.DetectImageTextsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.DetectImageTextsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetectImageTexts',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.DetectImageTextsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detect_image_texts_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.DetectImageTextsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.DetectImageTextsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.DetectImageTextsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetectImageTexts',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.DetectImageTextsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detect_image_texts(
+        self,
+        request: imm_20200930_models.DetectImageTextsRequest,
+    ) -> imm_20200930_models.DetectImageTextsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.detect_image_texts_with_options(request, runtime)
+
+    async def detect_image_texts_async(
+        self,
+        request: imm_20200930_models.DetectImageTextsRequest,
+    ) -> imm_20200930_models.DetectImageTextsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.detect_image_texts_with_options_async(request, runtime)
+
     def detect_media_meta_with_options(
         self,
         tmp_req: imm_20200930_models.DetectMediaMetaRequest,

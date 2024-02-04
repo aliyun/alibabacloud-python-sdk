@@ -28,7 +28,7 @@ pip install alibabacloud_imm20200930
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/imm-20200930/ChangeLog.md).
 
 ## References
 
