@@ -56,6 +56,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.nlu_service_params_json):
             query['NluServiceParamsJson'] = request.nlu_service_params_json
+        if not UtilClient.is_unset(request.nlu_service_type):
+            query['NluServiceType'] = request.nlu_service_type
         if not UtilClient.is_unset(request.union_source):
             query['UnionSource'] = request.union_source
         req = open_api_models.OpenApiRequest(
@@ -92,6 +94,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.nlu_service_params_json):
             query['NluServiceParamsJson'] = request.nlu_service_params_json
+        if not UtilClient.is_unset(request.nlu_service_type):
+            query['NluServiceType'] = request.nlu_service_type
         if not UtilClient.is_unset(request.union_source):
             query['UnionSource'] = request.union_source
         req = open_api_models.OpenApiRequest(
@@ -134,8 +138,18 @@ class Client(OpenApiClient):
     ) -> voice_navigator_20180612_models.AuditTTSVoiceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.access_key):
+            query['AccessKey'] = request.access_key
+        if not UtilClient.is_unset(request.app_key):
+            query['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.pitch_rate):
+            query['PitchRate'] = request.pitch_rate
+        if not UtilClient.is_unset(request.secret_key):
+            query['SecretKey'] = request.secret_key
         if not UtilClient.is_unset(request.speech_rate):
             query['SpeechRate'] = request.speech_rate
         if not UtilClient.is_unset(request.text):
@@ -170,8 +184,18 @@ class Client(OpenApiClient):
     ) -> voice_navigator_20180612_models.AuditTTSVoiceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.access_key):
+            query['AccessKey'] = request.access_key
+        if not UtilClient.is_unset(request.app_key):
+            query['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.pitch_rate):
+            query['PitchRate'] = request.pitch_rate
+        if not UtilClient.is_unset(request.secret_key):
+            query['SecretKey'] = request.secret_key
         if not UtilClient.is_unset(request.speech_rate):
             query['SpeechRate'] = request.speech_rate
         if not UtilClient.is_unset(request.text):
@@ -2890,6 +2914,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_key):
             query['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.engine_xunfei):
+            query['EngineXunfei'] = request.engine_xunfei
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.nls_service_type):
@@ -2928,6 +2956,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_key):
             query['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.engine_xunfei):
+            query['EngineXunfei'] = request.engine_xunfei
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.nls_service_type):
