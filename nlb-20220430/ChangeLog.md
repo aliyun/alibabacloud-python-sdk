@@ -1,3 +1,10 @@
+2024-02-04 Version: 3.0.2
+- Update API CreateListenerupdate IdleTimeout param.
+- Update API CreateLoadBalancerupdate ZoneMappings param.
+- Update API GetLoadBalancerAttributeupdate response param.
+- Update API UpdateListenerAttributeupdate IdleTimeout param.
+
+
 2024-01-22 Version: 3.0.1
 - Generated python 2022-04-30 for Nlb.
 

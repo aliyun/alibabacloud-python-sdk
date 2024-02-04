@@ -214,9 +214,6 @@ class AddServersToServerGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -358,9 +355,6 @@ class AssociateAdditionalCertificatesWithListenerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -502,9 +496,6 @@ class AttachCommonBandwidthPackageToLoadBalancerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -688,9 +679,6 @@ class CancelShiftLoadBalancerZonesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1378,9 +1366,6 @@ class CreateListenerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1563,12 +1548,18 @@ class CreateLoadBalancerRequestZoneMappings(TeaModel):
     def __init__(
         self,
         allocation_id: str = None,
+        ipv_4local_addresses: List[str] = None,
+        ipv_6address: str = None,
+        ipv_6local_addresses: List[str] = None,
         private_ipv_4address: str = None,
         v_switch_id: str = None,
         zone_id: str = None,
     ):
         # The ID of the elastic IP address (EIP) that is associated with the Internet-facing NLB instance. You can specify one EIP for each zone. You must add at least two zones. You can add a maximum of 10 zones.
         self.allocation_id = allocation_id
+        self.ipv_4local_addresses = ipv_4local_addresses
+        self.ipv_6address = ipv_6address
+        self.ipv_6local_addresses = ipv_6local_addresses
         # The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
         self.private_ipv_4address = private_ipv_4address
         # The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
@@ -1589,6 +1580,12 @@ class CreateLoadBalancerRequestZoneMappings(TeaModel):
         result = dict()
         if self.allocation_id is not None:
             result['AllocationId'] = self.allocation_id
+        if self.ipv_4local_addresses is not None:
+            result['Ipv4LocalAddresses'] = self.ipv_4local_addresses
+        if self.ipv_6address is not None:
+            result['Ipv6Address'] = self.ipv_6address
+        if self.ipv_6local_addresses is not None:
+            result['Ipv6LocalAddresses'] = self.ipv_6local_addresses
         if self.private_ipv_4address is not None:
             result['PrivateIPv4Address'] = self.private_ipv_4address
         if self.v_switch_id is not None:
@@ -1601,6 +1598,12 @@ class CreateLoadBalancerRequestZoneMappings(TeaModel):
         m = m or dict()
         if m.get('AllocationId') is not None:
             self.allocation_id = m.get('AllocationId')
+        if m.get('Ipv4LocalAddresses') is not None:
+            self.ipv_4local_addresses = m.get('Ipv4LocalAddresses')
+        if m.get('Ipv6Address') is not None:
+            self.ipv_6address = m.get('Ipv6Address')
+        if m.get('Ipv6LocalAddresses') is not None:
+            self.ipv_6local_addresses = m.get('Ipv6LocalAddresses')
         if m.get('PrivateIPv4Address') is not None:
             self.private_ipv_4address = m.get('PrivateIPv4Address')
         if m.get('VSwitchId') is not None:
@@ -1835,9 +1838,6 @@ class CreateLoadBalancerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2096,9 +2096,6 @@ class CreateSecurityPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2533,9 +2530,6 @@ class CreateServerGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2670,9 +2664,6 @@ class DeleteListenerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2807,9 +2798,6 @@ class DeleteLoadBalancerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2937,9 +2925,6 @@ class DeleteSecurityPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3074,9 +3059,6 @@ class DeleteServerGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3253,9 +3235,6 @@ class DescribeRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3432,9 +3411,6 @@ class DescribeZonesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3576,9 +3552,6 @@ class DetachCommonBandwidthPackageFromLoadBalancerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3706,9 +3679,6 @@ class DisableLoadBalancerIpv6InternetResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3850,9 +3820,6 @@ class DisassociateAdditionalCertificatesWithListenerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3980,9 +3947,6 @@ class EnableLoadBalancerIpv6InternetResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4101,9 +4065,6 @@ class GetJobStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4527,9 +4488,6 @@ class GetListenerAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4900,9 +4858,6 @@ class GetListenerHealthStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5192,7 +5147,9 @@ class GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses(TeaM
         self,
         allocation_id: str = None,
         eni_id: str = None,
+        ipv_4local_addresses: List[str] = None,
         ipv_6address: str = None,
+        ipv_6local_addresses: List[str] = None,
         private_ipv_4address: str = None,
         private_ipv_4hc_status: str = None,
         private_ipv_6hc_status: str = None,
@@ -5202,8 +5159,10 @@ class GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses(TeaM
         self.allocation_id = allocation_id
         # The ID of the elastic network interface (ENI).
         self.eni_id = eni_id
+        self.ipv_4local_addresses = ipv_4local_addresses
         # The IPv6 address of the NLB instance.
         self.ipv_6address = ipv_6address
+        self.ipv_6local_addresses = ipv_6local_addresses
         # The private IPv4 address of the NLB instance.
         self.private_ipv_4address = private_ipv_4address
         # The health status of the private IPv4 address of the NLB instance. Valid values:
@@ -5236,8 +5195,12 @@ class GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses(TeaM
             result['AllocationId'] = self.allocation_id
         if self.eni_id is not None:
             result['EniId'] = self.eni_id
+        if self.ipv_4local_addresses is not None:
+            result['Ipv4LocalAddresses'] = self.ipv_4local_addresses
         if self.ipv_6address is not None:
             result['Ipv6Address'] = self.ipv_6address
+        if self.ipv_6local_addresses is not None:
+            result['Ipv6LocalAddresses'] = self.ipv_6local_addresses
         if self.private_ipv_4address is not None:
             result['PrivateIPv4Address'] = self.private_ipv_4address
         if self.private_ipv_4hc_status is not None:
@@ -5254,8 +5217,12 @@ class GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses(TeaM
             self.allocation_id = m.get('AllocationId')
         if m.get('EniId') is not None:
             self.eni_id = m.get('EniId')
+        if m.get('Ipv4LocalAddresses') is not None:
+            self.ipv_4local_addresses = m.get('Ipv4LocalAddresses')
         if m.get('Ipv6Address') is not None:
             self.ipv_6address = m.get('Ipv6Address')
+        if m.get('Ipv6LocalAddresses') is not None:
+            self.ipv_6local_addresses = m.get('Ipv6LocalAddresses')
         if m.get('PrivateIPv4Address') is not None:
             self.private_ipv_4address = m.get('PrivateIPv4Address')
         if m.get('PrivateIPv4HcStatus') is not None:
@@ -5593,9 +5560,6 @@ class GetLoadBalancerAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5834,9 +5798,6 @@ class ListListenerCertificatesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6382,9 +6343,6 @@ class ListListenersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7256,9 +7214,6 @@ class ListLoadBalancersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7721,9 +7676,6 @@ class ListSecurityPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7994,9 +7946,6 @@ class ListServerGroupServersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8597,9 +8546,6 @@ class ListServerGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8763,9 +8709,6 @@ class ListSystemSecurityPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9073,9 +9016,6 @@ class ListTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9217,9 +9157,6 @@ class LoadBalancerJoinSecurityGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9361,9 +9298,6 @@ class LoadBalancerLeaveSecurityGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9546,9 +9480,6 @@ class MoveResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9762,9 +9693,6 @@ class RemoveServersFromServerGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9899,9 +9827,6 @@ class StartListenerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10085,9 +10010,6 @@ class StartShiftLoadBalancerZonesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10222,9 +10144,6 @@ class StopListenerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10424,9 +10343,6 @@ class TagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10589,9 +10505,6 @@ class UntagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11083,9 +10996,6 @@ class UpdateListenerAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11301,9 +11211,6 @@ class UpdateLoadBalancerAddressTypeConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11464,9 +11371,6 @@ class UpdateLoadBalancerAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11634,9 +11538,6 @@ class UpdateLoadBalancerProtectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11847,9 +11748,6 @@ class UpdateLoadBalancerZonesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12054,9 +11952,6 @@ class UpdateSecurityPolicyAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12372,9 +12267,6 @@ class UpdateServerGroupAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12612,9 +12504,6 @@ class UpdateServerGroupServersAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
