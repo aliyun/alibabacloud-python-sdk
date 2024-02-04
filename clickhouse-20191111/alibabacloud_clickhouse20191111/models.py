@@ -103,9 +103,6 @@ class AllocateClusterPublicConnectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -308,9 +305,6 @@ class CheckClickhouseToRDSResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -425,9 +419,6 @@ class CheckModifyConfigNeedRestartResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -573,9 +564,6 @@ class CheckMonitorAlertResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -860,9 +848,6 @@ class CheckScaleOutBalancedResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -943,7 +928,9 @@ class CheckServiceLinkedRoleResponseBody(TeaModel):
         has_service_linked_role: bool = None,
         request_id: str = None,
     ):
+        # The role.
         self.has_service_linked_role = has_service_linked_role
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -982,9 +969,6 @@ class CheckServiceLinkedRoleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1148,9 +1132,6 @@ class CreateAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1330,9 +1311,6 @@ class CreateAccountAndAuthorityResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1492,9 +1470,6 @@ class CreateBackupPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1646,7 +1621,9 @@ class CreateDBInstanceRequest(TeaModel):
         self.used_time = used_time
         # The VPC ID.
         self.vpcid = vpcid
+        # 备专有网络交换机
         self.v_switch_bak = v_switch_bak
+        # 备专有网络交换机2
         self.v_switch_bak_2 = v_switch_bak_2
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
@@ -1841,9 +1818,6 @@ class CreateDBInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1972,9 +1946,6 @@ class CreateMonitorDataReportResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2103,9 +2074,6 @@ class CreateOSSStorageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2241,9 +2209,6 @@ class CreatePortsForClickHouseResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2477,9 +2442,6 @@ class CreateRDSToClickhouseDbResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2644,9 +2606,6 @@ class CreateSQLAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2761,9 +2720,6 @@ class CreateServiceLinkedRoleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2892,9 +2848,6 @@ class DeleteAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3016,9 +2969,6 @@ class DeleteDBClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3172,9 +3122,6 @@ class DeleteSyndbResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3365,9 +3312,6 @@ class DescribeAccountAuthorityResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3617,9 +3561,6 @@ class DescribeAccountsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4042,9 +3983,6 @@ class DescribeAllDataSourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4467,9 +4405,6 @@ class DescribeAllDataSourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4637,9 +4572,6 @@ class DescribeBackupPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4902,9 +4834,6 @@ class DescribeBackupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5160,9 +5089,6 @@ class DescribeColumnsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5348,9 +5274,6 @@ class DescribeConfigHistoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5469,9 +5392,6 @@ class DescribeConfigVersionDifferenceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5679,9 +5599,6 @@ class DescribeDBClusterAccessWhiteListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5929,6 +5846,7 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
     ):
         # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
+        # The scheduled restart time. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in Coordinated Universal Time (UTC).
         self.appointment_restart_time = appointment_restart_time
         # The site ID. Valid values:
         # 
@@ -6023,7 +5941,14 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
         # 
         # >  Pay-as-you-go clusters never expire. If the cluster is a pay-as-you-go cluster, an empty string is returned for this parameter.
         self.expire_time = expire_time
+        # The extended storage space. Unit: GB.
         self.ext_storage_size = ext_storage_size
+        # The extended storage type. Valid values:
+        # 
+        # *   **CloudESSD**: The cluster uses an enhanced SSD (ESSD) of performance level (PL) 1.
+        # *   **CloudESSD_PL2**: The cluster uses an ESSD of PL 2.
+        # *   **CloudESSD_PL3**: The cluster uses an ESSD of PL 3.
+        # *   **CloudEfficiency**: The cluster uses an ultra disk.
         self.ext_storage_type = ext_storage_type
         # Indicates whether the cluster has expired. Valid values:
         # 
@@ -6063,6 +5988,7 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
         self.public_port = public_port
         # The region ID.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The status of the data migration task.
         self.scale_out_status = scale_out_status
@@ -6106,6 +6032,7 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
         # The zone ID.
         self.zone_id = zone_id
         self.zone_id_vswitch_map = zone_id_vswitch_map
+        # The ZooKeeper specifications.
         self.zookeeper_class = zookeeper_class
 
     def validate(self):
@@ -6382,9 +6309,6 @@ class DescribeDBClusterAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6520,9 +6444,6 @@ class DescribeDBClusterConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6634,9 +6555,6 @@ class DescribeDBClusterConfigInXMLResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6910,9 +6828,6 @@ class DescribeDBClusterNetInfoItemsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7259,9 +7174,6 @@ class DescribeDBClusterPerformanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7964,9 +7876,6 @@ class DescribeDBClustersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8102,9 +8011,6 @@ class DescribeDBConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8268,9 +8174,6 @@ class DescribeOSSStorageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8735,9 +8638,6 @@ class DescribeProcessListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9006,9 +8906,6 @@ class DescribeRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9209,9 +9106,6 @@ class DescribeSchemasResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9702,9 +9596,6 @@ class DescribeSlowLogRecordsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9840,9 +9731,6 @@ class DescribeSynDbTablesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9887,7 +9775,9 @@ class DescribeSynDbsRequest(TeaModel):
         self.db_cluster_id = db_cluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -9946,12 +9836,12 @@ class DescribeSynDbsResponseBodySynDbs(TeaModel):
         syn_db: str = None,
         syn_status: bool = None,
     ):
-        # *   When the value **true** is returned for the **SynStatus** parameter, the system does not return the ErrorMsg parameter.
-        # *   When the value **false** is returned for the **SynStatus** parameter, the system returns for the ErrorMsg parameter the cause why the data synchronization failed.
+        # *   If the value **true** is returned for the **SynStatus** parameter, this parameter is not returned.
+        # *   If the value **false** is returned for the **SynStatus** parameter, the system returns the ErrorMsg parameter that provides the cause why the data synchronization failed.
         self.error_msg = error_msg
         # The ID of the ApsaraDB RDS for MySQL instance.
         self.rds_id = rds_id
-        # The account that is used to log on to the ApsaraDB RDS for MySQL database.
+        # The database account that is used to log on to the ApsaraDB RDS for MySQL instance.
         self.rds_user_name = rds_user_name
         # The internal endpoint of the ApsaraDB RDS for MySQL instance.
         self.rds_vpc_url = rds_vpc_url
@@ -10012,12 +9902,15 @@ class DescribeSynDbsResponseBody(TeaModel):
         syn_dbs: List[DescribeSynDbsResponseBodySynDbs] = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         # The information about data synchronization between the ApsaraDB for ClickHouse cluster and an ApsaraDB RDS for MySQL instance.
         self.syn_dbs = syn_dbs
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -10076,9 +9969,6 @@ class DescribeSynDbsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10293,9 +10183,6 @@ class DescribeTablesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10513,9 +10400,6 @@ class DescribeTransferHistoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10653,9 +10537,6 @@ class KillProcessResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10839,9 +10720,6 @@ class ModifyAccountAuthorityResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10973,9 +10851,6 @@ class ModifyAccountDescriptionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11128,9 +11003,6 @@ class ModifyBackupPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11167,6 +11039,7 @@ class ModifyDBClusterRequest(TeaModel):
         dbcluster_id: str = None,
         dbnode_group_count: str = None,
         dbnode_storage: str = None,
+        db_node_storage_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
@@ -11206,6 +11079,7 @@ class ModifyDBClusterRequest(TeaModel):
         # 
         # >  This value is a multiple of 100.
         self.dbnode_storage = dbnode_storage
+        self.db_node_storage_type = db_node_storage_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID. You can call the [DescribeRegions](~~170875~~) operation to query the most recent region list.
@@ -11230,6 +11104,8 @@ class ModifyDBClusterRequest(TeaModel):
             result['DBNodeGroupCount'] = self.dbnode_group_count
         if self.dbnode_storage is not None:
             result['DBNodeStorage'] = self.dbnode_storage
+        if self.db_node_storage_type is not None:
+            result['DbNodeStorageType'] = self.db_node_storage_type
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -11252,6 +11128,8 @@ class ModifyDBClusterRequest(TeaModel):
             self.dbnode_group_count = m.get('DBNodeGroupCount')
         if m.get('DBNodeStorage') is not None:
             self.dbnode_storage = m.get('DBNodeStorage')
+        if m.get('DbNodeStorageType') is not None:
+            self.db_node_storage_type = m.get('DbNodeStorageType')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -11349,9 +11227,6 @@ class ModifyDBClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11495,9 +11370,6 @@ class ModifyDBClusterAccessWhiteListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11642,9 +11514,6 @@ class ModifyDBClusterConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11765,9 +11634,6 @@ class ModifyDBClusterConfigInXMLResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11899,9 +11765,6 @@ class ModifyDBClusterDescriptionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12034,9 +11897,6 @@ class ModifyDBClusterMaintainTimeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12172,9 +12032,6 @@ class ModifyDBConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12300,9 +12157,6 @@ class ModifyMinorVersionGreadeTypeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12536,9 +12390,6 @@ class ModifyRDSToClickhouseDbResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12660,9 +12511,6 @@ class ReleaseClusterPublicConnectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12805,9 +12653,6 @@ class ResetAccountPasswordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12963,9 +12808,6 @@ class RestartInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13147,9 +12989,6 @@ class TransferVersionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13301,9 +13140,6 @@ class UpgradeMinorVersionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

@@ -28,7 +28,7 @@ pip install alibabacloud_clickhouse20191111
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/clickhouse-20191111/ChangeLog.md).
 
 ## References
 

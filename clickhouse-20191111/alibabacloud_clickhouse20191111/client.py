@@ -5194,6 +5194,8 @@ class Client(OpenApiClient):
             query['DBNodeGroupCount'] = request.dbnode_group_count
         if not UtilClient.is_unset(request.dbnode_storage):
             query['DBNodeStorage'] = request.dbnode_storage
+        if not UtilClient.is_unset(request.db_node_storage_type):
+            query['DbNodeStorageType'] = request.db_node_storage_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -5238,6 +5240,8 @@ class Client(OpenApiClient):
             query['DBNodeGroupCount'] = request.dbnode_group_count
         if not UtilClient.is_unset(request.dbnode_storage):
             query['DBNodeStorage'] = request.dbnode_storage
+        if not UtilClient.is_unset(request.db_node_storage_type):
+            query['DbNodeStorageType'] = request.db_node_storage_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
