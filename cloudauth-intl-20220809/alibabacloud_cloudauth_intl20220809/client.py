@@ -1078,8 +1078,6 @@ class Client(OpenApiClient):
             query['DocType'] = request.doc_type
         if not UtilClient.is_unset(request.id_face_quality):
             query['IdFaceQuality'] = request.id_face_quality
-        if not UtilClient.is_unset(request.id_ocr_picture_base_64):
-            query['IdOcrPictureBase64'] = request.id_ocr_picture_base_64
         if not UtilClient.is_unset(request.id_ocr_picture_url):
             query['IdOcrPictureUrl'] = request.id_ocr_picture_url
         if not UtilClient.is_unset(request.merchant_biz_id):
@@ -1092,8 +1090,12 @@ class Client(OpenApiClient):
             query['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.spoof):
             query['Spoof'] = request.spoof
+        body = {}
+        if not UtilClient.is_unset(request.id_ocr_picture_base_64):
+            body['IdOcrPictureBase64'] = request.id_ocr_picture_base_64
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DocOcr',
@@ -1122,8 +1124,6 @@ class Client(OpenApiClient):
             query['DocType'] = request.doc_type
         if not UtilClient.is_unset(request.id_face_quality):
             query['IdFaceQuality'] = request.id_face_quality
-        if not UtilClient.is_unset(request.id_ocr_picture_base_64):
-            query['IdOcrPictureBase64'] = request.id_ocr_picture_base_64
         if not UtilClient.is_unset(request.id_ocr_picture_url):
             query['IdOcrPictureUrl'] = request.id_ocr_picture_url
         if not UtilClient.is_unset(request.merchant_biz_id):
@@ -1136,8 +1136,12 @@ class Client(OpenApiClient):
             query['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.spoof):
             query['Spoof'] = request.spoof
+        body = {}
+        if not UtilClient.is_unset(request.id_ocr_picture_base_64):
+            body['IdOcrPictureBase64'] = request.id_ocr_picture_base_64
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DocOcr',
@@ -1186,12 +1190,8 @@ class Client(OpenApiClient):
             query['DocNo'] = request.doc_no
         if not UtilClient.is_unset(request.doc_type):
             query['DocType'] = request.doc_type
-        if not UtilClient.is_unset(request.face_picture_base_64):
-            query['FacePictureBase64'] = request.face_picture_base_64
         if not UtilClient.is_unset(request.face_picture_url):
             query['FacePictureUrl'] = request.face_picture_url
-        if not UtilClient.is_unset(request.id_ocr_picture_base_64):
-            query['IdOcrPictureBase64'] = request.id_ocr_picture_base_64
         if not UtilClient.is_unset(request.id_ocr_picture_url):
             query['IdOcrPictureUrl'] = request.id_ocr_picture_url
         if not UtilClient.is_unset(request.merchant_biz_id):
@@ -1200,8 +1200,14 @@ class Client(OpenApiClient):
             query['MerchantUserId'] = request.merchant_user_id
         if not UtilClient.is_unset(request.product_code):
             query['ProductCode'] = request.product_code
+        body = {}
+        if not UtilClient.is_unset(request.face_picture_base_64):
+            body['FacePictureBase64'] = request.face_picture_base_64
+        if not UtilClient.is_unset(request.id_ocr_picture_base_64):
+            body['IdOcrPictureBase64'] = request.id_ocr_picture_base_64
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='EkycVerify',
@@ -1236,12 +1242,8 @@ class Client(OpenApiClient):
             query['DocNo'] = request.doc_no
         if not UtilClient.is_unset(request.doc_type):
             query['DocType'] = request.doc_type
-        if not UtilClient.is_unset(request.face_picture_base_64):
-            query['FacePictureBase64'] = request.face_picture_base_64
         if not UtilClient.is_unset(request.face_picture_url):
             query['FacePictureUrl'] = request.face_picture_url
-        if not UtilClient.is_unset(request.id_ocr_picture_base_64):
-            query['IdOcrPictureBase64'] = request.id_ocr_picture_base_64
         if not UtilClient.is_unset(request.id_ocr_picture_url):
             query['IdOcrPictureUrl'] = request.id_ocr_picture_url
         if not UtilClient.is_unset(request.merchant_biz_id):
@@ -1250,8 +1252,14 @@ class Client(OpenApiClient):
             query['MerchantUserId'] = request.merchant_user_id
         if not UtilClient.is_unset(request.product_code):
             query['ProductCode'] = request.product_code
+        body = {}
+        if not UtilClient.is_unset(request.face_picture_base_64):
+            body['FacePictureBase64'] = request.face_picture_base_64
+        if not UtilClient.is_unset(request.id_ocr_picture_base_64):
+            body['IdOcrPictureBase64'] = request.id_ocr_picture_base_64
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='EkycVerify',
@@ -1292,16 +1300,18 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.merchant_biz_id):
             query['MerchantBizId'] = request.merchant_biz_id
-        if not UtilClient.is_unset(request.source_face_picture):
-            query['SourceFacePicture'] = request.source_face_picture
         if not UtilClient.is_unset(request.source_face_picture_url):
             query['SourceFacePictureUrl'] = request.source_face_picture_url
-        if not UtilClient.is_unset(request.target_face_picture):
-            query['TargetFacePicture'] = request.target_face_picture
         if not UtilClient.is_unset(request.target_face_picture_url):
             query['TargetFacePictureUrl'] = request.target_face_picture_url
+        body = {}
+        if not UtilClient.is_unset(request.source_face_picture):
+            body['SourceFacePicture'] = request.source_face_picture
+        if not UtilClient.is_unset(request.target_face_picture):
+            body['TargetFacePicture'] = request.target_face_picture
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='FaceCompare',
@@ -1328,16 +1338,18 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.merchant_biz_id):
             query['MerchantBizId'] = request.merchant_biz_id
-        if not UtilClient.is_unset(request.source_face_picture):
-            query['SourceFacePicture'] = request.source_face_picture
         if not UtilClient.is_unset(request.source_face_picture_url):
             query['SourceFacePictureUrl'] = request.source_face_picture_url
-        if not UtilClient.is_unset(request.target_face_picture):
-            query['TargetFacePicture'] = request.target_face_picture
         if not UtilClient.is_unset(request.target_face_picture_url):
             query['TargetFacePictureUrl'] = request.target_face_picture_url
+        body = {}
+        if not UtilClient.is_unset(request.source_face_picture):
+            body['SourceFacePicture'] = request.source_face_picture
+        if not UtilClient.is_unset(request.target_face_picture):
+            body['TargetFacePicture'] = request.target_face_picture
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='FaceCompare',
@@ -1654,8 +1666,6 @@ class Client(OpenApiClient):
             query['DocScanMode'] = request.doc_scan_mode
         if not UtilClient.is_unset(request.doc_type):
             query['DocType'] = request.doc_type
-        if not UtilClient.is_unset(request.face_picture_base_64):
-            query['FacePictureBase64'] = request.face_picture_base_64
         if not UtilClient.is_unset(request.face_picture_url):
             query['FacePictureUrl'] = request.face_picture_url
         if not UtilClient.is_unset(request.flow_type):
@@ -1688,10 +1698,16 @@ class Client(OpenApiClient):
             query['ReturnUrl'] = request.return_url
         if not UtilClient.is_unset(request.scene_code):
             query['SceneCode'] = request.scene_code
+        if not UtilClient.is_unset(request.security_level):
+            query['SecurityLevel'] = request.security_level
         if not UtilClient.is_unset(request.service_level):
             query['ServiceLevel'] = request.service_level
+        body = {}
+        if not UtilClient.is_unset(request.face_picture_base_64):
+            body['FacePictureBase64'] = request.face_picture_base_64
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='Initialize',
@@ -1728,8 +1744,6 @@ class Client(OpenApiClient):
             query['DocScanMode'] = request.doc_scan_mode
         if not UtilClient.is_unset(request.doc_type):
             query['DocType'] = request.doc_type
-        if not UtilClient.is_unset(request.face_picture_base_64):
-            query['FacePictureBase64'] = request.face_picture_base_64
         if not UtilClient.is_unset(request.face_picture_url):
             query['FacePictureUrl'] = request.face_picture_url
         if not UtilClient.is_unset(request.flow_type):
@@ -1762,10 +1776,16 @@ class Client(OpenApiClient):
             query['ReturnUrl'] = request.return_url
         if not UtilClient.is_unset(request.scene_code):
             query['SceneCode'] = request.scene_code
+        if not UtilClient.is_unset(request.security_level):
+            query['SecurityLevel'] = request.security_level
         if not UtilClient.is_unset(request.service_level):
             query['ServiceLevel'] = request.service_level
+        body = {}
+        if not UtilClient.is_unset(request.face_picture_base_64):
+            body['FacePictureBase64'] = request.face_picture_base_64
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='Initialize',

@@ -4117,6 +4117,7 @@ class InitializeRequest(TeaModel):
         product_flow: str = None,
         return_url: str = None,
         scene_code: str = None,
+        security_level: str = None,
         service_level: str = None,
     ):
         self.authorize = authorize
@@ -4143,6 +4144,7 @@ class InitializeRequest(TeaModel):
         self.product_flow = product_flow
         self.return_url = return_url
         self.scene_code = scene_code
+        self.security_level = security_level
         self.service_level = service_level
 
     def validate(self):
@@ -4200,6 +4202,8 @@ class InitializeRequest(TeaModel):
             result['ReturnUrl'] = self.return_url
         if self.scene_code is not None:
             result['SceneCode'] = self.scene_code
+        if self.security_level is not None:
+            result['SecurityLevel'] = self.security_level
         if self.service_level is not None:
             result['ServiceLevel'] = self.service_level
         return result
@@ -4252,6 +4256,8 @@ class InitializeRequest(TeaModel):
             self.return_url = m.get('ReturnUrl')
         if m.get('SceneCode') is not None:
             self.scene_code = m.get('SceneCode')
+        if m.get('SecurityLevel') is not None:
+            self.security_level = m.get('SecurityLevel')
         if m.get('ServiceLevel') is not None:
             self.service_level = m.get('ServiceLevel')
         return self

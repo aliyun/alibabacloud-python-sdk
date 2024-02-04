@@ -1,3 +1,13 @@
+2024-02-04 Version: 1.4.5
+- Update API DocOcrupdate IdOcrPictureBase64 param.
+- Update API EkycVerifyupdate FacePictureBase64 param.
+update IdOcrPictureBase64 param.
+- Update API FaceCompareupdate SourceFacePicture param.
+update TargetFacePicture param.
+- Update API Initializeadd SecurityLevel param.
+update FacePictureBase64 param.
+
+
 2024-01-25 Version: 1.4.4
 - Update API CardOcrupdate IdOcrPictureBase64 param.
 - Update API FaceLivenessupdate FacePictureBase64 param.
