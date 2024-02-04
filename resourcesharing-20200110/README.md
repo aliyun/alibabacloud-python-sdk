@@ -28,7 +28,7 @@ pip install alibabacloud_resourcesharing20200110
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/resourcesharing-20200110/ChangeLog.md).
 
 ## References
 

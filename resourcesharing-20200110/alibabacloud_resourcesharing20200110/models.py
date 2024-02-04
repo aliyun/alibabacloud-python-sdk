@@ -38,6 +38,9 @@ class AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvi
     def __init__(
         self,
         associate_type: str = None,
+        failure_description: str = None,
+        failure_reason: str = None,
+        operation_type: str = None,
         resource_id: str = None,
         resource_type: str = None,
         status: str = None,
@@ -47,6 +50,9 @@ class AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvi
         # 
         # *   Associate
         self.associate_type = associate_type
+        self.failure_description = failure_description
+        self.failure_reason = failure_reason
+        self.operation_type = operation_type
         # The ID of the shared resource.
         self.resource_id = resource_id
         # The type of the shared resource.
@@ -74,6 +80,12 @@ class AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvi
         result = dict()
         if self.associate_type is not None:
             result['AssociateType'] = self.associate_type
+        if self.failure_description is not None:
+            result['FailureDescription'] = self.failure_description
+        if self.failure_reason is not None:
+            result['FailureReason'] = self.failure_reason
+        if self.operation_type is not None:
+            result['OperationType'] = self.operation_type
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_type is not None:
@@ -88,6 +100,12 @@ class AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvi
         m = m or dict()
         if m.get('AssociateType') is not None:
             self.associate_type = m.get('AssociateType')
+        if m.get('FailureDescription') is not None:
+            self.failure_description = m.get('FailureDescription')
+        if m.get('FailureReason') is not None:
+            self.failure_reason = m.get('FailureReason')
+        if m.get('OperationType') is not None:
+            self.operation_type = m.get('OperationType')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceType') is not None:
@@ -240,9 +258,6 @@ class AcceptResourceShareInvitationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -590,9 +605,6 @@ class AssociateResourceShareResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -707,9 +719,6 @@ class AssociateResourceSharePermissionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -821,9 +830,6 @@ class ChangeResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -903,9 +909,6 @@ class CheckSharingWithResourceDirectoryStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1228,9 +1231,6 @@ class CreateResourceShareResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1328,9 +1328,6 @@ class DeleteResourceShareResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1488,9 +1485,6 @@ class DescribeRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1793,9 +1787,6 @@ class DisassociateResourceShareResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1900,9 +1891,6 @@ class DisassociateResourceSharePermissionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1972,9 +1960,6 @@ class EnableSharingWithResourceDirectoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2173,9 +2158,6 @@ class GetPermissionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2389,9 +2371,6 @@ class ListPermissionVersionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2607,9 +2586,6 @@ class ListPermissionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2732,12 +2708,18 @@ class ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociat
         associate_type: str = None,
         entity_id: str = None,
         entity_type: str = None,
+        failure_description: str = None,
+        failure_reason: str = None,
+        operation_type: str = None,
         status: str = None,
         status_message: str = None,
     ):
         self.associate_type = associate_type
         self.entity_id = entity_id
         self.entity_type = entity_type
+        self.failure_description = failure_description
+        self.failure_reason = failure_reason
+        self.operation_type = operation_type
         self.status = status
         self.status_message = status_message
 
@@ -2756,6 +2738,12 @@ class ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociat
             result['EntityId'] = self.entity_id
         if self.entity_type is not None:
             result['EntityType'] = self.entity_type
+        if self.failure_description is not None:
+            result['FailureDescription'] = self.failure_description
+        if self.failure_reason is not None:
+            result['FailureReason'] = self.failure_reason
+        if self.operation_type is not None:
+            result['OperationType'] = self.operation_type
         if self.status is not None:
             result['Status'] = self.status
         if self.status_message is not None:
@@ -2770,6 +2758,12 @@ class ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociat
             self.entity_id = m.get('EntityId')
         if m.get('EntityType') is not None:
             self.entity_type = m.get('EntityType')
+        if m.get('FailureDescription') is not None:
+            self.failure_description = m.get('FailureDescription')
+        if m.get('FailureReason') is not None:
+            self.failure_reason = m.get('FailureReason')
+        if m.get('OperationType') is not None:
+            self.operation_type = m.get('OperationType')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('StatusMessage') is not None:
@@ -2976,9 +2970,6 @@ class ListResourceShareAssociationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3063,6 +3054,9 @@ class ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitation
     def __init__(
         self,
         associate_type: str = None,
+        failure_description: str = None,
+        failure_reason: str = None,
+        operation_type: str = None,
         resource_id: str = None,
         resource_type: str = None,
         status: str = None,
@@ -3073,6 +3067,9 @@ class ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitation
         # *   Associate
         # *   Disassociate
         self.associate_type = associate_type
+        self.failure_description = failure_description
+        self.failure_reason = failure_reason
+        self.operation_type = operation_type
         # The ID of the shared resource.
         self.resource_id = resource_id
         # The type of the shared resource.
@@ -3101,6 +3098,12 @@ class ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitation
         result = dict()
         if self.associate_type is not None:
             result['AssociateType'] = self.associate_type
+        if self.failure_description is not None:
+            result['FailureDescription'] = self.failure_description
+        if self.failure_reason is not None:
+            result['FailureReason'] = self.failure_reason
+        if self.operation_type is not None:
+            result['OperationType'] = self.operation_type
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_type is not None:
@@ -3115,6 +3118,12 @@ class ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitation
         m = m or dict()
         if m.get('AssociateType') is not None:
             self.associate_type = m.get('AssociateType')
+        if m.get('FailureDescription') is not None:
+            self.failure_description = m.get('FailureDescription')
+        if m.get('FailureReason') is not None:
+            self.failure_reason = m.get('FailureReason')
+        if m.get('OperationType') is not None:
+            self.operation_type = m.get('OperationType')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceType') is not None:
@@ -3280,9 +3289,6 @@ class ListResourceShareInvitationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3506,9 +3512,6 @@ class ListResourceSharePermissionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3762,9 +3765,6 @@ class ListResourceSharesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4015,9 +4015,6 @@ class ListSharedResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4254,9 +4251,6 @@ class ListSharedTargetsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4441,9 +4435,6 @@ class RejectResourceShareInvitationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4651,9 +4642,6 @@ class UpdateResourceShareResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
