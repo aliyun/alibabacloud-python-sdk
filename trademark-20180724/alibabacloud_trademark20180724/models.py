@@ -106,9 +106,6 @@ class AcceptPartnerNotificationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -240,9 +237,6 @@ class ApplyNotaryPostResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -380,9 +374,6 @@ class AskAdjudicationFileResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -496,9 +487,6 @@ class BindMaterialResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -612,9 +600,6 @@ class CancelTradeOrderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -734,9 +719,6 @@ class CheckFlsmFillResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -962,9 +944,6 @@ class CheckIfCollectedResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1226,9 +1205,6 @@ class CheckLoaFillResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1342,9 +1318,6 @@ class CheckTrademarkIconResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1584,9 +1557,6 @@ class CheckTrademarkOrderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1760,9 +1730,6 @@ class CombineLoaResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1930,9 +1897,6 @@ class CombineWTSResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2064,9 +2028,6 @@ class ComplementIntentionUserIdResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2186,9 +2147,6 @@ class ConfirmAdditionalMaterialResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2308,9 +2266,6 @@ class ConfirmApplicantResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2454,9 +2409,6 @@ class ConfirmDissentOriginalResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2558,9 +2510,6 @@ class ConvertImageToGrayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2662,9 +2611,6 @@ class CopyApplicantResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2813,9 +2759,6 @@ class CreateIntentionOrderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2947,9 +2890,6 @@ class CreateIntentionOrderGeneratingPayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3213,9 +3153,6 @@ class CreateTrademarkOrderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3329,9 +3266,6 @@ class DeleteMaterialResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3445,9 +3379,6 @@ class DeleteTmMonitorRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3561,9 +3492,6 @@ class DeleteTrademarkApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3677,9 +3605,6 @@ class DenySupplementResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4217,9 +4142,6 @@ class DescirbeCombineTrademarkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4339,9 +4261,6 @@ class FillLogisticsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4499,9 +4418,6 @@ class FilterUnavailableCodesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4687,9 +4603,6 @@ class ForceUploadTrademarkOnsaleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4827,9 +4740,6 @@ class GenerateQrCodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4969,9 +4879,6 @@ class GenerateUploadFilePolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5073,9 +4980,6 @@ class GetAuthorizationLetterVersionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5162,9 +5066,6 @@ class GetDefaultPrincipalResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5266,9 +5167,6 @@ class GetDefaultPrincipalNameResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5616,9 +5514,6 @@ class GetNotaryOrderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5740,9 +5635,6 @@ class GetSupportPrincipalNameResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6012,9 +5904,6 @@ class InsertMaterialResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6158,9 +6047,6 @@ class InsertRenewInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6385,9 +6271,6 @@ class InsertTmMonitorRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6668,9 +6551,6 @@ class ListNotaryInfosResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7028,9 +6908,6 @@ class ListNotaryOrdersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7275,9 +7152,6 @@ class ListTrademarkSbjKeyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7682,9 +7556,6 @@ class ModifySubmitTransferMaterailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7798,9 +7669,6 @@ class OperateProduceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8004,9 +7872,6 @@ class PartnerUpdateTrademarkNameResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8214,9 +8079,6 @@ class QueryCommunicationLogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8383,9 +8245,6 @@ class QueryCredentialsInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8511,9 +8370,6 @@ class QueryExtensionAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8687,9 +8543,6 @@ class QueryIntentionDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8957,9 +8810,6 @@ class QueryIntentionListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9114,9 +8964,6 @@ class QueryIntentionOwnerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9526,9 +9373,6 @@ class QueryIntentionPriceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9984,9 +9828,6 @@ class QueryMaterialResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10320,9 +10161,6 @@ class QueryMaterialListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10459,9 +10297,6 @@ class QueryMonitorKeywordsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10693,9 +10528,6 @@ class QueryOfficialFileCustomListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10922,9 +10754,6 @@ class QueryOrderLogisticsListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11114,9 +10943,6 @@ class QueryOssResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11654,9 +11480,6 @@ class QueryProduceDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12067,9 +11890,6 @@ class QueryProduceListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12201,9 +12021,6 @@ class QueryQrCodeUploadStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12517,9 +12334,6 @@ class QuerySbjRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12734,9 +12548,6 @@ class QuerySupplementDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12974,9 +12785,6 @@ class QueryTaskListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13202,9 +13010,6 @@ class QueryTmCollectionPageListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13627,9 +13432,6 @@ class QueryTmSbjProduceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14191,9 +13993,6 @@ class QueryTmSbjProduceDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14485,9 +14284,6 @@ class QueryTradeIntentionUserListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15693,9 +15489,6 @@ class QueryTradeMarkApplicationDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15897,9 +15690,6 @@ class QueryTradeMarkApplicationLogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16708,9 +16498,6 @@ class QueryTradeMarkApplicationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17150,9 +16937,6 @@ class QueryTradeMarkApplicationsByIntentionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17409,9 +17193,6 @@ class QueryTradeProduceDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17727,9 +17508,6 @@ class QueryTradeProduceListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18092,6 +17870,7 @@ class QueryTrademarkDetailByApplyNumberResponseBodyMoudle(TeaModel):
         trademark_name: str = None,
         trademark_name_type: int = None,
         trademark_number: str = None,
+        user_id: str = None,
     ):
         self.bit_flag = bit_flag
         self.biz_id = biz_id
@@ -18118,6 +17897,7 @@ class QueryTrademarkDetailByApplyNumberResponseBodyMoudle(TeaModel):
         self.trademark_name = trademark_name
         self.trademark_name_type = trademark_name_type
         self.trademark_number = trademark_number
+        self.user_id = user_id
 
     def validate(self):
         if self.leaf_codes:
@@ -18183,6 +17963,8 @@ class QueryTrademarkDetailByApplyNumberResponseBodyMoudle(TeaModel):
             result['TrademarkNameType'] = self.trademark_name_type
         if self.trademark_number is not None:
             result['TrademarkNumber'] = self.trademark_number
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
         return result
 
     def from_map(self, m: dict = None):
@@ -18240,6 +18022,8 @@ class QueryTrademarkDetailByApplyNumberResponseBodyMoudle(TeaModel):
             self.trademark_name_type = m.get('TrademarkNameType')
         if m.get('TrademarkNumber') is not None:
             self.trademark_number = m.get('TrademarkNumber')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
         return self
 
 
@@ -18290,9 +18074,6 @@ class QueryTrademarkDetailByApplyNumberResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18655,6 +18436,7 @@ class QueryTrademarkDetailByApplyNumberEspResponseBodyMoudle(TeaModel):
         trademark_name: str = None,
         trademark_name_type: int = None,
         trademark_number: str = None,
+        user_id: str = None,
     ):
         self.bit_flag = bit_flag
         self.biz_id = biz_id
@@ -18681,6 +18463,7 @@ class QueryTrademarkDetailByApplyNumberEspResponseBodyMoudle(TeaModel):
         self.trademark_name = trademark_name
         self.trademark_name_type = trademark_name_type
         self.trademark_number = trademark_number
+        self.user_id = user_id
 
     def validate(self):
         if self.leaf_codes:
@@ -18746,6 +18529,8 @@ class QueryTrademarkDetailByApplyNumberEspResponseBodyMoudle(TeaModel):
             result['TrademarkNameType'] = self.trademark_name_type
         if self.trademark_number is not None:
             result['TrademarkNumber'] = self.trademark_number
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
         return result
 
     def from_map(self, m: dict = None):
@@ -18803,6 +18588,8 @@ class QueryTrademarkDetailByApplyNumberEspResponseBodyMoudle(TeaModel):
             self.trademark_name_type = m.get('TrademarkNameType')
         if m.get('TrademarkNumber') is not None:
             self.trademark_number = m.get('TrademarkNumber')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
         return self
 
 
@@ -18853,9 +18640,6 @@ class QueryTrademarkDetailByApplyNumberEspResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19231,6 +19015,7 @@ class QueryTrademarkModelDetailResponseBodyMoudle(TeaModel):
         trademark_name: str = None,
         trademark_name_type: int = None,
         trademark_number: str = None,
+        user_id: str = None,
     ):
         self.bit_flag = bit_flag
         self.biz_id = biz_id
@@ -19258,6 +19043,7 @@ class QueryTrademarkModelDetailResponseBodyMoudle(TeaModel):
         self.trademark_name = trademark_name
         self.trademark_name_type = trademark_name_type
         self.trademark_number = trademark_number
+        self.user_id = user_id
 
     def validate(self):
         if self.leaf_codes:
@@ -19325,6 +19111,8 @@ class QueryTrademarkModelDetailResponseBodyMoudle(TeaModel):
             result['TrademarkNameType'] = self.trademark_name_type
         if self.trademark_number is not None:
             result['TrademarkNumber'] = self.trademark_number
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
         return result
 
     def from_map(self, m: dict = None):
@@ -19384,6 +19172,8 @@ class QueryTrademarkModelDetailResponseBodyMoudle(TeaModel):
             self.trademark_name_type = m.get('TrademarkNameType')
         if m.get('TrademarkNumber') is not None:
             self.trademark_number = m.get('TrademarkNumber')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
         return self
 
 
@@ -19428,9 +19218,6 @@ class QueryTrademarkModelDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19774,6 +19561,7 @@ class QueryTrademarkModelEspDetailResponseBodyMoudle(TeaModel):
         trademark_name: str = None,
         trademark_name_type: int = None,
         trademark_number: str = None,
+        user_id: str = None,
     ):
         self.bit_flag = bit_flag
         self.biz_id = biz_id
@@ -19799,6 +19587,7 @@ class QueryTrademarkModelEspDetailResponseBodyMoudle(TeaModel):
         self.trademark_name = trademark_name
         self.trademark_name_type = trademark_name_type
         self.trademark_number = trademark_number
+        self.user_id = user_id
 
     def validate(self):
         if self.leaf_codes:
@@ -19862,6 +19651,8 @@ class QueryTrademarkModelEspDetailResponseBodyMoudle(TeaModel):
             result['TrademarkNameType'] = self.trademark_name_type
         if self.trademark_number is not None:
             result['TrademarkNumber'] = self.trademark_number
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
         return result
 
     def from_map(self, m: dict = None):
@@ -19917,6 +19708,8 @@ class QueryTrademarkModelEspDetailResponseBodyMoudle(TeaModel):
             self.trademark_name_type = m.get('TrademarkNameType')
         if m.get('TrademarkNumber') is not None:
             self.trademark_number = m.get('TrademarkNumber')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
         return self
 
 
@@ -19961,9 +19754,6 @@ class QueryTrademarkModelEspDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20507,6 +20297,7 @@ class QueryTrademarkModelEspListResponseBodyMoudleDataItem(TeaModel):
         trademark_name: str = None,
         trademark_name_type: int = None,
         trademark_number: str = None,
+        user_id: str = None,
     ):
         self.bit_flag = bit_flag
         self.biz_id = biz_id
@@ -20531,6 +20322,7 @@ class QueryTrademarkModelEspListResponseBodyMoudleDataItem(TeaModel):
         self.trademark_name = trademark_name
         self.trademark_name_type = trademark_name_type
         self.trademark_number = trademark_number
+        self.user_id = user_id
 
     def validate(self):
         if self.leaf_codes:
@@ -20592,6 +20384,8 @@ class QueryTrademarkModelEspListResponseBodyMoudleDataItem(TeaModel):
             result['TrademarkNameType'] = self.trademark_name_type
         if self.trademark_number is not None:
             result['TrademarkNumber'] = self.trademark_number
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
         return result
 
     def from_map(self, m: dict = None):
@@ -20645,6 +20439,8 @@ class QueryTrademarkModelEspListResponseBodyMoudleDataItem(TeaModel):
             self.trademark_name_type = m.get('TrademarkNameType')
         if m.get('TrademarkNumber') is not None:
             self.trademark_number = m.get('TrademarkNumber')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
         return self
 
 
@@ -20765,9 +20561,6 @@ class QueryTrademarkModelEspListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21166,6 +20959,7 @@ class QueryTrademarkModelListResponseBodyMoudleDataItem(TeaModel):
         trademark_name: str = None,
         trademark_name_type: int = None,
         trademark_number: str = None,
+        user_id: str = None,
     ):
         self.bit_flag = bit_flag
         self.biz_id = biz_id
@@ -21192,6 +20986,7 @@ class QueryTrademarkModelListResponseBodyMoudleDataItem(TeaModel):
         self.trademark_name = trademark_name
         self.trademark_name_type = trademark_name_type
         self.trademark_number = trademark_number
+        self.user_id = user_id
 
     def validate(self):
         if self.leaf_codes:
@@ -21257,6 +21052,8 @@ class QueryTrademarkModelListResponseBodyMoudleDataItem(TeaModel):
             result['TrademarkNameType'] = self.trademark_name_type
         if self.trademark_number is not None:
             result['TrademarkNumber'] = self.trademark_number
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
         return result
 
     def from_map(self, m: dict = None):
@@ -21314,6 +21111,8 @@ class QueryTrademarkModelListResponseBodyMoudleDataItem(TeaModel):
             self.trademark_name_type = m.get('TrademarkNameType')
         if m.get('TrademarkNumber') is not None:
             self.trademark_number = m.get('TrademarkNumber')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
         return self
 
 
@@ -21434,9 +21233,6 @@ class QueryTrademarkModelListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21782,9 +21578,6 @@ class QueryTrademarkMonitorResultsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22118,9 +21911,6 @@ class QueryTrademarkMonitorRulesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22353,9 +22143,6 @@ class QueryTrademarkOnSaleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22644,9 +22431,6 @@ class QueryTrademarkPriceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22879,9 +22663,6 @@ class QueryTrademarkUploadAuditResultResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22995,9 +22776,6 @@ class RecordBankBalanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23117,9 +22895,6 @@ class RefundProduceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23239,9 +23014,6 @@ class RefuseAdditionalMaterialResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23361,9 +23133,6 @@ class RefuseApplicantResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23465,9 +23234,6 @@ class RejectApplicantResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23652,9 +23418,6 @@ class SaveClassificationConditionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23780,9 +23543,6 @@ class SaveExtensionAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23884,9 +23644,6 @@ class SaveTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23994,9 +23751,6 @@ class SaveTaskForOfficialFileCustomResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24443,9 +24197,6 @@ class SaveTradeMarkReviewMaterialDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24607,9 +24358,6 @@ class SbjOperateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24801,9 +24549,6 @@ class SbjOperateNewResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25046,9 +24791,6 @@ class SbrainServiceExecuteResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25243,9 +24985,6 @@ class SbrainServiceHasRunningTaskBatchQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25605,9 +25344,6 @@ class SbrainServiceSchemeMatchResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25912,9 +25648,6 @@ class SearchTmOnsalesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26034,9 +25767,6 @@ class StartNotaryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26306,9 +26036,6 @@ class StoreMaterialTemporarilyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26485,9 +26212,6 @@ class SubmitSupplementResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26634,9 +26358,6 @@ class SubmitTrademarkApplicationComplaintResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26828,9 +26549,6 @@ class SyncTrademarkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26980,9 +26698,6 @@ class UpdateApplicantContacterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27240,9 +26955,6 @@ class UpdateMaterialResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27356,9 +27068,6 @@ class UpdateProduceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27466,9 +27175,6 @@ class UpdateProduceLoaIdResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27594,9 +27300,6 @@ class UpdateSendMaterialNumResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27740,9 +27443,6 @@ class UpdateTrademarkNameResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27940,9 +27640,6 @@ class UpdateTrademarkOnsaleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28056,9 +27753,6 @@ class UploadNotaryDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28262,9 +27956,6 @@ class UploadTrademarkOnSaleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28390,9 +28081,6 @@ class WriteCommunicationLogResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28518,9 +28206,6 @@ class WriteIntentionCommunicationLogResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
