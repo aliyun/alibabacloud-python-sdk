@@ -1,3 +1,7 @@
+2024-02-04 Version: 1.10.5
+- Update API HotelOrderQueryupdate response param.
+
+
 2024-01-30 Version: 1.10.4
 - Update API ApplyAddupdate external_traveler_list param.
 - Update API ApplyModifyupdate external_traveler_list param.
