@@ -836,6 +836,14 @@ class Client(OpenApiClient):
         request: foasconsole_20190601_models.ModifyPrepayInstanceSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20190601_models.ModifyPrepayInstanceSpecResponse:
+        """
+        @deprecated : ModifyPrepayInstanceSpec is deprecated, please use foasconsole::2019-06-01::ModifyInstanceSpec instead.
+        
+        @param request: ModifyPrepayInstanceSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPrepayInstanceSpecResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         body_flat = {}
@@ -867,6 +875,14 @@ class Client(OpenApiClient):
         request: foasconsole_20190601_models.ModifyPrepayInstanceSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20190601_models.ModifyPrepayInstanceSpecResponse:
+        """
+        @deprecated : ModifyPrepayInstanceSpec is deprecated, please use foasconsole::2019-06-01::ModifyInstanceSpec instead.
+        
+        @param request: ModifyPrepayInstanceSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPrepayInstanceSpecResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         body_flat = {}
@@ -897,6 +913,13 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20190601_models.ModifyPrepayInstanceSpecRequest,
     ) -> foasconsole_20190601_models.ModifyPrepayInstanceSpecResponse:
+        """
+        @deprecated : ModifyPrepayInstanceSpec is deprecated, please use foasconsole::2019-06-01::ModifyInstanceSpec instead.
+        
+        @param request: ModifyPrepayInstanceSpecRequest
+        @return: ModifyPrepayInstanceSpecResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_prepay_instance_spec_with_options(request, runtime)
 
@@ -904,6 +927,13 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20190601_models.ModifyPrepayInstanceSpecRequest,
     ) -> foasconsole_20190601_models.ModifyPrepayInstanceSpecResponse:
+        """
+        @deprecated : ModifyPrepayInstanceSpec is deprecated, please use foasconsole::2019-06-01::ModifyInstanceSpec instead.
+        
+        @param request: ModifyPrepayInstanceSpecRequest
+        @return: ModifyPrepayInstanceSpecResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_prepay_instance_spec_with_options_async(request, runtime)
 
@@ -912,6 +942,14 @@ class Client(OpenApiClient):
         request: foasconsole_20190601_models.ModifyPrepayNamespaceSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20190601_models.ModifyPrepayNamespaceSpecResponse:
+        """
+        @deprecated : ModifyPrepayNamespaceSpec is deprecated, please use foasconsole::2019-06-01::ModifyNamespaceSpec instead.
+        
+        @param request: ModifyPrepayNamespaceSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPrepayNamespaceSpecResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         body_flat = {}
@@ -943,6 +981,14 @@ class Client(OpenApiClient):
         request: foasconsole_20190601_models.ModifyPrepayNamespaceSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20190601_models.ModifyPrepayNamespaceSpecResponse:
+        """
+        @deprecated : ModifyPrepayNamespaceSpec is deprecated, please use foasconsole::2019-06-01::ModifyNamespaceSpec instead.
+        
+        @param request: ModifyPrepayNamespaceSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPrepayNamespaceSpecResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         body_flat = {}
@@ -973,6 +1019,13 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20190601_models.ModifyPrepayNamespaceSpecRequest,
     ) -> foasconsole_20190601_models.ModifyPrepayNamespaceSpecResponse:
+        """
+        @deprecated : ModifyPrepayNamespaceSpec is deprecated, please use foasconsole::2019-06-01::ModifyNamespaceSpec instead.
+        
+        @param request: ModifyPrepayNamespaceSpecRequest
+        @return: ModifyPrepayNamespaceSpecResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_prepay_namespace_spec_with_options(request, runtime)
 
@@ -980,6 +1033,13 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20190601_models.ModifyPrepayNamespaceSpecRequest,
     ) -> foasconsole_20190601_models.ModifyPrepayNamespaceSpecResponse:
+        """
+        @deprecated : ModifyPrepayNamespaceSpec is deprecated, please use foasconsole::2019-06-01::ModifyNamespaceSpec instead.
+        
+        @param request: ModifyPrepayNamespaceSpecRequest
+        @return: ModifyPrepayNamespaceSpecResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_prepay_namespace_spec_with_options_async(request, runtime)
 

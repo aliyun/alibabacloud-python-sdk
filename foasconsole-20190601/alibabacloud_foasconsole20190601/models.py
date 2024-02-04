@@ -217,9 +217,6 @@ class ConvertInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -362,9 +359,6 @@ class ConvertPrepayInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -391,6 +385,39 @@ class ConvertPrepayInstanceResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = ConvertPrepayInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateInstanceRequestCreateInstanceRequestHaResourceSpec(TeaModel):
+    def __init__(
+        self,
+        cpu: int = None,
+        memory_gb: int = None,
+    ):
+        self.cpu = cpu
+        self.memory_gb = memory_gb
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        if self.memory_gb is not None:
+            result['MemoryGB'] = self.memory_gb
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        if m.get('MemoryGB') is not None:
+            self.memory_gb = m.get('MemoryGB')
         return self
 
 
@@ -491,7 +518,12 @@ class CreateInstanceRequestCreateInstanceRequest(TeaModel):
         charge_type: str = None,
         duration: int = None,
         extra: str = None,
+        ha: bool = None,
+        ha_resource_spec: CreateInstanceRequestCreateInstanceRequestHaResourceSpec = None,
+        ha_vswitch_ids: List[str] = None,
+        ha_zone_id: str = None,
         instance_name: str = None,
+        monitor_type: str = None,
         pricing_cycle: str = None,
         promotion_code: str = None,
         region: str = None,
@@ -508,7 +540,12 @@ class CreateInstanceRequestCreateInstanceRequest(TeaModel):
         self.charge_type = charge_type
         self.duration = duration
         self.extra = extra
+        self.ha = ha
+        self.ha_resource_spec = ha_resource_spec
+        self.ha_vswitch_ids = ha_vswitch_ids
+        self.ha_zone_id = ha_zone_id
         self.instance_name = instance_name
+        self.monitor_type = monitor_type
         self.pricing_cycle = pricing_cycle
         self.promotion_code = promotion_code
         self.region = region
@@ -522,6 +559,8 @@ class CreateInstanceRequestCreateInstanceRequest(TeaModel):
         self.zone_id = zone_id
 
     def validate(self):
+        if self.ha_resource_spec:
+            self.ha_resource_spec.validate()
         if self.resource_spec:
             self.resource_spec.validate()
         if self.storage:
@@ -543,8 +582,18 @@ class CreateInstanceRequestCreateInstanceRequest(TeaModel):
             result['Duration'] = self.duration
         if self.extra is not None:
             result['Extra'] = self.extra
+        if self.ha is not None:
+            result['Ha'] = self.ha
+        if self.ha_resource_spec is not None:
+            result['HaResourceSpec'] = self.ha_resource_spec.to_map()
+        if self.ha_vswitch_ids is not None:
+            result['HaVSwitchIds'] = self.ha_vswitch_ids
+        if self.ha_zone_id is not None:
+            result['HaZoneId'] = self.ha_zone_id
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
+        if self.monitor_type is not None:
+            result['MonitorType'] = self.monitor_type
         if self.pricing_cycle is not None:
             result['PricingCycle'] = self.pricing_cycle
         if self.promotion_code is not None:
@@ -579,8 +628,19 @@ class CreateInstanceRequestCreateInstanceRequest(TeaModel):
             self.duration = m.get('Duration')
         if m.get('Extra') is not None:
             self.extra = m.get('Extra')
+        if m.get('Ha') is not None:
+            self.ha = m.get('Ha')
+        if m.get('HaResourceSpec') is not None:
+            temp_model = CreateInstanceRequestCreateInstanceRequestHaResourceSpec()
+            self.ha_resource_spec = temp_model.from_map(m['HaResourceSpec'])
+        if m.get('HaVSwitchIds') is not None:
+            self.ha_vswitch_ids = m.get('HaVSwitchIds')
+        if m.get('HaZoneId') is not None:
+            self.ha_zone_id = m.get('HaZoneId')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
+        if m.get('MonitorType') is not None:
+            self.monitor_type = m.get('MonitorType')
         if m.get('PricingCycle') is not None:
             self.pricing_cycle = m.get('PricingCycle')
         if m.get('PromotionCode') is not None:
@@ -721,9 +781,6 @@ class CreateInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -789,11 +846,13 @@ class CreateNamespaceRequestCreateNamespaceRequestResourceSpec(TeaModel):
 class CreateNamespaceRequestCreateNamespaceRequest(TeaModel):
     def __init__(
         self,
+        ha: bool = None,
         instance_id: str = None,
         namespace: str = None,
         region: str = None,
         resource_spec: CreateNamespaceRequestCreateNamespaceRequestResourceSpec = None,
     ):
+        self.ha = ha
         self.instance_id = instance_id
         self.namespace = namespace
         self.region = region
@@ -809,6 +868,8 @@ class CreateNamespaceRequestCreateNamespaceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.ha is not None:
+            result['Ha'] = self.ha
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.namespace is not None:
@@ -821,6 +882,8 @@ class CreateNamespaceRequestCreateNamespaceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Ha') is not None:
+            self.ha = m.get('Ha')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Namespace') is not None:
@@ -907,9 +970,6 @@ class CreateNamespaceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1046,9 +1106,6 @@ class DeleteInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1191,9 +1248,6 @@ class DeleteNamespaceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1362,6 +1416,39 @@ class DescribeInstancesRequest(TeaModel):
         return self
 
 
+class DescribeInstancesResponseBodyInstancesHaResourceSpec(TeaModel):
+    def __init__(
+        self,
+        cpu: int = None,
+        memory_gb: int = None,
+    ):
+        self.cpu = cpu
+        self.memory_gb = memory_gb
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        if self.memory_gb is not None:
+            result['MemoryGB'] = self.memory_gb
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        if m.get('MemoryGB') is not None:
+            self.memory_gb = m.get('MemoryGB')
+        return self
+
+
 class DescribeInstancesResponseBodyInstancesHostAliases(TeaModel):
     def __init__(
         self,
@@ -1524,9 +1611,14 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         ask_cluster_id: str = None,
         charge_type: str = None,
         cluster_status: str = None,
+        ha: bool = None,
+        ha_resource_spec: DescribeInstancesResponseBodyInstancesHaResourceSpec = None,
+        ha_vswitch_ids: List[str] = None,
+        ha_zone_id: str = None,
         host_aliases: List[DescribeInstancesResponseBodyInstancesHostAliases] = None,
         instance_id: str = None,
         instance_name: str = None,
+        monitor_type: str = None,
         order_state: str = None,
         region: str = None,
         resource_create_time: int = None,
@@ -1545,9 +1637,14 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         self.ask_cluster_id = ask_cluster_id
         self.charge_type = charge_type
         self.cluster_status = cluster_status
+        self.ha = ha
+        self.ha_resource_spec = ha_resource_spec
+        self.ha_vswitch_ids = ha_vswitch_ids
+        self.ha_zone_id = ha_zone_id
         self.host_aliases = host_aliases
         self.instance_id = instance_id
         self.instance_name = instance_name
+        self.monitor_type = monitor_type
         self.order_state = order_state
         self.region = region
         self.resource_create_time = resource_create_time
@@ -1563,6 +1660,8 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         self.zone_id = zone_id
 
     def validate(self):
+        if self.ha_resource_spec:
+            self.ha_resource_spec.validate()
         if self.host_aliases:
             for k in self.host_aliases:
                 if k:
@@ -1590,6 +1689,14 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             result['ChargeType'] = self.charge_type
         if self.cluster_status is not None:
             result['ClusterStatus'] = self.cluster_status
+        if self.ha is not None:
+            result['Ha'] = self.ha
+        if self.ha_resource_spec is not None:
+            result['HaResourceSpec'] = self.ha_resource_spec.to_map()
+        if self.ha_vswitch_ids is not None:
+            result['HaVSwitchIds'] = self.ha_vswitch_ids
+        if self.ha_zone_id is not None:
+            result['HaZoneId'] = self.ha_zone_id
         result['HostAliases'] = []
         if self.host_aliases is not None:
             for k in self.host_aliases:
@@ -1598,6 +1705,8 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
+        if self.monitor_type is not None:
+            result['MonitorType'] = self.monitor_type
         if self.order_state is not None:
             result['OrderState'] = self.order_state
         if self.region is not None:
@@ -1638,6 +1747,15 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             self.charge_type = m.get('ChargeType')
         if m.get('ClusterStatus') is not None:
             self.cluster_status = m.get('ClusterStatus')
+        if m.get('Ha') is not None:
+            self.ha = m.get('Ha')
+        if m.get('HaResourceSpec') is not None:
+            temp_model = DescribeInstancesResponseBodyInstancesHaResourceSpec()
+            self.ha_resource_spec = temp_model.from_map(m['HaResourceSpec'])
+        if m.get('HaVSwitchIds') is not None:
+            self.ha_vswitch_ids = m.get('HaVSwitchIds')
+        if m.get('HaZoneId') is not None:
+            self.ha_zone_id = m.get('HaZoneId')
         self.host_aliases = []
         if m.get('HostAliases') is not None:
             for k in m.get('HostAliases'):
@@ -1647,6 +1765,8 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
+        if m.get('MonitorType') is not None:
+            self.monitor_type = m.get('MonitorType')
         if m.get('OrderState') is not None:
             self.order_state = m.get('OrderState')
         if m.get('Region') is not None:
@@ -1764,9 +1884,6 @@ class DescribeInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1832,6 +1949,7 @@ class DescribeNamespacesRequestDescribeNamespacesRequestTags(TeaModel):
 class DescribeNamespacesRequestDescribeNamespacesRequest(TeaModel):
     def __init__(
         self,
+        ha: bool = None,
         instance_id: str = None,
         namespace: str = None,
         page_index: int = None,
@@ -1839,6 +1957,7 @@ class DescribeNamespacesRequestDescribeNamespacesRequest(TeaModel):
         region: str = None,
         tags: List[DescribeNamespacesRequestDescribeNamespacesRequestTags] = None,
     ):
+        self.ha = ha
         self.instance_id = instance_id
         self.namespace = namespace
         self.page_index = page_index
@@ -1858,6 +1977,8 @@ class DescribeNamespacesRequestDescribeNamespacesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.ha is not None:
+            result['Ha'] = self.ha
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.namespace is not None:
@@ -1876,6 +1997,8 @@ class DescribeNamespacesRequestDescribeNamespacesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Ha') is not None:
+            self.ha = m.get('Ha')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Namespace') is not None:
@@ -2033,6 +2156,7 @@ class DescribeNamespacesResponseBodyNamespaces(TeaModel):
         self,
         gmt_create: int = None,
         gmt_modified: int = None,
+        ha: bool = None,
         namespace: str = None,
         resource_spec: DescribeNamespacesResponseBodyNamespacesResourceSpec = None,
         resource_used: DescribeNamespacesResponseBodyNamespacesResourceUsed = None,
@@ -2041,6 +2165,7 @@ class DescribeNamespacesResponseBodyNamespaces(TeaModel):
     ):
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
+        self.ha = ha
         self.namespace = namespace
         self.resource_spec = resource_spec
         self.resource_used = resource_used
@@ -2067,6 +2192,8 @@ class DescribeNamespacesResponseBodyNamespaces(TeaModel):
             result['GmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
+        if self.ha is not None:
+            result['Ha'] = self.ha
         if self.namespace is not None:
             result['Namespace'] = self.namespace
         if self.resource_spec is not None:
@@ -2087,6 +2214,8 @@ class DescribeNamespacesResponseBodyNamespaces(TeaModel):
             self.gmt_create = m.get('GmtCreate')
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
+        if m.get('Ha') is not None:
+            self.ha = m.get('Ha')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
         if m.get('ResourceSpec') is not None:
@@ -2188,9 +2317,6 @@ class DescribeNamespacesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2312,9 +2438,6 @@ class DescribeSupportedRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2428,9 +2551,6 @@ class DescribeSupportedZonesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2669,9 +2789,6 @@ class ListTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2698,6 +2815,39 @@ class ListTagResourcesResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = ListTagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequestHaResourceSpec(TeaModel):
+    def __init__(
+        self,
+        cpu: int = None,
+        memory_gb: int = None,
+    ):
+        self.cpu = cpu
+        self.memory_gb = memory_gb
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        if self.memory_gb is not None:
+            result['MemoryGB'] = self.memory_gb
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        if m.get('MemoryGB') is not None:
+            self.memory_gb = m.get('MemoryGB')
         return self
 
 
@@ -2737,15 +2887,25 @@ class ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequestResourceSpec
 class ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequest(TeaModel):
     def __init__(
         self,
+        ha: bool = None,
+        ha_resource_spec: ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequestHaResourceSpec = None,
+        ha_vswitch_ids: List[str] = None,
+        ha_zone_id: str = None,
         instance_id: str = None,
         region: str = None,
         resource_spec: ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequestResourceSpec = None,
     ):
+        self.ha = ha
+        self.ha_resource_spec = ha_resource_spec
+        self.ha_vswitch_ids = ha_vswitch_ids
+        self.ha_zone_id = ha_zone_id
         self.instance_id = instance_id
         self.region = region
         self.resource_spec = resource_spec
 
     def validate(self):
+        if self.ha_resource_spec:
+            self.ha_resource_spec.validate()
         if self.resource_spec:
             self.resource_spec.validate()
 
@@ -2755,6 +2915,14 @@ class ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.ha is not None:
+            result['Ha'] = self.ha
+        if self.ha_resource_spec is not None:
+            result['HaResourceSpec'] = self.ha_resource_spec.to_map()
+        if self.ha_vswitch_ids is not None:
+            result['HaVSwitchIds'] = self.ha_vswitch_ids
+        if self.ha_zone_id is not None:
+            result['HaZoneId'] = self.ha_zone_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region is not None:
@@ -2765,6 +2933,15 @@ class ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Ha') is not None:
+            self.ha = m.get('Ha')
+        if m.get('HaResourceSpec') is not None:
+            temp_model = ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequestHaResourceSpec()
+            self.ha_resource_spec = temp_model.from_map(m['HaResourceSpec'])
+        if m.get('HaVSwitchIds') is not None:
+            self.ha_vswitch_ids = m.get('HaVSwitchIds')
+        if m.get('HaZoneId') is not None:
+            self.ha_zone_id = m.get('HaZoneId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Region') is not None:
@@ -2855,9 +3032,6 @@ class ModifyPrepayInstanceSpecResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3041,9 +3215,6 @@ class ModifyPrepayNamespaceSpecResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3452,9 +3623,6 @@ class QueryConvertInstancePriceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3763,9 +3931,6 @@ class QueryConvertPrepayInstancePriceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3792,6 +3957,39 @@ class QueryConvertPrepayInstancePriceResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = QueryConvertPrepayInstancePriceResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryCreateInstancePriceRequestCreateInstanceRequestHaResourceSpec(TeaModel):
+    def __init__(
+        self,
+        cpu: int = None,
+        memory_gb: int = None,
+    ):
+        self.cpu = cpu
+        self.memory_gb = memory_gb
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        if self.memory_gb is not None:
+            result['MemoryGB'] = self.memory_gb
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        if m.get('MemoryGB') is not None:
+            self.memory_gb = m.get('MemoryGB')
         return self
 
 
@@ -3892,6 +4090,8 @@ class QueryCreateInstancePriceRequestCreateInstanceRequest(TeaModel):
         charge_type: str = None,
         duration: int = None,
         extra: str = None,
+        ha: bool = None,
+        ha_resource_spec: QueryCreateInstancePriceRequestCreateInstanceRequestHaResourceSpec = None,
         instance_name: str = None,
         pricing_cycle: str = None,
         promotion_code: str = None,
@@ -3908,6 +4108,8 @@ class QueryCreateInstancePriceRequestCreateInstanceRequest(TeaModel):
         self.charge_type = charge_type
         self.duration = duration
         self.extra = extra
+        self.ha = ha
+        self.ha_resource_spec = ha_resource_spec
         self.instance_name = instance_name
         self.pricing_cycle = pricing_cycle
         self.promotion_code = promotion_code
@@ -3921,6 +4123,8 @@ class QueryCreateInstancePriceRequestCreateInstanceRequest(TeaModel):
         self.zone_id = zone_id
 
     def validate(self):
+        if self.ha_resource_spec:
+            self.ha_resource_spec.validate()
         if self.resource_spec:
             self.resource_spec.validate()
         if self.storage:
@@ -3942,6 +4146,10 @@ class QueryCreateInstancePriceRequestCreateInstanceRequest(TeaModel):
             result['Duration'] = self.duration
         if self.extra is not None:
             result['Extra'] = self.extra
+        if self.ha is not None:
+            result['Ha'] = self.ha
+        if self.ha_resource_spec is not None:
+            result['HaResourceSpec'] = self.ha_resource_spec.to_map()
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
         if self.pricing_cycle is not None:
@@ -3976,6 +4184,11 @@ class QueryCreateInstancePriceRequestCreateInstanceRequest(TeaModel):
             self.duration = m.get('Duration')
         if m.get('Extra') is not None:
             self.extra = m.get('Extra')
+        if m.get('Ha') is not None:
+            self.ha = m.get('Ha')
+        if m.get('HaResourceSpec') is not None:
+            temp_model = QueryCreateInstancePriceRequestCreateInstanceRequestHaResourceSpec()
+            self.ha_resource_spec = temp_model.from_map(m['HaResourceSpec'])
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
         if m.get('PricingCycle') is not None:
@@ -4247,9 +4460,6 @@ class QueryCreateInstancePriceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4276,6 +4486,39 @@ class QueryCreateInstancePriceResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = QueryCreateInstancePriceResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequestHaResourceSpec(TeaModel):
+    def __init__(
+        self,
+        cpu: int = None,
+        memory_gb: int = None,
+    ):
+        self.cpu = cpu
+        self.memory_gb = memory_gb
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        if self.memory_gb is not None:
+            result['MemoryGB'] = self.memory_gb
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        if m.get('MemoryGB') is not None:
+            self.memory_gb = m.get('MemoryGB')
         return self
 
 
@@ -4315,15 +4558,25 @@ class QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequestResourceSpec
 class QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest(TeaModel):
     def __init__(
         self,
+        ha: bool = None,
+        ha_resource_spec: QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequestHaResourceSpec = None,
+        ha_vswitch_ids: List[str] = None,
+        ha_zone_id: str = None,
         instance_id: str = None,
         region: str = None,
         resource_spec: QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequestResourceSpec = None,
     ):
+        self.ha = ha
+        self.ha_resource_spec = ha_resource_spec
+        self.ha_vswitch_ids = ha_vswitch_ids
+        self.ha_zone_id = ha_zone_id
         self.instance_id = instance_id
         self.region = region
         self.resource_spec = resource_spec
 
     def validate(self):
+        if self.ha_resource_spec:
+            self.ha_resource_spec.validate()
         if self.resource_spec:
             self.resource_spec.validate()
 
@@ -4333,6 +4586,14 @@ class QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.ha is not None:
+            result['Ha'] = self.ha
+        if self.ha_resource_spec is not None:
+            result['HaResourceSpec'] = self.ha_resource_spec.to_map()
+        if self.ha_vswitch_ids is not None:
+            result['HaVSwitchIds'] = self.ha_vswitch_ids
+        if self.ha_zone_id is not None:
+            result['HaZoneId'] = self.ha_zone_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region is not None:
@@ -4343,6 +4604,15 @@ class QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Ha') is not None:
+            self.ha = m.get('Ha')
+        if m.get('HaResourceSpec') is not None:
+            temp_model = QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequestHaResourceSpec()
+            self.ha_resource_spec = temp_model.from_map(m['HaResourceSpec'])
+        if m.get('HaVSwitchIds') is not None:
+            self.ha_vswitch_ids = m.get('HaVSwitchIds')
+        if m.get('HaZoneId') is not None:
+            self.ha_zone_id = m.get('HaZoneId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Region') is not None:
@@ -4599,9 +4869,6 @@ class QueryModifyInstancePriceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4922,9 +5189,6 @@ class QueryRenewInstancePriceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5079,9 +5343,6 @@ class RenewInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5260,9 +5521,6 @@ class TagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5406,9 +5664,6 @@ class UntagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
