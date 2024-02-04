@@ -9,10 +9,12 @@ class AbolishApiRequest(TeaModel):
         self,
         api_id: str = None,
         group_id: str = None,
+        security_token: str = None,
         stage_name: str = None,
     ):
         self.api_id = api_id
         self.group_id = group_id
+        self.security_token = security_token
         self.stage_name = stage_name
 
     def validate(self):
@@ -28,6 +30,8 @@ class AbolishApiRequest(TeaModel):
             result['ApiId'] = self.api_id
         if self.group_id is not None:
             result['GroupId'] = self.group_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
         if self.stage_name is not None:
             result['StageName'] = self.stage_name
         return result
@@ -38,6 +42,8 @@ class AbolishApiRequest(TeaModel):
             self.api_id = m.get('ApiId')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
         if m.get('StageName') is not None:
             self.stage_name = m.get('StageName')
         return self
@@ -117,11 +123,13 @@ class AbolishApiForInnerRequest(TeaModel):
         ali_uid: int = None,
         api_id: str = None,
         group_id: str = None,
+        security_token: str = None,
         stage_name: str = None,
     ):
         self.ali_uid = ali_uid
         self.api_id = api_id
         self.group_id = group_id
+        self.security_token = security_token
         self.stage_name = stage_name
 
     def validate(self):
@@ -139,6 +147,8 @@ class AbolishApiForInnerRequest(TeaModel):
             result['ApiId'] = self.api_id
         if self.group_id is not None:
             result['GroupId'] = self.group_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
         if self.stage_name is not None:
             result['StageName'] = self.stage_name
         return result
@@ -151,6 +161,8 @@ class AbolishApiForInnerRequest(TeaModel):
             self.api_id = m.get('ApiId')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
         if m.get('StageName') is not None:
             self.stage_name = m.get('StageName')
         return self
