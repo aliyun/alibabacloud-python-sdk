@@ -1,3 +1,10 @@
+2024-02-05 Version: 2.6.0
+- Support API CreateSearchDome.
+- Support API CreateSearchKeyword.
+- Support API GetDocContent.
+- Support API GetLiveReplayUrl.
+
+
 2024-01-23 Version: 2.5.0
 - Generated python 2023-04-26 for aliding.
 
