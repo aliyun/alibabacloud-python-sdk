@@ -167,11 +167,16 @@ class LoginInstanceRequestInstanceLoginInfo(TeaModel):
         self,
         authentication_type: str = None,
         certificate: str = None,
+        credential_token: str = None,
+        docker_container_name: str = None,
+        docker_exec: str = None,
         duration_seconds: int = None,
         expire_time: str = None,
         host: str = None,
         instance_id: str = None,
         instance_type: str = None,
+        login_by_instance_credential: bool = None,
+        login_by_instance_shortcut: bool = None,
         network_access_mode: str = None,
         options: LoginInstanceRequestInstanceLoginInfoOptions = None,
         pass_phrase: str = None,
@@ -179,16 +184,23 @@ class LoginInstanceRequestInstanceLoginInfo(TeaModel):
         port: int = None,
         protocol: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
+        shortcut_token: str = None,
         username: str = None,
         vpc_id: str = None,
     ):
         self.authentication_type = authentication_type
         self.certificate = certificate
+        self.credential_token = credential_token
+        self.docker_container_name = docker_container_name
+        self.docker_exec = docker_exec
         self.duration_seconds = duration_seconds
         self.expire_time = expire_time
         self.host = host
         self.instance_id = instance_id
         self.instance_type = instance_type
+        self.login_by_instance_credential = login_by_instance_credential
+        self.login_by_instance_shortcut = login_by_instance_shortcut
         self.network_access_mode = network_access_mode
         self.options = options
         self.pass_phrase = pass_phrase
@@ -196,6 +208,8 @@ class LoginInstanceRequestInstanceLoginInfo(TeaModel):
         self.port = port
         self.protocol = protocol
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.shortcut_token = shortcut_token
         self.username = username
         self.vpc_id = vpc_id
 
@@ -213,6 +227,12 @@ class LoginInstanceRequestInstanceLoginInfo(TeaModel):
             result['AuthenticationType'] = self.authentication_type
         if self.certificate is not None:
             result['Certificate'] = self.certificate
+        if self.credential_token is not None:
+            result['CredentialToken'] = self.credential_token
+        if self.docker_container_name is not None:
+            result['DockerContainerName'] = self.docker_container_name
+        if self.docker_exec is not None:
+            result['DockerExec'] = self.docker_exec
         if self.duration_seconds is not None:
             result['DurationSeconds'] = self.duration_seconds
         if self.expire_time is not None:
@@ -223,6 +243,10 @@ class LoginInstanceRequestInstanceLoginInfo(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.login_by_instance_credential is not None:
+            result['LoginByInstanceCredential'] = self.login_by_instance_credential
+        if self.login_by_instance_shortcut is not None:
+            result['LoginByInstanceShortcut'] = self.login_by_instance_shortcut
         if self.network_access_mode is not None:
             result['NetworkAccessMode'] = self.network_access_mode
         if self.options is not None:
@@ -237,6 +261,10 @@ class LoginInstanceRequestInstanceLoginInfo(TeaModel):
             result['Protocol'] = self.protocol
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.shortcut_token is not None:
+            result['ShortcutToken'] = self.shortcut_token
         if self.username is not None:
             result['Username'] = self.username
         if self.vpc_id is not None:
@@ -249,6 +277,12 @@ class LoginInstanceRequestInstanceLoginInfo(TeaModel):
             self.authentication_type = m.get('AuthenticationType')
         if m.get('Certificate') is not None:
             self.certificate = m.get('Certificate')
+        if m.get('CredentialToken') is not None:
+            self.credential_token = m.get('CredentialToken')
+        if m.get('DockerContainerName') is not None:
+            self.docker_container_name = m.get('DockerContainerName')
+        if m.get('DockerExec') is not None:
+            self.docker_exec = m.get('DockerExec')
         if m.get('DurationSeconds') is not None:
             self.duration_seconds = m.get('DurationSeconds')
         if m.get('ExpireTime') is not None:
@@ -259,6 +293,10 @@ class LoginInstanceRequestInstanceLoginInfo(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        if m.get('LoginByInstanceCredential') is not None:
+            self.login_by_instance_credential = m.get('LoginByInstanceCredential')
+        if m.get('LoginByInstanceShortcut') is not None:
+            self.login_by_instance_shortcut = m.get('LoginByInstanceShortcut')
         if m.get('NetworkAccessMode') is not None:
             self.network_access_mode = m.get('NetworkAccessMode')
         if m.get('Options') is not None:
@@ -274,6 +312,10 @@ class LoginInstanceRequestInstanceLoginInfo(TeaModel):
             self.protocol = m.get('Protocol')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ShortcutToken') is not None:
+            self.shortcut_token = m.get('ShortcutToken')
         if m.get('Username') is not None:
             self.username = m.get('Username')
         if m.get('VpcId') is not None:
@@ -718,9 +760,6 @@ class LoginInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
