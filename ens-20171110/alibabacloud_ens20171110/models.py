@@ -703,9 +703,6 @@ class AccosicateNetworkAclResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1025,9 +1022,6 @@ class AddBackendServersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1175,9 +1169,6 @@ class AddDeviceInternetPortResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1289,9 +1280,6 @@ class AddNetworkInterfaceToInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1396,9 +1384,6 @@ class AddSnatIpForSnatEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1547,9 +1532,6 @@ class AssignPrivateIpAddressesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1595,11 +1577,11 @@ class AssociateEnsEipAddressRequest(TeaModel):
         self.instance_id = instance_id
         # The type of instance with which you want to associate the EIP. Valid values:
         # 
-        # *   **Nat**: a NAT gateway
+        # *   **Nat**: a NAT gateway.
         # *   **SlbInstance**: an ELB instance.
-        # *   **NetworkInterface**: a secondary ENI
+        # *   **NetworkInterface**: a secondary ENI.
         # *   **NatSlbInstance**: If you want to associate multiple EIPs to an ELB instance, you need to set the parameter to this value.
-        # *   **EnsInstance** (default): an ENS instance
+        # *   **EnsInstance** (default): an ENS instance.
         self.instance_type = instance_type
         # Specifies whether the EIP is a secondary EIP. Valid values:
         # 
@@ -1679,9 +1661,6 @@ class AssociateEnsEipAddressResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1804,9 +1783,6 @@ class AttachDiskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1911,9 +1887,6 @@ class AttachEnsInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1953,7 +1926,6 @@ class AuthorizeSecurityGroupRequest(TeaModel):
         security_group_id: str = None,
         source_cidr_ip: str = None,
         source_port_range: str = None,
-        version: str = None,
     ):
         # The transport layer protocol. The values of this parameter are case-sensitive. Valid values:
         # 
@@ -1994,8 +1966,6 @@ class AuthorizeSecurityGroupRequest(TeaModel):
         # *   When the IpProtocol parameter is set to gre, the port number range is **-1/-1**, which indicates all ports.
         # *   When the IpProtocol parameter is set to all, the port number range is **-1/-1**, which indicates all ports.
         self.source_port_range = source_port_range
-        # 2017-11-10
-        self.version = version
 
     def validate(self):
         pass
@@ -2020,8 +1990,6 @@ class AuthorizeSecurityGroupRequest(TeaModel):
             result['SourceCidrIp'] = self.source_cidr_ip
         if self.source_port_range is not None:
             result['SourcePortRange'] = self.source_port_range
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -2040,8 +2008,6 @@ class AuthorizeSecurityGroupRequest(TeaModel):
             self.source_cidr_ip = m.get('SourceCidrIp')
         if m.get('SourcePortRange') is not None:
             self.source_port_range = m.get('SourcePortRange')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -2085,9 +2051,6 @@ class AuthorizeSecurityGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2127,7 +2090,6 @@ class AuthorizeSecurityGroupEgressRequest(TeaModel):
         priority: int = None,
         security_group_id: str = None,
         source_port_range: str = None,
-        version: str = None,
     ):
         # The destination IP addresses. CIDR blocks and IPv4 addresses are supported.
         # 
@@ -2164,8 +2126,6 @@ class AuthorizeSecurityGroupEgressRequest(TeaModel):
         # *   When the IpProtocol parameter is set to gre, the port number range is **-1/-1**, which indicates all ports.
         # *   When the IpProtocol parameter is set to all, the port number range is **-1/-1**, which indicates all ports.
         self.source_port_range = source_port_range
-        # 2017-11-10
-        self.version = version
 
     def validate(self):
         pass
@@ -2190,8 +2150,6 @@ class AuthorizeSecurityGroupEgressRequest(TeaModel):
             result['SecurityGroupId'] = self.security_group_id
         if self.source_port_range is not None:
             result['SourcePortRange'] = self.source_port_range
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -2210,8 +2168,6 @@ class AuthorizeSecurityGroupEgressRequest(TeaModel):
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('SourcePortRange') is not None:
             self.source_port_range = m.get('SourcePortRange')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -2255,9 +2211,6 @@ class AuthorizeSecurityGroupEgressResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2371,9 +2324,6 @@ class CleanDistDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2637,9 +2587,6 @@ class CopySDGResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2911,9 +2858,6 @@ class CopySnapshotResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2969,11 +2913,7 @@ class CreateARMServerInstancesRequest(TeaModel):
         # *   true
         # *   false (default)
         self.auto_renew = auto_renew
-        # Specifies whether to use vouchers. Default values: true. Valid values:
-        # 
-        # - true 
-        # 
-        # - false
+        # Specifies whether to use coupons. Valid values: true and false Default value: true.
         self.auto_use_coupon = auto_use_coupon
         # The ID of the Edge Node Service (ENS) node.
         self.ens_region_id = ens_region_id
@@ -2992,6 +2932,18 @@ class CreateARMServerInstancesRequest(TeaModel):
         # *   aic.cf53r.c7.np
         # *   aic.cf53r.c8.np
         # *   ens.a6c2
+        # *   aic.cf52m1r.c1.np
+        # *   aic.cf52m1r.c2.np
+        # *   aic.cf52m1r.c3.np
+        # *   aic.cf52m1r.c4.np
+        # *   aic.cf52m1r.c5.np
+        # *   aic.cf53r.c6
+        # *   aic.cf52m1r.c6
+        # *   aic.cf53r.c7
+        # *   aic.cf52r.c1.np
+        # *   aic.cf52r.c2.np
+        # *   aic.cf52r.c3.np
+        # *   aic.cf52r.c4.np
         self.instance_type = instance_type
         # The name of the key pair.
         self.key_pair_name = key_pair_name
@@ -3016,9 +2968,24 @@ class CreateARMServerInstancesRequest(TeaModel):
         # The resolution. Valid values:
         # 
         # *   1920\*1080
-        # *   1280\*720
         # *   1080\*1920
+        # *   1280\*720
         # *   720\*1280
+        # *   2400\*1080
+        # *   1920\*864
+        # *   1080\*2400
+        # *   864\*1920
+        # 
+        # <!---->
+        # 
+        # *   1920\*1080
+        # *   1080\*1920
+        # *   1280\*720
+        # *   720\*1280
+        # *   2400\*1080
+        # *   1920\*864
+        # *   1080\*2400
+        # *   864\*1920
         self.resolution = resolution
         # The name of the service.
         self.server_name = server_name
@@ -3161,9 +3128,6 @@ class CreateARMServerInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3280,9 +3244,6 @@ class CreateApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3418,9 +3379,6 @@ class CreateClassicNetworkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3601,9 +3559,6 @@ class CreateDiskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3646,21 +3601,13 @@ class CreateEipInstanceRequest(TeaModel):
     ):
         # The peak bandwidth of the EIP. Default value: 5. Valid values: 5 to 10000. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The description of elastic IP address (EIP).
+        # The description of the EIP.
         self.description = description
         # The ID of the Edge Node Service (ENS) node.
         self.ens_region_id = ens_region_id
-        # The billing method of the EIP. Valid values:
-        # 
-        # *   **PrePaid**: subscription
-        # *   **PostPaid** (default): pay-as-you-go on a monthly basis
-        # 
-        # >  If you set **InstanceChargeType** to **PostPaid**, you cannot set **InternetChargeType** to **PayByBandwidth**.
+        # The billing method of the EIP. Set the value to **PostPaid**.
         self.instance_charge_type = instance_charge_type
-        # The metering method of the EIP. Valid values:
-        # 
-        # *   **PayByBandwidth** (default): pay-by-bandwidth
-        # *   **95BandwidthByMonth**: pay-by-monthly-95th-percentile-bandwidth
+        # The metering method of the EIP. Set the value to **95BandwidthByMonth**.
         self.internet_charge_type = internet_charge_type
         # The Internet service provider. Valid values:
         # 
@@ -3762,9 +3709,6 @@ class CreateEipInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3910,9 +3854,6 @@ class CreateEnsRouteEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4207,9 +4148,6 @@ class CreateEnsSaleControlResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4244,11 +4182,14 @@ class CreateEnsServiceRequest(TeaModel):
         self,
         ens_service_id: str = None,
         order_type: str = None,
-        version: str = None,
     ):
+        # The ID of the resource that you want to obtain. You can specify only one ID in a request.
         self.ens_service_id = ens_service_id
+        # The operation to perform after you preview the created edge service. Valid values:
+        # 
+        # *   **Buy**: create
+        # *   **Upgrade**: change
         self.order_type = order_type
-        self.version = version
 
     def validate(self):
         pass
@@ -4263,8 +4204,6 @@ class CreateEnsServiceRequest(TeaModel):
             result['EnsServiceId'] = self.ens_service_id
         if self.order_type is not None:
             result['OrderType'] = self.order_type
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -4273,8 +4212,6 @@ class CreateEnsServiceRequest(TeaModel):
             self.ens_service_id = m.get('EnsServiceId')
         if m.get('OrderType') is not None:
             self.order_type = m.get('OrderType')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -4284,7 +4221,9 @@ class CreateEnsServiceResponseBody(TeaModel):
         code: int = None,
         request_id: str = None,
     ):
+        # The service code. 0 is returned for a successful request. An error code is returned for a failed request.
         self.code = code
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4323,9 +4262,6 @@ class CreateEnsServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4364,10 +4300,26 @@ class CreateEpnInstanceRequest(TeaModel):
         internet_max_bandwidth_out: int = None,
         networking_model: str = None,
     ):
+        # The name of the EPN instance.
         self.epninstance_name = epninstance_name
+        # The type of the EPN instance. Set the value to **EdgeToEdge**.
         self.epninstance_type = epninstance_type
+        # The billing method for network usage. Valid values:
+        # 
+        # *   **BandwidthByDay**: Pay by daily peak bandwidth.
+        # *   **95BandwidthByMonth**: Pay by monthly 95th percentile bandwidth.
+        # *   **PayByBandwidth4thMonth**: Pay by monthly fourth peak bandwidth.
+        # *   **PayByBandwidth**: Pay by fixed bandwidth.
+        # 
+        # You can specify only one metering method for network usage and cannot overwrite the existing metering method.
         self.internet_charge_type = internet_charge_type
+        # The maximum outbound public bandwidth. Unit: Mbit/s. Valid values: 1 to 100.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
+        # The networking mode. Valid values:
+        # 
+        # *   **SpeedUp**: intelligent acceleration network (Internet)
+        # *   **Connection**: internal network
+        # *   **SpeedUpAndConnection**: intelligent acceleration network and internal network
         self.networking_model = networking_model
 
     def validate(self):
@@ -4412,7 +4364,9 @@ class CreateEpnInstanceResponseBody(TeaModel):
         epninstance_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the EPN instance.
         self.epninstance_id = epninstance_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4451,9 +4405,6 @@ class CreateEpnInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4500,7 +4451,7 @@ class CreateFileSystemRequestOrderDetails(TeaModel):
         # *   PrePaid: subscription. This billing method is not supported.
         # *   PostPaid: pay-as-you-go.
         self.charge_type = charge_type
-        # The ID of the ENS node.
+        # The ID of the node.
         self.ens_region_id = ens_region_id
         # The name of the file system.
         self.file_system_name = file_system_name
@@ -4691,9 +4642,6 @@ class CreateFileSystemResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4865,9 +4813,6 @@ class CreateForwardEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5004,9 +4949,6 @@ class CreateImageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5168,8 +5110,9 @@ class CreateInstanceRequest(TeaModel):
         self.password = password
         # Specifies whether to use the preset password of the image. Valid values:
         # 
-        # *   **true**: The password preset in the image is used, and the **Password** parameter must be null. For secure access, make sure that the selected image has a password configured.
-        # *   **false: does not use the password preset in the image.
+        # - **true**: The password preset in the image is used, and the **Password** parameter must be null. For secure access, make sure that the selected image has a password configured.
+        # 
+        # - **false**: does not use the password preset in the image.
         self.password_inherit = password_inherit
         # The billing method of the instance. The value is set to Subscription.
         self.payment_type = payment_type
@@ -5403,9 +5346,6 @@ class CreateInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5536,9 +5476,6 @@ class CreateInstanceActiveOpsTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5572,15 +5509,12 @@ class CreateKeyPairRequest(TeaModel):
     def __init__(
         self,
         key_pair_name: str = None,
-        version: str = None,
     ):
         # The name of the key pair. The name must conform to the following naming conventions:
         # 
         # *   The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
         # *   It must start with a letter but cannot start with `http://` or `https://`.
         self.key_pair_name = key_pair_name
-        # The version number. Set the value to 2017-11-10.
-        self.version = version
 
     def validate(self):
         pass
@@ -5593,16 +5527,12 @@ class CreateKeyPairRequest(TeaModel):
         result = dict()
         if self.key_pair_name is not None:
             result['KeyPairName'] = self.key_pair_name
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('KeyPairName') is not None:
             self.key_pair_name = m.get('KeyPairName')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -5674,9 +5604,6 @@ class CreateKeyPairResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5839,9 +5766,6 @@ class CreateLoadBalancerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6125,9 +6049,6 @@ class CreateLoadBalancerHTTPListenerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6436,9 +6357,6 @@ class CreateLoadBalancerHTTPSListenerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6680,9 +6598,6 @@ class CreateLoadBalancerTCPListenerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6882,9 +6797,6 @@ class CreateLoadBalancerUDPListenerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7015,9 +6927,6 @@ class CreateMountTargetResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7150,9 +7059,6 @@ class CreateNatGatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7288,9 +7194,6 @@ class CreateNetworkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7328,11 +7231,11 @@ class CreateNetworkAclRequest(TeaModel):
     ):
         # The description of the network ACL.
         # 
-        # The description must be 1 to 256 characters in length. The description cannot start with \*\*http:// **or** https://\*\*.
+        # The description must be 1 to 256 characters in length and cannot start with http:// or https://.
         self.description = description
-        # The name of the network ACL.
+        # Enter a name for the network ACL.
         # 
-        # The name must be 1 to 128 characters in length. The name cannot start with \*\*http:// **or** https://\*\*.
+        # The name must be 1 to 128 characters in length and cannot start with http:// or https://.
         self.network_acl_name = network_acl_name
 
     def validate(self):
@@ -7406,9 +7309,6 @@ class CreateNetworkAclResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7455,7 +7355,7 @@ class CreateNetworkAclEntryRequest(TeaModel):
         self.cidr_block = cidr_block
         # The description of the network ACL.
         # 
-        # The description must be 1 to 256 characters in length. The description cannot start with \*\*http:// **or** https://\*\*.
+        # The description must be 1 to 256 characters in length and cannot start with http:// or https://.
         self.description = description
         # Specifies whether the ACL rule controls inbound or outbound access requests. Valid values:
         # 
@@ -7464,7 +7364,7 @@ class CreateNetworkAclEntryRequest(TeaModel):
         self.direction = direction
         # The name of the rule.
         # 
-        # The name must be 1 to 128 characters in length. The name cannot start with \*\*http:// **or** https://\*\*.
+        # The name must be 1 to 128 characters in length and cannot start with http:// or https://.
         self.network_acl_entry_name = network_acl_entry_name
         # The ID of the network ACL.
         self.network_acl_id = network_acl_id
@@ -7475,8 +7375,8 @@ class CreateNetworkAclEntryRequest(TeaModel):
         self.policy = policy
         # The port range.
         # 
-        # *   If you set **Protocol** to **all** or **icmp**, set this parameter to \*\*-1/-1\*\*. \*\*-1/-1\*\* specifies all ports.
-        # *   If you set **Protocol** to **tcp** or **udp**, the port range must be in the following format: **1/200** or **80/80**. 1/200 specifies port 1 to port 200 and 80/80 specifies port 80. Valid values for a port: **1 to 65535**.
+        # *   If you set **Protocol** to **all** or **icmp**, set this parameter to -1/-1, which specifies all ports.
+        # *   If you set **Protocol** to **tcp** or **udp**, the port can be **1 to 65535**. You can set this parameter to **1/200** or **80/80**, which specifies ports 1 to 200 or port 80.
         self.port_range = port_range
         # The priority of the rule. Valid values: **1 to 100**. Default value: **1**.
         self.priority = priority
@@ -7587,9 +7487,6 @@ class CreateNetworkAclEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7701,9 +7598,6 @@ class CreateSecurityGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7838,9 +7732,6 @@ class CreateSnapshotResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7993,9 +7884,6 @@ class CreateSnatEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8139,9 +8027,6 @@ class CreateVSwitchResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8246,9 +8131,6 @@ class DeleteApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8346,9 +8228,6 @@ class DeleteBucketResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8453,9 +8332,6 @@ class DeleteBucketLifecycleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8577,9 +8453,6 @@ class DeleteDeviceInternetPortResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8684,9 +8557,6 @@ class DeleteDiskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8784,9 +8654,6 @@ class DeleteEnsRouteEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9021,9 +8888,6 @@ class DeleteEnsSaleConditionControlResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9211,9 +9075,6 @@ class DeleteEnsSaleControlResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9248,6 +9109,7 @@ class DeleteEpnInstanceRequest(TeaModel):
         self,
         epninstance_id: str = None,
     ):
+        # The ID of the EPN instance.
         self.epninstance_id = epninstance_id
 
     def validate(self):
@@ -9275,6 +9137,7 @@ class DeleteEpnInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9309,9 +9172,6 @@ class DeleteEpnInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9416,9 +9276,6 @@ class DeleteFileSystemResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9516,9 +9373,6 @@ class DeleteForwardEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9625,9 +9479,6 @@ class DeleteImageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9660,8 +9511,10 @@ class DeleteImageResponse(TeaModel):
 class DeleteKeyPairsRequest(TeaModel):
     def __init__(
         self,
+        key_pair_id: str = None,
         key_pair_name: str = None,
     ):
+        self.key_pair_id = key_pair_id
         # The key pair name. The name must conform to the following naming conventions:
         # 
         # *   The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
@@ -9680,12 +9533,16 @@ class DeleteKeyPairsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.key_pair_id is not None:
+            result['KeyPairId'] = self.key_pair_id
         if self.key_pair_name is not None:
             result['KeyPairName'] = self.key_pair_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('KeyPairId') is not None:
+            self.key_pair_id = m.get('KeyPairId')
         if m.get('KeyPairName') is not None:
             self.key_pair_name = m.get('KeyPairName')
         return self
@@ -9731,9 +9588,6 @@ class DeleteKeyPairsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9854,9 +9708,6 @@ class DeleteLoadBalancerListenerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9968,9 +9819,6 @@ class DeleteMountTargetResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10068,9 +9916,6 @@ class DeleteNatGatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10168,9 +10013,6 @@ class DeleteNetworkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10268,9 +10110,6 @@ class DeleteNetworkAclResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10368,9 +10207,6 @@ class DeleteNetworkAclEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10475,9 +10311,6 @@ class DeleteObjectResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10511,12 +10344,9 @@ class DeleteSecurityGroupRequest(TeaModel):
     def __init__(
         self,
         security_group_id: str = None,
-        version: str = None,
     ):
         # The security group ID of the instance.
         self.security_group_id = security_group_id
-        # The version number.
-        self.version = version
 
     def validate(self):
         pass
@@ -10529,16 +10359,12 @@ class DeleteSecurityGroupRequest(TeaModel):
         result = dict()
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -10582,9 +10408,6 @@ class DeleteSecurityGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10682,9 +10505,6 @@ class DeleteSnapshotResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10782,9 +10602,6 @@ class DeleteSnatEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10889,9 +10706,6 @@ class DeleteSnatIpForSnatEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10925,12 +10739,9 @@ class DeleteVSwitchRequest(TeaModel):
     def __init__(
         self,
         v_switch_id: str = None,
-        version: str = None,
     ):
         # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
-        # The version number.
-        self.version = version
 
     def validate(self):
         pass
@@ -10943,16 +10754,12 @@ class DeleteVSwitchRequest(TeaModel):
         result = dict()
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -10996,9 +10803,6 @@ class DeleteVSwitchResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11274,9 +11078,6 @@ class DeploySDGResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11538,9 +11339,6 @@ class DescribeAICImagesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12208,9 +12006,6 @@ class DescribeARMServerInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12344,9 +12139,6 @@ class DescribeApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12468,9 +12260,6 @@ class DescribeApplicationResourceSummaryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12497,34 +12286,6 @@ class DescribeApplicationResourceSummaryResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = DescribeApplicationResourceSummaryResponseBody()
             self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeAvailableResourceRequest(TeaModel):
-    def __init__(
-        self,
-        version: str = None,
-    ):
-        # The version number. Set the value to 2017-11-10.
-        self.version = version
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.version is not None:
-            result['Version'] = self.version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -12755,9 +12516,6 @@ class DescribeAvailableResourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12932,11 +12690,11 @@ class DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceEn
         self.area = area
         # The name. This parameter is empty by default.
         self.en_name = en_name
-        # The ID of the node.
+        # The ID of the edge node.
         self.ens_region_id = ens_region_id
-        # The Internet service provider (ISP).
+        # The information about the Internet service provider (ISP).
         self.isp = isp
-        # The name of the node.
+        # The name of the edge node.
         self.name = name
         # The province.
         self.province = province
@@ -13092,7 +12850,6 @@ class DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResource(T
         # The supplementary information about the edge nodes.
         self.ens_region_ids_extends = ens_region_ids_extends
         self.instance_speces = instance_speces
-        # The Internet service provider (ISP).
         self.isp = isp
         # The maximum size of the system disk. Unit: GiB.
         self.system_disk_max_size = system_disk_max_size
@@ -13259,9 +13016,6 @@ class DescribeAvailableResourceInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13362,9 +13116,6 @@ class DescribeBandWithdChargeTypeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13401,7 +13152,6 @@ class DescribeBandwitdhByInternetChargeTypeRequest(TeaModel):
         ens_region_id: str = None,
         isp: str = None,
         start_time: str = None,
-        version: str = None,
     ):
         # The end of the time range to query.
         # 
@@ -13422,8 +13172,6 @@ class DescribeBandwitdhByInternetChargeTypeRequest(TeaModel):
         # *   Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # *   If the value of the seconds place is not 00, the start time is automatically set to the next minute.
         self.start_time = start_time
-        # The version number. Set the value to 2017-11-10.
-        self.version = version
 
     def validate(self):
         pass
@@ -13442,8 +13190,6 @@ class DescribeBandwitdhByInternetChargeTypeRequest(TeaModel):
             result['Isp'] = self.isp
         if self.start_time is not None:
             result['StartTime'] = self.start_time
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -13456,8 +13202,6 @@ class DescribeBandwitdhByInternetChargeTypeRequest(TeaModel):
             self.isp = m.get('Isp')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -13529,9 +13273,6 @@ class DescribeBandwitdhByInternetChargeTypeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13720,9 +13461,6 @@ class DescribeCloudDiskAvailableResourceInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13904,9 +13642,6 @@ class DescribeCloudDiskTypesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13940,12 +13675,9 @@ class DescribeCreatePrePaidInstanceResultRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
-        version: str = None,
     ):
         # The ID of the instance. You can call the CreateIntance operation to create an instance.
         self.instance_id = instance_id
-        # The version number.
-        self.version = version
 
     def validate(self):
         pass
@@ -13958,16 +13690,12 @@ class DescribeCreatePrePaidInstanceResultRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -14060,9 +13788,6 @@ class DescribeCreatePrePaidInstanceResultResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14113,7 +13838,7 @@ class DescribeDataDistResultRequest(TeaModel):
         self.data_versions = data_versions
         # The IDs of the ENS nodes.
         self.ens_region_ids = ens_region_ids
-        # The ID of the Edge Node Service (ENS) instance. Separate multiple IDs with commas (,). By default, all edge instances are queried.
+        # The IDs of ENS instances. Separate multiple IDs with commas (,). By default, all instances are queried.
         self.instance_ids = instance_ids
         # The end of the time range to query. Specify the time in the 2006-01-02 format. By default, the time range to query is not restricted.
         self.max_date = max_date
@@ -14197,7 +13922,7 @@ class DescribeDataDistResultShrinkRequest(TeaModel):
         self.data_versions = data_versions
         # The IDs of the ENS nodes.
         self.ens_region_ids_shrink = ens_region_ids_shrink
-        # The ID of the Edge Node Service (ENS) instance. Separate multiple IDs with commas (,). By default, all edge instances are queried.
+        # The IDs of ENS instances. Separate multiple IDs with commas (,). By default, all instances are queried.
         self.instance_ids = instance_ids
         # The end of the time range to query. Specify the time in the 2006-01-02 format. By default, the time range to query is not restricted.
         self.max_date = max_date
@@ -14578,9 +14303,6 @@ class DescribeDataDistResultResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14814,9 +14536,6 @@ class DescribeDataDownloadURLResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15235,9 +14954,6 @@ class DescribeDataPushResultResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15929,9 +15645,6 @@ class DescribeDeviceServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16387,9 +16100,6 @@ class DescribeDisksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16424,14 +16134,11 @@ class DescribeEipAddressesRequest(TeaModel):
         self,
         eips: str = None,
         ens_region_id: str = None,
-        version: str = None,
     ):
         # The information about the EIPs.
         self.eips = eips
         # The ID of the Edge Node Service (ENS) node.
         self.ens_region_id = ens_region_id
-        # The version number. Set the value to 2017-11-10.
-        self.version = version
 
     def validate(self):
         pass
@@ -16446,8 +16153,6 @@ class DescribeEipAddressesRequest(TeaModel):
             result['Eips'] = self.eips
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -16456,8 +16161,6 @@ class DescribeEipAddressesRequest(TeaModel):
             self.eips = m.get('Eips')
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -16467,7 +16170,7 @@ class DescribeEipAddressesResponseBodyEipAddressesEipAddress(TeaModel):
         eip: str = None,
         instance_id_internet_ip: str = None,
     ):
-        # The information about the EIP.
+        # The information about an EIP.
         self.eip = eip
         # The public IP address of the ENS instance.
         self.instance_id_internet_ip = instance_id_internet_ip
@@ -16537,7 +16240,7 @@ class DescribeEipAddressesResponseBody(TeaModel):
         eip_addresses: DescribeEipAddressesResponseBodyEipAddresses = None,
         request_id: str = None,
     ):
-        # Details about the EIP.
+        # Details of the EIPs.
         self.eip_addresses = eip_addresses
         # The ID of the request.
         self.request_id = request_id
@@ -16580,9 +16283,6 @@ class DescribeEipAddressesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16737,9 +16437,6 @@ class DescribeElbAvailableResourceInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16882,9 +16579,6 @@ class DescribeEnsCommodityCodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17074,9 +16768,6 @@ class DescribeEnsCommodityModuleCodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17450,9 +17141,6 @@ class DescribeEnsEipAddressesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17487,11 +17175,19 @@ class DescribeEnsNetDistrictRequest(TeaModel):
         self,
         net_district_code: str = None,
         net_level_code: str = None,
-        version: str = None,
     ):
+        # The code of the region.
+        # 
+        # If you do not specify this parameter, only nodes in the regions of the level that is specified by the NetLevelCode parameter are queried.
+        # 
+        # If you specify this parameter, only nodes in the regions of the level that is specified by this parameter are queried.
         self.net_district_code = net_district_code
+        # The level of the region.
+        # 
+        # *   **Big**: area
+        # *   **Middle**: province
+        # *   **Small**: city
         self.net_level_code = net_level_code
-        self.version = version
 
     def validate(self):
         pass
@@ -17506,8 +17202,6 @@ class DescribeEnsNetDistrictRequest(TeaModel):
             result['NetDistrictCode'] = self.net_district_code
         if self.net_level_code is not None:
             result['NetLevelCode'] = self.net_level_code
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -17516,8 +17210,6 @@ class DescribeEnsNetDistrictRequest(TeaModel):
             self.net_district_code = m.get('NetDistrictCode')
         if m.get('NetLevelCode') is not None:
             self.net_level_code = m.get('NetLevelCode')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -17531,11 +17223,21 @@ class DescribeEnsNetDistrictResponseBodyEnsNetDistrictsEnsNetDistrict(TeaModel):
         net_district_level: str = None,
         net_district_name: str = None,
     ):
+        # The number of nodes in the region.
         self.ens_region_id_count = ens_region_id_count
+        # The code of the region.
         self.net_district_code = net_district_code
+        # The name of the region.
         self.net_district_en_name = net_district_en_name
+        # The parent code of the region.
         self.net_district_father_code = net_district_father_code
+        # The level of the region.
+        # 
+        # *   **Big**: area
+        # *   **Middle**: province
+        # *   **Small**: city
         self.net_district_level = net_district_level
+        # The name of the region.
         self.net_district_name = net_district_name
 
     def validate(self):
@@ -17620,8 +17322,11 @@ class DescribeEnsNetDistrictResponseBody(TeaModel):
         ens_net_districts: DescribeEnsNetDistrictResponseBodyEnsNetDistricts = None,
         request_id: str = None,
     ):
+        # The returned service code. A value of 0 indicates that the operation was successful.
         self.code = code
+        # The information about the regions.
         self.ens_net_districts = ens_net_districts
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17666,9 +17371,6 @@ class DescribeEnsNetDistrictResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17695,34 +17397,6 @@ class DescribeEnsNetDistrictResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = DescribeEnsNetDistrictResponseBody()
             self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeEnsNetLevelRequest(TeaModel):
-    def __init__(
-        self,
-        version: str = None,
-    ):
-        # The version number.
-        self.version = version
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.version is not None:
-            result['Version'] = self.version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -17849,9 +17523,6 @@ class DescribeEnsNetLevelResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18088,9 +17759,6 @@ class DescribeEnsNetSaleDistrictResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18235,9 +17903,6 @@ class DescribeEnsRegionIdIpv6InfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18277,11 +17942,26 @@ class DescribeEnsRegionIdResourceRequest(TeaModel):
         page_size: str = None,
         start_time: str = None,
     ):
+        # The end time of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_time = end_time
+        # The Internet service provider (ISP). Valid values:
+        # 
+        # *   cmcc: China Mobile
+        # *   telecom: China Telecom
+        # *   unicom: China Unicom
+        # *   multiCarrier: multi-line ISP
         self.isp = isp
+        # The order in which the resources to return are sorted. Valid values:
+        # 
+        # *   InstanceCount: desc
+        # *   Area: asc
+        # *   InternetBandwidth: asc
         self.order_by_params = order_by_params
+        # The page number. Pages start from page **1**. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. Maximum value: **100**. Default value: **10**.
         self.page_size = page_size
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -18337,14 +18017,28 @@ class DescribeEnsRegionIdResourceResponseBodyEnsRegionIdResourcesEnsRegionIdReso
         isp: str = None,
         vcpu: int = None,
     ):
+        # The region. Set the value to West.
         self.area = area
+        # The code of the region.
         self.area_code = area_code
+        # The date when the transaction was processed.
         self.biz_date = biz_date
+        # The ID of the node.
         self.ens_region_id = ens_region_id
+        # The name of the node.
         self.ens_region_id_name = ens_region_id_name
+        # The number of instances.
         self.instance_count = instance_count
+        # The public bandwidth of the instance. Unit: Bits/s.
         self.internet_bandwidth = internet_bandwidth
+        # The ISP. Valid values:
+        # 
+        # *   cmcc: China Mobile
+        # *   unicom: China Unicom
+        # *   telecom: China Telecom
+        # *   multiCarrier: multi-line ISP
         self.isp = isp
+        # The number of vCPUs.
         self.vcpu = vcpu
 
     def validate(self):
@@ -18443,10 +18137,15 @@ class DescribeEnsRegionIdResourceResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The returned data. For more information, see EnsRegionIdResources in sample JSON responses.
         self.ens_region_id_resources = ens_region_id_resources
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of queried nodes.
         self.total_count = total_count
 
     def validate(self):
@@ -18499,9 +18198,6 @@ class DescribeEnsRegionIdResourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18536,6 +18232,9 @@ class DescribeEnsRegionsRequest(TeaModel):
         self,
         ens_region_id: str = None,
     ):
+        # The ID of the node.
+        # 
+        # By default, all available node IDs are returned.
         self.ens_region_id = ens_region_id
 
     def validate(self):
@@ -18567,10 +18266,15 @@ class DescribeEnsRegionsResponseBodyEnsRegionsEnsRegions(TeaModel):
         name: str = None,
         province: str = None,
     ):
+        # The code of the region.
         self.area = area
+        # The name of the node.
         self.en_name = en_name
+        # The ID of the node.
         self.ens_region_id = ens_region_id
+        # The name of the node.
         self.name = name
+        # The province where the node is deployed.
         self.province = province
 
     def validate(self):
@@ -18651,8 +18355,11 @@ class DescribeEnsRegionsResponseBody(TeaModel):
         ens_regions: DescribeEnsRegionsResponseBodyEnsRegions = None,
         request_id: str = None,
     ):
+        # The service code. 0 is returned for a successful request. An error code is returned for a failed request.
         self.code = code
+        # The information about the regions.
         self.ens_regions = ens_regions
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -18697,9 +18404,6 @@ class DescribeEnsRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18735,7 +18439,9 @@ class DescribeEnsResourceUsageRequest(TeaModel):
         expired_end_time: str = None,
         expired_start_time: str = None,
     ):
+        # The end of the time range to query. Format: yyyy-MM-dd or yyyy-MM-dd HH:mm:ss.
         self.expired_end_time = expired_end_time
+        # The beginning of the time range to query. Format: yyyy-MM-dd or yyyy-MM-dd HH:mm:ss.
         self.expired_start_time = expired_start_time
 
     def validate(self):
@@ -18777,16 +18483,31 @@ class DescribeEnsResourceUsageResponseBodyEnsResourceUsage(TeaModel):
         service_type: str = None,
         storage_sum: int = None,
     ):
+        # The number of edge services. This parameter is available only when you set the ServiceType parameter to 2.
         self.compute_resource_count = compute_resource_count
+        # The CPU usage. Unit: cores.
         self.cpu_sum = cpu_sum
+        # The number of data disks.
         self.disk_count = disk_count
+        # The number of stopped VMs.
         self.down_count = down_count
+        # The number of expired VM instances.
         self.expired_count = expired_count
+        # The number of VM instances that are about to expire.
         self.expiring_count = expiring_count
+        # The number of GPUs.
         self.gpu_sum = gpu_sum
+        # The number of instances.
         self.instance_count = instance_count
+        # The number of running instances.
         self.running_count = running_count
+        # The type of the service. Valid values:
+        # 
+        # *   1: subscription instance.
+        # *   2: edge service instance.
+        # *   3: pay-as-you-go instance.
         self.service_type = service_type
+        # The total disk size.
         self.storage_sum = storage_sum
 
     def validate(self):
@@ -18855,8 +18576,9 @@ class DescribeEnsResourceUsageResponseBody(TeaModel):
         ens_resource_usage: List[DescribeEnsResourceUsageResponseBodyEnsResourceUsage] = None,
         request_id: str = None,
     ):
+        # The resource usage data.
         self.ens_resource_usage = ens_resource_usage
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -18903,9 +18625,6 @@ class DescribeEnsResourceUsageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19220,9 +18939,6 @@ class DescribeEnsRouteEntryListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19684,9 +19400,6 @@ class DescribeEnsSaleControlResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20004,7 +19717,7 @@ class DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableRes
                 l1 = []
                 for k1 in k:
                     l1.append(k1.to_map() if k1 else None)
-                result['availableSpecialStorageType'].append(l1)
+                result['AvailableSpecialStorageType'].append(l1)
         return result
 
     def from_map(self, m: dict = None):
@@ -20164,9 +19877,6 @@ class DescribeEnsSaleControlAvailableResourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20604,9 +20314,6 @@ class DescribeEnsSaleControlStockResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20647,17 +20354,38 @@ class DescribeEpnBandWidthDataRequest(TeaModel):
         networking_model: str = None,
         period: str = None,
         start_time: str = None,
-        version: str = None,
     ):
+        # The ID of the EPN instance.
         self.epninstance_id = epninstance_id
+        # The end of the time range to query.
+        # 
+        # *   Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # *   If the value of the seconds place is not 00, the start time is automatically set to the next minute.
         self.end_time = end_time
+        # The ID of the Edge Node Service (ENS) node.
         self.ens_region_id = ens_region_id
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The Internet service provider (ISP). Valid values:
+        # 
+        # *   cmcc: China Mobile
+        # *   telecom: China Telecom
+        # *   unicom: China Unicom
+        # *   multiCarrier: multi-line ISP
         self.isp = isp
+        # The networking mode. Valid values:
+        # 
+        # *   **SpeedUp**: intelligent acceleration network (Internet)
+        # *   **Connection**: internal network
+        # *   **SpeedUpAndConnection**: intelligent acceleration network and internal network
         self.networking_model = networking_model
+        # The precision of the monitoring data that you want to obtain. Valid values: 300, 1200, 3600, and 14400. Default value: 300. Unit: seconds.
         self.period = period
+        # The beginning of the time range to query.
+        # 
+        # *   Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # *   If the value of the seconds place is not 00, the start time is automatically set to the next minute.
         self.start_time = start_time
-        self.version = version
 
     def validate(self):
         pass
@@ -20684,8 +20412,6 @@ class DescribeEpnBandWidthDataRequest(TeaModel):
             result['Period'] = self.period
         if self.start_time is not None:
             result['StartTime'] = self.start_time
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -20706,8 +20432,6 @@ class DescribeEpnBandWidthDataRequest(TeaModel):
             self.period = m.get('Period')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -20720,10 +20444,15 @@ class DescribeEpnBandWidthDataResponseBodyMonitorDataBandWidthMonitorData(TeaMod
         time_stamp: str = None,
         up_band_width: int = None,
     ):
+        # The outbound bandwidth. Unit: bit/s.
         self.down_band_width = down_band_width
+        # The Internet traffic to the instance. Unit: bytes.
         self.internet_rx = internet_rx
+        # The Internet traffic from the instance. Unit: bytes.
         self.internet_tx = internet_tx
+        # The timestamp when the monitoring data was queried. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.time_stamp = time_stamp
+        # The inbound bandwidth. Unit: bit/s.
         self.up_band_width = up_band_width
 
     def validate(self):
@@ -20769,8 +20498,11 @@ class DescribeEpnBandWidthDataResponseBodyMonitorData(TeaModel):
         max_down_band_width: int = None,
         max_up_band_width: int = None,
     ):
+        # The bandwidth data.
         self.band_width_monitor_data = band_width_monitor_data
+        # The maximum outbound bandwidth within the queried time range. Unit: bit/s.
         self.max_down_band_width = max_down_band_width
+        # The maximum inbound bandwidth within the queried time range. Unit: bit/s.
         self.max_up_band_width = max_up_band_width
 
     def validate(self):
@@ -20815,7 +20547,9 @@ class DescribeEpnBandWidthDataResponseBody(TeaModel):
         monitor_data: DescribeEpnBandWidthDataResponseBodyMonitorData = None,
         request_id: str = None,
     ):
+        # The monitoring data of the instance.
         self.monitor_data = monitor_data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -20856,9 +20590,6 @@ class DescribeEpnBandWidthDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20896,14 +20627,32 @@ class DescribeEpnBandwitdhByInternetChargeTypeRequest(TeaModel):
         isp: str = None,
         networking_model: str = None,
         start_time: str = None,
-        version: str = None,
     ):
+        # The end of the time range to query.
+        # 
+        # *   Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # *   If the value of the seconds place is not 00, the start time is automatically set to the next minute.
         self.end_time = end_time
+        # The ID of the Edge Node Service (ENS) node.
         self.ens_region_id = ens_region_id
+        # The Internet service provider (ISP). Valid values:
+        # 
+        # *   cmcc: China Mobile
+        # *   telecom: China Telecom
+        # *   unicom: China Unicom
+        # *   multiCarrier: multi-line ISP
         self.isp = isp
+        # The networking mode. Valid values:
+        # 
+        # *   **SpeedUp**: intelligent acceleration network (Internet)
+        # *   **Connection**: internal network
+        # *   **SpeedUpAndConnection**: intelligent acceleration network and internal network
         self.networking_model = networking_model
+        # The beginning of the time range to query.
+        # 
+        # *   Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # *   If the value of the seconds place is not 00, the start time is automatically set to the next minute.
         self.start_time = start_time
-        self.version = version
 
     def validate(self):
         pass
@@ -20924,8 +20673,6 @@ class DescribeEpnBandwitdhByInternetChargeTypeRequest(TeaModel):
             result['NetworkingModel'] = self.networking_model
         if self.start_time is not None:
             result['StartTime'] = self.start_time
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -20940,8 +20687,6 @@ class DescribeEpnBandwitdhByInternetChargeTypeRequest(TeaModel):
             self.networking_model = m.get('NetworkingModel')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -20953,9 +20698,20 @@ class DescribeEpnBandwitdhByInternetChargeTypeResponseBody(TeaModel):
         request_id: str = None,
         time_stamp: str = None,
     ):
+        # The bandwidth. Unit: bit/s.
         self.bandwidth_value = bandwidth_value
+        # The metering method. Valid values:
+        # 
+        # *   BandwidthByDay: Pay by daily peak bandwidth
+        # *   95BandwidthByMonth: Pay by monthly 95th percentile bandwidth
+        # *   PayByBandwidth4thMonth: Pay by monthly fourth peak bandwidth
+        # *   PayByBandwidth: Pay by fixed bandwidth
+        # 
+        # You can specify only one metering method for network usage and cannot overwrite the existing metering method.
         self.internet_charge_type = internet_charge_type
+        # The request ID.
         self.request_id = request_id
+        # The timestamp when the monitoring data was queried. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.time_stamp = time_stamp
 
     def validate(self):
@@ -21002,9 +20758,6 @@ class DescribeEpnBandwitdhByInternetChargeTypeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21039,6 +20792,7 @@ class DescribeEpnInstanceAttributeRequest(TeaModel):
         self,
         epninstance_id: str = None,
     ):
+        # The ID of the EPN instance.
         self.epninstance_id = epninstance_id
 
     def validate(self):
@@ -21067,7 +20821,9 @@ class DescribeEpnInstanceAttributeResponseBodyConfVersions(TeaModel):
         conf_version: str = None,
         ens_region_id: str = None,
     ):
+        # The version number.
         self.conf_version = conf_version
+        # The ID of the node.
         self.ens_region_id = ens_region_id
 
     def validate(self):
@@ -21105,12 +20861,27 @@ class DescribeEpnInstanceAttributeResponseBodyInstances(TeaModel):
         public_ip_address: str = None,
         status: str = None,
     ):
+        # The ID of the node.
         self.ens_region_id = ens_region_id
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the instance.
         self.instance_name = instance_name
+        # The ISP. Valid values:
+        # 
+        # *   cmcc: China Mobile
+        # *   unicom: China Unicom
+        # *   telecom: China Telecom
         self.isp = isp
+        # The private IP address.
         self.private_ip_address = private_ip_address
+        # The public IP address.
         self.public_ip_address = public_ip_address
+        # The status of the instance. Valid values:
+        # 
+        # *   Running
+        # *   Stopped
+        # *   Expired
         self.status = status
 
     def validate(self):
@@ -21165,9 +20936,13 @@ class DescribeEpnInstanceAttributeResponseBodyVSwitches(TeaModel):
         v_switch_id: str = None,
         v_switch_name: str = None,
     ):
+        # The CIDR block.
         self.cidr_block = cidr_block
+        # The ID of the node.
         self.ens_region_id = ens_region_id
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
+        # The name of the vSwitch.
         self.v_switch_name = v_switch_name
 
     def validate(self):
@@ -21213,12 +20988,23 @@ class DescribeEpnInstanceAttributeResponseBody(TeaModel):
         request_id: str = None,
         v_switches: List[DescribeEpnInstanceAttributeResponseBodyVSwitches] = None,
     ):
+        # The information about the EPN configurations.
         self.conf_versions = conf_versions
+        # The ID of the EPN instance.
         self.epninstance_id = epninstance_id
+        # The name of the EPN instance.
         self.epninstance_name = epninstance_name
+        # The information about the instance.
         self.instances = instances
+        # The networking mode. Valid values:
+        # 
+        # *   SpeedUp: intelligent acceleration network (Internet)
+        # *   Connection: internal network
+        # *   SpeedUpAndConnection: intelligent acceleration network and internal network
         self.networking_model = networking_model
+        # The request ID.
         self.request_id = request_id
+        # Details of the vSwitch.
         self.v_switches = v_switches
 
     def validate(self):
@@ -21303,9 +21089,6 @@ class DescribeEpnInstanceAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21343,9 +21126,13 @@ class DescribeEpnInstancesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The version number.
         self.epninstance_id = epninstance_id
+        # The name of the EPN instance.
         self.epninstance_name = epninstance_name
+        # The page number. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. Valid values: **1 to 50**. Default value: **10**.
         self.page_size = page_size
 
     def validate(self):
@@ -21394,15 +21181,33 @@ class DescribeEpnInstancesResponseBodyEPNInstancesEPNInstance(TeaModel):
         start_time: str = None,
         status: str = None,
     ):
+        # The time when the instance was created. The time is displayed in UTC.
         self.creation_time = creation_time
+        # The ID of the EPN instance.
         self.epninstance_id = epninstance_id
+        # The name of the EPN instance.
         self.epninstance_name = epninstance_name
+        # Set the value to EdgeToEdge.
         self.epninstance_type = epninstance_type
+        # The end of the time range during which the data was queried. The time is displayed in UTC.
         self.end_time = end_time
+        # The inbound bandwidth. Unit: Mbit/s.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
+        # The time when the instance was last modified. The time is displayed in UTC.
         self.modify_time = modify_time
+        # The networking mode. Valid values:
+        # 
+        # *   SpeedUp: intelligent acceleration network (Internet)
+        # *   Connection: internal network
+        # *   SpeedUpAndConnection: intelligent acceleration network and internal network
         self.networking_model = networking_model
+        # The beginning of the time range during which the data was queried. The time is displayed in UTC.
         self.start_time = start_time
+        # The status of the instance. Valid values:
+        # 
+        # *   Running
+        # *   Excuting
+        # *   Stopped
         self.status = status
 
     def validate(self):
@@ -21505,10 +21310,15 @@ class DescribeEpnInstancesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Details of EPN instances.
         self.epninstances = epninstances
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of pages returned.
         self.total_count = total_count
 
     def validate(self):
@@ -21561,9 +21371,6 @@ class DescribeEpnInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21598,11 +21405,11 @@ class DescribeEpnMeasurementDataRequest(TeaModel):
         self,
         end_date: str = None,
         start_date: str = None,
-        version: str = None,
     ):
+        # The end of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_date = end_date
+        # The beginning of the time range to query. Specify the time in the yyyy-mm-ddthh:mm:ssz format. The time must be in UTC.
         self.start_date = start_date
-        self.version = version
 
     def validate(self):
         pass
@@ -21617,8 +21424,6 @@ class DescribeEpnMeasurementDataRequest(TeaModel):
             result['EndDate'] = self.end_date
         if self.start_date is not None:
             result['StartDate'] = self.start_date
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -21627,8 +21432,6 @@ class DescribeEpnMeasurementDataRequest(TeaModel):
             self.end_date = m.get('EndDate')
         if m.get('StartDate') is not None:
             self.start_date = m.get('StartDate')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -21641,10 +21444,18 @@ class DescribeEpnMeasurementDataResponseBodyMeasurementDatasMeasurementDataBandW
         cost_val: int = None,
         isp_line: str = None,
     ):
+        # The code of the billable item.
         self.cost_code = cost_code
+        # The name of the billable item.
         self.cost_name = cost_name
+        # Metering method
+        # 
+        # *   SpeedUp: bandwidth of intelligent acceleration
+        # *   IntranetConnection: internal bandwidth
         self.cost_type = cost_type
+        # The value of the billable item.
         self.cost_val = cost_val
+        # This parameter is unavailable.
         self.isp_line = isp_line
 
     def validate(self):
@@ -21727,10 +21538,18 @@ class DescribeEpnMeasurementDataResponseBodyMeasurementDatasMeasurementData(TeaM
         cost_end_time: str = None,
         cost_start_time: str = None,
     ):
+        # The bandwidth data returned.
         self.band_width_fee_datas = band_width_fee_datas
+        # The metering method. Valid values:
+        # 
+        # *   ChargeByUnified: unified metering.
+        # *   ChargeByGrade: differential metering.
         self.charge_model = charge_model
+        # The metering cycle.
         self.cost_cycle = cost_cycle
+        # The end time of the metering cycle.
         self.cost_end_time = cost_end_time
+        # The start time of the metering cycle.
         self.cost_start_time = cost_start_time
 
     def validate(self):
@@ -21812,7 +21631,9 @@ class DescribeEpnMeasurementDataResponseBody(TeaModel):
         measurement_datas: DescribeEpnMeasurementDataResponseBodyMeasurementDatas = None,
         request_id: str = None,
     ):
+        # The metering data returned.
         self.measurement_datas = measurement_datas
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -21853,9 +21674,6 @@ class DescribeEpnMeasurementDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22124,9 +21942,6 @@ class DescribeExportImageInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22160,12 +21975,9 @@ class DescribeExportImageStatusRequest(TeaModel):
     def __init__(
         self,
         image_id: str = None,
-        version: str = None,
     ):
         # The ID of the image.
         self.image_id = image_id
-        # The version number. Set the value to 2017-11-10.
-        self.version = version
 
     def validate(self):
         pass
@@ -22178,16 +21990,12 @@ class DescribeExportImageStatusRequest(TeaModel):
         result = dict()
         if self.image_id is not None:
             result['ImageId'] = self.image_id
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -22243,9 +22051,6 @@ class DescribeExportImageStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22580,9 +22385,6 @@ class DescribeFileSystemsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22891,9 +22693,6 @@ class DescribeForwardTableEntriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23120,9 +22919,6 @@ class DescribeImageInfosResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23309,9 +23105,6 @@ class DescribeImageSharePermissionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23615,9 +23408,6 @@ class DescribeImagesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23652,13 +23442,10 @@ class DescribeInstanceAutoRenewAttributeRequest(TeaModel):
         self,
         instance_ids: str = None,
         owner_id: int = None,
-        version: str = None,
     ):
         # The ID of an instance. Separate multiple IDs with semicolons (;).
         self.instance_ids = instance_ids
         self.owner_id = owner_id
-        # The version number.
-        self.version = version
 
     def validate(self):
         pass
@@ -23673,8 +23460,6 @@ class DescribeInstanceAutoRenewAttributeRequest(TeaModel):
             result['InstanceIds'] = self.instance_ids
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -23683,8 +23468,6 @@ class DescribeInstanceAutoRenewAttributeRequest(TeaModel):
             self.instance_ids = m.get('InstanceIds')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -23824,9 +23607,6 @@ class DescribeInstanceAutoRenewAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23863,7 +23643,6 @@ class DescribeInstanceMonitorDataRequest(TeaModel):
         instance_id: str = None,
         period: str = None,
         start_time: str = None,
-        version: str = None,
     ):
         # The end of the time range to query.
         # 
@@ -23877,8 +23656,6 @@ class DescribeInstanceMonitorDataRequest(TeaModel):
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. If the value of the seconds place is not 00, the start time is automatically set to the next minute.
         self.start_time = start_time
-        # The version number.
-        self.version = version
 
     def validate(self):
         pass
@@ -23897,8 +23674,6 @@ class DescribeInstanceMonitorDataRequest(TeaModel):
             result['Period'] = self.period
         if self.start_time is not None:
             result['StartTime'] = self.start_time
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -23911,8 +23686,6 @@ class DescribeInstanceMonitorDataRequest(TeaModel):
             self.period = m.get('Period')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -24049,9 +23822,6 @@ class DescribeInstanceMonitorDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24078,34 +23848,6 @@ class DescribeInstanceMonitorDataResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = DescribeInstanceMonitorDataResponseBody()
             self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeInstanceSpecRequest(TeaModel):
-    def __init__(
-        self,
-        version: str = None,
-    ):
-        # The version number.
-        self.version = version
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.version is not None:
-            result['Version'] = self.version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -24277,9 +24019,6 @@ class DescribeInstanceSpecResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24306,34 +24045,6 @@ class DescribeInstanceSpecResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = DescribeInstanceSpecResponseBody()
             self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeInstanceTypesRequest(TeaModel):
-    def __init__(
-        self,
-        version: str = None,
-    ):
-        # The version number. Set the value to 2017-11-10.
-        self.version = version
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.version is not None:
-            result['Version'] = self.version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -24477,9 +24188,6 @@ class DescribeInstanceTypesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24584,9 +24292,6 @@ class DescribeInstanceVncUrlResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24616,6 +24321,41 @@ class DescribeInstanceVncUrlResponse(TeaModel):
         return self
 
 
+class DescribeInstancesRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # 实例的标签键。N的取值范围为1~20。
+        self.key = key
+        # 实例的标签值。N的取值范围：1~20。
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -24635,6 +24375,7 @@ class DescribeInstancesRequest(TeaModel):
         search_key: str = None,
         security_group_id: str = None,
         status: str = None,
+        tags: List[DescribeInstancesRequestTags] = None,
         v_switch_id: str = None,
     ):
         # The region ID.
@@ -24647,7 +24388,7 @@ class DescribeInstancesRequest(TeaModel):
         self.image_id = image_id
         # The ID of the instance.
         self.instance_id = instance_id
-        # The IDs of the instances. The value is a JSON array that consists of up to 100 IDs. Separate multiple IDs with commas (,).
+        # The IDs of the instances. The value is a JSON array that consists of up to 100 IDs. Separate IDs with commas (,).
         self.instance_ids = instance_ids
         # The name of the instance.
         self.instance_name = instance_name
@@ -24664,7 +24405,7 @@ class DescribeInstancesRequest(TeaModel):
         self.network_id = network_id
         # The method that you want to use to sort instances. The value of this parameter is in the JSON format.
         # 
-        # You can sort instances by name, expiration time, region ID, or time when the instances were created. You can specify one or more methods.
+        # You can sort instances by name, expiration time, node ID, or creation time. You can specify one or more methods.
         self.order_by_params = order_by_params
         # The number of the page to return. Pages start from page **1**.
         # 
@@ -24684,6 +24425,176 @@ class DescribeInstancesRequest(TeaModel):
         # *   Stopped
         # *   Expired
         self.status = status
+        self.tags = tags
+        # The ID of the vSwitch.
+        self.v_switch_id = v_switch_id
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ens_region_id is not None:
+            result['EnsRegionId'] = self.ens_region_id
+        if self.ens_region_ids is not None:
+            result['EnsRegionIds'] = self.ens_region_ids
+        if self.ens_service_id is not None:
+            result['EnsServiceId'] = self.ens_service_id
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.instance_resource_type is not None:
+            result['InstanceResourceType'] = self.instance_resource_type
+        if self.intranet_ip is not None:
+            result['IntranetIp'] = self.intranet_ip
+        if self.network_id is not None:
+            result['NetworkId'] = self.network_id
+        if self.order_by_params is not None:
+            result['OrderByParams'] = self.order_by_params
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.search_key is not None:
+            result['SearchKey'] = self.search_key
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.status is not None:
+            result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnsRegionId') is not None:
+            self.ens_region_id = m.get('EnsRegionId')
+        if m.get('EnsRegionIds') is not None:
+            self.ens_region_ids = m.get('EnsRegionIds')
+        if m.get('EnsServiceId') is not None:
+            self.ens_service_id = m.get('EnsServiceId')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('InstanceResourceType') is not None:
+            self.instance_resource_type = m.get('InstanceResourceType')
+        if m.get('IntranetIp') is not None:
+            self.intranet_ip = m.get('IntranetIp')
+        if m.get('NetworkId') is not None:
+            self.network_id = m.get('NetworkId')
+        if m.get('OrderByParams') is not None:
+            self.order_by_params = m.get('OrderByParams')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SearchKey') is not None:
+            self.search_key = m.get('SearchKey')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeInstancesRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        return self
+
+
+class DescribeInstancesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        ens_region_id: str = None,
+        ens_region_ids: str = None,
+        ens_service_id: str = None,
+        image_id: str = None,
+        instance_id: str = None,
+        instance_ids: str = None,
+        instance_name: str = None,
+        instance_resource_type: str = None,
+        intranet_ip: str = None,
+        network_id: str = None,
+        order_by_params: str = None,
+        page_number: int = None,
+        page_size: str = None,
+        search_key: str = None,
+        security_group_id: str = None,
+        status: str = None,
+        tags_shrink: str = None,
+        v_switch_id: str = None,
+    ):
+        # The region ID.
+        self.ens_region_id = ens_region_id
+        # The IDs of the regions. The value is a JSON array that consists of up to 100 IDs. Separate multiple IDs with commas (,).
+        self.ens_region_ids = ens_region_ids
+        # The ID of the edge service. You can use the ID to query information about the instances that are created in the edge service.
+        self.ens_service_id = ens_service_id
+        # The ID of the image.
+        self.image_id = image_id
+        # The ID of the instance.
+        self.instance_id = instance_id
+        # The IDs of the instances. The value is a JSON array that consists of up to 100 IDs. Separate IDs with commas (,).
+        self.instance_ids = instance_ids
+        # The name of the instance.
+        self.instance_name = instance_name
+        # The condition that you want to use to filter instances by category. Valid values:
+        # 
+        # *   EnsInstance: ENS instances that you purchase.
+        # *   EnsService: ENS instances that belong to edge services.
+        # *   BuildMachine: ENS instances that are configured with image builders.
+        # *   EnsPostPaidInstance: Pay-as-you-go ENS instances that you purchase.
+        self.instance_resource_type = instance_resource_type
+        # The internal IP address of the instance.
+        self.intranet_ip = intranet_ip
+        # The ID of the network.
+        self.network_id = network_id
+        # The method that you want to use to sort instances. The value of this parameter is in the JSON format.
+        # 
+        # You can sort instances by name, expiration time, node ID, or creation time. You can specify one or more methods.
+        self.order_by_params = order_by_params
+        # The number of the page to return. Pages start from page **1**.
+        # 
+        # Default value: **1**.
+        self.page_number = page_number
+        # The number of entries to return on each page. The maximum value is **100**.
+        # 
+        # Default value: **10**.
+        self.page_size = page_size
+        # The keyword that you use to query the logs of the service. You can specify the values of parameters such as **ip**, **InstanceName**, and **InstanceId** as the keyword.
+        self.search_key = search_key
+        # The ID of the security group.
+        self.security_group_id = security_group_id
+        # The status of the instance. Valid values:
+        # 
+        # *   Running
+        # *   Stopped
+        # *   Expired
+        self.status = status
+        self.tags_shrink = tags_shrink
         # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
 
@@ -24728,6 +24639,8 @@ class DescribeInstancesRequest(TeaModel):
             result['SecurityGroupId'] = self.security_group_id
         if self.status is not None:
             result['Status'] = self.status
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         return result
@@ -24766,6 +24679,8 @@ class DescribeInstancesRequest(TeaModel):
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         return self
@@ -24777,6 +24692,7 @@ class DescribeInstancesResponseBodyInstancesInstanceDataDiskDataDisk(TeaModel):
         category: str = None,
         disk_id: str = None,
         disk_name: str = None,
+        disk_size: int = None,
         size: int = None,
         device_type: str = None,
         disk_type: str = None,
@@ -24790,10 +24706,11 @@ class DescribeInstancesResponseBodyInstancesInstanceDataDiskDataDisk(TeaModel):
         # *   **pangu**: ultra disk.
         # *   **local_hdd**: local HDD.
         self.category = category
-        # The disk ID.
+        # The ID of the disk.
         self.disk_id = disk_id
         # The name of the disk.
         self.disk_name = disk_name
+        self.disk_size = disk_size
         # The size of the disk. Unit: MiB.
         self.size = size
         # The extended field of the disk category. Valid values:
@@ -24828,6 +24745,8 @@ class DescribeInstancesResponseBodyInstancesInstanceDataDiskDataDisk(TeaModel):
             result['DiskId'] = self.disk_id
         if self.disk_name is not None:
             result['DiskName'] = self.disk_name
+        if self.disk_size is not None:
+            result['DiskSize'] = self.disk_size
         if self.size is not None:
             result['Size'] = self.size
         if self.device_type is not None:
@@ -24850,6 +24769,8 @@ class DescribeInstancesResponseBodyInstancesInstanceDataDiskDataDisk(TeaModel):
             self.disk_id = m.get('DiskId')
         if m.get('DiskName') is not None:
             self.disk_name = m.get('DiskName')
+        if m.get('DiskSize') is not None:
+            self.disk_size = m.get('DiskSize')
         if m.get('Size') is not None:
             self.size = m.get('Size')
         if m.get('device_type') is not None:
@@ -24963,7 +24884,7 @@ class DescribeInstancesResponseBodyInstancesInstanceNetworkAttributes(TeaModel):
     ):
         # The ID of the network.
         self.network_id = network_id
-        # The details of the private IP addresses.
+        # Details of the private IP addresses.
         self.private_ip_address = private_ip_address
         # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
@@ -25009,7 +24930,7 @@ class DescribeInstancesResponseBodyInstancesInstancePrivateIpAddressesPrivateIpA
         self.gate_way = gate_way
         # The IP address.
         self.ip = ip
-        # The information about the ISP.
+        # The ISP.
         self.isp = isp
 
     def validate(self):
@@ -25113,7 +25034,7 @@ class DescribeInstancesResponseBodyInstancesInstancePublicIpAddressesPublicIpAdd
         self.gate_way = gate_way
         # The IP address.
         self.ip = ip
-        # The information about the ISP.
+        # The Internet service provider (ISP).
         self.isp = isp
 
     def validate(self):
@@ -25225,7 +25146,7 @@ class DescribeInstancesResponseBodyInstancesInstanceSystemDisk(TeaModel):
         # *   **pangu**: ultra disk.
         # *   **local_hdd**: local HDD.
         self.category = category
-        # The disk ID.
+        # The ID of the disk.
         self.disk_id = disk_id
         # The name of the disk.
         self.disk_name = disk_name
@@ -25301,6 +25222,74 @@ class DescribeInstancesResponseBodyInstancesInstanceSystemDisk(TeaModel):
         return self
 
 
+class DescribeInstancesResponseBodyInstancesInstanceTagsTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class DescribeInstancesResponseBodyInstancesInstanceTags(TeaModel):
+    def __init__(
+        self,
+        tags: List[DescribeInstancesResponseBodyInstancesInstanceTagsTags] = None,
+    ):
+        self.tags = tags
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeInstancesResponseBodyInstancesInstanceTagsTags()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
     def __init__(
         self,
@@ -25329,28 +25318,29 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
         spec_name: str = None,
         status: str = None,
         system_disk: DescribeInstancesResponseBodyInstancesInstanceSystemDisk = None,
+        tags: DescribeInstancesResponseBodyInstancesInstanceTags = None,
     ):
         # The number of vCPUs.
         self.cpu = cpu
-        # The time when the instance is created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The details of the data disk.
+        # Details of the data disk.
         self.data_disk = data_disk
         # The total size of the disk. Unit: MiB.
         self.disk = disk
         # The region ID of the instance.
         self.ens_region_id = ens_region_id
-        # The expiration time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The expiration time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.expired_time = expired_time
         # The hostname of the instance.
         # 
         # *   The hostname cannot start or end with a period (.) or hyphen (-). It cannot contain consecutive periods (.) or hyphens (-).
-        # *   For a Windows instance, the hostname must be 2 to 15 characters in length and can contain letters, digits, and hyphens (-). It cannot contain periods (.) or contain only digits.
-        # *   For an instance that runs an operating system of another type such as Linux, the hostname must be 2 to 64 characters in length. You can use periods (.) to separate the hostname into multiple segments. Each segment can contain letters, digits, and hyphens (-).
+        # *   For a Windows instance, the hostname must be 2 to 15 characters in length and can contain letters, digits, and hyphens (-). The hostname cannot contain periods (.) or contain only digits.
+        # *   For an instance that runs another operating system such as Linux, the hostname must be 2 to 64 characters in length. You can use periods (.) to separate the hostname into multiple segments. Each segment can contain letters, digits, and hyphens (-).
         self.host_name = host_name
         # The ID of the image.
         self.image_id = image_id
-        # Internal IP addresses of instances.
+        # The private IP addresses of the instances.
         self.inner_ip_address = inner_ip_address
         # The ID of the instance.
         self.instance_id = instance_id
@@ -25361,17 +25351,17 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
         # *   EnsInstance: ENS instances that you purchase.
         # *   EnsService: ENS instances that belong to edge services.
         # *   BuildMachine: ENS instances that are configured with image builders.
-        # *   EnsPostPaidInstance: Pay-as-you-go ENS instances that you purchase.
+        # *   EnsPostPaidInstance: pay-as-you-go ENS instances that you purchase.
         self.instance_resource_type = instance_resource_type
         # The instance family. Valid values:
         # 
         # *   x86\_vm: x86-based computing instance.
         # *   x86\_pm: x86-based physical machine.
         # *   x86\_bmi: x86-based bare metal instance.
-        # *   x86\_bm: SmartNIC bare metal.
-        # *   pc_bmi: heterogeneous bare metal.
+        # *   x86\_bm: bare metal instance with the SmartNIC.
+        # *   pc_bmi: heterogeneous bare metal instance.
         # *   pc_vm: heterogeneous virtual machine.
-        # *   arm_bmi: ARM-based computing instance.
+        # *   arm_bmi: Arm-based computing instance.
         self.instance_type_family = instance_type_family
         # The maximum outbound bandwidth. Unit: Mbit/s.
         self.internet_max_bandwidth_in = internet_max_bandwidth_in
@@ -25383,13 +25373,13 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
         self.network_attributes = network_attributes
         # The name of the image.
         self.osname = osname
-        # The details of the private IP addresses.
+        # Details of the private IP addresses.
         self.private_ip_addresses = private_ip_addresses
-        # The public IP addresses.
+        # The public IP addresses of the instances.
         self.public_ip_address = public_ip_address
-        # The details of the public IP addresses.
+        # Details of the public IP addresses.
         self.public_ip_addresses = public_ip_addresses
-        # IDs of security groups.
+        # The IDs of the security groups.
         self.security_group_ids = security_group_ids
         # The code of the instance type.
         self.spec_name = spec_name
@@ -25401,6 +25391,7 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
         self.status = status
         # The returned information about the disk.
         self.system_disk = system_disk
+        self.tags = tags
 
     def validate(self):
         if self.data_disk:
@@ -25419,6 +25410,8 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
             self.security_group_ids.validate()
         if self.system_disk:
             self.system_disk.validate()
+        if self.tags:
+            self.tags.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -25476,6 +25469,8 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
             result['Status'] = self.status
         if self.system_disk is not None:
             result['SystemDisk'] = self.system_disk.to_map()
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -25538,6 +25533,9 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
         if m.get('SystemDisk') is not None:
             temp_model = DescribeInstancesResponseBodyInstancesInstanceSystemDisk()
             self.system_disk = temp_model.from_map(m['SystemDisk'])
+        if m.get('Tags') is not None:
+            temp_model = DescribeInstancesResponseBodyInstancesInstanceTags()
+            self.tags = temp_model.from_map(m['Tags'])
         return self
 
 
@@ -25588,7 +25586,7 @@ class DescribeInstancesResponseBody(TeaModel):
     ):
         # The returned service code. 0 indicates that the request was successful.
         self.code = code
-        # The information about instances returned. The value is an array that consists of InstanceAttributesType data.
+        # The returned instance information. It is an array that consists of InstanceAttributesType data.
         self.instances = instances
         # The page number.
         self.page_number = page_number
@@ -25653,9 +25651,6 @@ class DescribeInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25688,11 +25683,12 @@ class DescribeInstancesResponse(TeaModel):
 class DescribeKeyPairsRequest(TeaModel):
     def __init__(
         self,
+        key_pair_id: str = None,
         key_pair_name: str = None,
         page_number: str = None,
         page_size: str = None,
-        version: str = None,
     ):
+        self.key_pair_id = key_pair_id
         # The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain the following characters:
         # 
         # *   Digits
@@ -25706,8 +25702,6 @@ class DescribeKeyPairsRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Valid values: integers that are greater than 0. Default value: 10.
         self.page_size = page_size
-        # The version number. Set the value to 2017-11-10.
-        self.version = version
 
     def validate(self):
         pass
@@ -25718,26 +25712,26 @@ class DescribeKeyPairsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.key_pair_id is not None:
+            result['KeyPairId'] = self.key_pair_id
         if self.key_pair_name is not None:
             result['KeyPairName'] = self.key_pair_name
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('KeyPairId') is not None:
+            self.key_pair_id = m.get('KeyPairId')
         if m.get('KeyPairName') is not None:
             self.key_pair_name = m.get('KeyPairName')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -25746,12 +25740,14 @@ class DescribeKeyPairsResponseBodyKeyPairsKeyPair(TeaModel):
         self,
         creation_time: str = None,
         key_pair_finger_print: str = None,
+        key_pair_id: str = None,
         key_pair_name: str = None,
     ):
         # The time when the key pair was created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The fingerprint of the key pair.
         self.key_pair_finger_print = key_pair_finger_print
+        self.key_pair_id = key_pair_id
         # The name of the SSH key pair.
         self.key_pair_name = key_pair_name
 
@@ -25768,6 +25764,8 @@ class DescribeKeyPairsResponseBodyKeyPairsKeyPair(TeaModel):
             result['CreationTime'] = self.creation_time
         if self.key_pair_finger_print is not None:
             result['KeyPairFingerPrint'] = self.key_pair_finger_print
+        if self.key_pair_id is not None:
+            result['KeyPairId'] = self.key_pair_id
         if self.key_pair_name is not None:
             result['KeyPairName'] = self.key_pair_name
         return result
@@ -25778,6 +25776,8 @@ class DescribeKeyPairsResponseBodyKeyPairsKeyPair(TeaModel):
             self.creation_time = m.get('CreationTime')
         if m.get('KeyPairFingerPrint') is not None:
             self.key_pair_finger_print = m.get('KeyPairFingerPrint')
+        if m.get('KeyPairId') is not None:
+            self.key_pair_id = m.get('KeyPairId')
         if m.get('KeyPairName') is not None:
             self.key_pair_name = m.get('KeyPairName')
         return self
@@ -25888,9 +25888,6 @@ class DescribeKeyPairsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26235,9 +26232,6 @@ class DescribeLoadBalancerAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26549,9 +26543,6 @@ class DescribeLoadBalancerHTTPListenerAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26858,9 +26849,6 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27029,9 +27017,6 @@ class DescribeLoadBalancerSpecResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27326,9 +27311,6 @@ class DescribeLoadBalancerTCPListenerAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27577,9 +27559,6 @@ class DescribeLoadBalancerUDPListenerAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27905,9 +27884,6 @@ class DescribeLoadBalancersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27942,14 +27918,11 @@ class DescribeMeasurementDataRequest(TeaModel):
         self,
         end_date: str = None,
         start_date: str = None,
-        version: str = None,
     ):
         # The end of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_date = end_date
         # The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_date = start_date
-        # The version number.
-        self.version = version
 
     def validate(self):
         pass
@@ -27964,8 +27937,6 @@ class DescribeMeasurementDataRequest(TeaModel):
             result['EndDate'] = self.end_date
         if self.start_date is not None:
             result['StartDate'] = self.start_date
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -27974,8 +27945,6 @@ class DescribeMeasurementDataRequest(TeaModel):
             self.end_date = m.get('EndDate')
         if m.get('StartDate') is not None:
             self.start_date = m.get('StartDate')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -28351,9 +28320,6 @@ class DescribeMeasurementDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28583,9 +28549,6 @@ class DescribeMountTargetsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29477,9 +29440,6 @@ class DescribeNCInformationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29729,9 +29689,6 @@ class DescribeNatGatewaysResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30250,9 +30207,6 @@ class DescribeNetworkAclsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30532,9 +30486,6 @@ class DescribeNetworkAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -31030,9 +30981,6 @@ class DescribeNetworkInterfacesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -31346,9 +31294,6 @@ class DescribeNetworksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -31388,6 +31333,7 @@ class DescribePrePaidInstanceStockRequest(TeaModel):
     ):
         # The ID of the datadisk.
         self.data_disk_size = data_disk_size
+        # The ID of the edge node.
         self.ens_region_id = ens_region_id
         # The size of the system disk. Unit: GB.
         self.instance_spec = instance_spec
@@ -31522,9 +31468,6 @@ class DescribePrePaidInstanceStockResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -32051,9 +31994,6 @@ class DescribePriceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -32201,9 +32141,6 @@ class DescribeRegionIspsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -33959,9 +33896,6 @@ class DescribeRegionResourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -33988,33 +33922,6 @@ class DescribeRegionResourceResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = DescribeRegionResourceResponseBody()
             self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeReservedResourceRequest(TeaModel):
-    def __init__(
-        self,
-        version: str = None,
-    ):
-        self.version = version
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.version is not None:
-            result['Version'] = self.version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -34151,15 +34058,15 @@ class DescribeReservedResourceResponseBodySupportResourcesSupportResource(TeaMod
         support_resources_count: str = None,
         system_disk_sizes: DescribeReservedResourceResponseBodySupportResourcesSupportResourceSystemDiskSizes = None,
     ):
-        # The information of the data disk.
+        # The sizes of data disks.
         self.data_disk_sizes = data_disk_sizes
-        # The node ID.
+        # The ID of the node.
         self.ens_region_id = ens_region_id
-        # The instance type.
+        # The specifications of instances.
         self.instance_spec = instance_spec
         # The number of resources that you can purchase.
         self.support_resources_count = support_resources_count
-        # The information of the system disk.
+        # The sizes of system disks.
         self.system_disk_sizes = system_disk_sizes
 
     def validate(self):
@@ -34248,11 +34155,11 @@ class DescribeReservedResourceResponseBody(TeaModel):
     ):
         # The returned service code. 0 indicates that the request was successful.
         self.code = code
-        # The information about images.
+        # The information about the image.
         self.images = images
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The specifications of resources that you can purchase.
+        # The resources.
         self.support_resources = support_resources
 
     def validate(self):
@@ -34304,9 +34211,6 @@ class DescribeReservedResourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -34665,9 +34569,6 @@ class DescribeResourceTimelineResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -34704,8 +34605,11 @@ class DescribeSDGDeploymentStatusRequest(TeaModel):
         page_size: str = None,
         sdgid: str = None,
     ):
+        # The number of the page to return. Pages start from page **1**. Default value: **1**.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the SDG.
         self.sdgid = sdgid
 
     def validate(self):
@@ -34745,10 +34649,71 @@ class DescribeSDGDeploymentStatusResponseBodyDeploymentStatus(TeaModel):
         status: str = None,
         update_time: str = None,
     ):
+        # The ID of the instance
         self.instance_id = instance_id
+        # The deployment type.
+        # 
+        # Valid values:
+        # 
+        # *   overlay
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     read/write splitting
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   common
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     common deployment
+        # 
+        #     <!-- -->
+        # 
+        #     .
         self.mount_type = mount_type
+        # The ID of the node.
         self.region_id = region_id
+        # The deployment status of the SDG.
+        # 
+        # Valid values:
+        # 
+        # *   sdg_deploying
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   success
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   failed
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.status = status
+        # The time when the status was last updated.
         self.update_time = update_time
 
     def validate(self):
@@ -34796,10 +34761,15 @@ class DescribeSDGDeploymentStatusResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The deployment information of the SDG.
         self.deployment_status = deployment_status
+        # The page number. Pages start from page 1. Default value: 1
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of queried deployment records.
         self.total_count = total_count
 
     def validate(self):
@@ -34858,9 +34828,6 @@ class DescribeSDGDeploymentStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -35114,9 +35081,6 @@ class DescribeSecurityGroupAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -35153,7 +35117,6 @@ class DescribeSecurityGroupsRequest(TeaModel):
         page_size: int = None,
         security_group_id: str = None,
         security_group_name: str = None,
-        version: str = None,
     ):
         # The page number.
         # 
@@ -35169,8 +35132,6 @@ class DescribeSecurityGroupsRequest(TeaModel):
         self.security_group_id = security_group_id
         # The name of the security group.
         self.security_group_name = security_group_name
-        # The version number.
-        self.version = version
 
     def validate(self):
         pass
@@ -35189,8 +35150,6 @@ class DescribeSecurityGroupsRequest(TeaModel):
             result['SecurityGroupId'] = self.security_group_id
         if self.security_group_name is not None:
             result['SecurityGroupName'] = self.security_group_name
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -35203,8 +35162,6 @@ class DescribeSecurityGroupsRequest(TeaModel):
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('SecurityGroupName') is not None:
             self.security_group_name = m.get('SecurityGroupName')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -35369,9 +35326,6 @@ class DescribeSecurityGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -35482,7 +35436,7 @@ class DescribeSelfImagesResponseBodyImagesImage(TeaModel):
         self.architecture = architecture
         # Computing type. ens_vm/ens: x86 computing. bare_metal: x86 bare machine or x86 bare metal. arm_vm: ARM computing. arm_bare_metal: ARM bare machine or ARM bare metal. pcfarm: heterogeneous computing.
         self.compute_type = compute_type
-        # The image creation time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The image creation time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The ID of the image.
         self.image_id = image_id
@@ -35490,12 +35444,12 @@ class DescribeSelfImagesResponseBodyImagesImage(TeaModel):
         self.image_name = image_name
         # The source of the image. Valid values:
         # 
-        # *   **system: public images**\
-        # *   **self: your custom images**\
+        # *   **system**: public images
+        # *   **self**: your custom images
         self.image_owner_alias = image_owner_alias
         # The size of the image. Unit: GiB.
         self.image_size = image_size
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
         # The operating system version.
         self.os_version = os_version
@@ -35677,9 +35631,6 @@ class DescribeSelfImagesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -35977,9 +35928,6 @@ class DescribeServcieScheduleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -36266,9 +36214,6 @@ class DescribeSnapshotsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -36333,11 +36278,11 @@ class DescribeSnatAttributeResponseBodySnatIps(TeaModel):
         ip: str = None,
         status: str = None,
     ):
-        # The time when the EIP was created. The time is displayed in UTC.
+        # The time when the IP address was created. The time is displayed in UTC.
         self.creation_time = creation_time
         # The IP address.
         self.ip = ip
-        # The status of the EIP.
+        # The status of the IP address.
         # 
         # *   Running
         # *   Stopping
@@ -36394,7 +36339,9 @@ class DescribeSnatAttributeResponseBody(TeaModel):
     ):
         # The time when the entry was created. The time is displayed in UTC.
         self.creation_time = creation_time
+        # The destination CIDR block. The rule takes effect only on requests that access the destination CIDR block.
         self.dest_cidr = dest_cidr
+        # Timeout period.
         self.idle_timeout = idle_timeout
         # The ID of the Network Address Translation (NAT) gateway.
         self.nat_gateway_id = nat_gateway_id
@@ -36425,6 +36372,11 @@ class DescribeSnatAttributeResponseBody(TeaModel):
         # *   Available: The SNAT entry is available.
         # *   Deleting: The SNAT entry is being deleted.
         self.status = status
+        # The type of the NAT. Valid values: 
+        # 
+        # - Empty: symmetric NAT.
+        # 
+        # - FullCone: full cone NAT.
         self.type = type
 
     def validate(self):
@@ -36519,9 +36471,6 @@ class DescribeSnatAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -36787,9 +36736,6 @@ class DescribeSnatTableEntriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -37055,9 +37001,6 @@ class DescribeUserBandWidthDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -37097,7 +37040,6 @@ class DescribeVSwitchesRequest(TeaModel):
         page_size: int = None,
         v_switch_id: str = None,
         v_switch_name: str = None,
-        version: str = None,
     ):
         # The ID of the edge node.
         self.ens_region_id = ens_region_id
@@ -37115,8 +37057,6 @@ class DescribeVSwitchesRequest(TeaModel):
         self.v_switch_id = v_switch_id
         # The name of the vSwitch.
         self.v_switch_name = v_switch_name
-        # The version of the API.
-        self.version = version
 
     def validate(self):
         pass
@@ -37141,8 +37081,6 @@ class DescribeVSwitchesRequest(TeaModel):
             result['VSwitchId'] = self.v_switch_id
         if self.v_switch_name is not None:
             result['VSwitchName'] = self.v_switch_name
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -37161,8 +37099,6 @@ class DescribeVSwitchesRequest(TeaModel):
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VSwitchName') is not None:
             self.v_switch_name = m.get('VSwitchName')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -37358,9 +37294,6 @@ class DescribeVSwitchesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -37665,9 +37598,6 @@ class DescribeWorkflowResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -37870,9 +37800,6 @@ class DescribeWorkflowActivityResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -37984,9 +37911,6 @@ class DetachDiskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -38235,9 +38159,6 @@ class DistApplicationDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -38349,9 +38270,6 @@ class ExportBillDetailDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -38488,9 +38406,6 @@ class ExportImageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -38602,9 +38517,6 @@ class ExportMeasurementDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -38709,9 +38621,6 @@ class GetBucketAclResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -38885,9 +38794,6 @@ class GetBucketInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -39096,9 +39002,6 @@ class GetBucketLifecycleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -39298,9 +39201,6 @@ class GetDeviceInternetPortResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -39455,9 +39355,6 @@ class GetOssStorageAndAccByBucketsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -39663,9 +39560,6 @@ class GetOssUsageDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -39700,7 +39594,6 @@ class ImportKeyPairRequest(TeaModel):
         self,
         key_pair_name: str = None,
         public_key_body: str = None,
-        version: str = None,
     ):
         # The name of the key pair. The name must conform to the following naming conventions:
         # 
@@ -39712,8 +39605,6 @@ class ImportKeyPairRequest(TeaModel):
         self.key_pair_name = key_pair_name
         # The public key of the key pair. You can specify only one public key.
         self.public_key_body = public_key_body
-        # The version number. Set the value to 2017-11-10.
-        self.version = version
 
     def validate(self):
         pass
@@ -39728,8 +39619,6 @@ class ImportKeyPairRequest(TeaModel):
             result['KeyPairName'] = self.key_pair_name
         if self.public_key_body is not None:
             result['PublicKeyBody'] = self.public_key_body
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -39738,8 +39627,6 @@ class ImportKeyPairRequest(TeaModel):
             self.key_pair_name = m.get('KeyPairName')
         if m.get('PublicKeyBody') is not None:
             self.public_key_body = m.get('PublicKeyBody')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -39797,9 +39684,6 @@ class ImportKeyPairResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -39835,7 +39719,9 @@ class JoinPublicIpsToEpnInstanceRequest(TeaModel):
         epninstance_id: str = None,
         instance_infos: str = None,
     ):
+        # The ID of the EPN instance.
         self.epninstance_id = epninstance_id
+        # The information about the public IP address that you want to add to the EPN instance.
         self.instance_infos = instance_infos
 
     def validate(self):
@@ -39867,6 +39753,7 @@ class JoinPublicIpsToEpnInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -39901,9 +39788,6 @@ class JoinPublicIpsToEpnInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -39942,6 +39826,7 @@ class JoinSecurityGroupRequest(TeaModel):
     ):
         # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the ENI.
         self.network_interface_id = network_interface_id
         # The ID of the security group.
         self.security_group_id = security_group_id
@@ -40014,9 +39899,6 @@ class JoinSecurityGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -40121,9 +40003,6 @@ class JoinVSwitchesToEpnInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -40160,8 +40039,9 @@ class LeaveSecurityGroupRequest(TeaModel):
         network_interface_id: str = None,
         security_group_id: str = None,
     ):
-        # The ID of instance.
+        # The instance ID.
         self.instance_id = instance_id
+        # The ID of the ENI.
         self.network_interface_id = network_interface_id
         # The ID of the security group.
         self.security_group_id = security_group_id
@@ -40234,9 +40114,6 @@ class LeaveSecurityGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -40563,9 +40440,6 @@ class ListApplicationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -40769,9 +40643,6 @@ class ListBucketsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -41074,9 +40945,6 @@ class ListObjectsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -41195,9 +41063,6 @@ class ModifyEnsEipAddressAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -41322,9 +41187,6 @@ class ModifyEpnInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -41436,9 +41298,6 @@ class ModifyFileSystemResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -41550,9 +41409,6 @@ class ModifyForwardEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -41587,17 +41443,11 @@ class ModifyImageAttributeRequest(TeaModel):
         self,
         image_id: str = None,
         image_name: str = None,
-        version: str = None,
-        product: str = None,
     ):
         # The ID of the image.
         self.image_id = image_id
         # The name of the image.
         self.image_name = image_name
-        # 2017-11-10
-        self.version = version
-        # This parameter is unavailable.
-        self.product = product
 
     def validate(self):
         pass
@@ -41612,10 +41462,6 @@ class ModifyImageAttributeRequest(TeaModel):
             result['ImageId'] = self.image_id
         if self.image_name is not None:
             result['ImageName'] = self.image_name
-        if self.version is not None:
-            result['Version'] = self.version
-        if self.product is not None:
-            result['product'] = self.product
         return result
 
     def from_map(self, m: dict = None):
@@ -41624,10 +41470,6 @@ class ModifyImageAttributeRequest(TeaModel):
             self.image_id = m.get('ImageId')
         if m.get('ImageName') is not None:
             self.image_name = m.get('ImageName')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
-        if m.get('product') is not None:
-            self.product = m.get('product')
         return self
 
 
@@ -41678,9 +41520,6 @@ class ModifyImageAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -41792,9 +41631,6 @@ class ModifyImageSharePermissionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -41931,9 +41767,6 @@ class ModifyInstanceAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -41972,11 +41805,11 @@ class ModifyInstanceAutoRenewAttributeRequest(TeaModel):
         owner_id: str = None,
         renewal_status: str = None,
     ):
-        # Specify whether to automatically renew the subscription of the nodes. Valid values: true and false. Default value: false.
+        # Specifies whether to enable the auto-renewal feature. Valid values: **True and False**. Default value: False.
         self.auto_renew = auto_renew
         # The auto-renewal period of the instance. Unit: months. Valid values: 1 to 9 and 12. This parameter is required if the AutoRenew parameter is set to true.
         self.duration = duration
-        # The ID of the instance. Separate multiple instance IDs with semicolons (;).
+        # The IDs of the instances. Separate IDs with semicolons (;).
         self.instance_ids = instance_ids
         self.owner_id = owner_id
         # Specifies whether to renew the instance. The **RenewalStatus** parameter has a higher priority than the **AutoRenew** parameter. If you do not specify **RenewalStatus**, the **AutoRenew** parameter is used by default.
@@ -42030,9 +41863,9 @@ class ModifyInstanceAutoRenewAttributeResponseBody(TeaModel):
         code: int = None,
         request_id: str = None,
     ):
-        # The returned service code. A value of 0 indicates that the operation was successful.
+        # The returned service code. 0 indicates that the request was successful.
         self.code = code
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -42071,9 +41904,6 @@ class ModifyInstanceAutoRenewAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -42099,6 +41929,212 @@ class ModifyInstanceAutoRenewAttributeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyInstanceAutoRenewAttributeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyInstanceChargeTypeRequest(TeaModel):
+    def __init__(
+        self,
+        auto_pay: bool = None,
+        auto_renew: bool = None,
+        include_data_disks: bool = None,
+        instance_charge_type: str = None,
+        instance_ids: List[str] = None,
+        period: str = None,
+        period_unit: str = None,
+    ):
+        self.auto_pay = auto_pay
+        self.auto_renew = auto_renew
+        self.include_data_disks = include_data_disks
+        self.instance_charge_type = instance_charge_type
+        self.instance_ids = instance_ids
+        self.period = period
+        self.period_unit = period_unit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.include_data_disks is not None:
+            result['IncludeDataDisks'] = self.include_data_disks
+        if self.instance_charge_type is not None:
+            result['InstanceChargeType'] = self.instance_charge_type
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('IncludeDataDisks') is not None:
+            self.include_data_disks = m.get('IncludeDataDisks')
+        if m.get('InstanceChargeType') is not None:
+            self.instance_charge_type = m.get('InstanceChargeType')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
+        return self
+
+
+class ModifyInstanceChargeTypeShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        auto_pay: bool = None,
+        auto_renew: bool = None,
+        include_data_disks: bool = None,
+        instance_charge_type: str = None,
+        instance_ids_shrink: str = None,
+        period: str = None,
+        period_unit: str = None,
+    ):
+        self.auto_pay = auto_pay
+        self.auto_renew = auto_renew
+        self.include_data_disks = include_data_disks
+        self.instance_charge_type = instance_charge_type
+        self.instance_ids_shrink = instance_ids_shrink
+        self.period = period
+        self.period_unit = period_unit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.include_data_disks is not None:
+            result['IncludeDataDisks'] = self.include_data_disks
+        if self.instance_charge_type is not None:
+            result['InstanceChargeType'] = self.instance_charge_type
+        if self.instance_ids_shrink is not None:
+            result['InstanceIds'] = self.instance_ids_shrink
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('IncludeDataDisks') is not None:
+            self.include_data_disks = m.get('IncludeDataDisks')
+        if m.get('InstanceChargeType') is not None:
+            self.instance_charge_type = m.get('InstanceChargeType')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids_shrink = m.get('InstanceIds')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
+        return self
+
+
+class ModifyInstanceChargeTypeResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_ids: List[str] = None,
+        order_id: int = None,
+        request_id: str = None,
+    ):
+        self.instance_ids = instance_ids
+        self.order_id = order_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyInstanceChargeTypeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyInstanceChargeTypeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyInstanceChargeTypeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -42180,9 +42216,6 @@ class ModifyLoadBalancerAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -42300,9 +42333,6 @@ class ModifyNetworkAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -42407,9 +42437,6 @@ class ModifyPrepayInstanceSpecResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -42525,9 +42552,6 @@ class ModifySecurityGroupAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -42641,9 +42665,6 @@ class ModifySnapshotAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -42761,9 +42782,6 @@ class ModifyVSwitchAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -42980,9 +42998,6 @@ class PushApplicationDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -43114,9 +43129,6 @@ class PutBucketResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -43225,9 +43237,6 @@ class PutBucketAclResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -43385,9 +43394,6 @@ class PutBucketLifecycleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -43422,14 +43428,11 @@ class ReInitDiskRequest(TeaModel):
         self,
         disk_id: str = None,
         image_id: str = None,
-        version: str = None,
     ):
         # The ID of the disk to be initialized. You can initialize only one disk at a time.
         self.disk_id = disk_id
         # The ID of the image to use to create the instance.
         self.image_id = image_id
-        # 2017-11-10
-        self.version = version
 
     def validate(self):
         pass
@@ -43444,8 +43447,6 @@ class ReInitDiskRequest(TeaModel):
             result['DiskId'] = self.disk_id
         if self.image_id is not None:
             result['ImageId'] = self.image_id
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -43454,8 +43455,6 @@ class ReInitDiskRequest(TeaModel):
             self.disk_id = m.get('DiskId')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -43506,9 +43505,6 @@ class ReInitDiskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -43662,9 +43658,6 @@ class RebootAICInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -43762,9 +43755,6 @@ class RebootARMServerInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -43879,9 +43869,6 @@ class RebootInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -44018,9 +44005,6 @@ class RebootInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -44118,9 +44102,6 @@ class RecoverAICInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -44228,9 +44209,6 @@ class ReinitInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -44391,9 +44369,6 @@ class ReinitInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -44491,9 +44466,6 @@ class ReleaseAICInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -44591,9 +44563,6 @@ class ReleaseARMServerInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -44691,9 +44660,6 @@ class ReleaseInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -44791,9 +44757,6 @@ class ReleasePostPaidInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -44891,9 +44854,6 @@ class ReleasePrePaidInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -45213,9 +45173,6 @@ class RemoveBackendServersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -45251,7 +45208,9 @@ class RemovePublicIpsFromEpnInstanceRequest(TeaModel):
         epninstance_id: str = None,
         instance_infos: str = None,
     ):
+        # The ID of the EPN instance.
         self.epninstance_id = epninstance_id
+        # The information about the public IP addresses that you want to delete.
         self.instance_infos = instance_infos
 
     def validate(self):
@@ -45283,6 +45242,7 @@ class RemovePublicIpsFromEpnInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -45317,9 +45277,6 @@ class RemovePublicIpsFromEpnInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -45355,7 +45312,9 @@ class RemoveVSwitchesFromEpnInstanceRequest(TeaModel):
         epninstance_id: str = None,
         v_switches_info: str = None,
     ):
+        # The ID of theEPN instance.
         self.epninstance_id = epninstance_id
+        # The internal networking information that you want to delete.
         self.v_switches_info = v_switches_info
 
     def validate(self):
@@ -45387,6 +45346,7 @@ class RemoveVSwitchesFromEpnInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -45421,9 +45381,6 @@ class RemoveVSwitchesFromEpnInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -45456,10 +45413,12 @@ class RemoveVSwitchesFromEpnInstanceResponse(TeaModel):
 class RenewARMServerInstanceRequest(TeaModel):
     def __init__(
         self,
+        auto_renew: bool = None,
         instance_id: str = None,
         period: int = None,
         period_unit: str = None,
     ):
+        self.auto_renew = auto_renew
         # The ID of the instance that you want to renew.
         self.instance_id = instance_id
         # The renewal period. By default, instances are renewed on a monthly basis. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, and 12.
@@ -45479,6 +45438,8 @@ class RenewARMServerInstanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.period is not None:
@@ -45489,6 +45450,8 @@ class RenewARMServerInstanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Period') is not None:
@@ -45538,9 +45501,6 @@ class RenewARMServerInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -45658,9 +45618,6 @@ class RenewInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -45800,9 +45757,6 @@ class RescaleApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -46072,9 +46026,6 @@ class RescaleDeviceServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -46228,9 +46179,6 @@ class ResetAICInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -46342,9 +46290,6 @@ class ResetDeviceInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -46449,9 +46394,6 @@ class ResetDiskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -46563,9 +46505,6 @@ class ResizeDiskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -46670,9 +46609,6 @@ class RestartDeviceInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -46795,9 +46731,6 @@ class RestartWorkflowResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -46920,9 +46853,6 @@ class RetryWorkflowResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -46962,7 +46892,6 @@ class RevokeSecurityGroupRequest(TeaModel):
         security_group_id: str = None,
         source_cidr_ip: str = None,
         source_port_range: str = None,
-        version: str = None,
     ):
         # The transport layer protocol. The value of this parameter is case-sensitive. Valid values:
         # 
@@ -46997,8 +46926,6 @@ class RevokeSecurityGroupRequest(TeaModel):
         # *   When the IpProtocol parameter is set to gre, the port number range is **-1/-1**, which indicates all ports.
         # *   When the IpProtocol parameter is set to all, the port number range is **-1/-1**, which indicates all ports.
         self.source_port_range = source_port_range
-        # 2017-11-10
-        self.version = version
 
     def validate(self):
         pass
@@ -47023,8 +46950,6 @@ class RevokeSecurityGroupRequest(TeaModel):
             result['SourceCidrIp'] = self.source_cidr_ip
         if self.source_port_range is not None:
             result['SourcePortRange'] = self.source_port_range
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -47043,8 +46968,6 @@ class RevokeSecurityGroupRequest(TeaModel):
             self.source_cidr_ip = m.get('SourceCidrIp')
         if m.get('SourcePortRange') is not None:
             self.source_port_range = m.get('SourcePortRange')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -47088,9 +47011,6 @@ class RevokeSecurityGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -47130,7 +47050,6 @@ class RevokeSecurityGroupEgressRequest(TeaModel):
         priority: int = None,
         security_group_id: str = None,
         source_port_range: str = None,
-        version: str = None,
     ):
         # The destination IP addresses. CIDR blocks and IPv4 addresses are supported.
         # 
@@ -47171,8 +47090,6 @@ class RevokeSecurityGroupEgressRequest(TeaModel):
         # *   When the IpProtocol parameter is set to gre, the port number range is **-1/-1**, which indicates all ports.
         # *   When the IpProtocol parameter is set to all, the port number range is **-1/-1**, which indicates all ports.
         self.source_port_range = source_port_range
-        # The version number. Set the value to 2017-11-10.
-        self.version = version
 
     def validate(self):
         pass
@@ -47197,8 +47114,6 @@ class RevokeSecurityGroupEgressRequest(TeaModel):
             result['SecurityGroupId'] = self.security_group_id
         if self.source_port_range is not None:
             result['SourcePortRange'] = self.source_port_range
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -47217,8 +47132,6 @@ class RevokeSecurityGroupEgressRequest(TeaModel):
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('SourcePortRange') is not None:
             self.source_port_range = m.get('SourcePortRange')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -47262,9 +47175,6 @@ class RevokeSecurityGroupEgressResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -47383,9 +47293,6 @@ class RollbackApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -47508,9 +47415,6 @@ class RollbackWorkflowResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -47555,7 +47459,22 @@ class RunInstancesRequestDataDisk(TeaModel):
         # *   **local_hdd**: local HDD
         # *   **local_ssd**: local SSD
         self.category = category
+        # Specifies whether to encrypt data disk N. Valid values:
+        # 
+        # *   true: encrypts the data disk.
+        # *   false: does not encrypt the data disk.
+        # 
+        # Default value: false.
         self.encrypted = encrypted
+        # The ID of the Key Management Service (KMS) key that is used by the cloud disk. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
+        # 
+        # 
+        # >  If you set the **Encrypted** parameter to **true**, the default service key is used when the **KMSKeyId** parameter is empty.
         self.kmskey_id = kmskey_id
         # The size of a data disk. Unit: GiB.
         self.size = size
@@ -47627,6 +47546,39 @@ class RunInstancesRequestSystemDisk(TeaModel):
         return self
 
 
+class RunInstancesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class RunInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -47660,6 +47612,7 @@ class RunInstancesRequest(TeaModel):
         scheduling_strategy: str = None,
         security_id: str = None,
         system_disk: RunInstancesRequestSystemDisk = None,
+        tag: List[RunInstancesRequestTag] = None,
         unique_suffix: bool = None,
         user_data: str = None,
         v_switch_id: str = None,
@@ -47673,7 +47626,11 @@ class RunInstancesRequest(TeaModel):
         # 
         # >  This parameter is not available when InstanceChargeType is set to PostPaid.
         self.auto_renew = auto_renew
-        # 是否使用代金券，默认为使用，即AutoUseCoupon=true。
+        # Specifies whether to use vouchers. Default values: true. Valid values:
+        # 
+        # - true 
+        # 
+        # - false
         self.auto_use_coupon = auto_use_coupon
         # The billing cycle of computing resources of the instance. Only pay-as-you-go instances are supported. Valid values:
         # 
@@ -47720,6 +47677,11 @@ class RunInstancesRequest(TeaModel):
         self.internet_charge_type = internet_charge_type
         # The maximum public bandwidth. If the value of this parameter is greater than 0, a public IP address is assigned to the instance.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
+        # The type of IP address. Valid values:
+        # 
+        # *   **ipv4**: IPv4. This is the default value.
+        # *   **ipv6**: IPv6.
+        # *   **ipv4Andipv6**: IPv4 and IPv6.
         self.ip_type = ip_type
         # The name of the key pair.
         # 
@@ -47783,6 +47745,7 @@ class RunInstancesRequest(TeaModel):
         self.security_id = security_id
         # The specification of the system disk.
         self.system_disk = system_disk
+        self.tag = tag
         # Specifies whether to append sequential suffixes to the hostname specified by the **HostName** parameter and to the instance name specified by the **InstanceName** parameter. The sequential suffixes range from 001 to 999.
         self.unique_suffix = unique_suffix
         # The custom data. The maximum data size is 16 KB. You can specify **UserData**. **UserData** must be Base64-encoded.
@@ -47799,6 +47762,10 @@ class RunInstancesRequest(TeaModel):
                     k.validate()
         if self.system_disk:
             self.system_disk.validate()
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -47868,6 +47835,10 @@ class RunInstancesRequest(TeaModel):
             result['SecurityId'] = self.security_id
         if self.system_disk is not None:
             result['SystemDisk'] = self.system_disk.to_map()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.unique_suffix is not None:
             result['UniqueSuffix'] = self.unique_suffix
         if self.user_data is not None:
@@ -47942,12 +47913,50 @@ class RunInstancesRequest(TeaModel):
         if m.get('SystemDisk') is not None:
             temp_model = RunInstancesRequestSystemDisk()
             self.system_disk = temp_model.from_map(m['SystemDisk'])
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = RunInstancesRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('UniqueSuffix') is not None:
             self.unique_suffix = m.get('UniqueSuffix')
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
+        return self
+
+
+class RunInstancesShrinkRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -47984,6 +47993,7 @@ class RunInstancesShrinkRequest(TeaModel):
         scheduling_strategy: str = None,
         security_id: str = None,
         system_disk_shrink: str = None,
+        tag: List[RunInstancesShrinkRequestTag] = None,
         unique_suffix: bool = None,
         user_data: str = None,
         v_switch_id: str = None,
@@ -47997,7 +48007,11 @@ class RunInstancesShrinkRequest(TeaModel):
         # 
         # >  This parameter is not available when InstanceChargeType is set to PostPaid.
         self.auto_renew = auto_renew
-        # 是否使用代金券，默认为使用，即AutoUseCoupon=true。
+        # Specifies whether to use vouchers. Default values: true. Valid values:
+        # 
+        # - true 
+        # 
+        # - false
         self.auto_use_coupon = auto_use_coupon
         # The billing cycle of computing resources of the instance. Only pay-as-you-go instances are supported. Valid values:
         # 
@@ -48044,6 +48058,11 @@ class RunInstancesShrinkRequest(TeaModel):
         self.internet_charge_type = internet_charge_type
         # The maximum public bandwidth. If the value of this parameter is greater than 0, a public IP address is assigned to the instance.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
+        # The type of IP address. Valid values:
+        # 
+        # *   **ipv4**: IPv4. This is the default value.
+        # *   **ipv6**: IPv6.
+        # *   **ipv4Andipv6**: IPv4 and IPv6.
         self.ip_type = ip_type
         # The name of the key pair.
         # 
@@ -48107,6 +48126,7 @@ class RunInstancesShrinkRequest(TeaModel):
         self.security_id = security_id
         # The specification of the system disk.
         self.system_disk_shrink = system_disk_shrink
+        self.tag = tag
         # Specifies whether to append sequential suffixes to the hostname specified by the **HostName** parameter and to the instance name specified by the **InstanceName** parameter. The sequential suffixes range from 001 to 999.
         self.unique_suffix = unique_suffix
         # The custom data. The maximum data size is 16 KB. You can specify **UserData**. **UserData** must be Base64-encoded.
@@ -48117,7 +48137,10 @@ class RunInstancesShrinkRequest(TeaModel):
         self.v_switch_id = v_switch_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -48185,6 +48208,10 @@ class RunInstancesShrinkRequest(TeaModel):
             result['SecurityId'] = self.security_id
         if self.system_disk_shrink is not None:
             result['SystemDisk'] = self.system_disk_shrink
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.unique_suffix is not None:
             result['UniqueSuffix'] = self.unique_suffix
         if self.user_data is not None:
@@ -48255,6 +48282,11 @@ class RunInstancesShrinkRequest(TeaModel):
             self.security_id = m.get('SecurityId')
         if m.get('SystemDisk') is not None:
             self.system_disk_shrink = m.get('SystemDisk')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = RunInstancesShrinkRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('UniqueSuffix') is not None:
             self.unique_suffix = m.get('UniqueSuffix')
         if m.get('UserData') is not None:
@@ -48318,9 +48350,6 @@ class RunInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -48615,9 +48644,6 @@ class RunServiceScheduleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -48923,9 +48949,6 @@ class SetBackendServersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -49182,9 +49205,6 @@ class SetLoadBalancerHTTPListenerAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -49448,9 +49468,6 @@ class SetLoadBalancerHTTPSListenerAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -49558,9 +49575,6 @@ class SetLoadBalancerStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -49795,9 +49809,6 @@ class SetLoadBalancerTCPListenerAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -49990,9 +50001,6 @@ class SetLoadBalancerUDPListenerAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -50027,6 +50035,7 @@ class StartEpnInstanceRequest(TeaModel):
         self,
         epninstance_id: str = None,
     ):
+        # The ID of the EPN instance.
         self.epninstance_id = epninstance_id
 
     def validate(self):
@@ -50054,6 +50063,7 @@ class StartEpnInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50088,9 +50098,6 @@ class StartEpnInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -50195,9 +50202,6 @@ class StartInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -50334,9 +50338,6 @@ class StartInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -50463,9 +50464,6 @@ class StartLoadBalancerListenerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -50570,9 +50568,6 @@ class StartSnatIpForSnatEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -50607,6 +50602,7 @@ class StopEpnInstanceRequest(TeaModel):
         self,
         epninstance_id: str = None,
     ):
+        # The ID of the EPN instance.
         self.epninstance_id = epninstance_id
 
     def validate(self):
@@ -50634,6 +50630,7 @@ class StopEpnInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50668,9 +50665,6 @@ class StopEpnInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -50705,7 +50699,6 @@ class StopInstanceRequest(TeaModel):
         self,
         force_stop: str = None,
         instance_id: str = None,
-        version: str = None,
     ):
         # Specifies whether to forcibly stop the servers.
         # 
@@ -50714,8 +50707,6 @@ class StopInstanceRequest(TeaModel):
         self.force_stop = force_stop
         # The ID of the instance that you want to stop. You can specify only one instance ID.
         self.instance_id = instance_id
-        # The version number.
-        self.version = version
 
     def validate(self):
         pass
@@ -50730,8 +50721,6 @@ class StopInstanceRequest(TeaModel):
             result['ForceStop'] = self.force_stop
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -50740,8 +50729,6 @@ class StopInstanceRequest(TeaModel):
             self.force_stop = m.get('ForceStop')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -50792,9 +50779,6 @@ class StopInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -50931,9 +50915,6 @@ class StopInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -51047,9 +51028,6 @@ class StopLoadBalancerListenerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -51154,9 +51132,6 @@ class StopSnatIpForSnatEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -51279,9 +51254,6 @@ class TerminateWorkflowResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -51379,9 +51351,6 @@ class UnAssociateEnsEipAddressResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -51486,9 +51455,6 @@ class UnassignPrivateIpAddressesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -51527,8 +51493,6 @@ class UnassociateNetworkAclRequestResource(TeaModel):
         # The ID of the resource from which you want to disassociate the network ACL.
         self.resource_id = resource_id
         # The type of the resource from which you want to disassociate the network ACL. Set the value to **Network**.
-        # 
-        # ****\
         self.resource_type = resource_type
 
     def validate(self):
@@ -51638,9 +51602,6 @@ class UnassociateNetworkAclResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -51935,9 +51896,6 @@ class UpdateEnsSaleControlResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -52091,9 +52049,6 @@ class UpgradeAICInstanceImageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -52210,9 +52165,6 @@ class UpgradeApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

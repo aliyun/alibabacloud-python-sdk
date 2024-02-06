@@ -850,8 +850,6 @@ class Client(OpenApiClient):
             query['SourceCidrIp'] = request.source_cidr_ip
         if not UtilClient.is_unset(request.source_port_range):
             query['SourcePortRange'] = request.source_port_range
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -892,8 +890,6 @@ class Client(OpenApiClient):
             query['SourceCidrIp'] = request.source_cidr_ip
         if not UtilClient.is_unset(request.source_port_range):
             query['SourcePortRange'] = request.source_port_range
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -955,8 +951,6 @@ class Client(OpenApiClient):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.source_port_range):
             query['SourcePortRange'] = request.source_port_range
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1004,8 +998,6 @@ class Client(OpenApiClient):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.source_port_range):
             query['SourcePortRange'] = request.source_port_range
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1988,8 +1980,6 @@ class Client(OpenApiClient):
             query['EnsServiceId'] = request.ens_service_id
         if not UtilClient.is_unset(request.order_type):
             query['OrderType'] = request.order_type
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2020,8 +2010,6 @@ class Client(OpenApiClient):
             query['EnsServiceId'] = request.ens_service_id
         if not UtilClient.is_unset(request.order_type):
             query['OrderType'] = request.order_type
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2685,8 +2673,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.key_pair_name):
             query['KeyPairName'] = request.key_pair_name
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2722,8 +2708,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.key_pair_name):
             query['KeyPairName'] = request.key_pair_name
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5006,6 +4990,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteEpnInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteEpnInstanceResponse:
+        """
+        You can delete an EPN instance only when the instance group information is empty.
+        
+        @param request: DeleteEpnInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEpnInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.epninstance_id):
@@ -5034,6 +5025,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteEpnInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteEpnInstanceResponse:
+        """
+        You can delete an EPN instance only when the instance group information is empty.
+        
+        @param request: DeleteEpnInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEpnInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.epninstance_id):
@@ -5061,6 +5059,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteEpnInstanceRequest,
     ) -> ens_20171110_models.DeleteEpnInstanceResponse:
+        """
+        You can delete an EPN instance only when the instance group information is empty.
+        
+        @param request: DeleteEpnInstanceRequest
+        @return: DeleteEpnInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_epn_instance_with_options(request, runtime)
 
@@ -5068,6 +5072,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteEpnInstanceRequest,
     ) -> ens_20171110_models.DeleteEpnInstanceResponse:
+        """
+        You can delete an EPN instance only when the instance group information is empty.
+        
+        @param request: DeleteEpnInstanceRequest
+        @return: DeleteEpnInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_epn_instance_with_options_async(request, runtime)
 
@@ -5292,6 +5302,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.key_pair_id):
+            query['KeyPairId'] = request.key_pair_id
         if not UtilClient.is_unset(request.key_pair_name):
             query['KeyPairName'] = request.key_pair_name
         req = open_api_models.OpenApiRequest(
@@ -5328,6 +5340,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.key_pair_id):
+            query['KeyPairId'] = request.key_pair_id
         if not UtilClient.is_unset(request.key_pair_name):
             query['KeyPairName'] = request.key_pair_name
         req = open_api_models.OpenApiRequest(
@@ -5959,8 +5973,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5996,8 +6008,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6273,8 +6283,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6310,8 +6318,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6781,16 +6787,9 @@ class Client(OpenApiClient):
 
     def describe_available_resource_with_options(
         self,
-        request: ens_20171110_models.DescribeAvailableResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeAvailableResourceResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeAvailableResource',
             version='2017-11-10',
@@ -6809,16 +6808,9 @@ class Client(OpenApiClient):
 
     async def describe_available_resource_with_options_async(
         self,
-        request: ens_20171110_models.DescribeAvailableResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeAvailableResourceResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeAvailableResource',
             version='2017-11-10',
@@ -6835,19 +6827,13 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_available_resource(
-        self,
-        request: ens_20171110_models.DescribeAvailableResourceRequest,
-    ) -> ens_20171110_models.DescribeAvailableResourceResponse:
+    def describe_available_resource(self) -> ens_20171110_models.DescribeAvailableResourceResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_available_resource_with_options(request, runtime)
+        return self.describe_available_resource_with_options(runtime)
 
-    async def describe_available_resource_async(
-        self,
-        request: ens_20171110_models.DescribeAvailableResourceRequest,
-    ) -> ens_20171110_models.DescribeAvailableResourceResponse:
+    async def describe_available_resource_async(self) -> ens_20171110_models.DescribeAvailableResourceResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_available_resource_with_options_async(request, runtime)
+        return await self.describe_available_resource_with_options_async(runtime)
 
     def describe_available_resource_info_with_options(
         self,
@@ -6964,8 +6950,6 @@ class Client(OpenApiClient):
             query['Isp'] = request.isp
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7000,8 +6984,6 @@ class Client(OpenApiClient):
             query['Isp'] = request.isp
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7160,8 +7142,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7190,8 +7170,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7702,8 +7680,6 @@ class Client(OpenApiClient):
             query['Eips'] = request.eips
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7734,8 +7710,6 @@ class Client(OpenApiClient):
             query['Eips'] = request.eips
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8076,8 +8050,6 @@ class Client(OpenApiClient):
             query['NetDistrictCode'] = request.net_district_code
         if not UtilClient.is_unset(request.net_level_code):
             query['NetLevelCode'] = request.net_level_code
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8108,8 +8080,6 @@ class Client(OpenApiClient):
             query['NetDistrictCode'] = request.net_district_code
         if not UtilClient.is_unset(request.net_level_code):
             query['NetLevelCode'] = request.net_level_code
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8145,16 +8115,9 @@ class Client(OpenApiClient):
 
     def describe_ens_net_level_with_options(
         self,
-        request: ens_20171110_models.DescribeEnsNetLevelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsNetLevelResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeEnsNetLevel',
             version='2017-11-10',
@@ -8173,16 +8136,9 @@ class Client(OpenApiClient):
 
     async def describe_ens_net_level_with_options_async(
         self,
-        request: ens_20171110_models.DescribeEnsNetLevelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsNetLevelResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeEnsNetLevel',
             version='2017-11-10',
@@ -8199,19 +8155,13 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_ens_net_level(
-        self,
-        request: ens_20171110_models.DescribeEnsNetLevelRequest,
-    ) -> ens_20171110_models.DescribeEnsNetLevelResponse:
+    def describe_ens_net_level(self) -> ens_20171110_models.DescribeEnsNetLevelResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_ens_net_level_with_options(request, runtime)
+        return self.describe_ens_net_level_with_options(runtime)
 
-    async def describe_ens_net_level_async(
-        self,
-        request: ens_20171110_models.DescribeEnsNetLevelRequest,
-    ) -> ens_20171110_models.DescribeEnsNetLevelResponse:
+    async def describe_ens_net_level_async(self) -> ens_20171110_models.DescribeEnsNetLevelResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_ens_net_level_with_options_async(request, runtime)
+        return await self.describe_ens_net_level_with_options_async(runtime)
 
     def describe_ens_net_sale_district_with_options(
         self,
@@ -8984,8 +8934,6 @@ class Client(OpenApiClient):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9028,8 +8976,6 @@ class Client(OpenApiClient):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9080,8 +9026,6 @@ class Client(OpenApiClient):
             query['NetworkingModel'] = request.networking_model
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9118,8 +9062,6 @@ class Client(OpenApiClient):
             query['NetworkingModel'] = request.networking_model
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9158,6 +9100,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEpnInstanceAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEpnInstanceAttributeResponse:
+        """
+        In internal networking mode, the value of Instances is empty in the response. In public networking mode, the value of VSwitches is empty in the response.
+        
+        @param request: DescribeEpnInstanceAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEpnInstanceAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.epninstance_id):
@@ -9186,6 +9135,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEpnInstanceAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEpnInstanceAttributeResponse:
+        """
+        In internal networking mode, the value of Instances is empty in the response. In public networking mode, the value of VSwitches is empty in the response.
+        
+        @param request: DescribeEpnInstanceAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEpnInstanceAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.epninstance_id):
@@ -9213,6 +9169,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEpnInstanceAttributeRequest,
     ) -> ens_20171110_models.DescribeEpnInstanceAttributeResponse:
+        """
+        In internal networking mode, the value of Instances is empty in the response. In public networking mode, the value of VSwitches is empty in the response.
+        
+        @param request: DescribeEpnInstanceAttributeRequest
+        @return: DescribeEpnInstanceAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_epn_instance_attribute_with_options(request, runtime)
 
@@ -9220,6 +9182,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEpnInstanceAttributeRequest,
     ) -> ens_20171110_models.DescribeEpnInstanceAttributeResponse:
+        """
+        In internal networking mode, the value of Instances is empty in the response. In public networking mode, the value of VSwitches is empty in the response.
+        
+        @param request: DescribeEpnInstanceAttributeRequest
+        @return: DescribeEpnInstanceAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_epn_instance_attribute_with_options_async(request, runtime)
 
@@ -9316,8 +9284,6 @@ class Client(OpenApiClient):
             query['EndDate'] = request.end_date
         if not UtilClient.is_unset(request.start_date):
             query['StartDate'] = request.start_date
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9348,8 +9314,6 @@ class Client(OpenApiClient):
             query['EndDate'] = request.end_date
         if not UtilClient.is_unset(request.start_date):
             query['StartDate'] = request.start_date
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9508,8 +9472,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9538,8 +9500,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9994,8 +9954,6 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10026,8 +9984,6 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10076,8 +10032,6 @@ class Client(OpenApiClient):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10112,8 +10066,6 @@ class Client(OpenApiClient):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10149,16 +10101,9 @@ class Client(OpenApiClient):
 
     def describe_instance_spec_with_options(
         self,
-        request: ens_20171110_models.DescribeInstanceSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeInstanceSpecResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeInstanceSpec',
             version='2017-11-10',
@@ -10177,16 +10122,9 @@ class Client(OpenApiClient):
 
     async def describe_instance_spec_with_options_async(
         self,
-        request: ens_20171110_models.DescribeInstanceSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeInstanceSpecResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeInstanceSpec',
             version='2017-11-10',
@@ -10203,32 +10141,19 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_instance_spec(
-        self,
-        request: ens_20171110_models.DescribeInstanceSpecRequest,
-    ) -> ens_20171110_models.DescribeInstanceSpecResponse:
+    def describe_instance_spec(self) -> ens_20171110_models.DescribeInstanceSpecResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_instance_spec_with_options(request, runtime)
+        return self.describe_instance_spec_with_options(runtime)
 
-    async def describe_instance_spec_async(
-        self,
-        request: ens_20171110_models.DescribeInstanceSpecRequest,
-    ) -> ens_20171110_models.DescribeInstanceSpecResponse:
+    async def describe_instance_spec_async(self) -> ens_20171110_models.DescribeInstanceSpecResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_instance_spec_with_options_async(request, runtime)
+        return await self.describe_instance_spec_with_options_async(runtime)
 
     def describe_instance_types_with_options(
         self,
-        request: ens_20171110_models.DescribeInstanceTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeInstanceTypesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeInstanceTypes',
             version='2017-11-10',
@@ -10247,16 +10172,9 @@ class Client(OpenApiClient):
 
     async def describe_instance_types_with_options_async(
         self,
-        request: ens_20171110_models.DescribeInstanceTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeInstanceTypesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeInstanceTypes',
             version='2017-11-10',
@@ -10273,19 +10191,13 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_instance_types(
-        self,
-        request: ens_20171110_models.DescribeInstanceTypesRequest,
-    ) -> ens_20171110_models.DescribeInstanceTypesResponse:
+    def describe_instance_types(self) -> ens_20171110_models.DescribeInstanceTypesResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_instance_types_with_options(request, runtime)
+        return self.describe_instance_types_with_options(runtime)
 
-    async def describe_instance_types_async(
-        self,
-        request: ens_20171110_models.DescribeInstanceTypesRequest,
-    ) -> ens_20171110_models.DescribeInstanceTypesResponse:
+    async def describe_instance_types_async(self) -> ens_20171110_models.DescribeInstanceTypesResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_instance_types_with_options_async(request, runtime)
+        return await self.describe_instance_types_with_options_async(runtime)
 
     def describe_instance_vnc_url_with_options(
         self,
@@ -10359,7 +10271,7 @@ class Client(OpenApiClient):
 
     def describe_instances_with_options(
         self,
-        request: ens_20171110_models.DescribeInstancesRequest,
+        tmp_req: ens_20171110_models.DescribeInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeInstancesResponse:
         """
@@ -10367,11 +10279,15 @@ class Client(OpenApiClient):
         *   You can call this operation up to 100 times per second per user.
         *   You can specify multiple request parameters to be queried. Specified parameters are evaluated by using the AND operator. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, it is regarded as a valid filter condition and an empty result is returned.
         
-        @param request: DescribeInstancesRequest
+        @param tmp_req: DescribeInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeInstancesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DescribeInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
@@ -10405,6 +10321,8 @@ class Client(OpenApiClient):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         req = open_api_models.OpenApiRequest(
@@ -10428,7 +10346,7 @@ class Client(OpenApiClient):
 
     async def describe_instances_with_options_async(
         self,
-        request: ens_20171110_models.DescribeInstancesRequest,
+        tmp_req: ens_20171110_models.DescribeInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeInstancesResponse:
         """
@@ -10436,11 +10354,15 @@ class Client(OpenApiClient):
         *   You can call this operation up to 100 times per second per user.
         *   You can specify multiple request parameters to be queried. Specified parameters are evaluated by using the AND operator. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, it is regarded as a valid filter condition and an empty result is returned.
         
-        @param request: DescribeInstancesRequest
+        @param tmp_req: DescribeInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeInstancesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DescribeInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
@@ -10474,6 +10396,8 @@ class Client(OpenApiClient):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         req = open_api_models.OpenApiRequest(
@@ -10532,14 +10456,14 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.DescribeKeyPairsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.key_pair_id):
+            query['KeyPairId'] = request.key_pair_id
         if not UtilClient.is_unset(request.key_pair_name):
             query['KeyPairName'] = request.key_pair_name
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10566,14 +10490,14 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.DescribeKeyPairsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.key_pair_id):
+            query['KeyPairId'] = request.key_pair_id
         if not UtilClient.is_unset(request.key_pair_name):
             query['KeyPairName'] = request.key_pair_name
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11304,8 +11228,6 @@ class Client(OpenApiClient):
             query['EndDate'] = request.end_date
         if not UtilClient.is_unset(request.start_date):
             query['StartDate'] = request.start_date
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11336,8 +11258,6 @@ class Client(OpenApiClient):
             query['EndDate'] = request.end_date
         if not UtilClient.is_unset(request.start_date):
             query['StartDate'] = request.start_date
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12311,16 +12231,9 @@ class Client(OpenApiClient):
 
     def describe_reserved_resource_with_options(
         self,
-        request: ens_20171110_models.DescribeReservedResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeReservedResourceResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeReservedResource',
             version='2017-11-10',
@@ -12339,16 +12252,9 @@ class Client(OpenApiClient):
 
     async def describe_reserved_resource_with_options_async(
         self,
-        request: ens_20171110_models.DescribeReservedResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeReservedResourceResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeReservedResource',
             version='2017-11-10',
@@ -12365,19 +12271,13 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_reserved_resource(
-        self,
-        request: ens_20171110_models.DescribeReservedResourceRequest,
-    ) -> ens_20171110_models.DescribeReservedResourceResponse:
+    def describe_reserved_resource(self) -> ens_20171110_models.DescribeReservedResourceResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_reserved_resource_with_options(request, runtime)
+        return self.describe_reserved_resource_with_options(runtime)
 
-    async def describe_reserved_resource_async(
-        self,
-        request: ens_20171110_models.DescribeReservedResourceRequest,
-    ) -> ens_20171110_models.DescribeReservedResourceResponse:
+    async def describe_reserved_resource_async(self) -> ens_20171110_models.DescribeReservedResourceResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_reserved_resource_with_options_async(request, runtime)
+        return await self.describe_reserved_resource_with_options_async(runtime)
 
     def describe_resource_timeline_with_options(
         self,
@@ -12596,8 +12496,6 @@ class Client(OpenApiClient):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.security_group_name):
             query['SecurityGroupName'] = request.security_group_name
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12632,8 +12530,6 @@ class Client(OpenApiClient):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.security_group_name):
             query['SecurityGroupName'] = request.security_group_name
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13168,8 +13064,6 @@ class Client(OpenApiClient):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.v_switch_name):
             query['VSwitchName'] = request.v_switch_name
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13210,8 +13104,6 @@ class Client(OpenApiClient):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.v_switch_name):
             query['VSwitchName'] = request.v_switch_name
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -14268,8 +14160,6 @@ class Client(OpenApiClient):
             query['KeyPairName'] = request.key_pair_name
         if not UtilClient.is_unset(request.public_key_body):
             query['PublicKeyBody'] = request.public_key_body
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -14308,8 +14198,6 @@ class Client(OpenApiClient):
             query['KeyPairName'] = request.key_pair_name
         if not UtilClient.is_unset(request.public_key_body):
             query['PublicKeyBody'] = request.public_key_body
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -15314,10 +15202,6 @@ class Client(OpenApiClient):
             query['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.image_name):
             query['ImageName'] = request.image_name
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
-        if not UtilClient.is_unset(request.product):
-            query['product'] = request.product
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -15348,10 +15232,6 @@ class Client(OpenApiClient):
             query['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.image_name):
             query['ImageName'] = request.image_name
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
-        if not UtilClient.is_unset(request.product):
-            query['product'] = request.product
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -15668,6 +15548,108 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.ModifyInstanceAutoRenewAttributeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_auto_renew_attribute_with_options_async(request, runtime)
+
+    def modify_instance_charge_type_with_options(
+        self,
+        tmp_req: ens_20171110_models.ModifyInstanceChargeTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ModifyInstanceChargeTypeResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.ModifyInstanceChargeTypeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.include_data_disks):
+            query['IncludeDataDisks'] = request.include_data_disks
+        if not UtilClient.is_unset(request.instance_charge_type):
+            query['InstanceChargeType'] = request.instance_charge_type
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceChargeType',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ModifyInstanceChargeTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_instance_charge_type_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.ModifyInstanceChargeTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ModifyInstanceChargeTypeResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.ModifyInstanceChargeTypeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.include_data_disks):
+            query['IncludeDataDisks'] = request.include_data_disks
+        if not UtilClient.is_unset(request.instance_charge_type):
+            query['InstanceChargeType'] = request.instance_charge_type
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceChargeType',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ModifyInstanceChargeTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_instance_charge_type(
+        self,
+        request: ens_20171110_models.ModifyInstanceChargeTypeRequest,
+    ) -> ens_20171110_models.ModifyInstanceChargeTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_instance_charge_type_with_options(request, runtime)
+
+    async def modify_instance_charge_type_async(
+        self,
+        request: ens_20171110_models.ModifyInstanceChargeTypeRequest,
+    ) -> ens_20171110_models.ModifyInstanceChargeTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_instance_charge_type_with_options_async(request, runtime)
 
     def modify_load_balancer_attribute_with_options(
         self,
@@ -16626,8 +16608,6 @@ class Client(OpenApiClient):
             query['DiskId'] = request.disk_id
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -16658,8 +16638,6 @@ class Client(OpenApiClient):
             query['DiskId'] = request.disk_id
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -17892,6 +17870,8 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.RenewARMServerInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.period):
@@ -17924,6 +17904,8 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.RenewARMServerInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.period):
@@ -18811,8 +18793,6 @@ class Client(OpenApiClient):
             query['SourceCidrIp'] = request.source_cidr_ip
         if not UtilClient.is_unset(request.source_port_range):
             query['SourcePortRange'] = request.source_port_range
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -18862,8 +18842,6 @@ class Client(OpenApiClient):
             query['SourceCidrIp'] = request.source_cidr_ip
         if not UtilClient.is_unset(request.source_port_range):
             query['SourcePortRange'] = request.source_port_range
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -18941,8 +18919,6 @@ class Client(OpenApiClient):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.source_port_range):
             query['SourcePortRange'] = request.source_port_range
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -18990,8 +18966,6 @@ class Client(OpenApiClient):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.source_port_range):
             query['SourcePortRange'] = request.source_port_range
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -19270,6 +19244,8 @@ class Client(OpenApiClient):
             query['SecurityId'] = request.security_id
         if not UtilClient.is_unset(request.system_disk_shrink):
             query['SystemDisk'] = request.system_disk_shrink
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.unique_suffix):
             query['UniqueSuffix'] = request.unique_suffix
         if not UtilClient.is_unset(request.user_data):
@@ -19368,6 +19344,8 @@ class Client(OpenApiClient):
             query['SecurityId'] = request.security_id
         if not UtilClient.is_unset(request.system_disk_shrink):
             query['SystemDisk'] = request.system_disk_shrink
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.unique_suffix):
             query['UniqueSuffix'] = request.unique_suffix
         if not UtilClient.is_unset(request.user_data):
@@ -20215,7 +20193,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.SetLoadBalancerUDPListenerAttributeResponse:
         """
-        @deprecated
         >
         *   You can call this operation up to 100 times per second per account.
         *   You can call this operation up to 10 times per second per user.
@@ -20223,7 +20200,6 @@ class Client(OpenApiClient):
         @param request: SetLoadBalancerUDPListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetLoadBalancerUDPListenerAttributeResponse
-        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -20276,7 +20252,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.SetLoadBalancerUDPListenerAttributeResponse:
         """
-        @deprecated
         >
         *   You can call this operation up to 100 times per second per account.
         *   You can call this operation up to 10 times per second per user.
@@ -20284,7 +20259,6 @@ class Client(OpenApiClient):
         @param request: SetLoadBalancerUDPListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetLoadBalancerUDPListenerAttributeResponse
-        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -20336,14 +20310,12 @@ class Client(OpenApiClient):
         request: ens_20171110_models.SetLoadBalancerUDPListenerAttributeRequest,
     ) -> ens_20171110_models.SetLoadBalancerUDPListenerAttributeResponse:
         """
-        @deprecated
         >
         *   You can call this operation up to 100 times per second per account.
         *   You can call this operation up to 10 times per second per user.
         
         @param request: SetLoadBalancerUDPListenerAttributeRequest
         @return: SetLoadBalancerUDPListenerAttributeResponse
-        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.set_load_balancer_udplistener_attribute_with_options(request, runtime)
@@ -20353,14 +20325,12 @@ class Client(OpenApiClient):
         request: ens_20171110_models.SetLoadBalancerUDPListenerAttributeRequest,
     ) -> ens_20171110_models.SetLoadBalancerUDPListenerAttributeResponse:
         """
-        @deprecated
         >
         *   You can call this operation up to 100 times per second per account.
         *   You can call this operation up to 10 times per second per user.
         
         @param request: SetLoadBalancerUDPListenerAttributeRequest
         @return: SetLoadBalancerUDPListenerAttributeResponse
-        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.set_load_balancer_udplistener_attribute_with_options_async(request, runtime)
@@ -20886,8 +20856,6 @@ class Client(OpenApiClient):
             query['ForceStop'] = request.force_stop
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -20928,8 +20896,6 @@ class Client(OpenApiClient):
             query['ForceStop'] = request.force_stop
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
