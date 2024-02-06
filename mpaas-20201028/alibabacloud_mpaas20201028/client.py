@@ -8035,6 +8035,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.push_un_bind_with_options_async(request, runtime)
 
+    def query_info_from_mdp_with_options(
+        self,
+        request: m_paa_s20201028_models.QueryInfoFromMdpRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.QueryInfoFromMdpResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.mobile):
+            body['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.mobile_md_5):
+            body['MobileMd5'] = request.mobile_md_5
+        if not UtilClient.is_unset(request.mobile_sha_256):
+            body['MobileSha256'] = request.mobile_sha_256
+        if not UtilClient.is_unset(request.risk_scene):
+            body['RiskScene'] = request.risk_scene
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryInfoFromMdp',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.QueryInfoFromMdpResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_info_from_mdp_with_options_async(
+        self,
+        request: m_paa_s20201028_models.QueryInfoFromMdpRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.QueryInfoFromMdpResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.mobile):
+            body['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.mobile_md_5):
+            body['MobileMd5'] = request.mobile_md_5
+        if not UtilClient.is_unset(request.mobile_sha_256):
+            body['MobileSha256'] = request.mobile_sha_256
+        if not UtilClient.is_unset(request.risk_scene):
+            body['RiskScene'] = request.risk_scene
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryInfoFromMdp',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.QueryInfoFromMdpResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_info_from_mdp(
+        self,
+        request: m_paa_s20201028_models.QueryInfoFromMdpRequest,
+    ) -> m_paa_s20201028_models.QueryInfoFromMdpResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_info_from_mdp_with_options(request, runtime)
+
+    async def query_info_from_mdp_async(
+        self,
+        request: m_paa_s20201028_models.QueryInfoFromMdpRequest,
+    ) -> m_paa_s20201028_models.QueryInfoFromMdpResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_info_from_mdp_with_options_async(request, runtime)
+
     def query_mapp_center_app_with_options(
         self,
         request: m_paa_s20201028_models.QueryMappCenterAppRequest,
