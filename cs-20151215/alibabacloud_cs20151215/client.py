@@ -11172,6 +11172,8 @@ class Client(OpenApiClient):
             body['runtime_type'] = request.runtime_type
         if not UtilClient.is_unset(request.runtime_version):
             body['runtime_version'] = request.runtime_version
+        if not UtilClient.is_unset(request.use_replace):
+            body['use_replace'] = request.use_replace
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -11218,6 +11220,8 @@ class Client(OpenApiClient):
             body['runtime_type'] = request.runtime_type
         if not UtilClient.is_unset(request.runtime_version):
             body['runtime_version'] = request.runtime_version
+        if not UtilClient.is_unset(request.use_replace):
+            body['use_replace'] = request.use_replace
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
