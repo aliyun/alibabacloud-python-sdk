@@ -109,9 +109,6 @@ class AllocateClusterPublicConnectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -244,9 +241,6 @@ class ApplyAdviceByIdResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -370,9 +364,6 @@ class AttachUserENIResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -497,9 +488,6 @@ class BatchApplyAdviceByIdListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -637,9 +625,6 @@ class BindDBResourceGroupWithUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -777,9 +762,6 @@ class BindDBResourcePoolWithUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -962,9 +944,6 @@ class CreateAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1116,18 +1095,23 @@ class CreateDBClusterRequest(TeaModel):
         # > * This parameter is required if the Mode parameter is set to Reserver.
         # > * 1000 The storage capacity less than 1,000 GB increases in 100 GB increments. The storage capacity greater than 1,000 GB increases in 1,000 GB increments.
         self.dbnode_storage = dbnode_storage
+        # Specifies whether to enable disk encryption.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.disk_encryption = disk_encryption
         # The number of elastic I/O units (EIUs). For more information, see [Use EIUs to scale up storage resources](~~189505~~).
         self.elastic_ioresource = elastic_ioresource
         # A reserved parameter.
         self.executor_count = executor_count
+        # The Key Management Service (KMS) ID that is used for disk encryption. This parameter is valid only when DiskEncryption is set to true.
         self.kms_id = kms_id
         # The mode of the cluster. Valid values:
         # 
-        # *   **Reserver**: the reserved mode
-        # *   **Flexible**: the elastic mode
-        # 
-        # >  If you do not specify this parameter, the cluster is in reserved mode.
+        # *   **Reserver**: the reserved mode.
+        # *   **Flexible**: the elastic mode.
         self.mode = mode
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -1397,9 +1381,6 @@ class CreateDBClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1554,9 +1535,6 @@ class CreateDBResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1714,9 +1692,6 @@ class CreateDBResourcePoolResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1752,6 +1727,7 @@ class CreateElasticPlanRequest(TeaModel):
         dbcluster_id: str = None,
         elastic_plan_enable: bool = None,
         elastic_plan_end_day: str = None,
+        elastic_plan_monthly_repeat: str = None,
         elastic_plan_name: str = None,
         elastic_plan_node_num: int = None,
         elastic_plan_start_day: str = None,
@@ -1777,6 +1753,7 @@ class CreateElasticPlanRequest(TeaModel):
         self.elastic_plan_enable = elastic_plan_enable
         # The end date of the scaling plan. Specify the date in the yyyy-MM-dd format.
         self.elastic_plan_end_day = elastic_plan_end_day
+        self.elastic_plan_monthly_repeat = elastic_plan_monthly_repeat
         # The name of the scaling plan.
         # 
         # *   The name must be 2 to 30 characters in length.
@@ -1837,6 +1814,8 @@ class CreateElasticPlanRequest(TeaModel):
             result['ElasticPlanEnable'] = self.elastic_plan_enable
         if self.elastic_plan_end_day is not None:
             result['ElasticPlanEndDay'] = self.elastic_plan_end_day
+        if self.elastic_plan_monthly_repeat is not None:
+            result['ElasticPlanMonthlyRepeat'] = self.elastic_plan_monthly_repeat
         if self.elastic_plan_name is not None:
             result['ElasticPlanName'] = self.elastic_plan_name
         if self.elastic_plan_node_num is not None:
@@ -1873,6 +1852,8 @@ class CreateElasticPlanRequest(TeaModel):
             self.elastic_plan_enable = m.get('ElasticPlanEnable')
         if m.get('ElasticPlanEndDay') is not None:
             self.elastic_plan_end_day = m.get('ElasticPlanEndDay')
+        if m.get('ElasticPlanMonthlyRepeat') is not None:
+            self.elastic_plan_monthly_repeat = m.get('ElasticPlanMonthlyRepeat')
         if m.get('ElasticPlanName') is not None:
             self.elastic_plan_name = m.get('ElasticPlanName')
         if m.get('ElasticPlanNodeNum') is not None:
@@ -1942,9 +1923,6 @@ class CreateElasticPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2081,9 +2059,6 @@ class DeleteAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2219,9 +2194,6 @@ class DeleteDBClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2352,9 +2324,6 @@ class DeleteDBResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2485,9 +2454,6 @@ class DeleteDBResourcePoolResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2620,9 +2586,6 @@ class DeleteElasticPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2664,11 +2627,17 @@ class DescribeAccountsRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The name of the database account.
+        # 
+        # >  If you do not specify this parameter, the information about all database accounts is returned.
         self.account_name = account_name
-        # *   Normal: standard account.
-        # *   Super: privileged account.
+        # The type of the database account. If you do not specify this parameter, the information about all account types is returned. Valid values:
+        # 
+        # *   **Normal**: standard account.
+        # *   **Super**: privileged account.
         self.account_type = account_type
-        # The cluster ID.
+        # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -2733,12 +2702,14 @@ class DescribeAccountsResponseBodyAccountListDBAccount(TeaModel):
         self.account_name = account_name
         # The state of the database account. Valid values:
         # 
-        # *   Creating
-        # *   Available
-        # *   Deleting
+        # *   **Creating**\
+        # *   **Available**\
+        # *   **Deleting**\
         self.account_status = account_status
-        # *   Normal: standard account.
-        # *   Super: privileged account.
+        # The type of the database account. Valid values:
+        # 
+        # *   **Normal**: standard account.
+        # *   **Super**: privileged account.
         self.account_type = account_type
 
     def validate(self):
@@ -2857,9 +2828,6 @@ class DescribeAccountsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2988,9 +2956,6 @@ class DescribeAdviceServiceEnabledResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3155,9 +3120,6 @@ class DescribeAllAccountsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3580,9 +3542,6 @@ class DescribeAllDataSourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3623,9 +3582,9 @@ class DescribeAppliedAdvicesRequest(TeaModel):
         region_id: str = None,
         start_time: int = None,
     ):
-        # The cluster ID.
+        # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of Data Warehouse Edition (V3.0) clusters.
+        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
         self.dbcluster_id = dbcluster_id
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyyMMdd format. The time must be in UTC.
         self.end_time = end_time
@@ -3714,14 +3673,14 @@ class DescribeAppliedAdvicesResponseBodyItems(TeaModel):
         self.advice_id = advice_id
         # The benefit of the suggestion.
         self.benefit = benefit
-        # The SQL statement used to execute the BUILD task.
+        # The SQL statement that is used to execute the BUILD job.
         self.build_sql = build_sql
-        # The state of the suggestion execution task. Valid values:
+        # The state of the suggestion execution job. Valid values:
         # 
         # *   **SUCCEED**\
         # *   **FAILED**\
         self.job_status = job_status
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Valid values:
         # 
@@ -3729,7 +3688,7 @@ class DescribeAppliedAdvicesResponseBodyItems(TeaModel):
         # *   **50**\
         # *   **100**\
         self.page_size = page_size
-        # The SQL statement used to roll back the suggestion.
+        # The SQL statement that is used to roll back the suggestion.
         self.rollback_sql = rollback_sql
         # The SQL statement that is used to apply the suggestion.
         self.sql = sql
@@ -3740,7 +3699,7 @@ class DescribeAppliedAdvicesResponseBodyItems(TeaModel):
         self.submit_status = submit_status
         # The time when the suggestion was submitted. The time follows the ISO 8601 standard in the yyMMddHHmm format. The time is displayed in UTC.
         self.submit_time = submit_time
-        # The total number of entries returned. The value is an integer that is greater than or equal to 0. Default value: 0.
+        # The total number of entries returned. Minimum value: 0. Default value: 0.
         self.total_count = total_count
 
     def validate(self):
@@ -3883,9 +3842,6 @@ class DescribeAppliedAdvicesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4031,9 +3987,6 @@ class DescribeAuditLogConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4430,9 +4383,6 @@ class DescribeAuditLogRecordsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4726,9 +4676,6 @@ class DescribeAutoRenewAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4847,30 +4794,30 @@ class DescribeAvailableAdvicesResponseBodyItems(TeaModel):
         sql: str = None,
         total_count: int = None,
     ):
-        # The date when the suggestion was generated. The date follows the yyyyMMdd format. The date is displayed in UTC.
+        # The time when the suggestion was generated. The time follows the ISO 8601 standard in the yyyyMMdd format. The time is displayed in UTC.
         self.advice_date = advice_date
         # The suggestion ID.
         self.advice_id = advice_id
         # The type of the suggestion. Valid values:
         # 
-        # *   **Index**: index optimization
-        # *   **Tiering**: hot and cold data optimization
+        # *   **Index**: index optimization.
+        # *   **Tiering**: hot and cold data optimization.
         self.advice_type = advice_type
         # The benefit of the suggestion.
         self.benefit = benefit
-        # The page number of the returned page. The value must be an integer that is greater than 0. Default value: 1.
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries returned per page. Default value: 30. Valid values:
+        # The number of entries per page. Valid values:
         # 
-        # *   **30**\
+        # *   **30** (default)
         # *   **50**\
         # *   **100**\
         self.page_size = page_size
         # The reason why the suggestion was generated.
         self.reason = reason
-        # The SQL statement used to apply the suggestion.
+        # The SQL statement that is used to apply the suggestion.
         self.sql = sql
-        # The total number of entries returned. The value must be an integer that is greater than or equal to 0. Default value: 0.
+        # The total number of entries returned. Minimum value: 0. Default value: 0.
         self.total_count = total_count
 
     def validate(self):
@@ -4934,7 +4881,7 @@ class DescribeAvailableAdvicesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details of the suggestions.
+        # The queried suggestions.
         self.items = items
         # The page number of the returned page. The value must be an integer that is greater than 0. Default value: 1.
         self.page_number = page_number
@@ -5005,9 +4952,6 @@ class DescribeAvailableAdvicesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5050,21 +4994,26 @@ class DescribeAvailableResourceRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
-        # The supported mode. Valid values:
+        # The language of query results. Valid values:
         # 
-        # *   **flexible**: elastic mode
-        # *   **reserver**: reserved mode
+        # *   **zh-CN** (default): Chinese.
+        # *   **en-US**: English.
         self.accept_language = accept_language
         # The resources available in the supported modes.
         self.charge_type = charge_type
+        # The version of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         self.dbcluster_version = dbcluster_version
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The resources available in the zones.
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the zone.
+        # The zone ID.
+        # 
+        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -5126,8 +5075,11 @@ class DescribeAvailableResourceResponseBodyAvailableZoneListSupportedModeSupport
         min_count: str = None,
         step: str = None,
     ):
+        # The maximum amount of elastic I/O resources.
         self.max_count = max_count
+        # The minimum amount of elastic I/O resources.
         self.min_count = min_count
+        # The step size.
         self.step = step
 
     def validate(self):
@@ -5166,10 +5118,16 @@ class DescribeAvailableResourceResponseBodyAvailableZoneListSupportedModeSupport
         supported_elastic_ioresource: DescribeAvailableResourceResponseBodyAvailableZoneListSupportedModeSupportedSerialListSupportedFlexibleResourceSupportedElasticIOResource = None,
         supported_storage_resource: List[str] = None,
     ):
-        # The maximum number of EIUs.
+        # The disk storage type. Valid values:
+        # 
+        # *   **hdd**\
+        # *   **ssd**\
         self.storage_type = storage_type
+        # The supported computing resources.
         self.supported_compute_resource = supported_compute_resource
+        # The supported elastic I/O resources.
         self.supported_elastic_ioresource = supported_elastic_ioresource
+        # The supported storage resources.
         self.supported_storage_resource = supported_storage_resource
 
     def validate(self):
@@ -5213,8 +5171,11 @@ class DescribeAvailableResourceResponseBodyAvailableZoneListSupportedModeSupport
         min_count: str = None,
         step: str = None,
     ):
+        # A reserved parameter.
         self.max_count = max_count
+        # A reserved parameter.
         self.min_count = min_count
+        # A reserved parameter.
         self.step = step
 
     def validate(self):
@@ -5250,6 +5211,7 @@ class DescribeAvailableResourceResponseBodyAvailableZoneListSupportedModeSupport
         self,
         node_count: DescribeAvailableResourceResponseBodyAvailableZoneListSupportedModeSupportedSerialListSupportedInstanceClassListSupportedExecutorListNodeCount = None,
     ):
+        # The information about the supported compute nodes.
         self.node_count = node_count
 
     def validate(self):
@@ -5281,8 +5243,11 @@ class DescribeAvailableResourceResponseBodyAvailableZoneListSupportedModeSupport
         min_count: str = None,
         step: str = None,
     ):
+        # The maximum number of compute nodes.
         self.max_count = max_count
+        # The minimum number of compute nodes.
         self.min_count = min_count
+        # The step size.
         self.step = step
 
     def validate(self):
@@ -5319,7 +5284,9 @@ class DescribeAvailableResourceResponseBodyAvailableZoneListSupportedModeSupport
         node_count: DescribeAvailableResourceResponseBodyAvailableZoneListSupportedModeSupportedSerialListSupportedInstanceClassListSupportedNodeCountListNodeCount = None,
         storage_size: List[str] = None,
     ):
+        # The number of the supported compute nodes.
         self.node_count = node_count
+        # The support storage capacity. Unit: GB.
         self.storage_size = storage_size
 
     def validate(self):
@@ -5356,9 +5323,13 @@ class DescribeAvailableResourceResponseBodyAvailableZoneListSupportedModeSupport
         supported_node_count_list: List[DescribeAvailableResourceResponseBodyAvailableZoneListSupportedModeSupportedSerialListSupportedInstanceClassListSupportedNodeCountList] = None,
         tips: str = None,
     ):
+        # The supported instance type.
         self.instance_class = instance_class
+        # A reserved parameter.
         self.supported_executor_list = supported_executor_list
+        # The supported compute nodes.
         self.supported_node_count_list = supported_node_count_list
+        # The description of the instance type.
         self.tips = tips
 
     def validate(self):
@@ -5417,10 +5388,15 @@ class DescribeAvailableResourceResponseBodyAvailableZoneListSupportedModeSupport
         supported_flexible_resource: List[DescribeAvailableResourceResponseBodyAvailableZoneListSupportedModeSupportedSerialListSupportedFlexibleResource] = None,
         supported_instance_class_list: List[DescribeAvailableResourceResponseBodyAvailableZoneListSupportedModeSupportedSerialListSupportedInstanceClassList] = None,
     ):
-        # The step size.
+        # The supported edition. Valid values:
+        # 
+        # *   **basic**: Basic Edition.
+        # *   **cluster**: Cluster Edition.
+        # *   **mixed_storage**: elastic mode for Cluster Edition.
         self.serial = serial
-        # The minimum number of EIUs.
+        # The supported resources in elastic mode.
         self.supported_flexible_resource = supported_flexible_resource
+        # The supported resources in reserved mode.
         self.supported_instance_class_list = supported_instance_class_list
 
     def validate(self):
@@ -5474,9 +5450,12 @@ class DescribeAvailableResourceResponseBodyAvailableZoneListSupportedMode(TeaMod
         mode: str = None,
         supported_serial_list: List[DescribeAvailableResourceResponseBodyAvailableZoneListSupportedModeSupportedSerialList] = None,
     ):
-        # N/A
+        # The supported mode. Valid values:
+        # 
+        # *   **flexible**: elastic mode.
+        # *   **reserver**: reserved mode.
         self.mode = mode
-        # The available elastic I/O units (EIUs).
+        # The supported editions.
         self.supported_serial_list = supported_serial_list
 
     def validate(self):
@@ -5519,14 +5498,13 @@ class DescribeAvailableResourceResponseBodyAvailableZoneList(TeaModel):
         supported_storage_resource: List[str] = None,
         zone_id: str = None,
     ):
+        # A reserved parameter.
         self.supported_compute_resource = supported_compute_resource
-        # The available computing resources.
+        # The supported modes.
         self.supported_mode = supported_mode
+        # A reserved parameter.
         self.supported_storage_resource = supported_storage_resource
-        # The storage type. Valid values:
-        # 
-        # *   **hdd**\
-        # *   **ssd**\
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -5576,7 +5554,7 @@ class DescribeAvailableResourceResponseBody(TeaModel):
         region_id: str = None,
         request_id: str = None,
     ):
-        # The resources available in elastic mode.
+        # The supported zones.
         self.available_zone_list = available_zone_list
         # The resources available in the supported editions.
         self.region_id = region_id
@@ -5635,9 +5613,6 @@ class DescribeAvailableResourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5805,9 +5780,6 @@ class DescribeBackupPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5943,11 +5915,11 @@ class DescribeBackupsResponseBodyItemsBackup(TeaModel):
     ):
         # The end time of the backup.
         self.backup_end_time = backup_end_time
-        # The ID of the backup set.
+        # The backup set ID.
         self.backup_id = backup_id
         # The backup method. Only Snapshot is returned.
         self.backup_method = backup_method
-        # The backup size. Unit: bytes.
+        # The size of the backup set. Unit: bytes.
         self.backup_size = backup_size
         # The start time of the backup.
         self.backup_start_time = backup_start_time
@@ -6108,9 +6080,6 @@ class DescribeBackupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6360,9 +6329,6 @@ class DescribeColumnsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6568,9 +6534,6 @@ class DescribeComputeResourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6802,9 +6765,6 @@ class DescribeConnectionCountRecordsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6843,7 +6803,7 @@ class DescribeDBClusterAccessWhiteListRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -6893,16 +6853,16 @@ class DescribeDBClusterAccessWhiteListResponseBodyItemsIPArray(TeaModel):
         dbcluster_iparray_name: str = None,
         security_iplist: str = None,
     ):
-        # The attribute of the whitelist group. It is empty by default.
+        # The attribute of the IP address whitelist. By default, this parameter is empty.
         # 
-        # >  The groups with hidden attribute are not displayed in the console. The groups with hidden attribute are used to access DTS and PolarDB-X.
+        # >  The IP address whitelists that have the **hidden** attribute are not displayed in the console. These IP address whitelists are used to access services such as Data Transmission Service (DTS) and PolarDB-X.
         self.dbcluster_iparray_attribute = dbcluster_iparray_attribute
         # The name of the IP address whitelist.
         # 
-        # *   The name of the IP address whitelist group must be 2 to 32 characters in length and can contain lowercase letters, digits, and underscores (\_). The name must start with a lowercase letter and end with a digit or lowercase letter.
-        # *   You can create up to 50 whitelists for a cluster.
+        # *   The name of an IP address whitelist must be 2 to 32 characters in length. The name can contain lowercase letters, digits, and underscores (\_). The name must start with a lowercase letter and end with a lowercase letter or digit.
+        # *   Each cluster supports up to 50 IP address whitelists.
         self.dbcluster_iparray_name = dbcluster_iparray_name
-        # The IP addresses in an IP address whitelist. A maximum of 1,000 IP addresses can be returned. These addresses are separated with commas (,).
+        # The IP addresses in the IP address whitelist. Up to 1,000 IP addresses can be returned. Multiple IP addresses are separated by commas (,).
         self.security_iplist = security_iplist
 
     def validate(self):
@@ -6974,9 +6934,9 @@ class DescribeDBClusterAccessWhiteListResponseBody(TeaModel):
         items: DescribeDBClusterAccessWhiteListResponseBodyItems = None,
         request_id: str = None,
     ):
-        # An array that consists of the information of IP whitelists.
+        # The queried IP address whitelists.
         self.items = items
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7017,9 +6977,6 @@ class DescribeDBClusterAccessWhiteListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7238,9 +7195,9 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         # *   **ads**: pay-as-you-go.
         # *   **ads_pre**: subscription.
         self.commodity_code = commodity_code
-        # The specifications of computing resources that are used in the cluster in elastic mode. The increase of computing resources can speed up queries. You can adjust the value of this parameter to scale the cluster.
+        # The specifications of computing resources that are used in the cluster in elastic mode. Computing resources are used to compute data. The increase in the computing resources can accelerate queries. You can scale computing resources based on your business requirements.
         self.compute_resource = compute_resource
-        # The Virtual Private Cloud (VPC) endpoint of the cluster.
+        # The Virtual Private Cloud (VPC) endpoint that is used to connect to the cluster.
         self.connection_string = connection_string
         # The time when the cluster was created. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time is displayed in UTC.
         self.creation_time = creation_time
@@ -7252,7 +7209,7 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         self.dbcluster_network_type = dbcluster_network_type
         # The state of the cluster. For more information, see [Cluster states](~~143075~~).
         self.dbcluster_status = dbcluster_status
-        # The type of the cluster. Valid values:
+        # The cluster type. Valid values:
         # 
         # *   **Common**: common cluster.
         # *   **RDS_ANALYSIS**: MySQL analytic instance.
@@ -7263,8 +7220,12 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         self.dbnode_count = dbnode_count
         # The storage capacity of the cluster. Unit: GB.
         self.dbnode_storage = dbnode_storage
-        # The version of the database engine. **3.0** is returned.
+        # The engine version of the cluster. **3.0** is returned.
         self.dbversion = dbversion
+        # Indicates whether disk encryption is enabled. Valid values:
+        # 
+        # *   true
+        # *   false
         self.disk_encryption = disk_encryption
         # The ESSD performance level.
         self.disk_performance_level = disk_performance_level
@@ -7281,14 +7242,14 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         # 
         # >  For more information about ESSDs, see [ESSDs](~~122389~~).
         self.disk_type = disk_type
-        # The ID of the Data Transmission Service (DTS) synchronization task. This parameter is returned only for MySQL analytic instances.
+        # The ID of the Data Transmission Service (DTS) synchronization job. This parameter is returned only for MySQL analytic instances.
         self.dts_job_id = dts_job_id
         # The number of elastic I/O units (EIUs).
         self.elastic_ioresource = elastic_ioresource
         # The single-node specifications of an EIU. Valid values:
         # 
-        # *   8Core64GB: If this value is returned, an EIU of the cluster has 24 cores and 192 GB memory.
-        # *   12Core96GB: If this value is returned, an EIU of the cluster has 36 cores and 288 GB memory.
+        # *   8Core64GB: If this value is returned, the specifications of an EIU are 24 cores and 192 GB memory.
+        # *   12Core96GB: If this value is returned, the specifications of an EIU are 36 cores and 288 GB memory.
         self.elastic_ioresource_size = elastic_ioresource_size
         # Indicates whether an Airflow cluster was created. Valid values:
         # 
@@ -7306,7 +7267,7 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         self.engine_version = engine_version
         # The number of compute nodes that are used by the cluster in elastic mode.
         self.executor_count = executor_count
-        # The time when the cluster expires. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time is displayed in UTC. Example: *2999-09-08T16:00:00Z*.
+        # The expiration time of the cluster. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time is displayed in UTC. Example: *2999-09-08T16:00:00Z*.
         # 
         # > 
         # 
@@ -7319,7 +7280,7 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         # *   **true**\
         # *   **false**\
         self.expired = expired
-        # The public IP address.
+        # The public IP address of the cluster.
         self.inner_ip = inner_ip
         # The public port number.
         self.inner_port = inner_port
@@ -7333,13 +7294,13 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         # *   **ManualLock**: The cluster is manually locked.
         # *   **LockByExpiration**: The cluster is automatically locked due to cluster expiration.
         # *   **LockByRestoration**: The cluster is automatically locked due to cluster restoration.
-        # *   **LockByDiskQuota**: The cluster is automatically locked when it has used 90% of its storage.
+        # *   **LockByDiskQuota**: The cluster is automatically locked when 90% of the cluster storage is used.
         self.lock_mode = lock_mode
         # The reason why the cluster is locked.
         # 
         # >  This parameter is returned only when the cluster was locked. **instance_expire** is returned.
         self.lock_reason = lock_reason
-        # The maintenance window of the cluster. The window follows the ISO 8601 standard in the *HH:mmZ- HH:mmZ* format. The time is displayed in UTC. An example is *04:00Z-05:00Z*, which indicates that routine maintenance can be performed from 04:00 to 05:00.
+        # The maintenance window of the cluster. The time is displayed in the *HH:mmZ-HH:mmZ* format in UTC. An example is *04:00Z-05:00Z*, which indicates that routine maintenance is performed from 04:00 to 05:00.
         # 
         # >  For more information about maintenance windows, see [Configure a maintenance window](~~122569~~).
         self.maintain_time = maintain_time
@@ -7363,7 +7324,7 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The specifications of storage resources that are used in the cluster in elastic mode. These resources are used to read and write data. You can increase the value of this parameter to improve the read and write performance of the cluster.
+        # The specifications of storage resources that are used in the cluster in elastic mode. Storage resources are used to read and write data. The increase in the storage resources can improve the read and write performance of the cluster.
         self.storage_resource = storage_resource
         # The tags that are added to the cluster.
         self.tags = tags
@@ -7624,7 +7585,7 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         items: DescribeDBClusterAttributeResponseBodyItems = None,
         request_id: str = None,
     ):
-        # The information about the cluster.
+        # The queried cluster information.
         self.items = items
         # The request ID.
         self.request_id = request_id
@@ -7667,9 +7628,6 @@ class DescribeDBClusterAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8002,9 +7960,6 @@ class DescribeDBClusterHealthStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8254,9 +8209,6 @@ class DescribeDBClusterNetInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8585,9 +8537,6 @@ class DescribeDBClusterPerformanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8926,9 +8875,6 @@ class DescribeDBClusterResourcePoolPerformanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9070,9 +9016,6 @@ class DescribeDBClusterStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9785,9 +9728,6 @@ class DescribeDBClustersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10008,9 +9948,6 @@ class DescribeDBResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10233,9 +10170,6 @@ class DescribeDBResourcePoolResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10417,9 +10351,6 @@ class DescribeDiagnosisDimensionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10691,9 +10622,6 @@ class DescribeDiagnosisMonitorPerformanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11198,9 +11126,6 @@ class DescribeDiagnosisRecordsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11469,9 +11394,6 @@ class DescribeDiagnosisSQLInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11819,9 +11741,6 @@ class DescribeDiagnosisTasksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12017,9 +11936,6 @@ class DescribeDownloadRecordsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12064,17 +11980,38 @@ class DescribeEIURangeRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
+        # The specifications of computing resources.
+        # 
+        # >  You can call the [DescribeComputeResource](~~469002~~) operation to query the specifications of computing resources.
         self.compute_resource = compute_resource
+        # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        # 
+        # *   This parameter can be left empty when **Operation** is set to **Buy**.
+        # *   This parameter must be specified when **Operation** is set to **Upgrade** or **Downgrade**.
+        # 
+        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
         self.dbcluster_id = dbcluster_id
+        # The version of the AnalyticDB for MySQL Data Warehouse Edition cluster. Set the value to **3.0**.
         self.dbcluster_version = dbcluster_version
+        # The type of the operation. Valid values:
+        # 
+        # *   **Buy**: purchases a cluster.
+        # *   **Upgrade**: upgrades a cluster.
+        # *   **Downgrade**: downgrades a cluster.
         self.operation = operation
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the cluster.
+        # 
+        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The zone ID of the cluster.
+        # 
+        # >  You can call the [DescribeRegions](~~612293~~) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -12144,8 +12081,11 @@ class DescribeEIURangeResponseBodyEIUInfo(TeaModel):
         eiurange: List[int] = None,
         storage_resource_range: List[str] = None,
     ):
+        # The suggested value for the number of EIUs.
         self.default_value = default_value
+        # The queried range for the number of EIUs.
         self.eiurange = eiurange
+        # A reserved parameter.
         self.storage_resource_range = storage_resource_range
 
     def validate(self):
@@ -12182,7 +12122,9 @@ class DescribeEIURangeResponseBody(TeaModel):
         eiuinfo: DescribeEIURangeResponseBodyEIUInfo = None,
         request_id: str = None,
     ):
+        # The queried information about the number of EIUs.
         self.eiuinfo = eiuinfo
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12223,9 +12165,6 @@ class DescribeEIURangeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12520,9 +12459,6 @@ class DescribeElasticDailyPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12646,6 +12582,7 @@ class DescribeElasticPlanResponseBodyElasticPlanList(TeaModel):
         enable: bool = None,
         end_day: str = None,
         end_time: str = None,
+        monthly_repeat: str = None,
         plan_name: str = None,
         resource_pool_name: str = None,
         start_day: str = None,
@@ -12682,6 +12619,7 @@ class DescribeElasticPlanResponseBodyElasticPlanList(TeaModel):
         self.end_day = end_day
         # The restoration time of the scaling plan. The interval between the scale-up time and the restoration time cannot be more than 24 hours. The time is in the HH:mm:ss format.
         self.end_time = end_time
+        self.monthly_repeat = monthly_repeat
         # The name of the scaling plan.
         self.plan_name = plan_name
         # The name of the resource group.
@@ -12714,6 +12652,8 @@ class DescribeElasticPlanResponseBodyElasticPlanList(TeaModel):
             result['EndDay'] = self.end_day
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.monthly_repeat is not None:
+            result['MonthlyRepeat'] = self.monthly_repeat
         if self.plan_name is not None:
             result['PlanName'] = self.plan_name
         if self.resource_pool_name is not None:
@@ -12740,6 +12680,8 @@ class DescribeElasticPlanResponseBodyElasticPlanList(TeaModel):
             self.end_day = m.get('EndDay')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('MonthlyRepeat') is not None:
+            self.monthly_repeat = m.get('MonthlyRepeat')
         if m.get('PlanName') is not None:
             self.plan_name = m.get('PlanName')
         if m.get('ResourcePoolName') is not None:
@@ -12808,9 +12750,6 @@ class DescribeElasticPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13119,9 +13058,6 @@ class DescribeInclinedTablesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13440,9 +13376,6 @@ class DescribeLoadTasksRecordsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13781,9 +13714,6 @@ class DescribeMaintenanceActionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13933,9 +13863,6 @@ class DescribeOperatorPermissionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14222,9 +14149,6 @@ class DescribePatternPerformanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14556,9 +14480,6 @@ class DescribeProcessListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14861,9 +14782,6 @@ class DescribeRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14904,10 +14822,17 @@ class DescribeResubmitConfigRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
         self.dbcluster_id = dbcluster_id
+        # The name of the resource group.
+        # 
+        # >  You can call the [DescribeDBResourceGroup](~~459446~~) operation to query the resource group name of a cluster.
         self.group_name = group_name
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -14965,10 +14890,15 @@ class DescribeResubmitConfigResponseBodyRules(TeaModel):
         query_time: str = None,
         target_group_name: str = None,
     ):
+        # Indicates whether out-of-memory (OOM) check is configured.
         self.exceed_memory_exception = exceed_memory_exception
+        # The name of the source resource group.
         self.group_name = group_name
+        # The peak memory usage.
         self.peak_memory = peak_memory
+        # The duration of the SQL statement. Unit: milliseconds.
         self.query_time = query_time
+        # The name of the destination resource group.
         self.target_group_name = target_group_name
 
     def validate(self):
@@ -15014,8 +14944,13 @@ class DescribeResubmitConfigResponseBody(TeaModel):
         request_id: str = None,
         rules: List[DescribeResubmitConfigResponseBodyRules] = None,
     ):
+        # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
         self.dbcluster_id = dbcluster_id
+        # The request ID.
         self.request_id = request_id
+        # The job resubmission rules.
         self.rules = rules
 
     def validate(self):
@@ -15066,9 +15001,6 @@ class DescribeResubmitConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15110,11 +15042,21 @@ class DescribeSQAConfigRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
         self.dbcluster_id = dbcluster_id
+        # The name of the resource group.
+        # 
+        # >  You can call the [DescribeDBResourceGroup](~~612410~~) operation to query the resource group name of a cluster.
         self.group_name = group_name
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the cluster.
+        # 
+        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -15175,9 +15117,15 @@ class DescribeSQAConfigResponseBody(TeaModel):
         request_id: str = None,
         sqastatus: str = None,
     ):
+        # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
         self.dbcluster_id = dbcluster_id
+        # The name of the resource group.
         self.group_name = group_name
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether short query acceleration (SQA) is enabled.
         self.sqastatus = sqastatus
 
     def validate(self):
@@ -15224,9 +15172,6 @@ class DescribeSQAConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15605,9 +15550,6 @@ class DescribeSQLPatternsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16039,9 +15981,6 @@ class DescribeSQLPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16302,9 +16241,6 @@ class DescribeSQLPlanTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16505,9 +16441,6 @@ class DescribeSchemasResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16945,9 +16878,6 @@ class DescribeSlowLogRecordsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17269,9 +17199,6 @@ class DescribeSlowLogTrendResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17632,9 +17559,6 @@ class DescribeSqlPatternResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17887,9 +17811,6 @@ class DescribeTableAccessCountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18111,9 +18032,6 @@ class DescribeTableDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18366,9 +18284,6 @@ class DescribeTablePartitionDiagnoseResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18680,9 +18595,6 @@ class DescribeTableStatisticsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18906,9 +18818,6 @@ class DescribeTablesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18949,14 +18858,19 @@ class DescribeTaskInfoRequest(TeaModel):
         resource_owner_id: int = None,
         task_id: int = None,
     ):
-        # The ID of the cluster.
+        # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the cluster.
+        # 
+        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -19012,13 +18926,13 @@ class DescribeTaskInfoResponseBodyTaskInfo(TeaModel):
         status: str = None,
         task_id: int = None,
     ):
-        # The start time of the task. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format.
+        # The start time of the task. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.begin_time = begin_time
-        # The end time of the task. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format.
+        # The end time of the task. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.finish_time = finish_time
         # The progress of the task. Unit: %.
         self.progress = progress
-        # The status of the task.
+        # The status. Valid values:
         # 
         # *   Waiting
         # *   Running
@@ -19030,7 +18944,7 @@ class DescribeTaskInfoResponseBodyTaskInfo(TeaModel):
         # *   Pause
         # *   Stop
         self.status = status
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -19075,9 +18989,9 @@ class DescribeTaskInfoResponseBody(TeaModel):
         request_id: str = None,
         task_info: DescribeTaskInfoResponseBodyTaskInfo = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The description of the task.
+        # The queried task.
         self.task_info = task_info
 
     def validate(self):
@@ -19118,9 +19032,6 @@ class DescribeTaskInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19176,6 +19087,7 @@ class DescribeVSwitchesRequest(TeaModel):
         # 
         # > You can call the [DescribeDBClusters](~~129857~~) operation to query the VPC ID.
         self.vpc_id = vpc_id
+        # The vSwitch ID.
         self.vsw_id = vsw_id
         # The zone ID.
         # 
@@ -19259,7 +19171,7 @@ class DescribeVSwitchesResponseBodyVSwitchesVSwitch(TeaModel):
         self.gmt_create = gmt_create
         # The time when the vSwitch was modified.
         self.gmt_modified = gmt_modified
-        # Indicates whether the vSwitch is the default vSwitch. Valid values: **true** **false**\
+        # Indicates whether the vSwitch is the default vSwitch. Valid values: **true**: The vSwitch is the default vSwitch. **false**: The vSwitch is not the default vSwitch.
         self.is_default = is_default
         # The zone ID of the vSwitch.
         self.iz_no = iz_no
@@ -19337,6 +19249,7 @@ class DescribeVSwitchesResponseBodyVSwitches(TeaModel):
         self,
         v_switch: List[DescribeVSwitchesResponseBodyVSwitchesVSwitch] = None,
     ):
+        # The queried vSwitch.
         self.v_switch = v_switch
 
     def validate(self):
@@ -19416,9 +19329,6 @@ class DescribeVSwitchesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19542,9 +19452,6 @@ class DetachUserENIResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19663,9 +19570,6 @@ class DisableAdviceServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19897,9 +19801,6 @@ class DownloadDiagnosisRecordsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20018,9 +19919,6 @@ class EnableAdviceServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20161,9 +20059,6 @@ class GrantOperatorPermissionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20292,9 +20187,6 @@ class KillProcessResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20591,9 +20483,6 @@ class ListTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20715,9 +20604,6 @@ class MigrateDBClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20858,9 +20744,6 @@ class ModifyAccountDescriptionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21009,9 +20892,6 @@ class ModifyAuditLogConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21177,9 +21057,6 @@ class ModifyAutoRenewAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21358,9 +21235,6 @@ class ModifyBackupPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21510,9 +21384,6 @@ class ModifyClusterConnectionStringResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21599,7 +21470,12 @@ class ModifyDBClusterRequest(TeaModel):
         # 
         # *   The storage capacity less than 1,000 GB increases in 100 GB increments. The storage capacity greater than 1,000 GB increases in 1,000 GB increments.
         self.dbnode_storage = dbnode_storage
-        # The enhanced SSD (ESSD) performance level of the cluster. Valid values: PL1 PL2 PL3
+        # The enhanced SSD (ESSD) performance level of the cluster. Valid values:
+        # 
+        # *   PL0
+        # *   PL1
+        # *   PL2
+        # *   PL3
         self.disk_performance_level = disk_performance_level
         # The number of EIUs. The number of EIUs that you can purchase varies based on the single-node EIU specifications.
         # 
@@ -21611,7 +21487,7 @@ class ModifyDBClusterRequest(TeaModel):
         # *   **8Core64GB**: If you set the parameter to **8Core64GB**, the specifications of an EIU are 24 cores and 192 GB memory.
         # *   **12Core96GB**: If you set the parameter to **12Core96GB**, the specifications of an EIU are 36 cores and 288 GB memory.
         # 
-        # > This parameter is available only when the cluster meets the following conditions:
+        # >  This parameter takes effect only when your cluster meets the following requirements:
         # 
         # *   The cluster is in elastic mode.
         # 
@@ -21782,9 +21658,6 @@ class ModifyDBClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21827,23 +21700,19 @@ class ModifyDBClusterAccessWhiteListRequest(TeaModel):
         resource_owner_id: int = None,
         security_ips: str = None,
     ):
-        # The attribute of the whitelist. This parameter is empty by default.
-        # 
-        # The IP address whitelists that have the hidden attribute are not displayed in the AnalyticDB for MySQL console. These IP address whitelists are used to access Alibaba Cloud services such as Data Transmission Service (DTS) and PolarDB-X.
+        # The attribute of the IP address whitelist. By default, this parameter is empty. The IP address whitelists that have the **hidden** attribute are not displayed in the console. These IP address whitelists are used to access services such as Data Transmission Service (DTS) and PolarDB-X.
         self.dbcluster_iparray_attribute = dbcluster_iparray_attribute
-        # The name of the IP address whitelist to be modified. Default value: Default.
+        # The name of the IP address whitelist that you want to modify. Default value: **Default**. The name of an IP address whitelist must be 2 to 32 characters in length. The name can contain lowercase letters, digits, and underscores (\_). The name must start with a lowercase letter and end with a lowercase letter or digit.
         # 
-        # The name of an IP address whitelist must be 2 to 32 characters in length. The name must contain lowercase letters, digits, and underscores (\_). The name must start with a lowercase letter and end with a digit or lowercase letter.
-        # 
-        # You can create up to 50 whitelists for a cluster.
+        # Each cluster supports up to 50 IP address whitelists.
         self.dbcluster_iparray_name = dbcluster_iparray_name
-        # The ID of the cluster.
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The method used to modify the whitelist. Valid values:
+        # The method that you want to use to modify the IP address whitelist. Valid values:
         # 
-        # *   Cover: overwrites the original IP address whitelist.
-        # *   Append: adds one or more IP addresses.
-        # *   Delete: deletes one or more IP addresses.
+        # *   Cover: overwrites the IP address whitelist.
+        # *   Append: adds IP addresses to the IP address whitelist.
+        # *   Delete: removes IP addresses from the IP address whitelist.
         # 
         # Default value: Cover.
         self.modify_mode = modify_mode
@@ -21851,12 +21720,12 @@ class ModifyDBClusterAccessWhiteListRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The following formats are supported:
+        # The IP addresses that you want to use to modify the IP address whitelist of the cluster. Separate multiple IP addresses with commas (,). You can specify up to 500 distinct IP addresses. The following formats are supported:
         # 
-        # *   IP addresses. Example: 10.23.12.24.
-        # *   CIDR blocks. Example: 10.23.12.24/24. 24 indicates that the prefix of the CIDR block is 24-bit long. You can replace 24 with a value within the range of 1 to 32.
+        # *   IP address. Example: 10.23.12.24.
+        # *   CIDR block. Example: 10.23.12.24/24. In this example, 24 indicates that the prefix of the CIDR block is 24 bits in length. You can replace 24 with a value that ranges from 1 to 32.
         # 
-        # This parameter must be specified unless the ModifyMode parameter is set to Delete.
+        # >  This parameter must be specified unless ModifyMode is set to Delete.
         self.security_ips = security_ips
 
     def validate(self):
@@ -21918,11 +21787,11 @@ class ModifyDBClusterAccessWhiteListResponseBody(TeaModel):
         request_id: str = None,
         task_id: int = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -21965,9 +21834,6 @@ class ModifyDBClusterAccessWhiteListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22099,9 +21965,6 @@ class ModifyDBClusterDescriptionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22234,9 +22097,6 @@ class ModifyDBClusterMaintainTimeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22396,9 +22256,6 @@ class ModifyDBClusterPayTypeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22527,9 +22384,6 @@ class ModifyDBClusterResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22682,9 +22536,6 @@ class ModifyDBResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22840,9 +22691,6 @@ class ModifyDBResourcePoolResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22878,6 +22726,7 @@ class ModifyElasticPlanRequest(TeaModel):
         dbcluster_id: str = None,
         elastic_plan_enable: bool = None,
         elastic_plan_end_day: str = None,
+        elastic_plan_monthly_repeat: str = None,
         elastic_plan_name: str = None,
         elastic_plan_node_num: int = None,
         elastic_plan_start_day: str = None,
@@ -22903,6 +22752,7 @@ class ModifyElasticPlanRequest(TeaModel):
         self.elastic_plan_enable = elastic_plan_enable
         # The end date of the scaling plan. Specify the date in the yyyy-MM-dd format.
         self.elastic_plan_end_day = elastic_plan_end_day
+        self.elastic_plan_monthly_repeat = elastic_plan_monthly_repeat
         # The name of the scaling plan.
         # 
         # *   The name must be 2 to 30 characters in length.
@@ -22969,6 +22819,8 @@ class ModifyElasticPlanRequest(TeaModel):
             result['ElasticPlanEnable'] = self.elastic_plan_enable
         if self.elastic_plan_end_day is not None:
             result['ElasticPlanEndDay'] = self.elastic_plan_end_day
+        if self.elastic_plan_monthly_repeat is not None:
+            result['ElasticPlanMonthlyRepeat'] = self.elastic_plan_monthly_repeat
         if self.elastic_plan_name is not None:
             result['ElasticPlanName'] = self.elastic_plan_name
         if self.elastic_plan_node_num is not None:
@@ -23005,6 +22857,8 @@ class ModifyElasticPlanRequest(TeaModel):
             self.elastic_plan_enable = m.get('ElasticPlanEnable')
         if m.get('ElasticPlanEndDay') is not None:
             self.elastic_plan_end_day = m.get('ElasticPlanEndDay')
+        if m.get('ElasticPlanMonthlyRepeat') is not None:
+            self.elastic_plan_monthly_repeat = m.get('ElasticPlanMonthlyRepeat')
         if m.get('ElasticPlanName') is not None:
             self.elastic_plan_name = m.get('ElasticPlanName')
         if m.get('ElasticPlanNodeNum') is not None:
@@ -23074,9 +22928,6 @@ class ModifyElasticPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23224,9 +23075,6 @@ class ModifyLogBackupPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23380,9 +23228,6 @@ class ModifyMaintenanceActionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23421,10 +23266,15 @@ class ModifyResubmitConfigRequestRules(TeaModel):
         query_time: str = None,
         target_group_name: str = None,
     ):
+        # Specifies whether to configure out-of-memory (OOM) check.
         self.exceed_memory_exception = exceed_memory_exception
+        # The name of the source resource group.
         self.group_name = group_name
+        # The peak memory usage.
         self.peak_memory = peak_memory
+        # The duration of the SQL statement. Unit: milliseconds.
         self.query_time = query_time
+        # The name of the destination resource group.
         self.target_group_name = target_group_name
 
     def validate(self):
@@ -23474,12 +23324,17 @@ class ModifyResubmitConfigRequest(TeaModel):
         resource_owner_id: int = None,
         rules: List[ModifyResubmitConfigRequestRules] = None,
     ):
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The job resubmission rules.
         self.rules = rules
 
     def validate(self):
@@ -23545,12 +23400,17 @@ class ModifyResubmitConfigShrinkRequest(TeaModel):
         resource_owner_id: int = None,
         rules_shrink: str = None,
     ):
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The job resubmission rules.
         self.rules_shrink = rules_shrink
 
     def validate(self):
@@ -23602,6 +23462,7 @@ class ModifyResubmitConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -23636,9 +23497,6 @@ class ModifyResubmitConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23680,13 +23538,26 @@ class ModifySQAConfigRequest(TeaModel):
         resource_owner_id: int = None,
         sqastatus: str = None,
     ):
+        # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
         self.dbcluster_id = dbcluster_id
+        # The name of the resource group.
+        # 
+        # >  You can call the [DescribeDBResourceGroup](~~459446~~) operation to query the resource group name of a cluster.
         self.group_name = group_name
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Specifies whether to enable short query acceleration (SQA).
+        # 
+        # Valid values:
+        # 
+        # *   on
+        # *   off
         self.sqastatus = sqastatus
 
     def validate(self):
@@ -23742,6 +23613,7 @@ class ModifySQAConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -23776,9 +23648,6 @@ class ModifySQAConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23900,9 +23769,6 @@ class ReleaseClusterPublicConnectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24065,9 +23931,6 @@ class ResetAccountPasswordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24189,9 +24052,6 @@ class RevokeOperatorPermissionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24387,9 +24247,6 @@ class TagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24527,9 +24384,6 @@ class UnbindDBResourceGroupWithUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24665,9 +24519,6 @@ class UnbindDBResourcePoolWithUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24710,22 +24561,26 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # Specifies whether to detach all tags. This parameter takes effect only when the TagKey.N parameter is not specified. Valid values:
+        # Specifies whether to remove all tags from clusters. Default value: false. Valid values:
         # 
-        # *   true
-        # *   false
+        # *   **true**\
+        # *   **false**\
         # 
-        # Default value: false.
+        # >  If you specify TagKey and this parameter, this parameter does not take effect.
         self.all = all
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the instance. You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of cluster N. Valid values of N: 1 to 50.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the cluster. Set the value to `ALIYUN::ADB::CLUSTER`.
+        # The resource type. Set the value to **ALIYUN::ADB::CLUSTER**.
         self.resource_type = resource_type
+        # The key of tag N. Valid values of N: 1 to 20.
         self.tag_key = tag_key
 
     def validate(self):
@@ -24785,7 +24640,7 @@ class UntagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -24820,9 +24675,6 @@ class UntagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
