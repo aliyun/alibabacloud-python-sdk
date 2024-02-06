@@ -28,7 +28,7 @@ pip install alibabacloud_arms20210422
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/arms-20210422/ChangeLog.md).
 
 ## References
 
