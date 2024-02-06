@@ -2979,6 +2979,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_available_zone_with_options_async(request, runtime)
 
+    def describe_backup_set_download_link_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeBackupSetDownloadLinkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeBackupSetDownloadLinkResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.download_task_id):
+            body['DownloadTaskId'] = request.download_task_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackupSetDownloadLink',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeBackupSetDownloadLinkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_backup_set_download_link_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeBackupSetDownloadLinkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeBackupSetDownloadLinkResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.download_task_id):
+            body['DownloadTaskId'] = request.download_task_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackupSetDownloadLink',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeBackupSetDownloadLinkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_backup_set_download_link(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeBackupSetDownloadLinkRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeBackupSetDownloadLinkResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_backup_set_download_link_with_options(request, runtime)
+
+    async def describe_backup_set_download_link_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeBackupSetDownloadLinkRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeBackupSetDownloadLinkResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_backup_set_download_link_with_options_async(request, runtime)
+
     def describe_charset_with_options(
         self,
         request: ocean_base_pro_20190901_models.DescribeCharsetRequest,

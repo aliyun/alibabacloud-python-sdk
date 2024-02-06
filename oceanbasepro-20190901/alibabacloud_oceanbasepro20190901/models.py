@@ -10225,6 +10225,184 @@ class DescribeAvailableZoneResponse(TeaModel):
         return self
 
 
+class DescribeBackupSetDownloadLinkRequest(TeaModel):
+    def __init__(
+        self,
+        download_task_id: str = None,
+        instance_id: str = None,
+    ):
+        self.download_task_id = download_task_id
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.download_task_id is not None:
+            result['DownloadTaskId'] = self.download_task_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DownloadTaskId') is not None:
+            self.download_task_id = m.get('DownloadTaskId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DescribeBackupSetDownloadLinkResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        backup_restorable_time: str = None,
+        backup_set_id: str = None,
+        download_task_create_time: str = None,
+        download_task_id: int = None,
+        download_task_status: str = None,
+        internal_url: str = None,
+        url_alive_time: int = None,
+        url_expired_time: str = None,
+    ):
+        self.backup_restorable_time = backup_restorable_time
+        self.backup_set_id = backup_set_id
+        self.download_task_create_time = download_task_create_time
+        self.download_task_id = download_task_id
+        self.download_task_status = download_task_status
+        self.internal_url = internal_url
+        self.url_alive_time = url_alive_time
+        self.url_expired_time = url_expired_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backup_restorable_time is not None:
+            result['BackupRestorableTime'] = self.backup_restorable_time
+        if self.backup_set_id is not None:
+            result['BackupSetId'] = self.backup_set_id
+        if self.download_task_create_time is not None:
+            result['DownloadTaskCreateTime'] = self.download_task_create_time
+        if self.download_task_id is not None:
+            result['DownloadTaskId'] = self.download_task_id
+        if self.download_task_status is not None:
+            result['DownloadTaskStatus'] = self.download_task_status
+        if self.internal_url is not None:
+            result['InternalUrl'] = self.internal_url
+        if self.url_alive_time is not None:
+            result['UrlAliveTime'] = self.url_alive_time
+        if self.url_expired_time is not None:
+            result['UrlExpiredTime'] = self.url_expired_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackupRestorableTime') is not None:
+            self.backup_restorable_time = m.get('BackupRestorableTime')
+        if m.get('BackupSetId') is not None:
+            self.backup_set_id = m.get('BackupSetId')
+        if m.get('DownloadTaskCreateTime') is not None:
+            self.download_task_create_time = m.get('DownloadTaskCreateTime')
+        if m.get('DownloadTaskId') is not None:
+            self.download_task_id = m.get('DownloadTaskId')
+        if m.get('DownloadTaskStatus') is not None:
+            self.download_task_status = m.get('DownloadTaskStatus')
+        if m.get('InternalUrl') is not None:
+            self.internal_url = m.get('InternalUrl')
+        if m.get('UrlAliveTime') is not None:
+            self.url_alive_time = m.get('UrlAliveTime')
+        if m.get('UrlExpiredTime') is not None:
+            self.url_expired_time = m.get('UrlExpiredTime')
+        return self
+
+
+class DescribeBackupSetDownloadLinkResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeBackupSetDownloadLinkResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeBackupSetDownloadLinkResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeBackupSetDownloadLinkResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeBackupSetDownloadLinkResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeBackupSetDownloadLinkResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeCharsetRequest(TeaModel):
     def __init__(
         self,
