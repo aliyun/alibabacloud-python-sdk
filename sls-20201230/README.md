@@ -28,7 +28,7 @@ pip install alibabacloud_sls20201230
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/sls-20201230/ChangeLog.md).
 
 ## References
 
