@@ -875,6 +875,108 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.ApplyApproveHeaders()
         return await self.apply_approve_with_options_async(request, headers, runtime)
 
+    def apply_external_node_status_update_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.ApplyExternalNodeStatusUpdateRequest,
+        headers: btrip_open_20220520_models.ApplyExternalNodeStatusUpdateHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.ApplyExternalNodeStatusUpdateResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.ApplyExternalNodeStatusUpdateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.operation_records):
+            request.operation_records_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_records, 'operation_records', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.node_id):
+            body['node_id'] = request.node_id
+        if not UtilClient.is_unset(request.operation_records_shrink):
+            body['operation_records'] = request.operation_records_shrink
+        if not UtilClient.is_unset(request.process_action_result):
+            body['process_action_result'] = request.process_action_result
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ApplyExternalNodeStatusUpdate',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/apply/v1/external-nodes/action/status-update',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.ApplyExternalNodeStatusUpdateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def apply_external_node_status_update_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.ApplyExternalNodeStatusUpdateRequest,
+        headers: btrip_open_20220520_models.ApplyExternalNodeStatusUpdateHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.ApplyExternalNodeStatusUpdateResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.ApplyExternalNodeStatusUpdateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.operation_records):
+            request.operation_records_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_records, 'operation_records', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.node_id):
+            body['node_id'] = request.node_id
+        if not UtilClient.is_unset(request.operation_records_shrink):
+            body['operation_records'] = request.operation_records_shrink
+        if not UtilClient.is_unset(request.process_action_result):
+            body['process_action_result'] = request.process_action_result
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ApplyExternalNodeStatusUpdate',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/apply/v1/external-nodes/action/status-update',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.ApplyExternalNodeStatusUpdateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def apply_external_node_status_update(
+        self,
+        request: btrip_open_20220520_models.ApplyExternalNodeStatusUpdateRequest,
+    ) -> btrip_open_20220520_models.ApplyExternalNodeStatusUpdateResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.ApplyExternalNodeStatusUpdateHeaders()
+        return self.apply_external_node_status_update_with_options(request, headers, runtime)
+
+    async def apply_external_node_status_update_async(
+        self,
+        request: btrip_open_20220520_models.ApplyExternalNodeStatusUpdateRequest,
+    ) -> btrip_open_20220520_models.ApplyExternalNodeStatusUpdateResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.ApplyExternalNodeStatusUpdateHeaders()
+        return await self.apply_external_node_status_update_with_options_async(request, headers, runtime)
+
     def apply_invoice_task_with_options(
         self,
         tmp_req: btrip_open_20220520_models.ApplyInvoiceTaskRequest,
