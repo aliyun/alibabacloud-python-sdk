@@ -471,7 +471,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudsso_20210515_models.CreateAccessAssignmentResponse:
         """
-        When you call this operation, an asynchronous task is created. You can call the [GetTask](~~340670~~) operation to query the progress of task execution by using the value of the `TaskId` response parameter.
+        When you call this operation, an asynchronous task is created. You can call the [GetTask](~~340670~~) operation to query the progress of the task based on the value of the `TaskId` response parameter.
         For more information about how to assign permissions on an account in your resource directory, see [Overview of multi-account authorization](~~266726~~).
         This topic provides an example on how to assign access permissions on the account `114240524784****` in your resource directory to the CloudSSO user `u-00q8wbq42wiltcrk****` by using the access configuration `ac-00jhtfl8thteu6uj****`. After the call is successful, the CloudSSO user can access resources within the account in the resource directory.
         
@@ -518,7 +518,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudsso_20210515_models.CreateAccessAssignmentResponse:
         """
-        When you call this operation, an asynchronous task is created. You can call the [GetTask](~~340670~~) operation to query the progress of task execution by using the value of the `TaskId` response parameter.
+        When you call this operation, an asynchronous task is created. You can call the [GetTask](~~340670~~) operation to query the progress of the task based on the value of the `TaskId` response parameter.
         For more information about how to assign permissions on an account in your resource directory, see [Overview of multi-account authorization](~~266726~~).
         This topic provides an example on how to assign access permissions on the account `114240524784****` in your resource directory to the CloudSSO user `u-00q8wbq42wiltcrk****` by using the access configuration `ac-00jhtfl8thteu6uj****`. After the call is successful, the CloudSSO user can access resources within the account in the resource directory.
         
@@ -564,7 +564,7 @@ class Client(OpenApiClient):
         request: cloudsso_20210515_models.CreateAccessAssignmentRequest,
     ) -> cloudsso_20210515_models.CreateAccessAssignmentResponse:
         """
-        When you call this operation, an asynchronous task is created. You can call the [GetTask](~~340670~~) operation to query the progress of task execution by using the value of the `TaskId` response parameter.
+        When you call this operation, an asynchronous task is created. You can call the [GetTask](~~340670~~) operation to query the progress of the task based on the value of the `TaskId` response parameter.
         For more information about how to assign permissions on an account in your resource directory, see [Overview of multi-account authorization](~~266726~~).
         This topic provides an example on how to assign access permissions on the account `114240524784****` in your resource directory to the CloudSSO user `u-00q8wbq42wiltcrk****` by using the access configuration `ac-00jhtfl8thteu6uj****`. After the call is successful, the CloudSSO user can access resources within the account in the resource directory.
         
@@ -579,7 +579,7 @@ class Client(OpenApiClient):
         request: cloudsso_20210515_models.CreateAccessAssignmentRequest,
     ) -> cloudsso_20210515_models.CreateAccessAssignmentResponse:
         """
-        When you call this operation, an asynchronous task is created. You can call the [GetTask](~~340670~~) operation to query the progress of task execution by using the value of the `TaskId` response parameter.
+        When you call this operation, an asynchronous task is created. You can call the [GetTask](~~340670~~) operation to query the progress of the task based on the value of the `TaskId` response parameter.
         For more information about how to assign permissions on an account in your resource directory, see [Overview of multi-account authorization](~~266726~~).
         This topic provides an example on how to assign access permissions on the account `114240524784****` in your resource directory to the CloudSSO user `u-00q8wbq42wiltcrk****` by using the access configuration `ac-00jhtfl8thteu6uj****`. After the call is successful, the CloudSSO user can access resources within the account in the resource directory.
         
@@ -3075,6 +3075,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_group_with_options_async(request, runtime)
 
+    def get_login_preference_with_options(
+        self,
+        request: cloudsso_20210515_models.GetLoginPreferenceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudsso_20210515_models.GetLoginPreferenceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLoginPreference',
+            version='2021-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudsso_20210515_models.GetLoginPreferenceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_login_preference_with_options_async(
+        self,
+        request: cloudsso_20210515_models.GetLoginPreferenceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudsso_20210515_models.GetLoginPreferenceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLoginPreference',
+            version='2021-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudsso_20210515_models.GetLoginPreferenceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_login_preference(
+        self,
+        request: cloudsso_20210515_models.GetLoginPreferenceRequest,
+    ) -> cloudsso_20210515_models.GetLoginPreferenceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_login_preference_with_options(request, runtime)
+
+    async def get_login_preference_async(
+        self,
+        request: cloudsso_20210515_models.GetLoginPreferenceRequest,
+    ) -> cloudsso_20210515_models.GetLoginPreferenceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_login_preference_with_options_async(request, runtime)
+
     def get_mfaauthentication_setting_info_with_options(
         self,
         request: cloudsso_20210515_models.GetMFAAuthenticationSettingInfoRequest,
@@ -3371,6 +3441,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_mfaauthentication_status_with_options_async(request, runtime)
 
+    def get_password_policy_with_options(
+        self,
+        request: cloudsso_20210515_models.GetPasswordPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudsso_20210515_models.GetPasswordPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPasswordPolicy',
+            version='2021-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudsso_20210515_models.GetPasswordPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_password_policy_with_options_async(
+        self,
+        request: cloudsso_20210515_models.GetPasswordPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudsso_20210515_models.GetPasswordPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPasswordPolicy',
+            version='2021-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudsso_20210515_models.GetPasswordPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_password_policy(
+        self,
+        request: cloudsso_20210515_models.GetPasswordPolicyRequest,
+    ) -> cloudsso_20210515_models.GetPasswordPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_password_policy_with_options(request, runtime)
+
+    async def get_password_policy_async(
+        self,
+        request: cloudsso_20210515_models.GetPasswordPolicyRequest,
+    ) -> cloudsso_20210515_models.GetPasswordPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_password_policy_with_options_async(request, runtime)
+
     def get_scimsynchronization_status_with_options(
         self,
         request: cloudsso_20210515_models.GetSCIMSynchronizationStatusRequest,
@@ -3623,7 +3763,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudsso_20210515_models.GetTaskStatusResponse:
         """
-        You can call the GetTaskStatus operation to query the status of an asynchronous task. If you want to query more information about an asynchronous task, you can call the [GetTask](~~340670~~) operation.
+        You can call the GetTaskStatus operation to query the status of an asynchronous task. If you want to query more information about an asynchronous task, call the [GetTask](~~340670~~) operation.
         This topic provides an example on how to query the information about the task whose ID is `t-shfqw1u1edszvxw5****`.
         
         @param request: GetTaskStatusRequest
@@ -3661,7 +3801,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudsso_20210515_models.GetTaskStatusResponse:
         """
-        You can call the GetTaskStatus operation to query the status of an asynchronous task. If you want to query more information about an asynchronous task, you can call the [GetTask](~~340670~~) operation.
+        You can call the GetTaskStatus operation to query the status of an asynchronous task. If you want to query more information about an asynchronous task, call the [GetTask](~~340670~~) operation.
         This topic provides an example on how to query the information about the task whose ID is `t-shfqw1u1edszvxw5****`.
         
         @param request: GetTaskStatusRequest
@@ -3698,7 +3838,7 @@ class Client(OpenApiClient):
         request: cloudsso_20210515_models.GetTaskStatusRequest,
     ) -> cloudsso_20210515_models.GetTaskStatusResponse:
         """
-        You can call the GetTaskStatus operation to query the status of an asynchronous task. If you want to query more information about an asynchronous task, you can call the [GetTask](~~340670~~) operation.
+        You can call the GetTaskStatus operation to query the status of an asynchronous task. If you want to query more information about an asynchronous task, call the [GetTask](~~340670~~) operation.
         This topic provides an example on how to query the information about the task whose ID is `t-shfqw1u1edszvxw5****`.
         
         @param request: GetTaskStatusRequest
@@ -3712,7 +3852,7 @@ class Client(OpenApiClient):
         request: cloudsso_20210515_models.GetTaskStatusRequest,
     ) -> cloudsso_20210515_models.GetTaskStatusResponse:
         """
-        You can call the GetTaskStatus operation to query the status of an asynchronous task. If you want to query more information about an asynchronous task, you can call the [GetTask](~~340670~~) operation.
+        You can call the GetTaskStatus operation to query the status of an asynchronous task. If you want to query more information about an asynchronous task, call the [GetTask](~~340670~~) operation.
         This topic provides an example on how to query the information about the task whose ID is `t-shfqw1u1edszvxw5****`.
         
         @param request: GetTaskStatusRequest
@@ -4293,7 +4433,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudsso_20210515_models.ListAccessAssignmentsResponse:
         """
-        This topic provides an example on how to query the assigned access permissions on the account `114240524784***` in your resource directory. The returned result shows that access permissions on the account in your resource directory are assigned to one user.
+        This topic provides an example on how to query the assigned access permissions on the account `114240524784***` in your resource directory. The returned result shows that access permissions on the account in your resource directory is assigned to one user.
         
         @param request: ListAccessAssignmentsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4342,7 +4482,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudsso_20210515_models.ListAccessAssignmentsResponse:
         """
-        This topic provides an example on how to query the assigned access permissions on the account `114240524784***` in your resource directory. The returned result shows that access permissions on the account in your resource directory are assigned to one user.
+        This topic provides an example on how to query the assigned access permissions on the account `114240524784***` in your resource directory. The returned result shows that access permissions on the account in your resource directory is assigned to one user.
         
         @param request: ListAccessAssignmentsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4390,7 +4530,7 @@ class Client(OpenApiClient):
         request: cloudsso_20210515_models.ListAccessAssignmentsRequest,
     ) -> cloudsso_20210515_models.ListAccessAssignmentsResponse:
         """
-        This topic provides an example on how to query the assigned access permissions on the account `114240524784***` in your resource directory. The returned result shows that access permissions on the account in your resource directory are assigned to one user.
+        This topic provides an example on how to query the assigned access permissions on the account `114240524784***` in your resource directory. The returned result shows that access permissions on the account in your resource directory is assigned to one user.
         
         @param request: ListAccessAssignmentsRequest
         @return: ListAccessAssignmentsResponse
@@ -4403,7 +4543,7 @@ class Client(OpenApiClient):
         request: cloudsso_20210515_models.ListAccessAssignmentsRequest,
     ) -> cloudsso_20210515_models.ListAccessAssignmentsResponse:
         """
-        This topic provides an example on how to query the assigned access permissions on the account `114240524784***` in your resource directory. The returned result shows that access permissions on the account in your resource directory are assigned to one user.
+        This topic provides an example on how to query the assigned access permissions on the account `114240524784***` in your resource directory. The returned result shows that access permissions on the account in your resource directory is assigned to one user.
         
         @param request: ListAccessAssignmentsRequest
         @return: ListAccessAssignmentsResponse
@@ -6655,6 +6795,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.set_external_samlidentity_provider_with_options_async(request, runtime)
 
+    def set_login_preference_with_options(
+        self,
+        request: cloudsso_20210515_models.SetLoginPreferenceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudsso_20210515_models.SetLoginPreferenceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not UtilClient.is_unset(request.login_network_masks):
+            query['LoginNetworkMasks'] = request.login_network_masks
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetLoginPreference',
+            version='2021-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudsso_20210515_models.SetLoginPreferenceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_login_preference_with_options_async(
+        self,
+        request: cloudsso_20210515_models.SetLoginPreferenceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudsso_20210515_models.SetLoginPreferenceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not UtilClient.is_unset(request.login_network_masks):
+            query['LoginNetworkMasks'] = request.login_network_masks
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetLoginPreference',
+            version='2021-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudsso_20210515_models.SetLoginPreferenceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_login_preference(
+        self,
+        request: cloudsso_20210515_models.SetLoginPreferenceRequest,
+    ) -> cloudsso_20210515_models.SetLoginPreferenceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_login_preference_with_options(request, runtime)
+
+    async def set_login_preference_async(
+        self,
+        request: cloudsso_20210515_models.SetLoginPreferenceRequest,
+    ) -> cloudsso_20210515_models.SetLoginPreferenceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_login_preference_with_options_async(request, runtime)
+
     def set_mfaauthentication_status_with_options(
         self,
         request: cloudsso_20210515_models.SetMFAAuthenticationStatusRequest,
@@ -6758,6 +6972,100 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.set_mfaauthentication_status_with_options_async(request, runtime)
+
+    def set_password_policy_with_options(
+        self,
+        request: cloudsso_20210515_models.SetPasswordPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudsso_20210515_models.SetPasswordPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not UtilClient.is_unset(request.max_login_attempts):
+            query['MaxLoginAttempts'] = request.max_login_attempts
+        if not UtilClient.is_unset(request.max_password_age):
+            query['MaxPasswordAge'] = request.max_password_age
+        if not UtilClient.is_unset(request.min_password_different_chars):
+            query['MinPasswordDifferentChars'] = request.min_password_different_chars
+        if not UtilClient.is_unset(request.min_password_length):
+            query['MinPasswordLength'] = request.min_password_length
+        if not UtilClient.is_unset(request.password_not_contain_username):
+            query['PasswordNotContainUsername'] = request.password_not_contain_username
+        if not UtilClient.is_unset(request.password_reuse_prevention):
+            query['PasswordReusePrevention'] = request.password_reuse_prevention
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetPasswordPolicy',
+            version='2021-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudsso_20210515_models.SetPasswordPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_password_policy_with_options_async(
+        self,
+        request: cloudsso_20210515_models.SetPasswordPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudsso_20210515_models.SetPasswordPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not UtilClient.is_unset(request.max_login_attempts):
+            query['MaxLoginAttempts'] = request.max_login_attempts
+        if not UtilClient.is_unset(request.max_password_age):
+            query['MaxPasswordAge'] = request.max_password_age
+        if not UtilClient.is_unset(request.min_password_different_chars):
+            query['MinPasswordDifferentChars'] = request.min_password_different_chars
+        if not UtilClient.is_unset(request.min_password_length):
+            query['MinPasswordLength'] = request.min_password_length
+        if not UtilClient.is_unset(request.password_not_contain_username):
+            query['PasswordNotContainUsername'] = request.password_not_contain_username
+        if not UtilClient.is_unset(request.password_reuse_prevention):
+            query['PasswordReusePrevention'] = request.password_reuse_prevention
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetPasswordPolicy',
+            version='2021-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudsso_20210515_models.SetPasswordPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_password_policy(
+        self,
+        request: cloudsso_20210515_models.SetPasswordPolicyRequest,
+    ) -> cloudsso_20210515_models.SetPasswordPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_password_policy_with_options(request, runtime)
+
+    async def set_password_policy_async(
+        self,
+        request: cloudsso_20210515_models.SetPasswordPolicyRequest,
+    ) -> cloudsso_20210515_models.SetPasswordPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_password_policy_with_options_async(request, runtime)
 
     def set_scimsynchronization_status_with_options(
         self,

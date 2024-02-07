@@ -88,9 +88,6 @@ class AddExternalSAMLIdPCertificateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -226,9 +223,6 @@ class AddPermissionPolicyToAccessConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -340,9 +334,6 @@ class AddUserToGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -440,9 +431,6 @@ class ClearExternalSAMLIdentityProviderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -498,7 +486,7 @@ class CreateAccessAssignmentRequest(TeaModel):
         self.principal_type = principal_type
         # The ID of the task object.
         self.target_id = target_id
-        # The type of the task object. Set the value to RD-Account, which indicates an account in your resource directory.
+        # The type of the task object. Set the value to RD-Account, which specifies the accounts in the resource directory.
         self.target_type = target_type
 
     def validate(self):
@@ -571,7 +559,7 @@ class CreateAccessAssignmentResponseBodyTask(TeaModel):
         # *   User
         # *   Group
         self.principal_type = principal_type
-        # The status of the task. Valid values:
+        # The task status. Valid values:
         # 
         # *   InProgress: The task is running.
         # *   Success: The task is successful.
@@ -581,15 +569,15 @@ class CreateAccessAssignmentResponseBodyTask(TeaModel):
         self.target_id = target_id
         # The name of the task object.
         self.target_name = target_name
-        # The path ID of the task object in your resource directory.
+        # The path ID of the task object in the resource directory.
         self.target_path = target_path
-        # The path name of the task object in your resource directory.
+        # The path name of the task object in the resource directory.
         self.target_path_name = target_path_name
-        # The type of the task object. The value is fixed as RD-Account, which indicates an account in your resource directory.
+        # The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
         self.target_type = target_type
-        # The ID of the task.
+        # The ID of the job.
         self.task_id = task_id
-        # The type of the task. The value is fixed as CreateAccessAssignment, which indicates that access permissions on an account in your resource directory are assigned.
+        # The task type. The value is fixed as CreateAccessAssignment, which indicates that access permissions on an account in your resource directory are assigned.
         self.task_type = task_type
 
     def validate(self):
@@ -666,9 +654,9 @@ class CreateAccessAssignmentResponseBody(TeaModel):
         request_id: str = None,
         task: CreateAccessAssignmentResponseBodyTask = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information about the task.
+        # The queried task.
         self.task = task
 
     def validate(self):
@@ -709,9 +697,6 @@ class CreateAccessAssignmentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -939,9 +924,6 @@ class CreateAccessConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1110,9 +1092,6 @@ class CreateDirectoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1302,9 +1281,6 @@ class CreateGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1483,9 +1459,6 @@ class CreateSCIMServerCredentialResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1762,9 +1735,6 @@ class CreateUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2027,9 +1997,6 @@ class CreateUserProvisioningResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2091,7 +2058,7 @@ class DeleteAccessAssignmentRequest(TeaModel):
         self.principal_type = principal_type
         # The ID of the task object.
         self.target_id = target_id
-        # The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
+        # The type of the task object. Set the value to RD-Account, which specifies the accounts in the resource directory.
         self.target_type = target_type
 
     def validate(self):
@@ -2168,7 +2135,7 @@ class DeleteAccessAssignmentResponseBodyTask(TeaModel):
         # *   User
         # *   Group
         self.principal_type = principal_type
-        # The status of the task. Valid values:
+        # The task status. Valid values:
         # 
         # *   InProgress: The task is running.
         # *   Success: The task is successful.
@@ -2184,9 +2151,9 @@ class DeleteAccessAssignmentResponseBodyTask(TeaModel):
         self.target_path_name = target_path_name
         # The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
         self.target_type = target_type
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
-        # The type of the task. The value is fixed as DeleteAccessAssignment, which indicates that access permissions on an account in your resource directory are removed.
+        # The task type. The value is fixed as DeleteAccessAssignment, which indicates that access permissions on an account in your resource directory are removed.
         self.task_type = task_type
 
     def validate(self):
@@ -2263,9 +2230,9 @@ class DeleteAccessAssignmentResponseBody(TeaModel):
         request_id: str = None,
         task: DeleteAccessAssignmentResponseBodyTask = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information about the task.
+        # The task information.
         self.task = task
 
     def validate(self):
@@ -2306,9 +2273,6 @@ class DeleteAccessAssignmentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2423,9 +2387,6 @@ class DeleteAccessConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2523,9 +2484,6 @@ class DeleteDirectoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2630,9 +2588,6 @@ class DeleteGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2746,9 +2701,6 @@ class DeleteMFADeviceForUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2853,9 +2805,6 @@ class DeleteSCIMServerCredentialResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2960,9 +2909,6 @@ class DeleteUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3070,9 +3016,6 @@ class DeleteUserProvisioningResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3180,9 +3123,6 @@ class DeleteUserProvisioningEventResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3222,11 +3162,11 @@ class DeprovisionAccessConfigurationRequest(TeaModel):
     ):
         # The ID of the access configuration.
         self.access_configuration_id = access_configuration_id
-        # The ID of the directory.
+        # The directory ID.
         self.directory_id = directory_id
         # The ID of the task object.
         self.target_id = target_id
-        # The type of the task object. Set the value to RD-Account, which indicates an account in your resource directory.
+        # The type of the task object. Set the value to RD-Account, which specifies the accounts in the resource directory.
         self.target_type = target_type
 
     def validate(self):
@@ -3279,7 +3219,7 @@ class DeprovisionAccessConfigurationResponseBodyTasks(TeaModel):
         self.access_configuration_id = access_configuration_id
         # The name of the access configuration.
         self.access_configuration_name = access_configuration_name
-        # The status of the task. Valid values:
+        # The task status. Valid values:
         # 
         # *   InProgress: The task is running.
         # *   Success: The task is successful.
@@ -3289,15 +3229,15 @@ class DeprovisionAccessConfigurationResponseBodyTasks(TeaModel):
         self.target_id = target_id
         # The name of the task object.
         self.target_name = target_name
-        # The path ID of the task object in your resource directory.
+        # The path ID of the task object in the resource directory.
         self.target_path = target_path
-        # The path name of the task object in your resource directory.
+        # The path name of the task object in the resource directory.
         self.target_path_name = target_path_name
-        # The type of the task object. The value is fixed as RD-Account, which indicates an account in your resource directory.
+        # The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
         self.target_type = target_type
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
-        # The type of the task. The value is fixed as DeprovisionAccessConfiguration, which indicates that the access configuration is de-provisioned.
+        # The task type. The value is fixed as DeprovisionAccessConfiguration, which indicates that the access configuration is de-provisioned.
         self.task_type = task_type
 
     def validate(self):
@@ -3362,9 +3302,9 @@ class DeprovisionAccessConfigurationResponseBody(TeaModel):
         request_id: str = None,
         tasks: List[DeprovisionAccessConfigurationResponseBodyTasks] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information about the task.
+        # The task information.
         self.tasks = tasks
 
     def validate(self):
@@ -3411,9 +3351,6 @@ class DeprovisionAccessConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3483,9 +3420,6 @@ class DisableServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3555,9 +3489,6 @@ class EnableServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3750,9 +3681,6 @@ class GetAccessConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3915,9 +3843,6 @@ class GetDirectoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4091,9 +4016,6 @@ class GetDirectorySAMLServiceProviderInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4332,9 +4254,6 @@ class GetDirectoryStatisticsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4531,9 +4450,6 @@ class GetExternalSAMLIdentityProviderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4713,9 +4629,6 @@ class GetGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4741,6 +4654,136 @@ class GetGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetLoginPreferenceRequest(TeaModel):
+    def __init__(
+        self,
+        directory_id: str = None,
+    ):
+        self.directory_id = directory_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.directory_id is not None:
+            result['DirectoryId'] = self.directory_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DirectoryId') is not None:
+            self.directory_id = m.get('DirectoryId')
+        return self
+
+
+class GetLoginPreferenceResponseBodyLoginPreference(TeaModel):
+    def __init__(
+        self,
+        login_network_masks: str = None,
+    ):
+        self.login_network_masks = login_network_masks
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.login_network_masks is not None:
+            result['LoginNetworkMasks'] = self.login_network_masks
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LoginNetworkMasks') is not None:
+            self.login_network_masks = m.get('LoginNetworkMasks')
+        return self
+
+
+class GetLoginPreferenceResponseBody(TeaModel):
+    def __init__(
+        self,
+        login_preference: GetLoginPreferenceResponseBodyLoginPreference = None,
+        request_id: str = None,
+    ):
+        self.login_preference = login_preference
+        self.request_id = request_id
+
+    def validate(self):
+        if self.login_preference:
+            self.login_preference.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.login_preference is not None:
+            result['LoginPreference'] = self.login_preference.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LoginPreference') is not None:
+            temp_model = GetLoginPreferenceResponseBodyLoginPreference()
+            self.login_preference = temp_model.from_map(m['LoginPreference'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetLoginPreferenceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetLoginPreferenceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetLoginPreferenceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4867,9 +4910,6 @@ class GetMFAAuthenticationSettingInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4978,9 +5018,6 @@ class GetMFAAuthenticationSettingsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5088,9 +5125,6 @@ class GetMFAAuthenticationStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5116,6 +5150,202 @@ class GetMFAAuthenticationStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetMFAAuthenticationStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetPasswordPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        directory_id: str = None,
+    ):
+        self.directory_id = directory_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.directory_id is not None:
+            result['DirectoryId'] = self.directory_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DirectoryId') is not None:
+            self.directory_id = m.get('DirectoryId')
+        return self
+
+
+class GetPasswordPolicyResponseBodyPasswordPolicy(TeaModel):
+    def __init__(
+        self,
+        hard_expire: bool = None,
+        max_login_attempts: int = None,
+        max_password_age: int = None,
+        max_password_length: int = None,
+        min_password_different_chars: int = None,
+        min_password_length: int = None,
+        password_not_contain_username: bool = None,
+        password_reuse_prevention: int = None,
+        require_lower_case_chars: bool = None,
+        require_numbers: bool = None,
+        require_symbols: bool = None,
+        require_upper_case_chars: bool = None,
+    ):
+        self.hard_expire = hard_expire
+        self.max_login_attempts = max_login_attempts
+        self.max_password_age = max_password_age
+        self.max_password_length = max_password_length
+        self.min_password_different_chars = min_password_different_chars
+        self.min_password_length = min_password_length
+        self.password_not_contain_username = password_not_contain_username
+        self.password_reuse_prevention = password_reuse_prevention
+        self.require_lower_case_chars = require_lower_case_chars
+        self.require_numbers = require_numbers
+        self.require_symbols = require_symbols
+        self.require_upper_case_chars = require_upper_case_chars
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hard_expire is not None:
+            result['HardExpire'] = self.hard_expire
+        if self.max_login_attempts is not None:
+            result['MaxLoginAttempts'] = self.max_login_attempts
+        if self.max_password_age is not None:
+            result['MaxPasswordAge'] = self.max_password_age
+        if self.max_password_length is not None:
+            result['MaxPasswordLength'] = self.max_password_length
+        if self.min_password_different_chars is not None:
+            result['MinPasswordDifferentChars'] = self.min_password_different_chars
+        if self.min_password_length is not None:
+            result['MinPasswordLength'] = self.min_password_length
+        if self.password_not_contain_username is not None:
+            result['PasswordNotContainUsername'] = self.password_not_contain_username
+        if self.password_reuse_prevention is not None:
+            result['PasswordReusePrevention'] = self.password_reuse_prevention
+        if self.require_lower_case_chars is not None:
+            result['RequireLowerCaseChars'] = self.require_lower_case_chars
+        if self.require_numbers is not None:
+            result['RequireNumbers'] = self.require_numbers
+        if self.require_symbols is not None:
+            result['RequireSymbols'] = self.require_symbols
+        if self.require_upper_case_chars is not None:
+            result['RequireUpperCaseChars'] = self.require_upper_case_chars
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HardExpire') is not None:
+            self.hard_expire = m.get('HardExpire')
+        if m.get('MaxLoginAttempts') is not None:
+            self.max_login_attempts = m.get('MaxLoginAttempts')
+        if m.get('MaxPasswordAge') is not None:
+            self.max_password_age = m.get('MaxPasswordAge')
+        if m.get('MaxPasswordLength') is not None:
+            self.max_password_length = m.get('MaxPasswordLength')
+        if m.get('MinPasswordDifferentChars') is not None:
+            self.min_password_different_chars = m.get('MinPasswordDifferentChars')
+        if m.get('MinPasswordLength') is not None:
+            self.min_password_length = m.get('MinPasswordLength')
+        if m.get('PasswordNotContainUsername') is not None:
+            self.password_not_contain_username = m.get('PasswordNotContainUsername')
+        if m.get('PasswordReusePrevention') is not None:
+            self.password_reuse_prevention = m.get('PasswordReusePrevention')
+        if m.get('RequireLowerCaseChars') is not None:
+            self.require_lower_case_chars = m.get('RequireLowerCaseChars')
+        if m.get('RequireNumbers') is not None:
+            self.require_numbers = m.get('RequireNumbers')
+        if m.get('RequireSymbols') is not None:
+            self.require_symbols = m.get('RequireSymbols')
+        if m.get('RequireUpperCaseChars') is not None:
+            self.require_upper_case_chars = m.get('RequireUpperCaseChars')
+        return self
+
+
+class GetPasswordPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        password_policy: GetPasswordPolicyResponseBodyPasswordPolicy = None,
+        request_id: str = None,
+    ):
+        self.password_policy = password_policy
+        self.request_id = request_id
+
+    def validate(self):
+        if self.password_policy:
+            self.password_policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.password_policy is not None:
+            result['PasswordPolicy'] = self.password_policy.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PasswordPolicy') is not None:
+            temp_model = GetPasswordPolicyResponseBodyPasswordPolicy()
+            self.password_policy = temp_model.from_map(m['PasswordPolicy'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetPasswordPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPasswordPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPasswordPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5198,9 +5428,6 @@ class GetSCIMSynchronizationStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5336,9 +5563,6 @@ class GetServiceStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5374,9 +5598,9 @@ class GetTaskRequest(TeaModel):
         directory_id: str = None,
         task_id: str = None,
     ):
-        # The ID of the directory.
+        # The directory ID.
         self.directory_id = directory_id
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -5427,7 +5651,7 @@ class GetTaskResponseBodyTask(TeaModel):
         self.access_configuration_id = access_configuration_id
         # The name of the access configuration.
         self.access_configuration_name = access_configuration_name
-        # The time when the task ended.
+        # The end time of the task.
         self.end_time = end_time
         # The cause of the task failure.
         # 
@@ -5442,9 +5666,9 @@ class GetTaskResponseBodyTask(TeaModel):
         # *   User
         # *   Group
         self.principal_type = principal_type
-        # The time when the task started.
+        # The start time of the task.
         self.start_time = start_time
-        # The status of the task. Valid values:
+        # The task status. Valid values:
         # 
         # *   InProgress: The task is running.
         # *   Success: The task is successful.
@@ -5460,9 +5684,9 @@ class GetTaskResponseBodyTask(TeaModel):
         self.target_path_name = target_path_name
         # The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
         self.target_type = target_type
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
-        # The type of the task. Valid values:
+        # The task type. Valid values:
         # 
         # *   ProvisionAccessConfiguration: An access configuration is provisioned.
         # *   DeprovisionAccessConfiguration: An access configuration is de-provisioned.
@@ -5556,9 +5780,9 @@ class GetTaskResponseBody(TeaModel):
         request_id: str = None,
         task: GetTaskResponseBodyTask = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information about the task.
+        # The task information.
         self.task = task
 
     def validate(self):
@@ -5599,9 +5823,6 @@ class GetTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5637,9 +5858,9 @@ class GetTaskStatusRequest(TeaModel):
         directory_id: str = None,
         task_id: str = None,
     ):
-        # The ID of the directory.
+        # The directory ID.
         self.directory_id = directory_id
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -5676,23 +5897,23 @@ class GetTaskStatusResponseBodyTaskStatus(TeaModel):
         task_id: str = None,
         task_type: str = None,
     ):
-        # The time when the task ended.
+        # The end time of the task.
         self.end_time = end_time
         # The cause of the task failure.
         # 
         # >  This parameter is returned only when the value of `Status` is `Failed`.
         self.failure_reason = failure_reason
-        # The time when the task started.
+        # The start time of the task.
         self.start_time = start_time
-        # The status of the task. Valid values:
+        # The task status. Valid values:
         # 
         # *   InProgress: The task is running.
         # *   Success: The task is successful.
         # *   Failed: The task failed.
         self.status = status
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
-        # The type of the task. Valid values:
+        # The task type. Valid values:
         # 
         # *   ProvisionAccessConfiguration: An access configuration is provisioned.
         # *   DeprovisionAccessConfiguration: An access configuration is de-provisioned.
@@ -5746,9 +5967,9 @@ class GetTaskStatusResponseBody(TeaModel):
         request_id: str = None,
         task_status: GetTaskStatusResponseBodyTaskStatus = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The status information of the task.
+        # The status information about the task.
         self.task_status = task_status
 
     def validate(self):
@@ -5789,9 +6010,6 @@ class GetTaskStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6009,9 +6227,6 @@ class GetUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6126,9 +6341,6 @@ class GetUserMFAAuthenticationSettingsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6355,9 +6567,6 @@ class GetUserProvisioningResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6512,9 +6721,6 @@ class GetUserProvisioningConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6753,9 +6959,6 @@ class GetUserProvisioningEventResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6922,9 +7125,6 @@ class GetUserProvisioningRdAccountStatisticsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7091,9 +7291,6 @@ class GetUserProvisioningStatisticsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7137,39 +7334,39 @@ class ListAccessAssignmentsRequest(TeaModel):
     ):
         # The ID of the access configuration. The ID can be used to filter access permissions.
         self.access_configuration_id = access_configuration_id
-        # The ID of the directory.
+        # The directory ID.
         self.directory_id = directory_id
-        # The number of entries to return on each page.
+        # The maximum number of entries per page.
         # 
         # Valid values: 1 to 20.
         # 
         # Default value: 10.
         self.max_results = max_results
-        # The token to return for the next page. If this is your first time to call this operation, you do not need to specify `NextToken`.
+        # The pagination token that is used in the next request to retrieve a new page of results. If this is your first time to call this operation, you do not need to specify the `NextToken` parameter.
         # 
         # When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
         self.next_token = next_token
         # The ID of the CloudSSO identity. The ID can be used to filter access permissions.
         # 
-        # *   If you set `PrincipalType` to User, set `PrincipalId` to the ID of the Cloud SSO user.
+        # *   If you set `PrincipalType` to User, set `PrincipalId` to the ID of the CloudSSO user.
         # *   If you set `PrincipalType` to Group, set `PrincipalId` to the ID of the CloudSSO group.
         # 
-        # >  You can use the ID to filter access permissions only if you specify both `PrincipalId` and `PrincipalType`.
+        # >  You can use the type to filter access permissions only if you specify both PrincipalId and `PrincipalType`.``
         self.principal_id = principal_id
         # The type of the CloudSSO identity. The type can be used to filter access permissions. Valid values:
         # 
         # *   User
         # *   Group
         # 
-        # >  You can use the type to filter access permissions only if you specify both `PrincipalId` and `PrincipalType`.
+        # >  You can use the type to filter access permissions only if you specify both PrincipalId and `PrincipalType`.``
         self.principal_type = principal_type
         # The ID of the task object. The ID can be used to filter access permissions.
         # 
-        # >  You can use the ID to filter access permissions only if you specify both `TargetId` and `TargetType`.
+        # >  You can use the type to filter access permissions only if you specify both `TargetId` and `TargetType`.
         self.target_id = target_id
         # The type of the task object. The type can be used to filter access permissions.
         # 
-        # Set the value to RD-Account, which indicates an account in your resource directory.
+        # Set the value to RD-Account, which specifies the accounts in the resource directory.
         # 
         # >  You can use the type to filter access permissions only if you specify both `TargetId` and `TargetType`.
         self.target_type = target_type
@@ -7256,13 +7453,13 @@ class ListAccessAssignmentsResponseBodyAccessAssignments(TeaModel):
         self.target_id = target_id
         # The name of the task object.
         self.target_name = target_name
-        # The path ID of the task object in your resource directory.
+        # The path ID of the task object in the resource directory.
         self.target_path = target_path
-        # The path name of the task object in your resource directory.
+        # The path name of the task object in the resource directory.
         self.target_path_name = target_path_name
         # The type of the task object.
         # 
-        # The value is fixed as RD-Account, which indicates an account in your resource directory.
+        # The value is fixed as RD-Account, which indicates the accounts in the resource directory.
         self.target_type = target_type
 
     def validate(self):
@@ -7339,16 +7536,16 @@ class ListAccessAssignmentsResponseBody(TeaModel):
         self.access_assignments = access_assignments
         # Indicates whether the queried entries are truncated. Valid values:
         # 
-        # *   true: The queried entries are truncated.
-        # *   false: The queried entries are not truncated.
+        # *   true
+        # *   false
         self.is_truncated = is_truncated
-        # The number of entries returned per page.
+        # The maximum number of entries returned per page.
         self.max_results = max_results
-        # The token that is returned for the next page.
+        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
         # 
-        # >  This parameter is returned only when the value of `IsTruncated` is `true`.
+        # >  This parameter is returned only when the value of IsTruncated is `true`.``
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_counts = total_counts
@@ -7413,9 +7610,6 @@ class ListAccessAssignmentsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7456,17 +7650,17 @@ class ListAccessConfigurationProvisioningsRequest(TeaModel):
         target_id: str = None,
         target_type: str = None,
     ):
-        # The ID of the access configuration. The ID can be used to filter accounts.
+        # The ID of the access configuration. The ID can be used to filter access permissions.
         self.access_configuration_id = access_configuration_id
         # The ID of the directory.
         self.directory_id = directory_id
-        # The number of entries to return on each page.
+        # The maximum number of entries per page.
         # 
         # Valid values: 1 to 20.
         # 
         # Default value: 10.
         self.max_results = max_results
-        # The token to return for the next page. If this is your first time to call this operation, you do not need to specify `NextToken`.
+        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. If this is your first time to call this operation, you do not need to specify the `NextToken` parameter.
         # 
         # When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
         self.next_token = next_token
@@ -7476,15 +7670,15 @@ class ListAccessConfigurationProvisioningsRequest(TeaModel):
         # *   ReprovisionRequired: The access configuration needs to be re-provisioned.
         # *   DeprovisionFailed: The access configuration failed to be provisioned.
         self.provisioning_status = provisioning_status
-        # The ID of the task object. The ID can be used to filter accounts.
+        # The ID of the task object. The ID can be used to filter access permissions.
         # 
-        # >  You can use the ID to filter accounts only if you specify both `TargetId` and `TargetType`.
+        # >  You can use the type to filter access permissions only if you specify both `TargetId` and `TargetType`.
         self.target_id = target_id
-        # The type of the task object. The type can be used to filter accounts.
+        # The type of the task object. The type can be used to filter access permissions.
         # 
-        # Set the value to RD-Account, which indicates an account in your resource directory.
+        # Set the value to RD-Account, which specifies the accounts in the resource directory.
         # 
-        # >  You can use the type to filter accounts only if you specify both `TargetId` and `TargetType`.
+        # >  You can use the type to filter access permissions only if you specify both `TargetId` and `TargetType`.
         self.target_type = target_type
 
     def validate(self):
@@ -7554,11 +7748,11 @@ class ListAccessConfigurationProvisioningsResponseBodyAccessConfigurationProvisi
         self.access_configuration_name = access_configuration_name
         # The first time when the access configuration was provisioned.
         self.create_time = create_time
-        # The name of the custom policy that is created for an account in your resource directory.
+        # The name of the custom policy that is created for an account in the resource directory.
         self.rampolicy_names = rampolicy_names
-        # The name of the RAM role that is created for an account in your resource directory.
+        # The name of the RAM role that is created for an account in the resource directory.
         self.ramrole_name = ramrole_name
-        # The name of the Security Assertion Markup Language (SAML) identity provider (IdP) that is created within an account in your resource directory.
+        # The name of the Security Assertion Markup Language (SAML) identity provider (IdP) that is created within an account in the resource directory.
         self.samlprovider_name = samlprovider_name
         # The status of the access configuration. Valid values:
         # 
@@ -7568,17 +7762,17 @@ class ListAccessConfigurationProvisioningsResponseBodyAccessConfigurationProvisi
         self.status = status
         # The ID of the task object.
         # 
-        # If the value of TargetType is `RD-Account`, the value of this parameter is the UID of an account in your resource directory.
+        # If the value of TargetType is `RD-Account`, the value of this parameter is the UID of an account in the resource directory.
         self.target_id = target_id
         # The name of the task object.
         self.target_name = target_name
-        # The path ID of the task object in your resource directory.
+        # The path ID of the task object in the resource directory.
         self.target_path = target_path
-        # The path name of the task object in your resource directory.
+        # The path name of the task object in the resource directory.
         self.target_path_name = target_path_name
         # The type of the task object.
         # 
-        # The value is fixed as RD-Account, which indicates an account in your resource directory.
+        # Set the value to RD-Account, which specifies the accounts in the resource directory.
         self.target_type = target_type
         # The last time when the access configuration was provisioned.
         self.update_time = update_time
@@ -7665,16 +7859,16 @@ class ListAccessConfigurationProvisioningsResponseBody(TeaModel):
         self.access_configuration_provisionings = access_configuration_provisionings
         # Indicates whether the queried entries are truncated. Valid values:
         # 
-        # *   true: The queried entries are truncated.
-        # *   false: The queried entries are not truncated.
+        # *   true
+        # *   false
         self.is_truncated = is_truncated
-        # The number of entries returned per page.
+        # The maximum number of entries returned per page.
         self.max_results = max_results
-        # The token that is returned for the next page.
+        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
         # 
         # >  This parameter is returned only when the value of `IsTruncated` is `true`.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_counts = total_counts
@@ -7739,9 +7933,6 @@ class ListAccessConfigurationProvisioningsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8006,9 +8197,6 @@ class ListAccessConfigurationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8156,9 +8344,6 @@ class ListDirectoriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8369,9 +8554,6 @@ class ListExternalSAMLIdPCertificatesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8634,9 +8816,6 @@ class ListGroupMembersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8889,9 +9068,6 @@ class ListGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9130,9 +9306,6 @@ class ListJoinedGroupsForUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9315,9 +9488,6 @@ class ListMFADevicesForUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9507,9 +9677,6 @@ class ListPermissionPoliciesInAccessConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9695,9 +9862,6 @@ class ListSCIMServerCredentialsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9742,64 +9906,64 @@ class ListTasksRequest(TeaModel):
         target_type: str = None,
         task_type: str = None,
     ):
-        # The ID of the access configuration. The ID can be used to filter asynchronous tasks.
+        # The ID of the access configuration. The ID can be used to filter access permissions.
         self.access_configuration_id = access_configuration_id
         # The ID of the directory.
         self.directory_id = directory_id
         # The filter condition.
         # 
-        # Specify the value in the \<Attribute> \<Operator> \<Value> format. The value is not case sensitive. You can set Attribute only to StartTime and Operator only to ge. You must set Value in the YYYY-MM-DDTHH:mm:SSZ format and enter a value that is no more than 7 days from the current time. The value ge indicates Greater Than or Equals.
+        # The condition is not case-sensitive. The condition must be in the StartTime ge YYYY-MM-DDTHH:mm:SSZ format. You must set YYYY-MM-DDTHH:mm:SSZ to a value that is no more than 7 days from the current time. ge indicates Greater Than or Equals.
         # 
-        # For example, if you set Filter to StartTime ge 2021-03-15T01:12:23Z, the operation queries the tasks from 2021-03-15T01:12:23 GMT.
+        # For example, if you set the Filter parameter to StartTime ge 2021-03-15T01:12:23Z, the operation queries the tasks from 2021-03-15T01:12:23 GMT.
         # 
         # >  If you do not specify this parameter, the operation queries the tasks within the previous 24 hours by default.
         self.filter = filter
-        # The number of entries to return on each page.
+        # The maximum number of entries per page.
         # 
         # Valid values: 1 to 20.
         # 
         # Default value: 10.
         self.max_results = max_results
-        # The token to return for the next page. If this is your first time to call this operation, you do not need to specify `NextToken`.
+        # The pagination token that is used in the next request to retrieve a new page of results. If this is your first time to call this operation, you do not need to specify the `NextToken` parameter.
         # 
         # When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
         self.next_token = next_token
-        # The ID of the CloudSSO identity. The ID can be used to filter asynchronous tasks.
+        # The ID of the CloudSSO identity. The ID can be used to filter access permissions.
         # 
         # *   If you set `PrincipalType` to `User`, set `PrincipalId` to the ID of the CloudSSO user.
         # *   If you set `PrincipalType` to `Group`, set `PrincipalId` to the ID of the CloudSSO group.
         # 
-        # >  You can use the ID to filter asynchronous tasks only if you specify both `PrincipalId` and `PrincipalType`.
+        # >  You can use the type to filter access permissions only if you specify both `PrincipalId` and `PrincipalType`.
         self.principal_id = principal_id
-        # The type of the CloudSSO identity. The type can be used to filter asynchronous tasks. Valid values:
+        # The type of the CloudSSO identity. The type can be used to filter access permissions. Valid values:
         # 
         # *   User
         # *   Group
         # 
-        # >  You can use the type to filter asynchronous tasks only if you specify both `PrincipalId` and `PrincipalType`.
+        # >  You can use the type to filter access permissions only if you specify both `PrincipalId` and `PrincipalType`.
         self.principal_type = principal_type
-        # The ID of the task. The ID can be used to filter asynchronous tasks. Valid values:
+        # The ID of the task. The ID can be used to filter tasks. Valid values:
         # 
         # *   InProgress: The task is running.
         # *   Success: The task is successful.
         # *   Failed: The task failed.
         self.status = status
-        # The ID of the task object. The ID can be used to filter asynchronous tasks.
+        # The ID of the task object. The ID can be used to filter access permissions.
         # 
-        # >  You can use the ID to filter asynchronous tasks only if you specify both `TargetId` and `TargetType`.
+        # >  You can use the type to filter access permissions only if you specify both `TargetId` and `TargetType`.
         self.target_id = target_id
-        # The type of the task object. The type can be used to filter asynchronous tasks.
+        # The type of the task object. The type can be used to filter access permissions.
         # 
-        # Set the value to RD-Account, which indicates an account in your resource directory.
+        # Set the value to RD-Account, which specifies the accounts in the resource directory.
         # 
-        # >  You can use the type to filter asynchronous tasks only if you specify both `TargetId` and `TargetType`.
+        # >  You can use the type to filter access permissions only if you specify both `TargetId` and `TargetType`.
         self.target_type = target_type
-        # The type of the task. The type can be used to filter asynchronous tasks. Valid values:
+        # The type of the task. The type can be used to filter tasks. Valid values:
         # 
         # *   ProvisionAccessConfiguration: An access configuration is provisioned.
         # *   DeprovisionAccessConfiguration: An access configuration is de-provisioned.
-        # *   CreateAccessAssignment: Access permissions on an account in your resource directory are assigned.
-        # *   DeleteAccessAssignment: Access permissions on an account in your resource directory are removed.
+        # *   CreateAccessAssignment: Access permissions on an account in the resource directory are assigned.
+        # *   DeleteAccessAssignment: Access permissions on an account in the resource directory are removed.
         self.task_type = task_type
 
     def validate(self):
@@ -9886,7 +10050,7 @@ class ListTasksResponseBodyTasks(TeaModel):
         self.access_configuration_id = access_configuration_id
         # The name of the access configuration.
         self.access_configuration_name = access_configuration_name
-        # The time when the task ended.
+        # The end time of the task.
         self.end_time = end_time
         # The cause of the task failure.
         # 
@@ -9901,9 +10065,9 @@ class ListTasksResponseBodyTasks(TeaModel):
         # *   User
         # *   Group
         self.principal_type = principal_type
-        # The time when the task started.
+        # The start time of the task.
         self.start_time = start_time
-        # The status of the task. Valid values:
+        # The task status. Valid values:
         # 
         # *   InProgress: The task is running.
         # *   Success: The task is successful.
@@ -9913,22 +10077,22 @@ class ListTasksResponseBodyTasks(TeaModel):
         self.target_id = target_id
         # The name of the task object.
         self.target_name = target_name
-        # The path ID of the task object in your resource directory.
+        # The path ID of the task object in the resource directory.
         self.target_path = target_path
-        # The path name of the task object in your resource directory.
+        # The path name of the task object in the resource directory.
         self.target_path_name = target_path_name
         # The type of the task object.
         # 
-        # The value is fixed as RD-Account, which indicates an account in your resource directory.
+        # The value is fixed as RD-Account, which indicates the accounts in the resource directory.
         self.target_type = target_type
-        # The ID of the task.
+        # The ID of the job.
         self.task_id = task_id
-        # The type of the task. Valid values:
+        # The task type. Valid values:
         # 
         # *   ProvisionAccessConfiguration: An access configuration is provisioned.
         # *   DeprovisionAccessConfiguration: An access configuration is de-provisioned.
-        # *   CreateAccessAssignment: Access permissions on an account in your resource directory are assigned.
-        # *   DeleteAccessAssignment: Access permissions on an account in your resource directory are removed.
+        # *   CreateAccessAssignment: Access permissions on an account in the resource directory are assigned.
+        # *   DeleteAccessAssignment: Access permissions on an account in the resource directory are removed.
         self.task_type = task_type
 
     def validate(self):
@@ -10023,16 +10187,16 @@ class ListTasksResponseBody(TeaModel):
     ):
         # Indicates whether the queried entries are truncated. Valid values:
         # 
-        # *   true: The queried entries are truncated.
-        # *   false: The queried entries are not truncated.
+        # *   true
+        # *   false
         self.is_truncated = is_truncated
-        # The number of entries returned per page.
+        # The maximum number of entries returned per page.
         self.max_results = max_results
-        # The token that is returned for the next page.
+        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
         # 
         # >  This parameter is returned only when the value of `IsTruncated` is `true`.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The tasks.
         self.tasks = tasks
@@ -10099,9 +10263,6 @@ class ListTasksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10382,9 +10543,6 @@ class ListUserProvisioningEventsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10671,9 +10829,6 @@ class ListUserProvisioningsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10974,9 +11129,6 @@ class ListUsersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11016,11 +11168,11 @@ class ProvisionAccessConfigurationRequest(TeaModel):
     ):
         # The ID of the access configuration.
         self.access_configuration_id = access_configuration_id
-        # The ID of the directory.
+        # The directory ID.
         self.directory_id = directory_id
         # The ID of the task object.
         self.target_id = target_id
-        # The type of the task object. Set the value to RD-Account, which indicates an account in your resource directory.
+        # The type of the task object. Set the value to RD-Account, which specifies the accounts in the resource directory.
         self.target_type = target_type
 
     def validate(self):
@@ -11073,7 +11225,7 @@ class ProvisionAccessConfigurationResponseBodyTasks(TeaModel):
         self.access_configuration_id = access_configuration_id
         # The name of the access configuration.
         self.access_configuration_name = access_configuration_name
-        # The status of the task. Valid values:
+        # The task status. Valid values:
         # 
         # *   InProgress: The task is running.
         # *   Success: The task is successful.
@@ -11083,15 +11235,15 @@ class ProvisionAccessConfigurationResponseBodyTasks(TeaModel):
         self.target_id = target_id
         # The name of the task object.
         self.target_name = target_name
-        # The path ID of the task object in your resource directory.
+        # The path ID of the task object in the resource directory.
         self.target_path = target_path
-        # The path name of the task object in your resource directory.
+        # The path name of the task object in the resource directory.
         self.target_path_name = target_path_name
-        # The type of the task object. The value is fixed as RD-Account, which indicates an account in your resource directory.
+        # The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
         self.target_type = target_type
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
-        # The type of the task. The value is fixed as ProvisionAccessConfiguration, which indicates that an access configuration is provisioned.
+        # The task type. The value is fixed as ProvisionAccessConfiguration, which indicates that an access configuration is provisioned.
         self.task_type = task_type
 
     def validate(self):
@@ -11156,9 +11308,9 @@ class ProvisionAccessConfigurationResponseBody(TeaModel):
         request_id: str = None,
         tasks: List[ProvisionAccessConfigurationResponseBodyTasks] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information about the task.
+        # The task information.
         self.tasks = tasks
 
     def validate(self):
@@ -11205,9 +11357,6 @@ class ProvisionAccessConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11314,9 +11463,6 @@ class RemoveExternalSAMLIdPCertificateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11438,9 +11584,6 @@ class RemovePermissionPolicyFromAccessConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11552,9 +11695,6 @@ class RemoveUserFromGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11701,9 +11841,6 @@ class ResetUserPasswordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11811,9 +11948,6 @@ class RetryUserProvisioningEventResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12060,9 +12194,6 @@ class SetExternalSAMLIdentityProviderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12088,6 +12219,107 @@ class SetExternalSAMLIdentityProviderResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SetExternalSAMLIdentityProviderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetLoginPreferenceRequest(TeaModel):
+    def __init__(
+        self,
+        directory_id: str = None,
+        login_network_masks: str = None,
+    ):
+        self.directory_id = directory_id
+        self.login_network_masks = login_network_masks
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.directory_id is not None:
+            result['DirectoryId'] = self.directory_id
+        if self.login_network_masks is not None:
+            result['LoginNetworkMasks'] = self.login_network_masks
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DirectoryId') is not None:
+            self.directory_id = m.get('DirectoryId')
+        if m.get('LoginNetworkMasks') is not None:
+            self.login_network_masks = m.get('LoginNetworkMasks')
+        return self
+
+
+class SetLoginPreferenceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SetLoginPreferenceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetLoginPreferenceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetLoginPreferenceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12170,9 +12402,6 @@ class SetMFAAuthenticationStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12198,6 +12427,137 @@ class SetMFAAuthenticationStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SetMFAAuthenticationStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetPasswordPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        directory_id: str = None,
+        max_login_attempts: int = None,
+        max_password_age: int = None,
+        min_password_different_chars: int = None,
+        min_password_length: int = None,
+        password_not_contain_username: bool = None,
+        password_reuse_prevention: int = None,
+    ):
+        self.directory_id = directory_id
+        self.max_login_attempts = max_login_attempts
+        self.max_password_age = max_password_age
+        self.min_password_different_chars = min_password_different_chars
+        self.min_password_length = min_password_length
+        self.password_not_contain_username = password_not_contain_username
+        self.password_reuse_prevention = password_reuse_prevention
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.directory_id is not None:
+            result['DirectoryId'] = self.directory_id
+        if self.max_login_attempts is not None:
+            result['MaxLoginAttempts'] = self.max_login_attempts
+        if self.max_password_age is not None:
+            result['MaxPasswordAge'] = self.max_password_age
+        if self.min_password_different_chars is not None:
+            result['MinPasswordDifferentChars'] = self.min_password_different_chars
+        if self.min_password_length is not None:
+            result['MinPasswordLength'] = self.min_password_length
+        if self.password_not_contain_username is not None:
+            result['PasswordNotContainUsername'] = self.password_not_contain_username
+        if self.password_reuse_prevention is not None:
+            result['PasswordReusePrevention'] = self.password_reuse_prevention
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DirectoryId') is not None:
+            self.directory_id = m.get('DirectoryId')
+        if m.get('MaxLoginAttempts') is not None:
+            self.max_login_attempts = m.get('MaxLoginAttempts')
+        if m.get('MaxPasswordAge') is not None:
+            self.max_password_age = m.get('MaxPasswordAge')
+        if m.get('MinPasswordDifferentChars') is not None:
+            self.min_password_different_chars = m.get('MinPasswordDifferentChars')
+        if m.get('MinPasswordLength') is not None:
+            self.min_password_length = m.get('MinPasswordLength')
+        if m.get('PasswordNotContainUsername') is not None:
+            self.password_not_contain_username = m.get('PasswordNotContainUsername')
+        if m.get('PasswordReusePrevention') is not None:
+            self.password_reuse_prevention = m.get('PasswordReusePrevention')
+        return self
+
+
+class SetPasswordPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SetPasswordPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetPasswordPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetPasswordPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12280,9 +12640,6 @@ class SetSCIMSynchronizationStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12504,9 +12861,6 @@ class UpdateAccessConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12680,9 +13034,6 @@ class UpdateDirectoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12876,9 +13227,6 @@ class UpdateGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13001,9 +13349,6 @@ class UpdateInlinePolicyForAccessConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13124,9 +13469,6 @@ class UpdateMFAAuthenticationSettingsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13316,9 +13658,6 @@ class UpdateSCIMServerCredentialStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13571,9 +13910,6 @@ class UpdateUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13688,9 +14024,6 @@ class UpdateUserMFAAuthenticationSettingsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13935,9 +14268,6 @@ class UpdateUserProvisioningResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14104,9 +14434,6 @@ class UpdateUserProvisioningConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14221,9 +14548,6 @@ class UpdateUserStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
