@@ -1,3 +1,11 @@
+2024-02-19 Version: 3.5.2
+- Update API DescribeSampleData: update response param.
+- Update API QueryContent: add param IncludeVector.
+- Update API QueryContent: add param RecallWindow.
+- Update API QueryContent: add param RerankFactor.
+- Update API QueryContent: update response param.
+
+
 2024-01-18 Version: 3.5.1
 - Generated python 2016-05-03 for gpdb.
 
