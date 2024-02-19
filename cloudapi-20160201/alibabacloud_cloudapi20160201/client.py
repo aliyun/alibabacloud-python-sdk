@@ -358,6 +358,8 @@ class Client(OpenApiClient):
     ) -> cloud_api20160201_models.AddTrafficSpecialControlResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.special_key):
             query['SpecialKey'] = request.special_key
         if not UtilClient.is_unset(request.special_type):
@@ -392,6 +394,8 @@ class Client(OpenApiClient):
     ) -> cloud_api20160201_models.AddTrafficSpecialControlResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.special_key):
             query['SpecialKey'] = request.special_key
         if not UtilClient.is_unset(request.special_type):
@@ -442,6 +446,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ali_uid):
             query['AliUid'] = request.ali_uid
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -470,6 +476,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ali_uid):
             query['AliUid'] = request.ali_uid
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -586,6 +594,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.copy_list):
             query['CopyList'] = request.copy_list
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -614,6 +624,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.copy_list):
             query['CopyList'] = request.copy_list
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -690,6 +702,8 @@ class Client(OpenApiClient):
             query['ResultSample'] = request.result_sample
         if not UtilClient.is_unset(request.result_type):
             query['ResultType'] = request.result_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.service_address):
             query['ServiceAddress'] = request.service_address
         if not UtilClient.is_unset(request.service_protocol):
@@ -762,6 +776,8 @@ class Client(OpenApiClient):
             query['ResultSample'] = request.result_sample
         if not UtilClient.is_unset(request.result_type):
             query['ResultType'] = request.result_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.service_address):
             query['ServiceAddress'] = request.service_address
         if not UtilClient.is_unset(request.service_protocol):
@@ -830,6 +846,8 @@ class Client(OpenApiClient):
             query['ResultSample'] = request.result_sample
         if not UtilClient.is_unset(request.result_type):
             query['ResultType'] = request.result_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.service_config):
             query['ServiceConfig'] = request.service_config
         if not UtilClient.is_unset(request.service_parameters):
@@ -882,6 +900,8 @@ class Client(OpenApiClient):
             query['ResultSample'] = request.result_sample
         if not UtilClient.is_unset(request.result_type):
             query['ResultType'] = request.result_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.service_config):
             query['ServiceConfig'] = request.service_config
         if not UtilClient.is_unset(request.service_parameters):
@@ -1014,6 +1034,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         req = open_api_models.OpenApiRequest(
@@ -1048,6 +1070,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         req = open_api_models.OpenApiRequest(
@@ -1094,6 +1118,8 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1124,6 +1150,8 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1260,6 +1288,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.extend):
             query['Extend'] = request.extend
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         req = open_api_models.OpenApiRequest(
@@ -1302,6 +1332,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.extend):
             query['Extend'] = request.extend
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         req = open_api_models.OpenApiRequest(
@@ -1458,6 +1490,8 @@ class Client(OpenApiClient):
             query['Keywords'] = request.keywords
         if not UtilClient.is_unset(request.logo_url):
             query['LogoUrl'] = request.logo_url
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.short_description):
             query['ShortDescription'] = request.short_description
         if not UtilClient.is_unset(request.work_name):
@@ -1496,6 +1530,8 @@ class Client(OpenApiClient):
             query['Keywords'] = request.keywords
         if not UtilClient.is_unset(request.logo_url):
             query['LogoUrl'] = request.logo_url
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.short_description):
             query['ShortDescription'] = request.short_description
         if not UtilClient.is_unset(request.work_name):
@@ -1546,6 +1582,8 @@ class Client(OpenApiClient):
             query['SecretKeyName'] = request.secret_key_name
         if not UtilClient.is_unset(request.secret_value):
             query['SecretValue'] = request.secret_value
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1578,6 +1616,8 @@ class Client(OpenApiClient):
             query['SecretKeyName'] = request.secret_key_name
         if not UtilClient.is_unset(request.secret_value):
             query['SecretValue'] = request.secret_value
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1624,6 +1664,8 @@ class Client(OpenApiClient):
             query['AppDefault'] = request.app_default
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.traffic_control_name):
             query['TrafficControlName'] = request.traffic_control_name
         if not UtilClient.is_unset(request.traffic_control_unit):
@@ -1662,6 +1704,8 @@ class Client(OpenApiClient):
             query['AppDefault'] = request.app_default
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.traffic_control_name):
             query['TrafficControlName'] = request.traffic_control_name
         if not UtilClient.is_unset(request.traffic_control_unit):
@@ -1716,6 +1760,8 @@ class Client(OpenApiClient):
             query['EntityId'] = request.entity_id
         if not UtilClient.is_unset(request.limit_count):
             query['LimitCount'] = request.limit_count
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         if not UtilClient.is_unset(request.uid):
@@ -1756,6 +1802,8 @@ class Client(OpenApiClient):
             query['EntityId'] = request.entity_id
         if not UtilClient.is_unset(request.limit_count):
             query['LimitCount'] = request.limit_count
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         if not UtilClient.is_unset(request.uid):
@@ -1802,6 +1850,8 @@ class Client(OpenApiClient):
     ) -> cloud_api20160201_models.DeleteAllTrafficSpecialControlResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.traffic_control_id):
             query['TrafficControlId'] = request.traffic_control_id
         req = open_api_models.OpenApiRequest(
@@ -1830,6 +1880,8 @@ class Client(OpenApiClient):
     ) -> cloud_api20160201_models.DeleteAllTrafficSpecialControlResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.traffic_control_id):
             query['TrafficControlId'] = request.traffic_control_id
         req = open_api_models.OpenApiRequest(
@@ -1876,6 +1928,8 @@ class Client(OpenApiClient):
             query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1906,6 +1960,8 @@ class Client(OpenApiClient):
             query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1952,6 +2008,8 @@ class Client(OpenApiClient):
             query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1984,6 +2042,8 @@ class Client(OpenApiClient):
             query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2026,6 +2086,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2054,6 +2116,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2096,6 +2160,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2124,6 +2190,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2168,6 +2236,8 @@ class Client(OpenApiClient):
             query['AliUid'] = request.ali_uid
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2198,6 +2268,8 @@ class Client(OpenApiClient):
             query['AliUid'] = request.ali_uid
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2242,6 +2314,8 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2272,6 +2346,8 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2318,6 +2394,8 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2350,6 +2428,8 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2392,6 +2472,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.secret_key_id):
             query['SecretKeyId'] = request.secret_key_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2420,6 +2502,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.secret_key_id):
             query['SecretKeyId'] = request.secret_key_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2460,6 +2544,8 @@ class Client(OpenApiClient):
     ) -> cloud_api20160201_models.DeleteTrafficControlResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.traffic_control_id):
             query['TrafficControlId'] = request.traffic_control_id
         req = open_api_models.OpenApiRequest(
@@ -2488,6 +2574,8 @@ class Client(OpenApiClient):
     ) -> cloud_api20160201_models.DeleteTrafficControlResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.traffic_control_id):
             query['TrafficControlId'] = request.traffic_control_id
         req = open_api_models.OpenApiRequest(
@@ -2530,6 +2618,8 @@ class Client(OpenApiClient):
     ) -> cloud_api20160201_models.DeleteTrafficSpecialControlResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.special_key):
             query['SpecialKey'] = request.special_key
         if not UtilClient.is_unset(request.special_type):
@@ -2562,6 +2652,8 @@ class Client(OpenApiClient):
     ) -> cloud_api20160201_models.DeleteTrafficSpecialControlResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.special_key):
             query['SpecialKey'] = request.special_key
         if not UtilClient.is_unset(request.special_type):
@@ -2610,6 +2702,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.entity_id):
             query['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         if not UtilClient.is_unset(request.uid):
@@ -2642,6 +2736,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.entity_id):
             query['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         if not UtilClient.is_unset(request.uid):
@@ -2692,6 +2788,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -2726,6 +2824,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -2776,6 +2876,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -2812,6 +2914,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -2858,6 +2962,8 @@ class Client(OpenApiClient):
             query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2888,6 +2994,8 @@ class Client(OpenApiClient):
             query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3116,6 +3224,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -3156,6 +3266,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -3204,6 +3316,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -3238,6 +3352,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -3282,6 +3398,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3310,6 +3428,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3442,6 +3562,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -3476,6 +3598,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -3522,6 +3646,8 @@ class Client(OpenApiClient):
             query['AliUid'] = request.ali_uid
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3552,6 +3678,8 @@ class Client(OpenApiClient):
             query['AliUid'] = request.ali_uid
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3598,6 +3726,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -3632,6 +3762,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -3684,6 +3816,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.rule_type):
             query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -3722,6 +3856,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.rule_type):
             query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -3770,6 +3906,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -3804,6 +3942,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -3856,6 +3996,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.visibility):
             query['Visibility'] = request.visibility
         req = open_api_models.OpenApiRequest(
@@ -3894,6 +4036,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.visibility):
             query['Visibility'] = request.visibility
         req = open_api_models.OpenApiRequest(
@@ -3942,6 +4086,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3974,6 +4120,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4022,6 +4170,8 @@ class Client(OpenApiClient):
             query['RuleId'] = request.rule_id
         if not UtilClient.is_unset(request.rule_type):
             query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4056,6 +4206,8 @@ class Client(OpenApiClient):
             query['RuleId'] = request.rule_id
         if not UtilClient.is_unset(request.rule_type):
             query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4106,6 +4258,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         if not UtilClient.is_unset(request.visibility):
@@ -4146,6 +4300,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         if not UtilClient.is_unset(request.visibility):
@@ -4192,6 +4348,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4220,6 +4378,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4488,6 +4648,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4520,6 +4682,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4568,6 +4732,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -4604,6 +4770,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -4654,6 +4822,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4688,6 +4858,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4728,6 +4900,8 @@ class Client(OpenApiClient):
     ) -> cloud_api20160201_models.DescribeAvailableVipsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.vip):
             query['Vip'] = request.vip
         req = open_api_models.OpenApiRequest(
@@ -4756,6 +4930,8 @@ class Client(OpenApiClient):
     ) -> cloud_api20160201_models.DescribeAvailableVipsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.vip):
             query['Vip'] = request.vip
         req = open_api_models.OpenApiRequest(
@@ -4878,6 +5054,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4910,6 +5088,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4954,6 +5134,8 @@ class Client(OpenApiClient):
             query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -4986,6 +5168,8 @@ class Client(OpenApiClient):
             query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -5038,6 +5222,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -5076,6 +5262,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -5122,6 +5310,8 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5152,6 +5342,8 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5196,6 +5388,8 @@ class Client(OpenApiClient):
             query['DomainNames'] = request.domain_names
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5226,6 +5420,8 @@ class Client(OpenApiClient):
             query['DomainNames'] = request.domain_names
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5272,6 +5468,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.history_version):
             query['HistoryVersion'] = request.history_version
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -5306,6 +5504,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.history_version):
             query['HistoryVersion'] = request.history_version
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -5358,6 +5558,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -5396,6 +5598,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -5450,6 +5654,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5488,6 +5694,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5532,6 +5740,8 @@ class Client(OpenApiClient):
             query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5562,6 +5772,8 @@ class Client(OpenApiClient):
             query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5604,6 +5816,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5632,6 +5846,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5764,6 +5980,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         if not UtilClient.is_unset(request.visibility):
@@ -5804,6 +6022,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         if not UtilClient.is_unset(request.visibility):
@@ -5850,6 +6070,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5878,6 +6100,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5922,6 +6146,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5952,6 +6178,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6070,6 +6298,8 @@ class Client(OpenApiClient):
             query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -6102,6 +6332,8 @@ class Client(OpenApiClient):
             query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -6152,6 +6384,8 @@ class Client(OpenApiClient):
             query['SecretKeyId'] = request.secret_key_id
         if not UtilClient.is_unset(request.secret_key_name):
             query['SecretKeyName'] = request.secret_key_name
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6186,6 +6420,8 @@ class Client(OpenApiClient):
             query['SecretKeyId'] = request.secret_key_id
         if not UtilClient.is_unset(request.secret_key_name):
             query['SecretKeyName'] = request.secret_key_name
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6374,6 +6610,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         if not UtilClient.is_unset(request.traffic_control_id):
@@ -6414,6 +6652,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         if not UtilClient.is_unset(request.traffic_control_id):
@@ -6464,6 +6704,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         if not UtilClient.is_unset(request.uid):
@@ -6498,6 +6740,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         if not UtilClient.is_unset(request.uid):
@@ -6542,6 +6786,8 @@ class Client(OpenApiClient):
     ) -> cloud_api20160201_models.IsIncludedByUserWhitelistResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -6570,6 +6816,8 @@ class Client(OpenApiClient):
     ) -> cloud_api20160201_models.IsIncludedByUserWhitelistResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -6650,6 +6898,8 @@ class Client(OpenApiClient):
             query['ResultSample'] = request.result_sample
         if not UtilClient.is_unset(request.result_type):
             query['ResultType'] = request.result_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.service_address):
             query['ServiceAddress'] = request.service_address
         if not UtilClient.is_unset(request.service_protocol):
@@ -6724,6 +6974,8 @@ class Client(OpenApiClient):
             query['ResultSample'] = request.result_sample
         if not UtilClient.is_unset(request.result_type):
             query['ResultType'] = request.result_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.service_address):
             query['ServiceAddress'] = request.service_address
         if not UtilClient.is_unset(request.service_protocol):
@@ -6794,6 +7046,8 @@ class Client(OpenApiClient):
             query['ResultSample'] = request.result_sample
         if not UtilClient.is_unset(request.result_type):
             query['ResultType'] = request.result_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.service_config):
             query['ServiceConfig'] = request.service_config
         if not UtilClient.is_unset(request.service_parameters):
@@ -6848,6 +7102,8 @@ class Client(OpenApiClient):
             query['ResultSample'] = request.result_sample
         if not UtilClient.is_unset(request.result_type):
             query['ResultType'] = request.result_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.service_config):
             query['ServiceConfig'] = request.service_config
         if not UtilClient.is_unset(request.service_parameters):
@@ -6902,6 +7158,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6934,6 +7192,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7058,6 +7318,8 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7090,6 +7352,8 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7140,6 +7404,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.extend):
             query['Extend'] = request.extend
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7176,6 +7442,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.extend):
             query['Extend'] = request.extend
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7222,6 +7490,8 @@ class Client(OpenApiClient):
             query['AuthAppCode'] = request.auth_app_code
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7254,6 +7524,8 @@ class Client(OpenApiClient):
             query['AuthAppCode'] = request.auth_app_code
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7302,6 +7574,8 @@ class Client(OpenApiClient):
             query['SecretKeyName'] = request.secret_key_name
         if not UtilClient.is_unset(request.secret_value):
             query['SecretValue'] = request.secret_value
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7336,6 +7610,8 @@ class Client(OpenApiClient):
             query['SecretKeyName'] = request.secret_key_name
         if not UtilClient.is_unset(request.secret_value):
             query['SecretValue'] = request.secret_value
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7382,6 +7658,8 @@ class Client(OpenApiClient):
             query['AppDefault'] = request.app_default
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.traffic_control_id):
             query['TrafficControlId'] = request.traffic_control_id
         if not UtilClient.is_unset(request.traffic_control_name):
@@ -7422,6 +7700,8 @@ class Client(OpenApiClient):
             query['AppDefault'] = request.app_default
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.traffic_control_id):
             query['TrafficControlId'] = request.traffic_control_id
         if not UtilClient.is_unset(request.traffic_control_name):
@@ -7472,6 +7752,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         if not UtilClient.is_unset(request.uid):
@@ -7506,6 +7788,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         if not UtilClient.is_unset(request.uid):
@@ -7558,6 +7842,8 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7590,6 +7876,8 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7636,6 +7924,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.history_version):
             query['HistoryVersion'] = request.history_version
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -7670,6 +7960,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.history_version):
             query['HistoryVersion'] = request.history_version
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -7718,6 +8010,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.history_version):
             query['HistoryVersion'] = request.history_version
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -7752,6 +8046,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.history_version):
             query['HistoryVersion'] = request.history_version
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -7800,6 +8096,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.history_version):
             query['HistoryVersion'] = request.history_version
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -7834,6 +8132,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.history_version):
             query['HistoryVersion'] = request.history_version
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -7880,6 +8180,8 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7910,6 +8212,8 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7958,6 +8262,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -7994,6 +8300,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -8042,6 +8350,8 @@ class Client(OpenApiClient):
             query['AppIds'] = request.app_ids
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -8076,6 +8386,8 @@ class Client(OpenApiClient):
             query['AppIds'] = request.app_ids
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -8126,6 +8438,8 @@ class Client(OpenApiClient):
             query['AppIds'] = request.app_ids
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.stage_name):
@@ -8164,6 +8478,8 @@ class Client(OpenApiClient):
             query['AppIds'] = request.app_ids
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.stage_name):
@@ -8210,6 +8526,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.black_type):
             query['BlackType'] = request.black_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8238,6 +8556,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.black_type):
             query['BlackType'] = request.black_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8286,6 +8606,8 @@ class Client(OpenApiClient):
             query['RuleId'] = request.rule_id
         if not UtilClient.is_unset(request.rule_type):
             query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -8322,6 +8644,8 @@ class Client(OpenApiClient):
             query['RuleId'] = request.rule_id
         if not UtilClient.is_unset(request.rule_type):
             query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -8370,6 +8694,8 @@ class Client(OpenApiClient):
             query['AppIds'] = request.app_ids
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -8404,6 +8730,8 @@ class Client(OpenApiClient):
             query['AppIds'] = request.app_ids
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -8450,6 +8778,8 @@ class Client(OpenApiClient):
             query['BlackContent'] = request.black_content
         if not UtilClient.is_unset(request.black_type):
             query['BlackType'] = request.black_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8480,6 +8810,8 @@ class Client(OpenApiClient):
             query['BlackContent'] = request.black_content
         if not UtilClient.is_unset(request.black_type):
             query['BlackType'] = request.black_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8522,6 +8854,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_code):
             query['AppCode'] = request.app_code
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8550,6 +8884,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_code):
             query['AppCode'] = request.app_code
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8596,6 +8932,8 @@ class Client(OpenApiClient):
             query['AppCode'] = request.app_code
         if not UtilClient.is_unset(request.new_app_code):
             query['NewAppCode'] = request.new_app_code
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8628,6 +8966,8 @@ class Client(OpenApiClient):
             query['AppCode'] = request.app_code
         if not UtilClient.is_unset(request.new_app_code):
             query['NewAppCode'] = request.new_app_code
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8670,6 +9010,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_key):
             query['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8698,6 +9040,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_key):
             query['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8746,6 +9090,8 @@ class Client(OpenApiClient):
             query['NewAppKey'] = request.new_app_key
         if not UtilClient.is_unset(request.new_app_secret):
             query['NewAppSecret'] = request.new_app_secret
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8780,6 +9126,8 @@ class Client(OpenApiClient):
             query['NewAppKey'] = request.new_app_key
         if not UtilClient.is_unset(request.new_app_secret):
             query['NewAppSecret'] = request.new_app_secret
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8828,6 +9176,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -8864,6 +9214,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -8988,6 +9340,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -9024,6 +9378,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -9076,6 +9432,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.stage_name):
@@ -9116,6 +9474,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.stage_name):
@@ -9168,6 +9528,8 @@ class Client(OpenApiClient):
             query['RuleId'] = request.rule_id
         if not UtilClient.is_unset(request.rule_type):
             query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -9204,6 +9566,8 @@ class Client(OpenApiClient):
             query['RuleId'] = request.rule_id
         if not UtilClient.is_unset(request.rule_type):
             query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -9256,6 +9620,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.private_key):
             query['PrivateKey'] = request.private_key
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9292,6 +9658,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.private_key):
             query['PrivateKey'] = request.private_key
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9342,6 +9710,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.private_key):
             query['PrivateKey'] = request.private_key
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9378,6 +9748,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.private_key):
             query['PrivateKey'] = request.private_key
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9428,6 +9800,8 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9464,6 +9838,8 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9512,6 +9888,8 @@ class Client(OpenApiClient):
             query['Mock'] = request.mock
         if not UtilClient.is_unset(request.mock_result):
             query['MockResult'] = request.mock_result
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9546,6 +9924,8 @@ class Client(OpenApiClient):
             query['Mock'] = request.mock
         if not UtilClient.is_unset(request.mock_result):
             query['MockResult'] = request.mock_result
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9676,6 +10056,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.history_version):
             query['HistoryVersion'] = request.history_version
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -9712,6 +10094,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.history_version):
             query['HistoryVersion'] = request.history_version
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -9762,6 +10146,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.history_version):
             query['HistoryVersion'] = request.history_version
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -9798,6 +10184,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.history_version):
             query['HistoryVersion'] = request.history_version
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.stage_name):
             query['StageName'] = request.stage_name
         req = open_api_models.OpenApiRequest(
@@ -9850,6 +10238,8 @@ class Client(OpenApiClient):
             query['AppSecret'] = request.app_secret
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         req = open_api_models.OpenApiRequest(
@@ -9888,6 +10278,8 @@ class Client(OpenApiClient):
             query['AppSecret'] = request.app_secret
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         req = open_api_models.OpenApiRequest(
@@ -10122,6 +10514,8 @@ class Client(OpenApiClient):
             query['NewVip'] = request.new_vip
         if not UtilClient.is_unset(request.original_vip):
             query['OriginalVip'] = request.original_vip
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10152,6 +10546,8 @@ class Client(OpenApiClient):
             query['NewVip'] = request.new_vip
         if not UtilClient.is_unset(request.original_vip):
             query['OriginalVip'] = request.original_vip
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10196,6 +10592,8 @@ class Client(OpenApiClient):
             query['NewVip'] = request.new_vip
         if not UtilClient.is_unset(request.original_vip):
             query['OriginalVip'] = request.original_vip
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10226,6 +10624,8 @@ class Client(OpenApiClient):
             query['NewVip'] = request.new_vip
         if not UtilClient.is_unset(request.original_vip):
             query['OriginalVip'] = request.original_vip
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10270,6 +10670,8 @@ class Client(OpenApiClient):
             query['AddressPoolId'] = request.address_pool_id
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.server_ip):
             query['ServerIp'] = request.server_ip
         if not UtilClient.is_unset(request.token):
@@ -10304,6 +10706,8 @@ class Client(OpenApiClient):
             query['AddressPoolId'] = request.address_pool_id
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.server_ip):
             query['ServerIp'] = request.server_ip
         if not UtilClient.is_unset(request.token):
@@ -10354,6 +10758,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.token):
             query['Token'] = request.token
         req = open_api_models.OpenApiRequest(
@@ -10388,6 +10794,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.token):
             query['Token'] = request.token
         req = open_api_models.OpenApiRequest(
@@ -10514,6 +10922,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.token):
             query['Token'] = request.token
         req = open_api_models.OpenApiRequest(
@@ -10548,6 +10958,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.token):
             query['Token'] = request.token
         req = open_api_models.OpenApiRequest(
@@ -10592,6 +11004,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.server_ip):
             query['ServerIp'] = request.server_ip
         if not UtilClient.is_unset(request.token):
@@ -10624,6 +11038,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.server_ip):
             query['ServerIp'] = request.server_ip
         if not UtilClient.is_unset(request.token):
