@@ -20882,9 +20882,9 @@ class DescribeEnvironmentResponseBodyDataTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of the tag.
         self.key = key
-        # The tag value.
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -20975,6 +20975,10 @@ class DescribeEnvironmentResponseBodyData(TeaModel):
         self.grafana_folder_uid = grafana_folder_uid
         # The URL of the Grafana directory.
         self.grafana_folder_url = grafana_folder_url
+        # managed type:
+        # - none: unmanaged. The default value for ACK clusters.
+        # - agent: managed agent (including KSM). The default values for ASK, ACS, and AckOne clusters.
+        # - agent-exporter: managed agent and exporters. The default value for the cloud service type.
         self.managed_type = managed_type
         # The ID of the Prometheus instance.
         self.prometheus_instance_id = prometheus_instance_id
@@ -20988,7 +20992,7 @@ class DescribeEnvironmentResponseBodyData(TeaModel):
         self.tags = tags
         # The user ID.
         self.user_id = user_id
-        # VPC ID.
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -35332,6 +35336,609 @@ class ListAddonReleasesResponse(TeaModel):
         return self
 
 
+class ListAddonsRequest(TeaModel):
+    def __init__(
+        self,
+        aliyun_lang: str = None,
+        category: str = None,
+        regexp: bool = None,
+        region_id: str = None,
+        search: str = None,
+    ):
+        # Language,the default language is Chinese.
+        self.aliyun_lang = aliyun_lang
+        # Category filter.
+        self.category = category
+        # Whether to enable regular matching.
+        self.regexp = regexp
+        # The region ID.
+        self.region_id = region_id
+        # A query field can be queried by name or description.
+        self.search = search
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_lang is not None:
+            result['AliyunLang'] = self.aliyun_lang
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.regexp is not None:
+            result['Regexp'] = self.regexp
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.search is not None:
+            result['Search'] = self.search
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliyunLang') is not None:
+            self.aliyun_lang = m.get('AliyunLang')
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('Regexp') is not None:
+            self.regexp = m.get('Regexp')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Search') is not None:
+            self.search = m.get('Search')
+        return self
+
+
+class ListAddonsResponseBodyDataDashboards(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+        url: str = None,
+    ):
+        # Description of the dashboard.
+        self.description = description
+        # Name of the dashboard.
+        self.name = name
+        # URL of the dashboard.
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class ListAddonsResponseBodyDataEnvironmentsDependencies(TeaModel):
+    def __init__(
+        self,
+        features: Dict[str, bool] = None,
+        services: List[str] = None,
+    ):
+        # Name of the Feature.
+        self.features = features
+        # Service list.
+        self.services = services
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.features is not None:
+            result['Features'] = self.features
+        if self.services is not None:
+            result['Services'] = self.services
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Features') is not None:
+            self.features = m.get('Features')
+        if m.get('Services') is not None:
+            self.services = m.get('Services')
+        return self
+
+
+class ListAddonsResponseBodyDataEnvironmentsPoliciesMetricCheckRule(TeaModel):
+    def __init__(
+        self,
+        prom_ql: List[str] = None,
+    ):
+        # PromQL list.
+        self.prom_ql = prom_ql
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.prom_ql is not None:
+            result['PromQL'] = self.prom_ql
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PromQL') is not None:
+            self.prom_ql = m.get('PromQL')
+        return self
+
+
+class ListAddonsResponseBodyDataEnvironmentsPoliciesProtocols(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        icon: str = None,
+        label: str = None,
+        name: str = None,
+    ):
+        # Description of the Protocol.
+        self.description = description
+        # Icon address.
+        self.icon = icon
+        # Label of the Protocol.
+        self.label = label
+        # Name of the Protocol.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.icon is not None:
+            result['Icon'] = self.icon
+        if self.label is not None:
+            result['Label'] = self.label
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Icon') is not None:
+            self.icon = m.get('Icon')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ListAddonsResponseBodyDataEnvironmentsPolicies(TeaModel):
+    def __init__(
+        self,
+        alert_default_status: str = None,
+        default_install: bool = None,
+        enable_service_account: bool = None,
+        metric_check_rule: ListAddonsResponseBodyDataEnvironmentsPoliciesMetricCheckRule = None,
+        need_restart_after_integration: bool = None,
+        protocols: List[ListAddonsResponseBodyDataEnvironmentsPoliciesProtocols] = None,
+        target_addon_name: str = None,
+    ):
+        # Default alert status.
+        self.alert_default_status = alert_default_status
+        # Default install status.
+        self.default_install = default_install
+        # Whether to enable a service account.
+        self.enable_service_account = enable_service_account
+        # Metric check rule PromQL.
+        self.metric_check_rule = metric_check_rule
+        # Whether to restart after integration.
+        self.need_restart_after_integration = need_restart_after_integration
+        # Protocol list.
+        self.protocols = protocols
+        # Target Addon name.
+        self.target_addon_name = target_addon_name
+
+    def validate(self):
+        if self.metric_check_rule:
+            self.metric_check_rule.validate()
+        if self.protocols:
+            for k in self.protocols:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert_default_status is not None:
+            result['AlertDefaultStatus'] = self.alert_default_status
+        if self.default_install is not None:
+            result['DefaultInstall'] = self.default_install
+        if self.enable_service_account is not None:
+            result['EnableServiceAccount'] = self.enable_service_account
+        if self.metric_check_rule is not None:
+            result['MetricCheckRule'] = self.metric_check_rule.to_map()
+        if self.need_restart_after_integration is not None:
+            result['NeedRestartAfterIntegration'] = self.need_restart_after_integration
+        result['Protocols'] = []
+        if self.protocols is not None:
+            for k in self.protocols:
+                result['Protocols'].append(k.to_map() if k else None)
+        if self.target_addon_name is not None:
+            result['TargetAddonName'] = self.target_addon_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlertDefaultStatus') is not None:
+            self.alert_default_status = m.get('AlertDefaultStatus')
+        if m.get('DefaultInstall') is not None:
+            self.default_install = m.get('DefaultInstall')
+        if m.get('EnableServiceAccount') is not None:
+            self.enable_service_account = m.get('EnableServiceAccount')
+        if m.get('MetricCheckRule') is not None:
+            temp_model = ListAddonsResponseBodyDataEnvironmentsPoliciesMetricCheckRule()
+            self.metric_check_rule = temp_model.from_map(m['MetricCheckRule'])
+        if m.get('NeedRestartAfterIntegration') is not None:
+            self.need_restart_after_integration = m.get('NeedRestartAfterIntegration')
+        self.protocols = []
+        if m.get('Protocols') is not None:
+            for k in m.get('Protocols'):
+                temp_model = ListAddonsResponseBodyDataEnvironmentsPoliciesProtocols()
+                self.protocols.append(temp_model.from_map(k))
+        if m.get('TargetAddonName') is not None:
+            self.target_addon_name = m.get('TargetAddonName')
+        return self
+
+
+class ListAddonsResponseBodyDataEnvironments(TeaModel):
+    def __init__(
+        self,
+        dependencies: ListAddonsResponseBodyDataEnvironmentsDependencies = None,
+        description: str = None,
+        enable: bool = None,
+        label: str = None,
+        name: str = None,
+        policies: ListAddonsResponseBodyDataEnvironmentsPolicies = None,
+    ):
+        # Dependency list.
+        self.dependencies = dependencies
+        # Description of environment.
+        self.description = description
+        # Whether to enable it.
+        self.enable = enable
+        # Label of the environment.
+        self.label = label
+        # Name of the environment.
+        self.name = name
+        # Policies list.
+        self.policies = policies
+
+    def validate(self):
+        if self.dependencies:
+            self.dependencies.validate()
+        if self.policies:
+            self.policies.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dependencies is not None:
+            result['Dependencies'] = self.dependencies.to_map()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.label is not None:
+            result['Label'] = self.label
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.policies is not None:
+            result['Policies'] = self.policies.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Dependencies') is not None:
+            temp_model = ListAddonsResponseBodyDataEnvironmentsDependencies()
+            self.dependencies = temp_model.from_map(m['Dependencies'])
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Policies') is not None:
+            temp_model = ListAddonsResponseBodyDataEnvironmentsPolicies()
+            self.policies = temp_model.from_map(m['Policies'])
+        return self
+
+
+class ListAddonsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        categories: List[str] = None,
+        dashboards: List[ListAddonsResponseBodyDataDashboards] = None,
+        description: str = None,
+        environments: List[ListAddonsResponseBodyDataEnvironments] = None,
+        icon: str = None,
+        keywords: List[str] = None,
+        language: str = None,
+        latest_release_create_time: str = None,
+        name: str = None,
+        once: bool = None,
+        scene: str = None,
+        version: str = None,
+        weight: str = None,
+    ):
+        # Ailas of the Addon.
+        self.alias = alias
+        # Categories list.
+        self.categories = categories
+        # Dashboard list.
+        self.dashboards = dashboards
+        # Description of the Addon.
+        self.description = description
+        # Environment list.
+        self.environments = environments
+        # Icon address.
+        self.icon = icon
+        # Keyword list.
+        self.keywords = keywords
+        # Language.
+        self.language = language
+        # Last installation time.
+        self.latest_release_create_time = latest_release_create_time
+        # Name of the Addon.
+        self.name = name
+        # Whether to install it only once.
+        self.once = once
+        # Scene of the Addon.
+        self.scene = scene
+        # Version of the Addon.
+        self.version = version
+        # Weight of the Addon.
+        self.weight = weight
+
+    def validate(self):
+        if self.dashboards:
+            for k in self.dashboards:
+                if k:
+                    k.validate()
+        if self.environments:
+            for k in self.environments:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['Alias'] = self.alias
+        if self.categories is not None:
+            result['Categories'] = self.categories
+        result['Dashboards'] = []
+        if self.dashboards is not None:
+            for k in self.dashboards:
+                result['Dashboards'].append(k.to_map() if k else None)
+        if self.description is not None:
+            result['Description'] = self.description
+        result['Environments'] = []
+        if self.environments is not None:
+            for k in self.environments:
+                result['Environments'].append(k.to_map() if k else None)
+        if self.icon is not None:
+            result['Icon'] = self.icon
+        if self.keywords is not None:
+            result['Keywords'] = self.keywords
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.latest_release_create_time is not None:
+            result['LatestReleaseCreateTime'] = self.latest_release_create_time
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.once is not None:
+            result['Once'] = self.once
+        if self.scene is not None:
+            result['Scene'] = self.scene
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alias') is not None:
+            self.alias = m.get('Alias')
+        if m.get('Categories') is not None:
+            self.categories = m.get('Categories')
+        self.dashboards = []
+        if m.get('Dashboards') is not None:
+            for k in m.get('Dashboards'):
+                temp_model = ListAddonsResponseBodyDataDashboards()
+                self.dashboards.append(temp_model.from_map(k))
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.environments = []
+        if m.get('Environments') is not None:
+            for k in m.get('Environments'):
+                temp_model = ListAddonsResponseBodyDataEnvironments()
+                self.environments.append(temp_model.from_map(k))
+        if m.get('Icon') is not None:
+            self.icon = m.get('Icon')
+        if m.get('Keywords') is not None:
+            self.keywords = m.get('Keywords')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('LatestReleaseCreateTime') is not None:
+            self.latest_release_create_time = m.get('LatestReleaseCreateTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Once') is not None:
+            self.once = m.get('Once')
+        if m.get('Scene') is not None:
+            self.scene = m.get('Scene')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        return self
+
+
+class ListAddonsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: List[ListAddonsResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Status code: 200 indicates success.
+        self.code = code
+        # The returned struct.
+        self.data = data
+        # The returned message.
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        # Indicates whether the alert rule was deleted. Valid values:
+        # 
+        # *   `true`: The alert rule was deleted.
+        # *   `false`: The alert rule failed to be deleted.
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListAddonsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListAddonsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAddonsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAddonsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListAlertEventsRequest(TeaModel):
     def __init__(
         self,
@@ -46378,15 +46985,13 @@ class QueryAppMetadataRequest(TeaModel):
         pid: str = None,
         region_id: str = None,
     ):
-        # The array of meta Ids.
+        # The list of metadata IDs. Separate multiple IDs with commas (,).
         self.meta_ids = meta_ids
-        # The mata type.
+        # The metadata type. Valid values: sql: obtains an SQL statement based on sqlId exception: obtains the exception stack based on exceptionId
         self.meta_type = meta_type
-        # The ID of the application.
-        # 
-        # Log on to the **ARMS console**. In the left-side navigation pane, choose **Browser Monitoring** > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\*\*\*\*, you must replace %40 with an at sign (@) to obtain eb4zdose6v@9781be0f44d\*\*\*\*.
+        # The process identifier (PID) of the application. For more information about how to obtain the PID, see "Obtain the PID of an application."
         self.pid = pid
-        # The region ID.
+        # The region ID. Default value: cn-hangzhou.
         self.region_id = region_id
 
     def validate(self):

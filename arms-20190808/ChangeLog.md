@@ -1,3 +1,8 @@
+2024-02-19 Version: 4.3.0
+- Support API ListAddons.
+- Update API Upload: update response param.
+
+
 2024-01-30 Version: 4.2.1
 - Update API CreateIntegrationadd RegionId param.
 - Update API DescribeEnvironmentupdate response param.
