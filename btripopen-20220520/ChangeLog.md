@@ -1,3 +1,7 @@
+2024-02-19 Version: 1.12.0
+- Support API CooperatorHotelBillSettlementQuery.
+
+
 2024-02-06 Version: 1.11.0
 - Generated python 2022-05-20 for btripOpen.
 
