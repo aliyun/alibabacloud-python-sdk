@@ -1,3 +1,9 @@
+2024-02-19 Version: 4.4.1
+- Update API GetLindormInstanceList: update param PageNumber.
+- Update API GetLindormInstanceList: update param PageSize.
+- Update API UpdateInstanceIpWhiteList: update param Delete.
+
+
 2024-01-31 Version: 4.4.0
 - Support API GetClientSourceIp.
 - Support API OpenComputeEngine.
