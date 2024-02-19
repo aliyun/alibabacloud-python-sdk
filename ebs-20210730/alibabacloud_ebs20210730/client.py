@@ -2595,6 +2595,120 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_disk_replica_pairs_with_options_async(request, runtime)
 
+    def describe_disks_with_options(
+        self,
+        request: ebs_20210730_models.DescribeDisksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribeDisksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.disk_ids):
+            query['DiskIds'] = request.disk_ids
+        if not UtilClient.is_unset(request.disk_name):
+            query['DiskName'] = request.disk_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDisks',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDisksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_disks_with_options_async(
+        self,
+        request: ebs_20210730_models.DescribeDisksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribeDisksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.disk_ids):
+            query['DiskIds'] = request.disk_ids
+        if not UtilClient.is_unset(request.disk_name):
+            query['DiskName'] = request.disk_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDisks',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDisksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_disks(
+        self,
+        request: ebs_20210730_models.DescribeDisksRequest,
+    ) -> ebs_20210730_models.DescribeDisksResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_disks_with_options(request, runtime)
+
+    async def describe_disks_async(
+        self,
+        request: ebs_20210730_models.DescribeDisksRequest,
+    ) -> ebs_20210730_models.DescribeDisksResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_disks_with_options_async(request, runtime)
+
     def describe_enterprise_snapshot_policy_with_options(
         self,
         request: ebs_20210730_models.DescribeEnterpriseSnapshotPolicyRequest,
@@ -3370,6 +3484,80 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.failover_disk_replica_pair_with_options_async(request, runtime)
+
+    def get_disk_with_options(
+        self,
+        request: ebs_20210730_models.GetDiskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.GetDiskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.disk_id):
+            query['DiskId'] = request.disk_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDisk',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.GetDiskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_disk_with_options_async(
+        self,
+        request: ebs_20210730_models.GetDiskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.GetDiskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.disk_id):
+            query['DiskId'] = request.disk_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDisk',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.GetDiskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_disk(
+        self,
+        request: ebs_20210730_models.GetDiskRequest,
+    ) -> ebs_20210730_models.GetDiskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_disk_with_options(request, runtime)
+
+    async def get_disk_async(
+        self,
+        request: ebs_20210730_models.GetDiskRequest,
+    ) -> ebs_20210730_models.GetDiskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_disk_with_options_async(request, runtime)
 
     def list_tag_resources_with_options(
         self,
