@@ -4563,6 +4563,16 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.job_id):
             query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.signature):
+            query['Signature'] = request.signature
+        if not UtilClient.is_unset(request.signature_mehtod):
+            query['SignatureMehtod'] = request.signature_mehtod
+        if not UtilClient.is_unset(request.signature_nonce):
+            query['SignatureNonce'] = request.signature_nonce
+        if not UtilClient.is_unset(request.signature_type):
+            query['SignatureType'] = request.signature_type
+        if not UtilClient.is_unset(request.signature_version):
+            query['SignatureVersion'] = request.signature_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4591,6 +4601,16 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.job_id):
             query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.signature):
+            query['Signature'] = request.signature
+        if not UtilClient.is_unset(request.signature_mehtod):
+            query['SignatureMehtod'] = request.signature_mehtod
+        if not UtilClient.is_unset(request.signature_nonce):
+            query['SignatureNonce'] = request.signature_nonce
+        if not UtilClient.is_unset(request.signature_type):
+            query['SignatureType'] = request.signature_type
+        if not UtilClient.is_unset(request.signature_version):
+            query['SignatureVersion'] = request.signature_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

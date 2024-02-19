@@ -1,3 +1,13 @@
+2024-02-19 Version: 2.2.2
+- Update API DeleteLiveSnapshotFiles: update response param.
+- Update API GetBatchMediaProducingJob: add param Action.
+- Update API GetBatchMediaProducingJob: add param Signature.
+- Update API GetBatchMediaProducingJob: add param SignatureMehtod.
+- Update API GetBatchMediaProducingJob: add param SignatureNonce.
+- Update API GetBatchMediaProducingJob: add param SignatureType.
+- Update API GetBatchMediaProducingJob: add param SignatureVersion.
+
+
 2024-01-30 Version: 2.2.1
 - Generated python 2020-11-09 for ICE.
 
