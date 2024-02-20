@@ -526,6 +526,172 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_gateway_with_options_async(request, runtime)
 
+    def add_gateway_auth_with_options(
+        self,
+        tmp_req: mse_20190531_models.AddGatewayAuthRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.AddGatewayAuthResponse:
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.AddGatewayAuthShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.auth_resource_list):
+            request.auth_resource_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.auth_resource_list, 'AuthResourceList', 'json')
+        if not UtilClient.is_unset(tmp_req.external_auth_zjson):
+            request.external_auth_zjsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.external_auth_zjson, 'ExternalAuthZJSON', 'json')
+        if not UtilClient.is_unset(tmp_req.scopes_list):
+            request.scopes_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scopes_list, 'ScopesList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.auth_resource_list_shrink):
+            query['AuthResourceList'] = request.auth_resource_list_shrink
+        if not UtilClient.is_unset(request.client_id):
+            query['ClientId'] = request.client_id
+        if not UtilClient.is_unset(request.client_secret):
+            query['ClientSecret'] = request.client_secret
+        if not UtilClient.is_unset(request.cookie_domain):
+            query['CookieDomain'] = request.cookie_domain
+        if not UtilClient.is_unset(request.external_auth_zjsonshrink):
+            query['ExternalAuthZJSON'] = request.external_auth_zjsonshrink
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.is_white):
+            query['IsWhite'] = request.is_white
+        if not UtilClient.is_unset(request.issuer):
+            query['Issuer'] = request.issuer
+        if not UtilClient.is_unset(request.jwks):
+            query['Jwks'] = request.jwks
+        if not UtilClient.is_unset(request.login_url):
+            query['LoginUrl'] = request.login_url
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.redirect_url):
+            query['RedirectUrl'] = request.redirect_url
+        if not UtilClient.is_unset(request.scopes_list_shrink):
+            query['ScopesList'] = request.scopes_list_shrink
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.sub):
+            query['Sub'] = request.sub
+        if not UtilClient.is_unset(request.token_name):
+            query['TokenName'] = request.token_name
+        if not UtilClient.is_unset(request.token_name_prefix):
+            query['TokenNamePrefix'] = request.token_name_prefix
+        if not UtilClient.is_unset(request.token_pass):
+            query['TokenPass'] = request.token_pass
+        if not UtilClient.is_unset(request.token_position):
+            query['TokenPosition'] = request.token_position
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddGatewayAuth',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.AddGatewayAuthResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_gateway_auth_with_options_async(
+        self,
+        tmp_req: mse_20190531_models.AddGatewayAuthRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.AddGatewayAuthResponse:
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.AddGatewayAuthShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.auth_resource_list):
+            request.auth_resource_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.auth_resource_list, 'AuthResourceList', 'json')
+        if not UtilClient.is_unset(tmp_req.external_auth_zjson):
+            request.external_auth_zjsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.external_auth_zjson, 'ExternalAuthZJSON', 'json')
+        if not UtilClient.is_unset(tmp_req.scopes_list):
+            request.scopes_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scopes_list, 'ScopesList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.auth_resource_list_shrink):
+            query['AuthResourceList'] = request.auth_resource_list_shrink
+        if not UtilClient.is_unset(request.client_id):
+            query['ClientId'] = request.client_id
+        if not UtilClient.is_unset(request.client_secret):
+            query['ClientSecret'] = request.client_secret
+        if not UtilClient.is_unset(request.cookie_domain):
+            query['CookieDomain'] = request.cookie_domain
+        if not UtilClient.is_unset(request.external_auth_zjsonshrink):
+            query['ExternalAuthZJSON'] = request.external_auth_zjsonshrink
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.is_white):
+            query['IsWhite'] = request.is_white
+        if not UtilClient.is_unset(request.issuer):
+            query['Issuer'] = request.issuer
+        if not UtilClient.is_unset(request.jwks):
+            query['Jwks'] = request.jwks
+        if not UtilClient.is_unset(request.login_url):
+            query['LoginUrl'] = request.login_url
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.redirect_url):
+            query['RedirectUrl'] = request.redirect_url
+        if not UtilClient.is_unset(request.scopes_list_shrink):
+            query['ScopesList'] = request.scopes_list_shrink
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.sub):
+            query['Sub'] = request.sub
+        if not UtilClient.is_unset(request.token_name):
+            query['TokenName'] = request.token_name
+        if not UtilClient.is_unset(request.token_name_prefix):
+            query['TokenNamePrefix'] = request.token_name_prefix
+        if not UtilClient.is_unset(request.token_pass):
+            query['TokenPass'] = request.token_pass
+        if not UtilClient.is_unset(request.token_position):
+            query['TokenPosition'] = request.token_position
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddGatewayAuth',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.AddGatewayAuthResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_gateway_auth(
+        self,
+        request: mse_20190531_models.AddGatewayAuthRequest,
+    ) -> mse_20190531_models.AddGatewayAuthResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_gateway_auth_with_options(request, runtime)
+
+    async def add_gateway_auth_async(
+        self,
+        request: mse_20190531_models.AddGatewayAuthRequest,
+    ) -> mse_20190531_models.AddGatewayAuthResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_gateway_auth_with_options_async(request, runtime)
+
     def add_gateway_auth_consumer_with_options(
         self,
         request: mse_20190531_models.AddGatewayAuthConsumerRequest,
@@ -6411,6 +6577,88 @@ class Client(OpenApiClient):
     ) -> mse_20190531_models.GetGatewayAuthConsumerDetailResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_gateway_auth_consumer_detail_with_options_async(request, runtime)
+
+    def get_gateway_auth_detail_with_options(
+        self,
+        request: mse_20190531_models.GetGatewayAuthDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.GetGatewayAuthDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetGatewayAuthDetail',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.GetGatewayAuthDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_gateway_auth_detail_with_options_async(
+        self,
+        request: mse_20190531_models.GetGatewayAuthDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.GetGatewayAuthDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetGatewayAuthDetail',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.GetGatewayAuthDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_gateway_auth_detail(
+        self,
+        request: mse_20190531_models.GetGatewayAuthDetailRequest,
+    ) -> mse_20190531_models.GetGatewayAuthDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_gateway_auth_detail_with_options(request, runtime)
+
+    async def get_gateway_auth_detail_async(
+        self,
+        request: mse_20190531_models.GetGatewayAuthDetailRequest,
+    ) -> mse_20190531_models.GetGatewayAuthDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_gateway_auth_detail_with_options_async(request, runtime)
 
     def get_gateway_domain_detail_with_options(
         self,
