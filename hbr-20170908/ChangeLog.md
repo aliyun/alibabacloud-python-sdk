@@ -1,3 +1,7 @@
+2024-02-20 Version: 1.0.4
+- Update API DescribePoliciesV2: update response param.
+
+
 2024-02-01 Version: 1.0.3
 - Update API DescribeVaultsupdate response param.
 
