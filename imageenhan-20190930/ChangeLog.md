@@ -1,3 +1,10 @@
+2024-02-20 Version: 2.0.11
+- Update API GenerateCartoonizedImage: update param ImageType.
+- Update API GenerateCartoonizedImage: update response param.
+- Update API GenerateImageWithTextAndImage: update response param.
+- Update API GenerateSuperResolutionImage: update response param.
+
+
 2023-02-17 Version: 2.0.10
 - Release GenerateSuperResolutionImage.
 
