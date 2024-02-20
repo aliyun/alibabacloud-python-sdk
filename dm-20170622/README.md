@@ -28,7 +28,7 @@ pip install alibabacloud_dm20170622
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/dm-20170622/ChangeLog.md).
 
 ## References
 
