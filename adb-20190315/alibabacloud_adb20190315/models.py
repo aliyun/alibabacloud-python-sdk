@@ -18317,6 +18317,7 @@ class DescribeTableStatisticsRequest(TeaModel):
     def __init__(
         self,
         dbcluster_id: str = None,
+        keyword: str = None,
         order: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -18330,6 +18331,7 @@ class DescribeTableStatisticsRequest(TeaModel):
         # 
         # >  You can call the [DescribeDBClusters](~~129857~~) operation to query details about all AnalyticDB for MySQL clusters in a specific region, including cluster IDs.
         self.dbcluster_id = dbcluster_id
+        self.keyword = keyword
         # The order in which to sort the retrieved records by field. Specify this value in the JSON format. The value is an ordered array that uses the order of the input array and contains `Field` and `Type`. Example: `[{ "Field":"TableName", "Type":"Asc" }]`.
         # 
         # *   In the example, `Field` indicates the field that is used to sort the retrieved records. Set the value of Field to `TableName`.
@@ -18363,6 +18365,8 @@ class DescribeTableStatisticsRequest(TeaModel):
         result = dict()
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
         if self.order is not None:
             result['Order'] = self.order
         if self.owner_account is not None:
@@ -18385,6 +18389,8 @@ class DescribeTableStatisticsRequest(TeaModel):
         m = m or dict()
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
         if m.get('Order') is not None:
             self.order = m.get('Order')
         if m.get('OwnerAccount') is not None:
@@ -18409,12 +18415,16 @@ class DescribeTableStatisticsResponseBodyItemsTableStatisticRecords(TeaModel):
         self,
         cold_data_size: int = None,
         data_size: int = None,
+        hot_data_size: int = None,
         index_size: int = None,
+        other_size: int = None,
         partition_count: int = None,
         primary_key_index_size: int = None,
         row_count: int = None,
         schema_name: str = None,
+        space_ratio: float = None,
         table_name: str = None,
+        total_size: int = None,
     ):
         # The total amount of cold data. Unit: byte.
         # 
@@ -18422,8 +18432,10 @@ class DescribeTableStatisticsResponseBodyItemsTableStatisticRecords(TeaModel):
         self.cold_data_size = cold_data_size
         # The amount of data in the table. Unit: byte.
         self.data_size = data_size
+        self.hot_data_size = hot_data_size
         # The amount of data in indexes. Unit: byte.
         self.index_size = index_size
+        self.other_size = other_size
         # The number of partitions.
         self.partition_count = partition_count
         # The amount of data in primary key indexes. Unit: byte.
@@ -18432,8 +18444,10 @@ class DescribeTableStatisticsResponseBodyItemsTableStatisticRecords(TeaModel):
         self.row_count = row_count
         # The name of the database.
         self.schema_name = schema_name
+        self.space_ratio = space_ratio
         # The name of the table.
         self.table_name = table_name
+        self.total_size = total_size
 
     def validate(self):
         pass
@@ -18448,8 +18462,12 @@ class DescribeTableStatisticsResponseBodyItemsTableStatisticRecords(TeaModel):
             result['ColdDataSize'] = self.cold_data_size
         if self.data_size is not None:
             result['DataSize'] = self.data_size
+        if self.hot_data_size is not None:
+            result['HotDataSize'] = self.hot_data_size
         if self.index_size is not None:
             result['IndexSize'] = self.index_size
+        if self.other_size is not None:
+            result['OtherSize'] = self.other_size
         if self.partition_count is not None:
             result['PartitionCount'] = self.partition_count
         if self.primary_key_index_size is not None:
@@ -18458,8 +18476,12 @@ class DescribeTableStatisticsResponseBodyItemsTableStatisticRecords(TeaModel):
             result['RowCount'] = self.row_count
         if self.schema_name is not None:
             result['SchemaName'] = self.schema_name
+        if self.space_ratio is not None:
+            result['SpaceRatio'] = self.space_ratio
         if self.table_name is not None:
             result['TableName'] = self.table_name
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
         return result
 
     def from_map(self, m: dict = None):
@@ -18468,8 +18490,12 @@ class DescribeTableStatisticsResponseBodyItemsTableStatisticRecords(TeaModel):
             self.cold_data_size = m.get('ColdDataSize')
         if m.get('DataSize') is not None:
             self.data_size = m.get('DataSize')
+        if m.get('HotDataSize') is not None:
+            self.hot_data_size = m.get('HotDataSize')
         if m.get('IndexSize') is not None:
             self.index_size = m.get('IndexSize')
+        if m.get('OtherSize') is not None:
+            self.other_size = m.get('OtherSize')
         if m.get('PartitionCount') is not None:
             self.partition_count = m.get('PartitionCount')
         if m.get('PrimaryKeyIndexSize') is not None:
@@ -18478,8 +18504,12 @@ class DescribeTableStatisticsResponseBodyItemsTableStatisticRecords(TeaModel):
             self.row_count = m.get('RowCount')
         if m.get('SchemaName') is not None:
             self.schema_name = m.get('SchemaName')
+        if m.get('SpaceRatio') is not None:
+            self.space_ratio = m.get('SpaceRatio')
         if m.get('TableName') is not None:
             self.table_name = m.get('TableName')
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
         return self
 
 
