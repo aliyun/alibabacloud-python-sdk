@@ -1,3 +1,10 @@
+2024-02-20 Version: 1.0.11
+- Update API BatchSendMail: add param UnSubscribeFilterLevel.
+- Update API BatchSendMail: add param UnSubscribeLinkType.
+- Update API SingleSendMail: add param UnSubscribeFilterLevel.
+- Update API SingleSendMail: add param UnSubscribeLinkType.
+
+
 2024-01-15 Version: 1.0.10
 - Generated python 2015-11-23 for Dm.
 
