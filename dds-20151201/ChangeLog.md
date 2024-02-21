@@ -1,3 +1,6 @@
+2024-02-21 Version: 5.0.7
+- Generated python 2015-12-01 for Dds.
+
 2024-01-31 Version: 5.0.6
 - Update API DescribePriceupdate response param.
 - Update API RenewDBInstanceadd AutoRenew param.
