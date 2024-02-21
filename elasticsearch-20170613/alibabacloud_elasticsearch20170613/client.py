@@ -5286,6 +5286,64 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_region_configuration_with_options_async(request, headers, runtime)
 
+    def get_regional_instance_config_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> elasticsearch_20170613_models.GetRegionalInstanceConfigResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetRegionalInstanceConfig',
+            version='2017-06-13',
+            protocol='HTTPS',
+            pathname=f'/openapi/regions/instance-config',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            elasticsearch_20170613_models.GetRegionalInstanceConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_regional_instance_config_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> elasticsearch_20170613_models.GetRegionalInstanceConfigResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetRegionalInstanceConfig',
+            version='2017-06-13',
+            protocol='HTTPS',
+            pathname=f'/openapi/regions/instance-config',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            elasticsearch_20170613_models.GetRegionalInstanceConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_regional_instance_config(self) -> elasticsearch_20170613_models.GetRegionalInstanceConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_regional_instance_config_with_options(headers, runtime)
+
+    async def get_regional_instance_config_async(self) -> elasticsearch_20170613_models.GetRegionalInstanceConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_regional_instance_config_with_options_async(headers, runtime)
+
     def get_suggest_shrinkable_nodes_with_options(
         self,
         instance_id: str,

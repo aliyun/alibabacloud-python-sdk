@@ -1,3 +1,7 @@
+2024-02-21 Version: 1.3.0
+- Support API GetRegionalInstanceConfig.
+
+
 2023-11-28 Version: 1.2.0
 - Generated python 2017-06-13 for elasticsearch.
 
