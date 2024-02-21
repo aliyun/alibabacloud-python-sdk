@@ -1,3 +1,14 @@
+2024-02-21 Version: 5.5.2
+- Update API ConfigureDtsJob: add param MaxDu.
+- Update API ConfigureDtsJob: add param MinDu.
+- Update API ConfigureSubscription: add param MaxDu.
+- Update API ConfigureSubscription: add param MinDu.
+- Update API CreateDtsInstance: add param MaxDu.
+- Update API CreateDtsInstance: add param MinDu.
+- Update API DescribeDtsJobDetail: update response param.
+- Update API DescribeDtsJobs: update response param.
+
+
 2024-01-05 Version: 5.5.1
 - Generated python 2020-01-01 for Dts.
 

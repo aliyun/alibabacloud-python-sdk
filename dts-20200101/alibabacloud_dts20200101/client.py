@@ -8079,6 +8079,13 @@ class Client(OpenApiClient):
         tmp_req: dts_20200101_models.ModifyDtsJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifyDtsJobResponse:
+        """
+        When you configure a data synchronization task in the Data Transmission Service (DTS) console, you can move the pointer over *Next: Save Task Settings and Precheck** in the **Advanced Settings** step and click **Preview OpenAPI parameters** to view the parameters that are used to configure the task by calling an API operation.
+        
+        @param tmp_req: ModifyDtsJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDtsJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dts_20200101_models.ModifyDtsJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8139,6 +8146,13 @@ class Client(OpenApiClient):
         tmp_req: dts_20200101_models.ModifyDtsJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifyDtsJobResponse:
+        """
+        When you configure a data synchronization task in the Data Transmission Service (DTS) console, you can move the pointer over *Next: Save Task Settings and Precheck** in the **Advanced Settings** step and click **Preview OpenAPI parameters** to view the parameters that are used to configure the task by calling an API operation.
+        
+        @param tmp_req: ModifyDtsJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDtsJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dts_20200101_models.ModifyDtsJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8198,6 +8212,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ModifyDtsJobRequest,
     ) -> dts_20200101_models.ModifyDtsJobResponse:
+        """
+        When you configure a data synchronization task in the Data Transmission Service (DTS) console, you can move the pointer over *Next: Save Task Settings and Precheck** in the **Advanced Settings** step and click **Preview OpenAPI parameters** to view the parameters that are used to configure the task by calling an API operation.
+        
+        @param request: ModifyDtsJobRequest
+        @return: ModifyDtsJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dts_job_with_options(request, runtime)
 
@@ -8205,6 +8225,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ModifyDtsJobRequest,
     ) -> dts_20200101_models.ModifyDtsJobResponse:
+        """
+        When you configure a data synchronization task in the Data Transmission Service (DTS) console, you can move the pointer over *Next: Save Task Settings and Precheck** in the **Advanced Settings** step and click **Preview OpenAPI parameters** to view the parameters that are used to configure the task by calling an API operation.
+        
+        @param request: ModifyDtsJobRequest
+        @return: ModifyDtsJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dts_job_with_options_async(request, runtime)
 
@@ -10191,6 +10217,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.StartReverseWriterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.StartReverseWriterResponse:
+        """
+        Before you call this operation, make sure that your instance is not released and is paused. You can check the status of the instance in the Data Transmission Service (DTS) console or by calling the [DescribeDtsJobDetail](~~208925~~) operation.
+        
+        @param request: StartReverseWriterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartReverseWriterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.check_point):
@@ -10221,6 +10254,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.StartReverseWriterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.StartReverseWriterResponse:
+        """
+        Before you call this operation, make sure that your instance is not released and is paused. You can check the status of the instance in the Data Transmission Service (DTS) console or by calling the [DescribeDtsJobDetail](~~208925~~) operation.
+        
+        @param request: StartReverseWriterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartReverseWriterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.check_point):
@@ -10250,6 +10290,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.StartReverseWriterRequest,
     ) -> dts_20200101_models.StartReverseWriterResponse:
+        """
+        Before you call this operation, make sure that your instance is not released and is paused. You can check the status of the instance in the Data Transmission Service (DTS) console or by calling the [DescribeDtsJobDetail](~~208925~~) operation.
+        
+        @param request: StartReverseWriterRequest
+        @return: StartReverseWriterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_reverse_writer_with_options(request, runtime)
 
@@ -10257,6 +10303,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.StartReverseWriterRequest,
     ) -> dts_20200101_models.StartReverseWriterResponse:
+        """
+        Before you call this operation, make sure that your instance is not released and is paused. You can check the status of the instance in the Data Transmission Service (DTS) console or by calling the [DescribeDtsJobDetail](~~208925~~) operation.
+        
+        @param request: StartReverseWriterRequest
+        @return: StartReverseWriterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_reverse_writer_with_options_async(request, runtime)
 

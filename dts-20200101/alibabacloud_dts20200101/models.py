@@ -1218,9 +1218,6 @@ class ConfigureDtsJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1734,9 +1731,6 @@ class ConfigureMigrationJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1934,9 +1928,6 @@ class ConfigureMigrationJobAlertResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2358,9 +2349,6 @@ class ConfigureSubscriptionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2744,9 +2732,6 @@ class ConfigureSubscriptionInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2944,9 +2929,6 @@ class ConfigureSubscriptionInstanceAlertResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3454,9 +3436,6 @@ class ConfigureSynchronizationJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3666,9 +3645,6 @@ class ConfigureSynchronizationJobAlertResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3837,9 +3813,6 @@ class ConfigureSynchronizationJobReplicatorCompareResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4105,9 +4078,6 @@ class CountJobByConditionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4285,9 +4255,6 @@ class CreateConsumerChannelResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4459,9 +4426,6 @@ class CreateConsumerGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4652,9 +4616,6 @@ class CreateDedicatedClusterMonitorRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5033,9 +4994,6 @@ class CreateDtsInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5265,9 +5223,6 @@ class CreateJobMonitorRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5431,9 +5386,6 @@ class CreateMigrationJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5565,9 +5517,6 @@ class CreateReverseDtsJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5791,9 +5740,6 @@ class CreateSubscriptionInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6116,9 +6062,6 @@ class CreateSynchronizationJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6269,9 +6212,6 @@ class DeleteConsumerChannelResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6416,9 +6356,6 @@ class DeleteConsumerGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6595,9 +6532,6 @@ class DeleteDtsJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6749,9 +6683,6 @@ class DeleteDtsJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6889,9 +6820,6 @@ class DeleteMigrationJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7029,9 +6957,6 @@ class DeleteSubscriptionInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7169,9 +7094,6 @@ class DeleteSynchronizationJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7351,9 +7273,6 @@ class DescribeChannelAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7658,9 +7577,6 @@ class DescribeCheckJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7968,9 +7884,6 @@ class DescribeClusterOperateLogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8237,9 +8150,6 @@ class DescribeClusterUsedUtilizationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8591,9 +8501,6 @@ class DescribeConnectionStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8863,9 +8770,6 @@ class DescribeConsumerChannelResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9149,9 +9053,6 @@ class DescribeConsumerGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9301,9 +9202,6 @@ class DescribeDTSIPResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9341,9 +9239,16 @@ class DescribeDataCheckReportUrlRequest(TeaModel):
         dts_job_id: str = None,
         tb_name: str = None,
     ):
+        # The data verification method. Valid values:
+        # 
+        # *   **1**: full data verification.
+        # *   **2**: incremental data verification.
         self.check_type = check_type
+        # The name of the verified source database.
         self.db_name = db_name
+        # The ID of the Data Transmission Service (DTS) task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
         self.dts_job_id = dts_job_id
+        # The name of the table verified in the source database.
         self.tb_name = tb_name
 
     def validate(self):
@@ -9388,11 +9293,17 @@ class DescribeDataCheckReportUrlResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The URL for downloading the verification report.
         self.dynamic_message = dynamic_message
+        # The error code returned if the request failed.
         self.err_code = err_code
+        # The error message returned if the request failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -9447,9 +9358,6 @@ class DescribeDataCheckReportUrlResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9790,9 +9698,6 @@ class DescribeDataCheckTableDetailsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10025,9 +9930,6 @@ class DescribeDataCheckTableDiffDetailsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10322,9 +10224,6 @@ class DescribeDedicatedClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10498,9 +10397,6 @@ class DescribeDedicatedClusterMonitorRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10795,9 +10691,6 @@ class DescribeDtsEtlJobVersionInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16572,9 +16465,6 @@ class DescribeDtsJobDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16629,6 +16519,10 @@ class DescribeDtsJobsRequest(TeaModel):
     ):
         # The ID of the DTS dedicated cluster on which the task runs.
         self.dedicated_cluster_id = dedicated_cluster_id
+        # The environment tag of the DTS instance. Valid values:
+        # 
+        # - **normal**\
+        # - **online**\
         self.dts_bis_label = dts_bis_label
         # The ID of the data migration, data synchronization, or change tracking instance.
         self.dts_instance_id = dts_instance_id
@@ -17332,11 +17226,11 @@ class DescribeDtsJobsResponseBodyDtsJobListMigrationMode(TeaModel):
         self.data_synchronization = data_synchronization
         # Indicates whether full data verification is performed. Valid values:
         # -  **true**: yes
-        # -   **false**: no
+        # -  **false**: no
         self.full_data_check = full_data_check
         # Indicates whether incremental data verification is performed. Valid values:
         # -  **true**: yes
-        # -   **false**: no
+        # -  **false**: no
         self.inc_data_check = inc_data_check
         # Indicates whether schema migration or schema synchronization is performed. Valid values:
         # 
@@ -17923,9 +17817,18 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJobFullDataCheckStatus(TeaMode
         progress: str = None,
         status: str = None,
     ):
+        # The error message returned if the task failed.
         self.error_message = error_message
+        # The progress of the full data verification task. Unit: percentage.
         self.percent = percent
+        # The progress of the full data verification task.
         self.progress = progress
+        # The state of the full data verification task. Valid values:
+        # 
+        # - **NotStarted**: The verification is not started. 
+        # - **Checking**: The verification is in progress. 
+        # - **Failed**: The verification failed. 
+        # - **Finished**: The verification is complete.
         self.status = status
 
     def validate(self):
@@ -17968,9 +17871,18 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJobIncDataCheckStatus(TeaModel
         progress: str = None,
         status: str = None,
     ):
+        # The error message returned if the task failed.
         self.error_message = error_message
+        # The progress of the incremental data verification task. Unit: percentage.
         self.percent = percent
+        # The progress of the incremental data verification task.
         self.progress = progress
+        # The state of the incremental data verification task. Valid values:
+        # 
+        # - **Catched**: The verification is delayed. 
+        # - **NotStarted**: The verification is not started. 
+        # - **Checking**: The verification is in progress. 
+        # - **Failed**: The verification failed.
         self.status = status
 
     def validate(self):
@@ -18023,7 +17935,13 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode(TeaModel):
         # -  **true**\
         # -  **false**\
         self.data_synchronization = data_synchronization
+        # Indicates whether full data verification is performed. Valid values:
+        # -  **true**: yes
+        # -  **false**: no
         self.full_data_check = full_data_check
+        # Indicates whether incremental data verification is performed. Valid values:
+        # -  **true**: yes
+        # -  **false**: no
         self.inc_data_check = inc_data_check
         # Indicates whether initial schema synchronization is performed. Valid values:
         # -  **true**\
@@ -18453,7 +18371,9 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJob(TeaModel):
         # 
         # > This parameter is returned only if the returned value of **PayType** is **PrePaid**.
         self.expire_time = expire_time
+        # The state information about the full data verification task.
         self.full_data_check_status = full_data_check_status
+        # The state information about the incremental data verification task.
         self.inc_data_check_status = inc_data_check_status
         self.max_du = max_du
         # The memory that has been used. Unit: MB.
@@ -18939,6 +18859,10 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
         self.delay = delay
         # The connection settings of the destination instance.
         self.destination_endpoint = destination_endpoint
+        # The environment tag of the DTS instance. Valid values:
+        # 
+        # - **normal**\
+        # - **online**\
         self.dts_bis_label = dts_bis_label
         # The ID of the data synchronization instance.
         self.dts_instance_id = dts_instance_id
@@ -21340,9 +21264,6 @@ class DescribeDtsJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21632,9 +21553,6 @@ class DescribeDtsServiceLogResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21799,9 +21717,6 @@ class DescribeEndpointSwitchStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22026,9 +21941,6 @@ class DescribeEtlJobLogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22545,9 +22457,6 @@ class DescribeInitializationStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22816,9 +22725,6 @@ class DescribeJobMonitorRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23126,9 +23032,6 @@ class DescribeMetricListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23328,9 +23231,6 @@ class DescribeMigrationJobAlertResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24052,9 +23952,6 @@ class DescribeMigrationJobDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24851,9 +24748,6 @@ class DescribeMigrationJobStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25882,9 +25776,6 @@ class DescribeMigrationJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27491,9 +27382,6 @@ class DescribePreCheckStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27693,9 +27581,6 @@ class DescribeSubscriptionInstanceAlertResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28190,9 +28075,6 @@ class DescribeSubscriptionInstanceStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28941,9 +28823,6 @@ class DescribeSubscriptionInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29234,9 +29113,6 @@ class DescribeSubscriptionMetaResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29461,9 +29337,6 @@ class DescribeSynchronizationJobAlertResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29632,9 +29505,6 @@ class DescribeSynchronizationJobReplicatorCompareResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30571,9 +30441,6 @@ class DescribeSynchronizationJobStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30855,9 +30722,6 @@ class DescribeSynchronizationJobStatusListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -31927,9 +31791,6 @@ class DescribeSynchronizationJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -32405,9 +32266,6 @@ class DescribeSynchronizationObjectModifyStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -32580,9 +32438,6 @@ class DescribeTagKeysResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -32766,9 +32621,6 @@ class DescribeTagValuesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -32954,9 +32806,6 @@ class InitDtsRdsInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -33395,9 +33244,6 @@ class ListDedicatedClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -33697,9 +33543,6 @@ class ListTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -33877,9 +33720,6 @@ class ModifyConsumerChannelResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -34057,9 +33897,6 @@ class ModifyConsumerGroupPasswordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -34204,9 +34041,6 @@ class ModifyConsumptionTimestampResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -34377,9 +34211,6 @@ class ModifyDedicatedClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -34429,14 +34260,27 @@ class ModifyDtsJobRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        self.data_initialization = data_initialization
-        self.data_synchronization = data_synchronization
-        # The objects of the data synchronization task after modification. The value is a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+        # Specifies whether to perform full data migration or synchronization. Valid values:
         # 
-        # >  Before you call the ModifyDtsJob operation, we recommend that you call the [DescribeDtsJobDetail](~~208925~~) to query the current objects of the data synchronization task. Then, you can specify the new objects based on your business requirements. For example, if the current objects are Table A and Table B and you need to add Table C, you must specify Table A, Table B, and Table C for this parameter.
+        # *   **true**\
+        # *   **false**\
+        self.data_initialization = data_initialization
+        # Specifies whether to perform incremental data migration or synchronization. Valid values:
+        # 
+        # *   **false**\
+        # *   **true**\
+        self.data_synchronization = data_synchronization
+        # The objects of the data synchronization task after modification. The value must be a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+        # 
+        # > 
+        # 
+        # *   The new value of DbList overwrites the original value. Make sure that all the objects that you want to synchronize are specified. Otherwise, some objects may be lost. Specify this parameter with caution.
+        # 
+        # *   Before you call the ModifyDtsJob operation, we recommend that you call the [DescribeDtsJobDetail](~~208925~~) operation to query the current objects of the data synchronization task. Then, you can specify the new objects based on your business requirements. For example, if the current objects are Table A and Table B and you need to add Table C, you must specify Table A, Table B, and Table C for this parameter.
         self.db_list = db_list
         # The ID of the data synchronization instance.
         self.dts_instance_id = dts_instance_id
+        # The synchronization task ID. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
         self.dts_job_id = dts_job_id
         # The operator that is related to the extract, transform, and load (ETL) feature and dedicated to T+1 business.
         self.etl_operator_column_reference = etl_operator_column_reference
@@ -34450,6 +34294,10 @@ class ModifyDtsJobRequest(TeaModel):
         self.region_id = region_id
         # The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](~~176470~~).
         self.reserved = reserved
+        # Specifies whether to perform schema migration or synchronization. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.structure_initialization = structure_initialization
         # The synchronization direction. Valid values:
         # 
@@ -34553,14 +34401,27 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        self.data_initialization = data_initialization
-        self.data_synchronization = data_synchronization
-        # The objects of the data synchronization task after modification. The value is a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+        # Specifies whether to perform full data migration or synchronization. Valid values:
         # 
-        # >  Before you call the ModifyDtsJob operation, we recommend that you call the [DescribeDtsJobDetail](~~208925~~) to query the current objects of the data synchronization task. Then, you can specify the new objects based on your business requirements. For example, if the current objects are Table A and Table B and you need to add Table C, you must specify Table A, Table B, and Table C for this parameter.
+        # *   **true**\
+        # *   **false**\
+        self.data_initialization = data_initialization
+        # Specifies whether to perform incremental data migration or synchronization. Valid values:
+        # 
+        # *   **false**\
+        # *   **true**\
+        self.data_synchronization = data_synchronization
+        # The objects of the data synchronization task after modification. The value must be a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+        # 
+        # > 
+        # 
+        # *   The new value of DbList overwrites the original value. Make sure that all the objects that you want to synchronize are specified. Otherwise, some objects may be lost. Specify this parameter with caution.
+        # 
+        # *   Before you call the ModifyDtsJob operation, we recommend that you call the [DescribeDtsJobDetail](~~208925~~) operation to query the current objects of the data synchronization task. Then, you can specify the new objects based on your business requirements. For example, if the current objects are Table A and Table B and you need to add Table C, you must specify Table A, Table B, and Table C for this parameter.
         self.db_list = db_list
         # The ID of the data synchronization instance.
         self.dts_instance_id = dts_instance_id
+        # The synchronization task ID. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
         self.dts_job_id = dts_job_id
         # The operator that is related to the extract, transform, and load (ETL) feature and dedicated to T+1 business.
         self.etl_operator_column_reference = etl_operator_column_reference
@@ -34574,6 +34435,10 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
         self.region_id = region_id
         # The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](~~176470~~).
         self.reserved = reserved
+        # Specifies whether to perform schema migration or synchronization. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.structure_initialization = structure_initialization
         # The synchronization direction. Valid values:
         # 
@@ -34677,14 +34542,27 @@ class ModifyDtsJobShrinkRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        self.data_initialization = data_initialization
-        self.data_synchronization = data_synchronization
-        # The objects of the data synchronization task after modification. The value is a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+        # Specifies whether to perform full data migration or synchronization. Valid values:
         # 
-        # >  Before you call the ModifyDtsJob operation, we recommend that you call the [DescribeDtsJobDetail](~~208925~~) to query the current objects of the data synchronization task. Then, you can specify the new objects based on your business requirements. For example, if the current objects are Table A and Table B and you need to add Table C, you must specify Table A, Table B, and Table C for this parameter.
+        # *   **true**\
+        # *   **false**\
+        self.data_initialization = data_initialization
+        # Specifies whether to perform incremental data migration or synchronization. Valid values:
+        # 
+        # *   **false**\
+        # *   **true**\
+        self.data_synchronization = data_synchronization
+        # The objects of the data synchronization task after modification. The value must be a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+        # 
+        # > 
+        # 
+        # *   The new value of DbList overwrites the original value. Make sure that all the objects that you want to synchronize are specified. Otherwise, some objects may be lost. Specify this parameter with caution.
+        # 
+        # *   Before you call the ModifyDtsJob operation, we recommend that you call the [DescribeDtsJobDetail](~~208925~~) operation to query the current objects of the data synchronization task. Then, you can specify the new objects based on your business requirements. For example, if the current objects are Table A and Table B and you need to add Table C, you must specify Table A, Table B, and Table C for this parameter.
         self.db_list_shrink = db_list_shrink
         # The ID of the data synchronization instance.
         self.dts_instance_id = dts_instance_id
+        # The synchronization task ID. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
         self.dts_job_id = dts_job_id
         # The operator that is related to the extract, transform, and load (ETL) feature and dedicated to T+1 business.
         self.etl_operator_column_reference = etl_operator_column_reference
@@ -34698,6 +34576,10 @@ class ModifyDtsJobShrinkRequest(TeaModel):
         self.region_id = region_id
         # The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](~~176470~~).
         self.reserved = reserved
+        # Specifies whether to perform schema migration or synchronization. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.structure_initialization = structure_initialization
         # The synchronization direction. Valid values:
         # 
@@ -34858,9 +34740,6 @@ class ModifyDtsJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -34974,9 +34853,6 @@ class ModifyDtsJobConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -35126,9 +35002,6 @@ class ModifyDtsJobDedicatedClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -35290,9 +35163,6 @@ class ModifyDtsJobDuLimitResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -35508,9 +35378,6 @@ class ModifyDtsJobEndpointResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -35668,9 +35535,6 @@ class ModifyDtsJobNameResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -35849,9 +35713,6 @@ class ModifyDtsJobPasswordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -36007,9 +35868,6 @@ class ModifyDynamicConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -36178,9 +36036,6 @@ class ModifySubscriptionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -36325,9 +36180,6 @@ class ModifySubscriptionObjectResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -36492,9 +36344,6 @@ class ModifySynchronizationObjectResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -36705,9 +36554,6 @@ class RenewInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -36876,9 +36722,6 @@ class ResetDtsJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -37030,9 +36873,6 @@ class ResetSynchronizationJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -37176,9 +37016,6 @@ class ReverseTwoWayDirectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -37322,9 +37159,6 @@ class ShieldPrecheckResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -37562,9 +37396,6 @@ class SkipPreCheckResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -37735,9 +37566,6 @@ class StartDtsJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -37890,9 +37718,6 @@ class StartDtsJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -38030,9 +37855,6 @@ class StartMigrationJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -38068,7 +37890,11 @@ class StartReverseWriterRequest(TeaModel):
         check_point: str = None,
         dts_job_id: str = None,
     ):
+        # The offset of the Incremental Write module. Specify a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. 
+        # 
+        # > The default value is the offset that is automatically saved by DTS when the task is paused.
         self.check_point = check_point
+        # The ID of the reverse task that was created by calling the CreateReverseDtsJob operation.
         self.dts_job_id = dts_job_id
 
     def validate(self):
@@ -38103,9 +37929,13 @@ class StartReverseWriterResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the request failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -38152,9 +37982,6 @@ class StartReverseWriterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -38299,9 +38126,6 @@ class StartSubscriptionInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -38453,9 +38277,6 @@ class StartSynchronizationJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -38612,9 +38433,6 @@ class StopDedicatedClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -38783,9 +38601,6 @@ class StopDtsJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -38938,9 +38753,6 @@ class StopDtsJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -39085,9 +38897,6 @@ class StopMigrationJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -39334,9 +39143,6 @@ class SummaryJobDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -39508,9 +39314,6 @@ class SuspendDtsJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -39663,9 +39466,6 @@ class SuspendDtsJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -39810,9 +39610,6 @@ class SuspendMigrationJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -39964,9 +39761,6 @@ class SuspendSynchronizationJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -40116,9 +39910,6 @@ class SwitchPhysicalDtsJobToCloudResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -40400,9 +40191,6 @@ class SwitchSynchronizationEndpointResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -40591,9 +40379,6 @@ class TagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -40800,9 +40585,6 @@ class TransferInstanceClassResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -41027,9 +40809,6 @@ class TransferPayTypeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -41181,9 +40960,6 @@ class UntagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -41344,9 +41120,6 @@ class UpgradeTwoWayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -41521,9 +41294,6 @@ class WhiteIpListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
