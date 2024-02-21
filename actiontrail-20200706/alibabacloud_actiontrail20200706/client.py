@@ -731,6 +731,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_trails_with_options_async(request, runtime)
 
+    def enable_insight_with_options(
+        self,
+        request: actiontrail_20200706_models.EnableInsightRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> actiontrail_20200706_models.EnableInsightResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.insight_type):
+            query['InsightType'] = request.insight_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableInsight',
+            version='2020-07-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            actiontrail_20200706_models.EnableInsightResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_insight_with_options_async(
+        self,
+        request: actiontrail_20200706_models.EnableInsightRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> actiontrail_20200706_models.EnableInsightResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.insight_type):
+            query['InsightType'] = request.insight_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableInsight',
+            version='2020-07-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            actiontrail_20200706_models.EnableInsightResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_insight(
+        self,
+        request: actiontrail_20200706_models.EnableInsightRequest,
+    ) -> actiontrail_20200706_models.EnableInsightResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.enable_insight_with_options(request, runtime)
+
+    async def enable_insight_async(
+        self,
+        request: actiontrail_20200706_models.EnableInsightRequest,
+    ) -> actiontrail_20200706_models.EnableInsightResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_insight_with_options_async(request, runtime)
+
     def get_access_key_last_used_events_with_options(
         self,
         request: actiontrail_20200706_models.GetAccessKeyLastUsedEventsRequest,

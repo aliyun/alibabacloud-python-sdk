@@ -1,3 +1,7 @@
+2024-02-21 Version: 2.3.0
+- Support API EnableInsight.
+
+
 2024-01-09 Version: 2.2.1
 - Generated python 2020-07-06 for Actiontrail.
 
