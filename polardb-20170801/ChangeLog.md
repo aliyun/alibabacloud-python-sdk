@@ -1,3 +1,6 @@
+2024-02-21 Version: 5.0.1
+- Generated python 2017-08-01 for polardb.
+
 2024-02-04 Version: 5.0.0
 - Delete API UpgradeDBClusterMinorVersion.
 - Update API DescribeDBProxyPerformanceadd DBEndpointId param.
