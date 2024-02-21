@@ -1,3 +1,6 @@
+2024-02-21 Version: 3.3.7
+- Generated python 2019-09-10 for ROS.
+
 2024-01-30 Version: 3.3.6
 - Update API DeleteStackInstancesupdate DeploymentTargets param.
 

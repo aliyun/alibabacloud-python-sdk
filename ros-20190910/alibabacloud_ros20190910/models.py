@@ -4091,6 +4091,9 @@ class DeleteStackInstancesRequestDeploymentTargets(TeaModel):
         account_ids: List[str] = None,
         rd_folder_ids: List[str] = None,
     ):
+        # The IDs of the execution accounts within which you want to deploy stacks in self-managed mode. You can specify up to 20 execution account IDs.
+        # 
+        # > To view the folder IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the basic information about a folder](~~111223~~).
         self.account_ids = account_ids
         # The IDs of the folders in the resource directory. You can add up to five folder IDs.
         # 
@@ -18366,7 +18369,7 @@ class ListTemplateScratchesRequest(TeaModel):
         self.tags = tags
         # The ID of the scenario.
         self.template_scratch_id = template_scratch_id
-        # The type of the scenario. Valid values:
+        # The type of the resource scenario. Valid values:
         # 
         # *   ArchitectureReplication: resource replication
         # *   ArchitectureDetection: resource detection
@@ -18436,9 +18439,9 @@ class ListTemplateScratchesResponseBodyTemplateScratchesPreferenceParameters(Tea
         parameter_key: str = None,
         parameter_value: str = None,
     ):
-        # The name of the parameter.
+        # The parameter name.
         self.parameter_key = parameter_key
-        # The value of the parameter.
+        # The parameter value.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -18473,7 +18476,7 @@ class ListTemplateScratchesResponseBodyTemplateScratchesSourceResourceGroup(TeaM
     ):
         # The ID of the source resource group.
         self.resource_group_id = resource_group_id
-        # The filters for resource types.
+        # The resource types for filtering resources.
         self.resource_type_filter = resource_type_filter
 
     def validate(self):
@@ -18543,7 +18546,7 @@ class ListTemplateScratchesResponseBodyTemplateScratchesSourceTag(TeaModel):
     ):
         # The source tags.
         self.resource_tags = resource_tags
-        # The filters for resource types.
+        # The resource types for filtering resources.
         self.resource_type_filter = resource_type_filter
 
     def validate(self):
@@ -18576,9 +18579,9 @@ class ListTemplateScratchesResponseBodyTemplateScratchesTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the scenario.
+        # The tag key of the resource scenario.
         self.key = key
-        # The tag value of the scenario.
+        # The tag value of the resource scenario.
         self.value = value
 
     def validate(self):
@@ -18624,15 +18627,15 @@ class ListTemplateScratchesResponseBodyTemplateScratches(TeaModel):
         template_scratch_type: str = None,
         update_time: str = None,
     ):
-        # The time when the scenario was created.
+        # The time when the resource scenario was created.
         # 
         # The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.create_time = create_time
-        # The description of the scenario.
+        # The description of the resource scenario.
         self.description = description
-        # The status code that is returned if the scenario failed to be generated.
+        # The status code of the resource scenario that failed to be generated.
         # 
-        # >  This parameter is returned only if Status is set to GENERATE_FAILED.
+        # >  This parameter is returned only if the value of Status is GENERATE_FAILED.
         self.failed_code = failed_code
         # The policy based on which the logical ID is generated. Valid values:
         # 
@@ -18640,7 +18643,7 @@ class ListTemplateScratchesResponseBodyTemplateScratches(TeaModel):
         # *   LongTypePrefixAndHashSuffix: long-type prefix + hash-type suffix
         # *   ShortTypePrefixAndHashSuffix: short-type prefix + hash-type suffix
         self.logical_id_strategy = logical_id_strategy
-        # The parameters that are configured for the scenario.
+        # The preference parameters of the resource scenario.
         self.preference_parameters = preference_parameters
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -18650,22 +18653,22 @@ class ListTemplateScratchesResponseBodyTemplateScratches(TeaModel):
         self.source_resources = source_resources
         # The source tag.
         self.source_tag = source_tag
-        # The state of the scenario.
+        # The state of the resource scenario.
         self.status = status
-        # The reason why the scenario failed to be generated.
+        # The reason why the resource scenario failed to be generated.
         # 
-        # >  This parameter is returned only if Status is set to GENERATE_FAILED.
+        # >  This parameter is returned only if the value of Status is GENERATE_FAILED.
         self.status_reason = status_reason
-        # The tags of the scenario.
+        # The tags of the resource scenario.
         self.tags = tags
-        # The scenario ID.
+        # The ID of the resource scenario.
         self.template_scratch_id = template_scratch_id
-        # The type of the scenario. Valid values:
+        # The type of the resource scenario. Valid values:
         # 
         # *   ResourceImport: resource management
         # *   ArchitectureReplication: resource replication
         self.template_scratch_type = template_scratch_type
-        # The time when the scenario was updated.
+        # The time when the resource scenario was updated.
         # 
         # The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.update_time = update_time
@@ -18793,7 +18796,7 @@ class ListTemplateScratchesResponseBody(TeaModel):
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # The scenarios.
+        # The resource scenarios.
         self.template_scratches = template_scratches
         # The total number of scenarios.
         self.total_count = total_count
@@ -23463,16 +23466,16 @@ class UpdateTemplateScratchRequestPreferenceParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
-        # The name of the parameter.
+        # The parameter name.
         # 
         # For more information about the valid values of ParameterKey, see the "**Additional information about request parameters**" section of this topic.
         # 
-        # > - PreferenceParameters is optional. If you specify PreferenceParameters, you must specify both ParameterKey and ParameterValue.
+        # >- PreferenceParameters is optional. If you specify PreferenceParameters, you must specify both ParameterKey and ParameterValue.
         # > - If you set TemplateScratchType to ResourceImport, you must set ParameterKey to DeletionPolicy.
         self.parameter_key = parameter_key
-        # The value of the parameter. The value of ParameterValue varies based on the value of ParameterKey.
+        # The parameter value. The value of ParameterValue varies based on the value of ParameterKey.
         # 
-        # For more information about the valid values of ParameterValue, see the "**Additional information about request parameters**" section of this topic.
+        # For more information about the valid values of ParameterKey, see the "**Additional information about request parameters**" section of this topic.
         # 
         # >  PreferenceParameters is optional. If you specify PreferenceParameters, you must specify both ParameterKey and ParameterValue.
         self.parameter_value = parameter_value
@@ -23583,7 +23586,7 @@ class UpdateTemplateScratchRequestSourceTag(TeaModel):
         # 
         # If you set TemplateScratchType to ArchitectureDetection, you can add up to five source tags. In other cases, you can add up to 10 source tags.
         self.resource_tags = resource_tags
-        # The filters for resource types.
+        # The resource types for filtering resources.
         self.resource_type_filter = resource_type_filter
 
     def validate(self):
@@ -23646,7 +23649,7 @@ class UpdateTemplateScratchRequest(TeaModel):
         # 
         # >  If you set TemplateScratchType to ArchitectureDetection, the default value of LogicalIdStrategy is LongTypePrefixAndHashSuffix. In other cases, the default value of LogicalIdStrategy is LongTypePrefixAndIndexSuffix.
         self.logical_id_strategy = logical_id_strategy
-        # The parameters that you want to configure for the scenario.
+        # The preference parameters of the resource scenario.
         self.preference_parameters = preference_parameters
         # The region ID of the scenario.
         # 
@@ -23658,7 +23661,7 @@ class UpdateTemplateScratchRequest(TeaModel):
         self.source_resource_group = source_resource_group
         # The source resources.
         # 
-        # If you specify source resources as the value of SourceResources when TemplateScratchType is set to ArchitectureDetection, the system detects the schema data of all resources that are associated with the specified source resources. For example, if you specify the ID of a Classic Load Balancer (CLB) instance as the value of SourceResources, the system detects the schema data of resources, such as Elastic Compute Service (ECS) instances, vSwitches, and VPCs, that are associated with the CLB instance.
+        # If you specify SourceResources when TemplateScratchType is set to ArchitectureDetection, the system detects the architecture of all resources that are associated with the specified source resources. For example, if you set the value of SourceResources to an ID of a Classic Load Balancer (CLB) instance, the system detects the architecture of resources, such as Elastic Compute Service (ECS) instances, vSwitches, and virtual private clouds (VPCs), that are associated with the CLB instance.
         # 
         # If you set TemplateScratchType to ArchitectureDetection, you can specify up to 20 source resources for SourceResources. In other cases, you can specify up to 200 source resources.
         self.source_resources = source_resources
@@ -23786,7 +23789,7 @@ class UpdateTemplateScratchShrinkRequest(TeaModel):
         # 
         # >  If you set TemplateScratchType to ArchitectureDetection, the default value of LogicalIdStrategy is LongTypePrefixAndHashSuffix. In other cases, the default value of LogicalIdStrategy is LongTypePrefixAndIndexSuffix.
         self.logical_id_strategy = logical_id_strategy
-        # The parameters that you want to configure for the scenario.
+        # The preference parameters of the resource scenario.
         self.preference_parameters_shrink = preference_parameters_shrink
         # The region ID of the scenario.
         # 
@@ -23798,7 +23801,7 @@ class UpdateTemplateScratchShrinkRequest(TeaModel):
         self.source_resource_group_shrink = source_resource_group_shrink
         # The source resources.
         # 
-        # If you specify source resources as the value of SourceResources when TemplateScratchType is set to ArchitectureDetection, the system detects the schema data of all resources that are associated with the specified source resources. For example, if you specify the ID of a Classic Load Balancer (CLB) instance as the value of SourceResources, the system detects the schema data of resources, such as Elastic Compute Service (ECS) instances, vSwitches, and VPCs, that are associated with the CLB instance.
+        # If you specify SourceResources when TemplateScratchType is set to ArchitectureDetection, the system detects the architecture of all resources that are associated with the specified source resources. For example, if you set the value of SourceResources to an ID of a Classic Load Balancer (CLB) instance, the system detects the architecture of resources, such as Elastic Compute Service (ECS) instances, vSwitches, and virtual private clouds (VPCs), that are associated with the CLB instance.
         # 
         # If you set TemplateScratchType to ArchitectureDetection, you can specify up to 20 source resources for SourceResources. In other cases, you can specify up to 200 source resources.
         self.source_resources_shrink = source_resources_shrink
