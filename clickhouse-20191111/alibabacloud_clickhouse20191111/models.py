@@ -1502,6 +1502,7 @@ class CreateBackupPolicyResponse(TeaModel):
 class CreateDBInstanceRequest(TeaModel):
     def __init__(
         self,
+        auto_renew: bool = None,
         backup_set_id: str = None,
         client_token: str = None,
         dbcluster_category: str = None,
@@ -1532,6 +1533,7 @@ class CreateDBInstanceRequest(TeaModel):
         zone_id: str = None,
         zone_id_bak: str = None,
     ):
+        self.auto_renew = auto_renew
         # The ID of the backup set. You can call the [DescribeBackups](~~360339~~) operation to query the backup sets.
         # 
         # >  If you want to restore the data of an ApsaraDB for ClickHouse cluster, this parameter is required.
@@ -1641,6 +1643,8 @@ class CreateDBInstanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
         if self.backup_set_id is not None:
             result['BackupSetID'] = self.backup_set_id
         if self.client_token is not None:
@@ -1703,6 +1707,8 @@ class CreateDBInstanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
         if m.get('BackupSetID') is not None:
             self.backup_set_id = m.get('BackupSetID')
         if m.get('ClientToken') is not None:
@@ -6004,10 +6010,10 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
         # *   **1**: Data backup is supported.
         # *   **2**: Data backup is not supported.
         self.support_backup = support_backup
-        # Indicates whether the cluster supports an HTTP port. Valid values:
+        # Indicates whether HTTPS ports are supported. Valid values:
         # 
-        # *   **true**: An HTTP port is supported.
-        # *   **false**: An HTTP port is not supported.
+        # *   **true**\
+        # *   **false**\
         self.support_https_port = support_https_port
         # Indicates whether the cluster supports a MySQL port. Valid values:
         # 
@@ -6031,6 +6037,7 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
         self.vpc_ip_addr = vpc_ip_addr
         # The zone ID.
         self.zone_id = zone_id
+        # The list of vSwitch IDs in multi-zone clusters.
         self.zone_id_vswitch_map = zone_id_vswitch_map
         # The ZooKeeper specifications.
         self.zookeeper_class = zookeeper_class
@@ -8228,7 +8235,12 @@ class DescribeProcessListRequest(TeaModel):
         self.initial_user = initial_user
         # The keyword that is used to query.
         self.keyword = keyword
-        # The column by which the query results are sorted.
+        # Sorting by the specified column name. Valid values:
+        # 
+        # *   elapsed: the cumulative execution time
+        # *   written_rows: the number of written rows
+        # *   read_rows: the number of read rows
+        # *   memory_usage: the memory usage
         self.order = order
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -9836,8 +9848,8 @@ class DescribeSynDbsResponseBodySynDbs(TeaModel):
         syn_db: str = None,
         syn_status: bool = None,
     ):
-        # *   If the value **true** is returned for the **SynStatus** parameter, this parameter is not returned.
-        # *   If the value **false** is returned for the **SynStatus** parameter, the system returns the ErrorMsg parameter that provides the cause why the data synchronization failed.
+        # *   When the value **true** is returned for the **SynStatus** parameter, the system does not return the ErrorMsg parameter.
+        # *   When the value **false** is returned for the **SynStatus** parameter, the system returns for the ErrorMsg parameter the cause why the data synchronization failed.
         self.error_msg = error_msg
         # The ID of the ApsaraDB RDS for MySQL instance.
         self.rds_id = rds_id
@@ -11553,7 +11565,7 @@ class ModifyDBClusterConfigInXMLRequest(TeaModel):
     ):
         # The configuration parameters whose settings you want to modify. You can call the [DescribeDBClusterConfigInXML](~~452210~~) operation to query configuration parameters, and modify the settings of the returned configuration parameters.
         # 
-        # >  You must specify all configuration parameters even when you want to modify the setting of a single parameter. If a configuration parameter is not specified, the original value of this parameter is retained or the modification fails.
+        # > You must specify all configuration parameters even when you want to modify the setting of a single parameter. If a configuration parameter is not specified, the original value of this parameter is retained or the modification fails.
         self.config = config
         # The cluster ID. You can call the [DescribeDBClusters](~~170879~~) operation to query information about all the clusters that are deployed in a specific region. The information includes the cluster IDs.
         self.dbcluster_id = dbcluster_id

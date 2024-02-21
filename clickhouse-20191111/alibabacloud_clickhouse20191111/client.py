@@ -1028,6 +1028,8 @@ class Client(OpenApiClient):
     ) -> clickhouse_20191111_models.CreateDBInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.backup_set_id):
             query['BackupSetID'] = request.backup_set_id
         if not UtilClient.is_unset(request.client_token):
@@ -1112,6 +1114,8 @@ class Client(OpenApiClient):
     ) -> clickhouse_20191111_models.CreateDBInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.backup_set_id):
             query['BackupSetID'] = request.backup_set_id
         if not UtilClient.is_unset(request.client_token):

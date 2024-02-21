@@ -1,3 +1,7 @@
+2024-02-21 Version: 3.1.9
+- Update API CreateDBInstance: add param AutoRenew.
+
+
 2024-02-04 Version: 3.1.8
 - Update API CreateDBInstanceupdate VSwitchBak param.
 update VSwitchBak2 param.
