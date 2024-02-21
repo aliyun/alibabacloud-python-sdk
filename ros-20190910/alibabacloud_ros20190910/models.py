@@ -10429,11 +10429,13 @@ class GetStackGroupOperationResponse(TeaModel):
 class GetStackInstanceRequest(TeaModel):
     def __init__(
         self,
+        output_option: str = None,
         region_id: str = None,
         stack_group_name: str = None,
         stack_instance_account_id: str = None,
         stack_instance_region_id: str = None,
     ):
+        self.output_option = output_option
         # The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
         # The name of the stack group. The name must be unique within a region.\
@@ -10458,6 +10460,8 @@ class GetStackInstanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.output_option is not None:
+            result['OutputOption'] = self.output_option
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.stack_group_name is not None:
@@ -10470,6 +10474,8 @@ class GetStackInstanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('OutputOption') is not None:
+            self.output_option = m.get('OutputOption')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('StackGroupName') is not None:
@@ -10521,6 +10527,7 @@ class GetStackInstanceResponseBodyStackInstance(TeaModel):
         self,
         account_id: str = None,
         drift_detection_time: str = None,
+        outputs: List[Dict[str, Any]] = None,
         parameter_overrides: List[GetStackInstanceResponseBodyStackInstanceParameterOverrides] = None,
         rd_folder_id: str = None,
         region_id: str = None,
@@ -10537,6 +10544,7 @@ class GetStackInstanceResponseBodyStackInstance(TeaModel):
         # 
         # > This parameter is returned only if drift detection is performed on the stack group.
         self.drift_detection_time = drift_detection_time
+        self.outputs = outputs
         # The parameters that are used to override specific parameters.
         self.parameter_overrides = parameter_overrides
         # The ID of the folder in the resource directory.
@@ -10596,6 +10604,8 @@ class GetStackInstanceResponseBodyStackInstance(TeaModel):
             result['AccountId'] = self.account_id
         if self.drift_detection_time is not None:
             result['DriftDetectionTime'] = self.drift_detection_time
+        if self.outputs is not None:
+            result['Outputs'] = self.outputs
         result['ParameterOverrides'] = []
         if self.parameter_overrides is not None:
             for k in self.parameter_overrides:
@@ -10624,6 +10634,8 @@ class GetStackInstanceResponseBodyStackInstance(TeaModel):
             self.account_id = m.get('AccountId')
         if m.get('DriftDetectionTime') is not None:
             self.drift_detection_time = m.get('DriftDetectionTime')
+        if m.get('Outputs') is not None:
+            self.outputs = m.get('Outputs')
         self.parameter_overrides = []
         if m.get('ParameterOverrides') is not None:
             for k in m.get('ParameterOverrides'):
