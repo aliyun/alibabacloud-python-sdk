@@ -1,3 +1,9 @@
+2024-02-21 Version: 1.0.5
+- Update API CreatePolicyV2: update param Rules.
+- Update API DescribePoliciesV2: update response param.
+- Update API UpdatePolicyV2: update param Rules.
+
+
 2024-02-20 Version: 1.0.4
 - Update API DescribePoliciesV2: update response param.
 
