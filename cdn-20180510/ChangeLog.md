@@ -1,3 +1,9 @@
+2024-02-21 Version: 3.2.0
+- Support API BatchDescribeCdnIpInfo.
+- Support API DescribeCdnDomainAtoaLogs.
+- Support API DescribeDomainVerifyData.
+
+
 2023-10-18 Version: 3.1.2
 - Generated python 2018-05-10 for Cdn.
 

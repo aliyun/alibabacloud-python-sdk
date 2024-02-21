@@ -28,7 +28,7 @@ pip install alibabacloud_cdn20180510
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/cdn-20180510/ChangeLog.md).
 
 ## References
 
