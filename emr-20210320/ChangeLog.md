@@ -1,3 +1,7 @@
+2024-02-21 Version: 1.2.1
+- Update API ListClusters: update param RegionId.
+
+
 2023-12-07 Version: 1.2.0
 - Generated python 2021-03-20 for Emr.
 

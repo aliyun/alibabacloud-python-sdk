@@ -93,12 +93,12 @@ class AckConfig(TeaModel):
         data_disk_size: int = None,
         data_disk_storage_class: str = None,
         limit_cpu: float = None,
-        limit_memory: str = None,
+        limit_memory: float = None,
         mount_host_cgroup: bool = None,
         namespace: str = None,
         node_selectors: List[Tag] = None,
         request_cpu: float = None,
-        request_memory: str = None,
+        request_memory: float = None,
         tolerations: List[Toleration] = None,
     ):
         # ack集群id
@@ -6918,56 +6918,57 @@ class CreateClusterRequest(TeaModel):
         subscription_config: SubscriptionConfig = None,
         tags: List[Tag] = None,
     ):
-        # 应用配置。数组元素个数N的取值范围：1~1000。
+        # The configurations of the applications. Valid values of N: 1 to 1000.
         self.application_configs = application_configs
-        # 应用列表。数组元素个数N的取值范围：1~100。
+        # The applications that you want to add to the cluster. Valid values of N: 1 to 100.
         self.applications = applications
-        # 引导脚本。数组元素个数N的取值范围：1~10。
+        # The array of scripts for the bootstrap actions. Valid values of N: 1 to 10.
         self.bootstrap_scripts = bootstrap_scripts
-        # 幂等客户端TOKEN。同一个ClientToken多次调用的返回结果一致，同一个ClientToken最多只创建一个集群。
+        # The idempotent client token. If you call the same ClientToken multiple times, the returned results are the same. Only one cluster can be created with the same ClientToken.
         self.client_token = client_token
-        # 集群名称。长度为1~128个字符，必须以大小字母或中文开头，不能以http://和https://开头。可以包含中文、英文、数字、半角冒号（:）、下划线（_）、半角句号（.）或者短划线（-）
+        # The name of the cluster. The name must be 1 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (\_), periods (.), and hyphens (-).
         self.cluster_name = cluster_name
-        # 创建的EMR集群类型。取值范围：
-        # - DATALAKE：新版数据湖。
-        # - OLAP：数据分析。
-        # - DATAFLOW：实时数据流。
-        # - DATASERVING：数据服务。
-        # - CUSTOM：自定义集群。
-        # - HADOOP：旧版数据湖（不推荐使用，建议使用新版数据湖）。
+        # The type of the cluster. Valid values:
+        # 
+        # *   DATALAKE: data lake
+        # *   OLAP: online analytical processing (OLAP)
+        # *   DATAFLOW: Dataflow
+        # *   DATASERVING: DataServing
+        # *   CUSTOM: a custom hybrid cluster.
+        # *   HADOOP: the old data lake. We recommend that you use the new data lake.
+        # 
+        # If you create an EMR cluster for the first time after 17:00 (UTC +8) on December 19, 2022, you cannot select the HADOOP, DATA_SCIENCE, PRESTO, or ZOOKEEPER cluster type.
         self.cluster_type = cluster_type
-        # 集群中的应用部署模式。取值范围：
-        # - NORMAL：非高可用部署。集群1个MASTER节点。
-        # - HA：高可用部署。高可用部署要求至少3个MASTER节点。
+        # The deployment mode of applications in the cluster. Valid values:
         # 
-        # 默认值：NORMAL。
+        # *   NORMAL: regular mode. A master node is deployed in the cluster.
+        # *   HA: high availability mode. At least three master nodes are deployed in the cluster.
         self.deploy_mode = deploy_mode
-        # 节点属性。集群中的ECS节点基础属性。
+        # The attributes of all Elastic Compute Service (ECS) nodes in the cluster. The basic attributes of all ECS nodes in the cluster.
         self.node_attributes = node_attributes
-        # 节点组。数组元素个数N的取值范围：1~100。
-        # <p>
+        # The array of configurations of the node groups. Valid values of N: 1 to 100.
         self.node_groups = node_groups
-        # 集群的付费类型。取值范围：
-        # - PayAsYouGo：后付费。
-        # - Subscription：预付费。
+        # The billing cycle of the instance. Valid values:
         # 
-        # 默认值：PayAsYouGo。
+        # *   PayAsYouGo: pay-as-you-go
+        # *   Subscription: subscription
+        # 
+        # Default value: PayAsYouGo.
         self.payment_type = payment_type
-        # 区域ID。
+        # The ID of the region in which you want to create the instance.
         self.region_id = region_id
-        # EMR发行版。
+        # The version of EMR. You can view the EMR release version on the EMR cluster purchase page.
         self.release_version = release_version
-        # 集群所在的企业资源组ID。
+        # The ID of the resource group to which to assign the ENI.
         self.resource_group_id = resource_group_id
-        # Kerberos安全模式。取值范围：
-        # - NORMAL：普通模式，不开启Kerberos模式。
-        # - KERBEROS：开启Kerberos模式。
+        # The security mode of the cluster. Valid values:
         # 
-        # 默认值：NORMAL
+        # *   NORMAL: regular mode. Kerberos is not enabled.
+        # *   KERBEROS: Kerberos mode. Kerberos is enabled.
         self.security_mode = security_mode
-        # 预付费配置。当PaymentType取值Subscription时该参数生效。
+        # The subscription configurations. This parameter is required when the PaymentType parameter is set to Subscription.
         self.subscription_config = subscription_config
-        # 标签。数组元数个数N的取值范围：0~20。
+        # The tag that you want to add to the cloud desktop. Valid values of N: 0 to 20.
         self.tags = tags
 
     def validate(self):
@@ -7107,11 +7108,11 @@ class CreateClusterResponseBody(TeaModel):
         operation_id: str = None,
         request_id: str = None,
     ):
-        # 集群ID。
+        # The ID of cluster.
         self.cluster_id = cluster_id
-        # 操作ID。
+        # The ID of the operation.
         self.operation_id = operation_id
-        # 请求ID。
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7154,9 +7155,6 @@ class CreateClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7277,9 +7275,6 @@ class CreateNodeGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7412,9 +7407,6 @@ class DecreaseNodesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7526,9 +7518,6 @@ class DeleteClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7700,9 +7689,6 @@ class GetApmDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8064,9 +8050,6 @@ class GetApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8158,7 +8141,7 @@ class GetAutoScalingActivityResponseBodyScalingActivity(TeaModel):
     ):
         # The ID of the scaling activity.
         self.activity_id = activity_id
-        # The instances corresponding to this scaling activity.
+        # The instances that correspond to the scaling activity.
         self.activity_results = activity_results
         # The status of the scaling activity. Valid values:
         # 
@@ -8284,6 +8267,7 @@ class GetAutoScalingActivityResponseBody(TeaModel):
     ):
         # The request ID.
         self.request_id = request_id
+        # The information about the scaling activity.
         self.scaling_activity = scaling_activity
 
     def validate(self):
@@ -8324,9 +8308,6 @@ class GetAutoScalingActivityResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8630,9 +8611,6 @@ class GetAutoScalingPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8668,9 +8646,9 @@ class GetClusterRequest(TeaModel):
         cluster_id: str = None,
         region_id: str = None,
     ):
-        # 集群ID。
+        # The ID of the cluster.
         self.cluster_id = cluster_id
-        # 地域ID。
+        # The ID of the region in which you want to create the instance.
         self.region_id = region_id
 
     def validate(self):
@@ -8703,8 +8681,9 @@ class GetClusterResponseBody(TeaModel):
         cluster: Cluster = None,
         request_id: str = None,
     ):
+        # The details of the master instance.
         self.cluster = cluster
-        # 请求ID。
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8745,9 +8724,6 @@ class GetClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9262,9 +9238,6 @@ class GetDoctorApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10030,9 +10003,6 @@ class GetDoctorComputeSummaryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11067,9 +11037,6 @@ class GetDoctorHBaseClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11531,9 +11498,6 @@ class GetDoctorHBaseRegionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12301,9 +12265,6 @@ class GetDoctorHBaseRegionServerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13850,9 +13811,6 @@ class GetDoctorHBaseTableResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16539,9 +16497,6 @@ class GetDoctorHDFSClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18274,11 +18229,11 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetrics(TeaModel):
         warm_data_size: GetDoctorHDFSDirectoryResponseBodyDataMetricsWarmDataSize = None,
         warm_data_size_day_growth_ratio: GetDoctorHDFSDirectoryResponseBodyDataMetricsWarmDataSizeDayGrowthRatio = None,
     ):
-        # The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+        # The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
         self.cold_data_day_growth_size = cold_data_day_growth_size
-        # The amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+        # The amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
         self.cold_data_size = cold_data_size
-        # The day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+        # The day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
         self.cold_data_size_day_growth_ratio = cold_data_size_day_growth_ratio
         # The number of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_count = empty_file_count
@@ -18292,11 +18247,11 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetrics(TeaModel):
         self.freeze_data_size = freeze_data_size
         # The day-to-day growth rate of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_size_day_growth_ratio = freeze_data_size_day_growth_ratio
-        # The daily increment of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+        # The daily increment of the amount of hot data. Hot data refers to data that is accessed in previous seven days.
         self.hot_data_day_growth_size = hot_data_day_growth_size
-        # The amount of hot data. Hot data refers to data that is accessed in recent seven days.
+        # The amount of hot data. Hot data refers to data that is accessed in previous seven days.
         self.hot_data_size = hot_data_size
-        # The day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+        # The day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in previous seven days.
         self.hot_data_size_day_growth_ratio = hot_data_size_day_growth_ratio
         # The number of large files. Large files are those with a size greater than 1 GB.
         self.large_file_count = large_file_count
@@ -18322,7 +18277,7 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetrics(TeaModel):
         self.tiny_file_count_day_growth_ratio = tiny_file_count_day_growth_ratio
         # The daily increment of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_day_growth_count = tiny_file_day_growth_count
-        # The daily incremental of the total data volume.
+        # The daily incremental of the total amount of data.
         self.total_data_day_growth_size = total_data_day_growth_size
         # The total amount of data.
         self.total_data_size = total_data_size
@@ -18334,11 +18289,11 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetrics(TeaModel):
         self.total_file_count_day_growth_ratio = total_file_count_day_growth_ratio
         # The daily increment of the total number of files.
         self.total_file_day_growth_count = total_file_day_growth_count
-        # The daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+        # The daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
         self.warm_data_day_growth_size = warm_data_day_growth_size
-        # The amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+        # The amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
         self.warm_data_size = warm_data_size
-        # The day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+        # The day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
         self.warm_data_size_day_growth_ratio = warm_data_size_day_growth_ratio
 
     def validate(self):
@@ -18687,9 +18642,6 @@ class GetDoctorHDFSDirectoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19054,9 +19006,6 @@ class GetDoctorHDFSUGIResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22006,9 +21955,6 @@ class GetDoctorHiveClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22095,9 +22041,9 @@ class GetDoctorHiveDatabaseResponseBodyDataAnalysis(TeaModel):
         hive_frequency_score: int = None,
         hive_score: int = None,
     ):
-        # The score for the distribution of files of different sizes stored in the Hive database.
+        # The score for the file sizes of the Hive database.
         self.hive_distribution_score = hive_distribution_score
-        # The score for the distribution of files stored in different formats in the Hive database.
+        # The score for the data formats of the Hive database.
         self.hive_format_score = hive_format_score
         # The score for the access frequency of the Hive database.
         self.hive_frequency_score = hive_frequency_score
@@ -22146,17 +22092,17 @@ class GetDoctorHiveDatabaseResponseBodyDataFormats(TeaModel):
         format_size_day_growth_ratio: float = None,
         format_size_unit: str = None,
     ):
-        # The daily increment of storage format-specific data.
+        # The daily increment of data in the format.
         self.format_day_growth_size = format_day_growth_size
         # The name of the storage format.
         self.format_name = format_name
-        # The proportion of data in a specific storage format.
+        # The proportion of the data in the format.
         self.format_ratio = format_ratio
-        # The amount of storage format-specific data.
+        # The amount of data in the format.
         self.format_size = format_size
-        # The day-to-day growth rate of storage format-specific data.
+        # The day-to-day growth rate of data in the format.
         self.format_size_day_growth_ratio = format_size_day_growth_ratio
-        # The unit of the amount of storage format-specific data.
+        # The unit of the amount of data in the format.
         self.format_size_unit = format_size_unit
 
     def validate(self):
@@ -24403,13 +24349,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetrics(TeaModel):
         warm_data_size: GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataSize = None,
         warm_data_size_day_growth_ratio: GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataSizeDayGrowthRatio = None,
     ):
-        # The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+        # The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
         self.cold_data_day_growth_size = cold_data_day_growth_size
-        # The proportion of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+        # The proportion of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
         self.cold_data_ratio = cold_data_ratio
-        # The amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+        # The amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
         self.cold_data_size = cold_data_size
-        # The day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+        # The day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
         self.cold_data_size_day_growth_ratio = cold_data_size_day_growth_ratio
         # The number of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_count = empty_file_count
@@ -24427,13 +24373,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetrics(TeaModel):
         self.freeze_data_size = freeze_data_size
         # The day-to-day growth rate of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_size_day_growth_ratio = freeze_data_size_day_growth_ratio
-        # The daily increment of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+        # The daily increment of the amount of hot data. Hot data refers to data that is accessed in previous seven days.
         self.hot_data_day_growth_size = hot_data_day_growth_size
-        # The proportion of hot data. Hot data refers to data that is accessed in recent seven days.
+        # The proportion of hot data. Hot data refers to data that is accessed in previous seven days.
         self.hot_data_ratio = hot_data_ratio
-        # The amount of hot data. Hot data refers to data that is accessed in recent seven days.
+        # The amount of hot data. Hot data refers to data that is accessed in previous seven days.
         self.hot_data_size = hot_data_size
-        # The day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+        # The day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in previous seven days.
         self.hot_data_size_day_growth_ratio = hot_data_size_day_growth_ratio
         # The number of large files. Large files are those with a size greater than 1 GB.
         self.large_file_count = large_file_count
@@ -24471,7 +24417,7 @@ class GetDoctorHiveDatabaseResponseBodyDataMetrics(TeaModel):
         self.tiny_file_day_growth_count = tiny_file_day_growth_count
         # The proportion of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_ratio = tiny_file_ratio
-        # The daily incremental of the total data volume.
+        # The daily incremental of the total amount of data.
         self.total_data_day_growth_size = total_data_day_growth_size
         # The total amount of data.
         self.total_data_size = total_data_size
@@ -24483,13 +24429,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetrics(TeaModel):
         self.total_file_count_day_growth_ratio = total_file_count_day_growth_ratio
         # The daily increment of the total number of files.
         self.total_file_day_growth_count = total_file_day_growth_count
-        # The daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+        # The daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
         self.warm_data_day_growth_size = warm_data_day_growth_size
-        # The proportion of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+        # The proportion of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
         self.warm_data_ratio = warm_data_ratio
-        # The amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+        # The amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
         self.warm_data_size = warm_data_size
-        # The day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+        # The day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
         self.warm_data_size_day_growth_ratio = warm_data_size_day_growth_ratio
 
     def validate(self):
@@ -24920,9 +24866,6 @@ class GetDoctorHiveDatabaseResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27782,9 +27725,6 @@ class GetDoctorHiveTableResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28160,9 +28100,6 @@ class GetDoctorJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28330,9 +28267,6 @@ class GetDoctorReportComponentSummaryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28453,9 +28387,6 @@ class GetNodeGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28576,9 +28507,6 @@ class GetOperationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28747,9 +28675,6 @@ class IncreaseNodesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28787,7 +28712,7 @@ class JoinResourceGroupRequest(TeaModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
-        # The ID of the region in which you want to create the instance.
+        # The region ID.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -28870,9 +28795,6 @@ class JoinResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29054,9 +28976,6 @@ class ListApmMetadataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29200,11 +29119,11 @@ class ListApplicationConfigsResponseBodyApplicationConfigs(TeaModel):
         self.config_effect_state = config_effect_state
         # The name of the configuration file.
         self.config_file_name = config_file_name
-        # The name of the configuration item.
+        # The key of the configuration item.
         self.config_item_key = config_item_key
         # The value of the configuration item.
         self.config_item_value = config_item_value
-        # The time when the application was created.
+        # The creation time.
         self.create_time = create_time
         # Indicates whether the configurations are custom.
         self.custom = custom
@@ -29214,11 +29133,11 @@ class ListApplicationConfigsResponseBodyApplicationConfigs(TeaModel):
         self.init_value = init_value
         # The person who modified the configurations.
         self.modifier = modifier
-        # The ID of the node group.
+        # The node group ID.
         self.node_group_id = node_group_id
         # The node ID.
         self.node_id = node_id
-        # The time when the application was updated.
+        # The update time.
         self.update_time = update_time
 
     def validate(self):
@@ -29306,7 +29225,7 @@ class ListApplicationConfigsResponseBody(TeaModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of pages.
+        # The total number of pages returned.
         self.total_count = total_count
 
     def validate(self):
@@ -29365,9 +29284,6 @@ class ListApplicationConfigsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29578,9 +29494,6 @@ class ListApplicationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29893,9 +29806,6 @@ class ListAutoScalingActivitiesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29954,32 +29864,6 @@ class ListClustersRequest(TeaModel):
         # The billing methods. You can specify a maximum of 2 items.
         self.payment_types = payment_types
         # The region ID.
-        # 
-        # Valid values:
-        # 
-        # *   center
-        # *   cn-hangzhou
-        # *   cn-shanghai
-        # *   cn-qingdao
-        # *   cn-beijing
-        # *   cn-zhangjiakou
-        # *   cn-huhehaote
-        # *   cn-wulanchabu
-        # *   cn-shenzhen
-        # *   cn-chengdu
-        # *   cn-hongkong
-        # *   ap-southeast-1
-        # *   ap-southeast-2
-        # *   ap-southeast-3
-        # *   ap-southeast-5
-        # *   ap-northeast-1
-        # *   eu-central-1
-        # *   eu-west-1
-        # *   us-west-1
-        # *   us-east-1
-        # *   ap-south-1
-        # *   me-east-1
-        # *   me-central-1
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -30126,9 +30010,6 @@ class ListClustersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30430,9 +30311,6 @@ class ListComponentInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30677,9 +30555,6 @@ class ListComponentsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -31288,9 +31163,6 @@ class ListDoctorApplicationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -32099,9 +31971,6 @@ class ListDoctorComputeSummaryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -32936,9 +32805,6 @@ class ListDoctorHBaseRegionServersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -32980,17 +32846,28 @@ class ListDoctorHBaseTablesRequest(TeaModel):
         region_id: str = None,
         table_names: List[str] = None,
     ):
-        # 集群ID。
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The query date.
         self.date_time = date_time
-        # 一次获取的最大记录数。取值范围：1~100。
+        # The maximum number of entries that are returned.
         self.max_results = max_results
-        # 标记当前开始读取的位置，置空表示从头开始。
+        # Marks the current position to start reading. If this field is empty, the data is read from the beginning.
         self.next_token = next_token
+        # The field that you use to sort the query results.
+        # 
+        # Valid values:
+        # 
+        # *   tableSize
         self.order_by = order_by
+        # The order in which you want to sort the query results. Valid value:
+        # 
+        # *   ASC: in ascending order
+        # *   DESC: in descending order
         self.order_type = order_type
-        # 区域ID。
+        # The ID of the region.
         self.region_id = region_id
+        # The table names, which are used to filter the query results.
         self.table_names = table_names
 
     def validate(self):
@@ -33052,17 +32929,17 @@ class ListDoctorHBaseTablesResponseBodyDataAnalysis(TeaModel):
         write_request_hotspot_region_list: List[str] = None,
         write_request_unbalance_suggestion: str = None,
     ):
-        # The partitions that have read hotspot issues.
+        # The regions that have read hotspot issues.
         self.read_request_hotspot_region_list = read_request_hotspot_region_list
         # The description of read imbalance.
         self.read_request_unbalance_suggestion = read_request_unbalance_suggestion
-        # The partitions that have read/write hotspot issues.
+        # The regions that have read/write hotspot issues.
         self.request_hotspot_region_list = request_hotspot_region_list
         # The description of read/write imbalance.
         self.request_unbalance_suggestion = request_unbalance_suggestion
         # The score of the table.
         self.table_score = table_score
-        # The partitions that have write hotspot issues.
+        # The regions that have write hotspot issues.
         self.write_request_hotspot_region_list = write_request_hotspot_region_list
         # The description of write imbalance.
         self.write_request_unbalance_suggestion = write_request_unbalance_suggestion
@@ -34317,7 +34194,7 @@ class ListDoctorHBaseTablesResponseBodyDataMetrics(TeaModel):
     ):
         # The number of days during which the table was not accessed.
         self.cold_access_day = cold_access_day
-        # The number of consecutive days without access to data before the data is considered as cold data.
+        # The number of consecutive days without access to data before the data is considered as very cold data.
         self.cold_config_day = cold_config_day
         # The size of cold data.
         self.cold_data_size = cold_data_size
@@ -34329,7 +34206,7 @@ class ListDoctorHBaseTablesResponseBodyDataMetrics(TeaModel):
         self.daily_write_request = daily_write_request
         # The daily increment ratio of the number of write requests in a day.
         self.daily_write_request_day_growth_ratio = daily_write_request_day_growth_ratio
-        # The number of consecutive days without access to data before the data is considered as very cold data.
+        # The number of consecutive days without access to data before the data was considered as very cold data.
         self.freeze_config_day = freeze_config_day
         # The size of very cold data.
         self.freeze_data_size = freeze_data_size
@@ -34341,9 +34218,9 @@ class ListDoctorHBaseTablesResponseBodyDataMetrics(TeaModel):
         self.read_request_balance = read_request_balance
         # The balancing degree.
         self.region_balance = region_balance
-        # The number of partitions that are composed of the table.
+        # The number of regions that host the table.
         self.region_count = region_count
-        # The daily increment ratio of the number of partitions.
+        # The daily increment ratio of the number of regions.
         self.region_count_day_growth_ratio = region_count_day_growth_ratio
         # The number of region servers that host the table.
         self.region_server_count = region_server_count
@@ -34357,7 +34234,7 @@ class ListDoctorHBaseTablesResponseBodyDataMetrics(TeaModel):
         self.table_size = table_size
         # The daily increment ratio of the table size.
         self.table_size_day_growth_ratio = table_size_day_growth_ratio
-        # The number of consecutive days without access to data before the data is considered as warm data.
+        # The number of consecutive days without access to data before the data is considered as cold data.
         self.warm_config_day = warm_config_day
         # The size of warm data.
         self.warm_data_size = warm_data_size
@@ -34603,15 +34480,15 @@ class ListDoctorHBaseTablesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The returned data.
+        # The response parameters.
         self.data = data
-        # 本次请求所返回的最大记录条数。
+        # The maximum number of entries returned.
         self.max_results = max_results
-        # 返回读取到的数据位置，空代表数据已经读取完毕。
+        # The page number of the next page returned.
         self.next_token = next_token
-        # 请求ID。
+        # The ID of the request.
         self.request_id = request_id
-        # 本次请求条件下的数据总量。
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -34670,9 +34547,6 @@ class ListDoctorHBaseTablesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -36705,9 +36579,6 @@ class ListDoctorHDFSDirectoriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -37134,9 +37005,6 @@ class ListDoctorHDFSUGIResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -40115,9 +39983,6 @@ class ListDoctorHiveDatabasesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -40167,7 +40032,7 @@ class ListDoctorHiveTablesRequest(TeaModel):
         self.max_results = max_results
         # The pagination token that is used in the request to retrieve a new page of results.
         self.next_token = next_token
-        # The basis on which you want to sort the query results. Valid value:
+        # The basis on which you want to sort the query results. Valid values:
         # 
         # *   partitionNum: the number of partitions.
         # *   totalFileCount: the total number of files.
@@ -40181,14 +40046,14 @@ class ListDoctorHiveTablesRequest(TeaModel):
         # *   smallFileRatio: the proportion of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         # *   tinyFileRatio: the proportion of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         # *   emptyFileRatio: the proportion of empty files. Empty files are those with a size of 0 MB.
-        # *   hotDataSize: the amount of hot data. Hot data refers to data that is accessed in recent seven days.
-        # *   warmDataSize: the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
-        # *   coldDataSize: the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+        # *   hotDataSize: the amount of hot data. Hot data refers to data that is accessed in previous seven days.
+        # *   WarmDataSize: the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
+        # *   coldDataSize: the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
         # *   freezeDataSize: the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         # *   totalDataSize: the total amount of data.
-        # *   hotDataRatio: the proportion of hot data. Hot data refers to data that is accessed in recent seven days.
-        # *   awmDataRatio: the proportion of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
-        # *   coldDataRatio: the proportion of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+        # *   hotDataRatio: the proportion of hot data. Hot data refers to data that is accessed in previous seven days.
+        # *   WarmDataRatio: the proportion of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
+        # *   coldDataRatio: the proportion of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
         # *   freezeDataRatio: the proportion of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         # *   totalFileDayGrowthCount: the daily increment of the total number of files.
         # *   largeFileDayGrowthCount: the daily increment of the number of large files. Large files are those with a size greater than 1 GB.
@@ -40196,22 +40061,22 @@ class ListDoctorHiveTablesRequest(TeaModel):
         # *   smallFileDayGrowthCount: the daily increment of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         # *   tinyFileDayGrowthCount: the daily increment of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         # *   emptyFileDayGrowthCount: the daily increment of the number of empty files. Empty files are those with a size of 0 MB.
-        # *   hotDataDayGrowthSize: The daily increment of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
-        # *   warmDataDayGrowthSize: the daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
-        # *   coldDataDayGrowthSize: The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
-        # *   freezeDataDayGrowthSize: The daily increment of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
-        # *   totalDataDayGrowthSize: the daily incremental of the total data volume.
+        # *   hotDataDayGrowthSize: the daily increment of the amount of hot data. Hot data refers to data that is accessed in previous seven days.
+        # *   warmDataDayGrowthSize: the daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
+        # *   coldDataDayGrowthSize: the daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
+        # *   freezeDataDayGrowthSize: the daily increment of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+        # *   totalDataDayGrowthSize: the daily increment of the amount of total data.
         # *   totalFileCountDayGrowthRatio: the day-to-day growth rate of the total number of files.
         # *   largeFileCountDayGrowthRatio: the day-to-day growth rate of the number of large files. Large files are those with a size greater than 1 GB.
         # *   mediumFileCountDayGrowthRatio: the day-to-day growth rate of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
         # *   smallFileCountDayGrowthRatio: the day-to-day growth rate of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         # *   tinyFileCountDayGrowthRatio: the day-to-day growth rate of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         # *   emptyFileCountDayGrowthRatio: the day-to-day growth rate of the number of empty files. Empty files are those with a size of 0 MB.
-        # *   hotDataSizeDayGrowthRatio: the day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
-        # *   warmDataSizeDayGrowthRatio: the day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
-        # *   coldDataSizeDayGrowthRatio: the day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+        # *   hotDataSizeDayGrowthRatio: the day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in previous seven days.
+        # *   warmDataSizeDayGrowthRatio: the day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
+        # *   coldDataSizeDayGrowthRatio: the day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
         # *   freezeDataSizeDayGrowthRatio: the day-to-day growth rate of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
-        # *   totalDataSizeDayGrowthRatio: the day-to-day growth rate of the total data volume.
+        # *   totalDataSizeDayGrowthRatio: the day-to-day growth rate of the total amount of data.
         self.order_by = order_by
         # The order in which you want to sort the query results. Valid value:
         # 
@@ -40279,9 +40144,9 @@ class ListDoctorHiveTablesResponseBodyDataAnalysis(TeaModel):
         hive_frequency_score: int = None,
         hive_score: int = None,
     ):
-        # The score for the distribution of files of different sizes stored in the Hive table.
+        # The score for the file sizes of the Hive table.
         self.hive_distribution_score = hive_distribution_score
-        # The score for the distribution of files stored in different formats in the Hive table.
+        # The score for the data formats of the Hive table.
         self.hive_format_score = hive_format_score
         # The score for the access frequency of the Hive table.
         self.hive_frequency_score = hive_frequency_score
@@ -40330,17 +40195,17 @@ class ListDoctorHiveTablesResponseBodyDataFormats(TeaModel):
         format_size_day_growth_ratio: float = None,
         format_size_unit: str = None,
     ):
-        # The daily amount increment of the data in a specific storage format.
+        # The daily increment of data in the format.
         self.format_day_growth_size = format_day_growth_size
         # The name of the storage format.
         self.format_name = format_name
-        # The proportion of the data in a specific storage format.
+        # The proportion of the data in the format.
         self.format_ratio = format_ratio
-        # The size of storage format-specific data.
+        # The amount of data in the format.
         self.format_size = format_size
-        # The day-to-day growth rate of the amount of the data in a specific storage format.
+        # The day-to-day growth rate of data in the format.
         self.format_size_day_growth_ratio = format_size_day_growth_ratio
-        # The unit of the data size.
+        # The unit of the amount of data in the format.
         self.format_size_unit = format_size_unit
 
     def validate(self):
@@ -42537,13 +42402,13 @@ class ListDoctorHiveTablesResponseBodyDataMetrics(TeaModel):
         warm_data_size: ListDoctorHiveTablesResponseBodyDataMetricsWarmDataSize = None,
         warm_data_size_day_growth_ratio: ListDoctorHiveTablesResponseBodyDataMetricsWarmDataSizeDayGrowthRatio = None,
     ):
-        # The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+        # The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
         self.cold_data_day_growth_size = cold_data_day_growth_size
-        # The proportion of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+        # The proportion of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
         self.cold_data_ratio = cold_data_ratio
-        # The amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+        # The amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
         self.cold_data_size = cold_data_size
-        # The day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+        # The day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in previous 90 days.
         self.cold_data_size_day_growth_ratio = cold_data_size_day_growth_ratio
         # The number of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_count = empty_file_count
@@ -42561,13 +42426,13 @@ class ListDoctorHiveTablesResponseBodyDataMetrics(TeaModel):
         self.freeze_data_size = freeze_data_size
         # The day-to-day growth rate of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_size_day_growth_ratio = freeze_data_size_day_growth_ratio
-        # The daily increment of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+        # The daily increment of the amount of hot data. Hot data refers to data that is accessed in previous seven days.
         self.hot_data_day_growth_size = hot_data_day_growth_size
-        # The proportion of hot data. Hot data refers to data that is accessed in recent seven days.
+        # The proportion of hot data. Hot data refers to data that is accessed in previous seven days.
         self.hot_data_ratio = hot_data_ratio
-        # The amount of hot data. Hot data refers to data that is accessed in recent seven days.
+        # The amount of hot data. Hot data refers to data that is accessed in previous seven days.
         self.hot_data_size = hot_data_size
-        # The day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+        # The day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in previous seven days.
         self.hot_data_size_day_growth_ratio = hot_data_size_day_growth_ratio
         # The number of large files. Large files are those with a size greater than 1 GB.
         self.large_file_count = large_file_count
@@ -42603,11 +42468,11 @@ class ListDoctorHiveTablesResponseBodyDataMetrics(TeaModel):
         self.tiny_file_day_growth_count = tiny_file_day_growth_count
         # The proportion of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_ratio = tiny_file_ratio
-        # The daily incremental of the total data volume.
+        # The daily increment of the total amount of data.
         self.total_data_day_growth_size = total_data_day_growth_size
         # The total amount of data.
         self.total_data_size = total_data_size
-        # The day-to-day growth rate of the total data volume.
+        # The day-to-day growth rate of the total amount of data.
         self.total_data_size_day_growth_ratio = total_data_size_day_growth_ratio
         # The total number of files.
         self.total_file_count = total_file_count
@@ -42615,13 +42480,13 @@ class ListDoctorHiveTablesResponseBodyDataMetrics(TeaModel):
         self.total_file_count_day_growth_ratio = total_file_count_day_growth_ratio
         # The daily increment of the total number of files.
         self.total_file_day_growth_count = total_file_day_growth_count
-        # The daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+        # The daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
         self.warm_data_day_growth_size = warm_data_day_growth_size
-        # The proportion of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+        # The proportion of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
         self.warm_data_ratio = warm_data_ratio
-        # The amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+        # The amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
         self.warm_data_size = warm_data_size
-        # The day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+        # The day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in previous 30 days.
         self.warm_data_size_day_growth_ratio = warm_data_size_day_growth_ratio
 
     def validate(self):
@@ -42951,13 +42816,13 @@ class ListDoctorHiveTablesResponseBodyData(TeaModel):
     ):
         # The analysis results.
         self.analysis = analysis
-        # The information from the perspective of formats.
+        # The table format information.
         self.formats = formats
         # The metric information.
         self.metrics = metrics
         # The owner.
         self.owner = owner
-        # The table name. The table name must follow the naming rule in Hive. A name in the {database name.table identifier} format uniquely identifies a table.
+        # The table name. The table name must follow the naming rule in Hive. A name in the {Database name.Table name} format uniquely identifies a table.
         self.table_name = table_name
 
     def validate(self):
@@ -43086,9 +42951,6 @@ class ListDoctorHiveTablesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -43635,9 +43497,6 @@ class ListDoctorJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -44128,9 +43987,6 @@ class ListDoctorJobsStatsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -44168,13 +44024,13 @@ class ListDoctorReportsRequest(TeaModel):
         next_token: str = None,
         region_id: str = None,
     ):
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # 一次获取的最大记录数。取值范围：1~100。
+        # The number of entries to return on each page.
         self.max_results = max_results
-        # 标记当前开始读取的位置，置空表示从头开始。
+        # The pagination token that is used in the request to retrieve a new page of results.
         self.next_token = next_token
-        # 区域ID。
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -44258,7 +44114,7 @@ class ListDoctorReportsResponseBodyData(TeaModel):
         date_time: str = None,
         summary_report: ListDoctorReportsResponseBodyDataSummaryReport = None,
     ):
-        # The service types.
+        # The component types.
         # 
         # Valid values:
         # 
@@ -44356,13 +44212,13 @@ class ListDoctorReportsResponseBody(TeaModel):
     ):
         # The reports.
         self.data = data
-        # 本次请求所返回的最大记录条数。
+        # The maximum number of entries returned.
         self.max_results = max_results
-        # 返回读取到的数据位置，空代表数据已经读取完毕。
+        # A pagination token.
         self.next_token = next_token
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
-        # 本次请求条件下的数据总量。
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -44421,9 +44277,6 @@ class ListDoctorReportsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -44643,9 +44496,6 @@ class ListInstanceTypesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -44828,9 +44678,6 @@ class ListNodeGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -45042,9 +44889,6 @@ class ListNodesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -45234,9 +45078,6 @@ class ListReleaseVersionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -45462,9 +45303,6 @@ class ListTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -45602,9 +45440,6 @@ class PutAutoScalingPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -45758,9 +45593,6 @@ class QueryApmComponentsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -46151,9 +45983,6 @@ class QueryApmGrafanaDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -46265,9 +46094,6 @@ class RemoveAutoScalingPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -46432,7 +46258,7 @@ class RunApplicationActionResponseBody(TeaModel):
         operation_id: str = None,
         request_id: str = None,
     ):
-        # 异常节点列表。
+        # The abnormal nodes.
         self.abn_instances = abn_instances
         # The operation ID.
         self.operation_id = operation_id
@@ -46487,9 +46313,6 @@ class RunApplicationActionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -46618,9 +46441,6 @@ class TagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -46751,9 +46571,6 @@ class UntagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -46929,9 +46746,6 @@ class UpdateApplicationConfigsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

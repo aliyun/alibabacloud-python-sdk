@@ -5576,7 +5576,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.PutAutoScalingPolicyResponse:
         """
-        设置弹性伸缩规则。
+        You can call this operation to configure auto scaling policies.
         
         @param request: PutAutoScalingPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5619,7 +5619,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.PutAutoScalingPolicyResponse:
         """
-        设置弹性伸缩规则。
+        You can call this operation to configure auto scaling policies.
         
         @param request: PutAutoScalingPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5661,7 +5661,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.PutAutoScalingPolicyRequest,
     ) -> emr_20210320_models.PutAutoScalingPolicyResponse:
         """
-        设置弹性伸缩规则。
+        You can call this operation to configure auto scaling policies.
         
         @param request: PutAutoScalingPolicyRequest
         @return: PutAutoScalingPolicyResponse
@@ -5674,7 +5674,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.PutAutoScalingPolicyRequest,
     ) -> emr_20210320_models.PutAutoScalingPolicyResponse:
         """
-        设置弹性伸缩规则。
+        You can call this operation to configure auto scaling policies.
         
         @param request: PutAutoScalingPolicyRequest
         @return: PutAutoScalingPolicyResponse
