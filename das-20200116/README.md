@@ -28,7 +28,7 @@ pip install alibabacloud_das20200116
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/das-20200116/ChangeLog.md).
 
 ## References
 
