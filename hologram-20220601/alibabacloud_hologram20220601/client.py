@@ -41,6 +41,86 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def change_resource_group_with_options(
+        self,
+        request: hologram_20220601_models.ChangeResourceGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.ChangeResourceGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['instanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            body['newResourceGroupId'] = request.new_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/tag/changeResourceGroup',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.ChangeResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_resource_group_with_options_async(
+        self,
+        request: hologram_20220601_models.ChangeResourceGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.ChangeResourceGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['instanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            body['newResourceGroupId'] = request.new_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/tag/changeResourceGroup',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.ChangeResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_resource_group(
+        self,
+        request: hologram_20220601_models.ChangeResourceGroupRequest,
+    ) -> hologram_20220601_models.ChangeResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.change_resource_group_with_options(request, headers, runtime)
+
+    async def change_resource_group_async(
+        self,
+        request: hologram_20220601_models.ChangeResourceGroupRequest,
+    ) -> hologram_20220601_models.ChangeResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.change_resource_group_with_options_async(request, headers, runtime)
+
     def create_instance_with_options(
         self,
         request: hologram_20220601_models.CreateInstanceRequest,
@@ -405,6 +485,166 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_instance_with_options_async(instance_id, request, headers, runtime)
 
+    def disable_hive_access_with_options(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.DisableHiveAccessRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.DisableHiveAccessResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableHiveAccess',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/disableHiveAccess',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.DisableHiveAccessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_hive_access_with_options_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.DisableHiveAccessRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.DisableHiveAccessResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableHiveAccess',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/disableHiveAccess',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.DisableHiveAccessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_hive_access(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.DisableHiveAccessRequest,
+    ) -> hologram_20220601_models.DisableHiveAccessResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.disable_hive_access_with_options(instance_id, request, headers, runtime)
+
+    async def disable_hive_access_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.DisableHiveAccessRequest,
+    ) -> hologram_20220601_models.DisableHiveAccessResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.disable_hive_access_with_options_async(instance_id, request, headers, runtime)
+
+    def enable_hive_access_with_options(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.EnableHiveAccessRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.EnableHiveAccessResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableHiveAccess',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/enableHiveAccess',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.EnableHiveAccessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_hive_access_with_options_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.EnableHiveAccessRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.EnableHiveAccessResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableHiveAccess',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/enableHiveAccess',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.EnableHiveAccessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_hive_access(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.EnableHiveAccessRequest,
+    ) -> hologram_20220601_models.EnableHiveAccessResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.enable_hive_access_with_options(instance_id, request, headers, runtime)
+
+    async def enable_hive_access_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.EnableHiveAccessRequest,
+    ) -> hologram_20220601_models.EnableHiveAccessResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.enable_hive_access_with_options_async(instance_id, request, headers, runtime)
+
     def get_instance_with_options(
         self,
         instance_id: str,
@@ -470,6 +710,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_instance_with_options_async(instance_id, headers, runtime)
+
+    def get_warehouse_detail_with_options(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.GetWarehouseDetailResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetWarehouseDetail',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/getWarehouseDetail',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.GetWarehouseDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_warehouse_detail_with_options_async(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.GetWarehouseDetailResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetWarehouseDetail',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/getWarehouseDetail',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.GetWarehouseDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_warehouse_detail(
+        self,
+        instance_id: str,
+    ) -> hologram_20220601_models.GetWarehouseDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_warehouse_detail_with_options(instance_id, headers, runtime)
+
+    async def get_warehouse_detail_async(
+        self,
+        instance_id: str,
+    ) -> hologram_20220601_models.GetWarehouseDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_warehouse_detail_with_options_async(instance_id, headers, runtime)
 
     def list_instances_with_options(
         self,
@@ -554,6 +860,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_instances_with_options_async(request, headers, runtime)
+
+    def list_warehouses_with_options(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.ListWarehousesResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListWarehouses',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/listWarehouses',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.ListWarehousesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_warehouses_with_options_async(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.ListWarehousesResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListWarehouses',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/listWarehouses',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.ListWarehousesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_warehouses(
+        self,
+        instance_id: str,
+    ) -> hologram_20220601_models.ListWarehousesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_warehouses_with_options(instance_id, headers, runtime)
+
+    async def list_warehouses_async(
+        self,
+        instance_id: str,
+    ) -> hologram_20220601_models.ListWarehousesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_warehouses_with_options_async(instance_id, headers, runtime)
 
     def renew_instance_with_options(
         self,

@@ -28,7 +28,7 @@ pip install alibabacloud_hologram20220601
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/hologram-20220601/ChangeLog.md).
 
 ## References
 

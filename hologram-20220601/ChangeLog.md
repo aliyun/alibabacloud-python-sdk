@@ -1,3 +1,11 @@
+2024-02-21 Version: 1.1.0
+- Support API ChangeResourceGroup.
+- Support API DisableHiveAccess.
+- Support API EnableHiveAccess.
+- Support API GetWarehouseDetail.
+- Support API ListWarehouses.
+
+
 2024-01-23 Version: 1.0.7
 - Generated python 2022-06-01 for Hologram.
 
