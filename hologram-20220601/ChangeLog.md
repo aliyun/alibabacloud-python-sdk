@@ -1,3 +1,11 @@
+2024-02-21 Version: 1.2.0
+- Support API ChangeResourceGroup.
+- Support API DisableHiveAccess.
+- Support API EnableHiveAccess.
+- Support API GetWarehouseDetail.
+- Support API ListWarehouses.
+
+
 2024-02-21 Version: 1.1.0
 - Support API ChangeResourceGroup.
 - Support API DisableHiveAccess.
