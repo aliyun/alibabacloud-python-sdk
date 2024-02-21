@@ -1,3 +1,8 @@
+2024-02-21 Version: 3.1.1
+- Update API UpdateVpcEndpointZoneConnectionResourceAttribute: update param ResourceAllocateMode.
+- Update API UpdateVpcEndpointZoneConnectionResourceAttribute: update param ResourceReplaceMode.
+
+
 2023-11-23 Version: 3.1.0
 - Generated python 2020-04-15 for Privatelink.
 
