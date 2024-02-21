@@ -1,3 +1,8 @@
+2024-02-21 Version: 1.2.0
+- Support API ListAvailableZones.
+- Support API ListRegions.
+
+
 2023-10-09 Version: 1.1.2
 - Generated python 2022-08-01 for RocketMQ.
 

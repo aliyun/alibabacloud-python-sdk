@@ -1045,6 +1045,64 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_topic_with_options_async(instance_id, topic_name, headers, runtime)
 
+    def list_available_zones_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListAvailableZonesResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListAvailableZones',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/zones',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListAvailableZonesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_available_zones_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListAvailableZonesResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListAvailableZones',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/zones',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListAvailableZonesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_available_zones(self) -> rocket_mq20220801_models.ListAvailableZonesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_available_zones_with_options(headers, runtime)
+
+    async def list_available_zones_async(self) -> rocket_mq20220801_models.ListAvailableZonesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_available_zones_with_options_async(headers, runtime)
+
     def list_consumer_group_subscriptions_with_options(
         self,
         instance_id: str,
@@ -1350,6 +1408,64 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_instances_with_options_async(request, headers, runtime)
+
+    def list_regions_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListRegionsResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListRegions',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/regions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_regions_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListRegionsResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListRegions',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/regions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_regions(self) -> rocket_mq20220801_models.ListRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_regions_with_options(headers, runtime)
+
+    async def list_regions_async(self) -> rocket_mq20220801_models.ListRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_regions_with_options_async(headers, runtime)
 
     def list_topics_with_options(
         self,
