@@ -28,7 +28,7 @@ pip install alibabacloud_cbn20170912
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/cbn-20170912/ChangeLog.md).
 
 ## References
 

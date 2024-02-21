@@ -29,7 +29,7 @@ pip install alibabacloud_cbn20170912
 
 ## 发行说明
 
-每个版本的详细更改记录在[发行说明](./ChangeLog.md)中。
+每个版本的详细更改记录在[发行说明](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/cbn-20170912/ChangeLog.md)中。
 
 ## 相关
 
