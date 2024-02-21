@@ -12,19 +12,23 @@ class AddIpRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the resource group to which the Anti-DDoS Origin Enterprise instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # The ID of the Anti-DDoS Origin Enterprise instance.
         # 
-        # For more information about resource groups, see [Create a resource group](~~94485~~).
+        # >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin Enterprise instances.
         self.instance_id = instance_id
+        # The list of IP addresses that you want to add to the Anti-DDoS Origin Enterprise instance. This parameter is a string consisting of JSON arrays. Each element in a JSON array is a JSON struct that includes the following field:
+        # 
+        # *   **ip**: required. The IP address that you want to add. Data type: string.
+        # 
+        #     > The IP address must be the IP address of an asset that belongs to the current Alibaba Cloud account.
+        self.ip_list = ip_list
         # The region ID of the Anti-DDoS Origin Enterprise instance.
         # 
         # >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
-        self.ip_list = ip_list
-        # The ID of the request.
         self.region_id = region_id
-        # All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+        # The ID of the resource group to which the Anti-DDoS Origin Enterprise instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         # 
-        # For more information about sample requests, see the **"Examples"** section of this topic.
+        # For more information about resource groups, see [Create a resource group](~~94485~~).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -64,7 +68,7 @@ class AddIpResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Adds IP addresses to an Anti-DDoS Origin Enterprise instance.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -99,9 +103,6 @@ class AddIpResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -131,18 +132,251 @@ class AddIpResponse(TeaModel):
         return self
 
 
+class AttachAssetGroupToInstanceRequestAssetGroupList(TeaModel):
+    def __init__(
+        self,
+        member_uid: str = None,
+        name: str = None,
+        region: str = None,
+        type: str = None,
+    ):
+        # The UID of the member to which the asset belongs.
+        self.member_uid = member_uid
+        # The ID of the asset that you want to add. If the asset is a Web Application Firewall (WAF) instance, specify the ID of the WAF instance.
+        self.name = name
+        # The region ID of the asset.
+        self.region = region
+        # The type of the asset.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.member_uid is not None:
+            result['MemberUid'] = self.member_uid
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MemberUid') is not None:
+            self.member_uid = m.get('MemberUid')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class AttachAssetGroupToInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        asset_group_list: List[AttachAssetGroupToInstanceRequestAssetGroupList] = None,
+        instance_id: str = None,
+        region_id: str = None,
+        source_ip: str = None,
+    ):
+        # The information about the asset to be associated.
+        self.asset_group_list = asset_group_list
+        # The ID of the instance to query.
+        # 
+        # >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+        self.instance_id = instance_id
+        # The ID of the region in which the instance resides.
+        # 
+        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+        self.region_id = region_id
+        # The source IP address of the request. The system specifies this parameter.
+        self.source_ip = source_ip
+
+    def validate(self):
+        if self.asset_group_list:
+            for k in self.asset_group_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AssetGroupList'] = []
+        if self.asset_group_list is not None:
+            for k in self.asset_group_list:
+                result['AssetGroupList'].append(k.to_map() if k else None)
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.asset_group_list = []
+        if m.get('AssetGroupList') is not None:
+            for k in m.get('AssetGroupList'):
+                temp_model = AttachAssetGroupToInstanceRequestAssetGroupList()
+                self.asset_group_list.append(temp_model.from_map(k))
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        return self
+
+
+class AttachAssetGroupToInstanceShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        asset_group_list_shrink: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+        source_ip: str = None,
+    ):
+        # The information about the asset to be associated.
+        self.asset_group_list_shrink = asset_group_list_shrink
+        # The ID of the instance to query.
+        # 
+        # >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+        self.instance_id = instance_id
+        # The ID of the region in which the instance resides.
+        # 
+        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+        self.region_id = region_id
+        # The source IP address of the request. The system specifies this parameter.
+        self.source_ip = source_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asset_group_list_shrink is not None:
+            result['AssetGroupList'] = self.asset_group_list_shrink
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssetGroupList') is not None:
+            self.asset_group_list_shrink = m.get('AssetGroupList')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        return self
+
+
+class AttachAssetGroupToInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AttachAssetGroupToInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AttachAssetGroupToInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AttachAssetGroupToInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CheckAccessLogAuthRequest(TeaModel):
     def __init__(
         self,
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # Indicates whether Anti-DDoS Origin was authorized to access Log Service. Valid values:
+        # The ID of the region where the Anti-DDoS Origin instance resides.
         # 
-        # *   **true**: Anti-DDoS Origin was authorized.
-        # *   **false**: Anti-DDoS Origin was not authorized.
+        # For more information about the valid values of this parameter, see [Regions and zones](~~188196~~).
         self.region_id = region_id
-        # The ID of the request.
+        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin instance belongs to the default resource group.
+        # 
+        # For more information about resource groups, see [Create a resource group](~~94485~~).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -175,10 +409,12 @@ class CheckAccessLogAuthResponseBody(TeaModel):
         access_log_auth: bool = None,
         request_id: str = None,
     ):
-        # All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+        # Indicates whether Anti-DDoS Origin was authorized to access Log Service. Valid values:
         # 
-        # For more information about sample requests, see the **"Examples"** section of this topic.
+        # *   **true**: Anti-DDoS Origin was authorized.
+        # *   **false**: Anti-DDoS Origin was not authorized.
         self.access_log_auth = access_log_auth
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -217,9 +453,6 @@ class CheckAccessLogAuthResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -256,10 +489,18 @@ class CheckGrantRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
+        # Specifies whether to allow Anti-DDoS Origin to check the service-linked role. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.is_slr = is_slr
-        # WB269094
+        # The ID of the region where the Anti-DDoS Origin instance resides.
+        # 
+        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
         self.region_id = region_id
-        # CheckGrant
+        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
+        # 
+        # If you do not specify this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -296,7 +537,12 @@ class CheckGrantResponseBody(TeaModel):
         request_id: str = None,
         status: int = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether Anti-DDoS Origin is authorized to obtain information about the assets within the current Alibaba Cloud account. Valid values:
+        # 
+        # *   **1**: Anti-DDoS Origin is authorized to obtain information about the assets within the current Alibaba Cloud account.
+        # *   **0**: Anti-DDoS Origin is not authorized to obtain information about the assets within the current Alibaba Cloud account.
         self.status = status
 
     def validate(self):
@@ -335,9 +581,6 @@ class CheckGrantResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -383,49 +626,51 @@ class ConfigSchedruleOnDemandRequest(TeaModel):
         rule_undo_mode: str = None,
         time_zone: str = None,
     ):
+        # The ID of the on-demand instance.
+        # 
+        # >  You can call the [DescribeOnDemandInstance](~~152120~~) operation to query the IDs of all on-demand instances.
+        self.instance_id = instance_id
+        # The region ID of the on-demand instance.
+        # 
+        # >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
+        self.region_id = region_id
+        # The scheduling action. Set the value to **declare**, which indicates that the route is advertised.
+        self.rule_action = rule_action
+        # If the inbound bandwidth or packets consecutively exceed the threshold for the specified number of times, the scheduling rule is triggered and traffic is rerouted to the on-demand instance. The specified number of times is the value of this parameter.
+        # 
+        # >  The threshold of inbound bandwidth is the value of **RuleConditionMbps**. The threshold of inbound packets is the value of **RuleConditionKpps**.
+        self.rule_condition_cnt = rule_condition_cnt
+        # The threshold of inbound packets. Unit: Kpps. Minimum value: **10**.
+        self.rule_condition_kpps = rule_condition_kpps
+        # The threshold of inbound bandwidth. Unit: Mbit/s. Minimum value: **100**.
+        self.rule_condition_mbps = rule_condition_mbps
         # The name of the scheduling rule.
         # 
         # The name can contain lowercase letters, digits, hyphens (-), and underscores (\_). The name can be up to 32 characters in length. We recommend that you use the ID of the on-demand instance as the name. Example: `ddosbgp-cn-z2q1qzxb****`.
-        self.instance_id = instance_id
-        # The ID of the request.
-        self.region_id = region_id
+        self.rule_name = rule_name
         # Specifies whether the scheduling rule is enabled. Valid values:
         # 
         # *   **on**: enabled
         # *   **off**: disabled
-        self.rule_action = rule_action
-        # The scheduling action. Set the value to **declare**, which indicates that the route is advertised.
-        self.rule_condition_cnt = rule_condition_cnt
-        # If the inbound bandwidth or packets consecutively exceed the threshold for the specified number of times, the scheduling rule is triggered and traffic is rerouted to the on-demand instance. The specified number of times is the value of this parameter.
-        # 
-        # >  The threshold of inbound bandwidth is the value of **RuleConditionMbps**. The threshold of inbound packets is the value of **RuleConditionKpps**.
-        self.rule_condition_kpps = rule_condition_kpps
-        # The threshold of inbound packets. Unit: Kpps. Minimum value: **10**.
-        self.rule_condition_mbps = rule_condition_mbps
-        # The threshold of inbound bandwidth. Unit: Mbit/s. Minimum value: **100**.
-        self.rule_name = rule_name
-        # The stop method of the scheduling rule. Valid values:
-        # 
-        # *   **auto**: The scheduling rule automatically stops.
-        # *   **manual**: The scheduling rule is manually stopped.
         self.rule_switch = rule_switch
-        # The end time of the period during which the scheduling rule is automatically stopped. The time must be in the 24-hour clock and in the `hh:mm` format.
-        self.rule_undo_begin_time = rule_undo_begin_time
-        # The time zone of the time when the scheduling rule automatically stops. The time zone must be in the `GMT-hh:mm` format.
-        # 
-        # For example, the value `GMT-08:00` indicates that the time zone is UTC+8.
-        # 
-        # >  This parameter takes effect only when the **RuleUndoMode** parameter is set to **auto**.
-        self.rule_undo_end_time = rule_undo_end_time
         # The start time of the period during which the scheduling rule is automatically stopped. The time must be in the 24-hour clock and in the `hh:mm` format.
         # 
         # If the system detects that DDoS attacks stop, the system no longer reroutes traffic to the on-demand instance from the time you specified. We recommend that you set this parameter to a value that is defined as off-peak hours.
         # 
         # >  This parameter takes effect only when the **RuleUndoMode** parameter is set to **auto**.
-        self.rule_undo_mode = rule_undo_mode
-        # The region ID of the on-demand instance.
+        self.rule_undo_begin_time = rule_undo_begin_time
+        # The end time of the period during which the scheduling rule is automatically stopped. The time must be in the 24-hour clock and in the `hh:mm` format.
+        self.rule_undo_end_time = rule_undo_end_time
+        # The stop method of the scheduling rule. Valid values:
         # 
-        # >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
+        # *   **auto**: The scheduling rule automatically stops.
+        # *   **manual**: The scheduling rule is manually stopped.
+        self.rule_undo_mode = rule_undo_mode
+        # The time zone of the time when the scheduling rule automatically stops. The time zone must be in the `GMT-hh:mm` format.
+        # 
+        # For example, the value `GMT-08:00` indicates that the time zone is UTC+8.
+        # 
+        # >  This parameter takes effect only when the **RuleUndoMode** parameter is set to **auto**.
         self.time_zone = time_zone
 
     def validate(self):
@@ -497,9 +742,7 @@ class ConfigSchedruleOnDemandResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
-        # 
-        # For more information about sample requests, see the **"Examples"** section of this topic.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -534,9 +777,6 @@ class ConfigSchedruleOnDemandResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -582,49 +822,51 @@ class CreateSchedruleOnDemandRequest(TeaModel):
         rule_undo_mode: str = None,
         time_zone: str = None,
     ):
-        # The threshold of inbound bandwidth. Unit: Mbit/s. Minimum value: **100**.
+        # The ID of the on-demand instance.
+        # 
+        # >  You can call the [DescribeOnDemandInstance](~~152120~~) operation to query the IDs of all on-demand instances.
         self.instance_id = instance_id
-        # All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+        # The region ID of the on-demand instance.
         # 
-        # For more information about sample requests, see the **"Examples"** section of this topic.
+        # >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
         self.region_id = region_id
-        # The stop method of the scheduling rule. Valid values:
-        # 
-        # *   **auto**: The scheduling rule automatically stops.
-        # *   **manual**: The scheduling rule is manually stopped.
+        # The scheduling action. Set the value to **declare**, which indicates that the route is advertised.
         self.rule_action = rule_action
+        # If the inbound bandwidth or packets consecutively exceed the threshold for the specified number of times, the scheduling rule is triggered and traffic is rerouted to the on-demand instance. The specified number of times is the value of this parameter.
+        # 
+        # >  The threshold of inbound bandwidth is the value of **RuleConditionMbps**. The threshold of inbound packets is the value of **RuleConditionKpps**.
+        self.rule_condition_cnt = rule_condition_cnt
+        # The threshold of inbound packets. Unit: Kpps. Minimum value: **10**.
+        self.rule_condition_kpps = rule_condition_kpps
+        # The threshold of inbound bandwidth. Unit: Mbit/s. Minimum value: **100**.
+        self.rule_condition_mbps = rule_condition_mbps
+        # The name of the scheduling rule.
+        # 
+        # The name can contain lowercase letters, digits, hyphens (-), and underscores (\_). The name can be up to 32 characters in length. We recommend that you use the ID of the on-demand instance as the name. Example: `ddosbgp-cn-z2q1qzxb****`.
+        self.rule_name = rule_name
         # Specifies whether the scheduling rule is enabled. Valid values:
         # 
         # *   **on**: enabled
         # *   **off**: disabled
-        self.rule_condition_cnt = rule_condition_cnt
-        # The scheduling action. Set the value to **declare**, which indicates that the route is advertised.
-        self.rule_condition_kpps = rule_condition_kpps
-        # If the inbound bandwidth or packets consecutively exceed the threshold for the specified number of times, the scheduling rule is triggered and traffic is rerouted to the on-demand instance. The specified number of times is the value of this parameter.
-        # 
-        # >  The threshold of inbound bandwidth is the value of **RuleConditionMbps**. The threshold of inbound packets is the value of **RuleConditionKpps**.
-        self.rule_condition_mbps = rule_condition_mbps
-        # The threshold of inbound packets. Unit: Kpps. Minimum value: **10**.
-        self.rule_name = rule_name
+        self.rule_switch = rule_switch
         # The start time of the period during which the scheduling rule is automatically stopped. The time must be in the 24-hour clock and in the `hh:mm` format.
         # 
         # If the system detects that DDoS attacks stop, the system no longer reroutes traffic to the on-demand instance from the time you specified. We recommend that you set this parameter to a value that is defined as off-peak hours.
         # 
         # >  This parameter takes effect only when the **RuleUndoMode** parameter is set to **auto**.
-        self.rule_switch = rule_switch
+        self.rule_undo_begin_time = rule_undo_begin_time
+        # The end time of the period during which the scheduling rule is automatically stopped. The time must be in the 24-hour clock and in the `hh:mm` format.
+        self.rule_undo_end_time = rule_undo_end_time
+        # The stop method of the scheduling rule. Valid values:
+        # 
+        # *   **auto**: The scheduling rule automatically stops.
+        # *   **manual**: The scheduling rule is manually stopped.
+        self.rule_undo_mode = rule_undo_mode
         # The time zone of the time when the scheduling rule automatically stops. The time zone must be in the `GMT-hh:mm` format.
         # 
         # For example, the value `GMT-08:00` indicates that the time zone is UTC+8.
         # 
         # >  This parameter takes effect only when the **RuleUndoMode** parameter is set to **auto**.
-        self.rule_undo_begin_time = rule_undo_begin_time
-        # The region ID of the on-demand instance.
-        # 
-        # >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
-        self.rule_undo_end_time = rule_undo_end_time
-        # The end time of the period during which the scheduling rule is automatically stopped. The time must be in the 24-hour clock and in the `hh:mm` format.
-        self.rule_undo_mode = rule_undo_mode
-        # The ID of the request.
         self.time_zone = time_zone
 
     def validate(self):
@@ -696,7 +938,7 @@ class CreateSchedruleOnDemandResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Creates a scheduling rule for an on-demand instance.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -731,9 +973,6 @@ class CreateSchedruleOnDemandResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -860,9 +1099,6 @@ class DeleteBlackholeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -900,17 +1136,23 @@ class DeleteIpRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the request.
+        # The ID of the Anti-DDoS Origin Enterprise instance.
+        # 
+        # >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin Enterprise instances.
         self.instance_id = instance_id
+        # The list of IP addresses that you want to remove from the Anti-DDoS Origin Enterprise instance. This parameter is a string consisting of JSON arrays. Each element in a JSON array is a JSON struct that includes the following field:
+        # 
+        # *   **ip**: required. The IP address that you want to remove. Data type: string.
+        # 
+        #     > The IP addresses that you want to remove must be protected by the Anti-DDoS Origin Enterprise instance.
+        self.ip_list = ip_list
         # The region ID of the Anti-DDoS Origin Enterprise instance.
         # 
         # >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
-        self.ip_list = ip_list
-        # All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
-        # 
-        # For more information about sample requests, see the **"Examples"** section of this topic.
         self.region_id = region_id
-        # The Anti-DDoS Origin Enterprise instance no longer protects the IP addresses that are removed.
+        # The ID of the resource group to which the Anti-DDoS Origin Enterprise instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # 
+        # For more information about resource groups, see [Create a resource group](~~94485~~).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -950,7 +1192,7 @@ class DeleteIpResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Removes specific IP addresses from an Anti-DDoS Origin Enterprise instance.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -985,9 +1227,6 @@ class DeleteIpResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1024,13 +1263,15 @@ class DeleteSchedruleOnDemandRequest(TeaModel):
         region_id: str = None,
         rule_name: str = None,
     ):
-        # The name of the scheduling rule that you want to delete.
+        # The ID of the on-demand instance.
+        # 
+        # >  You can call the [DescribeOnDemandInstance](~~152120~~) operation to query the IDs of all on-demand instances.
         self.instance_id = instance_id
-        # The ID of the request.
-        self.region_id = region_id
         # The region ID of the on-demand instance.
         # 
         # >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
+        self.region_id = region_id
+        # The name of the scheduling rule that you want to delete.
         self.rule_name = rule_name
 
     def validate(self):
@@ -1066,9 +1307,7 @@ class DeleteSchedruleOnDemandResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
-        # 
-        # For more information about sample requests, see the **"Examples"** section of this topic.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1103,9 +1342,6 @@ class DeleteSchedruleOnDemandResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1135,6 +1371,424 @@ class DeleteSchedruleOnDemandResponse(TeaModel):
         return self
 
 
+class DescribeAssetGroupRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        region: str = None,
+        region_id: str = None,
+        source_ip: str = None,
+        type: str = None,
+    ):
+        # The ID of the asset. If the asset is a Web Application Firewall (WAF) instance, specify the ID of the WAF instance.
+        self.name = name
+        # The region ID of the asset.
+        self.region = region
+        # The ID of the region in which the instance resides.
+        # 
+        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+        self.region_id = region_id
+        # The source IP address of the request. The system specifies this parameter.
+        self.source_ip = source_ip
+        # The type of the asset. Valid values:
+        # 
+        # *   **waf**: WAF instance
+        # *   **ga**: Global Accelerator (GA) instance
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeAssetGroupResponseBodyAssetGroupList(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        region: str = None,
+        type: str = None,
+    ):
+        # The ID of the asset.
+        self.name = name
+        # The region to which the asset belongs.
+        self.region = region
+        # The type of the asset.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeAssetGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        asset_group_list: List[DescribeAssetGroupResponseBodyAssetGroupList] = None,
+        request_id: str = None,
+        total: int = None,
+    ):
+        # The information about the asset.
+        self.asset_group_list = asset_group_list
+        # The request ID.
+        self.request_id = request_id
+        # The total number of entries returned.
+        self.total = total
+
+    def validate(self):
+        if self.asset_group_list:
+            for k in self.asset_group_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AssetGroupList'] = []
+        if self.asset_group_list is not None:
+            for k in self.asset_group_list:
+                result['AssetGroupList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.asset_group_list = []
+        if m.get('AssetGroupList') is not None:
+            for k in m.get('AssetGroupList'):
+                temp_model = DescribeAssetGroupResponseBodyAssetGroupList()
+                self.asset_group_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class DescribeAssetGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAssetGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAssetGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAssetGroupToInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        member_uid: str = None,
+        name: str = None,
+        region: str = None,
+        region_id: str = None,
+        source_ip: str = None,
+        type: str = None,
+    ):
+        # The ID of the instance to query.
+        # 
+        # >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+        self.instance_id = instance_id
+        # The UID of the member to which the asset belongs.
+        self.member_uid = member_uid
+        # The ID of the asset. If the asset is a Web Application Firewall (WAF) instance, specify the ID of the WAF instance.
+        self.name = name
+        # The region ID of the asset.
+        self.region = region
+        # The ID of the region in which the instance resides.
+        # 
+        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+        self.region_id = region_id
+        # The source IP address of the request. The system specifies this parameter.
+        self.source_ip = source_ip
+        # The type of the asset. Valid values:
+        # 
+        # *   **waf**: WAF instance
+        # *   **ga**: Global Accelerator (GA) instance
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.member_uid is not None:
+            result['MemberUid'] = self.member_uid
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MemberUid') is not None:
+            self.member_uid = m.get('MemberUid')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeAssetGroupToInstanceResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        member_uid: str = None,
+        name: str = None,
+        region: str = None,
+        type: str = None,
+    ):
+        # The ID of the Anti-DDoS Origin instance of a paid edition.
+        self.instance_id = instance_id
+        # The UID of the member to which the asset belongs.
+        self.member_uid = member_uid
+        # The ID of the asset.
+        self.name = name
+        # The region ID of the asset.
+        self.region = region
+        # The type of the asset.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.member_uid is not None:
+            result['MemberUid'] = self.member_uid
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MemberUid') is not None:
+            self.member_uid = m.get('MemberUid')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeAssetGroupToInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        data_list: List[DescribeAssetGroupToInstanceResponseBodyDataList] = None,
+        request_id: str = None,
+        total: int = None,
+    ):
+        # The response parameters.
+        self.data_list = data_list
+        # The request ID.
+        self.request_id = request_id
+        # The total number of entries returned.
+        self.total = total
+
+    def validate(self):
+        if self.data_list:
+            for k in self.data_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataList'] = []
+        if self.data_list is not None:
+            for k in self.data_list:
+                result['DataList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_list = []
+        if m.get('DataList') is not None:
+            for k in m.get('DataList'):
+                temp_model = DescribeAssetGroupToInstanceResponseBodyDataList()
+                self.data_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class DescribeAssetGroupToInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAssetGroupToInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAssetGroupToInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDdosEventRequest(TeaModel):
     def __init__(
         self,
@@ -1147,28 +1801,27 @@ class DescribeDdosEventRequest(TeaModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
-        # The time when the DDoS attack stopped. This value is a UNIX timestamp. Unit: seconds.
+        # The end time of the DDoS attack event to query. This value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
-        # The start time of the DDoS attack event to query. This value is a UNIX timestamp. Unit: seconds.
-        self.instance_id = instance_id
-        # The status of the DDoS attack event. Valid values:
-        # 
-        # *   **hole_begin**: indicates that blackhole filtering is triggered for the attacked IP address.
-        # *   **hole_end**: indicates that blackhole filtering is deactivated for the attacked IP address.
-        # *   **defense_begin**: indicates that attack traffic is being scrubbed.
-        # *   **defense_end**: indicates that attack traffic is scrubbed.
-        self.ip = ip
-        # The attacked IP address to query.
-        self.page_no = page_no
         # The ID of the Anti-DDoS Origin instance to query.
         # 
         # >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances.
-        self.page_size = page_size
-        # The details about the DDoS attack event.
-        self.region_id = region_id
+        self.instance_id = instance_id
+        # The attacked IP address to query.
+        self.ip = ip
         # The number of the page to return.
+        self.page_no = page_no
+        # The number of entries to return on each page.
+        self.page_size = page_size
+        # The ID of the region where the Anti-DDoS Origin instance resides.
+        # 
+        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+        self.region_id = region_id
+        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
+        # 
+        # If you do not specify this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
-        # The operation that you want to perform. Set the value to **DescribeDdosEvent**\
+        # The start time of the DDoS attack event to query. This value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
 
     def validate(self):
@@ -1229,17 +1882,22 @@ class DescribeDdosEventResponseBodyEvents(TeaModel):
         start_time: int = None,
         status: str = None,
     ):
-        # All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
-        # 
-        # For more information about sample requests, see the **"Examples"** section of this topic.
+        # The time when the DDoS attack stopped. This value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
+        # The attacked IP address.
         self.ip = ip
-        # WB269094
+        # The volume of the request traffic at the start of the DDoS attack. Unit: Mbit/s.
         self.mbps = mbps
+        # The number of packets at the start of the DDoS attack. Unit: packets per second (PPS).
         self.pps = pps
-        # DescribeDdosEvent
+        # The time when the DDoS attack started. This value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
-        # Queries the details about the DDoS attack events that occurred on a specific Anti-DDoS Origin instance.
+        # The status of the DDoS attack event. Valid values:
+        # 
+        # *   **hole_begin**: indicates that blackhole filtering is triggered for the attacked IP address.
+        # *   **hole_end**: indicates that blackhole filtering is deactivated for the attacked IP address.
+        # *   **defense_begin**: indicates that attack traffic is being scrubbed.
+        # *   **defense_end**: indicates that attack traffic is scrubbed.
         self.status = status
 
     def validate(self):
@@ -1289,11 +1947,11 @@ class DescribeDdosEventResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The number of packets at the start of the DDoS attack. Unit: packets per second (PPS).
+        # The details about the DDoS attack event.
         self.events = events
         # The ID of the request.
         self.request_id = request_id
-        # The time when the DDoS attack started. This value is a UNIX timestamp. Unit: seconds.
+        # The total number of DDoS attack events.
         self.total = total
 
     def validate(self):
@@ -1344,9 +2002,6 @@ class DescribeDdosEventResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1382,9 +2037,13 @@ class DescribeExcpetionCountRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # DescribeExcpetionCount
+        # The ID of the region where the Anti-DDoS Origin instance resides.
+        # 
+        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
         self.region_id = region_id
-        # Queries the number of assets that are in an abnormal state and the number of Anti-DDoS Origin instances that are about to expire in a specific region.
+        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
+        # 
+        # If you do not specify this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -1418,9 +2077,11 @@ class DescribeExcpetionCountResponseBody(TeaModel):
         expire_time_count: int = None,
         request_id: str = None,
     ):
-        # WB269094
+        # The number of assets that are in an abnormal state.
         self.exception_ip_count = exception_ip_count
+        # The number of Anti-DDoS Origin instances that are about to expire.
         self.expire_time_count = expire_time_count
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1463,9 +2124,6 @@ class DescribeExcpetionCountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1501,11 +2159,9 @@ class DescribeInstanceListRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The ID of the instance.
+        # The key of the tag that is added to the Anti-DDoS Origin instance to query.
         self.key = key
-        # The field that is used to sort the Anti-DDoS Origin instances. Set the value to **expireTime**, which indicates that the instances are sorted based on the expiration time.
-        # 
-        # You can set the **Orderdire** parameter to specify the sorting method.
+        # The value of the tag that is added to the Anti-DDoS Origin instance to query.
         self.value = value
 
     def validate(self):
@@ -1549,34 +2205,39 @@ class DescribeInstanceListRequest(TeaModel):
         resource_group_id: str = None,
         tag: List[DescribeInstanceListRequestTag] = None,
     ):
-        # The details about the Anti-DDoS Origin instance.
-        self.instance_id_list = instance_id_list
         # The IDs of the Anti-DDoS Origin instances to query. Specify the value is in the `["<Instance ID 1>","<Instance ID 2>",……]` format.
-        self.instance_type = instance_type
-        self.instance_type_list = instance_type_list
-        # The remarks of the Anti-DDoS Origin instance to query. Fuzzy match is supported.
-        self.ip = ip
-        # The time when the instance was purchased. This value is a UNIX timestamp. Unit: milliseconds.
-        self.ip_version = ip_version
+        self.instance_id_list = instance_id_list
         # The mitigation plan of the Anti-DDoS Origin instance to query. Valid values:
         # 
         # *   **0**: the Professional mitigation plan
         # *   **1**: the Enterprise mitigation plan
-        self.orderby = orderby
-        # The key of the tag that is added to the Anti-DDoS Origin instance to query.
-        self.orderdire = orderdire
-        # The total number of Anti-DDoS Origin instances.
-        self.page_no = page_no
+        self.instance_type = instance_type
+        self.instance_type_list = instance_type_list
         # The IP address of the object that is protected by the Anti-DDoS Origin instance to query.
+        self.ip = ip
+        # The protocol type of the IP address asset that is protected by the Anti-DDoS Origin instance to query. Valid values:
+        # 
+        # *   **Ipv4**: IPv4
+        # *   **Ipv6**: IPv6
+        self.ip_version = ip_version
+        # The field that is used to sort the Anti-DDoS Origin instances. Set the value to **expireTime**, which indicates that the instances are sorted based on the expiration time.
+        # 
+        # You can set the **Orderdire** parameter to specify the sorting method.
+        self.orderby = orderby
+        # The sorting method. Valid values:
+        # 
+        # *   **desc**: the descending order. This is the default value.
+        # *   **asc**: the ascending order.
+        self.orderdire = orderdire
+        # The number of the page to return.
+        self.page_no = page_no
+        # The number of entries to return on each page.
         self.page_size = page_size
         # The ID of the region where the Anti-DDoS Origin instance to query resides.
         # 
         # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
         self.region_id = region_id
-        # Indicates whether auto-renewal is enabled for the instance. Valid values:
-        # 
-        # *   **true**: enabled
-        # *   **false**: disabled
+        # The remarks of the Anti-DDoS Origin instance to query. Fuzzy match is supported.
         self.remark = remark
         # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
         # 
@@ -1665,6 +2326,7 @@ class DescribeInstanceListResponseBodyInstanceList(TeaModel):
         self,
         auto_renewal: bool = None,
         blackholding_count: str = None,
+        commodity_type: str = None,
         coverage_type: int = None,
         expire_time: int = None,
         gmt_create: int = None,
@@ -1675,24 +2337,47 @@ class DescribeInstanceListResponseBodyInstanceList(TeaModel):
         remark: str = None,
         status: str = None,
     ):
-        # All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+        # Indicates whether auto-renewal is enabled for the instance. Valid values:
         # 
-        # For more information about sample requests, see the **"Examples"** section of this topic.
+        # *   **true**: enabled
+        # *   **false**: disabled
         self.auto_renewal = auto_renewal
+        # The number of protected public IP addresses for which blackhole filtering is triggered.
+        # 
+        # >  You can call the [DeleteBlackhole](~~118692~~) operation to deactivate blackhole filtering for a protected IP address.
         self.blackholding_count = blackholding_count
+        self.commodity_type = commodity_type
         self.coverage_type = coverage_type
-        # DescribeInstanceList
+        # The time when the instance expires. This value is a UNIX timestamp. Unit: milliseconds.
         self.expire_time = expire_time
+        # The time when the instance was purchased. This value is a UNIX timestamp. Unit: milliseconds.
         self.gmt_create = gmt_create
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The mitigation plan of the instance. Valid values:
+        # 
+        # *   **0**: the Professional mitigation plan
+        # *   **1**: the Enterprise mitigation plan
         self.instance_type = instance_type
-        # The ID of the request.
+        # The protocol type of the IP address asset that is protected by the instance. Valid values:
+        # 
+        # *   **Ipv4**: IPv4
+        # *   **Ipv6**: IPv6
         self.ip_type = ip_type
-        # WB269094
+        # The type of the cloud service that is associated with the Anti-DDoS Origin instance. By default, this parameter is not returned. If the Anti-DDoS Origin instance is created by using a different cloud service, the code of the cloud service is returned.
+        # 
+        # Valid values:
+        # 
+        # *   **gamebox**: The Anti-DDoS Origin instance is created by using Game Security Box.
+        # *   **eip**: The Anti-DDoS Origin instance is created by using an elastic IP address (EIP) for which Anti-DDoS (Enhanced Edition) is enabled.
         self.product = product
-        # Queries the details of all Anti-DDoS Origin instances.
-        self.remark = remark
         # The remarks of the instance.
+        self.remark = remark
+        # The status of the instance. Valid values:
+        # 
+        # *   **1**: normal
+        # *   **2**: expired
+        # *   **3**: released
         self.status = status
 
     def validate(self):
@@ -1708,6 +2393,8 @@ class DescribeInstanceListResponseBodyInstanceList(TeaModel):
             result['AutoRenewal'] = self.auto_renewal
         if self.blackholding_count is not None:
             result['BlackholdingCount'] = self.blackholding_count
+        if self.commodity_type is not None:
+            result['CommodityType'] = self.commodity_type
         if self.coverage_type is not None:
             result['CoverageType'] = self.coverage_type
         if self.expire_time is not None:
@@ -1734,6 +2421,8 @@ class DescribeInstanceListResponseBodyInstanceList(TeaModel):
             self.auto_renewal = m.get('AutoRenewal')
         if m.get('BlackholdingCount') is not None:
             self.blackholding_count = m.get('BlackholdingCount')
+        if m.get('CommodityType') is not None:
+            self.commodity_type = m.get('CommodityType')
         if m.get('CoverageType') is not None:
             self.coverage_type = m.get('CoverageType')
         if m.get('ExpireTime') is not None:
@@ -1762,16 +2451,11 @@ class DescribeInstanceListResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The number of the page to return.
+        # The details about the Anti-DDoS Origin instance.
         self.instance_list = instance_list
-        # The value of the tag that is added to the Anti-DDoS Origin instance to query.
+        # The ID of the request.
         self.request_id = request_id
-        # The type of the cloud service that is associated with the Anti-DDoS Origin instance. By default, this parameter is not returned. If the Anti-DDoS Origin instance is created by using a different cloud service, the code of the cloud service is returned.
-        # 
-        # Valid values:
-        # 
-        # *   **gamebox**: The Anti-DDoS Origin instance is created by using Game Security Box.
-        # *   **eip**: The Anti-DDoS Origin instance is created by using an elastic IP address (EIP) for which Anti-DDoS (Enhanced Edition) is enabled.
+        # The total number of Anti-DDoS Origin instances.
         self.total = total
 
     def validate(self):
@@ -1822,9 +2506,6 @@ class DescribeInstanceListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1861,16 +2542,17 @@ class DescribeInstanceSpecsRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
+        # The ID of the Anti-DDoS Origin Enterprise instance. This parameter value is a string consisting of JSON arrays. Each element in a JSON array indicates an instance ID. If you want to query more than one instance, separate instance IDs with commas (,).
+        # 
+        # >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin Enterprise instances in a specific region.
+        self.instance_id_list = instance_id_list
+        # The region ID of the Anti-DDoS Origin Enterprise instance. Default value: **cn-hangzhou**, which indicates the China (Hangzhou) region.
+        # 
+        # >  If your instance does not reside in the China (Hangzhou) region, you must specify this parameter to the region ID of your instance. You can call the [DescribeRegions](~~118703~~) operation to query the regions of cloud assets that are supported by an Anti-DDoS Origin instance.
+        self.region_id = region_id
         # The ID of the resource group to which the Anti-DDoS Origin Enterprise instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin Enterprise instance belongs to the default resource group.
         # 
         # For more information about resource groups, see [Create a resource group](~~94485~~).
-        self.instance_id_list = instance_id_list
-        # The normal clean bandwidth. Unit: Mbit/s.
-        self.region_id = region_id
-        # Indicates whether the unlimited protection feature is enabled. Valid values:
-        # 
-        # *   **0**: The unlimited protection feature is disabled.
-        # *   **1**: The unlimited protection feature is enabled.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -1913,21 +2595,21 @@ class DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig(TeaModel):
         pack_adv_thre: int = None,
         pack_basic_thre: int = None,
     ):
+        # The bandwidth of the package configuration.
         self.bandwidth = bandwidth
-        # The ID of the Anti-DDoS Origin Enterprise instance.
+        # The number of IP addresses that are protected by the Anti-DDoS Origin Enterprise instance.
         self.bind_ip_count = bind_ip_count
-        # DescribeInstanceSpecs
+        # The burstable bandwidth of each protected IP address. Unit: Gbit/s.
         self.ip_advance_thre = ip_advance_thre
-        # WB269094
+        # The basic bandwidth of each protected IP address. Unit: Gbit/s.
         self.ip_basic_thre = ip_basic_thre
+        # The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
         self.ip_spec = ip_spec
-        # DescribeInstanceSpecs
+        # The normal clean bandwidth. Unit: Mbit/s.
         self.normal_bandwidth = normal_bandwidth
-        # All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
-        # 
-        # For more information about sample requests, see the **"Examples"** section of this topic.
+        # The burstable protection bandwidth of the Anti-DDoS Origin Enterprise instance. Unit: Gbit/s.
         self.pack_adv_thre = pack_adv_thre
-        # The ID of the request.
+        # The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Unit: Gbit/s.
         self.pack_basic_thre = pack_basic_thre
 
     def validate(self):
@@ -1983,27 +2665,30 @@ class DescribeInstanceSpecsResponseBodyInstanceSpecs(TeaModel):
         self,
         available_defense_times: int = None,
         available_delete_blackhole_count: str = None,
+        defense_times_percent: int = None,
         instance_id: str = None,
         is_full_defense_mode: int = None,
         pack_config: DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig = None,
         region: str = None,
         total_defense_times: int = None,
     ):
-        # The ID of the Anti-DDoS Origin Enterprise instance. This parameter value is a string consisting of JSON arrays. Each element in a JSON array indicates an instance ID. If you want to query more than one instance, separate instance IDs with commas (,).
-        # 
-        # >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin Enterprise instances in a specific region.
+        # The number of times that the unlimited protection feature can be enabled.
         self.available_defense_times = available_defense_times
-        # The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Unit: Gbit/s.
+        # The number of times that blackhole filtering can be deactivated.
         self.available_delete_blackhole_count = available_delete_blackhole_count
-        # The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
+        self.defense_times_percent = defense_times_percent
+        # The ID of the Anti-DDoS Origin Enterprise instance.
         self.instance_id = instance_id
+        # Indicates whether the unlimited protection feature is enabled. Valid values:
+        # 
+        # *   **0**: The unlimited protection feature is disabled.
+        # *   **1**: The unlimited protection feature is enabled.
+        self.is_full_defense_mode = is_full_defense_mode
+        # The configurations of the Anti-DDoS Origin Enterprise instance, including the number of protected IP addresses and protection bandwidth.
+        self.pack_config = pack_config
         # The region ID of the Anti-DDoS Origin Enterprise instance.
         # 
         # >  You can call the [DescribeRegions](~~118703~~) operation to query the name of the region.
-        self.is_full_defense_mode = is_full_defense_mode
-        # The specifications of the Anti-DDoS Origin Enterprise instance, including whether the unlimited protection feature is enabled, and the numbers of times that the unlimited protection feature can be enabled and has been enabled.
-        self.pack_config = pack_config
-        # The number of times that blackhole filtering can be deactivated.
         self.region = region
         # The number of times that the unlimited protection feature can be enabled.
         self.total_defense_times = total_defense_times
@@ -2022,6 +2707,8 @@ class DescribeInstanceSpecsResponseBodyInstanceSpecs(TeaModel):
             result['AvailableDefenseTimes'] = self.available_defense_times
         if self.available_delete_blackhole_count is not None:
             result['AvailableDeleteBlackholeCount'] = self.available_delete_blackhole_count
+        if self.defense_times_percent is not None:
+            result['DefenseTimesPercent'] = self.defense_times_percent
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.is_full_defense_mode is not None:
@@ -2040,6 +2727,8 @@ class DescribeInstanceSpecsResponseBodyInstanceSpecs(TeaModel):
             self.available_defense_times = m.get('AvailableDefenseTimes')
         if m.get('AvailableDeleteBlackholeCount') is not None:
             self.available_delete_blackhole_count = m.get('AvailableDeleteBlackholeCount')
+        if m.get('DefenseTimesPercent') is not None:
+            self.defense_times_percent = m.get('DefenseTimesPercent')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('IsFullDefenseMode') is not None:
@@ -2060,9 +2749,9 @@ class DescribeInstanceSpecsResponseBody(TeaModel):
         instance_specs: List[DescribeInstanceSpecsResponseBodyInstanceSpecs] = None,
         request_id: str = None,
     ):
-        # The number of IP addresses that are protected by the Anti-DDoS Origin Enterprise instance.
+        # The specifications of the Anti-DDoS Origin Enterprise instance, including whether the unlimited protection feature is enabled, and the numbers of times that the unlimited protection feature can be enabled and has been enabled.
         self.instance_specs = instance_specs
-        # The number of times that the unlimited protection feature can be enabled.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2109,9 +2798,6 @@ class DescribeInstanceSpecsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2153,25 +2839,20 @@ class DescribeOnDemandDdosEventRequest(TeaModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
-        # The timestamp that indicates the end time of the attack. Unit: seconds. The timestamp follows the UNIX time format. It is the number of seconds that have elapsed since 00:00:00 Thursday, 1 January 1970.
+        # The timestamp that specifies the end of the time range to query. Unit: seconds. The timestamp follows the UNIX time format. It is the number of seconds that have elapsed since 00:00:00 Thursday, 1 January 1970.
         self.end_time = end_time
-        # The timestamp that specifies the beginning of the time range to query. Unit: seconds. The timestamp follows the UNIX time format. It is the number of seconds that have elapsed since 00:00:00 Thursday, 1 January 1970.
-        self.instance_id = instance_id
-        # The status of the event. Valid values:
-        # 
-        # *   **hole_begin **: indicates that the event is in the blackhole state.
-        # *   **hole_end **: indicates that blackhole ends.
-        # *   **defense_begin **: indicates that the event is in the cleaning state.
-        # *   **defense_end **: indicates that cleaning ends.
-        self.ip = ip
-        # The IP address of the protection target.
-        self.page_no = page_no
         # The ID of the on-demand instance to query.
+        self.instance_id = instance_id
+        # The IP address of the protection target.
+        self.ip = ip
+        # The number of the page to return. Default value: **1**.
+        self.page_no = page_no
+        # The number of entries to return on each page. The maximum value is **50**. The default value is **10**.
         self.page_size = page_size
         self.region_id = region_id
-        # The number of the page to return. Default value: **1**.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The operation that you want to perform. Set the value to **DescribeOnDemandDdosEvent**.
+        # The timestamp that specifies the beginning of the time range to query. Unit: seconds. The timestamp follows the UNIX time format. It is the number of seconds that have elapsed since 00:00:00 Thursday, 1 January 1970.
         self.start_time = start_time
 
     def validate(self):
@@ -2232,12 +2913,22 @@ class DescribeOnDemandDdosEventResponseBodyEvents(TeaModel):
         start_time: int = None,
         status: str = None,
     ):
-        # The packet forwarding rate of the DDoS attack. Unit: packets per second (PPS).
+        # The timestamp that indicates the end time of the attack. Unit: seconds. The timestamp follows the UNIX time format. It is the number of seconds that have elapsed since 00:00:00 Thursday, 1 January 1970.
         self.end_time = end_time
+        # The IP address of the protection target that encounters the DDoS attack.
         self.ip = ip
+        # The throughput of the DDoS attack. Unit: Mbit/s.
         self.mbps = mbps
+        # The packet forwarding rate of the DDoS attack. Unit: packets per second (PPS).
         self.pps = pps
+        # The timestamp that indicates the start time of the attack. Unit: seconds. The timestamp follows the UNIX time format. It is the number of seconds that have elapsed since 00:00:00 Thursday, 1 January 1970.
         self.start_time = start_time
+        # The status of the event. Valid values:
+        # 
+        # *   **hole_begin **: indicates that the event is in the blackhole state.
+        # *   **hole_end **: indicates that blackhole ends.
+        # *   **defense_begin **: indicates that the event is in the cleaning state.
+        # *   **defense_end **: indicates that cleaning ends.
         self.status = status
 
     def validate(self):
@@ -2287,11 +2978,11 @@ class DescribeOnDemandDdosEventResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The ID of the request.
-        self.events = events
-        # The timestamp that indicates the start time of the attack. Unit: seconds. The timestamp follows the UNIX time format. It is the number of seconds that have elapsed since 00:00:00 Thursday, 1 January 1970.
-        self.request_id = request_id
         # The list of DDoS events and the details of each event.
+        self.events = events
+        # The ID of the request.
+        self.request_id = request_id
+        # The total number of DDoS events.
         self.total = total
 
     def validate(self):
@@ -2342,9 +3033,6 @@ class DescribeOnDemandDdosEventResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2380,12 +3068,13 @@ class DescribeOnDemandInstanceStatusRequest(TeaModel):
         instance_id_list: List[str] = None,
         region_id: str = None,
     ):
-        # The mode used to start the on-demand instance. Valid values:
+        # The IDs of on-demand instances.
         # 
-        # *   **manual**: The instance is manually started.
-        # *   **netflow-auto**: The instance is automatically started by using NetFlow that monitors network traffic.
+        # >  You can call the [DescribeOnDemandInstance](~~152120~~) operation to query the IDs of all on-demand instances.
         self.instance_id_list = instance_id_list
-        # The details of the on-demand instance.
+        # The region ID of the on-demand instance.
+        # 
+        # >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
         self.region_id = region_id
 
     def validate(self):
@@ -2423,19 +3112,29 @@ class DescribeOnDemandInstanceStatusResponseBodyInstances(TeaModel):
         registed_as: str = None,
         user_id: str = None,
     ):
-        # WB269094
-        self.declared = declared
-        self.desc = desc
-        # DescribeOnDemandInstanceStatus
-        self.instance_id = instance_id
-        # All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+        # The details of route advertisement for data centers outside the Chinese mainland. This parameter is a JSON string. The following fields are included in the value:
         # 
-        # For more information about sample requests, see the **"Examples"** section of this topic.
+        # *   **region**: The code of the data center outside the Chinese mainland. The value is of the STRING type. For more information, see **Codes of data centers outside the Chinese mainland**.
+        # *   **declared**: indicates whether the data center advertised the route. The value is of the STRING type. Valid values: **0** and **1**. The value of 0 indicates that the data center did not advertise the route. The value of 1 indicates that the data center advertised the route.
+        self.declared = declared
+        # The description of the on-demand instance.
+        # 
+        # >  The value of this parameter is returned only when the information about multiple on-demand instances is returned. The value of this parameter is not returned because the information about only one on-demand instance is returned.
+        self.desc = desc
+        # The ID of the on-demand instance.
+        # 
+        # >  The value of this parameter is returned only when the information about multiple on-demand instances is returned. The value of this parameter is not returned because the information about only one on-demand instance is returned.
+        self.instance_id = instance_id
+        # The mode used to start the on-demand instance. Valid values:
+        # 
+        # *   **manual**: The instance is manually started.
+        # *   **netflow-auto**: The instance is automatically started by using NetFlow that monitors network traffic.
         self.mode = mode
+        # The CIDR block of the on-demand instance.
         self.net = net
-        # DescribeOnDemandInstanceStatus
+        # The number of the autonomous system (AS). Set the value to **0**, which indicates that AS is disabled.
         self.registed_as = registed_as
-        # The ID of the request.
+        # The ID of the Alibaba Cloud account.
         self.user_id = user_id
 
     def validate(self):
@@ -2488,9 +3187,9 @@ class DescribeOnDemandInstanceStatusResponseBody(TeaModel):
         instances: List[DescribeOnDemandInstanceStatusResponseBodyInstances] = None,
         request_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The details of the on-demand instance.
         self.instances = instances
-        # The CIDR block of the on-demand instance.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2537,9 +3236,6 @@ class DescribeOnDemandInstanceStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2812,9 +3508,6 @@ class DescribeOpEntitiesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2856,32 +3549,32 @@ class DescribePackIpListRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
+        # The ID of the Anti-DDoS Origin instance to query.
         # 
-        # If you do not specify this parameter, the instance belongs to the default resource group.
+        # >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances.
         self.instance_id = instance_id
-        # The number of the page to return.
+        # The protected IP address to query.
         self.ip = ip
+        # The ID of the member.
         self.member_uid = member_uid
-        # The operation that you want to perform. Set the value to **DescribePackIpList**.
+        # The number of the page to return.
         self.page_no = page_no
+        # The number of entries to return on each page.
+        self.page_size = page_size
         # The type of the cloud asset to which the protected IP address to query belongs. Valid values:
         # 
         # *   **ECS**: an Elastic Compute Service (ECS) instance.
         # *   **SLB**: a Classic Load Balancer (CLB) instance, originally called a Server Load Balancer (SLB) instance.
         # *   **EIP**: an elastic IP address (EIP). An Internet-facing Application Load Balancer (ALB) instance uses an EIP. If the IP address belongs to the Internet-facing ALB instance, set this parameter to EIP.
         # *   **WAF**: a Web Application Firewall (WAF) instance.
-        self.page_size = page_size
-        # The protected IP address to query.
         self.product_name = product_name
-        # The list of IP addresses that are protected by the Anti-DDoS Origin instance.
-        self.region_id = region_id
-        # The type of the cloud asset to which the IP address belongs. Valid values:
+        # The ID of the region where the Anti-DDoS Origin instance resides.
         # 
-        # *   **ECS**: an ECS instance.
-        # *   **SLB**: an CLB instance.
-        # *   **EIP**: an EIP. If the IP address belongs to an ALB instance, the value EIP is returned.
-        # *   **WAF**: a WAF instance.
+        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+        self.region_id = region_id
+        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
+        # 
+        # If you do not specify this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -2942,11 +3635,29 @@ class DescribePackIpListResponseBodyIpList(TeaModel):
         remark: str = None,
         status: str = None,
     ):
+        # The IP address.
         self.ip = ip
+        # The ID of the member.
         self.member_uid = member_uid
+        # The type of the cloud asset to which the IP address belongs. Valid values:
+        # 
+        # *   **ECS**: an ECS instance.
+        # *   **SLB**: a CLB instance, originally called an SLB instance.
+        # *   **EIP**: an EIP. If the IP address belongs to an ALB instance, the value EIP is returned.
+        # *   **WAF**: a WAF instance.
         self.product = product
+        # The region to which the protected IP address belongs.
+        # 
+        # >  If the protected IP address is in the same region as the instance, this parameter is not returned.
         self.region = region
+        # The description of the cloud asset to which the IP address belongs. The asset can be an ECS instance or an SLB instance.
+        # 
+        # >  If no descriptions are provided for the asset, this parameter is not returned.
         self.remark = remark
+        # The status of the IP address. Valid values:
+        # 
+        # *   **normal**: The IP address is in the normal state, which indicates that the IP address is not under attack.
+        # *   **hole_begin**: Blackhole filtering is triggered for the IP address.
         self.status = status
 
     def validate(self):
@@ -2998,17 +3709,20 @@ class DescribePackIpListResponseBody(TeaModel):
         success: bool = None,
         total: int = None,
     ):
-        # The ID of the request.
-        self.code = code
-        # WB269094
-        self.ip_list = ip_list
-        # All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+        # The HTTP status code of the request.
         # 
-        # For more information about sample requests, see the **"Examples"** section of this topic.
+        # For more information about status codes, see [Common parameters](~~118841~~).
+        self.code = code
+        # The IP addresses that are protected by the instance.
+        self.ip_list = ip_list
+        # The ID of the request.
         self.request_id = request_id
-        # DescribePackIpList
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   **true**: The call is successful.
+        # *   **false**: The call fails.
         self.success = success
-        # Queries the IP addresses that are protected by a specific Anti-DDoS Origin instance.
+        # The number of protected IP addresses.
         self.total = total
 
     def validate(self):
@@ -3067,9 +3781,6 @@ class DescribePackIpListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3252,9 +3963,6 @@ class DescribeRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3297,36 +4005,38 @@ class DescribeTrafficRequest(TeaModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
-        # The time when the traffic statistics are calculated. This value is a UNIX timestamp. Unit: seconds.
-        self.end_time = end_time
-        # The ID of the region where the Anti-DDoS Origin instance resides.
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
-        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
-        self.flow_type = flow_type
+        # If you do not specify this parameter, the current system time is used as the end time.
+        self.end_time = end_time
         # The type of the traffic statistics to query. Valid values:
         # 
         # *   **max**: the peak traffic within the specified interval
         # *   **avg**: the average traffic within the specified interval
-        self.instance_id = instance_id
-        # The interval at which the traffic statistics are calculated. Unit: seconds. Default value: **5**.
-        self.interval = interval
-        # The packet forwarding rate of attack traffic. Unit: packets per second.
-        # 
-        # >  This parameter is returned only if attack traffic exists.
-        self.ip = ip
-        # The operation that you want to perform. Set the value to **DescribeTraffic**.
-        self.ipnet = ipnet
-        # The bandwidth of the total traffic. Unit: Kbit/s.
-        self.region_id = region_id
+        self.flow_type = flow_type
         # The ID of the Anti-DDoS Origin instance to query.
         # 
         # >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances.
         # 
         # If you specify an on-demand instance, you must configure the **Interval** parameter.
-        self.resource_group_id = resource_group_id
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        self.instance_id = instance_id
+        # The interval at which the traffic statistics are calculated. Unit: seconds. Default value: **5**.
+        self.interval = interval
+        # The public IP address of the asset to query. If you do not specify this parameter, the traffic statistics of all public IP addresses that are protected by the Anti-DDoS Origin instance are queried.
         # 
-        # If you do not specify this parameter, the current system time is used as the end time.
+        # >  The public IP address must be a protected object of the Anti-DDoS Origin instance. You can call the [DescribePackIpList](~~118701~~) operation to query all protected objects of the Anti-DDoS Origin instance.
+        self.ip = ip
+        # The Classless Inter-Domain Routing (CIDR) block of the on-demand instance that you want to query.
+        self.ipnet = ipnet
+        # The ID of the region where the Anti-DDoS Origin instance resides.
+        # 
+        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+        self.region_id = region_id
+        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
+        # 
+        # If you do not specify this parameter, the instance belongs to the default resource group.
+        self.resource_group_id = resource_group_id
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
 
     def validate(self):
@@ -3392,19 +4102,26 @@ class DescribeTrafficResponseBodyFlowList(TeaModel):
         pps: int = None,
         time: int = None,
     ):
-        self.attack_bps = attack_bps
-        # Queries traffic statistics of an Anti-DDoS Origin instance within a specific time period.
-        self.attack_pps = attack_pps
-        # All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+        # The bandwidth of attack traffic. Unit: bit/s.
         # 
-        # For more information about sample requests, see the "**Examples**" section of this topic.
+        # >  This parameter is returned only if attack traffic exists.
+        self.attack_bps = attack_bps
+        # The packet forwarding rate of attack traffic. Unit: packets per second.
+        # 
+        # >  This parameter is returned only if attack traffic exists.
+        self.attack_pps = attack_pps
+        # The type of the traffic statistics. Valid values:
+        # 
+        # *   **max**: the peak traffic within the specified interval
+        # *   **avg**: the average traffic within the specified interval
         self.flow_type = flow_type
+        # The bandwidth of the total traffic. Unit: Kbit/s.
         self.kbps = kbps
-        # DescribeTraffic
+        # The ID of the traffic statistics.
         self.name = name
-        # WB269094
+        # The packet forwarding rate of the total traffic. Unit: packets per second.
         self.pps = pps
-        # The ID of the request.
+        # The time when the traffic statistics are calculated. This value is a UNIX timestamp. Unit: seconds.
         self.time = time
 
     def validate(self):
@@ -3457,9 +4174,9 @@ class DescribeTrafficResponseBody(TeaModel):
         flow_list: List[DescribeTrafficResponseBodyFlowList] = None,
         request_id: str = None,
     ):
-        # The ID of the traffic statistics.
+        # The queried traffic statistics.
         self.flow_list = flow_list
-        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3506,9 +4223,6 @@ class DescribeTrafficResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3538,18 +4252,247 @@ class DescribeTrafficResponse(TeaModel):
         return self
 
 
+class DettachAssetGroupToInstanceRequestAssetGroupList(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        region: str = None,
+        type: str = None,
+    ):
+        # The ID of the asset. If the asset is a Web Application Firewall (WAF) instance, specify the ID of the WAF instance.
+        self.name = name
+        # The region ID of the asset.
+        self.region = region
+        # The type of the asset. Valid values:
+        # 
+        # *   **waf**: WAF instance
+        # *   **ga**: Global Accelerator (GA) instance
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DettachAssetGroupToInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        asset_group_list: List[DettachAssetGroupToInstanceRequestAssetGroupList] = None,
+        instance_id: str = None,
+        region_id: str = None,
+        source_ip: str = None,
+    ):
+        # The information about the asset that you want to dissociate.
+        self.asset_group_list = asset_group_list
+        # The ID of the instance.
+        # 
+        # >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+        self.instance_id = instance_id
+        # The ID of the region in which the instance resides.
+        # 
+        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+        self.region_id = region_id
+        # The source IP address of the request. The system specifies this parameter.
+        self.source_ip = source_ip
+
+    def validate(self):
+        if self.asset_group_list:
+            for k in self.asset_group_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AssetGroupList'] = []
+        if self.asset_group_list is not None:
+            for k in self.asset_group_list:
+                result['AssetGroupList'].append(k.to_map() if k else None)
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.asset_group_list = []
+        if m.get('AssetGroupList') is not None:
+            for k in m.get('AssetGroupList'):
+                temp_model = DettachAssetGroupToInstanceRequestAssetGroupList()
+                self.asset_group_list.append(temp_model.from_map(k))
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        return self
+
+
+class DettachAssetGroupToInstanceShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        asset_group_list_shrink: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+        source_ip: str = None,
+    ):
+        # The information about the asset that you want to dissociate.
+        self.asset_group_list_shrink = asset_group_list_shrink
+        # The ID of the instance.
+        # 
+        # >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+        self.instance_id = instance_id
+        # The ID of the region in which the instance resides.
+        # 
+        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+        self.region_id = region_id
+        # The source IP address of the request. The system specifies this parameter.
+        self.source_ip = source_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asset_group_list_shrink is not None:
+            result['AssetGroupList'] = self.asset_group_list_shrink
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssetGroupList') is not None:
+            self.asset_group_list_shrink = m.get('AssetGroupList')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        return self
+
+
+class DettachAssetGroupToInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DettachAssetGroupToInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DettachAssetGroupToInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DettachAssetGroupToInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetSlsOpenStatusRequest(TeaModel):
     def __init__(
         self,
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # Indicates whether Log Service was activated. Valid values:
+        # The ID of the region where the Anti-DDoS Origin instance resides.
         # 
-        # *   **true**: Log Service was activated.
-        # *   **false**: Log Service was not activated.
+        # For more information about the valid values of this parameter, see [Regions and zones](~~188196~~).
         self.region_id = region_id
-        # The ID of the request.
+        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin instance belongs to the default resource group.
+        # 
+        # For more information about resource groups, see [Create a resource group](~~94485~~).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -3582,10 +4525,12 @@ class GetSlsOpenStatusResponseBody(TeaModel):
         request_id: str = None,
         sls_open_status: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
-        # All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+        # Indicates whether Log Service was activated. Valid values:
         # 
-        # For more information about sample requests, see the **"Examples"** section of this topic.
+        # *   **true**: Log Service was activated.
+        # *   **false**: Log Service was not activated.
         self.sls_open_status = sls_open_status
 
     def validate(self):
@@ -3624,9 +4569,6 @@ class GetSlsOpenStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3663,11 +4605,13 @@ class ListOpenedAccessLogInstancesRequest(TeaModel):
         page_size: int = None,
         resource_group_id: str = None,
     ):
-        # The number of the Anti-DDoS Origin instances for which log analysis was enabled.
+        # The number of the page to return. Pages start from page 1. Default value: **1**.
         self.page_number = page_number
-        # The ID of the request.
-        self.page_size = page_size
         # The number of entries to return on each page. Default value: **10**.
+        self.page_size = page_size
+        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin instance belongs to the default resource group.
+        # 
+        # For more information about resource groups, see [Create a resource group](~~94485~~).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -3704,10 +4648,12 @@ class ListOpenedAccessLogInstancesResponseBodySlsConfigStatus(TeaModel):
         enable: bool = None,
         instance_id: str = None,
     ):
-        self.enable = enable
-        # All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+        # Indicates whether log analysis was enabled for the Anti-DDoS Origin instance. Valid values:
         # 
-        # For more information about sample requests, see the **"Examples"** section of this topic.
+        # *   **true**: Log analysis was enabled.
+        # *   **false**: Log analysis was disabled.
+        self.enable = enable
+        # The ID of the Anti-DDoS Origin instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -3741,14 +4687,11 @@ class ListOpenedAccessLogInstancesResponseBody(TeaModel):
         sls_config_status: List[ListOpenedAccessLogInstancesResponseBodySlsConfigStatus] = None,
         total_count: int = None,
     ):
-        # The ID of the Anti-DDoS Origin instance.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether log analysis was enabled for the Anti-DDoS Origin instance. Valid values:
-        # 
-        # *   **true**: Log analysis was enabled.
-        # *   **false**: Log analysis was disabled.
-        self.sls_config_status = sls_config_status
         # The configuration of log analysis for the Anti-DDoS Origin instance.
+        self.sls_config_status = sls_config_status
+        # The number of the Anti-DDoS Origin instances for which log analysis was enabled.
         self.total_count = total_count
 
     def validate(self):
@@ -3799,9 +4742,6 @@ class ListOpenedAccessLogInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3840,15 +4780,15 @@ class ListTagKeysRequest(TeaModel):
         resource_group_id: str = None,
         resource_type: str = None,
     ):
-        # The ID of the resource group.
-        self.current_page = current_page
         # The number of the page to return. Pages start from page **1**. Default value: **1**.
-        self.page_size = page_size
-        # The type of the resource. Valid value: **INSTANCE**.
-        self.region_id = region_id
-        # The page number of the returned page.
-        self.resource_group_id = resource_group_id
+        self.current_page = current_page
         # The number of entries to return on each page. Valid values: 1 to **50**. Default value: **10**.
+        self.page_size = page_size
+        # The region ID.
+        self.region_id = region_id
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
+        # The type of the resource. Valid value: **INSTANCE**.
         self.resource_type = resource_type
 
     def validate(self):
@@ -3893,8 +4833,9 @@ class ListTagKeysResponseBodyTagKeys(TeaModel):
         tag_count: int = None,
         tag_key: str = None,
     ):
-        # The key of each tag.
+        # The total number of tag values that correspond to each key.
         self.tag_count = tag_count
+        # The key of each tag.
         self.tag_key = tag_key
 
     def validate(self):
@@ -3930,15 +4871,15 @@ class ListTagKeysResponseBody(TeaModel):
         tag_keys: List[ListTagKeysResponseBodyTagKeys] = None,
         total_count: int = None,
     ):
-        # The ID of the request.
+        # The page number of the returned page.
         self.current_page = current_page
-        # The total number of tags.
-        self.page_size = page_size
         # The number of entries returned per page.
+        self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of tag values that correspond to each key.
-        self.tag_keys = tag_keys
         # The list of tags and the details of each tag.
+        self.tag_keys = tag_keys
+        # The total number of tags.
         self.total_count = total_count
 
     def validate(self):
@@ -3997,9 +4938,6 @@ class ListTagKeysResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4035,9 +4973,13 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The ID of the request.
+        # The key of the tag to query.
+        # 
+        # >  The **ResourceIds.N** parameter and the key-value pair (Tag.N.Key and Tag.N.Value) cannot be left empty at the same time.
         self.key = key
-        # The type of the resource. The value is fixed as **INSTANCE**, which indicates instances.
+        # The value of the tag to query.
+        # 
+        # >  The **ResourceIds.N** parameter and the key-value pair (Tag.N.Key and Tag.N.Value) cannot be left empty at the same time.
         self.value = value
 
     def validate(self):
@@ -4074,23 +5016,23 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
+        # The query token. Set the value to the **NextToken** value that is returned in the last call to the ListTagResources operation. Leave this parameter empty the first time you call this operation.
+        self.next_token = next_token
+        # The ID of the region where the Anti-DDoS Origin instance resides.
+        # 
+        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+        self.region_id = region_id
         # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
         # 
         # If you do not specify this parameter, the instance belongs to the default resource group.
-        self.next_token = next_token
-        # The operation that you want to perform. Set the value to **ListTagResources**.
-        self.region_id = region_id
-        # The ID of the Anti-DDoS Origin instance.
         self.resource_group_id = resource_group_id
-        # The value of the tag that is added to the instance.
+        # The IDs of Anti-DDoS Origin Instances to query.
+        # 
+        # >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances.
         self.resource_id = resource_id
-        # The value of the tag to query.
-        # 
-        # >  The **ResourceIds.N** parameter and the key-value pair (Tag.N.Key and Tag.N.Value) cannot be left empty at the same time.
+        # The type of the resource to query. Set the value to **INSTANCE**, which indicates instances.
         self.resource_type = resource_type
-        # The key of the tag to query.
-        # 
-        # >  The **ResourceIds.N** parameter and the key-value pair (Tag.N.Key and Tag.N.Value) cannot be left empty at the same time.
+        # The tags to query.
         self.tag = tag
 
     def validate(self):
@@ -4149,9 +5091,13 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The ID of the Anti-DDoS Origin instance.
         self.resource_id = resource_id
+        # The type of the resource. The value is fixed as **INSTANCE**, which indicates instances.
         self.resource_type = resource_type
+        # The key of the tag that is added to the instance.
         self.tag_key = tag_key
+        # The value of the tag that is added to the instance.
         self.tag_value = tag_value
 
     def validate(self):
@@ -4228,13 +5174,11 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: ListTagResourcesResponseBodyTagResources = None,
     ):
-        # All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
-        # 
-        # For more information about sample requests, see the **"Examples"** section of this topic.
+        # The query token that is returned in this call.
         self.next_token = next_token
-        # ListTagResources
+        # The ID of the request.
         self.request_id = request_id
-        # WB269094
+        # The list of tags that are added to the Anti-DDoS Origin instance.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -4279,9 +5223,6 @@ class ListTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4319,12 +5260,19 @@ class ModifyRemarkRequest(TeaModel):
         remark: str = None,
         resource_group_id: str = None,
     ):
-        # Adds remarks for a specific Anti-DDoS Origin instance.
+        # The ID of the Anti-DDoS Origin instance for which you want to add remarks.
+        # 
+        # >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances.
         self.instance_id = instance_id
+        # The ID of the region where the Anti-DDoS Origin instance resides.
+        # 
+        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
         self.region_id = region_id
-        # ModifyRemark
+        # The remarks for the Anti-DDoS Origin instance.
         self.remark = remark
-        # WB269094
+        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
+        # 
+        # If you do not specify this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -4364,6 +5312,7 @@ class ModifyRemarkResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4398,9 +5347,6 @@ class ModifyRemarkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4436,9 +5382,13 @@ class QuerySchedruleOnDemandRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the request.
-        self.instance_id = instance_id
         # The ID of the on-demand instance.
+        # 
+        # >  You can call the [DescribeOnDemandInstance](~~152120~~) operation to query the IDs of all on-demand instances.
+        self.instance_id = instance_id
+        # The region ID of the on-demand instance.
+        # 
+        # >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
         self.region_id = region_id
 
     def validate(self):
@@ -4479,41 +5429,41 @@ class QuerySchedruleOnDemandResponseBodyRuleConfig(TeaModel):
         rule_undo_mode: str = None,
         time_zone: str = None,
     ):
-        # The stop method of the scheduling rule. Valid values:
-        # 
-        # *   **auto**: The scheduling rule automatically stops.
-        # *   **manual**: The scheduling rule is manually stopped.
+        # The scheduling action. Set the value to **declare**, which indicates that the route is advertised.
         self.rule_action = rule_action
-        # The name of the scheduling rule.
+        # If the inbound bandwidth or packets consecutively exceed the threshold for the specified number of times, the scheduling rule is triggered and traffic is rerouted to the on-demand instance. The specified number of times is the value of this parameter.
+        # 
+        # >  The threshold of inbound bandwidth is the value of **RuleConditionMbps**. The threshold of inbound packets is the value of **RuleConditionKpps**.
         self.rule_condition_cnt = rule_condition_cnt
+        # The threshold of inbound packets. Unit: Kpps. Minimum value: **10**.
+        self.rule_condition_kpps = rule_condition_kpps
+        # The threshold of inbound bandwidth. Unit: Mbit/s. Minimum value: **100**.
+        self.rule_condition_mbps = rule_condition_mbps
+        # The name of the scheduling rule.
+        self.rule_name = rule_name
+        # Indicates whether the scheduling rule is enabled. Valid values:
+        # 
+        # *   **on**: enabled
+        # *   **off**: disabled
+        self.rule_switch = rule_switch
         # The start time of the period during which the scheduling rule is automatically stopped. The time must be in the 24-hour clock and in the `hh:mm` format.
         # 
         # If the system detects that DDoS attacks stop, the system no longer reroutes traffic to the on-demand instance from the time you specified. We recommend that you set this parameter to a value that is defined as off-peak hours.
         # 
         # >  This parameter takes effect only when the **RuleUndoMode** parameter is set to **auto**.
-        self.rule_condition_kpps = rule_condition_kpps
-        # The scheduling action. Set the value to **declare**, which indicates that the route is advertised.
-        self.rule_condition_mbps = rule_condition_mbps
-        # The scheduling status. Valid values:
+        self.rule_undo_begin_time = rule_undo_begin_time
+        # The end time of the period during which the scheduling rule is automatically stopped. The time must be in the 24-hour clock and in the `hh:mm` format.
+        self.rule_undo_end_time = rule_undo_end_time
+        # The stop method of the scheduling rule. Valid values:
         # 
-        # *   **scheduled**\
-        # *   **unscheduled**\
-        self.rule_name = rule_name
+        # *   **auto**: The scheduling rule automatically stops.
+        # *   **manual**: The scheduling rule is manually stopped.
+        self.rule_undo_mode = rule_undo_mode
         # The time zone of the time when the scheduling rule automatically stops. The time zone must be in the `GMT-hh:mm` format.
         # 
         # For example, the value `GMT-08:00` indicates that the time zone is UTC+8.
         # 
         # >  This parameter takes effect only when the **RuleUndoMode** parameter is set to **auto**.
-        self.rule_switch = rule_switch
-        # The end time of the period during which the scheduling rule is automatically stopped. The time must be in the 24-hour clock and in the `hh:mm` format.
-        self.rule_undo_begin_time = rule_undo_begin_time
-        # The status of the scheduling rule.
-        self.rule_undo_end_time = rule_undo_end_time
-        # If the inbound bandwidth or packets consecutively exceed the threshold for the specified number of times, the scheduling rule is triggered and traffic is rerouted to the on-demand instance. The specified number of times is the value of this parameter.
-        # 
-        # >  The threshold of inbound bandwidth is the value of **RuleConditionMbps**. The threshold of inbound packets is the value of **RuleConditionKpps**.
-        self.rule_undo_mode = rule_undo_mode
-        # The threshold of inbound packets. Unit: Kpps. Minimum value: **10**.
         self.time_zone = time_zone
 
     def validate(self):
@@ -4578,10 +5528,12 @@ class QuerySchedruleOnDemandResponseBodyRuleStatus(TeaModel):
         net: str = None,
         rule_sched_status: str = None,
     ):
+        # The CIDR block of the on-demand instance.
         self.net = net
-        # All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+        # The scheduling status. Valid values:
         # 
-        # For more information about sample requests, see the **"Examples"** section of this topic.
+        # *   **scheduled**\
+        # *   **unscheduled**\
         self.rule_sched_status = rule_sched_status
 
     def validate(self):
@@ -4617,18 +5569,15 @@ class QuerySchedruleOnDemandResponseBody(TeaModel):
         rule_status: List[QuerySchedruleOnDemandResponseBodyRuleStatus] = None,
         user_id: str = None,
     ):
-        # The configurations of the scheduling rule.
+        # The ID of the on-demand instance.
         self.instance_id = instance_id
-        # The ID of the Alibaba Cloud account.
+        # The ID of the request.
         self.request_id = request_id
-        # The threshold of inbound bandwidth. Unit: Mbit/s. Minimum value: **100**.
+        # The configurations of the scheduling rule.
         self.rule_config = rule_config
-        # The CIDR block of the on-demand instance.
+        # The status of the scheduling rule.
         self.rule_status = rule_status
-        # Indicates whether the scheduling rule is enabled. Valid values:
-        # 
-        # *   **on**: enabled
-        # *   **off**: disabled
+        # The ID of the Alibaba Cloud account.
         self.user_id = user_id
 
     def validate(self):
@@ -4696,9 +5645,6 @@ class QuerySchedruleOnDemandResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4735,11 +5681,18 @@ class SetInstanceModeOnDemandRequest(TeaModel):
         mode: str = None,
         region_id: str = None,
     ):
-        # SetInstanceModeOnDemand
+        # The IDs of on-demand instances.
+        # 
+        # >  You can call the [DescribeOnDemandInstance](~~152120~~) operation to query the IDs of all on-demand instances.
         self.instance_id_list = instance_id_list
-        # SetInstanceModeOnDemand
+        # The scheduling mode of the on-demand instance. Valid values:
+        # 
+        # *   **manual**: manual scheduling
+        # *   **netflow-auto**: automatic scheduling
         self.mode = mode
-        # WB269094
+        # The region ID of the on-demand instance.
+        # 
+        # >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
         self.region_id = region_id
 
     def validate(self):
@@ -4775,6 +5728,7 @@ class SetInstanceModeOnDemandResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4809,9 +5763,6 @@ class SetInstanceModeOnDemandResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4847,8 +5798,13 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # WB269094
+        # The key of the tag to add.
+        # 
+        # >  If the specified key does not exist, a key is created.
         self.key = key
+        # The value of the tag to add.
+        # 
+        # >  If the specified value does not exist, a value is created.
         self.value = value
 
     def validate(self):
@@ -4884,14 +5840,16 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
-        # All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+        # The ID of the region where the Anti-DDoS Origin instance resides.
         # 
-        # For more information about sample requests, see the **"Examples"** section of this topic.
+        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The operation that you want to perform. Set the value to **TagResources**.
+        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
+        # 
+        # If you do not specify this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         self.resource_id = resource_id
-        # Adds tags to Anti-DDoS Origin instances.
+        # The type of the resource to which you want to add tags. Set the value to **INSTANCE**, which indicates instances.
         self.resource_type = resource_type
         self.tag = tag
 
@@ -4944,6 +5902,7 @@ class TagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4978,9 +5937,6 @@ class TagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5020,14 +5976,14 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # The operation that you want to perform. Set the value to **UntagResources**.
+        # Specifies whether to remove all tags from the specified Anti-DDoS Origin Enterprise instances.
         self.all = all
-        # testKey1
+        # The ID of the region where the Anti-DDoS Origin Enterprise instances reside.
         self.region_id = region_id
-        # The type of the specified resource. Set the value to **INSTANCE**.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_id = resource_id
-        # The ID of the request.
+        # The type of the specified resource. Set the value to **INSTANCE**.
         self.resource_type = resource_type
         self.tag_key = tag_key
 
@@ -5076,6 +6032,7 @@ class UntagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5110,9 +6067,6 @@ class UntagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
