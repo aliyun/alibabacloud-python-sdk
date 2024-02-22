@@ -853,6 +853,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_instance_with_options_async(instance_id, headers, runtime)
 
+    def get_instance_events_with_options(
+        self,
+        instance_id: str,
+        request: pai_dsw_20220101_models.GetInstanceEventsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.GetInstanceEventsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_events_num):
+            query['MaxEventsNum'] = request.max_events_num
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetInstanceEvents',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/events',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetInstanceEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_instance_events_with_options_async(
+        self,
+        instance_id: str,
+        request: pai_dsw_20220101_models.GetInstanceEventsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.GetInstanceEventsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_events_num):
+            query['MaxEventsNum'] = request.max_events_num
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetInstanceEvents',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/events',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetInstanceEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_instance_events(
+        self,
+        instance_id: str,
+        request: pai_dsw_20220101_models.GetInstanceEventsRequest,
+    ) -> pai_dsw_20220101_models.GetInstanceEventsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_instance_events_with_options(instance_id, request, headers, runtime)
+
+    async def get_instance_events_async(
+        self,
+        instance_id: str,
+        request: pai_dsw_20220101_models.GetInstanceEventsRequest,
+    ) -> pai_dsw_20220101_models.GetInstanceEventsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_instance_events_with_options_async(instance_id, request, headers, runtime)
+
     def get_instance_metrics_with_options(
         self,
         instance_id: str,

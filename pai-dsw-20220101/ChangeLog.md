@@ -1,3 +1,7 @@
+2024-02-22 Version: 1.2.0
+- Support API GetInstanceEvents.
+
+
 2024-01-09 Version: 1.1.45
 - Generated python 2022-01-01 for pai-dsw.
 
