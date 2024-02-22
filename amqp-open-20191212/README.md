@@ -28,7 +28,7 @@ pip install alibabacloud_amqp_open20191212
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/amqp-open-20191212/ChangeLog.md).
 
 ## References
 
