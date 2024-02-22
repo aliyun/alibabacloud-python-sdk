@@ -2783,6 +2783,108 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.CommonApplySyncHeaders()
         return await self.common_apply_sync_with_options_async(request, headers, runtime)
 
+    def cooperator_flight_bill_settlement_query_with_options(
+        self,
+        request: btrip_open_20220520_models.CooperatorFlightBillSettlementQueryRequest,
+        headers: btrip_open_20220520_models.CooperatorFlightBillSettlementQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.CooperatorFlightBillSettlementQueryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cooperator_id):
+            query['cooperator_id'] = request.cooperator_id
+        if not UtilClient.is_unset(request.page_no):
+            query['page_no'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['page_size'] = request.page_size
+        if not UtilClient.is_unset(request.period_end):
+            query['period_end'] = request.period_end
+        if not UtilClient.is_unset(request.period_start):
+            query['period_start'] = request.period_start
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CooperatorFlightBillSettlementQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/cooperator-flight/v1/bill-settlement',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.CooperatorFlightBillSettlementQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cooperator_flight_bill_settlement_query_with_options_async(
+        self,
+        request: btrip_open_20220520_models.CooperatorFlightBillSettlementQueryRequest,
+        headers: btrip_open_20220520_models.CooperatorFlightBillSettlementQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.CooperatorFlightBillSettlementQueryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cooperator_id):
+            query['cooperator_id'] = request.cooperator_id
+        if not UtilClient.is_unset(request.page_no):
+            query['page_no'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['page_size'] = request.page_size
+        if not UtilClient.is_unset(request.period_end):
+            query['period_end'] = request.period_end
+        if not UtilClient.is_unset(request.period_start):
+            query['period_start'] = request.period_start
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CooperatorFlightBillSettlementQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/cooperator-flight/v1/bill-settlement',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.CooperatorFlightBillSettlementQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cooperator_flight_bill_settlement_query(
+        self,
+        request: btrip_open_20220520_models.CooperatorFlightBillSettlementQueryRequest,
+    ) -> btrip_open_20220520_models.CooperatorFlightBillSettlementQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.CooperatorFlightBillSettlementQueryHeaders()
+        return self.cooperator_flight_bill_settlement_query_with_options(request, headers, runtime)
+
+    async def cooperator_flight_bill_settlement_query_async(
+        self,
+        request: btrip_open_20220520_models.CooperatorFlightBillSettlementQueryRequest,
+    ) -> btrip_open_20220520_models.CooperatorFlightBillSettlementQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.CooperatorFlightBillSettlementQueryHeaders()
+        return await self.cooperator_flight_bill_settlement_query_with_options_async(request, headers, runtime)
+
     def cooperator_hotel_bill_settlement_query_with_options(
         self,
         request: btrip_open_20220520_models.CooperatorHotelBillSettlementQueryRequest,
