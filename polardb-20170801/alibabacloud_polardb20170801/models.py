@@ -8750,6 +8750,7 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
         max_connections: int = None,
         max_iops: int = None,
         memory_size: str = None,
+        remote_memory_size: str = None,
         scc_mode: str = None,
         server_weight: str = None,
         serverless_type: str = None,
@@ -8805,6 +8806,7 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
         # The maximum input/output operations per second (IOPS).
         self.max_iops = max_iops
         self.memory_size = memory_size
+        self.remote_memory_size = remote_memory_size
         # Indicates whether the global consistency (high-performance mode) feature is enabled for the node. Valid values:
         # 
         # *   **ON**\
@@ -8857,6 +8859,8 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
             result['MaxIOPS'] = self.max_iops
         if self.memory_size is not None:
             result['MemorySize'] = self.memory_size
+        if self.remote_memory_size is not None:
+            result['RemoteMemorySize'] = self.remote_memory_size
         if self.scc_mode is not None:
             result['SccMode'] = self.scc_mode
         if self.server_weight is not None:
@@ -8899,6 +8903,8 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
             self.max_iops = m.get('MaxIOPS')
         if m.get('MemorySize') is not None:
             self.memory_size = m.get('MemorySize')
+        if m.get('RemoteMemorySize') is not None:
+            self.remote_memory_size = m.get('RemoteMemorySize')
         if m.get('SccMode') is not None:
             self.scc_mode = m.get('SccMode')
         if m.get('ServerWeight') is not None:
@@ -8950,6 +8956,7 @@ class DescribeDBClusterAttributeResponseBodyTags(TeaModel):
 class DescribeDBClusterAttributeResponseBody(TeaModel):
     def __init__(
         self,
+        ai_creating_time: str = None,
         ai_type: str = None,
         architecture: str = None,
         blktag_total: int = None,
@@ -9005,6 +9012,7 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         v_switch_id: str = None,
         zone_ids: str = None,
     ):
+        self.ai_creating_time = ai_creating_time
         # The information status of the AI node. Valid values:
         # 
         # *   SearchNode: search node.
@@ -9190,6 +9198,8 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.ai_creating_time is not None:
+            result['AiCreatingTime'] = self.ai_creating_time
         if self.ai_type is not None:
             result['AiType'] = self.ai_type
         if self.architecture is not None:
@@ -9306,6 +9316,8 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AiCreatingTime') is not None:
+            self.ai_creating_time = m.get('AiCreatingTime')
         if m.get('AiType') is not None:
             self.ai_type = m.get('AiType')
         if m.get('Architecture') is not None:
