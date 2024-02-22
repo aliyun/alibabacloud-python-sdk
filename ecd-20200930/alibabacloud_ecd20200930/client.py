@@ -21,6 +21,7 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
+        self._signature_algorithm = 'v2'
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('ecd', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -11538,6 +11539,84 @@ class Client(OpenApiClient):
     ) -> ecd_20200930_models.DisableDesktopsInGroupResponse:
         runtime = util_models.RuntimeOptions()
         return await self.disable_desktops_in_group_with_options_async(request, runtime)
+
+    def disconnect_desktop_sessions_with_options(
+        self,
+        request: ecd_20200930_models.DisconnectDesktopSessionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DisconnectDesktopSessionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.pre_check):
+            query['PreCheck'] = request.pre_check
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sessions):
+            query['Sessions'] = request.sessions
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisconnectDesktopSessions',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DisconnectDesktopSessionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disconnect_desktop_sessions_with_options_async(
+        self,
+        request: ecd_20200930_models.DisconnectDesktopSessionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DisconnectDesktopSessionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.pre_check):
+            query['PreCheck'] = request.pre_check
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sessions):
+            query['Sessions'] = request.sessions
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisconnectDesktopSessions',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DisconnectDesktopSessionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disconnect_desktop_sessions(
+        self,
+        request: ecd_20200930_models.DisconnectDesktopSessionsRequest,
+    ) -> ecd_20200930_models.DisconnectDesktopSessionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.disconnect_desktop_sessions_with_options(request, runtime)
+
+    async def disconnect_desktop_sessions_async(
+        self,
+        request: ecd_20200930_models.DisconnectDesktopSessionsRequest,
+    ) -> ecd_20200930_models.DisconnectDesktopSessionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.disconnect_desktop_sessions_with_options_async(request, runtime)
 
     def dissociate_network_package_with_options(
         self,

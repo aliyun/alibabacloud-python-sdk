@@ -1,3 +1,12 @@
+2024-02-22 Version: 3.1.0
+- Support API DisconnectDesktopSessions.
+- Update API CreateAutoSnapshotPolicy: update response param.
+- Update API CreateSnapshot: update response param.
+- Update API RebuildDesktops: update response param.
+- Update API SetDesktopGroupTimer: update response param.
+- Update API SetDesktopGroupTimerStatus: update response param.
+
+
 2024-01-26 Version: 3.0.1
 - Update API CreatePolicyGroupadd RecordingUserNotify param.
 add RecordingUserNotifyMessage param.
