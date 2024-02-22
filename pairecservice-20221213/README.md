@@ -28,7 +28,7 @@ pip install alibabacloud_pairecservice20221213
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/pairecservice-20221213/ChangeLog.md).
 
 ## References
 

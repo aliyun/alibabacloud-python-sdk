@@ -157,9 +157,6 @@ class BackflowFeatureConsistencyCheckJobDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -314,9 +311,6 @@ class CheckInstanceResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -419,9 +413,6 @@ class CloneExperimentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -536,9 +527,6 @@ class CloneExperimentGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -640,9 +628,6 @@ class CloneFeatureConsistencyCheckJobConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -757,9 +742,6 @@ class CloneLaboratoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -933,9 +915,6 @@ class CreateABMetricResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1067,9 +1046,6 @@ class CreateABMetricGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1189,9 +1165,6 @@ class CreateCalculationJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1324,9 +1297,6 @@ class CreateCrowdResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1477,9 +1447,6 @@ class CreateExperimentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1654,9 +1621,6 @@ class CreateExperimentGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1776,9 +1740,6 @@ class CreateFeatureConsistencyCheckJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1818,6 +1779,12 @@ class CreateFeatureConsistencyCheckJobConfigRequest(TeaModel):
         feature_display_exclude: str = None,
         feature_landing_resource_id: str = None,
         feature_priority: str = None,
+        feature_store_item_id: str = None,
+        feature_store_model_id: str = None,
+        feature_store_project_id: str = None,
+        feature_store_project_name: str = None,
+        feature_store_seq_feature_view: str = None,
+        feature_store_user_id: str = None,
         fg_jar_version: str = None,
         fg_json_file_name: str = None,
         generate_zip: bool = None,
@@ -1831,6 +1798,7 @@ class CreateFeatureConsistencyCheckJobConfigRequest(TeaModel):
         sample_rate: float = None,
         scene_id: str = None,
         service_id: str = None,
+        use_feature_store: bool = None,
         user_id_field: str = None,
         user_table: str = None,
         user_table_partition_field: str = None,
@@ -1844,6 +1812,12 @@ class CreateFeatureConsistencyCheckJobConfigRequest(TeaModel):
         self.feature_display_exclude = feature_display_exclude
         self.feature_landing_resource_id = feature_landing_resource_id
         self.feature_priority = feature_priority
+        self.feature_store_item_id = feature_store_item_id
+        self.feature_store_model_id = feature_store_model_id
+        self.feature_store_project_id = feature_store_project_id
+        self.feature_store_project_name = feature_store_project_name
+        self.feature_store_seq_feature_view = feature_store_seq_feature_view
+        self.feature_store_user_id = feature_store_user_id
         self.fg_jar_version = fg_jar_version
         self.fg_json_file_name = fg_json_file_name
         self.generate_zip = generate_zip
@@ -1857,6 +1831,7 @@ class CreateFeatureConsistencyCheckJobConfigRequest(TeaModel):
         self.sample_rate = sample_rate
         self.scene_id = scene_id
         self.service_id = service_id
+        self.use_feature_store = use_feature_store
         self.user_id_field = user_id_field
         self.user_table = user_table
         self.user_table_partition_field = user_table_partition_field
@@ -1886,6 +1861,18 @@ class CreateFeatureConsistencyCheckJobConfigRequest(TeaModel):
             result['FeatureLandingResourceId'] = self.feature_landing_resource_id
         if self.feature_priority is not None:
             result['FeaturePriority'] = self.feature_priority
+        if self.feature_store_item_id is not None:
+            result['FeatureStoreItemId'] = self.feature_store_item_id
+        if self.feature_store_model_id is not None:
+            result['FeatureStoreModelId'] = self.feature_store_model_id
+        if self.feature_store_project_id is not None:
+            result['FeatureStoreProjectId'] = self.feature_store_project_id
+        if self.feature_store_project_name is not None:
+            result['FeatureStoreProjectName'] = self.feature_store_project_name
+        if self.feature_store_seq_feature_view is not None:
+            result['FeatureStoreSeqFeatureView'] = self.feature_store_seq_feature_view
+        if self.feature_store_user_id is not None:
+            result['FeatureStoreUserId'] = self.feature_store_user_id
         if self.fg_jar_version is not None:
             result['FgJarVersion'] = self.fg_jar_version
         if self.fg_json_file_name is not None:
@@ -1912,6 +1899,8 @@ class CreateFeatureConsistencyCheckJobConfigRequest(TeaModel):
             result['SceneId'] = self.scene_id
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
+        if self.use_feature_store is not None:
+            result['UseFeatureStore'] = self.use_feature_store
         if self.user_id_field is not None:
             result['UserIdField'] = self.user_id_field
         if self.user_table is not None:
@@ -1940,6 +1929,18 @@ class CreateFeatureConsistencyCheckJobConfigRequest(TeaModel):
             self.feature_landing_resource_id = m.get('FeatureLandingResourceId')
         if m.get('FeaturePriority') is not None:
             self.feature_priority = m.get('FeaturePriority')
+        if m.get('FeatureStoreItemId') is not None:
+            self.feature_store_item_id = m.get('FeatureStoreItemId')
+        if m.get('FeatureStoreModelId') is not None:
+            self.feature_store_model_id = m.get('FeatureStoreModelId')
+        if m.get('FeatureStoreProjectId') is not None:
+            self.feature_store_project_id = m.get('FeatureStoreProjectId')
+        if m.get('FeatureStoreProjectName') is not None:
+            self.feature_store_project_name = m.get('FeatureStoreProjectName')
+        if m.get('FeatureStoreSeqFeatureView') is not None:
+            self.feature_store_seq_feature_view = m.get('FeatureStoreSeqFeatureView')
+        if m.get('FeatureStoreUserId') is not None:
+            self.feature_store_user_id = m.get('FeatureStoreUserId')
         if m.get('FgJarVersion') is not None:
             self.fg_jar_version = m.get('FgJarVersion')
         if m.get('FgJsonFileName') is not None:
@@ -1966,6 +1967,8 @@ class CreateFeatureConsistencyCheckJobConfigRequest(TeaModel):
             self.scene_id = m.get('SceneId')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
+        if m.get('UseFeatureStore') is not None:
+            self.use_feature_store = m.get('UseFeatureStore')
         if m.get('UserIdField') is not None:
             self.user_id_field = m.get('UserIdField')
         if m.get('UserTable') is not None:
@@ -2024,9 +2027,6 @@ class CreateFeatureConsistencyCheckJobConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2146,9 +2146,6 @@ class CreateInstanceResourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2317,9 +2314,6 @@ class CreateLaboratoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2440,9 +2434,6 @@ class CreateLayerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2569,9 +2560,6 @@ class CreateParamResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2733,9 +2721,6 @@ class CreateSceneResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2850,9 +2835,6 @@ class CreateSubCrowdResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2885,12 +2867,16 @@ class CreateSubCrowdResponse(TeaModel):
 class CreateTableMetaRequestFields(TeaModel):
     def __init__(
         self,
+        data_type: str = None,
         is_dimension_field: bool = None,
+        is_partition_field: str = None,
         meaning: str = None,
         name: str = None,
         type: str = None,
     ):
+        self.data_type = data_type
         self.is_dimension_field = is_dimension_field
+        self.is_partition_field = is_partition_field
         self.meaning = meaning
         self.name = name
         self.type = type
@@ -2904,8 +2890,12 @@ class CreateTableMetaRequestFields(TeaModel):
             return _map
 
         result = dict()
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
         if self.is_dimension_field is not None:
             result['IsDimensionField'] = self.is_dimension_field
+        if self.is_partition_field is not None:
+            result['IsPartitionField'] = self.is_partition_field
         if self.meaning is not None:
             result['Meaning'] = self.meaning
         if self.name is not None:
@@ -2916,8 +2906,12 @@ class CreateTableMetaRequestFields(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
         if m.get('IsDimensionField') is not None:
             self.is_dimension_field = m.get('IsDimensionField')
+        if m.get('IsPartitionField') is not None:
+            self.is_partition_field = m.get('IsPartitionField')
         if m.get('Meaning') is not None:
             self.meaning = m.get('Meaning')
         if m.get('Name') is not None:
@@ -3043,9 +3037,6 @@ class CreateTableMetaResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3141,9 +3132,6 @@ class DeleteABMetricResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3239,9 +3227,6 @@ class DeleteABMetricGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3338,9 +3323,6 @@ class DeleteCrowdResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3437,9 +3419,6 @@ class DeleteExperimentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3536,9 +3515,6 @@ class DeleteExperimentGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3607,9 +3583,6 @@ class DeleteInstanceResourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3706,9 +3679,6 @@ class DeleteLaboratoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3805,9 +3775,6 @@ class DeleteLayerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3904,9 +3871,6 @@ class DeleteParamResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4003,9 +3967,6 @@ class DeleteSceneResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4102,9 +4063,6 @@ class DeleteSubCrowdResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4200,9 +4158,6 @@ class DeleteTableMetaResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4382,9 +4337,6 @@ class GetABMetricResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4522,9 +4474,6 @@ class GetABMetricGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4668,9 +4617,6 @@ class GetCalculationJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4863,9 +4809,6 @@ class GetExperimentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5058,9 +5001,6 @@ class GetExperimentGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5198,9 +5138,6 @@ class GetFeatureConsistencyCheckJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5268,6 +5205,12 @@ class GetFeatureConsistencyCheckJobConfigResponseBody(TeaModel):
         feature_landing_resource_id: str = None,
         feature_landing_resource_uri: str = None,
         feature_priority: str = None,
+        feature_store_item_id: str = None,
+        feature_store_model_id: str = None,
+        feature_store_project_id: str = None,
+        feature_store_project_name: str = None,
+        feature_store_seq_feature_view: str = None,
+        feature_store_user_id: str = None,
         fg_jar_version: str = None,
         fg_json_file_name: str = None,
         generate_zip: bool = None,
@@ -5290,6 +5233,7 @@ class GetFeatureConsistencyCheckJobConfigResponseBody(TeaModel):
         service_id: str = None,
         service_name: str = None,
         status: str = None,
+        use_feature_store: bool = None,
         user_id_field: str = None,
         user_table: str = None,
         user_table_partition_field: str = None,
@@ -5304,6 +5248,12 @@ class GetFeatureConsistencyCheckJobConfigResponseBody(TeaModel):
         self.feature_landing_resource_id = feature_landing_resource_id
         self.feature_landing_resource_uri = feature_landing_resource_uri
         self.feature_priority = feature_priority
+        self.feature_store_item_id = feature_store_item_id
+        self.feature_store_model_id = feature_store_model_id
+        self.feature_store_project_id = feature_store_project_id
+        self.feature_store_project_name = feature_store_project_name
+        self.feature_store_seq_feature_view = feature_store_seq_feature_view
+        self.feature_store_user_id = feature_store_user_id
         self.fg_jar_version = fg_jar_version
         self.fg_json_file_name = fg_json_file_name
         self.generate_zip = generate_zip
@@ -5326,6 +5276,7 @@ class GetFeatureConsistencyCheckJobConfigResponseBody(TeaModel):
         self.service_id = service_id
         self.service_name = service_name
         self.status = status
+        self.use_feature_store = use_feature_store
         self.user_id_field = user_id_field
         self.user_table = user_table
         self.user_table_partition_field = user_table_partition_field
@@ -5357,6 +5308,18 @@ class GetFeatureConsistencyCheckJobConfigResponseBody(TeaModel):
             result['FeatureLandingResourceUri'] = self.feature_landing_resource_uri
         if self.feature_priority is not None:
             result['FeaturePriority'] = self.feature_priority
+        if self.feature_store_item_id is not None:
+            result['FeatureStoreItemId'] = self.feature_store_item_id
+        if self.feature_store_model_id is not None:
+            result['FeatureStoreModelId'] = self.feature_store_model_id
+        if self.feature_store_project_id is not None:
+            result['FeatureStoreProjectId'] = self.feature_store_project_id
+        if self.feature_store_project_name is not None:
+            result['FeatureStoreProjectName'] = self.feature_store_project_name
+        if self.feature_store_seq_feature_view is not None:
+            result['FeatureStoreSeqFeatureView'] = self.feature_store_seq_feature_view
+        if self.feature_store_user_id is not None:
+            result['FeatureStoreUserId'] = self.feature_store_user_id
         if self.fg_jar_version is not None:
             result['FgJarVersion'] = self.fg_jar_version
         if self.fg_json_file_name is not None:
@@ -5401,6 +5364,8 @@ class GetFeatureConsistencyCheckJobConfigResponseBody(TeaModel):
             result['ServiceName'] = self.service_name
         if self.status is not None:
             result['Status'] = self.status
+        if self.use_feature_store is not None:
+            result['UseFeatureStore'] = self.use_feature_store
         if self.user_id_field is not None:
             result['UserIdField'] = self.user_id_field
         if self.user_table is not None:
@@ -5431,6 +5396,18 @@ class GetFeatureConsistencyCheckJobConfigResponseBody(TeaModel):
             self.feature_landing_resource_uri = m.get('FeatureLandingResourceUri')
         if m.get('FeaturePriority') is not None:
             self.feature_priority = m.get('FeaturePriority')
+        if m.get('FeatureStoreItemId') is not None:
+            self.feature_store_item_id = m.get('FeatureStoreItemId')
+        if m.get('FeatureStoreModelId') is not None:
+            self.feature_store_model_id = m.get('FeatureStoreModelId')
+        if m.get('FeatureStoreProjectId') is not None:
+            self.feature_store_project_id = m.get('FeatureStoreProjectId')
+        if m.get('FeatureStoreProjectName') is not None:
+            self.feature_store_project_name = m.get('FeatureStoreProjectName')
+        if m.get('FeatureStoreSeqFeatureView') is not None:
+            self.feature_store_seq_feature_view = m.get('FeatureStoreSeqFeatureView')
+        if m.get('FeatureStoreUserId') is not None:
+            self.feature_store_user_id = m.get('FeatureStoreUserId')
         if m.get('FgJarVersion') is not None:
             self.fg_jar_version = m.get('FgJarVersion')
         if m.get('FgJsonFileName') is not None:
@@ -5475,6 +5452,8 @@ class GetFeatureConsistencyCheckJobConfigResponseBody(TeaModel):
             self.service_name = m.get('ServiceName')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('UseFeatureStore') is not None:
+            self.use_feature_store = m.get('UseFeatureStore')
         if m.get('UserIdField') is not None:
             self.user_id_field = m.get('UserIdField')
         if m.get('UserTable') is not None:
@@ -5500,9 +5479,6 @@ class GetFeatureConsistencyCheckJobConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5815,9 +5791,6 @@ class GetInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5934,9 +5907,6 @@ class GetInstanceResourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5970,11 +5940,13 @@ class GetInstanceResourceTableResponseBodyFields(TeaModel):
     def __init__(
         self,
         is_dimension_field: bool = None,
+        is_partition_field: bool = None,
         meaning: str = None,
         name: str = None,
         type: str = None,
     ):
         self.is_dimension_field = is_dimension_field
+        self.is_partition_field = is_partition_field
         self.meaning = meaning
         self.name = name
         self.type = type
@@ -5990,6 +5962,8 @@ class GetInstanceResourceTableResponseBodyFields(TeaModel):
         result = dict()
         if self.is_dimension_field is not None:
             result['IsDimensionField'] = self.is_dimension_field
+        if self.is_partition_field is not None:
+            result['IsPartitionField'] = self.is_partition_field
         if self.meaning is not None:
             result['Meaning'] = self.meaning
         if self.name is not None:
@@ -6002,6 +5976,8 @@ class GetInstanceResourceTableResponseBodyFields(TeaModel):
         m = m or dict()
         if m.get('IsDimensionField') is not None:
             self.is_dimension_field = m.get('IsDimensionField')
+        if m.get('IsPartitionField') is not None:
+            self.is_partition_field = m.get('IsPartitionField')
         if m.get('Meaning') is not None:
             self.meaning = m.get('Meaning')
         if m.get('Name') is not None:
@@ -6070,9 +6046,6 @@ class GetInstanceResourceTableResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6247,9 +6220,6 @@ class GetLaboratoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6370,9 +6340,6 @@ class GetLayerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6528,9 +6495,6 @@ class GetSceneResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6651,9 +6615,6 @@ class GetSubCrowdResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6759,27 +6720,33 @@ class GetTableMetaResponseBody(TeaModel):
     def __init__(
         self,
         can_delete: bool = None,
+        config: str = None,
         description: str = None,
         fields: List[GetTableMetaResponseBodyFields] = None,
         gmt_create_time: str = None,
+        gmt_imported_time: str = None,
         gmt_modified_time: str = None,
         module: str = None,
         name: str = None,
         request_id: str = None,
         resource_id: str = None,
+        table_meta_id: str = None,
         table_name: str = None,
         type: str = None,
         url: str = None,
     ):
         self.can_delete = can_delete
+        self.config = config
         self.description = description
         self.fields = fields
         self.gmt_create_time = gmt_create_time
+        self.gmt_imported_time = gmt_imported_time
         self.gmt_modified_time = gmt_modified_time
         self.module = module
         self.name = name
         self.request_id = request_id
         self.resource_id = resource_id
+        self.table_meta_id = table_meta_id
         self.table_name = table_name
         self.type = type
         self.url = url
@@ -6798,6 +6765,8 @@ class GetTableMetaResponseBody(TeaModel):
         result = dict()
         if self.can_delete is not None:
             result['CanDelete'] = self.can_delete
+        if self.config is not None:
+            result['Config'] = self.config
         if self.description is not None:
             result['Description'] = self.description
         result['Fields'] = []
@@ -6806,6 +6775,8 @@ class GetTableMetaResponseBody(TeaModel):
                 result['Fields'].append(k.to_map() if k else None)
         if self.gmt_create_time is not None:
             result['GmtCreateTime'] = self.gmt_create_time
+        if self.gmt_imported_time is not None:
+            result['GmtImportedTime'] = self.gmt_imported_time
         if self.gmt_modified_time is not None:
             result['GmtModifiedTime'] = self.gmt_modified_time
         if self.module is not None:
@@ -6816,6 +6787,8 @@ class GetTableMetaResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
+        if self.table_meta_id is not None:
+            result['TableMetaId'] = self.table_meta_id
         if self.table_name is not None:
             result['TableName'] = self.table_name
         if self.type is not None:
@@ -6828,6 +6801,8 @@ class GetTableMetaResponseBody(TeaModel):
         m = m or dict()
         if m.get('CanDelete') is not None:
             self.can_delete = m.get('CanDelete')
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         self.fields = []
@@ -6837,6 +6812,8 @@ class GetTableMetaResponseBody(TeaModel):
                 self.fields.append(temp_model.from_map(k))
         if m.get('GmtCreateTime') is not None:
             self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('GmtImportedTime') is not None:
+            self.gmt_imported_time = m.get('GmtImportedTime')
         if m.get('GmtModifiedTime') is not None:
             self.gmt_modified_time = m.get('GmtModifiedTime')
         if m.get('Module') is not None:
@@ -6847,6 +6824,8 @@ class GetTableMetaResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
+        if m.get('TableMetaId') is not None:
+            self.table_meta_id = m.get('TableMetaId')
         if m.get('TableName') is not None:
             self.table_name = m.get('TableName')
         if m.get('Type') is not None:
@@ -6868,9 +6847,6 @@ class GetTableMetaResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6904,16 +6880,20 @@ class ListABMetricGroupsRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
+        order: str = None,
         page_number: int = None,
         page_size: int = None,
         realtime: bool = None,
         scene_id: str = None,
+        sort_by: str = None,
     ):
         self.instance_id = instance_id
+        self.order = order
         self.page_number = page_number
         self.page_size = page_size
         self.realtime = realtime
         self.scene_id = scene_id
+        self.sort_by = sort_by
 
     def validate(self):
         pass
@@ -6926,6 +6906,8 @@ class ListABMetricGroupsRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.order is not None:
+            result['Order'] = self.order
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -6934,12 +6916,16 @@ class ListABMetricGroupsRequest(TeaModel):
             result['Realtime'] = self.realtime
         if self.scene_id is not None:
             result['SceneId'] = self.scene_id
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -6948,6 +6934,8 @@ class ListABMetricGroupsRequest(TeaModel):
             self.realtime = m.get('Realtime')
         if m.get('SceneId') is not None:
             self.scene_id = m.get('SceneId')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
         return self
 
 
@@ -7079,9 +7067,6 @@ class ListABMetricGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7350,9 +7335,6 @@ class ListABMetricsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7561,9 +7543,6 @@ class ListCalculationJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7672,9 +7651,6 @@ class ListCrowdUsersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7860,9 +7836,6 @@ class ListCrowdsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8114,9 +8087,6 @@ class ListExperimentGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8374,9 +8344,6 @@ class ListExperimentsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8469,6 +8436,12 @@ class ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCo
         feature_landing_resource_id: str = None,
         feature_landing_resource_uri: str = None,
         feature_priority: str = None,
+        feature_store_item_id: str = None,
+        feature_store_model_id: str = None,
+        feature_store_project_id: str = None,
+        feature_store_project_name: str = None,
+        feature_store_seq_feature_view: str = None,
+        feature_store_user_id: str = None,
         fg_jar_version: str = None,
         fg_json_file_name: str = None,
         generate_zip: bool = None,
@@ -8490,6 +8463,7 @@ class ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCo
         service_id: str = None,
         service_name: str = None,
         status: str = None,
+        use_feature_store: str = None,
         user_id_field: str = None,
         user_table: str = None,
         user_table_partition_field: str = None,
@@ -8505,6 +8479,12 @@ class ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCo
         self.feature_landing_resource_id = feature_landing_resource_id
         self.feature_landing_resource_uri = feature_landing_resource_uri
         self.feature_priority = feature_priority
+        self.feature_store_item_id = feature_store_item_id
+        self.feature_store_model_id = feature_store_model_id
+        self.feature_store_project_id = feature_store_project_id
+        self.feature_store_project_name = feature_store_project_name
+        self.feature_store_seq_feature_view = feature_store_seq_feature_view
+        self.feature_store_user_id = feature_store_user_id
         self.fg_jar_version = fg_jar_version
         self.fg_json_file_name = fg_json_file_name
         self.generate_zip = generate_zip
@@ -8526,6 +8506,7 @@ class ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCo
         self.service_id = service_id
         self.service_name = service_name
         self.status = status
+        self.use_feature_store = use_feature_store
         self.user_id_field = user_id_field
         self.user_table = user_table
         self.user_table_partition_field = user_table_partition_field
@@ -8559,6 +8540,18 @@ class ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCo
             result['FeatureLandingResourceUri'] = self.feature_landing_resource_uri
         if self.feature_priority is not None:
             result['FeaturePriority'] = self.feature_priority
+        if self.feature_store_item_id is not None:
+            result['FeatureStoreItemId'] = self.feature_store_item_id
+        if self.feature_store_model_id is not None:
+            result['FeatureStoreModelId'] = self.feature_store_model_id
+        if self.feature_store_project_id is not None:
+            result['FeatureStoreProjectId'] = self.feature_store_project_id
+        if self.feature_store_project_name is not None:
+            result['FeatureStoreProjectName'] = self.feature_store_project_name
+        if self.feature_store_seq_feature_view is not None:
+            result['FeatureStoreSeqFeatureView'] = self.feature_store_seq_feature_view
+        if self.feature_store_user_id is not None:
+            result['FeatureStoreUserId'] = self.feature_store_user_id
         if self.fg_jar_version is not None:
             result['FgJarVersion'] = self.fg_jar_version
         if self.fg_json_file_name is not None:
@@ -8601,6 +8594,8 @@ class ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCo
             result['ServiceName'] = self.service_name
         if self.status is not None:
             result['Status'] = self.status
+        if self.use_feature_store is not None:
+            result['UseFeatureStore'] = self.use_feature_store
         if self.user_id_field is not None:
             result['UserIdField'] = self.user_id_field
         if self.user_table is not None:
@@ -8633,6 +8628,18 @@ class ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCo
             self.feature_landing_resource_uri = m.get('FeatureLandingResourceUri')
         if m.get('FeaturePriority') is not None:
             self.feature_priority = m.get('FeaturePriority')
+        if m.get('FeatureStoreItemId') is not None:
+            self.feature_store_item_id = m.get('FeatureStoreItemId')
+        if m.get('FeatureStoreModelId') is not None:
+            self.feature_store_model_id = m.get('FeatureStoreModelId')
+        if m.get('FeatureStoreProjectId') is not None:
+            self.feature_store_project_id = m.get('FeatureStoreProjectId')
+        if m.get('FeatureStoreProjectName') is not None:
+            self.feature_store_project_name = m.get('FeatureStoreProjectName')
+        if m.get('FeatureStoreSeqFeatureView') is not None:
+            self.feature_store_seq_feature_view = m.get('FeatureStoreSeqFeatureView')
+        if m.get('FeatureStoreUserId') is not None:
+            self.feature_store_user_id = m.get('FeatureStoreUserId')
         if m.get('FgJarVersion') is not None:
             self.fg_jar_version = m.get('FgJarVersion')
         if m.get('FgJsonFileName') is not None:
@@ -8675,6 +8682,8 @@ class ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCo
             self.service_name = m.get('ServiceName')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('UseFeatureStore') is not None:
+            self.use_feature_store = m.get('UseFeatureStore')
         if m.get('UserIdField') is not None:
             self.user_id_field = m.get('UserIdField')
         if m.get('UserTable') is not None:
@@ -8747,9 +8756,6 @@ class ListFeatureConsistencyCheckJobConfigsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8946,9 +8952,6 @@ class ListFeatureConsistencyCheckJobFeatureReportsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9160,9 +9163,6 @@ class ListFeatureConsistencyCheckJobScoreReportsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9377,9 +9377,6 @@ class ListFeatureConsistencyCheckJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9576,9 +9573,6 @@ class ListInstanceResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9989,9 +9983,6 @@ class ListInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10231,9 +10222,6 @@ class ListLaboratoriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10407,9 +10395,6 @@ class ListLayersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10607,9 +10592,6 @@ class ListParamsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10818,9 +10800,6 @@ class ListScenesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10988,9 +10967,6 @@ class ListSubCrowdsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11126,6 +11102,7 @@ class ListTableMetasResponseBodyTableMetas(TeaModel):
     def __init__(
         self,
         can_delete: bool = None,
+        config: str = None,
         description: str = None,
         fields: List[ListTableMetasResponseBodyTableMetasFields] = None,
         gmt_create_time: str = None,
@@ -11140,6 +11117,7 @@ class ListTableMetasResponseBodyTableMetas(TeaModel):
         url: str = None,
     ):
         self.can_delete = can_delete
+        self.config = config
         self.description = description
         self.fields = fields
         self.gmt_create_time = gmt_create_time
@@ -11167,6 +11145,8 @@ class ListTableMetasResponseBodyTableMetas(TeaModel):
         result = dict()
         if self.can_delete is not None:
             result['CanDelete'] = self.can_delete
+        if self.config is not None:
+            result['Config'] = self.config
         if self.description is not None:
             result['Description'] = self.description
         result['Fields'] = []
@@ -11199,6 +11179,8 @@ class ListTableMetasResponseBodyTableMetas(TeaModel):
         m = m or dict()
         if m.get('CanDelete') is not None:
             self.can_delete = m.get('CanDelete')
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         self.fields = []
@@ -11288,9 +11270,6 @@ class ListTableMetasResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11387,9 +11366,6 @@ class OfflineExperimentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11486,9 +11462,6 @@ class OfflineExperimentGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11585,9 +11558,6 @@ class OfflineLaboratoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11684,9 +11654,6 @@ class OnlineExperimentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11783,9 +11750,6 @@ class OnlineExperimentGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11882,9 +11846,6 @@ class OnlineLaboratoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11981,9 +11942,6 @@ class PushAllExperimentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12153,9 +12111,6 @@ class ReportABMetricGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12305,9 +12260,6 @@ class SyncFeatureConsistencyCheckJobReplayLogResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12403,9 +12355,6 @@ class TerminateFeatureConsistencyCheckJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12573,9 +12522,6 @@ class UpdateABMetricResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12701,9 +12647,6 @@ class UpdateABMetricGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12812,9 +12755,6 @@ class UpdateCrowdResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12953,9 +12893,6 @@ class UpdateExperimentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13124,9 +13061,6 @@ class UpdateExperimentGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13166,10 +13100,17 @@ class UpdateFeatureConsistencyCheckJobConfigRequest(TeaModel):
         feature_display_exclude: str = None,
         feature_landing_resource_id: str = None,
         feature_priority: str = None,
+        feature_store_item_id: str = None,
+        feature_store_model_id: str = None,
+        feature_store_project_id: str = None,
+        feature_store_project_name: str = None,
+        feature_store_seq_feature_view: str = None,
+        feature_store_user_id: str = None,
         fg_jar_version: str = None,
         fg_json_file_name: str = None,
         generate_zip: bool = None,
         instance_id: str = None,
+        is_use_feature_store: bool = None,
         item_id_field: str = None,
         item_table: str = None,
         item_table_partition_field: str = None,
@@ -13192,10 +13133,17 @@ class UpdateFeatureConsistencyCheckJobConfigRequest(TeaModel):
         self.feature_display_exclude = feature_display_exclude
         self.feature_landing_resource_id = feature_landing_resource_id
         self.feature_priority = feature_priority
+        self.feature_store_item_id = feature_store_item_id
+        self.feature_store_model_id = feature_store_model_id
+        self.feature_store_project_id = feature_store_project_id
+        self.feature_store_project_name = feature_store_project_name
+        self.feature_store_seq_feature_view = feature_store_seq_feature_view
+        self.feature_store_user_id = feature_store_user_id
         self.fg_jar_version = fg_jar_version
         self.fg_json_file_name = fg_json_file_name
         self.generate_zip = generate_zip
         self.instance_id = instance_id
+        self.is_use_feature_store = is_use_feature_store
         self.item_id_field = item_id_field
         self.item_table = item_table
         self.item_table_partition_field = item_table_partition_field
@@ -13234,6 +13182,18 @@ class UpdateFeatureConsistencyCheckJobConfigRequest(TeaModel):
             result['FeatureLandingResourceId'] = self.feature_landing_resource_id
         if self.feature_priority is not None:
             result['FeaturePriority'] = self.feature_priority
+        if self.feature_store_item_id is not None:
+            result['FeatureStoreItemId'] = self.feature_store_item_id
+        if self.feature_store_model_id is not None:
+            result['FeatureStoreModelId'] = self.feature_store_model_id
+        if self.feature_store_project_id is not None:
+            result['FeatureStoreProjectId'] = self.feature_store_project_id
+        if self.feature_store_project_name is not None:
+            result['FeatureStoreProjectName'] = self.feature_store_project_name
+        if self.feature_store_seq_feature_view is not None:
+            result['FeatureStoreSeqFeatureView'] = self.feature_store_seq_feature_view
+        if self.feature_store_user_id is not None:
+            result['FeatureStoreUserId'] = self.feature_store_user_id
         if self.fg_jar_version is not None:
             result['FgJarVersion'] = self.fg_jar_version
         if self.fg_json_file_name is not None:
@@ -13242,6 +13202,8 @@ class UpdateFeatureConsistencyCheckJobConfigRequest(TeaModel):
             result['GenerateZip'] = self.generate_zip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.is_use_feature_store is not None:
+            result['IsUseFeatureStore'] = self.is_use_feature_store
         if self.item_id_field is not None:
             result['ItemIdField'] = self.item_id_field
         if self.item_table is not None:
@@ -13288,6 +13250,18 @@ class UpdateFeatureConsistencyCheckJobConfigRequest(TeaModel):
             self.feature_landing_resource_id = m.get('FeatureLandingResourceId')
         if m.get('FeaturePriority') is not None:
             self.feature_priority = m.get('FeaturePriority')
+        if m.get('FeatureStoreItemId') is not None:
+            self.feature_store_item_id = m.get('FeatureStoreItemId')
+        if m.get('FeatureStoreModelId') is not None:
+            self.feature_store_model_id = m.get('FeatureStoreModelId')
+        if m.get('FeatureStoreProjectId') is not None:
+            self.feature_store_project_id = m.get('FeatureStoreProjectId')
+        if m.get('FeatureStoreProjectName') is not None:
+            self.feature_store_project_name = m.get('FeatureStoreProjectName')
+        if m.get('FeatureStoreSeqFeatureView') is not None:
+            self.feature_store_seq_feature_view = m.get('FeatureStoreSeqFeatureView')
+        if m.get('FeatureStoreUserId') is not None:
+            self.feature_store_user_id = m.get('FeatureStoreUserId')
         if m.get('FgJarVersion') is not None:
             self.fg_jar_version = m.get('FgJarVersion')
         if m.get('FgJsonFileName') is not None:
@@ -13296,6 +13270,8 @@ class UpdateFeatureConsistencyCheckJobConfigRequest(TeaModel):
             self.generate_zip = m.get('GenerateZip')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('IsUseFeatureStore') is not None:
+            self.is_use_feature_store = m.get('IsUseFeatureStore')
         if m.get('ItemIdField') is not None:
             self.item_id_field = m.get('ItemIdField')
         if m.get('ItemTable') is not None:
@@ -13366,9 +13342,6 @@ class UpdateFeatureConsistencyCheckJobConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13470,9 +13443,6 @@ class UpdateInstanceResourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13629,9 +13599,6 @@ class UpdateLaboratoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13740,9 +13707,6 @@ class UpdateLayerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13845,9 +13809,6 @@ class UpdateParamResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14003,9 +13964,6 @@ class UpdateSceneResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14038,12 +13996,16 @@ class UpdateSceneResponse(TeaModel):
 class UpdateTableMetaRequestFields(TeaModel):
     def __init__(
         self,
+        data_type: str = None,
         is_dimension_field: bool = None,
+        is_partition_field: str = None,
         meaning: str = None,
         name: str = None,
         type: str = None,
     ):
+        self.data_type = data_type
         self.is_dimension_field = is_dimension_field
+        self.is_partition_field = is_partition_field
         self.meaning = meaning
         self.name = name
         self.type = type
@@ -14057,8 +14019,12 @@ class UpdateTableMetaRequestFields(TeaModel):
             return _map
 
         result = dict()
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
         if self.is_dimension_field is not None:
             result['IsDimensionField'] = self.is_dimension_field
+        if self.is_partition_field is not None:
+            result['IsPartitionField'] = self.is_partition_field
         if self.meaning is not None:
             result['Meaning'] = self.meaning
         if self.name is not None:
@@ -14069,8 +14035,12 @@ class UpdateTableMetaRequestFields(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
         if m.get('IsDimensionField') is not None:
             self.is_dimension_field = m.get('IsDimensionField')
+        if m.get('IsPartitionField') is not None:
+            self.is_partition_field = m.get('IsPartitionField')
         if m.get('Meaning') is not None:
             self.meaning = m.get('Meaning')
         if m.get('Name') is not None:
@@ -14190,9 +14160,6 @@ class UpdateTableMetaResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
