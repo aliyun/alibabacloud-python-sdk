@@ -1,3 +1,10 @@
+2024-02-22 Version: 3.0.0
+- Update API CreateDomain: update param Redirect.
+- Update API DescribeDomainDetail: update response param.
+- Update API DescribeHybridCloudResources: update response param.
+- Update API ModifyDomain: update param Redirect.
+
+
 2023-10-18 Version: 2.1.1
 - Generated python 2021-10-01 for waf-openapi.
 

@@ -105,9 +105,6 @@ class ClearMajorProtectionBlackIpResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -245,9 +242,6 @@ class CreateDefenseResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -398,9 +392,6 @@ class CreateDefenseRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -572,9 +563,6 @@ class CreateDefenseTemplateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -830,6 +818,7 @@ class CreateDomainRequestRedirect(TeaModel):
         sni_enabled: bool = None,
         sni_host: str = None,
         write_timeout: int = None,
+        xff_proto: bool = None,
     ):
         # The IP addresses or domain names of the origin server.
         self.backends = backends
@@ -892,6 +881,7 @@ class CreateDomainRequestRedirect(TeaModel):
         self.sni_host = sni_host
         # The write timeout period. Unit: seconds. Valid values: 1 to 3600.
         self.write_timeout = write_timeout
+        self.xff_proto = xff_proto
 
     def validate(self):
         if self.request_headers:
@@ -937,6 +927,8 @@ class CreateDomainRequestRedirect(TeaModel):
             result['SniHost'] = self.sni_host
         if self.write_timeout is not None:
             result['WriteTimeout'] = self.write_timeout
+        if self.xff_proto is not None:
+            result['XffProto'] = self.xff_proto
         return result
 
     def from_map(self, m: dict = None):
@@ -974,6 +966,8 @@ class CreateDomainRequestRedirect(TeaModel):
             self.sni_host = m.get('SniHost')
         if m.get('WriteTimeout') is not None:
             self.write_timeout = m.get('WriteTimeout')
+        if m.get('XffProto') is not None:
+            self.xff_proto = m.get('XffProto')
         return self
 
 
@@ -1236,9 +1230,6 @@ class CreateDomainResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1390,9 +1381,6 @@ class CreateMajorProtectionBlackIpResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1516,9 +1504,6 @@ class DeleteDefenseResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1649,9 +1634,6 @@ class DeleteDefenseRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1775,9 +1757,6 @@ class DeleteDefenseTemplateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1918,9 +1897,6 @@ class DeleteDomainResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2058,9 +2034,6 @@ class DeleteMajorProtectionBlackIpResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2249,9 +2222,6 @@ class DescribeDefenseResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2605,9 +2575,6 @@ class DescribeDefenseResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2830,9 +2797,6 @@ class DescribeDefenseRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3087,9 +3051,6 @@ class DescribeDefenseRulesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3188,6 +3149,11 @@ class DescribeDefenseTemplateResponseBodyTemplate(TeaModel):
     ):
         # The scenario in which the template is used. For more information, see the description of the **DefenseScene** parameter in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
         self.defense_scene = defense_scene
+        # The sub-scenario in which the template is used. Valid values:
+        # 
+        # *   **web**: The template is a bot management template that is used for website protection.
+        # *   **app**: The template is a bot management template that is used for app protection.
+        # *   **basic**: The template is a bot management template that is used for basic protection.
         self.defense_sub_scene = defense_sub_scene
         # The description of the protection rule template.
         self.description = description
@@ -3311,9 +3277,6 @@ class DescribeDefenseTemplateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3706,6 +3669,7 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
         sni_enabled: bool = None,
         sni_host: str = None,
         write_timeout: int = None,
+        xff_proto: bool = None,
     ):
         # An array of addresses of origin servers.
         self.backends = backends
@@ -3753,6 +3717,7 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
         self.sni_host = sni_host
         # The write timeout period. Unit: seconds. Valid values: 5 to 1800.
         self.write_timeout = write_timeout
+        self.xff_proto = xff_proto
 
     def validate(self):
         if self.backends:
@@ -3800,6 +3765,8 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
             result['SniHost'] = self.sni_host
         if self.write_timeout is not None:
             result['WriteTimeout'] = self.write_timeout
+        if self.xff_proto is not None:
+            result['XffProto'] = self.xff_proto
         return result
 
     def from_map(self, m: dict = None):
@@ -3836,6 +3803,8 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
             self.sni_host = m.get('SniHost')
         if m.get('WriteTimeout') is not None:
             self.write_timeout = m.get('WriteTimeout')
+        if m.get('XffProto') is not None:
+            self.xff_proto = m.get('XffProto')
         return self
 
 
@@ -4015,9 +3984,6 @@ class DescribeDomainDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4454,9 +4420,6 @@ class DescribeDomainsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4802,9 +4765,6 @@ class DescribeFlowChartResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4985,9 +4945,6 @@ class DescribeFlowTopResourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5175,9 +5132,6 @@ class DescribeFlowTopUrlResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5465,9 +5419,6 @@ class DescribeHybridCloudGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5643,10 +5594,6 @@ class DescribeHybridCloudResourcesResponseBodyDomainsListen(TeaModel):
         self.http_ports = http_ports
         # The HTTPS listener ports.
         self.https_ports = https_ports
-        # Indicates whether IPv6 is supported. Valid values:
-        # 
-        # *   **true**\
-        # *   **false**\
         self.ipv_6enabled = ipv_6enabled
         # The type of the protection resource. Valid values:
         # 
@@ -5698,7 +5645,7 @@ class DescribeHybridCloudResourcesResponseBodyDomainsListen(TeaModel):
         if self.https_ports is not None:
             result['HttpsPorts'] = self.https_ports
         if self.ipv_6enabled is not None:
-            result['Ipv6Enabled'] = self.ipv_6enabled
+            result['IPv6Enabled'] = self.ipv_6enabled
         if self.protection_resource is not None:
             result['ProtectionResource'] = self.protection_resource
         if self.tlsversion is not None:
@@ -5729,8 +5676,8 @@ class DescribeHybridCloudResourcesResponseBodyDomainsListen(TeaModel):
             self.http_ports = m.get('HttpPorts')
         if m.get('HttpsPorts') is not None:
             self.https_ports = m.get('HttpsPorts')
-        if m.get('Ipv6Enabled') is not None:
-            self.ipv_6enabled = m.get('Ipv6Enabled')
+        if m.get('IPv6Enabled') is not None:
+            self.ipv_6enabled = m.get('IPv6Enabled')
         if m.get('ProtectionResource') is not None:
             self.protection_resource = m.get('ProtectionResource')
         if m.get('TLSVersion') is not None:
@@ -6092,9 +6039,6 @@ class DescribeHybridCloudResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6255,9 +6199,6 @@ class DescribeHybridCloudUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6869,9 +6810,6 @@ class DescribeInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7122,9 +7060,6 @@ class DescribeMajorProtectionBlackIpsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7347,9 +7282,6 @@ class DescribePeakTrendResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7526,9 +7458,6 @@ class DescribeResourceLogStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7659,9 +7588,6 @@ class DescribeResourcePortResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7887,9 +7813,6 @@ class DescribeResponseCodeTrendGraphResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8130,9 +8053,6 @@ class DescribeRuleGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8333,9 +8253,6 @@ class DescribeRuleHitsTopClientIpResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8529,9 +8446,6 @@ class DescribeRuleHitsTopResourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8745,9 +8659,6 @@ class DescribeRuleHitsTopRuleIdResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8937,9 +8848,6 @@ class DescribeRuleHitsTopTuleTypeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9127,9 +9035,6 @@ class DescribeRuleHitsTopUaResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9330,9 +9235,6 @@ class DescribeRuleHitsTopUrlResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9473,9 +9375,6 @@ class DescribeTemplateResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9677,9 +9576,6 @@ class DescribeVisitTopIpResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9856,9 +9752,6 @@ class DescribeVisitUasResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10019,9 +9912,6 @@ class DescribeWafSourceIpSegmentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10166,9 +10056,6 @@ class ModifyDefenseResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10294,9 +10181,6 @@ class ModifyDefenseRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10437,9 +10321,6 @@ class ModifyDefenseRuleStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10577,9 +10458,6 @@ class ModifyDefenseTemplateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10713,9 +10591,6 @@ class ModifyDefenseTemplateStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10974,6 +10849,7 @@ class ModifyDomainRequestRedirect(TeaModel):
         sni_enabled: bool = None,
         sni_host: str = None,
         write_timeout: int = None,
+        xff_proto: bool = None,
     ):
         # The back-to-origin IP addresses or domain names. You can specify only one type of address. If you use the domain name type, only IPv4 is supported.
         # 
@@ -11039,6 +10915,7 @@ class ModifyDomainRequestRedirect(TeaModel):
         self.sni_host = sni_host
         # The write timeout period. Unit: seconds. Valid values: 1 to 3600.
         self.write_timeout = write_timeout
+        self.xff_proto = xff_proto
 
     def validate(self):
         if self.request_headers:
@@ -11084,6 +10961,8 @@ class ModifyDomainRequestRedirect(TeaModel):
             result['SniHost'] = self.sni_host
         if self.write_timeout is not None:
             result['WriteTimeout'] = self.write_timeout
+        if self.xff_proto is not None:
+            result['XffProto'] = self.xff_proto
         return result
 
     def from_map(self, m: dict = None):
@@ -11121,6 +11000,8 @@ class ModifyDomainRequestRedirect(TeaModel):
             self.sni_host = m.get('SniHost')
         if m.get('WriteTimeout') is not None:
             self.write_timeout = m.get('WriteTimeout')
+        if m.get('XffProto') is not None:
+            self.xff_proto = m.get('XffProto')
         return self
 
 
@@ -11376,9 +11257,6 @@ class ModifyDomainResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11497,9 +11375,6 @@ class ModifyHybridCloudClusterBypassStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11653,9 +11528,6 @@ class ModifyMajorProtectionBlackIpResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11799,9 +11671,6 @@ class ModifyResourceLogStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11953,9 +11822,6 @@ class ModifyTemplateResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

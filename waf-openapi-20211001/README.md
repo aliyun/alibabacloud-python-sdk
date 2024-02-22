@@ -28,7 +28,7 @@ pip install alibabacloud_waf_openapi20211001
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/waf-openapi-20211001/ChangeLog.md).
 
 ## References
 
