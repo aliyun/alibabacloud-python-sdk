@@ -1,3 +1,8 @@
+2024-02-22 Version: 1.2.0
+- Support API ModifyInstanceAttribute.
+- Update API ModifyScalingGroup: add param ScalingPolicy.
+
+
 2024-02-01 Version: 1.1.2
 - Update API CreateScalingConfigurationadd CustomPriorities param.
 - Update API CreateScalingGroupadd HealthCheckTypes param.

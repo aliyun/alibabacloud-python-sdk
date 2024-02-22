@@ -7677,6 +7677,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_eci_scaling_configuration_with_options_async(request, runtime)
 
+    def modify_instance_attribute_with_options(
+        self,
+        request: ess_20220222_models.ModifyInstanceAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.ModifyInstanceAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.entrusted):
+            query['Entrusted'] = request.entrusted
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceAttribute',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.ModifyInstanceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_instance_attribute_with_options_async(
+        self,
+        request: ess_20220222_models.ModifyInstanceAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.ModifyInstanceAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.entrusted):
+            query['Entrusted'] = request.entrusted
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceAttribute',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.ModifyInstanceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_instance_attribute(
+        self,
+        request: ess_20220222_models.ModifyInstanceAttributeRequest,
+    ) -> ess_20220222_models.ModifyInstanceAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_instance_attribute_with_options(request, runtime)
+
+    async def modify_instance_attribute_async(
+        self,
+        request: ess_20220222_models.ModifyInstanceAttributeRequest,
+    ) -> ess_20220222_models.ModifyInstanceAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_instance_attribute_with_options_async(request, runtime)
+
     def modify_lifecycle_hook_with_options(
         self,
         request: ess_20220222_models.ModifyLifecycleHookRequest,
@@ -8302,6 +8392,8 @@ class Client(OpenApiClient):
             query['ScalingGroupId'] = request.scaling_group_id
         if not UtilClient.is_unset(request.scaling_group_name):
             query['ScalingGroupName'] = request.scaling_group_name
+        if not UtilClient.is_unset(request.scaling_policy):
+            query['ScalingPolicy'] = request.scaling_policy
         if not UtilClient.is_unset(request.spot_allocation_strategy):
             query['SpotAllocationStrategy'] = request.spot_allocation_strategy
         if not UtilClient.is_unset(request.spot_instance_pools):
@@ -8408,6 +8500,8 @@ class Client(OpenApiClient):
             query['ScalingGroupId'] = request.scaling_group_id
         if not UtilClient.is_unset(request.scaling_group_name):
             query['ScalingGroupName'] = request.scaling_group_name
+        if not UtilClient.is_unset(request.scaling_policy):
+            query['ScalingPolicy'] = request.scaling_policy
         if not UtilClient.is_unset(request.spot_allocation_strategy):
             query['SpotAllocationStrategy'] = request.spot_allocation_strategy
         if not UtilClient.is_unset(request.spot_instance_pools):

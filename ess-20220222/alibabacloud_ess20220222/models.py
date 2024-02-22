@@ -22766,6 +22766,131 @@ class ModifyEciScalingConfigurationResponse(TeaModel):
         return self
 
 
+class ModifyInstanceAttributeRequest(TeaModel):
+    def __init__(
+        self,
+        entrusted: bool = None,
+        instance_id: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        scaling_group_id: str = None,
+    ):
+        self.entrusted = entrusted
+        self.instance_id = instance_id
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.scaling_group_id = scaling_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.entrusted is not None:
+            result['Entrusted'] = self.entrusted
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.scaling_group_id is not None:
+            result['ScalingGroupId'] = self.scaling_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Entrusted') is not None:
+            self.entrusted = m.get('Entrusted')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ScalingGroupId') is not None:
+            self.scaling_group_id = m.get('ScalingGroupId')
+        return self
+
+
+class ModifyInstanceAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyInstanceAttributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyInstanceAttributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyInstanceAttributeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyLifecycleHookRequest(TeaModel):
     def __init__(
         self,
@@ -25443,6 +25568,7 @@ class ModifyScalingGroupRequest(TeaModel):
         resource_owner_id: int = None,
         scaling_group_id: str = None,
         scaling_group_name: str = None,
+        scaling_policy: str = None,
         spot_allocation_strategy: str = None,
         spot_instance_pools: int = None,
         spot_instance_remedy: bool = None,
@@ -25553,6 +25679,7 @@ class ModifyScalingGroupRequest(TeaModel):
         self.scaling_group_id = scaling_group_id
         # The name of the scaling group. The name of each scaling group must be unique in a region. The name must be 2 to 64 characters in length and can contain letters, digits, underscores (\_), hyphens (-), and periods (.). The name must start with a letter or a digit.
         self.scaling_group_name = scaling_group_name
+        self.scaling_policy = scaling_policy
         # The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy of preemptible instances. This parameter takes effect only when you set the `MultiAZPolicy` parameter to `COMPOSABLE`. Valid values:
         # 
         # *   priority: Auto Scaling selects instance types based on the specified order to create the required number of preemptible instances.
@@ -25641,6 +25768,8 @@ class ModifyScalingGroupRequest(TeaModel):
             result['ScalingGroupId'] = self.scaling_group_id
         if self.scaling_group_name is not None:
             result['ScalingGroupName'] = self.scaling_group_name
+        if self.scaling_policy is not None:
+            result['ScalingPolicy'] = self.scaling_policy
         if self.spot_allocation_strategy is not None:
             result['SpotAllocationStrategy'] = self.spot_allocation_strategy
         if self.spot_instance_pools is not None:
@@ -25710,6 +25839,8 @@ class ModifyScalingGroupRequest(TeaModel):
             self.scaling_group_id = m.get('ScalingGroupId')
         if m.get('ScalingGroupName') is not None:
             self.scaling_group_name = m.get('ScalingGroupName')
+        if m.get('ScalingPolicy') is not None:
+            self.scaling_policy = m.get('ScalingPolicy')
         if m.get('SpotAllocationStrategy') is not None:
             self.spot_allocation_strategy = m.get('SpotAllocationStrategy')
         if m.get('SpotInstancePools') is not None:
