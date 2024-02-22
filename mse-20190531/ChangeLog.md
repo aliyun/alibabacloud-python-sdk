@@ -1,3 +1,8 @@
+2024-02-22 Version: 6.0.0
+- Support API AddGatewayAuth.
+- Support API GetGatewayAuthDetail.
+
+
 2024-02-20 Version: 5.3.0
 - Support API AddGatewayAuth.
 - Support API GetGatewayAuthDetail.
