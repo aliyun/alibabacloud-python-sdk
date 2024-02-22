@@ -1,3 +1,10 @@
+2024-02-22 Version: 3.3.11
+- Update API QueryCopyrightExtract: add param body.
+- Update API QueryCopyrightExtract: update param body.
+- Update API QueryTraceExtract: add param body.
+- Update API QueryTraceExtract: update param body.
+
+
 2024-01-10 Version: 3.3.10
 - Generated python 2021-07-28 for Mts.
 
