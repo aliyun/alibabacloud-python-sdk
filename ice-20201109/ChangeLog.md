@@ -1,3 +1,16 @@
+2024-02-22 Version: 2.2.3
+- Delete API SubmitSubtitleProduceJob.
+- Update API DeleteLiveSnapshotFiles: update response param.
+- Update API GetBatchMediaProducingJob: add param Action.
+- Update API GetBatchMediaProducingJob: add param Signature.
+- Update API GetBatchMediaProducingJob: add param SignatureMehtod.
+- Update API GetBatchMediaProducingJob: add param SignatureNonce.
+- Update API GetBatchMediaProducingJob: add param SignatureType.
+- Update API GetBatchMediaProducingJob: add param SignatureVersion.
+- Update API SubmitMediaCensorJob: add param AccessKeyId.
+- Update API SubmitMediaCensorJob: add param Action.
+
+
 2024-02-19 Version: 2.2.2
 - Update API DeleteLiveSnapshotFiles: update response param.
 - Update API GetBatchMediaProducingJob: add param Action.
