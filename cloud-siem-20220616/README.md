@@ -28,7 +28,7 @@ pip install alibabacloud_cloud_siem20220616
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/cloud-siem-20220616/ChangeLog.md).
 
 ## References
 

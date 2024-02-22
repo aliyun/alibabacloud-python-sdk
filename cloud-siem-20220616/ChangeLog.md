@@ -1,3 +1,7 @@
+2024-02-22 Version: 3.0.3
+- Update API DescribeCloudSiemEventDetail: update response param.
+
+
 2024-01-18 Version: 3.0.2
 - Generated python 2022-06-16 for cloud-siem.
 
