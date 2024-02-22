@@ -1,3 +1,9 @@
+2024-02-22 Version: 2.13.0
+- Support API AddBlacklistCallTagging.
+- Support API RemoveBlacklistCallTagging.
+- Update API AnswerCall: update response param.
+
+
 2024-02-02 Version: 2.12.0
 - Support API ChangeVisibility.
 - Update API CoachCallupdate DeviceId param.

@@ -123,6 +123,132 @@ class AbortCampaignResponse(TeaModel):
         return self
 
 
+class AddBlacklistCallTaggingRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        job_id: str = None,
+        number: str = None,
+    ):
+        self.instance_id = instance_id
+        self.job_id = job_id
+        self.number = number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.number is not None:
+            result['Number'] = self.number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Number') is not None:
+            self.number = m.get('Number')
+        return self
+
+
+class AddBlacklistCallTaggingResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AddBlacklistCallTaggingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddBlacklistCallTaggingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddBlacklistCallTaggingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AddCasesRequestCaseList(TeaModel):
     def __init__(
         self,
@@ -1179,6 +1305,7 @@ class AnswerCallResponseBodyDataCallContextChannelContexts(TeaModel):
         channel_state: str = None,
         channel_variables: str = None,
         destination: str = None,
+        index: int = None,
         job_id: str = None,
         originator: str = None,
         release_initiator: str = None,
@@ -1193,6 +1320,7 @@ class AnswerCallResponseBodyDataCallContextChannelContexts(TeaModel):
         self.channel_state = channel_state
         self.channel_variables = channel_variables
         self.destination = destination
+        self.index = index
         self.job_id = job_id
         self.originator = originator
         self.release_initiator = release_initiator
@@ -1221,6 +1349,8 @@ class AnswerCallResponseBodyDataCallContextChannelContexts(TeaModel):
             result['ChannelVariables'] = self.channel_variables
         if self.destination is not None:
             result['Destination'] = self.destination
+        if self.index is not None:
+            result['Index'] = self.index
         if self.job_id is not None:
             result['JobId'] = self.job_id
         if self.originator is not None:
@@ -1251,6 +1381,8 @@ class AnswerCallResponseBodyDataCallContextChannelContexts(TeaModel):
             self.channel_variables = m.get('ChannelVariables')
         if m.get('Destination') is not None:
             self.destination = m.get('Destination')
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
         if m.get('Originator') is not None:
@@ -44386,6 +44518,132 @@ class ReleaseCallResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ReleaseCallResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RemoveBlacklistCallTaggingRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        job_id: str = None,
+        number: str = None,
+    ):
+        self.instance_id = instance_id
+        self.job_id = job_id
+        self.number = number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.number is not None:
+            result['Number'] = self.number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Number') is not None:
+            self.number = m.get('Number')
+        return self
+
+
+class RemoveBlacklistCallTaggingResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RemoveBlacklistCallTaggingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RemoveBlacklistCallTaggingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RemoveBlacklistCallTaggingResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
