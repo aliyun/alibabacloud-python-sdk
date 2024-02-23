@@ -1,3 +1,7 @@
+2024-02-23 Version: 2.0.3
+- Update API GetTaskInfo: update response param.
+
+
 2024-01-08 Version: 2.0.2
 - Generated python 2023-09-30 for tingwu.
 

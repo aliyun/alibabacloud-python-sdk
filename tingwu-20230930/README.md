@@ -28,7 +28,7 @@ pip install alibabacloud_tingwu20230930
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/tingwu-20230930/ChangeLog.md).
 
 ## References
 

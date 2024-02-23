@@ -528,9 +528,6 @@ class CreateTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -704,9 +701,6 @@ class CreateTranscriptionPhrasesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -787,9 +781,6 @@ class DeleteTranscriptionPhrasesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -879,11 +870,15 @@ class GetTaskInfoResponseBodyDataResult(TeaModel):
 class GetTaskInfoResponseBodyData(TeaModel):
     def __init__(
         self,
+        error_code: str = None,
+        error_message: str = None,
         result: GetTaskInfoResponseBodyDataResult = None,
         task_id: str = None,
         task_key: str = None,
         task_status: str = None,
     ):
+        self.error_code = error_code
+        self.error_message = error_message
         self.result = result
         self.task_id = task_id
         self.task_key = task_key
@@ -899,6 +894,10 @@ class GetTaskInfoResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
         if self.result is not None:
             result['Result'] = self.result.to_map()
         if self.task_id is not None:
@@ -911,6 +910,10 @@ class GetTaskInfoResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
         if m.get('Result') is not None:
             temp_model = GetTaskInfoResponseBodyDataResult()
             self.result = temp_model.from_map(m['Result'])
@@ -982,9 +985,6 @@ class GetTaskInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1172,9 +1172,6 @@ class GetTranscriptionPhrasesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1356,9 +1353,6 @@ class ListTranscriptionPhrasesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1526,9 +1520,6 @@ class UpdateTranscriptionPhrasesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
