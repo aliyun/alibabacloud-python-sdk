@@ -1,3 +1,15 @@
+2024-02-23 Version: 3.0.0
+- Delete API AddRtcAccount.
+- Delete API GetCallInfo.
+- Delete API GetMqttToken.
+- Delete API GetRtcToken.
+- Delete API RefreshMqttToken.
+- Update API CancelRobotTask: update param TaskId.
+- Update API GetToken: update param AccessKeyId.
+- Update API IvrCall: update param MenuKeyMap.
+- Update API ListCallTaskDetail: update param AccessKeyId.
+
+
 2022-04-20 Version: 2.1.4
 - Update SDK.
 
