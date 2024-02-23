@@ -1271,6 +1271,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_enterprise_snapshot_policy_with_options_async(request, runtime)
 
+    def delete_disk_with_options(
+        self,
+        request: ebs_20210730_models.DeleteDiskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DeleteDiskResponse:
+        """
+        Currently, this API is only available for use with ACS resource hosting and is not yet open for direct invocation.
+        
+        @param request: DeleteDiskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDiskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.disk_id):
+            query['DiskId'] = request.disk_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDisk',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DeleteDiskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_disk_with_options_async(
+        self,
+        request: ebs_20210730_models.DeleteDiskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DeleteDiskResponse:
+        """
+        Currently, this API is only available for use with ACS resource hosting and is not yet open for direct invocation.
+        
+        @param request: DeleteDiskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDiskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.disk_id):
+            query['DiskId'] = request.disk_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDisk',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DeleteDiskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_disk(
+        self,
+        request: ebs_20210730_models.DeleteDiskRequest,
+    ) -> ebs_20210730_models.DeleteDiskResponse:
+        """
+        Currently, this API is only available for use with ACS resource hosting and is not yet open for direct invocation.
+        
+        @param request: DeleteDiskRequest
+        @return: DeleteDiskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_disk_with_options(request, runtime)
+
+    async def delete_disk_async(
+        self,
+        request: ebs_20210730_models.DeleteDiskRequest,
+    ) -> ebs_20210730_models.DeleteDiskResponse:
+        """
+        Currently, this API is only available for use with ACS resource hosting and is not yet open for direct invocation.
+        
+        @param request: DeleteDiskRequest
+        @return: DeleteDiskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_disk_with_options_async(request, runtime)
+
     def delete_disk_replica_group_with_options(
         self,
         request: ebs_20210730_models.DeleteDiskReplicaGroupRequest,

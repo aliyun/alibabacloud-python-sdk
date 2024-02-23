@@ -1,3 +1,10 @@
+2024-02-23 Version: 2.4.0
+- Support API DeleteDisk.
+- Support API DescribeDisks.
+- Support API GetDisk.
+- Update API DescribeDiskMonitorData: update response param.
+
+
 2024-02-21 Version: 2.3.0
 - Support API DescribeDisks.
 - Support API GetDisk.
