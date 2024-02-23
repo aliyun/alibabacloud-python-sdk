@@ -1,3 +1,10 @@
+2024-02-23 Version: 1.3.0
+- Support API CreateReport.
+- Support API GetClusterCloneMeta.
+- Update API IncreaseNodes: add param MinIncreaseNodeCount.
+- Update API ListClusters: update param RegionId.
+
+
 2024-02-21 Version: 1.2.1
 - Update API ListClusters: update param RegionId.
 
