@@ -70,9 +70,6 @@ class CancelCertificateForPackageRequestResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -172,9 +169,6 @@ class CancelOrderRequestResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -375,9 +369,6 @@ class CreateCertificateForPackageRequestResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -534,9 +525,6 @@ class CreateCertificateRequestResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -695,9 +683,6 @@ class CreateCertificateWithCsrRequestResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -919,9 +904,6 @@ class CreateWHClientCertificateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1047,9 +1029,6 @@ class DecryptResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1149,9 +1128,6 @@ class DeleteCertificateRequestResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1247,9 +1223,6 @@ class DeletePCACertResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1347,9 +1320,6 @@ class DeleteUserCertificateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1557,9 +1527,6 @@ class DescribeCertificateStateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1719,9 +1686,6 @@ class DescribePackageStateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1847,9 +1811,6 @@ class EncryptResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1930,9 +1891,6 @@ class GetCertWarehouseQuotaResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1968,7 +1926,7 @@ class GetUserCertificateDetailRequest(TeaModel):
         cert_filter: bool = None,
         cert_id: int = None,
     ):
-        # 值为true时Cert、Key、EncryptCert、EncryptPrivateKey、SignCert、SignPrivateKey信息不返回，false时则返回，默认是false。
+        # If true, the Cert, Key, EncryptCert, EncryptPrivateKey, SignCert, SignPrivateKey will return null, default is false.
         self.cert_filter = cert_filter
         # The ID of the certificate.
         self.cert_id = cert_id
@@ -2204,9 +2162,6 @@ class GetUserCertificateDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2254,7 +2209,7 @@ class ListCertRequest(TeaModel):
         self.cert_type = cert_type
         # The number of the page to return. Default value: 1.
         self.current_page = current_page
-        # The keyword for the query. You can enter a name, domain name, or Subject Alternative Name (SAN) extension. Fuzzy match is supported.
+        # The keyword that is used for queries. The value can be a name, domain name, or subject alternative name (SAN) attribute. Fuzzy match is supported.
         self.key_word = key_word
         # The number of entries to return on each page. Default value: 50.
         self.show_size = show_size
@@ -2268,7 +2223,7 @@ class ListCertRequest(TeaModel):
         # *   **ISSUE**: issued
         # *   **REVOKE**: revoked
         self.status = status
-        # The ID of the certificate repository. You can call the [ListCertWarehouse](~~453246~~) operation to query the IDs of certificate repositories.
+        # The ID of the certificate repository. You can call the ListCertWarehouse API operation to query the IDs of certificate repositories.
         self.warehouse_id = warehouse_id
 
     def validate(self):
@@ -2351,7 +2306,7 @@ class ListCertResponseBodyCertList(TeaModel):
         self.identifier = identifier
         # The issuer of the certificate.
         self.issuer = issuer
-        # The domain names that are bound to the certificate. Multiple domain names are separated by commas.
+        # All domain names that are bound to the certificate. Multiple domain names are separated by commas (,).
         self.sans = sans
         # The source of the certificate. Valid values:
         # 
@@ -2363,9 +2318,9 @@ class ListCertResponseBodyCertList(TeaModel):
         # *   **ISSUE**: issued
         # *   **REVOKE**: revoked
         self.status = status
-        # The ID of the certificate repository.
+        # The ID of the certificate application repository.
         self.wh_id = wh_id
-        # The instance ID of the certificate repository.
+        # The instance ID of the certificate application repository.
         self.wh_instance_id = wh_instance_id
 
     def validate(self):
@@ -2441,7 +2396,7 @@ class ListCertResponseBody(TeaModel):
         show_size: int = None,
         total_count: int = None,
     ):
-        # An array that consists of the certificates.
+        # The certificates.
         self.cert_list = cert_list
         # The page number of the returned page. Default value: 1.
         self.current_page = current_page
@@ -2508,9 +2463,6 @@ class ListCertResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2731,9 +2683,6 @@ class ListCertWarehouseResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3215,9 +3164,6 @@ class ListUserCertificateOrderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3339,9 +3285,6 @@ class RenewCertificateOrderForPackageRequestResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3437,9 +3380,6 @@ class RevokeWHClientCertificateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3559,9 +3499,6 @@ class SignResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3689,9 +3626,6 @@ class UploadPCACertResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3847,9 +3781,6 @@ class UploadUserCertificateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3975,9 +3906,6 @@ class VerifyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
