@@ -1,3 +1,13 @@
+2024-02-23 Version: 1.0.6
+- Update API CreateClients: update response param.
+- Update API CreatePolicyV2: update param Rules.
+- Update API CreateVault: update response param.
+- Update API DeleteClient: update response param.
+- Update API DescribePoliciesV2: update response param.
+- Update API UninstallClient: update response param.
+- Update API UpdatePolicyV2: update param Rules.
+
+
 2024-02-21 Version: 1.0.5
 - Update API CreatePolicyV2: update param Rules.
 - Update API DescribePoliciesV2: update response param.
