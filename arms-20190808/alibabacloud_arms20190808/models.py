@@ -6308,6 +6308,7 @@ class CreateEnvironmentRequest(TeaModel):
         environment_sub_type: str = None,
         environment_type: str = None,
         managed_type: str = None,
+        prometheus_instance_id: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         tags: List[CreateEnvironmentRequestTags] = None,
@@ -6335,6 +6336,7 @@ class CreateEnvironmentRequest(TeaModel):
         # - agent: managed agent. default value of  promehtues for ASK/ACS/AckOne.
         # - agent-exproter: maanged agent and exporter. default of prometheus for Cloud.
         self.managed_type = managed_type
+        self.prometheus_instance_id = prometheus_instance_id
         # The region ID.
         self.region_id = region_id
         # The ID of the resource group.
@@ -6366,6 +6368,8 @@ class CreateEnvironmentRequest(TeaModel):
             result['EnvironmentType'] = self.environment_type
         if self.managed_type is not None:
             result['ManagedType'] = self.managed_type
+        if self.prometheus_instance_id is not None:
+            result['PrometheusInstanceId'] = self.prometheus_instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -6390,6 +6394,8 @@ class CreateEnvironmentRequest(TeaModel):
             self.environment_type = m.get('EnvironmentType')
         if m.get('ManagedType') is not None:
             self.managed_type = m.get('ManagedType')
+        if m.get('PrometheusInstanceId') is not None:
+            self.prometheus_instance_id = m.get('PrometheusInstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -12787,10 +12793,56 @@ class CreateTimingSyntheticTaskRequestCommonSettingCustomHost(TeaModel):
         return self
 
 
+class CreateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        secure_group_id: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+    ):
+        self.region_id = region_id
+        self.secure_group_id = secure_group_id
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.secure_group_id is not None:
+            result['SecureGroupId'] = self.secure_group_id
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecureGroupId') is not None:
+            self.secure_group_id = m.get('SecureGroupId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
 class CreateTimingSyntheticTaskRequestCommonSetting(TeaModel):
     def __init__(
         self,
         custom_host: CreateTimingSyntheticTaskRequestCommonSettingCustomHost = None,
+        custom_vpcsetting: CreateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting = None,
         ip_type: int = None,
         is_open_trace: bool = None,
         monitor_samples: int = None,
@@ -12798,6 +12850,7 @@ class CreateTimingSyntheticTaskRequestCommonSetting(TeaModel):
         xtrace_region: str = None,
     ):
         self.custom_host = custom_host
+        self.custom_vpcsetting = custom_vpcsetting
         self.ip_type = ip_type
         self.is_open_trace = is_open_trace
         self.monitor_samples = monitor_samples
@@ -12807,6 +12860,8 @@ class CreateTimingSyntheticTaskRequestCommonSetting(TeaModel):
     def validate(self):
         if self.custom_host:
             self.custom_host.validate()
+        if self.custom_vpcsetting:
+            self.custom_vpcsetting.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -12816,6 +12871,8 @@ class CreateTimingSyntheticTaskRequestCommonSetting(TeaModel):
         result = dict()
         if self.custom_host is not None:
             result['CustomHost'] = self.custom_host.to_map()
+        if self.custom_vpcsetting is not None:
+            result['CustomVPCSetting'] = self.custom_vpcsetting.to_map()
         if self.ip_type is not None:
             result['IpType'] = self.ip_type
         if self.is_open_trace is not None:
@@ -12833,6 +12890,9 @@ class CreateTimingSyntheticTaskRequestCommonSetting(TeaModel):
         if m.get('CustomHost') is not None:
             temp_model = CreateTimingSyntheticTaskRequestCommonSettingCustomHost()
             self.custom_host = temp_model.from_map(m['CustomHost'])
+        if m.get('CustomVPCSetting') is not None:
+            temp_model = CreateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting()
+            self.custom_vpcsetting = temp_model.from_map(m['CustomVPCSetting'])
         if m.get('IpType') is not None:
             self.ip_type = m.get('IpType')
         if m.get('IsOpenTrace') is not None:
@@ -18635,6 +18695,7 @@ class DeleteWebhookContactRequest(TeaModel):
         self,
         webhook_id: int = None,
     ):
+        # The ID of the webhook alert contact.
         self.webhook_id = webhook_id
 
     def validate(self):
@@ -18663,7 +18724,12 @@ class DeleteWebhookContactResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the webhook alert contact was deleted.
+        # 
+        # *   `true`
+        # *   `false`
         self.is_success = is_success
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -31263,10 +31329,56 @@ class GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost(TeaModel):
         return self
 
 
+class GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomVPCSetting(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        secure_group_id: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+    ):
+        self.region_id = region_id
+        self.secure_group_id = secure_group_id
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.secure_group_id is not None:
+            result['SecureGroupId'] = self.secure_group_id
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecureGroupId') is not None:
+            self.secure_group_id = m.get('SecureGroupId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
 class GetTimingSyntheticTaskResponseBodyDataCommonSetting(TeaModel):
     def __init__(
         self,
         custom_host: GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost = None,
+        custom_vpcsetting: GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomVPCSetting = None,
         ip_type: int = None,
         is_open_trace: bool = None,
         monitor_samples: int = None,
@@ -31275,6 +31387,7 @@ class GetTimingSyntheticTaskResponseBodyDataCommonSetting(TeaModel):
     ):
         # The custom host.
         self.custom_host = custom_host
+        self.custom_vpcsetting = custom_vpcsetting
         # The IP version. Valid values:
         # 
         # *   0: A version is automatically selected.
@@ -31300,6 +31413,8 @@ class GetTimingSyntheticTaskResponseBodyDataCommonSetting(TeaModel):
     def validate(self):
         if self.custom_host:
             self.custom_host.validate()
+        if self.custom_vpcsetting:
+            self.custom_vpcsetting.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -31309,6 +31424,8 @@ class GetTimingSyntheticTaskResponseBodyDataCommonSetting(TeaModel):
         result = dict()
         if self.custom_host is not None:
             result['CustomHost'] = self.custom_host.to_map()
+        if self.custom_vpcsetting is not None:
+            result['CustomVPCSetting'] = self.custom_vpcsetting.to_map()
         if self.ip_type is not None:
             result['IpType'] = self.ip_type
         if self.is_open_trace is not None:
@@ -31326,6 +31443,9 @@ class GetTimingSyntheticTaskResponseBodyDataCommonSetting(TeaModel):
         if m.get('CustomHost') is not None:
             temp_model = GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost()
             self.custom_host = temp_model.from_map(m['CustomHost'])
+        if m.get('CustomVPCSetting') is not None:
+            temp_model = GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomVPCSetting()
+            self.custom_vpcsetting = temp_model.from_map(m['CustomVPCSetting'])
         if m.get('IpType') is not None:
             self.ip_type = m.get('IpType')
         if m.get('IsOpenTrace') is not None:
@@ -58141,10 +58261,56 @@ class UpdateTimingSyntheticTaskRequestCommonSettingCustomHost(TeaModel):
         return self
 
 
+class UpdateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        secure_group_id: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+    ):
+        self.region_id = region_id
+        self.secure_group_id = secure_group_id
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.secure_group_id is not None:
+            result['SecureGroupId'] = self.secure_group_id
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecureGroupId') is not None:
+            self.secure_group_id = m.get('SecureGroupId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
 class UpdateTimingSyntheticTaskRequestCommonSetting(TeaModel):
     def __init__(
         self,
         custom_host: UpdateTimingSyntheticTaskRequestCommonSettingCustomHost = None,
+        custom_vpcsetting: UpdateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting = None,
         ip_type: int = None,
         is_open_trace: bool = None,
         monitor_samples: int = None,
@@ -58153,6 +58319,7 @@ class UpdateTimingSyntheticTaskRequestCommonSetting(TeaModel):
     ):
         # The custom host.
         self.custom_host = custom_host
+        self.custom_vpcsetting = custom_vpcsetting
         # The IP version. Valid values:
         # 
         # *   0: A version is automatically selected.
@@ -58178,6 +58345,8 @@ class UpdateTimingSyntheticTaskRequestCommonSetting(TeaModel):
     def validate(self):
         if self.custom_host:
             self.custom_host.validate()
+        if self.custom_vpcsetting:
+            self.custom_vpcsetting.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -58187,6 +58356,8 @@ class UpdateTimingSyntheticTaskRequestCommonSetting(TeaModel):
         result = dict()
         if self.custom_host is not None:
             result['CustomHost'] = self.custom_host.to_map()
+        if self.custom_vpcsetting is not None:
+            result['CustomVPCSetting'] = self.custom_vpcsetting.to_map()
         if self.ip_type is not None:
             result['IpType'] = self.ip_type
         if self.is_open_trace is not None:
@@ -58204,6 +58375,9 @@ class UpdateTimingSyntheticTaskRequestCommonSetting(TeaModel):
         if m.get('CustomHost') is not None:
             temp_model = UpdateTimingSyntheticTaskRequestCommonSettingCustomHost()
             self.custom_host = temp_model.from_map(m['CustomHost'])
+        if m.get('CustomVPCSetting') is not None:
+            temp_model = UpdateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting()
+            self.custom_vpcsetting = temp_model.from_map(m['CustomVPCSetting'])
         if m.get('IpType') is not None:
             self.ip_type = m.get('IpType')
         if m.get('IsOpenTrace') is not None:

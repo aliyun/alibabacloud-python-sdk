@@ -2446,6 +2446,8 @@ class Client(OpenApiClient):
             query['EnvironmentType'] = request.environment_type
         if not UtilClient.is_unset(request.managed_type):
             query['ManagedType'] = request.managed_type
+        if not UtilClient.is_unset(request.prometheus_instance_id):
+            query['PrometheusInstanceId'] = request.prometheus_instance_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -2490,6 +2492,8 @@ class Client(OpenApiClient):
             query['EnvironmentType'] = request.environment_type
         if not UtilClient.is_unset(request.managed_type):
             query['ManagedType'] = request.managed_type
+        if not UtilClient.is_unset(request.prometheus_instance_id):
+            query['PrometheusInstanceId'] = request.prometheus_instance_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
