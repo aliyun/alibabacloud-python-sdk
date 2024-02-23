@@ -29,7 +29,7 @@ pip install alibabacloud_alb20200616
 
 ## 发行说明
 
-每个版本的详细更改记录在[发行说明](./ChangeLog.md)中。
+每个版本的详细更改记录在[发行说明](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/alb-20200616/ChangeLog.md)中。
 
 ## 相关
 

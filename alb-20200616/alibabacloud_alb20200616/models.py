@@ -154,9 +154,6 @@ class AddEntriesToAclResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -390,9 +387,6 @@ class AddServersToServerGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -525,9 +519,6 @@ class ApplyHealthCheckTemplateToServerGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -670,9 +661,6 @@ class AssociateAclsWithListenerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -841,9 +829,6 @@ class AssociateAdditionalCertificatesWithListenerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -985,9 +970,6 @@ class AttachCommonBandwidthPackageToLoadBalancerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1158,9 +1140,6 @@ class CancelShiftLoadBalancerZonesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1389,9 +1368,6 @@ class CreateAScriptsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1581,9 +1557,6 @@ class CreateAclResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1889,9 +1862,6 @@ class CreateHealthCheckTemplateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2625,9 +2595,6 @@ class CreateListenerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3036,9 +3003,6 @@ class CreateLoadBalancerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4537,9 +4501,6 @@ class CreateRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6139,9 +6100,6 @@ class CreateRulesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6338,9 +6296,6 @@ class CreateSecurityPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6367,6 +6322,39 @@ class CreateSecurityPolicyResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = CreateSecurityPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateServerGroupRequestConnectionDrainConfig(TeaModel):
+    def __init__(
+        self,
+        connection_drain_enabled: bool = None,
+        connection_drain_timeout: int = None,
+    ):
+        self.connection_drain_enabled = connection_drain_enabled
+        self.connection_drain_timeout = connection_drain_timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connection_drain_enabled is not None:
+            result['ConnectionDrainEnabled'] = self.connection_drain_enabled
+        if self.connection_drain_timeout is not None:
+            result['ConnectionDrainTimeout'] = self.connection_drain_timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectionDrainEnabled') is not None:
+            self.connection_drain_enabled = m.get('ConnectionDrainEnabled')
+        if m.get('ConnectionDrainTimeout') is not None:
+            self.connection_drain_timeout = m.get('ConnectionDrainTimeout')
         return self
 
 
@@ -6529,6 +6517,39 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
         return self
 
 
+class CreateServerGroupRequestSlowStartConfig(TeaModel):
+    def __init__(
+        self,
+        slow_start_duration: int = None,
+        slow_start_enabled: bool = None,
+    ):
+        self.slow_start_duration = slow_start_duration
+        self.slow_start_enabled = slow_start_enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.slow_start_duration is not None:
+            result['SlowStartDuration'] = self.slow_start_duration
+        if self.slow_start_enabled is not None:
+            result['SlowStartEnabled'] = self.slow_start_enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SlowStartDuration') is not None:
+            self.slow_start_duration = m.get('SlowStartDuration')
+        if m.get('SlowStartEnabled') is not None:
+            self.slow_start_enabled = m.get('SlowStartEnabled')
+        return self
+
+
 class CreateServerGroupRequestStickySessionConfig(TeaModel):
     def __init__(
         self,
@@ -6677,6 +6698,7 @@ class CreateServerGroupRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
+        connection_drain_config: CreateServerGroupRequestConnectionDrainConfig = None,
         dry_run: bool = None,
         health_check_config: CreateServerGroupRequestHealthCheckConfig = None,
         protocol: str = None,
@@ -6685,6 +6707,7 @@ class CreateServerGroupRequest(TeaModel):
         server_group_name: str = None,
         server_group_type: str = None,
         service_name: str = None,
+        slow_start_config: CreateServerGroupRequestSlowStartConfig = None,
         sticky_session_config: CreateServerGroupRequestStickySessionConfig = None,
         tag: List[CreateServerGroupRequestTag] = None,
         uch_config: CreateServerGroupRequestUchConfig = None,
@@ -6697,6 +6720,7 @@ class CreateServerGroupRequest(TeaModel):
         # 
         # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        self.connection_drain_config = connection_drain_config
         # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
         # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
@@ -6732,6 +6756,7 @@ class CreateServerGroupRequest(TeaModel):
         self.server_group_type = server_group_type
         # This parameter is available only if the ALB Ingress controller is used. In this case, set this parameter to the name of the `Kubernetes Service` that is associated with the server group.
         self.service_name = service_name
+        self.slow_start_config = slow_start_config
         # The configuration of session persistence.
         # 
         # > This parameter takes effect when the **ServerGroupType** parameter is set to **Instance** or **Ip**.
@@ -6748,8 +6773,12 @@ class CreateServerGroupRequest(TeaModel):
         self.vpc_id = vpc_id
 
     def validate(self):
+        if self.connection_drain_config:
+            self.connection_drain_config.validate()
         if self.health_check_config:
             self.health_check_config.validate()
+        if self.slow_start_config:
+            self.slow_start_config.validate()
         if self.sticky_session_config:
             self.sticky_session_config.validate()
         if self.tag:
@@ -6767,6 +6796,8 @@ class CreateServerGroupRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.connection_drain_config is not None:
+            result['ConnectionDrainConfig'] = self.connection_drain_config.to_map()
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
         if self.health_check_config is not None:
@@ -6783,6 +6814,8 @@ class CreateServerGroupRequest(TeaModel):
             result['ServerGroupType'] = self.server_group_type
         if self.service_name is not None:
             result['ServiceName'] = self.service_name
+        if self.slow_start_config is not None:
+            result['SlowStartConfig'] = self.slow_start_config.to_map()
         if self.sticky_session_config is not None:
             result['StickySessionConfig'] = self.sticky_session_config.to_map()
         result['Tag'] = []
@@ -6801,6 +6834,9 @@ class CreateServerGroupRequest(TeaModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('ConnectionDrainConfig') is not None:
+            temp_model = CreateServerGroupRequestConnectionDrainConfig()
+            self.connection_drain_config = temp_model.from_map(m['ConnectionDrainConfig'])
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
         if m.get('HealthCheckConfig') is not None:
@@ -6818,6 +6854,9 @@ class CreateServerGroupRequest(TeaModel):
             self.server_group_type = m.get('ServerGroupType')
         if m.get('ServiceName') is not None:
             self.service_name = m.get('ServiceName')
+        if m.get('SlowStartConfig') is not None:
+            temp_model = CreateServerGroupRequestSlowStartConfig()
+            self.slow_start_config = temp_model.from_map(m['SlowStartConfig'])
         if m.get('StickySessionConfig') is not None:
             temp_model = CreateServerGroupRequestStickySessionConfig()
             self.sticky_session_config = temp_model.from_map(m['StickySessionConfig'])
@@ -6890,9 +6929,6 @@ class CreateServerGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7016,9 +7052,6 @@ class DeleteAScriptsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7144,9 +7177,6 @@ class DeleteAclResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7261,9 +7291,6 @@ class DeleteHealthCheckTemplatesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7389,9 +7416,6 @@ class DeleteListenerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7515,9 +7539,6 @@ class DeleteLoadBalancerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7643,9 +7664,6 @@ class DeleteRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7771,9 +7789,6 @@ class DeleteRulesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7890,9 +7905,6 @@ class DeleteSecurityPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8018,9 +8030,6 @@ class DeleteServerGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8179,9 +8188,6 @@ class DescribeRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8333,9 +8339,6 @@ class DescribeZonesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8477,9 +8480,6 @@ class DetachCommonBandwidthPackageFromLoadBalancerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8594,9 +8594,6 @@ class DisableDeletionProtectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8713,9 +8710,6 @@ class DisableLoadBalancerAccessLogResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8841,9 +8835,6 @@ class DisableLoadBalancerIpv6InternetResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8976,9 +8967,6 @@ class DissociateAclsFromListenerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9147,9 +9135,6 @@ class DissociateAdditionalCertificatesFromListenerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9264,9 +9249,6 @@ class EnableDeletionProtectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9397,9 +9379,6 @@ class EnableLoadBalancerAccessLogResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9525,9 +9504,6 @@ class EnableLoadBalancerIpv6InternetResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9806,9 +9782,6 @@ class GetHealthCheckTemplateAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10743,9 +10716,6 @@ class GetListenerAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11365,9 +11335,6 @@ class GetListenerHealthStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12020,9 +11987,6 @@ class GetLoadBalancerAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12274,9 +12238,6 @@ class ListAScriptsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12476,9 +12437,6 @@ class ListAclEntriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12694,9 +12652,6 @@ class ListAclRelationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13041,9 +12996,6 @@ class ListAclsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13349,9 +13301,6 @@ class ListAsynJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13768,9 +13717,6 @@ class ListHealthCheckTemplatesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13987,9 +13933,6 @@ class ListListenerCertificatesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14853,9 +14796,6 @@ class ListListenersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15590,9 +15530,6 @@ class ListLoadBalancersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17198,9 +17135,6 @@ class ListRulesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17541,9 +17475,6 @@ class ListSecurityPoliciesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17748,9 +17679,6 @@ class ListSecurityPolicyRelationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18059,9 +17987,6 @@ class ListServerGroupServersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18217,6 +18142,39 @@ class ListServerGroupsRequest(TeaModel):
         return self
 
 
+class ListServerGroupsResponseBodyServerGroupsConnectionDrainConfig(TeaModel):
+    def __init__(
+        self,
+        connection_drain_enabled: bool = None,
+        connection_drain_timeout: int = None,
+    ):
+        self.connection_drain_enabled = connection_drain_enabled
+        self.connection_drain_timeout = connection_drain_timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connection_drain_enabled is not None:
+            result['ConnectionDrainEnabled'] = self.connection_drain_enabled
+        if self.connection_drain_timeout is not None:
+            result['ConnectionDrainTimeout'] = self.connection_drain_timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectionDrainEnabled') is not None:
+            self.connection_drain_enabled = m.get('ConnectionDrainEnabled')
+        if m.get('ConnectionDrainTimeout') is not None:
+            self.connection_drain_timeout = m.get('ConnectionDrainTimeout')
+        return self
+
+
 class ListServerGroupsResponseBodyServerGroupsHealthCheckConfig(TeaModel):
     def __init__(
         self,
@@ -18354,6 +18312,39 @@ class ListServerGroupsResponseBodyServerGroupsHealthCheckConfig(TeaModel):
         return self
 
 
+class ListServerGroupsResponseBodyServerGroupsSlowStartConfig(TeaModel):
+    def __init__(
+        self,
+        slow_start_duration: int = None,
+        slow_start_enabled: bool = None,
+    ):
+        self.slow_start_duration = slow_start_duration
+        self.slow_start_enabled = slow_start_enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.slow_start_duration is not None:
+            result['SlowStartDuration'] = self.slow_start_duration
+        if self.slow_start_enabled is not None:
+            result['SlowStartEnabled'] = self.slow_start_enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SlowStartDuration') is not None:
+            self.slow_start_duration = m.get('SlowStartDuration')
+        if m.get('SlowStartEnabled') is not None:
+            self.slow_start_enabled = m.get('SlowStartEnabled')
+        return self
+
+
 class ListServerGroupsResponseBodyServerGroupsStickySessionConfig(TeaModel):
     def __init__(
         self,
@@ -18485,6 +18476,7 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
     def __init__(
         self,
         config_managed_enabled: bool = None,
+        connection_drain_config: ListServerGroupsResponseBodyServerGroupsConnectionDrainConfig = None,
         create_time: str = None,
         health_check_config: ListServerGroupsResponseBodyServerGroupsHealthCheckConfig = None,
         ipv_6enabled: bool = None,
@@ -18498,6 +18490,7 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         server_group_status: str = None,
         server_group_type: str = None,
         service_name: str = None,
+        slow_start_config: ListServerGroupsResponseBodyServerGroupsSlowStartConfig = None,
         sticky_session_config: ListServerGroupsResponseBodyServerGroupsStickySessionConfig = None,
         tags: List[ListServerGroupsResponseBodyServerGroupsTags] = None,
         uch_config: ListServerGroupsResponseBodyServerGroupsUchConfig = None,
@@ -18509,6 +18502,7 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         # *   **true**\
         # *   **false**\
         self.config_managed_enabled = config_managed_enabled
+        self.connection_drain_config = connection_drain_config
         # The time when the resource was created.
         self.create_time = create_time
         # The health check configuration.
@@ -18553,6 +18547,7 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         self.server_group_type = server_group_type
         # The service name.
         self.service_name = service_name
+        self.slow_start_config = slow_start_config
         # The configuration of session persistence.
         self.sticky_session_config = sticky_session_config
         # The tags that are added to the server group.
@@ -18568,8 +18563,12 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         self.vpc_id = vpc_id
 
     def validate(self):
+        if self.connection_drain_config:
+            self.connection_drain_config.validate()
         if self.health_check_config:
             self.health_check_config.validate()
+        if self.slow_start_config:
+            self.slow_start_config.validate()
         if self.sticky_session_config:
             self.sticky_session_config.validate()
         if self.tags:
@@ -18587,6 +18586,8 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         result = dict()
         if self.config_managed_enabled is not None:
             result['ConfigManagedEnabled'] = self.config_managed_enabled
+        if self.connection_drain_config is not None:
+            result['ConnectionDrainConfig'] = self.connection_drain_config.to_map()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.health_check_config is not None:
@@ -18613,6 +18614,8 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
             result['ServerGroupType'] = self.server_group_type
         if self.service_name is not None:
             result['ServiceName'] = self.service_name
+        if self.slow_start_config is not None:
+            result['SlowStartConfig'] = self.slow_start_config.to_map()
         if self.sticky_session_config is not None:
             result['StickySessionConfig'] = self.sticky_session_config.to_map()
         result['Tags'] = []
@@ -18631,6 +18634,9 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         m = m or dict()
         if m.get('ConfigManagedEnabled') is not None:
             self.config_managed_enabled = m.get('ConfigManagedEnabled')
+        if m.get('ConnectionDrainConfig') is not None:
+            temp_model = ListServerGroupsResponseBodyServerGroupsConnectionDrainConfig()
+            self.connection_drain_config = temp_model.from_map(m['ConnectionDrainConfig'])
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('HealthCheckConfig') is not None:
@@ -18658,6 +18664,9 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
             self.server_group_type = m.get('ServerGroupType')
         if m.get('ServiceName') is not None:
             self.service_name = m.get('ServiceName')
+        if m.get('SlowStartConfig') is not None:
+            temp_model = ListServerGroupsResponseBodyServerGroupsSlowStartConfig()
+            self.slow_start_config = temp_model.from_map(m['SlowStartConfig'])
         if m.get('StickySessionConfig') is not None:
             temp_model = ListServerGroupsResponseBodyServerGroupsStickySessionConfig()
             self.sticky_session_config = temp_model.from_map(m['StickySessionConfig'])
@@ -18755,9 +18764,6 @@ class ListServerGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18884,9 +18890,6 @@ class ListSystemSecurityPoliciesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19102,9 +19105,6 @@ class ListTagKeysResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19367,9 +19367,6 @@ class ListTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19534,9 +19531,6 @@ class ListTagValuesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19655,9 +19649,6 @@ class MoveResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19790,9 +19781,6 @@ class RemoveEntriesFromAclResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19996,9 +19984,6 @@ class RemoveServersFromServerGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20289,9 +20274,6 @@ class ReplaceServersInServerGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20417,9 +20399,6 @@ class StartListenerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20590,9 +20569,6 @@ class StartShiftLoadBalancerZonesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20718,9 +20694,6 @@ class StopListenerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20880,9 +20853,6 @@ class TagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21059,9 +21029,6 @@ class UnTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21249,9 +21216,6 @@ class UpdateAScriptsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21375,9 +21339,6 @@ class UpdateAclAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21626,9 +21587,6 @@ class UpdateHealthCheckTemplateAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22283,9 +22241,6 @@ class UpdateListenerAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22485,9 +22440,6 @@ class UpdateListenerLogConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22684,9 +22636,6 @@ class UpdateLoadBalancerAddressTypeConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22870,9 +22819,6 @@ class UpdateLoadBalancerAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23002,9 +22948,6 @@ class UpdateLoadBalancerEditionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23186,9 +23129,6 @@ class UpdateLoadBalancerZonesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24610,9 +24550,6 @@ class UpdateRuleAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26065,9 +26002,6 @@ class UpdateRulesAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26216,9 +26150,6 @@ class UpdateSecurityPolicyAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26245,6 +26176,39 @@ class UpdateSecurityPolicyAttributeResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = UpdateSecurityPolicyAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateServerGroupAttributeRequestConnectionDrainConfig(TeaModel):
+    def __init__(
+        self,
+        connection_drain_enabled: bool = None,
+        connection_drain_timeout: int = None,
+    ):
+        self.connection_drain_enabled = connection_drain_enabled
+        self.connection_drain_timeout = connection_drain_timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connection_drain_enabled is not None:
+            result['ConnectionDrainEnabled'] = self.connection_drain_enabled
+        if self.connection_drain_timeout is not None:
+            result['ConnectionDrainTimeout'] = self.connection_drain_timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectionDrainEnabled') is not None:
+            self.connection_drain_enabled = m.get('ConnectionDrainEnabled')
+        if m.get('ConnectionDrainTimeout') is not None:
+            self.connection_drain_timeout = m.get('ConnectionDrainTimeout')
         return self
 
 
@@ -26405,6 +26369,39 @@ class UpdateServerGroupAttributeRequestHealthCheckConfig(TeaModel):
         return self
 
 
+class UpdateServerGroupAttributeRequestSlowStartConfig(TeaModel):
+    def __init__(
+        self,
+        slow_start_duration: int = None,
+        slow_start_enabled: bool = None,
+    ):
+        self.slow_start_duration = slow_start_duration
+        self.slow_start_enabled = slow_start_enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.slow_start_duration is not None:
+            result['SlowStartDuration'] = self.slow_start_duration
+        if self.slow_start_enabled is not None:
+            result['SlowStartEnabled'] = self.slow_start_enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SlowStartDuration') is not None:
+            self.slow_start_duration = m.get('SlowStartDuration')
+        if m.get('SlowStartEnabled') is not None:
+            self.slow_start_enabled = m.get('SlowStartEnabled')
+        return self
+
+
 class UpdateServerGroupAttributeRequestStickySessionConfig(TeaModel):
     def __init__(
         self,
@@ -26514,12 +26511,14 @@ class UpdateServerGroupAttributeRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
+        connection_drain_config: UpdateServerGroupAttributeRequestConnectionDrainConfig = None,
         dry_run: bool = None,
         health_check_config: UpdateServerGroupAttributeRequestHealthCheckConfig = None,
         scheduler: str = None,
         server_group_id: str = None,
         server_group_name: str = None,
         service_name: str = None,
+        slow_start_config: UpdateServerGroupAttributeRequestSlowStartConfig = None,
         sticky_session_config: UpdateServerGroupAttributeRequestStickySessionConfig = None,
         uch_config: UpdateServerGroupAttributeRequestUchConfig = None,
         upstream_keepalive_enabled: bool = None,
@@ -26530,6 +26529,7 @@ class UpdateServerGroupAttributeRequest(TeaModel):
         # 
         # > If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        self.connection_drain_config = connection_drain_config
         # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
         # *   **true**: checks the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
@@ -26551,6 +26551,7 @@ class UpdateServerGroupAttributeRequest(TeaModel):
         self.server_group_name = server_group_name
         # This parameter is available only if the ALB Ingress controller is used. In this case, set this parameter to the name of the `Kubernetes Service` that is associated with the server group.
         self.service_name = service_name
+        self.slow_start_config = slow_start_config
         # The configuration of session persistence.
         self.sticky_session_config = sticky_session_config
         # The setting of consistent hashing based on URLs.
@@ -26559,8 +26560,12 @@ class UpdateServerGroupAttributeRequest(TeaModel):
         self.upstream_keepalive_enabled = upstream_keepalive_enabled
 
     def validate(self):
+        if self.connection_drain_config:
+            self.connection_drain_config.validate()
         if self.health_check_config:
             self.health_check_config.validate()
+        if self.slow_start_config:
+            self.slow_start_config.validate()
         if self.sticky_session_config:
             self.sticky_session_config.validate()
         if self.uch_config:
@@ -26574,6 +26579,8 @@ class UpdateServerGroupAttributeRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.connection_drain_config is not None:
+            result['ConnectionDrainConfig'] = self.connection_drain_config.to_map()
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
         if self.health_check_config is not None:
@@ -26586,6 +26593,8 @@ class UpdateServerGroupAttributeRequest(TeaModel):
             result['ServerGroupName'] = self.server_group_name
         if self.service_name is not None:
             result['ServiceName'] = self.service_name
+        if self.slow_start_config is not None:
+            result['SlowStartConfig'] = self.slow_start_config.to_map()
         if self.sticky_session_config is not None:
             result['StickySessionConfig'] = self.sticky_session_config.to_map()
         if self.uch_config is not None:
@@ -26598,6 +26607,9 @@ class UpdateServerGroupAttributeRequest(TeaModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('ConnectionDrainConfig') is not None:
+            temp_model = UpdateServerGroupAttributeRequestConnectionDrainConfig()
+            self.connection_drain_config = temp_model.from_map(m['ConnectionDrainConfig'])
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
         if m.get('HealthCheckConfig') is not None:
@@ -26611,6 +26623,9 @@ class UpdateServerGroupAttributeRequest(TeaModel):
             self.server_group_name = m.get('ServerGroupName')
         if m.get('ServiceName') is not None:
             self.service_name = m.get('ServiceName')
+        if m.get('SlowStartConfig') is not None:
+            temp_model = UpdateServerGroupAttributeRequestSlowStartConfig()
+            self.slow_start_config = temp_model.from_map(m['SlowStartConfig'])
         if m.get('StickySessionConfig') is not None:
             temp_model = UpdateServerGroupAttributeRequestStickySessionConfig()
             self.sticky_session_config = temp_model.from_map(m['StickySessionConfig'])
@@ -26669,9 +26684,6 @@ class UpdateServerGroupAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26889,9 +26901,6 @@ class UpdateServerGroupServersAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

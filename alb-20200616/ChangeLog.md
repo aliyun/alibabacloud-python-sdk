@@ -1,3 +1,18 @@
+2024-02-23 Version: 1.1.6
+- Update API CreateSecurityPolicy: update param Ciphers.
+- Update API CreateServerGroup: add param ConnectionDrainConfig.
+- Update API CreateServerGroup: add param SlowStartConfig.
+- Update API ListRules: update param ListenerIds.
+- Update API ListRules: update param LoadBalancerIds.
+- Update API ListRules: update param RuleIds.
+- Update API ListRules: update param Tag.
+- Update API ListServerGroups: update response param.
+- Update API ListTagKeys: update response param.
+- Update API UpdateSecurityPolicyAttribute: update param Ciphers.
+- Update API UpdateServerGroupAttribute: add param ConnectionDrainConfig.
+- Update API UpdateServerGroupAttribute: add param SlowStartConfig.
+
+
 2023-12-28 Version: 1.1.5
 - Generated python 2020-06-16 for Alb.
 

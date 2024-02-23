@@ -1977,6 +1977,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.connection_drain_config):
+            query['ConnectionDrainConfig'] = request.connection_drain_config
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.health_check_config):
@@ -1993,6 +1995,8 @@ class Client(OpenApiClient):
             query['ServerGroupType'] = request.server_group_type
         if not UtilClient.is_unset(request.service_name):
             query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.slow_start_config):
+            query['SlowStartConfig'] = request.slow_start_config
         if not UtilClient.is_unset(request.sticky_session_config):
             query['StickySessionConfig'] = request.sticky_session_config
         if not UtilClient.is_unset(request.tag):
@@ -2040,6 +2044,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.connection_drain_config):
+            query['ConnectionDrainConfig'] = request.connection_drain_config
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.health_check_config):
@@ -2056,6 +2062,8 @@ class Client(OpenApiClient):
             query['ServerGroupType'] = request.server_group_type
         if not UtilClient.is_unset(request.service_name):
             query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.slow_start_config):
+            query['SlowStartConfig'] = request.slow_start_config
         if not UtilClient.is_unset(request.sticky_session_config):
             query['StickySessionConfig'] = request.sticky_session_config
         if not UtilClient.is_unset(request.tag):
@@ -8460,6 +8468,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.connection_drain_config):
+            query['ConnectionDrainConfig'] = request.connection_drain_config
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.health_check_config):
@@ -8472,6 +8482,8 @@ class Client(OpenApiClient):
             query['ServerGroupName'] = request.server_group_name
         if not UtilClient.is_unset(request.service_name):
             query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.slow_start_config):
+            query['SlowStartConfig'] = request.slow_start_config
         if not UtilClient.is_unset(request.sticky_session_config):
             query['StickySessionConfig'] = request.sticky_session_config
         if not UtilClient.is_unset(request.uch_config):
@@ -8516,6 +8528,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.connection_drain_config):
+            query['ConnectionDrainConfig'] = request.connection_drain_config
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.health_check_config):
@@ -8528,6 +8542,8 @@ class Client(OpenApiClient):
             query['ServerGroupName'] = request.server_group_name
         if not UtilClient.is_unset(request.service_name):
             query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.slow_start_config):
+            query['SlowStartConfig'] = request.slow_start_config
         if not UtilClient.is_unset(request.sticky_session_config):
             query['StickySessionConfig'] = request.sticky_session_config
         if not UtilClient.is_unset(request.uch_config):
