@@ -2095,6 +2095,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.open_compute_engine_with_options_async(request, runtime)
 
+    def open_compute_pre_check_with_options(
+        self,
+        request: hitsdb_20200615_models.OpenComputePreCheckRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.OpenComputePreCheckResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cpu_limit):
+            query['CpuLimit'] = request.cpu_limit
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.memory_limit):
+            query['MemoryLimit'] = request.memory_limit
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenComputePreCheck',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.OpenComputePreCheckResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def open_compute_pre_check_with_options_async(
+        self,
+        request: hitsdb_20200615_models.OpenComputePreCheckRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.OpenComputePreCheckResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cpu_limit):
+            query['CpuLimit'] = request.cpu_limit
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.memory_limit):
+            query['MemoryLimit'] = request.memory_limit
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenComputePreCheck',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.OpenComputePreCheckResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def open_compute_pre_check(
+        self,
+        request: hitsdb_20200615_models.OpenComputePreCheckRequest,
+    ) -> hitsdb_20200615_models.OpenComputePreCheckResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.open_compute_pre_check_with_options(request, runtime)
+
+    async def open_compute_pre_check_async(
+        self,
+        request: hitsdb_20200615_models.OpenComputePreCheckRequest,
+    ) -> hitsdb_20200615_models.OpenComputePreCheckResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.open_compute_pre_check_with_options_async(request, runtime)
+
     def release_lindorm_instance_with_options(
         self,
         request: hitsdb_20200615_models.ReleaseLindormInstanceRequest,
