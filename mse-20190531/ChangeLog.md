@@ -1,3 +1,9 @@
+2024-02-23 Version: 6.1.0
+- Support API AddGatewayAuth.
+- Support API GetGatewayAuthDetail.
+- Update API ListClusterTypes: update response param.
+
+
 2024-02-22 Version: 6.0.0
 - Support API AddGatewayAuth.
 - Support API GetGatewayAuthDetail.

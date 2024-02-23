@@ -32189,8 +32189,10 @@ class ListClusterTypesRequest(TeaModel):
 class ListClusterTypesResponseBodyData(TeaModel):
     def __init__(
         self,
+        code: str = None,
         show_name: str = None,
     ):
+        self.code = code
         # The type of the MSE engine that can be activated.
         self.show_name = show_name
 
@@ -32203,12 +32205,16 @@ class ListClusterTypesResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.show_name is not None:
             result['ShowName'] = self.show_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('ShowName') is not None:
             self.show_name = m.get('ShowName')
         return self
