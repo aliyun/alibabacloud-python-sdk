@@ -1,3 +1,10 @@
+2024-02-26 Version: 4.0.0
+- Update API ChangeResourceGroup: add param ResourceType.
+- Update API ChangeResourceGroup: delete param ResourceRegionId.
+- Update API UpdateVpcEndpointZoneConnectionResourceAttribute: update param ResourceAllocateMode.
+- Update API UpdateVpcEndpointZoneConnectionResourceAttribute: update param ResourceReplaceMode.
+
+
 2024-02-21 Version: 3.1.1
 - Update API UpdateVpcEndpointZoneConnectionResourceAttribute: update param ResourceAllocateMode.
 - Update API UpdateVpcEndpointZoneConnectionResourceAttribute: update param ResourceReplaceMode.
