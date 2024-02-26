@@ -333,6 +333,8 @@ class Client(OpenApiClient):
             body['Endpoints'] = request.endpoints
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.io_type):
+            body['IoType'] = request.io_type
         if not UtilClient.is_unset(request.life_cycle):
             body['LifeCycle'] = request.life_cycle
         if not UtilClient.is_unset(request.name):
@@ -381,6 +383,8 @@ class Client(OpenApiClient):
             body['Endpoints'] = request.endpoints
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.io_type):
+            body['IoType'] = request.io_type
         if not UtilClient.is_unset(request.life_cycle):
             body['LifeCycle'] = request.life_cycle
         if not UtilClient.is_unset(request.name):

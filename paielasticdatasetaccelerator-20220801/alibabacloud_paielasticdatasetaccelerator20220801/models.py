@@ -394,9 +394,6 @@ class BindEndpointResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -522,9 +519,6 @@ class CreateEndpointResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -721,9 +715,6 @@ class CreateInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -839,6 +830,7 @@ class CreateSlotRequest(TeaModel):
         endpoint_ids: str = None,
         endpoints: List[CreateSlotRequestEndpoints] = None,
         instance_id: str = None,
+        io_type: str = None,
         life_cycle: SlotLifeCycle = None,
         name: str = None,
         storage_type: str = None,
@@ -850,6 +842,7 @@ class CreateSlotRequest(TeaModel):
         self.endpoint_ids = endpoint_ids
         self.endpoints = endpoints
         self.instance_id = instance_id
+        self.io_type = io_type
         self.life_cycle = life_cycle
         self.name = name
         self.storage_type = storage_type
@@ -886,6 +879,8 @@ class CreateSlotRequest(TeaModel):
                 result['Endpoints'].append(k.to_map() if k else None)
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.io_type is not None:
+            result['IoType'] = self.io_type
         if self.life_cycle is not None:
             result['LifeCycle'] = self.life_cycle.to_map()
         if self.name is not None:
@@ -915,6 +910,8 @@ class CreateSlotRequest(TeaModel):
                 self.endpoints.append(temp_model.from_map(k))
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('IoType') is not None:
+            self.io_type = m.get('IoType')
         if m.get('LifeCycle') is not None:
             temp_model = SlotLifeCycle()
             self.life_cycle = temp_model.from_map(m['LifeCycle'])
@@ -983,9 +980,6 @@ class CreateSlotResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1055,6 +1049,7 @@ class CreateSlotsRequestSlots(TeaModel):
         description: str = None,
         endpoint_ids: str = None,
         instance_id: str = None,
+        io_type: str = None,
         life_cycle: SlotLifeCycle = None,
         name: str = None,
         storage_type: str = None,
@@ -1065,6 +1060,7 @@ class CreateSlotsRequestSlots(TeaModel):
         self.description = description
         self.endpoint_ids = endpoint_ids
         self.instance_id = instance_id
+        self.io_type = io_type
         self.life_cycle = life_cycle
         self.name = name
         self.storage_type = storage_type
@@ -1093,6 +1089,8 @@ class CreateSlotsRequestSlots(TeaModel):
             result['EndpointIds'] = self.endpoint_ids
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.io_type is not None:
+            result['IoType'] = self.io_type
         if self.life_cycle is not None:
             result['LifeCycle'] = self.life_cycle.to_map()
         if self.name is not None:
@@ -1117,6 +1115,8 @@ class CreateSlotsRequestSlots(TeaModel):
             self.endpoint_ids = m.get('EndpointIds')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('IoType') is not None:
+            self.io_type = m.get('IoType')
         if m.get('LifeCycle') is not None:
             temp_model = SlotLifeCycle()
             self.life_cycle = temp_model.from_map(m['LifeCycle'])
@@ -1226,9 +1226,6 @@ class CreateSlotsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1342,9 +1339,6 @@ class CreateTagResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1413,9 +1407,6 @@ class DeleteEndpointResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1484,9 +1475,6 @@ class DeleteInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1582,9 +1570,6 @@ class DeleteSlotResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1692,9 +1677,6 @@ class DeleteTagResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1918,9 +1900,6 @@ class DescribeComponentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2051,9 +2030,6 @@ class DescribeEndpointResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2271,9 +2247,6 @@ class DescribeInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2480,9 +2453,6 @@ class DescribeSlotResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2738,9 +2708,6 @@ class ListComponentsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2995,9 +2962,6 @@ class ListEndpointsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3331,9 +3295,6 @@ class ListInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3768,9 +3729,6 @@ class ListSlotsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3997,9 +3955,6 @@ class ListTagsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4190,9 +4145,6 @@ class QueryInstanceMetricsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4383,9 +4335,6 @@ class QuerySlotMetricsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4511,9 +4460,6 @@ class QueryStatisticResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4582,9 +4528,6 @@ class ReloadSlotResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4653,9 +4596,6 @@ class StopSlotResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4724,9 +4664,6 @@ class UnbindEndpointResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4834,9 +4771,6 @@ class UpdateInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5012,9 +4946,6 @@ class UpdateSlotResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
