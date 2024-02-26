@@ -1,3 +1,12 @@
+2024-02-26 Version: 2.1.1
+- Update API CreateAcl: update param AclResourceType.
+- Update API DeleteAcl: update param AclOperationType.
+- Update API DeleteAcl: update param AclResourceType.
+- Update API DescribeAcls: update param AclResourceType.
+- Update API UpgradePostPayOrder: add param ServerlessConfig.
+- Update API UpgradePostPayOrder: update param DiskSize.
+
+
 2024-01-18 Version: 2.1.0
 - Generated python 2019-09-16 for alikafka.
 

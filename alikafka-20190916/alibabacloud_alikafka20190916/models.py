@@ -118,9 +118,6 @@ class ChangeResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -264,9 +261,6 @@ class ConvertPostPayOrderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -445,9 +439,6 @@ class CreateAclResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -647,9 +638,6 @@ class CreateConsumerGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -937,9 +925,6 @@ class CreatePostPayOrderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1227,9 +1212,6 @@ class CreatePrePayOrderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1381,9 +1363,6 @@ class CreateSaslUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1652,9 +1631,6 @@ class CreateTopicResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1827,9 +1803,6 @@ class DeleteAclResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1962,9 +1935,6 @@ class DeleteConsumerGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2090,9 +2060,6 @@ class DeleteInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2237,9 +2204,6 @@ class DeleteSaslUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2372,9 +2336,6 @@ class DeleteTopicResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2656,9 +2617,6 @@ class DescribeAclsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2875,9 +2833,6 @@ class DescribeSaslUsersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3003,9 +2958,6 @@ class GetAllInstanceIdListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3292,9 +3244,6 @@ class GetAllowedIpListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3606,9 +3555,6 @@ class GetConsumerListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3964,9 +3910,6 @@ class GetConsumerProgressResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4612,9 +4555,6 @@ class GetInstanceListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4850,9 +4790,6 @@ class GetQuotaTipResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5260,9 +5197,6 @@ class GetTopicListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5539,9 +5473,6 @@ class GetTopicStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5838,9 +5769,6 @@ class ListTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5976,9 +5904,6 @@ class ModifyInstanceNameResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6122,9 +6047,6 @@ class ModifyPartitionNumResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6264,9 +6186,6 @@ class ModifyTopicRemarkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6535,9 +6454,6 @@ class QueryMessageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6673,9 +6589,6 @@ class ReleaseInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6986,9 +6899,6 @@ class StartInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7169,9 +7079,6 @@ class TagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7303,9 +7210,6 @@ class UntagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7481,9 +7385,6 @@ class UpdateAllowedIpResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7787,9 +7688,6 @@ class UpdateConsumerOffsetResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7922,9 +7820,6 @@ class UpdateInstanceConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8069,9 +7964,6 @@ class UpdateTopicConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8209,9 +8101,6 @@ class UpgradeInstanceVersionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8241,6 +8130,39 @@ class UpgradeInstanceVersionResponse(TeaModel):
         return self
 
 
+class UpgradePostPayOrderRequestServerlessConfig(TeaModel):
+    def __init__(
+        self,
+        reserved_publish_capacity: int = None,
+        reserved_subscribe_capacity: int = None,
+    ):
+        self.reserved_publish_capacity = reserved_publish_capacity
+        self.reserved_subscribe_capacity = reserved_subscribe_capacity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.reserved_publish_capacity is not None:
+            result['ReservedPublishCapacity'] = self.reserved_publish_capacity
+        if self.reserved_subscribe_capacity is not None:
+            result['ReservedSubscribeCapacity'] = self.reserved_subscribe_capacity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReservedPublishCapacity') is not None:
+            self.reserved_publish_capacity = m.get('ReservedPublishCapacity')
+        if m.get('ReservedSubscribeCapacity') is not None:
+            self.reserved_subscribe_capacity = m.get('ReservedSubscribeCapacity')
+        return self
+
+
 class UpgradePostPayOrderRequest(TeaModel):
     def __init__(
         self,
@@ -8252,6 +8174,7 @@ class UpgradePostPayOrderRequest(TeaModel):
         io_max_spec: str = None,
         partition_num: int = None,
         region_id: str = None,
+        serverless_config: UpgradePostPayOrderRequestServerlessConfig = None,
         spec_type: str = None,
         topic_quota: int = None,
     ):
@@ -8294,6 +8217,140 @@ class UpgradePostPayOrderRequest(TeaModel):
         self.partition_num = partition_num
         # The region ID of the instance.
         self.region_id = region_id
+        self.serverless_config = serverless_config
+        # The edition of the instance. Valid values:
+        # 
+        # *   **normal**: Standard Edition (High Write)
+        # *   **professional**: Professional Edition (High Write)
+        # *   **professionalForHighRead**: Professional Edition (High Read)
+        # 
+        # You cannot downgrade an instance from the Professional Edition to the Standard Edition. For more information about these instance editions, see [Billing](~~84737~~).
+        self.spec_type = spec_type
+        # The number of topics. We recommend that you do not configure this parameter.
+        # 
+        # *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
+        # *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
+        # *   The default value of the TopicQuota parameter varies based on the value of the IoMaxSpec parameter. If the number of topics that you consume exceeds the default value, you are charged additional fees.
+        # *   For more information about the valid values, see [Billing](~~84737~~).
+        self.topic_quota = topic_quota
+
+    def validate(self):
+        if self.serverless_config:
+            self.serverless_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disk_size is not None:
+            result['DiskSize'] = self.disk_size
+        if self.eip_max is not None:
+            result['EipMax'] = self.eip_max
+        if self.eip_model is not None:
+            result['EipModel'] = self.eip_model
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.io_max is not None:
+            result['IoMax'] = self.io_max
+        if self.io_max_spec is not None:
+            result['IoMaxSpec'] = self.io_max_spec
+        if self.partition_num is not None:
+            result['PartitionNum'] = self.partition_num
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.serverless_config is not None:
+            result['ServerlessConfig'] = self.serverless_config.to_map()
+        if self.spec_type is not None:
+            result['SpecType'] = self.spec_type
+        if self.topic_quota is not None:
+            result['TopicQuota'] = self.topic_quota
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiskSize') is not None:
+            self.disk_size = m.get('DiskSize')
+        if m.get('EipMax') is not None:
+            self.eip_max = m.get('EipMax')
+        if m.get('EipModel') is not None:
+            self.eip_model = m.get('EipModel')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IoMax') is not None:
+            self.io_max = m.get('IoMax')
+        if m.get('IoMaxSpec') is not None:
+            self.io_max_spec = m.get('IoMaxSpec')
+        if m.get('PartitionNum') is not None:
+            self.partition_num = m.get('PartitionNum')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ServerlessConfig') is not None:
+            temp_model = UpgradePostPayOrderRequestServerlessConfig()
+            self.serverless_config = temp_model.from_map(m['ServerlessConfig'])
+        if m.get('SpecType') is not None:
+            self.spec_type = m.get('SpecType')
+        if m.get('TopicQuota') is not None:
+            self.topic_quota = m.get('TopicQuota')
+        return self
+
+
+class UpgradePostPayOrderShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        disk_size: int = None,
+        eip_max: int = None,
+        eip_model: bool = None,
+        instance_id: str = None,
+        io_max: int = None,
+        io_max_spec: str = None,
+        partition_num: int = None,
+        region_id: str = None,
+        serverless_config_shrink: str = None,
+        spec_type: str = None,
+        topic_quota: int = None,
+    ):
+        # The disk size. Unit: GB.
+        # 
+        # *   The disk size that you specify must be greater than or equal to the current disk size of the instance.
+        # *   For more information about the valid values, see [Billing](~~84737~~).
+        self.disk_size = disk_size
+        # The Internet traffic for the instance.
+        # 
+        # *   The Internet traffic volume that you specify must be greater than or equal to the current Internet traffic volume of the instance.
+        # *   For more information about the valid values, see [Billing](~~84737~~).
+        # > - If the **EipModel** parameter is set to **true**, set the **EipMax** parameter to a value that is greater than 0.
+        # > - If the **EipModel** parameter is set to **false**, set the **EipMax** parameter to **0**.
+        self.eip_max = eip_max
+        # Specifies whether to enable Internet access for the instance. Valid values:
+        # 
+        # *   true: enables Internet access.
+        # *   false: disables Internet access.
+        self.eip_model = eip_model
+        # The instance ID.
+        self.instance_id = instance_id
+        # The maximum traffic for the instance. We recommend that you do not configure this parameter.
+        # 
+        # *   The maximum traffic that you specify must be greater than or equal to the current maximum traffic of the instance.
+        # *   You must configure at least one of the IoMax and IoMaxSpec parameters. If you configure both parameters, the value of the IoMaxSpec parameter takes effect. We recommend that you specify only the IoMaxSpec parameter.
+        # *   For more information about the valid values, see [Billing](~~84737~~).
+        self.io_max = io_max
+        # The traffic specification of the instance. We recommend that you configure this parameter.
+        # 
+        # *   The traffic specification that you specify must be greater than or equal to the current traffic specification of the instance.
+        # *   You must configure at least one of the IoMax and IoMaxSpec parameters. If you configure both parameters, the value of the IoMaxSpec parameter takes effect. We recommend that you specify only the IoMaxSpec parameter.
+        # *   For more information about the valid values, see [Billing](~~84737~~).
+        self.io_max_spec = io_max_spec
+        # The number of partitions. We recommend that you configure this parameter.
+        # 
+        # *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
+        # *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
+        # *   For more information about the valid values, see [Billing](~~84737~~).
+        self.partition_num = partition_num
+        # The region ID of the instance.
+        self.region_id = region_id
+        self.serverless_config_shrink = serverless_config_shrink
         # The edition of the instance. Valid values:
         # 
         # *   **normal**: Standard Edition (High Write)
@@ -8335,6 +8392,8 @@ class UpgradePostPayOrderRequest(TeaModel):
             result['PartitionNum'] = self.partition_num
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.serverless_config_shrink is not None:
+            result['ServerlessConfig'] = self.serverless_config_shrink
         if self.spec_type is not None:
             result['SpecType'] = self.spec_type
         if self.topic_quota is not None:
@@ -8359,6 +8418,8 @@ class UpgradePostPayOrderRequest(TeaModel):
             self.partition_num = m.get('PartitionNum')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ServerlessConfig') is not None:
+            self.serverless_config_shrink = m.get('ServerlessConfig')
         if m.get('SpecType') is not None:
             self.spec_type = m.get('SpecType')
         if m.get('TopicQuota') is not None:
@@ -8427,9 +8488,6 @@ class UpgradePostPayOrderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8645,9 +8703,6 @@ class UpgradePrePayOrderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
