@@ -1449,6 +1449,100 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.CancelScheduleConferenceHeaders()
         return await self.cancel_schedule_conference_with_options_async(request, headers, runtime)
 
+    def check_user_is_group_member_with_options(
+        self,
+        request: aliding_20230426_models.CheckUserIsGroupMemberRequest,
+        tmp_header: aliding_20230426_models.CheckUserIsGroupMemberHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CheckUserIsGroupMemberResponse:
+        UtilClient.validate_model(request)
+        headers = aliding_20230426_models.CheckUserIsGroupMemberShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.open_conversation_id):
+            body['OpenConversationId'] = request.open_conversation_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CheckUserIsGroupMember',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/im/checkUserIsGroupMember',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CheckUserIsGroupMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_user_is_group_member_with_options_async(
+        self,
+        request: aliding_20230426_models.CheckUserIsGroupMemberRequest,
+        tmp_header: aliding_20230426_models.CheckUserIsGroupMemberHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CheckUserIsGroupMemberResponse:
+        UtilClient.validate_model(request)
+        headers = aliding_20230426_models.CheckUserIsGroupMemberShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.open_conversation_id):
+            body['OpenConversationId'] = request.open_conversation_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CheckUserIsGroupMember',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/im/checkUserIsGroupMember',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CheckUserIsGroupMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_user_is_group_member(
+        self,
+        request: aliding_20230426_models.CheckUserIsGroupMemberRequest,
+    ) -> aliding_20230426_models.CheckUserIsGroupMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CheckUserIsGroupMemberHeaders()
+        return self.check_user_is_group_member_with_options(request, headers, runtime)
+
+    async def check_user_is_group_member_async(
+        self,
+        request: aliding_20230426_models.CheckUserIsGroupMemberRequest,
+    ) -> aliding_20230426_models.CheckUserIsGroupMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CheckUserIsGroupMemberHeaders()
+        return await self.check_user_is_group_member_with_options_async(request, headers, runtime)
+
     def clear_with_options(
         self,
         tmp_req: aliding_20230426_models.ClearRequest,
@@ -6179,6 +6273,112 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.ExecuteTaskHeaders()
         return await self.execute_task_with_options_async(request, headers, runtime)
 
+    def expand_group_capacity_with_options(
+        self,
+        tmp_req: aliding_20230426_models.ExpandGroupCapacityRequest,
+        tmp_header: aliding_20230426_models.ExpandGroupCapacityHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.ExpandGroupCapacityResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.ExpandGroupCapacityShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.ExpandGroupCapacityShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.open_conversation_id):
+            body['OpenConversationId'] = request.open_conversation_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExpandGroupCapacity',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/aliding/v1/im/expandGroupCapacity',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.ExpandGroupCapacityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def expand_group_capacity_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.ExpandGroupCapacityRequest,
+        tmp_header: aliding_20230426_models.ExpandGroupCapacityHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.ExpandGroupCapacityResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.ExpandGroupCapacityShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.ExpandGroupCapacityShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.open_conversation_id):
+            body['OpenConversationId'] = request.open_conversation_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExpandGroupCapacity',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/aliding/v1/im/expandGroupCapacity',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.ExpandGroupCapacityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def expand_group_capacity(
+        self,
+        request: aliding_20230426_models.ExpandGroupCapacityRequest,
+    ) -> aliding_20230426_models.ExpandGroupCapacityResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.ExpandGroupCapacityHeaders()
+        return self.expand_group_capacity_with_options(request, headers, runtime)
+
+    async def expand_group_capacity_async(
+        self,
+        request: aliding_20230426_models.ExpandGroupCapacityRequest,
+    ) -> aliding_20230426_models.ExpandGroupCapacityResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.ExpandGroupCapacityHeaders()
+        return await self.expand_group_capacity_with_options_async(request, headers, runtime)
+
     def get_activity_list_with_options(
         self,
         request: aliding_20230426_models.GetActivityListRequest,
@@ -6390,6 +6590,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetAllSheetsHeaders()
         return await self.get_all_sheets_with_options_async(request, headers, runtime)
+
+    def get_conversaion_space_with_options(
+        self,
+        tmp_req: aliding_20230426_models.GetConversaionSpaceRequest,
+        tmp_header: aliding_20230426_models.GetConversaionSpaceHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetConversaionSpaceResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetConversaionSpaceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetConversaionSpaceShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.open_conversation_id):
+            body['OpenConversationId'] = request.open_conversation_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetConversaionSpace',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/getConversaionSpace',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetConversaionSpaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_conversaion_space_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.GetConversaionSpaceRequest,
+        tmp_header: aliding_20230426_models.GetConversaionSpaceHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetConversaionSpaceResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetConversaionSpaceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetConversaionSpaceShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.open_conversation_id):
+            body['OpenConversationId'] = request.open_conversation_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetConversaionSpace',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/getConversaionSpace',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetConversaionSpaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_conversaion_space(
+        self,
+        request: aliding_20230426_models.GetConversaionSpaceRequest,
+    ) -> aliding_20230426_models.GetConversaionSpaceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetConversaionSpaceHeaders()
+        return self.get_conversaion_space_with_options(request, headers, runtime)
+
+    async def get_conversaion_space_async(
+        self,
+        request: aliding_20230426_models.GetConversaionSpaceRequest,
+    ) -> aliding_20230426_models.GetConversaionSpaceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetConversaionSpaceHeaders()
+        return await self.get_conversaion_space_with_options_async(request, headers, runtime)
 
     def get_corp_accomplishment_tasks_with_options(
         self,
@@ -6969,6 +7275,124 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.GetFieldDefByUuidHeaders()
         return await self.get_field_def_by_uuid_with_options_async(request, headers, runtime)
 
+    def get_file_download_info_with_options(
+        self,
+        tmp_req: aliding_20230426_models.GetFileDownloadInfoRequest,
+        tmp_header: aliding_20230426_models.GetFileDownloadInfoHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetFileDownloadInfoResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetFileDownloadInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetFileDownloadInfoShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.option):
+            request.option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.option, 'Option', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dentry_id):
+            body['DentryId'] = request.dentry_id
+        if not UtilClient.is_unset(request.option_shrink):
+            body['Option'] = request.option_shrink
+        if not UtilClient.is_unset(request.space_id):
+            body['SpaceId'] = request.space_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFileDownloadInfo',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/getFileDownloadInfo',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetFileDownloadInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_file_download_info_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.GetFileDownloadInfoRequest,
+        tmp_header: aliding_20230426_models.GetFileDownloadInfoHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetFileDownloadInfoResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetFileDownloadInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetFileDownloadInfoShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.option):
+            request.option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.option, 'Option', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dentry_id):
+            body['DentryId'] = request.dentry_id
+        if not UtilClient.is_unset(request.option_shrink):
+            body['Option'] = request.option_shrink
+        if not UtilClient.is_unset(request.space_id):
+            body['SpaceId'] = request.space_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFileDownloadInfo',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/getFileDownloadInfo',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetFileDownloadInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_file_download_info(
+        self,
+        request: aliding_20230426_models.GetFileDownloadInfoRequest,
+    ) -> aliding_20230426_models.GetFileDownloadInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetFileDownloadInfoHeaders()
+        return self.get_file_download_info_with_options(request, headers, runtime)
+
+    async def get_file_download_info_async(
+        self,
+        request: aliding_20230426_models.GetFileDownloadInfoRequest,
+    ) -> aliding_20230426_models.GetFileDownloadInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetFileDownloadInfoHeaders()
+        return await self.get_file_download_info_with_options_async(request, headers, runtime)
+
     def get_form_component_definition_list_with_options(
         self,
         request: aliding_20230426_models.GetFormComponentDefinitionListRequest,
@@ -7290,6 +7714,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetFormListInAppHeaders()
         return await self.get_form_list_in_app_with_options_async(request, headers, runtime)
+
+    def get_inner_group_members_with_options(
+        self,
+        request: aliding_20230426_models.GetInnerGroupMembersRequest,
+        tmp_header: aliding_20230426_models.GetInnerGroupMembersHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetInnerGroupMembersResponse:
+        UtilClient.validate_model(request)
+        headers = aliding_20230426_models.GetInnerGroupMembersShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.open_conversation_id):
+            body['OpenConversationId'] = request.open_conversation_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetInnerGroupMembers',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/im/getInnerGroupMembers',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetInnerGroupMembersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_inner_group_members_with_options_async(
+        self,
+        request: aliding_20230426_models.GetInnerGroupMembersRequest,
+        tmp_header: aliding_20230426_models.GetInnerGroupMembersHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetInnerGroupMembersResponse:
+        UtilClient.validate_model(request)
+        headers = aliding_20230426_models.GetInnerGroupMembersShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.open_conversation_id):
+            body['OpenConversationId'] = request.open_conversation_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetInnerGroupMembers',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/im/getInnerGroupMembers',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetInnerGroupMembersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_inner_group_members(
+        self,
+        request: aliding_20230426_models.GetInnerGroupMembersRequest,
+    ) -> aliding_20230426_models.GetInnerGroupMembersResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetInnerGroupMembersHeaders()
+        return self.get_inner_group_members_with_options(request, headers, runtime)
+
+    async def get_inner_group_members_async(
+        self,
+        request: aliding_20230426_models.GetInnerGroupMembersRequest,
+    ) -> aliding_20230426_models.GetInnerGroupMembersResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetInnerGroupMembersHeaders()
+        return await self.get_inner_group_members_with_options_async(request, headers, runtime)
 
     def get_instance_by_id_with_options(
         self,
@@ -8263,6 +8789,108 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.GetMineWorkspaceHeaders()
         return await self.get_mine_workspace_with_options_async(request, headers, runtime)
 
+    def get_newest_inner_groups_with_options(
+        self,
+        tmp_req: aliding_20230426_models.GetNewestInnerGroupsRequest,
+        tmp_header: aliding_20230426_models.GetNewestInnerGroupsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetNewestInnerGroupsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetNewestInnerGroupsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetNewestInnerGroupsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.request):
+            request.request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.request, 'Request', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.request_shrink):
+            body['Request'] = request.request_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetNewestInnerGroups',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/im/getNewestInnerGroups',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetNewestInnerGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_newest_inner_groups_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.GetNewestInnerGroupsRequest,
+        tmp_header: aliding_20230426_models.GetNewestInnerGroupsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetNewestInnerGroupsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetNewestInnerGroupsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetNewestInnerGroupsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.request):
+            request.request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.request, 'Request', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.request_shrink):
+            body['Request'] = request.request_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetNewestInnerGroups',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/im/getNewestInnerGroups',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetNewestInnerGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_newest_inner_groups(
+        self,
+        request: aliding_20230426_models.GetNewestInnerGroupsRequest,
+    ) -> aliding_20230426_models.GetNewestInnerGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetNewestInnerGroupsHeaders()
+        return self.get_newest_inner_groups_with_options(request, headers, runtime)
+
+    async def get_newest_inner_groups_async(
+        self,
+        request: aliding_20230426_models.GetNewestInnerGroupsRequest,
+    ) -> aliding_20230426_models.GetNewestInnerGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetNewestInnerGroupsHeaders()
+        return await self.get_newest_inner_groups_with_options_async(request, headers, runtime)
+
     def get_node_with_options(
         self,
         tmp_req: aliding_20230426_models.GetNodeRequest,
@@ -9206,6 +9834,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetRangeHeaders()
         return await self.get_range_with_options_async(request, headers, runtime)
+
+    def get_related_workspaces_with_options(
+        self,
+        tmp_req: aliding_20230426_models.GetRelatedWorkspacesRequest,
+        tmp_header: aliding_20230426_models.GetRelatedWorkspacesHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetRelatedWorkspacesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetRelatedWorkspacesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetRelatedWorkspacesShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.include_recent):
+            body['IncludeRecent'] = request.include_recent
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetRelatedWorkspaces',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/getRelatedWorkspaces',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetRelatedWorkspacesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_related_workspaces_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.GetRelatedWorkspacesRequest,
+        tmp_header: aliding_20230426_models.GetRelatedWorkspacesHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetRelatedWorkspacesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetRelatedWorkspacesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetRelatedWorkspacesShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.include_recent):
+            body['IncludeRecent'] = request.include_recent
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetRelatedWorkspaces',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/getRelatedWorkspaces',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetRelatedWorkspacesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_related_workspaces(
+        self,
+        request: aliding_20230426_models.GetRelatedWorkspacesRequest,
+    ) -> aliding_20230426_models.GetRelatedWorkspacesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetRelatedWorkspacesHeaders()
+        return self.get_related_workspaces_with_options(request, headers, runtime)
+
+    async def get_related_workspaces_async(
+        self,
+        request: aliding_20230426_models.GetRelatedWorkspacesRequest,
+    ) -> aliding_20230426_models.GetRelatedWorkspacesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetRelatedWorkspacesHeaders()
+        return await self.get_related_workspaces_with_options_async(request, headers, runtime)
 
     def get_report_template_by_name_with_options(
         self,
@@ -11140,6 +11874,136 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ListCalendarsHeaders()
         return await self.list_calendars_with_options_async(request, headers, runtime)
+
+    def list_dentries_with_options(
+        self,
+        tmp_req: aliding_20230426_models.ListDentriesRequest,
+        tmp_header: aliding_20230426_models.ListDentriesHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.ListDentriesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.ListDentriesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.ListDentriesShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order):
+            body['Order'] = request.order
+        if not UtilClient.is_unset(request.order_by):
+            body['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.parent_id):
+            body['ParentId'] = request.parent_id
+        if not UtilClient.is_unset(request.space_id):
+            body['SpaceId'] = request.space_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.with_thumbnail):
+            body['WithThumbnail'] = request.with_thumbnail
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDentries',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/listDentries',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.ListDentriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_dentries_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.ListDentriesRequest,
+        tmp_header: aliding_20230426_models.ListDentriesHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.ListDentriesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.ListDentriesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.ListDentriesShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order):
+            body['Order'] = request.order
+        if not UtilClient.is_unset(request.order_by):
+            body['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.parent_id):
+            body['ParentId'] = request.parent_id
+        if not UtilClient.is_unset(request.space_id):
+            body['SpaceId'] = request.space_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.with_thumbnail):
+            body['WithThumbnail'] = request.with_thumbnail
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDentries',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/listDentries',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.ListDentriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_dentries(
+        self,
+        request: aliding_20230426_models.ListDentriesRequest,
+    ) -> aliding_20230426_models.ListDentriesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.ListDentriesHeaders()
+        return self.list_dentries_with_options(request, headers, runtime)
+
+    async def list_dentries_async(
+        self,
+        request: aliding_20230426_models.ListDentriesRequest,
+    ) -> aliding_20230426_models.ListDentriesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.ListDentriesHeaders()
+        return await self.list_dentries_with_options_async(request, headers, runtime)
 
     def list_events_with_options(
         self,
@@ -14031,10 +14895,10 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tenant_context):
             request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
         body = {}
-        if not UtilClient.is_unset(request.request_union_id):
-            body['RequestUnionId'] = request.request_union_id
         if not UtilClient.is_unset(request.tenant_context_shrink):
             body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.schedule_conference_id):
+            body['scheduleConferenceId'] = request.schedule_conference_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -14076,10 +14940,10 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tenant_context):
             request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
         body = {}
-        if not UtilClient.is_unset(request.request_union_id):
-            body['RequestUnionId'] = request.request_union_id
         if not UtilClient.is_unset(request.tenant_context_shrink):
             body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.schedule_conference_id):
+            body['scheduleConferenceId'] = request.schedule_conference_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -15844,6 +16708,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SearchFormDatasHeaders()
         return await self.search_form_datas_with_options_async(request, headers, runtime)
+
+    def search_inner_groups_with_options(
+        self,
+        request: aliding_20230426_models.SearchInnerGroupsRequest,
+        tmp_header: aliding_20230426_models.SearchInnerGroupsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.SearchInnerGroupsResponse:
+        UtilClient.validate_model(request)
+        headers = aliding_20230426_models.SearchInnerGroupsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.search_key):
+            body['SearchKey'] = request.search_key
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SearchInnerGroups',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/im/searchInnerGroups',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.SearchInnerGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_inner_groups_with_options_async(
+        self,
+        request: aliding_20230426_models.SearchInnerGroupsRequest,
+        tmp_header: aliding_20230426_models.SearchInnerGroupsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.SearchInnerGroupsResponse:
+        UtilClient.validate_model(request)
+        headers = aliding_20230426_models.SearchInnerGroupsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.search_key):
+            body['SearchKey'] = request.search_key
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SearchInnerGroups',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/im/searchInnerGroups',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.SearchInnerGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_inner_groups(
+        self,
+        request: aliding_20230426_models.SearchInnerGroupsRequest,
+    ) -> aliding_20230426_models.SearchInnerGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.SearchInnerGroupsHeaders()
+        return self.search_inner_groups_with_options(request, headers, runtime)
+
+    async def search_inner_groups_async(
+        self,
+        request: aliding_20230426_models.SearchInnerGroupsRequest,
+    ) -> aliding_20230426_models.SearchInnerGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.SearchInnerGroupsHeaders()
+        return await self.search_inner_groups_with_options_async(request, headers, runtime)
 
     def send_banner_with_options(
         self,
@@ -18180,6 +19142,120 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateRangeHeaders()
         return await self.update_range_with_options_async(request, headers, runtime)
+
+    def update_schedule_conf_settings_with_options(
+        self,
+        tmp_req: aliding_20230426_models.UpdateScheduleConfSettingsRequest,
+        tmp_header: aliding_20230426_models.UpdateScheduleConfSettingsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.UpdateScheduleConfSettingsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.UpdateScheduleConfSettingsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.UpdateScheduleConfSettingsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.schedule_conf_setting_model):
+            request.schedule_conf_setting_model_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule_conf_setting_model, 'ScheduleConfSettingModel', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.schedule_conf_setting_model_shrink):
+            body['ScheduleConfSettingModel'] = request.schedule_conf_setting_model_shrink
+        if not UtilClient.is_unset(request.schedule_conference_id):
+            body['ScheduleConferenceId'] = request.schedule_conference_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateScheduleConfSettings',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ysp/updateScheduleConfSettings',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.UpdateScheduleConfSettingsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_schedule_conf_settings_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.UpdateScheduleConfSettingsRequest,
+        tmp_header: aliding_20230426_models.UpdateScheduleConfSettingsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.UpdateScheduleConfSettingsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.UpdateScheduleConfSettingsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.UpdateScheduleConfSettingsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.schedule_conf_setting_model):
+            request.schedule_conf_setting_model_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule_conf_setting_model, 'ScheduleConfSettingModel', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.schedule_conf_setting_model_shrink):
+            body['ScheduleConfSettingModel'] = request.schedule_conf_setting_model_shrink
+        if not UtilClient.is_unset(request.schedule_conference_id):
+            body['ScheduleConferenceId'] = request.schedule_conference_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateScheduleConfSettings',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ysp/updateScheduleConfSettings',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.UpdateScheduleConfSettingsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_schedule_conf_settings(
+        self,
+        request: aliding_20230426_models.UpdateScheduleConfSettingsRequest,
+    ) -> aliding_20230426_models.UpdateScheduleConfSettingsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.UpdateScheduleConfSettingsHeaders()
+        return self.update_schedule_conf_settings_with_options(request, headers, runtime)
+
+    async def update_schedule_conf_settings_async(
+        self,
+        request: aliding_20230426_models.UpdateScheduleConfSettingsRequest,
+    ) -> aliding_20230426_models.UpdateScheduleConfSettingsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.UpdateScheduleConfSettingsHeaders()
+        return await self.update_schedule_conf_settings_with_options_async(request, headers, runtime)
 
     def update_schedule_conference_with_options(
         self,
