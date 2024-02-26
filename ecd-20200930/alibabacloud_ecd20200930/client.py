@@ -19862,6 +19862,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
+    def unbind_user_desktop_with_options(
+        self,
+        request: ecd_20200930_models.UnbindUserDesktopRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.UnbindUserDesktopResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.desktop_agent_ids):
+            query['DesktopAgentIds'] = request.desktop_agent_ids
+        if not UtilClient.is_unset(request.desktop_group_id):
+            query['DesktopGroupId'] = request.desktop_group_id
+        if not UtilClient.is_unset(request.desktop_ids):
+            query['DesktopIds'] = request.desktop_ids
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        if not UtilClient.is_unset(request.reason):
+            query['Reason'] = request.reason
+        if not UtilClient.is_unset(request.user_desktop_ids):
+            query['UserDesktopIds'] = request.user_desktop_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindUserDesktop',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.UnbindUserDesktopResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unbind_user_desktop_with_options_async(
+        self,
+        request: ecd_20200930_models.UnbindUserDesktopRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.UnbindUserDesktopResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.desktop_agent_ids):
+            query['DesktopAgentIds'] = request.desktop_agent_ids
+        if not UtilClient.is_unset(request.desktop_group_id):
+            query['DesktopGroupId'] = request.desktop_group_id
+        if not UtilClient.is_unset(request.desktop_ids):
+            query['DesktopIds'] = request.desktop_ids
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        if not UtilClient.is_unset(request.reason):
+            query['Reason'] = request.reason
+        if not UtilClient.is_unset(request.user_desktop_ids):
+            query['UserDesktopIds'] = request.user_desktop_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindUserDesktop',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.UnbindUserDesktopResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unbind_user_desktop(
+        self,
+        request: ecd_20200930_models.UnbindUserDesktopRequest,
+    ) -> ecd_20200930_models.UnbindUserDesktopResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.unbind_user_desktop_with_options(request, runtime)
+
+    async def unbind_user_desktop_async(
+        self,
+        request: ecd_20200930_models.UnbindUserDesktopRequest,
+    ) -> ecd_20200930_models.UnbindUserDesktopResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.unbind_user_desktop_with_options_async(request, runtime)
+
     def unlock_virtual_mfadevice_with_options(
         self,
         request: ecd_20200930_models.UnlockVirtualMFADeviceRequest,

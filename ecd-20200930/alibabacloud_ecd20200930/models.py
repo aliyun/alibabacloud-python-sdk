@@ -26275,9 +26275,31 @@ class DescribeRegionsRequest(TeaModel):
         accept_language: str = None,
         region_id: str = None,
     ):
-        # The ID of the region.
+        # The display language of the specified service in a location.
+        # 
+        # Valid values:
+        # 
+        # *   en
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     : English
+        # 
+        # *   zh (default)
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     : Chinese
         self.accept_language = accept_language
-        # The list of regions.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -26311,8 +26333,11 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
         region_endpoint: str = None,
         region_id: str = None,
     ):
+        # The display name of the region, which varies based on the current language.
         self.local_name = local_name
+        # The endpoint of the region.
         self.region_endpoint = region_endpoint
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -26349,9 +26374,9 @@ class DescribeRegionsResponseBody(TeaModel):
         regions: List[DescribeRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
-        # DescribeRegions
+        # The information about regions.
         self.regions = regions
-        # The operation that you want to perform. Set the value to DescribeRegions.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -44937,6 +44962,131 @@ class TagResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UnbindUserDesktopRequest(TeaModel):
+    def __init__(
+        self,
+        desktop_agent_ids: List[str] = None,
+        desktop_group_id: str = None,
+        desktop_ids: List[str] = None,
+        force: bool = None,
+        reason: str = None,
+        user_desktop_ids: List[str] = None,
+    ):
+        self.desktop_agent_ids = desktop_agent_ids
+        self.desktop_group_id = desktop_group_id
+        self.desktop_ids = desktop_ids
+        self.force = force
+        self.reason = reason
+        self.user_desktop_ids = user_desktop_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desktop_agent_ids is not None:
+            result['DesktopAgentIds'] = self.desktop_agent_ids
+        if self.desktop_group_id is not None:
+            result['DesktopGroupId'] = self.desktop_group_id
+        if self.desktop_ids is not None:
+            result['DesktopIds'] = self.desktop_ids
+        if self.force is not None:
+            result['Force'] = self.force
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.user_desktop_ids is not None:
+            result['UserDesktopIds'] = self.user_desktop_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DesktopAgentIds') is not None:
+            self.desktop_agent_ids = m.get('DesktopAgentIds')
+        if m.get('DesktopGroupId') is not None:
+            self.desktop_group_id = m.get('DesktopGroupId')
+        if m.get('DesktopIds') is not None:
+            self.desktop_ids = m.get('DesktopIds')
+        if m.get('Force') is not None:
+            self.force = m.get('Force')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('UserDesktopIds') is not None:
+            self.user_desktop_ids = m.get('UserDesktopIds')
+        return self
+
+
+class UnbindUserDesktopResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UnbindUserDesktopResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UnbindUserDesktopResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UnbindUserDesktopResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
