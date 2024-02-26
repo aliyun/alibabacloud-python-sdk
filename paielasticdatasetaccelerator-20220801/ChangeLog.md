@@ -1,3 +1,9 @@
+2024-02-26 Version: 1.1.2
+- Update API CreateSlot: update param body.
+- Update API CreateSlot: update response param.
+- Update API CreateSlots: update param body.
+
+
 2024-02-26 Version: 1.1.1
 - Update API CreateSlot: update param body.
 - Update API CreateSlot: update response param.
