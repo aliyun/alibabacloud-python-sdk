@@ -818,7 +818,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.CreateDBInstanceResponse:
         """
-        Creates or clones an ApsaraDB for MongoDB replica set instance.
+        Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail/mongodb_computeudr_dp_cn) of ApsaraDB for MongoDB before you call this operation.
+        For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](https://www.alibabacloud.com/help/en/mongodb/product-overview/instance-types-1).
+        To create sharded cluster instances, you can call the [CreateShardingDBInstance](~~CreateShardingDBInstance~~) operation.
         
         @param request: CreateDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -929,7 +931,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.CreateDBInstanceResponse:
         """
-        Creates or clones an ApsaraDB for MongoDB replica set instance.
+        Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail/mongodb_computeudr_dp_cn) of ApsaraDB for MongoDB before you call this operation.
+        For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](https://www.alibabacloud.com/help/en/mongodb/product-overview/instance-types-1).
+        To create sharded cluster instances, you can call the [CreateShardingDBInstance](~~CreateShardingDBInstance~~) operation.
         
         @param request: CreateDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1039,7 +1043,9 @@ class Client(OpenApiClient):
         request: dds_20151201_models.CreateDBInstanceRequest,
     ) -> dds_20151201_models.CreateDBInstanceResponse:
         """
-        Creates or clones an ApsaraDB for MongoDB replica set instance.
+        Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail/mongodb_computeudr_dp_cn) of ApsaraDB for MongoDB before you call this operation.
+        For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](https://www.alibabacloud.com/help/en/mongodb/product-overview/instance-types-1).
+        To create sharded cluster instances, you can call the [CreateShardingDBInstance](~~CreateShardingDBInstance~~) operation.
         
         @param request: CreateDBInstanceRequest
         @return: CreateDBInstanceResponse
@@ -1052,7 +1058,9 @@ class Client(OpenApiClient):
         request: dds_20151201_models.CreateDBInstanceRequest,
     ) -> dds_20151201_models.CreateDBInstanceResponse:
         """
-        Creates or clones an ApsaraDB for MongoDB replica set instance.
+        Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail/mongodb_computeudr_dp_cn) of ApsaraDB for MongoDB before you call this operation.
+        For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](https://www.alibabacloud.com/help/en/mongodb/product-overview/instance-types-1).
+        To create sharded cluster instances, you can call the [CreateShardingDBInstance](~~CreateShardingDBInstance~~) operation.
         
         @param request: CreateDBInstanceRequest
         @return: CreateDBInstanceResponse
@@ -8725,6 +8733,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.enable_backup_log):
             query['EnableBackupLog'] = request.enable_backup_log
+        if not UtilClient.is_unset(request.high_frequency_backup_retention):
+            query['HighFrequencyBackupRetention'] = request.high_frequency_backup_retention
         if not UtilClient.is_unset(request.log_backup_retention_period):
             query['LogBackupRetentionPeriod'] = request.log_backup_retention_period
         if not UtilClient.is_unset(request.owner_account):
@@ -8739,8 +8749,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.snapshot_backup_type):
             query['SnapshotBackupType'] = request.snapshot_backup_type
         req = open_api_models.OpenApiRequest(
@@ -8777,6 +8785,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.enable_backup_log):
             query['EnableBackupLog'] = request.enable_backup_log
+        if not UtilClient.is_unset(request.high_frequency_backup_retention):
+            query['HighFrequencyBackupRetention'] = request.high_frequency_backup_retention
         if not UtilClient.is_unset(request.log_backup_retention_period):
             query['LogBackupRetentionPeriod'] = request.log_backup_retention_period
         if not UtilClient.is_unset(request.owner_account):
@@ -8791,8 +8801,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.snapshot_backup_type):
             query['SnapshotBackupType'] = request.snapshot_backup_type
         req = open_api_models.OpenApiRequest(
