@@ -6027,7 +6027,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterVersionResponse:
         """
-        > For more information, see [Engine versions](~~471239~~) and [PolarDB for MySQL](~~172561~~).
+        The release note of the kernel version.
         
         @param request: DescribeDBClusterVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6072,7 +6072,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterVersionResponse:
         """
-        > For more information, see [Engine versions](~~471239~~) and [PolarDB for MySQL](~~172561~~).
+        The release note of the kernel version.
         
         @param request: DescribeDBClusterVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6116,7 +6116,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDBClusterVersionRequest,
     ) -> polardb_20170801_models.DescribeDBClusterVersionResponse:
         """
-        > For more information, see [Engine versions](~~471239~~) and [PolarDB for MySQL](~~172561~~).
+        The release note of the kernel version.
         
         @param request: DescribeDBClusterVersionRequest
         @return: DescribeDBClusterVersionResponse
@@ -6129,7 +6129,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDBClusterVersionRequest,
     ) -> polardb_20170801_models.DescribeDBClusterVersionResponse:
         """
-        > For more information, see [Engine versions](~~471239~~) and [PolarDB for MySQL](~~172561~~).
+        The release note of the kernel version.
         
         @param request: DescribeDBClusterVersionRequest
         @return: DescribeDBClusterVersionResponse
@@ -12020,6 +12020,8 @@ class Client(OpenApiClient):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.zone_id):
             query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.zone_type):
+            query['ZoneType'] = request.zone_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12070,6 +12072,8 @@ class Client(OpenApiClient):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.zone_id):
             query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.zone_type):
+            query['ZoneType'] = request.zone_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
