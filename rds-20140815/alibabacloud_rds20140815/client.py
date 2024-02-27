@@ -15701,7 +15701,7 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.DescribeDBInstancesAsCsvResponse:
         """
         @deprecated : DescribeDBInstancesAsCsv is deprecated, please use Rds::2014-08-15::DescribeDBInstances instead.
-        This operation is phased out. Use the DescribeDBInstances operation instead.
+        >  The DescribeDBInstancesAsCsv operation is phased out. You can call the DescribeDBInstances operation.
         
         @param request: DescribeDBInstancesAsCsvRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15752,7 +15752,7 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.DescribeDBInstancesAsCsvResponse:
         """
         @deprecated : DescribeDBInstancesAsCsv is deprecated, please use Rds::2014-08-15::DescribeDBInstances instead.
-        This operation is phased out. Use the DescribeDBInstances operation instead.
+        >  The DescribeDBInstancesAsCsv operation is phased out. You can call the DescribeDBInstances operation.
         
         @param request: DescribeDBInstancesAsCsvRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15802,7 +15802,7 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.DescribeDBInstancesAsCsvResponse:
         """
         @deprecated : DescribeDBInstancesAsCsv is deprecated, please use Rds::2014-08-15::DescribeDBInstances instead.
-        This operation is phased out. Use the DescribeDBInstances operation instead.
+        >  The DescribeDBInstancesAsCsv operation is phased out. You can call the DescribeDBInstances operation.
         
         @param request: DescribeDBInstancesAsCsvRequest
         @return: DescribeDBInstancesAsCsvResponse
@@ -15817,7 +15817,7 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.DescribeDBInstancesAsCsvResponse:
         """
         @deprecated : DescribeDBInstancesAsCsv is deprecated, please use Rds::2014-08-15::DescribeDBInstances instead.
-        This operation is phased out. Use the DescribeDBInstances operation instead.
+        >  The DescribeDBInstancesAsCsv operation is phased out. You can call the DescribeDBInstances operation.
         
         @param request: DescribeDBInstancesAsCsvRequest
         @return: DescribeDBInstancesAsCsvResponse
@@ -31428,6 +31428,8 @@ class Client(OpenApiClient):
             query['ACL'] = request.acl
         if not UtilClient.is_unset(request.catype):
             query['CAType'] = request.catype
+        if not UtilClient.is_unset(request.certificate):
+            query['Certificate'] = request.certificate
         if not UtilClient.is_unset(request.client_cacert):
             query['ClientCACert'] = request.client_cacert
         if not UtilClient.is_unset(request.client_caenabled):
@@ -31446,6 +31448,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pass_word):
+            query['PassWord'] = request.pass_word
         if not UtilClient.is_unset(request.replication_acl):
             query['ReplicationACL'] = request.replication_acl
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -31505,6 +31509,8 @@ class Client(OpenApiClient):
             query['ACL'] = request.acl
         if not UtilClient.is_unset(request.catype):
             query['CAType'] = request.catype
+        if not UtilClient.is_unset(request.certificate):
+            query['Certificate'] = request.certificate
         if not UtilClient.is_unset(request.client_cacert):
             query['ClientCACert'] = request.client_cacert
         if not UtilClient.is_unset(request.client_caenabled):
@@ -31523,6 +31529,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pass_word):
+            query['PassWord'] = request.pass_word
         if not UtilClient.is_unset(request.replication_acl):
             query['ReplicationACL'] = request.replication_acl
         if not UtilClient.is_unset(request.resource_owner_account):

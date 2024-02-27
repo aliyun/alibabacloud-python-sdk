@@ -1,3 +1,9 @@
+2024-02-27 Version: 3.0.6
+- Update API DescribeDBInstanceNetInfo: update response param.
+- Update API ModifyDBInstanceSSL: add param Certificate.
+- Update API ModifyDBInstanceSSL: add param PassWord.
+
+
 2024-01-31 Version: 3.0.5
 - Update API DescribeBackupPolicyupdate response param.
 
