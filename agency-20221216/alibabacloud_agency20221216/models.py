@@ -3339,6 +3339,280 @@ class ListCountriesResponse(TeaModel):
         return self
 
 
+class ListCouponUsageRequest(TeaModel):
+    def __init__(
+        self,
+        account: str = None,
+        coupon_template_id: int = None,
+        page: int = None,
+        page_size: int = None,
+        status: str = None,
+        uid: int = None,
+    ):
+        self.account = account
+        self.coupon_template_id = coupon_template_id
+        self.page = page
+        self.page_size = page_size
+        self.status = status
+        self.uid = uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account is not None:
+            result['Account'] = self.account
+        if self.coupon_template_id is not None:
+            result['CouponTemplateId'] = self.coupon_template_id
+        if self.page is not None:
+            result['Page'] = self.page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.uid is not None:
+            result['Uid'] = self.uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Account') is not None:
+            self.account = m.get('Account')
+        if m.get('CouponTemplateId') is not None:
+            self.coupon_template_id = m.get('CouponTemplateId')
+        if m.get('Page') is not None:
+            self.page = m.get('Page')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Uid') is not None:
+            self.uid = m.get('Uid')
+        return self
+
+
+class ListCouponUsageResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        account: str = None,
+        amount: float = None,
+        balance: float = None,
+        coupon_id: str = None,
+        coupon_template_id: int = None,
+        eff_date: str = None,
+        publish_date: str = None,
+        status: str = None,
+        uid: int = None,
+    ):
+        self.account = account
+        self.amount = amount
+        self.balance = balance
+        self.coupon_id = coupon_id
+        self.coupon_template_id = coupon_template_id
+        self.eff_date = eff_date
+        self.publish_date = publish_date
+        self.status = status
+        self.uid = uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account is not None:
+            result['Account'] = self.account
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.balance is not None:
+            result['Balance'] = self.balance
+        if self.coupon_id is not None:
+            result['CouponId'] = self.coupon_id
+        if self.coupon_template_id is not None:
+            result['CouponTemplateId'] = self.coupon_template_id
+        if self.eff_date is not None:
+            result['EffDate'] = self.eff_date
+        if self.publish_date is not None:
+            result['PublishDate'] = self.publish_date
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.uid is not None:
+            result['Uid'] = self.uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Account') is not None:
+            self.account = m.get('Account')
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('Balance') is not None:
+            self.balance = m.get('Balance')
+        if m.get('CouponId') is not None:
+            self.coupon_id = m.get('CouponId')
+        if m.get('CouponTemplateId') is not None:
+            self.coupon_template_id = m.get('CouponTemplateId')
+        if m.get('EffDate') is not None:
+            self.eff_date = m.get('EffDate')
+        if m.get('PublishDate') is not None:
+            self.publish_date = m.get('PublishDate')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Uid') is not None:
+            self.uid = m.get('Uid')
+        return self
+
+
+class ListCouponUsageResponseBodyPageInfo(TeaModel):
+    def __init__(
+        self,
+        page: int = None,
+        page_size: int = None,
+        total: int = None,
+    ):
+        self.page = page
+        self.page_size = page_size
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page is not None:
+            result['Page'] = self.page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Page') is not None:
+            self.page = m.get('Page')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListCouponUsageResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListCouponUsageResponseBodyData] = None,
+        message: str = None,
+        page_info: ListCouponUsageResponseBodyPageInfo = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.page_info = page_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+        if self.page_info:
+            self.page_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_info is not None:
+            result['PageInfo'] = self.page_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListCouponUsageResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageInfo') is not None:
+            temp_model = ListCouponUsageResponseBodyPageInfo()
+            self.page_info = temp_model.from_map(m['PageInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListCouponUsageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCouponUsageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCouponUsageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QuotaListExportPagedRequest(TeaModel):
     def __init__(
         self,
