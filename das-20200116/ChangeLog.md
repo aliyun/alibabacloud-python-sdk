@@ -1,3 +1,11 @@
+2024-02-27 Version: 2.3.2
+- Update API GetPfsSqlSample: update param EndTime.
+- Update API GetPfsSqlSample: update param InstanceId.
+- Update API GetPfsSqlSample: update param StartTime.
+- Update API ModifyAutoScalingConfig: update param Bandwidth.
+- Update API ModifyAutoScalingConfig: update response param.
+
+
 2024-02-21 Version: 2.3.1
 - Generated python 2020-01-16 for DAS.
 
