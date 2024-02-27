@@ -1,3 +1,7 @@
+2024-02-27 Version: 4.14.0
+- Support API ListUserDrawRecordByPk.
+
+
 2024-02-27 Version: 4.13.0
 - Support API ListUserDrawRecordByPk.
 
