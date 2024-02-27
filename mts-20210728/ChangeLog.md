@@ -1,3 +1,16 @@
+2024-02-27 Version: 3.3.12
+- Update API QueryCopyrightExtract: add param body.
+- Update API QueryCopyrightExtract: update param body.
+- Update API QueryTraceExtract: add param body.
+- Update API QueryTraceExtract: update param body.
+- Update API QueryTraceMu: add param body.
+- Update API QueryTraceMu: update param body.
+- Update API SubmitCopyrightJob: add param body.
+- Update API SubmitCopyrightJob: update param body.
+- Update API SubmitTraceExtract: add param body.
+- Update API SubmitTraceExtract: update param body.
+
+
 2024-02-22 Version: 3.3.11
 - Update API QueryCopyrightExtract: add param body.
 - Update API QueryCopyrightExtract: update param body.
