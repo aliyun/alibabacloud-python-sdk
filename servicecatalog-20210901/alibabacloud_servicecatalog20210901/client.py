@@ -681,6 +681,8 @@ class Client(OpenApiClient):
             body['ProductVersionParameters'] = request.product_version_parameters_shrink
         if not UtilClient.is_unset(request.provider_name):
             body['ProviderName'] = request.provider_name
+        if not UtilClient.is_unset(request.template_type):
+            body['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -728,6 +730,8 @@ class Client(OpenApiClient):
             body['ProductVersionParameters'] = request.product_version_parameters_shrink
         if not UtilClient.is_unset(request.provider_name):
             body['ProviderName'] = request.provider_name
+        if not UtilClient.is_unset(request.template_type):
+            body['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
