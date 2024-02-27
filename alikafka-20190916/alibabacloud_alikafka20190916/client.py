@@ -519,19 +519,25 @@ class Client(OpenApiClient):
 
     def create_pre_pay_order_with_options(
         self,
-        request: alikafka_20190916_models.CreatePrePayOrderRequest,
+        tmp_req: alikafka_20190916_models.CreatePrePayOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.CreatePrePayOrderResponse:
         """
         Before you call this operation, make sure that you understand the billing methods and pricing of subscription ApsaraMQ for Kafka instances. For more information, see [Billing](~~84737~~).
         *   If you create an ApsaraMQ for Kafka instance by calling this operation, the subscription duration is one month and the auto-renewal feature is enabled by default. The auto-renewal cycle is also one month. If you want to change the auto-renewal cycle or disable the auto-renewal feature, you can go to the [Renewal](https://renew.console.aliyun.com/#/ecs) page in the Alibaba Cloud Management Console.
         
-        @param request: CreatePrePayOrderRequest
+        @param tmp_req: CreatePrePayOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreatePrePayOrderResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = alikafka_20190916_models.CreatePrePayOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.confluent_config):
+            request.confluent_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.confluent_config, 'ConfluentConfig', 'json')
         query = {}
+        if not UtilClient.is_unset(request.confluent_config_shrink):
+            query['ConfluentConfig'] = request.confluent_config_shrink
         if not UtilClient.is_unset(request.deploy_type):
             query['DeployType'] = request.deploy_type
         if not UtilClient.is_unset(request.disk_size):
@@ -577,19 +583,25 @@ class Client(OpenApiClient):
 
     async def create_pre_pay_order_with_options_async(
         self,
-        request: alikafka_20190916_models.CreatePrePayOrderRequest,
+        tmp_req: alikafka_20190916_models.CreatePrePayOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.CreatePrePayOrderResponse:
         """
         Before you call this operation, make sure that you understand the billing methods and pricing of subscription ApsaraMQ for Kafka instances. For more information, see [Billing](~~84737~~).
         *   If you create an ApsaraMQ for Kafka instance by calling this operation, the subscription duration is one month and the auto-renewal feature is enabled by default. The auto-renewal cycle is also one month. If you want to change the auto-renewal cycle or disable the auto-renewal feature, you can go to the [Renewal](https://renew.console.aliyun.com/#/ecs) page in the Alibaba Cloud Management Console.
         
-        @param request: CreatePrePayOrderRequest
+        @param tmp_req: CreatePrePayOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreatePrePayOrderResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = alikafka_20190916_models.CreatePrePayOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.confluent_config):
+            request.confluent_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.confluent_config, 'ConfluentConfig', 'json')
         query = {}
+        if not UtilClient.is_unset(request.confluent_config_shrink):
+            query['ConfluentConfig'] = request.confluent_config_shrink
         if not UtilClient.is_unset(request.deploy_type):
             query['DeployType'] = request.deploy_type
         if not UtilClient.is_unset(request.disk_size):
@@ -2707,6 +2719,8 @@ class Client(OpenApiClient):
             query['Username'] = request.username
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.v_switch_ids):
+            query['VSwitchIds'] = request.v_switch_ids
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         if not UtilClient.is_unset(request.zone_id):
@@ -2780,6 +2794,8 @@ class Client(OpenApiClient):
             query['Username'] = request.username
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.v_switch_ids):
+            query['VSwitchIds'] = request.v_switch_ids
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         if not UtilClient.is_unset(request.zone_id):
@@ -3715,18 +3731,24 @@ class Client(OpenApiClient):
 
     def upgrade_pre_pay_order_with_options(
         self,
-        request: alikafka_20190916_models.UpgradePrePayOrderRequest,
+        tmp_req: alikafka_20190916_models.UpgradePrePayOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.UpgradePrePayOrderResponse:
         """
         Before you call this operation, make sure that you understand the billing method and pricing of subscription Message Queue for Apache Kafka instances. For more information, see [Billing overview](~~84737~~).
         
-        @param request: UpgradePrePayOrderRequest
+        @param tmp_req: UpgradePrePayOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpgradePrePayOrderResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = alikafka_20190916_models.UpgradePrePayOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.confluent_config):
+            request.confluent_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.confluent_config, 'ConfluentConfig', 'json')
         query = {}
+        if not UtilClient.is_unset(request.confluent_config_shrink):
+            query['ConfluentConfig'] = request.confluent_config_shrink
         if not UtilClient.is_unset(request.disk_size):
             query['DiskSize'] = request.disk_size
         if not UtilClient.is_unset(request.eip_max):
@@ -3739,6 +3761,8 @@ class Client(OpenApiClient):
             query['IoMax'] = request.io_max
         if not UtilClient.is_unset(request.io_max_spec):
             query['IoMaxSpec'] = request.io_max_spec
+        if not UtilClient.is_unset(request.paid_type):
+            query['PaidType'] = request.paid_type
         if not UtilClient.is_unset(request.partition_num):
             query['PartitionNum'] = request.partition_num
         if not UtilClient.is_unset(request.region_id):
@@ -3768,18 +3792,24 @@ class Client(OpenApiClient):
 
     async def upgrade_pre_pay_order_with_options_async(
         self,
-        request: alikafka_20190916_models.UpgradePrePayOrderRequest,
+        tmp_req: alikafka_20190916_models.UpgradePrePayOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.UpgradePrePayOrderResponse:
         """
         Before you call this operation, make sure that you understand the billing method and pricing of subscription Message Queue for Apache Kafka instances. For more information, see [Billing overview](~~84737~~).
         
-        @param request: UpgradePrePayOrderRequest
+        @param tmp_req: UpgradePrePayOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpgradePrePayOrderResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = alikafka_20190916_models.UpgradePrePayOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.confluent_config):
+            request.confluent_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.confluent_config, 'ConfluentConfig', 'json')
         query = {}
+        if not UtilClient.is_unset(request.confluent_config_shrink):
+            query['ConfluentConfig'] = request.confluent_config_shrink
         if not UtilClient.is_unset(request.disk_size):
             query['DiskSize'] = request.disk_size
         if not UtilClient.is_unset(request.eip_max):
@@ -3792,6 +3822,8 @@ class Client(OpenApiClient):
             query['IoMax'] = request.io_max
         if not UtilClient.is_unset(request.io_max_spec):
             query['IoMaxSpec'] = request.io_max_spec
+        if not UtilClient.is_unset(request.paid_type):
+            query['PaidType'] = request.paid_type
         if not UtilClient.is_unset(request.partition_num):
             query['PartitionNum'] = request.partition_num
         if not UtilClient.is_unset(request.region_id):
