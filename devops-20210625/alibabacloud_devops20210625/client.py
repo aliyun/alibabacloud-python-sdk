@@ -14467,6 +14467,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_test_case_fields_with_options_async(organization_id, request, headers, runtime)
 
+    def list_user_draw_record_by_pk_with_options(
+        self,
+        request: devops_20210625_models.ListUserDrawRecordByPkRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListUserDrawRecordByPkResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_pk):
+            query['aliyunPk'] = request.aliyun_pk
+        if not UtilClient.is_unset(request.draw_group):
+            query['drawGroup'] = request.draw_group
+        if not UtilClient.is_unset(request.draw_pool_name):
+            query['drawPoolName'] = request.draw_pool_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUserDrawRecordByPk',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/listUserDrawRecords',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListUserDrawRecordByPkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_user_draw_record_by_pk_with_options_async(
+        self,
+        request: devops_20210625_models.ListUserDrawRecordByPkRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListUserDrawRecordByPkResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_pk):
+            query['aliyunPk'] = request.aliyun_pk
+        if not UtilClient.is_unset(request.draw_group):
+            query['drawGroup'] = request.draw_group
+        if not UtilClient.is_unset(request.draw_pool_name):
+            query['drawPoolName'] = request.draw_pool_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUserDrawRecordByPk',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/listUserDrawRecords',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListUserDrawRecordByPkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_user_draw_record_by_pk(
+        self,
+        request: devops_20210625_models.ListUserDrawRecordByPkRequest,
+    ) -> devops_20210625_models.ListUserDrawRecordByPkResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_user_draw_record_by_pk_with_options(request, headers, runtime)
+
+    async def list_user_draw_record_by_pk_async(
+        self,
+        request: devops_20210625_models.ListUserDrawRecordByPkRequest,
+    ) -> devops_20210625_models.ListUserDrawRecordByPkResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_user_draw_record_by_pk_with_options_async(request, headers, runtime)
+
     def list_user_keys_with_options(
         self,
         request: devops_20210625_models.ListUserKeysRequest,
