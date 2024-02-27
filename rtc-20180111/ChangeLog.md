@@ -1,3 +1,16 @@
+2024-02-27 Version: 1.7.0
+- Support API DescribeChannel.
+- Support API DescribeChannelAllUsers.
+- Support API DescribeChannelUser.
+- Support API DescribeChannels.
+- Support API RemoveUsers.
+- Support API StartCloudRecord.
+- Support API StartStreamingOut.
+- Support API StopChannel.
+- Support API StopCloudRecord.
+- Support API StopStreamingOut.
+
+
 2024-01-31 Version: 1.6.0
 - Support API CreateAppStreamingOutTemplate.
 - Support API DeleteAppStreamingOutTemplate.
