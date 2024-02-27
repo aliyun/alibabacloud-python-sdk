@@ -1,3 +1,7 @@
+2024-02-27 Version: 2.27.1
+- Update API DescribeVersionConfig: update response param.
+
+
 2024-01-31 Version: 2.27.0
 - Support API DeleteVulAutoRepairConfig.
 - Update API DescribeSuspEventDetailupdate Lang param.
