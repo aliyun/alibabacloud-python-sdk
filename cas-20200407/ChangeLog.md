@@ -1,3 +1,12 @@
+2024-02-27 Version: 1.1.0
+- Support API CreateCsr.
+- Support API DeleteCsr.
+- Support API GetCsrDetail.
+- Support API ListCsr.
+- Support API UpdateCsr.
+- Support API UploadCsr.
+
+
 2024-02-23 Version: 1.0.16
 - Generated python 2020-04-07 for cas.
 

@@ -712,6 +712,168 @@ class CreateCertificateWithCsrRequestResponse(TeaModel):
         return self
 
 
+class CreateCsrRequest(TeaModel):
+    def __init__(
+        self,
+        algorithm: str = None,
+        common_name: str = None,
+        corp_name: str = None,
+        country_code: str = None,
+        department: str = None,
+        key_size: int = None,
+        locality: str = None,
+        name: str = None,
+        province: str = None,
+        sans: str = None,
+    ):
+        self.algorithm = algorithm
+        self.common_name = common_name
+        self.corp_name = corp_name
+        self.country_code = country_code
+        self.department = department
+        self.key_size = key_size
+        self.locality = locality
+        self.name = name
+        self.province = province
+        self.sans = sans
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.common_name is not None:
+            result['CommonName'] = self.common_name
+        if self.corp_name is not None:
+            result['CorpName'] = self.corp_name
+        if self.country_code is not None:
+            result['CountryCode'] = self.country_code
+        if self.department is not None:
+            result['Department'] = self.department
+        if self.key_size is not None:
+            result['KeySize'] = self.key_size
+        if self.locality is not None:
+            result['Locality'] = self.locality
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.province is not None:
+            result['Province'] = self.province
+        if self.sans is not None:
+            result['Sans'] = self.sans
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('CommonName') is not None:
+            self.common_name = m.get('CommonName')
+        if m.get('CorpName') is not None:
+            self.corp_name = m.get('CorpName')
+        if m.get('CountryCode') is not None:
+            self.country_code = m.get('CountryCode')
+        if m.get('Department') is not None:
+            self.department = m.get('Department')
+        if m.get('KeySize') is not None:
+            self.key_size = m.get('KeySize')
+        if m.get('Locality') is not None:
+            self.locality = m.get('Locality')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Province') is not None:
+            self.province = m.get('Province')
+        if m.get('Sans') is not None:
+            self.sans = m.get('Sans')
+        return self
+
+
+class CreateCsrResponseBody(TeaModel):
+    def __init__(
+        self,
+        csr: str = None,
+        csr_id: int = None,
+        request_id: str = None,
+    ):
+        self.csr = csr
+        # CSR ID。
+        self.csr_id = csr_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.csr is not None:
+            result['Csr'] = self.csr
+        if self.csr_id is not None:
+            result['CsrId'] = self.csr_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Csr') is not None:
+            self.csr = m.get('Csr')
+        if m.get('CsrId') is not None:
+            self.csr_id = m.get('CsrId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateCsrResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateCsrResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateCsrResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateWHClientCertificateRequest(TeaModel):
     def __init__(
         self,
@@ -1153,6 +1315,102 @@ class DeleteCertificateRequestResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteCertificateRequestResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteCsrRequest(TeaModel):
+    def __init__(
+        self,
+        csr_id: int = None,
+    ):
+        # CSR ID。
+        self.csr_id = csr_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.csr_id is not None:
+            result['CsrId'] = self.csr_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CsrId') is not None:
+            self.csr_id = m.get('CsrId')
+        return self
+
+
+class DeleteCsrResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteCsrResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteCsrResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteCsrResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1916,6 +2174,108 @@ class GetCertWarehouseQuotaResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetCertWarehouseQuotaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetCsrDetailRequest(TeaModel):
+    def __init__(
+        self,
+        csr_id: int = None,
+    ):
+        # CSR ID。
+        self.csr_id = csr_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.csr_id is not None:
+            result['CsrId'] = self.csr_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CsrId') is not None:
+            self.csr_id = m.get('CsrId')
+        return self
+
+
+class GetCsrDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        csr: str = None,
+        request_id: str = None,
+    ):
+        self.csr = csr
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.csr is not None:
+            result['Csr'] = self.csr
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Csr') is not None:
+            self.csr = m.get('Csr')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetCsrDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetCsrDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetCsrDetailResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2708,6 +3068,251 @@ class ListCertWarehouseResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListCertWarehouseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListCsrRequest(TeaModel):
+    def __init__(
+        self,
+        algorithm: str = None,
+        current_page: int = None,
+        key_word: str = None,
+        show_size: int = None,
+    ):
+        self.algorithm = algorithm
+        self.current_page = current_page
+        self.key_word = key_word
+        self.show_size = show_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.key_word is not None:
+            result['KeyWord'] = self.key_word
+        if self.show_size is not None:
+            result['ShowSize'] = self.show_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('KeyWord') is not None:
+            self.key_word = m.get('KeyWord')
+        if m.get('ShowSize') is not None:
+            self.show_size = m.get('ShowSize')
+        return self
+
+
+class ListCsrResponseBodyCsrList(TeaModel):
+    def __init__(
+        self,
+        algorithm: str = None,
+        common_name: str = None,
+        corp_name: str = None,
+        country_code: str = None,
+        csr_id: int = None,
+        department: str = None,
+        has_private_key: bool = None,
+        key_sha_2: str = None,
+        key_size: int = None,
+        locality: str = None,
+        name: str = None,
+        province: str = None,
+        sans: str = None,
+    ):
+        self.algorithm = algorithm
+        self.common_name = common_name
+        self.corp_name = corp_name
+        self.country_code = country_code
+        # CSR ID。
+        self.csr_id = csr_id
+        self.department = department
+        self.has_private_key = has_private_key
+        self.key_sha_2 = key_sha_2
+        self.key_size = key_size
+        self.locality = locality
+        self.name = name
+        self.province = province
+        self.sans = sans
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.common_name is not None:
+            result['CommonName'] = self.common_name
+        if self.corp_name is not None:
+            result['CorpName'] = self.corp_name
+        if self.country_code is not None:
+            result['CountryCode'] = self.country_code
+        if self.csr_id is not None:
+            result['CsrId'] = self.csr_id
+        if self.department is not None:
+            result['Department'] = self.department
+        if self.has_private_key is not None:
+            result['HasPrivateKey'] = self.has_private_key
+        if self.key_sha_2 is not None:
+            result['KeySha2'] = self.key_sha_2
+        if self.key_size is not None:
+            result['KeySize'] = self.key_size
+        if self.locality is not None:
+            result['Locality'] = self.locality
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.province is not None:
+            result['Province'] = self.province
+        if self.sans is not None:
+            result['Sans'] = self.sans
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('CommonName') is not None:
+            self.common_name = m.get('CommonName')
+        if m.get('CorpName') is not None:
+            self.corp_name = m.get('CorpName')
+        if m.get('CountryCode') is not None:
+            self.country_code = m.get('CountryCode')
+        if m.get('CsrId') is not None:
+            self.csr_id = m.get('CsrId')
+        if m.get('Department') is not None:
+            self.department = m.get('Department')
+        if m.get('HasPrivateKey') is not None:
+            self.has_private_key = m.get('HasPrivateKey')
+        if m.get('KeySha2') is not None:
+            self.key_sha_2 = m.get('KeySha2')
+        if m.get('KeySize') is not None:
+            self.key_size = m.get('KeySize')
+        if m.get('Locality') is not None:
+            self.locality = m.get('Locality')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Province') is not None:
+            self.province = m.get('Province')
+        if m.get('Sans') is not None:
+            self.sans = m.get('Sans')
+        return self
+
+
+class ListCsrResponseBody(TeaModel):
+    def __init__(
+        self,
+        csr_list: List[ListCsrResponseBodyCsrList] = None,
+        current_page: int = None,
+        request_id: str = None,
+        show_size: int = None,
+        total_count: int = None,
+    ):
+        self.csr_list = csr_list
+        self.current_page = current_page
+        self.request_id = request_id
+        self.show_size = show_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.csr_list:
+            for k in self.csr_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CsrList'] = []
+        if self.csr_list is not None:
+            for k in self.csr_list:
+                result['CsrList'].append(k.to_map() if k else None)
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.show_size is not None:
+            result['ShowSize'] = self.show_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.csr_list = []
+        if m.get('CsrList') is not None:
+            for k in m.get('CsrList'):
+                temp_model = ListCsrResponseBodyCsrList()
+                self.csr_list.append(temp_model.from_map(k))
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ShowSize') is not None:
+            self.show_size = m.get('ShowSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListCsrResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCsrResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCsrResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3524,6 +4129,222 @@ class SignResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SignResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateCsrRequest(TeaModel):
+    def __init__(
+        self,
+        csr_id: int = None,
+        key: str = None,
+    ):
+        # CSR ID。
+        self.csr_id = csr_id
+        self.key = key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.csr_id is not None:
+            result['CsrId'] = self.csr_id
+        if self.key is not None:
+            result['Key'] = self.key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CsrId') is not None:
+            self.csr_id = m.get('CsrId')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        return self
+
+
+class UpdateCsrResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateCsrResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCsrResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCsrResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UploadCsrRequest(TeaModel):
+    def __init__(
+        self,
+        csr: str = None,
+        key: str = None,
+        name: str = None,
+    ):
+        self.csr = csr
+        self.key = key
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.csr is not None:
+            result['Csr'] = self.csr
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Csr') is not None:
+            self.csr = m.get('Csr')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class UploadCsrResponseBody(TeaModel):
+    def __init__(
+        self,
+        csr_id: int = None,
+        request_id: str = None,
+    ):
+        # CSR ID。
+        self.csr_id = csr_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.csr_id is not None:
+            result['CsrId'] = self.csr_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CsrId') is not None:
+            self.csr_id = m.get('CsrId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UploadCsrResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UploadCsrResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UploadCsrResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

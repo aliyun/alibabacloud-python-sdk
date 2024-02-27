@@ -686,6 +686,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_certificate_with_csr_request_with_options_async(request, runtime)
 
+    def create_csr_with_options(
+        self,
+        request: cas_20200407_models.CreateCsrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.CreateCsrResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.common_name):
+            query['CommonName'] = request.common_name
+        if not UtilClient.is_unset(request.corp_name):
+            query['CorpName'] = request.corp_name
+        if not UtilClient.is_unset(request.country_code):
+            query['CountryCode'] = request.country_code
+        if not UtilClient.is_unset(request.department):
+            query['Department'] = request.department
+        if not UtilClient.is_unset(request.key_size):
+            query['KeySize'] = request.key_size
+        if not UtilClient.is_unset(request.locality):
+            query['Locality'] = request.locality
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.province):
+            query['Province'] = request.province
+        if not UtilClient.is_unset(request.sans):
+            query['Sans'] = request.sans
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCsr',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.CreateCsrResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_csr_with_options_async(
+        self,
+        request: cas_20200407_models.CreateCsrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.CreateCsrResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.common_name):
+            query['CommonName'] = request.common_name
+        if not UtilClient.is_unset(request.corp_name):
+            query['CorpName'] = request.corp_name
+        if not UtilClient.is_unset(request.country_code):
+            query['CountryCode'] = request.country_code
+        if not UtilClient.is_unset(request.department):
+            query['Department'] = request.department
+        if not UtilClient.is_unset(request.key_size):
+            query['KeySize'] = request.key_size
+        if not UtilClient.is_unset(request.locality):
+            query['Locality'] = request.locality
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.province):
+            query['Province'] = request.province
+        if not UtilClient.is_unset(request.sans):
+            query['Sans'] = request.sans
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCsr',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.CreateCsrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_csr(
+        self,
+        request: cas_20200407_models.CreateCsrRequest,
+    ) -> cas_20200407_models.CreateCsrResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_csr_with_options(request, runtime)
+
+    async def create_csr_async(
+        self,
+        request: cas_20200407_models.CreateCsrRequest,
+    ) -> cas_20200407_models.CreateCsrResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_csr_with_options_async(request, runtime)
+
     def create_whclient_certificate_with_options(
         self,
         request: cas_20200407_models.CreateWHClientCertificateRequest,
@@ -1005,6 +1111,76 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_certificate_request_with_options_async(request, runtime)
+
+    def delete_csr_with_options(
+        self,
+        request: cas_20200407_models.DeleteCsrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.DeleteCsrResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.csr_id):
+            query['CsrId'] = request.csr_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCsr',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.DeleteCsrResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_csr_with_options_async(
+        self,
+        request: cas_20200407_models.DeleteCsrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.DeleteCsrResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.csr_id):
+            query['CsrId'] = request.csr_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCsr',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.DeleteCsrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_csr(
+        self,
+        request: cas_20200407_models.DeleteCsrRequest,
+    ) -> cas_20200407_models.DeleteCsrResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_csr_with_options(request, runtime)
+
+    async def delete_csr_async(
+        self,
+        request: cas_20200407_models.DeleteCsrRequest,
+    ) -> cas_20200407_models.DeleteCsrResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_csr_with_options_async(request, runtime)
 
     def delete_pcacert_with_options(
         self,
@@ -1474,6 +1650,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_cert_warehouse_quota_with_options_async(runtime)
 
+    def get_csr_detail_with_options(
+        self,
+        request: cas_20200407_models.GetCsrDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.GetCsrDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.csr_id):
+            query['CsrId'] = request.csr_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCsrDetail',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.GetCsrDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_csr_detail_with_options_async(
+        self,
+        request: cas_20200407_models.GetCsrDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.GetCsrDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.csr_id):
+            query['CsrId'] = request.csr_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCsrDetail',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.GetCsrDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_csr_detail(
+        self,
+        request: cas_20200407_models.GetCsrDetailRequest,
+    ) -> cas_20200407_models.GetCsrDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_csr_detail_with_options(request, runtime)
+
+    async def get_csr_detail_async(
+        self,
+        request: cas_20200407_models.GetCsrDetailRequest,
+    ) -> cas_20200407_models.GetCsrDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_csr_detail_with_options_async(request, runtime)
+
     def get_user_certificate_detail_with_options(
         self,
         request: cas_20200407_models.GetUserCertificateDetailRequest,
@@ -1779,6 +2025,88 @@ class Client(OpenApiClient):
     ) -> cas_20200407_models.ListCertWarehouseResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_cert_warehouse_with_options_async(request, runtime)
+
+    def list_csr_with_options(
+        self,
+        request: cas_20200407_models.ListCsrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.ListCsrResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.show_size):
+            query['ShowSize'] = request.show_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCsr',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.ListCsrResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_csr_with_options_async(
+        self,
+        request: cas_20200407_models.ListCsrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.ListCsrResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.show_size):
+            query['ShowSize'] = request.show_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCsr',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.ListCsrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_csr(
+        self,
+        request: cas_20200407_models.ListCsrRequest,
+    ) -> cas_20200407_models.ListCsrResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_csr_with_options(request, runtime)
+
+    async def list_csr_async(
+        self,
+        request: cas_20200407_models.ListCsrRequest,
+    ) -> cas_20200407_models.ListCsrResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_csr_with_options_async(request, runtime)
 
     def list_user_certificate_order_with_options(
         self,
@@ -2159,6 +2487,158 @@ class Client(OpenApiClient):
     ) -> cas_20200407_models.SignResponse:
         runtime = util_models.RuntimeOptions()
         return await self.sign_with_options_async(request, runtime)
+
+    def update_csr_with_options(
+        self,
+        request: cas_20200407_models.UpdateCsrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.UpdateCsrResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.csr_id):
+            query['CsrId'] = request.csr_id
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCsr',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.UpdateCsrResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_csr_with_options_async(
+        self,
+        request: cas_20200407_models.UpdateCsrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.UpdateCsrResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.csr_id):
+            query['CsrId'] = request.csr_id
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCsr',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.UpdateCsrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_csr(
+        self,
+        request: cas_20200407_models.UpdateCsrRequest,
+    ) -> cas_20200407_models.UpdateCsrResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_csr_with_options(request, runtime)
+
+    async def update_csr_async(
+        self,
+        request: cas_20200407_models.UpdateCsrRequest,
+    ) -> cas_20200407_models.UpdateCsrResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_csr_with_options_async(request, runtime)
+
+    def upload_csr_with_options(
+        self,
+        request: cas_20200407_models.UploadCsrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.UploadCsrResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.csr):
+            query['Csr'] = request.csr
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UploadCsr',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.UploadCsrResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upload_csr_with_options_async(
+        self,
+        request: cas_20200407_models.UploadCsrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.UploadCsrResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.csr):
+            query['Csr'] = request.csr
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UploadCsr',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.UploadCsrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upload_csr(
+        self,
+        request: cas_20200407_models.UploadCsrRequest,
+    ) -> cas_20200407_models.UploadCsrResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.upload_csr_with_options(request, runtime)
+
+    async def upload_csr_async(
+        self,
+        request: cas_20200407_models.UploadCsrRequest,
+    ) -> cas_20200407_models.UploadCsrResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.upload_csr_with_options_async(request, runtime)
 
     def upload_pcacert_with_options(
         self,
