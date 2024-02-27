@@ -1,3 +1,13 @@
+2024-02-27 Version: 2.1.0
+- Support API CooperatorFlightBillSettlementQuery.
+- Support API CooperatorHotelBillSettlementQuery.
+- Update API ApplyAdd: update param external_traveler_standard.
+- Update API ApplyAdd: update param traveler_standard.
+- Update API ApplyModify: update param external_traveler_standard.
+- Update API ApplyModify: update param traveler_standard.
+- Update API ApplyQuery: update response param.
+
+
 2024-02-22 Version: 2.0.0
 - Support API CooperatorFlightBillSettlementQuery.
 - Support API CooperatorHotelBillSettlementQuery.
