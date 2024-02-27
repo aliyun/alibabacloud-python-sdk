@@ -31081,6 +31081,7 @@ class ListOrganizationMembersResponseBodyMembers(TeaModel):
         email: str = None,
         hired_date: int = None,
         identities: ListOrganizationMembersResponseBodyMembersIdentities = None,
+        job_number: str = None,
         join_time: int = None,
         last_visit_time: int = None,
         mobile: str = None,
@@ -31095,6 +31096,7 @@ class ListOrganizationMembersResponseBodyMembers(TeaModel):
         self.email = email
         self.hired_date = hired_date
         self.identities = identities
+        self.job_number = job_number
         self.join_time = join_time
         self.last_visit_time = last_visit_time
         self.mobile = mobile
@@ -31125,6 +31127,8 @@ class ListOrganizationMembersResponseBodyMembers(TeaModel):
             result['hiredDate'] = self.hired_date
         if self.identities is not None:
             result['identities'] = self.identities.to_map()
+        if self.job_number is not None:
+            result['jobNumber'] = self.job_number
         if self.join_time is not None:
             result['joinTime'] = self.join_time
         if self.last_visit_time is not None:
@@ -31156,6 +31160,8 @@ class ListOrganizationMembersResponseBodyMembers(TeaModel):
         if m.get('identities') is not None:
             temp_model = ListOrganizationMembersResponseBodyMembersIdentities()
             self.identities = temp_model.from_map(m['identities'])
+        if m.get('jobNumber') is not None:
+            self.job_number = m.get('jobNumber')
         if m.get('joinTime') is not None:
             self.join_time = m.get('joinTime')
         if m.get('lastVisitTime') is not None:
