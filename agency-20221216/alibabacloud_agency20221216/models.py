@@ -100,9 +100,6 @@ class CancelSubscriptionBillResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -141,10 +138,15 @@ class CreateCustomerRequest(TeaModel):
         customer_trade: str = None,
         nation: str = None,
     ):
+        # Customer\"s name.
         self.customer_name = customer_name
+        # The source/channel that allow client to connected with us. Please enumerate with Customer Source.
         self.customer_source = customer_source
+        # The sub-industry that Customer\"s business belongs to. Please enumerate with Customer Trade.
         self.customer_sub_trade = customer_sub_trade
+        # The industry that Customer\"s business belongs to. Please enumerate with Customer Trade.
         self.customer_trade = customer_trade
+        # The region that Customer choose to launch the Cloud Service. Please use ListCountries to confirm the valid region list for current UID.
         self.nation = nation
 
     def validate(self):
@@ -192,10 +194,15 @@ class CreateCustomerResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Code indicating whether the call was successful.
         self.code = code
+        # Data indicating whether a customer was successfully created. If it\"s "true", the Message contains CID.
         self.data = data
+        # Massage indicating whether the call was successful.
         self.message = message
+        # Request ID, Alibaba Cloud will track errors with this.
         self.request_id = request_id
+        # Candidate Value: True/False, which indicates whether the current API call it self was successful. It does not guarantee the success of subsequent business operations.
         self.success = success
 
     def validate(self):
@@ -246,9 +253,6 @@ class CreateCustomerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -278,13 +282,290 @@ class CreateCustomerResponse(TeaModel):
         return self
 
 
+class CustomerQuotaRecordListRequest(TeaModel):
+    def __init__(
+        self,
+        end_date: str = None,
+        end_user_pk: int = None,
+        language: str = None,
+        operation_type: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        start_date: str = None,
+    ):
+        # End Date Format: yyyy-MM-dd
+        self.end_date = end_date
+        # Customer UID
+        self.end_user_pk = end_user_pk
+        # Multilingual Parameters, the default language is English.</br>
+        # en: English</br>
+        # zh: Chinese</br>
+        # ja: Japanese </br>
+        self.language = language
+        # Operation Type Enum</br>
+        # all All types</br>
+        # quota_create Create quota</br>
+        # quota_amount_adjust Adjust the amount of quota</br>
+        self.operation_type = operation_type
+        # Pagination, current page number, starting from 1.
+        self.page_no = page_no
+        # Pagination, record number on each page. Maximum 100.
+        self.page_size = page_size
+        # Start Date Format: yyyy-MM-dd
+        self.start_date = start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.end_user_pk is not None:
+            result['EndUserPk'] = self.end_user_pk
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.operation_type is not None:
+            result['OperationType'] = self.operation_type
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('EndUserPk') is not None:
+            self.end_user_pk = m.get('EndUserPk')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('OperationType') is not None:
+            self.operation_type = m.get('OperationType')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        return self
+
+
+class CustomerQuotaRecordListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        operation_submit_type: str = None,
+        operation_time: str = None,
+        operation_type_code: str = None,
+        operation_type_desc: str = None,
+        operation_uid: str = None,
+        update_after_amount: str = None,
+        update_amount: str = None,
+        update_before_amount: str = None,
+    ):
+        # The way to submit the quota adjustment operation. API/ACPN
+        self.operation_submit_type = operation_submit_type
+        # The time of submit the quota adjustment operation.
+        self.operation_time = operation_time
+        # Operation Type Enum</br>
+        # all All types</br>
+        # quota_create Create quota</br>
+        # quota_amount_adjust Adjust the amount of quota</br>
+        self.operation_type_code = operation_type_code
+        # The description of submitted quota adjustment operation.
+        self.operation_type_desc = operation_type_desc
+        # The UID of operator(Partner\"s UID).
+        self.operation_uid = operation_uid
+        # Updated quota amount
+        self.update_after_amount = update_after_amount
+        # The difference amount between updated quota and original quota.
+        self.update_amount = update_amount
+        # Original quota amount
+        self.update_before_amount = update_before_amount
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operation_submit_type is not None:
+            result['OperationSubmitType'] = self.operation_submit_type
+        if self.operation_time is not None:
+            result['OperationTime'] = self.operation_time
+        if self.operation_type_code is not None:
+            result['OperationTypeCode'] = self.operation_type_code
+        if self.operation_type_desc is not None:
+            result['OperationTypeDesc'] = self.operation_type_desc
+        if self.operation_uid is not None:
+            result['OperationUid'] = self.operation_uid
+        if self.update_after_amount is not None:
+            result['UpdateAfterAmount'] = self.update_after_amount
+        if self.update_amount is not None:
+            result['UpdateAmount'] = self.update_amount
+        if self.update_before_amount is not None:
+            result['UpdateBeforeAmount'] = self.update_before_amount
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OperationSubmitType') is not None:
+            self.operation_submit_type = m.get('OperationSubmitType')
+        if m.get('OperationTime') is not None:
+            self.operation_time = m.get('OperationTime')
+        if m.get('OperationTypeCode') is not None:
+            self.operation_type_code = m.get('OperationTypeCode')
+        if m.get('OperationTypeDesc') is not None:
+            self.operation_type_desc = m.get('OperationTypeDesc')
+        if m.get('OperationUid') is not None:
+            self.operation_uid = m.get('OperationUid')
+        if m.get('UpdateAfterAmount') is not None:
+            self.update_after_amount = m.get('UpdateAfterAmount')
+        if m.get('UpdateAmount') is not None:
+            self.update_amount = m.get('UpdateAmount')
+        if m.get('UpdateBeforeAmount') is not None:
+            self.update_before_amount = m.get('UpdateBeforeAmount')
+        return self
+
+
+class CustomerQuotaRecordListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[CustomerQuotaRecordListResponseBodyData] = None,
+        msg: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total: int = None,
+    ):
+        # Status code of returning result, 200 means success.
+        self.code = code
+        # Listed data of returning result
+        self.data = data
+        # Description of returning data
+        self.msg = msg
+        # Current page number
+        self.page_no = page_no
+        # Record number on each page
+        self.page_size = page_size
+        # ID of request
+        self.request_id = request_id
+        # Total volume
+        self.total = total
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = CustomerQuotaRecordListResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class CustomerQuotaRecordListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CustomerQuotaRecordListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CustomerQuotaRecordListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeductOutstandingBalanceRequest(TeaModel):
     def __init__(
         self,
         deduct_amount: str = None,
         uid: int = None,
     ):
+        # The Deducted Credit to be offset.
         self.deduct_amount = deduct_amount
+        # Account UID of Distribution Customer.
         self.uid = uid
 
     def validate(self):
@@ -319,9 +600,15 @@ class DeductOutstandingBalanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result Code. Value Range:
+        # - 200 OK
+        # - 1109 System Error
         self.code = code
+        # Same as Code Parameter Value.
         self.message = message
+        # Request ID, the unique request identifier generated by Alibaba Cloud.
         self.request_id = request_id
+        # Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
         self.success = success
 
     def validate(self):
@@ -368,9 +655,6 @@ class DeductOutstandingBalanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -406,8 +690,13 @@ class EditEndUserStatusRequest(TeaModel):
         credit_status: str = None,
         uid: int = None,
     ):
+        # Shutdown Status</br>
+        # 
+        # - postPayFreeze, the account have been blocked</br>
+        # 
+        # - postPayThaw, the account have been unlocked</br>
         self.credit_status = credit_status
-        # uid
+        # UID
         self.uid = uid
 
     def validate(self):
@@ -443,10 +732,15 @@ class EditEndUserStatusResponseBody(TeaModel):
         msg: str = None,
         request_id: str = None,
     ):
+        # Status Code</br>
         self.code = code
+        # Success or not</br>
         self.data = data
+        # Message</br>
         self.message = message
+        # Message</br>
         self.msg = msg
+        # Request ID</br>
         self.request_id = request_id
 
     def validate(self):
@@ -497,9 +791,6 @@ class EditEndUserStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -535,7 +826,13 @@ class EditNewBuyStatusRequest(TeaModel):
         new_buy_status: str = None,
         uid: int = None,
     ):
+        # New Purchase Status</br>
+        # 
+        # - cancelBan: Cancel the restriction for New Purchase request</br>
+        # 
+        # - ban: ban the New Purchase request</br>
         self.new_buy_status = new_buy_status
+        # Customer UID
         self.uid = uid
 
     def validate(self):
@@ -571,10 +868,15 @@ class EditNewBuyStatusResponseBody(TeaModel):
         msg: str = None,
         request_id: str = None,
     ):
+        # Status Code</br>
         self.code = code
+        # Success or not</br>
         self.data = data
+        # Message</br>
         self.message = message
+        # Message</br>
         self.msg = msg
+        # Request ID</br>
         self.request_id = request_id
 
     def validate(self):
@@ -625,9 +927,6 @@ class EditNewBuyStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -663,8 +962,9 @@ class EditZeroCreditShutdownRequest(TeaModel):
         shutdown_policy: str = None,
         uid: int = None,
     ):
+        # UID
         self.shutdown_policy = shutdown_policy
-        # uid
+        # No Change History
         self.uid = uid
 
     def validate(self):
@@ -700,10 +1000,15 @@ class EditZeroCreditShutdownResponseBody(TeaModel):
         msg: str = None,
         request_id: str = None,
     ):
+        # Success or not</br>
         self.code = code
+        # Request ID</br>
         self.data = data
+        # Message</br>
         self.message = message
+        # NO_STOP
         self.msg = msg
+        # success
         self.request_id = request_id
 
     def validate(self):
@@ -754,9 +1059,6 @@ class EditZeroCreditShutdownResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -786,6 +1088,195 @@ class EditZeroCreditShutdownResponse(TeaModel):
         return self
 
 
+class ExportCustomerQuotaRecordRequest(TeaModel):
+    def __init__(
+        self,
+        end_date: str = None,
+        end_user_pk: int = None,
+        language: str = None,
+        operation_type: str = None,
+        start_date: str = None,
+    ):
+        # End Date Format:  yyyy-MM-dd
+        self.end_date = end_date
+        # Customer UID
+        self.end_user_pk = end_user_pk
+        # Multilingual Parameters, the default language is English.</br>
+        # en: English</br>
+        # zh: Chinese</br>
+        # ja: Japanese </br>
+        self.language = language
+        # Operation Type Enum</br>
+        # all All types</br>
+        # quota_create Create quota</br>
+        # quota_amount_adjust Adjust the amount of quota</br>
+        self.operation_type = operation_type
+        # Start Date Format:  yyyy-MM-dd
+        self.start_date = start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.end_user_pk is not None:
+            result['EndUserPk'] = self.end_user_pk
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.operation_type is not None:
+            result['OperationType'] = self.operation_type
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('EndUserPk') is not None:
+            self.end_user_pk = m.get('EndUserPk')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('OperationType') is not None:
+            self.operation_type = m.get('OperationType')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        return self
+
+
+class ExportCustomerQuotaRecordResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cost: int = None,
+        id: int = None,
+    ):
+        # Estimated duration, in minutes.
+        self.cost = cost
+        # ID of Export task
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost is not None:
+            result['Cost'] = self.cost
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cost') is not None:
+            self.cost = m.get('Cost')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class ExportCustomerQuotaRecordResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ExportCustomerQuotaRecordResponseBodyData = None,
+        msg: str = None,
+        request_id: str = None,
+    ):
+        # Code
+        self.code = code
+        # Data
+        self.data = data
+        # Description
+        self.msg = msg
+        # ID of the Request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ExportCustomerQuotaRecordResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ExportCustomerQuotaRecordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExportCustomerQuotaRecordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExportCustomerQuotaRecordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetAccountInfoRequest(TeaModel):
     def __init__(
         self,
@@ -794,9 +1285,16 @@ class GetAccountInfoRequest(TeaModel):
         uid: int = None,
         user_type: str = None,
     ):
+        # Pagination, current page.
         self.current_page = current_page
+        # Pagination, record number on each page, maximum 20.
         self.page_size = page_size
+        # Account UID of Distribution Customer. This parameter and the UserType parameter must have one filled. If this parameter is empty, then check all Distribution Customer accounts of the selected UserType.
         self.uid = uid
+        # Distribution Customer\"s Account Type:
+        # - 1 End User
+        # - 2 Enterprise
+        # - 3 T2 Partner
         self.user_type = user_type
 
     def validate(self):
@@ -844,14 +1342,31 @@ class GetAccountInfoResponseBodyAccountInfoListAccountInfo(TeaModel):
         sub_account_type: int = None,
         uid: int = None,
     ):
+        # The name of Sub Account:
+        # 1.	Use the official name of Company, if Sub Account is an enterprise.
+        # 2.	Use the official name of Partner, if Sub Account is a T2 reseller.
         self.account_nickname = account_nickname
+        # Alibaba Cloud Login name of Distribution Customer.
         self.aliyun_id = aliyun_id
+        # The time that Distribution Customer successfully associated with Distributor.
         self.association_success_time = association_success_time
+        # Account CID of Distribution Customer.
         self.cid = cid
+        # The E-mail of Distribution Customer.
         self.email = email
+        # Valid mobile number of Distribution Customer.
         self.mobile = mobile
+        # Description of Distribution Customer.
         self.remark = remark
+        # Account Type:
+        # - 1 Agency\"s End User
+        # - 2 Reseller\"s End User
+        # - 3 Enterprise
+        # - 4 T2 Agency Partner
+        # - 5 T2 Reseller Partner
+        # - 6 T2 Agency+Reseller Partner
         self.sub_account_type = sub_account_type
+        # Account UID of Distribution Customer.
         self.uid = uid
 
     def validate(self):
@@ -948,8 +1463,11 @@ class GetAccountInfoResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total: int = None,
     ):
+        # Pagination, current page.
         self.page = page
+        # Pagination, record number on each page.
         self.page_size = page_size
+        # Pagination, page volume in total.
         self.total = total
 
     def validate(self):
@@ -990,12 +1508,22 @@ class GetAccountInfoResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # List of Account Information
         self.account_info_list = account_info_list
+        # Result Code - Error Code. Value Range:
+        # - 200 OK
+        # - 1109 System Error
+        # - 3029: Invalid UID
+        # - 3062: UID and UserType are both empty.
+        # - 3063: UserType value out of range.
         self.code = code
-        # message
+        # Message
         self.message = message
+        # Pagination Information
         self.page_info = page_info
+        # Request ID, the unique request identifier generated by Alibaba Cloud.
         self.request_id = request_id
+        # Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
         self.success = success
 
     def validate(self):
@@ -1055,9 +1583,6 @@ class GetAccountInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1092,6 +1617,7 @@ class GetCreditInfoRequest(TeaModel):
         self,
         uid: int = None,
     ):
+        # Sub Account UID
         self.uid = uid
 
     def validate(self):
@@ -1126,13 +1652,30 @@ class GetCreditInfoResponseBodyData(TeaModel):
         zero_credit_shutdown_policy: str = None,
         new_buy_status: str = None,
     ):
+        # The Credit Control status, Value Range:</br>
+        # 1. normal - Sub Account status is running as usual.
+        # 2. arrearsNotShutdown - Sub Account status is running as usual, but have outstanding bill(s).
+        # 3. shutdown -  Sub Account status is down.
         self.account_status = account_status
+        # Percentage value, when the available credit limit is lower than this credit limit percentage, a notification E-mail will be sent to the main account.
         self.alarm_threshold = alarm_threshold
+        # The Credit available to consume.
         self.available_credit = available_credit
+        # Obtain total unpaid amount on demo bill before simulated deduction.
         self.consumed_undeducted_value = consumed_undeducted_value
+        # The Credit Line of Sub Account
         self.credit_line = credit_line
+        # The Credit have been consumed by Sub Account, and haven\"t be paid.
         self.outstanding_balance = outstanding_balance
+        # The systematic controlling policy for resource management, specifically when the available Credit of Sub Account falls to 0 or less.</br>
+        # 
+        # - 1: delayStop. The account have Shutdown-delay Privilege,  After Shutdown-delay Credit is ran out, Alibaba Cloud will take over resources and keep the instance for 15 days. In addition, the instance will be released if Sub Account failed to pay the bill within these 15 days.</br>
+        # - 2: noStop. Partner will manually manage Shutdown Status for Sub Account. Meanwhile, System would not manage the resource\"s life-circle of Sub Account.</br>
+        # - 3: immediatelyStop. Once valid quota of Sub Account falls below 0 and be identified as defaulting account, it will trigger the instance shutdown immediately.</br>
         self.zero_credit_shutdown_policy = zero_credit_shutdown_policy
+        # Manage order operation.
+        # - ban：Ban the new purchase action.
+        # - normal：The account could raise new purchase order as usual.
         self.new_buy_status = new_buy_status
 
     def validate(self):
@@ -1192,10 +1735,17 @@ class GetCreditInfoResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result Code:
+        # - 200 OK
+        # - 1109 System Error
         self.code = code
+        # The data returned.
         self.data = data
+        # Message Information
         self.message = message
+        # Request ID, Alibaba Cloud will track errors with this.
         self.request_id = request_id
+        # Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
         self.success = success
 
     def validate(self):
@@ -1248,9 +1798,6 @@ class GetCreditInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1287,7 +1834,16 @@ class GetDailyBillRequest(TeaModel):
         bill_type: str = None,
         date: str = None,
     ):
+        # Bill Owner type. Value Range:</br>
+        # 1: Master account</br>
+        # 2: Sub account</br>
         self.bill_owner = bill_owner
+        # BillType. Value Range:</br>
+        # 
+        # - DailyOrder(Deprecated)
+        # - DailyBill (Deprecated)
+        # - DailyInstanceBill (Deprecated)
+        # - DailyInstanceBillV2
         self.bill_type = bill_type
         # Billing date. Format YYYY-MM-DD
         self.date = date
@@ -1329,10 +1885,15 @@ class GetDailyBillResponseBodyData(TeaModel):
         bill_type: str = None,
         spending_time: str = None,
     ):
+        # The link to download CSV file, please use HTTP Protocol.
         self.bill_link_csv = bill_link_csv
+        # The link to download XLSX file, please use HTTP Protocol.
         self.bill_link_xlsx = bill_link_xlsx
+        # Same as inserted parameter BillOwner.
         self.bill_owner = bill_owner
+        # Same as inserted parameter BillType.
         self.bill_type = bill_type
+        # Spending Time, refer to the exact time of costuming.
         self.spending_time = spending_time
 
     def validate(self):
@@ -1380,10 +1941,20 @@ class GetDailyBillResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result Code:
+        # * 200 OK
+        # * 1109 System error
+        # * 3050 Bill Type can only be DailyOrder, DailyBill or DailyInstanceBill.
+        # * 3049 Incorrect format of Spending Time.
+        # * 3048 Bill Owner can only be 1 or 2.
         self.code = code
+        # The returned data.
         self.data = data
+        # Same as Code parameters.
         self.message = message
+        # Request ID, the unique request identifier generated by Alibaba Cloud.
         self.request_id = request_id
+        # Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
         self.success = success
 
     def validate(self):
@@ -1436,9 +2007,6 @@ class GetDailyBillResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1473,6 +2041,7 @@ class GetInviteStatusRequestInviteStatusList(TeaModel):
         self,
         invite_id: int = None,
     ):
+        # Invitation ID, From interface InviteSubAccount
         self.invite_id = invite_id
 
     def validate(self):
@@ -1500,7 +2069,8 @@ class GetInviteStatusRequest(TeaModel):
         self,
         invite_status_list: List[GetInviteStatusRequestInviteStatusList] = None,
     ):
-        # inviteId list
+        # inviteId list</br>
+        # `Sub-levels <= 5`
         self.invite_status_list = invite_status_list
 
     def validate(self):
@@ -1542,12 +2112,27 @@ class GetInviteStatusResponseBodyDataInviteStatusInviteStatusList(TeaModel):
         sub_account_type: str = None,
         uid: int = None,
     ):
+        # The time that Distribution Customer successfully associated with Distributor.</br>
+        # This value will be empty if there is no existing association.
         self.association_success_time = association_success_time
+        # Distribution Customer\"s CID
         self.cid = cid
+        # The time of email been sent out.
         self.gmt_create = gmt_create
+        # The parent organization ID.
         self.parent_id = parent_id
+        # Invitation Status:
+        # * 0 No visit on registration URL
+        # * 1 Successful Registration
+        # * 2 Unsuccessful Registration
+        # * 3 Registration URL have been visited, but no submitted sheet/ticket.
         self.status = status
+        # Account Type:
+        # - 1 Agency\"s End User
+        # - 2 Reseller\"s End User
+        # - 5 T2 Reseller Partner
         self.sub_account_type = sub_account_type
+        # Distribution Customer\"s UID
         self.uid = uid
 
     def validate(self):
@@ -1602,9 +2187,15 @@ class GetInviteStatusResponseBodyDataInviteStatus(TeaModel):
         message: str = None,
         success: bool = None,
     ):
+        # Result Code. Value Range:
+        # *   200 OK
+        # *   1109 system error
         self.code = code
+        # List of Invitation Status result
         self.invite_status_list = invite_status_list
+        # The message returned.
         self.message = message
+        # Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
         self.success = success
 
     def validate(self):
@@ -1685,10 +2276,17 @@ class GetInviteStatusResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status Code. Error Code:
+        # 
+        # - 3057 InviteId is empty
         self.code = code
+        # The returned data.
         self.data = data
+        # The message returned.
         self.message = message
+        # Request ID, Alibaba Cloud will track errors with this.
         self.request_id = request_id
+        # Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
         self.success = success
 
     def validate(self):
@@ -1741,9 +2339,6 @@ class GetInviteStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1780,33 +2375,21 @@ class GetMonthlyBillRequest(TeaModel):
         bill_type: str = None,
         month: str = None,
     ):
-        # Bill Owner type.
-        # 
-        #  Value range:
-        # 
-        # 1: Master account 
-        # 
-        # 2: Sub account
+        # Bill Owner type. Value Range:</br>
+        # 1: Master account</br>
+        # 2: Sub account</br>
         self.bill_owner = bill_owner
         # Value Range:
         # 
-        # MonthlyInvoice
-        # 
-        # MonthRefundInvoice
-        # 
-        # MonthlySummary
-        # 
-        # MonthlyInstanceAddAdjustBill 
-        # 
-        # MonthlyInstanceRefundBill
-        # 
-        # MonthlyAddAdjustInvoce
-        # 
-        # MonthlyRefundAdjustInvoce 
-        # 
-        # MonthlyInstanceConsumeV2 
-        # 
-        # MarginReportV2
+        # - MonthlyInvoice
+        # - MonthRefundInvoice
+        # - MonthlySummary
+        # - MonthlyInstanceAddAdjustBill 
+        # - MonthlyInstanceRefundBill
+        # - MonthlyAddAdjustInvoce
+        # - MonthlyRefundAdjustInvoce 
+        # - MonthlyInstanceConsumeV2 
+        # - MarginReportV2
         self.bill_type = bill_type
         # Billing Month, Format is YYYY-MM
         self.month = month
@@ -1851,13 +2434,22 @@ class GetMonthlyBillResponseBodyData(TeaModel):
         refund_invoice_link: str = None,
         spending_time: str = None,
     ):
+        # The link to download CSV file, please use HTTP Protocol.
         self.bill_link_csv = bill_link_csv
+        # The link to download XLSX file, please use HTTP Protocol.
         self.bill_link_xlsx = bill_link_xlsx
+        # Same as inserted parameter BillOwner.
         self.bill_owner = bill_owner
+        # Same as inserted parameter BillType.
         self.bill_type = bill_type
+        # The URL to download invoice.
         self.invoice_link = invoice_link
+        # It states the existence of refund invoice. </br>
+        # Candidate Values: True/False
         self.refund_invoice_flag = refund_invoice_flag
+        # The URL to download refund invoice.
         self.refund_invoice_link = refund_invoice_link
+        # Spending Time, refer to the exact time of costuming.
         self.spending_time = spending_time
 
     def validate(self):
@@ -1917,10 +2509,19 @@ class GetMonthlyBillResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result Code:
+        # * 200 OK
+        # * 1109 System error
+        # * 3030 Sub Account Nickname exceeds maximum length, maximum length 150 bytes.
+        # * 3031 Remark exceeds maximum length, maximum length 3000 bytes.
         self.code = code
+        # The returned data.
         self.data = data
+        # Same as Code parameters.
         self.message = message
+        # Request ID, the unique request identifier generated by Alibaba Cloud.
         self.request_id = request_id
+        # Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
         self.success = success
 
     def validate(self):
@@ -1973,9 +2574,6 @@ class GetMonthlyBillResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2011,7 +2609,9 @@ class GetUnassociatedCustomerRequest(TeaModel):
         current_page: int = None,
         page_size: int = None,
     ):
+        # Pagination, current page.
         self.current_page = current_page
+        # Pagination, record number on each page.
         self.page_size = page_size
 
     def validate(self):
@@ -2047,10 +2647,19 @@ class GetUnassociatedCustomerResponseBodyInviteInfoListInviteInfo(TeaModel):
         invite_id: int = None,
         status: int = None,
     ):
+        # The name of Customer who are to be invited.
         self.account_nickname = account_nickname
+        # The Email of Customer who are to be invited.
         self.email = email
+        # The time of email been sent out.
         self.gmt_create = gmt_create
+        # Invitation ID
         self.invite_id = invite_id
+        # Invitation Status:
+        # * 0 No visit on registration URL
+        # * 1 Successful Registration
+        # * 2 Unsuccessful Registration
+        # * 3 Registration URL have been visited, but no submitted sheet/ticket.
         self.status = status
 
     def validate(self):
@@ -2131,8 +2740,11 @@ class GetUnassociatedCustomerResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total: int = None,
     ):
+        # Pagination, current page.
         self.page = page
+        # Pagination, record number on each page.
         self.page_size = page_size
+        # Pagination, page volume in total.
         self.total = total
 
     def validate(self):
@@ -2173,11 +2785,19 @@ class GetUnassociatedCustomerResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error Code, Candidate Value：
+        # * 200: OK
+        # * 1109: System error
         self.code = code
+        # List of Invitation Information
         self.invite_info_list = invite_info_list
+        # Message information
         self.message = message
+        # Pagination Information
         self.page_info = page_info
+        # Request ID, Alibaba Cloud will track errors with this.
         self.request_id = request_id
+        # Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
         self.success = success
 
     def validate(self):
@@ -2237,9 +2857,6 @@ class GetUnassociatedCustomerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2281,13 +2898,32 @@ class InviteSubAccountRequestAccountInfoList(TeaModel):
         sub_account_type: str = None,
         zero_credit_shutdown_policy: str = None,
     ):
+        # The name of Sub Account:</br>
+        # 1. Use the official name of Company, if Sub Account is an enterprise.</br>
+        # 2. Use the official name of Partner, if Sub Account is a T2 reseller.</br>
         self.account_nickname = account_nickname
+        # The total budget Credit of Sub Account that distributed by Partner.
         self.credit_line = credit_line
+        # Customer ID, Returning ID from CreateCustomer API.
         self.customer_id = customer_id
+        # The email address of End User,  which will receive the invitation email.
         self.email_address = email_address
+        # Initial Order Status</br>
+        # 1. ban：Ban the new purchase action--After End User finish registration and authorization, they can\"t issue Cloud Resource order immediately. Partner should manually update the "Order Control" settings as "Normal" to enable new order.</br>
+        # 2. normal：Normal--After End User finished registration and authorization, they can issue Cloud Resource order immediately.</br>
         self.new_buy_status = new_buy_status
+        # Description of Sub Account.
         self.remark = remark
+        # The type of Sub Account</br>
+        # 
+        # 1 Agency\"s End User</br>
+        # 2 Reseller\"s End user</br>
+        # 5 Reseller\"s T2 Partner</br>
         self.sub_account_type = sub_account_type
+        # Partner\"s Shutdown Policy Management for Sub Account.</br>
+        # 1: delayStop. The account have Shutdown-delay Privilege,  After Shutdown-delay Credit is ran out, Alibaba Cloud will take over resources and keep the instance for 15 days. In addition, the instance will be released if Sub Account failed to pay the bill within these 15 days.</br>
+        # 2: noStop. Partner will manually manage Shutdown Status for Sub Account. Meanwhile, System would not manage the resource\"s life-circle of Sub Account.</br>
+        # 3: immediatelyStop. Once valid quota of Sub Account falls below 0 and be identified as defaulting account, it will trigger the instance shutdown immediately.</br>
         self.zero_credit_shutdown_policy = zero_credit_shutdown_policy
 
     def validate(self):
@@ -2343,6 +2979,8 @@ class InviteSubAccountRequest(TeaModel):
         self,
         account_info_list: List[InviteSubAccountRequestAccountInfoList] = None,
     ):
+        # List of invited account information,  less than 5 accounts at a time.</br>
+        # `Sub-levels <= 5`
         self.account_info_list = account_info_list
 
     def validate(self):
@@ -2380,8 +3018,11 @@ class InviteSubAccountResponseBodyResultsResultResult(TeaModel):
         invite_id: int = None,
         reg_url: str = None,
     ):
+        # Valid days of registration URL, count on daily basis.
         self.days = days
+        # Invitation ID, The invitation status tracking code.
         self.invite_id = invite_id
+        # URL for Partner Customer Registration.
         self.reg_url = reg_url
 
     def validate(self):
@@ -2420,9 +3061,13 @@ class InviteSubAccountResponseBodyResultsResult(TeaModel):
         result: InviteSubAccountResponseBodyResultsResultResult = None,
         success: bool = None,
     ):
+        # Error Code, 200 OK
         self.code = code
+        # Message, Notes of Code
         self.message = message
+        # Returning Message of Invitation Results
         self.result = result
+        # Always true.
         self.success = success
 
     def validate(self):
@@ -2503,10 +3148,17 @@ class InviteSubAccountResponseBody(TeaModel):
         results: InviteSubAccountResponseBodyResults = None,
         success: bool = None,
     ):
+        # Error Code: </br>
+        # • 200 OK</br>
+        # • 1109 System Error</br>
         self.code = code
+        # Message</br>
         self.message = message
+        # Request ID, Alibaba Cloud will track errors with this ID.
         self.request_id = request_id
+        # List of invitation sending results
         self.results = results
+        # Candidate Values: True/False, this value states if the current API calling action is successful. It does not guarantee the success of subsequent business operations.
         self.success = success
 
     def validate(self):
@@ -2559,9 +3211,6 @@ class InviteSubAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2600,10 +3249,17 @@ class ListCountriesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error Code
+        # * 200: OK
+        # * 1109: System error
         self.code = code
+        # List of Region Code
         self.data = data
+        # Message information
         self.message = message
+        # Request ID, Alibaba Cloud will track errors with this.
         self.request_id = request_id
+        # Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
         self.success = success
 
     def validate(self):
@@ -2654,9 +3310,6 @@ class ListCountriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2686,11 +3339,243 @@ class ListCountriesResponse(TeaModel):
         return self
 
 
+class QuotaListExportPagedRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        language: str = None,
+        page_size: int = None,
+    ):
+        # Pagination, current page number, starting from 1.
+        self.current_page = current_page
+        # Multilingual Parameters, the default language is English.</br>
+        # en: English</br>
+        # zh: Chinese</br>
+        # ja: Japanese </br>
+        self.language = language
+        # Pagination, record number on each page, maximum 100.
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class QuotaListExportPagedResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        file_name: str = None,
+        message: str = None,
+        status: str = None,
+        status_code: str = None,
+        url: str = None,
+    ):
+        # Create Time
+        self.create_time = create_time
+        # File Name
+        self.file_name = file_name
+        # Notification Message
+        self.message = message
+        # Display of Task Status
+        self.status = status
+        # Task Status Enum</br>
+        # 2: Exporting</br>
+        # 3: Export Success</br>
+        # -1: Export Fail</br>
+        self.status_code = status_code
+        # The link to download exported file.
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class QuotaListExportPagedResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[QuotaListExportPagedResponseBodyData] = None,
+        msg: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total: int = None,
+    ):
+        # Status code of returning result, 200 means success.
+        self.code = code
+        # Listed data of returning result
+        self.data = data
+        # Description of returning result
+        self.msg = msg
+        # Current page number
+        self.page_no = page_no
+        # Record number on each page
+        self.page_size = page_size
+        # ID of the Request
+        self.request_id = request_id
+        # Total volume
+        self.total = total
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = QuotaListExportPagedResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class QuotaListExportPagedResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QuotaListExportPagedResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QuotaListExportPagedResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ResendEmailRequest(TeaModel):
     def __init__(
         self,
         invite_id: int = None,
     ):
+        # Invitation ID, from interface InviteSubAccount </br>
+        # Note: This field type is Long, which may result in precision loss in serialization/deserialization process. Please ensure the value does not exceed 9007199254740991.
         self.invite_id = invite_id
 
     def validate(self):
@@ -2721,9 +3606,20 @@ class ResendEmailResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result Code, Error code.</br>
+        # Candidate Value: </br>
+        # * 200: OK
+        # * 1109: System error
+        # * 3058: Frequent sending, the limit is 10 emails in every 5 minutes.
+        # * 3057: InviteId is empty.
+        # * 3060: Can\"t find sending record of given InviteId.
+        # * 3061: Registration URL is expired, unable to resend.
         self.code = code
+        # Result message
         self.message = message
+        # Request ID, the unique request identifier generated by Alibaba Cloud.
         self.request_id = request_id
+        # Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
         self.success = success
 
     def validate(self):
@@ -2770,9 +3666,6 @@ class ResendEmailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2809,8 +3702,13 @@ class SetAccountInfoRequest(TeaModel):
         remark: str = None,
         uid: int = None,
     ):
+        # Sub Account Nickname. 
+        # * Use the official name of Company, if Sub Account is an enterprise.
+        # * Use the official name of Partner, if Sub Account is a T2 reseller.
         self.account_nickname = account_nickname
+        # Description of Sub Account.
         self.remark = remark
+        # The UID of Sub Account.
         self.uid = uid
 
     def validate(self):
@@ -2849,9 +3747,17 @@ class SetAccountInfoResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result Code:
+        # *   200 OK
+        # *   1109 System error
+        # *   3030 Sub Account Nickname exceeds maximum length,  maximum length 150 bytes.
+        # *   3031 Remark exceeds maximum length,  maximum length 3000 bytes.
         self.code = code
+        # Message information
         self.message = message
+        # Request ID, Alibaba Cloud will track errors with this.
         self.request_id = request_id
+        # Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
         self.success = success
 
     def validate(self):
@@ -2898,9 +3804,6 @@ class SetAccountInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2936,7 +3839,9 @@ class SetCreditLineRequest(TeaModel):
         credit_line: str = None,
         uid: int = None,
     ):
+        # New Credit Line
         self.credit_line = credit_line
+        # The UID of Sub Account.
         self.uid = uid
 
     def validate(self):
@@ -2971,9 +3876,17 @@ class SetCreditLineResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result Code:
+        # *   200 OK
+        # *   1109 system error
+        # *   3040 Sub Account is in a frozen state and cannot be operated.
+        # *   3041 Credit is not a proper number
         self.code = code
+        # Same as Code parameter value
         self.message = message
+        # Request ID, the unique request identifier generated by Alibaba Cloud.
         self.request_id = request_id
+        # Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
         self.success = success
 
     def validate(self):
@@ -3020,9 +3933,6 @@ class SetCreditLineResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3095,18 +4005,18 @@ class SetWarningThresholdResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Result code:
-        # 
-        # *   200 OK
-        # *   1109 system error
-        # *   The operation cannot be completed 3040 the sub-account is frozen-the 3044 alert proportion value is not a number.
-        # *   3045 Alert Scale value should be 1 to 100
+        # Result Code:
+        # * 200 OK
+        # * 1109 System Error
+        # * 3040 The Sub Account is frozen, the operation cannot be completed. 
+        # * 3044 Alert proportion value is not a number.
+        # * 3045 Alert proportion value should between 1 to 100.
         self.code = code
         # Same as Code parameter value
         self.message = message
-        # the request id. the unique identifier generated by alibaba cloud for the request.
+        # Request ID, the unique request identifier generated by Alibaba Cloud.
         self.request_id = request_id
-        # Candidate value: True or False, which indicates whether the current API call itself is successful. does not represent the success of subsequent business operations.
+        # Candidate Value: True or False, which indicates whether the current API call itself is successful. does not represent the success of subsequent business operations.
         self.success = success
 
     def validate(self):
@@ -3153,9 +4063,6 @@ class SetWarningThresholdResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3326,9 +4233,6 @@ class SubscriptionBillResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

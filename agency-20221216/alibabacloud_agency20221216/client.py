@@ -293,11 +293,85 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_customer_with_options_async(request, runtime)
 
+    def customer_quota_record_list_with_options(
+        self,
+        request: agency_20221216_models.CustomerQuotaRecordListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.CustomerQuotaRecordListResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CustomerQuotaRecordList',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.CustomerQuotaRecordListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def customer_quota_record_list_with_options_async(
+        self,
+        request: agency_20221216_models.CustomerQuotaRecordListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.CustomerQuotaRecordListResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CustomerQuotaRecordList',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.CustomerQuotaRecordListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def customer_quota_record_list(
+        self,
+        request: agency_20221216_models.CustomerQuotaRecordListRequest,
+    ) -> agency_20221216_models.CustomerQuotaRecordListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.customer_quota_record_list_with_options(request, runtime)
+
+    async def customer_quota_record_list_async(
+        self,
+        request: agency_20221216_models.CustomerQuotaRecordListRequest,
+    ) -> agency_20221216_models.CustomerQuotaRecordListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.customer_quota_record_list_with_options_async(request, runtime)
+
     def deduct_outstanding_balance_with_options(
         self,
         request: agency_20221216_models.DeductOutstandingBalanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.DeductOutstandingBalanceResponse:
+        """
+        Note that sometimes you may find that the customer\\"s Used Credit is negative. This indicates that there is no need to restore the Used Credit, and its ready for customer\\"s usage. This phenomenon occurs because a refund is generated while the customer\\"s credit is full, thereby triggered additional increasing on the customer\\"s credit.
+        For example, if the customer\\"s maximum Available Credit is 1000 with no usage, and a refund of 300 occurs, the Used Credit will become -300.
+        
+        @param request: DeductOutstandingBalanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeductOutstandingBalanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.deduct_amount):
@@ -328,6 +402,14 @@ class Client(OpenApiClient):
         request: agency_20221216_models.DeductOutstandingBalanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.DeductOutstandingBalanceResponse:
+        """
+        Note that sometimes you may find that the customer\\"s Used Credit is negative. This indicates that there is no need to restore the Used Credit, and its ready for customer\\"s usage. This phenomenon occurs because a refund is generated while the customer\\"s credit is full, thereby triggered additional increasing on the customer\\"s credit.
+        For example, if the customer\\"s maximum Available Credit is 1000 with no usage, and a refund of 300 occurs, the Used Credit will become -300.
+        
+        @param request: DeductOutstandingBalanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeductOutstandingBalanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.deduct_amount):
@@ -357,6 +439,13 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.DeductOutstandingBalanceRequest,
     ) -> agency_20221216_models.DeductOutstandingBalanceResponse:
+        """
+        Note that sometimes you may find that the customer\\"s Used Credit is negative. This indicates that there is no need to restore the Used Credit, and its ready for customer\\"s usage. This phenomenon occurs because a refund is generated while the customer\\"s credit is full, thereby triggered additional increasing on the customer\\"s credit.
+        For example, if the customer\\"s maximum Available Credit is 1000 with no usage, and a refund of 300 occurs, the Used Credit will become -300.
+        
+        @param request: DeductOutstandingBalanceRequest
+        @return: DeductOutstandingBalanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.deduct_outstanding_balance_with_options(request, runtime)
 
@@ -364,6 +453,13 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.DeductOutstandingBalanceRequest,
     ) -> agency_20221216_models.DeductOutstandingBalanceResponse:
+        """
+        Note that sometimes you may find that the customer\\"s Used Credit is negative. This indicates that there is no need to restore the Used Credit, and its ready for customer\\"s usage. This phenomenon occurs because a refund is generated while the customer\\"s credit is full, thereby triggered additional increasing on the customer\\"s credit.
+        For example, if the customer\\"s maximum Available Credit is 1000 with no usage, and a refund of 300 occurs, the Used Credit will become -300.
+        
+        @param request: DeductOutstandingBalanceRequest
+        @return: DeductOutstandingBalanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.deduct_outstanding_balance_with_options_async(request, runtime)
 
@@ -372,6 +468,14 @@ class Client(OpenApiClient):
         request: agency_20221216_models.EditEndUserStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.EditEndUserStatusResponse:
+        """
+        The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+        **This content is only published on the international site. **\
+        
+        @param request: EditEndUserStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EditEndUserStatusResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -398,6 +502,14 @@ class Client(OpenApiClient):
         request: agency_20221216_models.EditEndUserStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.EditEndUserStatusResponse:
+        """
+        The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+        **This content is only published on the international site. **\
+        
+        @param request: EditEndUserStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EditEndUserStatusResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -423,6 +535,13 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.EditEndUserStatusRequest,
     ) -> agency_20221216_models.EditEndUserStatusResponse:
+        """
+        The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+        **This content is only published on the international site. **\
+        
+        @param request: EditEndUserStatusRequest
+        @return: EditEndUserStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.edit_end_user_status_with_options(request, runtime)
 
@@ -430,6 +549,13 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.EditEndUserStatusRequest,
     ) -> agency_20221216_models.EditEndUserStatusResponse:
+        """
+        The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+        **This content is only published on the international site. **\
+        
+        @param request: EditEndUserStatusRequest
+        @return: EditEndUserStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.edit_end_user_status_with_options_async(request, runtime)
 
@@ -438,6 +564,14 @@ class Client(OpenApiClient):
         request: agency_20221216_models.EditNewBuyStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.EditNewBuyStatusResponse:
+        """
+        The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+        **This content is only published on the international site. **\
+        
+        @param request: EditNewBuyStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EditNewBuyStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_buy_status):
@@ -468,6 +602,14 @@ class Client(OpenApiClient):
         request: agency_20221216_models.EditNewBuyStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.EditNewBuyStatusResponse:
+        """
+        The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+        **This content is only published on the international site. **\
+        
+        @param request: EditNewBuyStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EditNewBuyStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_buy_status):
@@ -497,6 +639,13 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.EditNewBuyStatusRequest,
     ) -> agency_20221216_models.EditNewBuyStatusResponse:
+        """
+        The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+        **This content is only published on the international site. **\
+        
+        @param request: EditNewBuyStatusRequest
+        @return: EditNewBuyStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.edit_new_buy_status_with_options(request, runtime)
 
@@ -504,6 +653,13 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.EditNewBuyStatusRequest,
     ) -> agency_20221216_models.EditNewBuyStatusResponse:
+        """
+        The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+        **This content is only published on the international site. **\
+        
+        @param request: EditNewBuyStatusRequest
+        @return: EditNewBuyStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.edit_new_buy_status_with_options_async(request, runtime)
 
@@ -512,6 +668,14 @@ class Client(OpenApiClient):
         request: agency_20221216_models.EditZeroCreditShutdownRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.EditZeroCreditShutdownResponse:
+        """
+        The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+        **This content is only published on the international site. **\
+        
+        @param request: EditZeroCreditShutdownRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EditZeroCreditShutdownResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.shutdown_policy):
@@ -542,6 +706,14 @@ class Client(OpenApiClient):
         request: agency_20221216_models.EditZeroCreditShutdownRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.EditZeroCreditShutdownResponse:
+        """
+        The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+        **This content is only published on the international site. **\
+        
+        @param request: EditZeroCreditShutdownRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EditZeroCreditShutdownResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.shutdown_policy):
@@ -571,6 +743,13 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.EditZeroCreditShutdownRequest,
     ) -> agency_20221216_models.EditZeroCreditShutdownResponse:
+        """
+        The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+        **This content is only published on the international site. **\
+        
+        @param request: EditZeroCreditShutdownRequest
+        @return: EditZeroCreditShutdownResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.edit_zero_credit_shutdown_with_options(request, runtime)
 
@@ -578,8 +757,127 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.EditZeroCreditShutdownRequest,
     ) -> agency_20221216_models.EditZeroCreditShutdownResponse:
+        """
+        The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+        **This content is only published on the international site. **\
+        
+        @param request: EditZeroCreditShutdownRequest
+        @return: EditZeroCreditShutdownResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.edit_zero_credit_shutdown_with_options_async(request, runtime)
+
+    def export_customer_quota_record_with_options(
+        self,
+        request: agency_20221216_models.ExportCustomerQuotaRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.ExportCustomerQuotaRecordResponse:
+        """
+        Caller must be a Partner from International Site, either Distribution or Reseller will do.
+        
+        @param request: ExportCustomerQuotaRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportCustomerQuotaRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.end_user_pk):
+            query['EndUserPk'] = request.end_user_pk
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.operation_type):
+            query['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ExportCustomerQuotaRecord',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.ExportCustomerQuotaRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_customer_quota_record_with_options_async(
+        self,
+        request: agency_20221216_models.ExportCustomerQuotaRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.ExportCustomerQuotaRecordResponse:
+        """
+        Caller must be a Partner from International Site, either Distribution or Reseller will do.
+        
+        @param request: ExportCustomerQuotaRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportCustomerQuotaRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.end_user_pk):
+            query['EndUserPk'] = request.end_user_pk
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.operation_type):
+            query['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ExportCustomerQuotaRecord',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.ExportCustomerQuotaRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_customer_quota_record(
+        self,
+        request: agency_20221216_models.ExportCustomerQuotaRecordRequest,
+    ) -> agency_20221216_models.ExportCustomerQuotaRecordResponse:
+        """
+        Caller must be a Partner from International Site, either Distribution or Reseller will do.
+        
+        @param request: ExportCustomerQuotaRecordRequest
+        @return: ExportCustomerQuotaRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.export_customer_quota_record_with_options(request, runtime)
+
+    async def export_customer_quota_record_async(
+        self,
+        request: agency_20221216_models.ExportCustomerQuotaRecordRequest,
+    ) -> agency_20221216_models.ExportCustomerQuotaRecordResponse:
+        """
+        Caller must be a Partner from International Site, either Distribution or Reseller will do.
+        
+        @param request: ExportCustomerQuotaRecordRequest
+        @return: ExportCustomerQuotaRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.export_customer_quota_record_with_options_async(request, runtime)
 
     def get_account_info_with_options(
         self,
@@ -1010,6 +1308,13 @@ class Client(OpenApiClient):
         request: agency_20221216_models.InviteSubAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.InviteSubAccountResponse:
+        """
+        The current API request rate for the Cloud Product has not been disclosed.
+        
+        @param request: InviteSubAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InviteSubAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_info_list):
@@ -1038,6 +1343,13 @@ class Client(OpenApiClient):
         request: agency_20221216_models.InviteSubAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.InviteSubAccountResponse:
+        """
+        The current API request rate for the Cloud Product has not been disclosed.
+        
+        @param request: InviteSubAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InviteSubAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_info_list):
@@ -1065,6 +1377,12 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.InviteSubAccountRequest,
     ) -> agency_20221216_models.InviteSubAccountResponse:
+        """
+        The current API request rate for the Cloud Product has not been disclosed.
+        
+        @param request: InviteSubAccountRequest
+        @return: InviteSubAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.invite_sub_account_with_options(request, runtime)
 
@@ -1072,6 +1390,12 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.InviteSubAccountRequest,
     ) -> agency_20221216_models.InviteSubAccountResponse:
+        """
+        The current API request rate for the Cloud Product has not been disclosed.
+        
+        @param request: InviteSubAccountRequest
+        @return: InviteSubAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.invite_sub_account_with_options_async(request, runtime)
 
@@ -1079,6 +1403,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.ListCountriesResponse:
+        """
+        The current API request rate for cloud products has not been disclosed.
+        
+        @param request: ListCountriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCountriesResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListCountries',
@@ -1100,6 +1431,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.ListCountriesResponse:
+        """
+        The current API request rate for cloud products has not been disclosed.
+        
+        @param request: ListCountriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCountriesResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListCountries',
@@ -1118,12 +1456,114 @@ class Client(OpenApiClient):
         )
 
     def list_countries(self) -> agency_20221216_models.ListCountriesResponse:
+        """
+        The current API request rate for cloud products has not been disclosed.
+        
+        @return: ListCountriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_countries_with_options(runtime)
 
     async def list_countries_async(self) -> agency_20221216_models.ListCountriesResponse:
+        """
+        The current API request rate for cloud products has not been disclosed.
+        
+        @return: ListCountriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_countries_with_options_async(runtime)
+
+    def quota_list_export_paged_with_options(
+        self,
+        request: agency_20221216_models.QuotaListExportPagedRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.QuotaListExportPagedResponse:
+        """
+        Caller must be a Partner from International Site, either Distribution or Reseller will do.
+        
+        @param request: QuotaListExportPagedRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuotaListExportPagedResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuotaListExportPaged',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.QuotaListExportPagedResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def quota_list_export_paged_with_options_async(
+        self,
+        request: agency_20221216_models.QuotaListExportPagedRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.QuotaListExportPagedResponse:
+        """
+        Caller must be a Partner from International Site, either Distribution or Reseller will do.
+        
+        @param request: QuotaListExportPagedRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuotaListExportPagedResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuotaListExportPaged',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.QuotaListExportPagedResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def quota_list_export_paged(
+        self,
+        request: agency_20221216_models.QuotaListExportPagedRequest,
+    ) -> agency_20221216_models.QuotaListExportPagedResponse:
+        """
+        Caller must be a Partner from International Site, either Distribution or Reseller will do.
+        
+        @param request: QuotaListExportPagedRequest
+        @return: QuotaListExportPagedResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.quota_list_export_paged_with_options(request, runtime)
+
+    async def quota_list_export_paged_async(
+        self,
+        request: agency_20221216_models.QuotaListExportPagedRequest,
+    ) -> agency_20221216_models.QuotaListExportPagedResponse:
+        """
+        Caller must be a Partner from International Site, either Distribution or Reseller will do.
+        
+        @param request: QuotaListExportPagedRequest
+        @return: QuotaListExportPagedResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.quota_list_export_paged_with_options_async(request, runtime)
 
     def resend_email_with_options(
         self,

@@ -28,7 +28,7 @@ pip install alibabacloud_agency20221216
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/agency-20221216/ChangeLog.md).
 
 ## References
 
