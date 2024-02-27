@@ -352,8 +352,12 @@ class Client(OpenApiClient):
             query['NickName'] = request.nick_name
         if not UtilClient.is_unset(request.user_type):
             query['UserType'] = request.user_type
+        body = {}
+        if not UtilClient.is_unset(request.role_ids):
+            body['RoleIds'] = request.role_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='AddUser',
@@ -388,8 +392,12 @@ class Client(OpenApiClient):
             query['NickName'] = request.nick_name
         if not UtilClient.is_unset(request.user_type):
             query['UserType'] = request.user_type
+        body = {}
+        if not UtilClient.is_unset(request.role_ids):
+            body['RoleIds'] = request.role_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='AddUser',
@@ -4812,6 +4820,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.account):
             query['Account'] = request.account
+        if not UtilClient.is_unset(request.parent_account_name):
+            query['ParentAccountName'] = request.parent_account_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4840,6 +4850,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.account):
             query['Account'] = request.account
+        if not UtilClient.is_unset(request.parent_account_name):
+            query['ParentAccountName'] = request.parent_account_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6266,6 +6278,8 @@ class Client(OpenApiClient):
             query['AuthAdminUser'] = request.auth_admin_user
         if not UtilClient.is_unset(request.nick_name):
             query['NickName'] = request.nick_name
+        if not UtilClient.is_unset(request.role_ids):
+            query['RoleIds'] = request.role_ids
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
         if not UtilClient.is_unset(request.user_type):
@@ -6302,6 +6316,8 @@ class Client(OpenApiClient):
             query['AuthAdminUser'] = request.auth_admin_user
         if not UtilClient.is_unset(request.nick_name):
             query['NickName'] = request.nick_name
+        if not UtilClient.is_unset(request.role_ids):
+            query['RoleIds'] = request.role_ids
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
         if not UtilClient.is_unset(request.user_type):

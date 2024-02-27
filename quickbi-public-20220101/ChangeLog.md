@@ -1,3 +1,16 @@
+2024-02-27 Version: 1.1.8
+- Update API AddUser: add param AuthAdminUser.
+- Update API AddUser: add param RoleIds.
+- Update API AddUser: update param AdminUser.
+- Update API AddUser: update param AuthAdminUser.
+- Update API AddUser: update response param.
+- Update API QueryUserInfoByAccount: add param ParentAccountName.
+- Update API QueryUserInfoByAccount: update response param.
+- Update API QueryUserInfoByUserId: update response param.
+- Update API QueryUserList: update response param.
+- Update API UpdateUser: add param RoleIds.
+
+
 2023-10-24 Version: 1.1.7
 - Generated python 2022-01-01 for quickbi-public.
 
