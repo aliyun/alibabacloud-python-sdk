@@ -1103,6 +1103,76 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_available_zones_with_options_async(headers, runtime)
 
+    def list_consumer_connections_with_options(
+        self,
+        instance_id: str,
+        consumer_group_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListConsumerConnectionsResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListConsumerConnections',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/consumerGroups/{OpenApiUtilClient.get_encode_param(consumer_group_id)}/connections',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListConsumerConnectionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_consumer_connections_with_options_async(
+        self,
+        instance_id: str,
+        consumer_group_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListConsumerConnectionsResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListConsumerConnections',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/consumerGroups/{OpenApiUtilClient.get_encode_param(consumer_group_id)}/connections',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListConsumerConnectionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_consumer_connections(
+        self,
+        instance_id: str,
+        consumer_group_id: str,
+    ) -> rocket_mq20220801_models.ListConsumerConnectionsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_consumer_connections_with_options(instance_id, consumer_group_id, headers, runtime)
+
+    async def list_consumer_connections_async(
+        self,
+        instance_id: str,
+        consumer_group_id: str,
+    ) -> rocket_mq20220801_models.ListConsumerConnectionsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_consumer_connections_with_options_async(instance_id, consumer_group_id, headers, runtime)
+
     def list_consumer_group_subscriptions_with_options(
         self,
         instance_id: str,
@@ -1466,6 +1536,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_regions_with_options_async(headers, runtime)
+
+    def list_topic_subscriptions_with_options(
+        self,
+        instance_id: str,
+        topic_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListTopicSubscriptionsResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListTopicSubscriptions',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/topics/{OpenApiUtilClient.get_encode_param(topic_name)}/subscriptions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListTopicSubscriptionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_topic_subscriptions_with_options_async(
+        self,
+        instance_id: str,
+        topic_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListTopicSubscriptionsResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListTopicSubscriptions',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/topics/{OpenApiUtilClient.get_encode_param(topic_name)}/subscriptions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListTopicSubscriptionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_topic_subscriptions(
+        self,
+        instance_id: str,
+        topic_name: str,
+    ) -> rocket_mq20220801_models.ListTopicSubscriptionsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_topic_subscriptions_with_options(instance_id, topic_name, headers, runtime)
+
+    async def list_topic_subscriptions_async(
+        self,
+        instance_id: str,
+        topic_name: str,
+    ) -> rocket_mq20220801_models.ListTopicSubscriptionsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_topic_subscriptions_with_options_async(instance_id, topic_name, headers, runtime)
 
     def list_topics_with_options(
         self,

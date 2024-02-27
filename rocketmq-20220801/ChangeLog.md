@@ -1,3 +1,10 @@
+2024-02-27 Version: 1.3.0
+- Support API ListAvailableZones.
+- Support API ListConsumerConnections.
+- Support API ListRegions.
+- Support API ListTopicSubscriptions.
+
+
 2024-02-21 Version: 1.2.0
 - Support API ListAvailableZones.
 - Support API ListRegions.
