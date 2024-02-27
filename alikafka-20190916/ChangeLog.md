@@ -1,3 +1,13 @@
+2024-02-27 Version: 2.2.0
+- Support API GetTopicSubscribeStatus.
+- Update API CreateAcl: update param AclResourceType.
+- Update API DeleteAcl: update param AclOperationType.
+- Update API DeleteAcl: update param AclResourceType.
+- Update API DescribeAcls: update param AclResourceType.
+- Update API UpgradePostPayOrder: add param ServerlessConfig.
+- Update API UpgradePostPayOrder: update param DiskSize.
+
+
 2024-02-26 Version: 2.1.1
 - Update API CreateAcl: update param AclResourceType.
 - Update API DeleteAcl: update param AclOperationType.
