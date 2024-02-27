@@ -28,7 +28,7 @@ pip install alibabacloud_avatar20220130
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/avatar-20220130/ChangeLog.md).
 
 ## References
 

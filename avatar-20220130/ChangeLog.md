@@ -1,3 +1,8 @@
+2024-02-27 Version: 2.5.2
+- Update API QueryAvatar: update response param.
+- Update API QueryAvatarList: update response param.
+
+
 2024-01-24 Version: 2.5.1
 - Generated python 2022-01-30 for avatar.
 
