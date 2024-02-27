@@ -1,3 +1,12 @@
+2024-02-27 Version: 4.1.0
+- Support API ExecuteOperationSync.
+- Update API DeployApplication: add param ClientToken.
+- Update API ExecuteOperationASync: add param ClientToken.
+- Update API ReleaseApplication: add param ClientToken.
+- Update API ValidateApplication: add param ClientToken.
+- Update API ValuateApplication: add param ClientToken.
+
+
 2024-01-30 Version: 4.0.0
 - Support API AppFailBack.
 - Support API AppFailOver.
