@@ -1,3 +1,11 @@
+2024-02-28 Version: 4.0.1
+- Update API CreateAutoSnapshotPolicy: add param CopyEncryptionConfiguration.
+- Update API CreateAutoSnapshotPolicy: update response param.
+- Update API DescribeAutoSnapshotPolicyEx: update response param.
+- Update API ModifyAutoSnapshotPolicyEx: add param CopyEncryptionConfiguration.
+- Update API RunInstances: update param NetworkInterface.
+
+
 2024-02-02 Version: 4.0.0
 - Support API CreateSavingsPlan.
 - Support API DescribeSavingsPlanEstimation.

@@ -4852,6 +4852,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.copied_snapshots_retention_days):
             query['CopiedSnapshotsRetentionDays'] = request.copied_snapshots_retention_days
+        if not UtilClient.is_unset(request.copy_encryption_configuration):
+            query['CopyEncryptionConfiguration'] = request.copy_encryption_configuration
         if not UtilClient.is_unset(request.enable_cross_region_copy):
             query['EnableCrossRegionCopy'] = request.enable_cross_region_copy
         if not UtilClient.is_unset(request.owner_id):
@@ -4917,6 +4919,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.copied_snapshots_retention_days):
             query['CopiedSnapshotsRetentionDays'] = request.copied_snapshots_retention_days
+        if not UtilClient.is_unset(request.copy_encryption_configuration):
+            query['CopyEncryptionConfiguration'] = request.copy_encryption_configuration
         if not UtilClient.is_unset(request.enable_cross_region_copy):
             query['EnableCrossRegionCopy'] = request.enable_cross_region_copy
         if not UtilClient.is_unset(request.owner_id):
@@ -18852,14 +18856,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeDisksResponse:
         """
-        You can specify multiple request parameters such as `RegionId`, `ZoneId`, `DiskIds`, and `InstanceId` as filters. Specified parameters are evaluated by using the "AND" operator. If you specify more than one filter, the records that match all filters are returned.
-        *   The value of the `DiskIds` parameter is a JSON array. If it is not specified, it is not used as a filter, and if `DiskIds` is set to an empty JSON array, it is regarded as a valid filter, and an empty result is returned.
+        ### [](#)Usage notes
+        *   You can specify multiple request parameters such as `RegionId`, `ZoneId`, `DiskIds`, and `InstanceId` as filters. The specified parameters are evaluated by using the "AND" operator. If you specify more than one filter, the records that match all filters are returned.
+        *   The value of `DiskIds` is a JSON array. If you do not specify DiskIds, the parameter is not used as a filter condition. If you set `DiskIds` to an empty JSON array, the parameter is regarded as a valid filter, and an empty result is returned.
         *   You can use one of the following methods to check the responses:
-        *   Method 1: Use `NextToken` to configure the query token. Set the value to the `NextToken` value that was returned in the last call made to the DescribeDisks operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
-        *   Method 2: Use `PageSize` to specify the number of entries to return on each page and then use `PageNumber` to specify the page number to return.
-        You can use only one of the preceding methods. If you require a large number of entries to be returned, we recommend that you use method 1. If `NextToken` is specified, `PageSize` and `PageNumber` do not take effect and `TotalCount` in the response is invalid.
-        *   A disk that has the multi-attach feature enabled can be attached to multiple instances. You can query the attachment information of the disk based on the `Attachment` values in the response.
-        When you call an API operation by using Alibaba Cloud CLI, you must specify the request parameter values of different data types in the required formats. For more information, see [Parameter format overview](~~110340~~).
+        *   Method 1: Use `NextToken` to specify the pagination token. Set the value to the `NextToken` value that is obtained from the previous query. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
+        *   Method 2: Use `PageSize` to specify the number of entries to return on each page, and then use `PageNumber` to specify the number of the page to return.
+        You can use only one of the preceding methods. If a large number of entries are to be returned, we recommend that you use Method 1. If `NextToken` is specified, `PageSize` and `PageNumber` do not take effect and `TotalCount` in the response is invalid.
+        *   You can attach a disk for which the multi-attach feature is enabled to multiple instances. You can query the attachment information of the disk based on the `Attachment` values in the response.
+        When you call an API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in the required formats. For more information, see [Parameter format overview](~~110340~~).
         
         @param request: DescribeDisksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18960,14 +18965,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeDisksResponse:
         """
-        You can specify multiple request parameters such as `RegionId`, `ZoneId`, `DiskIds`, and `InstanceId` as filters. Specified parameters are evaluated by using the "AND" operator. If you specify more than one filter, the records that match all filters are returned.
-        *   The value of the `DiskIds` parameter is a JSON array. If it is not specified, it is not used as a filter, and if `DiskIds` is set to an empty JSON array, it is regarded as a valid filter, and an empty result is returned.
+        ### [](#)Usage notes
+        *   You can specify multiple request parameters such as `RegionId`, `ZoneId`, `DiskIds`, and `InstanceId` as filters. The specified parameters are evaluated by using the "AND" operator. If you specify more than one filter, the records that match all filters are returned.
+        *   The value of `DiskIds` is a JSON array. If you do not specify DiskIds, the parameter is not used as a filter condition. If you set `DiskIds` to an empty JSON array, the parameter is regarded as a valid filter, and an empty result is returned.
         *   You can use one of the following methods to check the responses:
-        *   Method 1: Use `NextToken` to configure the query token. Set the value to the `NextToken` value that was returned in the last call made to the DescribeDisks operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
-        *   Method 2: Use `PageSize` to specify the number of entries to return on each page and then use `PageNumber` to specify the page number to return.
-        You can use only one of the preceding methods. If you require a large number of entries to be returned, we recommend that you use method 1. If `NextToken` is specified, `PageSize` and `PageNumber` do not take effect and `TotalCount` in the response is invalid.
-        *   A disk that has the multi-attach feature enabled can be attached to multiple instances. You can query the attachment information of the disk based on the `Attachment` values in the response.
-        When you call an API operation by using Alibaba Cloud CLI, you must specify the request parameter values of different data types in the required formats. For more information, see [Parameter format overview](~~110340~~).
+        *   Method 1: Use `NextToken` to specify the pagination token. Set the value to the `NextToken` value that is obtained from the previous query. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
+        *   Method 2: Use `PageSize` to specify the number of entries to return on each page, and then use `PageNumber` to specify the number of the page to return.
+        You can use only one of the preceding methods. If a large number of entries are to be returned, we recommend that you use Method 1. If `NextToken` is specified, `PageSize` and `PageNumber` do not take effect and `TotalCount` in the response is invalid.
+        *   You can attach a disk for which the multi-attach feature is enabled to multiple instances. You can query the attachment information of the disk based on the `Attachment` values in the response.
+        When you call an API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in the required formats. For more information, see [Parameter format overview](~~110340~~).
         
         @param request: DescribeDisksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19067,14 +19073,15 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeDisksRequest,
     ) -> ecs_20140526_models.DescribeDisksResponse:
         """
-        You can specify multiple request parameters such as `RegionId`, `ZoneId`, `DiskIds`, and `InstanceId` as filters. Specified parameters are evaluated by using the "AND" operator. If you specify more than one filter, the records that match all filters are returned.
-        *   The value of the `DiskIds` parameter is a JSON array. If it is not specified, it is not used as a filter, and if `DiskIds` is set to an empty JSON array, it is regarded as a valid filter, and an empty result is returned.
+        ### [](#)Usage notes
+        *   You can specify multiple request parameters such as `RegionId`, `ZoneId`, `DiskIds`, and `InstanceId` as filters. The specified parameters are evaluated by using the "AND" operator. If you specify more than one filter, the records that match all filters are returned.
+        *   The value of `DiskIds` is a JSON array. If you do not specify DiskIds, the parameter is not used as a filter condition. If you set `DiskIds` to an empty JSON array, the parameter is regarded as a valid filter, and an empty result is returned.
         *   You can use one of the following methods to check the responses:
-        *   Method 1: Use `NextToken` to configure the query token. Set the value to the `NextToken` value that was returned in the last call made to the DescribeDisks operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
-        *   Method 2: Use `PageSize` to specify the number of entries to return on each page and then use `PageNumber` to specify the page number to return.
-        You can use only one of the preceding methods. If you require a large number of entries to be returned, we recommend that you use method 1. If `NextToken` is specified, `PageSize` and `PageNumber` do not take effect and `TotalCount` in the response is invalid.
-        *   A disk that has the multi-attach feature enabled can be attached to multiple instances. You can query the attachment information of the disk based on the `Attachment` values in the response.
-        When you call an API operation by using Alibaba Cloud CLI, you must specify the request parameter values of different data types in the required formats. For more information, see [Parameter format overview](~~110340~~).
+        *   Method 1: Use `NextToken` to specify the pagination token. Set the value to the `NextToken` value that is obtained from the previous query. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
+        *   Method 2: Use `PageSize` to specify the number of entries to return on each page, and then use `PageNumber` to specify the number of the page to return.
+        You can use only one of the preceding methods. If a large number of entries are to be returned, we recommend that you use Method 1. If `NextToken` is specified, `PageSize` and `PageNumber` do not take effect and `TotalCount` in the response is invalid.
+        *   You can attach a disk for which the multi-attach feature is enabled to multiple instances. You can query the attachment information of the disk based on the `Attachment` values in the response.
+        When you call an API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in the required formats. For more information, see [Parameter format overview](~~110340~~).
         
         @param request: DescribeDisksRequest
         @return: DescribeDisksResponse
@@ -19087,14 +19094,15 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeDisksRequest,
     ) -> ecs_20140526_models.DescribeDisksResponse:
         """
-        You can specify multiple request parameters such as `RegionId`, `ZoneId`, `DiskIds`, and `InstanceId` as filters. Specified parameters are evaluated by using the "AND" operator. If you specify more than one filter, the records that match all filters are returned.
-        *   The value of the `DiskIds` parameter is a JSON array. If it is not specified, it is not used as a filter, and if `DiskIds` is set to an empty JSON array, it is regarded as a valid filter, and an empty result is returned.
+        ### [](#)Usage notes
+        *   You can specify multiple request parameters such as `RegionId`, `ZoneId`, `DiskIds`, and `InstanceId` as filters. The specified parameters are evaluated by using the "AND" operator. If you specify more than one filter, the records that match all filters are returned.
+        *   The value of `DiskIds` is a JSON array. If you do not specify DiskIds, the parameter is not used as a filter condition. If you set `DiskIds` to an empty JSON array, the parameter is regarded as a valid filter, and an empty result is returned.
         *   You can use one of the following methods to check the responses:
-        *   Method 1: Use `NextToken` to configure the query token. Set the value to the `NextToken` value that was returned in the last call made to the DescribeDisks operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
-        *   Method 2: Use `PageSize` to specify the number of entries to return on each page and then use `PageNumber` to specify the page number to return.
-        You can use only one of the preceding methods. If you require a large number of entries to be returned, we recommend that you use method 1. If `NextToken` is specified, `PageSize` and `PageNumber` do not take effect and `TotalCount` in the response is invalid.
-        *   A disk that has the multi-attach feature enabled can be attached to multiple instances. You can query the attachment information of the disk based on the `Attachment` values in the response.
-        When you call an API operation by using Alibaba Cloud CLI, you must specify the request parameter values of different data types in the required formats. For more information, see [Parameter format overview](~~110340~~).
+        *   Method 1: Use `NextToken` to specify the pagination token. Set the value to the `NextToken` value that is obtained from the previous query. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
+        *   Method 2: Use `PageSize` to specify the number of entries to return on each page, and then use `PageNumber` to specify the number of the page to return.
+        You can use only one of the preceding methods. If a large number of entries are to be returned, we recommend that you use Method 1. If `NextToken` is specified, `PageSize` and `PageNumber` do not take effect and `TotalCount` in the response is invalid.
+        *   You can attach a disk for which the multi-attach feature is enabled to multiple instances. You can query the attachment information of the disk based on the `Attachment` values in the response.
+        When you call an API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in the required formats. For more information, see [Parameter format overview](~~110340~~).
         
         @param request: DescribeDisksRequest
         @return: DescribeDisksResponse
@@ -32459,6 +32467,15 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.GetInstanceConsoleOutputRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.GetInstanceConsoleOutputResponse:
+        """
+        ECS is a virtualized cloud-based service and cannot be connected to display devices. Alibaba Cloud caches system command outputs for the last start, restart, or shutdown of ECS instances. You can call the GetInstanceConsoleOutput operation to query the command outputs.
+        *   For instances of the retired instance types, you cannot obtain command outputs. For more information, see [Retired instance types](~~55263~~).
+        *   You cannot obtain the command outputs of Windows instances.
+        
+        @param request: GetInstanceConsoleOutputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceConsoleOutputResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -32501,6 +32518,15 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.GetInstanceConsoleOutputRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.GetInstanceConsoleOutputResponse:
+        """
+        ECS is a virtualized cloud-based service and cannot be connected to display devices. Alibaba Cloud caches system command outputs for the last start, restart, or shutdown of ECS instances. You can call the GetInstanceConsoleOutput operation to query the command outputs.
+        *   For instances of the retired instance types, you cannot obtain command outputs. For more information, see [Retired instance types](~~55263~~).
+        *   You cannot obtain the command outputs of Windows instances.
+        
+        @param request: GetInstanceConsoleOutputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceConsoleOutputResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -32542,6 +32568,14 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.GetInstanceConsoleOutputRequest,
     ) -> ecs_20140526_models.GetInstanceConsoleOutputResponse:
+        """
+        ECS is a virtualized cloud-based service and cannot be connected to display devices. Alibaba Cloud caches system command outputs for the last start, restart, or shutdown of ECS instances. You can call the GetInstanceConsoleOutput operation to query the command outputs.
+        *   For instances of the retired instance types, you cannot obtain command outputs. For more information, see [Retired instance types](~~55263~~).
+        *   You cannot obtain the command outputs of Windows instances.
+        
+        @param request: GetInstanceConsoleOutputRequest
+        @return: GetInstanceConsoleOutputResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_instance_console_output_with_options(request, runtime)
 
@@ -32549,6 +32583,14 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.GetInstanceConsoleOutputRequest,
     ) -> ecs_20140526_models.GetInstanceConsoleOutputResponse:
+        """
+        ECS is a virtualized cloud-based service and cannot be connected to display devices. Alibaba Cloud caches system command outputs for the last start, restart, or shutdown of ECS instances. You can call the GetInstanceConsoleOutput operation to query the command outputs.
+        *   For instances of the retired instance types, you cannot obtain command outputs. For more information, see [Retired instance types](~~55263~~).
+        *   You cannot obtain the command outputs of Windows instances.
+        
+        @param request: GetInstanceConsoleOutputRequest
+        @return: GetInstanceConsoleOutputResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_instance_console_output_with_options_async(request, runtime)
 
@@ -34634,13 +34676,19 @@ class Client(OpenApiClient):
 
     def modify_auto_snapshot_policy_ex_with_options(
         self,
-        request: ecs_20140526_models.ModifyAutoSnapshotPolicyExRequest,
+        tmp_req: ecs_20140526_models.ModifyAutoSnapshotPolicyExRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyAutoSnapshotPolicyExResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ecs_20140526_models.ModifyAutoSnapshotPolicyExShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.copy_encryption_configuration):
+            request.copy_encryption_configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.copy_encryption_configuration, 'CopyEncryptionConfiguration', 'json')
         query = {}
         if not UtilClient.is_unset(request.copied_snapshots_retention_days):
             query['CopiedSnapshotsRetentionDays'] = request.copied_snapshots_retention_days
+        if not UtilClient.is_unset(request.copy_encryption_configuration_shrink):
+            query['CopyEncryptionConfiguration'] = request.copy_encryption_configuration_shrink
         if not UtilClient.is_unset(request.enable_cross_region_copy):
             query['EnableCrossRegionCopy'] = request.enable_cross_region_copy
         if not UtilClient.is_unset(request.owner_id):
@@ -34684,13 +34732,19 @@ class Client(OpenApiClient):
 
     async def modify_auto_snapshot_policy_ex_with_options_async(
         self,
-        request: ecs_20140526_models.ModifyAutoSnapshotPolicyExRequest,
+        tmp_req: ecs_20140526_models.ModifyAutoSnapshotPolicyExRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyAutoSnapshotPolicyExResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ecs_20140526_models.ModifyAutoSnapshotPolicyExShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.copy_encryption_configuration):
+            request.copy_encryption_configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.copy_encryption_configuration, 'CopyEncryptionConfiguration', 'json')
         query = {}
         if not UtilClient.is_unset(request.copied_snapshots_retention_days):
             query['CopiedSnapshotsRetentionDays'] = request.copied_snapshots_retention_days
+        if not UtilClient.is_unset(request.copy_encryption_configuration_shrink):
+            query['CopyEncryptionConfiguration'] = request.copy_encryption_configuration_shrink
         if not UtilClient.is_unset(request.enable_cross_region_copy):
             query['EnableCrossRegionCopy'] = request.enable_cross_region_copy
         if not UtilClient.is_unset(request.owner_id):
@@ -40526,7 +40580,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyPrepayInstanceSpecResponse:
         """
-        Before you call this operation, we recommend that you familiarize yourself with the billing methods, pricing schedule, and refund rules of [ECS](https://www.alibabacloud.com/product/ecs#pricing). For more information, see [Refund rules for real-time configuration downgrade](~~201955~~).
+        Before you call this operation, we recommend that you familiarize yourself with the billing methods, pricing schedule, and refund rules of [ECS](https://www.alibabacloud.com/product/ecs#pricing). For more information, see [Refund rules for real-time configuration downgrade](~~476339~~).
         Before you change the instance type of a subscription instance, you can call the [DescribeResourcesModification](~~66187~~) operation to query the instance types to which you can change the instance. You can use ECS SDK for Python to query the instance types to which you can change. For more information, see [Query available resources for configuration changes](~~109517~~).
         When you call this operation, take note of the following items:
         *   You cannot change the instance type of an expired instance. Renew the instance and try again.
@@ -40604,7 +40658,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyPrepayInstanceSpecResponse:
         """
-        Before you call this operation, we recommend that you familiarize yourself with the billing methods, pricing schedule, and refund rules of [ECS](https://www.alibabacloud.com/product/ecs#pricing). For more information, see [Refund rules for real-time configuration downgrade](~~201955~~).
+        Before you call this operation, we recommend that you familiarize yourself with the billing methods, pricing schedule, and refund rules of [ECS](https://www.alibabacloud.com/product/ecs#pricing). For more information, see [Refund rules for real-time configuration downgrade](~~476339~~).
         Before you change the instance type of a subscription instance, you can call the [DescribeResourcesModification](~~66187~~) operation to query the instance types to which you can change the instance. You can use ECS SDK for Python to query the instance types to which you can change. For more information, see [Query available resources for configuration changes](~~109517~~).
         When you call this operation, take note of the following items:
         *   You cannot change the instance type of an expired instance. Renew the instance and try again.
@@ -40681,7 +40735,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyPrepayInstanceSpecRequest,
     ) -> ecs_20140526_models.ModifyPrepayInstanceSpecResponse:
         """
-        Before you call this operation, we recommend that you familiarize yourself with the billing methods, pricing schedule, and refund rules of [ECS](https://www.alibabacloud.com/product/ecs#pricing). For more information, see [Refund rules for real-time configuration downgrade](~~201955~~).
+        Before you call this operation, we recommend that you familiarize yourself with the billing methods, pricing schedule, and refund rules of [ECS](https://www.alibabacloud.com/product/ecs#pricing). For more information, see [Refund rules for real-time configuration downgrade](~~476339~~).
         Before you change the instance type of a subscription instance, you can call the [DescribeResourcesModification](~~66187~~) operation to query the instance types to which you can change the instance. You can use ECS SDK for Python to query the instance types to which you can change. For more information, see [Query available resources for configuration changes](~~109517~~).
         When you call this operation, take note of the following items:
         *   You cannot change the instance type of an expired instance. Renew the instance and try again.
@@ -40705,7 +40759,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyPrepayInstanceSpecRequest,
     ) -> ecs_20140526_models.ModifyPrepayInstanceSpecResponse:
         """
-        Before you call this operation, we recommend that you familiarize yourself with the billing methods, pricing schedule, and refund rules of [ECS](https://www.alibabacloud.com/product/ecs#pricing). For more information, see [Refund rules for real-time configuration downgrade](~~201955~~).
+        Before you call this operation, we recommend that you familiarize yourself with the billing methods, pricing schedule, and refund rules of [ECS](https://www.alibabacloud.com/product/ecs#pricing). For more information, see [Refund rules for real-time configuration downgrade](~~476339~~).
         Before you change the instance type of a subscription instance, you can call the [DescribeResourcesModification](~~66187~~) operation to query the instance types to which you can change the instance. You can use ECS SDK for Python to query the instance types to which you can change. For more information, see [Query available resources for configuration changes](~~109517~~).
         When you call this operation, take note of the following items:
         *   You cannot change the instance type of an expired instance. Renew the instance and try again.
@@ -45048,7 +45102,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RenewDedicatedHostsResponse:
         """
-        The IDs of dedicated hosts. You can specify the IDs of up to 100 subscription dedicated hosts. Specify the dedicated host IDs in a JSON array. Example: `["dh-xxxxxxxxx", "dh-yyyyyyyyy", … "dh-zzzzzzzzz"]`. Separate the IDs with commas (,).
+        Valid vouchers can be applied when you renew the subscription plan dedicated hosts. In order to use vouchers, make sure that your account supports the credit card payment method.
         
         @param request: RenewDedicatedHostsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -45099,7 +45153,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RenewDedicatedHostsResponse:
         """
-        The IDs of dedicated hosts. You can specify the IDs of up to 100 subscription dedicated hosts. Specify the dedicated host IDs in a JSON array. Example: `["dh-xxxxxxxxx", "dh-yyyyyyyyy", … "dh-zzzzzzzzz"]`. Separate the IDs with commas (,).
+        Valid vouchers can be applied when you renew the subscription plan dedicated hosts. In order to use vouchers, make sure that your account supports the credit card payment method.
         
         @param request: RenewDedicatedHostsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -45149,7 +45203,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RenewDedicatedHostsRequest,
     ) -> ecs_20140526_models.RenewDedicatedHostsResponse:
         """
-        The IDs of dedicated hosts. You can specify the IDs of up to 100 subscription dedicated hosts. Specify the dedicated host IDs in a JSON array. Example: `["dh-xxxxxxxxx", "dh-yyyyyyyyy", … "dh-zzzzzzzzz"]`. Separate the IDs with commas (,).
+        Valid vouchers can be applied when you renew the subscription plan dedicated hosts. In order to use vouchers, make sure that your account supports the credit card payment method.
         
         @param request: RenewDedicatedHostsRequest
         @return: RenewDedicatedHostsResponse
@@ -45162,7 +45216,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RenewDedicatedHostsRequest,
     ) -> ecs_20140526_models.RenewDedicatedHostsResponse:
         """
-        The IDs of dedicated hosts. You can specify the IDs of up to 100 subscription dedicated hosts. Specify the dedicated host IDs in a JSON array. Example: `["dh-xxxxxxxxx", "dh-yyyyyyyyy", … "dh-zzzzzzzzz"]`. Separate the IDs with commas (,).
+        Valid vouchers can be applied when you renew the subscription plan dedicated hosts. In order to use vouchers, make sure that your account supports the credit card payment method.
         
         @param request: RenewDedicatedHostsRequest
         @return: RenewDedicatedHostsResponse
@@ -47042,27 +47096,116 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RunInstancesResponse:
         """
-        **Preparations**:
-        * The real-name verification is complete.
-        * Cost estimation: Learn about the billing methods of ECS resources. For more information, see [Billing overview](~~25398~~).
-        * Instance type selection: Call the [DescribeInstanceTypes](~~25620~~) operation to query the performance data of instance types, or see [Best practices for instance type selection](~~58291~~) to learn about how to select instance types.
-        * Query for available resources: Call the [DescribeAvailableResource](~~66186~~) operation to query available resources in a specific region or zone.
-        * Network planning: Make sure that you have security groups available for use. For more information, see [CreateSecurityGroup](~~25553~~). Before you create an instance of the Virtual Private Cloud (VPC) type, create a VPC in the region where you want to create the instance. For more information, see [Create a VPC](~~65430~~).
-        * **Precautions**:
-        * You can create a maximum of 100 instances at a time.
-        * You can use the `AutoReleaseTime` parameter to set the time when you want the instances to be automatically released.
-        * After instances are created, you can call the [DescribeInstances](~~25506~~) operation to check their states.
-        * By default, instances automatically start after they are created. Instances are ready for use when they are in the Running (`Running`) state.
-        * As of November 27, 2020, the maximum bandwidth value available for you to create ECS instances or to change ECS instance configurations is subject to the throttling policy for your account. To increase the maximum bandwidth value, submit a ticket. The throttling policy imposes the following constraints: Within a single region, the total maximum bandwidth value of all instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s and that of all instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
-        * Different from the [CreateInstance](~~25499~~) operation, the `RunInstances` operation allows the system to assign public IP addresses to the new instances if you set the `InternetMaxBandwidthOut` parameter to a value greater than 0.
-        * When you call the RunInstances operation to create an instance, you can use one of the following methods to bind a primary elastic network interface (ENI) to the instance. Note that you can use only one of the methods to configure the primary ENI in each call. Otherwise, the call fails and an error message is returned. Specify parameters such as `SecurityGroupId`, `VSwitchId`, `PrivateIpAddress`, `NetworkInterfaceQueueNumber`, and `Ipv6AddressCount` to configure the primary ENI. Specify parameters that start with `NetworkInterface.N.` to configure the primary and secondary ENIs. If `NetworkInterface.N.InstanceType` is set to `Primary`, the primary ENI is bound to the instance. If `NetworkInterface.N.InstanceType` is set to `Secondary` or left empty, a secondary ENI is bound to the instance.
-        * After you call this operation, an error is returned if a parameter is invalid or if available resources are insufficient. For more information, see the "Error codes" section of this topic.
-        > If the `QuotaExceed.ElasticQuota` error is returned when you call this operation, you have reached the maximum number of instances of the specified instance type that can be created within the specified region or the maximum number of vCPUs for all instance types in a zone. You can go to the [ECS console](https://ecs.console.aliyun.com/?spm=a2c8b.12215451.favorites.decs.5e3a336aMGTtzy#/privileges/quota) or [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas) to request a quota increase.
-        * **Best practices**:
-        * We recommend that you use auto provisioning groups in the following scenarios: Resources are insufficient to create more than 100 instances at a time, you want to quickly create instances regardless of resource configurations such as instance types or zones, or you want to create instances to consume a specific total number of vCPUs regardless of the number of the instances. You can call the [CreateAutoProvisioningGroup](~~122738~~) operation to create an auto provisioning group to deploy an instance cluster across different billing methods, instance families, and zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](~~200772~~).
-        * You can call the `RunInstances` operation to batch create instances. To better manage and search for these instances, we recommend that you specify tags for the instances by using the `Tag.N.Key` and `Tag.N.Value` parameters. You can also append incremental suffixes (`UniqueSuffix`) to the hostname (`HostName`) and to the instance name (`InstanceName`).
-        * A launch template contains parameters required to create an instance so that you do not have to specify these parameters every time you create instances. You can call the [CreateLaunchTemplate](~~74686~~) operation to create a launch template. Then, in your request to call the `RunInstances` operation, you can specify the `LaunchTemplateId` and `LaunchTemplateVersion` parameters to use the launch template.
-        * When you create an instance in the [OpenAPI Explorer](https://api.alibabacloud.com/api/Ecs), you can view the best practices for calling the `RunInstances` operation. In the Preview step, click View OpenAPI in the Configurations Selected section. In the dialog box that appears, the left-side **API Workflow** section shows the operations and request parameters that are related to the `RunInstances` operation. The right-side section shows SDK examples for the **Java** and **Python** programming languages.
+        ## [](#)Usage notes
+        *   **Preparations**:
+        *   Cost estimation: Learn about the billing methods of ECS resources. For more information, see [Billing overview](~~25398~~).
+        *   Instance type selection: Call the [DescribeInstanceTypes](~~25620~~) operation to query the performance data of instance types, or see [Best practices for instance type selection](~~58291~~) to learn about how to select instance types.
+        *   Query of available resources: Call the [DescribeAvailableResource](~~66186~~) operation to query resources available in a specific region or zone.
+        *   Network planning: Make sure that you have security groups available for use. For more information, see [CreateSecurityGroup](~~25553~~). Before you create an instance of the Virtual Private Cloud (VPC) type, create a VPC in the region where you want to create the instance. For more information, see [Create a VPC](~~65430~~).
+        *   **Comparison with CreateInstance**:
+        RunInstances has the following advantages over CreateInstance:
+        *   You can call the RunInstances operation to create up to 100 instances at a time, instead of repeatedly calling the CreateInstance operation.
+        *   After an instance is created, the instance enters the `Starting` state and then transitions to the `Running` state. You do not need to call the [StartInstance](~~25500~~) operation to start the instance.
+        *   When you create an instance, you can specify `InternetMaxBandwidthOut` to assign a public IP address to the instance, without the need to call the [AllocatePublicIpAddress](~~25544~~) operation.
+        *   You can use `AutoReleaseTime` to set the time when to automatically release the instances, without the need to call the [ModifyInstanceAutoReleaseTime](~~47576~~) operation.
+        *   You can specify `LaunchTemplateId` and `LaunchTemplateVersion` to use a launch template. This way, you do not need to configure a large number of parameters every time you create instances.
+        *   You can specify `UniqueSuffix` to batch configure sequential names or hostnames for multiple instances for easy management and retrieval.
+        *   When you call the RunInstances operation to create instances, you can configure the enclave-based confidential computing mode and the trusted system mode for the instances.
+        *   You can set `NetworkOptions.EnableJumboFrame` to true to enable the Jumbo Frames feature when you create instances. For more information, see [MTUs](~~200512~~).
+        *   **Considerations**:
+        *   You can create up to 100 instances at a time.
+        *   You can use `AutoReleaseTime` to set the time when to automatically release the instances.
+        *   After you create instances and obtain their IDs, you can call the [DescribeInstances](~~25506~~) operation to check the status of the instances.
+        *   By default, instances automatically start after they are created. Instances are ready for use when they are in the Running (`Running`) state.
+        *   Starting November 27, 2020, the maximum bandwidth value that is available for you to create ECS instances or change ECS instance configurations is subject to the throttling policy of your account. To increase the maximum bandwidth value, submit a ticket. The throttling policy imposes the following constraints: In a single region, the total maximum bandwidth value of all instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s and the total maximum bandwidth value of all instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
+        *   Different from the [CreateInstance](~~25499~~) operation, the `RunInstances` operation allows the system to assign public IP addresses to new instances if you set `InternetMaxBandwidthOut` to a value greater than 0.
+        *   When you call the RunInstances operation to create an instance, you can use one of the following methods to attach a primary elastic network interface (ENI) to the instance. Take note that you can use only one of the methods to configure the primary ENI in each call. Otherwise, the call fails and an error message is returned. - Specify parameters such as `SecurityGroupId`, `VSwitchId`, `PrivateIpAddress`, `NetworkInterfaceQueueNumber`, and `Ipv6AddressCount` to configure the primary ENI. - Specify parameters that start with `NetworkInterface.N.` to configure the primary and secondary ENIs. If `NetworkInterface.N.InstanceType` is set to `Primary`, the primary ENI is attached to the instance. If `NetworkInterface.N.InstanceType` is set to `Secondary` or left empty, a secondary ENI is attached to the instance.
+        *   If a parameter is invalid or available resources are insufficient, an error is returned after you call the RunInstances operation. For more information, see the "Error codes" section of this topic.
+        - If the maximum number of instances of the specified instance type that can be created in the specified region or the maximum number of vCPUs for all instance types in a zone is exceeded, the QuotaExceed.ElasticQuota error is returned when you call the operation. You can go to the ECS console (https://ecs.console.aliyun.com/?spm=a2c8b.12215451.favorites.decs.5e3a336aMGTtzy#/privileges/quota) or Quota Center (https://quotas.console.aliyun.com/products/ecs/quotas) to request a quota increase. If the capacity of disks that belong to the specified disk category exceeds the quota limit for the specified zone, the QuotaExceed.DiskCapacity error is returned when you call the operation. You can go to the Quota Center (https://quotas.console.aliyun.com/products/disk/quotas) to view and increase the disk capacity quota.
+        *   **Best practices**:
+        *   We recommend that you use auto provisioning groups in the following scenarios: Resources are insufficient to create more than 100 instances at a time, you want to quickly create instances regardless of resource configurations such as instance types or zones, or you want to create instances to consume a specific total number of vCPUs regardless of the number of instances. You can call the [CreateAutoProvisioningGroup](~~122738~~) operation to create an auto provisioning group to deploy an instance cluster across different zones and by using different billing methods and instance families. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](~~200772~~).
+        *   You can call the `RunInstances` operation to batch create instances. To better manage and search for the instances, we recommend that you add tags to the instances by specifying `Tag.N.Key` and `Tag.N.Value`. You can also append incremental suffixes (`UniqueSuffix`) to the hostname (`HostName`) and to the instance name (`InstanceName`).
+        *   A launch template contains parameters required to create an instance so that you do not have to specify these parameters every time you create instances. You can call the [CreateLaunchTemplate](~~74686~~) operation to create a launch template. Then, in your request to call the `RunInstances` operation, you can specify `LaunchTemplateId` and `LaunchTemplateVersion` to use the launch template.
+        *   [](https://api.alibabacloud.com/api/Ecs/)``****``********\
+        ### [](#-1)Example 1: Create a subscription instance
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a one-month subscription instance of the ecs.g7.large instance type in the China (Hangzhou) region, and enable auto-renewal to renew the instance for one month on expiration. The instance uses a 40 GiB enhanced SSD (ESSD) as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        http(s)://ecs.aliyuncs.com/?Action=RunInstances
+        &RegionId=cn-hangzhou
+        &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
+        &InstanceType=ecs.g7.large
+        &SecurityGroupId=sg-bp150uqocpf9jj70****\
+        &VSwitchId=vsw-bp1qo7s91cbch5i4l****\
+        &InstanceChargeType=PrePaid
+        &SystemDisk.Size=40
+        &DataDisk.1.Size=100
+        &DataDisk.1.Category=cloud_essd
+        &SystemDisk.Category=cloud_essd
+        &Amount=1
+        &Period=1
+        &PeriodUnit=Month
+        &AutoRenew=true
+        &AutoRenewPeriod=1
+        &HostName=ECS-test
+        &Password=ECS@test1234
+        &InternetMaxBandwidthOut=10
+        &<Common request parameters>
+        ### [](#-2)Example 2: Create a pay-as-you-go instance
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a pay-as-you-go instance of the ecs.g7.large instance type in the China (Hangzhou) region. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        http(s)://ecs.aliyuncs.com/?Action=RunInstances
+        &RegionId=cn-hangzhou
+        &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
+        &InstanceType=ecs.g7.large
+        &SecurityGroupId=sg-bp150uqocpf9jj70****\
+        &VSwitchId=vsw-bp1qo7s91cbch5i4l****\
+        &InstanceChargeType=PostPaid
+        &SystemDisk.Size=40
+        &DataDisk.1.Size=100
+        &DataDisk.1.Category=cloud_essd
+        &SystemDisk.Category=cloud_essd
+        &HostName=ECS-test
+        &Password=ECS@test1234
+        &InternetMaxBandwidthOut=10
+        &<Common request parameters>
+        ### [](#-3)Example 3: Create a preemptible instance
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a preemptible instance of the ecs.g7.large instance type that has a 1-hour protection period in the China (Hangzhou) region. The market price of the instance type at the time of purchase is automatically used as the bidding price. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        http(s)://ecs.aliyuncs.com/?Action=RunInstances
+        &RegionId=cn-hangzhou
+        &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
+        &InstanceType=ecs.g7.large
+        &SecurityGroupId=sg-bp150uqocpf9jj70****\
+        &VSwitchId=vsw-bp1qo7s91cbch5i4l****\
+        &InstanceChargeType=PostPaid
+        &SystemDisk.Size=40
+        &DataDisk.1.Size=100
+        &DataDisk.1.Category=cloud_essd
+        &SystemDisk.Category=cloud_essd
+        &HostName=ECS-test
+        &Password=ECS@test1234
+        &InternetMaxBandwidthOut=10
+        &SpotStrategy=SpotAsPriceGo
+        &SpotDuration=1
+        &<Common request parameters>
+        ### [](#-4)Example 4: Create a subscription instance on a dedicated host
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a one-month subscription instance of the ecs.g7.large instance type on the dh-bp12w10wll9xcjq2\\*\\*\\*\\* dedicated host. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        http(s)://ecs.aliyuncs.com/?Action=RunInstances
+        &RegionId=cn-hangzhou
+        &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
+        &InstanceType=ecs.g7.large
+        &SecurityGroupId=sg-bp150uqocpf9jj70****\
+        &VSwitchId=vsw-bp1qo7s91cbch5i4l****\
+        &InstanceChargeType=PrePaid
+        &Amount=1
+        &Period=1
+        &PeriodUnit=Month
+        &SystemDisk.Size=40
+        &DataDisk.1.Size=100
+        &DataDisk.1.Category=cloud_essd
+        &SystemDisk.Category=cloud_essd
+        &HostName=ECS-test
+        &Password=ECS@test1234
+        &InternetMaxBandwidthOut=10
+        &DedicatedHostId=dh-bp12w10wll9xcjq2****\
+        &<Common request parameters>
         
         @param request: RunInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -47249,27 +47392,116 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RunInstancesResponse:
         """
-        **Preparations**:
-        * The real-name verification is complete.
-        * Cost estimation: Learn about the billing methods of ECS resources. For more information, see [Billing overview](~~25398~~).
-        * Instance type selection: Call the [DescribeInstanceTypes](~~25620~~) operation to query the performance data of instance types, or see [Best practices for instance type selection](~~58291~~) to learn about how to select instance types.
-        * Query for available resources: Call the [DescribeAvailableResource](~~66186~~) operation to query available resources in a specific region or zone.
-        * Network planning: Make sure that you have security groups available for use. For more information, see [CreateSecurityGroup](~~25553~~). Before you create an instance of the Virtual Private Cloud (VPC) type, create a VPC in the region where you want to create the instance. For more information, see [Create a VPC](~~65430~~).
-        * **Precautions**:
-        * You can create a maximum of 100 instances at a time.
-        * You can use the `AutoReleaseTime` parameter to set the time when you want the instances to be automatically released.
-        * After instances are created, you can call the [DescribeInstances](~~25506~~) operation to check their states.
-        * By default, instances automatically start after they are created. Instances are ready for use when they are in the Running (`Running`) state.
-        * As of November 27, 2020, the maximum bandwidth value available for you to create ECS instances or to change ECS instance configurations is subject to the throttling policy for your account. To increase the maximum bandwidth value, submit a ticket. The throttling policy imposes the following constraints: Within a single region, the total maximum bandwidth value of all instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s and that of all instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
-        * Different from the [CreateInstance](~~25499~~) operation, the `RunInstances` operation allows the system to assign public IP addresses to the new instances if you set the `InternetMaxBandwidthOut` parameter to a value greater than 0.
-        * When you call the RunInstances operation to create an instance, you can use one of the following methods to bind a primary elastic network interface (ENI) to the instance. Note that you can use only one of the methods to configure the primary ENI in each call. Otherwise, the call fails and an error message is returned. Specify parameters such as `SecurityGroupId`, `VSwitchId`, `PrivateIpAddress`, `NetworkInterfaceQueueNumber`, and `Ipv6AddressCount` to configure the primary ENI. Specify parameters that start with `NetworkInterface.N.` to configure the primary and secondary ENIs. If `NetworkInterface.N.InstanceType` is set to `Primary`, the primary ENI is bound to the instance. If `NetworkInterface.N.InstanceType` is set to `Secondary` or left empty, a secondary ENI is bound to the instance.
-        * After you call this operation, an error is returned if a parameter is invalid or if available resources are insufficient. For more information, see the "Error codes" section of this topic.
-        > If the `QuotaExceed.ElasticQuota` error is returned when you call this operation, you have reached the maximum number of instances of the specified instance type that can be created within the specified region or the maximum number of vCPUs for all instance types in a zone. You can go to the [ECS console](https://ecs.console.aliyun.com/?spm=a2c8b.12215451.favorites.decs.5e3a336aMGTtzy#/privileges/quota) or [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas) to request a quota increase.
-        * **Best practices**:
-        * We recommend that you use auto provisioning groups in the following scenarios: Resources are insufficient to create more than 100 instances at a time, you want to quickly create instances regardless of resource configurations such as instance types or zones, or you want to create instances to consume a specific total number of vCPUs regardless of the number of the instances. You can call the [CreateAutoProvisioningGroup](~~122738~~) operation to create an auto provisioning group to deploy an instance cluster across different billing methods, instance families, and zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](~~200772~~).
-        * You can call the `RunInstances` operation to batch create instances. To better manage and search for these instances, we recommend that you specify tags for the instances by using the `Tag.N.Key` and `Tag.N.Value` parameters. You can also append incremental suffixes (`UniqueSuffix`) to the hostname (`HostName`) and to the instance name (`InstanceName`).
-        * A launch template contains parameters required to create an instance so that you do not have to specify these parameters every time you create instances. You can call the [CreateLaunchTemplate](~~74686~~) operation to create a launch template. Then, in your request to call the `RunInstances` operation, you can specify the `LaunchTemplateId` and `LaunchTemplateVersion` parameters to use the launch template.
-        * When you create an instance in the [OpenAPI Explorer](https://api.alibabacloud.com/api/Ecs), you can view the best practices for calling the `RunInstances` operation. In the Preview step, click View OpenAPI in the Configurations Selected section. In the dialog box that appears, the left-side **API Workflow** section shows the operations and request parameters that are related to the `RunInstances` operation. The right-side section shows SDK examples for the **Java** and **Python** programming languages.
+        ## [](#)Usage notes
+        *   **Preparations**:
+        *   Cost estimation: Learn about the billing methods of ECS resources. For more information, see [Billing overview](~~25398~~).
+        *   Instance type selection: Call the [DescribeInstanceTypes](~~25620~~) operation to query the performance data of instance types, or see [Best practices for instance type selection](~~58291~~) to learn about how to select instance types.
+        *   Query of available resources: Call the [DescribeAvailableResource](~~66186~~) operation to query resources available in a specific region or zone.
+        *   Network planning: Make sure that you have security groups available for use. For more information, see [CreateSecurityGroup](~~25553~~). Before you create an instance of the Virtual Private Cloud (VPC) type, create a VPC in the region where you want to create the instance. For more information, see [Create a VPC](~~65430~~).
+        *   **Comparison with CreateInstance**:
+        RunInstances has the following advantages over CreateInstance:
+        *   You can call the RunInstances operation to create up to 100 instances at a time, instead of repeatedly calling the CreateInstance operation.
+        *   After an instance is created, the instance enters the `Starting` state and then transitions to the `Running` state. You do not need to call the [StartInstance](~~25500~~) operation to start the instance.
+        *   When you create an instance, you can specify `InternetMaxBandwidthOut` to assign a public IP address to the instance, without the need to call the [AllocatePublicIpAddress](~~25544~~) operation.
+        *   You can use `AutoReleaseTime` to set the time when to automatically release the instances, without the need to call the [ModifyInstanceAutoReleaseTime](~~47576~~) operation.
+        *   You can specify `LaunchTemplateId` and `LaunchTemplateVersion` to use a launch template. This way, you do not need to configure a large number of parameters every time you create instances.
+        *   You can specify `UniqueSuffix` to batch configure sequential names or hostnames for multiple instances for easy management and retrieval.
+        *   When you call the RunInstances operation to create instances, you can configure the enclave-based confidential computing mode and the trusted system mode for the instances.
+        *   You can set `NetworkOptions.EnableJumboFrame` to true to enable the Jumbo Frames feature when you create instances. For more information, see [MTUs](~~200512~~).
+        *   **Considerations**:
+        *   You can create up to 100 instances at a time.
+        *   You can use `AutoReleaseTime` to set the time when to automatically release the instances.
+        *   After you create instances and obtain their IDs, you can call the [DescribeInstances](~~25506~~) operation to check the status of the instances.
+        *   By default, instances automatically start after they are created. Instances are ready for use when they are in the Running (`Running`) state.
+        *   Starting November 27, 2020, the maximum bandwidth value that is available for you to create ECS instances or change ECS instance configurations is subject to the throttling policy of your account. To increase the maximum bandwidth value, submit a ticket. The throttling policy imposes the following constraints: In a single region, the total maximum bandwidth value of all instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s and the total maximum bandwidth value of all instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
+        *   Different from the [CreateInstance](~~25499~~) operation, the `RunInstances` operation allows the system to assign public IP addresses to new instances if you set `InternetMaxBandwidthOut` to a value greater than 0.
+        *   When you call the RunInstances operation to create an instance, you can use one of the following methods to attach a primary elastic network interface (ENI) to the instance. Take note that you can use only one of the methods to configure the primary ENI in each call. Otherwise, the call fails and an error message is returned. - Specify parameters such as `SecurityGroupId`, `VSwitchId`, `PrivateIpAddress`, `NetworkInterfaceQueueNumber`, and `Ipv6AddressCount` to configure the primary ENI. - Specify parameters that start with `NetworkInterface.N.` to configure the primary and secondary ENIs. If `NetworkInterface.N.InstanceType` is set to `Primary`, the primary ENI is attached to the instance. If `NetworkInterface.N.InstanceType` is set to `Secondary` or left empty, a secondary ENI is attached to the instance.
+        *   If a parameter is invalid or available resources are insufficient, an error is returned after you call the RunInstances operation. For more information, see the "Error codes" section of this topic.
+        - If the maximum number of instances of the specified instance type that can be created in the specified region or the maximum number of vCPUs for all instance types in a zone is exceeded, the QuotaExceed.ElasticQuota error is returned when you call the operation. You can go to the ECS console (https://ecs.console.aliyun.com/?spm=a2c8b.12215451.favorites.decs.5e3a336aMGTtzy#/privileges/quota) or Quota Center (https://quotas.console.aliyun.com/products/ecs/quotas) to request a quota increase. If the capacity of disks that belong to the specified disk category exceeds the quota limit for the specified zone, the QuotaExceed.DiskCapacity error is returned when you call the operation. You can go to the Quota Center (https://quotas.console.aliyun.com/products/disk/quotas) to view and increase the disk capacity quota.
+        *   **Best practices**:
+        *   We recommend that you use auto provisioning groups in the following scenarios: Resources are insufficient to create more than 100 instances at a time, you want to quickly create instances regardless of resource configurations such as instance types or zones, or you want to create instances to consume a specific total number of vCPUs regardless of the number of instances. You can call the [CreateAutoProvisioningGroup](~~122738~~) operation to create an auto provisioning group to deploy an instance cluster across different zones and by using different billing methods and instance families. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](~~200772~~).
+        *   You can call the `RunInstances` operation to batch create instances. To better manage and search for the instances, we recommend that you add tags to the instances by specifying `Tag.N.Key` and `Tag.N.Value`. You can also append incremental suffixes (`UniqueSuffix`) to the hostname (`HostName`) and to the instance name (`InstanceName`).
+        *   A launch template contains parameters required to create an instance so that you do not have to specify these parameters every time you create instances. You can call the [CreateLaunchTemplate](~~74686~~) operation to create a launch template. Then, in your request to call the `RunInstances` operation, you can specify `LaunchTemplateId` and `LaunchTemplateVersion` to use the launch template.
+        *   [](https://api.alibabacloud.com/api/Ecs/)``****``********\
+        ### [](#-1)Example 1: Create a subscription instance
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a one-month subscription instance of the ecs.g7.large instance type in the China (Hangzhou) region, and enable auto-renewal to renew the instance for one month on expiration. The instance uses a 40 GiB enhanced SSD (ESSD) as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        http(s)://ecs.aliyuncs.com/?Action=RunInstances
+        &RegionId=cn-hangzhou
+        &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
+        &InstanceType=ecs.g7.large
+        &SecurityGroupId=sg-bp150uqocpf9jj70****\
+        &VSwitchId=vsw-bp1qo7s91cbch5i4l****\
+        &InstanceChargeType=PrePaid
+        &SystemDisk.Size=40
+        &DataDisk.1.Size=100
+        &DataDisk.1.Category=cloud_essd
+        &SystemDisk.Category=cloud_essd
+        &Amount=1
+        &Period=1
+        &PeriodUnit=Month
+        &AutoRenew=true
+        &AutoRenewPeriod=1
+        &HostName=ECS-test
+        &Password=ECS@test1234
+        &InternetMaxBandwidthOut=10
+        &<Common request parameters>
+        ### [](#-2)Example 2: Create a pay-as-you-go instance
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a pay-as-you-go instance of the ecs.g7.large instance type in the China (Hangzhou) region. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        http(s)://ecs.aliyuncs.com/?Action=RunInstances
+        &RegionId=cn-hangzhou
+        &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
+        &InstanceType=ecs.g7.large
+        &SecurityGroupId=sg-bp150uqocpf9jj70****\
+        &VSwitchId=vsw-bp1qo7s91cbch5i4l****\
+        &InstanceChargeType=PostPaid
+        &SystemDisk.Size=40
+        &DataDisk.1.Size=100
+        &DataDisk.1.Category=cloud_essd
+        &SystemDisk.Category=cloud_essd
+        &HostName=ECS-test
+        &Password=ECS@test1234
+        &InternetMaxBandwidthOut=10
+        &<Common request parameters>
+        ### [](#-3)Example 3: Create a preemptible instance
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a preemptible instance of the ecs.g7.large instance type that has a 1-hour protection period in the China (Hangzhou) region. The market price of the instance type at the time of purchase is automatically used as the bidding price. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        http(s)://ecs.aliyuncs.com/?Action=RunInstances
+        &RegionId=cn-hangzhou
+        &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
+        &InstanceType=ecs.g7.large
+        &SecurityGroupId=sg-bp150uqocpf9jj70****\
+        &VSwitchId=vsw-bp1qo7s91cbch5i4l****\
+        &InstanceChargeType=PostPaid
+        &SystemDisk.Size=40
+        &DataDisk.1.Size=100
+        &DataDisk.1.Category=cloud_essd
+        &SystemDisk.Category=cloud_essd
+        &HostName=ECS-test
+        &Password=ECS@test1234
+        &InternetMaxBandwidthOut=10
+        &SpotStrategy=SpotAsPriceGo
+        &SpotDuration=1
+        &<Common request parameters>
+        ### [](#-4)Example 4: Create a subscription instance on a dedicated host
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a one-month subscription instance of the ecs.g7.large instance type on the dh-bp12w10wll9xcjq2\\*\\*\\*\\* dedicated host. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        http(s)://ecs.aliyuncs.com/?Action=RunInstances
+        &RegionId=cn-hangzhou
+        &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
+        &InstanceType=ecs.g7.large
+        &SecurityGroupId=sg-bp150uqocpf9jj70****\
+        &VSwitchId=vsw-bp1qo7s91cbch5i4l****\
+        &InstanceChargeType=PrePaid
+        &Amount=1
+        &Period=1
+        &PeriodUnit=Month
+        &SystemDisk.Size=40
+        &DataDisk.1.Size=100
+        &DataDisk.1.Category=cloud_essd
+        &SystemDisk.Category=cloud_essd
+        &HostName=ECS-test
+        &Password=ECS@test1234
+        &InternetMaxBandwidthOut=10
+        &DedicatedHostId=dh-bp12w10wll9xcjq2****\
+        &<Common request parameters>
         
         @param request: RunInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -47455,27 +47687,116 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RunInstancesRequest,
     ) -> ecs_20140526_models.RunInstancesResponse:
         """
-        **Preparations**:
-        * The real-name verification is complete.
-        * Cost estimation: Learn about the billing methods of ECS resources. For more information, see [Billing overview](~~25398~~).
-        * Instance type selection: Call the [DescribeInstanceTypes](~~25620~~) operation to query the performance data of instance types, or see [Best practices for instance type selection](~~58291~~) to learn about how to select instance types.
-        * Query for available resources: Call the [DescribeAvailableResource](~~66186~~) operation to query available resources in a specific region or zone.
-        * Network planning: Make sure that you have security groups available for use. For more information, see [CreateSecurityGroup](~~25553~~). Before you create an instance of the Virtual Private Cloud (VPC) type, create a VPC in the region where you want to create the instance. For more information, see [Create a VPC](~~65430~~).
-        * **Precautions**:
-        * You can create a maximum of 100 instances at a time.
-        * You can use the `AutoReleaseTime` parameter to set the time when you want the instances to be automatically released.
-        * After instances are created, you can call the [DescribeInstances](~~25506~~) operation to check their states.
-        * By default, instances automatically start after they are created. Instances are ready for use when they are in the Running (`Running`) state.
-        * As of November 27, 2020, the maximum bandwidth value available for you to create ECS instances or to change ECS instance configurations is subject to the throttling policy for your account. To increase the maximum bandwidth value, submit a ticket. The throttling policy imposes the following constraints: Within a single region, the total maximum bandwidth value of all instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s and that of all instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
-        * Different from the [CreateInstance](~~25499~~) operation, the `RunInstances` operation allows the system to assign public IP addresses to the new instances if you set the `InternetMaxBandwidthOut` parameter to a value greater than 0.
-        * When you call the RunInstances operation to create an instance, you can use one of the following methods to bind a primary elastic network interface (ENI) to the instance. Note that you can use only one of the methods to configure the primary ENI in each call. Otherwise, the call fails and an error message is returned. Specify parameters such as `SecurityGroupId`, `VSwitchId`, `PrivateIpAddress`, `NetworkInterfaceQueueNumber`, and `Ipv6AddressCount` to configure the primary ENI. Specify parameters that start with `NetworkInterface.N.` to configure the primary and secondary ENIs. If `NetworkInterface.N.InstanceType` is set to `Primary`, the primary ENI is bound to the instance. If `NetworkInterface.N.InstanceType` is set to `Secondary` or left empty, a secondary ENI is bound to the instance.
-        * After you call this operation, an error is returned if a parameter is invalid or if available resources are insufficient. For more information, see the "Error codes" section of this topic.
-        > If the `QuotaExceed.ElasticQuota` error is returned when you call this operation, you have reached the maximum number of instances of the specified instance type that can be created within the specified region or the maximum number of vCPUs for all instance types in a zone. You can go to the [ECS console](https://ecs.console.aliyun.com/?spm=a2c8b.12215451.favorites.decs.5e3a336aMGTtzy#/privileges/quota) or [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas) to request a quota increase.
-        * **Best practices**:
-        * We recommend that you use auto provisioning groups in the following scenarios: Resources are insufficient to create more than 100 instances at a time, you want to quickly create instances regardless of resource configurations such as instance types or zones, or you want to create instances to consume a specific total number of vCPUs regardless of the number of the instances. You can call the [CreateAutoProvisioningGroup](~~122738~~) operation to create an auto provisioning group to deploy an instance cluster across different billing methods, instance families, and zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](~~200772~~).
-        * You can call the `RunInstances` operation to batch create instances. To better manage and search for these instances, we recommend that you specify tags for the instances by using the `Tag.N.Key` and `Tag.N.Value` parameters. You can also append incremental suffixes (`UniqueSuffix`) to the hostname (`HostName`) and to the instance name (`InstanceName`).
-        * A launch template contains parameters required to create an instance so that you do not have to specify these parameters every time you create instances. You can call the [CreateLaunchTemplate](~~74686~~) operation to create a launch template. Then, in your request to call the `RunInstances` operation, you can specify the `LaunchTemplateId` and `LaunchTemplateVersion` parameters to use the launch template.
-        * When you create an instance in the [OpenAPI Explorer](https://api.alibabacloud.com/api/Ecs), you can view the best practices for calling the `RunInstances` operation. In the Preview step, click View OpenAPI in the Configurations Selected section. In the dialog box that appears, the left-side **API Workflow** section shows the operations and request parameters that are related to the `RunInstances` operation. The right-side section shows SDK examples for the **Java** and **Python** programming languages.
+        ## [](#)Usage notes
+        *   **Preparations**:
+        *   Cost estimation: Learn about the billing methods of ECS resources. For more information, see [Billing overview](~~25398~~).
+        *   Instance type selection: Call the [DescribeInstanceTypes](~~25620~~) operation to query the performance data of instance types, or see [Best practices for instance type selection](~~58291~~) to learn about how to select instance types.
+        *   Query of available resources: Call the [DescribeAvailableResource](~~66186~~) operation to query resources available in a specific region or zone.
+        *   Network planning: Make sure that you have security groups available for use. For more information, see [CreateSecurityGroup](~~25553~~). Before you create an instance of the Virtual Private Cloud (VPC) type, create a VPC in the region where you want to create the instance. For more information, see [Create a VPC](~~65430~~).
+        *   **Comparison with CreateInstance**:
+        RunInstances has the following advantages over CreateInstance:
+        *   You can call the RunInstances operation to create up to 100 instances at a time, instead of repeatedly calling the CreateInstance operation.
+        *   After an instance is created, the instance enters the `Starting` state and then transitions to the `Running` state. You do not need to call the [StartInstance](~~25500~~) operation to start the instance.
+        *   When you create an instance, you can specify `InternetMaxBandwidthOut` to assign a public IP address to the instance, without the need to call the [AllocatePublicIpAddress](~~25544~~) operation.
+        *   You can use `AutoReleaseTime` to set the time when to automatically release the instances, without the need to call the [ModifyInstanceAutoReleaseTime](~~47576~~) operation.
+        *   You can specify `LaunchTemplateId` and `LaunchTemplateVersion` to use a launch template. This way, you do not need to configure a large number of parameters every time you create instances.
+        *   You can specify `UniqueSuffix` to batch configure sequential names or hostnames for multiple instances for easy management and retrieval.
+        *   When you call the RunInstances operation to create instances, you can configure the enclave-based confidential computing mode and the trusted system mode for the instances.
+        *   You can set `NetworkOptions.EnableJumboFrame` to true to enable the Jumbo Frames feature when you create instances. For more information, see [MTUs](~~200512~~).
+        *   **Considerations**:
+        *   You can create up to 100 instances at a time.
+        *   You can use `AutoReleaseTime` to set the time when to automatically release the instances.
+        *   After you create instances and obtain their IDs, you can call the [DescribeInstances](~~25506~~) operation to check the status of the instances.
+        *   By default, instances automatically start after they are created. Instances are ready for use when they are in the Running (`Running`) state.
+        *   Starting November 27, 2020, the maximum bandwidth value that is available for you to create ECS instances or change ECS instance configurations is subject to the throttling policy of your account. To increase the maximum bandwidth value, submit a ticket. The throttling policy imposes the following constraints: In a single region, the total maximum bandwidth value of all instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s and the total maximum bandwidth value of all instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
+        *   Different from the [CreateInstance](~~25499~~) operation, the `RunInstances` operation allows the system to assign public IP addresses to new instances if you set `InternetMaxBandwidthOut` to a value greater than 0.
+        *   When you call the RunInstances operation to create an instance, you can use one of the following methods to attach a primary elastic network interface (ENI) to the instance. Take note that you can use only one of the methods to configure the primary ENI in each call. Otherwise, the call fails and an error message is returned. - Specify parameters such as `SecurityGroupId`, `VSwitchId`, `PrivateIpAddress`, `NetworkInterfaceQueueNumber`, and `Ipv6AddressCount` to configure the primary ENI. - Specify parameters that start with `NetworkInterface.N.` to configure the primary and secondary ENIs. If `NetworkInterface.N.InstanceType` is set to `Primary`, the primary ENI is attached to the instance. If `NetworkInterface.N.InstanceType` is set to `Secondary` or left empty, a secondary ENI is attached to the instance.
+        *   If a parameter is invalid or available resources are insufficient, an error is returned after you call the RunInstances operation. For more information, see the "Error codes" section of this topic.
+        - If the maximum number of instances of the specified instance type that can be created in the specified region or the maximum number of vCPUs for all instance types in a zone is exceeded, the QuotaExceed.ElasticQuota error is returned when you call the operation. You can go to the ECS console (https://ecs.console.aliyun.com/?spm=a2c8b.12215451.favorites.decs.5e3a336aMGTtzy#/privileges/quota) or Quota Center (https://quotas.console.aliyun.com/products/ecs/quotas) to request a quota increase. If the capacity of disks that belong to the specified disk category exceeds the quota limit for the specified zone, the QuotaExceed.DiskCapacity error is returned when you call the operation. You can go to the Quota Center (https://quotas.console.aliyun.com/products/disk/quotas) to view and increase the disk capacity quota.
+        *   **Best practices**:
+        *   We recommend that you use auto provisioning groups in the following scenarios: Resources are insufficient to create more than 100 instances at a time, you want to quickly create instances regardless of resource configurations such as instance types or zones, or you want to create instances to consume a specific total number of vCPUs regardless of the number of instances. You can call the [CreateAutoProvisioningGroup](~~122738~~) operation to create an auto provisioning group to deploy an instance cluster across different zones and by using different billing methods and instance families. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](~~200772~~).
+        *   You can call the `RunInstances` operation to batch create instances. To better manage and search for the instances, we recommend that you add tags to the instances by specifying `Tag.N.Key` and `Tag.N.Value`. You can also append incremental suffixes (`UniqueSuffix`) to the hostname (`HostName`) and to the instance name (`InstanceName`).
+        *   A launch template contains parameters required to create an instance so that you do not have to specify these parameters every time you create instances. You can call the [CreateLaunchTemplate](~~74686~~) operation to create a launch template. Then, in your request to call the `RunInstances` operation, you can specify `LaunchTemplateId` and `LaunchTemplateVersion` to use the launch template.
+        *   [](https://api.alibabacloud.com/api/Ecs/)``****``********\
+        ### [](#-1)Example 1: Create a subscription instance
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a one-month subscription instance of the ecs.g7.large instance type in the China (Hangzhou) region, and enable auto-renewal to renew the instance for one month on expiration. The instance uses a 40 GiB enhanced SSD (ESSD) as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        http(s)://ecs.aliyuncs.com/?Action=RunInstances
+        &RegionId=cn-hangzhou
+        &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
+        &InstanceType=ecs.g7.large
+        &SecurityGroupId=sg-bp150uqocpf9jj70****\
+        &VSwitchId=vsw-bp1qo7s91cbch5i4l****\
+        &InstanceChargeType=PrePaid
+        &SystemDisk.Size=40
+        &DataDisk.1.Size=100
+        &DataDisk.1.Category=cloud_essd
+        &SystemDisk.Category=cloud_essd
+        &Amount=1
+        &Period=1
+        &PeriodUnit=Month
+        &AutoRenew=true
+        &AutoRenewPeriod=1
+        &HostName=ECS-test
+        &Password=ECS@test1234
+        &InternetMaxBandwidthOut=10
+        &<Common request parameters>
+        ### [](#-2)Example 2: Create a pay-as-you-go instance
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a pay-as-you-go instance of the ecs.g7.large instance type in the China (Hangzhou) region. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        http(s)://ecs.aliyuncs.com/?Action=RunInstances
+        &RegionId=cn-hangzhou
+        &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
+        &InstanceType=ecs.g7.large
+        &SecurityGroupId=sg-bp150uqocpf9jj70****\
+        &VSwitchId=vsw-bp1qo7s91cbch5i4l****\
+        &InstanceChargeType=PostPaid
+        &SystemDisk.Size=40
+        &DataDisk.1.Size=100
+        &DataDisk.1.Category=cloud_essd
+        &SystemDisk.Category=cloud_essd
+        &HostName=ECS-test
+        &Password=ECS@test1234
+        &InternetMaxBandwidthOut=10
+        &<Common request parameters>
+        ### [](#-3)Example 3: Create a preemptible instance
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a preemptible instance of the ecs.g7.large instance type that has a 1-hour protection period in the China (Hangzhou) region. The market price of the instance type at the time of purchase is automatically used as the bidding price. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        http(s)://ecs.aliyuncs.com/?Action=RunInstances
+        &RegionId=cn-hangzhou
+        &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
+        &InstanceType=ecs.g7.large
+        &SecurityGroupId=sg-bp150uqocpf9jj70****\
+        &VSwitchId=vsw-bp1qo7s91cbch5i4l****\
+        &InstanceChargeType=PostPaid
+        &SystemDisk.Size=40
+        &DataDisk.1.Size=100
+        &DataDisk.1.Category=cloud_essd
+        &SystemDisk.Category=cloud_essd
+        &HostName=ECS-test
+        &Password=ECS@test1234
+        &InternetMaxBandwidthOut=10
+        &SpotStrategy=SpotAsPriceGo
+        &SpotDuration=1
+        &<Common request parameters>
+        ### [](#-4)Example 4: Create a subscription instance on a dedicated host
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a one-month subscription instance of the ecs.g7.large instance type on the dh-bp12w10wll9xcjq2\\*\\*\\*\\* dedicated host. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        http(s)://ecs.aliyuncs.com/?Action=RunInstances
+        &RegionId=cn-hangzhou
+        &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
+        &InstanceType=ecs.g7.large
+        &SecurityGroupId=sg-bp150uqocpf9jj70****\
+        &VSwitchId=vsw-bp1qo7s91cbch5i4l****\
+        &InstanceChargeType=PrePaid
+        &Amount=1
+        &Period=1
+        &PeriodUnit=Month
+        &SystemDisk.Size=40
+        &DataDisk.1.Size=100
+        &DataDisk.1.Category=cloud_essd
+        &SystemDisk.Category=cloud_essd
+        &HostName=ECS-test
+        &Password=ECS@test1234
+        &InternetMaxBandwidthOut=10
+        &DedicatedHostId=dh-bp12w10wll9xcjq2****\
+        &<Common request parameters>
         
         @param request: RunInstancesRequest
         @return: RunInstancesResponse
@@ -47488,27 +47809,116 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RunInstancesRequest,
     ) -> ecs_20140526_models.RunInstancesResponse:
         """
-        **Preparations**:
-        * The real-name verification is complete.
-        * Cost estimation: Learn about the billing methods of ECS resources. For more information, see [Billing overview](~~25398~~).
-        * Instance type selection: Call the [DescribeInstanceTypes](~~25620~~) operation to query the performance data of instance types, or see [Best practices for instance type selection](~~58291~~) to learn about how to select instance types.
-        * Query for available resources: Call the [DescribeAvailableResource](~~66186~~) operation to query available resources in a specific region or zone.
-        * Network planning: Make sure that you have security groups available for use. For more information, see [CreateSecurityGroup](~~25553~~). Before you create an instance of the Virtual Private Cloud (VPC) type, create a VPC in the region where you want to create the instance. For more information, see [Create a VPC](~~65430~~).
-        * **Precautions**:
-        * You can create a maximum of 100 instances at a time.
-        * You can use the `AutoReleaseTime` parameter to set the time when you want the instances to be automatically released.
-        * After instances are created, you can call the [DescribeInstances](~~25506~~) operation to check their states.
-        * By default, instances automatically start after they are created. Instances are ready for use when they are in the Running (`Running`) state.
-        * As of November 27, 2020, the maximum bandwidth value available for you to create ECS instances or to change ECS instance configurations is subject to the throttling policy for your account. To increase the maximum bandwidth value, submit a ticket. The throttling policy imposes the following constraints: Within a single region, the total maximum bandwidth value of all instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s and that of all instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
-        * Different from the [CreateInstance](~~25499~~) operation, the `RunInstances` operation allows the system to assign public IP addresses to the new instances if you set the `InternetMaxBandwidthOut` parameter to a value greater than 0.
-        * When you call the RunInstances operation to create an instance, you can use one of the following methods to bind a primary elastic network interface (ENI) to the instance. Note that you can use only one of the methods to configure the primary ENI in each call. Otherwise, the call fails and an error message is returned. Specify parameters such as `SecurityGroupId`, `VSwitchId`, `PrivateIpAddress`, `NetworkInterfaceQueueNumber`, and `Ipv6AddressCount` to configure the primary ENI. Specify parameters that start with `NetworkInterface.N.` to configure the primary and secondary ENIs. If `NetworkInterface.N.InstanceType` is set to `Primary`, the primary ENI is bound to the instance. If `NetworkInterface.N.InstanceType` is set to `Secondary` or left empty, a secondary ENI is bound to the instance.
-        * After you call this operation, an error is returned if a parameter is invalid or if available resources are insufficient. For more information, see the "Error codes" section of this topic.
-        > If the `QuotaExceed.ElasticQuota` error is returned when you call this operation, you have reached the maximum number of instances of the specified instance type that can be created within the specified region or the maximum number of vCPUs for all instance types in a zone. You can go to the [ECS console](https://ecs.console.aliyun.com/?spm=a2c8b.12215451.favorites.decs.5e3a336aMGTtzy#/privileges/quota) or [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas) to request a quota increase.
-        * **Best practices**:
-        * We recommend that you use auto provisioning groups in the following scenarios: Resources are insufficient to create more than 100 instances at a time, you want to quickly create instances regardless of resource configurations such as instance types or zones, or you want to create instances to consume a specific total number of vCPUs regardless of the number of the instances. You can call the [CreateAutoProvisioningGroup](~~122738~~) operation to create an auto provisioning group to deploy an instance cluster across different billing methods, instance families, and zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](~~200772~~).
-        * You can call the `RunInstances` operation to batch create instances. To better manage and search for these instances, we recommend that you specify tags for the instances by using the `Tag.N.Key` and `Tag.N.Value` parameters. You can also append incremental suffixes (`UniqueSuffix`) to the hostname (`HostName`) and to the instance name (`InstanceName`).
-        * A launch template contains parameters required to create an instance so that you do not have to specify these parameters every time you create instances. You can call the [CreateLaunchTemplate](~~74686~~) operation to create a launch template. Then, in your request to call the `RunInstances` operation, you can specify the `LaunchTemplateId` and `LaunchTemplateVersion` parameters to use the launch template.
-        * When you create an instance in the [OpenAPI Explorer](https://api.alibabacloud.com/api/Ecs), you can view the best practices for calling the `RunInstances` operation. In the Preview step, click View OpenAPI in the Configurations Selected section. In the dialog box that appears, the left-side **API Workflow** section shows the operations and request parameters that are related to the `RunInstances` operation. The right-side section shows SDK examples for the **Java** and **Python** programming languages.
+        ## [](#)Usage notes
+        *   **Preparations**:
+        *   Cost estimation: Learn about the billing methods of ECS resources. For more information, see [Billing overview](~~25398~~).
+        *   Instance type selection: Call the [DescribeInstanceTypes](~~25620~~) operation to query the performance data of instance types, or see [Best practices for instance type selection](~~58291~~) to learn about how to select instance types.
+        *   Query of available resources: Call the [DescribeAvailableResource](~~66186~~) operation to query resources available in a specific region or zone.
+        *   Network planning: Make sure that you have security groups available for use. For more information, see [CreateSecurityGroup](~~25553~~). Before you create an instance of the Virtual Private Cloud (VPC) type, create a VPC in the region where you want to create the instance. For more information, see [Create a VPC](~~65430~~).
+        *   **Comparison with CreateInstance**:
+        RunInstances has the following advantages over CreateInstance:
+        *   You can call the RunInstances operation to create up to 100 instances at a time, instead of repeatedly calling the CreateInstance operation.
+        *   After an instance is created, the instance enters the `Starting` state and then transitions to the `Running` state. You do not need to call the [StartInstance](~~25500~~) operation to start the instance.
+        *   When you create an instance, you can specify `InternetMaxBandwidthOut` to assign a public IP address to the instance, without the need to call the [AllocatePublicIpAddress](~~25544~~) operation.
+        *   You can use `AutoReleaseTime` to set the time when to automatically release the instances, without the need to call the [ModifyInstanceAutoReleaseTime](~~47576~~) operation.
+        *   You can specify `LaunchTemplateId` and `LaunchTemplateVersion` to use a launch template. This way, you do not need to configure a large number of parameters every time you create instances.
+        *   You can specify `UniqueSuffix` to batch configure sequential names or hostnames for multiple instances for easy management and retrieval.
+        *   When you call the RunInstances operation to create instances, you can configure the enclave-based confidential computing mode and the trusted system mode for the instances.
+        *   You can set `NetworkOptions.EnableJumboFrame` to true to enable the Jumbo Frames feature when you create instances. For more information, see [MTUs](~~200512~~).
+        *   **Considerations**:
+        *   You can create up to 100 instances at a time.
+        *   You can use `AutoReleaseTime` to set the time when to automatically release the instances.
+        *   After you create instances and obtain their IDs, you can call the [DescribeInstances](~~25506~~) operation to check the status of the instances.
+        *   By default, instances automatically start after they are created. Instances are ready for use when they are in the Running (`Running`) state.
+        *   Starting November 27, 2020, the maximum bandwidth value that is available for you to create ECS instances or change ECS instance configurations is subject to the throttling policy of your account. To increase the maximum bandwidth value, submit a ticket. The throttling policy imposes the following constraints: In a single region, the total maximum bandwidth value of all instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s and the total maximum bandwidth value of all instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
+        *   Different from the [CreateInstance](~~25499~~) operation, the `RunInstances` operation allows the system to assign public IP addresses to new instances if you set `InternetMaxBandwidthOut` to a value greater than 0.
+        *   When you call the RunInstances operation to create an instance, you can use one of the following methods to attach a primary elastic network interface (ENI) to the instance. Take note that you can use only one of the methods to configure the primary ENI in each call. Otherwise, the call fails and an error message is returned. - Specify parameters such as `SecurityGroupId`, `VSwitchId`, `PrivateIpAddress`, `NetworkInterfaceQueueNumber`, and `Ipv6AddressCount` to configure the primary ENI. - Specify parameters that start with `NetworkInterface.N.` to configure the primary and secondary ENIs. If `NetworkInterface.N.InstanceType` is set to `Primary`, the primary ENI is attached to the instance. If `NetworkInterface.N.InstanceType` is set to `Secondary` or left empty, a secondary ENI is attached to the instance.
+        *   If a parameter is invalid or available resources are insufficient, an error is returned after you call the RunInstances operation. For more information, see the "Error codes" section of this topic.
+        - If the maximum number of instances of the specified instance type that can be created in the specified region or the maximum number of vCPUs for all instance types in a zone is exceeded, the QuotaExceed.ElasticQuota error is returned when you call the operation. You can go to the ECS console (https://ecs.console.aliyun.com/?spm=a2c8b.12215451.favorites.decs.5e3a336aMGTtzy#/privileges/quota) or Quota Center (https://quotas.console.aliyun.com/products/ecs/quotas) to request a quota increase. If the capacity of disks that belong to the specified disk category exceeds the quota limit for the specified zone, the QuotaExceed.DiskCapacity error is returned when you call the operation. You can go to the Quota Center (https://quotas.console.aliyun.com/products/disk/quotas) to view and increase the disk capacity quota.
+        *   **Best practices**:
+        *   We recommend that you use auto provisioning groups in the following scenarios: Resources are insufficient to create more than 100 instances at a time, you want to quickly create instances regardless of resource configurations such as instance types or zones, or you want to create instances to consume a specific total number of vCPUs regardless of the number of instances. You can call the [CreateAutoProvisioningGroup](~~122738~~) operation to create an auto provisioning group to deploy an instance cluster across different zones and by using different billing methods and instance families. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](~~200772~~).
+        *   You can call the `RunInstances` operation to batch create instances. To better manage and search for the instances, we recommend that you add tags to the instances by specifying `Tag.N.Key` and `Tag.N.Value`. You can also append incremental suffixes (`UniqueSuffix`) to the hostname (`HostName`) and to the instance name (`InstanceName`).
+        *   A launch template contains parameters required to create an instance so that you do not have to specify these parameters every time you create instances. You can call the [CreateLaunchTemplate](~~74686~~) operation to create a launch template. Then, in your request to call the `RunInstances` operation, you can specify `LaunchTemplateId` and `LaunchTemplateVersion` to use the launch template.
+        *   [](https://api.alibabacloud.com/api/Ecs/)``****``********\
+        ### [](#-1)Example 1: Create a subscription instance
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a one-month subscription instance of the ecs.g7.large instance type in the China (Hangzhou) region, and enable auto-renewal to renew the instance for one month on expiration. The instance uses a 40 GiB enhanced SSD (ESSD) as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        http(s)://ecs.aliyuncs.com/?Action=RunInstances
+        &RegionId=cn-hangzhou
+        &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
+        &InstanceType=ecs.g7.large
+        &SecurityGroupId=sg-bp150uqocpf9jj70****\
+        &VSwitchId=vsw-bp1qo7s91cbch5i4l****\
+        &InstanceChargeType=PrePaid
+        &SystemDisk.Size=40
+        &DataDisk.1.Size=100
+        &DataDisk.1.Category=cloud_essd
+        &SystemDisk.Category=cloud_essd
+        &Amount=1
+        &Period=1
+        &PeriodUnit=Month
+        &AutoRenew=true
+        &AutoRenewPeriod=1
+        &HostName=ECS-test
+        &Password=ECS@test1234
+        &InternetMaxBandwidthOut=10
+        &<Common request parameters>
+        ### [](#-2)Example 2: Create a pay-as-you-go instance
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a pay-as-you-go instance of the ecs.g7.large instance type in the China (Hangzhou) region. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        http(s)://ecs.aliyuncs.com/?Action=RunInstances
+        &RegionId=cn-hangzhou
+        &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
+        &InstanceType=ecs.g7.large
+        &SecurityGroupId=sg-bp150uqocpf9jj70****\
+        &VSwitchId=vsw-bp1qo7s91cbch5i4l****\
+        &InstanceChargeType=PostPaid
+        &SystemDisk.Size=40
+        &DataDisk.1.Size=100
+        &DataDisk.1.Category=cloud_essd
+        &SystemDisk.Category=cloud_essd
+        &HostName=ECS-test
+        &Password=ECS@test1234
+        &InternetMaxBandwidthOut=10
+        &<Common request parameters>
+        ### [](#-3)Example 3: Create a preemptible instance
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a preemptible instance of the ecs.g7.large instance type that has a 1-hour protection period in the China (Hangzhou) region. The market price of the instance type at the time of purchase is automatically used as the bidding price. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        http(s)://ecs.aliyuncs.com/?Action=RunInstances
+        &RegionId=cn-hangzhou
+        &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
+        &InstanceType=ecs.g7.large
+        &SecurityGroupId=sg-bp150uqocpf9jj70****\
+        &VSwitchId=vsw-bp1qo7s91cbch5i4l****\
+        &InstanceChargeType=PostPaid
+        &SystemDisk.Size=40
+        &DataDisk.1.Size=100
+        &DataDisk.1.Category=cloud_essd
+        &SystemDisk.Category=cloud_essd
+        &HostName=ECS-test
+        &Password=ECS@test1234
+        &InternetMaxBandwidthOut=10
+        &SpotStrategy=SpotAsPriceGo
+        &SpotDuration=1
+        &<Common request parameters>
+        ### [](#-4)Example 4: Create a subscription instance on a dedicated host
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a one-month subscription instance of the ecs.g7.large instance type on the dh-bp12w10wll9xcjq2\\*\\*\\*\\* dedicated host. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        http(s)://ecs.aliyuncs.com/?Action=RunInstances
+        &RegionId=cn-hangzhou
+        &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
+        &InstanceType=ecs.g7.large
+        &SecurityGroupId=sg-bp150uqocpf9jj70****\
+        &VSwitchId=vsw-bp1qo7s91cbch5i4l****\
+        &InstanceChargeType=PrePaid
+        &Amount=1
+        &Period=1
+        &PeriodUnit=Month
+        &SystemDisk.Size=40
+        &DataDisk.1.Size=100
+        &DataDisk.1.Category=cloud_essd
+        &SystemDisk.Category=cloud_essd
+        &HostName=ECS-test
+        &Password=ECS@test1234
+        &InternetMaxBandwidthOut=10
+        &DedicatedHostId=dh-bp12w10wll9xcjq2****\
+        &<Common request parameters>
         
         @param request: RunInstancesRequest
         @return: RunInstancesResponse
