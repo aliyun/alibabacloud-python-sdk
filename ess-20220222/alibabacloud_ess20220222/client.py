@@ -87,6 +87,92 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def apply_eci_scaling_configuration_with_options(
+        self,
+        request: ess_20220222_models.ApplyEciScalingConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.ApplyEciScalingConfigurationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.format):
+            query['Format'] = request.format
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scaling_configuration_id):
+            query['ScalingConfigurationId'] = request.scaling_configuration_id
+        if not UtilClient.is_unset(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ApplyEciScalingConfiguration',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.ApplyEciScalingConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def apply_eci_scaling_configuration_with_options_async(
+        self,
+        request: ess_20220222_models.ApplyEciScalingConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.ApplyEciScalingConfigurationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.format):
+            query['Format'] = request.format
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scaling_configuration_id):
+            query['ScalingConfigurationId'] = request.scaling_configuration_id
+        if not UtilClient.is_unset(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ApplyEciScalingConfiguration',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.ApplyEciScalingConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def apply_eci_scaling_configuration(
+        self,
+        request: ess_20220222_models.ApplyEciScalingConfigurationRequest,
+    ) -> ess_20220222_models.ApplyEciScalingConfigurationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.apply_eci_scaling_configuration_with_options(request, runtime)
+
+    async def apply_eci_scaling_configuration_async(
+        self,
+        request: ess_20220222_models.ApplyEciScalingConfigurationRequest,
+    ) -> ess_20220222_models.ApplyEciScalingConfigurationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.apply_eci_scaling_configuration_with_options_async(request, runtime)
+
     def apply_scaling_group_with_options(
         self,
         request: ess_20220222_models.ApplyScalingGroupRequest,
@@ -4015,6 +4101,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_alarms_with_options_async(request, runtime)
 
+    def describe_eci_scaling_configuration_detail_with_options(
+        self,
+        request: ess_20220222_models.DescribeEciScalingConfigurationDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.DescribeEciScalingConfigurationDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.output_format):
+            query['OutputFormat'] = request.output_format
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scaling_configuration_id):
+            query['ScalingConfigurationId'] = request.scaling_configuration_id
+        if not UtilClient.is_unset(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEciScalingConfigurationDetail',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.DescribeEciScalingConfigurationDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_eci_scaling_configuration_detail_with_options_async(
+        self,
+        request: ess_20220222_models.DescribeEciScalingConfigurationDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.DescribeEciScalingConfigurationDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.output_format):
+            query['OutputFormat'] = request.output_format
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scaling_configuration_id):
+            query['ScalingConfigurationId'] = request.scaling_configuration_id
+        if not UtilClient.is_unset(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEciScalingConfigurationDetail',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.DescribeEciScalingConfigurationDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_eci_scaling_configuration_detail(
+        self,
+        request: ess_20220222_models.DescribeEciScalingConfigurationDetailRequest,
+    ) -> ess_20220222_models.DescribeEciScalingConfigurationDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_eci_scaling_configuration_detail_with_options(request, runtime)
+
+    async def describe_eci_scaling_configuration_detail_async(
+        self,
+        request: ess_20220222_models.DescribeEciScalingConfigurationDetailRequest,
+    ) -> ess_20220222_models.DescribeEciScalingConfigurationDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_eci_scaling_configuration_detail_with_options_async(request, runtime)
+
     def describe_eci_scaling_configurations_with_options(
         self,
         request: ess_20220222_models.DescribeEciScalingConfigurationsRequest,
@@ -4998,6 +5166,88 @@ class Client(OpenApiClient):
     ) -> ess_20220222_models.DescribeScalingConfigurationsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_scaling_configurations_with_options_async(request, runtime)
+
+    def describe_scaling_group_detail_with_options(
+        self,
+        request: ess_20220222_models.DescribeScalingGroupDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.DescribeScalingGroupDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.output_format):
+            query['OutputFormat'] = request.output_format
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeScalingGroupDetail',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.DescribeScalingGroupDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_scaling_group_detail_with_options_async(
+        self,
+        request: ess_20220222_models.DescribeScalingGroupDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.DescribeScalingGroupDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.output_format):
+            query['OutputFormat'] = request.output_format
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeScalingGroupDetail',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.DescribeScalingGroupDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_scaling_group_detail(
+        self,
+        request: ess_20220222_models.DescribeScalingGroupDetailRequest,
+    ) -> ess_20220222_models.DescribeScalingGroupDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_scaling_group_detail_with_options(request, runtime)
+
+    async def describe_scaling_group_detail_async(
+        self,
+        request: ess_20220222_models.DescribeScalingGroupDetailRequest,
+    ) -> ess_20220222_models.DescribeScalingGroupDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_scaling_group_detail_with_options_async(request, runtime)
 
     def describe_scaling_groups_with_options(
         self,

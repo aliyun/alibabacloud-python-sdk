@@ -4,6 +4,131 @@ from Tea.model import TeaModel
 from typing import Dict, List, Any
 
 
+class ApplyEciScalingConfigurationRequest(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        format: str = None,
+        region_id: str = None,
+        scaling_configuration_id: str = None,
+        scaling_group_id: str = None,
+    ):
+        self.content = content
+        self.format = format
+        self.region_id = region_id
+        self.scaling_configuration_id = scaling_configuration_id
+        self.scaling_group_id = scaling_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.format is not None:
+            result['Format'] = self.format
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.scaling_configuration_id is not None:
+            result['ScalingConfigurationId'] = self.scaling_configuration_id
+        if self.scaling_group_id is not None:
+            result['ScalingGroupId'] = self.scaling_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Format') is not None:
+            self.format = m.get('Format')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ScalingConfigurationId') is not None:
+            self.scaling_configuration_id = m.get('ScalingConfigurationId')
+        if m.get('ScalingGroupId') is not None:
+            self.scaling_group_id = m.get('ScalingGroupId')
+        return self
+
+
+class ApplyEciScalingConfigurationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        scaling_configuration_id: str = None,
+    ):
+        self.request_id = request_id
+        self.scaling_configuration_id = scaling_configuration_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.scaling_configuration_id is not None:
+            result['ScalingConfigurationId'] = self.scaling_configuration_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ScalingConfigurationId') is not None:
+            self.scaling_configuration_id = m.get('ScalingConfigurationId')
+        return self
+
+
+class ApplyEciScalingConfigurationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ApplyEciScalingConfigurationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ApplyEciScalingConfigurationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ApplyScalingGroupRequest(TeaModel):
     def __init__(
         self,
@@ -10095,6 +10220,1692 @@ class DescribeAlarmsResponse(TeaModel):
         return self
 
 
+class DescribeEciScalingConfigurationDetailRequest(TeaModel):
+    def __init__(
+        self,
+        output_format: str = None,
+        region_id: str = None,
+        scaling_configuration_id: str = None,
+        scaling_group_id: str = None,
+    ):
+        self.output_format = output_format
+        self.region_id = region_id
+        self.scaling_configuration_id = scaling_configuration_id
+        self.scaling_group_id = scaling_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output_format is not None:
+            result['OutputFormat'] = self.output_format
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.scaling_configuration_id is not None:
+            result['ScalingConfigurationId'] = self.scaling_configuration_id
+        if self.scaling_group_id is not None:
+            result['ScalingGroupId'] = self.scaling_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OutputFormat') is not None:
+            self.output_format = m.get('OutputFormat')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ScalingConfigurationId') is not None:
+            self.scaling_configuration_id = m.get('ScalingConfigurationId')
+        if m.get('ScalingGroupId') is not None:
+            self.scaling_group_id = m.get('ScalingGroupId')
+        return self
+
+
+class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationAcrRegistryInfos(TeaModel):
+    def __init__(
+        self,
+        domains: List[str] = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        region_id: str = None,
+    ):
+        self.domains = domains
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domains is not None:
+            result['Domains'] = self.domains
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domains') is not None:
+            self.domains = m.get('Domains')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersEnvironmentVars(TeaModel):
+    def __init__(
+        self,
+        field_ref_field_path: str = None,
+        key: str = None,
+        value: str = None,
+    ):
+        self.field_ref_field_path = field_ref_field_path
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.field_ref_field_path is not None:
+            result['FieldRefFieldPath'] = self.field_ref_field_path
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FieldRefFieldPath') is not None:
+            self.field_ref_field_path = m.get('FieldRefFieldPath')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersPorts(TeaModel):
+    def __init__(
+        self,
+        port: int = None,
+        protocol: str = None,
+    ):
+        self.port = port
+        self.protocol = protocol
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        return self
+
+
+class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersVolumeMounts(TeaModel):
+    def __init__(
+        self,
+        mount_path: str = None,
+        mount_propagation: str = None,
+        name: str = None,
+        read_only: bool = None,
+        sub_path: str = None,
+    ):
+        self.mount_path = mount_path
+        self.mount_propagation = mount_propagation
+        self.name = name
+        self.read_only = read_only
+        self.sub_path = sub_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mount_path is not None:
+            result['MountPath'] = self.mount_path
+        if self.mount_propagation is not None:
+            result['MountPropagation'] = self.mount_propagation
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.read_only is not None:
+            result['ReadOnly'] = self.read_only
+        if self.sub_path is not None:
+            result['SubPath'] = self.sub_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MountPath') is not None:
+            self.mount_path = m.get('MountPath')
+        if m.get('MountPropagation') is not None:
+            self.mount_propagation = m.get('MountPropagation')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ReadOnly') is not None:
+            self.read_only = m.get('ReadOnly')
+        if m.get('SubPath') is not None:
+            self.sub_path = m.get('SubPath')
+        return self
+
+
+class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers(TeaModel):
+    def __init__(
+        self,
+        args: List[str] = None,
+        commands: List[str] = None,
+        cpu: float = None,
+        environment_vars: List[DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersEnvironmentVars] = None,
+        gpu: int = None,
+        image: str = None,
+        image_pull_policy: str = None,
+        lifecycle_post_start_handler_execs: List[str] = None,
+        lifecycle_post_start_handler_http_get_host: str = None,
+        lifecycle_post_start_handler_http_get_path: str = None,
+        lifecycle_post_start_handler_http_get_port: int = None,
+        lifecycle_post_start_handler_http_get_scheme: str = None,
+        lifecycle_post_start_handler_tcp_socket_host: str = None,
+        lifecycle_post_start_handler_tcp_socket_port: int = None,
+        lifecycle_pre_stop_handler_execs: List[str] = None,
+        lifecycle_pre_stop_handler_http_get_host: str = None,
+        lifecycle_pre_stop_handler_http_get_path: str = None,
+        lifecycle_pre_stop_handler_http_get_port: int = None,
+        lifecycle_pre_stop_handler_http_get_scheme: str = None,
+        lifecycle_pre_stop_handler_tcp_socket_host: str = None,
+        lifecycle_pre_stop_handler_tcp_socket_port: int = None,
+        liveness_probe_exec_commands: List[str] = None,
+        liveness_probe_failure_threshold: int = None,
+        liveness_probe_http_get_path: str = None,
+        liveness_probe_http_get_port: int = None,
+        liveness_probe_http_get_scheme: str = None,
+        liveness_probe_initial_delay_seconds: int = None,
+        liveness_probe_period_seconds: int = None,
+        liveness_probe_success_threshold: int = None,
+        liveness_probe_tcp_socket_port: int = None,
+        liveness_probe_timeout_seconds: int = None,
+        memory: float = None,
+        name: str = None,
+        ports: List[DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersPorts] = None,
+        readiness_probe_exec_commands: List[str] = None,
+        readiness_probe_failure_threshold: int = None,
+        readiness_probe_http_get_path: str = None,
+        readiness_probe_http_get_port: int = None,
+        readiness_probe_http_get_scheme: str = None,
+        readiness_probe_initial_delay_seconds: int = None,
+        readiness_probe_period_seconds: int = None,
+        readiness_probe_success_threshold: int = None,
+        readiness_probe_tcp_socket_port: int = None,
+        readiness_probe_timeout_seconds: int = None,
+        security_context_capability_adds: List[str] = None,
+        security_context_read_only_root_filesystem: bool = None,
+        security_context_run_as_user: int = None,
+        stdin: bool = None,
+        stdin_once: bool = None,
+        tty: bool = None,
+        volume_mounts: List[DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersVolumeMounts] = None,
+        working_dir: str = None,
+    ):
+        self.args = args
+        self.commands = commands
+        self.cpu = cpu
+        self.environment_vars = environment_vars
+        self.gpu = gpu
+        self.image = image
+        self.image_pull_policy = image_pull_policy
+        self.lifecycle_post_start_handler_execs = lifecycle_post_start_handler_execs
+        self.lifecycle_post_start_handler_http_get_host = lifecycle_post_start_handler_http_get_host
+        self.lifecycle_post_start_handler_http_get_path = lifecycle_post_start_handler_http_get_path
+        self.lifecycle_post_start_handler_http_get_port = lifecycle_post_start_handler_http_get_port
+        self.lifecycle_post_start_handler_http_get_scheme = lifecycle_post_start_handler_http_get_scheme
+        self.lifecycle_post_start_handler_tcp_socket_host = lifecycle_post_start_handler_tcp_socket_host
+        self.lifecycle_post_start_handler_tcp_socket_port = lifecycle_post_start_handler_tcp_socket_port
+        self.lifecycle_pre_stop_handler_execs = lifecycle_pre_stop_handler_execs
+        self.lifecycle_pre_stop_handler_http_get_host = lifecycle_pre_stop_handler_http_get_host
+        self.lifecycle_pre_stop_handler_http_get_path = lifecycle_pre_stop_handler_http_get_path
+        self.lifecycle_pre_stop_handler_http_get_port = lifecycle_pre_stop_handler_http_get_port
+        self.lifecycle_pre_stop_handler_http_get_scheme = lifecycle_pre_stop_handler_http_get_scheme
+        self.lifecycle_pre_stop_handler_tcp_socket_host = lifecycle_pre_stop_handler_tcp_socket_host
+        self.lifecycle_pre_stop_handler_tcp_socket_port = lifecycle_pre_stop_handler_tcp_socket_port
+        self.liveness_probe_exec_commands = liveness_probe_exec_commands
+        self.liveness_probe_failure_threshold = liveness_probe_failure_threshold
+        self.liveness_probe_http_get_path = liveness_probe_http_get_path
+        self.liveness_probe_http_get_port = liveness_probe_http_get_port
+        self.liveness_probe_http_get_scheme = liveness_probe_http_get_scheme
+        self.liveness_probe_initial_delay_seconds = liveness_probe_initial_delay_seconds
+        self.liveness_probe_period_seconds = liveness_probe_period_seconds
+        self.liveness_probe_success_threshold = liveness_probe_success_threshold
+        self.liveness_probe_tcp_socket_port = liveness_probe_tcp_socket_port
+        self.liveness_probe_timeout_seconds = liveness_probe_timeout_seconds
+        self.memory = memory
+        self.name = name
+        self.ports = ports
+        self.readiness_probe_exec_commands = readiness_probe_exec_commands
+        self.readiness_probe_failure_threshold = readiness_probe_failure_threshold
+        self.readiness_probe_http_get_path = readiness_probe_http_get_path
+        self.readiness_probe_http_get_port = readiness_probe_http_get_port
+        self.readiness_probe_http_get_scheme = readiness_probe_http_get_scheme
+        self.readiness_probe_initial_delay_seconds = readiness_probe_initial_delay_seconds
+        self.readiness_probe_period_seconds = readiness_probe_period_seconds
+        self.readiness_probe_success_threshold = readiness_probe_success_threshold
+        self.readiness_probe_tcp_socket_port = readiness_probe_tcp_socket_port
+        self.readiness_probe_timeout_seconds = readiness_probe_timeout_seconds
+        self.security_context_capability_adds = security_context_capability_adds
+        self.security_context_read_only_root_filesystem = security_context_read_only_root_filesystem
+        self.security_context_run_as_user = security_context_run_as_user
+        self.stdin = stdin
+        self.stdin_once = stdin_once
+        self.tty = tty
+        self.volume_mounts = volume_mounts
+        self.working_dir = working_dir
+
+    def validate(self):
+        if self.environment_vars:
+            for k in self.environment_vars:
+                if k:
+                    k.validate()
+        if self.ports:
+            for k in self.ports:
+                if k:
+                    k.validate()
+        if self.volume_mounts:
+            for k in self.volume_mounts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.args is not None:
+            result['Args'] = self.args
+        if self.commands is not None:
+            result['Commands'] = self.commands
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        result['EnvironmentVars'] = []
+        if self.environment_vars is not None:
+            for k in self.environment_vars:
+                result['EnvironmentVars'].append(k.to_map() if k else None)
+        if self.gpu is not None:
+            result['Gpu'] = self.gpu
+        if self.image is not None:
+            result['Image'] = self.image
+        if self.image_pull_policy is not None:
+            result['ImagePullPolicy'] = self.image_pull_policy
+        if self.lifecycle_post_start_handler_execs is not None:
+            result['LifecyclePostStartHandlerExecs'] = self.lifecycle_post_start_handler_execs
+        if self.lifecycle_post_start_handler_http_get_host is not None:
+            result['LifecyclePostStartHandlerHttpGetHost'] = self.lifecycle_post_start_handler_http_get_host
+        if self.lifecycle_post_start_handler_http_get_path is not None:
+            result['LifecyclePostStartHandlerHttpGetPath'] = self.lifecycle_post_start_handler_http_get_path
+        if self.lifecycle_post_start_handler_http_get_port is not None:
+            result['LifecyclePostStartHandlerHttpGetPort'] = self.lifecycle_post_start_handler_http_get_port
+        if self.lifecycle_post_start_handler_http_get_scheme is not None:
+            result['LifecyclePostStartHandlerHttpGetScheme'] = self.lifecycle_post_start_handler_http_get_scheme
+        if self.lifecycle_post_start_handler_tcp_socket_host is not None:
+            result['LifecyclePostStartHandlerTcpSocketHost'] = self.lifecycle_post_start_handler_tcp_socket_host
+        if self.lifecycle_post_start_handler_tcp_socket_port is not None:
+            result['LifecyclePostStartHandlerTcpSocketPort'] = self.lifecycle_post_start_handler_tcp_socket_port
+        if self.lifecycle_pre_stop_handler_execs is not None:
+            result['LifecyclePreStopHandlerExecs'] = self.lifecycle_pre_stop_handler_execs
+        if self.lifecycle_pre_stop_handler_http_get_host is not None:
+            result['LifecyclePreStopHandlerHttpGetHost'] = self.lifecycle_pre_stop_handler_http_get_host
+        if self.lifecycle_pre_stop_handler_http_get_path is not None:
+            result['LifecyclePreStopHandlerHttpGetPath'] = self.lifecycle_pre_stop_handler_http_get_path
+        if self.lifecycle_pre_stop_handler_http_get_port is not None:
+            result['LifecyclePreStopHandlerHttpGetPort'] = self.lifecycle_pre_stop_handler_http_get_port
+        if self.lifecycle_pre_stop_handler_http_get_scheme is not None:
+            result['LifecyclePreStopHandlerHttpGetScheme'] = self.lifecycle_pre_stop_handler_http_get_scheme
+        if self.lifecycle_pre_stop_handler_tcp_socket_host is not None:
+            result['LifecyclePreStopHandlerTcpSocketHost'] = self.lifecycle_pre_stop_handler_tcp_socket_host
+        if self.lifecycle_pre_stop_handler_tcp_socket_port is not None:
+            result['LifecyclePreStopHandlerTcpSocketPort'] = self.lifecycle_pre_stop_handler_tcp_socket_port
+        if self.liveness_probe_exec_commands is not None:
+            result['LivenessProbeExecCommands'] = self.liveness_probe_exec_commands
+        if self.liveness_probe_failure_threshold is not None:
+            result['LivenessProbeFailureThreshold'] = self.liveness_probe_failure_threshold
+        if self.liveness_probe_http_get_path is not None:
+            result['LivenessProbeHttpGetPath'] = self.liveness_probe_http_get_path
+        if self.liveness_probe_http_get_port is not None:
+            result['LivenessProbeHttpGetPort'] = self.liveness_probe_http_get_port
+        if self.liveness_probe_http_get_scheme is not None:
+            result['LivenessProbeHttpGetScheme'] = self.liveness_probe_http_get_scheme
+        if self.liveness_probe_initial_delay_seconds is not None:
+            result['LivenessProbeInitialDelaySeconds'] = self.liveness_probe_initial_delay_seconds
+        if self.liveness_probe_period_seconds is not None:
+            result['LivenessProbePeriodSeconds'] = self.liveness_probe_period_seconds
+        if self.liveness_probe_success_threshold is not None:
+            result['LivenessProbeSuccessThreshold'] = self.liveness_probe_success_threshold
+        if self.liveness_probe_tcp_socket_port is not None:
+            result['LivenessProbeTcpSocketPort'] = self.liveness_probe_tcp_socket_port
+        if self.liveness_probe_timeout_seconds is not None:
+            result['LivenessProbeTimeoutSeconds'] = self.liveness_probe_timeout_seconds
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.name is not None:
+            result['Name'] = self.name
+        result['Ports'] = []
+        if self.ports is not None:
+            for k in self.ports:
+                result['Ports'].append(k.to_map() if k else None)
+        if self.readiness_probe_exec_commands is not None:
+            result['ReadinessProbeExecCommands'] = self.readiness_probe_exec_commands
+        if self.readiness_probe_failure_threshold is not None:
+            result['ReadinessProbeFailureThreshold'] = self.readiness_probe_failure_threshold
+        if self.readiness_probe_http_get_path is not None:
+            result['ReadinessProbeHttpGetPath'] = self.readiness_probe_http_get_path
+        if self.readiness_probe_http_get_port is not None:
+            result['ReadinessProbeHttpGetPort'] = self.readiness_probe_http_get_port
+        if self.readiness_probe_http_get_scheme is not None:
+            result['ReadinessProbeHttpGetScheme'] = self.readiness_probe_http_get_scheme
+        if self.readiness_probe_initial_delay_seconds is not None:
+            result['ReadinessProbeInitialDelaySeconds'] = self.readiness_probe_initial_delay_seconds
+        if self.readiness_probe_period_seconds is not None:
+            result['ReadinessProbePeriodSeconds'] = self.readiness_probe_period_seconds
+        if self.readiness_probe_success_threshold is not None:
+            result['ReadinessProbeSuccessThreshold'] = self.readiness_probe_success_threshold
+        if self.readiness_probe_tcp_socket_port is not None:
+            result['ReadinessProbeTcpSocketPort'] = self.readiness_probe_tcp_socket_port
+        if self.readiness_probe_timeout_seconds is not None:
+            result['ReadinessProbeTimeoutSeconds'] = self.readiness_probe_timeout_seconds
+        if self.security_context_capability_adds is not None:
+            result['SecurityContextCapabilityAdds'] = self.security_context_capability_adds
+        if self.security_context_read_only_root_filesystem is not None:
+            result['SecurityContextReadOnlyRootFilesystem'] = self.security_context_read_only_root_filesystem
+        if self.security_context_run_as_user is not None:
+            result['SecurityContextRunAsUser'] = self.security_context_run_as_user
+        if self.stdin is not None:
+            result['Stdin'] = self.stdin
+        if self.stdin_once is not None:
+            result['StdinOnce'] = self.stdin_once
+        if self.tty is not None:
+            result['Tty'] = self.tty
+        result['VolumeMounts'] = []
+        if self.volume_mounts is not None:
+            for k in self.volume_mounts:
+                result['VolumeMounts'].append(k.to_map() if k else None)
+        if self.working_dir is not None:
+            result['WorkingDir'] = self.working_dir
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Args') is not None:
+            self.args = m.get('Args')
+        if m.get('Commands') is not None:
+            self.commands = m.get('Commands')
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        self.environment_vars = []
+        if m.get('EnvironmentVars') is not None:
+            for k in m.get('EnvironmentVars'):
+                temp_model = DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersEnvironmentVars()
+                self.environment_vars.append(temp_model.from_map(k))
+        if m.get('Gpu') is not None:
+            self.gpu = m.get('Gpu')
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+        if m.get('ImagePullPolicy') is not None:
+            self.image_pull_policy = m.get('ImagePullPolicy')
+        if m.get('LifecyclePostStartHandlerExecs') is not None:
+            self.lifecycle_post_start_handler_execs = m.get('LifecyclePostStartHandlerExecs')
+        if m.get('LifecyclePostStartHandlerHttpGetHost') is not None:
+            self.lifecycle_post_start_handler_http_get_host = m.get('LifecyclePostStartHandlerHttpGetHost')
+        if m.get('LifecyclePostStartHandlerHttpGetPath') is not None:
+            self.lifecycle_post_start_handler_http_get_path = m.get('LifecyclePostStartHandlerHttpGetPath')
+        if m.get('LifecyclePostStartHandlerHttpGetPort') is not None:
+            self.lifecycle_post_start_handler_http_get_port = m.get('LifecyclePostStartHandlerHttpGetPort')
+        if m.get('LifecyclePostStartHandlerHttpGetScheme') is not None:
+            self.lifecycle_post_start_handler_http_get_scheme = m.get('LifecyclePostStartHandlerHttpGetScheme')
+        if m.get('LifecyclePostStartHandlerTcpSocketHost') is not None:
+            self.lifecycle_post_start_handler_tcp_socket_host = m.get('LifecyclePostStartHandlerTcpSocketHost')
+        if m.get('LifecyclePostStartHandlerTcpSocketPort') is not None:
+            self.lifecycle_post_start_handler_tcp_socket_port = m.get('LifecyclePostStartHandlerTcpSocketPort')
+        if m.get('LifecyclePreStopHandlerExecs') is not None:
+            self.lifecycle_pre_stop_handler_execs = m.get('LifecyclePreStopHandlerExecs')
+        if m.get('LifecyclePreStopHandlerHttpGetHost') is not None:
+            self.lifecycle_pre_stop_handler_http_get_host = m.get('LifecyclePreStopHandlerHttpGetHost')
+        if m.get('LifecyclePreStopHandlerHttpGetPath') is not None:
+            self.lifecycle_pre_stop_handler_http_get_path = m.get('LifecyclePreStopHandlerHttpGetPath')
+        if m.get('LifecyclePreStopHandlerHttpGetPort') is not None:
+            self.lifecycle_pre_stop_handler_http_get_port = m.get('LifecyclePreStopHandlerHttpGetPort')
+        if m.get('LifecyclePreStopHandlerHttpGetScheme') is not None:
+            self.lifecycle_pre_stop_handler_http_get_scheme = m.get('LifecyclePreStopHandlerHttpGetScheme')
+        if m.get('LifecyclePreStopHandlerTcpSocketHost') is not None:
+            self.lifecycle_pre_stop_handler_tcp_socket_host = m.get('LifecyclePreStopHandlerTcpSocketHost')
+        if m.get('LifecyclePreStopHandlerTcpSocketPort') is not None:
+            self.lifecycle_pre_stop_handler_tcp_socket_port = m.get('LifecyclePreStopHandlerTcpSocketPort')
+        if m.get('LivenessProbeExecCommands') is not None:
+            self.liveness_probe_exec_commands = m.get('LivenessProbeExecCommands')
+        if m.get('LivenessProbeFailureThreshold') is not None:
+            self.liveness_probe_failure_threshold = m.get('LivenessProbeFailureThreshold')
+        if m.get('LivenessProbeHttpGetPath') is not None:
+            self.liveness_probe_http_get_path = m.get('LivenessProbeHttpGetPath')
+        if m.get('LivenessProbeHttpGetPort') is not None:
+            self.liveness_probe_http_get_port = m.get('LivenessProbeHttpGetPort')
+        if m.get('LivenessProbeHttpGetScheme') is not None:
+            self.liveness_probe_http_get_scheme = m.get('LivenessProbeHttpGetScheme')
+        if m.get('LivenessProbeInitialDelaySeconds') is not None:
+            self.liveness_probe_initial_delay_seconds = m.get('LivenessProbeInitialDelaySeconds')
+        if m.get('LivenessProbePeriodSeconds') is not None:
+            self.liveness_probe_period_seconds = m.get('LivenessProbePeriodSeconds')
+        if m.get('LivenessProbeSuccessThreshold') is not None:
+            self.liveness_probe_success_threshold = m.get('LivenessProbeSuccessThreshold')
+        if m.get('LivenessProbeTcpSocketPort') is not None:
+            self.liveness_probe_tcp_socket_port = m.get('LivenessProbeTcpSocketPort')
+        if m.get('LivenessProbeTimeoutSeconds') is not None:
+            self.liveness_probe_timeout_seconds = m.get('LivenessProbeTimeoutSeconds')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.ports = []
+        if m.get('Ports') is not None:
+            for k in m.get('Ports'):
+                temp_model = DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersPorts()
+                self.ports.append(temp_model.from_map(k))
+        if m.get('ReadinessProbeExecCommands') is not None:
+            self.readiness_probe_exec_commands = m.get('ReadinessProbeExecCommands')
+        if m.get('ReadinessProbeFailureThreshold') is not None:
+            self.readiness_probe_failure_threshold = m.get('ReadinessProbeFailureThreshold')
+        if m.get('ReadinessProbeHttpGetPath') is not None:
+            self.readiness_probe_http_get_path = m.get('ReadinessProbeHttpGetPath')
+        if m.get('ReadinessProbeHttpGetPort') is not None:
+            self.readiness_probe_http_get_port = m.get('ReadinessProbeHttpGetPort')
+        if m.get('ReadinessProbeHttpGetScheme') is not None:
+            self.readiness_probe_http_get_scheme = m.get('ReadinessProbeHttpGetScheme')
+        if m.get('ReadinessProbeInitialDelaySeconds') is not None:
+            self.readiness_probe_initial_delay_seconds = m.get('ReadinessProbeInitialDelaySeconds')
+        if m.get('ReadinessProbePeriodSeconds') is not None:
+            self.readiness_probe_period_seconds = m.get('ReadinessProbePeriodSeconds')
+        if m.get('ReadinessProbeSuccessThreshold') is not None:
+            self.readiness_probe_success_threshold = m.get('ReadinessProbeSuccessThreshold')
+        if m.get('ReadinessProbeTcpSocketPort') is not None:
+            self.readiness_probe_tcp_socket_port = m.get('ReadinessProbeTcpSocketPort')
+        if m.get('ReadinessProbeTimeoutSeconds') is not None:
+            self.readiness_probe_timeout_seconds = m.get('ReadinessProbeTimeoutSeconds')
+        if m.get('SecurityContextCapabilityAdds') is not None:
+            self.security_context_capability_adds = m.get('SecurityContextCapabilityAdds')
+        if m.get('SecurityContextReadOnlyRootFilesystem') is not None:
+            self.security_context_read_only_root_filesystem = m.get('SecurityContextReadOnlyRootFilesystem')
+        if m.get('SecurityContextRunAsUser') is not None:
+            self.security_context_run_as_user = m.get('SecurityContextRunAsUser')
+        if m.get('Stdin') is not None:
+            self.stdin = m.get('Stdin')
+        if m.get('StdinOnce') is not None:
+            self.stdin_once = m.get('StdinOnce')
+        if m.get('Tty') is not None:
+            self.tty = m.get('Tty')
+        self.volume_mounts = []
+        if m.get('VolumeMounts') is not None:
+            for k in m.get('VolumeMounts'):
+                temp_model = DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersVolumeMounts()
+                self.volume_mounts.append(temp_model.from_map(k))
+        if m.get('WorkingDir') is not None:
+            self.working_dir = m.get('WorkingDir')
+        return self
+
+
+class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationDnsConfigOptions(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationHostAliases(TeaModel):
+    def __init__(
+        self,
+        hostnames: List[str] = None,
+        ip: str = None,
+    ):
+        self.hostnames = hostnames
+        self.ip = ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hostnames is not None:
+            result['Hostnames'] = self.hostnames
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Hostnames') is not None:
+            self.hostnames = m.get('Hostnames')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        return self
+
+
+class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationImageRegistryCredentials(TeaModel):
+    def __init__(
+        self,
+        password: str = None,
+        server: str = None,
+        user_name: str = None,
+    ):
+        self.password = password
+        self.server = server
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.server is not None:
+            result['Server'] = self.server
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('Server') is not None:
+            self.server = m.get('Server')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerEnvironmentVars(TeaModel):
+    def __init__(
+        self,
+        field_ref_field_path: str = None,
+        key: str = None,
+        value: str = None,
+    ):
+        self.field_ref_field_path = field_ref_field_path
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.field_ref_field_path is not None:
+            result['FieldRefFieldPath'] = self.field_ref_field_path
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FieldRefFieldPath') is not None:
+            self.field_ref_field_path = m.get('FieldRefFieldPath')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerPorts(TeaModel):
+    def __init__(
+        self,
+        port: int = None,
+        protocol: str = None,
+    ):
+        self.port = port
+        self.protocol = protocol
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        return self
+
+
+class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerVolumeMounts(TeaModel):
+    def __init__(
+        self,
+        mount_path: str = None,
+        mount_propagation: str = None,
+        name: str = None,
+        read_only: bool = None,
+        sub_path: str = None,
+    ):
+        self.mount_path = mount_path
+        self.mount_propagation = mount_propagation
+        self.name = name
+        self.read_only = read_only
+        self.sub_path = sub_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mount_path is not None:
+            result['MountPath'] = self.mount_path
+        if self.mount_propagation is not None:
+            result['MountPropagation'] = self.mount_propagation
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.read_only is not None:
+            result['ReadOnly'] = self.read_only
+        if self.sub_path is not None:
+            result['SubPath'] = self.sub_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MountPath') is not None:
+            self.mount_path = m.get('MountPath')
+        if m.get('MountPropagation') is not None:
+            self.mount_propagation = m.get('MountPropagation')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ReadOnly') is not None:
+            self.read_only = m.get('ReadOnly')
+        if m.get('SubPath') is not None:
+            self.sub_path = m.get('SubPath')
+        return self
+
+
+class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers(TeaModel):
+    def __init__(
+        self,
+        cpu: float = None,
+        gpu: int = None,
+        image: str = None,
+        image_pull_policy: str = None,
+        init_container_args: List[str] = None,
+        init_container_commands: List[str] = None,
+        init_container_environment_vars: List[DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerEnvironmentVars] = None,
+        init_container_ports: List[DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerPorts] = None,
+        init_container_volume_mounts: List[DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerVolumeMounts] = None,
+        memory: float = None,
+        name: str = None,
+        security_context_capability_adds: List[str] = None,
+        security_context_read_only_root_filesystem: bool = None,
+        security_context_run_as_user: str = None,
+        working_dir: str = None,
+    ):
+        self.cpu = cpu
+        self.gpu = gpu
+        self.image = image
+        self.image_pull_policy = image_pull_policy
+        self.init_container_args = init_container_args
+        self.init_container_commands = init_container_commands
+        self.init_container_environment_vars = init_container_environment_vars
+        self.init_container_ports = init_container_ports
+        self.init_container_volume_mounts = init_container_volume_mounts
+        self.memory = memory
+        self.name = name
+        self.security_context_capability_adds = security_context_capability_adds
+        self.security_context_read_only_root_filesystem = security_context_read_only_root_filesystem
+        self.security_context_run_as_user = security_context_run_as_user
+        self.working_dir = working_dir
+
+    def validate(self):
+        if self.init_container_environment_vars:
+            for k in self.init_container_environment_vars:
+                if k:
+                    k.validate()
+        if self.init_container_ports:
+            for k in self.init_container_ports:
+                if k:
+                    k.validate()
+        if self.init_container_volume_mounts:
+            for k in self.init_container_volume_mounts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        if self.gpu is not None:
+            result['Gpu'] = self.gpu
+        if self.image is not None:
+            result['Image'] = self.image
+        if self.image_pull_policy is not None:
+            result['ImagePullPolicy'] = self.image_pull_policy
+        if self.init_container_args is not None:
+            result['InitContainerArgs'] = self.init_container_args
+        if self.init_container_commands is not None:
+            result['InitContainerCommands'] = self.init_container_commands
+        result['InitContainerEnvironmentVars'] = []
+        if self.init_container_environment_vars is not None:
+            for k in self.init_container_environment_vars:
+                result['InitContainerEnvironmentVars'].append(k.to_map() if k else None)
+        result['InitContainerPorts'] = []
+        if self.init_container_ports is not None:
+            for k in self.init_container_ports:
+                result['InitContainerPorts'].append(k.to_map() if k else None)
+        result['InitContainerVolumeMounts'] = []
+        if self.init_container_volume_mounts is not None:
+            for k in self.init_container_volume_mounts:
+                result['InitContainerVolumeMounts'].append(k.to_map() if k else None)
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.security_context_capability_adds is not None:
+            result['SecurityContextCapabilityAdds'] = self.security_context_capability_adds
+        if self.security_context_read_only_root_filesystem is not None:
+            result['SecurityContextReadOnlyRootFilesystem'] = self.security_context_read_only_root_filesystem
+        if self.security_context_run_as_user is not None:
+            result['SecurityContextRunAsUser'] = self.security_context_run_as_user
+        if self.working_dir is not None:
+            result['WorkingDir'] = self.working_dir
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        if m.get('Gpu') is not None:
+            self.gpu = m.get('Gpu')
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+        if m.get('ImagePullPolicy') is not None:
+            self.image_pull_policy = m.get('ImagePullPolicy')
+        if m.get('InitContainerArgs') is not None:
+            self.init_container_args = m.get('InitContainerArgs')
+        if m.get('InitContainerCommands') is not None:
+            self.init_container_commands = m.get('InitContainerCommands')
+        self.init_container_environment_vars = []
+        if m.get('InitContainerEnvironmentVars') is not None:
+            for k in m.get('InitContainerEnvironmentVars'):
+                temp_model = DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerEnvironmentVars()
+                self.init_container_environment_vars.append(temp_model.from_map(k))
+        self.init_container_ports = []
+        if m.get('InitContainerPorts') is not None:
+            for k in m.get('InitContainerPorts'):
+                temp_model = DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerPorts()
+                self.init_container_ports.append(temp_model.from_map(k))
+        self.init_container_volume_mounts = []
+        if m.get('InitContainerVolumeMounts') is not None:
+            for k in m.get('InitContainerVolumeMounts'):
+                temp_model = DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainersInitContainerVolumeMounts()
+                self.init_container_volume_mounts.append(temp_model.from_map(k))
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SecurityContextCapabilityAdds') is not None:
+            self.security_context_capability_adds = m.get('SecurityContextCapabilityAdds')
+        if m.get('SecurityContextReadOnlyRootFilesystem') is not None:
+            self.security_context_read_only_root_filesystem = m.get('SecurityContextReadOnlyRootFilesystem')
+        if m.get('SecurityContextRunAsUser') is not None:
+            self.security_context_run_as_user = m.get('SecurityContextRunAsUser')
+        if m.get('WorkingDir') is not None:
+            self.working_dir = m.get('WorkingDir')
+        return self
+
+
+class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationSecurityContextSysCtls(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumesConfigFileVolumeConfigFileToPaths(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        mode: int = None,
+        path: str = None,
+    ):
+        self.content = content
+        self.mode = mode
+        self.path = path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.path is not None:
+            result['Path'] = self.path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        return self
+
+
+class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes(TeaModel):
+    def __init__(
+        self,
+        config_file_volume_config_file_to_paths: List[DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumesConfigFileVolumeConfigFileToPaths] = None,
+        config_file_volume_default_mode: int = None,
+        disk_volume_disk_id: str = None,
+        disk_volume_disk_size: int = None,
+        disk_volume_fs_type: str = None,
+        empty_dir_volume_medium: str = None,
+        empty_dir_volume_size_limit: str = None,
+        flex_volume_driver: str = None,
+        flex_volume_fs_type: str = None,
+        flex_volume_options: str = None,
+        host_path_volume_path: str = None,
+        host_path_volume_type: str = None,
+        nfsvolume_path: str = None,
+        nfsvolume_read_only: bool = None,
+        nfsvolume_server: str = None,
+        name: str = None,
+        type: str = None,
+    ):
+        self.config_file_volume_config_file_to_paths = config_file_volume_config_file_to_paths
+        self.config_file_volume_default_mode = config_file_volume_default_mode
+        self.disk_volume_disk_id = disk_volume_disk_id
+        self.disk_volume_disk_size = disk_volume_disk_size
+        self.disk_volume_fs_type = disk_volume_fs_type
+        self.empty_dir_volume_medium = empty_dir_volume_medium
+        self.empty_dir_volume_size_limit = empty_dir_volume_size_limit
+        self.flex_volume_driver = flex_volume_driver
+        self.flex_volume_fs_type = flex_volume_fs_type
+        self.flex_volume_options = flex_volume_options
+        self.host_path_volume_path = host_path_volume_path
+        self.host_path_volume_type = host_path_volume_type
+        self.nfsvolume_path = nfsvolume_path
+        self.nfsvolume_read_only = nfsvolume_read_only
+        self.nfsvolume_server = nfsvolume_server
+        self.name = name
+        self.type = type
+
+    def validate(self):
+        if self.config_file_volume_config_file_to_paths:
+            for k in self.config_file_volume_config_file_to_paths:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ConfigFileVolumeConfigFileToPaths'] = []
+        if self.config_file_volume_config_file_to_paths is not None:
+            for k in self.config_file_volume_config_file_to_paths:
+                result['ConfigFileVolumeConfigFileToPaths'].append(k.to_map() if k else None)
+        if self.config_file_volume_default_mode is not None:
+            result['ConfigFileVolumeDefaultMode'] = self.config_file_volume_default_mode
+        if self.disk_volume_disk_id is not None:
+            result['DiskVolumeDiskId'] = self.disk_volume_disk_id
+        if self.disk_volume_disk_size is not None:
+            result['DiskVolumeDiskSize'] = self.disk_volume_disk_size
+        if self.disk_volume_fs_type is not None:
+            result['DiskVolumeFsType'] = self.disk_volume_fs_type
+        if self.empty_dir_volume_medium is not None:
+            result['EmptyDirVolumeMedium'] = self.empty_dir_volume_medium
+        if self.empty_dir_volume_size_limit is not None:
+            result['EmptyDirVolumeSizeLimit'] = self.empty_dir_volume_size_limit
+        if self.flex_volume_driver is not None:
+            result['FlexVolumeDriver'] = self.flex_volume_driver
+        if self.flex_volume_fs_type is not None:
+            result['FlexVolumeFsType'] = self.flex_volume_fs_type
+        if self.flex_volume_options is not None:
+            result['FlexVolumeOptions'] = self.flex_volume_options
+        if self.host_path_volume_path is not None:
+            result['HostPathVolumePath'] = self.host_path_volume_path
+        if self.host_path_volume_type is not None:
+            result['HostPathVolumeType'] = self.host_path_volume_type
+        if self.nfsvolume_path is not None:
+            result['NFSVolumePath'] = self.nfsvolume_path
+        if self.nfsvolume_read_only is not None:
+            result['NFSVolumeReadOnly'] = self.nfsvolume_read_only
+        if self.nfsvolume_server is not None:
+            result['NFSVolumeServer'] = self.nfsvolume_server
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.config_file_volume_config_file_to_paths = []
+        if m.get('ConfigFileVolumeConfigFileToPaths') is not None:
+            for k in m.get('ConfigFileVolumeConfigFileToPaths'):
+                temp_model = DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumesConfigFileVolumeConfigFileToPaths()
+                self.config_file_volume_config_file_to_paths.append(temp_model.from_map(k))
+        if m.get('ConfigFileVolumeDefaultMode') is not None:
+            self.config_file_volume_default_mode = m.get('ConfigFileVolumeDefaultMode')
+        if m.get('DiskVolumeDiskId') is not None:
+            self.disk_volume_disk_id = m.get('DiskVolumeDiskId')
+        if m.get('DiskVolumeDiskSize') is not None:
+            self.disk_volume_disk_size = m.get('DiskVolumeDiskSize')
+        if m.get('DiskVolumeFsType') is not None:
+            self.disk_volume_fs_type = m.get('DiskVolumeFsType')
+        if m.get('EmptyDirVolumeMedium') is not None:
+            self.empty_dir_volume_medium = m.get('EmptyDirVolumeMedium')
+        if m.get('EmptyDirVolumeSizeLimit') is not None:
+            self.empty_dir_volume_size_limit = m.get('EmptyDirVolumeSizeLimit')
+        if m.get('FlexVolumeDriver') is not None:
+            self.flex_volume_driver = m.get('FlexVolumeDriver')
+        if m.get('FlexVolumeFsType') is not None:
+            self.flex_volume_fs_type = m.get('FlexVolumeFsType')
+        if m.get('FlexVolumeOptions') is not None:
+            self.flex_volume_options = m.get('FlexVolumeOptions')
+        if m.get('HostPathVolumePath') is not None:
+            self.host_path_volume_path = m.get('HostPathVolumePath')
+        if m.get('HostPathVolumeType') is not None:
+            self.host_path_volume_type = m.get('HostPathVolumeType')
+        if m.get('NFSVolumePath') is not None:
+            self.nfsvolume_path = m.get('NFSVolumePath')
+        if m.get('NFSVolumeReadOnly') is not None:
+            self.nfsvolume_read_only = m.get('NFSVolumeReadOnly')
+        if m.get('NFSVolumeServer') is not None:
+            self.nfsvolume_server = m.get('NFSVolumeServer')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration(TeaModel):
+    def __init__(
+        self,
+        acr_registry_infos: List[DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationAcrRegistryInfos] = None,
+        active_deadline_seconds: int = None,
+        auto_create_eip: bool = None,
+        auto_match_image_cache: bool = None,
+        compute_category: List[str] = None,
+        container_group_name: str = None,
+        containers: List[DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers] = None,
+        cost_optimization: bool = None,
+        cpu: float = None,
+        cpu_options_core: int = None,
+        cpu_options_threads_per_core: int = None,
+        creation_time: str = None,
+        data_cache_bucket: str = None,
+        data_cache_bursting_enabled: bool = None,
+        data_cache_pl: str = None,
+        data_cache_provisioned_iops: int = None,
+        description: str = None,
+        dns_config_name_servers: List[str] = None,
+        dns_config_options: List[DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationDnsConfigOptions] = None,
+        dns_config_searches: List[str] = None,
+        dns_policy: str = None,
+        egress_bandwidth: int = None,
+        eip_bandwidth: int = None,
+        eip_common_bandwidth_package: str = None,
+        eip_isp: str = None,
+        eip_public_ip_address_pool_id: str = None,
+        ephemeral_storage: int = None,
+        host_aliases: List[DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationHostAliases] = None,
+        host_name: str = None,
+        image_registry_credentials: List[DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationImageRegistryCredentials] = None,
+        image_snapshot_id: str = None,
+        ingress_bandwidth: int = None,
+        init_containers: List[DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers] = None,
+        instance_family_level: str = None,
+        instance_types: List[str] = None,
+        ipv_6address_count: int = None,
+        lifecycle_state: str = None,
+        load_balancer_weight: int = None,
+        memory: float = None,
+        ntp_servers: List[str] = None,
+        ram_role_name: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        restart_policy: str = None,
+        scaling_configuration_id: str = None,
+        scaling_configuration_name: str = None,
+        scaling_group_id: str = None,
+        security_context_sys_ctls: List[DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationSecurityContextSysCtls] = None,
+        security_group_id: str = None,
+        sls_enable: bool = None,
+        spot_price_limit: float = None,
+        spot_strategy: str = None,
+        tags: List[DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationTags] = None,
+        termination_grace_period_seconds: int = None,
+        volumes: List[DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes] = None,
+    ):
+        self.acr_registry_infos = acr_registry_infos
+        self.active_deadline_seconds = active_deadline_seconds
+        self.auto_create_eip = auto_create_eip
+        self.auto_match_image_cache = auto_match_image_cache
+        self.compute_category = compute_category
+        self.container_group_name = container_group_name
+        self.containers = containers
+        self.cost_optimization = cost_optimization
+        self.cpu = cpu
+        self.cpu_options_core = cpu_options_core
+        self.cpu_options_threads_per_core = cpu_options_threads_per_core
+        self.creation_time = creation_time
+        self.data_cache_bucket = data_cache_bucket
+        self.data_cache_bursting_enabled = data_cache_bursting_enabled
+        self.data_cache_pl = data_cache_pl
+        self.data_cache_provisioned_iops = data_cache_provisioned_iops
+        self.description = description
+        self.dns_config_name_servers = dns_config_name_servers
+        self.dns_config_options = dns_config_options
+        self.dns_config_searches = dns_config_searches
+        self.dns_policy = dns_policy
+        self.egress_bandwidth = egress_bandwidth
+        self.eip_bandwidth = eip_bandwidth
+        self.eip_common_bandwidth_package = eip_common_bandwidth_package
+        self.eip_isp = eip_isp
+        self.eip_public_ip_address_pool_id = eip_public_ip_address_pool_id
+        self.ephemeral_storage = ephemeral_storage
+        self.host_aliases = host_aliases
+        self.host_name = host_name
+        self.image_registry_credentials = image_registry_credentials
+        self.image_snapshot_id = image_snapshot_id
+        self.ingress_bandwidth = ingress_bandwidth
+        self.init_containers = init_containers
+        self.instance_family_level = instance_family_level
+        self.instance_types = instance_types
+        self.ipv_6address_count = ipv_6address_count
+        self.lifecycle_state = lifecycle_state
+        self.load_balancer_weight = load_balancer_weight
+        self.memory = memory
+        self.ntp_servers = ntp_servers
+        self.ram_role_name = ram_role_name
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.restart_policy = restart_policy
+        self.scaling_configuration_id = scaling_configuration_id
+        self.scaling_configuration_name = scaling_configuration_name
+        self.scaling_group_id = scaling_group_id
+        self.security_context_sys_ctls = security_context_sys_ctls
+        self.security_group_id = security_group_id
+        self.sls_enable = sls_enable
+        self.spot_price_limit = spot_price_limit
+        self.spot_strategy = spot_strategy
+        self.tags = tags
+        self.termination_grace_period_seconds = termination_grace_period_seconds
+        self.volumes = volumes
+
+    def validate(self):
+        if self.acr_registry_infos:
+            for k in self.acr_registry_infos:
+                if k:
+                    k.validate()
+        if self.containers:
+            for k in self.containers:
+                if k:
+                    k.validate()
+        if self.dns_config_options:
+            for k in self.dns_config_options:
+                if k:
+                    k.validate()
+        if self.host_aliases:
+            for k in self.host_aliases:
+                if k:
+                    k.validate()
+        if self.image_registry_credentials:
+            for k in self.image_registry_credentials:
+                if k:
+                    k.validate()
+        if self.init_containers:
+            for k in self.init_containers:
+                if k:
+                    k.validate()
+        if self.security_context_sys_ctls:
+            for k in self.security_context_sys_ctls:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+        if self.volumes:
+            for k in self.volumes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AcrRegistryInfos'] = []
+        if self.acr_registry_infos is not None:
+            for k in self.acr_registry_infos:
+                result['AcrRegistryInfos'].append(k.to_map() if k else None)
+        if self.active_deadline_seconds is not None:
+            result['ActiveDeadlineSeconds'] = self.active_deadline_seconds
+        if self.auto_create_eip is not None:
+            result['AutoCreateEip'] = self.auto_create_eip
+        if self.auto_match_image_cache is not None:
+            result['AutoMatchImageCache'] = self.auto_match_image_cache
+        if self.compute_category is not None:
+            result['ComputeCategory'] = self.compute_category
+        if self.container_group_name is not None:
+            result['ContainerGroupName'] = self.container_group_name
+        result['Containers'] = []
+        if self.containers is not None:
+            for k in self.containers:
+                result['Containers'].append(k.to_map() if k else None)
+        if self.cost_optimization is not None:
+            result['CostOptimization'] = self.cost_optimization
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        if self.cpu_options_core is not None:
+            result['CpuOptionsCore'] = self.cpu_options_core
+        if self.cpu_options_threads_per_core is not None:
+            result['CpuOptionsThreadsPerCore'] = self.cpu_options_threads_per_core
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.data_cache_bucket is not None:
+            result['DataCacheBucket'] = self.data_cache_bucket
+        if self.data_cache_bursting_enabled is not None:
+            result['DataCacheBurstingEnabled'] = self.data_cache_bursting_enabled
+        if self.data_cache_pl is not None:
+            result['DataCachePL'] = self.data_cache_pl
+        if self.data_cache_provisioned_iops is not None:
+            result['DataCacheProvisionedIops'] = self.data_cache_provisioned_iops
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.dns_config_name_servers is not None:
+            result['DnsConfigNameServers'] = self.dns_config_name_servers
+        result['DnsConfigOptions'] = []
+        if self.dns_config_options is not None:
+            for k in self.dns_config_options:
+                result['DnsConfigOptions'].append(k.to_map() if k else None)
+        if self.dns_config_searches is not None:
+            result['DnsConfigSearches'] = self.dns_config_searches
+        if self.dns_policy is not None:
+            result['DnsPolicy'] = self.dns_policy
+        if self.egress_bandwidth is not None:
+            result['EgressBandwidth'] = self.egress_bandwidth
+        if self.eip_bandwidth is not None:
+            result['EipBandwidth'] = self.eip_bandwidth
+        if self.eip_common_bandwidth_package is not None:
+            result['EipCommonBandwidthPackage'] = self.eip_common_bandwidth_package
+        if self.eip_isp is not None:
+            result['EipISP'] = self.eip_isp
+        if self.eip_public_ip_address_pool_id is not None:
+            result['EipPublicIpAddressPoolId'] = self.eip_public_ip_address_pool_id
+        if self.ephemeral_storage is not None:
+            result['EphemeralStorage'] = self.ephemeral_storage
+        result['HostAliases'] = []
+        if self.host_aliases is not None:
+            for k in self.host_aliases:
+                result['HostAliases'].append(k.to_map() if k else None)
+        if self.host_name is not None:
+            result['HostName'] = self.host_name
+        result['ImageRegistryCredentials'] = []
+        if self.image_registry_credentials is not None:
+            for k in self.image_registry_credentials:
+                result['ImageRegistryCredentials'].append(k.to_map() if k else None)
+        if self.image_snapshot_id is not None:
+            result['ImageSnapshotId'] = self.image_snapshot_id
+        if self.ingress_bandwidth is not None:
+            result['IngressBandwidth'] = self.ingress_bandwidth
+        result['InitContainers'] = []
+        if self.init_containers is not None:
+            for k in self.init_containers:
+                result['InitContainers'].append(k.to_map() if k else None)
+        if self.instance_family_level is not None:
+            result['InstanceFamilyLevel'] = self.instance_family_level
+        if self.instance_types is not None:
+            result['InstanceTypes'] = self.instance_types
+        if self.ipv_6address_count is not None:
+            result['Ipv6AddressCount'] = self.ipv_6address_count
+        if self.lifecycle_state is not None:
+            result['LifecycleState'] = self.lifecycle_state
+        if self.load_balancer_weight is not None:
+            result['LoadBalancerWeight'] = self.load_balancer_weight
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.ntp_servers is not None:
+            result['NtpServers'] = self.ntp_servers
+        if self.ram_role_name is not None:
+            result['RamRoleName'] = self.ram_role_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.restart_policy is not None:
+            result['RestartPolicy'] = self.restart_policy
+        if self.scaling_configuration_id is not None:
+            result['ScalingConfigurationId'] = self.scaling_configuration_id
+        if self.scaling_configuration_name is not None:
+            result['ScalingConfigurationName'] = self.scaling_configuration_name
+        if self.scaling_group_id is not None:
+            result['ScalingGroupId'] = self.scaling_group_id
+        result['SecurityContextSysCtls'] = []
+        if self.security_context_sys_ctls is not None:
+            for k in self.security_context_sys_ctls:
+                result['SecurityContextSysCtls'].append(k.to_map() if k else None)
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.sls_enable is not None:
+            result['SlsEnable'] = self.sls_enable
+        if self.spot_price_limit is not None:
+            result['SpotPriceLimit'] = self.spot_price_limit
+        if self.spot_strategy is not None:
+            result['SpotStrategy'] = self.spot_strategy
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.termination_grace_period_seconds is not None:
+            result['TerminationGracePeriodSeconds'] = self.termination_grace_period_seconds
+        result['Volumes'] = []
+        if self.volumes is not None:
+            for k in self.volumes:
+                result['Volumes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.acr_registry_infos = []
+        if m.get('AcrRegistryInfos') is not None:
+            for k in m.get('AcrRegistryInfos'):
+                temp_model = DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationAcrRegistryInfos()
+                self.acr_registry_infos.append(temp_model.from_map(k))
+        if m.get('ActiveDeadlineSeconds') is not None:
+            self.active_deadline_seconds = m.get('ActiveDeadlineSeconds')
+        if m.get('AutoCreateEip') is not None:
+            self.auto_create_eip = m.get('AutoCreateEip')
+        if m.get('AutoMatchImageCache') is not None:
+            self.auto_match_image_cache = m.get('AutoMatchImageCache')
+        if m.get('ComputeCategory') is not None:
+            self.compute_category = m.get('ComputeCategory')
+        if m.get('ContainerGroupName') is not None:
+            self.container_group_name = m.get('ContainerGroupName')
+        self.containers = []
+        if m.get('Containers') is not None:
+            for k in m.get('Containers'):
+                temp_model = DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainers()
+                self.containers.append(temp_model.from_map(k))
+        if m.get('CostOptimization') is not None:
+            self.cost_optimization = m.get('CostOptimization')
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        if m.get('CpuOptionsCore') is not None:
+            self.cpu_options_core = m.get('CpuOptionsCore')
+        if m.get('CpuOptionsThreadsPerCore') is not None:
+            self.cpu_options_threads_per_core = m.get('CpuOptionsThreadsPerCore')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('DataCacheBucket') is not None:
+            self.data_cache_bucket = m.get('DataCacheBucket')
+        if m.get('DataCacheBurstingEnabled') is not None:
+            self.data_cache_bursting_enabled = m.get('DataCacheBurstingEnabled')
+        if m.get('DataCachePL') is not None:
+            self.data_cache_pl = m.get('DataCachePL')
+        if m.get('DataCacheProvisionedIops') is not None:
+            self.data_cache_provisioned_iops = m.get('DataCacheProvisionedIops')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DnsConfigNameServers') is not None:
+            self.dns_config_name_servers = m.get('DnsConfigNameServers')
+        self.dns_config_options = []
+        if m.get('DnsConfigOptions') is not None:
+            for k in m.get('DnsConfigOptions'):
+                temp_model = DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationDnsConfigOptions()
+                self.dns_config_options.append(temp_model.from_map(k))
+        if m.get('DnsConfigSearches') is not None:
+            self.dns_config_searches = m.get('DnsConfigSearches')
+        if m.get('DnsPolicy') is not None:
+            self.dns_policy = m.get('DnsPolicy')
+        if m.get('EgressBandwidth') is not None:
+            self.egress_bandwidth = m.get('EgressBandwidth')
+        if m.get('EipBandwidth') is not None:
+            self.eip_bandwidth = m.get('EipBandwidth')
+        if m.get('EipCommonBandwidthPackage') is not None:
+            self.eip_common_bandwidth_package = m.get('EipCommonBandwidthPackage')
+        if m.get('EipISP') is not None:
+            self.eip_isp = m.get('EipISP')
+        if m.get('EipPublicIpAddressPoolId') is not None:
+            self.eip_public_ip_address_pool_id = m.get('EipPublicIpAddressPoolId')
+        if m.get('EphemeralStorage') is not None:
+            self.ephemeral_storage = m.get('EphemeralStorage')
+        self.host_aliases = []
+        if m.get('HostAliases') is not None:
+            for k in m.get('HostAliases'):
+                temp_model = DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationHostAliases()
+                self.host_aliases.append(temp_model.from_map(k))
+        if m.get('HostName') is not None:
+            self.host_name = m.get('HostName')
+        self.image_registry_credentials = []
+        if m.get('ImageRegistryCredentials') is not None:
+            for k in m.get('ImageRegistryCredentials'):
+                temp_model = DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationImageRegistryCredentials()
+                self.image_registry_credentials.append(temp_model.from_map(k))
+        if m.get('ImageSnapshotId') is not None:
+            self.image_snapshot_id = m.get('ImageSnapshotId')
+        if m.get('IngressBandwidth') is not None:
+            self.ingress_bandwidth = m.get('IngressBandwidth')
+        self.init_containers = []
+        if m.get('InitContainers') is not None:
+            for k in m.get('InitContainers'):
+                temp_model = DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitContainers()
+                self.init_containers.append(temp_model.from_map(k))
+        if m.get('InstanceFamilyLevel') is not None:
+            self.instance_family_level = m.get('InstanceFamilyLevel')
+        if m.get('InstanceTypes') is not None:
+            self.instance_types = m.get('InstanceTypes')
+        if m.get('Ipv6AddressCount') is not None:
+            self.ipv_6address_count = m.get('Ipv6AddressCount')
+        if m.get('LifecycleState') is not None:
+            self.lifecycle_state = m.get('LifecycleState')
+        if m.get('LoadBalancerWeight') is not None:
+            self.load_balancer_weight = m.get('LoadBalancerWeight')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('NtpServers') is not None:
+            self.ntp_servers = m.get('NtpServers')
+        if m.get('RamRoleName') is not None:
+            self.ram_role_name = m.get('RamRoleName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('RestartPolicy') is not None:
+            self.restart_policy = m.get('RestartPolicy')
+        if m.get('ScalingConfigurationId') is not None:
+            self.scaling_configuration_id = m.get('ScalingConfigurationId')
+        if m.get('ScalingConfigurationName') is not None:
+            self.scaling_configuration_name = m.get('ScalingConfigurationName')
+        if m.get('ScalingGroupId') is not None:
+            self.scaling_group_id = m.get('ScalingGroupId')
+        self.security_context_sys_ctls = []
+        if m.get('SecurityContextSysCtls') is not None:
+            for k in m.get('SecurityContextSysCtls'):
+                temp_model = DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationSecurityContextSysCtls()
+                self.security_context_sys_ctls.append(temp_model.from_map(k))
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('SlsEnable') is not None:
+            self.sls_enable = m.get('SlsEnable')
+        if m.get('SpotPriceLimit') is not None:
+            self.spot_price_limit = m.get('SpotPriceLimit')
+        if m.get('SpotStrategy') is not None:
+            self.spot_strategy = m.get('SpotStrategy')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('TerminationGracePeriodSeconds') is not None:
+            self.termination_grace_period_seconds = m.get('TerminationGracePeriodSeconds')
+        self.volumes = []
+        if m.get('Volumes') is not None:
+            for k in m.get('Volumes'):
+                temp_model = DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolumes()
+                self.volumes.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeEciScalingConfigurationDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        output: str = None,
+        request_id: str = None,
+        scaling_configuration: DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration = None,
+    ):
+        self.output = output
+        self.request_id = request_id
+        self.scaling_configuration = scaling_configuration
+
+    def validate(self):
+        if self.scaling_configuration:
+            self.scaling_configuration.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output is not None:
+            result['Output'] = self.output
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.scaling_configuration is not None:
+            result['ScalingConfiguration'] = self.scaling_configuration.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Output') is not None:
+            self.output = m.get('Output')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ScalingConfiguration') is not None:
+            temp_model = DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration()
+            self.scaling_configuration = temp_model.from_map(m['ScalingConfiguration'])
+        return self
+
+
+class DescribeEciScalingConfigurationDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeEciScalingConfigurationDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeEciScalingConfigurationDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeEciScalingConfigurationsRequest(TeaModel):
     def __init__(
         self,
@@ -14970,6 +16781,836 @@ class DescribeScalingConfigurationsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScalingConfigurationsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeScalingGroupDetailRequest(TeaModel):
+    def __init__(
+        self,
+        output_format: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        scaling_group_id: str = None,
+    ):
+        self.output_format = output_format
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.scaling_group_id = scaling_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output_format is not None:
+            result['OutputFormat'] = self.output_format
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.scaling_group_id is not None:
+            result['ScalingGroupId'] = self.scaling_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OutputFormat') is not None:
+            self.output_format = m.get('OutputFormat')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ScalingGroupId') is not None:
+            self.scaling_group_id = m.get('ScalingGroupId')
+        return self
+
+
+class DescribeScalingGroupDetailResponseBodyScalingGroupAlbServerGroups(TeaModel):
+    def __init__(
+        self,
+        alb_server_group_id: str = None,
+        port: int = None,
+        weight: int = None,
+    ):
+        self.alb_server_group_id = alb_server_group_id
+        self.port = port
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alb_server_group_id is not None:
+            result['AlbServerGroupId'] = self.alb_server_group_id
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlbServerGroupId') is not None:
+            self.alb_server_group_id = m.get('AlbServerGroupId')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        return self
+
+
+class DescribeScalingGroupDetailResponseBodyScalingGroupLaunchTemplateOverrides(TeaModel):
+    def __init__(
+        self,
+        instance_type: str = None,
+        spot_price_limit: float = None,
+        weighted_capacity: int = None,
+    ):
+        self.instance_type = instance_type
+        self.spot_price_limit = spot_price_limit
+        self.weighted_capacity = weighted_capacity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.spot_price_limit is not None:
+            result['SpotPriceLimit'] = self.spot_price_limit
+        if self.weighted_capacity is not None:
+            result['WeightedCapacity'] = self.weighted_capacity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('SpotPriceLimit') is not None:
+            self.spot_price_limit = m.get('SpotPriceLimit')
+        if m.get('WeightedCapacity') is not None:
+            self.weighted_capacity = m.get('WeightedCapacity')
+        return self
+
+
+class DescribeScalingGroupDetailResponseBodyScalingGroupLoadBalancerConfigs(TeaModel):
+    def __init__(
+        self,
+        load_balancer_id: str = None,
+        weight: int = None,
+    ):
+        self.load_balancer_id = load_balancer_id
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.load_balancer_id is not None:
+            result['LoadBalancerId'] = self.load_balancer_id
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LoadBalancerId') is not None:
+            self.load_balancer_id = m.get('LoadBalancerId')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        return self
+
+
+class DescribeScalingGroupDetailResponseBodyScalingGroupServerGroups(TeaModel):
+    def __init__(
+        self,
+        port: int = None,
+        server_group_id: str = None,
+        type: str = None,
+        weight: int = None,
+    ):
+        self.port = port
+        self.server_group_id = server_group_id
+        self.type = type
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.server_group_id is not None:
+            result['ServerGroupId'] = self.server_group_id
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('ServerGroupId') is not None:
+            self.server_group_id = m.get('ServerGroupId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        return self
+
+
+class DescribeScalingGroupDetailResponseBodyScalingGroupTags(TeaModel):
+    def __init__(
+        self,
+        propagate: bool = None,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.propagate = propagate
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.propagate is not None:
+            result['Propagate'] = self.propagate
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Propagate') is not None:
+            self.propagate = m.get('Propagate')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class DescribeScalingGroupDetailResponseBodyScalingGroupVServerGroupsVServerGroupAttributes(TeaModel):
+    def __init__(
+        self,
+        port: int = None,
+        vserver_group_id: str = None,
+        weight: int = None,
+    ):
+        self.port = port
+        self.vserver_group_id = vserver_group_id
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.vserver_group_id is not None:
+            result['VServerGroupId'] = self.vserver_group_id
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('VServerGroupId') is not None:
+            self.vserver_group_id = m.get('VServerGroupId')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        return self
+
+
+class DescribeScalingGroupDetailResponseBodyScalingGroupVServerGroups(TeaModel):
+    def __init__(
+        self,
+        load_balancer_id: str = None,
+        vserver_group_attributes: List[DescribeScalingGroupDetailResponseBodyScalingGroupVServerGroupsVServerGroupAttributes] = None,
+    ):
+        self.load_balancer_id = load_balancer_id
+        self.vserver_group_attributes = vserver_group_attributes
+
+    def validate(self):
+        if self.vserver_group_attributes:
+            for k in self.vserver_group_attributes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.load_balancer_id is not None:
+            result['LoadBalancerId'] = self.load_balancer_id
+        result['VServerGroupAttributes'] = []
+        if self.vserver_group_attributes is not None:
+            for k in self.vserver_group_attributes:
+                result['VServerGroupAttributes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LoadBalancerId') is not None:
+            self.load_balancer_id = m.get('LoadBalancerId')
+        self.vserver_group_attributes = []
+        if m.get('VServerGroupAttributes') is not None:
+            for k in m.get('VServerGroupAttributes'):
+                temp_model = DescribeScalingGroupDetailResponseBodyScalingGroupVServerGroupsVServerGroupAttributes()
+                self.vserver_group_attributes.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeScalingGroupDetailResponseBodyScalingGroup(TeaModel):
+    def __init__(
+        self,
+        active_capacity: int = None,
+        active_scaling_configuration_id: str = None,
+        alb_server_groups: List[DescribeScalingGroupDetailResponseBodyScalingGroupAlbServerGroups] = None,
+        allocation_strategy: str = None,
+        az_balance: bool = None,
+        compensate_with_on_demand: bool = None,
+        creation_time: str = None,
+        current_host_name: str = None,
+        custom_policy_arn: str = None,
+        dbinstance_ids: List[str] = None,
+        default_cooldown: int = None,
+        desired_capacity: int = None,
+        enable_desired_capacity: bool = None,
+        group_deletion_protection: bool = None,
+        group_type: str = None,
+        health_check_type: str = None,
+        health_check_types: List[str] = None,
+        init_capacity: int = None,
+        is_elastic_strength_in_alarm: bool = None,
+        launch_template_id: str = None,
+        launch_template_overrides: List[DescribeScalingGroupDetailResponseBodyScalingGroupLaunchTemplateOverrides] = None,
+        launch_template_version: str = None,
+        lifecycle_state: str = None,
+        load_balancer_configs: List[DescribeScalingGroupDetailResponseBodyScalingGroupLoadBalancerConfigs] = None,
+        load_balancer_ids: List[str] = None,
+        max_instance_lifetime: int = None,
+        max_size: int = None,
+        min_size: int = None,
+        modification_time: str = None,
+        monitor_group_id: str = None,
+        multi_azpolicy: str = None,
+        on_demand_base_capacity: int = None,
+        on_demand_percentage_above_base_capacity: int = None,
+        pending_capacity: int = None,
+        pending_wait_capacity: int = None,
+        protected_capacity: int = None,
+        region_id: str = None,
+        removal_policies: List[str] = None,
+        removing_capacity: int = None,
+        removing_wait_capacity: int = None,
+        resource_group_id: str = None,
+        scaling_group_id: str = None,
+        scaling_group_name: str = None,
+        scaling_policy: str = None,
+        server_groups: List[DescribeScalingGroupDetailResponseBodyScalingGroupServerGroups] = None,
+        spot_allocation_strategy: str = None,
+        spot_instance_pools: int = None,
+        spot_instance_remedy: bool = None,
+        standby_capacity: int = None,
+        stopped_capacity: int = None,
+        suspended_processes: List[str] = None,
+        system_suspended: bool = None,
+        tags: List[DescribeScalingGroupDetailResponseBodyScalingGroupTags] = None,
+        total_capacity: int = None,
+        total_instance_count: int = None,
+        vserver_groups: List[DescribeScalingGroupDetailResponseBodyScalingGroupVServerGroups] = None,
+        v_switch_id: str = None,
+        v_switch_ids: List[str] = None,
+        vpc_id: str = None,
+    ):
+        self.active_capacity = active_capacity
+        self.active_scaling_configuration_id = active_scaling_configuration_id
+        self.alb_server_groups = alb_server_groups
+        self.allocation_strategy = allocation_strategy
+        self.az_balance = az_balance
+        self.compensate_with_on_demand = compensate_with_on_demand
+        self.creation_time = creation_time
+        self.current_host_name = current_host_name
+        self.custom_policy_arn = custom_policy_arn
+        self.dbinstance_ids = dbinstance_ids
+        self.default_cooldown = default_cooldown
+        self.desired_capacity = desired_capacity
+        self.enable_desired_capacity = enable_desired_capacity
+        self.group_deletion_protection = group_deletion_protection
+        self.group_type = group_type
+        self.health_check_type = health_check_type
+        self.health_check_types = health_check_types
+        self.init_capacity = init_capacity
+        self.is_elastic_strength_in_alarm = is_elastic_strength_in_alarm
+        self.launch_template_id = launch_template_id
+        self.launch_template_overrides = launch_template_overrides
+        self.launch_template_version = launch_template_version
+        self.lifecycle_state = lifecycle_state
+        self.load_balancer_configs = load_balancer_configs
+        self.load_balancer_ids = load_balancer_ids
+        self.max_instance_lifetime = max_instance_lifetime
+        self.max_size = max_size
+        self.min_size = min_size
+        self.modification_time = modification_time
+        self.monitor_group_id = monitor_group_id
+        self.multi_azpolicy = multi_azpolicy
+        self.on_demand_base_capacity = on_demand_base_capacity
+        self.on_demand_percentage_above_base_capacity = on_demand_percentage_above_base_capacity
+        self.pending_capacity = pending_capacity
+        self.pending_wait_capacity = pending_wait_capacity
+        self.protected_capacity = protected_capacity
+        self.region_id = region_id
+        self.removal_policies = removal_policies
+        self.removing_capacity = removing_capacity
+        self.removing_wait_capacity = removing_wait_capacity
+        self.resource_group_id = resource_group_id
+        self.scaling_group_id = scaling_group_id
+        self.scaling_group_name = scaling_group_name
+        self.scaling_policy = scaling_policy
+        self.server_groups = server_groups
+        self.spot_allocation_strategy = spot_allocation_strategy
+        self.spot_instance_pools = spot_instance_pools
+        self.spot_instance_remedy = spot_instance_remedy
+        self.standby_capacity = standby_capacity
+        self.stopped_capacity = stopped_capacity
+        self.suspended_processes = suspended_processes
+        self.system_suspended = system_suspended
+        self.tags = tags
+        self.total_capacity = total_capacity
+        self.total_instance_count = total_instance_count
+        self.vserver_groups = vserver_groups
+        self.v_switch_id = v_switch_id
+        self.v_switch_ids = v_switch_ids
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        if self.alb_server_groups:
+            for k in self.alb_server_groups:
+                if k:
+                    k.validate()
+        if self.launch_template_overrides:
+            for k in self.launch_template_overrides:
+                if k:
+                    k.validate()
+        if self.load_balancer_configs:
+            for k in self.load_balancer_configs:
+                if k:
+                    k.validate()
+        if self.server_groups:
+            for k in self.server_groups:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+        if self.vserver_groups:
+            for k in self.vserver_groups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active_capacity is not None:
+            result['ActiveCapacity'] = self.active_capacity
+        if self.active_scaling_configuration_id is not None:
+            result['ActiveScalingConfigurationId'] = self.active_scaling_configuration_id
+        result['AlbServerGroups'] = []
+        if self.alb_server_groups is not None:
+            for k in self.alb_server_groups:
+                result['AlbServerGroups'].append(k.to_map() if k else None)
+        if self.allocation_strategy is not None:
+            result['AllocationStrategy'] = self.allocation_strategy
+        if self.az_balance is not None:
+            result['AzBalance'] = self.az_balance
+        if self.compensate_with_on_demand is not None:
+            result['CompensateWithOnDemand'] = self.compensate_with_on_demand
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.current_host_name is not None:
+            result['CurrentHostName'] = self.current_host_name
+        if self.custom_policy_arn is not None:
+            result['CustomPolicyARN'] = self.custom_policy_arn
+        if self.dbinstance_ids is not None:
+            result['DBInstanceIds'] = self.dbinstance_ids
+        if self.default_cooldown is not None:
+            result['DefaultCooldown'] = self.default_cooldown
+        if self.desired_capacity is not None:
+            result['DesiredCapacity'] = self.desired_capacity
+        if self.enable_desired_capacity is not None:
+            result['EnableDesiredCapacity'] = self.enable_desired_capacity
+        if self.group_deletion_protection is not None:
+            result['GroupDeletionProtection'] = self.group_deletion_protection
+        if self.group_type is not None:
+            result['GroupType'] = self.group_type
+        if self.health_check_type is not None:
+            result['HealthCheckType'] = self.health_check_type
+        if self.health_check_types is not None:
+            result['HealthCheckTypes'] = self.health_check_types
+        if self.init_capacity is not None:
+            result['InitCapacity'] = self.init_capacity
+        if self.is_elastic_strength_in_alarm is not None:
+            result['IsElasticStrengthInAlarm'] = self.is_elastic_strength_in_alarm
+        if self.launch_template_id is not None:
+            result['LaunchTemplateId'] = self.launch_template_id
+        result['LaunchTemplateOverrides'] = []
+        if self.launch_template_overrides is not None:
+            for k in self.launch_template_overrides:
+                result['LaunchTemplateOverrides'].append(k.to_map() if k else None)
+        if self.launch_template_version is not None:
+            result['LaunchTemplateVersion'] = self.launch_template_version
+        if self.lifecycle_state is not None:
+            result['LifecycleState'] = self.lifecycle_state
+        result['LoadBalancerConfigs'] = []
+        if self.load_balancer_configs is not None:
+            for k in self.load_balancer_configs:
+                result['LoadBalancerConfigs'].append(k.to_map() if k else None)
+        if self.load_balancer_ids is not None:
+            result['LoadBalancerIds'] = self.load_balancer_ids
+        if self.max_instance_lifetime is not None:
+            result['MaxInstanceLifetime'] = self.max_instance_lifetime
+        if self.max_size is not None:
+            result['MaxSize'] = self.max_size
+        if self.min_size is not None:
+            result['MinSize'] = self.min_size
+        if self.modification_time is not None:
+            result['ModificationTime'] = self.modification_time
+        if self.monitor_group_id is not None:
+            result['MonitorGroupId'] = self.monitor_group_id
+        if self.multi_azpolicy is not None:
+            result['MultiAZPolicy'] = self.multi_azpolicy
+        if self.on_demand_base_capacity is not None:
+            result['OnDemandBaseCapacity'] = self.on_demand_base_capacity
+        if self.on_demand_percentage_above_base_capacity is not None:
+            result['OnDemandPercentageAboveBaseCapacity'] = self.on_demand_percentage_above_base_capacity
+        if self.pending_capacity is not None:
+            result['PendingCapacity'] = self.pending_capacity
+        if self.pending_wait_capacity is not None:
+            result['PendingWaitCapacity'] = self.pending_wait_capacity
+        if self.protected_capacity is not None:
+            result['ProtectedCapacity'] = self.protected_capacity
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.removal_policies is not None:
+            result['RemovalPolicies'] = self.removal_policies
+        if self.removing_capacity is not None:
+            result['RemovingCapacity'] = self.removing_capacity
+        if self.removing_wait_capacity is not None:
+            result['RemovingWaitCapacity'] = self.removing_wait_capacity
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.scaling_group_id is not None:
+            result['ScalingGroupId'] = self.scaling_group_id
+        if self.scaling_group_name is not None:
+            result['ScalingGroupName'] = self.scaling_group_name
+        if self.scaling_policy is not None:
+            result['ScalingPolicy'] = self.scaling_policy
+        result['ServerGroups'] = []
+        if self.server_groups is not None:
+            for k in self.server_groups:
+                result['ServerGroups'].append(k.to_map() if k else None)
+        if self.spot_allocation_strategy is not None:
+            result['SpotAllocationStrategy'] = self.spot_allocation_strategy
+        if self.spot_instance_pools is not None:
+            result['SpotInstancePools'] = self.spot_instance_pools
+        if self.spot_instance_remedy is not None:
+            result['SpotInstanceRemedy'] = self.spot_instance_remedy
+        if self.standby_capacity is not None:
+            result['StandbyCapacity'] = self.standby_capacity
+        if self.stopped_capacity is not None:
+            result['StoppedCapacity'] = self.stopped_capacity
+        if self.suspended_processes is not None:
+            result['SuspendedProcesses'] = self.suspended_processes
+        if self.system_suspended is not None:
+            result['SystemSuspended'] = self.system_suspended
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.total_capacity is not None:
+            result['TotalCapacity'] = self.total_capacity
+        if self.total_instance_count is not None:
+            result['TotalInstanceCount'] = self.total_instance_count
+        result['VServerGroups'] = []
+        if self.vserver_groups is not None:
+            for k in self.vserver_groups:
+                result['VServerGroups'].append(k.to_map() if k else None)
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActiveCapacity') is not None:
+            self.active_capacity = m.get('ActiveCapacity')
+        if m.get('ActiveScalingConfigurationId') is not None:
+            self.active_scaling_configuration_id = m.get('ActiveScalingConfigurationId')
+        self.alb_server_groups = []
+        if m.get('AlbServerGroups') is not None:
+            for k in m.get('AlbServerGroups'):
+                temp_model = DescribeScalingGroupDetailResponseBodyScalingGroupAlbServerGroups()
+                self.alb_server_groups.append(temp_model.from_map(k))
+        if m.get('AllocationStrategy') is not None:
+            self.allocation_strategy = m.get('AllocationStrategy')
+        if m.get('AzBalance') is not None:
+            self.az_balance = m.get('AzBalance')
+        if m.get('CompensateWithOnDemand') is not None:
+            self.compensate_with_on_demand = m.get('CompensateWithOnDemand')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('CurrentHostName') is not None:
+            self.current_host_name = m.get('CurrentHostName')
+        if m.get('CustomPolicyARN') is not None:
+            self.custom_policy_arn = m.get('CustomPolicyARN')
+        if m.get('DBInstanceIds') is not None:
+            self.dbinstance_ids = m.get('DBInstanceIds')
+        if m.get('DefaultCooldown') is not None:
+            self.default_cooldown = m.get('DefaultCooldown')
+        if m.get('DesiredCapacity') is not None:
+            self.desired_capacity = m.get('DesiredCapacity')
+        if m.get('EnableDesiredCapacity') is not None:
+            self.enable_desired_capacity = m.get('EnableDesiredCapacity')
+        if m.get('GroupDeletionProtection') is not None:
+            self.group_deletion_protection = m.get('GroupDeletionProtection')
+        if m.get('GroupType') is not None:
+            self.group_type = m.get('GroupType')
+        if m.get('HealthCheckType') is not None:
+            self.health_check_type = m.get('HealthCheckType')
+        if m.get('HealthCheckTypes') is not None:
+            self.health_check_types = m.get('HealthCheckTypes')
+        if m.get('InitCapacity') is not None:
+            self.init_capacity = m.get('InitCapacity')
+        if m.get('IsElasticStrengthInAlarm') is not None:
+            self.is_elastic_strength_in_alarm = m.get('IsElasticStrengthInAlarm')
+        if m.get('LaunchTemplateId') is not None:
+            self.launch_template_id = m.get('LaunchTemplateId')
+        self.launch_template_overrides = []
+        if m.get('LaunchTemplateOverrides') is not None:
+            for k in m.get('LaunchTemplateOverrides'):
+                temp_model = DescribeScalingGroupDetailResponseBodyScalingGroupLaunchTemplateOverrides()
+                self.launch_template_overrides.append(temp_model.from_map(k))
+        if m.get('LaunchTemplateVersion') is not None:
+            self.launch_template_version = m.get('LaunchTemplateVersion')
+        if m.get('LifecycleState') is not None:
+            self.lifecycle_state = m.get('LifecycleState')
+        self.load_balancer_configs = []
+        if m.get('LoadBalancerConfigs') is not None:
+            for k in m.get('LoadBalancerConfigs'):
+                temp_model = DescribeScalingGroupDetailResponseBodyScalingGroupLoadBalancerConfigs()
+                self.load_balancer_configs.append(temp_model.from_map(k))
+        if m.get('LoadBalancerIds') is not None:
+            self.load_balancer_ids = m.get('LoadBalancerIds')
+        if m.get('MaxInstanceLifetime') is not None:
+            self.max_instance_lifetime = m.get('MaxInstanceLifetime')
+        if m.get('MaxSize') is not None:
+            self.max_size = m.get('MaxSize')
+        if m.get('MinSize') is not None:
+            self.min_size = m.get('MinSize')
+        if m.get('ModificationTime') is not None:
+            self.modification_time = m.get('ModificationTime')
+        if m.get('MonitorGroupId') is not None:
+            self.monitor_group_id = m.get('MonitorGroupId')
+        if m.get('MultiAZPolicy') is not None:
+            self.multi_azpolicy = m.get('MultiAZPolicy')
+        if m.get('OnDemandBaseCapacity') is not None:
+            self.on_demand_base_capacity = m.get('OnDemandBaseCapacity')
+        if m.get('OnDemandPercentageAboveBaseCapacity') is not None:
+            self.on_demand_percentage_above_base_capacity = m.get('OnDemandPercentageAboveBaseCapacity')
+        if m.get('PendingCapacity') is not None:
+            self.pending_capacity = m.get('PendingCapacity')
+        if m.get('PendingWaitCapacity') is not None:
+            self.pending_wait_capacity = m.get('PendingWaitCapacity')
+        if m.get('ProtectedCapacity') is not None:
+            self.protected_capacity = m.get('ProtectedCapacity')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RemovalPolicies') is not None:
+            self.removal_policies = m.get('RemovalPolicies')
+        if m.get('RemovingCapacity') is not None:
+            self.removing_capacity = m.get('RemovingCapacity')
+        if m.get('RemovingWaitCapacity') is not None:
+            self.removing_wait_capacity = m.get('RemovingWaitCapacity')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ScalingGroupId') is not None:
+            self.scaling_group_id = m.get('ScalingGroupId')
+        if m.get('ScalingGroupName') is not None:
+            self.scaling_group_name = m.get('ScalingGroupName')
+        if m.get('ScalingPolicy') is not None:
+            self.scaling_policy = m.get('ScalingPolicy')
+        self.server_groups = []
+        if m.get('ServerGroups') is not None:
+            for k in m.get('ServerGroups'):
+                temp_model = DescribeScalingGroupDetailResponseBodyScalingGroupServerGroups()
+                self.server_groups.append(temp_model.from_map(k))
+        if m.get('SpotAllocationStrategy') is not None:
+            self.spot_allocation_strategy = m.get('SpotAllocationStrategy')
+        if m.get('SpotInstancePools') is not None:
+            self.spot_instance_pools = m.get('SpotInstancePools')
+        if m.get('SpotInstanceRemedy') is not None:
+            self.spot_instance_remedy = m.get('SpotInstanceRemedy')
+        if m.get('StandbyCapacity') is not None:
+            self.standby_capacity = m.get('StandbyCapacity')
+        if m.get('StoppedCapacity') is not None:
+            self.stopped_capacity = m.get('StoppedCapacity')
+        if m.get('SuspendedProcesses') is not None:
+            self.suspended_processes = m.get('SuspendedProcesses')
+        if m.get('SystemSuspended') is not None:
+            self.system_suspended = m.get('SystemSuspended')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeScalingGroupDetailResponseBodyScalingGroupTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('TotalCapacity') is not None:
+            self.total_capacity = m.get('TotalCapacity')
+        if m.get('TotalInstanceCount') is not None:
+            self.total_instance_count = m.get('TotalInstanceCount')
+        self.vserver_groups = []
+        if m.get('VServerGroups') is not None:
+            for k in m.get('VServerGroups'):
+                temp_model = DescribeScalingGroupDetailResponseBodyScalingGroupVServerGroups()
+                self.vserver_groups.append(temp_model.from_map(k))
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class DescribeScalingGroupDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        output: str = None,
+        request_id: str = None,
+        scaling_group: DescribeScalingGroupDetailResponseBodyScalingGroup = None,
+    ):
+        self.output = output
+        self.request_id = request_id
+        self.scaling_group = scaling_group
+
+    def validate(self):
+        if self.scaling_group:
+            self.scaling_group.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output is not None:
+            result['Output'] = self.output
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.scaling_group is not None:
+            result['ScalingGroup'] = self.scaling_group.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Output') is not None:
+            self.output = m.get('Output')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ScalingGroup') is not None:
+            temp_model = DescribeScalingGroupDetailResponseBodyScalingGroup()
+            self.scaling_group = temp_model.from_map(m['ScalingGroup'])
+        return self
+
+
+class DescribeScalingGroupDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeScalingGroupDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeScalingGroupDetailResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -1,3 +1,11 @@
+2024-02-28 Version: 1.3.0
+- Support API ApplyEciScalingConfiguration.
+- Support API DescribeEciScalingConfigurationDetail.
+- Support API DescribeScalingGroupDetail.
+- Support API ModifyInstanceAttribute.
+- Update API ModifyScalingGroup: add param ScalingPolicy.
+
+
 2024-02-22 Version: 1.2.0
 - Support API ModifyInstanceAttribute.
 - Update API ModifyScalingGroup: add param ScalingPolicy.
