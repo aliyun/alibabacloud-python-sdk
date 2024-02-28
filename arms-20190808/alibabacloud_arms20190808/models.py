@@ -6336,6 +6336,7 @@ class CreateEnvironmentRequest(TeaModel):
         # - agent: managed agent. default value of  promehtues for ASK/ACS/AckOne.
         # - agent-exproter: maanged agent and exporter. default of prometheus for Cloud.
         self.managed_type = managed_type
+        # the ID of prometheus instance bound to the environment. If not provided, please call the InitEnvironment interface to complete the initialization of the storage instance.
         self.prometheus_instance_id = prometheus_instance_id
         # The region ID.
         self.region_id = region_id
@@ -10699,6 +10700,7 @@ class CreatePrometheusInstanceRequest(TeaModel):
         cluster_id: str = None,
         cluster_name: str = None,
         cluster_type: str = None,
+        duration: int = None,
         grafana_instance_id: str = None,
         region_id: str = None,
         resource_group_id: str = None,
@@ -10725,6 +10727,7 @@ class CreatePrometheusInstanceRequest(TeaModel):
         # - cloud-monitor: Prometheus for enterprise cloud monitor
         # - flink: Prometheus for Flink
         self.cluster_type = cluster_type
+        self.duration = duration
         # The ID of the Grafana dedicated instance. This parameter is available if you set ClusterType to ecs.
         self.grafana_instance_id = grafana_instance_id
         # The region ID. If you create a Prometheus instance for a cloud service in China, set this parameter to cn-shanghai.
@@ -10762,6 +10765,8 @@ class CreatePrometheusInstanceRequest(TeaModel):
             result['ClusterName'] = self.cluster_name
         if self.cluster_type is not None:
             result['ClusterType'] = self.cluster_type
+        if self.duration is not None:
+            result['Duration'] = self.duration
         if self.grafana_instance_id is not None:
             result['GrafanaInstanceId'] = self.grafana_instance_id
         if self.region_id is not None:
@@ -10792,6 +10797,8 @@ class CreatePrometheusInstanceRequest(TeaModel):
             self.cluster_name = m.get('ClusterName')
         if m.get('ClusterType') is not None:
             self.cluster_type = m.get('ClusterType')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
         if m.get('GrafanaInstanceId') is not None:
             self.grafana_instance_id = m.get('GrafanaInstanceId')
         if m.get('RegionId') is not None:
@@ -20986,6 +20993,7 @@ class DescribeEnvironmentResponseBodyData(TeaModel):
         bind_resource_store_duration: str = None,
         bind_resource_type: str = None,
         bind_vpc_cidr: str = None,
+        db_instance_status: str = None,
         environment_id: str = None,
         environment_name: str = None,
         environment_sub_type: str = None,
@@ -21016,6 +21024,7 @@ class DescribeEnvironmentResponseBodyData(TeaModel):
         self.bind_resource_type = bind_resource_type
         # The VPC CIDR block.
         self.bind_vpc_cidr = bind_vpc_cidr
+        self.db_instance_status = db_instance_status
         # The ID of the environment instance.
         self.environment_id = environment_id
         # The environment name.
@@ -21085,6 +21094,8 @@ class DescribeEnvironmentResponseBodyData(TeaModel):
             result['BindResourceType'] = self.bind_resource_type
         if self.bind_vpc_cidr is not None:
             result['BindVpcCidr'] = self.bind_vpc_cidr
+        if self.db_instance_status is not None:
+            result['DbInstanceStatus'] = self.db_instance_status
         if self.environment_id is not None:
             result['EnvironmentId'] = self.environment_id
         if self.environment_name is not None:
@@ -21137,6 +21148,8 @@ class DescribeEnvironmentResponseBodyData(TeaModel):
             self.bind_resource_type = m.get('BindResourceType')
         if m.get('BindVpcCidr') is not None:
             self.bind_vpc_cidr = m.get('BindVpcCidr')
+        if m.get('DbInstanceStatus') is not None:
+            self.db_instance_status = m.get('DbInstanceStatus')
         if m.get('EnvironmentId') is not None:
             self.environment_id = m.get('EnvironmentId')
         if m.get('EnvironmentName') is not None:
@@ -28587,7 +28600,7 @@ class GetRetcodeShareUrlRequest(TeaModel):
         self,
         pid: str = None,
     ):
-        # The logon-free URL of the application.
+        # The process identifier (PID) of the application. For more information about how to obtain the PID, see [Obtain the PID of an application](https://www.alibabacloud.com/help/zh/doc-detail/186100.htm?spm=a2cdw.13409063.0.0.7a72281f0bkTfx#title-imy-7gj-qhr).
         self.pid = pid
 
     def validate(self):
@@ -28616,9 +28629,9 @@ class GetRetcodeShareUrlResponseBody(TeaModel):
         request_id: str = None,
         url: str = None,
     ):
-        # Queries the logon-free URL of a Browser Monitoring application.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the request.
+        # The logon-free URL of the application.
         self.url = url
 
     def validate(self):
@@ -46992,10 +47005,7 @@ class OpenXtraceDefaultSLRRequest(TeaModel):
         self,
         region_id: str = None,
     ):
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -53238,14 +53248,14 @@ class SetRetcodeShareStatusRequest(TeaModel):
         pid: str = None,
         status: bool = None,
     ):
-        # Turns on or turns off logon-free sharing for an application monitored by Browser Monitoring.
+        # The name of the application that is monitored by Browser Monitoring.
         self.app_name = app_name
-        # Indicates whether the call is successful. Valid values:
-        # 
-        # *   `true`: The call is successful.
-        # *   `false`: The call fails.
+        # The process identifier (PID) of the application. For more information, see [Obtain the PID of an application](https://www.alibabacloud.com/help/zh/doc-detail/186100.htm?spm=a2cdw.13409063.0.0.7a72281f0bkTfx#title-imy-7gj-qhr).
         self.pid = pid
-        # SetRetcodeShareStatus
+        # Specifies whether to turn on or turn off the logon-free sharing switch. Valid values:
+        # 
+        # *   `true`: Turn on the switch.
+        # *   `false`: Turn off the switch.
         self.status = status
 
     def validate(self):
@@ -53282,12 +53292,12 @@ class SetRetcodeShareStatusResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
-        # The ID of the application. Log on to the ARMS console. In the left-side navigation pane, choose **Browser Monitoring** > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is xxx%4074xxx, you must replace %40 with the at sign (@) to obtain xxx@74xxx.
-        self.is_success = is_success
-        # Specifies whether to turn on logon-free sharing. Valid values:
+        # Indicates whether the call is successful. Valid values:
         # 
-        # *   `true`: turns on logon-free sharing.
-        # *   `false`: turns off logon-free sharing.
+        # *   `true`: The call is successful.
+        # *   `false`: The call fails.
+        self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
