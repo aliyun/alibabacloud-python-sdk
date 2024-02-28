@@ -8100,6 +8100,176 @@ class DescribeReplicaGroupDrillsResponse(TeaModel):
         return self
 
 
+class DescribeSolutionInstanceConfigurationRequestParameters(TeaModel):
+    def __init__(
+        self,
+        parameter_key: str = None,
+        parameter_value: str = None,
+    ):
+        # The key of the parameter.
+        self.parameter_key = parameter_key
+        # The value of the parameter.
+        # 
+        # > The Parameters parameter is optional. If you specify Parameters, you must specify ParameterValue.
+        self.parameter_value = parameter_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.parameter_key is not None:
+            result['ParameterKey'] = self.parameter_key
+        if self.parameter_value is not None:
+            result['ParameterValue'] = self.parameter_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParameterKey') is not None:
+            self.parameter_key = m.get('ParameterKey')
+        if m.get('ParameterValue') is not None:
+            self.parameter_value = m.get('ParameterValue')
+        return self
+
+
+class DescribeSolutionInstanceConfigurationRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        parameters: List[DescribeSolutionInstanceConfigurationRequestParameters] = None,
+        region_id: str = None,
+        solution_id: str = None,
+    ):
+        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        self.client_token = client_token
+        # The parameters.
+        self.parameters = parameters
+        # The region ID.
+        self.region_id = region_id
+        # The ID of the solution.
+        self.solution_id = solution_id
+
+    def validate(self):
+        if self.parameters:
+            for k in self.parameters:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        result['Parameters'] = []
+        if self.parameters is not None:
+            for k in self.parameters:
+                result['Parameters'].append(k.to_map() if k else None)
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.solution_id is not None:
+            result['SolutionId'] = self.solution_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        self.parameters = []
+        if m.get('Parameters') is not None:
+            for k in m.get('Parameters'):
+                temp_model = DescribeSolutionInstanceConfigurationRequestParameters()
+                self.parameters.append(temp_model.from_map(k))
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SolutionId') is not None:
+            self.solution_id = m.get('SolutionId')
+        return self
+
+
+class DescribeSolutionInstanceConfigurationResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[Dict[str, Any]] = None,
+        request_id: str = None,
+    ):
+        # The returned data.
+        self.data = data
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeSolutionInstanceConfigurationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSolutionInstanceConfigurationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSolutionInstanceConfigurationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class FailoverDiskReplicaGroupRequest(TeaModel):
     def __init__(
         self,

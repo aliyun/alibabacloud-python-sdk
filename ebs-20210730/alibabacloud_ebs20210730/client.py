@@ -3349,6 +3349,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_replica_group_drills_with_options_async(request, runtime)
 
+    def describe_solution_instance_configuration_with_options(
+        self,
+        request: ebs_20210730_models.DescribeSolutionInstanceConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribeSolutionInstanceConfigurationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.solution_id):
+            query['SolutionId'] = request.solution_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSolutionInstanceConfiguration',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeSolutionInstanceConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_solution_instance_configuration_with_options_async(
+        self,
+        request: ebs_20210730_models.DescribeSolutionInstanceConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribeSolutionInstanceConfigurationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.solution_id):
+            query['SolutionId'] = request.solution_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSolutionInstanceConfiguration',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeSolutionInstanceConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_solution_instance_configuration(
+        self,
+        request: ebs_20210730_models.DescribeSolutionInstanceConfigurationRequest,
+    ) -> ebs_20210730_models.DescribeSolutionInstanceConfigurationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_solution_instance_configuration_with_options(request, runtime)
+
+    async def describe_solution_instance_configuration_async(
+        self,
+        request: ebs_20210730_models.DescribeSolutionInstanceConfigurationRequest,
+    ) -> ebs_20210730_models.DescribeSolutionInstanceConfigurationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_solution_instance_configuration_with_options_async(request, runtime)
+
     def failover_disk_replica_group_with_options(
         self,
         request: ebs_20210730_models.FailoverDiskReplicaGroupRequest,
