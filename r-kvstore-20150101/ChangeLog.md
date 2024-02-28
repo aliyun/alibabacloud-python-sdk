@@ -1,3 +1,8 @@
+2024-02-28 Version: 2.25.6
+- Update API DescribeClusterBackupList: update param ClusterBackupId.
+- Update API DescribePrice: update response param.
+
+
 2024-01-30 Version: 2.25.5
 - Update API ModifyBackupPolicyadd BackupRetentionPeriod param.
 - Update API RenewInstanceadd AutoRenew param.
