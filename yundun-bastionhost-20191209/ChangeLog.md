@@ -9,6 +9,17 @@
 - Update API ModifyUser: update response param.
 
 
+2024-02-28 Version: 1.1.2
+- Update API CreateUser: add param Language.
+- Update API CreateUser: add param LanguageStatus.
+- Update API CreateUser: update response param.
+- Update API GetUser: update response param.
+- Update API ListUsers: update response param.
+- Update API ModifyUser: add param Language.
+- Update API ModifyUser: add param LanguageStatus.
+- Update API ModifyUser: update response param.
+
+
 2023-11-27 Version: 1.1.1
 - Generated python 2019-12-09 for Yundun-bastionhost.
 
