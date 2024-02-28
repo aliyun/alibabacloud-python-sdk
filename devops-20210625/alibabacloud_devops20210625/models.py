@@ -24429,6 +24429,45 @@ class GetWorkItemInfoResponseBodyWorkitemCustomFields(TeaModel):
         return self
 
 
+class GetWorkItemInfoResponseBodyWorkitemTagDetails(TeaModel):
+    def __init__(
+        self,
+        color: str = None,
+        identifier: str = None,
+        name: str = None,
+    ):
+        self.color = color
+        self.identifier = identifier
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.color is not None:
+            result['color'] = self.color
+        if self.identifier is not None:
+            result['identifier'] = self.identifier
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('color') is not None:
+            self.color = m.get('color')
+        if m.get('identifier') is not None:
+            self.identifier = m.get('identifier')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
 class GetWorkItemInfoResponseBodyWorkitem(TeaModel):
     def __init__(
         self,
@@ -24455,6 +24494,7 @@ class GetWorkItemInfoResponseBodyWorkitem(TeaModel):
         status_stage_identifier: str = None,
         subject: str = None,
         tag: List[str] = None,
+        tag_details: List[GetWorkItemInfoResponseBodyWorkitemTagDetails] = None,
         tracker: List[str] = None,
         update_status_at: int = None,
         verifier: List[str] = None,
@@ -24483,6 +24523,7 @@ class GetWorkItemInfoResponseBodyWorkitem(TeaModel):
         self.status_stage_identifier = status_stage_identifier
         self.subject = subject
         self.tag = tag
+        self.tag_details = tag_details
         self.tracker = tracker
         self.update_status_at = update_status_at
         self.verifier = verifier
@@ -24491,6 +24532,10 @@ class GetWorkItemInfoResponseBodyWorkitem(TeaModel):
     def validate(self):
         if self.custom_fields:
             for k in self.custom_fields:
+                if k:
+                    k.validate()
+        if self.tag_details:
+            for k in self.tag_details:
                 if k:
                     k.validate()
 
@@ -24548,6 +24593,10 @@ class GetWorkItemInfoResponseBodyWorkitem(TeaModel):
             result['subject'] = self.subject
         if self.tag is not None:
             result['tag'] = self.tag
+        result['tagDetails'] = []
+        if self.tag_details is not None:
+            for k in self.tag_details:
+                result['tagDetails'].append(k.to_map() if k else None)
         if self.tracker is not None:
             result['tracker'] = self.tracker
         if self.update_status_at is not None:
@@ -24609,6 +24658,11 @@ class GetWorkItemInfoResponseBodyWorkitem(TeaModel):
             self.subject = m.get('subject')
         if m.get('tag') is not None:
             self.tag = m.get('tag')
+        self.tag_details = []
+        if m.get('tagDetails') is not None:
+            for k in m.get('tagDetails'):
+                temp_model = GetWorkItemInfoResponseBodyWorkitemTagDetails()
+                self.tag_details.append(temp_model.from_map(k))
         if m.get('tracker') is not None:
             self.tracker = m.get('tracker')
         if m.get('updateStatusAt') is not None:
