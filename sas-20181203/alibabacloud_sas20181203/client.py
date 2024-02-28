@@ -14747,6 +14747,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeExposedInstanceCriteriaResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.value):
             query['Value'] = request.value
         req = open_api_models.OpenApiRequest(
@@ -14775,6 +14777,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeExposedInstanceCriteriaResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.value):
             query['Value'] = request.value
         req = open_api_models.OpenApiRequest(
@@ -14817,6 +14821,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeExposedInstanceDetailResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.uuid):
             query['Uuid'] = request.uuid
         req = open_api_models.OpenApiRequest(
@@ -14845,6 +14851,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeExposedInstanceDetailResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.uuid):
             query['Uuid'] = request.uuid
         req = open_api_models.OpenApiRequest(
@@ -14905,6 +14913,8 @@ class Client(OpenApiClient):
             query['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.vul_status):
             query['VulStatus'] = request.vul_status
         req = open_api_models.OpenApiRequest(
@@ -14951,6 +14961,8 @@ class Client(OpenApiClient):
             query['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.vul_status):
             query['VulStatus'] = request.vul_status
         req = open_api_models.OpenApiRequest(
@@ -15047,6 +15059,8 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.statistics_type):
             query['StatisticsType'] = request.statistics_type
         if not UtilClient.is_unset(request.statistics_type_gateway_type):
@@ -15083,6 +15097,8 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.statistics_type):
             query['StatisticsType'] = request.statistics_type
         if not UtilClient.is_unset(request.statistics_type_gateway_type):

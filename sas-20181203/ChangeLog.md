@@ -1,3 +1,11 @@
+2024-02-28 Version: 2.27.2
+- Update API DescribeExposedInstanceCriteria: add param ResourceDirectoryAccountId.
+- Update API DescribeExposedInstanceDetail: add param ResourceDirectoryAccountId.
+- Update API DescribeExposedInstanceList: add param ResourceDirectoryAccountId.
+- Update API DescribeExposedStatisticsDetail: add param ResourceDirectoryAccountId.
+- Update API DescribeVersionConfig: update response param.
+
+
 2024-02-27 Version: 2.27.1
 - Update API DescribeVersionConfig: update response param.
 
