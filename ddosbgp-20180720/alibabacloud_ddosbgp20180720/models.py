@@ -2321,9 +2321,37 @@ class DescribeInstanceListRequest(TeaModel):
         return self
 
 
+class DescribeInstanceListResponseBodyInstanceListAutoProtectCondition(TeaModel):
+    def __init__(
+        self,
+        events: List[str] = None,
+    ):
+        self.events = events
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.events is not None:
+            result['Events'] = self.events
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Events') is not None:
+            self.events = m.get('Events')
+        return self
+
+
 class DescribeInstanceListResponseBodyInstanceList(TeaModel):
     def __init__(
         self,
+        auto_protect_condition: DescribeInstanceListResponseBodyInstanceListAutoProtectCondition = None,
         auto_renewal: bool = None,
         blackholding_count: str = None,
         commodity_type: str = None,
@@ -2337,6 +2365,7 @@ class DescribeInstanceListResponseBodyInstanceList(TeaModel):
         remark: str = None,
         status: str = None,
     ):
+        self.auto_protect_condition = auto_protect_condition
         # Indicates whether auto-renewal is enabled for the instance. Valid values:
         # 
         # *   **true**: enabled
@@ -2381,7 +2410,8 @@ class DescribeInstanceListResponseBodyInstanceList(TeaModel):
         self.status = status
 
     def validate(self):
-        pass
+        if self.auto_protect_condition:
+            self.auto_protect_condition.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2389,6 +2419,8 @@ class DescribeInstanceListResponseBodyInstanceList(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_protect_condition is not None:
+            result['AutoProtectCondition'] = self.auto_protect_condition.to_map()
         if self.auto_renewal is not None:
             result['AutoRenewal'] = self.auto_renewal
         if self.blackholding_count is not None:
@@ -2417,6 +2449,9 @@ class DescribeInstanceListResponseBodyInstanceList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoProtectCondition') is not None:
+            temp_model = DescribeInstanceListResponseBodyInstanceListAutoProtectCondition()
+            self.auto_protect_condition = temp_model.from_map(m['AutoProtectCondition'])
         if m.get('AutoRenewal') is not None:
             self.auto_renewal = m.get('AutoRenewal')
         if m.get('BlackholdingCount') is not None:
@@ -3630,6 +3665,7 @@ class DescribePackIpListResponseBodyIpList(TeaModel):
         self,
         ip: str = None,
         member_uid: str = None,
+        nsm_status: int = None,
         product: str = None,
         region: str = None,
         remark: str = None,
@@ -3639,6 +3675,7 @@ class DescribePackIpListResponseBodyIpList(TeaModel):
         self.ip = ip
         # The ID of the member.
         self.member_uid = member_uid
+        self.nsm_status = nsm_status
         # The type of the cloud asset to which the IP address belongs. Valid values:
         # 
         # *   **ECS**: an ECS instance.
@@ -3673,6 +3710,8 @@ class DescribePackIpListResponseBodyIpList(TeaModel):
             result['Ip'] = self.ip
         if self.member_uid is not None:
             result['MemberUid'] = self.member_uid
+        if self.nsm_status is not None:
+            result['NsmStatus'] = self.nsm_status
         if self.product is not None:
             result['Product'] = self.product
         if self.region is not None:
@@ -3689,6 +3728,8 @@ class DescribePackIpListResponseBodyIpList(TeaModel):
             self.ip = m.get('Ip')
         if m.get('MemberUid') is not None:
             self.member_uid = m.get('MemberUid')
+        if m.get('NsmStatus') is not None:
+            self.nsm_status = m.get('NsmStatus')
         if m.get('Product') is not None:
             self.product = m.get('Product')
         if m.get('Region') is not None:
