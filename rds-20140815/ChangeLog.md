@@ -1,3 +1,10 @@
+2024-02-28 Version: 3.1.0
+- Support API DescribeKmsAssociateResources.
+- Update API DescribeDBInstanceNetInfo: update response param.
+- Update API ModifyDBInstanceSSL: add param Certificate.
+- Update API ModifyDBInstanceSSL: add param PassWord.
+
+
 2024-02-27 Version: 3.0.6
 - Update API DescribeDBInstanceNetInfo: update response param.
 - Update API ModifyDBInstanceSSL: add param Certificate.
