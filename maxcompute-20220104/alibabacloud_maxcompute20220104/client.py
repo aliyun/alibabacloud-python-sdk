@@ -1455,6 +1455,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_running_jobs_with_options_async(request, headers, runtime)
 
+    def get_table_info_with_options(
+        self,
+        project_name: str,
+        table_name: str,
+        request: max_compute_20220104_models.GetTableInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetTableInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.schema_name):
+            query['schemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTableInfo',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/projects/{OpenApiUtilClient.get_encode_param(project_name)}/tables/{OpenApiUtilClient.get_encode_param(table_name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetTableInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_table_info_with_options_async(
+        self,
+        project_name: str,
+        table_name: str,
+        request: max_compute_20220104_models.GetTableInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetTableInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.schema_name):
+            query['schemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTableInfo',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/projects/{OpenApiUtilClient.get_encode_param(project_name)}/tables/{OpenApiUtilClient.get_encode_param(table_name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetTableInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_table_info(
+        self,
+        project_name: str,
+        table_name: str,
+        request: max_compute_20220104_models.GetTableInfoRequest,
+    ) -> max_compute_20220104_models.GetTableInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_table_info_with_options(project_name, table_name, request, headers, runtime)
+
+    async def get_table_info_async(
+        self,
+        project_name: str,
+        table_name: str,
+        request: max_compute_20220104_models.GetTableInfoRequest,
+    ) -> max_compute_20220104_models.GetTableInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_table_info_with_options_async(project_name, table_name, request, headers, runtime)
+
     def get_trusted_projects_with_options(
         self,
         project_name: str,
