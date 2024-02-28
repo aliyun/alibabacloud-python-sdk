@@ -2,6 +2,10 @@
 - Support API GetTableInfo.
 
 
+2024-02-28 Version: 2.2.0
+- Support API GetTableInfo.
+
+
 2024-01-08 Version: 2.1.1
 - Generated python 2022-01-04 for MaxCompute.
 
