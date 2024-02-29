@@ -1,3 +1,11 @@
+2024-02-29 Version: 5.0.4
+- Update API DescribeDBClusterAttribute: update response param.
+- Update API DescribeDBClusterParameters: update response param.
+- Update API DescribeDBClusterPerformance: add param Interval.
+- Update API DescribeDBClusterVersion: update response param.
+- Update API ModifyDBClusterPrimaryZone: add param ZoneType.
+
+
 2024-02-27 Version: 5.0.3
 - Update API DescribeDBClusterAttribute: update response param.
 - Update API DescribeDBClusterVersion: update response param.
