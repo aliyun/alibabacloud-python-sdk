@@ -2696,6 +2696,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_flow_rule_with_options_async(request, runtime)
 
+    def create_isolation_rule_with_options(
+        self,
+        request: mse_20190531_models.CreateIsolationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.CreateIsolationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.threshold):
+            query['Threshold'] = request.threshold
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateIsolationRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.CreateIsolationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_isolation_rule_with_options_async(
+        self,
+        request: mse_20190531_models.CreateIsolationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.CreateIsolationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.threshold):
+            query['Threshold'] = request.threshold
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateIsolationRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.CreateIsolationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_isolation_rule(
+        self,
+        request: mse_20190531_models.CreateIsolationRuleRequest,
+    ) -> mse_20190531_models.CreateIsolationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_isolation_rule_with_options(request, runtime)
+
+    async def create_isolation_rule_async(
+        self,
+        request: mse_20190531_models.CreateIsolationRuleRequest,
+    ) -> mse_20190531_models.CreateIsolationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_isolation_rule_with_options_async(request, runtime)
+
     def create_mse_service_application_with_options(
         self,
         request: mse_20190531_models.CreateMseServiceApplicationRequest,
@@ -4611,6 +4709,96 @@ class Client(OpenApiClient):
     ) -> mse_20190531_models.DeleteGatewaySlbResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_gateway_slb_with_options_async(request, runtime)
+
+    def delete_isolation_rules_with_options(
+        self,
+        tmp_req: mse_20190531_models.DeleteIsolationRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.DeleteIsolationRulesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.DeleteIsolationRulesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ids):
+            request.ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.ids_shrink):
+            query['Ids'] = request.ids_shrink
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteIsolationRules',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.DeleteIsolationRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_isolation_rules_with_options_async(
+        self,
+        tmp_req: mse_20190531_models.DeleteIsolationRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.DeleteIsolationRulesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.DeleteIsolationRulesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ids):
+            request.ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.ids_shrink):
+            query['Ids'] = request.ids_shrink
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteIsolationRules',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.DeleteIsolationRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_isolation_rules(
+        self,
+        request: mse_20190531_models.DeleteIsolationRulesRequest,
+    ) -> mse_20190531_models.DeleteIsolationRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_isolation_rules_with_options(request, runtime)
+
+    async def delete_isolation_rules_async(
+        self,
+        request: mse_20190531_models.DeleteIsolationRulesRequest,
+    ) -> mse_20190531_models.DeleteIsolationRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_isolation_rules_with_options_async(request, runtime)
 
     def delete_migration_task_with_options(
         self,
@@ -11560,6 +11748,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_instance_count_with_options_async(request, runtime)
 
+    def list_isolation_rules_with_options(
+        self,
+        request: mse_20190531_models.ListIsolationRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListIsolationRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.resource_search_key):
+            query['ResourceSearchKey'] = request.resource_search_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIsolationRules',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListIsolationRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_isolation_rules_with_options_async(
+        self,
+        request: mse_20190531_models.ListIsolationRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListIsolationRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.resource_search_key):
+            query['ResourceSearchKey'] = request.resource_search_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIsolationRules',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListIsolationRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_isolation_rules(
+        self,
+        request: mse_20190531_models.ListIsolationRulesRequest,
+    ) -> mse_20190531_models.ListIsolationRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_isolation_rules_with_options(request, runtime)
+
+    async def list_isolation_rules_async(
+        self,
+        request: mse_20190531_models.ListIsolationRulesRequest,
+    ) -> mse_20190531_models.ListIsolationRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_isolation_rules_with_options_async(request, runtime)
+
     def list_listeners_by_config_with_options(
         self,
         request: mse_20190531_models.ListListenersByConfigRequest,
@@ -18127,6 +18413,100 @@ class Client(OpenApiClient):
     ) -> mse_20190531_models.UpdateImageResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_image_with_options_async(request, runtime)
+
+    def update_isolation_rule_with_options(
+        self,
+        request: mse_20190531_models.UpdateIsolationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateIsolationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.threshold):
+            query['Threshold'] = request.threshold
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateIsolationRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateIsolationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_isolation_rule_with_options_async(
+        self,
+        request: mse_20190531_models.UpdateIsolationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateIsolationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.threshold):
+            query['Threshold'] = request.threshold
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateIsolationRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateIsolationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_isolation_rule(
+        self,
+        request: mse_20190531_models.UpdateIsolationRuleRequest,
+    ) -> mse_20190531_models.UpdateIsolationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_isolation_rule_with_options(request, runtime)
+
+    async def update_isolation_rule_async(
+        self,
+        request: mse_20190531_models.UpdateIsolationRuleRequest,
+    ) -> mse_20190531_models.UpdateIsolationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_isolation_rule_with_options_async(request, runtime)
 
     def update_message_queue_route_with_options(
         self,

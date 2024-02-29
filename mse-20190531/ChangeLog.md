@@ -1,3 +1,13 @@
+2024-02-29 Version: 6.2.0
+- Support API AddGatewayAuth.
+- Support API CreateIsolationRule.
+- Support API DeleteIsolationRules.
+- Support API GetGatewayAuthDetail.
+- Support API ListIsolationRules.
+- Support API UpdateIsolationRule.
+- Update API ListClusterTypes: update response param.
+
+
 2024-02-23 Version: 6.1.0
 - Support API AddGatewayAuth.
 - Support API GetGatewayAuthDetail.
