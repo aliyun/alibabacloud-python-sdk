@@ -7183,6 +7183,96 @@ class Client(OpenApiClient):
         headers = ali_genieip__1__0_models.PageGetHotelRoomDevicesHeaders()
         return await self.page_get_hotel_room_devices_with_options_async(request, headers, runtime)
 
+    def pms_event_report_with_options(
+        self,
+        request: ali_genieip__1__0_models.PmsEventReportRequest,
+        headers: ali_genieip__1__0_models.PmsEventReportHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.PmsEventReportResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.payload):
+            body['Payload'] = request.payload
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PmsEventReport',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/pmsEventReport',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.PmsEventReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pms_event_report_with_options_async(
+        self,
+        request: ali_genieip__1__0_models.PmsEventReportRequest,
+        headers: ali_genieip__1__0_models.PmsEventReportHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.PmsEventReportResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.payload):
+            body['Payload'] = request.payload
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PmsEventReport',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/pmsEventReport',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.PmsEventReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pms_event_report(
+        self,
+        request: ali_genieip__1__0_models.PmsEventReportRequest,
+    ) -> ali_genieip__1__0_models.PmsEventReportResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.PmsEventReportHeaders()
+        return self.pms_event_report_with_options(request, headers, runtime)
+
+    async def pms_event_report_async(
+        self,
+        request: ali_genieip__1__0_models.PmsEventReportRequest,
+    ) -> ali_genieip__1__0_models.PmsEventReportResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.PmsEventReportHeaders()
+        return await self.pms_event_report_with_options_async(request, headers, runtime)
+
     def push_hotel_message_with_options(
         self,
         tmp_req: ali_genieip__1__0_models.PushHotelMessageRequest,

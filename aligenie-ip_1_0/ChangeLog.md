@@ -1,3 +1,7 @@
+2024-02-29 Version: 2.7.0
+- Support API PmsEventReport.
+
+
 2023-10-19 Version: 2.6.0
 - Generated python ip_1.0 for AliGenie.
 
