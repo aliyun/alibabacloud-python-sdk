@@ -467,6 +467,8 @@ class Client(OpenApiClient):
             body['CodeDir'] = request.code_dir
         if not UtilClient.is_unset(request.compute_resource):
             body['ComputeResource'] = request.compute_resource
+        if not UtilClient.is_unset(request.experiment_config):
+            body['ExperimentConfig'] = request.experiment_config
         if not UtilClient.is_unset(request.hyper_parameters):
             body['HyperParameters'] = request.hyper_parameters
         if not UtilClient.is_unset(request.input_channels):
@@ -529,6 +531,8 @@ class Client(OpenApiClient):
             body['CodeDir'] = request.code_dir
         if not UtilClient.is_unset(request.compute_resource):
             body['ComputeResource'] = request.compute_resource
+        if not UtilClient.is_unset(request.experiment_config):
+            body['ExperimentConfig'] = request.experiment_config
         if not UtilClient.is_unset(request.hyper_parameters):
             body['HyperParameters'] = request.hyper_parameters
         if not UtilClient.is_unset(request.input_channels):

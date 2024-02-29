@@ -1,3 +1,9 @@
+2024-02-29 Version: 1.1.4
+- Update API CreateTrainingJob: update param body.
+- Update API GetTrainingJob: update response param.
+- Update API ListTrainingJobs: update response param.
+
+
 2024-01-24 Version: 1.1.3
 - Generated python 2022-01-12 for PaiStudio.
 

@@ -28,7 +28,7 @@ pip install alibabacloud_paistudio20220112
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/paistudio-20220112/ChangeLog.md).
 
 ## References
 
