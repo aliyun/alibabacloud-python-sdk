@@ -7313,6 +7313,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.generate_disync_task_config_for_updating_with_options_async(request, runtime)
 
+    def get_alert_message_with_options(
+        self,
+        request: dataworks_public_20200518_models.GetAlertMessageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetAlertMessageResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.alert_id):
+            body['AlertId'] = request.alert_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetAlertMessage',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetAlertMessageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_alert_message_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.GetAlertMessageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetAlertMessageResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.alert_id):
+            body['AlertId'] = request.alert_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetAlertMessage',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetAlertMessageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_alert_message(
+        self,
+        request: dataworks_public_20200518_models.GetAlertMessageRequest,
+    ) -> dataworks_public_20200518_models.GetAlertMessageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_alert_message_with_options(request, runtime)
+
+    async def get_alert_message_async(
+        self,
+        request: dataworks_public_20200518_models.GetAlertMessageRequest,
+    ) -> dataworks_public_20200518_models.GetAlertMessageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_alert_message_with_options_async(request, runtime)
+
     def get_baseline_with_options(
         self,
         request: dataworks_public_20200518_models.GetBaselineRequest,
@@ -17008,6 +17078,8 @@ class Client(OpenApiClient):
             body['ProjectEnv'] = request.project_env
         if not UtilClient.is_unset(request.project_id):
             body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.scheduler_type):
+            body['SchedulerType'] = request.scheduler_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -17050,6 +17122,8 @@ class Client(OpenApiClient):
             body['ProjectEnv'] = request.project_env
         if not UtilClient.is_unset(request.project_id):
             body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.scheduler_type):
+            body['SchedulerType'] = request.scheduler_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -19817,10 +19891,16 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.alert_notice_type):
+            body['AlertNoticeType'] = request.alert_notice_type
+        if not UtilClient.is_unset(request.alert_type):
+            body['AlertType'] = request.alert_type
         if not UtilClient.is_unset(request.biz_begin_time):
             body['BizBeginTime'] = request.biz_begin_time
         if not UtilClient.is_unset(request.biz_end_time):
             body['BizEndTime'] = request.biz_end_time
+        if not UtilClient.is_unset(request.concurrent_runs):
+            body['ConcurrentRuns'] = request.concurrent_runs
         if not UtilClient.is_unset(request.end_biz_date):
             body['EndBizDate'] = request.end_biz_date
         if not UtilClient.is_unset(request.exclude_node_ids):
@@ -19874,10 +19954,16 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.alert_notice_type):
+            body['AlertNoticeType'] = request.alert_notice_type
+        if not UtilClient.is_unset(request.alert_type):
+            body['AlertType'] = request.alert_type
         if not UtilClient.is_unset(request.biz_begin_time):
             body['BizBeginTime'] = request.biz_begin_time
         if not UtilClient.is_unset(request.biz_end_time):
             body['BizEndTime'] = request.biz_end_time
+        if not UtilClient.is_unset(request.concurrent_runs):
+            body['ConcurrentRuns'] = request.concurrent_runs
         if not UtilClient.is_unset(request.end_biz_date):
             body['EndBizDate'] = request.end_biz_date
         if not UtilClient.is_unset(request.exclude_node_ids):
