@@ -1,3 +1,24 @@
+2024-02-29 Version: 2.1.2
+- Update API CreateDataFlow: add param FileSystemPath.
+- Update API CreateDataFlow: add param SourceStoragePath.
+- Update API CreateDataFlow: update param FsetId.
+- Update API CreateDataFlow: update param SourceStorage.
+- Update API CreateDataFlow: update param Throughput.
+- Update API CreateDataFlow: update response param.
+- Update API CreateDataFlowTask: add param ConflictPolicy.
+- Update API CreateDataFlowTask: update param Directory.
+- Update API CreateDataFlowTask: update response param.
+- Update API CreateFileSystem: update param StorageType.
+- Update API DescribeAccessGroups: update response param.
+- Update API DescribeAccessRules: update response param.
+- Update API DescribeDataFlowTasks: update response param.
+- Update API DescribeDataFlows: update param Filters.
+- Update API DescribeDataFlows: update response param.
+- Update API DescribeFileSystemStatistics: update response param.
+- Update API DescribeFileSystems: update response param.
+- Update API ModifyAccessRule: update param SourceCidrIp.
+
+
 2024-02-27 Version: 2.1.1
 - Update API CreateFileSystem: update param StorageType.
 - Update API DescribeAccessGroups: update response param.

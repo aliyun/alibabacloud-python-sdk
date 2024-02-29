@@ -1682,12 +1682,16 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.file_system_id):
             query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.file_system_path):
+            query['FileSystemPath'] = request.file_system_path
         if not UtilClient.is_unset(request.fset_id):
             query['FsetId'] = request.fset_id
         if not UtilClient.is_unset(request.source_security_type):
             query['SourceSecurityType'] = request.source_security_type
         if not UtilClient.is_unset(request.source_storage):
             query['SourceStorage'] = request.source_storage
+        if not UtilClient.is_unset(request.source_storage_path):
+            query['SourceStoragePath'] = request.source_storage_path
         if not UtilClient.is_unset(request.throughput):
             query['Throughput'] = request.throughput
         req = open_api_models.OpenApiRequest(
@@ -1771,12 +1775,16 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.file_system_id):
             query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.file_system_path):
+            query['FileSystemPath'] = request.file_system_path
         if not UtilClient.is_unset(request.fset_id):
             query['FsetId'] = request.fset_id
         if not UtilClient.is_unset(request.source_security_type):
             query['SourceSecurityType'] = request.source_security_type
         if not UtilClient.is_unset(request.source_storage):
             query['SourceStorage'] = request.source_storage
+        if not UtilClient.is_unset(request.source_storage_path):
+            query['SourceStoragePath'] = request.source_storage_path
         if not UtilClient.is_unset(request.throughput):
             query['Throughput'] = request.throughput
         req = open_api_models.OpenApiRequest(
@@ -1912,6 +1920,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.conflict_policy):
+            query['ConflictPolicy'] = request.conflict_policy
         if not UtilClient.is_unset(request.data_flow_id):
             query['DataFlowId'] = request.data_flow_id
         if not UtilClient.is_unset(request.data_type):
@@ -1967,6 +1977,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.conflict_policy):
+            query['ConflictPolicy'] = request.conflict_policy
         if not UtilClient.is_unset(request.data_flow_id):
             query['DataFlowId'] = request.data_flow_id
         if not UtilClient.is_unset(request.data_type):
