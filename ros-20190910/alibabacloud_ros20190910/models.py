@@ -8934,6 +8934,7 @@ class GetStackResponseBody(TeaModel):
         request_id: str = None,
         resource_group_id: str = None,
         resource_progress: GetStackResponseBodyResourceProgress = None,
+        rollback_failed_root_reason: str = None,
         root_stack_id: str = None,
         service_managed: bool = None,
         service_name: str = None,
@@ -9014,6 +9015,7 @@ class GetStackResponseBody(TeaModel):
         self.resource_group_id = resource_group_id
         # The creation progress of resources.
         self.resource_progress = resource_progress
+        self.rollback_failed_root_reason = rollback_failed_root_reason
         # The ID of the root stack. This parameter is returned if the specified stack is a nested stack.
         self.root_stack_id = root_stack_id
         # Indicates whether the stack is a managed stack. Valid values: 
@@ -9162,6 +9164,8 @@ class GetStackResponseBody(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_progress is not None:
             result['ResourceProgress'] = self.resource_progress.to_map()
+        if self.rollback_failed_root_reason is not None:
+            result['RollbackFailedRootReason'] = self.rollback_failed_root_reason
         if self.root_stack_id is not None:
             result['RootStackId'] = self.root_stack_id
         if self.service_managed is not None:
@@ -9248,6 +9252,8 @@ class GetStackResponseBody(TeaModel):
         if m.get('ResourceProgress') is not None:
             temp_model = GetStackResponseBodyResourceProgress()
             self.resource_progress = temp_model.from_map(m['ResourceProgress'])
+        if m.get('RollbackFailedRootReason') is not None:
+            self.rollback_failed_root_reason = m.get('RollbackFailedRootReason')
         if m.get('RootStackId') is not None:
             self.root_stack_id = m.get('RootStackId')
         if m.get('ServiceManaged') is not None:

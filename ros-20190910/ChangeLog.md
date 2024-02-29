@@ -1,3 +1,9 @@
+2024-02-29 Version: 3.3.9
+- Update API GetStack: update response param.
+- Update API GetStackInstance: add param OutputOption.
+- Update API GetStackInstance: update response param.
+
+
 2024-02-21 Version: 3.3.8
 - Update API GetStackInstance: add param OutputOption.
 - Update API GetStackInstance: update response param.
