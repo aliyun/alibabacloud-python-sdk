@@ -4666,6 +4666,8 @@ class Client(OpenApiClient):
             query['SpotTargetCapacity'] = request.spot_target_capacity
         if not UtilClient.is_unset(request.system_disk_config):
             query['SystemDiskConfig'] = request.system_disk_config
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.terminate_instances):
             query['TerminateInstances'] = request.terminate_instances
         if not UtilClient.is_unset(request.terminate_instances_with_expiration):
@@ -4767,6 +4769,8 @@ class Client(OpenApiClient):
             query['SpotTargetCapacity'] = request.spot_target_capacity
         if not UtilClient.is_unset(request.system_disk_config):
             query['SystemDiskConfig'] = request.system_disk_config
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.terminate_instances):
             query['TerminateInstances'] = request.terminate_instances
         if not UtilClient.is_unset(request.terminate_instances_with_expiration):
@@ -16007,6 +16011,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -16055,6 +16061,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -34676,19 +34684,15 @@ class Client(OpenApiClient):
 
     def modify_auto_snapshot_policy_ex_with_options(
         self,
-        tmp_req: ecs_20140526_models.ModifyAutoSnapshotPolicyExRequest,
+        request: ecs_20140526_models.ModifyAutoSnapshotPolicyExRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyAutoSnapshotPolicyExResponse:
-        UtilClient.validate_model(tmp_req)
-        request = ecs_20140526_models.ModifyAutoSnapshotPolicyExShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.copy_encryption_configuration):
-            request.copy_encryption_configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.copy_encryption_configuration, 'CopyEncryptionConfiguration', 'json')
+        UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.copied_snapshots_retention_days):
             query['CopiedSnapshotsRetentionDays'] = request.copied_snapshots_retention_days
-        if not UtilClient.is_unset(request.copy_encryption_configuration_shrink):
-            query['CopyEncryptionConfiguration'] = request.copy_encryption_configuration_shrink
+        if not UtilClient.is_unset(request.copy_encryption_configuration):
+            query['CopyEncryptionConfiguration'] = request.copy_encryption_configuration
         if not UtilClient.is_unset(request.enable_cross_region_copy):
             query['EnableCrossRegionCopy'] = request.enable_cross_region_copy
         if not UtilClient.is_unset(request.owner_id):
@@ -34732,19 +34736,15 @@ class Client(OpenApiClient):
 
     async def modify_auto_snapshot_policy_ex_with_options_async(
         self,
-        tmp_req: ecs_20140526_models.ModifyAutoSnapshotPolicyExRequest,
+        request: ecs_20140526_models.ModifyAutoSnapshotPolicyExRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyAutoSnapshotPolicyExResponse:
-        UtilClient.validate_model(tmp_req)
-        request = ecs_20140526_models.ModifyAutoSnapshotPolicyExShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.copy_encryption_configuration):
-            request.copy_encryption_configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.copy_encryption_configuration, 'CopyEncryptionConfiguration', 'json')
+        UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.copied_snapshots_retention_days):
             query['CopiedSnapshotsRetentionDays'] = request.copied_snapshots_retention_days
-        if not UtilClient.is_unset(request.copy_encryption_configuration_shrink):
-            query['CopyEncryptionConfiguration'] = request.copy_encryption_configuration_shrink
+        if not UtilClient.is_unset(request.copy_encryption_configuration):
+            query['CopyEncryptionConfiguration'] = request.copy_encryption_configuration
         if not UtilClient.is_unset(request.enable_cross_region_copy):
             query['EnableCrossRegionCopy'] = request.enable_cross_region_copy
         if not UtilClient.is_unset(request.owner_id):
