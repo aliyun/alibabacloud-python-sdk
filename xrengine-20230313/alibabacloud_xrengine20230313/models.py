@@ -1938,6 +1938,7 @@ class ListDigitalHumanMaterialsResponseBodyData(TeaModel):
         files: Dict[str, Any] = None,
         id: str = None,
         name: str = None,
+        sort_order: int = None,
         type: str = None,
     ):
         self.components = components
@@ -1946,6 +1947,7 @@ class ListDigitalHumanMaterialsResponseBodyData(TeaModel):
         self.files = files
         self.id = id
         self.name = name
+        self.sort_order = sort_order
         self.type = type
 
     def validate(self):
@@ -1974,6 +1976,8 @@ class ListDigitalHumanMaterialsResponseBodyData(TeaModel):
             result['Id'] = self.id
         if self.name is not None:
             result['Name'] = self.name
+        if self.sort_order is not None:
+            result['SortOrder'] = self.sort_order
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -1995,6 +1999,8 @@ class ListDigitalHumanMaterialsResponseBodyData(TeaModel):
             self.id = m.get('Id')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('SortOrder') is not None:
+            self.sort_order = m.get('SortOrder')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self

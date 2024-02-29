@@ -1,3 +1,7 @@
+2024-02-29 Version: 2.9.1
+- Update API ListDigitalHumanMaterials: update response param.
+
+
 2024-02-02 Version: 2.9.0
 - Support API LoginHuggingFace.
 
