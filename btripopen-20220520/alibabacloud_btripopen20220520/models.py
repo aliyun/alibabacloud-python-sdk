@@ -68299,9 +68299,11 @@ class IntlFlightListingSearchResponseBodyModuleFlightItemListBestPriceItem(TeaMo
     def __init__(
         self,
         agreement_price_codes: List[str] = None,
+        item_type: str = None,
         shopping_item_map: Dict[str, ModuleFlightItemListBestPriceItemShoppingItemMapValue] = None,
     ):
         self.agreement_price_codes = agreement_price_codes
+        self.item_type = item_type
         self.shopping_item_map = shopping_item_map
 
     def validate(self):
@@ -68318,6 +68320,8 @@ class IntlFlightListingSearchResponseBodyModuleFlightItemListBestPriceItem(TeaMo
         result = dict()
         if self.agreement_price_codes is not None:
             result['agreement_price_codes'] = self.agreement_price_codes
+        if self.item_type is not None:
+            result['item_type'] = self.item_type
         result['shopping_item_map'] = {}
         if self.shopping_item_map is not None:
             for k, v in self.shopping_item_map.items():
@@ -68328,6 +68332,8 @@ class IntlFlightListingSearchResponseBodyModuleFlightItemListBestPriceItem(TeaMo
         m = m or dict()
         if m.get('agreement_price_codes') is not None:
             self.agreement_price_codes = m.get('agreement_price_codes')
+        if m.get('item_type') is not None:
+            self.item_type = m.get('item_type')
         self.shopping_item_map = {}
         if m.get('shopping_item_map') is not None:
             for k, v in m.get('shopping_item_map').items():
@@ -70227,6 +70233,7 @@ class IntlFlightOtaItemDetailResponseBodyModuleGroupItem(TeaModel):
         agreement_price_codes: List[str] = None,
         flight_rule_info_list: List[IntlFlightOtaItemDetailResponseBodyModuleGroupItemFlightRuleInfoList] = None,
         item_id: str = None,
+        item_type: str = None,
         shopping_item_map: Dict[str, ModuleGroupItemShoppingItemMapValue] = None,
         sub_item_position_map: Dict[str, List[ModuleGroupItemSubItemPositionMapValue]] = None,
         sub_items: List[IntlFlightOtaItemDetailResponseBodyModuleGroupItemSubItems] = None,
@@ -70234,6 +70241,7 @@ class IntlFlightOtaItemDetailResponseBodyModuleGroupItem(TeaModel):
         self.agreement_price_codes = agreement_price_codes
         self.flight_rule_info_list = flight_rule_info_list
         self.item_id = item_id
+        self.item_type = item_type
         self.shopping_item_map = shopping_item_map
         self.sub_item_position_map = sub_item_position_map
         self.sub_items = sub_items
@@ -70271,6 +70279,8 @@ class IntlFlightOtaItemDetailResponseBodyModuleGroupItem(TeaModel):
                 result['flight_rule_info_list'].append(k.to_map() if k else None)
         if self.item_id is not None:
             result['item_id'] = self.item_id
+        if self.item_type is not None:
+            result['item_type'] = self.item_type
         result['shopping_item_map'] = {}
         if self.shopping_item_map is not None:
             for k, v in self.shopping_item_map.items():
@@ -70299,6 +70309,8 @@ class IntlFlightOtaItemDetailResponseBodyModuleGroupItem(TeaModel):
                 self.flight_rule_info_list.append(temp_model.from_map(k))
         if m.get('item_id') is not None:
             self.item_id = m.get('item_id')
+        if m.get('item_type') is not None:
+            self.item_type = m.get('item_type')
         self.shopping_item_map = {}
         if m.get('shopping_item_map') is not None:
             for k, v in m.get('shopping_item_map').items():
@@ -71900,6 +71912,7 @@ class IntlFlightOtaSearchResponseBodyModuleItemList(TeaModel):
         agreement_price_codes: List[str] = None,
         flight_rule_info_list: List[IntlFlightOtaSearchResponseBodyModuleItemListFlightRuleInfoList] = None,
         item_id: str = None,
+        item_type: str = None,
         shopping_item_map: Dict[str, ModuleItemListShoppingItemMapValue] = None,
         sub_item_position_map: Dict[str, List[ModuleItemListSubItemPositionMapValue]] = None,
         sub_items: List[IntlFlightOtaSearchResponseBodyModuleItemListSubItems] = None,
@@ -71907,6 +71920,7 @@ class IntlFlightOtaSearchResponseBodyModuleItemList(TeaModel):
         self.agreement_price_codes = agreement_price_codes
         self.flight_rule_info_list = flight_rule_info_list
         self.item_id = item_id
+        self.item_type = item_type
         self.shopping_item_map = shopping_item_map
         self.sub_item_position_map = sub_item_position_map
         self.sub_items = sub_items
@@ -71944,6 +71958,8 @@ class IntlFlightOtaSearchResponseBodyModuleItemList(TeaModel):
                 result['flight_rule_info_list'].append(k.to_map() if k else None)
         if self.item_id is not None:
             result['item_id'] = self.item_id
+        if self.item_type is not None:
+            result['item_type'] = self.item_type
         result['shopping_item_map'] = {}
         if self.shopping_item_map is not None:
             for k, v in self.shopping_item_map.items():
@@ -71972,6 +71988,8 @@ class IntlFlightOtaSearchResponseBodyModuleItemList(TeaModel):
                 self.flight_rule_info_list.append(temp_model.from_map(k))
         if m.get('item_id') is not None:
             self.item_id = m.get('item_id')
+        if m.get('item_type') is not None:
+            self.item_type = m.get('item_type')
         self.shopping_item_map = {}
         if m.get('shopping_item_map') is not None:
             for k, v in m.get('shopping_item_map').items():
