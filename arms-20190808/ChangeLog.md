@@ -1,3 +1,16 @@
+2024-03-01 Version: 4.6.0
+- Support API ListAddons.
+- Update API CreateEnvironment: add param PrometheusInstanceId.
+- Update API CreatePrometheusInstance: add param Duration.
+- Update API CreateTimingSyntheticTask: update param CommonSetting.
+- Update API CreateTimingSyntheticTask: update param MonitorConf.
+- Update API DescribeEnvironment: update response param.
+- Update API GetTimingSyntheticTask: update response param.
+- Update API UpdateTimingSyntheticTask: update param CommonSetting.
+- Update API UpdateTimingSyntheticTask: update param MonitorConf.
+- Update API Upload: update response param.
+
+
 2024-02-28 Version: 4.5.0
 - Support API ListAddons.
 - Update API CreateEnvironment: add param PrometheusInstanceId.
