@@ -1,3 +1,20 @@
+2024-03-01 Version: 2.4.0
+- Support API EnableAutoGroupCreation.
+- Support API EnableAutoTopicCreation.
+- Support API GetTopicSubscribeStatus.
+- Update API CreateAcl: update param AclResourceType.
+- Update API CreatePrePayOrder: add param ConfluentConfig.
+- Update API DeleteAcl: update param AclOperationType.
+- Update API DeleteAcl: update param AclResourceType.
+- Update API DescribeAcls: update param AclResourceType.
+- Update API GetInstanceList: update response param.
+- Update API StartInstance: add param VSwitchIds.
+- Update API UpgradePostPayOrder: add param ServerlessConfig.
+- Update API UpgradePostPayOrder: update param DiskSize.
+- Update API UpgradePrePayOrder: add param ConfluentConfig.
+- Update API UpgradePrePayOrder: add param PaidType.
+
+
 2024-02-27 Version: 2.3.0
 - Support API GetTopicSubscribeStatus.
 - Update API CreateAcl: update param AclResourceType.

@@ -1469,6 +1469,166 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_sasl_users_with_options_async(request, runtime)
 
+    def enable_auto_group_creation_with_options(
+        self,
+        request: alikafka_20190916_models.EnableAutoGroupCreationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.EnableAutoGroupCreationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableAutoGroupCreation',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.EnableAutoGroupCreationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_auto_group_creation_with_options_async(
+        self,
+        request: alikafka_20190916_models.EnableAutoGroupCreationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.EnableAutoGroupCreationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableAutoGroupCreation',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.EnableAutoGroupCreationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_auto_group_creation(
+        self,
+        request: alikafka_20190916_models.EnableAutoGroupCreationRequest,
+    ) -> alikafka_20190916_models.EnableAutoGroupCreationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.enable_auto_group_creation_with_options(request, runtime)
+
+    async def enable_auto_group_creation_async(
+        self,
+        request: alikafka_20190916_models.EnableAutoGroupCreationRequest,
+    ) -> alikafka_20190916_models.EnableAutoGroupCreationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_auto_group_creation_with_options_async(request, runtime)
+
+    def enable_auto_topic_creation_with_options(
+        self,
+        request: alikafka_20190916_models.EnableAutoTopicCreationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.EnableAutoTopicCreationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.operate):
+            query['Operate'] = request.operate
+        if not UtilClient.is_unset(request.partition_num):
+            query['PartitionNum'] = request.partition_num
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableAutoTopicCreation',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.EnableAutoTopicCreationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_auto_topic_creation_with_options_async(
+        self,
+        request: alikafka_20190916_models.EnableAutoTopicCreationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.EnableAutoTopicCreationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.operate):
+            query['Operate'] = request.operate
+        if not UtilClient.is_unset(request.partition_num):
+            query['PartitionNum'] = request.partition_num
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableAutoTopicCreation',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.EnableAutoTopicCreationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_auto_topic_creation(
+        self,
+        request: alikafka_20190916_models.EnableAutoTopicCreationRequest,
+    ) -> alikafka_20190916_models.EnableAutoTopicCreationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.enable_auto_topic_creation_with_options(request, runtime)
+
+    async def enable_auto_topic_creation_async(
+        self,
+        request: alikafka_20190916_models.EnableAutoTopicCreationRequest,
+    ) -> alikafka_20190916_models.EnableAutoTopicCreationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_auto_topic_creation_with_options_async(request, runtime)
+
     def get_all_instance_id_list_with_options(
         self,
         request: alikafka_20190916_models.GetAllInstanceIdListRequest,
