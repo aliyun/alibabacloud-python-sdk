@@ -10,9 +10,9 @@ class AddAddressBookRequestTagList(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of the tag.
+        # The key of the ECS tag.
         self.tag_key = tag_key
-        # The value of the tag.
+        # The value of the ECS tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -54,16 +54,16 @@ class AddAddressBookRequest(TeaModel):
     ):
         # The addresses that you want to add to the address book. Separate multiple addresses with commas (,).
         # 
-        # > If you set GroupType to `ip`, `port` or `domain`, you must specify the AddressList parameter.
-        # >
-        # > * If you set GroupType to `ip`, you must add IP addresses to the address book. Example: 192.0.XX.XX/32, 192.0.XX.XX/24.
-        # > * If you set GroupType to `port`, you must add port numbers or port ranges to the address book. Example: 80, 100/200.
-        # > * If you set GroupType to `domain`, you must add domain names to the address book. Example: example.com, aliyundoc.com.
+        # >  If you set GroupType to `ip`, `port`, or `domain`, you must specify the AddressList parameter.
+        # 
+        # *   If you set GroupType to `ip`, you must add IP addresses to the address book. Example: 192.0.XX.XX/32, 192.0.XX.XX/24.
+        # *   If you set GroupType to `port`, you must add port numbers or port ranges to the address book. Example: 80, 100/200.
+        # *   If you set GroupType to `domain`, you must add domain names to the address book. Example: example.com, aliyundoc.com.
         self.address_list = address_list
         # Specifies whether to automatically add public IP addresses of ECS instances to the address book if the instances match the specified tags. Valid values:
         # 
         # *   **1**: yes
-        # *   **0**: no (default)
+        # *   **0** (default): no
         self.auto_add_tag_ecs = auto_add_tag_ecs
         # The description of the address book.
         self.description = description
@@ -71,14 +71,14 @@ class AddAddressBookRequest(TeaModel):
         self.group_name = group_name
         # The type of the address book. Valid values:
         # 
-        # * **ip**: IP address book
-        # * **domain**: domain address book
-        # * **port**: port address book
-        # * **tag**: ECS tag-based address book
+        # *   **ip**: IP address book
+        # *   **domain**: domain address book
+        # *   **port**: port address book
+        # *   **tag**: ECS tag-based address book
         self.group_type = group_type
         # The language of the content within the response. Valid values:
         # 
-        # *   **zh**: Chinese (default)
+        # *   **zh** (default): Chinese
         # *   **en**: English
         self.lang = lang
         # The source IP address of the request.
@@ -87,7 +87,7 @@ class AddAddressBookRequest(TeaModel):
         self.tag_list = tag_list
         # The logical relation among the ECS tags that you want to match. Valid values:
         # 
-        # *   **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the address book. This is the default value.
+        # *   **and** (default): Only the public IP addresses of ECS instances that match all the specified tags can be added to the address book.
         # *   **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the address book.
         self.tag_relation = tag_relation
 
@@ -159,7 +159,7 @@ class AddAddressBookResponseBody(TeaModel):
     ):
         # The UUID of the returned address book.
         self.group_uuid = group_uuid
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -198,9 +198,6 @@ class AddAddressBookResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -344,6 +341,9 @@ class AddControlPolicyRequest(TeaModel):
         # *   **in**: inbound traffic
         # *   **out**: outbound traffic
         self.direction = direction
+        # The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+        # 
+        # >  If you set RepeatType to Permanent, leave this parameter empty. If you set RepeatType to None, Daily, Weekly, or Monthly, you must specify this parameter.
         self.end_time = end_time
         # The IP version supported by the access control policy.
         # 
@@ -371,9 +371,32 @@ class AddControlPolicyRequest(TeaModel):
         # *   **true**: enables the access control policy.
         # *   **false**: disables the access control policy.
         self.release = release
+        # The days of a week or of a month on which the access control policy takes effect.
+        # 
+        # *   If you set RepeatType to `Permanent`, `None`, or `Daily`, leave this parameter empty. Example: \[].
+        # *   If you set RepeatType to Weekly, you must specify this parameter. Example: \[0, 6].
+        # 
+        # >  If you set RepeatType to Weekly, the fields in the value of this parameter cannot be repeated.
+        # 
+        # *   If you set RepeatType to `Monthly`, you must specify this parameter. Example: \[1, 31].
+        # 
+        # >  If you set RepeatType to Monthly, the fields in the value of this parameter cannot be repeated.
         self.repeat_days = repeat_days
+        # The point in time when the recurrence ends. Example: 23:30. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+        # 
+        # >  If you set RepeatType to Permanent or None, leave this parameter empty. If you set RepeatType to Daily, Weekly, or Monthly, you must specify this parameter.
         self.repeat_end_time = repeat_end_time
+        # The point in time when the recurrence starts. Example: 08:00. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+        # 
+        # >  If you set RepeatType to Permanent or None, leave this parameter empty. If you set RepeatType to Daily, Weekly, or Monthly, you must specify this parameter.
         self.repeat_start_time = repeat_start_time
+        # The recurrence type for the access control policy to take effect. Valid values:
+        # 
+        # *   **Permanent** (default): The policy always takes effect.
+        # *   **None**: The policy takes effect for only once.
+        # *   **Daily**: The policy takes effect on a daily basis.
+        # *   **Weekly**: The policy takes effect on a weekly basis.
+        # *   **Monthly**: The policy takes effect on a monthly basis.
         self.repeat_type = repeat_type
         # The source address in the access control policy. Valid values:
         # 
@@ -397,6 +420,9 @@ class AddControlPolicyRequest(TeaModel):
         # *   **group**: address book
         # *   **location**: location
         self.source_type = source_type
+        # The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+        # 
+        # >  If you set RepeatType to Permanent, leave this parameter empty. If you set RepeatType to None, Daily, Weekly, or Monthly, you must specify this parameter.
         self.start_time = start_time
 
     def validate(self):
@@ -558,9 +584,6 @@ class AddControlPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -701,9 +724,6 @@ class AddInstanceMembersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -835,9 +855,6 @@ class BatchCopyVpcFirewallControlPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -863,6 +880,125 @@ class BatchCopyVpcFirewallControlPolicyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = BatchCopyVpcFirewallControlPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateDownloadTaskRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        task_data: str = None,
+    ):
+        self.lang = lang
+        self.task_data = task_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.task_data is not None:
+            result['TaskData'] = self.task_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('TaskData') is not None:
+            self.task_data = m.get('TaskData')
+        return self
+
+
+class CreateDownloadTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        status: str = None,
+        task_id: int = None,
+        task_name: str = None,
+    ):
+        self.request_id = request_id
+        self.status = status
+        self.task_id = task_id
+        self.task_name = task_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        return self
+
+
+class CreateDownloadTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDownloadTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDownloadTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1211,9 +1347,6 @@ class CreateNatFirewallControlPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1420,9 +1553,6 @@ class CreateTrFirewallV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1706,9 +1836,6 @@ class CreateTrFirewallV2RoutePolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1903,9 +2030,6 @@ class CreateVpcFirewallCenConfigureResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2089,9 +2213,6 @@ class CreateVpcFirewallConfigureResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2172,6 +2293,7 @@ class CreateVpcFirewallControlPolicyRequest(TeaModel):
         # - **SSL**\
         # - **ANY**: all types of applications
         self.application_name = application_name
+        # The application types supported by the access control policy.
         self.application_name_list = application_name_list
         # The description of the access control policy.
         self.description = description
@@ -2200,6 +2322,9 @@ class CreateVpcFirewallControlPolicyRequest(TeaModel):
         # - **group**: address book
         # - **domain**: domain name
         self.destination_type = destination_type
+        # The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+        # 
+        # >  If you set RepeatType to Permanent, leave this parameter empty. If you set RepeatType to None, Daily, Weekly, or Monthly, you must specify this parameter.
         self.end_time = end_time
         # The language of the content within the request and response. Valid values:
         # 
@@ -2224,9 +2349,32 @@ class CreateVpcFirewallControlPolicyRequest(TeaModel):
         # - **true**: enables the access control policy.
         # - **false**: disables the access control policy.
         self.release = release
+        # The days of a week or of a month on which the access control policy takes effect.
+        # 
+        # *   If you set RepeatType to `Permanent`, `None`, or `Daily`, leave this parameter empty. Example: \[].
+        # *   If you set RepeatType to Weekly, you must specify this parameter. Example: \[0, 6].
+        # 
+        # >  If you set RepeatType to Weekly, the fields in the value of this parameter cannot be repeated.
+        # 
+        # *   If you set RepeatType to `Monthly`, you must specify this parameter. Example: \[1, 31].
+        # 
+        # >  If you set RepeatType to Monthly, the fields in the value of this parameter cannot be repeated.
         self.repeat_days = repeat_days
+        # The point in time when the recurrence ends. Example: 23:30. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+        # 
+        # >  If you set RepeatType to Permanent or None, leave this parameter empty. If you set RepeatType to Daily, Weekly, or Monthly, you must specify this parameter.
         self.repeat_end_time = repeat_end_time
+        # The point in time when the recurrence starts. Example: 08:00. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+        # 
+        # >  If you set RepeatType to Permanent or None, leave this parameter empty. If you set RepeatType to Daily, Weekly, or Monthly, you must specify this parameter.
         self.repeat_start_time = repeat_start_time
+        # The recurrence type for the access control policy to take effect. Valid values:
+        # 
+        # *   **Permanent** (default): The policy always takes effect.
+        # *   **None**: The policy takes effect for only once.
+        # *   **Daily**: The policy takes effect on a daily basis.
+        # *   **Weekly**: The policy takes effect on a weekly basis.
+        # *   **Monthly**: The policy takes effect on a monthly basis.
         self.repeat_type = repeat_type
         # The source address in the access control policy. 
         # 
@@ -2238,6 +2386,9 @@ class CreateVpcFirewallControlPolicyRequest(TeaModel):
         # - **net**: CIDR block
         # - **group**: address book
         self.source_type = source_type
+        # The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+        # 
+        # >  If you set RepeatType to Permanent, leave this parameter empty. If you set RepeatType to None, Daily, Weekly, or Monthly, you must specify this parameter.
         self.start_time = start_time
         # The ID of the policy group in which you want to create the access control policy. 
         # 
@@ -2402,9 +2553,6 @@ class CreateVpcFirewallControlPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2521,9 +2669,6 @@ class DeleteAddressBookResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2654,9 +2799,6 @@ class DeleteControlPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2682,6 +2824,214 @@ class DeleteControlPolicyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteControlPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteControlPolicyTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        source_ip: str = None,
+        template_id: str = None,
+    ):
+        self.lang = lang
+        self.source_ip = source_ip
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class DeleteControlPolicyTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteControlPolicyTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteControlPolicyTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteControlPolicyTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDownloadTaskRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        task_id: str = None,
+    ):
+        self.lang = lang
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class DeleteDownloadTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteDownloadTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDownloadTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDownloadTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2764,9 +3114,6 @@ class DeleteFirewallV2RoutePoliciesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2864,9 +3211,6 @@ class DeleteInstanceMembersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2994,9 +3338,6 @@ class DeleteNatFirewallControlPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3022,6 +3363,119 @@ class DeleteNatFirewallControlPolicyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteNatFirewallControlPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteNatFirewallControlPolicyBatchRequest(TeaModel):
+    def __init__(
+        self,
+        acl_uuid_list: List[str] = None,
+        direction: str = None,
+        lang: str = None,
+        nat_gateway_id: str = None,
+    ):
+        self.acl_uuid_list = acl_uuid_list
+        self.direction = direction
+        self.lang = lang
+        self.nat_gateway_id = nat_gateway_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_uuid_list is not None:
+            result['AclUuidList'] = self.acl_uuid_list
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclUuidList') is not None:
+            self.acl_uuid_list = m.get('AclUuidList')
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        return self
+
+
+class DeleteNatFirewallControlPolicyBatchResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteNatFirewallControlPolicyBatchResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteNatFirewallControlPolicyBatchResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteNatFirewallControlPolicyBatchResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3104,9 +3558,6 @@ class DeleteTrFirewallV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3221,9 +3672,6 @@ class DeleteVpcFirewallCenConfigureResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3338,9 +3786,6 @@ class DeleteVpcFirewallConfigureResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3466,9 +3911,6 @@ class DeleteVpcFirewallControlPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3675,9 +4117,6 @@ class DescribeACLProtectTrendResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3719,27 +4158,27 @@ class DescribeAddressBookRequest(TeaModel):
     ):
         # The port that is included in the address book. This parameter takes effect only when the **GroupType** parameter is set to **port**.
         self.contain_port = contain_port
-        # The number of the page to return.
+        # The page number.
         # 
         # Pages start from page 1. Default value: 1.
         self.current_page = current_page
         # The type of the address book. Valid values:
         # 
-        # * **ip**: IP address book
-        # * **domain**: domain address book
-        # * **port**: port address book
-        # * **tag**: Elastic Compute Service (ECS) tag-based address book
-        # * **allCloud**: cloud service address book
-        # * **threat**: threat intelligence address book
+        # *   **ip**: IP address book
+        # *   **domain**: domain address book
+        # *   **port**: port address book
+        # *   **tag**: Elastic Compute Service (ECS) tag-based address book
+        # *   **allCloud**: cloud service address book
+        # *   **threat**: threat intelligence address book
         # 
-        # > If you do not specify a type, the domain address books and ECS tag-based address books are queried.
+        # >  If you do not specify a type, the domain address books and ECS tag-based address books are queried.
         self.group_type = group_type
         # The language of the content within the request. Valid values:
         # 
-        # * **zh**: Chinese (default)
-        # * **en**: English
+        # *   **zh** (default): Chinese
+        # *   **en**: English
         self.lang = lang
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # Default value: 10. Maximum value: 50.
         self.page_size = page_size
@@ -3841,8 +4280,8 @@ class DescribeAddressBookResponseBodyAcls(TeaModel):
         self.address_list_count = address_list_count
         # Indicates whether the public IP addresses of ECS instances are automatically added to the address book if the instances match the specified tags. The setting takes effect on both newly purchased ECS instances whose tag settings are complete and ECS instances whose tag settings are modified. Valid values:
         # 
-        # * **1**: yes
-        # * **0**: no
+        # *   **1**: yes
+        # *   **0**: no
         self.auto_add_tag_ecs = auto_add_tag_ecs
         # The description of the address book.
         self.description = description
@@ -3850,14 +4289,14 @@ class DescribeAddressBookResponseBodyAcls(TeaModel):
         self.group_name = group_name
         # The type of the address book. Valid values:
         # 
-        # * **ip**: IP address book
-        # * **domain**: domain address book
-        # * **port**: port address book
-        # * **tag**: ECS tag-based address book
-        # * **allCloud**: cloud service address book
-        # * **threat**: threat intelligence address book
+        # *   **ip**: IP address book
+        # *   **domain**: domain address book
+        # *   **port**: port address book
+        # *   **tag**: ECS tag-based address book
+        # *   **allCloud**: cloud service address book
+        # *   **threat**: threat intelligence address book
         self.group_type = group_type
-        # The unique ID of the address book.
+        # The UUID of the address book.
         self.group_uuid = group_uuid
         # The number of times that the address book is referenced.
         self.reference_count = reference_count
@@ -3865,8 +4304,8 @@ class DescribeAddressBookResponseBodyAcls(TeaModel):
         self.tag_list = tag_list
         # The logical relationship among ECS tags. Valid values:
         # 
-        # * **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the address book.
-        # * **or**: The public IP addresses of ECS instances that match any of the specified tags can be added to the address book.
+        # *   **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the address book.
+        # *   **or**: The public IP addresses of ECS instances that match any of the specified tags can be added to the address book.
         self.tag_relation = tag_relation
 
     def validate(self):
@@ -3944,11 +4383,11 @@ class DescribeAddressBookResponseBody(TeaModel):
     ):
         # The information about the address book.
         self.acls = acls
-        # The page number of the current page.
+        # The page number.
         self.page_no = page_no
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of the returned address books.
         self.total_count = total_count
@@ -4009,9 +4448,6 @@ class DescribeAddressBookResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4093,8 +4529,8 @@ class DescribeAssetListRequest(TeaModel):
         # *   **EIP**: the EIP
         # *   **EniEIP**: the EIP of an elastic network interface (ENI)
         # *   **NatEIP**: the EIP of a NAT gateway
-        # *   **SlbEIP**: the EIP of a Server Load Balancer (SLB) instance
-        # *   **SlbPublicIP**: the public IP address of an SLB instance
+        # *   **SlbEIP**: the EIP of a Server Load Balancer (SLB) instance or a Classic Load Balancer (CLB) instance
+        # *   **SlbPublicIP**: the public IP address of an SLB instance or a CLB instance
         # *   **NatPublicIP**: the public IP address of a NAT gateway
         # *   **HAVIP**: the high-availability virtual IP address (HAVIP)
         self.resource_type = resource_type
@@ -4470,9 +4906,6 @@ class DescribeAssetListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4498,6 +4931,344 @@ class DescribeAssetListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeAssetListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAssetRiskListRequest(TeaModel):
+    def __init__(
+        self,
+        ip_addr_list: List[str] = None,
+        ip_version: int = None,
+        lang: str = None,
+        source_ip: str = None,
+    ):
+        self.ip_addr_list = ip_addr_list
+        self.ip_version = ip_version
+        self.lang = lang
+        self.source_ip = source_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip_addr_list is not None:
+            result['IpAddrList'] = self.ip_addr_list
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IpAddrList') is not None:
+            self.ip_addr_list = m.get('IpAddrList')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        return self
+
+
+class DescribeAssetRiskListResponseBodyAssetList(TeaModel):
+    def __init__(
+        self,
+        ip: str = None,
+        ip_version: int = None,
+        reason: str = None,
+        risk_level: str = None,
+    ):
+        self.ip = ip
+        self.ip_version = ip_version
+        self.reason = reason
+        self.risk_level = risk_level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+        return self
+
+
+class DescribeAssetRiskListResponseBody(TeaModel):
+    def __init__(
+        self,
+        asset_list: List[DescribeAssetRiskListResponseBodyAssetList] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.asset_list = asset_list
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.asset_list:
+            for k in self.asset_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AssetList'] = []
+        if self.asset_list is not None:
+            for k in self.asset_list:
+                result['AssetList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.asset_list = []
+        if m.get('AssetList') is not None:
+            for k in m.get('AssetList'):
+                temp_model = DescribeAssetRiskListResponseBodyAssetList()
+                self.asset_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeAssetRiskListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAssetRiskListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAssetRiskListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCfwRiskLevelSummaryRequest(TeaModel):
+    def __init__(
+        self,
+        instance_type: str = None,
+        lang: str = None,
+        region_id: str = None,
+    ):
+        self.instance_type = instance_type
+        self.lang = lang
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeCfwRiskLevelSummaryResponseBodyRiskList(TeaModel):
+    def __init__(
+        self,
+        level: str = None,
+        num: str = None,
+        type: str = None,
+    ):
+        self.level = level
+        self.num = num
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.num is not None:
+            result['Num'] = self.num
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Num') is not None:
+            self.num = m.get('Num')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeCfwRiskLevelSummaryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        risk_list: List[DescribeCfwRiskLevelSummaryResponseBodyRiskList] = None,
+    ):
+        self.request_id = request_id
+        self.risk_list = risk_list
+
+    def validate(self):
+        if self.risk_list:
+            for k in self.risk_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['RiskList'] = []
+        if self.risk_list is not None:
+            for k in self.risk_list:
+                result['RiskList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.risk_list = []
+        if m.get('RiskList') is not None:
+            for k in m.get('RiskList'):
+                temp_model = DescribeCfwRiskLevelSummaryResponseBodyRiskList()
+                self.risk_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeCfwRiskLevelSummaryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCfwRiskLevelSummaryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCfwRiskLevelSummaryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4577,6 +5348,13 @@ class DescribeControlPolicyRequest(TeaModel):
         # *   **true**: The access control policy is enabled.
         # *   **false**: The access control policy is disabled.
         self.release = release
+        # The recurrence type for the access control policy to take effect. Valid values:
+        # 
+        # *   **Permanent** (default): The policy always takes effect.
+        # *   **None**: The policy takes effect for only once.
+        # *   **Daily**: The policy takes effect on a daily basis.
+        # *   **Weekly**: The policy takes effect on a weekly basis.
+        # *   **Monthly**: The policy takes effect on a monthly basis.
         self.repeat_type = repeat_type
         # The source address in the access control policy. Fuzzy match is supported. The value of this parameter depends on the value of the SourceType parameter.
         # 
@@ -4701,11 +5479,11 @@ class DescribeControlPolicyResponseBodyPolicys(TeaModel):
         # *   **drop**: denies the traffic.
         # *   **log**: monitors the traffic.
         self.acl_action = acl_action
-        # The unique ID of the access control policy.
+        # The UUID of the access control policy.
         self.acl_uuid = acl_uuid
         # The application ID in the access control policy.
         self.application_id = application_id
-        # The type of the application that the access control policy supports. Valid values:
+        # The application type supported by the access control policy. We recommend that you specify ApplicationNameList. Valid values:
         # 
         # *   **FTP**\
         # *   **HTTP**\
@@ -4723,9 +5501,9 @@ class DescribeControlPolicyResponseBodyPolicys(TeaModel):
         # *   **VNC**\
         # *   **ANY**: all types of applications
         self.application_name = application_name
-        # The names of applications.
+        # The application names.
         self.application_name_list = application_name_list
-        # The time at which the access control policy was created.
+        # The time when the access control policy was created.
         self.create_time = create_time
         # The description of the access control policy.
         self.description = description
@@ -4740,7 +5518,7 @@ class DescribeControlPolicyResponseBodyPolicys(TeaModel):
         # *   **port**: port
         # *   **group**: port address book
         self.dest_port_type = dest_port_type
-        # The destination address in the access control policy. The value of this parameter depends on the value of the DestinationType parameter. Valid values:
+        # The destination address in the access control policy. The value of this parameter varies based on the value of DestinationType. Valid values:
         # 
         # *   If **DestinationType** is set to **net**, the value of Destination is a CIDR block. Example: 192.0.XX.XX/24.
         # *   If **DestinationType** is set to **domain**, the value of Destination is a domain name. Example: aliyuncs.com.
@@ -4759,10 +5537,10 @@ class DescribeControlPolicyResponseBodyPolicys(TeaModel):
         self.destination_group_type = destination_group_type
         # The type of the destination address in the access control policy. Valid values:
         # 
-        # *   **net**: destination CIDR block
-        # *   **group**: destination address book
-        # *   **domain**: destination domain name
-        # *   **location**: destination location
+        # *   **net**: CIDR block
+        # *   **group**: address book
+        # *   **domain**: domain name
+        # *   **location**: location
         self.destination_type = destination_type
         # The direction of the traffic to which the access control policy applies. Valid values:
         # 
@@ -4771,39 +5549,65 @@ class DescribeControlPolicyResponseBodyPolicys(TeaModel):
         self.direction = direction
         # The DNS resolution result.
         self.dns_result = dns_result
-        # The timestamp of the DNS resolution result. The value is a UNIX timestamp. Unit: seconds.
+        # The time when the Domain Name System (DNS) resolution was performed. The value is a timestamp. Unit: seconds.
         self.dns_result_time = dns_result_time
+        # The time when the access control policy stops taking effect. The value is a timestamp. Unit: seconds. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+        # 
+        # >  If RepeatType is set to Permanent, this parameter is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, this parameter must be specified.
         self.end_time = end_time
-        # The timestamp when the access control policy was last hit. The value is a UNIX timestamp. Unit: seconds.
+        # The time when the access control policy was last hit. The value is a timestamp. Unit: seconds.
         self.hit_last_time = hit_last_time
         # The number of hits for the access control policy.
         self.hit_times = hit_times
-        # The IP version of the address in the access control policy. Valid values:
+        # The IP version used in the access control policy. Valid values:
         # 
         # *   **4**: IPv4
         # *   **6**: IPv6
         self.ip_version = ip_version
-        # The time at which the access control policy was modified.
+        # The time when the access control policy was modified.
         self.modify_time = modify_time
         # The priority of the access control policy.
         # 
-        # The priority value starts from 1. A small priority value indicates a high priority.
+        # The priority value starts from 1. A smaller priority value indicates a higher priority.
         self.order = order
-        # The type of the protocol in the access control policy. Valid values:
+        # The protocol type in the access control policy. Valid values:
         # 
         # *   **ANY**\
         # *   **TCP**\
         # *   **UDP**\
         # *   **ICMP**\
         self.proto = proto
-        # Indicates whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values:
+        # The status of the access control policy. By default, an access control policy is enabled after it is created. Valid values:
         # 
-        # *   **true**: The access control policy is enabled.
-        # *   **false**: The access control policy is disabled.
+        # *   **true**: enabled
+        # *   **false**: disabled
         self.release = release
+        # The days of a week or of a month on which the access control policy takes effect.
+        # 
+        # *   If RepeatType is set to `Permanent`, `None`, or `Daily`, this parameter is left empty. Example: \[].
+        # *   If RepeatType is set to Weekly, this parameter must be specified. Example: \[0, 6].
+        # 
+        # >  If RepeatType is set to Weekly, the fields in the value of RepeatDays cannot be repeated.
+        # 
+        # *   If RepeatType is set to `Monthly`, this parameter must be specified. Example: \[1, 31].
+        # 
+        # >  If RepeatType is set to Monthly, the fields in the value of RepeatDays cannot be repeated.
         self.repeat_days = repeat_days
+        # The point in time when the recurrence ends. Example: 23:30. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+        # 
+        # >  If RepeatType is set to Permanent or None, this parameter is left empty. If RepeatType is set to Daily, Weekly, or Monthly, this parameter must be specified.
         self.repeat_end_time = repeat_end_time
+        # The point in time when the recurrence starts. Example: 08:00. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+        # 
+        # >  If RepeatType is set to Permanent or None, this parameter is left empty. If RepeatType is set to Daily, Weekly, or Monthly, this parameter must be specified.
         self.repeat_start_time = repeat_start_time
+        # The recurrence type based on which the access control policy takes effect. Valid values:
+        # 
+        # *   **Permanent** (default): The policy always takes effect.
+        # *   **None**: The policy takes effect for only once.
+        # *   **Daily**: The policy takes effect on a daily basis.
+        # *   **Weekly**: The policy takes effect on a weekly basis.
+        # *   **Monthly**: The policy takes effect on a monthly basis.
         self.repeat_type = repeat_type
         # The source address in the access control policy. Valid values:
         # 
@@ -4823,14 +5627,15 @@ class DescribeControlPolicyResponseBodyPolicys(TeaModel):
         self.source_group_type = source_group_type
         # The type of the source address in the access control policy. Valid values:
         # 
-        # *   **net**: source CIDR block
-        # *   **group**: source address book
-        # *   **location**: source location
+        # *   **net**: CIDR block
+        # *   **group**: address book
+        # *   **location**: location
         self.source_type = source_type
-        # The total quota consumed by the returned access control policies, which is the sum of the quota consumed by each policy.
-        # 
-        # Quota that is consumed by an access control policy = Number of source CIDR blocks × Number of destination CIDR blocks, destination locations, or IP addresses that are resolved from destination domain names × Number of applications × Number of ports.
+        # The total quota consumed by the returned access control policies, which is the sum of the quota consumed by each policy. The quota that is consumed by an access control policy is calculated by using the following formula: Quota that is consumed by an access control policy = Number of source addresses (number of CIDR blocks or regions) × Number of destination addresses (number of CIDR blocks, regions, or domain names) × Number of port ranges × Number of applications.
         self.spread_cnt = spread_cnt
+        # The time when the access control policy starts to take effect. The value is a timestamp. Unit: seconds. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+        # 
+        # >  If RepeatType is set to Permanent, this parameter is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, this parameter must be specified.
         self.start_time = start_time
 
     def validate(self):
@@ -5006,7 +5811,7 @@ class DescribeControlPolicyResponseBody(TeaModel):
         self.page_no = page_no
         # The number of entries returned per page.
         self.page_size = page_size
-        # The details about the access control policy.
+        # The information about the access control policies.
         self.policys = policys
         # The ID of the request.
         self.request_id = request_id
@@ -5069,9 +5874,6 @@ class DescribeControlPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5221,9 +6023,6 @@ class DescribeDefaultIPSConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5394,9 +6193,6 @@ class DescribeDomainResolveResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5422,6 +6218,374 @@ class DescribeDomainResolveResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDomainResolveResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDownloadTaskRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: str = None,
+        lang: str = None,
+        page_size: str = None,
+        task_type: str = None,
+    ):
+        self.current_page = current_page
+        self.lang = lang
+        self.page_size = page_size
+        self.task_type = task_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
+class DescribeDownloadTaskResponseBodyTasks(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        expire_time: int = None,
+        file_size: str = None,
+        file_url: str = None,
+        status: str = None,
+        task_id: str = None,
+        task_name: str = None,
+        task_type: str = None,
+    ):
+        self.create_time = create_time
+        self.expire_time = expire_time
+        self.file_size = file_size
+        self.file_url = file_url
+        self.status = status
+        self.task_id = task_id
+        self.task_name = task_name
+        self.task_type = task_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.file_size is not None:
+            result['FileSize'] = self.file_size
+        if self.file_url is not None:
+            result['FileURL'] = self.file_url
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('FileSize') is not None:
+            self.file_size = m.get('FileSize')
+        if m.get('FileURL') is not None:
+            self.file_url = m.get('FileURL')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
+class DescribeDownloadTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        tasks: List[DescribeDownloadTaskResponseBodyTasks] = None,
+        total_count: int = None,
+    ):
+        self.request_id = request_id
+        self.tasks = tasks
+        self.total_count = total_count
+
+    def validate(self):
+        if self.tasks:
+            for k in self.tasks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Tasks'] = []
+        if self.tasks is not None:
+            for k in self.tasks:
+                result['Tasks'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.tasks = []
+        if m.get('Tasks') is not None:
+            for k in m.get('Tasks'):
+                temp_model = DescribeDownloadTaskResponseBodyTasks()
+                self.tasks.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeDownloadTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDownloadTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDownloadTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDownloadTaskTypeRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: str = None,
+        lang: str = None,
+        page_size: str = None,
+        task_type: str = None,
+    ):
+        self.current_page = current_page
+        self.lang = lang
+        self.page_size = page_size
+        self.task_type = task_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
+class DescribeDownloadTaskTypeResponseBodyTaskTypeArray(TeaModel):
+    def __init__(
+        self,
+        task_name: str = None,
+        task_type: str = None,
+    ):
+        self.task_name = task_name
+        self.task_type = task_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
+class DescribeDownloadTaskTypeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_type_array: List[DescribeDownloadTaskTypeResponseBodyTaskTypeArray] = None,
+        total_count: int = None,
+    ):
+        self.request_id = request_id
+        self.task_type_array = task_type_array
+        self.total_count = total_count
+
+    def validate(self):
+        if self.task_type_array:
+            for k in self.task_type_array:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['TaskTypeArray'] = []
+        if self.task_type_array is not None:
+            for k in self.task_type_array:
+                result['TaskTypeArray'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.task_type_array = []
+        if m.get('TaskTypeArray') is not None:
+            for k in m.get('TaskTypeArray'):
+                temp_model = DescribeDownloadTaskTypeResponseBodyTaskTypeArray()
+                self.task_type_array.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeDownloadTaskTypeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDownloadTaskTypeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDownloadTaskTypeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5657,9 +6821,6 @@ class DescribeInstanceMembersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5685,6 +6846,260 @@ class DescribeInstanceMembersResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeInstanceMembersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeInstanceRiskLevelsRequestInstances(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        internet_ip: List[str] = None,
+        intranet_ip: str = None,
+        uuid: str = None,
+    ):
+        self.instance_id = instance_id
+        self.internet_ip = internet_ip
+        self.intranet_ip = intranet_ip
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.internet_ip is not None:
+            result['InternetIp'] = self.internet_ip
+        if self.intranet_ip is not None:
+            result['IntranetIp'] = self.intranet_ip
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InternetIp') is not None:
+            self.internet_ip = m.get('InternetIp')
+        if m.get('IntranetIp') is not None:
+            self.intranet_ip = m.get('IntranetIp')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class DescribeInstanceRiskLevelsRequest(TeaModel):
+    def __init__(
+        self,
+        instances: List[DescribeInstanceRiskLevelsRequestInstances] = None,
+        lang: str = None,
+    ):
+        self.instances = instances
+        self.lang = lang
+
+    def validate(self):
+        if self.instances:
+            for k in self.instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Instances'] = []
+        if self.instances is not None:
+            for k in self.instances:
+                result['Instances'].append(k.to_map() if k else None)
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instances = []
+        if m.get('Instances') is not None:
+            for k in m.get('Instances'):
+                temp_model = DescribeInstanceRiskLevelsRequestInstances()
+                self.instances.append(temp_model.from_map(k))
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        return self
+
+
+class DescribeInstanceRiskLevelsResponseBodyInstanceRisksDetails(TeaModel):
+    def __init__(
+        self,
+        ip: str = None,
+        level: str = None,
+        type: str = None,
+    ):
+        self.ip = ip
+        self.level = level
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeInstanceRiskLevelsResponseBodyInstanceRisks(TeaModel):
+    def __init__(
+        self,
+        details: List[DescribeInstanceRiskLevelsResponseBodyInstanceRisksDetails] = None,
+        instance_id: str = None,
+        level: str = None,
+    ):
+        self.details = details
+        self.instance_id = instance_id
+        self.level = level
+
+    def validate(self):
+        if self.details:
+            for k in self.details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Details'] = []
+        if self.details is not None:
+            for k in self.details:
+                result['Details'].append(k.to_map() if k else None)
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.level is not None:
+            result['Level'] = self.level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.details = []
+        if m.get('Details') is not None:
+            for k in m.get('Details'):
+                temp_model = DescribeInstanceRiskLevelsResponseBodyInstanceRisksDetails()
+                self.details.append(temp_model.from_map(k))
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        return self
+
+
+class DescribeInstanceRiskLevelsResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_risks: List[DescribeInstanceRiskLevelsResponseBodyInstanceRisks] = None,
+        request_id: str = None,
+    ):
+        self.instance_risks = instance_risks
+        self.request_id = request_id
+
+    def validate(self):
+        if self.instance_risks:
+            for k in self.instance_risks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InstanceRisks'] = []
+        if self.instance_risks is not None:
+            for k in self.instance_risks:
+                result['InstanceRisks'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance_risks = []
+        if m.get('InstanceRisks') is not None:
+            for k in m.get('InstanceRisks'):
+                temp_model = DescribeInstanceRiskLevelsResponseBodyInstanceRisks()
+                self.instance_risks.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeInstanceRiskLevelsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeInstanceRiskLevelsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeInstanceRiskLevelsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6055,9 +7470,6 @@ class DescribeInternetOpenIpResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6214,7 +7626,7 @@ class DescribeInternetTrafficTrendResponseBodyDataList(TeaModel):
         self.session_count = session_count
         # The time when traffic is generated. The value is a UNIX timestamp. Unit: seconds.
         self.time = time
-        # The total inbound and outbound network throughput, which indicates the number of bits that are sent inbound per second. Unit: bit/s.
+        # The total outbound and inbound network throughput, which indicates the total number of bits that are sent inbound and outbound per second. Unit: bit/s.
         self.total_bps = total_bps
 
     def validate(self):
@@ -6419,9 +7831,6 @@ class DescribeInternetTrafficTrendResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6892,9 +8301,6 @@ class DescribeInvadeEventListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6920,6 +8326,107 @@ class DescribeInvadeEventListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeInvadeEventListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeNatAclPageStatusRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+    ):
+        self.lang = lang
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        return self
+
+
+class DescribeNatAclPageStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        nat_acl_page_enable: bool = None,
+        request_id: str = None,
+    ):
+        self.nat_acl_page_enable = nat_acl_page_enable
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.nat_acl_page_enable is not None:
+            result['NatAclPageEnable'] = self.nat_acl_page_enable
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NatAclPageEnable') is not None:
+            self.nat_acl_page_enable = m.get('NatAclPageEnable')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeNatAclPageStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeNatAclPageStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeNatAclPageStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6993,6 +8500,13 @@ class DescribeNatFirewallControlPolicyRequest(TeaModel):
         # *   **true**\
         # *   **false**\
         self.release = release
+        # The recurrence type for the access control policy to take effect. Valid values:
+        # 
+        # *   **Permanent** (default): The policy always takes effect.
+        # *   **None**: The policy takes effect for only once.
+        # *   **Daily**: The policy takes effect on a daily basis.
+        # *   **Weekly**: The policy takes effect on a weekly basis.
+        # *   **Monthly**: The policy takes effect on a monthly basis.
         self.repeat_type = repeat_type
         # The source address in the access control policy. Fuzzy match is supported. The value of this parameter varies based on the value of the SourceType parameter.
         # 
@@ -7136,10 +8650,10 @@ class DescribeNatFirewallControlPolicyResponseBodyPolicys(TeaModel):
         self.dest_port_type = dest_port_type
         # The destination address in the access control policy. The value of this parameter varies based on the value of DestinationType. Valid values:
         # 
-        # *   If **DestinationType** is set to **net**, the value of Destination is a CIDR block. Example: 192.0.XX.XX/24.
-        # *   If **DestinationType** is set to **domain**, the value of Destination is a domain name. Example: aliyuncs.com.
-        # *   If **DestinationType** is set to **group**, the value of Destination is the name of an address book. Example: db_group.
-        # *   If **DestinationType** is set to **location**, the value of Destination is a location. For more information about location codes, see [AddControlPolicy](~~138867~~). Example: \["BJ11", "ZB"].
+        # *   If the value of **DestinationType** is **net**, the value of this parameter is a CIDR block. Example: 192.0.XX.XX/24.
+        # *   If the value of **DestinationType** is **domain**, the value of this parameter is a domain name. Example: aliyuncs.com.
+        # *   If the value of **DestinationType** is **group**, the value of this parameter is the name of an address book. Example: db_group.
+        # *   If the value of **DestinationType** is **location**, the value of this parameter is a location. For more information about location codes, see [AddControlPolicy](~~138867~~). Example: \["BJ11", "ZB"].
         self.destination = destination
         # The CIDR blocks in the destination address book.
         self.destination_group_cidrs = destination_group_cidrs
@@ -7159,12 +8673,15 @@ class DescribeNatFirewallControlPolicyResponseBodyPolicys(TeaModel):
         self.dns_result = dns_result
         # The time when the Domain Name System (DNS) resolution was performed. The value is a UNIX timestamp. Unit: seconds.
         self.dns_result_time = dns_result_time
-        # The domain name resolution method of the access control policy. By default, an access control policy is enabled after it is created. Valid values:
+        # The domain name resolution method of the access control policy. By default, an access control policy is enabled after the policy is created. Valid values:
         # 
-        # *   **0**: fully qualified domain name (FQDN) resolution
-        # *   **1**: dynamic DNS resolution
-        # *   **2**: FQDN resolution and dynamic DNS resolution
+        # *   **0**: fully qualified domain name (FQDN)-based resolution
+        # *   **1**: DNS-based dynamic resolution
+        # *   **2**: FQDN and DNS-based dynamic resolution
         self.domain_resolve_type = domain_resolve_type
+        # The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+        # 
+        # >  If RepeatType is set to Permanent, this parameter is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, this parameter must be specified.
         self.end_time = end_time
         # The time when the access control policy was last hit. The value is a UNIX timestamp. Unit: seconds.
         self.hit_last_time = hit_last_time
@@ -7185,20 +8702,43 @@ class DescribeNatFirewallControlPolicyResponseBodyPolicys(TeaModel):
         # *   **UDP**\
         # *   **ICMP**\
         self.proto = proto
-        # Indicates whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values:
+        # The status of the access control policy. By default, an access control policy is enabled after it is created. Valid values:
         # 
-        # *   **true**\
-        # *   **false**\
+        # *   **true**: enabled
+        # *   **false**: disabled
         self.release = release
+        # The days of a week or of a month on which the access control policy takes effect.
+        # 
+        # *   If RepeatType is set to `Permanent`, `None`, or `Daily`, the value of this parameter is an empty array. Example: \[].
+        # *   If RepeatType is set to Weekly, this parameter must be specified. Example: \[0, 6].
+        # 
+        # >  If RepeatType is set to Weekly, the fields in the value of this parameter cannot be repeated.
+        # 
+        # *   If RepeatType is set to `Monthly`, this parameter must be specified. Example: \[1, 31].
+        # 
+        # >  If RepeatType is set to Monthly, the fields in the value of this parameter cannot be repeated.
         self.repeat_days = repeat_days
+        # The point in time when the recurrence ends. Example: 23:30. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+        # 
+        # >  If RepeatType is set to Permanent or None, this parameter is left empty. If RepeatType is set to Daily, Weekly, or Monthly, this parameter must be specified.
         self.repeat_end_time = repeat_end_time
+        # The point in time when the recurrence starts. Example: 08:00. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+        # 
+        # >  If RepeatType is set to Permanent or None, this parameter is left empty. If RepeatType is set to Daily, Weekly, or Monthly, this parameter must be specified.
         self.repeat_start_time = repeat_start_time
+        # The recurrence type for the access control policy to take effect. Valid values:
+        # 
+        # *   **Permanent** (default): The policy always takes effect.
+        # *   **None**: The policy takes effect for only once.
+        # *   **Daily**: The policy takes effect on a daily basis.
+        # *   **Weekly**: The policy takes effect on a weekly basis.
+        # *   **Monthly**: The policy takes effect on a monthly basis.
         self.repeat_type = repeat_type
         # The source address in the access control policy. Valid values:
         # 
-        # *   If **SourceType** is set to `net`, the value of Source is a CIDR block. Example: 192.0.XX.XX/24.
-        # *   If **SourceType** is set to `group`, the value of Source is the name of an address book. Example: db_group.
-        # *   If **SourceType** is set to `location`, the value of Source is a location. For more information about location codes, see [AddControlPolicy](~~138867~~). Example: \["BJ11", "ZB"].
+        # *   If the value of **SourceType** is `net`, the value of this parameter is a CIDR block. Example: 192.0.XX.XX/24.
+        # *   If the value of **SourceType** is `group`, the value of this parameter is the name of an address book. Example: db_group.
+        # *   If the value of **SourceType** is `location`, the value of this parameter is a location. For more information about location codes, see [AddControlPolicy](~~138867~~). Example: \["BJ11", "ZB"].
         self.source = source
         # The CIDR blocks in the source address book.
         self.source_group_cidrs = source_group_cidrs
@@ -7212,6 +8752,9 @@ class DescribeNatFirewallControlPolicyResponseBodyPolicys(TeaModel):
         self.source_type = source_type
         # The total quota consumed by the returned access control policies, which is the sum of the quota consumed by each policy. The quota that is consumed by an access control policy is calculated by using the following formula: Quota that is consumed by an access control policy = Number of source addresses (number of CIDR blocks or regions) × Number of destination addresses (number of CIDR blocks, regions, or domain names) × Number of port ranges × Number of applications.
         self.spread_cnt = spread_cnt
+        # The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+        # 
+        # >  If RepeatType is set to Permanent, this parameter is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, this parameter must be specified.
         self.start_time = start_time
 
     def validate(self):
@@ -7428,9 +8971,6 @@ class DescribeNatFirewallControlPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7572,9 +9112,6 @@ class DescribeNatFirewallPolicyPriorUsedResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7660,13 +9197,13 @@ class DescribeOutgoingDestinationIPRequest(TeaModel):
         self.end_time = end_time
         # The language of the content within the response. Valid values:
         # 
-        # *   **zh**: Chinese (default)
+        # *   **zh** (default): Chinese
         # *   **en**: English
         self.lang = lang
-        # The order in which you want to sort the queried information. Valid values:
+        # The method that is used to sort the results. Valid values:
         # 
         # *   **asc**: the ascending order.
-        # *   **desc**: the descending order. This is the default value.
+        # *   **desc** (default): the descending order.
         self.order = order
         # The number of entries to return on each page.
         # 
@@ -7678,9 +9215,9 @@ class DescribeOutgoingDestinationIPRequest(TeaModel):
         self.private_ip = private_ip
         # The public IP address of the Elastic Compute Service (ECS) instance that initiates the outbound connection.
         self.public_ip = public_ip
-        # The field based on which you want to sort the queried information. Valid values:
+        # The field based on which you want to sort the query results. Valid values:
         # 
-        # *   **SessionCount**: the number of requests. This is the default value.
+        # *   **SessionCount** (default): the number of requests.
         # *   **TotalBytes**: the total volume of traffic.
         self.sort = sort
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
@@ -7839,7 +9376,7 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList(TeaM
         application_name: str = None,
         port: int = None,
     ):
-        # The application type in the access control policy. Valid values:
+        # The application type used in the access control policy. Valid values:
         # 
         # *   **FTP**\
         # *   **HTTP**\
@@ -7857,9 +9394,9 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList(TeaM
         # *   **SSL**\
         # *   **VNC**\
         # 
-        # >  The value of this parameter depends on the value of Proto. If you set Proto to TCP, you can set ApplicationNameList to any valid value. If you specify both ApplicationNameList and ApplicationName, only the value of ApplicationNameList is used.
+        # >  The value of this parameter depends on the value of the Proto parameter. If you set Proto to TCP, you can set ApplicationNameList to any valid value. If you configure both ApplicationNameList and ApplicationName, only the value of ApplicationNameList is used.
         self.application_name = application_name
-        # The port of the application.
+        # The application port.
         self.port = port
 
     def validate(self):
@@ -7978,19 +9515,19 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(TeaModel):
     ):
         # Indicates whether an access control policy is configured. Valid values:
         # 
-        # *   **Uncovered**: No access control policies are configured.
-        # *   **FullCoverage**: An access control policy is configured.
+        # *   **Uncovered**: no
+        # *   **FullCoverage**: yes
         self.acl_coverage = acl_coverage
-        # The suggestion in an access control policy.
+        # The suggestion to configure an access control policy.
         self.acl_recommend_detail = acl_recommend_detail
-        # The state of the access control policy. Valid values:
+        # The status of the access control policy. Valid values:
         # 
-        # *   **Normal**: healthy
+        # *   **normal**: healthy
         # *   **Abnormal**: unhealthy
         self.acl_status = acl_status
         # The information about the address book.
         self.address_group_list = address_group_list
-        # An array that consists of application ports.
+        # The application ports.
         self.application_port_list = application_port_list
         # The type of the tag. Valid values:
         # 
@@ -7998,7 +9535,7 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(TeaModel):
         # *   **Malicious**\
         # *   **Trusted**\
         self.category_class_id = category_class_id
-        # The ID of the service to which the destination IP address belongs. Valid values:
+        # The ID of the service type. Valid values:
         # 
         # *   **Aliyun**: Alibaba Cloud services
         # *   **NotAliyun**: third-party services
@@ -8006,28 +9543,28 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(TeaModel):
         # The type of the service to which the destination IP address belongs. Valid values:
         # 
         # *   **Alibaba Cloud services**\
-        # *   **third-party services**\
+        # *   **Third-party services**\
         self.category_name = category_name
-        # The destination IP address in the outbound connection that is initiated to access a domain name.
+        # The destination IP addresses in outbound connections.
         self.dst_ip = dst_ip
         # The name of the group to which the access control policy belongs.
         self.group_name = group_name
         # Indicates whether an access control policy is configured. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         self.has_acl = has_acl
         # Indicates whether an access control policy is recommended. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         self.has_acl_recommend = has_acl_recommend
         # The inbound traffic. Unit: bytes.
         self.in_bytes = in_bytes
         # Indicates whether the destination IP address is added to a whitelist. Valid values:
         # 
-        # *   **true**: added
-        # *   **false**: not added
+        # *   **true**\
+        # *   **false**\
         self.is_mark_normal = is_mark_normal
         # The outbound traffic. Unit: bytes.
         self.out_bytes = out_bytes
@@ -8047,7 +9584,7 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(TeaModel):
         self.session_count = session_count
         # The tags.
         self.tag_list = tag_list
-        # The total volume of traffic. Unit: bytes.
+        # The total traffic. Unit: bytes
         self.total_bytes = total_bytes
 
     def validate(self):
@@ -8187,7 +9724,7 @@ class DescribeOutgoingDestinationIPResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The destination IP addresses in outbound connections.
+        # The IP addresses in outbound connections.
         self.dst_iplist = dst_iplist
         # The ID of the request.
         self.request_id = request_id
@@ -8242,9 +9779,6 @@ class DescribeOutgoingDestinationIPResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8310,10 +9844,10 @@ class DescribeOutgoingDomainRequest(TeaModel):
         # *   **zh**: Chinese (default)
         # *   **en**: English
         self.lang = lang
-        # The order in which you want to sort the query results. Valid values:
+        # The method that is used to sort the results. Valid values:
         # 
         # *   **asc**: the ascending order.
-        # *   **desc**: the descending order. This is the default value.
+        # *   **desc** (default): the descending order.
         self.order = order
         # The number of entries to return on each page.
         # 
@@ -8323,7 +9857,7 @@ class DescribeOutgoingDomainRequest(TeaModel):
         self.public_ip = public_ip
         # The field based on which you want to sort the query results. Valid values:
         # 
-        # *   **SessionCount**: the number of requests. This is the default value.
+        # *   **SessionCount** (default): the number of requests.
         # *   **TotalBytes**: the total volume of traffic.
         self.sort = sort
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
@@ -8781,9 +10315,6 @@ class DescribeOutgoingDomainResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8901,9 +10432,6 @@ class DescribePolicyAdvancedConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9055,9 +10583,6 @@ class DescribePolicyPriorUsedResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9083,6 +10608,184 @@ class DescribePolicyPriorUsedResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribePolicyPriorUsedResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribePrefixListsRequest(TeaModel):
+    def __init__(
+        self,
+        region_no: str = None,
+        source_ip: str = None,
+    ):
+        self.region_no = region_no
+        self.source_ip = source_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_no is not None:
+            result['RegionNo'] = self.region_no
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionNo') is not None:
+            self.region_no = m.get('RegionNo')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        return self
+
+
+class DescribePrefixListsResponseBodyPrefixList(TeaModel):
+    def __init__(
+        self,
+        address_family: str = None,
+        association_count: int = None,
+        creation_time: str = None,
+        description: str = None,
+        max_entries: int = None,
+        prefix_list_id: str = None,
+        prefix_list_name: str = None,
+    ):
+        self.address_family = address_family
+        self.association_count = association_count
+        self.creation_time = creation_time
+        self.description = description
+        self.max_entries = max_entries
+        self.prefix_list_id = prefix_list_id
+        self.prefix_list_name = prefix_list_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_family is not None:
+            result['AddressFamily'] = self.address_family
+        if self.association_count is not None:
+            result['AssociationCount'] = self.association_count
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.max_entries is not None:
+            result['MaxEntries'] = self.max_entries
+        if self.prefix_list_id is not None:
+            result['PrefixListId'] = self.prefix_list_id
+        if self.prefix_list_name is not None:
+            result['PrefixListName'] = self.prefix_list_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressFamily') is not None:
+            self.address_family = m.get('AddressFamily')
+        if m.get('AssociationCount') is not None:
+            self.association_count = m.get('AssociationCount')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('MaxEntries') is not None:
+            self.max_entries = m.get('MaxEntries')
+        if m.get('PrefixListId') is not None:
+            self.prefix_list_id = m.get('PrefixListId')
+        if m.get('PrefixListName') is not None:
+            self.prefix_list_name = m.get('PrefixListName')
+        return self
+
+
+class DescribePrefixListsResponseBody(TeaModel):
+    def __init__(
+        self,
+        prefix_list: List[DescribePrefixListsResponseBodyPrefixList] = None,
+        request_id: str = None,
+    ):
+        self.prefix_list = prefix_list
+        self.request_id = request_id
+
+    def validate(self):
+        if self.prefix_list:
+            for k in self.prefix_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PrefixList'] = []
+        if self.prefix_list is not None:
+            for k in self.prefix_list:
+                result['PrefixList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.prefix_list = []
+        if m.get('PrefixList') is not None:
+            for k in m.get('PrefixList'):
+                temp_model = DescribePrefixListsResponseBodyPrefixList()
+                self.prefix_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribePrefixListsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribePrefixListsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribePrefixListsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9836,9 +11539,6 @@ class DescribeRiskEventGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10075,9 +11775,6 @@ class DescribeRiskEventPayloadResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10107,13 +11804,228 @@ class DescribeRiskEventPayloadResponse(TeaModel):
         return self
 
 
+class DescribeSignatureLibVersionResponseBodyVersion(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+        version: str = None,
+    ):
+        self.type = type
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class DescribeSignatureLibVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        total_count: int = None,
+        version: List[DescribeSignatureLibVersionResponseBodyVersion] = None,
+    ):
+        self.request_id = request_id
+        self.total_count = total_count
+        self.version = version
+
+    def validate(self):
+        if self.version:
+            for k in self.version:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['Version'] = []
+        if self.version is not None:
+            for k in self.version:
+                result['Version'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.version = []
+        if m.get('Version') is not None:
+            for k in m.get('Version'):
+                temp_model = DescribeSignatureLibVersionResponseBodyVersion()
+                self.version.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeSignatureLibVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSignatureLibVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSignatureLibVersionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeTrFirewallPolicyBackUpAssociationListRequestCandidateList(TeaModel):
+    def __init__(
+        self,
+        candidate_id: str = None,
+        candidate_type: str = None,
+    ):
+        self.candidate_id = candidate_id
+        self.candidate_type = candidate_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.candidate_id is not None:
+            result['CandidateId'] = self.candidate_id
+        if self.candidate_type is not None:
+            result['CandidateType'] = self.candidate_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CandidateId') is not None:
+            self.candidate_id = m.get('CandidateId')
+        if m.get('CandidateType') is not None:
+            self.candidate_type = m.get('CandidateType')
+        return self
+
+
 class DescribeTrFirewallPolicyBackUpAssociationListRequest(TeaModel):
     def __init__(
         self,
+        candidate_list: List[DescribeTrFirewallPolicyBackUpAssociationListRequestCandidateList] = None,
         firewall_id: str = None,
         lang: str = None,
         tr_firewall_route_policy_id: str = None,
     ):
+        self.candidate_list = candidate_list
+        # The instance ID of the VPC firewall.
+        self.firewall_id = firewall_id
+        # The language of the content within the response. Valid values:
+        # 
+        # *   **zh** (default): Chinese
+        # *   **en**: English
+        self.lang = lang
+        # The ID of the routing policy.
+        self.tr_firewall_route_policy_id = tr_firewall_route_policy_id
+
+    def validate(self):
+        if self.candidate_list:
+            for k in self.candidate_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CandidateList'] = []
+        if self.candidate_list is not None:
+            for k in self.candidate_list:
+                result['CandidateList'].append(k.to_map() if k else None)
+        if self.firewall_id is not None:
+            result['FirewallId'] = self.firewall_id
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.tr_firewall_route_policy_id is not None:
+            result['TrFirewallRoutePolicyId'] = self.tr_firewall_route_policy_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.candidate_list = []
+        if m.get('CandidateList') is not None:
+            for k in m.get('CandidateList'):
+                temp_model = DescribeTrFirewallPolicyBackUpAssociationListRequestCandidateList()
+                self.candidate_list.append(temp_model.from_map(k))
+        if m.get('FirewallId') is not None:
+            self.firewall_id = m.get('FirewallId')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('TrFirewallRoutePolicyId') is not None:
+            self.tr_firewall_route_policy_id = m.get('TrFirewallRoutePolicyId')
+        return self
+
+
+class DescribeTrFirewallPolicyBackUpAssociationListShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        candidate_list_shrink: str = None,
+        firewall_id: str = None,
+        lang: str = None,
+        tr_firewall_route_policy_id: str = None,
+    ):
+        self.candidate_list_shrink = candidate_list_shrink
         # The instance ID of the VPC firewall.
         self.firewall_id = firewall_id
         # The language of the content within the response. Valid values:
@@ -10133,6 +12045,8 @@ class DescribeTrFirewallPolicyBackUpAssociationListRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.candidate_list_shrink is not None:
+            result['CandidateList'] = self.candidate_list_shrink
         if self.firewall_id is not None:
             result['FirewallId'] = self.firewall_id
         if self.lang is not None:
@@ -10143,6 +12057,8 @@ class DescribeTrFirewallPolicyBackUpAssociationListRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CandidateList') is not None:
+            self.candidate_list_shrink = m.get('CandidateList')
         if m.get('FirewallId') is not None:
             self.firewall_id = m.get('FirewallId')
         if m.get('Lang') is not None:
@@ -10263,9 +12179,6 @@ class DescribeTrFirewallPolicyBackUpAssociationListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10584,9 +12497,6 @@ class DescribeTrFirewallV2RoutePolicyListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10823,9 +12733,6 @@ class DescribeTrFirewallsV2DetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11352,9 +13259,6 @@ class DescribeTrFirewallsV2ListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11533,9 +13437,6 @@ class DescribeTrFirewallsV2RouteListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11576,10 +13477,10 @@ class DescribeUserAssetIPTrafficInfoRequest(TeaModel):
         self.asset_ip = asset_ip
         # The language of the content within the response. Valid values:
         # 
-        # *   **zh**: Chinese (default)
+        # *   **zh** (default): Chinese
         # *   **en**: English
         self.lang = lang
-        # The point in time to query. The value is a UNIX timestamp. Unit: seconds.
+        # The time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.traffic_time = traffic_time
 
     def validate(self):
@@ -11623,23 +13524,23 @@ class DescribeUserAssetIPTrafficInfoResponseBody(TeaModel):
         session_count: int = None,
         start_time: int = None,
     ):
-        # The end of the time range that is queried. The value is a UNIX timestamp. Unit: seconds.
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
         # The network throughput, which indicates the inbound traffic rate. Unit: bit/s.
         self.in_bps = in_bps
-        # The network throughput, which indicates the inbound packet rate. Unit: packets per second (pps).
+        # The inbound network throughput, which indicates the number of packets that are sent inbound per second. Unit: packets per second (pps).
         self.in_pps = in_pps
-        # The number of new connections.
+        # The new connection creation rate.
         self.new_conn = new_conn
         # The network throughput, which indicates the outbound traffic rate. Unit: bit/s.
         self.out_bps = out_bps
-        # The network throughput, which indicates the outbound packet rate. Unit: pps.
+        # The outbound network throughput, which indicates the number of packets that are sent outbound per second. Unit: pps.
         self.out_pps = out_pps
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The number of requests.
         self.session_count = session_count
-        # The beginning of the time range that is queried. The value is a UNIX timestamp. Unit: seconds.
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
 
     def validate(self):
@@ -11706,9 +13607,6 @@ class DescribeUserAssetIPTrafficInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11941,9 +13839,6 @@ class DescribeUserIPSWhitelistResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11987,7 +13882,7 @@ class DescribeVpcFirewallAclGroupListRequest(TeaModel):
         # 
         # *   **notconfigured**: VPC firewalls are not configured.
         # *   **configured**: VPC firewalls are configured.
-        # *   If this parameter is left empty, all policy groups of access control policies are queried.
+        # *   If you do not specify this parameter, the access control policies of all VPC firewalls are queried.
         self.firewall_configure_status = firewall_configure_status
         # The language of the content within the response. Valid values:
         # 
@@ -12046,16 +13941,20 @@ class DescribeVpcFirewallAclGroupListResponseBodyAclGroupList(TeaModel):
         # 
         #     Example: cen-ervw0g12b5jbw\*\*\*\*\
         # 
-        # *   If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the ID of the VPC firewall instance.
+        # *   If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the instance ID of the VPC firewall.
         # 
         #     Example: vfw-a42bbb7b887148c9\*\*\*\*\
         self.acl_group_id = acl_group_id
         # The name of the policy group. Valid values:
         # 
         # *   If the VPC firewall is used to protect a CEN instance, the value of this parameter is the name of the CEN instance.
-        # *   If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the name of the VPC firewall instance.
+        # *   If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the instance name of the VPC firewall.
         self.acl_group_name = acl_group_name
+        # The number of access control policies in the policy group.
         self.acl_rule_count = acl_rule_count
+        # 是否是默认防火墙。取值：
+        # - **true**：是默认防火墙。
+        # - **false**：不是默认防火墙。
         self.is_default = is_default
         # The UID of the member that is managed by your Alibaba Cloud account.
         self.member_uid = member_uid
@@ -12103,7 +14002,7 @@ class DescribeVpcFirewallAclGroupListResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # An array that consists of the information about the policy group.
+        # The information about the policy groups.
         self.acl_group_list = acl_group_list
         # The ID of the request.
         self.request_id = request_id
@@ -12158,9 +14057,6 @@ class DescribeVpcFirewallAclGroupListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12680,9 +14576,6 @@ class DescribeVpcFirewallCenDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13305,9 +15198,6 @@ class DescribeVpcFirewallCenListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13873,9 +15763,6 @@ class DescribeVpcFirewallControlPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14013,9 +15900,6 @@ class DescribeVpcFirewallDefaultIPSConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14517,9 +16401,6 @@ class DescribeVpcFirewallDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14545,6 +16426,178 @@ class DescribeVpcFirewallDetailResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeVpcFirewallDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeVpcFirewallIPSWhitelistRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        member_uid: int = None,
+        vpc_firewall_id: str = None,
+    ):
+        self.lang = lang
+        self.member_uid = member_uid
+        self.vpc_firewall_id = vpc_firewall_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.member_uid is not None:
+            result['MemberUid'] = self.member_uid
+        if self.vpc_firewall_id is not None:
+            result['VpcFirewallId'] = self.vpc_firewall_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('MemberUid') is not None:
+            self.member_uid = m.get('MemberUid')
+        if m.get('VpcFirewallId') is not None:
+            self.vpc_firewall_id = m.get('VpcFirewallId')
+        return self
+
+
+class DescribeVpcFirewallIPSWhitelistResponseBodyWhitelists(TeaModel):
+    def __init__(
+        self,
+        list_type: int = None,
+        list_value: str = None,
+        vpc_firewall_id: str = None,
+        white_list_value: List[str] = None,
+        white_type: int = None,
+    ):
+        self.list_type = list_type
+        self.list_value = list_value
+        self.vpc_firewall_id = vpc_firewall_id
+        self.white_list_value = white_list_value
+        self.white_type = white_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.list_type is not None:
+            result['ListType'] = self.list_type
+        if self.list_value is not None:
+            result['ListValue'] = self.list_value
+        if self.vpc_firewall_id is not None:
+            result['VpcFirewallId'] = self.vpc_firewall_id
+        if self.white_list_value is not None:
+            result['WhiteListValue'] = self.white_list_value
+        if self.white_type is not None:
+            result['WhiteType'] = self.white_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ListType') is not None:
+            self.list_type = m.get('ListType')
+        if m.get('ListValue') is not None:
+            self.list_value = m.get('ListValue')
+        if m.get('VpcFirewallId') is not None:
+            self.vpc_firewall_id = m.get('VpcFirewallId')
+        if m.get('WhiteListValue') is not None:
+            self.white_list_value = m.get('WhiteListValue')
+        if m.get('WhiteType') is not None:
+            self.white_type = m.get('WhiteType')
+        return self
+
+
+class DescribeVpcFirewallIPSWhitelistResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        whitelists: List[DescribeVpcFirewallIPSWhitelistResponseBodyWhitelists] = None,
+    ):
+        self.request_id = request_id
+        self.whitelists = whitelists
+
+    def validate(self):
+        if self.whitelists:
+            for k in self.whitelists:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Whitelists'] = []
+        if self.whitelists is not None:
+            for k in self.whitelists:
+                result['Whitelists'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.whitelists = []
+        if m.get('Whitelists') is not None:
+            for k in m.get('Whitelists'):
+                temp_model = DescribeVpcFirewallIPSWhitelistResponseBodyWhitelists()
+                self.whitelists.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeVpcFirewallIPSWhitelistResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVpcFirewallIPSWhitelistResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVpcFirewallIPSWhitelistResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15204,9 +17257,6 @@ class DescribeVpcFirewallListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15339,9 +17389,6 @@ class DescribeVpcFirewallPolicyPriorUsedResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15371,6 +17418,344 @@ class DescribeVpcFirewallPolicyPriorUsedResponse(TeaModel):
         return self
 
 
+class DescribeVpcListLiteRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        region_no: str = None,
+        source_ip: str = None,
+        vpc_id: str = None,
+        vpc_name: str = None,
+    ):
+        self.lang = lang
+        self.region_no = region_no
+        self.source_ip = source_ip
+        self.vpc_id = vpc_id
+        self.vpc_name = vpc_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.region_no is not None:
+            result['RegionNo'] = self.region_no
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.vpc_name is not None:
+            result['VpcName'] = self.vpc_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('RegionNo') is not None:
+            self.region_no = m.get('RegionNo')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('VpcName') is not None:
+            self.vpc_name = m.get('VpcName')
+        return self
+
+
+class DescribeVpcListLiteResponseBodyVpcList(TeaModel):
+    def __init__(
+        self,
+        region_no: str = None,
+        vpc_id: str = None,
+        vpc_name: str = None,
+    ):
+        self.region_no = region_no
+        self.vpc_id = vpc_id
+        self.vpc_name = vpc_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_no is not None:
+            result['RegionNo'] = self.region_no
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.vpc_name is not None:
+            result['VpcName'] = self.vpc_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionNo') is not None:
+            self.region_no = m.get('RegionNo')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('VpcName') is not None:
+            self.vpc_name = m.get('VpcName')
+        return self
+
+
+class DescribeVpcListLiteResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        vpc_list: List[DescribeVpcListLiteResponseBodyVpcList] = None,
+    ):
+        self.request_id = request_id
+        self.vpc_list = vpc_list
+
+    def validate(self):
+        if self.vpc_list:
+            for k in self.vpc_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['VpcList'] = []
+        if self.vpc_list is not None:
+            for k in self.vpc_list:
+                result['VpcList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.vpc_list = []
+        if m.get('VpcList') is not None:
+            for k in m.get('VpcList'):
+                temp_model = DescribeVpcListLiteResponseBodyVpcList()
+                self.vpc_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeVpcListLiteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVpcListLiteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVpcListLiteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeVpcZoneRequest(TeaModel):
+    def __init__(
+        self,
+        environment: str = None,
+        lang: str = None,
+        member_uid: str = None,
+        region_no: str = None,
+    ):
+        self.environment = environment
+        self.lang = lang
+        self.member_uid = member_uid
+        self.region_no = region_no
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.environment is not None:
+            result['Environment'] = self.environment
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.member_uid is not None:
+            result['MemberUid'] = self.member_uid
+        if self.region_no is not None:
+            result['RegionNo'] = self.region_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Environment') is not None:
+            self.environment = m.get('Environment')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('MemberUid') is not None:
+            self.member_uid = m.get('MemberUid')
+        if m.get('RegionNo') is not None:
+            self.region_no = m.get('RegionNo')
+        return self
+
+
+class DescribeVpcZoneResponseBodyZoneList(TeaModel):
+    def __init__(
+        self,
+        local_name: str = None,
+        zone_id: str = None,
+        zone_type: str = None,
+    ):
+        self.local_name = local_name
+        self.zone_id = zone_id
+        self.zone_type = zone_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.local_name is not None:
+            result['LocalName'] = self.local_name
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        if self.zone_type is not None:
+            result['ZoneType'] = self.zone_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LocalName') is not None:
+            self.local_name = m.get('LocalName')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        if m.get('ZoneType') is not None:
+            self.zone_type = m.get('ZoneType')
+        return self
+
+
+class DescribeVpcZoneResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        zone_list: List[DescribeVpcZoneResponseBodyZoneList] = None,
+    ):
+        self.request_id = request_id
+        self.zone_list = zone_list
+
+    def validate(self):
+        if self.zone_list:
+            for k in self.zone_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ZoneList'] = []
+        if self.zone_list is not None:
+            for k in self.zone_list:
+                result['ZoneList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.zone_list = []
+        if m.get('ZoneList') is not None:
+            for k in m.get('ZoneList'):
+                temp_model = DescribeVpcZoneResponseBodyZoneList()
+                self.zone_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeVpcZoneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVpcZoneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVpcZoneResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeVulnerabilityProtectedListRequest(TeaModel):
     def __init__(
         self,
@@ -15392,7 +17777,7 @@ class DescribeVulnerabilityProtectedListRequest(TeaModel):
         vuln_status: str = None,
         vuln_type: str = None,
     ):
-        # The attack type of the intrusion event. Valid values:
+        # The attack type of the vulnerability prevention event. Valid values:
         # 
         # *   **1**: suspicious connection
         # *   **2**: command execution
@@ -15408,9 +17793,9 @@ class DescribeVulnerabilityProtectedListRequest(TeaModel):
         # *   **12**: mining
         # *   **13**: reverse shell
         # 
-        # > If you do not specify this parameter, the intrusion events of all attack types are queried.
+        # >  If you do not specify this parameter, the intrusion events of all attack types are queried.
         self.attack_type = attack_type
-        # The edition of Cloud Firewall.
+        # The edition of Cloud Firewall. If you use Cloud Firewall that uses the pay-as-you-go billing method, set the value to 10. You do not need to specify this parameter for other editions.
         self.buy_version = buy_version
         # The number of the page to return. Default value: 1.
         self.current_page = current_page
@@ -15432,7 +17817,7 @@ class DescribeVulnerabilityProtectedListRequest(TeaModel):
         self.page_size = page_size
         # The sorting basis. Set the value to **attackCnt**, which indicates the number of attacks.
         self.sort_key = sort_key
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
@@ -15563,9 +17948,9 @@ class DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList(TeaMode
         self.internet_ip = internet_ip
         # The private IP address of the instance.
         self.intranet_ip = intranet_ip
-        # The ID of the region in which Cloud Firewall is supported.
+        # The region ID of your Cloud Firewall.
         # 
-        # > For more information about the regions, see [Supported regions](~~195657~~).
+        # >  For more information about Cloud Firewall supported regions, see [Supported regions](~~195657~~).
         self.region_id = region_id
         # The ID of the instance.
         self.resource_id = resource_id
@@ -15577,11 +17962,11 @@ class DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList(TeaMode
         # *   **EIP**\
         # *   **ECS**\
         self.resource_type = resource_type
-        # The status of vulnerability protection. Valid values:
+        # The status of the vulnerability prevention feature. Valid values:
         # 
-        # *   **partProtected**: partially protected
-        # *   **protected**: protected
-        # *   **unProtected**: unprotected
+        # *   **partProtected**: enabled for partial assets
+        # *   **protected**: enabled
+        # *   **unProtected**: disabled
         self.vuln_status = vuln_status
 
     def validate(self):
@@ -15658,9 +18043,9 @@ class DescribeVulnerabilityProtectedListResponseBodyVulnList(TeaModel):
         vuln_status: str = None,
         vuln_type: str = None,
     ):
-        # The number of vulnerabilities.
+        # The number of vulnerability attacks.
         self.attack_cnt = attack_cnt
-        # The attack type of the intrusion event. Valid values:
+        # The attack type of the vulnerability prevention event. Valid values:
         # 
         # *   **1**: suspicious connection
         # *   **2**: command execution
@@ -15675,8 +18060,6 @@ class DescribeVulnerabilityProtectedListResponseBodyVulnList(TeaModel):
         # *   **11**: computer worm
         # *   **12**: mining
         # *   **13**: reverse shell
-        # 
-        # > If no attack type is specified, the intrusion events of all attack types are queried.
         self.attack_type = attack_type
         # The IDs of associated basic protection policies.
         self.basic_rule_ids = basic_rule_ids
@@ -15691,39 +18074,40 @@ class DescribeVulnerabilityProtectedListResponseBodyVulnList(TeaModel):
         self.highlight_tag = highlight_tag
         # The time when the last attack was launched.
         self.last_time = last_time
+        # The UID of the member that is managed by your Alibaba Cloud account.
         self.member_uid = member_uid
-        # The status of basic protection. Valid values:
+        # Indicates whether the basic protection policy that related to the vulnerability is enabled. Valid values:
         # 
-        # *   **false**: enabled
-        # *   **false**: disabled
+        # *   **true**\
+        # *   **false**\
         # 
-        # > If the value of this parameter is true, you must configure the intrusion prevention feature when you enable protection.
+        # >  If the value of this parameter is true, you must set the action of the basic protection policy related to the vulnerability to Block.
         self.need_open_basic_rule = need_open_basic_rule
-        # The UUIDs of the basic protection policies for which you want to set the Current Action parameter to Block.
+        # The UUIDs of the basic protection policies for which the action needs to be changed to Block.
         self.need_open_basic_rule_uuids = need_open_basic_rule_uuids
-        # Indicates whether the intrusion prevention feature needs to be configured when you enable protection. Valid values:
+        # Indicates whether Threat Engine Mode needs to be configured when you enable protection. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         self.need_open_run_mode = need_open_run_mode
-        # The status of virtual patching. Valid values:
+        # Indicates whether the virtual patching policy that related to the vulnerability is enabled. Valid values:
         # 
-        # *   **true**: enabled
-        # *   **false**: disabled
+        # *   **true**\
+        # *   **false**\
         # 
-        # > If the value of this parameter is true, you must configure the intrusion prevention feature when you enable protection.
+        # >  If the value of this parameter is true, you must set the action of the virtual patching policy that related to the vulnerability to Block.
         self.need_open_virtual_patche = need_open_virtual_patche
-        # The UUIDs of the virtual patching policies for which you want to set the Current Action parameter to Block.
+        # The UUIDs of the virtual patching policies for which the action needs to be changed to Block.
         self.need_open_virtual_patche_uuids = need_open_virtual_patche_uuids
-        # The Rule Group that you want to specify. Valid values:
+        # The type of the rule group. Valid values:
         # 
-        # *   **1**: Loose (default)
-        # *   **2**: Medium
-        # *   **3**: Strict
+        # *   **1** (default): loose
+        # *   **2**: medium
+        # *   **3**: strict
         self.need_rule_class = need_rule_class
         # The number of assets on which vulnerabilities are detected.
         self.resource_cnt = resource_cnt
-        # An array consisting of the assets on which vulnerabilities are detected.
+        # The assets on which the vulnerability is detected.
         self.resource_list = resource_list
         # The IDs of associated virtual patching policies.
         self.virtual_patche_ids = virtual_patche_ids
@@ -15737,17 +18121,17 @@ class DescribeVulnerabilityProtectedListResponseBodyVulnList(TeaModel):
         self.vuln_level = vuln_level
         # The name of the vulnerability.
         self.vuln_name = vuln_name
-        # The status of vulnerability protection. Valid values:
+        # The status of the vulnerability prevention feature. Valid values:
         # 
-        # *   **partProtected**: partially protected
-        # *   **protected**: protected
-        # *   **unProtected**: unprotected
+        # *   **partProtected**: enabled for partial assets
+        # *   **protected**: enabled
+        # *   **unProtected**: disabled
         self.vuln_status = vuln_status
         # The type of the vulnerability. Valid values:
         # 
-        # *   **cve**: Windows vulnerability
-        # *   **cms**: Web-CMS vulnerability
-        # *   **App**: application vulnerability
+        # *   **emg**: urgent vulnerability
+        # *   **webcms**: Web-CMS vulnerability
+        # *   **app**: application vulnerability
         self.vuln_type = vuln_type
 
     def validate(self):
@@ -15874,7 +18258,7 @@ class DescribeVulnerabilityProtectedListResponseBody(TeaModel):
         self.request_id = request_id
         # The total number of vulnerabilities that are detected by Cloud Firewall.
         self.total_count = total_count
-        # An array that consists of the information about the vulnerabilities.
+        # The vulnerabilities.
         self.vuln_list = vuln_list
         # The number of assets on which no vulnerabilities are detected.
         self.zero_resource_count = zero_resource_count
@@ -15931,9 +18315,6 @@ class DescribeVulnerabilityProtectedListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16145,9 +18526,6 @@ class ModifyAddressBookResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16475,9 +18853,6 @@ class ModifyControlPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16526,13 +18901,9 @@ class ModifyControlPolicyPositionRequest(TeaModel):
         # *   zh: Chinese (default)
         # *   en: English
         self.lang = lang
-        # The new priority of the IPv4 access control policy.
+        # The new priority of the IPv4 access control policy. You must specify a numeric value for this parameter. The value 1 indicates the highest priority. A larger value indicates a lower priority.
         # 
-        # You must specify a numeric value for this parameter. The value 1 indicates the highest priority. A larger value indicates a lower priority.
-        # 
-        # >  The value of this parameter must be within the priority range of existing IPv4 access control policies. Otherwise, an error occurs when you call this operation.
-        # 
-        # We recommend that you first call the [DescribePolicyPriorUsed](~~138862~~) operation to query the priority range of existing IPv4 access control policies that apply to the traffic of the specified direction.
+        # >  The new priority cannot exceed the priority range of the IPv4 access control policy. Otherwise, an error occurs when you call this operation. Before you call this operation, we recommend that you use the [DescribePolicyPriorUsed](~~138862~~) operation to query the priority range of the IPv4 access control policy in the specified direction.
         self.new_order = new_order
         # The original priority of the IPv4 access control policy.
         self.old_order = old_order
@@ -16580,7 +18951,7 @@ class ModifyControlPolicyPositionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16615,9 +18986,6 @@ class ModifyControlPolicyPositionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16767,9 +19135,6 @@ class ModifyDefaultIPSConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16904,9 +19269,6 @@ class ModifyFirewallV2RoutePolicySwitchResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17047,9 +19409,6 @@ class ModifyInstanceMemberAttributesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17147,6 +19506,9 @@ class ModifyNatFirewallControlPolicyRequest(TeaModel):
         # *   **domain**: domain name
         # *   **location**\
         self.destination_type = destination_type
+        # The direction of the traffic to which the access control policy applies.
+        # 
+        # *   Set the value to **out**.
         self.direction = direction
         # The domain name resolution method of the access control policy. By default, an access control policy is enabled after it is created. Valid values:
         # 
@@ -17154,6 +19516,9 @@ class ModifyNatFirewallControlPolicyRequest(TeaModel):
         # *   **1**: Domain Name System (DNS)-based dynamic resolution
         # *   **2**: FQDN and DNS-based dynamic resolution
         self.domain_resolve_type = domain_resolve_type
+        # The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the value of StartTime.
+        # 
+        # >  If RepeatType is set to Permanent, EndTime is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, EndTime must be specified.
         self.end_time = end_time
         # The language of the content within the request and the response. Valid values:
         # 
@@ -17173,32 +19538,49 @@ class ModifyNatFirewallControlPolicyRequest(TeaModel):
         self.proto = proto
         # The status of the access control policy. Valid values:
         # 
-        # *   true: enabled
-        # *   false: disabled
+        # *   **true**: enabled
+        # *   **false**: disabled
         self.release = release
+        # The days of a week or of a month on which the access control policy takes effect.
+        # 
+        # *   If RepeatType is set to `Permanent`, `None`, or `Daily`, RepeatDays is left empty. Example: \[].
+        # *   If RepeatType is set to Weekly, RepeatDays must be specified. Example: \[0, 6].
+        # 
+        # >  If RepeatType is set to Weekly, the fields in the value of RepeatDays cannot be repeated.
+        # 
+        # *   If RepeatType is set to `Monthly`, RepeatDays must be specified. Example: \[1, 31].
+        # 
+        # >  If RepeatType is set to Monthly, the fields in the value of RepeatDays cannot be repeated.
         self.repeat_days = repeat_days
+        # The point in time when the recurrence ends. Example: 23:30. The value must be on the hour or on the half hour, and at least 30 minutes later than the value of RepeatStartTime.
+        # 
+        # >  If RepeatType is set to Permanent or None, RepeatEndTime is left empty. If RepeatType is set to Daily, Weekly, or Monthly, RepeatEndTime must be specified.
         self.repeat_end_time = repeat_end_time
+        # The point in time when the recurrence starts. Example: 08:00. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of RepeatEndTime.
+        # 
+        # >  If RepeatType is set to Permanent or None, RepeatStartTime is left empty. If RepeatType is set to Daily, Weekly, or Monthly, this parameter must be specified.
         self.repeat_start_time = repeat_start_time
+        # The recurrence type for the access control policy to take effect. Valid values:
+        # 
+        # *   **Permanent** (default): The policy always takes effect.
+        # *   **None**: The policy takes effect for only once.
+        # *   **Daily**: The policy takes effect on a daily basis.
+        # *   **Weekly**: The policy takes effect on a weekly basis.
+        # *   **Monthly**: The policy takes effect on a monthly basis.
         self.repeat_type = repeat_type
-        # The source address in the access control policy.
+        # The source address in the access control policy. Valid values:
         # 
-        # Valid values:
-        # 
-        # *   If **SourceType** is set to `net`, the value of Source is a CIDR block.
-        # 
-        #     Example: 10.2.4.0/24
-        # 
-        # *   If **SourceType** is set to `group`, the value of this parameter is an address book.
-        # 
-        #     Example: db_group
+        # *   If **SourceType** is set to `net`, the value of this parameter is a CIDR block. Example: 10.2.XX.XX/24.
+        # *   If **SourceType** is set to `group`, the value of this parameter is an address book name. Example: db_group.
         self.source = source
-        # The type of the source address in the access control policy.
-        # 
-        # Valid values:
+        # The type of the source address in the access control policy. Valid values:
         # 
         # *   **net**: CIDR block
         # *   **group**: address book
         self.source_type = source_type
+        # The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of EndTime.
+        # 
+        # >  If RepeatType is set to Permanent, StartTime is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, StartTime must be specified.
         self.start_time = start_time
 
     def validate(self):
@@ -17349,9 +19731,6 @@ class ModifyNatFirewallControlPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17392,6 +19771,9 @@ class ModifyNatFirewallControlPolicyPositionRequest(TeaModel):
     ):
         # The UUID of the access control policy.
         self.acl_uuid = acl_uuid
+        # The direction of the traffic to which the access control policy applies.
+        # 
+        # *   Set the value to **out**.
         self.direction = direction
         # The language of the content within the response. Valid values:
         # 
@@ -17483,9 +19865,6 @@ class ModifyNatFirewallControlPolicyPositionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17603,9 +19982,6 @@ class ModifyPolicyAdvancedConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17713,9 +20089,6 @@ class ModifyTrFirewallV2ConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17817,12 +20190,14 @@ class ModifyTrFirewallV2RoutePolicyScopeRequest(TeaModel):
         dest_candidate_list: List[ModifyTrFirewallV2RoutePolicyScopeRequestDestCandidateList] = None,
         firewall_id: str = None,
         lang: str = None,
+        should_recover: str = None,
         src_candidate_list: List[ModifyTrFirewallV2RoutePolicyScopeRequestSrcCandidateList] = None,
         tr_firewall_route_policy_id: str = None,
     ):
         self.dest_candidate_list = dest_candidate_list
         self.firewall_id = firewall_id
         self.lang = lang
+        self.should_recover = should_recover
         self.src_candidate_list = src_candidate_list
         self.tr_firewall_route_policy_id = tr_firewall_route_policy_id
 
@@ -17850,6 +20225,8 @@ class ModifyTrFirewallV2RoutePolicyScopeRequest(TeaModel):
             result['FirewallId'] = self.firewall_id
         if self.lang is not None:
             result['Lang'] = self.lang
+        if self.should_recover is not None:
+            result['ShouldRecover'] = self.should_recover
         result['SrcCandidateList'] = []
         if self.src_candidate_list is not None:
             for k in self.src_candidate_list:
@@ -17869,6 +20246,8 @@ class ModifyTrFirewallV2RoutePolicyScopeRequest(TeaModel):
             self.firewall_id = m.get('FirewallId')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+        if m.get('ShouldRecover') is not None:
+            self.should_recover = m.get('ShouldRecover')
         self.src_candidate_list = []
         if m.get('SrcCandidateList') is not None:
             for k in m.get('SrcCandidateList'):
@@ -17885,12 +20264,14 @@ class ModifyTrFirewallV2RoutePolicyScopeShrinkRequest(TeaModel):
         dest_candidate_list_shrink: str = None,
         firewall_id: str = None,
         lang: str = None,
+        should_recover: str = None,
         src_candidate_list_shrink: str = None,
         tr_firewall_route_policy_id: str = None,
     ):
         self.dest_candidate_list_shrink = dest_candidate_list_shrink
         self.firewall_id = firewall_id
         self.lang = lang
+        self.should_recover = should_recover
         self.src_candidate_list_shrink = src_candidate_list_shrink
         self.tr_firewall_route_policy_id = tr_firewall_route_policy_id
 
@@ -17909,6 +20290,8 @@ class ModifyTrFirewallV2RoutePolicyScopeShrinkRequest(TeaModel):
             result['FirewallId'] = self.firewall_id
         if self.lang is not None:
             result['Lang'] = self.lang
+        if self.should_recover is not None:
+            result['ShouldRecover'] = self.should_recover
         if self.src_candidate_list_shrink is not None:
             result['SrcCandidateList'] = self.src_candidate_list_shrink
         if self.tr_firewall_route_policy_id is not None:
@@ -17923,6 +20306,8 @@ class ModifyTrFirewallV2RoutePolicyScopeShrinkRequest(TeaModel):
             self.firewall_id = m.get('FirewallId')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+        if m.get('ShouldRecover') is not None:
+            self.should_recover = m.get('ShouldRecover')
         if m.get('SrcCandidateList') is not None:
             self.src_candidate_list_shrink = m.get('SrcCandidateList')
         if m.get('TrFirewallRoutePolicyId') is not None:
@@ -17975,9 +20360,6 @@ class ModifyTrFirewallV2RoutePolicyScopeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18109,9 +20491,6 @@ class ModifyUserIPSWhitelistResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18235,9 +20614,6 @@ class ModifyVpcFirewallCenConfigureResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18364,9 +20740,6 @@ class ModifyVpcFirewallCenSwitchStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18514,9 +20887,6 @@ class ModifyVpcFirewallConfigureResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18870,9 +21240,6 @@ class ModifyVpcFirewallControlPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19017,9 +21384,6 @@ class ModifyVpcFirewallControlPolicyPositionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19174,9 +21538,6 @@ class ModifyVpcFirewallDefaultIPSConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19202,6 +21563,131 @@ class ModifyVpcFirewallDefaultIPSConfigResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyVpcFirewallDefaultIPSConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyVpcFirewallIPSWhitelistRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        list_type: int = None,
+        list_value: str = None,
+        member_uid: int = None,
+        vpc_firewall_id: str = None,
+        white_type: int = None,
+    ):
+        self.lang = lang
+        self.list_type = list_type
+        self.list_value = list_value
+        self.member_uid = member_uid
+        self.vpc_firewall_id = vpc_firewall_id
+        self.white_type = white_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.list_type is not None:
+            result['ListType'] = self.list_type
+        if self.list_value is not None:
+            result['ListValue'] = self.list_value
+        if self.member_uid is not None:
+            result['MemberUid'] = self.member_uid
+        if self.vpc_firewall_id is not None:
+            result['VpcFirewallId'] = self.vpc_firewall_id
+        if self.white_type is not None:
+            result['WhiteType'] = self.white_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('ListType') is not None:
+            self.list_type = m.get('ListType')
+        if m.get('ListValue') is not None:
+            self.list_value = m.get('ListValue')
+        if m.get('MemberUid') is not None:
+            self.member_uid = m.get('MemberUid')
+        if m.get('VpcFirewallId') is not None:
+            self.vpc_firewall_id = m.get('VpcFirewallId')
+        if m.get('WhiteType') is not None:
+            self.white_type = m.get('WhiteType')
+        return self
+
+
+class ModifyVpcFirewallIPSWhitelistResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyVpcFirewallIPSWhitelistResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyVpcFirewallIPSWhitelistResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyVpcFirewallIPSWhitelistResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -19303,9 +21789,6 @@ class ModifyVpcFirewallSwitchStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19420,9 +21903,6 @@ class PutDisableAllFwSwitchResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19557,9 +22037,6 @@ class PutDisableFwSwitchResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19674,9 +22151,6 @@ class PutEnableAllFwSwitchResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19886,9 +22360,6 @@ class PutEnableFwSwitchResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20002,9 +22473,6 @@ class ReleasePostInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20030,6 +22498,113 @@ class ReleasePostInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ReleasePostInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ResetNatFirewallRuleHitCountRequest(TeaModel):
+    def __init__(
+        self,
+        acl_uuid: str = None,
+        lang: str = None,
+        nat_gateway_id: str = None,
+    ):
+        self.acl_uuid = acl_uuid
+        self.lang = lang
+        self.nat_gateway_id = nat_gateway_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_uuid is not None:
+            result['AclUuid'] = self.acl_uuid
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclUuid') is not None:
+            self.acl_uuid = m.get('AclUuid')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        return self
+
+
+class ResetNatFirewallRuleHitCountResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ResetNatFirewallRuleHitCountResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ResetNatFirewallRuleHitCountResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ResetNatFirewallRuleHitCountResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -20114,9 +22689,6 @@ class ResetVpcFirewallRuleHitCountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
