@@ -2042,6 +2042,8 @@ class Client(OpenApiClient):
             request.recurrence_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.recurrence, 'Recurrence', 'json')
         if not UtilClient.is_unset(tmp_req.reminders):
             request.reminders_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.reminders, 'Reminders', 'json')
+        if not UtilClient.is_unset(tmp_req.rich_text_description):
+            request.rich_text_description_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rich_text_description, 'RichTextDescription', 'json')
         if not UtilClient.is_unset(tmp_req.ui_configs):
             request.ui_configs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ui_configs, 'UiConfigs', 'json')
         if not UtilClient.is_unset(tmp_req.start):
@@ -2065,6 +2067,8 @@ class Client(OpenApiClient):
             body['Recurrence'] = request.recurrence_shrink
         if not UtilClient.is_unset(request.reminders_shrink):
             body['Reminders'] = request.reminders_shrink
+        if not UtilClient.is_unset(request.rich_text_description_shrink):
+            body['RichTextDescription'] = request.rich_text_description_shrink
         if not UtilClient.is_unset(request.summary):
             body['Summary'] = request.summary
         if not UtilClient.is_unset(request.ui_configs_shrink):
@@ -2125,6 +2129,8 @@ class Client(OpenApiClient):
             request.recurrence_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.recurrence, 'Recurrence', 'json')
         if not UtilClient.is_unset(tmp_req.reminders):
             request.reminders_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.reminders, 'Reminders', 'json')
+        if not UtilClient.is_unset(tmp_req.rich_text_description):
+            request.rich_text_description_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rich_text_description, 'RichTextDescription', 'json')
         if not UtilClient.is_unset(tmp_req.ui_configs):
             request.ui_configs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ui_configs, 'UiConfigs', 'json')
         if not UtilClient.is_unset(tmp_req.start):
@@ -2148,6 +2154,8 @@ class Client(OpenApiClient):
             body['Recurrence'] = request.recurrence_shrink
         if not UtilClient.is_unset(request.reminders_shrink):
             body['Reminders'] = request.reminders_shrink
+        if not UtilClient.is_unset(request.rich_text_description_shrink):
+            body['RichTextDescription'] = request.rich_text_description_shrink
         if not UtilClient.is_unset(request.summary):
             body['Summary'] = request.summary
         if not UtilClient.is_unset(request.ui_configs_shrink):
@@ -6979,6 +6987,8 @@ class Client(OpenApiClient):
             body['TargetFormat'] = request.target_format
         if not UtilClient.is_unset(request.tenant_context_shrink):
             body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.user_token):
+            body['userToken'] = request.user_token
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -7026,6 +7036,8 @@ class Client(OpenApiClient):
             body['TargetFormat'] = request.target_format
         if not UtilClient.is_unset(request.tenant_context_shrink):
             body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.user_token):
+            body['userToken'] = request.user_token
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers

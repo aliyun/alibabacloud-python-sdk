@@ -1,3 +1,22 @@
+2024-03-01 Version: 2.10.0
+- Support API CheckUserIsGroupMember.
+- Support API ExpandGroupCapacity.
+- Support API GetConversaionSpace.
+- Support API GetFileDownloadInfo.
+- Support API GetInnerGroupMembers.
+- Support API GetNewestInnerGroups.
+- Support API GetRelatedWorkspaces.
+- Support API ListDentries.
+- Support API SearchInnerGroups.
+- Support API UpdateScheduleConfSettings.
+- Update API CreateEvent: add param RichTextDescription.
+- Update API CreateEvent: update response param.
+- Update API GetDocContent: add param userToken.
+- Update API GetDocContent: update param AccountContext.
+- Update API QueryScheduleConference: add param scheduleConferenceId.
+- Update API QueryScheduleConference: update param AccountContext.
+
+
 2024-02-27 Version: 2.9.0
 - Support API CheckUserIsGroupMember.
 - Support API ExpandGroupCapacity.

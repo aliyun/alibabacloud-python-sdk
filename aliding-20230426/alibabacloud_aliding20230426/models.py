@@ -5918,6 +5918,33 @@ class CreateEventRequestReminders(TeaModel):
         return self
 
 
+class CreateEventRequestRichTextDescription(TeaModel):
+    def __init__(
+        self,
+        text: str = None,
+    ):
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.text is not None:
+            result['text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        return self
+
+
 class CreateEventRequestUiConfigs(TeaModel):
     def __init__(
         self,
@@ -6002,6 +6029,7 @@ class CreateEventRequest(TeaModel):
         online_meeting_info: CreateEventRequestOnlineMeetingInfo = None,
         recurrence: CreateEventRequestRecurrence = None,
         reminders: List[CreateEventRequestReminders] = None,
+        rich_text_description: CreateEventRequestRichTextDescription = None,
         summary: str = None,
         ui_configs: List[CreateEventRequestUiConfigs] = None,
         calendar_id: str = None,
@@ -6016,6 +6044,7 @@ class CreateEventRequest(TeaModel):
         self.online_meeting_info = online_meeting_info
         self.recurrence = recurrence
         self.reminders = reminders
+        self.rich_text_description = rich_text_description
         self.summary = summary
         self.ui_configs = ui_configs
         self.calendar_id = calendar_id
@@ -6038,6 +6067,8 @@ class CreateEventRequest(TeaModel):
             for k in self.reminders:
                 if k:
                     k.validate()
+        if self.rich_text_description:
+            self.rich_text_description.validate()
         if self.ui_configs:
             for k in self.ui_configs:
                 if k:
@@ -6073,6 +6104,8 @@ class CreateEventRequest(TeaModel):
         if self.reminders is not None:
             for k in self.reminders:
                 result['Reminders'].append(k.to_map() if k else None)
+        if self.rich_text_description is not None:
+            result['RichTextDescription'] = self.rich_text_description.to_map()
         if self.summary is not None:
             result['Summary'] = self.summary
         result['UiConfigs'] = []
@@ -6115,6 +6148,9 @@ class CreateEventRequest(TeaModel):
             for k in m.get('Reminders'):
                 temp_model = CreateEventRequestReminders()
                 self.reminders.append(temp_model.from_map(k))
+        if m.get('RichTextDescription') is not None:
+            temp_model = CreateEventRequestRichTextDescription()
+            self.rich_text_description = temp_model.from_map(m['RichTextDescription'])
         if m.get('Summary') is not None:
             self.summary = m.get('Summary')
         self.ui_configs = []
@@ -6142,6 +6178,7 @@ class CreateEventShrinkRequest(TeaModel):
         online_meeting_info_shrink: str = None,
         recurrence_shrink: str = None,
         reminders_shrink: str = None,
+        rich_text_description_shrink: str = None,
         summary: str = None,
         ui_configs_shrink: str = None,
         calendar_id: str = None,
@@ -6156,6 +6193,7 @@ class CreateEventShrinkRequest(TeaModel):
         self.online_meeting_info_shrink = online_meeting_info_shrink
         self.recurrence_shrink = recurrence_shrink
         self.reminders_shrink = reminders_shrink
+        self.rich_text_description_shrink = rich_text_description_shrink
         self.summary = summary
         self.ui_configs_shrink = ui_configs_shrink
         self.calendar_id = calendar_id
@@ -6188,6 +6226,8 @@ class CreateEventShrinkRequest(TeaModel):
             result['Recurrence'] = self.recurrence_shrink
         if self.reminders_shrink is not None:
             result['Reminders'] = self.reminders_shrink
+        if self.rich_text_description_shrink is not None:
+            result['RichTextDescription'] = self.rich_text_description_shrink
         if self.summary is not None:
             result['Summary'] = self.summary
         if self.ui_configs_shrink is not None:
@@ -6218,6 +6258,8 @@ class CreateEventShrinkRequest(TeaModel):
             self.recurrence_shrink = m.get('Recurrence')
         if m.get('Reminders') is not None:
             self.reminders_shrink = m.get('Reminders')
+        if m.get('RichTextDescription') is not None:
+            self.rich_text_description_shrink = m.get('RichTextDescription')
         if m.get('Summary') is not None:
             self.summary = m.get('Summary')
         if m.get('UiConfigs') is not None:
@@ -6591,6 +6633,33 @@ class CreateEventResponseBodyReminders(TeaModel):
         return self
 
 
+class CreateEventResponseBodyRichTextDescription(TeaModel):
+    def __init__(
+        self,
+        text: str = None,
+    ):
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.text is not None:
+            result['text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        return self
+
+
 class CreateEventResponseBodyStart(TeaModel):
     def __init__(
         self,
@@ -6678,6 +6747,7 @@ class CreateEventResponseBody(TeaModel):
         recurrence: CreateEventResponseBodyRecurrence = None,
         reminders: List[CreateEventResponseBodyReminders] = None,
         request_id: str = None,
+        rich_text_description: CreateEventResponseBodyRichTextDescription = None,
         start: CreateEventResponseBodyStart = None,
         summary: str = None,
         ui_configs: List[CreateEventResponseBodyUiConfigs] = None,
@@ -6696,6 +6766,7 @@ class CreateEventResponseBody(TeaModel):
         self.reminders = reminders
         # requestId
         self.request_id = request_id
+        self.rich_text_description = rich_text_description
         self.start = start
         self.summary = summary
         self.ui_configs = ui_configs
@@ -6720,6 +6791,8 @@ class CreateEventResponseBody(TeaModel):
             for k in self.reminders:
                 if k:
                     k.validate()
+        if self.rich_text_description:
+            self.rich_text_description.validate()
         if self.start:
             self.start.validate()
         if self.ui_configs:
@@ -6761,6 +6834,8 @@ class CreateEventResponseBody(TeaModel):
                 result['reminders'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['requestId'] = self.request_id
+        if self.rich_text_description is not None:
+            result['richTextDescription'] = self.rich_text_description.to_map()
         if self.start is not None:
             result['start'] = self.start.to_map()
         if self.summary is not None:
@@ -6810,6 +6885,9 @@ class CreateEventResponseBody(TeaModel):
                 self.reminders.append(temp_model.from_map(k))
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+        if m.get('richTextDescription') is not None:
+            temp_model = CreateEventResponseBodyRichTextDescription()
+            self.rich_text_description = temp_model.from_map(m['richTextDescription'])
         if m.get('start') is not None:
             temp_model = CreateEventResponseBodyStart()
             self.start = temp_model.from_map(m['start'])
@@ -19273,9 +19351,9 @@ class GetCorpTasksResponse(TeaModel):
 class GetDocContentHeadersAccountContext(TeaModel):
     def __init__(
         self,
-        user_token: str = None,
+        account_id: str = None,
     ):
-        self.user_token = user_token
+        self.account_id = account_id
 
     def validate(self):
         pass
@@ -19286,14 +19364,14 @@ class GetDocContentHeadersAccountContext(TeaModel):
             return _map
 
         result = dict()
-        if self.user_token is not None:
-            result['userToken'] = self.user_token
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('userToken') is not None:
-            self.user_token = m.get('userToken')
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
         return self
 
 
@@ -19398,10 +19476,12 @@ class GetDocContentRequest(TeaModel):
         dentry_uuid: str = None,
         target_format: str = None,
         tenant_context: GetDocContentRequestTenantContext = None,
+        user_token: str = None,
     ):
         self.dentry_uuid = dentry_uuid
         self.target_format = target_format
         self.tenant_context = tenant_context
+        self.user_token = user_token
 
     def validate(self):
         if self.tenant_context:
@@ -19419,6 +19499,8 @@ class GetDocContentRequest(TeaModel):
             result['TargetFormat'] = self.target_format
         if self.tenant_context is not None:
             result['TenantContext'] = self.tenant_context.to_map()
+        if self.user_token is not None:
+            result['userToken'] = self.user_token
         return result
 
     def from_map(self, m: dict = None):
@@ -19430,6 +19512,8 @@ class GetDocContentRequest(TeaModel):
         if m.get('TenantContext') is not None:
             temp_model = GetDocContentRequestTenantContext()
             self.tenant_context = temp_model.from_map(m['TenantContext'])
+        if m.get('userToken') is not None:
+            self.user_token = m.get('userToken')
         return self
 
 
@@ -19439,10 +19523,12 @@ class GetDocContentShrinkRequest(TeaModel):
         dentry_uuid: str = None,
         target_format: str = None,
         tenant_context_shrink: str = None,
+        user_token: str = None,
     ):
         self.dentry_uuid = dentry_uuid
         self.target_format = target_format
         self.tenant_context_shrink = tenant_context_shrink
+        self.user_token = user_token
 
     def validate(self):
         pass
@@ -19459,6 +19545,8 @@ class GetDocContentShrinkRequest(TeaModel):
             result['TargetFormat'] = self.target_format
         if self.tenant_context_shrink is not None:
             result['TenantContext'] = self.tenant_context_shrink
+        if self.user_token is not None:
+            result['userToken'] = self.user_token
         return result
 
     def from_map(self, m: dict = None):
@@ -19469,6 +19557,8 @@ class GetDocContentShrinkRequest(TeaModel):
             self.target_format = m.get('TargetFormat')
         if m.get('TenantContext') is not None:
             self.tenant_context_shrink = m.get('TenantContext')
+        if m.get('userToken') is not None:
+            self.user_token = m.get('userToken')
         return self
 
 
