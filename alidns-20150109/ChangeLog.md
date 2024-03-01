@@ -1,3 +1,7 @@
+2024-03-01 Version: 3.1.0
+- Support API DescribeInternetDnsLogs.
+
+
 2024-01-29 Version: 3.0.13
 - Generated python 2015-01-09 for Alidns.
 
