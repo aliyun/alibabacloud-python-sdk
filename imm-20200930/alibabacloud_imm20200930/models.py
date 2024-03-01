@@ -1723,14 +1723,12 @@ class DataIngestionActions(TeaModel):
         return self
 
 
-class DataIngestionNotification(TeaModel):
+class MNS(TeaModel):
     def __init__(
         self,
-        endpoint: str = None,
-        topic: str = None,
+        topic_name: str = None,
     ):
-        self.endpoint = endpoint
-        self.topic = topic
+        self.topic_name = topic_name
 
     def validate(self):
         pass
@@ -1741,8 +1739,81 @@ class DataIngestionNotification(TeaModel):
             return _map
 
         result = dict()
+        if self.topic_name is not None:
+            result['TopicName'] = self.topic_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TopicName') is not None:
+            self.topic_name = m.get('TopicName')
+        return self
+
+
+class RocketMQ(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        topic_name: str = None,
+    ):
+        self.instance_id = instance_id
+        self.topic_name = topic_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.topic_name is not None:
+            result['TopicName'] = self.topic_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TopicName') is not None:
+            self.topic_name = m.get('TopicName')
+        return self
+
+
+class DataIngestionNotification(TeaModel):
+    def __init__(
+        self,
+        endpoint: str = None,
+        mns: MNS = None,
+        rocket_mq: RocketMQ = None,
+        topic: str = None,
+    ):
+        self.endpoint = endpoint
+        self.mns = mns
+        self.rocket_mq = rocket_mq
+        self.topic = topic
+
+    def validate(self):
+        if self.mns:
+            self.mns.validate()
+        if self.rocket_mq:
+            self.rocket_mq.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.endpoint is not None:
             result['Endpoint'] = self.endpoint
+        if self.mns is not None:
+            result['MNS'] = self.mns.to_map()
+        if self.rocket_mq is not None:
+            result['RocketMQ'] = self.rocket_mq.to_map()
         if self.topic is not None:
             result['Topic'] = self.topic
         return result
@@ -1751,6 +1822,12 @@ class DataIngestionNotification(TeaModel):
         m = m or dict()
         if m.get('Endpoint') is not None:
             self.endpoint = m.get('Endpoint')
+        if m.get('MNS') is not None:
+            temp_model = MNS()
+            self.mns = temp_model.from_map(m['MNS'])
+        if m.get('RocketMQ') is not None:
+            temp_model = RocketMQ()
+            self.rocket_mq = temp_model.from_map(m['RocketMQ'])
         if m.get('Topic') is not None:
             self.topic = m.get('Topic')
         return self
@@ -3994,66 +4071,6 @@ class LocationDateCluster(TeaModel):
             self.title = m.get('Title')
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
-        return self
-
-
-class MNS(TeaModel):
-    def __init__(
-        self,
-        topic_name: str = None,
-    ):
-        self.topic_name = topic_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.topic_name is not None:
-            result['TopicName'] = self.topic_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('TopicName') is not None:
-            self.topic_name = m.get('TopicName')
-        return self
-
-
-class RocketMQ(TeaModel):
-    def __init__(
-        self,
-        instance_id: str = None,
-        topic_name: str = None,
-    ):
-        self.instance_id = instance_id
-        self.topic_name = topic_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.topic_name is not None:
-            result['TopicName'] = self.topic_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('TopicName') is not None:
-            self.topic_name = m.get('TopicName')
         return self
 
 
