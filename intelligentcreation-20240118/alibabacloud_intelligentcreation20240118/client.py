@@ -111,6 +111,76 @@ class Client(OpenApiClient):
         headers = {}
         return await self.actual_deduct_resource_with_options_async(request, headers, runtime)
 
+    def actual_deduct_resources_with_options(
+        self,
+        request: intelligent_creation_20240118_models.ActualDeductResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240118_models.ActualDeductResourcesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='ActualDeductResources',
+            version='2024-01-18',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/digitalHuman/commands/actualDeductResources',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.ActualDeductResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def actual_deduct_resources_with_options_async(
+        self,
+        request: intelligent_creation_20240118_models.ActualDeductResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240118_models.ActualDeductResourcesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='ActualDeductResources',
+            version='2024-01-18',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/digitalHuman/commands/actualDeductResources',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.ActualDeductResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def actual_deduct_resources(
+        self,
+        request: intelligent_creation_20240118_models.ActualDeductResourcesRequest,
+    ) -> intelligent_creation_20240118_models.ActualDeductResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.actual_deduct_resources_with_options(request, headers, runtime)
+
+    async def actual_deduct_resources_async(
+        self,
+        request: intelligent_creation_20240118_models.ActualDeductResourcesRequest,
+    ) -> intelligent_creation_20240118_models.ActualDeductResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.actual_deduct_resources_with_options_async(request, headers, runtime)
+
     def direct_deduct_resource_with_options(
         self,
         request: intelligent_creation_20240118_models.DirectDeductResourceRequest,
@@ -181,6 +251,76 @@ class Client(OpenApiClient):
         headers = {}
         return await self.direct_deduct_resource_with_options_async(request, headers, runtime)
 
+    def direct_deduct_resources_with_options(
+        self,
+        request: intelligent_creation_20240118_models.DirectDeductResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240118_models.DirectDeductResourcesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='DirectDeductResources',
+            version='2024-01-18',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/digitalHuman/commands/directDeductResources',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.DirectDeductResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def direct_deduct_resources_with_options_async(
+        self,
+        request: intelligent_creation_20240118_models.DirectDeductResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240118_models.DirectDeductResourcesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='DirectDeductResources',
+            version='2024-01-18',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/digitalHuman/commands/directDeductResources',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.DirectDeductResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def direct_deduct_resources(
+        self,
+        request: intelligent_creation_20240118_models.DirectDeductResourcesRequest,
+    ) -> intelligent_creation_20240118_models.DirectDeductResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.direct_deduct_resources_with_options(request, headers, runtime)
+
+    async def direct_deduct_resources_async(
+        self,
+        request: intelligent_creation_20240118_models.DirectDeductResourcesRequest,
+    ) -> intelligent_creation_20240118_models.DirectDeductResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.direct_deduct_resources_with_options_async(request, headers, runtime)
+
     def expect_deduct_resource_with_options(
         self,
         request: intelligent_creation_20240118_models.ExpectDeductResourceRequest,
@@ -250,3 +390,157 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.expect_deduct_resource_with_options_async(request, headers, runtime)
+
+    def expect_deduct_resources_with_options(
+        self,
+        request: intelligent_creation_20240118_models.ExpectDeductResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240118_models.ExpectDeductResourcesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='ExpectDeductResources',
+            version='2024-01-18',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/digitalHuman/commands/expectDeductResources',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.ExpectDeductResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def expect_deduct_resources_with_options_async(
+        self,
+        request: intelligent_creation_20240118_models.ExpectDeductResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240118_models.ExpectDeductResourcesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='ExpectDeductResources',
+            version='2024-01-18',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/digitalHuman/commands/expectDeductResources',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.ExpectDeductResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def expect_deduct_resources(
+        self,
+        request: intelligent_creation_20240118_models.ExpectDeductResourcesRequest,
+    ) -> intelligent_creation_20240118_models.ExpectDeductResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.expect_deduct_resources_with_options(request, headers, runtime)
+
+    async def expect_deduct_resources_async(
+        self,
+        request: intelligent_creation_20240118_models.ExpectDeductResourcesRequest,
+    ) -> intelligent_creation_20240118_models.ExpectDeductResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.expect_deduct_resources_with_options_async(request, headers, runtime)
+
+    def get_remain_resource_with_options(
+        self,
+        request: intelligent_creation_20240118_models.GetRemainResourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240118_models.GetRemainResourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['accountId'] = request.account_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['resourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.sub_account_id):
+            query['subAccountId'] = request.sub_account_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRemainResource',
+            version='2024-01-18',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/digitalHuman/commands/getRemainResource',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.GetRemainResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_remain_resource_with_options_async(
+        self,
+        request: intelligent_creation_20240118_models.GetRemainResourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240118_models.GetRemainResourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['accountId'] = request.account_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['resourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.sub_account_id):
+            query['subAccountId'] = request.sub_account_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRemainResource',
+            version='2024-01-18',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/digitalHuman/commands/getRemainResource',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.GetRemainResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_remain_resource(
+        self,
+        request: intelligent_creation_20240118_models.GetRemainResourceRequest,
+    ) -> intelligent_creation_20240118_models.GetRemainResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_remain_resource_with_options(request, headers, runtime)
+
+    async def get_remain_resource_async(
+        self,
+        request: intelligent_creation_20240118_models.GetRemainResourceRequest,
+    ) -> intelligent_creation_20240118_models.GetRemainResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_remain_resource_with_options_async(request, headers, runtime)
