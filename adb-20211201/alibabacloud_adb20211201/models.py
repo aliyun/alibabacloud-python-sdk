@@ -11349,6 +11349,7 @@ class DescribeDBResourceGroupRequest(TeaModel):
         dbcluster_id: str = None,
         group_name: str = None,
         group_type: str = None,
+        region_id: str = None,
         resource_owner_account: str = None,
     ):
         # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
@@ -11364,6 +11365,7 @@ class DescribeDBResourceGroupRequest(TeaModel):
         # 
         # > For information about resource groups of Data Lakehouse Edition, see [Resource groups](~~428610~~).
         self.group_type = group_type
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
 
     def validate(self):
@@ -11381,6 +11383,8 @@ class DescribeDBResourceGroupRequest(TeaModel):
             result['GroupName'] = self.group_name
         if self.group_type is not None:
             result['GroupType'] = self.group_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         return result
@@ -11393,6 +11397,8 @@ class DescribeDBResourceGroupRequest(TeaModel):
             self.group_name = m.get('GroupName')
         if m.get('GroupType') is not None:
             self.group_type = m.get('GroupType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         return self
@@ -17870,7 +17876,9 @@ class GetSparkAppAttemptLogRequest(TeaModel):
         self.attempt_id = attempt_id
         # The number of log entries to return. Valid values: 1 to 500. Default value: 300.
         self.log_length = log_length
+        # The log offset.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):
@@ -17920,6 +17928,7 @@ class GetSparkAppAttemptLogResponseBodyData(TeaModel):
         self.dbcluster_id = dbcluster_id
         # The content of the log.
         self.log_content = log_content
+        # The number of entries per page. A value of 0 indicates that no valid logs are returned.
         self.log_size = log_size
         # The alert message returned for the request, such as task execution failure or insufficient resources. If no alert occurs, null is returned.
         self.message = message
