@@ -5298,6 +5298,144 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.fuzzy_query_with_options_async(request, runtime)
 
+    def generate_video_playlist_with_options(
+        self,
+        tmp_req: imm_20200930_models.GenerateVideoPlaylistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GenerateVideoPlaylistResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.GenerateVideoPlaylistShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
+        if not UtilClient.is_unset(tmp_req.source_subtitles):
+            request.source_subtitles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_subtitles, 'SourceSubtitles', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        if not UtilClient.is_unset(tmp_req.targets):
+            request.targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.targets, 'Targets', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.master_uri):
+            query['MasterURI'] = request.master_uri
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
+        if not UtilClient.is_unset(request.overwrite_policy):
+            query['OverwritePolicy'] = request.overwrite_policy
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_duration):
+            query['SourceDuration'] = request.source_duration
+        if not UtilClient.is_unset(request.source_start_time):
+            query['SourceStartTime'] = request.source_start_time
+        if not UtilClient.is_unset(request.source_subtitles_shrink):
+            query['SourceSubtitles'] = request.source_subtitles_shrink
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.targets_shrink):
+            query['Targets'] = request.targets_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateVideoPlaylist',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GenerateVideoPlaylistResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generate_video_playlist_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.GenerateVideoPlaylistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GenerateVideoPlaylistResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.GenerateVideoPlaylistShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
+        if not UtilClient.is_unset(tmp_req.source_subtitles):
+            request.source_subtitles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_subtitles, 'SourceSubtitles', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        if not UtilClient.is_unset(tmp_req.targets):
+            request.targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.targets, 'Targets', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.master_uri):
+            query['MasterURI'] = request.master_uri
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
+        if not UtilClient.is_unset(request.overwrite_policy):
+            query['OverwritePolicy'] = request.overwrite_policy
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_duration):
+            query['SourceDuration'] = request.source_duration
+        if not UtilClient.is_unset(request.source_start_time):
+            query['SourceStartTime'] = request.source_start_time
+        if not UtilClient.is_unset(request.source_subtitles_shrink):
+            query['SourceSubtitles'] = request.source_subtitles_shrink
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.targets_shrink):
+            query['Targets'] = request.targets_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateVideoPlaylist',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GenerateVideoPlaylistResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generate_video_playlist(
+        self,
+        request: imm_20200930_models.GenerateVideoPlaylistRequest,
+    ) -> imm_20200930_models.GenerateVideoPlaylistResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.generate_video_playlist_with_options(request, runtime)
+
+    async def generate_video_playlist_async(
+        self,
+        request: imm_20200930_models.GenerateVideoPlaylistRequest,
+    ) -> imm_20200930_models.GenerateVideoPlaylistResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.generate_video_playlist_with_options_async(request, runtime)
+
     def generate_weboffice_token_with_options(
         self,
         tmp_req: imm_20200930_models.GenerateWebofficeTokenRequest,

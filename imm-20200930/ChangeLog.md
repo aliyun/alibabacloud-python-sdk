@@ -1,3 +1,10 @@
+2024-03-04 Version: 4.3.0
+- Support API DetectImageTexts.
+- Support API GenerateVideoPlaylist.
+- Update API CreateProject: update response param.
+- Update API UpdateProject: update response param.
+
+
 2024-03-01 Version: 4.2.0
 - Support API DetectImageTexts.
 - Update API CreateProject: update response param.
