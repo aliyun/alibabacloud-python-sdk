@@ -46512,6 +46512,132 @@ class SubmitSyncMediaInfoJobResponse(TeaModel):
         return self
 
 
+class SubmitTextGenerateJobRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        generate_config: str = None,
+        title: str = None,
+        type: str = None,
+        user_data: str = None,
+    ):
+        self.description = description
+        self.generate_config = generate_config
+        self.title = title
+        self.type = type
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.generate_config is not None:
+            result['GenerateConfig'] = self.generate_config
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GenerateConfig') is not None:
+            self.generate_config = m.get('GenerateConfig')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class SubmitTextGenerateJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        request_id: str = None,
+    ):
+        self.job_id = job_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SubmitTextGenerateJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitTextGenerateJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitTextGenerateJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SubmitTranscodeJobRequestInputGroup(TeaModel):
     def __init__(
         self,
