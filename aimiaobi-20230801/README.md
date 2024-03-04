@@ -28,7 +28,7 @@ pip install alibabacloud_aimiaobi20230801
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/aimiaobi-20230801/ChangeLog.md).
 
 ## References
 

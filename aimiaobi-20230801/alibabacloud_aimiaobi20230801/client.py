@@ -749,6 +749,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.file_key):
             body['FileKey'] = request.file_key
+        if not UtilClient.is_unset(request.file_name):
+            body['FileName'] = request.file_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
@@ -781,6 +783,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.file_key):
             body['FileKey'] = request.file_key
+        if not UtilClient.is_unset(request.file_name):
+            body['FileName'] = request.file_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
