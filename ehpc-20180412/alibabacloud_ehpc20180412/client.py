@@ -3190,14 +3190,6 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.GetAutoScaleConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.GetAutoScaleConfigResponse:
-        """
-        ## Debugging
-        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=EHPC\\&api=GetAutoScaleConfig\\&type=RPC\\&version=2018-04-12)
-        
-        @param request: GetAutoScaleConfigRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAutoScaleConfigResponse
-        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3224,14 +3216,6 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.GetAutoScaleConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.GetAutoScaleConfigResponse:
-        """
-        ## Debugging
-        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=EHPC\\&api=GetAutoScaleConfig\\&type=RPC\\&version=2018-04-12)
-        
-        @param request: GetAutoScaleConfigRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAutoScaleConfigResponse
-        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3257,13 +3241,6 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.GetAutoScaleConfigRequest,
     ) -> ehpc20180412_models.GetAutoScaleConfigResponse:
-        """
-        ## Debugging
-        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=EHPC\\&api=GetAutoScaleConfig\\&type=RPC\\&version=2018-04-12)
-        
-        @param request: GetAutoScaleConfigRequest
-        @return: GetAutoScaleConfigResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.get_auto_scale_config_with_options(request, runtime)
 
@@ -3271,13 +3248,6 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.GetAutoScaleConfigRequest,
     ) -> ehpc20180412_models.GetAutoScaleConfigResponse:
-        """
-        ## Debugging
-        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=EHPC\\&api=GetAutoScaleConfig\\&type=RPC\\&version=2018-04-12)
-        
-        @param request: GetAutoScaleConfigRequest
-        @return: GetAutoScaleConfigResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.get_auto_scale_config_with_options_async(request, runtime)
 

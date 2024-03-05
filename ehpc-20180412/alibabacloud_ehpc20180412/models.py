@@ -142,9 +142,6 @@ class AddContainerAppResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -330,9 +327,6 @@ class AddExistedNodesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -480,9 +474,6 @@ class AddLocalNodesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -716,6 +707,7 @@ class AddNodesRequest(TeaModel):
         self.create_mode = create_mode
         # The list of data disks.
         self.data_disks = data_disks
+        # The information about Domain Name System (DNS) settings.
         self.dns_config = dns_config
         # The billing method of the compute nodes. Valid values:
         # 
@@ -1026,6 +1018,7 @@ class AddNodesResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The instance IDs.
         self.instance_ids = instance_ids
         # The ID of the request.
         self.request_id = request_id
@@ -1074,9 +1067,6 @@ class AddNodesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1201,9 +1191,6 @@ class AddQueueResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1319,9 +1306,6 @@ class AddSecurityGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1503,9 +1487,6 @@ class AddUsersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1690,6 +1671,7 @@ class ApplyNodesRequest(TeaModel):
         system_disk_type: str = None,
         tag: List[ApplyNodesRequestTag] = None,
         target_capacity: int = None,
+        user_data: str = None,
         zone_infos: List[ApplyNodesRequestZoneInfos] = None,
     ):
         # Specifies whether to allocate a public IP address to the compute nodes. Valid values:
@@ -1829,6 +1811,7 @@ class ApplyNodesRequest(TeaModel):
         # *   If ResourceAmountType is set to Instance, the value range of TargetCapacity is 1 to 200.
         # *   If ResourceAmountType is set to Cores, the value range of TargetCapacity is 1 to 1,000.
         self.target_capacity = target_capacity
+        self.user_data = user_data
         # The details of the zones. You can specify up to 10 zones.
         self.zone_infos = zone_infos
 
@@ -1908,6 +1891,8 @@ class ApplyNodesRequest(TeaModel):
                 result['Tag'].append(k.to_map() if k else None)
         if self.target_capacity is not None:
             result['TargetCapacity'] = self.target_capacity
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
         result['ZoneInfos'] = []
         if self.zone_infos is not None:
             for k in self.zone_infos:
@@ -1974,6 +1959,8 @@ class ApplyNodesRequest(TeaModel):
                 self.tag.append(temp_model.from_map(k))
         if m.get('TargetCapacity') is not None:
             self.target_capacity = m.get('TargetCapacity')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
         self.zone_infos = []
         if m.get('ZoneInfos') is not None:
             for k in m.get('ZoneInfos'):
@@ -2078,9 +2065,6 @@ class ApplyNodesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3292,9 +3276,6 @@ class CreateClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3415,9 +3396,6 @@ class CreateGWSClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3529,9 +3507,6 @@ class CreateGWSImageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3729,9 +3704,6 @@ class CreateGWSInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4525,9 +4497,6 @@ class CreateHybridClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4666,9 +4635,6 @@ class CreateJobFileResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4934,9 +4900,6 @@ class CreateJobTemplateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5052,9 +5015,6 @@ class DeleteClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5188,9 +5148,6 @@ class DeleteContainerAppsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5288,9 +5245,6 @@ class DeleteGWSClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5388,9 +5342,6 @@ class DeleteGWSInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5515,9 +5466,6 @@ class DeleteImageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5619,9 +5567,6 @@ class DeleteJobTemplatesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5741,9 +5686,6 @@ class DeleteJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5855,9 +5797,6 @@ class DeleteLocalImageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6030,9 +5969,6 @@ class DeleteNodesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6141,9 +6077,6 @@ class DeleteQueueResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6248,9 +6181,6 @@ class DeleteSecurityGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6404,9 +6334,6 @@ class DeleteUsersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6618,9 +6545,6 @@ class DescribeAutoScaleConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6655,10 +6579,7 @@ class DescribeClusterRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
-        # The type of the protocol that is used by the file system. Valid values:
-        # 
-        # *   nfs
-        # *   smb
+        # The cluster ID. You can call the [ListClusters](~~87116~~) operation to query the list of clusters in a region.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -6690,29 +6611,22 @@ class DescribeClusterResponseBodyClusterInfoAddOnsInfoAddOnsInfo(TeaModel):
         status: str = None,
         url: str = None,
     ):
-        # Specifies whether to enable auto-renewal. The parameter takes effect only when EcsChargeType is set to PrePaid. Valid values:
+        # The deployment mode of the custom component. Valid values:
         # 
-        # *   true: enables auto-renewal.
-        # *   false: disables auto-renewal.
-        # 
-        # Default value: true.
+        # *   local
+        # *   ecs
         self.deploy_mode = deploy_mode
-        # The bidding method of the compute node. Valid values:
-        # 
-        # *   NoSpot: The instance is created as a pay-as-you-go instance.
-        # *   SpotWithPriceLimit: The instance is created as a preemptible instance with a user-defined maximum hourly price.
-        # *   SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is automatically used as the bidding price.
+        # The TCP port number of the custom component.
         self.port = port
-        # The auto-renewal period of the subscription compute nodes. The parameter takes effect when AutoRenew is set to true.
-        # 
-        # *   If PeriodUnit is set to Week, the valid values of the AutoRenewPeriod parameter are 1, 2, and 3.
-        # *   If PeriodUnit is set to Month, the valid values of the AutoRenewPeriod parameter are 1, 2, 3, 6, and 12.
-        # 
-        # Default value: 1.
+        # The software ID of the component.
         self.software_id = software_id
-        # The maximum hourly price of the compute nodes. A maximum of three decimal places can be used in the value of the parameter. The parameter is valid only when the ComputeSpotStrategy parameter is set to SpotWithPriceLimit.
+        # The running status of the custom component. Valid values:
+        # 
+        # *   running
+        # *   stopped
+        # *   exception
         self.status = status
-        # The information of the on-premises node in the cluster.
+        # The endpoint of the custom component service.
         self.url = url
 
     def validate(self):
@@ -6793,11 +6707,11 @@ class DescribeClusterResponseBodyClusterInfoApplicationsApplicationInfo(TeaModel
         tag: str = None,
         version: str = None,
     ):
-        # The number of compute nodes in the cluster.
+        # The name of the software.
         self.name = name
-        # The instance type of the compute nodes.
+        # The tag of the software.
         self.tag = tag
-        # The list of logon nodes.
+        # The version of the software.
         self.version = version
 
     def validate(self):
@@ -6869,9 +6783,9 @@ class DescribeClusterResponseBodyClusterInfoEcsInfoCompute(TeaModel):
         count: int = None,
         instance_type: str = None,
     ):
-        # The software ID of the component.
+        # The number of compute nodes in the cluster.
         self.count = count
-        # The information about the custom component service.
+        # The instance type of the compute nodes.
         self.instance_type = instance_type
 
     def validate(self):
@@ -6904,13 +6818,9 @@ class DescribeClusterResponseBodyClusterInfoEcsInfoLogin(TeaModel):
         count: int = None,
         instance_type: str = None,
     ):
-        # The running status of the custom component. Valid values:
-        # 
-        # *   running
-        # *   stopped
-        # *   exception
+        # The number of logon nodes in the cluster.
         self.count = count
-        # The TCP port number of the custom component.
+        # The instance type of the logon nodes.
         self.instance_type = instance_type
 
     def validate(self):
@@ -6943,13 +6853,9 @@ class DescribeClusterResponseBodyClusterInfoEcsInfoManager(TeaModel):
         count: int = None,
         instance_type: str = None,
     ):
-        # The hostname of the on-premises management nodes.
+        # The number of management nodes.
         self.count = count
-        # The type of on-premises management nodes. Valid values:
-        # 
-        # *   scheduler
-        # *   account
-        # *   account, scheduler
+        # The instance type of the management nodes.
         self.instance_type = instance_type
 
     def validate(self):
@@ -6982,9 +6888,9 @@ class DescribeClusterResponseBodyClusterInfoEcsInfoProxyMgr(TeaModel):
         count: int = None,
         instance_type: str = None,
     ):
-        # Specifies whether to not install the agent.
+        # The number of proxy nodes.
         self.count = count
-        # The version of the E-HPC cluster.
+        # The instance type of the proxy node.
         self.instance_type = instance_type
 
     def validate(self):
@@ -7019,18 +6925,15 @@ class DescribeClusterResponseBodyClusterInfoEcsInfo(TeaModel):
         manager: DescribeClusterResponseBodyClusterInfoEcsInfoManager = None,
         proxy_mgr: DescribeClusterResponseBodyClusterInfoEcsInfoProxyMgr = None,
     ):
-        # The IP address of the on-premises management nodes.
+        # The list of compute nodes.
         self.compute = compute
-        # The deployment mode of the custom component. Valid values:
-        # 
-        # *   local
-        # *   ecs
+        # The list of logon nodes.
         self.login = login
-        # The list of on-premises management nodes.
+        # The information of management nodes.
+        self.manager = manager
+        # The list of proxy nodes on the cloud.
         # 
         # This parameter is returned only when the cluster is deployed across hybrid environments and the hybrid-cloud proxy mode is enabled for the cluster.
-        self.manager = manager
-        # The endpoint of the custom component service.
         self.proxy_mgr = proxy_mgr
 
     def validate(self):
@@ -7083,8 +6986,16 @@ class DescribeClusterResponseBodyClusterInfoInitialImage(TeaModel):
         image_owner_alias: str = None,
         os_tag: str = None,
     ):
+        # The image ID.
         self.image_id = image_id
+        # The type of the image. Valid values:
+        # 
+        # *   system: public image
+        # *   self: custom image
+        # *   others: shared image
+        # *   marketplace: Alibaba Cloud Marketplace image
         self.image_owner_alias = image_owner_alias
+        # An array of OS images that are supported by E-HPC.
         self.os_tag = os_tag
 
     def validate(self):
@@ -7125,11 +7036,33 @@ class DescribeClusterResponseBodyClusterInfoNodesNodesInfo(TeaModel):
         role: str = None,
         scheduler_type: str = None,
     ):
+        # The service type of the domain account to which the on-premises node in the cluster belongs. Valid values:
+        # 
+        # *   nis
+        # *   ldap
+        # 
+        # Default value: nis.
         self.account_type = account_type
+        # The directory of the on-premises node in the cluster.
         self.dir = dir
+        # The hostname of the on-premises node in the cluster.
         self.host_name = host_name
+        # The IP address of the on-premises node in the cluster.
         self.ip_address = ip_address
+        # The role of the on-premises node in the cluster. Valid values:
+        # 
+        # *   Manager: management node
+        # *   Login: logon node
+        # *   Compute: compute node
         self.role = role
+        # The scheduler type of the on-premises node in the cluster. Valid values:
+        # 
+        # *   pbs
+        # *   slurm
+        # *   opengridscheduler
+        # *   deadline
+        # 
+        # Default value: pbs.
         self.scheduler_type = scheduler_type
 
     def validate(self):
@@ -7214,13 +7147,15 @@ class DescribeClusterResponseBodyClusterInfoOnPremiseInfoOnPremiseInfo(TeaModel)
         ip: str = None,
         type: str = None,
     ):
-        # The parameter that is used to connect to the OpenLDAP server.
+        # The hostname of the on-premises management nodes.
         self.host_name = host_name
-        # The parameter that is used to connect to the Windows AD server.
+        # The IP address of the on-premises management nodes.
         self.ip = ip
-        # The domain name of the on-premises E-HPC cluster.
+        # The type of on-premises management nodes. Valid values:
         # 
-        # This parameter takes effect only when the AccoutType parameter is set to Idap.
+        # *   scheduler
+        # *   account
+        # *   account, scheduler
         self.type = type
 
     def validate(self):
@@ -7292,11 +7227,9 @@ class DescribeClusterResponseBodyClusterInfoPostInstallScriptsPostInstallScriptI
         args: str = None,
         url: str = None,
     ):
-        # The instance type of the proxy node.
+        # The runtime parameter of the script.
         self.args = args
-        # The list of proxy nodes on the cloud.
-        # 
-        # This parameter is returned only when the cluster is deployed across hybrid environments and the hybrid-cloud proxy mode is enabled for the cluster.
+        # The URL used to download the script.
         self.url = url
 
     def validate(self):
@@ -7415,13 +7348,103 @@ class DescribeClusterResponseBodyClusterInfo(TeaModel):
         without_agent: int = None,
         zone_id: str = None,
     ):
+        # The server type of the account. Valid values:
+        # 
+        # *   nis
+        # *   ldap
+        self.account_type = account_type
+        # The information about the custom component service.
+        self.add_ons_info = add_ons_info
+        # The array of the software in the cluster. The array contains the name and version of the software.
+        self.applications = applications
+        # Specifies whether to enable auto-renewal. The parameter takes effect only when EcsChargeType is set to PrePaid. Valid values:
+        # 
+        # *   true: enables auto-renewal.
+        # *   false: disables auto-renewal.
+        # 
+        # Default value: true.
+        self.auto_renew = auto_renew
+        # The auto-renewal period of the subscription compute nodes. The parameter takes effect when AutoRenew is set to true.
+        # 
+        # *   If PeriodUnit is set to Week, the valid values of the AutoRenewPeriod parameter are 1, 2, and 3.
+        # *   If PeriodUnit is set to Month, the valid values of the AutoRenewPeriod parameter are 1, 2, 3, 6, and 12.
+        # 
+        # Default value: 1.
+        self.auto_renew_period = auto_renew_period
+        # The image of the cluster.
+        self.base_os_tag = base_os_tag
+        # The version of the E-HPC client.
+        self.client_version = client_version
+        # The version of the E-HPC cluster.
+        self.cluster_version = cluster_version
+        # The maximum hourly price of the compute nodes. A maximum of three decimal places can be used in the value of the parameter. The parameter is valid only when the ComputeSpotStrategy parameter is set to SpotWithPriceLimit.
+        self.compute_spot_price_limit = compute_spot_price_limit
+        # The bidding method of the compute node. Valid values:
+        # 
+        # *   NoSpot: The instance is created as a pay-as-you-go instance.
+        # *   SpotWithPriceLimit: The instance is created as a preemptible instance with a user-defined maximum hourly price.
+        # *   SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is automatically used as the bidding price.
+        self.compute_spot_strategy = compute_spot_strategy
+        # The time at which the instance is created.
+        self.create_time = create_time
+        # The mode in which the cluster is deployed. Valid values:
+        # 
+        # *   Standard: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
+        # *   Advanced: Two high availability (HA) account nodes, two HA scheduler nodes, one logon node, and multiple compute nodes are separately deployed.
+        # *   Simple: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
+        # *   Tiny: The account node, scheduling node, and logon node are deployed on one node. The compute node is separately deployed.
+        self.deploy_mode = deploy_mode
+        # The description of the cluster.
+        self.description = description
+        # The domain name of the on-premises E-HPC cluster.
+        # 
+        # This parameter takes effect only when the AccoutType parameter is set to Idap.
+        self.domain = domain
+        # The billing method of the nodes in the cluster. Valid values:
+        # 
+        # *   PostPaid: pay-as-you-go
+        # *   PrePaid: subscription
+        self.ecs_charge_type = ecs_charge_type
+        # The list of ECS instance specifications and quantity.
+        self.ecs_info = ecs_info
+        # Specifies whether to enable the high availability feature.
+        # 
+        # >  If high availability is enabled, each management role in the cluster uses both primary and secondary instances.
+        self.ha_enable = ha_enable
+        # The instance ID.
+        self.id = id
+        # The image ID.
+        self.image_id = image_id
+        # The image name.
+        self.image_name = image_name
         # The image type. Valid values:
         # 
         # *   system: public image
         # *   self: custom image
         # *   others: shared image
         # *   marketplace: Alibaba Cloud Marketplace image
-        self.account_type = account_type
+        self.image_owner_alias = image_owner_alias
+        # The image information of the operating systems.
+        self.initial_image = initial_image
+        # The name of the AccessKey pair.
+        self.key_pair_name = key_pair_name
+        # The location where the cluster is deployed. Valid values:
+        # 
+        # *   OnPremise: The node is deployed on a hybrid cloud.
+        # *   PublicCloud: The cluster is deployed on a public cloud.
+        self.location = location
+        # The name of the cluster.
+        self.name = name
+        # The information of the on-premises node in the cluster.
+        self.nodes = nodes
+        # The list of on-premises management nodes.
+        # 
+        # This parameter is returned only when the cluster is deployed across hybrid environments and the hybrid-cloud proxy mode is enabled for the cluster.
+        self.on_premise_info = on_premise_info
+        # The parameter that is used to connect to the OpenLDAP server.
+        self.openldap_par = openldap_par
+        # The operating system tag of the image.
+        self.os_tag = os_tag
         # The duration of the subscription. The unit of the duration is specified by the `PeriodUnit` parameter.
         # 
         # *   If you set PriceUnit to Year, the valid values of the Period parameter are 1, 2, and 3.
@@ -7429,59 +7452,15 @@ class DescribeClusterResponseBodyClusterInfo(TeaModel):
         # *   If you set PriceUnit to Hour, the valid value of the Period parameter is 1.
         # 
         # Default value: 1.
-        self.add_ons_info = add_ons_info
-        # The number of management nodes.
-        self.applications = applications
-        self.auto_renew = auto_renew
-        # The image ID.
-        self.auto_renew_period = auto_renew_period
-        # The vSwitch ID. E-HPC can be deployed only in VPCs.
-        self.base_os_tag = base_os_tag
-        # The URL used to download the script.
-        self.client_version = client_version
-        # The role of the on-premises node in the cluster. Valid values:
+        self.period = period
+        # The unit of the subscription duration. Valid value:
         # 
-        # *   Manager: management node
-        # *   Login: logon node
-        # *   Compute: compute node
-        self.cluster_version = cluster_version
-        self.compute_spot_price_limit = compute_spot_price_limit
-        self.compute_spot_strategy = compute_spot_strategy
-        # The mode in which the cluster is deployed. Valid values:
+        # *   Year
+        # *   Month
+        # *   Hour
         # 
-        # *   Standard: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
-        # *   Advanced: Two high availability (HA) account nodes, two HA scheduler nodes, one logon node, and multiple compute nodes are separately deployed.
-        # *   Simple: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
-        # *   Tiny: The account node, scheduling node, and logon node are deployed on one node. The compute node is separately deployed.
-        self.create_time = create_time
-        # The instance ID.
-        self.deploy_mode = deploy_mode
-        # The mount target of the NAS file system. The mount target is of the VPC type. Mount targets cannot be automatically created for NAS file systems.
-        self.description = description
-        # The directory of the on-premises node in the cluster.
-        self.domain = domain
-        # The image ID.
-        self.ecs_charge_type = ecs_charge_type
-        # The number of proxy nodes.
-        self.ecs_info = ecs_info
-        # The region ID.
-        self.ha_enable = ha_enable
-        # The list of post-installation scripts
-        self.id = id
-        # The type of the network shared storage. Valid value: NAS.
-        self.image_id = image_id
-        # The tag of the software.
-        self.image_name = image_name
-        # The version of the E-HPC client.
-        self.image_owner_alias = image_owner_alias
-        self.initial_image = initial_image
-        # The name of the cluster.
-        self.key_pair_name = key_pair_name
-        # The version of the software.
-        self.location = location
-        # The image name.
-        self.name = name
-        self.nodes = nodes
+        # Default value: Month.
+        self.period_unit = period_unit
         # The mode configurations of the plug-in. This parameter takes effect only when the SchedulerType parameter is set to custom.
         # 
         # The value must be a JSON string. The parameter contains the following parameters: pluginMod, pluginLocalPath, and pluginOssPath.
@@ -7494,85 +7473,66 @@ class DescribeClusterResponseBodyClusterInfo(TeaModel):
         # *   pluginLocalPath: the local path where the plug-in is stored. We recommend that you select a shared directory in the oss mode and a non-shared directory in the image mode.
         # 
         # *   pluginOssPath: the remote path where the plug-in is stored in OSS. This parameter takes effect only if you set the pluginMod parameter to oss.
-        self.on_premise_info = on_premise_info
-        # The scheduler type of the on-premises node in the cluster. Valid values:
-        # 
-        # *   pbs
-        # *   slurm
-        # *   opengridscheduler
-        # *   deadline
-        # 
-        # Default value: pbs.
-        self.openldap_par = openldap_par
-        # The zone ID.
-        self.os_tag = os_tag
-        # An array of OS images that are supported by E-HPC.
-        self.period = period
-        # The type of the image. Valid values:
-        # 
-        # *   system: public image
-        # *   self: custom image
-        # *   others: shared image
-        # *   marketplace: Alibaba Cloud Marketplace image
-        self.period_unit = period_unit
-        # The IP address of the on-premises node in the cluster.
         self.plugin = plugin
-        # The instance type of the logon nodes.
+        # The list of post-installation scripts
         self.post_install_scripts = post_install_scripts
-        # The instance type of the management nodes.
-        self.ram_node_types = ram_node_types
-        # The information of management nodes.
-        self.ram_role_name = ram_role_name
         # The node type details of the instance RAM role.
-        self.region_id = region_id
+        self.ram_node_types = ram_node_types
         # The name of the instance Resource Access Management (RAM) role.
+        self.ram_role_name = ram_role_name
+        # The region ID.
+        self.region_id = region_id
+        # The remote directory on which the file system is mounted.
         self.remote_directory = remote_directory
-        # The list of ECS instance specifications and quantity.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The version of the scheduler.
+        # The ID of the Super Computing Cluster (SCC) instance. If the cluster is not an SCC instance, a null string is returned.
         self.scc_cluster_id = scc_cluster_id
-        # The service type of the domain account to which the on-premises node in the cluster belongs. Valid values:
+        # Specifies whether the scheduler is preinstalled for the image. Valid values:
         # 
-        # *   nis
-        # *   ldap
-        # 
-        # Default value: nis.
+        # *   true: The scheduler is preinstalled. When you create a node or scale out a cluster, you do not need to install the scheduler.
+        # *   false: The scheduler is not preinstalled. When you create or add a cluster, you must install the scheduler.
         self.scheduler_pre_install = scheduler_pre_install
-        # The location where the cluster is deployed. Valid values:
-        # 
-        # *   OnPremise: The node is deployed on a hybrid cloud.
-        # *   PublicCloud: The cluster is deployed on a public cloud.
-        self.scheduler_type = scheduler_type
-        # The version of the scheduler.
-        self.scheduler_version = scheduler_version
         # The type of the scheduler. Valid values:
         # 
         # *   pbs
         # *   slurm
         # *   opengridscheduler
         # *   deadline
+        self.scheduler_type = scheduler_type
+        # The version of the scheduler.
+        self.scheduler_version = scheduler_version
+        # The ID of the security group.
         self.security_group_id = security_group_id
-        # Specifies whether to enable the high availability feature.
+        # The status of the cluster. Valid values:
         # 
-        # >  If high availability is enabled, each management role in the cluster uses both primary and secondary instances.
+        # *   uninit: The cluster is not initialized.
+        # *   creating: The cluster is being created.
+        # *   init: The cluster is being initialized.
+        # *   running: The cluster is running.
+        # *   exception: The cluster encounters an exception.
+        # *   releasing: The cluster is being released.
         self.status = status
-        # The array of the software in the cluster. The array contains the name and version of the software.
+        # The vSwitch ID. E-HPC can be deployed only in VPCs.
         self.v_switch_id = v_switch_id
-        # The remote directory on which the file system is mounted.
+        # The ID of the Apsara File Storage NAS file system. NAS file systems cannot be automatically created.
         self.volume_id = volume_id
-        # The resource group ID.
+        # The mount target of the NAS file system. The mount target is of the VPC type. Mount targets cannot be automatically created for NAS file systems.
         self.volume_mountpoint = volume_mountpoint
-        # The operating system tag of the image.
+        # The type of the protocol that is used by the file system. Valid values:
+        # 
+        # *   nfs
+        # *   smb
         self.volume_protocol = volume_protocol
-        # The name of the software.
+        # The type of the network shared storage. Valid value: NAS.
         self.volume_type = volume_type
-        # The image of the cluster.
+        # The VPC ID of the node.
         self.vpc_id = vpc_id
-        # The image information of the operating systems.
+        # The parameter that is used to connect to the Windows AD server.
         self.win_ad_par = win_ad_par
-        # The hostname of the on-premises node in the cluster.
+        # Specifies whether to not install the agent.
         self.without_agent = without_agent
-        # The runtime parameter of the script.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -7829,9 +7789,9 @@ class DescribeClusterResponseBody(TeaModel):
         cluster_info: DescribeClusterResponseBodyClusterInfo = None,
         request_id: str = None,
     ):
-        # The ID of the Apsara File Storage NAS file system. NAS file systems cannot be automatically created.
+        # The cluster information.
         self.cluster_info = cluster_info
-        # The description of the cluster.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7872,9 +7832,6 @@ class DescribeClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8053,9 +8010,6 @@ class DescribeContainerAppResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8281,9 +8235,6 @@ class DescribeEstackImageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8415,9 +8366,6 @@ class DescribeGWSClusterPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8671,9 +8619,6 @@ class DescribeGWSClustersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8899,9 +8844,6 @@ class DescribeGWSImagesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9297,9 +9239,6 @@ class DescribeGWSInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9500,9 +9439,6 @@ class DescribeImageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9761,9 +9697,6 @@ class DescribeImageGatewayConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9945,9 +9878,6 @@ class DescribeImagePriceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10102,9 +10032,6 @@ class DescribeJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10264,9 +10191,6 @@ class DescribeNFSClientStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10773,9 +10697,6 @@ class DescribePriceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13477,9 +13398,6 @@ class DescribeServerlessJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13754,9 +13672,6 @@ class EditJobTemplateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13999,9 +13914,6 @@ class GetAccountingReportResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14036,7 +13948,7 @@ class GetAutoScaleConfigRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
-        # The ID of the cluster.
+        # The interval between two consecutive rounds of scale-out. Unit: minutes. Valid values: 2 to 10.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -14069,35 +13981,11 @@ class GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisksDataDisksInfo(TeaMod
         data_disk_performance_level: str = None,
         data_disk_size: int = None,
     ):
-        # The type of the data disk. Valid values:
-        # 
-        # - cloud_efficiency: ultra disk
-        # - cloud_ssd: SSD
-        # - cloud_essd: ESSD
-        # - cloud: basic disk
         self.data_disk_category = data_disk_category
-        # Indicates whether the data disk is released when the node is released. Valid values:
-        # 
-        # - true
-        # - false
         self.data_disk_delete_with_instance = data_disk_delete_with_instance
-        # Indicates whether the data disk is encrypted. Valid values:
-        # 
-        # - true
-        # - false
         self.data_disk_encrypted = data_disk_encrypted
-        # The KMS key ID of the data disk.
         self.data_disk_kmskey_id = data_disk_kmskey_id
-        # The performance level of the ESSD used as the data disk. The parameter takes effect only when the DataDisks.N.DataDiskCategory parameter is set to cloud_essd. Valid values:
-        # 
-        # - PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
-        # - PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
-        # - PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
-        # - PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
         self.data_disk_performance_level = data_disk_performance_level
-        # The capacity of the data disk. Unit: GB.
-        # 
-        # Valid values: 40 to 500.
         self.data_disk_size = data_disk_size
 
     def validate(self):
@@ -14187,25 +14075,45 @@ class GetAutoScaleConfigResponseBodyQueuesQueueInfoInstanceTypesInstanceTypeInfo
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # The prefix of the hostname. You can query compute nodes that have a specified prefix.
-        self.host_name_prefix = host_name_prefix
-        # The instance type of the node.
-        self.instance_type = instance_type
-        # The protection period of the preemptible instance. Unit: hours. Valid values: 0 to 1. Default value: 1. A value of 0 means no protection period is specified.
-        self.spot_duration = spot_duration
-        # The interruption mode of the preemptible instance. Default value: Terminate. Set the value to Terminate, which indicates that the instance is released.
-        self.spot_interruption_behavior = spot_interruption_behavior
-        # The maximum hourly price of the compute nodes. The value can be accurate to three decimal places. The parameter takes effect only when SpotStrategy is set to SpotWithPriceLimit.
-        self.spot_price_limit = spot_price_limit
-        # The bidding method of the compute nodes. Valid values:
+        # The type of the data disk. Valid values:
         # 
-        # *   NoSpot: The compute nodes are pay-as-you-go instances.
-        # *   SpotWithPriceLimit: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
-        # *   SpotAsPriceGo: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
+        # - cloud_efficiency: ultra disk
+        # - cloud_ssd: SSD
+        # - cloud_essd: ESSD
+        # - cloud: basic disk
+        self.host_name_prefix = host_name_prefix
+        # Indicates whether the data disk is encrypted. Valid values:
+        # 
+        # - true
+        # - false
+        self.instance_type = instance_type
+        # The list of data disks.
+        self.spot_duration = spot_duration
+        # The minimum number of compute nodes that can be added in each round of an auto scale-out task. Valid values: 1 to 99.
+        # 
+        # Default value: 1.
+        # 
+        # If the number of compute nodes that you want to add in a round is less than the value of this property, the system automatically changes the value of this property to the number of compute nodes that you want to add in a round. This helps ensure that compute nodes can be added as expected.
+        # 
+        # > The configuration takes effect only for the minimum compute nodes that can be added in the current round.
+        self.spot_interruption_behavior = spot_interruption_behavior
+        # The performance level of the ESSD used as the data disk. The parameter takes effect only when the DataDisks.N.DataDiskCategory parameter is set to cloud_essd. Valid values:
+        # 
+        # - PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
+        # - PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
+        # - PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
+        # - PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+        self.spot_price_limit = spot_price_limit
+        # The KMS key ID of the data disk.
         self.spot_strategy = spot_strategy
-        # The ID of the vSwitch.
+        # The capacity of the data disk. Unit: GB.
+        # 
+        # Valid values: 40 to 500.
         self.v_switch_id = v_switch_id
-        # The ID of the zone.
+        # Indicates whether the data disk is released when the node is released. Valid values:
+        # 
+        # - true
+        # - false
         self.zone_id = zone_id
 
     def validate(self):
@@ -14317,72 +14225,56 @@ class GetAutoScaleConfigResponseBodyQueuesQueueInfo(TeaModel):
         system_disk_size: int = None,
     ):
         self.auto_min_nodes_per_cycle = auto_min_nodes_per_cycle
-        # The list of data disks.
         self.data_disks = data_disks
-        # Indicates whether the queue enabled auto scale-out. Valid values:
-        # 
-        # *   true
-        # *   false
+        # The instance type of the node.
         self.enable_auto_grow = enable_auto_grow
-        # Indicates whether the queue enabled auto scale-in. Valid values:
-        # 
-        # *   true
-        # *   false
+        # The ID of the zone.
         self.enable_auto_shrink = enable_auto_shrink
-        # The prefix of the queue name. You can query queues that have a specified prefix.
-        self.host_name_prefix = host_name_prefix
-        # The suffix of the queue name. You can query queues that have a specified suffix.
-        self.host_name_suffix = host_name_suffix
-        # The instance type of the compute nodes that were automatically added in the queue.
-        self.instance_type = instance_type
         # The specification information of the compute nodes.
-        self.instance_types = instance_types
-        # The maximum number of compute nodes that can be added in a queue. Valid values: 0 to 500.
-        self.max_nodes_in_queue = max_nodes_in_queue
-        # The maximum number of compute nodes that can be added in each round of an auto scale-out task. Valid values: 0 to 99.
-        # 
-        # Default value: 0.
-        self.max_nodes_per_cycle = max_nodes_per_cycle
-        # The minimum number of compute nodes that can be retained in a queue. Valid values: 0 to 50.
-        self.min_nodes_in_queue = min_nodes_in_queue
-        # The minimum number of compute nodes that can be added in each round of an auto scale-out task. Valid values: 1 to 99.
-        # 
-        # Default value: 1.
-        # 
-        # If the number of compute nodes that you want to add in a round is less than the value of this property, the system automatically changes the value of this property to the number of compute nodes that you want to add in a round. This helps ensure that compute nodes can be added as expected.
-        # 
-        # > The configuration takes effect only for the minimum compute nodes that can be added in the current round.
-        self.min_nodes_per_cycle = min_nodes_per_cycle
-        # The image ID of the compute nodes in the queue.
-        self.queue_image_id = queue_image_id
-        # The name of the queue.
-        self.queue_name = queue_name
-        # The ID of the resource group to which the compute nodes belong.
-        self.resource_group_id = resource_group_id
-        self.sorted_by_inventory = sorted_by_inventory
-        # The maximum hourly price of the compute nodes. The value can be accurate to three decimal places. The parameter takes effect only when SpotStrategy is set to SpotWithPriceLimit.
-        self.spot_price_limit = spot_price_limit
-        # The preemption policy of the compute nodes. Valid values:
-        # 
-        # *   NoSpot: The compute nodes are pay-as-you-go instances.
-        # *   SpotWithPriceLimit: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
-        # *   SpotAsPriceGo: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
-        self.spot_strategy = spot_strategy
-        # The type of the system disk. Valid values:
-        # 
-        # *   cloud_efficiency: ultra disk
-        # *   cloud_ssd: SSD
-        # *   cloud_essd: ESSD
-        # *   cloud: basic disk
-        self.system_disk_category = system_disk_category
+        self.host_name_prefix = host_name_prefix
         # The performance level of the system disk. Valid values:
         # 
         # *   PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
         # *   PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
         # *   PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
         # *   PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+        self.host_name_suffix = host_name_suffix
+        # Indicates whether the queue enabled auto scale-out. Valid values:
+        # 
+        # *   true
+        # *   false
+        self.instance_type = instance_type
+        # The list of data disks.
+        self.instance_types = instance_types
+        # The ID of the vSwitch.
+        self.max_nodes_in_queue = max_nodes_in_queue
+        self.max_nodes_per_cycle = max_nodes_per_cycle
+        # The maximum hourly price of the compute nodes. The value can be accurate to three decimal places. The parameter takes effect only when SpotStrategy is set to SpotWithPriceLimit.
+        self.min_nodes_in_queue = min_nodes_in_queue
+        self.min_nodes_per_cycle = min_nodes_per_cycle
+        # Indicates whether the queue enabled auto scale-in. Valid values:
+        # 
+        # *   true
+        # *   false
+        self.queue_image_id = queue_image_id
+        # The maximum hourly price of the compute nodes. The value can be accurate to three decimal places. The parameter takes effect only when SpotStrategy is set to SpotWithPriceLimit.
+        self.queue_name = queue_name
+        # The protection period of the preemptible instance. Unit: hours. Valid values: 0 to 1. Default value: 1. A value of 0 means no protection period is specified.
+        self.resource_group_id = resource_group_id
+        self.sorted_by_inventory = sorted_by_inventory
+        # The interruption mode of the preemptible instance. Default value: Terminate. Set the value to Terminate, which indicates that the instance is released.
+        self.spot_price_limit = spot_price_limit
+        # The ID of the resource group to which the compute nodes belong.
+        self.spot_strategy = spot_strategy
+        # The name of the queue.
+        self.system_disk_category = system_disk_category
+        # The bidding method of the compute nodes. Valid values:
+        # 
+        # *   NoSpot: The compute nodes are pay-as-you-go instances.
+        # *   SpotWithPriceLimit: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
+        # *   SpotAsPriceGo: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
         self.system_disk_level = system_disk_level
-        # The size of the system disk. Unit: GB. Valid values: 40 to 500.
+        # The prefix of the hostname. You can query compute nodes that have a specified prefix.
         self.system_disk_size = system_disk_size
 
     def validate(self):
@@ -14549,70 +14441,66 @@ class GetAutoScaleConfigResponseBody(TeaModel):
         spot_strategy: str = None,
         uid: str = None,
     ):
-        # The ID of the cluster.
+        # The prefix of the queue name. You can query queues that have a specified prefix.
         self.cluster_id = cluster_id
-        # The type of the scheduler. Valid values:
-        # 
-        # *   slurm
-        # *   pbs
-        # *   opengridscheduler
-        # *   deadline
+        # The ID of the cluster.
         self.cluster_type = cluster_type
+        # Specifies whether to enable hyper-threading for the ECS instance that is used as the compute node.
+        # 
+        # >  You can only disable hyper-threading for some instance types. The hyper-threading is enabled for ECS instances by default. For more information, see [Specify and view CPU options](~~145895~~).
         self.compute_enable_ht = compute_enable_ht
+        # The Domain Name System (DNS) settings.
         self.dns_config = dns_config
-        # Indicates whether the cluster enabled auto scale-out. Valid values:
-        # 
-        # *   true
-        # *   false
-        self.enable_auto_grow = enable_auto_grow
-        # Indicates whether the cluster enabled auto scale-in. Valid values:
-        # 
-        # *   true
-        # *   false
-        self.enable_auto_shrink = enable_auto_shrink
-        # The compute nodes that were excluded from the list of auto scaling nodes. Multiple compute nodes were separated with commas (,).
-        self.exclude_nodes = exclude_nodes
-        # The percentage of extra compute nodes. Valid values: 0 to 100.
-        # 
-        # If you need to add 100 compute nodes and the value of the ExtraNodesGrowRatio parameter is 2, 102 compute nodes are added.
-        self.extra_nodes_grow_ratio = extra_nodes_grow_ratio
-        # The interval between two consecutive rounds of scale-in. Unit: minutes. Valid values: 2 to 10.
-        # 
-        # >  An interval may exist during multiple rounds of a scale-out task or between two consecutive scale-out tasks.
-        self.grow_interval_in_minutes = grow_interval_in_minutes
         # The percentage of each round of scale-out. Valid values: 1 to 100.
         # 
         # If you set GrowRatio to 50, the scale-out has two rounds. Each round completes half of the scale-out.
-        self.grow_ratio = grow_ratio
-        # The timeout period before the scale-out nodes were started. Unit: minutes. Valid values: 10 to 60.
-        # 
-        # If the scale-out timeout period has been reached but the scale-out nodes still do not reach the Running state, the system resets them.
-        self.grow_timeout_in_minutes = grow_timeout_in_minutes
-        # The image ID of the compute nodes in the queue.
-        self.image_id = image_id
-        # The maximum number of compute nodes that can be added in the cluster. Valid values: 0 to 500.
-        self.max_nodes_in_cluster = max_nodes_in_cluster
-        # The auto scaling configuration of the queue.
-        # 
-        # >  If auto scaling is enabled for the cluster and queue at the same time, the queue settings prevail.
-        self.queues = queues
-        # The ID of the request.
-        self.request_id = request_id
+        self.enable_auto_grow = enable_auto_grow
         # The number of consecutive times that a compute node is idle during the resource scale-in check. Valid values: 2 to 5.
         # 
         # If the parameter is set to 3, a compute node is idle for more than three consecutive times. In this case, the node is released.
-        self.shrink_idle_times = shrink_idle_times
-        # The interval between two consecutive rounds of scale-out. Unit: minutes. Valid values: 2 to 10.
-        self.shrink_interval_in_minutes = shrink_interval_in_minutes
+        self.enable_auto_shrink = enable_auto_shrink
+        # The ID of the Alibaba Cloud account.
+        self.exclude_nodes = exclude_nodes
+        # The instance type of the compute nodes that were automatically added in the queue.
+        self.extra_nodes_grow_ratio = extra_nodes_grow_ratio
+        # The image ID of the compute nodes in the queue.
+        self.grow_interval_in_minutes = grow_interval_in_minutes
+        # The minimum number of compute nodes that can be retained in a queue. Valid values: 0 to 50.
+        self.grow_ratio = grow_ratio
         # The maximum hourly price of the compute nodes. The value can be accurate to three decimal places. The parameter takes effect only when SpotStrategy is set to SpotWithPriceLimit.
-        self.spot_price_limit = spot_price_limit
+        self.grow_timeout_in_minutes = grow_timeout_in_minutes
         # The preemption policy of the compute nodes. Valid values:
         # 
         # *   NoSpot: The compute nodes are pay-as-you-go instances.
         # *   SpotWithPriceLimit: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
         # *   SpotAsPriceGo: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
+        self.image_id = image_id
+        # The interval between two consecutive rounds of scale-in. Unit: minutes. Valid values: 2 to 10.
+        # 
+        # >  An interval may exist during multiple rounds of a scale-out task or between two consecutive scale-out tasks.
+        self.max_nodes_in_cluster = max_nodes_in_cluster
+        # The maximum number of compute nodes that can be added in a queue. Valid values: 0 to 500.
+        self.queues = queues
+        # The image ID of the compute nodes in the queue.
+        self.request_id = request_id
+        # The suffix of the queue name. You can query queues that have a specified suffix.
+        self.shrink_idle_times = shrink_idle_times
+        # The auto scaling configuration of the queue.
+        # 
+        # >  If auto scaling is enabled for the cluster and queue at the same time, the queue settings prevail.
+        self.shrink_interval_in_minutes = shrink_interval_in_minutes
+        # The type of the system disk. Valid values:
+        # 
+        # *   cloud_efficiency: ultra disk
+        # *   cloud_ssd: SSD
+        # *   cloud_essd: ESSD
+        # *   cloud: basic disk
+        self.spot_price_limit = spot_price_limit
+        # The percentage of extra compute nodes. Valid values: 0 to 100.
+        # 
+        # If you need to add 100 compute nodes and the value of the ExtraNodesGrowRatio parameter is 2, 102 compute nodes are added.
         self.spot_strategy = spot_strategy
-        # The ID of the Alibaba Cloud account.
+        # The size of the system disk. Unit: GB. Valid values: 40 to 500.
         self.uid = uid
 
     def validate(self):
@@ -14725,9 +14613,6 @@ class GetAutoScaleConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15014,9 +14899,6 @@ class GetCloudMetricLogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15221,9 +15103,6 @@ class GetCloudMetricProfilingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15542,9 +15421,6 @@ class GetClusterVolumesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15663,9 +15539,6 @@ class GetCommonImageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15773,9 +15646,6 @@ class GetGWSConnectTicketResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15894,9 +15764,6 @@ class GetHybridClusterConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16024,9 +15891,6 @@ class GetIfEcsTypeSupportHtConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16184,9 +16048,6 @@ class GetJobLogResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16345,9 +16206,6 @@ class GetPostScriptsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16553,9 +16411,6 @@ class GetSchedulerInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16688,9 +16543,6 @@ class GetUserImageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16797,9 +16649,6 @@ class GetVisualServiceStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16839,6 +16688,7 @@ class InitializeEHPCRequest(TeaModel):
         # 
         # You can call the [ListRegions](~~188593~~) operation to obtain the IDs of regions supported by E-HPC.
         self.region_id = region_id
+        # This parameter is unavailable for public use.
         self.service_name = service_name
 
     def validate(self):
@@ -16905,9 +16755,6 @@ class InitializeEHPCResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17121,9 +16968,6 @@ class InspectImageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17232,9 +17076,6 @@ class InstallSoftwareResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17398,6 +17239,7 @@ class InvokeShellCommandResponseBody(TeaModel):
     ):
         # The ID of the command. It is used to query the execution status of the command.
         self.command_id = command_id
+        # The list of IDs of the instances on which you want to run the command.
         self.instance_ids = instance_ids
         # The ID of the request.
         self.request_id = request_id
@@ -17444,9 +17286,6 @@ class InvokeShellCommandResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17847,9 +17686,6 @@ class ListAvailableEcsTypesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18113,9 +17949,6 @@ class ListCloudMetricProfilingsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18350,9 +18183,6 @@ class ListClusterLogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19033,9 +18863,6 @@ class ListClustersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19357,9 +19184,6 @@ class ListClustersMetaResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19600,9 +19424,6 @@ class ListCommandsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20016,9 +19837,6 @@ class ListCommunityImagesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20264,9 +20082,6 @@ class ListContainerAppsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20535,9 +20350,6 @@ class ListContainerImagesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20900,9 +20712,6 @@ class ListCpfsFileSystemsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20979,9 +20788,6 @@ class ListCurrentClientVersionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21406,9 +21212,6 @@ class ListCustomImagesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21487,21 +21290,21 @@ class ListFileSystemWithMountTargetsResponseBodyFileSystemListFileSystemsMountTa
         # 
         # Valid values:
         # 
-        # *   true: ueses the default permission group. If you use the default permission group, access from all IP addresses are allowed. The default permission group and the permission rules in the default permission group cannot be deleted.
+        # *   true: uses the default permission group. If the permission group is the default one, all IP addresses are allowed to access the permission group, and users cannot delete the group and its rules.
         # *   false: does not use the default permission group.
         self.access_group = access_group
-        # The domain where the mount target resides.
+        # The domain in which the mount target resides.
         self.mount_target_domain = mount_target_domain
-        # The network type of the cluster. Valid values:
+        # The network type. Valid values:
         # 
-        # *   vpc: Virtual Private Cloud (VPC)
-        # *   classic: the classic network
+        # *   vpc
+        # *   classic
         self.network_type = network_type
-        # The status of the mount target. Valid values:
+        # The state of the mount target. Valid values:
         # 
         # *   Active: The mount target is available.
         # *   Inactive: The mount target is unavailable.
-        # *   Pending: The mount target is being created or modified.
+        # *   Pending: The mount target is pending to be used.
         # *   Deleting: The mount target is being deleted.
         self.status = status
         # The ID of the VPC.
@@ -21668,37 +21471,37 @@ class ListFileSystemWithMountTargetsResponseBodyFileSystemListFileSystems(TeaMod
     ):
         # The bandwidth of the file system. Unit: MB/s.
         self.band_width = band_width
-        # The capacity of the file system. Unit: GiB.
+        # The capacity of the file system. Unit: GiB
         self.capacity = capacity
-        # The time at which the file system is created.
+        # The time when the file system was created.
         self.create_time = create_time
         # The description of the file system.
         self.destription = destription
-        # Specifies whether to encrypt the data in the file system.
+        # Indicates whether data in the file system is encrypted.
         # 
-        # You can use keys that are managed by Key Management Service (KMS) to encrypt the data that is stored in a file system. When you read and write the encrypted data, the data is automatically decrypted.
+        # You can use keys that are hosted by Key Management Service (KMS) to encrypt the data in a file system. When you read and write the encrypted data, the data is automatically decrypted.
         # 
         # Valid values:
         # 
-        # *   0 (default): The data in the file system is not encrypted.
-        # *   1: NAS-managed keys are used to encrypt the data in the file system. This value is valid only if the FileSystemType parameter is set to standard or extreme.
-        # *   2: KMS-managed keys are used to encrypt the data in the file system. This value is valid only if the FileSystemType parameter is set to extreme.
+        # *   0 (default): does not encrypt the data in the file system.
+        # *   1: encrypts data in the file system by using a NAS-managed key. This parameter is valid only if the FileSystemType parameter is set to standard or extreme.
+        # *   2: A KMS-managed key is used to encrypt the data in the file system. This parameter is valid only if the FileSystemType parameter is set to extreme.
         self.encrypt_type = encrypt_type
         # The ID of the file system.
         self.file_system_id = file_system_id
-        # The type of the file system. Valid values:
+        # The type of the file system.
         # 
-        # *   standard: general-purpose NAS. extreme: Extreme NAS.
+        # *   Valid values: standard (General-purpose NAS file systems) and extreme (Extreme NAS file systems).
         self.file_system_type = file_system_type
-        # The used storage of the NAS file system. Unit: byte.
+        # The used capacity of the NAS file system. Unit: bytes.
         self.metered_size = metered_size
-        # The mount targets.
+        # The list of mount targets.
         self.mount_target_list = mount_target_list
         # The list of storage plans.
         self.package_list = package_list
         # The protocol type of the file system. Valid values:
         # 
-        # *   NFS- SMB
+        # *   NFS-SMB
         self.protocol_type = protocol_type
         # The region ID.
         self.region_id = region_id
@@ -21708,14 +21511,15 @@ class ListFileSystemWithMountTargetsResponseBodyFileSystemListFileSystems(TeaMod
         # *   Running: The file system is available.
         # *   Stopped: The file system is unavailable.
         # *   Extending: The file system is being scaled out.
-        # *   Stopping: The file system is being disabled.
+        # *   Stopping: The file system is being stopped.
         # *   Deleting: The file system is being deleted.
         self.status = status
         # The storage type of the file system.
         # 
-        # *   Valid values when FileSystemType is set to standard: Capacity and Performance. Valid values when FileSystemType is set to extreme: standard and advance.
+        # *   Valid values if FileSystemType is set to standard: Capacity and Performance.
+        # *   Valid values if FileSystemType is set to extreme: standard and advance.
         self.storage_type = storage_type
-        # The VPC ID of the node.
+        # The ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -21904,9 +21708,6 @@ class ListFileSystemWithMountTargetsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22141,9 +21942,6 @@ class ListImagesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22339,9 +22137,6 @@ class ListInstalledSoftwareResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22667,9 +22462,6 @@ class ListInvocationResultsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22881,9 +22673,6 @@ class ListInvocationStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23252,9 +23041,6 @@ class ListJobTemplatesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23640,9 +23426,6 @@ class ListJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24100,9 +23883,6 @@ class ListJobsWithFiltersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24723,9 +24503,6 @@ class ListNodesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25225,9 +25002,6 @@ class ListNodesByQueueResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25467,9 +25241,6 @@ class ListNodesNoPagingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25824,9 +25595,6 @@ class ListPreferredEcsTypesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26196,9 +25964,6 @@ class ListQueuesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26347,9 +26112,6 @@ class ListRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26490,9 +26252,6 @@ class ListSecurityGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26818,9 +26577,6 @@ class ListServerlessJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27146,9 +26902,6 @@ class ListSoftwaresResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27417,9 +27170,6 @@ class ListTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27706,9 +27456,6 @@ class ListTasksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27891,9 +27638,6 @@ class ListUpgradeClientsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28123,9 +27867,6 @@ class ListUsersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28383,9 +28124,6 @@ class ListUsersAsyncResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28779,9 +28517,6 @@ class ListVolumesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28991,9 +28726,6 @@ class ModifyClusterAttributesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29100,9 +28832,6 @@ class ModifyContainerAppAttributesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29311,9 +29040,6 @@ class ModifyImageGatewayConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29477,9 +29203,6 @@ class ModifyUserGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29649,9 +29372,6 @@ class ModifyUserPasswordsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29784,9 +29504,6 @@ class ModifyVisualServicePasswdResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29922,9 +29639,6 @@ class MountNFSResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30043,9 +29757,6 @@ class PullImageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30244,9 +29955,6 @@ class QueryServicePackAndPriceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30419,9 +30127,6 @@ class RecoverClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30543,9 +30248,6 @@ class RerunJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30696,9 +30398,6 @@ class ResetNodesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30837,9 +30536,6 @@ class RunCloudMetricProfilingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -31092,6 +30788,8 @@ class SetAutoScaleConfigRequestQueues(TeaModel):
         system_disk_level: str = None,
         system_disk_size: int = None,
     ):
+        # Automatic Configuration of the Minimum Node Number for Each Scale-out.
+        # If you set this parameter to true, the minimum number of nodes for each scale-out is equal to the number of nodes required by the job. The maximum number is 99.
         self.auto_min_nodes_per_cycle = auto_min_nodes_per_cycle
         # The list of data disks.
         self.data_disks = data_disks
@@ -31352,6 +31050,7 @@ class SetAutoScaleConfigRequest(TeaModel):
         # 
         # >  You can only disable hyper-threading for some instance types. The hyper-threading is enabled for ECS instances by default. For more information, see [Specify and view CPU options](~~145895~~).
         self.compute_enable_ht = compute_enable_ht
+        # The Domain Name System (DNS) settings.
         self.dns_config = dns_config
         # Specifies whether to enable auto scale-out. Valid values:
         # 
@@ -31571,9 +31270,6 @@ class SetAutoScaleConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -31745,9 +31441,6 @@ class SetGWSClusterPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -31849,9 +31542,6 @@ class SetGWSInstanceNameResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -31963,9 +31653,6 @@ class SetGWSInstanceUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -32122,9 +31809,6 @@ class SetPostScriptsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -32277,9 +31961,6 @@ class SetQueueResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -32719,9 +32400,6 @@ class SetSchedulerInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -32826,9 +32504,6 @@ class StartClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -32926,9 +32601,6 @@ class StartGWSInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -33092,9 +32764,6 @@ class StartNodesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -33216,9 +32885,6 @@ class StartVisualServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -33325,9 +32991,6 @@ class StopClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -33423,9 +33086,6 @@ class StopGWSInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -33547,9 +33207,6 @@ class StopJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -33713,9 +33370,6 @@ class StopNodesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -33825,9 +33479,6 @@ class StopServerlessJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -33949,9 +33600,6 @@ class StopVisualServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -34315,9 +33963,6 @@ class SubmitJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -34356,11 +34001,11 @@ class SubmitServerlessJobRequestArrayProperties(TeaModel):
     ):
         # The end value of the array job index. Valid values: 0 to 4999. The value must be greater than or equal to the value of IndexStart.
         self.index_end = index_end
-        # The starting value of the array job index. Valid values: 0 to 4999.
+        # The start value of the array job index. Valid values: 0 to 4999.
         self.index_start = index_start
         # The interval of the array job index.
         # 
-        # >  If the IndexStart of the array job is set to 1, IndexEnd is set to 5, and IndexStep is set to 2, the array job contains three subtasks. The subtask indexes are 1, 3, and 5.
+        # >  If the array job property is IndexStart=1,IndexEnd=5, and IndexStep=2, the array job contains three subtasks. The values of the subtask indexes are 1,3, and 5.
         self.index_step = index_step
 
     def validate(self):
@@ -34397,9 +34042,8 @@ class SubmitServerlessJobRequestContainerEnvironmentVar(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The name of the environment variable. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (\_). The name cannot start with a digit. Specify the name in the \[0-9a-zA-Z] format.
         self.key = key
-        # The value of the environment variable. The value can be up to 256 characters in length.
+        # The value of the environment variable for the container. The value must be 0 to 256 characters in length.
         self.value = value
 
     def validate(self):
@@ -34433,16 +34077,11 @@ class SubmitServerlessJobRequestContainerVolumeMount(TeaModel):
         flex_volume_options: str = None,
         mount_path: str = None,
     ):
-        # The driver type when you use the FlexVolume plug-in to mount the volume. Valid values:
-        # 
-        # *   alicloud/nas: a NAS driver.
-        # *   alicloud/oss: an OSS driver.
         self.flex_volume_driver = flex_volume_driver
-        # The options when you set the Type parameter to FlexVolume. Each option is a key-value pair in a JSON string.
         self.flex_volume_options = flex_volume_options
         # The directory to which the volume is mounted.
         # 
-        # >  The data stored in this directory is overwritten by the data on the volume. Specify the parameter with caution.
+        # > The data stored in this directory is overwritten by the data on the volume. Specify this parameter with caution.
         self.mount_path = mount_path
 
     def validate(self):
@@ -34488,13 +34127,13 @@ class SubmitServerlessJobRequestContainer(TeaModel):
         self.arg = arg
         # The container startup commands.
         self.command = command
-        # The value of the environment variable for the container.
+        # The environment variable of the container.
         self.environment_var = environment_var
         # The number of GPUs of the container.
         self.gpu = gpu
         # The image of the container.
         self.image = image
-        # The data volumes that are mounted to the container.
+        # The data volumes mounted to the container.
         self.volume_mount = volume_mount
         # The working directory of the container.
         self.working_dir = working_dir
@@ -34608,12 +34247,7 @@ class SubmitServerlessJobRequestRetryStrategyEvaluateOnExit(TeaModel):
         action: str = None,
         on_exit_code: str = None,
     ):
-        # The action that you want to take on the job. Valid values:
-        # 
-        # *   Retry: The job starts a retry when a specific exit code is hit.
-        # *   Exit: The job exits when a specific exit code is hit.
         self.action = action
-        # The job exit code, which is used together with the Action parameter as a job retry rule. Valid values: 0 to 255.
         self.on_exit_code = on_exit_code
 
     def validate(self):
@@ -34646,9 +34280,7 @@ class SubmitServerlessJobRequestRetryStrategy(TeaModel):
         attempts: int = None,
         evaluate_on_exit: List[SubmitServerlessJobRequestRetryStrategyEvaluateOnExit] = None,
     ):
-        # The number of retries for the serverless job. Valid values: 1 to 10.
         self.attempts = attempts
-        # The list of retry rules for the serverless job. You can specify up to 10 rules.
         self.evaluate_on_exit = evaluate_on_exit
 
     def validate(self):
@@ -34705,7 +34337,7 @@ class SubmitServerlessJobRequest(TeaModel):
     ):
         # The configuration of the array job.
         # 
-        # >  The index value of an array job is passed to the serverless job container by using the environment variable **EHPC_JOB_ARRAY_INDEX** to allow access to the array job from business programs.
+        # >  The value of an array job index is passed to a serverless job container through the environment variable `EHPC_ARRAY_TASK_ID`. Users can access the container from business programs.
         self.array_properties = array_properties
         # The ID of the E-HPC cluster.
         # 
@@ -34724,8 +34356,6 @@ class SubmitServerlessJobRequest(TeaModel):
         # The ECS instance types used by the serverless job container.
         self.instance_type = instance_type
         # The name of the serverless job.
-        # 
-        # >  The name can contain lowercase letters, digits, and hyphens (-). It cannot start or end with a hyphen.
         self.job_name = job_name
         # The scheduling priority of the serverless job. Valid values: 0 to 999. A greater value indicates a higher priority.
         self.job_priority = job_priority
@@ -34733,7 +34363,6 @@ class SubmitServerlessJobRequest(TeaModel):
         self.memory = memory
         # The name of the RAM role that is associated with the serverless job container.
         self.ram_role_name = ram_role_name
-        # The retry policy for the serverless job.
         self.retry_strategy = retry_strategy
         # The maximum hourly price of the preemptible instance. The value can contain up to three decimal places.
         # 
@@ -34871,7 +34500,7 @@ class SubmitServerlessJobShrinkRequest(TeaModel):
     ):
         # The configuration of the array job.
         # 
-        # >  The index value of an array job is passed to the serverless job container by using the environment variable **EHPC_JOB_ARRAY_INDEX** to allow access to the array job from business programs.
+        # >  The value of an array job index is passed to a serverless job container through the environment variable `EHPC_ARRAY_TASK_ID`. Users can access the container from business programs.
         self.array_properties_shrink = array_properties_shrink
         # The ID of the E-HPC cluster.
         # 
@@ -34890,8 +34519,6 @@ class SubmitServerlessJobShrinkRequest(TeaModel):
         # The ECS instance types used by the serverless job container.
         self.instance_type_shrink = instance_type_shrink
         # The name of the serverless job.
-        # 
-        # >  The name can contain lowercase letters, digits, and hyphens (-). It cannot start or end with a hyphen.
         self.job_name = job_name
         # The scheduling priority of the serverless job. Valid values: 0 to 999. A greater value indicates a higher priority.
         self.job_priority = job_priority
@@ -34899,7 +34526,6 @@ class SubmitServerlessJobShrinkRequest(TeaModel):
         self.memory = memory
         # The name of the RAM role that is associated with the serverless job container.
         self.ram_role_name = ram_role_name
-        # The retry policy for the serverless job.
         self.retry_strategy_shrink = retry_strategy_shrink
         # The maximum hourly price of the preemptible instance. The value can contain up to three decimal places.
         # 
@@ -35045,9 +34671,6 @@ class SubmitServerlessJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -35159,9 +34782,6 @@ class SummaryImagesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -35280,9 +34900,6 @@ class SummaryImagesInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -35391,9 +35008,6 @@ class SyncUsersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -35555,9 +35169,6 @@ class TagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -35688,9 +35299,6 @@ class UnTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -35799,9 +35407,6 @@ class UninstallSoftwareResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -36051,9 +35656,6 @@ class UpdateClusterVolumesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -36195,9 +35797,6 @@ class UpdateQueueConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -36302,9 +35901,6 @@ class UpgradeClientResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

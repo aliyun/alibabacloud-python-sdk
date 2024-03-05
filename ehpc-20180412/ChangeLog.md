@@ -1,3 +1,7 @@
+2024-03-05 Version: 3.0.2
+- Update API ApplyNodes: add param UserData.
+
+
 2024-01-18 Version: 3.0.1
 - Generated python 2018-04-12 for EHPC.
 
