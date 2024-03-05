@@ -28,7 +28,7 @@ pip install alibabacloud_carbonfootprint20230711
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/carbonfootprint-20230711/ChangeLog.md).
 
 ## References
 
