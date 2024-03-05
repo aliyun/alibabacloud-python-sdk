@@ -1969,6 +1969,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.selected_domain_list_with_options_async(request, runtime)
 
+    def submit_purchase_info_with_options(
+        self,
+        request: domain_20180208_models.SubmitPurchaseInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180208_models.SubmitPurchaseInfoResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.biz_id):
+            body['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.purchase_currency):
+            body['PurchaseCurrency'] = request.purchase_currency
+        if not UtilClient.is_unset(request.purchase_price):
+            body['PurchasePrice'] = request.purchase_price
+        if not UtilClient.is_unset(request.purchase_proofs):
+            body['PurchaseProofs'] = request.purchase_proofs
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitPurchaseInfo',
+            version='2018-02-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180208_models.SubmitPurchaseInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_purchase_info_with_options_async(
+        self,
+        request: domain_20180208_models.SubmitPurchaseInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180208_models.SubmitPurchaseInfoResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.biz_id):
+            body['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.purchase_currency):
+            body['PurchaseCurrency'] = request.purchase_currency
+        if not UtilClient.is_unset(request.purchase_price):
+            body['PurchasePrice'] = request.purchase_price
+        if not UtilClient.is_unset(request.purchase_proofs):
+            body['PurchaseProofs'] = request.purchase_proofs
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitPurchaseInfo',
+            version='2018-02-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180208_models.SubmitPurchaseInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_purchase_info(
+        self,
+        request: domain_20180208_models.SubmitPurchaseInfoRequest,
+    ) -> domain_20180208_models.SubmitPurchaseInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_purchase_info_with_options(request, runtime)
+
+    async def submit_purchase_info_async(
+        self,
+        request: domain_20180208_models.SubmitPurchaseInfoRequest,
+    ) -> domain_20180208_models.SubmitPurchaseInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_purchase_info_with_options_async(request, runtime)
+
     def update_partner_reserve_price_with_options(
         self,
         request: domain_20180208_models.UpdatePartnerReservePriceRequest,
