@@ -376,6 +376,8 @@ class Client(OpenApiClient):
             query['RenewStatus'] = request.renew_status
         if not UtilClient.is_unset(request.renewal_duration_unit):
             query['RenewalDurationUnit'] = request.renewal_duration_unit
+        if not UtilClient.is_unset(request.serverless_charge_type):
+            query['ServerlessChargeType'] = request.serverless_charge_type
         if not UtilClient.is_unset(request.storage_size):
             query['StorageSize'] = request.storage_size
         if not UtilClient.is_unset(request.support_eip):
@@ -438,6 +440,8 @@ class Client(OpenApiClient):
             query['RenewStatus'] = request.renew_status
         if not UtilClient.is_unset(request.renewal_duration_unit):
             query['RenewalDurationUnit'] = request.renewal_duration_unit
+        if not UtilClient.is_unset(request.serverless_charge_type):
+            query['ServerlessChargeType'] = request.serverless_charge_type
         if not UtilClient.is_unset(request.storage_size):
             query['StorageSize'] = request.storage_size
         if not UtilClient.is_unset(request.support_eip):

@@ -638,6 +638,7 @@ class CreateInstanceRequest(TeaModel):
         queue_capacity: int = None,
         renew_status: str = None,
         renewal_duration_unit: str = None,
+        serverless_charge_type: str = None,
         storage_size: int = None,
         support_eip: bool = None,
         support_tracing: bool = None,
@@ -658,6 +659,7 @@ class CreateInstanceRequest(TeaModel):
         # autoRenew和renewStatus都是续费方式，当两个同时填写时，以renewStatus为准
         self.renew_status = renew_status
         self.renewal_duration_unit = renewal_duration_unit
+        self.serverless_charge_type = serverless_charge_type
         self.storage_size = storage_size
         self.support_eip = support_eip
         self.support_tracing = support_tracing
@@ -700,6 +702,8 @@ class CreateInstanceRequest(TeaModel):
             result['RenewStatus'] = self.renew_status
         if self.renewal_duration_unit is not None:
             result['RenewalDurationUnit'] = self.renewal_duration_unit
+        if self.serverless_charge_type is not None:
+            result['ServerlessChargeType'] = self.serverless_charge_type
         if self.storage_size is not None:
             result['StorageSize'] = self.storage_size
         if self.support_eip is not None:
@@ -740,6 +744,8 @@ class CreateInstanceRequest(TeaModel):
             self.renew_status = m.get('RenewStatus')
         if m.get('RenewalDurationUnit') is not None:
             self.renewal_duration_unit = m.get('RenewalDurationUnit')
+        if m.get('ServerlessChargeType') is not None:
+            self.serverless_charge_type = m.get('ServerlessChargeType')
         if m.get('StorageSize') is not None:
             self.storage_size = m.get('StorageSize')
         if m.get('SupportEip') is not None:
