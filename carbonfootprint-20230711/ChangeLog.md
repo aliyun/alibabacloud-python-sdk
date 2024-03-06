@@ -1,3 +1,9 @@
+2024-03-06 Version: 1.1.2
+- Update API GetSummaryData: add param Uids.
+- Update API GetSummaryData: update response param.
+- Update API Verify: update response param.
+
+
 2024-03-05 Version: 1.1.1
 - Update API Verify: update response param.
 

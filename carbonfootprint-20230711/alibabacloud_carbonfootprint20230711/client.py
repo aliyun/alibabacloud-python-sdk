@@ -93,10 +93,14 @@ class Client(OpenApiClient):
 
     def get_summary_data_with_options(
         self,
-        request: carbon_footprint_20230711_models.GetSummaryDataRequest,
+        tmp_req: carbon_footprint_20230711_models.GetSummaryDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> carbon_footprint_20230711_models.GetSummaryDataResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = carbon_footprint_20230711_models.GetSummaryDataShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.uids):
+            request.uids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.uids, 'Uids', 'json')
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
@@ -104,6 +108,8 @@ class Client(OpenApiClient):
             query['Group'] = request.group
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.uids_shrink):
+            query['Uids'] = request.uids_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -125,10 +131,14 @@ class Client(OpenApiClient):
 
     async def get_summary_data_with_options_async(
         self,
-        request: carbon_footprint_20230711_models.GetSummaryDataRequest,
+        tmp_req: carbon_footprint_20230711_models.GetSummaryDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> carbon_footprint_20230711_models.GetSummaryDataResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = carbon_footprint_20230711_models.GetSummaryDataShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.uids):
+            request.uids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.uids, 'Uids', 'json')
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
@@ -136,6 +146,8 @@ class Client(OpenApiClient):
             query['Group'] = request.group
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.uids_shrink):
+            query['Uids'] = request.uids_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

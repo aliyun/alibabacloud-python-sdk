@@ -84,10 +84,12 @@ class GetSummaryDataRequest(TeaModel):
         end_time: str = None,
         group: str = None,
         start_time: str = None,
+        uids: List[str] = None,
     ):
         self.end_time = end_time
         self.group = group
         self.start_time = start_time
+        self.uids = uids
 
     def validate(self):
         pass
@@ -104,6 +106,8 @@ class GetSummaryDataRequest(TeaModel):
             result['Group'] = self.group
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.uids is not None:
+            result['Uids'] = self.uids
         return result
 
     def from_map(self, m: dict = None):
@@ -114,27 +118,23 @@ class GetSummaryDataRequest(TeaModel):
             self.group = m.get('Group')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('Uids') is not None:
+            self.uids = m.get('Uids')
         return self
 
 
-class GetSummaryDataResponseBodyData(TeaModel):
+class GetSummaryDataShrinkRequest(TeaModel):
     def __init__(
         self,
-        last_month_consumption_conversion: str = None,
-        last_year_consumption_conversion: str = None,
-        last_year_consumption_conversion_sum: str = None,
-        latest_data_time: str = None,
-        this_month_consumption_conversion: str = None,
-        this_year_consumption_conversion: str = None,
-        total_carbon_consumption_conversion: str = None,
+        end_time: str = None,
+        group: str = None,
+        start_time: str = None,
+        uids_shrink: str = None,
     ):
-        self.last_month_consumption_conversion = last_month_consumption_conversion
-        self.last_year_consumption_conversion = last_year_consumption_conversion
-        self.last_year_consumption_conversion_sum = last_year_consumption_conversion_sum
-        self.latest_data_time = latest_data_time
-        self.this_month_consumption_conversion = this_month_consumption_conversion
-        self.this_year_consumption_conversion = this_year_consumption_conversion
-        self.total_carbon_consumption_conversion = total_carbon_consumption_conversion
+        self.end_time = end_time
+        self.group = group
+        self.start_time = start_time
+        self.uids_shrink = uids_shrink
 
     def validate(self):
         pass
@@ -145,6 +145,67 @@ class GetSummaryDataResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.group is not None:
+            result['Group'] = self.group
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.uids_shrink is not None:
+            result['Uids'] = self.uids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Group') is not None:
+            self.group = m.get('Group')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Uids') is not None:
+            self.uids_shrink = m.get('Uids')
+        return self
+
+
+class GetSummaryDataResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        aircraft_consumption_conversion: str = None,
+        car_consumption_conversion: str = None,
+        last_month_consumption_conversion: str = None,
+        last_year_consumption_conversion: str = None,
+        last_year_consumption_conversion_sum: str = None,
+        latest_data_time: str = None,
+        this_month_consumption_conversion: str = None,
+        this_year_consumption_conversion: str = None,
+        total_carbon_consumption_conversion: str = None,
+        tree_consumption_conversion: str = None,
+    ):
+        self.aircraft_consumption_conversion = aircraft_consumption_conversion
+        self.car_consumption_conversion = car_consumption_conversion
+        self.last_month_consumption_conversion = last_month_consumption_conversion
+        self.last_year_consumption_conversion = last_year_consumption_conversion
+        self.last_year_consumption_conversion_sum = last_year_consumption_conversion_sum
+        self.latest_data_time = latest_data_time
+        self.this_month_consumption_conversion = this_month_consumption_conversion
+        self.this_year_consumption_conversion = this_year_consumption_conversion
+        self.total_carbon_consumption_conversion = total_carbon_consumption_conversion
+        self.tree_consumption_conversion = tree_consumption_conversion
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aircraft_consumption_conversion is not None:
+            result['AircraftConsumptionConversion'] = self.aircraft_consumption_conversion
+        if self.car_consumption_conversion is not None:
+            result['CarConsumptionConversion'] = self.car_consumption_conversion
         if self.last_month_consumption_conversion is not None:
             result['LastMonthConsumptionConversion'] = self.last_month_consumption_conversion
         if self.last_year_consumption_conversion is not None:
@@ -159,10 +220,16 @@ class GetSummaryDataResponseBodyData(TeaModel):
             result['ThisYearConsumptionConversion'] = self.this_year_consumption_conversion
         if self.total_carbon_consumption_conversion is not None:
             result['TotalCarbonConsumptionConversion'] = self.total_carbon_consumption_conversion
+        if self.tree_consumption_conversion is not None:
+            result['TreeConsumptionConversion'] = self.tree_consumption_conversion
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AircraftConsumptionConversion') is not None:
+            self.aircraft_consumption_conversion = m.get('AircraftConsumptionConversion')
+        if m.get('CarConsumptionConversion') is not None:
+            self.car_consumption_conversion = m.get('CarConsumptionConversion')
         if m.get('LastMonthConsumptionConversion') is not None:
             self.last_month_consumption_conversion = m.get('LastMonthConsumptionConversion')
         if m.get('LastYearConsumptionConversion') is not None:
@@ -177,6 +244,8 @@ class GetSummaryDataResponseBodyData(TeaModel):
             self.this_year_consumption_conversion = m.get('ThisYearConsumptionConversion')
         if m.get('TotalCarbonConsumptionConversion') is not None:
             self.total_carbon_consumption_conversion = m.get('TotalCarbonConsumptionConversion')
+        if m.get('TreeConsumptionConversion') is not None:
+            self.tree_consumption_conversion = m.get('TreeConsumptionConversion')
         return self
 
 
