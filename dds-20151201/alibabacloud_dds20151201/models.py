@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List
+from typing import Dict, List, Any
 
 
 class AllocateNodePrivateNetworkAddressRequest(TeaModel):
@@ -6441,6 +6441,202 @@ class DescribeBackupPolicyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeBackupPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeBackupTasksRequest(TeaModel):
+    def __init__(
+        self,
+        backup_job_id: int = None,
+        dbinstance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        self.backup_job_id = backup_job_id
+        self.dbinstance_id = dbinstance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backup_job_id is not None:
+            result['BackupJobId'] = self.backup_job_id
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackupJobId') is not None:
+            self.backup_job_id = m.get('BackupJobId')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DescribeBackupTasksResponseBodyBackupJobs(TeaModel):
+    def __init__(
+        self,
+        backup_set_status: str = None,
+        backup_start_time: str = None,
+        backupjob_id: int = None,
+        job_mode: str = None,
+        progress: str = None,
+    ):
+        self.backup_set_status = backup_set_status
+        self.backup_start_time = backup_start_time
+        self.backupjob_id = backupjob_id
+        self.job_mode = job_mode
+        self.progress = progress
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backup_set_status is not None:
+            result['BackupSetStatus'] = self.backup_set_status
+        if self.backup_start_time is not None:
+            result['BackupStartTime'] = self.backup_start_time
+        if self.backupjob_id is not None:
+            result['BackupjobId'] = self.backupjob_id
+        if self.job_mode is not None:
+            result['JobMode'] = self.job_mode
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackupSetStatus') is not None:
+            self.backup_set_status = m.get('BackupSetStatus')
+        if m.get('BackupStartTime') is not None:
+            self.backup_start_time = m.get('BackupStartTime')
+        if m.get('BackupjobId') is not None:
+            self.backupjob_id = m.get('BackupjobId')
+        if m.get('JobMode') is not None:
+            self.job_mode = m.get('JobMode')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        return self
+
+
+class DescribeBackupTasksResponseBody(TeaModel):
+    def __init__(
+        self,
+        backup_jobs: List[DescribeBackupTasksResponseBodyBackupJobs] = None,
+        request_id: str = None,
+    ):
+        self.backup_jobs = backup_jobs
+        self.request_id = request_id
+
+    def validate(self):
+        if self.backup_jobs:
+            for k in self.backup_jobs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['BackupJobs'] = []
+        if self.backup_jobs is not None:
+            for k in self.backup_jobs:
+                result['BackupJobs'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.backup_jobs = []
+        if m.get('BackupJobs') is not None:
+            for k in m.get('BackupJobs'):
+                temp_model = DescribeBackupTasksResponseBodyBackupJobs()
+                self.backup_jobs.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeBackupTasksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeBackupTasksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeBackupTasksResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13311,6 +13507,184 @@ class DescribeInstanceAutoRenewalAttributeResponse(TeaModel):
         return self
 
 
+class DescribeInstanceRecoverTimeRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        self.dbinstance_id = dbinstance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DescribeInstanceRecoverTimeResponseBodyRestoreRanges(TeaModel):
+    def __init__(
+        self,
+        restore_begin_time: str = None,
+        restore_end_time: str = None,
+        restore_type: str = None,
+    ):
+        self.restore_begin_time = restore_begin_time
+        self.restore_end_time = restore_end_time
+        self.restore_type = restore_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.restore_begin_time is not None:
+            result['RestoreBeginTime'] = self.restore_begin_time
+        if self.restore_end_time is not None:
+            result['RestoreEndTime'] = self.restore_end_time
+        if self.restore_type is not None:
+            result['RestoreType'] = self.restore_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RestoreBeginTime') is not None:
+            self.restore_begin_time = m.get('RestoreBeginTime')
+        if m.get('RestoreEndTime') is not None:
+            self.restore_end_time = m.get('RestoreEndTime')
+        if m.get('RestoreType') is not None:
+            self.restore_type = m.get('RestoreType')
+        return self
+
+
+class DescribeInstanceRecoverTimeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        restore_ranges: List[DescribeInstanceRecoverTimeResponseBodyRestoreRanges] = None,
+    ):
+        self.request_id = request_id
+        self.restore_ranges = restore_ranges
+
+    def validate(self):
+        if self.restore_ranges:
+            for k in self.restore_ranges:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['RestoreRanges'] = []
+        if self.restore_ranges is not None:
+            for k in self.restore_ranges:
+                result['RestoreRanges'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.restore_ranges = []
+        if m.get('RestoreRanges') is not None:
+            for k in m.get('RestoreRanges'):
+                temp_model = DescribeInstanceRecoverTimeResponseBodyRestoreRanges()
+                self.restore_ranges.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeInstanceRecoverTimeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeInstanceRecoverTimeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeInstanceRecoverTimeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeKernelReleaseNotesRequest(TeaModel):
     def __init__(
         self,
@@ -15107,6 +15481,181 @@ class DescribePriceResponseBodyOrderCoupons(TeaModel):
         return self
 
 
+class DescribePriceResponseBodyOrderDepreciateInfoContractActivityOptionIds(TeaModel):
+    def __init__(
+        self,
+        option_id: List[int] = None,
+    ):
+        self.option_id = option_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.option_id is not None:
+            result['OptionId'] = self.option_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OptionId') is not None:
+            self.option_id = m.get('OptionId')
+        return self
+
+
+class DescribePriceResponseBodyOrderDepreciateInfoContractActivity(TeaModel):
+    def __init__(
+        self,
+        activity_id: int = None,
+        activity_name: str = None,
+        final_fee: float = None,
+        final_prom_fee: float = None,
+        option_code: str = None,
+        option_ids: DescribePriceResponseBodyOrderDepreciateInfoContractActivityOptionIds = None,
+        prod_fee: float = None,
+    ):
+        self.activity_id = activity_id
+        self.activity_name = activity_name
+        self.final_fee = final_fee
+        self.final_prom_fee = final_prom_fee
+        self.option_code = option_code
+        self.option_ids = option_ids
+        self.prod_fee = prod_fee
+
+    def validate(self):
+        if self.option_ids:
+            self.option_ids.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.activity_id is not None:
+            result['ActivityId'] = self.activity_id
+        if self.activity_name is not None:
+            result['ActivityName'] = self.activity_name
+        if self.final_fee is not None:
+            result['FinalFee'] = self.final_fee
+        if self.final_prom_fee is not None:
+            result['FinalPromFee'] = self.final_prom_fee
+        if self.option_code is not None:
+            result['OptionCode'] = self.option_code
+        if self.option_ids is not None:
+            result['OptionIds'] = self.option_ids.to_map()
+        if self.prod_fee is not None:
+            result['ProdFee'] = self.prod_fee
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActivityId') is not None:
+            self.activity_id = m.get('ActivityId')
+        if m.get('ActivityName') is not None:
+            self.activity_name = m.get('ActivityName')
+        if m.get('FinalFee') is not None:
+            self.final_fee = m.get('FinalFee')
+        if m.get('FinalPromFee') is not None:
+            self.final_prom_fee = m.get('FinalPromFee')
+        if m.get('OptionCode') is not None:
+            self.option_code = m.get('OptionCode')
+        if m.get('OptionIds') is not None:
+            temp_model = DescribePriceResponseBodyOrderDepreciateInfoContractActivityOptionIds()
+            self.option_ids = temp_model.from_map(m['OptionIds'])
+        if m.get('ProdFee') is not None:
+            self.prod_fee = m.get('ProdFee')
+        return self
+
+
+class DescribePriceResponseBodyOrderDepreciateInfo(TeaModel):
+    def __init__(
+        self,
+        cheap_rate: float = None,
+        cheap_stand_amount: float = None,
+        contract_activity: DescribePriceResponseBodyOrderDepreciateInfoContractActivity = None,
+        differential: float = None,
+        differential_name: str = None,
+        is_contract_activity: bool = None,
+        is_show: str = None,
+        list_price: float = None,
+        month_price: float = None,
+        original_stand_amount: float = None,
+    ):
+        self.cheap_rate = cheap_rate
+        self.cheap_stand_amount = cheap_stand_amount
+        self.contract_activity = contract_activity
+        self.differential = differential
+        self.differential_name = differential_name
+        self.is_contract_activity = is_contract_activity
+        self.is_show = is_show
+        self.list_price = list_price
+        self.month_price = month_price
+        self.original_stand_amount = original_stand_amount
+
+    def validate(self):
+        if self.contract_activity:
+            self.contract_activity.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cheap_rate is not None:
+            result['CheapRate'] = self.cheap_rate
+        if self.cheap_stand_amount is not None:
+            result['CheapStandAmount'] = self.cheap_stand_amount
+        if self.contract_activity is not None:
+            result['ContractActivity'] = self.contract_activity.to_map()
+        if self.differential is not None:
+            result['Differential'] = self.differential
+        if self.differential_name is not None:
+            result['DifferentialName'] = self.differential_name
+        if self.is_contract_activity is not None:
+            result['IsContractActivity'] = self.is_contract_activity
+        if self.is_show is not None:
+            result['IsShow'] = self.is_show
+        if self.list_price is not None:
+            result['ListPrice'] = self.list_price
+        if self.month_price is not None:
+            result['MonthPrice'] = self.month_price
+        if self.original_stand_amount is not None:
+            result['OriginalStandAmount'] = self.original_stand_amount
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheapRate') is not None:
+            self.cheap_rate = m.get('CheapRate')
+        if m.get('CheapStandAmount') is not None:
+            self.cheap_stand_amount = m.get('CheapStandAmount')
+        if m.get('ContractActivity') is not None:
+            temp_model = DescribePriceResponseBodyOrderDepreciateInfoContractActivity()
+            self.contract_activity = temp_model.from_map(m['ContractActivity'])
+        if m.get('Differential') is not None:
+            self.differential = m.get('Differential')
+        if m.get('DifferentialName') is not None:
+            self.differential_name = m.get('DifferentialName')
+        if m.get('IsContractActivity') is not None:
+            self.is_contract_activity = m.get('IsContractActivity')
+        if m.get('IsShow') is not None:
+            self.is_show = m.get('IsShow')
+        if m.get('ListPrice') is not None:
+            self.list_price = m.get('ListPrice')
+        if m.get('MonthPrice') is not None:
+            self.month_price = m.get('MonthPrice')
+        if m.get('OriginalStandAmount') is not None:
+            self.original_stand_amount = m.get('OriginalStandAmount')
+        return self
+
+
 class DescribePriceResponseBodyOrderRuleIds(TeaModel):
     def __init__(
         self,
@@ -15137,22 +15686,34 @@ class DescribePriceResponseBodyOrderRuleIds(TeaModel):
 class DescribePriceResponseBodyOrder(TeaModel):
     def __init__(
         self,
+        code: str = None,
+        contract_activity: bool = None,
         coupons: DescribePriceResponseBodyOrderCoupons = None,
         currency: str = None,
+        depreciate_info: DescribePriceResponseBodyOrderDepreciateInfo = None,
         discount_amount: str = None,
+        is_contract_activity: bool = None,
+        message: str = None,
         optional_promotions: str = None,
         original_amount: str = None,
         prom_detail_list: str = None,
         rule_ids: DescribePriceResponseBodyOrderRuleIds = None,
         show_discount_info: bool = None,
+        stand_discount_price: float = None,
+        stand_price: float = None,
         trade_amount: str = None,
     ):
+        self.code = code
+        self.contract_activity = contract_activity
         # The information of coupons.
         self.coupons = coupons
         # The currency.
         self.currency = currency
+        self.depreciate_info = depreciate_info
         # The discount amount of the order.
         self.discount_amount = discount_amount
+        self.is_contract_activity = is_contract_activity
+        self.message = message
         self.optional_promotions = optional_promotions
         # The original price of the order.
         self.original_amount = original_amount
@@ -15161,12 +15722,16 @@ class DescribePriceResponseBodyOrder(TeaModel):
         self.rule_ids = rule_ids
         # Indicates whether the information of the discount is displayed.
         self.show_discount_info = show_discount_info
+        self.stand_discount_price = stand_discount_price
+        self.stand_price = stand_price
         # The final price of the order.
         self.trade_amount = trade_amount
 
     def validate(self):
         if self.coupons:
             self.coupons.validate()
+        if self.depreciate_info:
+            self.depreciate_info.validate()
         if self.rule_ids:
             self.rule_ids.validate()
 
@@ -15176,12 +15741,22 @@ class DescribePriceResponseBodyOrder(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.contract_activity is not None:
+            result['ContractActivity'] = self.contract_activity
         if self.coupons is not None:
             result['Coupons'] = self.coupons.to_map()
         if self.currency is not None:
             result['Currency'] = self.currency
+        if self.depreciate_info is not None:
+            result['DepreciateInfo'] = self.depreciate_info.to_map()
         if self.discount_amount is not None:
             result['DiscountAmount'] = self.discount_amount
+        if self.is_contract_activity is not None:
+            result['IsContractActivity'] = self.is_contract_activity
+        if self.message is not None:
+            result['Message'] = self.message
         if self.optional_promotions is not None:
             result['OptionalPromotions'] = self.optional_promotions
         if self.original_amount is not None:
@@ -15192,19 +15767,34 @@ class DescribePriceResponseBodyOrder(TeaModel):
             result['RuleIds'] = self.rule_ids.to_map()
         if self.show_discount_info is not None:
             result['ShowDiscountInfo'] = self.show_discount_info
+        if self.stand_discount_price is not None:
+            result['StandDiscountPrice'] = self.stand_discount_price
+        if self.stand_price is not None:
+            result['StandPrice'] = self.stand_price
         if self.trade_amount is not None:
             result['TradeAmount'] = self.trade_amount
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ContractActivity') is not None:
+            self.contract_activity = m.get('ContractActivity')
         if m.get('Coupons') is not None:
             temp_model = DescribePriceResponseBodyOrderCoupons()
             self.coupons = temp_model.from_map(m['Coupons'])
         if m.get('Currency') is not None:
             self.currency = m.get('Currency')
+        if m.get('DepreciateInfo') is not None:
+            temp_model = DescribePriceResponseBodyOrderDepreciateInfo()
+            self.depreciate_info = temp_model.from_map(m['DepreciateInfo'])
         if m.get('DiscountAmount') is not None:
             self.discount_amount = m.get('DiscountAmount')
+        if m.get('IsContractActivity') is not None:
+            self.is_contract_activity = m.get('IsContractActivity')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('OptionalPromotions') is not None:
             self.optional_promotions = m.get('OptionalPromotions')
         if m.get('OriginalAmount') is not None:
@@ -15216,6 +15806,10 @@ class DescribePriceResponseBodyOrder(TeaModel):
             self.rule_ids = temp_model.from_map(m['RuleIds'])
         if m.get('ShowDiscountInfo') is not None:
             self.show_discount_info = m.get('ShowDiscountInfo')
+        if m.get('StandDiscountPrice') is not None:
+            self.stand_discount_price = m.get('StandDiscountPrice')
+        if m.get('StandPrice') is not None:
+            self.stand_price = m.get('StandPrice')
         if m.get('TradeAmount') is not None:
             self.trade_amount = m.get('TradeAmount')
         return self
@@ -15298,6 +15892,831 @@ class DescribePriceResponseBodyRules(TeaModel):
         return self
 
 
+class DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivityOptionIds(TeaModel):
+    def __init__(
+        self,
+        option_id: List[int] = None,
+    ):
+        self.option_id = option_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.option_id is not None:
+            result['OptionId'] = self.option_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OptionId') is not None:
+            self.option_id = m.get('OptionId')
+        return self
+
+
+class DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity(TeaModel):
+    def __init__(
+        self,
+        activity_id: int = None,
+        activity_name: str = None,
+        final_fee: float = None,
+        final_prom_fee: float = None,
+        option_code: str = None,
+        option_ids: DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivityOptionIds = None,
+        prod_fee: float = None,
+    ):
+        self.activity_id = activity_id
+        self.activity_name = activity_name
+        self.final_fee = final_fee
+        self.final_prom_fee = final_prom_fee
+        self.option_code = option_code
+        self.option_ids = option_ids
+        self.prod_fee = prod_fee
+
+    def validate(self):
+        if self.option_ids:
+            self.option_ids.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.activity_id is not None:
+            result['ActivityId'] = self.activity_id
+        if self.activity_name is not None:
+            result['ActivityName'] = self.activity_name
+        if self.final_fee is not None:
+            result['FinalFee'] = self.final_fee
+        if self.final_prom_fee is not None:
+            result['FinalPromFee'] = self.final_prom_fee
+        if self.option_code is not None:
+            result['OptionCode'] = self.option_code
+        if self.option_ids is not None:
+            result['OptionIds'] = self.option_ids.to_map()
+        if self.prod_fee is not None:
+            result['ProdFee'] = self.prod_fee
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActivityId') is not None:
+            self.activity_id = m.get('ActivityId')
+        if m.get('ActivityName') is not None:
+            self.activity_name = m.get('ActivityName')
+        if m.get('FinalFee') is not None:
+            self.final_fee = m.get('FinalFee')
+        if m.get('FinalPromFee') is not None:
+            self.final_prom_fee = m.get('FinalPromFee')
+        if m.get('OptionCode') is not None:
+            self.option_code = m.get('OptionCode')
+        if m.get('OptionIds') is not None:
+            temp_model = DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivityOptionIds()
+            self.option_ids = temp_model.from_map(m['OptionIds'])
+        if m.get('ProdFee') is not None:
+            self.prod_fee = m.get('ProdFee')
+        return self
+
+
+class DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo(TeaModel):
+    def __init__(
+        self,
+        cheap_rate: float = None,
+        cheap_stand_amount: float = None,
+        contract_activity: DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity = None,
+        differential: float = None,
+        differential_name: str = None,
+        is_contract_activity: bool = None,
+        is_show: str = None,
+        list_price: float = None,
+        month_price: float = None,
+        original_stand_amount: float = None,
+    ):
+        self.cheap_rate = cheap_rate
+        self.cheap_stand_amount = cheap_stand_amount
+        self.contract_activity = contract_activity
+        self.differential = differential
+        self.differential_name = differential_name
+        self.is_contract_activity = is_contract_activity
+        self.is_show = is_show
+        self.list_price = list_price
+        self.month_price = month_price
+        self.original_stand_amount = original_stand_amount
+
+    def validate(self):
+        if self.contract_activity:
+            self.contract_activity.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cheap_rate is not None:
+            result['CheapRate'] = self.cheap_rate
+        if self.cheap_stand_amount is not None:
+            result['CheapStandAmount'] = self.cheap_stand_amount
+        if self.contract_activity is not None:
+            result['ContractActivity'] = self.contract_activity.to_map()
+        if self.differential is not None:
+            result['Differential'] = self.differential
+        if self.differential_name is not None:
+            result['DifferentialName'] = self.differential_name
+        if self.is_contract_activity is not None:
+            result['IsContractActivity'] = self.is_contract_activity
+        if self.is_show is not None:
+            result['IsShow'] = self.is_show
+        if self.list_price is not None:
+            result['ListPrice'] = self.list_price
+        if self.month_price is not None:
+            result['MonthPrice'] = self.month_price
+        if self.original_stand_amount is not None:
+            result['OriginalStandAmount'] = self.original_stand_amount
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheapRate') is not None:
+            self.cheap_rate = m.get('CheapRate')
+        if m.get('CheapStandAmount') is not None:
+            self.cheap_stand_amount = m.get('CheapStandAmount')
+        if m.get('ContractActivity') is not None:
+            temp_model = DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity()
+            self.contract_activity = temp_model.from_map(m['ContractActivity'])
+        if m.get('Differential') is not None:
+            self.differential = m.get('Differential')
+        if m.get('DifferentialName') is not None:
+            self.differential_name = m.get('DifferentialName')
+        if m.get('IsContractActivity') is not None:
+            self.is_contract_activity = m.get('IsContractActivity')
+        if m.get('IsShow') is not None:
+            self.is_show = m.get('IsShow')
+        if m.get('ListPrice') is not None:
+            self.list_price = m.get('ListPrice')
+        if m.get('MonthPrice') is not None:
+            self.month_price = m.get('MonthPrice')
+        if m.get('OriginalStandAmount') is not None:
+            self.original_stand_amount = m.get('OriginalStandAmount')
+        return self
+
+
+class DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo(TeaModel):
+    def __init__(
+        self,
+        cheap_rate: float = None,
+        cheap_stand_amount: float = None,
+        differential: float = None,
+        differential_name: str = None,
+        is_contract_activity: bool = None,
+        is_show: str = None,
+        list_price: float = None,
+        month_price: float = None,
+        original_stand_amount: float = None,
+    ):
+        self.cheap_rate = cheap_rate
+        self.cheap_stand_amount = cheap_stand_amount
+        self.differential = differential
+        self.differential_name = differential_name
+        self.is_contract_activity = is_contract_activity
+        self.is_show = is_show
+        self.list_price = list_price
+        self.month_price = month_price
+        self.original_stand_amount = original_stand_amount
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cheap_rate is not None:
+            result['CheapRate'] = self.cheap_rate
+        if self.cheap_stand_amount is not None:
+            result['CheapStandAmount'] = self.cheap_stand_amount
+        if self.differential is not None:
+            result['Differential'] = self.differential
+        if self.differential_name is not None:
+            result['DifferentialName'] = self.differential_name
+        if self.is_contract_activity is not None:
+            result['IsContractActivity'] = self.is_contract_activity
+        if self.is_show is not None:
+            result['IsShow'] = self.is_show
+        if self.list_price is not None:
+            result['ListPrice'] = self.list_price
+        if self.month_price is not None:
+            result['MonthPrice'] = self.month_price
+        if self.original_stand_amount is not None:
+            result['OriginalStandAmount'] = self.original_stand_amount
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheapRate') is not None:
+            self.cheap_rate = m.get('CheapRate')
+        if m.get('CheapStandAmount') is not None:
+            self.cheap_stand_amount = m.get('CheapStandAmount')
+        if m.get('Differential') is not None:
+            self.differential = m.get('Differential')
+        if m.get('DifferentialName') is not None:
+            self.differential_name = m.get('DifferentialName')
+        if m.get('IsContractActivity') is not None:
+            self.is_contract_activity = m.get('IsContractActivity')
+        if m.get('IsShow') is not None:
+            self.is_show = m.get('IsShow')
+        if m.get('ListPrice') is not None:
+            self.list_price = m.get('ListPrice')
+        if m.get('MonthPrice') is not None:
+            self.month_price = m.get('MonthPrice')
+        if m.get('OriginalStandAmount') is not None:
+            self.original_stand_amount = m.get('OriginalStandAmount')
+        return self
+
+
+class DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrsModuleAttr(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        name: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.code = code
+        self.name = name
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrs(TeaModel):
+    def __init__(
+        self,
+        module_attr: List[DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrsModuleAttr] = None,
+    ):
+        self.module_attr = module_attr
+
+    def validate(self):
+        if self.module_attr:
+            for k in self.module_attr:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['moduleAttr'] = []
+        if self.module_attr is not None:
+            for k in self.module_attr:
+                result['moduleAttr'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.module_attr = []
+        if m.get('moduleAttr') is not None:
+            for k in m.get('moduleAttr'):
+                temp_model = DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrsModuleAttr()
+                self.module_attr.append(temp_model.from_map(k))
+        return self
+
+
+class DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailListPromDetal(TeaModel):
+    def __init__(
+        self,
+        activity_ext_info: Dict[str, Any] = None,
+        derived_prom_type: str = None,
+        final_prom_fee: float = None,
+        option_code: str = None,
+        prom_type: str = None,
+        promotion_code: str = None,
+        promotion_id: int = None,
+        promotion_name: str = None,
+    ):
+        self.activity_ext_info = activity_ext_info
+        self.derived_prom_type = derived_prom_type
+        self.final_prom_fee = final_prom_fee
+        self.option_code = option_code
+        self.prom_type = prom_type
+        self.promotion_code = promotion_code
+        self.promotion_id = promotion_id
+        self.promotion_name = promotion_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.activity_ext_info is not None:
+            result['ActivityExtInfo'] = self.activity_ext_info
+        if self.derived_prom_type is not None:
+            result['DerivedPromType'] = self.derived_prom_type
+        if self.final_prom_fee is not None:
+            result['FinalPromFee'] = self.final_prom_fee
+        if self.option_code is not None:
+            result['OptionCode'] = self.option_code
+        if self.prom_type is not None:
+            result['PromType'] = self.prom_type
+        if self.promotion_code is not None:
+            result['PromotionCode'] = self.promotion_code
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
+        if self.promotion_name is not None:
+            result['PromotionName'] = self.promotion_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActivityExtInfo') is not None:
+            self.activity_ext_info = m.get('ActivityExtInfo')
+        if m.get('DerivedPromType') is not None:
+            self.derived_prom_type = m.get('DerivedPromType')
+        if m.get('FinalPromFee') is not None:
+            self.final_prom_fee = m.get('FinalPromFee')
+        if m.get('OptionCode') is not None:
+            self.option_code = m.get('OptionCode')
+        if m.get('PromType') is not None:
+            self.prom_type = m.get('PromType')
+        if m.get('PromotionCode') is not None:
+            self.promotion_code = m.get('PromotionCode')
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
+        if m.get('PromotionName') is not None:
+            self.promotion_name = m.get('PromotionName')
+        return self
+
+
+class DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailList(TeaModel):
+    def __init__(
+        self,
+        prom_detal: List[DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailListPromDetal] = None,
+    ):
+        self.prom_detal = prom_detal
+
+    def validate(self):
+        if self.prom_detal:
+            for k in self.prom_detal:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PromDetal'] = []
+        if self.prom_detal is not None:
+            for k in self.prom_detal:
+                result['PromDetal'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.prom_detal = []
+        if m.get('PromDetal') is not None:
+            for k in m.get('PromDetal'):
+                temp_model = DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailListPromDetal()
+                self.prom_detal.append(temp_model.from_map(k))
+        return self
+
+
+class DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance(TeaModel):
+    def __init__(
+        self,
+        contract_activity: bool = None,
+        cycle_fee: str = None,
+        depreciate_info: DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo = None,
+        discount_fee: str = None,
+        module_attrs: DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrs = None,
+        module_code: str = None,
+        module_id: int = None,
+        module_name: str = None,
+        need_order_pay: bool = None,
+        pay_fee: float = None,
+        pricing_module: bool = None,
+        prom_detail_list: DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailList = None,
+        stand_price: float = None,
+        total_product_fee: float = None,
+    ):
+        self.contract_activity = contract_activity
+        self.cycle_fee = cycle_fee
+        self.depreciate_info = depreciate_info
+        self.discount_fee = discount_fee
+        self.module_attrs = module_attrs
+        self.module_code = module_code
+        self.module_id = module_id
+        self.module_name = module_name
+        self.need_order_pay = need_order_pay
+        self.pay_fee = pay_fee
+        self.pricing_module = pricing_module
+        self.prom_detail_list = prom_detail_list
+        self.stand_price = stand_price
+        self.total_product_fee = total_product_fee
+
+    def validate(self):
+        if self.depreciate_info:
+            self.depreciate_info.validate()
+        if self.module_attrs:
+            self.module_attrs.validate()
+        if self.prom_detail_list:
+            self.prom_detail_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.contract_activity is not None:
+            result['ContractActivity'] = self.contract_activity
+        if self.cycle_fee is not None:
+            result['CycleFee'] = self.cycle_fee
+        if self.depreciate_info is not None:
+            result['DepreciateInfo'] = self.depreciate_info.to_map()
+        if self.discount_fee is not None:
+            result['DiscountFee'] = self.discount_fee
+        if self.module_attrs is not None:
+            result['ModuleAttrs'] = self.module_attrs.to_map()
+        if self.module_code is not None:
+            result['ModuleCode'] = self.module_code
+        if self.module_id is not None:
+            result['ModuleId'] = self.module_id
+        if self.module_name is not None:
+            result['ModuleName'] = self.module_name
+        if self.need_order_pay is not None:
+            result['NeedOrderPay'] = self.need_order_pay
+        if self.pay_fee is not None:
+            result['PayFee'] = self.pay_fee
+        if self.pricing_module is not None:
+            result['PricingModule'] = self.pricing_module
+        if self.prom_detail_list is not None:
+            result['PromDetailList'] = self.prom_detail_list.to_map()
+        if self.stand_price is not None:
+            result['StandPrice'] = self.stand_price
+        if self.total_product_fee is not None:
+            result['TotalProductFee'] = self.total_product_fee
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ContractActivity') is not None:
+            self.contract_activity = m.get('ContractActivity')
+        if m.get('CycleFee') is not None:
+            self.cycle_fee = m.get('CycleFee')
+        if m.get('DepreciateInfo') is not None:
+            temp_model = DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo()
+            self.depreciate_info = temp_model.from_map(m['DepreciateInfo'])
+        if m.get('DiscountFee') is not None:
+            self.discount_fee = m.get('DiscountFee')
+        if m.get('ModuleAttrs') is not None:
+            temp_model = DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrs()
+            self.module_attrs = temp_model.from_map(m['ModuleAttrs'])
+        if m.get('ModuleCode') is not None:
+            self.module_code = m.get('ModuleCode')
+        if m.get('ModuleId') is not None:
+            self.module_id = m.get('ModuleId')
+        if m.get('ModuleName') is not None:
+            self.module_name = m.get('ModuleName')
+        if m.get('NeedOrderPay') is not None:
+            self.need_order_pay = m.get('NeedOrderPay')
+        if m.get('PayFee') is not None:
+            self.pay_fee = m.get('PayFee')
+        if m.get('PricingModule') is not None:
+            self.pricing_module = m.get('PricingModule')
+        if m.get('PromDetailList') is not None:
+            temp_model = DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailList()
+            self.prom_detail_list = temp_model.from_map(m['PromDetailList'])
+        if m.get('StandPrice') is not None:
+            self.stand_price = m.get('StandPrice')
+        if m.get('TotalProductFee') is not None:
+            self.total_product_fee = m.get('TotalProductFee')
+        return self
+
+
+class DescribePriceResponseBodySubOrdersSubOrderModuleInstance(TeaModel):
+    def __init__(
+        self,
+        module_instance: List[DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance] = None,
+    ):
+        self.module_instance = module_instance
+
+    def validate(self):
+        if self.module_instance:
+            for k in self.module_instance:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ModuleInstance'] = []
+        if self.module_instance is not None:
+            for k in self.module_instance:
+                result['ModuleInstance'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.module_instance = []
+        if m.get('ModuleInstance') is not None:
+            for k in m.get('ModuleInstance'):
+                temp_model = DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance()
+                self.module_instance.append(temp_model.from_map(k))
+        return self
+
+
+class DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotionTargetArticleItemCodes(TeaModel):
+    def __init__(
+        self,
+        target_article_item_code: List[str] = None,
+    ):
+        self.target_article_item_code = target_article_item_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.target_article_item_code is not None:
+            result['targetArticleItemCode'] = self.target_article_item_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('targetArticleItemCode') is not None:
+            self.target_article_item_code = m.get('targetArticleItemCode')
+        return self
+
+
+class DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion(TeaModel):
+    def __init__(
+        self,
+        activity_category: str = None,
+        activity_ext_info: Dict[str, Any] = None,
+        can_prom_fee: float = None,
+        option_code: str = None,
+        promotion_name: str = None,
+        promotion_option_no: str = None,
+        selected: bool = None,
+        show: bool = None,
+        target_article_item_codes: DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotionTargetArticleItemCodes = None,
+    ):
+        self.activity_category = activity_category
+        self.activity_ext_info = activity_ext_info
+        self.can_prom_fee = can_prom_fee
+        self.option_code = option_code
+        self.promotion_name = promotion_name
+        self.promotion_option_no = promotion_option_no
+        self.selected = selected
+        self.show = show
+        self.target_article_item_codes = target_article_item_codes
+
+    def validate(self):
+        if self.target_article_item_codes:
+            self.target_article_item_codes.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.activity_category is not None:
+            result['ActivityCategory'] = self.activity_category
+        if self.activity_ext_info is not None:
+            result['ActivityExtInfo'] = self.activity_ext_info
+        if self.can_prom_fee is not None:
+            result['CanPromFee'] = self.can_prom_fee
+        if self.option_code is not None:
+            result['OptionCode'] = self.option_code
+        if self.promotion_name is not None:
+            result['PromotionName'] = self.promotion_name
+        if self.promotion_option_no is not None:
+            result['PromotionOptionNo'] = self.promotion_option_no
+        if self.selected is not None:
+            result['Selected'] = self.selected
+        if self.show is not None:
+            result['Show'] = self.show
+        if self.target_article_item_codes is not None:
+            result['TargetArticleItemCodes'] = self.target_article_item_codes.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActivityCategory') is not None:
+            self.activity_category = m.get('ActivityCategory')
+        if m.get('ActivityExtInfo') is not None:
+            self.activity_ext_info = m.get('ActivityExtInfo')
+        if m.get('CanPromFee') is not None:
+            self.can_prom_fee = m.get('CanPromFee')
+        if m.get('OptionCode') is not None:
+            self.option_code = m.get('OptionCode')
+        if m.get('PromotionName') is not None:
+            self.promotion_name = m.get('PromotionName')
+        if m.get('PromotionOptionNo') is not None:
+            self.promotion_option_no = m.get('PromotionOptionNo')
+        if m.get('Selected') is not None:
+            self.selected = m.get('Selected')
+        if m.get('Show') is not None:
+            self.show = m.get('Show')
+        if m.get('TargetArticleItemCodes') is not None:
+            temp_model = DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotionTargetArticleItemCodes()
+            self.target_article_item_codes = temp_model.from_map(m['TargetArticleItemCodes'])
+        return self
+
+
+class DescribePriceResponseBodySubOrdersSubOrderOptionalPromotions(TeaModel):
+    def __init__(
+        self,
+        optional_promotion: List[DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion] = None,
+    ):
+        self.optional_promotion = optional_promotion
+
+    def validate(self):
+        if self.optional_promotion:
+            for k in self.optional_promotion:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['OptionalPromotion'] = []
+        if self.optional_promotion is not None:
+            for k in self.optional_promotion:
+                result['OptionalPromotion'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.optional_promotion = []
+        if m.get('OptionalPromotion') is not None:
+            for k in m.get('OptionalPromotion'):
+                temp_model = DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion()
+                self.optional_promotion.append(temp_model.from_map(k))
+        return self
+
+
+class DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetal(TeaModel):
+    def __init__(
+        self,
+        activity_ext_info: Dict[str, Any] = None,
+        derived_prom_type: str = None,
+        final_prom_fee: float = None,
+        option_code: str = None,
+        prom_type: str = None,
+        promotion_code: str = None,
+        promotion_id: int = None,
+        promotion_name: str = None,
+    ):
+        self.activity_ext_info = activity_ext_info
+        self.derived_prom_type = derived_prom_type
+        self.final_prom_fee = final_prom_fee
+        self.option_code = option_code
+        self.prom_type = prom_type
+        self.promotion_code = promotion_code
+        self.promotion_id = promotion_id
+        self.promotion_name = promotion_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.activity_ext_info is not None:
+            result['ActivityExtInfo'] = self.activity_ext_info
+        if self.derived_prom_type is not None:
+            result['DerivedPromType'] = self.derived_prom_type
+        if self.final_prom_fee is not None:
+            result['FinalPromFee'] = self.final_prom_fee
+        if self.option_code is not None:
+            result['OptionCode'] = self.option_code
+        if self.prom_type is not None:
+            result['PromType'] = self.prom_type
+        if self.promotion_code is not None:
+            result['PromotionCode'] = self.promotion_code
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
+        if self.promotion_name is not None:
+            result['PromotionName'] = self.promotion_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActivityExtInfo') is not None:
+            self.activity_ext_info = m.get('ActivityExtInfo')
+        if m.get('DerivedPromType') is not None:
+            self.derived_prom_type = m.get('DerivedPromType')
+        if m.get('FinalPromFee') is not None:
+            self.final_prom_fee = m.get('FinalPromFee')
+        if m.get('OptionCode') is not None:
+            self.option_code = m.get('OptionCode')
+        if m.get('PromType') is not None:
+            self.prom_type = m.get('PromType')
+        if m.get('PromotionCode') is not None:
+            self.promotion_code = m.get('PromotionCode')
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
+        if m.get('PromotionName') is not None:
+            self.promotion_name = m.get('PromotionName')
+        return self
+
+
+class DescribePriceResponseBodySubOrdersSubOrderPromDetailList(TeaModel):
+    def __init__(
+        self,
+        prom_detal: List[DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetal] = None,
+    ):
+        self.prom_detal = prom_detal
+
+    def validate(self):
+        if self.prom_detal:
+            for k in self.prom_detal:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PromDetal'] = []
+        if self.prom_detal is not None:
+            for k in self.prom_detal:
+                result['PromDetal'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.prom_detal = []
+        if m.get('PromDetal') is not None:
+            for k in m.get('PromDetal'):
+                temp_model = DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetal()
+                self.prom_detal.append(temp_model.from_map(k))
+        return self
+
+
 class DescribePriceResponseBodySubOrdersSubOrderRuleIds(TeaModel):
     def __init__(
         self,
@@ -15328,24 +16747,50 @@ class DescribePriceResponseBodySubOrdersSubOrderRuleIds(TeaModel):
 class DescribePriceResponseBodySubOrdersSubOrder(TeaModel):
     def __init__(
         self,
+        contract_activity: bool = None,
+        depreciate_info: DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo = None,
         discount_amount: str = None,
         instance_id: str = None,
+        is_contract_activity: bool = None,
+        is_new_official_activity: str = None,
+        module_instance: DescribePriceResponseBodySubOrdersSubOrderModuleInstance = None,
+        optional_promotions: DescribePriceResponseBodySubOrdersSubOrderOptionalPromotions = None,
         original_amount: str = None,
+        prom_detail_list: DescribePriceResponseBodySubOrdersSubOrderPromDetailList = None,
         rule_ids: DescribePriceResponseBodySubOrdersSubOrderRuleIds = None,
+        stand_discount_price: float = None,
+        stand_price: float = None,
         trade_amount: str = None,
     ):
+        self.contract_activity = contract_activity
+        self.depreciate_info = depreciate_info
         # The discount amount of the order.
         self.discount_amount = discount_amount
         # The instance ID.
         self.instance_id = instance_id
+        self.is_contract_activity = is_contract_activity
+        self.is_new_official_activity = is_new_official_activity
+        self.module_instance = module_instance
+        self.optional_promotions = optional_promotions
         # The list price of the order.
         self.original_amount = original_amount
+        self.prom_detail_list = prom_detail_list
         # The promotion rules.
         self.rule_ids = rule_ids
+        self.stand_discount_price = stand_discount_price
+        self.stand_price = stand_price
         # The actual price of the order.
         self.trade_amount = trade_amount
 
     def validate(self):
+        if self.depreciate_info:
+            self.depreciate_info.validate()
+        if self.module_instance:
+            self.module_instance.validate()
+        if self.optional_promotions:
+            self.optional_promotions.validate()
+        if self.prom_detail_list:
+            self.prom_detail_list.validate()
         if self.rule_ids:
             self.rule_ids.validate()
 
@@ -15355,29 +16800,69 @@ class DescribePriceResponseBodySubOrdersSubOrder(TeaModel):
             return _map
 
         result = dict()
+        if self.contract_activity is not None:
+            result['ContractActivity'] = self.contract_activity
+        if self.depreciate_info is not None:
+            result['DepreciateInfo'] = self.depreciate_info.to_map()
         if self.discount_amount is not None:
             result['DiscountAmount'] = self.discount_amount
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.is_contract_activity is not None:
+            result['IsContractActivity'] = self.is_contract_activity
+        if self.is_new_official_activity is not None:
+            result['IsNewOfficialActivity'] = self.is_new_official_activity
+        if self.module_instance is not None:
+            result['ModuleInstance'] = self.module_instance.to_map()
+        if self.optional_promotions is not None:
+            result['OptionalPromotions'] = self.optional_promotions.to_map()
         if self.original_amount is not None:
             result['OriginalAmount'] = self.original_amount
+        if self.prom_detail_list is not None:
+            result['PromDetailList'] = self.prom_detail_list.to_map()
         if self.rule_ids is not None:
             result['RuleIds'] = self.rule_ids.to_map()
+        if self.stand_discount_price is not None:
+            result['StandDiscountPrice'] = self.stand_discount_price
+        if self.stand_price is not None:
+            result['StandPrice'] = self.stand_price
         if self.trade_amount is not None:
             result['TradeAmount'] = self.trade_amount
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ContractActivity') is not None:
+            self.contract_activity = m.get('ContractActivity')
+        if m.get('DepreciateInfo') is not None:
+            temp_model = DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo()
+            self.depreciate_info = temp_model.from_map(m['DepreciateInfo'])
         if m.get('DiscountAmount') is not None:
             self.discount_amount = m.get('DiscountAmount')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('IsContractActivity') is not None:
+            self.is_contract_activity = m.get('IsContractActivity')
+        if m.get('IsNewOfficialActivity') is not None:
+            self.is_new_official_activity = m.get('IsNewOfficialActivity')
+        if m.get('ModuleInstance') is not None:
+            temp_model = DescribePriceResponseBodySubOrdersSubOrderModuleInstance()
+            self.module_instance = temp_model.from_map(m['ModuleInstance'])
+        if m.get('OptionalPromotions') is not None:
+            temp_model = DescribePriceResponseBodySubOrdersSubOrderOptionalPromotions()
+            self.optional_promotions = temp_model.from_map(m['OptionalPromotions'])
         if m.get('OriginalAmount') is not None:
             self.original_amount = m.get('OriginalAmount')
+        if m.get('PromDetailList') is not None:
+            temp_model = DescribePriceResponseBodySubOrdersSubOrderPromDetailList()
+            self.prom_detail_list = temp_model.from_map(m['PromDetailList'])
         if m.get('RuleIds') is not None:
             temp_model = DescribePriceResponseBodySubOrdersSubOrderRuleIds()
             self.rule_ids = temp_model.from_map(m['RuleIds'])
+        if m.get('StandDiscountPrice') is not None:
+            self.stand_discount_price = m.get('StandDiscountPrice')
+        if m.get('StandPrice') is not None:
+            self.stand_price = m.get('StandPrice')
         if m.get('TradeAmount') is not None:
             self.trade_amount = m.get('TradeAmount')
         return self
