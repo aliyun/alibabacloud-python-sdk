@@ -3,8 +3,10 @@
 from typing import Dict
 from Tea.core import TeaCore
 
+from alibabacloud_gateway_spi.client import Client as SPIClient
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_kms20160120 import models as kms_20160120_models
@@ -16,11 +18,16 @@ class Client(OpenApiClient):
     """
     *\
     """
+    _client: SPIClient = None
+
     def __init__(
         self, 
         config: open_api_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'Kms'
+        self._client = GatewayClientClient()
+        self._spi = self._client
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('kms', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -85,10 +92,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.AsymmetricDecryptResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.AsymmetricDecryptResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.AsymmetricDecryptResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def asymmetric_decrypt_with_options_async(
         self,
@@ -134,10 +147,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.AsymmetricDecryptResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.AsymmetricDecryptResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.AsymmetricDecryptResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def asymmetric_decrypt(
         self,
@@ -225,10 +244,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.AsymmetricEncryptResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.AsymmetricEncryptResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.AsymmetricEncryptResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def asymmetric_encrypt_with_options_async(
         self,
@@ -274,10 +299,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.AsymmetricEncryptResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.AsymmetricEncryptResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.AsymmetricEncryptResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def asymmetric_encrypt(
         self,
@@ -357,10 +388,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.AsymmetricSignResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.AsymmetricSignResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.AsymmetricSignResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def asymmetric_sign_with_options_async(
         self,
@@ -398,10 +435,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.AsymmetricSignResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.AsymmetricSignResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.AsymmetricSignResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def asymmetric_sign(
         self,
@@ -477,10 +520,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.AsymmetricVerifyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.AsymmetricVerifyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.AsymmetricVerifyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def asymmetric_verify_with_options_async(
         self,
@@ -530,10 +579,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.AsymmetricVerifyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.AsymmetricVerifyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.AsymmetricVerifyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def asymmetric_verify(
         self,
@@ -611,10 +666,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.CancelKeyDeletionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.CancelKeyDeletionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.CancelKeyDeletionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def cancel_key_deletion_with_options_async(
         self,
@@ -646,10 +707,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.CancelKeyDeletionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.CancelKeyDeletionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.CancelKeyDeletionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def cancel_key_deletion(
         self,
@@ -718,10 +785,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.CertificatePrivateKeyDecryptResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.CertificatePrivateKeyDecryptResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.CertificatePrivateKeyDecryptResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def certificate_private_key_decrypt_with_options_async(
         self,
@@ -764,10 +837,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.CertificatePrivateKeyDecryptResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.CertificatePrivateKeyDecryptResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.CertificatePrivateKeyDecryptResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def certificate_private_key_decrypt(
         self,
@@ -852,10 +931,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.CertificatePrivateKeySignResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.CertificatePrivateKeySignResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.CertificatePrivateKeySignResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def certificate_private_key_sign_with_options_async(
         self,
@@ -900,10 +985,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.CertificatePrivateKeySignResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.CertificatePrivateKeySignResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.CertificatePrivateKeySignResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def certificate_private_key_sign(
         self,
@@ -986,10 +1077,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.CertificatePublicKeyEncryptResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.CertificatePublicKeyEncryptResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.CertificatePublicKeyEncryptResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def certificate_public_key_encrypt_with_options_async(
         self,
@@ -1032,10 +1129,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.CertificatePublicKeyEncryptResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.CertificatePublicKeyEncryptResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.CertificatePublicKeyEncryptResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def certificate_public_key_encrypt(
         self,
@@ -1122,10 +1225,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.CertificatePublicKeyVerifyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.CertificatePublicKeyVerifyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.CertificatePublicKeyVerifyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def certificate_public_key_verify_with_options_async(
         self,
@@ -1172,10 +1281,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.CertificatePublicKeyVerifyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.CertificatePublicKeyVerifyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.CertificatePublicKeyVerifyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def certificate_public_key_verify(
         self,
@@ -1256,10 +1371,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ConnectKmsInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ConnectKmsInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ConnectKmsInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def connect_kms_instance_with_options_async(
         self,
@@ -1300,10 +1421,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ConnectKmsInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ConnectKmsInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ConnectKmsInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def connect_kms_instance(
         self,
@@ -1367,10 +1494,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.CreateAliasResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.CreateAliasResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.CreateAliasResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_alias_with_options_async(
         self,
@@ -1406,10 +1539,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.CreateAliasResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.CreateAliasResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.CreateAliasResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_alias(
         self,
@@ -1481,10 +1620,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.CreateApplicationAccessPointResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.CreateApplicationAccessPointResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.CreateApplicationAccessPointResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_application_access_point_with_options_async(
         self,
@@ -1526,10 +1671,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.CreateApplicationAccessPointResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.CreateApplicationAccessPointResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.CreateApplicationAccessPointResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_application_access_point(
         self,
@@ -1606,10 +1757,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.CreateCertificateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.CreateCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.CreateCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_certificate_with_options_async(
         self,
@@ -1652,10 +1809,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.CreateCertificateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.CreateCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.CreateCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_certificate(
         self,
@@ -1727,10 +1890,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.CreateClientKeyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.CreateClientKeyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.CreateClientKeyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_client_key_with_options_async(
         self,
@@ -1774,10 +1943,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.CreateClientKeyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.CreateClientKeyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.CreateClientKeyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_client_key(
         self,
@@ -1863,10 +2038,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.CreateKeyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.CreateKeyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.CreateKeyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_key_with_options_async(
         self,
@@ -1914,10 +2095,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.CreateKeyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.CreateKeyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.CreateKeyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_key(
         self,
@@ -1979,10 +2166,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.CreateKeyVersionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.CreateKeyVersionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.CreateKeyVersionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_key_version_with_options_async(
         self,
@@ -2018,10 +2211,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.CreateKeyVersionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.CreateKeyVersionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.CreateKeyVersionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_key_version(
         self,
@@ -2097,10 +2296,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.CreateNetworkRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.CreateNetworkRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.CreateNetworkRuleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_network_rule_with_options_async(
         self,
@@ -2142,10 +2347,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.CreateNetworkRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.CreateNetworkRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.CreateNetworkRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_network_rule(
         self,
@@ -2225,10 +2436,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.CreatePolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.CreatePolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.CreatePolicyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_policy_with_options_async(
         self,
@@ -2274,10 +2491,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.CreatePolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.CreatePolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.CreatePolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_policy(
         self,
@@ -2373,10 +2596,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.CreateSecretResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.CreateSecretResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.CreateSecretResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_secret_with_options_async(
         self,
@@ -2438,10 +2667,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.CreateSecretResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.CreateSecretResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.CreateSecretResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_secret(
         self,
@@ -2506,10 +2741,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DecryptResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DecryptResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DecryptResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def decrypt_with_options_async(
         self,
@@ -2540,10 +2781,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DecryptResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DecryptResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DecryptResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def decrypt(
         self,
@@ -2582,10 +2829,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DeleteAliasResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DeleteAliasResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DeleteAliasResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_alias_with_options_async(
         self,
@@ -2610,10 +2863,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DeleteAliasResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DeleteAliasResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DeleteAliasResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_alias(
         self,
@@ -2659,10 +2918,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DeleteApplicationAccessPointResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DeleteApplicationAccessPointResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DeleteApplicationAccessPointResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_application_access_point_with_options_async(
         self,
@@ -2694,10 +2959,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DeleteApplicationAccessPointResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DeleteApplicationAccessPointResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DeleteApplicationAccessPointResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_application_access_point(
         self,
@@ -2756,10 +3027,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DeleteCertificateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DeleteCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DeleteCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_certificate_with_options_async(
         self,
@@ -2792,10 +3069,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DeleteCertificateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DeleteCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DeleteCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_certificate(
         self,
@@ -2855,10 +3138,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DeleteClientKeyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DeleteClientKeyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DeleteClientKeyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_client_key_with_options_async(
         self,
@@ -2890,10 +3179,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DeleteClientKeyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DeleteClientKeyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DeleteClientKeyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_client_key(
         self,
@@ -2953,10 +3248,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DeleteKeyMaterialResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DeleteKeyMaterialResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DeleteKeyMaterialResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_key_material_with_options_async(
         self,
@@ -2990,10 +3291,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DeleteKeyMaterialResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DeleteKeyMaterialResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DeleteKeyMaterialResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_key_material(
         self,
@@ -3055,10 +3362,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DeleteNetworkRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DeleteNetworkRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DeleteNetworkRuleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_network_rule_with_options_async(
         self,
@@ -3090,10 +3403,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DeleteNetworkRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DeleteNetworkRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DeleteNetworkRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_network_rule(
         self,
@@ -3151,10 +3470,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DeletePolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DeletePolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DeletePolicyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_policy_with_options_async(
         self,
@@ -3186,10 +3511,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DeletePolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DeletePolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DeletePolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_policy(
         self,
@@ -3252,10 +3583,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DeleteSecretResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DeleteSecretResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DeleteSecretResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_secret_with_options_async(
         self,
@@ -3292,10 +3629,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DeleteSecretResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DeleteSecretResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DeleteSecretResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_secret(
         self,
@@ -3341,10 +3684,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DescribeAccountKmsStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeAccountKmsStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeAccountKmsStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_account_kms_status_with_options_async(
         self,
@@ -3362,10 +3711,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DescribeAccountKmsStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeAccountKmsStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeAccountKmsStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_account_kms_status(self) -> kms_20160120_models.DescribeAccountKmsStatusResponse:
         runtime = util_models.RuntimeOptions()
@@ -3398,10 +3753,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DescribeApplicationAccessPointResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeApplicationAccessPointResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeApplicationAccessPointResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_application_access_point_with_options_async(
         self,
@@ -3426,10 +3787,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DescribeApplicationAccessPointResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeApplicationAccessPointResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeApplicationAccessPointResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_application_access_point(
         self,
@@ -3475,10 +3842,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DescribeCertificateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_certificate_with_options_async(
         self,
@@ -3510,10 +3883,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DescribeCertificateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_certificate(
         self,
@@ -3571,10 +3950,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DescribeKeyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeKeyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeKeyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_key_with_options_async(
         self,
@@ -3606,10 +3991,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DescribeKeyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeKeyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeKeyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_key(
         self,
@@ -3669,10 +4060,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DescribeKeyVersionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeKeyVersionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeKeyVersionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_key_version_with_options_async(
         self,
@@ -3706,10 +4103,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DescribeKeyVersionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeKeyVersionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeKeyVersionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_key_version(
         self,
@@ -3760,10 +4163,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DescribeNetworkRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeNetworkRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeNetworkRuleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_network_rule_with_options_async(
         self,
@@ -3788,10 +4197,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DescribeNetworkRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeNetworkRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeNetworkRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_network_rule(
         self,
@@ -3830,10 +4245,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DescribePolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DescribePolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DescribePolicyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_policy_with_options_async(
         self,
@@ -3858,10 +4279,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DescribePolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DescribePolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DescribePolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_policy(
         self,
@@ -3901,10 +4328,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DescribeRegionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeRegionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeRegionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_regions_with_options_async(
         self,
@@ -3930,10 +4363,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DescribeRegionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeRegionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeRegionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_regions(self) -> kms_20160120_models.DescribeRegionsResponse:
         """
@@ -3988,10 +4427,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DescribeSecretResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeSecretResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeSecretResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_secret_with_options_async(
         self,
@@ -4026,10 +4471,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DescribeSecretResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeSecretResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DescribeSecretResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_secret(
         self,
@@ -4090,10 +4541,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DisableKeyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DisableKeyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DisableKeyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def disable_key_with_options_async(
         self,
@@ -4126,10 +4583,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.DisableKeyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.DisableKeyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.DisableKeyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def disable_key(
         self,
@@ -4182,10 +4645,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.EnableKeyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.EnableKeyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.EnableKeyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def enable_key_with_options_async(
         self,
@@ -4210,10 +4679,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.EnableKeyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.EnableKeyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.EnableKeyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def enable_key(
         self,
@@ -4269,10 +4744,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.EncryptResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.EncryptResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.EncryptResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def encrypt_with_options_async(
         self,
@@ -4314,10 +4795,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.EncryptResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.EncryptResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.EncryptResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def encrypt(
         self,
@@ -4392,10 +4879,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ExportDataKeyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ExportDataKeyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ExportDataKeyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def export_data_key_with_options_async(
         self,
@@ -4440,10 +4933,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ExportDataKeyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ExportDataKeyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ExportDataKeyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def export_data_key(
         self,
@@ -4523,10 +5022,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.GenerateAndExportDataKeyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.GenerateAndExportDataKeyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.GenerateAndExportDataKeyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def generate_and_export_data_key_with_options_async(
         self,
@@ -4578,10 +5083,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.GenerateAndExportDataKeyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.GenerateAndExportDataKeyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.GenerateAndExportDataKeyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def generate_and_export_data_key(
         self,
@@ -4666,10 +5177,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.GenerateDataKeyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.GenerateDataKeyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.GenerateDataKeyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def generate_data_key_with_options_async(
         self,
@@ -4720,10 +5237,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.GenerateDataKeyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.GenerateDataKeyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.GenerateDataKeyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def generate_data_key(
         self,
@@ -4812,10 +5335,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.GenerateDataKeyWithoutPlaintextResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.GenerateDataKeyWithoutPlaintextResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.GenerateDataKeyWithoutPlaintextResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def generate_data_key_without_plaintext_with_options_async(
         self,
@@ -4860,10 +5389,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.GenerateDataKeyWithoutPlaintextResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.GenerateDataKeyWithoutPlaintextResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.GenerateDataKeyWithoutPlaintextResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def generate_data_key_without_plaintext(
         self,
@@ -4927,10 +5462,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.GetCertificateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.GetCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.GetCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_certificate_with_options_async(
         self,
@@ -4962,10 +5503,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.GetCertificateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.GetCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.GetCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_certificate(
         self,
@@ -5014,10 +5561,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.GetClientKeyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.GetClientKeyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.GetClientKeyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_client_key_with_options_async(
         self,
@@ -5040,10 +5593,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.GetClientKeyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.GetClientKeyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.GetClientKeyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_client_key(
         self,
@@ -5082,10 +5641,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.GetKmsInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.GetKmsInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.GetKmsInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_kms_instance_with_options_async(
         self,
@@ -5110,10 +5675,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.GetKmsInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.GetKmsInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.GetKmsInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_kms_instance(
         self,
@@ -5175,10 +5746,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.GetParametersForImportResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.GetParametersForImportResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.GetParametersForImportResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_parameters_for_import_with_options_async(
         self,
@@ -5226,10 +5803,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.GetParametersForImportResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.GetParametersForImportResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.GetParametersForImportResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_parameters_for_import(
         self,
@@ -5306,10 +5889,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.GetPublicKeyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.GetPublicKeyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.GetPublicKeyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_public_key_with_options_async(
         self,
@@ -5336,10 +5925,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.GetPublicKeyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.GetPublicKeyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.GetPublicKeyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_public_key(
         self,
@@ -5390,10 +5985,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.GetRandomPasswordResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.GetRandomPasswordResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.GetRandomPasswordResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_random_password_with_options_async(
         self,
@@ -5430,10 +6031,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.GetRandomPasswordResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.GetRandomPasswordResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.GetRandomPasswordResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_random_password(
         self,
@@ -5487,10 +6094,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.GetSecretValueResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.GetSecretValueResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.GetSecretValueResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_secret_value_with_options_async(
         self,
@@ -5530,10 +6143,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.GetSecretValueResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.GetSecretValueResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.GetSecretValueResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_secret_value(
         self,
@@ -5608,10 +6227,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ImportKeyMaterialResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ImportKeyMaterialResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ImportKeyMaterialResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def import_key_material_with_options_async(
         self,
@@ -5656,10 +6281,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ImportKeyMaterialResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ImportKeyMaterialResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ImportKeyMaterialResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def import_key_material(
         self,
@@ -5726,10 +6357,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ListAliasesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ListAliasesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ListAliasesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_aliases_with_options_async(
         self,
@@ -5756,10 +6393,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ListAliasesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ListAliasesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ListAliasesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_aliases(
         self,
@@ -5802,10 +6445,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ListAliasesByKeyIdResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ListAliasesByKeyIdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ListAliasesByKeyIdResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_aliases_by_key_id_with_options_async(
         self,
@@ -5834,10 +6483,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ListAliasesByKeyIdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ListAliasesByKeyIdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ListAliasesByKeyIdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_aliases_by_key_id(
         self,
@@ -5878,10 +6533,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ListApplicationAccessPointsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ListApplicationAccessPointsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ListApplicationAccessPointsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_application_access_points_with_options_async(
         self,
@@ -5908,10 +6569,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ListApplicationAccessPointsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ListApplicationAccessPointsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ListApplicationAccessPointsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_application_access_points(
         self,
@@ -5948,10 +6615,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ListClientKeysResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ListClientKeysResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ListClientKeysResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_client_keys_with_options_async(
         self,
@@ -5974,10 +6647,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ListClientKeysResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ListClientKeysResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ListClientKeysResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_client_keys(
         self,
@@ -6020,10 +6699,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ListKeyVersionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ListKeyVersionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ListKeyVersionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_key_versions_with_options_async(
         self,
@@ -6052,10 +6737,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ListKeyVersionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ListKeyVersionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ListKeyVersionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_key_versions(
         self,
@@ -6098,10 +6789,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ListKeysResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ListKeysResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ListKeysResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_keys_with_options_async(
         self,
@@ -6130,10 +6827,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ListKeysResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ListKeysResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ListKeysResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_keys(
         self,
@@ -6174,10 +6877,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ListKmsInstancesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ListKmsInstancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ListKmsInstancesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_kms_instances_with_options_async(
         self,
@@ -6204,10 +6913,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ListKmsInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ListKmsInstancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ListKmsInstancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_kms_instances(
         self,
@@ -6248,10 +6963,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ListNetworkRulesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ListNetworkRulesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ListNetworkRulesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_network_rules_with_options_async(
         self,
@@ -6278,10 +6999,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ListNetworkRulesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ListNetworkRulesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ListNetworkRulesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_network_rules(
         self,
@@ -6322,10 +7049,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ListPoliciesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ListPoliciesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ListPoliciesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_policies_with_options_async(
         self,
@@ -6352,10 +7085,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ListPoliciesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ListPoliciesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ListPoliciesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_policies(
         self,
@@ -6401,10 +7140,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ListResourceTagsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ListResourceTagsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ListResourceTagsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_resource_tags_with_options_async(
         self,
@@ -6436,10 +7181,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ListResourceTagsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ListResourceTagsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ListResourceTagsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_resource_tags(
         self,
@@ -6503,10 +7254,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ListSecretVersionIdsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ListSecretVersionIdsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ListSecretVersionIdsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_secret_version_ids_with_options_async(
         self,
@@ -6544,10 +7301,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ListSecretVersionIdsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ListSecretVersionIdsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ListSecretVersionIdsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_secret_version_ids(
         self,
@@ -6613,10 +7376,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ListSecretsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ListSecretsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ListSecretsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_secrets_with_options_async(
         self,
@@ -6656,10 +7425,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ListSecretsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ListSecretsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ListSecretsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_secrets(
         self,
@@ -6722,10 +7497,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ListTagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ListTagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ListTagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_tag_resources_with_options_async(
         self,
@@ -6758,10 +7539,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ListTagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ListTagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ListTagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_tag_resources(
         self,
@@ -6803,10 +7590,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.OpenKmsServiceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.OpenKmsServiceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.OpenKmsServiceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def open_kms_service_with_options_async(
         self,
@@ -6834,10 +7627,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.OpenKmsServiceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.OpenKmsServiceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.OpenKmsServiceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def open_kms_service(self) -> kms_20160120_models.OpenKmsServiceResponse:
         """
@@ -6908,10 +7707,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.PutSecretValueResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.PutSecretValueResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.PutSecretValueResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def put_secret_value_with_options_async(
         self,
@@ -6958,10 +7763,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.PutSecretValueResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.PutSecretValueResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.PutSecretValueResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def put_secret_value(
         self,
@@ -7058,10 +7869,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ReEncryptResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ReEncryptResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ReEncryptResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def re_encrypt_with_options_async(
         self,
@@ -7118,10 +7935,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ReEncryptResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ReEncryptResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ReEncryptResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def re_encrypt(
         self,
@@ -7193,10 +8016,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.RestoreSecretResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.RestoreSecretResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.RestoreSecretResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def restore_secret_with_options_async(
         self,
@@ -7228,10 +8057,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.RestoreSecretResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.RestoreSecretResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.RestoreSecretResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def restore_secret(
         self,
@@ -7294,10 +8129,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.RotateSecretResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.RotateSecretResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.RotateSecretResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def rotate_secret_with_options_async(
         self,
@@ -7334,10 +8175,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.RotateSecretResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.RotateSecretResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.RotateSecretResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def rotate_secret(
         self,
@@ -7405,10 +8252,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ScheduleKeyDeletionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ScheduleKeyDeletionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ScheduleKeyDeletionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def schedule_key_deletion_with_options_async(
         self,
@@ -7444,10 +8297,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.ScheduleKeyDeletionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.ScheduleKeyDeletionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.ScheduleKeyDeletionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def schedule_key_deletion(
         self,
@@ -7515,10 +8374,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.SetDeletionProtectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.SetDeletionProtectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.SetDeletionProtectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def set_deletion_protection_with_options_async(
         self,
@@ -7556,10 +8421,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.SetDeletionProtectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.SetDeletionProtectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.SetDeletionProtectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def set_deletion_protection(
         self,
@@ -7628,10 +8499,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.TagResourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.TagResourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.TagResourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def tag_resource_with_options_async(
         self,
@@ -7670,10 +8547,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.TagResourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.TagResourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.TagResourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def tag_resource(
         self,
@@ -7739,10 +8622,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.TagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.TagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.TagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def tag_resources_with_options_async(
         self,
@@ -7780,10 +8669,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.TagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.TagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.TagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def tag_resources(
         self,
@@ -7849,10 +8744,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.UntagResourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.UntagResourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.UntagResourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def untag_resource_with_options_async(
         self,
@@ -7892,10 +8793,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.UntagResourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.UntagResourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.UntagResourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def untag_resource(
         self,
@@ -7966,10 +8873,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.UntagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.UntagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.UntagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def untag_resources_with_options_async(
         self,
@@ -8010,10 +8923,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.UntagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.UntagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.UntagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def untag_resources(
         self,
@@ -8068,10 +8987,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.UpdateAliasResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateAliasResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateAliasResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_alias_with_options_async(
         self,
@@ -8098,10 +9023,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.UpdateAliasResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateAliasResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateAliasResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_alias(
         self,
@@ -8151,10 +9082,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.UpdateApplicationAccessPointResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateApplicationAccessPointResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateApplicationAccessPointResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_application_access_point_with_options_async(
         self,
@@ -8190,10 +9127,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.UpdateApplicationAccessPointResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateApplicationAccessPointResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateApplicationAccessPointResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_application_access_point(
         self,
@@ -8253,10 +9196,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.UpdateCertificateStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateCertificateStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateCertificateStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_certificate_status_with_options_async(
         self,
@@ -8290,10 +9239,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.UpdateCertificateStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateCertificateStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateCertificateStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_certificate_status(
         self,
@@ -8353,10 +9308,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.UpdateKeyDescriptionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateKeyDescriptionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateKeyDescriptionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_key_description_with_options_async(
         self,
@@ -8390,10 +9351,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.UpdateKeyDescriptionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateKeyDescriptionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateKeyDescriptionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_key_description(
         self,
@@ -8451,10 +9418,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.UpdateKmsInstanceBindVpcResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateKmsInstanceBindVpcResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateKmsInstanceBindVpcResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_kms_instance_bind_vpc_with_options_async(
         self,
@@ -8486,10 +9459,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.UpdateKmsInstanceBindVpcResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateKmsInstanceBindVpcResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateKmsInstanceBindVpcResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_kms_instance_bind_vpc(
         self,
@@ -8556,10 +9535,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.UpdateNetworkRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateNetworkRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateNetworkRuleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_network_rule_with_options_async(
         self,
@@ -8596,10 +9581,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.UpdateNetworkRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateNetworkRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateNetworkRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_network_rule(
         self,
@@ -8668,10 +9659,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.UpdatePolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.UpdatePolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.UpdatePolicyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_policy_with_options_async(
         self,
@@ -8712,10 +9709,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.UpdatePolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.UpdatePolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.UpdatePolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_policy(
         self,
@@ -8785,10 +9788,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.UpdateRotationPolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateRotationPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateRotationPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_rotation_policy_with_options_async(
         self,
@@ -8830,10 +9839,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.UpdateRotationPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateRotationPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateRotationPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_rotation_policy(
         self,
@@ -8907,10 +9922,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.UpdateSecretResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateSecretResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateSecretResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_secret_with_options_async(
         self,
@@ -8946,10 +9967,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.UpdateSecretResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateSecretResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateSecretResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_secret(
         self,
@@ -9015,10 +10042,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.UpdateSecretRotationPolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateSecretRotationPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateSecretRotationPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_secret_rotation_policy_with_options_async(
         self,
@@ -9058,10 +10091,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.UpdateSecretRotationPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateSecretRotationPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateSecretRotationPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_secret_rotation_policy(
         self,
@@ -9133,10 +10172,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.UpdateSecretVersionStageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateSecretVersionStageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateSecretVersionStageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_secret_version_stage_with_options_async(
         self,
@@ -9174,10 +10219,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.UpdateSecretVersionStageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateSecretVersionStageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.UpdateSecretVersionStageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_secret_version_stage(
         self,
@@ -9239,10 +10290,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.UploadCertificateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.UploadCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.UploadCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def upload_certificate_with_options_async(
         self,
@@ -9278,10 +10335,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            kms_20160120_models.UploadCertificateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                kms_20160120_models.UploadCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                kms_20160120_models.UploadCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def upload_certificate(
         self,
