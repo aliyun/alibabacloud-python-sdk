@@ -1311,10 +1311,15 @@ class ConnectKmsInstanceRequest(TeaModel):
         vpc_id: str = None,
         zone_ids: str = None,
     ):
+        # The provider of the KMS instance. Set the value to Aliyun.
         self.kmprovider = kmprovider
+        # The ID of the KMS instance that you want to enable.
         self.kms_instance_id = kms_instance_id
+        # The vSwitch in the two zones. The vSwitch must have at least one available IP address.
         self.v_switch_ids = v_switch_ids
+        # The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
         self.vpc_id = vpc_id
+        # The two zones for the KMS instance. Dual-zone deployment improves service availability and disaster recovery capabilities.
         self.zone_ids = zone_ids
 
     def validate(self):
@@ -1358,6 +1363,7 @@ class ConnectKmsInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1535,9 +1541,15 @@ class CreateApplicationAccessPointRequest(TeaModel):
         name: str = None,
         policies: str = None,
     ):
+        # The authentication method. Currently, only ClientKey is supported.
         self.authentication_method = authentication_method
+        # The description of the AAP.
         self.description = description
+        # The name of the AAP.
         self.name = name
+        # The permission policy.
+        # 
+        # > You can bind up to three permission policies to each AAP.
         self.policies = policies
 
     def validate(self):
@@ -1582,11 +1594,17 @@ class CreateApplicationAccessPointResponseBody(TeaModel):
         policies: str = None,
         request_id: str = None,
     ):
+        # The Alibaba Cloud Resource Name (ARN) of the AAP.
         self.arn = arn
+        # The authentication method.
         self.authentication_method = authentication_method
+        # The description of the AAP.
         self.description = description
+        # The name of the AAP.
         self.name = name
+        # The permission policy.
         self.policies = policies
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -1910,9 +1928,22 @@ class CreateClientKeyRequest(TeaModel):
         not_before: str = None,
         password: str = None,
     ):
+        # The operation that you want to perform. Set the value to **CreateClientKey**.
         self.aap_name = aap_name
+        # The encryption password of the client key.
+        # 
+        # The password must be 8 to 64 characters in length and must contain at least two of the following types: digits, letters, and special characters. Special characters include `~ ! @ # $ % ^ & * ? _ -`.
         self.not_after = not_after
+        # The end of the validity period of the client key.
+        # 
+        # Specify the time in the ISO 8601 standard. The time must be in UTC. The time must be in the yyyy-MM-ddTHH:mm:ssZ format.
+        # 
+        # > 
+        # 
+        # *   If you do not configure NotAfter, the default value is the time when the client key was created plus five years.
+        # *   If you configure NotAfter, you must configure NotBefore.
         self.not_before = not_before
+        # The name of the AAP.
         self.password = password
 
     def validate(self):
@@ -1957,11 +1988,24 @@ class CreateClientKeyResponseBody(TeaModel):
         private_key_data: str = None,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.client_key_id = client_key_id
+        # The ID of the client key.
         self.key_algorithm = key_algorithm
+        # The beginning of the validity period of the client key.
         self.not_after = not_after
+        # The private key of the client key.
         self.not_before = not_before
+        # The algorithm that is used to encrypt the private key of the client key. Currently, only RSA\_2048 is supported.
         self.private_key_data = private_key_data
+        # The beginning of the validity period of the client key.
+        # 
+        # Specify the time in the ISO 8601 standard. The time must be in UTC. The time must be in the yyyy-MM-ddTHH:mm:ssZ format.
+        # 
+        # > 
+        # 
+        # *   If you do not configure NotBefore, the default value is the time when the client key was created.
+        # *   If you configure NotBefore, you must configure NotAfter.
         self.request_id = request_id
 
     def validate(self):
@@ -2058,66 +2102,68 @@ class CreateKeyRequest(TeaModel):
         rotation_interval: str = None,
         tags: str = None,
     ):
-        # The ID of the dedicated KMS instance.
+        # The ID of the KMS instance.
+        # 
+        # > You must specify this parameter if you need to create a key for a KMS instance. If you need to create a default key of the CMK type, you do not need to specify this parameter.
         self.dkmsinstance_id = dkmsinstance_id
-        # The description of the CMK.
+        # The description of the key.
         # 
         # The description can be 0 to 8,192 characters in length.
         self.description = description
         # Specifies whether to enable automatic key rotation. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # - false (default)
         # 
-        # Default value: false.
-        # 
-        # >  If the Origin parameter is set to EXTERNAL or the KeySpec parameter is set to an asymmetric CMK type, automatic key rotation is not supported.
+        # This parameter is valid only when the key belongs to an instance type that supports automatic rotation. For more information, see [Key rotation](~~2358146~~).
         self.enable_automatic_rotation = enable_automatic_rotation
-        # The type of the CMK. Valid values:
+        # The key specification. The valid values vary based on the KMS instance type. For more information, see [Overview](~~480159~~).
         # 
-        # *   Aliyun_AES\_256
-        # *   Aliyun_AES\_128
-        # *   Aliyun_AES\_192
-        # *   Aliyun_SM4
-        # *   RSA\_2048
-        # *   RSA\_3072
-        # *   EC_P256
-        # *   EC_P256K
-        # *   EC_SM2
-        # 
-        # > * The default type of the CMK is Aliyun\_AES\_256.
-        # > * Only Dedicated KMS supports Aliyun\_AES\_128 and Aliyun\_AES\_192.
+        # > If you do not specify a value for this parameter, the default key specification is Aliyun_AES_256.
         self.key_spec = key_spec
-        # The usage of the CMK. Valid values:
+        # The usage of the key. Valid values:
         # 
-        # *   ENCRYPT/DECRYPT: encrypts or decrypts data.
-        # *   SIGN/VERIFY: generates or verifies a digital signature.
+        # - ENCRYPT/DECRYPT
+        # - SIGN/VERIFY
         # 
-        # If the CMK supports signature verification, the default value is SIGN/VERIFY. If the CMK does not support signature verification, the default value is ENCRYPT/DECRYPT.
+        # If the key supports signing and verification, the default value is SIGN/VERIFY. If the key does not support signing and verification, the default value is ENCRYPT/DECRYPT.
         self.key_usage = key_usage
-        # The source of key material. Valid values:
+        # The key material origin. Valid values:
         # 
-        # *   Aliyun_KMS (default value)
-        # *   EXTERNAL
+        # - Aliyun_KMS (default): KMS generates key material.
+        # - EXTERNAL: You import key material.
         # 
-        # > * The value of this parameter is case-sensitive.
-        # > * If you set the KeySpec parameter to an asymmetric CMK type, you are not allowed to set the Origin parameter to EXTERNAL.
-        # > * If you set the Origin parameter to EXTERNAL, you must import key material. For more information, see [Import key material](~~68523~~).
+        # 
+        # > - The value of this parameter is case-sensitive.
+        # > - Default keys of the customer master key (CMK) type support Aliyun_KMS and EXTERNAL. Keys in instances of the software key management type support only Aliyun_KMS. Keys in instances of the hardware key management type support Aliyun_KMS and EXTERNAL.
+        # > - If you set Origin to EXTERNAL, you must import key material. For more information, see [Import key material into a symmetric key](~~607841~~) or [Import key material into an asymmetric key](~~608827~~).
         self.origin = origin
-        # The protection level of the CMK. Valid values:
+        # You do not need to specify this parameter. KMS sets a protection level for your key.
         # 
-        # *   SOFTWARE
-        # *   HSM
+        # The protection level of the key. Valid values:
         # 
-        # Default value: SOFTWARE.
+        # - SOFTWARE
+        # - HSM
         # 
-        # > * The value of this parameter is case-sensitive.
-        # > * Assume that you set this parameter to HSM. If you set the Origin parameter to Aliyun_KMS, the CMK is created in a managed HSM. If you set the Origin parameter to EXTERNAL, you can import an external key into the managed HSM.
+        # 
+        # > - If DKMSInstanceId is specified, this parameter does not take effect. If your instance is an instance of the software key management type, set the value to SOFTWARE. If your instance is an instance of the hardware key management type, set the value to HSM.
+        # > - If you do not specify DKMSInstanceId, we recommend that you do not specify this parameter. KMS sets a protection level for your key. If managed hardware security modules (HSMs) exist in the region of your KMS instance, set the value to HSM. If managed HSMs do not exist in the region of your KMS instance, set the value to SOFTWARE. For more information, see Managed HSM overview.
         self.protection_level = protection_level
-        # The period of automatic key rotation. Specify the value in the integer\[unit] format. Unit: d (day), h (hour), m (minute), or s (second). For example, you can use either 7d or 604800s to specify a seven-day period. The period can range from 7 days to 730 days.
+        # The period of automatic key rotation. Format: integer[unit]. Unit: d (day), h (hour), m (minute), or s (second). For example, both 7d and 604800s represent a seven-day interval.
         # 
-        # >  If you set the EnableAutomaticRotation parameter to true, you must also specify this parameter. If you set the EnableAutomaticRotation parameter to false, you can leave this parameter unspecified.
+        # - For a default key, set the value to 365 days.
+        # - For a software-protected key, set a value that ranges from 7 to 365 days.
+        # - A hardware-protected key does not support automatic rotation.
+        # 
+        # > If EnableAutomaticRotation is set to true, this parameter is required.
         self.rotation_interval = rotation_interval
+        # The tag that is added to the key. A tag consists of a key-value pair.
+        # 
+        # You can enter up to 20 tags. Enter multiple tags in the [{"TagKey":"key1","TagValue":"value1"},{"TagKey":"key2","TagValue":"value2"},..] format.
+        # 
+        # Each tag key or tag value can be up to 128 characters in length and can contain letters, digits, forward slashes (/), backslashes (\), underscores (_), hyphens (-), periods (.), plus signs (+), equal signs (=), colons (:), and at signs (@).
+        # 
+        # > The tag key cannot start with aliyun or acs:.
         self.tags = tags
 
     def validate(self):
@@ -2194,62 +2240,57 @@ class CreateKeyResponseBodyKeyMetadata(TeaModel):
         protection_level: str = None,
         rotation_interval: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the CMK.
+        # The Alibaba Cloud Resource Name (ARN) of the key.
         self.arn = arn
-        # Indicates whether automatic key rotation is enabled. Valid values:
+        # The status of automatic key rotation. Valid values:
         # 
-        # *   Enabled: Automatic key rotation is enabled.
-        # *   Disabled: Automatic key rotation is disabled.
-        # *   Suspended: Automatic key rotation is suspended. For more information, see [Automatic key rotation](~~134270~~).
-        # 
-        # >  Automatic key rotation is available only for symmetric CMKs.
+        # - Enabled
+        # - Disabled
+        # - Suspended
         self.automatic_rotation = automatic_rotation
-        # The date and time when the CMK was created. The time is displayed in UTC.
+        # The date and time (UTC) when the key was created.
         self.creation_date = creation_date
-        # The creator of the CMK.
+        # The user who created the key.
         self.creator = creator
-        # The ID of the dedicated KMS instance.
+        # The ID of the KMS instance.
         self.dkmsinstance_id = dkmsinstance_id
-        # The time when the CMK is scheduled for deletion.
+        # The time when the key is scheduled for deletion. For more information, see ScheduleKeyDeletion.
         # 
-        # For more information, see [ScheduleKeyDeletion](~~44196~~).
-        # 
-        # >  This value is returned only when the value of the KeyState parameter is PendingDeletion.
+        # This parameter is returned only when the value of KeyState is PendingDeletion.
         self.delete_date = delete_date
-        # The description of the CMK.
+        # The description of the key.
         self.description = description
-        # The ID of the CMK. The ID must be globally unique.
+        # The globally unique ID of the key.
         self.key_id = key_id
-        # The type of the CMK.
+        # The specification of the key.
         self.key_spec = key_spec
-        # The status of the CMK.
+        # The status of the key.
         # 
-        # For more information, see [Impact of CMK status on API operations](~~44211~~).
+        # For more information, see [Impacts of key status on API operations](~~44211~~).
         self.key_state = key_state
-        # The usage of the CMK.
+        # The usage of the key.
         self.key_usage = key_usage
         # The time when the last rotation was performed. The time is displayed in UTC.
         # 
-        # For a new CMK, this parameter value is the time when the initial version of the CMK was generated.
+        # For a new key, this parameter value is the time when the initial version of the key was generated.
         self.last_rotation_date = last_rotation_date
         # The time when the key material expires. The time is displayed in UTC.
         # 
         # If this parameter value is empty, the key material does not expire.
         self.material_expire_time = material_expire_time
-        # The time when the next rotation will be performed.
+        # The time when the key is next rotated.
         # 
-        # >  This value is returned only when the value of the AutomaticRotation parameter is Enabled or Suspended.
+        # This value is returned only when the value of AutomaticRotation is Enabled or Suspended.
         self.next_rotation_date = next_rotation_date
-        # The source of the key material for the CMK.
+        # The key material origin.
         self.origin = origin
-        # The ID of the current primary key version of the symmetric CMK.
-        # 
-        # > * The primary key version of a symmetric CMK is an active encryption key. KMS uses the primary key version of a specified CMK to encrypt data.
-        # > * This parameter is unavailable for asymmetric CMKs.
+        # The current primary version identifier of the key.
         self.primary_key_version = primary_key_version
-        # The protection level of the CMK.
+        # The protection level of the key.
         self.protection_level = protection_level
-        # The period of automatic key rotation. Unit: seconds. The value is in the format of an integer followed by the letter s. For example, if the rotation period is seven days, this parameter is set to 604800s. This value is returned only when the value of the AutomaticRotation parameter is Enabled or Suspended.
+        # The interval for automatic key rotation. Unit: seconds. The format is an integer value followed by the character s. For example, if the rotation period is seven days, this parameter is set to 604800s.
+        # 
+        # This value is returned only when the value of AutomaticRotation is Enabled or Suspended.
         self.rotation_interval = rotation_interval
 
     def validate(self):
@@ -2346,7 +2387,7 @@ class CreateKeyResponseBody(TeaModel):
         key_metadata: CreateKeyResponseBodyKeyMetadata = None,
         request_id: str = None,
     ):
-        # The metadata of the CMK.
+        # The metadata of the key.
         self.key_metadata = key_metadata
         # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
@@ -2576,9 +2617,15 @@ class CreateNetworkRuleRequest(TeaModel):
         source_private_ip: str = None,
         type: str = None,
     ):
+        # The description.
         self.description = description
+        # The name of the access control rule.
         self.name = name
+        # The private IP address or private CIDR block. Separate multiple items with commas (,).
         self.source_private_ip = source_private_ip
+        # The network type.
+        # 
+        # Only private IP addresses are supported. Set the value to Private.
         self.type = type
 
     def validate(self):
@@ -2623,11 +2670,17 @@ class CreateNetworkRuleResponseBody(TeaModel):
         source_private_ip: str = None,
         type: str = None,
     ):
+        # The ARN of the access control rule.
         self.arn = arn
+        # The description.
         self.description = description
+        # The name of the access control rule.
         self.name = name
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The private IP address or private CIDR block.
         self.source_private_ip = source_private_ip
+        # The network type.
         self.type = type
 
     def validate(self):
@@ -2721,11 +2774,27 @@ class CreatePolicyRequest(TeaModel):
         permissions: str = None,
         resources: str = None,
     ):
+        # The name of the access control rule.
+        # 
+        # > For more information about how to query created access control rules, see [ListNetworkRules](~~2539433~~).
         self.access_control_rules = access_control_rules
+        # The description.
         self.description = description
+        # The scope of the permission policy. You need to specify the KMS instance that you want to access.
         self.kms_instance = kms_instance
+        # The name of the permission policy.
         self.name = name
+        # The operations that can be performed. Valid values:
+        # 
+        # *   RbacPermission/Template/CryptoServiceKeyUser: allows you to perform cryptographic operations.
+        # *   RbacPermission/Template/CryptoServiceSecretUser: allows you to perform secret-related operations.
+        # 
+        # You can select both.
         self.permissions = permissions
+        # The key and secret that are allowed to access.
+        # 
+        # *   Key: Enter a key in the `key/${KeyId}` format. To allow access to all keys of a KMS instance, enter key/\*.
+        # *   Secret: Enter a secret in the `secret/${SecretName}` format. To allow access to all secrets of a KMS instance, enter secret/\*.
         self.resources = resources
 
     def validate(self):
@@ -2780,13 +2849,24 @@ class CreatePolicyResponseBody(TeaModel):
         request_id: str = None,
         resources: str = None,
     ):
+        # The name of the access control rule.
         self.access_control_rules = access_control_rules
+        # The ARN of the permission policy.
         self.arn = arn
+        # The description.
         self.description = description
+        # The scope of the permission policy.
         self.kms_instance = kms_instance
+        # The name of the permission policy.
         self.name = name
+        # The operations that can be performed.
         self.permissions = permissions
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The key and secret that are allowed to access.
+        # 
+        # *   `key/*` indicates that all keys of the KMS instance can be accessed.
+        # *   `secret/*` indicates all secrets of the KMS instance can be accessed.
         self.resources = resources
 
     def validate(self):
@@ -3645,6 +3725,7 @@ class DeleteApplicationAccessPointRequest(TeaModel):
         self,
         name: str = None,
     ):
+        # The name of the AAP that you want to delete.
         self.name = name
 
     def validate(self):
@@ -3672,6 +3753,7 @@ class DeleteApplicationAccessPointResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -3837,6 +3919,7 @@ class DeleteClientKeyRequest(TeaModel):
         self,
         client_key_id: str = None,
     ):
+        # The ID of the client key.
         self.client_key_id = client_key_id
 
     def validate(self):
@@ -3864,6 +3947,7 @@ class DeleteClientKeyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -4029,6 +4113,7 @@ class DeleteNetworkRuleRequest(TeaModel):
         self,
         name: str = None,
     ):
+        # The name of the network access rule that you want to delete.
         self.name = name
 
     def validate(self):
@@ -4056,6 +4141,7 @@ class DeleteNetworkRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -4124,6 +4210,7 @@ class DeletePolicyRequest(TeaModel):
         self,
         name: str = None,
     ):
+        # The name of the permission policy that you want to delete.
         self.name = name
 
     def validate(self):
@@ -4151,6 +4238,7 @@ class DeletePolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4435,6 +4523,7 @@ class DescribeApplicationAccessPointRequest(TeaModel):
         self,
         name: str = None,
     ):
+        # The name of the AAP that you want to query.
         self.name = name
 
     def validate(self):
@@ -4467,11 +4556,17 @@ class DescribeApplicationAccessPointResponseBody(TeaModel):
         policies: str = None,
         request_id: str = None,
     ):
+        # The ARN of the AAP.
         self.arn = arn
+        # The authentication method.
         self.authentication_method = authentication_method
+        # The description.
         self.description = description
+        # The name of the AAP.
         self.name = name
+        # The permission policy that is bound to the AAP.
         self.policies = policies
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -5245,6 +5340,7 @@ class DescribeNetworkRuleRequest(TeaModel):
         self,
         name: str = None,
     ):
+        # The name of the access control rule that you want to query.
         self.name = name
 
     def validate(self):
@@ -5276,10 +5372,15 @@ class DescribeNetworkRuleResponseBody(TeaModel):
         source_private_ip: str = None,
         type: str = None,
     ):
+        # The ARN of the access control rule.
         self.arn = arn
+        # The description.
         self.description = description
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The private IP address or private CIDR block.
         self.source_private_ip = source_private_ip
+        # The network type. Only private IP addresses are supported. The value is fixed as Private.
         self.type = type
 
     def validate(self):
@@ -5364,6 +5465,7 @@ class DescribePolicyRequest(TeaModel):
         self,
         name: str = None,
     ):
+        # The name of the permission policy that you want to query.
         self.name = name
 
     def validate(self):
@@ -5398,13 +5500,21 @@ class DescribePolicyResponseBody(TeaModel):
         request_id: str = None,
         resources: List[str] = None,
     ):
+        # The network access rule that is associated with the permission policy.
         self.access_control_rules = access_control_rules
+        # The Alibaba Cloud Resource Name (ARN) of the permission policy.
         self.arn = arn
+        # The description.
         self.description = description
+        # The scope of the permission policy.
         self.kms_instance = kms_instance
+        # The name of the permission policy.
         self.name = name
+        # A list of operations that can be performed.
         self.permissions = permissions
+        # The request ID.
         self.request_id = request_id
+        # A list of keys and secrets that are allowed to access.
         self.resources = resources
 
     def validate(self):
@@ -7384,6 +7494,7 @@ class GetClientKeyRequest(TeaModel):
         self,
         client_key_id: str = None,
     ):
+        # The ID of the client key.
         self.client_key_id = client_key_id
 
     def validate(self):
@@ -7419,14 +7530,25 @@ class GetClientKeyResponseBody(TeaModel):
         public_key_data: str = None,
         request_id: str = None,
     ):
+        # The name of the application access point (AAP).
         self.aap_name = aap_name
+        # The ID of the client key.
         self.client_key_id = client_key_id
+        # The time when the client key was created.
         self.create_time = create_time
+        # The private key algorithm of the client key.
         self.key_algorithm = key_algorithm
+        # The provider of the client key.
+        # 
+        # Currently, only Key Management Service (KMS) is supported. The value is fixed as KMS_PROVIDED.
         self.key_origin = key_origin
+        # The end of the validity period of the client key.
         self.not_after = not_after
+        # The beginning of the validity period of the client key.
         self.not_before = not_before
+        # The content of the public key of the client key.
         self.public_key_data = public_key_data
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -7527,6 +7649,7 @@ class GetKmsInstanceRequest(TeaModel):
         self,
         kms_instance_id: str = None,
     ):
+        # The ID of the KMS instance that you want to query.
         self.kms_instance_id = kms_instance_id
 
     def validate(self):
@@ -7557,9 +7680,13 @@ class GetKmsInstanceResponseBodyKmsInstanceBindVpcsBindVpc(TeaModel):
         vpc_id: str = None,
         vpc_owner_id: str = None,
     ):
+        # The region to which the VPC belongs.
         self.region_id = region_id
+        # The vSwitch in the VPC.
         self.v_switch_id = v_switch_id
+        # The ID of the VPC.
         self.vpc_id = vpc_id
+        # The Alibaba Cloud account to which the VPC belongs.
         self.vpc_owner_id = vpc_owner_id
 
     def validate(self):
@@ -7648,20 +7775,43 @@ class GetKmsInstanceResponseBodyKmsInstance(TeaModel):
         vswitch_ids: str = None,
         zone_ids: str = None,
     ):
+        # A list of associated VPCs.
+        # 
+        # >  If your self-managed applications are deployed in multiple VPCs in the same region, you can associate VPCs with the KMS instance beyond the VPC that you specify when you enable the KMS instance. The VPCs can belong to the same Alibaba Cloud account or different Alibaba Cloud accounts. After the configuration is complete, self-managed applications in the VPCs can access the specified KMS instance.
         self.bind_vpcs = bind_vpcs
+        # The content of the certificate authority (CA) certificate of the KMS instance.
         self.ca_certificate_chain_pem = ca_certificate_chain_pem
+        # The time when the KMS instance is created.
         self.create_time = create_time
+        # The expiration time of the KMS instance.
         self.end_date = end_date
+        # The ID of the KMS instance.
         self.instance_id = instance_id
+        # The name of the KMS instance.
         self.instance_name = instance_name
+        # The number of keys that can be created for the KMS instance.
         self.key_num = key_num
+        # The number of secrets that can be created for the KMS instance.
         self.secret_num = secret_num
+        # The computing performance of the KMS instance.
         self.spec = spec
+        # The time when the KMS instance is enabled.
         self.start_date = start_date
+        # The status of the KMS instance. Valid values:
+        # 
+        # *   Uninitialized: The KMS instance is not enabled.
+        # *   Connecting: The KMS instance is being connected.
+        # *   Connected: The KMS instance is enabled.
+        # *   Disconnected: The KMS instance is disconnected.
+        # *   Error: The KMS instance is abnormal.
         self.status = status
+        # The virtual private cloud (VPC) with which the KMS instance is associated.
         self.vpc_id = vpc_id
+        # The access management quota for the KMS instance.
         self.vpc_num = vpc_num
+        # The vSwitch in the VPC.
         self.vswitch_ids = vswitch_ids
+        # The zone with which the KMS instance is associated.
         self.zone_ids = zone_ids
 
     def validate(self):
@@ -7748,7 +7898,9 @@ class GetKmsInstanceResponseBody(TeaModel):
         kms_instance: GetKmsInstanceResponseBodyKmsInstance = None,
         request_id: str = None,
     ):
+        # The details of the KMS instance.
         self.kms_instance = kms_instance
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9123,7 +9275,9 @@ class ListApplicationAccessPointsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.page_size = page_size
 
     def validate(self):
@@ -9156,7 +9310,9 @@ class ListApplicationAccessPointsResponseBodyApplicationAccessPointsApplicationA
         authentication_method: str = None,
         name: str = None,
     ):
+        # The authentication method.
         self.authentication_method = authentication_method
+        # The name of the AAP.
         self.name = name
 
     def validate(self):
@@ -9227,10 +9383,15 @@ class ListApplicationAccessPointsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # A list of AAPs.
         self.application_access_points = application_access_points
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -9317,6 +9478,7 @@ class ListClientKeysRequest(TeaModel):
         self,
         aap_name: str = None,
     ):
+        # The name of the application access point (AAP).
         self.aap_name = aap_name
 
     def validate(self):
@@ -9351,13 +9513,23 @@ class ListClientKeysResponseBodyClientKeys(TeaModel):
         not_before: str = None,
         public_key_data: str = None,
     ):
+        # The name of the AAP.
         self.aap_name = aap_name
+        # The ID of the client key.
         self.client_key_id = client_key_id
+        # The time when the client key was created.
         self.create_time = create_time
+        # The private key algorithm of the client key.
         self.key_algorithm = key_algorithm
+        # The provider of the client key.
+        # 
+        # Currently, only KMS is supported. The value is fixed as KMS_PROVIDED.
         self.key_origin = key_origin
+        # The end of the validity period of the client key.
         self.not_after = not_after
+        # The beginning of the validity period of the client key.
         self.not_before = not_before
+        # The public key of the client key.
         self.public_key_data = public_key_data
 
     def validate(self):
@@ -9414,7 +9586,9 @@ class ListClientKeysResponseBody(TeaModel):
         client_keys: List[ListClientKeysResponseBodyClientKeys] = None,
         request_id: str = None,
     ):
+        # A list of client keys.
         self.client_keys = client_keys
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -9725,11 +9899,61 @@ class ListKeysRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The CMK filter. The filter consists of one or more key-value pairs. You can specify a maximum of 10 key-value pairs.
+        # 
+        # *   Key
+        # 
+        #     *   Description: the property that you want to filter.
+        # 
+        #     *   Type: string.
+        # 
+        #     *   Valid values:
+        # 
+        #         *   KeyState: the status of the CMK.
+        #         *   KeySpec: the type of the CMK.
+        #         *   KeyUsage: the usage of the CMK.
+        #         *   ProtectionLevel: the protection level.
+        #         *   CreatorType: the type of the creator.
+        # 
+        # *   Values
+        # 
+        #     *   Description: the value to be included after filtering.
+        # 
+        #     *   Format: string array.
+        # 
+        #     *   Length: 0 to 10.
+        # 
+        #     *   Valid values:
+        # 
+        #         *   When Key is set to KeyState, the value can be Enabled, Disabled, PendingDeletion, or PendingImport.
+        # 
+        #         *   When Key is set to KeySpec, the value can be Aliyun_AES\_256, Aliyun_SM4, RSA\_2048, EC_P256, EC_P256K, or EC_SM2.
+        # 
+        #             Note: You can create CMKs of the EC_SM2 or Aliyun_SM4 type only in regions where State Cryptography Administration (SCA)-certified managed HSMs reside. For more information about the regions, see [Supported regions](~~125803~~). If your region does not support EC_SM2 or Aliyun_SM4, the two values are ignored if they are specified.
+        # 
+        #         *   When Key is set to KeyUsage, the value can be ENCRYPT/DECRYPT or SIGN/VERIFY. ENCRYPT/DECRYPT indicates that the CMK is used to encrypt and decrypt data. SIGN/VERIFY indicates that the CMK is used to generate and verify digital signatures.
+        # 
+        #         *   When Key is set to ProtectionLevel, the value can be SOFTWARE (software) or HSM (hardware).
+        # 
+        #             You can set ProtectionLevel to HSM in only specific regions. For more information about the regions, see [Supported regions](~~125803~~). If your region does not support the value HSM, the value is ignored if the value is specified.
+        # 
+        #         *   If Key is set to CreatorType, the value can be User or Service. User indicates that CMKs created by the current account are queried. Service indicates that CMKs automatically created by other cloud services authorized by the current account are queried.
+        # 
+        # The logical relationship between different keys is AND, and the logical relationship between multiple items in the same key is OR. Example:
+        # 
+        # `[ {"Key":"KeyState", "Values":["Enabled","Disabled"]}, {"Key":"KeyState", "Values":["PendingDeletion"]}, {"Key":"KeySpec", "Values":["Aliyun_AES_256"]}]`. In this example, the semantics are:`(KeyState=Enabled OR KeyState=Disabled OR KeyState=PendingDeletion) AND (KeySpec=Aliyun_AES_ 256)`.
         self.filters = filters
-        # The page number of the returned page.
+        # The number of the page to return.
+        # 
+        # Pages start from page 1.
+        # 
+        # Default value: 1.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries to return on each page.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 10
         self.page_size = page_size
 
     def validate(self):
@@ -9766,7 +9990,9 @@ class ListKeysResponseBodyKeysKey(TeaModel):
         key_arn: str = None,
         key_id: str = None,
     ):
+        # The Alibaba Cloud Resource Name (ARN) of the CMK.
         self.key_arn = key_arn
+        # The ID of the CMK. The ID must be globally unique.
         self.key_id = key_id
 
     def validate(self):
@@ -9837,14 +10063,15 @@ class ListKeysResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        self.keys = keys
-        # The total number of CMKs.
-        self.page_number = page_number
         # An array that consists of the CMKs of the current Alibaba Cloud account in the current region.
+        self.keys = keys
+        # The page number of the returned page.
+        self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
-        # The ID of the CMK. The ID must be globally unique.
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
-        # The Alibaba Cloud Resource Name (ARN) of the CMK.
+        # The total number of CMKs.
         self.total_count = total_count
 
     def validate(self):
@@ -9932,7 +10159,9 @@ class ListKmsInstancesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.page_size = page_size
 
     def validate(self):
@@ -9965,7 +10194,9 @@ class ListKmsInstancesResponseBodyKmsInstancesKmsInstance(TeaModel):
         kms_instance_arn: str = None,
         kms_instance_id: str = None,
     ):
+        # The ARN of the KMS instance.
         self.kms_instance_arn = kms_instance_arn
+        # The ID of the KMS instance.
         self.kms_instance_id = kms_instance_id
 
     def validate(self):
@@ -10036,10 +10267,15 @@ class ListKmsInstancesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # A list of KMS instances.
         self.kms_instances = kms_instances
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of KMS instances.
         self.total_count = total_count
 
     def validate(self):
@@ -10127,7 +10363,9 @@ class ListNetworkRulesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.page_size = page_size
 
     def validate(self):
@@ -10160,7 +10398,9 @@ class ListNetworkRulesResponseBodyNetworkRulesNetworkRule(TeaModel):
         name: str = None,
         type: str = None,
     ):
+        # The name of the access control rule.
         self.name = name
+        # The network type. The value is fixed as Private. Self-managed applications can access KMS instances only over a private virtual private cloud (VPC).
         self.type = type
 
     def validate(self):
@@ -10231,10 +10471,15 @@ class ListNetworkRulesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # A list of access control rules.
         self.network_rules = network_rules
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -10322,7 +10567,9 @@ class ListPoliciesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.page_size = page_size
 
     def validate(self):
@@ -10354,6 +10601,7 @@ class ListPoliciesResponseBodyPoliciesPolicy(TeaModel):
         self,
         name: str = None,
     ):
+        # The name of the permission policy.
         self.name = name
 
     def validate(self):
@@ -10420,10 +10668,15 @@ class ListPoliciesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # A list of permission policies.
         self.policies = policies
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -11317,7 +11570,15 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag. A tag consists of a key-value pair.
+        # 
+        # You can enter up to 20 tags. Enter multiple tags in the `[{"Key":"key1","Value":"value1"},{"Key":"key2","Value":"value2"},..]` format.
+        # 
+        # >  The key cannot start with aliyun or acs:.
         self.key = key
+        # The value of the tag. A tag consists of a key-value pair.
+        # 
+        # You can enter up to 20 tags. Enter multiple tags in the `[{"Key":"key1","Value":"value1"},{"Key":"key2","Value":"value2"},..]` format.
         self.value = value
 
     def validate(self):
@@ -11353,10 +11614,24 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
+        # The pagination token that is used in the next request to retrieve a new page of results.
+        # 
+        # >  If the call does not return all result entries, the value of the NextToken parameter is returned. By default, 200 rows are returned. You can call this operation again and set the value of the parameter to the value of the parameter that is returned in the last call to implement paged query.
         self.next_token = next_token
+        # The region ID of the resource.
+        # 
+        # >  You can call the [DescribeRegions](~~601478~~) to query the most recent region list.
         self.region_id = region_id
+        # A list of resource IDs for which you want to query tags. You can enter a maximum of 50 resource IDs.
+        # 
+        # Enter multiple resource IDs in the `["ResourceId. 1","ResourceId. 2",...]` format.
         self.resource_id = resource_id
+        # The type of resource whose tags you want to query. Valid value:
+        # 
+        # *   key
+        # *   secret
         self.resource_type = resource_type
+        # A list of tags that you want to query. Valid values of N: 1 to 20.
         self.tag = tag
 
     def validate(self):
@@ -11411,9 +11686,13 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The resource ID.
         self.resource_id = resource_id
+        # The type of the resource.
         self.resource_type = resource_type
+        # The key of the tag.
         self.tag_key = tag_key
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -11490,8 +11769,14 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: ListTagResourcesResponseBodyTagResources = None,
     ):
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # 
+        # *   If NextToken is empty ("NextToken": ""), no next page exists.
+        # *   If NextToken is not empty, the next query is required, and the value is the token used to start the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # A list of tags.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -12678,7 +12963,19 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag. A tag consists of a key-value pair.
+        # 
+        # You can enter up to 20 tags. Enter multiple tags in the `[{"Key":"key1","Value":"value1"},{"Key":"key2","Value":"value2"},..]` format.
+        # 
+        # Each key can be up to 128 characters in length and can contain letters, digits, forward slashes (/), backslashes (\\), underscores (\_), hyphens (-), periods (.), plus signs (+), equal signs (=), colons (:), and at signs (@).
+        # 
+        # >  The key cannot start with aliyun or acs:.
         self.key = key
+        # The value of the tag. A tag consists of a key-value pair.
+        # 
+        # You can enter up to 20 tags. Enter multiple tags in the `[{"Key":"key1","Value":"value1"},{"Key":"key2","Value":"value2"},..]` format.
+        # 
+        # Each value can be up to 128 characters in length and can contain letters, digits, forward slashes (/), backslashes (\\), underscores (\_), hyphens (-), periods (.), plus signs (+), equal signs (=), colons (:), and at signs (@).
         self.value = value
 
     def validate(self):
@@ -12713,9 +13010,22 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
+        # The region ID of the resource.
+        # 
+        # >  You can call the [DescribeRegions](~~601478~~) to query the most recent region list.
         self.region_id = region_id
+        # The IDs of the resources to which you want to add tags. You can enter a maximum of 50 resource IDs.
+        # 
+        # Enter multiple resource IDs in the `["ResourceId. 1","ResourceId. 2",...]` format.
         self.resource_id = resource_id
+        # The type of the resource to which you want to add tags. Valid values:
+        # 
+        # *   key
+        # *   secret
         self.resource_type = resource_type
+        # A list of tags. You can enter up to 20 tags.
+        # 
+        # A tag consists of a key-value pair. Enter multiple tags in the `[{"Key":"key1","Value":"value1"},{"Key":"key2","Value":"value2"},..]` format.
         self.tag = tag
 
     def validate(self):
@@ -12763,6 +13073,7 @@ class TagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12949,10 +13260,31 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
+        # Specifies whether to remove all tags from resources. Valid values:
+        # 
+        # *   true
+        # *   false (default)
+        # 
+        # >  This parameter takes effect only when you specify an empty tag key.
         self.all = all
+        # The region ID of the resource.
+        # 
+        # >  You can call the [DescribeRegions](~~601478~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The IDs of the resources from which you want to remove tags. You can enter up to 50 resource IDs.
+        # 
+        # Enter multiple resource IDs in the `["ResourceId.1","ResourceId.2",...]` format.
         self.resource_id = resource_id
+        # The type of the resource from which you want to remove tags. Valid values:
+        # 
+        # *   key
+        # *   secret
         self.resource_type = resource_type
+        # The keys of the tags that you want to remove. You can enter up to 20 tag keys.
+        # 
+        # Enter multiple tag keys in the `["key.1","key.2",...]` format.
+        # 
+        # >  The tag key cannot start with aliyun or acs:.
         self.tag_key = tag_key
 
     def validate(self):
@@ -12996,6 +13328,7 @@ class UntagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -13172,8 +13505,12 @@ class UpdateApplicationAccessPointRequest(TeaModel):
         name: str = None,
         policies: str = None,
     ):
+        # The description.
         self.description = description
+        # The name of the AAP that you want to update.
         self.name = name
+        # The permission policy that you want to update.
+        # > You can associate up to three permission policies with each AAP.
         self.policies = policies
 
     def validate(self):
@@ -13209,6 +13546,7 @@ class UpdateApplicationAccessPointResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -13494,7 +13832,16 @@ class UpdateKmsInstanceBindVpcRequest(TeaModel):
         bind_vpcs: str = None,
         kms_instance_id: str = None,
     ):
+        # The VPC configuration. The configuration of each VPC contains the following content:
+        # 
+        # *   VpcId: the ID of the VPC.
+        # *   VSwitchId: the vSwitch in the VPC.
+        # *   RegionID: the ID of the region to which the VPC belongs.
+        # *   VpcOwnerId: the Alibaba Cloud account to which the VPC belongs.
+        # 
+        # Format: `[{"VpcId":"${VpcId}","VSwitchId":"${VSwitchId}","RegionId":"${RegionId}","VpcOwnerId":${VpcOwnerId}},..]`.
         self.bind_vpcs = bind_vpcs
+        # The ID of the KMS instance.
         self.kms_instance_id = kms_instance_id
 
     def validate(self):
@@ -13526,6 +13873,7 @@ class UpdateKmsInstanceBindVpcResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -13596,8 +13944,11 @@ class UpdateNetworkRuleRequest(TeaModel):
         name: str = None,
         source_private_ip: str = None,
     ):
+        # The description after the update.
         self.description = description
+        # The name of the access control rule that you want to update.
         self.name = name
+        # The private IP address or CIDR block after the update. Separate multiple items with commas (,).
         self.source_private_ip = source_private_ip
 
     def validate(self):
@@ -13633,6 +13984,7 @@ class UpdateNetworkRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -13705,10 +14057,25 @@ class UpdatePolicyRequest(TeaModel):
         permissions: str = None,
         resources: str = None,
     ):
+        # The access control rule.
+        # 
+        # > For more information about how to query created access control rules, see [ListNetworkRules](~~2539433~~).
         self.access_control_rules = access_control_rules
+        # The description.
         self.description = description
+        # The name of the permission policy that you want to update.
         self.name = name
+        # The operations that are supported by the updated policy. Valid values:
+        # 
+        # *   RbacPermission/Template/CryptoServiceKeyUser: allows you to perform cryptographic operations.
+        # *   RbacPermission/Template/CryptoServiceSecretUser: allows you to perform secret-related operations.
+        # 
+        # You can select both.
         self.permissions = permissions
+        # The key and secret that are allowed to access after the update.
+        # 
+        # *   Key: Enter a key in the `key/${KeyId}` format. To allow access to all keys of a KMS instance, enter key/\*.
+        # *   Secret: Enter a secret in the `secret/${SecretName}` format. To allow access to all secrets of a KMS instance, enter secret/\*.
         self.resources = resources
 
     def validate(self):
@@ -13752,6 +14119,7 @@ class UpdatePolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
