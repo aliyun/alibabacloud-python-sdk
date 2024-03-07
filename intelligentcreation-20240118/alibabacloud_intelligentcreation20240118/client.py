@@ -3,10 +3,8 @@
 from typing import Dict
 from Tea.core import TeaCore
 
-from alibabacloud_gateway_spi.client import Client as SPIClient
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
-from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_intelligentcreation20240118 import models as intelligent_creation_20240118_models
@@ -18,16 +16,11 @@ class Client(OpenApiClient):
     """
     *\
     """
-    _client: SPIClient = None
-
     def __init__(
         self, 
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._product_id = 'IntelligentCreation'
-        self._client = GatewayClientClient()
-        self._spi = self._client
         self._endpoint_rule = ''
         self.check_config(config)
         self._endpoint = self.get_endpoint('intelligentcreation', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -70,16 +63,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.ActualDeductResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.ActualDeductResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.ActualDeductResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def actual_deduct_resource_with_options_async(
         self,
@@ -103,16 +90,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.ActualDeductResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.ActualDeductResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.ActualDeductResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def actual_deduct_resource(
         self,
@@ -152,16 +133,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.ActualDeductResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.ActualDeductResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.ActualDeductResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def actual_deduct_resources_with_options_async(
         self,
@@ -185,16 +160,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.ActualDeductResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.ActualDeductResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.ActualDeductResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def actual_deduct_resources(
         self,
@@ -255,16 +224,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.CopywritingQAResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.CopywritingQAResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.CopywritingQAResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def copywriting_qawith_options_async(
         self,
@@ -309,16 +272,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.CopywritingQAResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.CopywritingQAResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.CopywritingQAResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def copywriting_qa(
         self,
@@ -358,16 +315,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.DirectDeductResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.DirectDeductResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.DirectDeductResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def direct_deduct_resource_with_options_async(
         self,
@@ -391,16 +342,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.DirectDeductResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.DirectDeductResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.DirectDeductResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def direct_deduct_resource(
         self,
@@ -440,16 +385,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.DirectDeductResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.DirectDeductResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.DirectDeductResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def direct_deduct_resources_with_options_async(
         self,
@@ -473,16 +412,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.DirectDeductResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.DirectDeductResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.DirectDeductResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def direct_deduct_resources(
         self,
@@ -522,16 +455,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.ExpectDeductResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.ExpectDeductResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.ExpectDeductResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def expect_deduct_resource_with_options_async(
         self,
@@ -555,16 +482,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.ExpectDeductResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.ExpectDeductResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.ExpectDeductResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def expect_deduct_resource(
         self,
@@ -604,16 +525,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.ExpectDeductResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.ExpectDeductResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.ExpectDeductResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def expect_deduct_resources_with_options_async(
         self,
@@ -637,16 +552,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.ExpectDeductResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.ExpectDeductResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.ExpectDeductResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def expect_deduct_resources(
         self,
@@ -693,16 +602,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.GetRemainResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.GetRemainResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.GetRemainResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_remain_resource_with_options_async(
         self,
@@ -733,16 +636,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.GetRemainResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.GetRemainResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.GetRemainResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_remain_resource(
         self,
@@ -795,16 +692,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.SubmitBulletQuestionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.SubmitBulletQuestionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.SubmitBulletQuestionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def submit_bullet_questions_with_options_async(
         self,
@@ -841,16 +732,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.SubmitBulletQuestionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                intelligent_creation_20240118_models.SubmitBulletQuestionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.SubmitBulletQuestionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def submit_bullet_questions(
         self,
