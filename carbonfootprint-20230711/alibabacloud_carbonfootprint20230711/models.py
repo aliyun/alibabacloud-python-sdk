@@ -330,12 +330,16 @@ class QueryCarbonTrackRequest(TeaModel):
     def __init__(
         self,
         end_time: str = None,
+        filter_rdaccount: int = None,
         group: str = None,
         start_time: str = None,
+        uids: List[str] = None,
     ):
         self.end_time = end_time
+        self.filter_rdaccount = filter_rdaccount
         self.group = group
         self.start_time = start_time
+        self.uids = uids
 
     def validate(self):
         pass
@@ -348,20 +352,79 @@ class QueryCarbonTrackRequest(TeaModel):
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.filter_rdaccount is not None:
+            result['FilterRDAccount'] = self.filter_rdaccount
         if self.group is not None:
             result['Group'] = self.group
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.uids is not None:
+            result['Uids'] = self.uids
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('FilterRDAccount') is not None:
+            self.filter_rdaccount = m.get('FilterRDAccount')
         if m.get('Group') is not None:
             self.group = m.get('Group')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('Uids') is not None:
+            self.uids = m.get('Uids')
+        return self
+
+
+class QueryCarbonTrackShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        filter_rdaccount: int = None,
+        group: str = None,
+        start_time: str = None,
+        uids_shrink: str = None,
+    ):
+        self.end_time = end_time
+        self.filter_rdaccount = filter_rdaccount
+        self.group = group
+        self.start_time = start_time
+        self.uids_shrink = uids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.filter_rdaccount is not None:
+            result['FilterRDAccount'] = self.filter_rdaccount
+        if self.group is not None:
+            result['Group'] = self.group
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.uids_shrink is not None:
+            result['Uids'] = self.uids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('FilterRDAccount') is not None:
+            self.filter_rdaccount = m.get('FilterRDAccount')
+        if m.get('Group') is not None:
+            self.group = m.get('Group')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Uids') is not None:
+            self.uids_shrink = m.get('Uids')
         return self
 
 
