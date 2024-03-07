@@ -132,3 +132,123 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_hpo_experiment_with_options_async(request, headers, runtime)
+
+    def list_hpo_experiments_with_options(
+        self,
+        request: pai_auto_ml20220828_models.ListHpoExperimentsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_auto_ml20220828_models.ListHpoExperimentsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accessibility):
+            query['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.creator):
+            query['Creator'] = request.creator
+        if not UtilClient.is_unset(request.include_config_data):
+            query['IncludeConfigData'] = request.include_config_data
+        if not UtilClient.is_unset(request.max_create_time):
+            query['MaxCreateTime'] = request.max_create_time
+        if not UtilClient.is_unset(request.min_create_time):
+            query['MinCreateTime'] = request.min_create_time
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListHpoExperiments',
+            version='2022-08-28',
+            protocol='HTTPS',
+            pathname=f'/api/automl/v1/hpo/experiments',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_auto_ml20220828_models.ListHpoExperimentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_hpo_experiments_with_options_async(
+        self,
+        request: pai_auto_ml20220828_models.ListHpoExperimentsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_auto_ml20220828_models.ListHpoExperimentsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accessibility):
+            query['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.creator):
+            query['Creator'] = request.creator
+        if not UtilClient.is_unset(request.include_config_data):
+            query['IncludeConfigData'] = request.include_config_data
+        if not UtilClient.is_unset(request.max_create_time):
+            query['MaxCreateTime'] = request.max_create_time
+        if not UtilClient.is_unset(request.min_create_time):
+            query['MinCreateTime'] = request.min_create_time
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListHpoExperiments',
+            version='2022-08-28',
+            protocol='HTTPS',
+            pathname=f'/api/automl/v1/hpo/experiments',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_auto_ml20220828_models.ListHpoExperimentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_hpo_experiments(
+        self,
+        request: pai_auto_ml20220828_models.ListHpoExperimentsRequest,
+    ) -> pai_auto_ml20220828_models.ListHpoExperimentsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_hpo_experiments_with_options(request, headers, runtime)
+
+    async def list_hpo_experiments_async(
+        self,
+        request: pai_auto_ml20220828_models.ListHpoExperimentsRequest,
+    ) -> pai_auto_ml20220828_models.ListHpoExperimentsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_hpo_experiments_with_options_async(request, headers, runtime)
