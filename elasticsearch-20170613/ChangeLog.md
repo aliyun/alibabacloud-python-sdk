@@ -1,3 +1,11 @@
+2024-03-07 Version: 1.4.0
+- Support API DisableKibanaPvlNetwork.
+- Support API EnableKibanaPvlNetwork.
+- Support API GetRegionalInstanceConfig.
+- Support API ListKibanaPvlNetwork.
+- Support API UpdateKibanaPvlNetwork.
+
+
 2024-02-21 Version: 1.3.0
 - Support API GetRegionalInstanceConfig.
 

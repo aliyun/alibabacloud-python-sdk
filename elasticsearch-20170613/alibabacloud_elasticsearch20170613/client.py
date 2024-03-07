@@ -4622,6 +4622,164 @@ class Client(OpenApiClient):
         headers = {}
         return await self.diagnose_instance_with_options_async(instance_id, request, headers, runtime)
 
+    def disable_kibana_pvl_network_with_options(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> elasticsearch_20170613_models.DisableKibanaPvlNetworkResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DisableKibanaPvlNetwork',
+            version='2017-06-13',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/disable-kibana-private',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            elasticsearch_20170613_models.DisableKibanaPvlNetworkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_kibana_pvl_network_with_options_async(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> elasticsearch_20170613_models.DisableKibanaPvlNetworkResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DisableKibanaPvlNetwork',
+            version='2017-06-13',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/disable-kibana-private',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            elasticsearch_20170613_models.DisableKibanaPvlNetworkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_kibana_pvl_network(
+        self,
+        instance_id: str,
+    ) -> elasticsearch_20170613_models.DisableKibanaPvlNetworkResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.disable_kibana_pvl_network_with_options(instance_id, headers, runtime)
+
+    async def disable_kibana_pvl_network_async(
+        self,
+        instance_id: str,
+    ) -> elasticsearch_20170613_models.DisableKibanaPvlNetworkResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.disable_kibana_pvl_network_with_options_async(instance_id, headers, runtime)
+
+    def enable_kibana_pvl_network_with_options(
+        self,
+        instance_id: str,
+        request: elasticsearch_20170613_models.EnableKibanaPvlNetworkRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> elasticsearch_20170613_models.EnableKibanaPvlNetworkResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.endpoint_name):
+            body['endpointName'] = request.endpoint_name
+        if not UtilClient.is_unset(request.security_groups):
+            body['securityGroups'] = request.security_groups
+        if not UtilClient.is_unset(request.v_switch_ids_zone):
+            body['vSwitchIdsZone'] = request.v_switch_ids_zone
+        if not UtilClient.is_unset(request.vpc_id):
+            body['vpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EnableKibanaPvlNetwork',
+            version='2017-06-13',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/enable-kibana-private',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            elasticsearch_20170613_models.EnableKibanaPvlNetworkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_kibana_pvl_network_with_options_async(
+        self,
+        instance_id: str,
+        request: elasticsearch_20170613_models.EnableKibanaPvlNetworkRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> elasticsearch_20170613_models.EnableKibanaPvlNetworkResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.endpoint_name):
+            body['endpointName'] = request.endpoint_name
+        if not UtilClient.is_unset(request.security_groups):
+            body['securityGroups'] = request.security_groups
+        if not UtilClient.is_unset(request.v_switch_ids_zone):
+            body['vSwitchIdsZone'] = request.v_switch_ids_zone
+        if not UtilClient.is_unset(request.vpc_id):
+            body['vpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EnableKibanaPvlNetwork',
+            version='2017-06-13',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/enable-kibana-private',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            elasticsearch_20170613_models.EnableKibanaPvlNetworkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_kibana_pvl_network(
+        self,
+        instance_id: str,
+        request: elasticsearch_20170613_models.EnableKibanaPvlNetworkRequest,
+    ) -> elasticsearch_20170613_models.EnableKibanaPvlNetworkResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.enable_kibana_pvl_network_with_options(instance_id, request, headers, runtime)
+
+    async def enable_kibana_pvl_network_async(
+        self,
+        instance_id: str,
+        request: elasticsearch_20170613_models.EnableKibanaPvlNetworkRequest,
+    ) -> elasticsearch_20170613_models.EnableKibanaPvlNetworkResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.enable_kibana_pvl_network_with_options_async(instance_id, request, headers, runtime)
+
     def estimated_logstash_restart_time_with_options(
         self,
         instance_id: str,
@@ -8765,6 +8923,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_kibana_plugins_with_options_async(instance_id, request, headers, runtime)
+
+    def list_kibana_pvl_network_with_options(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> elasticsearch_20170613_models.ListKibanaPvlNetworkResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListKibanaPvlNetwork',
+            version='2017-06-13',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/get-kibana-private',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            elasticsearch_20170613_models.ListKibanaPvlNetworkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_kibana_pvl_network_with_options_async(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> elasticsearch_20170613_models.ListKibanaPvlNetworkResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListKibanaPvlNetwork',
+            version='2017-06-13',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/get-kibana-private',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            elasticsearch_20170613_models.ListKibanaPvlNetworkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_kibana_pvl_network(
+        self,
+        instance_id: str,
+    ) -> elasticsearch_20170613_models.ListKibanaPvlNetworkResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_kibana_pvl_network_with_options(instance_id, headers, runtime)
+
+    async def list_kibana_pvl_network_async(
+        self,
+        instance_id: str,
+    ) -> elasticsearch_20170613_models.ListKibanaPvlNetworkResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_kibana_pvl_network_with_options_async(instance_id, headers, runtime)
 
     def list_logstash_with_options(
         self,
@@ -14943,6 +15167,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_instance_settings_with_options_async(instance_id, request, headers, runtime)
+
+    def update_kibana_pvl_network_with_options(
+        self,
+        instance_id: str,
+        request: elasticsearch_20170613_models.UpdateKibanaPvlNetworkRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> elasticsearch_20170613_models.UpdateKibanaPvlNetworkResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.pvl_id):
+            query['pvlId'] = request.pvl_id
+        body = {}
+        if not UtilClient.is_unset(request.endpoint_name):
+            body['endpointName'] = request.endpoint_name
+        if not UtilClient.is_unset(request.security_groups):
+            body['securityGroups'] = request.security_groups
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateKibanaPvlNetwork',
+            version='2017-06-13',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/update-kibana-private',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            elasticsearch_20170613_models.UpdateKibanaPvlNetworkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_kibana_pvl_network_with_options_async(
+        self,
+        instance_id: str,
+        request: elasticsearch_20170613_models.UpdateKibanaPvlNetworkRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> elasticsearch_20170613_models.UpdateKibanaPvlNetworkResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.pvl_id):
+            query['pvlId'] = request.pvl_id
+        body = {}
+        if not UtilClient.is_unset(request.endpoint_name):
+            body['endpointName'] = request.endpoint_name
+        if not UtilClient.is_unset(request.security_groups):
+            body['securityGroups'] = request.security_groups
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateKibanaPvlNetwork',
+            version='2017-06-13',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/update-kibana-private',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            elasticsearch_20170613_models.UpdateKibanaPvlNetworkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_kibana_pvl_network(
+        self,
+        instance_id: str,
+        request: elasticsearch_20170613_models.UpdateKibanaPvlNetworkRequest,
+    ) -> elasticsearch_20170613_models.UpdateKibanaPvlNetworkResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_kibana_pvl_network_with_options(instance_id, request, headers, runtime)
+
+    async def update_kibana_pvl_network_async(
+        self,
+        instance_id: str,
+        request: elasticsearch_20170613_models.UpdateKibanaPvlNetworkRequest,
+    ) -> elasticsearch_20170613_models.UpdateKibanaPvlNetworkResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_kibana_pvl_network_with_options_async(instance_id, request, headers, runtime)
 
     def update_kibana_settings_with_options(
         self,
