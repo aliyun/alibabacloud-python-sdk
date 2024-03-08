@@ -1,3 +1,12 @@
+2024-03-08 Version: 1.1.4
+- Update API GetSummaryData: add param Uids.
+- Update API GetSummaryData: update response param.
+- Update API QueryCarbonTrack: add param FilterRDAccount.
+- Update API QueryCarbonTrack: add param TopNum.
+- Update API QueryCarbonTrack: add param Uids.
+- Update API Verify: update response param.
+
+
 2024-03-07 Version: 1.1.3
 - Update API GetSummaryData: add param Uids.
 - Update API GetSummaryData: update response param.

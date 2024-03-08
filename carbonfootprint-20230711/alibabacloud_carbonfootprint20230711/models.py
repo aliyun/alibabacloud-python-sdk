@@ -333,12 +333,14 @@ class QueryCarbonTrackRequest(TeaModel):
         filter_rdaccount: int = None,
         group: str = None,
         start_time: str = None,
+        top_num: int = None,
         uids: List[str] = None,
     ):
         self.end_time = end_time
         self.filter_rdaccount = filter_rdaccount
         self.group = group
         self.start_time = start_time
+        self.top_num = top_num
         self.uids = uids
 
     def validate(self):
@@ -358,6 +360,8 @@ class QueryCarbonTrackRequest(TeaModel):
             result['Group'] = self.group
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.top_num is not None:
+            result['TopNum'] = self.top_num
         if self.uids is not None:
             result['Uids'] = self.uids
         return result
@@ -372,6 +376,8 @@ class QueryCarbonTrackRequest(TeaModel):
             self.group = m.get('Group')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('TopNum') is not None:
+            self.top_num = m.get('TopNum')
         if m.get('Uids') is not None:
             self.uids = m.get('Uids')
         return self
@@ -384,12 +390,14 @@ class QueryCarbonTrackShrinkRequest(TeaModel):
         filter_rdaccount: int = None,
         group: str = None,
         start_time: str = None,
+        top_num: int = None,
         uids_shrink: str = None,
     ):
         self.end_time = end_time
         self.filter_rdaccount = filter_rdaccount
         self.group = group
         self.start_time = start_time
+        self.top_num = top_num
         self.uids_shrink = uids_shrink
 
     def validate(self):
@@ -409,6 +417,8 @@ class QueryCarbonTrackShrinkRequest(TeaModel):
             result['Group'] = self.group
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.top_num is not None:
+            result['TopNum'] = self.top_num
         if self.uids_shrink is not None:
             result['Uids'] = self.uids_shrink
         return result
@@ -423,6 +433,8 @@ class QueryCarbonTrackShrinkRequest(TeaModel):
             self.group = m.get('Group')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('TopNum') is not None:
+            self.top_num = m.get('TopNum')
         if m.get('Uids') is not None:
             self.uids_shrink = m.get('Uids')
         return self

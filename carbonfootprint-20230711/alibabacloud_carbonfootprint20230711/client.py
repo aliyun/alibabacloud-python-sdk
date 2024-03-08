@@ -200,6 +200,8 @@ class Client(OpenApiClient):
             query['Group'] = request.group
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.top_num):
+            query['TopNum'] = request.top_num
         if not UtilClient.is_unset(request.uids_shrink):
             query['Uids'] = request.uids_shrink
         req = open_api_models.OpenApiRequest(
@@ -240,6 +242,8 @@ class Client(OpenApiClient):
             query['Group'] = request.group
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.top_num):
+            query['TopNum'] = request.top_num
         if not UtilClient.is_unset(request.uids_shrink):
             query['Uids'] = request.uids_shrink
         req = open_api_models.OpenApiRequest(
