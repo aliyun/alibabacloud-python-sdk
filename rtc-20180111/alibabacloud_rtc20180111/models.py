@@ -431,12 +431,10 @@ class AddRecordTemplateResponse(TeaModel):
 class CreateAppStreamingOutTemplateRequestStreamingOutTemplate(TeaModel):
     def __init__(
         self,
-        enable_vad: bool = None,
         layout_ids: List[str] = None,
         media_encode: int = None,
         name: str = None,
     ):
-        self.enable_vad = enable_vad
         self.layout_ids = layout_ids
         self.media_encode = media_encode
         self.name = name
@@ -450,8 +448,6 @@ class CreateAppStreamingOutTemplateRequestStreamingOutTemplate(TeaModel):
             return _map
 
         result = dict()
-        if self.enable_vad is not None:
-            result['EnableVad'] = self.enable_vad
         if self.layout_ids is not None:
             result['LayoutIds'] = self.layout_ids
         if self.media_encode is not None:
@@ -462,8 +458,6 @@ class CreateAppStreamingOutTemplateRequestStreamingOutTemplate(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('EnableVad') is not None:
-            self.enable_vad = m.get('EnableVad')
         if m.get('LayoutIds') is not None:
             self.layout_ids = m.get('LayoutIds')
         if m.get('MediaEncode') is not None:
@@ -2041,14 +2035,12 @@ class DescribeAppStreamingOutTemplatesResponseBodyTemplates(TeaModel):
     def __init__(
         self,
         create_time: str = None,
-        enable_vad: bool = None,
         layout_ids: List[str] = None,
         media_encode: int = None,
         name: str = None,
         template_id: str = None,
     ):
         self.create_time = create_time
-        self.enable_vad = enable_vad
         self.layout_ids = layout_ids
         self.media_encode = media_encode
         self.name = name
@@ -2065,8 +2057,6 @@ class DescribeAppStreamingOutTemplatesResponseBodyTemplates(TeaModel):
         result = dict()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
-        if self.enable_vad is not None:
-            result['EnableVad'] = self.enable_vad
         if self.layout_ids is not None:
             result['LayoutIds'] = self.layout_ids
         if self.media_encode is not None:
@@ -2081,8 +2071,6 @@ class DescribeAppStreamingOutTemplatesResponseBodyTemplates(TeaModel):
         m = m or dict()
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
-        if m.get('EnableVad') is not None:
-            self.enable_vad = m.get('EnableVad')
         if m.get('LayoutIds') is not None:
             self.layout_ids = m.get('LayoutIds')
         if m.get('MediaEncode') is not None:
@@ -5354,107 +5342,6 @@ class DescribeChannelUsersResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeChannelUsersResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeChannelsRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-    ):
-        self.app_id = app_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        return self
-
-
-class DescribeChannelsResponseBody(TeaModel):
-    def __init__(
-        self,
-        channel_ids: List[str] = None,
-        request_id: str = None,
-    ):
-        self.channel_ids = channel_ids
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.channel_ids is not None:
-            result['ChannelIds'] = self.channel_ids
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ChannelIds') is not None:
-            self.channel_ids = m.get('ChannelIds')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DescribeChannelsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeChannelsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeChannelsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12741,13 +12628,11 @@ class ModifyAppResponse(TeaModel):
 class ModifyAppStreamingOutTemplateRequestStreamingOutTemplate(TeaModel):
     def __init__(
         self,
-        enable_vad: bool = None,
         layout_ids: List[str] = None,
         media_encode: int = None,
         name: str = None,
         template_id: str = None,
     ):
-        self.enable_vad = enable_vad
         self.layout_ids = layout_ids
         self.media_encode = media_encode
         self.name = name
@@ -12762,8 +12647,6 @@ class ModifyAppStreamingOutTemplateRequestStreamingOutTemplate(TeaModel):
             return _map
 
         result = dict()
-        if self.enable_vad is not None:
-            result['EnableVad'] = self.enable_vad
         if self.layout_ids is not None:
             result['LayoutIds'] = self.layout_ids
         if self.media_encode is not None:
@@ -12776,8 +12659,6 @@ class ModifyAppStreamingOutTemplateRequestStreamingOutTemplate(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('EnableVad') is not None:
-            self.enable_vad = m.get('EnableVad')
         if m.get('LayoutIds') is not None:
             self.layout_ids = m.get('LayoutIds')
         if m.get('MediaEncode') is not None:
@@ -13521,14 +13402,11 @@ class RemoveUsersResponse(TeaModel):
 class StartCloudRecordRequestPanes(TeaModel):
     def __init__(
         self,
-        pane_id: str = None,
-        source: str = None,
+        pane_id: int = None,
         source_type: str = None,
     ):
         # paneId
         self.pane_id = pane_id
-        # source
-        self.source = source
         # sourceType
         self.source_type = source_type
 
@@ -13543,8 +13421,6 @@ class StartCloudRecordRequestPanes(TeaModel):
         result = dict()
         if self.pane_id is not None:
             result['PaneId'] = self.pane_id
-        if self.source is not None:
-            result['Source'] = self.source
         if self.source_type is not None:
             result['SourceType'] = self.source_type
         return result
@@ -13553,8 +13429,6 @@ class StartCloudRecordRequestPanes(TeaModel):
         m = m or dict()
         if m.get('PaneId') is not None:
             self.pane_id = m.get('PaneId')
-        if m.get('Source') is not None:
-            self.source = m.get('Source')
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')
         return self
