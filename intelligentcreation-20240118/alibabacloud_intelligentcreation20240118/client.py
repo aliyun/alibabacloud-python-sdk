@@ -293,6 +293,76 @@ class Client(OpenApiClient):
         headers = {}
         return await self.copywriting_qawith_options_async(request, headers, runtime)
 
+    def copywriting_qav1with_options(
+        self,
+        request: intelligent_creation_20240118_models.CopywritingQAV1Request,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240118_models.CopywritingQAV1Response:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CopywritingQAV1',
+            version='2024-01-18',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/digitalHuman/commands/copywritingQAV1',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.CopywritingQAV1Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def copywriting_qav1with_options_async(
+        self,
+        request: intelligent_creation_20240118_models.CopywritingQAV1Request,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240118_models.CopywritingQAV1Response:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CopywritingQAV1',
+            version='2024-01-18',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/digitalHuman/commands/copywritingQAV1',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.CopywritingQAV1Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def copywriting_qav1(
+        self,
+        request: intelligent_creation_20240118_models.CopywritingQAV1Request,
+    ) -> intelligent_creation_20240118_models.CopywritingQAV1Response:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.copywriting_qav1with_options(request, headers, runtime)
+
+    async def copywriting_qav1_async(
+        self,
+        request: intelligent_creation_20240118_models.CopywritingQAV1Request,
+    ) -> intelligent_creation_20240118_models.CopywritingQAV1Response:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.copywriting_qav1with_options_async(request, headers, runtime)
+
     def direct_deduct_resource_with_options(
         self,
         request: intelligent_creation_20240118_models.DirectDeductResourceRequest,
@@ -752,3 +822,73 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.submit_bullet_questions_with_options_async(request, headers, runtime)
+
+    def submit_bullet_questions_v1with_options(
+        self,
+        request: intelligent_creation_20240118_models.SubmitBulletQuestionsV1Request,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240118_models.SubmitBulletQuestionsV1Response:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='SubmitBulletQuestionsV1',
+            version='2024-01-18',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/digitalHuman/commands/submitBulletQuestionsV1',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.SubmitBulletQuestionsV1Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_bullet_questions_v1with_options_async(
+        self,
+        request: intelligent_creation_20240118_models.SubmitBulletQuestionsV1Request,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240118_models.SubmitBulletQuestionsV1Response:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='SubmitBulletQuestionsV1',
+            version='2024-01-18',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/digitalHuman/commands/submitBulletQuestionsV1',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.SubmitBulletQuestionsV1Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_bullet_questions_v1(
+        self,
+        request: intelligent_creation_20240118_models.SubmitBulletQuestionsV1Request,
+    ) -> intelligent_creation_20240118_models.SubmitBulletQuestionsV1Response:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.submit_bullet_questions_v1with_options(request, headers, runtime)
+
+    async def submit_bullet_questions_v1_async(
+        self,
+        request: intelligent_creation_20240118_models.SubmitBulletQuestionsV1Request,
+    ) -> intelligent_creation_20240118_models.SubmitBulletQuestionsV1Response:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.submit_bullet_questions_v1with_options_async(request, headers, runtime)

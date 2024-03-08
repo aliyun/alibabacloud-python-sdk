@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List
+from typing import List, Dict
 
 
 class ActualDeductResourceCmd(TeaModel):
@@ -89,6 +89,155 @@ class ActualDeductResourceResult(TeaModel):
             self.error_message = m.get('errorMessage')
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class DigitalHumanLiveBroadcastQACmdHistory(TeaModel):
+    def __init__(
+        self,
+        bot: str = None,
+        user: str = None,
+    ):
+        self.bot = bot
+        self.user = user
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bot is not None:
+            result['bot'] = self.bot
+        if self.user is not None:
+            result['user'] = self.user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bot') is not None:
+            self.bot = m.get('bot')
+        if m.get('user') is not None:
+            self.user = m.get('user')
+        return self
+
+
+class DigitalHumanLiveBroadcastQACmd(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        history: List[DigitalHumanLiveBroadcastQACmdHistory] = None,
+        question: str = None,
+        session_id: str = None,
+        stream: bool = None,
+        sub_account_id: str = None,
+    ):
+        self.account_id = account_id
+        self.history = history
+        self.question = question
+        self.session_id = session_id
+        self.stream = stream
+        self.sub_account_id = sub_account_id
+
+    def validate(self):
+        if self.history:
+            for k in self.history:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        result['history'] = []
+        if self.history is not None:
+            for k in self.history:
+                result['history'].append(k.to_map() if k else None)
+        if self.question is not None:
+            result['question'] = self.question
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        if self.stream is not None:
+            result['stream'] = self.stream
+        if self.sub_account_id is not None:
+            result['subAccountId'] = self.sub_account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        self.history = []
+        if m.get('history') is not None:
+            for k in m.get('history'):
+                temp_model = DigitalHumanLiveBroadcastQACmdHistory()
+                self.history.append(temp_model.from_map(k))
+        if m.get('question') is not None:
+            self.question = m.get('question')
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        if m.get('stream') is not None:
+            self.stream = m.get('stream')
+        if m.get('subAccountId') is not None:
+            self.sub_account_id = m.get('subAccountId')
+        return self
+
+
+class DigitalHumanLiveBroadcastQAResult(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        error_code: str = None,
+        error_message: str = None,
+        session_id: str = None,
+        success: bool = None,
+    ):
+        self.content = content
+        self.error_code = error_code
+        self.error_message = error_message
+        self.session_id = session_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
         if m.get('success') is not None:
             self.success = m.get('success')
         return self
@@ -319,6 +468,143 @@ class ExpectDeductResourceResult(TeaModel):
             self.success = m.get('success')
         if m.get('taskId') is not None:
             self.task_id = m.get('taskId')
+        return self
+
+
+class SubmitBulletQuestionsCmdQuestions(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        id: str = None,
+        time: int = None,
+        username: str = None,
+    ):
+        self.content = content
+        self.id = id
+        self.time = time
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.id is not None:
+            result['id'] = self.id
+        if self.time is not None:
+            result['time'] = self.time
+        if self.username is not None:
+            result['username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('time') is not None:
+            self.time = m.get('time')
+        if m.get('username') is not None:
+            self.username = m.get('username')
+        return self
+
+
+class SubmitBulletQuestionsCmd(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        questions: List[SubmitBulletQuestionsCmdQuestions] = None,
+        room_id: str = None,
+        sub_account_id: str = None,
+    ):
+        self.account_id = account_id
+        self.questions = questions
+        self.room_id = room_id
+        self.sub_account_id = sub_account_id
+
+    def validate(self):
+        if self.questions:
+            for k in self.questions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        result['questions'] = []
+        if self.questions is not None:
+            for k in self.questions:
+                result['questions'].append(k.to_map() if k else None)
+        if self.room_id is not None:
+            result['roomId'] = self.room_id
+        if self.sub_account_id is not None:
+            result['subAccountId'] = self.sub_account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        self.questions = []
+        if m.get('questions') is not None:
+            for k in m.get('questions'):
+                temp_model = SubmitBulletQuestionsCmdQuestions()
+                self.questions.append(temp_model.from_map(k))
+        if m.get('roomId') is not None:
+            self.room_id = m.get('roomId')
+        if m.get('subAccountId') is not None:
+            self.sub_account_id = m.get('subAccountId')
+        return self
+
+
+class SubmitBulletQuestionsQAResult(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('success') is not None:
+            self.success = m.get('success')
         return self
 
 
@@ -753,6 +1039,76 @@ class CopywritingQAResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CopywritingQAResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CopywritingQAV1Request(TeaModel):
+    def __init__(
+        self,
+        body: DigitalHumanLiveBroadcastQACmd = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = DigitalHumanLiveBroadcastQACmd()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CopywritingQAV1Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DigitalHumanLiveBroadcastQAResult = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DigitalHumanLiveBroadcastQAResult()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1390,6 +1746,76 @@ class SubmitBulletQuestionsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SubmitBulletQuestionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitBulletQuestionsV1Request(TeaModel):
+    def __init__(
+        self,
+        body: SubmitBulletQuestionsCmd = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = SubmitBulletQuestionsCmd()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitBulletQuestionsV1Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitBulletQuestionsQAResult = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitBulletQuestionsQAResult()
             self.body = temp_model.from_map(m['body'])
         return self
 
