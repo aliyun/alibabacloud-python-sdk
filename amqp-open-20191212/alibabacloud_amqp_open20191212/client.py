@@ -1877,6 +1877,124 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_virtual_hosts_with_options_async(request, runtime)
 
+    def update_instance_with_options(
+        self,
+        request: amqp_open_20191212_models.UpdateInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> amqp_open_20191212_models.UpdateInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.max_connections):
+            query['MaxConnections'] = request.max_connections
+        if not UtilClient.is_unset(request.max_eip_tps):
+            query['MaxEipTps'] = request.max_eip_tps
+        if not UtilClient.is_unset(request.max_private_tps):
+            query['MaxPrivateTps'] = request.max_private_tps
+        if not UtilClient.is_unset(request.modify_type):
+            query['ModifyType'] = request.modify_type
+        if not UtilClient.is_unset(request.queue_capacity):
+            query['QueueCapacity'] = request.queue_capacity
+        if not UtilClient.is_unset(request.serverless_charge_type):
+            query['ServerlessChargeType'] = request.serverless_charge_type
+        if not UtilClient.is_unset(request.storage_size):
+            query['StorageSize'] = request.storage_size
+        if not UtilClient.is_unset(request.support_eip):
+            query['SupportEip'] = request.support_eip
+        if not UtilClient.is_unset(request.support_tracing):
+            query['SupportTracing'] = request.support_tracing
+        if not UtilClient.is_unset(request.tracing_storage_time):
+            query['TracingStorageTime'] = request.tracing_storage_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateInstance',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.UpdateInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_instance_with_options_async(
+        self,
+        request: amqp_open_20191212_models.UpdateInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> amqp_open_20191212_models.UpdateInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.max_connections):
+            query['MaxConnections'] = request.max_connections
+        if not UtilClient.is_unset(request.max_eip_tps):
+            query['MaxEipTps'] = request.max_eip_tps
+        if not UtilClient.is_unset(request.max_private_tps):
+            query['MaxPrivateTps'] = request.max_private_tps
+        if not UtilClient.is_unset(request.modify_type):
+            query['ModifyType'] = request.modify_type
+        if not UtilClient.is_unset(request.queue_capacity):
+            query['QueueCapacity'] = request.queue_capacity
+        if not UtilClient.is_unset(request.serverless_charge_type):
+            query['ServerlessChargeType'] = request.serverless_charge_type
+        if not UtilClient.is_unset(request.storage_size):
+            query['StorageSize'] = request.storage_size
+        if not UtilClient.is_unset(request.support_eip):
+            query['SupportEip'] = request.support_eip
+        if not UtilClient.is_unset(request.support_tracing):
+            query['SupportTracing'] = request.support_tracing
+        if not UtilClient.is_unset(request.tracing_storage_time):
+            query['TracingStorageTime'] = request.tracing_storage_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateInstance',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.UpdateInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_instance(
+        self,
+        request: amqp_open_20191212_models.UpdateInstanceRequest,
+    ) -> amqp_open_20191212_models.UpdateInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_instance_with_options(request, runtime)
+
+    async def update_instance_async(
+        self,
+        request: amqp_open_20191212_models.UpdateInstanceRequest,
+    ) -> amqp_open_20191212_models.UpdateInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_instance_with_options_async(request, runtime)
+
     def update_instance_name_with_options(
         self,
         request: amqp_open_20191212_models.UpdateInstanceNameRequest,

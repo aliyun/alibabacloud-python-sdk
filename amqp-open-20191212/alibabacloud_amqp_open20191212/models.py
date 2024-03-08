@@ -4400,6 +4400,203 @@ class ListVirtualHostsResponse(TeaModel):
         return self
 
 
+class UpdateInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        instance_id: str = None,
+        instance_type: str = None,
+        max_connections: int = None,
+        max_eip_tps: int = None,
+        max_private_tps: int = None,
+        modify_type: str = None,
+        queue_capacity: int = None,
+        serverless_charge_type: str = None,
+        storage_size: int = None,
+        support_eip: bool = None,
+        support_tracing: bool = None,
+        tracing_storage_time: int = None,
+    ):
+        self.client_token = client_token
+        self.instance_id = instance_id
+        self.instance_type = instance_type
+        self.max_connections = max_connections
+        self.max_eip_tps = max_eip_tps
+        self.max_private_tps = max_private_tps
+        self.modify_type = modify_type
+        self.queue_capacity = queue_capacity
+        self.serverless_charge_type = serverless_charge_type
+        self.storage_size = storage_size
+        self.support_eip = support_eip
+        self.support_tracing = support_tracing
+        self.tracing_storage_time = tracing_storage_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.max_connections is not None:
+            result['MaxConnections'] = self.max_connections
+        if self.max_eip_tps is not None:
+            result['MaxEipTps'] = self.max_eip_tps
+        if self.max_private_tps is not None:
+            result['MaxPrivateTps'] = self.max_private_tps
+        if self.modify_type is not None:
+            result['ModifyType'] = self.modify_type
+        if self.queue_capacity is not None:
+            result['QueueCapacity'] = self.queue_capacity
+        if self.serverless_charge_type is not None:
+            result['ServerlessChargeType'] = self.serverless_charge_type
+        if self.storage_size is not None:
+            result['StorageSize'] = self.storage_size
+        if self.support_eip is not None:
+            result['SupportEip'] = self.support_eip
+        if self.support_tracing is not None:
+            result['SupportTracing'] = self.support_tracing
+        if self.tracing_storage_time is not None:
+            result['TracingStorageTime'] = self.tracing_storage_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('MaxConnections') is not None:
+            self.max_connections = m.get('MaxConnections')
+        if m.get('MaxEipTps') is not None:
+            self.max_eip_tps = m.get('MaxEipTps')
+        if m.get('MaxPrivateTps') is not None:
+            self.max_private_tps = m.get('MaxPrivateTps')
+        if m.get('ModifyType') is not None:
+            self.modify_type = m.get('ModifyType')
+        if m.get('QueueCapacity') is not None:
+            self.queue_capacity = m.get('QueueCapacity')
+        if m.get('ServerlessChargeType') is not None:
+            self.serverless_charge_type = m.get('ServerlessChargeType')
+        if m.get('StorageSize') is not None:
+            self.storage_size = m.get('StorageSize')
+        if m.get('SupportEip') is not None:
+            self.support_eip = m.get('SupportEip')
+        if m.get('SupportTracing') is not None:
+            self.support_tracing = m.get('SupportTracing')
+        if m.get('TracingStorageTime') is not None:
+            self.tracing_storage_time = m.get('TracingStorageTime')
+        return self
+
+
+class UpdateInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: Any = None,
+        message: str = None,
+        request_id: str = None,
+        status_code: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.status_code = status_code
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateInstanceNameRequest(TeaModel):
     def __init__(
         self,
