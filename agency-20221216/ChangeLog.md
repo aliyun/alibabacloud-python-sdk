@@ -1,3 +1,10 @@
+2024-03-08 Version: 1.3.0
+- Support API CustomerQuotaRecordList.
+- Support API ExportCustomerQuotaRecord.
+- Support API ListCouponUsage.
+- Support API QuotaListExportPaged.
+
+
 2024-02-27 Version: 1.2.0
 - Support API CustomerQuotaRecordList.
 - Support API ExportCustomerQuotaRecord.
