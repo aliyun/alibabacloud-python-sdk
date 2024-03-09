@@ -1771,6 +1771,143 @@ class GetHpoTrialResponse(TeaModel):
         return self
 
 
+class ListHpoExperimentLogsRequest(TeaModel):
+    def __init__(
+        self,
+        log_name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.log_name = log_name
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.log_name is not None:
+            result['LogName'] = self.log_name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LogName') is not None:
+            self.log_name = m.get('LogName')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListHpoExperimentLogsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        detail: Dict[str, Any] = None,
+        logs: List[str] = None,
+        message: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.code = code
+        self.detail = detail
+        self.logs = logs
+        self.message = message
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.detail is not None:
+            result['Detail'] = self.detail
+        if self.logs is not None:
+            result['Logs'] = self.logs
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Detail') is not None:
+            self.detail = m.get('Detail')
+        if m.get('Logs') is not None:
+            self.logs = m.get('Logs')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListHpoExperimentLogsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListHpoExperimentLogsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListHpoExperimentLogsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListHpoExperimentsRequest(TeaModel):
     def __init__(
         self,
@@ -2083,6 +2220,237 @@ class ListHpoExperimentsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListHpoExperimentsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListHpoTrialCommandsResponseBodyCommands(TeaModel):
+    def __init__(
+        self,
+        command: str = None,
+        id: int = None,
+        output: str = None,
+    ):
+        self.command = command
+        self.id = id
+        self.output = output
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.command is not None:
+            result['Command'] = self.command
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.output is not None:
+            result['Output'] = self.output
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Command') is not None:
+            self.command = m.get('Command')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Output') is not None:
+            self.output = m.get('Output')
+        return self
+
+
+class ListHpoTrialCommandsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        commands: List[ListHpoTrialCommandsResponseBodyCommands] = None,
+        detail: Dict[str, str] = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.commands = commands
+        self.detail = detail
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.commands:
+            for k in self.commands:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Commands'] = []
+        if self.commands is not None:
+            for k in self.commands:
+                result['Commands'].append(k.to_map() if k else None)
+        if self.detail is not None:
+            result['Detail'] = self.detail
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.commands = []
+        if m.get('Commands') is not None:
+            for k in m.get('Commands'):
+                temp_model = ListHpoTrialCommandsResponseBodyCommands()
+                self.commands.append(temp_model.from_map(k))
+        if m.get('Detail') is not None:
+            self.detail = m.get('Detail')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListHpoTrialCommandsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListHpoTrialCommandsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListHpoTrialCommandsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListHpoTrialLogNamesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        detail: Dict[str, str] = None,
+        log_names: List[str] = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.detail = detail
+        self.log_names = log_names
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.detail is not None:
+            result['Detail'] = self.detail
+        if self.log_names is not None:
+            result['LogNames'] = self.log_names
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Detail') is not None:
+            self.detail = m.get('Detail')
+        if m.get('LogNames') is not None:
+            self.log_names = m.get('LogNames')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListHpoTrialLogNamesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListHpoTrialLogNamesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListHpoTrialLogNamesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2812,6 +3180,145 @@ class StopHpoTrialsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StopHpoTrialsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateHpoExperimentRequest(TeaModel):
+    def __init__(
+        self,
+        accessibility: str = None,
+        description: str = None,
+        hpo_experiment_configuration: HpoExperimentConfig = None,
+        name: str = None,
+        workspace_id: str = None,
+    ):
+        self.accessibility = accessibility
+        self.description = description
+        self.hpo_experiment_configuration = hpo_experiment_configuration
+        self.name = name
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.hpo_experiment_configuration:
+            self.hpo_experiment_configuration.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.hpo_experiment_configuration is not None:
+            result['HpoExperimentConfiguration'] = self.hpo_experiment_configuration.to_map()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('HpoExperimentConfiguration') is not None:
+            temp_model = HpoExperimentConfig()
+            self.hpo_experiment_configuration = temp_model.from_map(m['HpoExperimentConfiguration'])
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class UpdateHpoExperimentResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        detail: Dict[str, Any] = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.detail = detail
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.detail is not None:
+            result['Detail'] = self.detail
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Detail') is not None:
+            self.detail = m.get('Detail')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateHpoExperimentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateHpoExperimentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateHpoExperimentResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

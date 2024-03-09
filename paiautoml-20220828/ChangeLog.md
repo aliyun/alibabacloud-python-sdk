@@ -1,3 +1,10 @@
+2024-03-09 Version: 1.3.0
+- Support API ListHpoExperimentLogs.
+- Support API ListHpoTrialCommands.
+- Support API ListHpoTrialLogNames.
+- Support API UpdateHpoExperiment.
+
+
 2024-03-08 Version: 1.2.0
 - Support API DeleteHpoExperiment.
 - Support API GetHpoExperiment.

@@ -335,6 +335,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_hpo_trial_with_options_async(experiment_id, trial_id, headers, runtime)
 
+    def list_hpo_experiment_logs_with_options(
+        self,
+        experiment_id: str,
+        request: pai_auto_ml20220828_models.ListHpoExperimentLogsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_auto_ml20220828_models.ListHpoExperimentLogsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.log_name):
+            query['LogName'] = request.log_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListHpoExperimentLogs',
+            version='2022-08-28',
+            protocol='HTTPS',
+            pathname=f'/api/automl/v1/hpo/experiment/{OpenApiUtilClient.get_encode_param(experiment_id)}/logs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_auto_ml20220828_models.ListHpoExperimentLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_hpo_experiment_logs_with_options_async(
+        self,
+        experiment_id: str,
+        request: pai_auto_ml20220828_models.ListHpoExperimentLogsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_auto_ml20220828_models.ListHpoExperimentLogsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.log_name):
+            query['LogName'] = request.log_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListHpoExperimentLogs',
+            version='2022-08-28',
+            protocol='HTTPS',
+            pathname=f'/api/automl/v1/hpo/experiment/{OpenApiUtilClient.get_encode_param(experiment_id)}/logs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_auto_ml20220828_models.ListHpoExperimentLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_hpo_experiment_logs(
+        self,
+        experiment_id: str,
+        request: pai_auto_ml20220828_models.ListHpoExperimentLogsRequest,
+    ) -> pai_auto_ml20220828_models.ListHpoExperimentLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_hpo_experiment_logs_with_options(experiment_id, request, headers, runtime)
+
+    async def list_hpo_experiment_logs_async(
+        self,
+        experiment_id: str,
+        request: pai_auto_ml20220828_models.ListHpoExperimentLogsRequest,
+    ) -> pai_auto_ml20220828_models.ListHpoExperimentLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_hpo_experiment_logs_with_options_async(experiment_id, request, headers, runtime)
+
     def list_hpo_experiments_with_options(
         self,
         request: pai_auto_ml20220828_models.ListHpoExperimentsRequest,
@@ -454,6 +542,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_hpo_experiments_with_options_async(request, headers, runtime)
+
+    def list_hpo_trial_commands_with_options(
+        self,
+        experiment_id: str,
+        trial_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_auto_ml20220828_models.ListHpoTrialCommandsResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListHpoTrialCommands',
+            version='2022-08-28',
+            protocol='HTTPS',
+            pathname=f'/api/automl/v1/hpo/experiment/{OpenApiUtilClient.get_encode_param(experiment_id)}/trial/{OpenApiUtilClient.get_encode_param(trial_id)}/commands',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_auto_ml20220828_models.ListHpoTrialCommandsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_hpo_trial_commands_with_options_async(
+        self,
+        experiment_id: str,
+        trial_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_auto_ml20220828_models.ListHpoTrialCommandsResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListHpoTrialCommands',
+            version='2022-08-28',
+            protocol='HTTPS',
+            pathname=f'/api/automl/v1/hpo/experiment/{OpenApiUtilClient.get_encode_param(experiment_id)}/trial/{OpenApiUtilClient.get_encode_param(trial_id)}/commands',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_auto_ml20220828_models.ListHpoTrialCommandsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_hpo_trial_commands(
+        self,
+        experiment_id: str,
+        trial_id: str,
+    ) -> pai_auto_ml20220828_models.ListHpoTrialCommandsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_hpo_trial_commands_with_options(experiment_id, trial_id, headers, runtime)
+
+    async def list_hpo_trial_commands_async(
+        self,
+        experiment_id: str,
+        trial_id: str,
+    ) -> pai_auto_ml20220828_models.ListHpoTrialCommandsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_hpo_trial_commands_with_options_async(experiment_id, trial_id, headers, runtime)
+
+    def list_hpo_trial_log_names_with_options(
+        self,
+        experiment_id: str,
+        trial_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_auto_ml20220828_models.ListHpoTrialLogNamesResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListHpoTrialLogNames',
+            version='2022-08-28',
+            protocol='HTTPS',
+            pathname=f'/api/automl/v1/hpo/experiment/{OpenApiUtilClient.get_encode_param(experiment_id)}/trial/{OpenApiUtilClient.get_encode_param(trial_id)}/lognames',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_auto_ml20220828_models.ListHpoTrialLogNamesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_hpo_trial_log_names_with_options_async(
+        self,
+        experiment_id: str,
+        trial_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_auto_ml20220828_models.ListHpoTrialLogNamesResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListHpoTrialLogNames',
+            version='2022-08-28',
+            protocol='HTTPS',
+            pathname=f'/api/automl/v1/hpo/experiment/{OpenApiUtilClient.get_encode_param(experiment_id)}/trial/{OpenApiUtilClient.get_encode_param(trial_id)}/lognames',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_auto_ml20220828_models.ListHpoTrialLogNamesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_hpo_trial_log_names(
+        self,
+        experiment_id: str,
+        trial_id: str,
+    ) -> pai_auto_ml20220828_models.ListHpoTrialLogNamesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_hpo_trial_log_names_with_options(experiment_id, trial_id, headers, runtime)
+
+    async def list_hpo_trial_log_names_async(
+        self,
+        experiment_id: str,
+        trial_id: str,
+    ) -> pai_auto_ml20220828_models.ListHpoTrialLogNamesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_hpo_trial_log_names_with_options_async(experiment_id, trial_id, headers, runtime)
 
     def list_hpo_trial_logs_with_options(
         self,
@@ -868,3 +1096,99 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.stop_hpo_trials_with_options_async(experiment_id, request, headers, runtime)
+
+    def update_hpo_experiment_with_options(
+        self,
+        experiment_id: str,
+        request: pai_auto_ml20220828_models.UpdateHpoExperimentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_auto_ml20220828_models.UpdateHpoExperimentResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.hpo_experiment_configuration):
+            body['HpoExperimentConfiguration'] = request.hpo_experiment_configuration
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateHpoExperiment',
+            version='2022-08-28',
+            protocol='HTTPS',
+            pathname=f'/api/automl/v1/hpo/experiment/{OpenApiUtilClient.get_encode_param(experiment_id)}/update',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_auto_ml20220828_models.UpdateHpoExperimentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_hpo_experiment_with_options_async(
+        self,
+        experiment_id: str,
+        request: pai_auto_ml20220828_models.UpdateHpoExperimentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_auto_ml20220828_models.UpdateHpoExperimentResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.hpo_experiment_configuration):
+            body['HpoExperimentConfiguration'] = request.hpo_experiment_configuration
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateHpoExperiment',
+            version='2022-08-28',
+            protocol='HTTPS',
+            pathname=f'/api/automl/v1/hpo/experiment/{OpenApiUtilClient.get_encode_param(experiment_id)}/update',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_auto_ml20220828_models.UpdateHpoExperimentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_hpo_experiment(
+        self,
+        experiment_id: str,
+        request: pai_auto_ml20220828_models.UpdateHpoExperimentRequest,
+    ) -> pai_auto_ml20220828_models.UpdateHpoExperimentResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_hpo_experiment_with_options(experiment_id, request, headers, runtime)
+
+    async def update_hpo_experiment_async(
+        self,
+        experiment_id: str,
+        request: pai_auto_ml20220828_models.UpdateHpoExperimentRequest,
+    ) -> pai_auto_ml20220828_models.UpdateHpoExperimentResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_hpo_experiment_with_options_async(experiment_id, request, headers, runtime)
