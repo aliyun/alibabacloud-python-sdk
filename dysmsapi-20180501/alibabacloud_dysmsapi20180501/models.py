@@ -29,6 +29,7 @@ class BatchSendMessageToGlobeRequest(TeaModel):
         # *   **NOTIFY**: notification
         # *   **MKT**: promotional message
         self.type = type
+        # The validity period of the message. Unit: seconds.
         self.validity_period = validity_period
 
     def validate(self):
@@ -153,9 +154,6 @@ class BatchSendMessageToGlobeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -195,7 +193,7 @@ class ConversionDataRequest(TeaModel):
         # 
         # >  The value of this parameter is of type double, and the value is between \[0,1].
         self.conversion_rate = conversion_rate
-        # Timestamp of the conversion rate observation should be a Unix timestamp, millisecond-level long integer.
+        # Timestamp of the conversion rate observation should be a Unix timestamp, a millisecond-level long integer.
         # 
         # >  If this field is not specified: the current timestamp is the default.
         self.report_time = report_time
@@ -278,9 +276,6 @@ class ConversionDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -503,9 +498,6 @@ class QueryMessageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -553,7 +545,10 @@ class SendMessageToGlobeRequest(TeaModel):
         # The mobile phone number to which the message is sent. You must add the dialing code to the beginning of the mobile phone number. Example: 8521245567\*\*\*\*.
         # 
         # For more information, see [Dialing codes](https://www.alibabacloud.com/help/zh/short-message-service/latest/dialing-codes).
+        # 
+        # >  You cannot call the SendMessageToGlobe operation to send messages to the Chinese mainland.
         self.to = to
+        # The validity period of the message. Unit: seconds.
         self.validity_period = validity_period
 
     def validate(self):
@@ -725,9 +720,6 @@ class SendMessageToGlobeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -779,6 +771,7 @@ class SendMessageWithTemplateRequest(TeaModel):
         # 
         # For more information, see [Dialing codes](https://www.alibabacloud.com/help/zh/short-message-service/latest/dialing-codes).
         self.to = to
+        # The validity period of the message.
         self.validity_period = validity_period
 
     def validate(self):
@@ -947,9 +940,6 @@ class SendMessageWithTemplateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1078,9 +1068,6 @@ class SmsConversionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

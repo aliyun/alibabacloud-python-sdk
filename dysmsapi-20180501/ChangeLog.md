@@ -1,3 +1,6 @@
+2024-03-11 Version: 1.0.5
+- Generated python 2018-05-01 for Dysmsapi.
+
 2023-06-27 Version: 1.0.4
 - Fix empty RequestId return for QueryMessage and SendMessageWithTemplate.
 
