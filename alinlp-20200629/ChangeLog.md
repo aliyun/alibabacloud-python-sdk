@@ -1,3 +1,9 @@
+2024-03-11 Version: 2.5.1
+- Update API ADMiniCog: update response param.
+- Update API ADMiniCogResult: update response param.
+- Update API GetItemPubChEcom: update response param.
+
+
 2024-01-23 Version: 2.5.0
 - Generated python 2020-06-29 for alinlp.
 
