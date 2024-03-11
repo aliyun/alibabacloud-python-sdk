@@ -204,6 +204,8 @@ class Client(OpenApiClient):
             query['TopNum'] = request.top_num
         if not UtilClient.is_unset(request.uids_shrink):
             query['Uids'] = request.uids_shrink
+        if not UtilClient.is_unset(request.use_code):
+            query['UseCode'] = request.use_code
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -246,6 +248,8 @@ class Client(OpenApiClient):
             query['TopNum'] = request.top_num
         if not UtilClient.is_unset(request.uids_shrink):
             query['Uids'] = request.uids_shrink
+        if not UtilClient.is_unset(request.use_code):
+            query['UseCode'] = request.use_code
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
