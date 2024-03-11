@@ -3546,6 +3546,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_policy_with_options_async(request, runtime)
 
+    def describe_backup_storage_with_options(
+        self,
+        request: dds_20151201_models.DescribeBackupStorageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeBackupStorageResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackupStorage',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DescribeBackupStorageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_backup_storage_with_options_async(
+        self,
+        request: dds_20151201_models.DescribeBackupStorageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeBackupStorageResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackupStorage',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DescribeBackupStorageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_backup_storage(
+        self,
+        request: dds_20151201_models.DescribeBackupStorageRequest,
+    ) -> dds_20151201_models.DescribeBackupStorageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_backup_storage_with_options(request, runtime)
+
+    async def describe_backup_storage_async(
+        self,
+        request: dds_20151201_models.DescribeBackupStorageRequest,
+    ) -> dds_20151201_models.DescribeBackupStorageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_backup_storage_with_options_async(request, runtime)
+
     def describe_backup_tasks_with_options(
         self,
         request: dds_20151201_models.DescribeBackupTasksRequest,

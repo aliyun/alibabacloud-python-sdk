@@ -1,3 +1,13 @@
+2024-03-11 Version: 6.2.0
+- Support API DescribeBackupStorage.
+- Support API DescribeBackupTasks.
+- Support API DescribeInstanceRecoverTime.
+- Update API DescribeBackupPolicy: update response param.
+- Update API DescribeBackups: update response param.
+- Update API DescribePrice: update response param.
+- Update API ModifyBackupPolicy: add param HighFrequencyBackupRetention.
+
+
 2024-03-06 Version: 6.1.0
 - Support API DescribeBackupTasks.
 - Support API DescribeInstanceRecoverTime.
