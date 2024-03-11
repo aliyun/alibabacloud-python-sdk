@@ -4,212 +4,11 @@ from Tea.model import TeaModel
 from typing import Dict, List, Any
 
 
-class DeleteAppExpMetricRuleRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-    ):
-        # APP ID
-        self.app_id = app_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        return self
-
-
-class DeleteAppExpMetricRuleResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        # 请求ID
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DeleteAppExpMetricRuleResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DeleteAppExpMetricRuleResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DeleteAppExpMetricRuleResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DeleteAppFollowCallRuleRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-    ):
-        # APP ID
-        self.app_id = app_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        return self
-
-
-class DeleteAppFollowCallRuleResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        # 请求ID
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DeleteAppFollowCallRuleResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DeleteAppFollowCallRuleResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DeleteAppFollowCallRuleResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeAppConfigRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
     ):
-        # APP ID
         self.app_id = app_id
 
     def validate(self):
@@ -237,7 +36,6 @@ class DescribeAppConfigResponseBodyThresholdConfig(TeaModel):
         self,
         join_slow_time: int = None,
     ):
-        # 入会慢时间阈值，单位毫秒
         self.join_slow_time = join_slow_time
 
     def validate(self):
@@ -266,9 +64,7 @@ class DescribeAppConfigResponseBody(TeaModel):
         request_id: str = None,
         threshold_config: DescribeAppConfigResponseBodyThresholdConfig = None,
     ):
-        # 请求ID
         self.request_id = request_id
-        # 阈值配置对象
         self.threshold_config = threshold_config
 
     def validate(self):
@@ -309,9 +105,6 @@ class DescribeAppConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -341,644 +134,6 @@ class DescribeAppConfigResponse(TeaModel):
         return self
 
 
-class DescribeAppExpMetricRuleRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-    ):
-        # APP ID
-        self.app_id = app_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        return self
-
-
-class DescribeAppExpMetricRuleResponseBodyAppExpMetricRule(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        created_ts: int = None,
-        gmt_create_ts: int = None,
-        gmt_modified_ts: int = None,
-        modified_ts: int = None,
-        rule: str = None,
-    ):
-        # 应用ID
-        self.app_id = app_id
-        # 创建时间，秒级时间戳，如1614912647
-        self.created_ts = created_ts
-        self.gmt_create_ts = gmt_create_ts
-        self.gmt_modified_ts = gmt_modified_ts
-        # 修改时间，秒级时间戳，如1615272998
-        self.modified_ts = modified_ts
-        # 具体规则，JSON格式
-        self.rule = rule
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.created_ts is not None:
-            result['CreatedTs'] = self.created_ts
-        if self.gmt_create_ts is not None:
-            result['GmtCreateTs'] = self.gmt_create_ts
-        if self.gmt_modified_ts is not None:
-            result['GmtModifiedTs'] = self.gmt_modified_ts
-        if self.modified_ts is not None:
-            result['ModifiedTs'] = self.modified_ts
-        if self.rule is not None:
-            result['Rule'] = self.rule
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('CreatedTs') is not None:
-            self.created_ts = m.get('CreatedTs')
-        if m.get('GmtCreateTs') is not None:
-            self.gmt_create_ts = m.get('GmtCreateTs')
-        if m.get('GmtModifiedTs') is not None:
-            self.gmt_modified_ts = m.get('GmtModifiedTs')
-        if m.get('ModifiedTs') is not None:
-            self.modified_ts = m.get('ModifiedTs')
-        if m.get('Rule') is not None:
-            self.rule = m.get('Rule')
-        return self
-
-
-class DescribeAppExpMetricRuleResponseBody(TeaModel):
-    def __init__(
-        self,
-        app_exp_metric_rule: DescribeAppExpMetricRuleResponseBodyAppExpMetricRule = None,
-        request_id: str = None,
-    ):
-        # 获取用户体验阈值规则相关数据
-        self.app_exp_metric_rule = app_exp_metric_rule
-        # 请求ID
-        self.request_id = request_id
-
-    def validate(self):
-        if self.app_exp_metric_rule:
-            self.app_exp_metric_rule.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_exp_metric_rule is not None:
-            result['AppExpMetricRule'] = self.app_exp_metric_rule.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppExpMetricRule') is not None:
-            temp_model = DescribeAppExpMetricRuleResponseBodyAppExpMetricRule()
-            self.app_exp_metric_rule = temp_model.from_map(m['AppExpMetricRule'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DescribeAppExpMetricRuleResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeAppExpMetricRuleResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeAppExpMetricRuleResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeAppExpMetricRuleListResponseBodyAppExpMetricRuleList(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        created_ts: int = None,
-        gmt_create_ts: int = None,
-        gmt_modified_ts: int = None,
-        modified_ts: int = None,
-        rule: str = None,
-    ):
-        # 应用ID
-        self.app_id = app_id
-        # 创建时间，秒级时间戳，如1614912647
-        self.created_ts = created_ts
-        self.gmt_create_ts = gmt_create_ts
-        self.gmt_modified_ts = gmt_modified_ts
-        # 修改时间，秒级时间戳，如1615272998
-        self.modified_ts = modified_ts
-        # 具体规则，JSON格式
-        self.rule = rule
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.created_ts is not None:
-            result['CreatedTs'] = self.created_ts
-        if self.gmt_create_ts is not None:
-            result['GmtCreateTs'] = self.gmt_create_ts
-        if self.gmt_modified_ts is not None:
-            result['GmtModifiedTs'] = self.gmt_modified_ts
-        if self.modified_ts is not None:
-            result['ModifiedTs'] = self.modified_ts
-        if self.rule is not None:
-            result['Rule'] = self.rule
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('CreatedTs') is not None:
-            self.created_ts = m.get('CreatedTs')
-        if m.get('GmtCreateTs') is not None:
-            self.gmt_create_ts = m.get('GmtCreateTs')
-        if m.get('GmtModifiedTs') is not None:
-            self.gmt_modified_ts = m.get('GmtModifiedTs')
-        if m.get('ModifiedTs') is not None:
-            self.modified_ts = m.get('ModifiedTs')
-        if m.get('Rule') is not None:
-            self.rule = m.get('Rule')
-        return self
-
-
-class DescribeAppExpMetricRuleListResponseBody(TeaModel):
-    def __init__(
-        self,
-        app_exp_metric_rule_list: List[DescribeAppExpMetricRuleListResponseBodyAppExpMetricRuleList] = None,
-        request_id: str = None,
-    ):
-        # 用户体验阈值规则相关数据列表
-        self.app_exp_metric_rule_list = app_exp_metric_rule_list
-        # 请求ID
-        self.request_id = request_id
-
-    def validate(self):
-        if self.app_exp_metric_rule_list:
-            for k in self.app_exp_metric_rule_list:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['AppExpMetricRuleList'] = []
-        if self.app_exp_metric_rule_list is not None:
-            for k in self.app_exp_metric_rule_list:
-                result['AppExpMetricRuleList'].append(k.to_map() if k else None)
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.app_exp_metric_rule_list = []
-        if m.get('AppExpMetricRuleList') is not None:
-            for k in m.get('AppExpMetricRuleList'):
-                temp_model = DescribeAppExpMetricRuleListResponseBodyAppExpMetricRuleList()
-                self.app_exp_metric_rule_list.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DescribeAppExpMetricRuleListResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeAppExpMetricRuleListResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeAppExpMetricRuleListResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeAppFollowCallRuleRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-    ):
-        # APP ID
-        self.app_id = app_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        return self
-
-
-class DescribeAppFollowCallRuleResponseBodyAppFollowCallRule(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        created_ts: int = None,
-        gmt_create_ts: int = None,
-        gmt_modified_ts: int = None,
-        modified_ts: int = None,
-        rule: str = None,
-    ):
-        # 应用ID
-        self.app_id = app_id
-        # 创建时间，秒级时间戳，如1614936817
-        self.created_ts = created_ts
-        self.gmt_create_ts = gmt_create_ts
-        self.gmt_modified_ts = gmt_modified_ts
-        # 修改时间，秒级时间戳，如1614936817
-        self.modified_ts = modified_ts
-        # 具体规则，JSON格式
-        self.rule = rule
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.created_ts is not None:
-            result['CreatedTs'] = self.created_ts
-        if self.gmt_create_ts is not None:
-            result['GmtCreateTs'] = self.gmt_create_ts
-        if self.gmt_modified_ts is not None:
-            result['GmtModifiedTs'] = self.gmt_modified_ts
-        if self.modified_ts is not None:
-            result['ModifiedTs'] = self.modified_ts
-        if self.rule is not None:
-            result['Rule'] = self.rule
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('CreatedTs') is not None:
-            self.created_ts = m.get('CreatedTs')
-        if m.get('GmtCreateTs') is not None:
-            self.gmt_create_ts = m.get('GmtCreateTs')
-        if m.get('GmtModifiedTs') is not None:
-            self.gmt_modified_ts = m.get('GmtModifiedTs')
-        if m.get('ModifiedTs') is not None:
-            self.modified_ts = m.get('ModifiedTs')
-        if m.get('Rule') is not None:
-            self.rule = m.get('Rule')
-        return self
-
-
-class DescribeAppFollowCallRuleResponseBody(TeaModel):
-    def __init__(
-        self,
-        app_follow_call_rule: DescribeAppFollowCallRuleResponseBodyAppFollowCallRule = None,
-        request_id: str = None,
-    ):
-        # 获取用户体验阈值规则相关数据
-        self.app_follow_call_rule = app_follow_call_rule
-        # 请求ID
-        self.request_id = request_id
-
-    def validate(self):
-        if self.app_follow_call_rule:
-            self.app_follow_call_rule.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_follow_call_rule is not None:
-            result['AppFollowCallRule'] = self.app_follow_call_rule.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppFollowCallRule') is not None:
-            temp_model = DescribeAppFollowCallRuleResponseBodyAppFollowCallRule()
-            self.app_follow_call_rule = temp_model.from_map(m['AppFollowCallRule'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DescribeAppFollowCallRuleResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeAppFollowCallRuleResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeAppFollowCallRuleResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeAppFollowCallRuleListResponseBodyAppFollowCallRuleList(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        created_ts: int = None,
-        gmt_create_ts: int = None,
-        gmt_modified_ts: int = None,
-        modified_ts: int = None,
-        rule: str = None,
-    ):
-        # 应用ID
-        self.app_id = app_id
-        # 创建时间，秒级时间戳，如1614836732
-        self.created_ts = created_ts
-        # 创建时间，待删除
-        self.gmt_create_ts = gmt_create_ts
-        # 修改时间，待删除
-        self.gmt_modified_ts = gmt_modified_ts
-        # 修改时间，秒级时间戳，如1614836732
-        self.modified_ts = modified_ts
-        # 具体规则，JSON格式
-        self.rule = rule
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.created_ts is not None:
-            result['CreatedTs'] = self.created_ts
-        if self.gmt_create_ts is not None:
-            result['GmtCreateTs'] = self.gmt_create_ts
-        if self.gmt_modified_ts is not None:
-            result['GmtModifiedTs'] = self.gmt_modified_ts
-        if self.modified_ts is not None:
-            result['ModifiedTs'] = self.modified_ts
-        if self.rule is not None:
-            result['Rule'] = self.rule
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('CreatedTs') is not None:
-            self.created_ts = m.get('CreatedTs')
-        if m.get('GmtCreateTs') is not None:
-            self.gmt_create_ts = m.get('GmtCreateTs')
-        if m.get('GmtModifiedTs') is not None:
-            self.gmt_modified_ts = m.get('GmtModifiedTs')
-        if m.get('ModifiedTs') is not None:
-            self.modified_ts = m.get('ModifiedTs')
-        if m.get('Rule') is not None:
-            self.rule = m.get('Rule')
-        return self
-
-
-class DescribeAppFollowCallRuleListResponseBody(TeaModel):
-    def __init__(
-        self,
-        app_follow_call_rule_list: List[DescribeAppFollowCallRuleListResponseBodyAppFollowCallRuleList] = None,
-        request_id: str = None,
-    ):
-        # 通信监测关注规则相关数据列表
-        self.app_follow_call_rule_list = app_follow_call_rule_list
-        # 请求ID
-        self.request_id = request_id
-
-    def validate(self):
-        if self.app_follow_call_rule_list:
-            for k in self.app_follow_call_rule_list:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['AppFollowCallRuleList'] = []
-        if self.app_follow_call_rule_list is not None:
-            for k in self.app_follow_call_rule_list:
-                result['AppFollowCallRuleList'].append(k.to_map() if k else None)
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.app_follow_call_rule_list = []
-        if m.get('AppFollowCallRuleList') is not None:
-            for k in m.get('AppFollowCallRuleList'):
-                temp_model = DescribeAppFollowCallRuleListResponseBodyAppFollowCallRuleList()
-                self.app_follow_call_rule_list.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DescribeAppFollowCallRuleListResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeAppFollowCallRuleListResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeAppFollowCallRuleListResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeCallRequest(TeaModel):
     def __init__(
         self,
@@ -989,17 +144,11 @@ class DescribeCallRequest(TeaModel):
         ext_data_type: str = None,
         query_exp_info: bool = None,
     ):
-        # APP ID。
         self.app_id = app_id
-        # 频道ID。
         self.channel_id = channel_id
-        # 创建频道时间，使用UNIX时间戳表示，单位：秒。
         self.created_ts = created_ts
-        # 频道释放时间，使用UNIX时间戳表示，单位：秒。参数为空表示获取当前时间。
         self.destroyed_ts = destroyed_ts
-        # 查询的扩展。取值：USER_DURATION_STAT：用户时长统计数据类型。
         self.ext_data_type = ext_data_type
-        # 是否查询通信体验信息，不传默认是true
         self.query_exp_info = query_exp_info
 
     def validate(self):
@@ -1054,15 +203,10 @@ class DescribeCallResponseBodyCallInfo(TeaModel):
     ):
         # App ID。
         self.app_id = app_id
-        # 通信状态。取值：IN：进行中。OUT：已结束。
         self.call_status = call_status
-        # 频道ID。
         self.channel_id = channel_id
-        # 创建通信时间，使用UNIX时间戳表示，单位：秒。
         self.created_ts = created_ts
-        # 释放通信时间，使用UNIX时间戳表示，单位：秒。
         self.destroyed_ts = destroyed_ts
-        # 通信持续时长，单位：秒。
         self.duration = duration
 
     def validate(self):
@@ -1119,25 +263,15 @@ class DescribeCallResponseBodyUserDetailListDurMetricStatData(TeaModel):
         sub_video_720: int = None,
         sub_video_screen_share: int = None,
     ):
-        # 发布音频时长，单位秒
         self.pub_audio = pub_audio
-        # 发布1080P视频时长，单位：秒
         self.pub_video_1080 = pub_video_1080
-        # 发布360P视频时长，单位秒
         self.pub_video_360 = pub_video_360
-        # 发布720P视频时长，单位：秒
         self.pub_video_720 = pub_video_720
-        # 发布屏幕共享时长，单位：秒
         self.pub_video_screen_share = pub_video_screen_share
-        # 订阅音频时长，单位秒
         self.sub_audio = sub_audio
-        # 订阅1080P视频时长，单位：秒
         self.sub_video_1080 = sub_video_1080
-        # 订阅360P视频时长，单位：秒
         self.sub_video_360 = sub_video_360
-        # 订阅720P视频时长，单位：秒
         self.sub_video_720 = sub_video_720
-        # 订阅屏幕共享时长，单位：秒
         self.sub_video_screen_share = sub_video_screen_share
 
     def validate(self):
@@ -1202,9 +336,7 @@ class DescribeCallResponseBodyUserDetailListOnlinePeriods(TeaModel):
         join_ts: int = None,
         leave_ts: int = None,
     ):
-        # 加入通话时间，使用UNIX时间戳表示，单位：秒。
         self.join_ts = join_ts
-        # 离开通话时间，使用UNIX时间戳表示，单位：秒。
         self.leave_ts = leave_ts
 
     def validate(self):
@@ -1240,8 +372,6 @@ class DescribeCallResponseBodyUserDetailList(TeaModel):
         dur_metric_stat_data: DescribeCallResponseBodyUserDetailListDurMetricStatData = None,
         duration: int = None,
         location: str = None,
-        location_cn: str = None,
-        location_en: str = None,
         network: str = None,
         network_list: List[str] = None,
         online_duration: int = None,
@@ -1254,41 +384,22 @@ class DescribeCallResponseBodyUserDetailList(TeaModel):
         user_id: str = None,
         user_id_alias: str = None,
     ):
-        # 通话体验，取值：GOOD:优良，BAD:欠佳。
         self.call_exp = call_exp
-        # 创建通话时间，使用UNIX时间戳表示，单位：秒。
         self.created_ts = created_ts
-        # 释放通话时间，使用UNIX时间戳表示，单位：秒。通话未结束时值为0。
         self.destroyed_ts = destroyed_ts
-        # 时长统计数据
         self.dur_metric_stat_data = dur_metric_stat_data
-        # 通话时长，首次进入到最后离开，单位：秒。
         self.duration = duration
-        # 地理位置信息，例如：北京市-北京市
         self.location = location
-        self.location_cn = location_cn
-        self.location_en = location_en
-        # 网络类型，如WiFi，4G等
         self.network = network
-        # 网络类型，如WiFi，4G等
         self.network_list = network_list
-        # 在线时长，单位：秒。
         self.online_duration = online_duration
-        # 在线时段信息。
         self.online_periods = online_periods
-        # 平台类型：若用户客户端为WEB则是浏览器类型，若客户端为NATIVE则是操作系统类型
         self.os = os
-        # 平台类型：若用户客户端为WEB则是浏览器类型，若客户端为NATIVE则是操作系统类型
         self.os_list = os_list
-        # 用户角色，取值：SENDER：发布端。RECEIVER：订阅端。
         self.roles = roles
-        # SDK版本，如1.0.0、1.1.1等
         self.sdk_version = sdk_version
-        # SDK版本列表，如1.0.0、1.1.1等
         self.sdk_version_list = sdk_version_list
-        # 用户ID。
         self.user_id = user_id
-        # 用户ID 别称
         self.user_id_alias = user_id_alias
 
     def validate(self):
@@ -1317,10 +428,6 @@ class DescribeCallResponseBodyUserDetailList(TeaModel):
             result['Duration'] = self.duration
         if self.location is not None:
             result['Location'] = self.location
-        if self.location_cn is not None:
-            result['LocationCn'] = self.location_cn
-        if self.location_en is not None:
-            result['LocationEn'] = self.location_en
         if self.network is not None:
             result['Network'] = self.network
         if self.network_list is not None:
@@ -1362,10 +469,6 @@ class DescribeCallResponseBodyUserDetailList(TeaModel):
             self.duration = m.get('Duration')
         if m.get('Location') is not None:
             self.location = m.get('Location')
-        if m.get('LocationCn') is not None:
-            self.location_cn = m.get('LocationCn')
-        if m.get('LocationEn') is not None:
-            self.location_en = m.get('LocationEn')
         if m.get('Network') is not None:
             self.network = m.get('Network')
         if m.get('NetworkList') is not None:
@@ -1401,11 +504,8 @@ class DescribeCallResponseBody(TeaModel):
         request_id: str = None,
         user_detail_list: List[DescribeCallResponseBodyUserDetailList] = None,
     ):
-        # 通信基本信息。
         self.call_info = call_info
-        # 请求ID
         self.request_id = request_id
-        # 用户详情列表。
         self.user_detail_list = user_detail_list
 
     def validate(self):
@@ -1459,9 +559,6 @@ class DescribeCallResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1640,9 +737,6 @@ class DescribeCallInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1686,25 +780,15 @@ class DescribeCallListRequest(TeaModel):
         start_ts: int = None,
         user_id: str = None,
     ):
-        # APP ID。
         self.app_id = app_id
-        # 通信状态。取值：IN：进行中。OUT：已结束。
         self.call_status = call_status
-        # 频道ID
         self.channel_id = channel_id
-        # 查询的结束时间，使用UNIX时间戳表示，单位：秒。
         self.end_ts = end_ts
-        # 排序字段。取值：BAD_EXP_USER_COUNT_DESC：按体验欠佳人数降序。BAD_EXP_USER_COUNT_ASC：按体验欠佳人数升序
         self.order_by = order_by
-        # 页码
         self.page_no = page_no
-        # 每页数量
         self.page_size = page_size
-        # 查询模式。取值：ALL：全部通话。FOLLOW：关注通话。
         self.query_mode = query_mode
-        # 查询的开始时间，使用UNIX时间戳表示，单位：秒。
         self.start_ts = start_ts
-        # 用户ID
         self.user_id = user_id
 
     def validate(self):
@@ -1777,19 +861,12 @@ class DescribeCallListResponseBodyCallList(TeaModel):
     ):
         # App ID。
         self.app_id = app_id
-        # 通信体验差的用户数。
         self.bad_exp_user_cnt = bad_exp_user_cnt
-        # 通信状态，IN：进行中，OUT：已结束
         self.call_status = call_status
-        # 频道ID。
         self.channel_id = channel_id
-        # 通信的创建时间戳，使用UNIX时间戳表示，单位：秒。
         self.created_ts = created_ts
-        # 通信的释放时间戳，使用UNIX时间戳表示，单位：秒。
         self.destroyed_ts = destroyed_ts
-        # 通信持续时长，单位：秒。
         self.duration = duration
-        # 通信用户数。
         self.user_cnt = user_cnt
 
     def validate(self):
@@ -1849,15 +926,10 @@ class DescribeCallListResponseBody(TeaModel):
         request_id: str = None,
         total_cnt: int = None,
     ):
-        # 通信列表。
         self.call_list = call_list
-        # 页码。
         self.page_no = page_no
-        # 每页数量。
         self.page_size = page_size
-        # 请求ID。
         self.request_id = request_id
-        # 总数量。
         self.total_cnt = total_cnt
 
     def validate(self):
@@ -1916,9 +988,6 @@ class DescribeCallListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1948,117 +1017,6 @@ class DescribeCallListResponse(TeaModel):
         return self
 
 
-class DescribeCallListTestRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        end_ts: int = None,
-        start_ts: int = None,
-    ):
-        self.app_id = app_id
-        self.end_ts = end_ts
-        self.start_ts = start_ts
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.end_ts is not None:
-            result['EndTs'] = self.end_ts
-        if self.start_ts is not None:
-            result['StartTs'] = self.start_ts
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('EndTs') is not None:
-            self.end_ts = m.get('EndTs')
-        if m.get('StartTs') is not None:
-            self.start_ts = m.get('StartTs')
-        return self
-
-
-class DescribeCallListTestResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        # 请求ID
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DescribeCallListTestResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeCallListTestResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeCallListTestResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeCallUserExpRequest(TeaModel):
     def __init__(
         self,
@@ -2067,13 +1025,9 @@ class DescribeCallUserExpRequest(TeaModel):
         created_ts: int = None,
         destroyed_ts: int = None,
     ):
-        # APP ID。
         self.app_id = app_id
-        # 频道ID。
         self.channel_id = channel_id
-        # 创建频道时间，使用UNIX时间戳表示，单位：秒。
         self.created_ts = created_ts
-        # 频道释放时间，使用UNIX时间戳表示，单位：秒。参数为空表示获取当前时间。
         self.destroyed_ts = destroyed_ts
 
     def validate(self):
@@ -2114,9 +1068,7 @@ class DescribeCallUserExpResponseBodyExpInfoList(TeaModel):
         call_exp: str = None,
         user_id: str = None,
     ):
-        # 用户体验：GOOD:优良, BAD:欠佳
         self.call_exp = call_exp
-        # 用户ID
         self.user_id = user_id
 
     def validate(self):
@@ -2149,9 +1101,7 @@ class DescribeCallUserExpResponseBody(TeaModel):
         exp_info_list: List[DescribeCallUserExpResponseBodyExpInfoList] = None,
         request_id: str = None,
     ):
-        # 通信体验信息。
         self.exp_info_list = exp_info_list
-        # 请求ID
         self.request_id = request_id
 
     def validate(self):
@@ -2198,9 +1148,6 @@ class DescribeCallUserExpResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2244,7 +1191,6 @@ class DescribeCallUserListRequest(TeaModel):
         role_type: str = None,
         user_id: str = None,
     ):
-        # A short description of struct
         self.app_id = app_id
         self.channel_id = channel_id
         self.created_ts = created_ts
@@ -2637,9 +1583,6 @@ class DescribeCallUserListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2678,15 +1621,10 @@ class DescribeChannelAreaDistributionStatDataRequest(TeaModel):
         destroyed_ts: int = None,
         parent_area: str = None,
     ):
-        # APP ID。
         self.app_id = app_id
-        # 频道ID
         self.channel_id = channel_id
-        # 频道创建时间，使用UNIX时间戳表示，单位：秒。
         self.created_ts = created_ts
-        # 频道释放时间，使用UNIX时间戳表示，单位：秒。参数为空表示获取当前时间。
         self.destroyed_ts = destroyed_ts
-        # 父级地区名称，例如：深圳市的父级为广东省。参数为空表示世界范围（国家维度）的统计，例如：中国、英国。
         self.parent_area = parent_area
 
     def validate(self):
@@ -2734,15 +1672,10 @@ class DescribeChannelAreaDistributionStatDataResponseBodyAreaStatList(TeaModel):
         pub_user_count: int = None,
         sub_user_count: int = None,
     ):
-        # 地域名称，例如：中国_浙江省_杭州市。
         self.area_name = area_name
-        # 通信人数。
         self.call_user_count = call_user_count
-        # 优质传输率，用小数表示，例如0.9999表示优质传输率为99.99%。
         self.high_quality_transmission_rate = high_quality_transmission_rate
-        # 发布端人数。
         self.pub_user_count = pub_user_count
-        # 订阅端人数。
         self.sub_user_count = sub_user_count
 
     def validate(self):
@@ -2787,9 +1720,7 @@ class DescribeChannelAreaDistributionStatDataResponseBody(TeaModel):
         area_stat_list: List[DescribeChannelAreaDistributionStatDataResponseBodyAreaStatList] = None,
         request_id: str = None,
     ):
-        # 地域统计列表。
         self.area_stat_list = area_stat_list
-        # 请求ID。
         self.request_id = request_id
 
     def validate(self):
@@ -2836,9 +1767,6 @@ class DescribeChannelAreaDistributionStatDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2877,15 +1805,10 @@ class DescribeChannelDistributionStatDataRequest(TeaModel):
         destroyed_ts: int = None,
         stat_dim: str = None,
     ):
-        # APP ID。
         self.app_id = app_id
-        # 频道ID
         self.channel_id = channel_id
-        # 创建频道的时间戳，使用UNIX时间戳表示，单位：秒。
         self.created_ts = created_ts
-        # 频道释放时间，使用UNIX时间戳表示，单位：秒。参数为空表示获取当前时间。
         self.destroyed_ts = destroyed_ts
-        # 统计维度，取值：OS：按照系统统计。SDK_VERSION：按照SDK版本统计。
         self.stat_dim = stat_dim
 
     def validate(self):
@@ -2931,11 +1854,8 @@ class DescribeChannelDistributionStatDataResponseBodyStatList(TeaModel):
         call_user_ratio: str = None,
         name: str = None,
     ):
-        # 通信人数。
         self.call_user_count = call_user_count
-        # 通信人数占比，用小数表示，例如1.0000表示通信人数占比为100%。
         self.call_user_ratio = call_user_ratio
-        # 统计维度。
         self.name = name
 
     def validate(self):
@@ -2972,9 +1892,7 @@ class DescribeChannelDistributionStatDataResponseBody(TeaModel):
         request_id: str = None,
         stat_list: List[DescribeChannelDistributionStatDataResponseBodyStatList] = None,
     ):
-        # 请求ID。
         self.request_id = request_id
-        # 频道分布统计列表。
         self.stat_list = stat_list
 
     def validate(self):
@@ -3021,9 +1939,6 @@ class DescribeChannelDistributionStatDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3061,13 +1976,9 @@ class DescribeChannelJoinInfoRequest(TeaModel):
         created_ts: int = None,
         destroyed_ts: int = None,
     ):
-        # APP ID
         self.app_id = app_id
-        # 频道ID
         self.channel_id = channel_id
-        # 频道创建时间
         self.created_ts = created_ts
-        # 频道释放时间
         self.destroyed_ts = destroyed_ts
 
     def validate(self):
@@ -3109,11 +2020,8 @@ class DescribeChannelJoinInfoResponseBody(TeaModel):
         join_slow_threshold: int = None,
         request_id: str = None,
     ):
-        # 在入会慢时间阈值内的入会成功率
         self.join_fast_success_rate = join_fast_success_rate
-        # 入会慢时间阈值
         self.join_slow_threshold = join_slow_threshold
-        # 请求ID
         self.request_id = request_id
 
     def validate(self):
@@ -3156,9 +2064,6 @@ class DescribeChannelJoinInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3196,13 +2101,9 @@ class DescribeChannelOverallDataRequest(TeaModel):
         created_ts: int = None,
         destroyed_ts: int = None,
     ):
-        # APP ID。
         self.app_id = app_id
-        # 频道ID。
         self.channel_id = channel_id
-        # 创建频道的时间戳，使用UNIX时间戳表示，单位：秒。
         self.created_ts = created_ts
-        # 频道释放时间，使用UNIX时间戳表示，单位：秒。参数为空表示获取当前时间。
         self.destroyed_ts = destroyed_ts
 
     def validate(self):
@@ -3247,17 +2148,11 @@ class DescribeChannelOverallDataResponseBodyCallInfo(TeaModel):
         destroyed_ts: int = None,
         duration: int = None,
     ):
-        # 应用ID。
         self.app_id = app_id
-        # 通信状态，取值：IN：进行中。OUT：已结束
         self.call_status = call_status
-        # 频道ID。
         self.channel_id = channel_id
-        # 创建通信的时间戳，使用UNIX时间戳表示，单位：秒。
         self.created_ts = created_ts
-        # 释放通信的时间戳，使用UNIX时间戳表示，单位：秒。
         self.destroyed_ts = destroyed_ts
-        # 通信时长，单位：秒。
         self.duration = duration
 
     def validate(self):
@@ -3307,11 +2202,8 @@ class DescribeChannelOverallDataResponseBodyMetricDatasNodes(TeaModel):
         x: str = None,
         y: str = None,
     ):
-        # 扩展数据
         self.ext = ext
-        # 指标趋势图中x轴横坐标。
         self.x = x
-        # 指标趋势图中y轴纵坐标。
         self.y = y
 
     def validate(self):
@@ -3348,9 +2240,7 @@ class DescribeChannelOverallDataResponseBodyMetricDatas(TeaModel):
         nodes: List[DescribeChannelOverallDataResponseBodyMetricDatasNodes] = None,
         type: str = None,
     ):
-        # 指标趋势图坐标点列表。
         self.nodes = nodes
-        # 指标类型，取值：CALL_QUALITY：通信质量。CONN_NUM：通信次数。
         self.type = type
 
     def validate(self):
@@ -3394,15 +2284,10 @@ class DescribeChannelOverallDataResponseBodyOverallData(TeaModel):
         total_video_stuck_rate: float = None,
         total_video_vague_rate: float = None,
     ):
-        # 平均通信连接的用时，单位：秒。
         self.conn_avg_time = conn_avg_time
-        # 5秒内连通成功率，用小数表示，例如1.0表示连通成功率为100%。
         self.five_sec_join_rate = five_sec_join_rate
-        # 整体音频卡顿率，用小数表示，例如0.02表示音频卡顿率为2%。
         self.total_audio_stuck_rate = total_audio_stuck_rate
-        # 整体视频卡顿率，用小数表示，例如0.02表示视频卡顿率为2%。
         self.total_video_stuck_rate = total_video_stuck_rate
-        # 整体视频模糊率，用小数表示，例如0.02表示视频模糊率为2%。
         self.total_video_vague_rate = total_video_vague_rate
 
     def validate(self):
@@ -3449,13 +2334,9 @@ class DescribeChannelOverallDataResponseBody(TeaModel):
         overall_data: DescribeChannelOverallDataResponseBodyOverallData = None,
         request_id: str = None,
     ):
-        # 通信基本信息。
         self.call_info = call_info
-        # 指标数据列表。
         self.metric_datas = metric_datas
-        # 概览数据。
         self.overall_data = overall_data
-        # 请求ID。
         self.request_id = request_id
 
     def validate(self):
@@ -3516,9 +2397,6 @@ class DescribeChannelOverallDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3556,13 +2434,9 @@ class DescribeChannelTopPubUserListRequest(TeaModel):
         created_ts: int = None,
         destroyed_ts: int = None,
     ):
-        # APP ID。
         self.app_id = app_id
-        # 频道ID。
         self.channel_id = channel_id
-        # 创建频道的时间戳，使用UNIX时间戳表示，单位：秒。
         self.created_ts = created_ts
-        # 频道释放时间，使用UNIX时间戳表示，单位：秒。参数为空表示获取当前时间。
         self.destroyed_ts = destroyed_ts
 
     def validate(self):
@@ -3603,9 +2477,7 @@ class DescribeChannelTopPubUserListResponseBodyTopPubUserDetailListOnlinePeriods
         join_ts: int = None,
         leave_ts: int = None,
     ):
-        # 加入通话时间，使用UNIX时间戳表示，单位：秒。
         self.join_ts = join_ts
-        # 离开通话时间，使用UNIX时间戳表示，单位：秒。
         self.leave_ts = leave_ts
 
     def validate(self):
@@ -3643,19 +2515,12 @@ class DescribeChannelTopPubUserListResponseBodyTopPubUserDetailList(TeaModel):
         online_periods: List[DescribeChannelTopPubUserListResponseBodyTopPubUserDetailListOnlinePeriods] = None,
         user_id: str = None,
     ):
-        # 第一次加入通话的时间，使用UNIX时间戳表示，单位：秒。
         self.created_ts = created_ts
-        # 最后一次离开通话的时间，使用UNIX时间戳表示，单位：秒。通话未结束时值为0。
         self.destroyed_ts = destroyed_ts
-        # 总时长，单位：秒。
         self.duration = duration
-        # 地域位置，例如：北京市-北京市
         self.location = location
-        # 通信时长，单位：秒。
         self.online_duration = online_duration
-        # 在线期间用户列表。
         self.online_periods = online_periods
-        # 用户ID。
         self.user_id = user_id
 
     def validate(self):
@@ -3716,9 +2581,7 @@ class DescribeChannelTopPubUserListResponseBody(TeaModel):
         request_id: str = None,
         top_pub_user_detail_list: List[DescribeChannelTopPubUserListResponseBodyTopPubUserDetailList] = None,
     ):
-        # 请求ID。
         self.request_id = request_id
-        # Top发布用户详情列表
         self.top_pub_user_detail_list = top_pub_user_detail_list
 
     def validate(self):
@@ -3765,9 +2628,6 @@ class DescribeChannelTopPubUserListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3805,13 +2665,9 @@ class DescribeChannelUserMetricsRequest(TeaModel):
         created_ts: int = None,
         destroyed_ts: int = None,
     ):
-        # APP ID。
         self.app_id = app_id
-        # 频道ID。
         self.channel_id = channel_id
-        # 频道的创建时间戳，使用UNIX时间戳表示，单位：秒。
         self.created_ts = created_ts
-        # 频道释放时间，使用UNIX时间戳表示，单位：秒。参数为空表示获取当前时间。
         self.destroyed_ts = destroyed_ts
 
     def validate(self):
@@ -3853,11 +2709,8 @@ class DescribeChannelUserMetricsResponseBodyMetricDatasNodes(TeaModel):
         x: str = None,
         y: str = None,
     ):
-        # 拓展属性
         self.ext = ext
-        # 指标趋势图中x轴横坐标。
         self.x = x
-        # 指标趋势图中y轴纵坐标。
         self.y = y
 
     def validate(self):
@@ -3894,9 +2747,7 @@ class DescribeChannelUserMetricsResponseBodyMetricDatas(TeaModel):
         nodes: List[DescribeChannelUserMetricsResponseBodyMetricDatasNodes] = None,
         type: str = None,
     ):
-        # 指标趋势图坐标点列表。
         self.nodes = nodes
-        # 指标类型，取值：ALL_NUM：累计用户数量。PUB_NUM：累计发布用户数量。SUB_NUM：累计订阅用户数量。JOIN_FAIL_NUM：累计加入频道异常用户数量。BAD_EXP_NUM：累计通信体验异常用户。
         self.type = type
 
     def validate(self):
@@ -3940,15 +2791,10 @@ class DescribeChannelUserMetricsResponseBodyOverallData(TeaModel):
         total_sub_user_num: int = None,
         total_user_num: int = None,
     ):
-        # 累计通信体验异常用户数量。
         self.total_bad_exp_num = total_bad_exp_num
-        # 累计加入频道异常用户数量。
         self.total_join_fail_num = total_join_fail_num
-        # 累计发布端用户数量。
         self.total_pub_user_num = total_pub_user_num
-        # 累计订阅端用户数量。
         self.total_sub_user_num = total_sub_user_num
-        # 累计用户数量。
         self.total_user_num = total_user_num
 
     def validate(self):
@@ -3994,11 +2840,8 @@ class DescribeChannelUserMetricsResponseBody(TeaModel):
         overall_data: DescribeChannelUserMetricsResponseBodyOverallData = None,
         request_id: str = None,
     ):
-        # 指标数据列表。
         self.metric_datas = metric_datas
-        # 总览数据
         self.overall_data = overall_data
-        # 请求ID。
         self.request_id = request_id
 
     def validate(self):
@@ -4052,9 +2895,6 @@ class DescribeChannelUserMetricsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4093,15 +2933,10 @@ class DescribeEndPointEventListRequest(TeaModel):
         destroyed_ts: int = None,
         user_id_list: str = None,
     ):
-        # APP ID。
         self.app_id = app_id
-        # 频道ID
         self.channel_id = channel_id
-        # 创建频道时间，使用UNIX时间戳表示，单位：秒。
         self.created_ts = created_ts
-        # 释放频道时间，使用UNIX时间戳表示，单位：秒。参数为空表示获取当前时间。
         self.destroyed_ts = destroyed_ts
-        # 用户ID列表，多个用英文逗号（,）分隔。
         self.user_id_list = user_id_list
 
     def validate(self):
@@ -4154,13 +2989,12 @@ class DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList(TeaModel
         track_code: str = None,
         track_name: str = None,
         ts: int = None,
+        ts_in_ms: str = None,
         user_id: str = None,
     ):
         self.acs = acs
         self.event_code = event_code
-        # 事件名称。
         self.event_name = event_name
-        # 事件类型，取值：USER：用户事件。SYSTEM：系统事件。
         self.event_type = event_type
         self.os = os
         self.sdk = sdk
@@ -4168,8 +3002,8 @@ class DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList(TeaModel
         self.stream_type = stream_type
         self.track_code = track_code
         self.track_name = track_name
-        # 事件发生的时间，使用UNIX时间戳表示，单位：秒。
         self.ts = ts
+        self.ts_in_ms = ts_in_ms
         self.user_id = user_id
 
     def validate(self):
@@ -4203,6 +3037,8 @@ class DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList(TeaModel
             result['TrackName'] = self.track_name
         if self.ts is not None:
             result['Ts'] = self.ts
+        if self.ts_in_ms is not None:
+            result['TsInMs'] = self.ts_in_ms
         if self.user_id is not None:
             result['UserId'] = self.user_id
         return result
@@ -4231,6 +3067,8 @@ class DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList(TeaModel
             self.track_name = m.get('TrackName')
         if m.get('Ts') is not None:
             self.ts = m.get('Ts')
+        if m.get('TsInMs') is not None:
+            self.ts_in_ms = m.get('TsInMs')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         return self
@@ -4242,9 +3080,7 @@ class DescribeEndPointEventListResponseBodyNodesEventDataItems(TeaModel):
         event_list: List[DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList] = None,
         ts: int = None,
     ):
-        # 事件列表。
         self.event_list = event_list
-        # 第一个事件发生的时间，使用UNIX时间戳表示，单位：秒。
         self.ts = ts
 
     def validate(self):
@@ -4285,9 +3121,7 @@ class DescribeEndPointEventListResponseBodyNodes(TeaModel):
         event_data_items: List[DescribeEndPointEventListResponseBodyNodesEventDataItems] = None,
         user_id: str = None,
     ):
-        # 事件数据列表
         self.event_data_items = event_data_items
-        # 用户ID
         self.user_id = user_id
 
     def validate(self):
@@ -4328,9 +3162,7 @@ class DescribeEndPointEventListResponseBody(TeaModel):
         nodes: List[DescribeEndPointEventListResponseBodyNodes] = None,
         request_id: str = None,
     ):
-        # 用户基本信息列表。
         self.nodes = nodes
-        # 请求ID。
         self.request_id = request_id
 
     def validate(self):
@@ -4377,9 +3209,6 @@ class DescribeEndPointEventListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4421,21 +3250,13 @@ class DescribeEndPointMetricDataRequest(TeaModel):
         pub_user_id: str = None,
         sub_user_id: str = None,
     ):
-        # APP ID。
         self.app_id = app_id
-        # 频道ID
         self.channel_id = channel_id
-        # 创建频道时间，使用UNIX时间戳表示，单位：秒。
         self.created_ts = created_ts
-        # 释放频道时间，使用UNIX时间戳表示，单位：秒。参数为空表示获取当前时间。
         self.destroyed_ts = destroyed_ts
-        # 指标枚举列表，以半角逗号分隔，包括以下类型APP_CPU APPCPU SYSTEM_CPU 系统CPU APP_MEMORY APP内存 SYSTEM_MEMORY 系统占用内存 SYSTEM_TOTAL_MEMORY 系统总内存 AUDIO_LOST_RATE 音频丢包率 VIDEO_LOST_RATE 视频丢包率 AUDIO_RTT 音频延时 VIDEO_RTT 视频延时 AUDIO_END_TO_END_RTT 音频端到端延时 VIDEO_END_TO_END_RTT 视频端到端延时 AUDIO_BIT_RATE 音频码率 AUDIO_STUCK 音频卡顿 AUDIO_LEVEL 音量 VIDEO_BIT_RATE_CAMERA 视频码率 VIDEO_BIT_RATE_LARGE 视频码率（大画面） VIDEO_BIT_RATE_SMALL 视频码率（小画面） VIDEO_BIT_RATE_SUPER 视频码率（超大屏幕） VIDEO_BIT_RATE_SHARE 视频码率（屏幕分享） VIDEO_STUCK_CAMERA 视频卡顿 VIDEO_STUCK_LARGE 视频卡顿（大画面） VIDEO_STUCK_SMALL 视频卡顿（小画面） VIDEO_STUCK_SUPER 视频卡顿（超大屏幕） VIDEO_STUCK_SHARE 视频卡顿（屏幕分享） VIDEO_RESOLUTION_CAMERA 视频分辨率 VIDEO_RESOLUTION_LARGE 视频分辨率（大画面） VIDEO_RESOLUTION_SMALL 视频分辨率（小画面） VIDEO_RESOLUTION_SUPER 视频分辨率（超大屏幕） VIDEO_RESOLUTION_SHARE 视频分辨率（屏幕分享） VIDEO_FPS_CAMERA 视频帧率 VIDEO_FPS_LARGE 视频帧率（大画面） VIDEO_FPS_SMALL 视频帧率（小画面） VIDEO_FPS_SUPER 视频帧率（超大屏幕） VIDEO_FPS_SHARE 视频帧率（屏幕分享）
         self.metrics = metrics
-        # 发布端用户通信流的Call ID，多个用英文逗号（,）分隔。
         self.pub_call_id_list = pub_call_id_list
-        # 发布端用户ID。
         self.pub_user_id = pub_user_id
-        # 订阅端用户ID。
         self.sub_user_id = sub_user_id
 
     def validate(self):
@@ -4493,11 +3314,8 @@ class DescribeEndPointMetricDataResponseBodyPubMetricsNodes(TeaModel):
         x: str = None,
         y: str = None,
     ):
-        # 拓展属性
         self.ext = ext
-        # 发布端指标趋势图中x轴横坐标。
         self.x = x
-        # 发布端指标趋势图中y轴纵坐标。
         self.y = y
 
     def validate(self):
@@ -4535,11 +3353,8 @@ class DescribeEndPointMetricDataResponseBodyPubMetrics(TeaModel):
         type: str = None,
         user_id: str = None,
     ):
-        # 坐标点列表
         self.nodes = nodes
-        # 对应入参Metrics中的类型
         self.type = type
-        # 用户ID。
         self.user_id = user_id
 
     def validate(self):
@@ -4585,11 +3400,8 @@ class DescribeEndPointMetricDataResponseBodySubMetricsNodes(TeaModel):
         x: str = None,
         y: str = None,
     ):
-        # 拓展属性
         self.ext = ext
-        # 订阅端指标趋势图中x轴横坐标。
         self.x = x
-        # 订阅端指标趋势图y轴纵坐标。
         self.y = y
 
     def validate(self):
@@ -4627,11 +3439,8 @@ class DescribeEndPointMetricDataResponseBodySubMetrics(TeaModel):
         type: str = None,
         user_id: str = None,
     ):
-        # 订阅端指标趋势图坐标点列表。
         self.nodes = nodes
-        # 对应入参Metrics中的类型
         self.type = type
-        # 用户ID。
         self.user_id = user_id
 
     def validate(self):
@@ -4677,11 +3486,8 @@ class DescribeEndPointMetricDataResponseBody(TeaModel):
         request_id: str = None,
         sub_metrics: List[DescribeEndPointMetricDataResponseBodySubMetrics] = None,
     ):
-        # 发布端用户指标数据。
         self.pub_metrics = pub_metrics
-        # 请求ID。
         self.request_id = request_id
-        # 订阅端用户指标数据。
         self.sub_metrics = sub_metrics
 
     def validate(self):
@@ -4741,9 +3547,6 @@ class DescribeEndPointMetricDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4780,11 +3583,8 @@ class DescribeFaultDiagnosisFactorDistributionStatRequest(TeaModel):
         end_ts: int = None,
         start_ts: int = None,
     ):
-        # APP ID。
         self.app_id = app_id
-        # 查询的结束时间，使用UNIX时间戳表示，单位：秒。
         self.end_ts = end_ts
-        # 查询的开始时间，使用UNIX时间戳表示，单位：秒。
         self.start_ts = start_ts
 
     def validate(self):
@@ -4822,11 +3622,8 @@ class DescribeFaultDiagnosisFactorDistributionStatResponseBodyStatList(TeaModel)
         user_count: int = None,
         user_ratio: float = None,
     ):
-        # 影响因素ID： 1：发布端网络差 2：订阅端网络差 3：发布端设备性能差 4：发布端关闭摄像头 5：发布端切到后台运行，UNKNOWN：未知
         self.factor_id = factor_id
-        # 影响用户数
         self.user_count = user_count
-        # 影响用户占比
         self.user_ratio = user_ratio
 
     def validate(self):
@@ -4863,9 +3660,7 @@ class DescribeFaultDiagnosisFactorDistributionStatResponseBody(TeaModel):
         request_id: str = None,
         stat_list: List[DescribeFaultDiagnosisFactorDistributionStatResponseBodyStatList] = None,
     ):
-        # 请求ID。
         self.request_id = request_id
-        # 影响因素分布统计数据
         self.stat_list = stat_list
 
     def validate(self):
@@ -4912,9 +3707,6 @@ class DescribeFaultDiagnosisFactorDistributionStatResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4952,13 +3744,9 @@ class DescribeFaultDiagnosisOverallDataRequest(TeaModel):
         start_ts: int = None,
         stat_dim: str = None,
     ):
-        # APP ID
         self.app_id = app_id
-        # 结束时间，秒级时间戳：1609344000
         self.end_ts = end_ts
-        # 开始时间，秒级时间戳：1609344000
         self.start_ts = start_ts
-        # 获取数据统计维度： JOIN_SLOW_USER：进频道慢用户数 AUDIO_STUCK_USER：音频卡顿用户数 VIDEO_STUCK_USER：视频卡顿用户数 VIDEO_VAGUE_USER：视频模糊用户数 HIGH_DELAY_USER：通话延迟高用户数 FIRST_SCREEN_SLOW_USER：接收首屏慢用户数
         self.stat_dim = stat_dim
 
     def validate(self):
@@ -5000,11 +3788,8 @@ class DescribeFaultDiagnosisOverallDataResponseBodyMetricDataNodes(TeaModel):
         x: str = None,
         y: str = None,
     ):
-        # 拓展属性，ratio：单位时间内异常用户占比，totalCount：单位时间内用户总数
         self.ext = ext
-        # x轴横坐标，秒级时间戳
         self.x = x
-        # y轴横坐标，单位数据异常用户数
         self.y = y
 
     def validate(self):
@@ -5040,7 +3825,6 @@ class DescribeFaultDiagnosisOverallDataResponseBodyMetricData(TeaModel):
         self,
         nodes: List[DescribeFaultDiagnosisOverallDataResponseBodyMetricDataNodes] = None,
     ):
-        # 指标坐标点列表，单位时间为1分钟的异常用户数据
         self.nodes = nodes
 
     def validate(self):
@@ -5078,11 +3862,8 @@ class DescribeFaultDiagnosisOverallDataResponseBodyOverallData(TeaModel):
         fault_user_ratio: float = None,
         total_user_count: int = None,
     ):
-        # 异常用户数/人次
         self.fault_user_count = fault_user_count
-        # 异常用户总占比
         self.fault_user_ratio = fault_user_ratio
-        # 用户总数/人次
         self.total_user_count = total_user_count
 
     def validate(self):
@@ -5120,11 +3901,8 @@ class DescribeFaultDiagnosisOverallDataResponseBody(TeaModel):
         overall_data: DescribeFaultDiagnosisOverallDataResponseBodyOverallData = None,
         request_id: str = None,
     ):
-        # 异常指标数据
         self.metric_data = metric_data
-        # 总览数据
         self.overall_data = overall_data
-        # 请求ID。
         self.request_id = request_id
 
     def validate(self):
@@ -5172,9 +3950,6 @@ class DescribeFaultDiagnosisOverallDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5214,17 +3989,11 @@ class DescribeFaultDiagnosisUserDetailRequest(TeaModel):
         query_call_user_info: bool = None,
         user_id: str = None,
     ):
-        # APP ID。
         self.app_id = app_id
-        # 频道ID
         self.channel_id = channel_id
-        # 频道创建时间，使用UNIX时间戳表示，单位：秒。
         self.created_ts = created_ts
-        # 异常类型 JOIN_SLOW：进频道慢 AUDIO_STUCK：音频卡顿 VIDEO_STUCK：视频卡顿 VIDEO_VAGUE：视频模糊 HIGH_DELAY：通话延迟高 FIRST_FRAME_SLOW：接收首屏慢
         self.fault_type = fault_type
-        # 是否查询通话用户信息，为空默认是false
         self.query_call_user_info = query_call_user_info
-        # 用户ID
         self.user_id = user_id
 
     def validate(self):
@@ -5279,15 +4048,10 @@ class DescribeFaultDiagnosisUserDetailResponseBodyCallInfo(TeaModel):
     ):
         # App ID。
         self.app_id = app_id
-        # 通信状态。取值：IN：进行中。OUT：已结束。
         self.call_status = call_status
-        # 频道ID。
         self.channel_id = channel_id
-        # 创建通信时间，使用UNIX时间戳表示，单位：秒。
         self.created_ts = created_ts
-        # 释放通信时间，使用UNIX时间戳表示，单位：秒。
         self.destroyed_ts = destroyed_ts
-        # 通信持续时长，单位：秒。
         self.duration = duration
 
     def validate(self):
@@ -5348,9 +4112,7 @@ class DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEve
     ):
         self.acs = acs
         self.event_code = event_code
-        # 事件名称。
         self.event_name = event_name
-        # 事件类型，取值：USER：用户事件。SYSTEM：系统事件。
         self.event_type = event_type
         self.os = os
         self.sdk = sdk
@@ -5358,7 +4120,6 @@ class DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEve
         self.stream_type = stream_type
         self.track_code = track_code
         self.track_name = track_name
-        # 事件发生的时间，使用UNIX时间戳表示，单位：秒。
         self.ts = ts
         self.user_id = user_id
 
@@ -5432,9 +4193,7 @@ class DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEve
         event_list: List[DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList] = None,
         ts: int = None,
     ):
-        # 事件列表。
         self.event_list = event_list
-        # 第一个事件发生的时间，使用UNIX时间戳表示，单位：秒。
         self.ts = ts
 
     def validate(self):
@@ -5476,11 +4235,8 @@ class DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatas(Te
         role: str = None,
         user_id: str = None,
     ):
-        # 事件数据列表
         self.event_data_items = event_data_items
-        # 来源角色： SENDER：发布端，即上行 RECEIVER：订阅端，即下行
         self.role = role
-        # 用户ID
         self.user_id = user_id
 
     def validate(self):
@@ -5526,11 +4282,8 @@ class DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricDatasNo
         x: str = None,
         y: str = None,
     ):
-        # 扩展数据
         self.ext = ext
-        # X坐标值，秒级时间戳
         self.x = x
-        # Y坐标值，指标值
         self.y = y
 
     def validate(self):
@@ -5569,13 +4322,9 @@ class DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricDatas(T
         type: str = None,
         user_id: str = None,
     ):
-        # 坐标数据列表
         self.nodes = nodes
-        # 来源角色： SENDER：发布端，即上行 RECEIVER：订阅端，即下行
         self.role = role
-        # 指标类型，参照端到端指标接口的指标类型
         self.type = type
-        # 数据来自对应发布端的用户ID
         self.user_id = user_id
 
     def validate(self):
@@ -5626,13 +4375,9 @@ class DescribeFaultDiagnosisUserDetailResponseBodyFactorList(TeaModel):
         related_event_datas: List[DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatas] = None,
         related_metric_datas: List[DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricDatas] = None,
     ):
-        # 影响因素ID： 1：发布端网络差 2：订阅端网络差 3：发布端设备性能差 4：发布端关闭摄像头 5：发布端切到后台运行
         self.factor_id = factor_id
-        # 异常来源 LOCAL：本端 REMOTE：远端
         self.fault_source = fault_source
-        # 关联的事件，按时间分组，当FaultType为AUDIO_STUCK、VIDEO_STUCK、VIDEO_VAGUE、HIGH_DELAY时返回
         self.related_event_datas = related_event_datas
-        # 关联的指标，坐标数据，当FaultType为AUDIO_STUCK、VIDEO_STUCK、VIDEO_VAGUE、HIGH_DELAY时返回
         self.related_metric_datas = related_metric_datas
 
     def validate(self):
@@ -5690,9 +4435,7 @@ class DescribeFaultDiagnosisUserDetailResponseBodyFaultMetricDataNodes(TeaModel)
         x: str = None,
         y: str = None,
     ):
-        # x轴坐标值，秒级时间戳，单位时间为分钟
         self.x = x
-        # y轴坐标值，异常指标的值
         self.y = y
 
     def validate(self):
@@ -5724,7 +4467,6 @@ class DescribeFaultDiagnosisUserDetailResponseBodyFaultMetricData(TeaModel):
         self,
         nodes: List[DescribeFaultDiagnosisUserDetailResponseBodyFaultMetricDataNodes] = None,
     ):
-        # 指标坐标点列表
         self.nodes = nodes
 
     def validate(self):
@@ -5761,9 +4503,7 @@ class DescribeFaultDiagnosisUserDetailResponseBodyUserDetailOnlinePeriods(TeaMod
         join_ts: int = None,
         leave_ts: int = None,
     ):
-        # 加入通话时间，使用UNIX时间戳表示，单位：秒。
         self.join_ts = join_ts
-        # 离开通话时间，使用UNIX时间戳表示，单位：秒。
         self.leave_ts = leave_ts
 
     def validate(self):
@@ -5804,25 +4544,15 @@ class DescribeFaultDiagnosisUserDetailResponseBodyUserDetail(TeaModel):
         sdk_version: str = None,
         user_id: str = None,
     ):
-        # 创建通话时间，使用UNIX时间戳表示，单位：秒。
         self.created_ts = created_ts
-        # 释放通话时间，使用UNIX时间戳表示，单位：秒。通话未结束时值为0。
         self.destroyed_ts = destroyed_ts
-        # 通话时长，首次进入到最后离开，单位：秒。
         self.duration = duration
-        # 地理位置信息，例如：北京市-北京市
         self.location = location
-        # 网络类型，如WiFi，4G等
         self.network = network
-        # 在线时长，单位：秒。
         self.online_duration = online_duration
-        # 在线时段信息。
         self.online_periods = online_periods
-        # 平台类型：若用户客户端为WEB则是浏览器类型，若客户端为NATIVE则是操作系统类型
         self.os = os
-        # SDK版本，如1.0.0、1.1.1等
         self.sdk_version = sdk_version
-        # 用户ID。
         self.user_id = user_id
 
     def validate(self):
@@ -5899,17 +4629,11 @@ class DescribeFaultDiagnosisUserDetailResponseBody(TeaModel):
         request_id: str = None,
         user_detail: DescribeFaultDiagnosisUserDetailResponseBodyUserDetail = None,
     ):
-        # 通信基本信息，QueryCallUserInfo=false是返回。
         self.call_info = call_info
-        # 影响因素列表，空表示影响因素未知
         self.factor_list = factor_list
-        # 异常指标
         self.fault_metric_data = fault_metric_data
-        # 网络运营商列表
         self.network_operators = network_operators
-        # 请求ID。
         self.request_id = request_id
-        # 诊断用户详细信，QueryCallUserInfo=false是返回息
         self.user_detail = user_detail
 
     def validate(self):
@@ -5981,9 +4705,6 @@ class DescribeFaultDiagnosisUserDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6025,21 +4746,13 @@ class DescribeFaultDiagnosisUserListRequest(TeaModel):
         start_ts: int = None,
         user_id: str = None,
     ):
-        # APP ID。
         self.app_id = app_id
-        # 搜索的频道ID
         self.channel_id = channel_id
-        # 查询的结束时间，使用UNIX时间戳表示，单位：秒。
         self.end_ts = end_ts
-        # 过滤的异常类型，多个使用半角逗号分隔 JOIN_SLOW：进频道慢 AUDIO_STUCK：音频卡顿 VIDEO_STUCK：视频卡顿 VIDEO_VAGUE：视频模糊 HIGH_DELAY：通话延迟高 FIRST_FRAME_SLOW：接收首屏慢
         self.fault_types = fault_types
-        # 页码
         self.page_no = page_no
-        # 每页数量
         self.page_size = page_size
-        # 查询的开始时间，使用UNIX时间戳表示，单位：秒。
         self.start_ts = start_ts
-        # 搜索的用户ID
         self.user_id = user_id
 
     def validate(self):
@@ -6095,7 +4808,6 @@ class DescribeFaultDiagnosisUserListResponseBodyUserListFaultList(TeaModel):
         self,
         fault_type: str = None,
     ):
-        # 异常类型 JOIN_SLOW：进频道慢 AUDIO_STUCK：音频卡顿 VIDEO_STUCK：视频卡顿 VIDEO_VAGUE：视频模糊 HIGH_DELAY：通话延迟高 FIRST_FRAME_SLOW：接收首屏慢
         self.fault_type = fault_type
 
     def validate(self):
@@ -6128,17 +4840,11 @@ class DescribeFaultDiagnosisUserListResponseBodyUserList(TeaModel):
         fault_list: List[DescribeFaultDiagnosisUserListResponseBodyUserListFaultList] = None,
         user_id: str = None,
     ):
-        # 通信的创建时间戳，使用UNIX时间戳表示，单位：秒。
         self.channel_created_ts = channel_created_ts
-        # 频道ID。
         self.channel_id = channel_id
-        # 用户首次进入通话时间，使用UNIX时间戳表示，单位：秒。
         self.created_ts = created_ts
-        # 用户最后一次离开通话时间，使用UNIX时间戳表示，单位：秒。
         self.destroyed_ts = destroyed_ts
-        # 异常列表。
         self.fault_list = fault_list
-        # 用户ID。
         self.user_id = user_id
 
     def validate(self):
@@ -6198,15 +4904,10 @@ class DescribeFaultDiagnosisUserListResponseBody(TeaModel):
         total_cnt: int = None,
         user_list: List[DescribeFaultDiagnosisUserListResponseBodyUserList] = None,
     ):
-        # 页码。
         self.page_no = page_no
-        # 每页数量。
         self.page_size = page_size
-        # 请求ID。
         self.request_id = request_id
-        # 总数量。
         self.total_cnt = total_cnt
-        # 异常用户明细列表。
         self.user_list = user_list
 
     def validate(self):
@@ -6265,9 +4966,6 @@ class DescribeFaultDiagnosisUserListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6305,13 +5003,9 @@ class DescribeIceDurPeriodByDaySubTypeRequest(TeaModel):
         start_ts: int = None,
         time_zone: str = None,
     ):
-        # 结束是时间戳
         self.end_ts = end_ts
-        # 任务类型
         self.job_type = job_type
-        # 起始时间戳
         self.start_ts = start_ts
-        # 时区
         self.time_zone = time_zone
 
     def validate(self):
@@ -6352,9 +5046,7 @@ class DescribeIceDurPeriodByDaySubTypeResponseBodyJobInfoListSubJobInfoList(TeaM
         sub_job_duration: int = None,
         sub_job_type: str = None,
     ):
-        # 子任务时长
         self.sub_job_duration = sub_job_duration
-        # 子任务类型
         self.sub_job_type = sub_job_type
 
     def validate(self):
@@ -6388,11 +5080,8 @@ class DescribeIceDurPeriodByDaySubTypeResponseBodyJobInfoList(TeaModel):
         duration: int = None,
         sub_job_info_list: List[DescribeIceDurPeriodByDaySubTypeResponseBodyJobInfoListSubJobInfoList] = None,
     ):
-        # 日期时间戳
         self.date_ts = date_ts
-        # 任务总时长,单位分钟
         self.duration = duration
-        # 子任务信息列表
         self.sub_job_info_list = sub_job_info_list
 
     def validate(self):
@@ -6437,9 +5126,7 @@ class DescribeIceDurPeriodByDaySubTypeResponseBody(TeaModel):
         job_info_list: List[DescribeIceDurPeriodByDaySubTypeResponseBodyJobInfoList] = None,
         request_id: str = None,
     ):
-        # 任务信息列表
         self.job_info_list = job_info_list
-        # 请求ID
         self.request_id = request_id
 
     def validate(self):
@@ -6486,9 +5173,6 @@ class DescribeIceDurPeriodByDaySubTypeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6524,9 +5208,7 @@ class DescribeIceDurSummaryOverviewRequest(TeaModel):
         cur_ts: int = None,
         time_zone: str = None,
     ):
-        # 当前时间戳
         self.cur_ts = cur_ts
-        # 时区
         self.time_zone = time_zone
 
     def validate(self):
@@ -6560,11 +5242,8 @@ class DescribeIceDurSummaryOverviewResponseBodyJobInfoList(TeaModel):
         job_type: str = None,
         time_range: str = None,
     ):
-        # 任务时长
         self.duration = duration
-        # 作业类型
         self.job_type = job_type
-        # 时间维度
         self.time_range = time_range
 
     def validate(self):
@@ -6601,9 +5280,7 @@ class DescribeIceDurSummaryOverviewResponseBody(TeaModel):
         job_info_list: List[DescribeIceDurSummaryOverviewResponseBodyJobInfoList] = None,
         request_id: str = None,
     ):
-        # 任务信息
         self.job_info_list = job_info_list
-        # 请求ID
         self.request_id = request_id
 
     def validate(self):
@@ -6650,9 +5327,6 @@ class DescribeIceDurSummaryOverviewResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6691,15 +5365,10 @@ class DescribePubUserListBySubUserRequest(TeaModel):
         destroyed_ts: int = None,
         sub_user_id: str = None,
     ):
-        # APP ID。
         self.app_id = app_id
-        # 频道ID。
         self.channel_id = channel_id
-        # 频道创建时间，使用UNIX时间戳表示，单位：秒。
         self.created_ts = created_ts
-        # 频道释放时间，使用UNIX时间戳表示，单位：秒。参数为空表示获取当前时间。
         self.destroyed_ts = destroyed_ts
-        # 订阅端用户ID。
         self.sub_user_id = sub_user_id
 
     def validate(self):
@@ -6744,9 +5413,7 @@ class DescribePubUserListBySubUserResponseBodyPubUserDetailListOnlinePeriods(Tea
         join_ts: int = None,
         leave_ts: int = None,
     ):
-        # 加入通话时间，使用UNIX时间戳表示，单位：秒。
         self.join_ts = join_ts
-        # 离开通话时间，使用UNIX时间戳表示，单位：秒。
         self.leave_ts = leave_ts
 
     def validate(self):
@@ -6794,39 +5461,22 @@ class DescribePubUserListBySubUserResponseBodyPubUserDetailList(TeaModel):
         user_id: str = None,
         user_id_alias: str = None,
     ):
-        # 用户通信流的Call ID。
         self.call_id_list = call_id_list
-        # 端类型，取值：WEB：Web端。NATIVE：本地端。
         self.client_type = client_type
-        # 第一次加入通话的时间，使用UNIX时间戳表示，单位：秒。
         self.created_ts = created_ts
-        # 最后一次离开通话的时间，使用UNIX时间戳表示，单位：秒。
         self.destroyed_ts = destroyed_ts
-        # 通话时长，首次进入到最后离开，单位：秒。
         self.duration = duration
-        # 地理位置信息，例如：浙江省-杭州市。
         self.location = location
-        # 网络类型，如WiFi，4G等
         self.network = network
-        # 网络类型，如WiFi，4G等
         self.network_list = network_list
-        # 在线时长，单位：秒。
         self.online_duration = online_duration
-        # 在线时段信息。
         self.online_periods = online_periods
-        # 平台类型：若用户客户端为WEB则是浏览器类型，若客户端为NATIVE则是操作系统类型
         self.os = os
-        # 平台类型：若用户客户端为WEB则是浏览器类型，若客户端为NATIVE则是操作系统类型
         self.os_list = os_list
-        # 用户角色，取值：SENDER：发起者。RECEIVER：接收者。
         self.roles = roles
-        # SDK版本。
         self.sdk_version = sdk_version
-        # SDK版本列表，如1.0.0、1.1.1等
         self.sdk_version_list = sdk_version_list
-        # 用户ID。
         self.user_id = user_id
-        # 用户ID别称
         self.user_id_alias = user_id_alias
 
     def validate(self):
@@ -6927,9 +5577,7 @@ class DescribePubUserListBySubUserResponseBodySubUserDetailOnlinePeriods(TeaMode
         join_ts: int = None,
         leave_ts: int = None,
     ):
-        # 加入通话时间，使用UNIX时间戳表示，单位：秒。
         self.join_ts = join_ts
-        # 离开通话时间，使用UNIX时间戳表示，单位：秒。
         self.leave_ts = leave_ts
 
     def validate(self):
@@ -6976,37 +5624,21 @@ class DescribePubUserListBySubUserResponseBodySubUserDetail(TeaModel):
         user_id: str = None,
         user_id_alias: str = None,
     ):
-        # 端类型，取值：WEB：Web端。NATIVE：本地端。
         self.client_type = client_type
-        # 第一次加入通话的时间，使用UNIX时间戳表示，单位：秒。
         self.created_ts = created_ts
-        # 最后一次离开通话的时间，使用UNIX时间戳表示，单位：秒。通话未结束时值为0。
         self.destroyed_ts = destroyed_ts
-        # 通话时长，首次进入到最后离开，单位：秒。
         self.duration = duration
-        # 地理位置信息，例如：浙江省-杭州市。
         self.location = location
-        # 网络类型，如WiFi，4G等
         self.network = network
-        # 网络类型，如WiFi，4G等
         self.network_list = network_list
-        # 在线时长，单位：秒。
         self.online_duration = online_duration
-        # 在线时段信息。
         self.online_periods = online_periods
-        # 平台类型：若用户客户端为WEB则是浏览器类型，若客户端为NATIVE则是操作系统类型
         self.os = os
-        # 平台类型：若用户客户端为WEB则是浏览器类型，若客户端为NATIVE则是操作系统类型
         self.os_list = os_list
-        # 用户角色，取值：SENDER：发布端。RECEIVER：订阅端。
         self.roles = roles
-        # SDK版本。
         self.sdk_version = sdk_version
-        # SDK版本列表，如1.0.0、1.1.1等
         self.sdk_version_list = sdk_version_list
-        # 用户ID。
         self.user_id = user_id
-        # 用户ID别称
         self.user_id_alias = user_id_alias
 
     def validate(self):
@@ -7105,13 +5737,9 @@ class DescribePubUserListBySubUserResponseBody(TeaModel):
         request_id: str = None,
         sub_user_detail: DescribePubUserListBySubUserResponseBodySubUserDetail = None,
     ):
-        # 通信状态。取值：IN：进行中。OUT：已结束。
         self.call_status = call_status
-        # 发布端用户详情信息。
         self.pub_user_detail_list = pub_user_detail_list
-        # 请求ID。
         self.request_id = request_id
-        # 订阅端用户详细信息。
         self.sub_user_detail = sub_user_detail
 
     def validate(self):
@@ -7169,9 +5797,6 @@ class DescribePubUserListBySubUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7210,15 +5835,10 @@ class DescribeQoeMetricDataRequest(TeaModel):
         destroyed_ts: int = None,
         user_id: str = None,
     ):
-        # APP ID。
         self.app_id = app_id
-        # 频道ID。
         self.channel_id = channel_id
-        # 创建频道时间，使用UNIX时间戳表示，单位：秒。
         self.created_ts = created_ts
-        # 频道释放时间，使用UNIX时间戳表示，单位：秒。参数为空表示获取当前时间。
         self.destroyed_ts = destroyed_ts
-        # 用户ID。
         self.user_id = user_id
 
     def validate(self):
@@ -7263,9 +5883,7 @@ class DescribeQoeMetricDataResponseBodyAudioDataNodes(TeaModel):
         x: str = None,
         y: str = None,
     ):
-        # 音频指标趋势图中x轴横坐标。
         self.x = x
-        # 音频指标趋势图中y轴纵坐标。
         self.y = y
 
     def validate(self):
@@ -7299,11 +5917,8 @@ class DescribeQoeMetricDataResponseBodyAudioData(TeaModel):
         type: str = None,
         user_id: str = None,
     ):
-        # 音频指标趋势图坐标点列表。
         self.nodes = nodes
-        # 通信体验，取值：AUDIO：音频码率。AUDIO_STUCK：音频下行卡顿。
         self.type = type
-        # 用户ID。
         self.user_id = user_id
 
     def validate(self):
@@ -7348,9 +5963,7 @@ class DescribeQoeMetricDataResponseBodyVideoDataNodes(TeaModel):
         x: str = None,
         y: str = None,
     ):
-        # 视频指标趋势图中x轴横坐标。
         self.x = x
-        # 视频指标趋势图中y轴纵坐标。
         self.y = y
 
     def validate(self):
@@ -7384,11 +5997,8 @@ class DescribeQoeMetricDataResponseBodyVideoData(TeaModel):
         type: str = None,
         user_id: str = None,
     ):
-        # 视频指标趋势图坐标点列表。
         self.nodes = nodes
-        # 通信体验，取值：VIDEO_CAMERA：摄像头码率。VIDEO_CAMERA_LARGE：摄像头大流码率。VIDEO_CAMERA_SMALL：摄像头小流码率。VIDEO_CAMERA_SUPER：摄像头超大流码率。VIDEO_SCREEN_SHARE：共享屏幕流码率。VIDEO_STUCK_CAMERA：摄像头卡顿。VIDEO_STUCK_CAMERA_LARGE：摄像头大流卡顿。VIDEO_STUCK_CAMERA_SMALL：摄像头小流卡顿。VIDEO_STUCK_CAMERA_SUPER：摄像头超大流卡顿。VIDEO_STUCK_SCREEN_SHARE：屏幕共享卡顿。VIDEO_VAGUE_CAMERA：摄像头模糊。VIDEO_VAGUE_CAMERA_LARGE：摄像头大流模糊。VIDEO_VAGUE_CAMERA_SMALL：摄像头小流模糊。VIDEO_VAGUE_CAMERA_SUPER：摄像头超大流模糊。VIDEO_VAGUE_SCREEN_SHARE：屏幕共享模糊。
         self.type = type
-        # 用户ID
         self.user_id = user_id
 
     def validate(self):
@@ -7434,11 +6044,8 @@ class DescribeQoeMetricDataResponseBody(TeaModel):
         request_id: str = None,
         video_data: List[DescribeQoeMetricDataResponseBodyVideoData] = None,
     ):
-        # 音频数据。
         self.audio_data = audio_data
-        # 请求ID
         self.request_id = request_id
-        # 视频数据。
         self.video_data = video_data
 
     def validate(self):
@@ -7498,9 +6105,6 @@ class DescribeQoeMetricDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7538,13 +6142,9 @@ class DescribeQualityAreaDistributionStatDataRequest(TeaModel):
         parent_area: str = None,
         start_date: int = None,
     ):
-        # APP ID
         self.app_id = app_id
-        # 结束时间，秒级时间戳，如1609344000
         self.end_date = end_date
-        # 父级地区名称，为空取世界范围（国家维度）的统计，如： ""->中国、英国 "中国"->北京市、广东省 "广东省"->广州市、深圳市、佛山市 "北京市"->北京市
         self.parent_area = parent_area
-        # 开始时间，秒级时间戳，如1609344000
         self.start_date = start_date
 
     def validate(self):
@@ -7595,29 +6195,17 @@ class DescribeQualityAreaDistributionStatDataResponseBodyQualityStatDataList(Tea
         video_high_quality_transmission_rate: str = None,
         video_stuck_rate: str = None,
     ):
-        # 音频延时，单位毫秒
         self.audio_delay = audio_delay
-        # 音频优质传输率， 四位小数表示，如0.9927
         self.audio_high_quality_transmission_rate = audio_high_quality_transmission_rate
-        # 音频首次出声时间，单位毫秒
         self.audio_speak_out_duration = audio_speak_out_duration
-        # 音频卡顿率， 四位小数表示，如0.0034
         self.audio_stuck_rate = audio_stuck_rate
-        # 通话时长用量占比，四位小数表示，如1.0000
         self.call_duration_ratio = call_duration_ratio
-        # 5秒加入频道成功率， 四位小数表示，如1.0000
         self.join_channel_suc_five_sec_rate = join_channel_suc_five_sec_rate
-        # 加入频道成功率， 四位小数表示，如1.0000
         self.join_channel_suc_rate = join_channel_suc_rate
-        # 区域名称，如广东省
         self.name = name
-        # 视频延时，单位毫秒
         self.video_delay = video_delay
-        # 视频首次出图时间，单位毫秒
         self.video_first_pic_duration = video_first_pic_duration
-        # 视频优质传输率，四位小数表示，如0.9965
         self.video_high_quality_transmission_rate = video_high_quality_transmission_rate
-        # 视频卡顿率， 四位小数表示，如0.0038
         self.video_stuck_rate = video_stuck_rate
 
     def validate(self):
@@ -7690,9 +6278,7 @@ class DescribeQualityAreaDistributionStatDataResponseBody(TeaModel):
         quality_stat_data_list: List[DescribeQualityAreaDistributionStatDataResponseBodyQualityStatDataList] = None,
         request_id: str = None,
     ):
-        # 质量分布数据列表
         self.quality_stat_data_list = quality_stat_data_list
-        # 请求ID
         self.request_id = request_id
 
     def validate(self):
@@ -7739,9 +6325,6 @@ class DescribeQualityAreaDistributionStatDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7779,13 +6362,9 @@ class DescribeQualityDistributionStatDataRequest(TeaModel):
         start_date: int = None,
         stat_dim: str = None,
     ):
-        # APP ID
         self.app_id = app_id
-        # 结束时间，秒级时间戳，如1609344000
         self.end_date = end_date
-        # 开始时间，秒级时间戳，如1609344000
         self.start_date = start_date
-        # 统计维度，支持最多填入一个 CHANNEL_ONLINE, NETWORK, OS
         self.stat_dim = stat_dim
 
     def validate(self):
@@ -7836,29 +6415,17 @@ class DescribeQualityDistributionStatDataResponseBodyQualityStatDataList(TeaMode
         video_high_quality_transmission_rate: str = None,
         video_stuck_rate: str = None,
     ):
-        # 音频延时，单位毫秒
         self.audio_delay = audio_delay
-        # 音频优质传输率， 四位小数表示，如0.9927
         self.audio_high_quality_transmission_rate = audio_high_quality_transmission_rate
-        # 音频首次出声时间，单位毫秒
         self.audio_speak_out_duration = audio_speak_out_duration
-        # 音频卡顿率， 四位小数表示，如0.0034
         self.audio_stuck_rate = audio_stuck_rate
-        # 通话时长用量占比，四位小数表示，如1.0000
         self.call_duration_ratio = call_duration_ratio
-        # 5秒加入频道成功率， 四位小数表示，如1.0000
         self.join_channel_suc_five_sec_rate = join_channel_suc_five_sec_rate
-        # 加入频道成功率， 四位小数表示，如1.0000
         self.join_channel_suc_rate = join_channel_suc_rate
-        # 统计名称， 当StatDim=CHANNEL_ONLINE： ONE_TO_FIVE：1-5人 SIX_TO_TEN：6-10人 ELEVEN_TO_TWENTY：11-20人 TWENTY_ONE_TO_FIFTY: 21-50人 ABOVE_FIFTY：50人以上  当StatDim=NETWORK： WiFi，4G等  当StatDim=OS： iOS、android等
         self.name = name
-        # 视频延时，单位毫秒
         self.video_delay = video_delay
-        # 视频首次出图时间，单位毫秒
         self.video_first_pic_duration = video_first_pic_duration
-        # 视频优质传输率，四位小数表示，如0.9965
         self.video_high_quality_transmission_rate = video_high_quality_transmission_rate
-        # 视频卡顿率， 四位小数表示，如0.0038
         self.video_stuck_rate = video_stuck_rate
 
     def validate(self):
@@ -7931,9 +6498,7 @@ class DescribeQualityDistributionStatDataResponseBody(TeaModel):
         quality_stat_data_list: List[DescribeQualityDistributionStatDataResponseBodyQualityStatDataList] = None,
         request_id: str = None,
     ):
-        # 分布数据列表
         self.quality_stat_data_list = quality_stat_data_list
-        # 请求ID
         self.request_id = request_id
 
     def validate(self):
@@ -7980,9 +6545,6 @@ class DescribeQualityDistributionStatDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8019,11 +6581,8 @@ class DescribeQualityOsSdkVersionDistributionStatDataRequest(TeaModel):
         end_date: int = None,
         start_date: int = None,
     ):
-        # APP ID
         self.app_id = app_id
-        # 结束时间，秒级时间戳，如1609344000
         self.end_date = end_date
-        # 开始时间，秒级时间戳，如1609344000
         self.start_date = start_date
 
     def validate(self):
@@ -8071,31 +6630,18 @@ class DescribeQualityOsSdkVersionDistributionStatDataResponseBodyQualityOsSdkVer
         video_high_quality_transmission_rate: str = None,
         video_stuck_rate: str = None,
     ):
-        # 音频延时，单位毫秒
         self.audio_delay = audio_delay
-        # 音频优质传输率， 四位小数表示，如0.9927
         self.audio_high_quality_transmission_rate = audio_high_quality_transmission_rate
-        # 音频首次出声时间，单位毫秒
         self.audio_speak_out_duration = audio_speak_out_duration
-        # 音频卡顿率， 四位小数表示，如0.0034
         self.audio_stuck_rate = audio_stuck_rate
-        # 通话时长用量占比，四位小数表示，如1.0000
         self.call_duration_ratio = call_duration_ratio
-        # 5秒加入频道成功率， 四位小数表示，如1.0000
         self.join_channel_suc_five_sec_rate = join_channel_suc_five_sec_rate
-        # 加入频道成功率， 四位小数表示，如1.0000
         self.join_channel_suc_rate = join_channel_suc_rate
-        # SDK版本名称，1.0.0、1.1.1等
         self.name = name
-        # 操作系统名称，iOS、android等
         self.os = os
-        # 视频延时，单位毫秒
         self.video_delay = video_delay
-        # 视频首次出图时间，单位毫秒
         self.video_first_pic_duration = video_first_pic_duration
-        # 视频优质传输率，四位小数表示，如0.9965
         self.video_high_quality_transmission_rate = video_high_quality_transmission_rate
-        # 视频卡顿率， 四位小数表示，如0.0038
         self.video_stuck_rate = video_stuck_rate
 
     def validate(self):
@@ -8172,9 +6718,7 @@ class DescribeQualityOsSdkVersionDistributionStatDataResponseBody(TeaModel):
         quality_os_sdk_version_stat_data_list: List[DescribeQualityOsSdkVersionDistributionStatDataResponseBodyQualityOsSdkVersionStatDataList] = None,
         request_id: str = None,
     ):
-        # 分布数据列表
         self.quality_os_sdk_version_stat_data_list = quality_os_sdk_version_stat_data_list
-        # 请求ID
         self.request_id = request_id
 
     def validate(self):
@@ -8221,9 +6765,6 @@ class DescribeQualityOsSdkVersionDistributionStatDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8261,13 +6802,9 @@ class DescribeQualityOverallDataRequest(TeaModel):
         start_date: int = None,
         types: str = None,
     ):
-        # APP ID
         self.app_id = app_id
-        # 结束时间，秒级时间戳，如1609344000
         self.end_date = end_date
-        # 开始时间，秒级时间戳，如1609344000
         self.start_date = start_date
-        # 类型，以半角逗号分隔 加入频道成功率： JOIN_CHANNEL_SUC_RATE 五秒加入频道成功率： JOIN_CHANNEL_SUC_FIVE_SEC_RATE  首次出声时间： AUDIO_SPEAK_OUT_DUR 首次出图时间： VIDEO_FIRST_PIC_DUR 音频卡顿率： AUDIO_STUCK_RATE 视频卡顿率： VIDEO_STUCK_RATE 音频延时： AUDIO_DELAY 视频延时： AUDIO_DELAY 音频优质传输率： AUDIO_HIGH_QUALITY_TRANSMISSION_RATE 视频优质传输率： VIDEO_HIGH_QUALITY_TRANSMISSION_RATE
         self.types = types
 
     def validate(self):
@@ -8308,9 +6845,7 @@ class DescribeQualityOverallDataResponseBodyQualityOverallDataNodes(TeaModel):
         x: str = None,
         y: str = None,
     ):
-        # x轴横坐标
         self.x = x
-        # y轴纵坐标
         self.y = y
 
     def validate(self):
@@ -8344,11 +6879,8 @@ class DescribeQualityOverallDataResponseBodyQualityOverallData(TeaModel):
         nodes: List[DescribeQualityOverallDataResponseBodyQualityOverallDataNodes] = None,
         type: str = None,
     ):
-        # 平均值
         self.average = average
-        # 坐标点列表
         self.nodes = nodes
-        # 概览数据类型，加入频道成功率： JOIN_CHANNEL_SUC_RATE 五秒加入频道成功率： JOIN_CHANNEL_SUC_FIVE_SEC_RATE  首次出声时间： AUDIO_SPEAK_OUT_DUR 首次出图时间： VIDEO_FIRST_PIC_DUR 音频卡顿率： AUDIO_STUCK_RATE 视频卡顿率： VIDEO_STUCK_RATE 音频延时： AUDIO_DELAY 视频延时： AUDIO_DELAY 音频优质传输率： AUDIO_HIGH_QUALITY_TRANSMISSION_RATE 视频优质传输率： VIDEO_HIGH_QUALITY_TRANSMISSION_RATE
         self.type = type
 
     def validate(self):
@@ -8393,9 +6925,7 @@ class DescribeQualityOverallDataResponseBody(TeaModel):
         quality_overall_data: List[DescribeQualityOverallDataResponseBodyQualityOverallData] = None,
         request_id: str = None,
     ):
-        # 概览数据列表
         self.quality_overall_data = quality_overall_data
-        # 请求ID
         self.request_id = request_id
 
     def validate(self):
@@ -8442,9 +6972,6 @@ class DescribeQualityOverallDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8474,1383 +7001,6 @@ class DescribeQualityOverallDataResponse(TeaModel):
         return self
 
 
-class DescribeRtcChannelDetailsRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        channel_id: str = None,
-        end_time: str = None,
-        page_no: int = None,
-        page_size: int = None,
-        start_time: str = None,
-    ):
-        # 应用 ID
-        self.app_id = app_id
-        # 频道ID
-        self.channel_id = channel_id
-        # 结束时间，UTC时间
-        self.end_time = end_time
-        # 页号
-        self.page_no = page_no
-        # 显示数量
-        self.page_size = page_size
-        # 起始时间，UTC格式
-        self.start_time = start_time
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.channel_id is not None:
-            result['ChannelId'] = self.channel_id
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.page_no is not None:
-            result['PageNo'] = self.page_no
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('ChannelId') is not None:
-            self.channel_id = m.get('ChannelId')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('PageNo') is not None:
-            self.page_no = m.get('PageNo')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        return self
-
-
-class DescribeRtcChannelDetailsResponseBodyChannelInfo(TeaModel):
-    def __init__(
-        self,
-        device_type: str = None,
-        join_time: str = None,
-        leave_time: str = None,
-        os: str = None,
-        platform: str = None,
-        sdk_version: str = None,
-        sid: str = None,
-        uid: str = None,
-    ):
-        # 设备类型
-        self.device_type = device_type
-        # 用户入会时间，UTC格式
-        self.join_time = join_time
-        # 用户离会时间，UTC格式
-        self.leave_time = leave_time
-        # 操作系统
-        self.os = os
-        # 平台信息
-        self.platform = platform
-        # SDK版本
-        self.sdk_version = sdk_version
-        # SessionID
-        self.sid = sid
-        # 参会者ID
-        self.uid = uid
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.device_type is not None:
-            result['DeviceType'] = self.device_type
-        if self.join_time is not None:
-            result['JoinTime'] = self.join_time
-        if self.leave_time is not None:
-            result['LeaveTime'] = self.leave_time
-        if self.os is not None:
-            result['OS'] = self.os
-        if self.platform is not None:
-            result['Platform'] = self.platform
-        if self.sdk_version is not None:
-            result['SdkVersion'] = self.sdk_version
-        if self.sid is not None:
-            result['Sid'] = self.sid
-        if self.uid is not None:
-            result['Uid'] = self.uid
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DeviceType') is not None:
-            self.device_type = m.get('DeviceType')
-        if m.get('JoinTime') is not None:
-            self.join_time = m.get('JoinTime')
-        if m.get('LeaveTime') is not None:
-            self.leave_time = m.get('LeaveTime')
-        if m.get('OS') is not None:
-            self.os = m.get('OS')
-        if m.get('Platform') is not None:
-            self.platform = m.get('Platform')
-        if m.get('SdkVersion') is not None:
-            self.sdk_version = m.get('SdkVersion')
-        if m.get('Sid') is not None:
-            self.sid = m.get('Sid')
-        if m.get('Uid') is not None:
-            self.uid = m.get('Uid')
-        return self
-
-
-class DescribeRtcChannelDetailsResponseBody(TeaModel):
-    def __init__(
-        self,
-        channel_id: str = None,
-        channel_info: List[DescribeRtcChannelDetailsResponseBodyChannelInfo] = None,
-        page_no: int = None,
-        page_size: int = None,
-        request_id: str = None,
-        total_size: int = None,
-    ):
-        # 频道ID
-        self.channel_id = channel_id
-        # 频道信息
-        self.channel_info = channel_info
-        # 页号
-        self.page_no = page_no
-        # 显示数量
-        self.page_size = page_size
-        # 请求Id
-        self.request_id = request_id
-        # 总数量
-        self.total_size = total_size
-
-    def validate(self):
-        if self.channel_info:
-            for k in self.channel_info:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.channel_id is not None:
-            result['ChannelId'] = self.channel_id
-        result['ChannelInfo'] = []
-        if self.channel_info is not None:
-            for k in self.channel_info:
-                result['ChannelInfo'].append(k.to_map() if k else None)
-        if self.page_no is not None:
-            result['PageNo'] = self.page_no
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.total_size is not None:
-            result['TotalSize'] = self.total_size
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ChannelId') is not None:
-            self.channel_id = m.get('ChannelId')
-        self.channel_info = []
-        if m.get('ChannelInfo') is not None:
-            for k in m.get('ChannelInfo'):
-                temp_model = DescribeRtcChannelDetailsResponseBodyChannelInfo()
-                self.channel_info.append(temp_model.from_map(k))
-        if m.get('PageNo') is not None:
-            self.page_no = m.get('PageNo')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TotalSize') is not None:
-            self.total_size = m.get('TotalSize')
-        return self
-
-
-class DescribeRtcChannelDetailsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeRtcChannelDetailsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeRtcChannelDetailsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeRtcChannelListRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        channel_id: str = None,
-        end_time: str = None,
-        page_no: int = None,
-        page_size: int = None,
-        start_time: str = None,
-    ):
-        # 应用Id
-        self.app_id = app_id
-        # ChannelId
-        self.channel_id = channel_id
-        # 结束时间，UTC格式
-        self.end_time = end_time
-        # 页号
-        self.page_no = page_no
-        # 显示数量
-        self.page_size = page_size
-        # 起始时间，UTC格式
-        self.start_time = start_time
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.channel_id is not None:
-            result['ChannelId'] = self.channel_id
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.page_no is not None:
-            result['PageNo'] = self.page_no
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('ChannelId') is not None:
-            self.channel_id = m.get('ChannelId')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('PageNo') is not None:
-            self.page_no = m.get('PageNo')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        return self
-
-
-class DescribeRtcChannelListResponseBodyChannels(TeaModel):
-    def __init__(
-        self,
-        channel_id: str = None,
-        end_time: str = None,
-        finished: bool = None,
-        start_time: str = None,
-    ):
-        # 频道ID
-        self.channel_id = channel_id
-        # 频道结束时间，UTC时间
-        self.end_time = end_time
-        # 是否已经结束
-        self.finished = finished
-        # 频道开始时间，UTC格式
-        self.start_time = start_time
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.channel_id is not None:
-            result['ChannelId'] = self.channel_id
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.finished is not None:
-            result['Finished'] = self.finished
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ChannelId') is not None:
-            self.channel_id = m.get('ChannelId')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('Finished') is not None:
-            self.finished = m.get('Finished')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        return self
-
-
-class DescribeRtcChannelListResponseBody(TeaModel):
-    def __init__(
-        self,
-        channels: List[DescribeRtcChannelListResponseBodyChannels] = None,
-        page_no: int = None,
-        page_size: int = None,
-        request_id: str = None,
-        total_cnt: int = None,
-    ):
-        # 频道列表
-        self.channels = channels
-        # 页号
-        self.page_no = page_no
-        # 显示数量
-        self.page_size = page_size
-        # 请求id
-        self.request_id = request_id
-        # 总条数
-        self.total_cnt = total_cnt
-
-    def validate(self):
-        if self.channels:
-            for k in self.channels:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Channels'] = []
-        if self.channels is not None:
-            for k in self.channels:
-                result['Channels'].append(k.to_map() if k else None)
-        if self.page_no is not None:
-            result['PageNo'] = self.page_no
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.total_cnt is not None:
-            result['TotalCnt'] = self.total_cnt
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.channels = []
-        if m.get('Channels') is not None:
-            for k in m.get('Channels'):
-                temp_model = DescribeRtcChannelListResponseBodyChannels()
-                self.channels.append(temp_model.from_map(k))
-        if m.get('PageNo') is not None:
-            self.page_no = m.get('PageNo')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TotalCnt') is not None:
-            self.total_cnt = m.get('TotalCnt')
-        return self
-
-
-class DescribeRtcChannelListResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeRtcChannelListResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeRtcChannelListResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeRtcChannelMetricListRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        channel_id: str = None,
-        end_time: str = None,
-        pub_uid: str = None,
-        start_time: str = None,
-        sub_uid: str = None,
-    ):
-        # 应用id
-        self.app_id = app_id
-        # ChannelId
-        self.channel_id = channel_id
-        # 结束时间，UTC格式
-        self.end_time = end_time
-        # 发布端用户ID
-        self.pub_uid = pub_uid
-        # 起始时间，UTC格式
-        self.start_time = start_time
-        # 接收端用户ID
-        self.sub_uid = sub_uid
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.channel_id is not None:
-            result['ChannelId'] = self.channel_id
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.pub_uid is not None:
-            result['PubUid'] = self.pub_uid
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        if self.sub_uid is not None:
-            result['SubUid'] = self.sub_uid
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('ChannelId') is not None:
-            self.channel_id = m.get('ChannelId')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('PubUid') is not None:
-            self.pub_uid = m.get('PubUid')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        if m.get('SubUid') is not None:
-            self.sub_uid = m.get('SubUid')
-        return self
-
-
-class DescribeRtcChannelMetricListResponseBodyMetrics(TeaModel):
-    def __init__(
-        self,
-        kvs: Dict[str, Any] = None,
-        mid: int = None,
-        uid: str = None,
-    ):
-        # 指标键值对,指标发生时间:指标值
-        self.kvs = kvs
-        # 指标ID
-        self.mid = mid
-        # 用户ID
-        self.uid = uid
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.kvs is not None:
-            result['KVs'] = self.kvs
-        if self.mid is not None:
-            result['Mid'] = self.mid
-        if self.uid is not None:
-            result['Uid'] = self.uid
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('KVs') is not None:
-            self.kvs = m.get('KVs')
-        if m.get('Mid') is not None:
-            self.mid = m.get('Mid')
-        if m.get('Uid') is not None:
-            self.uid = m.get('Uid')
-        return self
-
-
-class DescribeRtcChannelMetricListResponseBody(TeaModel):
-    def __init__(
-        self,
-        metrics: List[DescribeRtcChannelMetricListResponseBodyMetrics] = None,
-        request_id: str = None,
-    ):
-        # 指标列表
-        self.metrics = metrics
-        # 请求Id
-        self.request_id = request_id
-
-    def validate(self):
-        if self.metrics:
-            for k in self.metrics:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Metrics'] = []
-        if self.metrics is not None:
-            for k in self.metrics:
-                result['Metrics'].append(k.to_map() if k else None)
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.metrics = []
-        if m.get('Metrics') is not None:
-            for k in m.get('Metrics'):
-                temp_model = DescribeRtcChannelMetricListResponseBodyMetrics()
-                self.metrics.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DescribeRtcChannelMetricListResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeRtcChannelMetricListResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeRtcChannelMetricListResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeRtcChannelUsersRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        channel_id: str = None,
-        page_no: int = None,
-        page_size: int = None,
-        time_point: str = None,
-    ):
-        # 应用ID
-        self.app_id = app_id
-        # ChannelId
-        self.channel_id = channel_id
-        # 页号
-        self.page_no = page_no
-        # 显示数量
-        self.page_size = page_size
-        # 查询时间点日期，天粒度，UTC格式
-        self.time_point = time_point
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.channel_id is not None:
-            result['ChannelId'] = self.channel_id
-        if self.page_no is not None:
-            result['PageNo'] = self.page_no
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.time_point is not None:
-            result['TimePoint'] = self.time_point
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('ChannelId') is not None:
-            self.channel_id = m.get('ChannelId')
-        if m.get('PageNo') is not None:
-            self.page_no = m.get('PageNo')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('TimePoint') is not None:
-            self.time_point = m.get('TimePoint')
-        return self
-
-
-class DescribeRtcChannelUsersResponseBodyUserListUserList(TeaModel):
-    def __init__(
-        self,
-        channel: str = None,
-        end_time: str = None,
-        location: str = None,
-        pub_audio: int = None,
-        pub_content: int = None,
-        pub_video_1080: int = None,
-        pub_video_360: int = None,
-        pub_video_720: int = None,
-        service_area: str = None,
-        start_time: str = None,
-        sub_audio: int = None,
-        sub_content: int = None,
-        sub_video_1080: int = None,
-        sub_video_360: int = None,
-        sub_video_720: int = None,
-        user_id: str = None,
-    ):
-        # ChannelID
-        self.channel = channel
-        # 用户离开频道时间
-        self.end_time = end_time
-        # 用户地理位置
-        self.location = location
-        # 发布音频时长(单位分钟)
-        self.pub_audio = pub_audio
-        # 发布屏幕共享时长(单位分钟)
-        self.pub_content = pub_content
-        # 发布1080视频时长(单位分钟)
-        self.pub_video_1080 = pub_video_1080
-        # 发布360视频时长(单位分钟)
-        self.pub_video_360 = pub_video_360
-        # 发布720视频时长(单位分钟)
-        self.pub_video_720 = pub_video_720
-        # 服务大区
-        self.service_area = service_area
-        # 用户加入频道时间
-        self.start_time = start_time
-        # 订阅音频时长(单位分钟)
-        self.sub_audio = sub_audio
-        # 订阅屏幕共享时长(单位分钟)
-        self.sub_content = sub_content
-        # 订阅1080视频时长(单位分钟)
-        self.sub_video_1080 = sub_video_1080
-        # 订阅时360视频长(单位分钟)
-        self.sub_video_360 = sub_video_360
-        # 订阅720视频时长(单位分钟)
-        self.sub_video_720 = sub_video_720
-        # 用户ID
-        self.user_id = user_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.channel is not None:
-            result['Channel'] = self.channel
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.location is not None:
-            result['Location'] = self.location
-        if self.pub_audio is not None:
-            result['PubAudio'] = self.pub_audio
-        if self.pub_content is not None:
-            result['PubContent'] = self.pub_content
-        if self.pub_video_1080 is not None:
-            result['PubVideo1080'] = self.pub_video_1080
-        if self.pub_video_360 is not None:
-            result['PubVideo360'] = self.pub_video_360
-        if self.pub_video_720 is not None:
-            result['PubVideo720'] = self.pub_video_720
-        if self.service_area is not None:
-            result['ServiceArea'] = self.service_area
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        if self.sub_audio is not None:
-            result['SubAudio'] = self.sub_audio
-        if self.sub_content is not None:
-            result['SubContent'] = self.sub_content
-        if self.sub_video_1080 is not None:
-            result['SubVideo1080'] = self.sub_video_1080
-        if self.sub_video_360 is not None:
-            result['SubVideo360'] = self.sub_video_360
-        if self.sub_video_720 is not None:
-            result['SubVideo720'] = self.sub_video_720
-        if self.user_id is not None:
-            result['UserId'] = self.user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Channel') is not None:
-            self.channel = m.get('Channel')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('Location') is not None:
-            self.location = m.get('Location')
-        if m.get('PubAudio') is not None:
-            self.pub_audio = m.get('PubAudio')
-        if m.get('PubContent') is not None:
-            self.pub_content = m.get('PubContent')
-        if m.get('PubVideo1080') is not None:
-            self.pub_video_1080 = m.get('PubVideo1080')
-        if m.get('PubVideo360') is not None:
-            self.pub_video_360 = m.get('PubVideo360')
-        if m.get('PubVideo720') is not None:
-            self.pub_video_720 = m.get('PubVideo720')
-        if m.get('ServiceArea') is not None:
-            self.service_area = m.get('ServiceArea')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        if m.get('SubAudio') is not None:
-            self.sub_audio = m.get('SubAudio')
-        if m.get('SubContent') is not None:
-            self.sub_content = m.get('SubContent')
-        if m.get('SubVideo1080') is not None:
-            self.sub_video_1080 = m.get('SubVideo1080')
-        if m.get('SubVideo360') is not None:
-            self.sub_video_360 = m.get('SubVideo360')
-        if m.get('SubVideo720') is not None:
-            self.sub_video_720 = m.get('SubVideo720')
-        if m.get('UserId') is not None:
-            self.user_id = m.get('UserId')
-        return self
-
-
-class DescribeRtcChannelUsersResponseBodyUserList(TeaModel):
-    def __init__(
-        self,
-        user_list: List[DescribeRtcChannelUsersResponseBodyUserListUserList] = None,
-    ):
-        self.user_list = user_list
-
-    def validate(self):
-        if self.user_list:
-            for k in self.user_list:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['UserList'] = []
-        if self.user_list is not None:
-            for k in self.user_list:
-                result['UserList'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.user_list = []
-        if m.get('UserList') is not None:
-            for k in m.get('UserList'):
-                temp_model = DescribeRtcChannelUsersResponseBodyUserListUserList()
-                self.user_list.append(temp_model.from_map(k))
-        return self
-
-
-class DescribeRtcChannelUsersResponseBody(TeaModel):
-    def __init__(
-        self,
-        page_no: int = None,
-        page_size: int = None,
-        request_id: str = None,
-        total_cnt: int = None,
-        user_list: DescribeRtcChannelUsersResponseBodyUserList = None,
-    ):
-        # 页号
-        self.page_no = page_no
-        # 显示数量
-        self.page_size = page_size
-        # 请求ID
-        self.request_id = request_id
-        # 总数
-        self.total_cnt = total_cnt
-        # 用户列表
-        self.user_list = user_list
-
-    def validate(self):
-        if self.user_list:
-            self.user_list.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.page_no is not None:
-            result['PageNo'] = self.page_no
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.total_cnt is not None:
-            result['TotalCnt'] = self.total_cnt
-        if self.user_list is not None:
-            result['UserList'] = self.user_list.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PageNo') is not None:
-            self.page_no = m.get('PageNo')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TotalCnt') is not None:
-            self.total_cnt = m.get('TotalCnt')
-        if m.get('UserList') is not None:
-            temp_model = DescribeRtcChannelUsersResponseBodyUserList()
-            self.user_list = temp_model.from_map(m['UserList'])
-        return self
-
-
-class DescribeRtcChannelUsersResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeRtcChannelUsersResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeRtcChannelUsersResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeRtcRecordMetricDataRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        end_time: str = None,
-        service_area: str = None,
-        start_time: str = None,
-    ):
-        # appId
-        self.app_id = app_id
-        # 结束时间，UTC格式
-        self.end_time = end_time
-        # 服务区域
-        self.service_area = service_area
-        # 起始时间，UTC格式
-        self.start_time = start_time
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.service_area is not None:
-            result['ServiceArea'] = self.service_area
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('ServiceArea') is not None:
-            self.service_area = m.get('ServiceArea')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        return self
-
-
-class DescribeRtcRecordMetricDataResponseBodyRtcRecordMetricData(TeaModel):
-    def __init__(
-        self,
-        duration: int = None,
-        ratio: str = None,
-        service_area: str = None,
-        task_profile: str = None,
-        time_stamp: str = None,
-        type: str = None,
-    ):
-        # 时长分钟
-        self.duration = duration
-        # 分辨率
-        self.ratio = ratio
-        # 服务区域
-        self.service_area = service_area
-        # 规格
-        self.task_profile = task_profile
-        # 日期，UTC格式
-        self.time_stamp = time_stamp
-        # 输入路数
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.duration is not None:
-            result['Duration'] = self.duration
-        if self.ratio is not None:
-            result['Ratio'] = self.ratio
-        if self.service_area is not None:
-            result['ServiceArea'] = self.service_area
-        if self.task_profile is not None:
-            result['TaskProfile'] = self.task_profile
-        if self.time_stamp is not None:
-            result['TimeStamp'] = self.time_stamp
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Duration') is not None:
-            self.duration = m.get('Duration')
-        if m.get('Ratio') is not None:
-            self.ratio = m.get('Ratio')
-        if m.get('ServiceArea') is not None:
-            self.service_area = m.get('ServiceArea')
-        if m.get('TaskProfile') is not None:
-            self.task_profile = m.get('TaskProfile')
-        if m.get('TimeStamp') is not None:
-            self.time_stamp = m.get('TimeStamp')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        return self
-
-
-class DescribeRtcRecordMetricDataResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        rtc_record_metric_data: List[DescribeRtcRecordMetricDataResponseBodyRtcRecordMetricData] = None,
-    ):
-        # 请求Id
-        self.request_id = request_id
-        # 录制用量查询数据
-        self.rtc_record_metric_data = rtc_record_metric_data
-
-    def validate(self):
-        if self.rtc_record_metric_data:
-            for k in self.rtc_record_metric_data:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        result['RtcRecordMetricData'] = []
-        if self.rtc_record_metric_data is not None:
-            for k in self.rtc_record_metric_data:
-                result['RtcRecordMetricData'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        self.rtc_record_metric_data = []
-        if m.get('RtcRecordMetricData') is not None:
-            for k in m.get('RtcRecordMetricData'):
-                temp_model = DescribeRtcRecordMetricDataResponseBodyRtcRecordMetricData()
-                self.rtc_record_metric_data.append(temp_model.from_map(k))
-        return self
-
-
-class DescribeRtcRecordMetricDataResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeRtcRecordMetricDataResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeRtcRecordMetricDataResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeRtcUserEventListRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        channel_id: str = None,
-        end_time: str = None,
-        start_time: str = None,
-        uid: str = None,
-    ):
-        # 应用id
-        self.app_id = app_id
-        # ChannelID
-        self.channel_id = channel_id
-        # 结束时间，UTC格式
-        self.end_time = end_time
-        # 起始时间，UTC格式
-        self.start_time = start_time
-        # 用户ID
-        self.uid = uid
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.channel_id is not None:
-            result['ChannelId'] = self.channel_id
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        if self.uid is not None:
-            result['Uid'] = self.uid
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('ChannelId') is not None:
-            self.channel_id = m.get('ChannelId')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        if m.get('Uid') is not None:
-            self.uid = m.get('Uid')
-        return self
-
-
-class DescribeRtcUserEventListResponseBodyEvents(TeaModel):
-    def __init__(
-        self,
-        category: str = None,
-        event_id: int = None,
-        event_time: int = None,
-    ):
-        # 事件类型
-        self.category = category
-        # 事件Id
-        self.event_id = event_id
-        # 时间发生unix timestamp
-        self.event_time = event_time
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.category is not None:
-            result['Category'] = self.category
-        if self.event_id is not None:
-            result['EventId'] = self.event_id
-        if self.event_time is not None:
-            result['EventTime'] = self.event_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Category') is not None:
-            self.category = m.get('Category')
-        if m.get('EventId') is not None:
-            self.event_id = m.get('EventId')
-        if m.get('EventTime') is not None:
-            self.event_time = m.get('EventTime')
-        return self
-
-
-class DescribeRtcUserEventListResponseBody(TeaModel):
-    def __init__(
-        self,
-        events: List[DescribeRtcUserEventListResponseBodyEvents] = None,
-        request_id: str = None,
-    ):
-        # 指标列表
-        self.events = events
-        # 请求ID
-        self.request_id = request_id
-
-    def validate(self):
-        if self.events:
-            for k in self.events:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Events'] = []
-        if self.events is not None:
-            for k in self.events:
-                result['Events'].append(k.to_map() if k else None)
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.events = []
-        if m.get('Events') is not None:
-            for k in m.get('Events'):
-                temp_model = DescribeRtcUserEventListResponseBodyEvents()
-                self.events.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DescribeRtcUserEventListResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeRtcUserEventListResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeRtcUserEventListResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeUsageAreaDistributionStatDataRequest(TeaModel):
     def __init__(
         self,
@@ -9859,13 +7009,9 @@ class DescribeUsageAreaDistributionStatDataRequest(TeaModel):
         parent_area: str = None,
         start_date: str = None,
     ):
-        # APP ID
         self.app_id = app_id
-        # 结束时间，秒级时间戳，如1609344000
         self.end_date = end_date
-        # 父级地区名称，为空取世界范围（国家维度）的统计，如： ""->中国、英国 "中国"->北京市、广东省 "广东省"->广州市、深圳市、佛山市 "北京市"->北京市
         self.parent_area = parent_area
-        # 开始时间，秒级时间戳，如1609344000
         self.start_date = start_date
 
     def validate(self):
@@ -9908,13 +7054,9 @@ class DescribeUsageAreaDistributionStatDataResponseBodyUsageAreaStatList(TeaMode
         total_call_duration: int = None,
         video_call_duration: int = None,
     ):
-        # 音频通话时长，单位分钟
         self.audio_call_duration = audio_call_duration
-        # 地域名称，如中国
         self.name = name
-        # 总通话时长，单位分钟
         self.total_call_duration = total_call_duration
-        # 视频通话时长，单位分钟
         self.video_call_duration = video_call_duration
 
     def validate(self):
@@ -9955,9 +7097,7 @@ class DescribeUsageAreaDistributionStatDataResponseBody(TeaModel):
         request_id: str = None,
         usage_area_stat_list: List[DescribeUsageAreaDistributionStatDataResponseBodyUsageAreaStatList] = None,
     ):
-        # 请求ID
         self.request_id = request_id
-        # 用量统计地域分布数据
         self.usage_area_stat_list = usage_area_stat_list
 
     def validate(self):
@@ -10004,9 +7144,6 @@ class DescribeUsageAreaDistributionStatDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10044,13 +7181,9 @@ class DescribeUsageDistributionStatDataRequest(TeaModel):
         start_date: int = None,
         stat_dim: str = None,
     ):
-        # APP ID
         self.app_id = app_id
-        # 结束时间，秒级时间戳：如1609344000
         self.end_date = end_date
-        # 开始时间，秒级时间戳：如1609344000
         self.start_date = start_date
-        # 统计维度，支持最多填入一个 CHANNEL_ONLINE, NETWORK, OS
         self.stat_dim = stat_dim
 
     def validate(self):
@@ -10094,15 +7227,10 @@ class DescribeUsageDistributionStatDataResponseBodyUsageStatList(TeaModel):
         total_call_duration: int = None,
         video_call_duration: int = None,
     ):
-        # 音频通话时长，单位分钟
         self.audio_call_duration = audio_call_duration
-        # 通话时长占比，四位小数表示，如1.0000
         self.call_duration_ratio = call_duration_ratio
-        # 统计名称， 当StatDim=CHANNEL_ONLINE： ONE_TO_FIVE：1-5人 SIX_TO_TEN：6-10人 ELEVEN_TO_TWENTY：11-20人 TWENTY_ONE_TO_FIFTY: 21-50人 ABOVE_FIFTY：50人以上  当StatDim=NETWORK： WiFi，4G等  当StatDim=OS： iOS、android等
         self.name = name
-        # 总通话时长，单位分钟
         self.total_call_duration = total_call_duration
-        # 视频通话时长，单位分钟
         self.video_call_duration = video_call_duration
 
     def validate(self):
@@ -10147,9 +7275,7 @@ class DescribeUsageDistributionStatDataResponseBody(TeaModel):
         request_id: str = None,
         usage_stat_list: List[DescribeUsageDistributionStatDataResponseBodyUsageStatList] = None,
     ):
-        # 请求ID
         self.request_id = request_id
-        # 用量统计数据列表
         self.usage_stat_list = usage_stat_list
 
     def validate(self):
@@ -10196,9 +7322,6 @@ class DescribeUsageDistributionStatDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10235,11 +7358,8 @@ class DescribeUsageOsSdkVersionDistributionStatDataRequest(TeaModel):
         end_date: int = None,
         start_date: int = None,
     ):
-        # APP ID
         self.app_id = app_id
-        # 结束时间，秒级时间戳：1609344000
         self.end_date = end_date
-        # 开始时间，秒级时间戳：1609344000
         self.start_date = start_date
 
     def validate(self):
@@ -10280,17 +7400,11 @@ class DescribeUsageOsSdkVersionDistributionStatDataResponseBodyUsageOsSdkVersion
         total_call_duration: int = None,
         video_call_duration: int = None,
     ):
-        # 音频通话时长，单位分钟
         self.audio_call_duration = audio_call_duration
-        # 通话时长占比，四位小数表示，如1.0000
         self.call_duration_ratio = call_duration_ratio
-        # SDK版本名称，1.0.0、1.1.1等
         self.name = name
-        # 操作系统，如iOS、android等
         self.os = os
-        # 总通话时长，单位分钟
         self.total_call_duration = total_call_duration
-        # 视频通话时长，单位分钟
         self.video_call_duration = video_call_duration
 
     def validate(self):
@@ -10339,9 +7453,7 @@ class DescribeUsageOsSdkVersionDistributionStatDataResponseBody(TeaModel):
         request_id: str = None,
         usage_os_sdk_version_stat_list: List[DescribeUsageOsSdkVersionDistributionStatDataResponseBodyUsageOsSdkVersionStatList] = None,
     ):
-        # 请求ID
         self.request_id = request_id
-        # 用量统计SDK版本数据列表
         self.usage_os_sdk_version_stat_list = usage_os_sdk_version_stat_list
 
     def validate(self):
@@ -10388,9 +7500,6 @@ class DescribeUsageOsSdkVersionDistributionStatDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10428,13 +7537,9 @@ class DescribeUsageOverallDataRequest(TeaModel):
         start_date: int = None,
         types: str = None,
     ):
-        # APP ID
         self.app_id = app_id
-        # 结束时间，秒级时间戳：1609344000
         self.end_date = end_date
-        # 开始时间，秒级时间戳：1609344000
         self.start_date = start_date
-        # 类型，半角逗号分隔    总时长：TOTAL_CALL_DURATION  视频通信时长：VIDEO_CALL_DURATION  音频通信时长：AUDIO_CALL_DURATION    通信频道数：CALL_CHANNEL_COUNT  高并发通信频道数：  HIGHLY_CONCURRENT_CHANNEL_COUNT  并发频道数峰值：  CHANNEL_CONCURRENT_PEAK    在线人数峰值：ONLINE_USER_PEAK  累计通话人数：  TOTAL_CALL_USER  累计进出人次：  TOTAL_INOUT_NUM
         self.types = types
 
     def validate(self):
@@ -10475,9 +7580,7 @@ class DescribeUsageOverallDataResponseBodyUsageOverallDataNodes(TeaModel):
         x: str = None,
         y: str = None,
     ):
-        # x轴横坐标
         self.x = x
-        # y轴横坐标
         self.y = y
 
     def validate(self):
@@ -10510,9 +7613,7 @@ class DescribeUsageOverallDataResponseBodyUsageOverallData(TeaModel):
         nodes: List[DescribeUsageOverallDataResponseBodyUsageOverallDataNodes] = None,
         type: str = None,
     ):
-        # 坐标点列表
         self.nodes = nodes
-        # 类型，半角逗号分隔    总时长：TOTAL_CALL_DURATION  视频通信时长：VIDEO_CALL_DURATION  音频通信时长：AUDIO_CALL_DURATION    通信频道数：CALL_CHANNEL_COUNT  高并发通信频道数：  HIGHLY_CONCURRENT_CHANNEL_COUNT  并发频道数峰值：  CHANNEL_CONCURRENT_PEAK    在线人数峰值：ONLINE_USER_PEAK  累计通话人数：  TOTAL_CALL_USER  累计进出人次：  TOTAL_INOUT_NUM
         self.type = type
 
     def validate(self):
@@ -10553,9 +7654,7 @@ class DescribeUsageOverallDataResponseBody(TeaModel):
         request_id: str = None,
         usage_overall_data: List[DescribeUsageOverallDataResponseBodyUsageOverallData] = None,
     ):
-        # 请求ID
         self.request_id = request_id
-        # 用量概览数据列表
         self.usage_overall_data = usage_overall_data
 
     def validate(self):
@@ -10602,9 +7701,6 @@ class DescribeUsageOverallDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10630,220 +7726,6 @@ class DescribeUsageOverallDataResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeUsageOverallDataResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class UpdateAppExpMetricRuleRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        rule: str = None,
-    ):
-        # APP ID
-        self.app_id = app_id
-        # 具体规则，JSON格式
-        self.rule = rule
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.rule is not None:
-            result['Rule'] = self.rule
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('Rule') is not None:
-            self.rule = m.get('Rule')
-        return self
-
-
-class UpdateAppExpMetricRuleResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        # 请求ID
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class UpdateAppExpMetricRuleResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: UpdateAppExpMetricRuleResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = UpdateAppExpMetricRuleResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class UpdateAppFollowCallRuleRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        rule: str = None,
-    ):
-        # APP ID
-        self.app_id = app_id
-        # 具体规则，JSON格式
-        self.rule = rule
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.rule is not None:
-            result['Rule'] = self.rule
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('Rule') is not None:
-            self.rule = m.get('Rule')
-        return self
-
-
-class UpdateAppFollowCallRuleResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        # 请求ID
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class UpdateAppFollowCallRuleResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: UpdateAppFollowCallRuleResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = UpdateAppFollowCallRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

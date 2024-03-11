@@ -1,3 +1,6 @@
+2024-03-11 Version: 1.3.2
+- Generated python 2020-12-14 for vdc.
+
 2022-06-08 Version: 1.3.1
 - For Prod.
 
