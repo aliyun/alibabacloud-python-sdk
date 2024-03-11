@@ -8628,9 +8628,9 @@ class CreateOrgHonorTemplateResponse(TeaModel):
 class CreatePersonalTodoTaskHeadersAccountContext(TeaModel):
     def __init__(
         self,
-        user_token: str = None,
+        account_id: str = None,
     ):
-        self.user_token = user_token
+        self.account_id = account_id
 
     def validate(self):
         pass
@@ -8641,14 +8641,14 @@ class CreatePersonalTodoTaskHeadersAccountContext(TeaModel):
             return _map
 
         result = dict()
-        if self.user_token is not None:
-            result['userToken'] = self.user_token
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('userToken') is not None:
-            self.user_token = m.get('userToken')
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
         return self
 
 
