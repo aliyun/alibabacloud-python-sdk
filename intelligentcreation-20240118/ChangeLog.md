@@ -1,3 +1,14 @@
+2024-03-12 Version: 1.5.0
+- Support API ActualDeductResources.
+- Support API CopywritingQA.
+- Support API CopywritingQAV1.
+- Support API DirectDeductResources.
+- Support API ExpectDeductResources.
+- Support API GetRemainResource.
+- Support API SubmitBulletQuestions.
+- Support API SubmitBulletQuestionsV1.
+
+
 2024-03-08 Version: 1.4.0
 - Support API ActualDeductResources.
 - Support API CopywritingQA.
