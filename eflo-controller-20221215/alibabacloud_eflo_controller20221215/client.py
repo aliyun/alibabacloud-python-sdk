@@ -467,6 +467,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_cluster_with_options_async(request, runtime)
 
+    def describe_invocations_with_options(
+        self,
+        request: eflo_controller_20221215_models.DescribeInvocationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.DescribeInvocationsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.content_encoding):
+            body['ContentEncoding'] = request.content_encoding
+        if not UtilClient.is_unset(request.include_output):
+            body['IncludeOutput'] = request.include_output
+        if not UtilClient.is_unset(request.invoke_id):
+            body['InvokeId'] = request.invoke_id
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeInvocations',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.DescribeInvocationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_invocations_with_options_async(
+        self,
+        request: eflo_controller_20221215_models.DescribeInvocationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.DescribeInvocationsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.content_encoding):
+            body['ContentEncoding'] = request.content_encoding
+        if not UtilClient.is_unset(request.include_output):
+            body['IncludeOutput'] = request.include_output
+        if not UtilClient.is_unset(request.invoke_id):
+            body['InvokeId'] = request.invoke_id
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeInvocations',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.DescribeInvocationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_invocations(
+        self,
+        request: eflo_controller_20221215_models.DescribeInvocationsRequest,
+    ) -> eflo_controller_20221215_models.DescribeInvocationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_invocations_with_options(request, runtime)
+
+    async def describe_invocations_async(
+        self,
+        request: eflo_controller_20221215_models.DescribeInvocationsRequest,
+    ) -> eflo_controller_20221215_models.DescribeInvocationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_invocations_with_options_async(request, runtime)
+
     def describe_node_with_options(
         self,
         request: eflo_controller_20221215_models.DescribeNodeRequest,
@@ -606,6 +688,80 @@ class Client(OpenApiClient):
     ) -> eflo_controller_20221215_models.DescribeRegionsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
+
+    def describe_send_file_results_with_options(
+        self,
+        request: eflo_controller_20221215_models.DescribeSendFileResultsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.DescribeSendFileResultsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.invoke_id):
+            body['InvokeId'] = request.invoke_id
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeSendFileResults',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.DescribeSendFileResultsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_send_file_results_with_options_async(
+        self,
+        request: eflo_controller_20221215_models.DescribeSendFileResultsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.DescribeSendFileResultsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.invoke_id):
+            body['InvokeId'] = request.invoke_id
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeSendFileResults',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.DescribeSendFileResultsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_send_file_results(
+        self,
+        request: eflo_controller_20221215_models.DescribeSendFileResultsRequest,
+    ) -> eflo_controller_20221215_models.DescribeSendFileResultsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_send_file_results_with_options(request, runtime)
+
+    async def describe_send_file_results_async(
+        self,
+        request: eflo_controller_20221215_models.DescribeSendFileResultsRequest,
+    ) -> eflo_controller_20221215_models.DescribeSendFileResultsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_send_file_results_with_options_async(request, runtime)
 
     def describe_task_with_options(
         self,
@@ -1361,6 +1517,254 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.reimage_nodes_with_options_async(request, runtime)
 
+    def run_command_with_options(
+        self,
+        tmp_req: eflo_controller_20221215_models.RunCommandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.RunCommandResponse:
+        UtilClient.validate_model(tmp_req)
+        request = eflo_controller_20221215_models.RunCommandShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.node_id_list):
+            request.node_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_id_list, 'NodeIdList', 'json')
+        if not UtilClient.is_unset(tmp_req.parameters):
+            request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.command_content):
+            body['CommandContent'] = request.command_content
+        if not UtilClient.is_unset(request.content_encoding):
+            body['ContentEncoding'] = request.content_encoding
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_parameter):
+            body['EnableParameter'] = request.enable_parameter
+        if not UtilClient.is_unset(request.frequency):
+            body['Frequency'] = request.frequency
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.node_id_list_shrink):
+            body['NodeIdList'] = request.node_id_list_shrink
+        if not UtilClient.is_unset(request.parameters_shrink):
+            body['Parameters'] = request.parameters_shrink
+        if not UtilClient.is_unset(request.repeat_mode):
+            body['RepeatMode'] = request.repeat_mode
+        if not UtilClient.is_unset(request.timeout):
+            body['Timeout'] = request.timeout
+        if not UtilClient.is_unset(request.username):
+            body['Username'] = request.username
+        if not UtilClient.is_unset(request.working_dir):
+            body['WorkingDir'] = request.working_dir
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunCommand',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.RunCommandResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_command_with_options_async(
+        self,
+        tmp_req: eflo_controller_20221215_models.RunCommandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.RunCommandResponse:
+        UtilClient.validate_model(tmp_req)
+        request = eflo_controller_20221215_models.RunCommandShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.node_id_list):
+            request.node_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_id_list, 'NodeIdList', 'json')
+        if not UtilClient.is_unset(tmp_req.parameters):
+            request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.command_content):
+            body['CommandContent'] = request.command_content
+        if not UtilClient.is_unset(request.content_encoding):
+            body['ContentEncoding'] = request.content_encoding
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_parameter):
+            body['EnableParameter'] = request.enable_parameter
+        if not UtilClient.is_unset(request.frequency):
+            body['Frequency'] = request.frequency
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.node_id_list_shrink):
+            body['NodeIdList'] = request.node_id_list_shrink
+        if not UtilClient.is_unset(request.parameters_shrink):
+            body['Parameters'] = request.parameters_shrink
+        if not UtilClient.is_unset(request.repeat_mode):
+            body['RepeatMode'] = request.repeat_mode
+        if not UtilClient.is_unset(request.timeout):
+            body['Timeout'] = request.timeout
+        if not UtilClient.is_unset(request.username):
+            body['Username'] = request.username
+        if not UtilClient.is_unset(request.working_dir):
+            body['WorkingDir'] = request.working_dir
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunCommand',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.RunCommandResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_command(
+        self,
+        request: eflo_controller_20221215_models.RunCommandRequest,
+    ) -> eflo_controller_20221215_models.RunCommandResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.run_command_with_options(request, runtime)
+
+    async def run_command_async(
+        self,
+        request: eflo_controller_20221215_models.RunCommandRequest,
+    ) -> eflo_controller_20221215_models.RunCommandResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.run_command_with_options_async(request, runtime)
+
+    def send_file_with_options(
+        self,
+        tmp_req: eflo_controller_20221215_models.SendFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.SendFileResponse:
+        UtilClient.validate_model(tmp_req)
+        request = eflo_controller_20221215_models.SendFileShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.node_id_list):
+            request.node_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_id_list, 'NodeIdList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.content_type):
+            body['ContentType'] = request.content_type
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.file_group):
+            body['FileGroup'] = request.file_group
+        if not UtilClient.is_unset(request.file_mode):
+            body['FileMode'] = request.file_mode
+        if not UtilClient.is_unset(request.file_owner):
+            body['FileOwner'] = request.file_owner
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.node_id_list_shrink):
+            body['NodeIdList'] = request.node_id_list_shrink
+        if not UtilClient.is_unset(request.overwrite):
+            body['Overwrite'] = request.overwrite
+        if not UtilClient.is_unset(request.target_dir):
+            body['TargetDir'] = request.target_dir
+        if not UtilClient.is_unset(request.timeout):
+            body['Timeout'] = request.timeout
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SendFile',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.SendFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_file_with_options_async(
+        self,
+        tmp_req: eflo_controller_20221215_models.SendFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.SendFileResponse:
+        UtilClient.validate_model(tmp_req)
+        request = eflo_controller_20221215_models.SendFileShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.node_id_list):
+            request.node_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_id_list, 'NodeIdList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.content_type):
+            body['ContentType'] = request.content_type
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.file_group):
+            body['FileGroup'] = request.file_group
+        if not UtilClient.is_unset(request.file_mode):
+            body['FileMode'] = request.file_mode
+        if not UtilClient.is_unset(request.file_owner):
+            body['FileOwner'] = request.file_owner
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.node_id_list_shrink):
+            body['NodeIdList'] = request.node_id_list_shrink
+        if not UtilClient.is_unset(request.overwrite):
+            body['Overwrite'] = request.overwrite
+        if not UtilClient.is_unset(request.target_dir):
+            body['TargetDir'] = request.target_dir
+        if not UtilClient.is_unset(request.timeout):
+            body['Timeout'] = request.timeout
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SendFile',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.SendFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_file(
+        self,
+        request: eflo_controller_20221215_models.SendFileRequest,
+    ) -> eflo_controller_20221215_models.SendFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.send_file_with_options(request, runtime)
+
+    async def send_file_async(
+        self,
+        request: eflo_controller_20221215_models.SendFileRequest,
+    ) -> eflo_controller_20221215_models.SendFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.send_file_with_options_async(request, runtime)
+
     def shrink_cluster_with_options(
         self,
         tmp_req: eflo_controller_20221215_models.ShrinkClusterRequest,
@@ -1446,6 +1850,88 @@ class Client(OpenApiClient):
     ) -> eflo_controller_20221215_models.ShrinkClusterResponse:
         runtime = util_models.RuntimeOptions()
         return await self.shrink_cluster_with_options_async(request, runtime)
+
+    def stop_invocation_with_options(
+        self,
+        tmp_req: eflo_controller_20221215_models.StopInvocationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.StopInvocationResponse:
+        UtilClient.validate_model(tmp_req)
+        request = eflo_controller_20221215_models.StopInvocationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.node_id_list):
+            request.node_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_id_list, 'NodeIdList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.invoke_id):
+            body['InvokeId'] = request.invoke_id
+        if not UtilClient.is_unset(request.node_id_list_shrink):
+            body['NodeIdList'] = request.node_id_list_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StopInvocation',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.StopInvocationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_invocation_with_options_async(
+        self,
+        tmp_req: eflo_controller_20221215_models.StopInvocationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.StopInvocationResponse:
+        UtilClient.validate_model(tmp_req)
+        request = eflo_controller_20221215_models.StopInvocationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.node_id_list):
+            request.node_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_id_list, 'NodeIdList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.invoke_id):
+            body['InvokeId'] = request.invoke_id
+        if not UtilClient.is_unset(request.node_id_list_shrink):
+            body['NodeIdList'] = request.node_id_list_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StopInvocation',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.StopInvocationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_invocation(
+        self,
+        request: eflo_controller_20221215_models.StopInvocationRequest,
+    ) -> eflo_controller_20221215_models.StopInvocationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.stop_invocation_with_options(request, runtime)
+
+    async def stop_invocation_async(
+        self,
+        request: eflo_controller_20221215_models.StopInvocationRequest,
+    ) -> eflo_controller_20221215_models.StopInvocationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_invocation_with_options_async(request, runtime)
 
     def tag_resources_with_options(
         self,

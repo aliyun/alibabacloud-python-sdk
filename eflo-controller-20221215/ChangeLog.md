@@ -1,3 +1,14 @@
+2024-03-12 Version: 1.2.0
+- Support API DescribeInvocations.
+- Support API DescribeSendFileResults.
+- Support API RunCommand.
+- Support API SendFile.
+- Support API StopInvocation.
+- Update API CreateCluster: update param NodeGroups.
+- Update API ExtendCluster: update param NodeGroups.
+- Update API ReimageNodes: update param Nodes.
+
+
 2024-01-10 Version: 1.1.3
 - Generated python 2022-12-15 for eflo-controller.
 
