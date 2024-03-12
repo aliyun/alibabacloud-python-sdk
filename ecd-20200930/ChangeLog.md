@@ -1,3 +1,21 @@
+2024-03-12 Version: 3.4.0
+- Support API DisconnectDesktopSessions.
+- Support API UnbindUserDesktop.
+- Update API CreateAutoSnapshotPolicy: update response param.
+- Update API CreateCloudDriveService: add param AutoPay.
+- Update API CreateCloudDriveService: add param AutoRenew.
+- Update API CreateCloudDriveService: add param CdsChargeType.
+- Update API CreateCloudDriveService: add param Period.
+- Update API CreateCloudDriveService: add param PeriodUnit.
+- Update API CreateCloudDriveService: add param UserCount.
+- Update API CreateCloudDriveService: update param Name.
+- Update API CreateCloudDriveService: update response param.
+- Update API CreateSnapshot: update response param.
+- Update API RebuildDesktops: update response param.
+- Update API SetDesktopGroupTimer: update response param.
+- Update API SetDesktopGroupTimerStatus: update response param.
+
+
 2024-02-26 Version: 3.3.0
 - Support API DisconnectDesktopSessions.
 - Support API UnbindUserDesktop.

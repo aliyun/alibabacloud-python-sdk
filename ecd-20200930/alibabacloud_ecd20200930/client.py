@@ -2263,7 +2263,7 @@ class Client(OpenApiClient):
         When you create a workspace of the enterprise AD account type, AD connectors are automatically created to allow you to connect to enterprise AD systems. You are charged for the AD connectors. For more information, see [Billing overview](~~188395~~).
         *   After you call this operation to create a workspace of the enterprise AD account type, perform the following steps to configure the AD domain: 1. Configure the conditional forwarder in the Domain Name System (DNS) server. 2. Configure the trust relationship in the AD domain server, and call the [ConfigADConnectorTrust](~~311258~~) operation to configure the trust relationship for the workspace of the enterprise AD account type. 3. Call the [ListUserAdOrganizationUnits](~~311259~~) operation to obtain the organizational unit (OU) details of the AD domain. Then, call the [ConfigADConnectorUser](~~311262~~) operation to specify an OU and an administrator for the workspace of the enterprise AD account type.
         **\
-        **Note**If you specify DomainUserName and DomainPassword when you create a workspace of the enterprise AD account type, you must configure only the conditional forwarder. If you do not specify DomainUserName or DomainPassword, you must configure the conditional forwarder, trust relationship, and OU.
+        **Note** If you specify DomainUserName and DomainPassword when you create a workspace of the enterprise AD account type, you must configure only the conditional forwarder. If you do not specify DomainUserName or DomainPassword, you must configure the conditional forwarder, trust relationship, and OU.
         For more information, see [Create a workspace of the enterprise AD account type](~~214469~~).
         
         @param request: CreateADConnectorOfficeSiteRequest
@@ -2340,7 +2340,7 @@ class Client(OpenApiClient):
         When you create a workspace of the enterprise AD account type, AD connectors are automatically created to allow you to connect to enterprise AD systems. You are charged for the AD connectors. For more information, see [Billing overview](~~188395~~).
         *   After you call this operation to create a workspace of the enterprise AD account type, perform the following steps to configure the AD domain: 1. Configure the conditional forwarder in the Domain Name System (DNS) server. 2. Configure the trust relationship in the AD domain server, and call the [ConfigADConnectorTrust](~~311258~~) operation to configure the trust relationship for the workspace of the enterprise AD account type. 3. Call the [ListUserAdOrganizationUnits](~~311259~~) operation to obtain the organizational unit (OU) details of the AD domain. Then, call the [ConfigADConnectorUser](~~311262~~) operation to specify an OU and an administrator for the workspace of the enterprise AD account type.
         **\
-        **Note**If you specify DomainUserName and DomainPassword when you create a workspace of the enterprise AD account type, you must configure only the conditional forwarder. If you do not specify DomainUserName or DomainPassword, you must configure the conditional forwarder, trust relationship, and OU.
+        **Note** If you specify DomainUserName and DomainPassword when you create a workspace of the enterprise AD account type, you must configure only the conditional forwarder. If you do not specify DomainUserName or DomainPassword, you must configure the conditional forwarder, trust relationship, and OU.
         For more information, see [Create a workspace of the enterprise AD account type](~~214469~~).
         
         @param request: CreateADConnectorOfficeSiteRequest
@@ -2416,7 +2416,7 @@ class Client(OpenApiClient):
         When you create a workspace of the enterprise AD account type, AD connectors are automatically created to allow you to connect to enterprise AD systems. You are charged for the AD connectors. For more information, see [Billing overview](~~188395~~).
         *   After you call this operation to create a workspace of the enterprise AD account type, perform the following steps to configure the AD domain: 1. Configure the conditional forwarder in the Domain Name System (DNS) server. 2. Configure the trust relationship in the AD domain server, and call the [ConfigADConnectorTrust](~~311258~~) operation to configure the trust relationship for the workspace of the enterprise AD account type. 3. Call the [ListUserAdOrganizationUnits](~~311259~~) operation to obtain the organizational unit (OU) details of the AD domain. Then, call the [ConfigADConnectorUser](~~311262~~) operation to specify an OU and an administrator for the workspace of the enterprise AD account type.
         **\
-        **Note**If you specify DomainUserName and DomainPassword when you create a workspace of the enterprise AD account type, you must configure only the conditional forwarder. If you do not specify DomainUserName or DomainPassword, you must configure the conditional forwarder, trust relationship, and OU.
+        **Note** If you specify DomainUserName and DomainPassword when you create a workspace of the enterprise AD account type, you must configure only the conditional forwarder. If you do not specify DomainUserName or DomainPassword, you must configure the conditional forwarder, trust relationship, and OU.
         For more information, see [Create a workspace of the enterprise AD account type](~~214469~~).
         
         @param request: CreateADConnectorOfficeSiteRequest
@@ -2433,7 +2433,7 @@ class Client(OpenApiClient):
         When you create a workspace of the enterprise AD account type, AD connectors are automatically created to allow you to connect to enterprise AD systems. You are charged for the AD connectors. For more information, see [Billing overview](~~188395~~).
         *   After you call this operation to create a workspace of the enterprise AD account type, perform the following steps to configure the AD domain: 1. Configure the conditional forwarder in the Domain Name System (DNS) server. 2. Configure the trust relationship in the AD domain server, and call the [ConfigADConnectorTrust](~~311258~~) operation to configure the trust relationship for the workspace of the enterprise AD account type. 3. Call the [ListUserAdOrganizationUnits](~~311259~~) operation to obtain the organizational unit (OU) details of the AD domain. Then, call the [ConfigADConnectorUser](~~311262~~) operation to specify an OU and an administrator for the workspace of the enterprise AD account type.
         **\
-        **Note**If you specify DomainUserName and DomainPassword when you create a workspace of the enterprise AD account type, you must configure only the conditional forwarder. If you do not specify DomainUserName or DomainPassword, you must configure the conditional forwarder, trust relationship, and OU.
+        **Note** If you specify DomainUserName and DomainPassword when you create a workspace of the enterprise AD account type, you must configure only the conditional forwarder. If you do not specify DomainUserName or DomainPassword, you must configure the conditional forwarder, trust relationship, and OU.
         For more information, see [Create a workspace of the enterprise AD account type](~~214469~~).
         
         @param request: CreateADConnectorOfficeSiteRequest
@@ -3041,8 +3041,14 @@ class Client(OpenApiClient):
     ) -> ecd_20200930_models.CreateCloudDriveServiceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.biz_type):
             query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.cds_charge_type):
+            query['CdsChargeType'] = request.cds_charge_type
         if not UtilClient.is_unset(request.cen_id):
             query['CenId'] = request.cen_id
         if not UtilClient.is_unset(request.domain_name):
@@ -3057,10 +3063,16 @@ class Client(OpenApiClient):
             query['OfficeSiteId'] = request.office_site_id
         if not UtilClient.is_unset(request.office_site_type):
             query['OfficeSiteType'] = request.office_site_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.solution_id):
             query['SolutionId'] = request.solution_id
+        if not UtilClient.is_unset(request.user_count):
+            query['UserCount'] = request.user_count
         if not UtilClient.is_unset(request.user_max_size):
             query['UserMaxSize'] = request.user_max_size
         req = open_api_models.OpenApiRequest(
@@ -3089,8 +3101,14 @@ class Client(OpenApiClient):
     ) -> ecd_20200930_models.CreateCloudDriveServiceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.biz_type):
             query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.cds_charge_type):
+            query['CdsChargeType'] = request.cds_charge_type
         if not UtilClient.is_unset(request.cen_id):
             query['CenId'] = request.cen_id
         if not UtilClient.is_unset(request.domain_name):
@@ -3105,10 +3123,16 @@ class Client(OpenApiClient):
             query['OfficeSiteId'] = request.office_site_id
         if not UtilClient.is_unset(request.office_site_type):
             query['OfficeSiteType'] = request.office_site_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.solution_id):
             query['SolutionId'] = request.solution_id
+        if not UtilClient.is_unset(request.user_count):
+            query['UserCount'] = request.user_count
         if not UtilClient.is_unset(request.user_max_size):
             query['UserMaxSize'] = request.user_max_size
         req = open_api_models.OpenApiRequest(
@@ -6876,7 +6900,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeClientEventsResponse:
         """
-        The version of the client.
+        You can audit the operation logs of regular users to improve security. The operation logs record events such as desktop startup, shutdown, and session disconnection.
         
         @param request: DescribeClientEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6937,7 +6961,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeClientEventsResponse:
         """
-        The version of the client.
+        You can audit the operation logs of regular users to improve security. The operation logs record events such as desktop startup, shutdown, and session disconnection.
         
         @param request: DescribeClientEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6997,7 +7021,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeClientEventsRequest,
     ) -> ecd_20200930_models.DescribeClientEventsResponse:
         """
-        The version of the client.
+        You can audit the operation logs of regular users to improve security. The operation logs record events such as desktop startup, shutdown, and session disconnection.
         
         @param request: DescribeClientEventsRequest
         @return: DescribeClientEventsResponse
@@ -7010,7 +7034,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeClientEventsRequest,
     ) -> ecd_20200930_models.DescribeClientEventsResponse:
         """
-        The version of the client.
+        You can audit the operation logs of regular users to improve security. The operation logs record events such as desktop startup, shutdown, and session disconnection.
         
         @param request: DescribeClientEventsRequest
         @return: DescribeClientEventsResponse
@@ -14722,9 +14746,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDesktopChargeTypeResponse:
         """
-        Before you call this operation, make sure that you are familiar with the billing methods of cloud desktops. For more information, see [Billing overview](~~188395~~).
+        Before you call this operation, make sure that you are familiar with the billing methods of cloud desktops in Elastic Desktop Service (EDS). For more information, see [Billing overview](~~188395~~).
         *   Before you call this operation, make sure that the cloud desktop that you want to manage is in the Running or Stopped state and no overdue payments of the cloud desktop are generated.
         *   After the order payment is completed, the system starts to change the billing method of the cloud desktop. During the change, you cannot perform operations, such as starting or stopping the cloud desktop, and changing configurations of the cloud desktop.
+        *   After you change the billing method of the cloud desktop from subscription to pay-as-you-go, you may get a refund. For more information, see [Change a subscription cloud desktop to a pay-as-you-go one](https://help.aliyun.com/document_detail/439964.html).
         
         @param request: ModifyDesktopChargeTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14773,9 +14798,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDesktopChargeTypeResponse:
         """
-        Before you call this operation, make sure that you are familiar with the billing methods of cloud desktops. For more information, see [Billing overview](~~188395~~).
+        Before you call this operation, make sure that you are familiar with the billing methods of cloud desktops in Elastic Desktop Service (EDS). For more information, see [Billing overview](~~188395~~).
         *   Before you call this operation, make sure that the cloud desktop that you want to manage is in the Running or Stopped state and no overdue payments of the cloud desktop are generated.
         *   After the order payment is completed, the system starts to change the billing method of the cloud desktop. During the change, you cannot perform operations, such as starting or stopping the cloud desktop, and changing configurations of the cloud desktop.
+        *   After you change the billing method of the cloud desktop from subscription to pay-as-you-go, you may get a refund. For more information, see [Change a subscription cloud desktop to a pay-as-you-go one](https://help.aliyun.com/document_detail/439964.html).
         
         @param request: ModifyDesktopChargeTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14823,9 +14849,10 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDesktopChargeTypeRequest,
     ) -> ecd_20200930_models.ModifyDesktopChargeTypeResponse:
         """
-        Before you call this operation, make sure that you are familiar with the billing methods of cloud desktops. For more information, see [Billing overview](~~188395~~).
+        Before you call this operation, make sure that you are familiar with the billing methods of cloud desktops in Elastic Desktop Service (EDS). For more information, see [Billing overview](~~188395~~).
         *   Before you call this operation, make sure that the cloud desktop that you want to manage is in the Running or Stopped state and no overdue payments of the cloud desktop are generated.
         *   After the order payment is completed, the system starts to change the billing method of the cloud desktop. During the change, you cannot perform operations, such as starting or stopping the cloud desktop, and changing configurations of the cloud desktop.
+        *   After you change the billing method of the cloud desktop from subscription to pay-as-you-go, you may get a refund. For more information, see [Change a subscription cloud desktop to a pay-as-you-go one](https://help.aliyun.com/document_detail/439964.html).
         
         @param request: ModifyDesktopChargeTypeRequest
         @return: ModifyDesktopChargeTypeResponse
@@ -14838,9 +14865,10 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDesktopChargeTypeRequest,
     ) -> ecd_20200930_models.ModifyDesktopChargeTypeResponse:
         """
-        Before you call this operation, make sure that you are familiar with the billing methods of cloud desktops. For more information, see [Billing overview](~~188395~~).
+        Before you call this operation, make sure that you are familiar with the billing methods of cloud desktops in Elastic Desktop Service (EDS). For more information, see [Billing overview](~~188395~~).
         *   Before you call this operation, make sure that the cloud desktop that you want to manage is in the Running or Stopped state and no overdue payments of the cloud desktop are generated.
         *   After the order payment is completed, the system starts to change the billing method of the cloud desktop. During the change, you cannot perform operations, such as starting or stopping the cloud desktop, and changing configurations of the cloud desktop.
+        *   After you change the billing method of the cloud desktop from subscription to pay-as-you-go, you may get a refund. For more information, see [Change a subscription cloud desktop to a pay-as-you-go one](https://help.aliyun.com/document_detail/439964.html).
         
         @param request: ModifyDesktopChargeTypeRequest
         @return: ModifyDesktopChargeTypeResponse
@@ -18395,7 +18423,7 @@ class Client(OpenApiClient):
         Before you call this operation, make sure that the following operations are performed:
         *   The data that you want to retain in the disk is backed up.
         **\
-        **Note**The disk restoration operation is irreversible. After you restore data on a disk, the disk is restored to the status at the point in time when the snapshot was created. Data that is generated between the snapshot creation time and the current time is lost. Before you restore a disk from a snapshot, make sure that you back up important data.
+        **Note** The disk restoration operation is irreversible. After you restore data on a disk, the disk is restored to the status at the point in time when the snapshot was created. Data that is generated between the snapshot creation time and the current time is lost. Before you restore a disk from a snapshot, make sure that you back up important data.
         *   The cloud desktop whose disk you want to restore is stopped.
         
         @param request: ResetSnapshotRequest
@@ -18436,7 +18464,7 @@ class Client(OpenApiClient):
         Before you call this operation, make sure that the following operations are performed:
         *   The data that you want to retain in the disk is backed up.
         **\
-        **Note**The disk restoration operation is irreversible. After you restore data on a disk, the disk is restored to the status at the point in time when the snapshot was created. Data that is generated between the snapshot creation time and the current time is lost. Before you restore a disk from a snapshot, make sure that you back up important data.
+        **Note** The disk restoration operation is irreversible. After you restore data on a disk, the disk is restored to the status at the point in time when the snapshot was created. Data that is generated between the snapshot creation time and the current time is lost. Before you restore a disk from a snapshot, make sure that you back up important data.
         *   The cloud desktop whose disk you want to restore is stopped.
         
         @param request: ResetSnapshotRequest
@@ -18476,7 +18504,7 @@ class Client(OpenApiClient):
         Before you call this operation, make sure that the following operations are performed:
         *   The data that you want to retain in the disk is backed up.
         **\
-        **Note**The disk restoration operation is irreversible. After you restore data on a disk, the disk is restored to the status at the point in time when the snapshot was created. Data that is generated between the snapshot creation time and the current time is lost. Before you restore a disk from a snapshot, make sure that you back up important data.
+        **Note** The disk restoration operation is irreversible. After you restore data on a disk, the disk is restored to the status at the point in time when the snapshot was created. Data that is generated between the snapshot creation time and the current time is lost. Before you restore a disk from a snapshot, make sure that you back up important data.
         *   The cloud desktop whose disk you want to restore is stopped.
         
         @param request: ResetSnapshotRequest
@@ -18493,7 +18521,7 @@ class Client(OpenApiClient):
         Before you call this operation, make sure that the following operations are performed:
         *   The data that you want to retain in the disk is backed up.
         **\
-        **Note**The disk restoration operation is irreversible. After you restore data on a disk, the disk is restored to the status at the point in time when the snapshot was created. Data that is generated between the snapshot creation time and the current time is lost. Before you restore a disk from a snapshot, make sure that you back up important data.
+        **Note** The disk restoration operation is irreversible. After you restore data on a disk, the disk is restored to the status at the point in time when the snapshot was created. Data that is generated between the snapshot creation time and the current time is lost. Before you restore a disk from a snapshot, make sure that you back up important data.
         *   The cloud desktop whose disk you want to restore is stopped.
         
         @param request: ResetSnapshotRequest
@@ -19656,7 +19684,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.StopInvocationResponse:
         """
-        The ID of the execution.
+        When you stop a one-time execution of a command, the command continues to run on the cloud desktops where it has started to run, and will not run on the cloud desktops where it has not started to run.
         
         @param request: StopInvocationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19695,7 +19723,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.StopInvocationResponse:
         """
-        The ID of the execution.
+        When you stop a one-time execution of a command, the command continues to run on the cloud desktops where it has started to run, and will not run on the cloud desktops where it has not started to run.
         
         @param request: StopInvocationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19733,7 +19761,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.StopInvocationRequest,
     ) -> ecd_20200930_models.StopInvocationResponse:
         """
-        The ID of the execution.
+        When you stop a one-time execution of a command, the command continues to run on the cloud desktops where it has started to run, and will not run on the cloud desktops where it has not started to run.
         
         @param request: StopInvocationRequest
         @return: StopInvocationResponse
@@ -19746,7 +19774,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.StopInvocationRequest,
     ) -> ecd_20200930_models.StopInvocationResponse:
         """
-        The ID of the execution.
+        When you stop a one-time execution of a command, the command continues to run on the cloud desktops where it has started to run, and will not run on the cloud desktops where it has not started to run.
         
         @param request: StopInvocationRequest
         @return: StopInvocationResponse

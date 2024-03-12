@@ -2703,9 +2703,25 @@ class CancelCoordinationForMonitoringRequest(TeaModel):
         region_id: str = None,
         user_type: str = None,
     ):
+        # The IDs of stream collaboration tasks.
         self.co_ids = co_ids
+        # The ID of the end user that initiates stream collaboration. If the initiator is the administrator, skip this parameter.
         self.end_user_id = end_user_id
+        # The region ID. You can call the [DescribeRegions](~~436773~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The type of the user.
+        # 
+        # Valid value:
+        # 
+        # *   <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     TENANT_ADMIN
+        # 
+        #     <!-- -->
+        # 
+        #     : administrator.
         self.user_type = user_type
 
     def validate(self):
@@ -2745,6 +2761,7 @@ class CancelCoordinationForMonitoringResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3700,10 +3717,15 @@ class CopyImageRequest(TeaModel):
         image_id: str = None,
         region_id: str = None,
     ):
+        # The description of the image copy. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.destination_description = destination_description
+        # The name of the image copy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `acs:` or `aliyun`. The name cannot contain `http://` or `https://`. The name can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-).
         self.destination_image_name = destination_image_name
+        # The destination region to which you want to copy the image.
         self.destination_region_id = destination_region_id
+        # The ID of the image that is copied to the destination region.
         self.image_id = image_id
+        # The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -3748,7 +3770,9 @@ class CopyImageResponseBody(TeaModel):
         image_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the image that is being copied.
         self.image_id = image_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5393,7 +5417,10 @@ class CreateCdsFileShareLinkResponse(TeaModel):
 class CreateCloudDriveServiceRequest(TeaModel):
     def __init__(
         self,
+        auto_pay: bool = None,
+        auto_renew: bool = None,
         biz_type: int = None,
+        cds_charge_type: str = None,
         cen_id: str = None,
         domain_name: str = None,
         end_user_id: List[str] = None,
@@ -5401,11 +5428,18 @@ class CreateCloudDriveServiceRequest(TeaModel):
         name: str = None,
         office_site_id: str = None,
         office_site_type: str = None,
+        period: int = None,
+        period_unit: str = None,
         region_id: str = None,
         solution_id: str = None,
+        user_count: int = None,
         user_max_size: int = None,
     ):
+        self.auto_pay = auto_pay
+        self.auto_renew = auto_renew
+        # The business type.
         self.biz_type = biz_type
+        self.cds_charge_type = cds_charge_type
         self.cen_id = cen_id
         self.domain_name = domain_name
         self.end_user_id = end_user_id
@@ -5414,9 +5448,13 @@ class CreateCloudDriveServiceRequest(TeaModel):
         self.name = name
         self.office_site_id = office_site_id
         self.office_site_type = office_site_type
+        self.period = period
+        self.period_unit = period_unit
         # The region ID.
         self.region_id = region_id
+        # The solution ID.
         self.solution_id = solution_id
+        self.user_count = user_count
         self.user_max_size = user_max_size
 
     def validate(self):
@@ -5428,8 +5466,14 @@ class CreateCloudDriveServiceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
         if self.biz_type is not None:
             result['BizType'] = self.biz_type
+        if self.cds_charge_type is not None:
+            result['CdsChargeType'] = self.cds_charge_type
         if self.cen_id is not None:
             result['CenId'] = self.cen_id
         if self.domain_name is not None:
@@ -5444,18 +5488,30 @@ class CreateCloudDriveServiceRequest(TeaModel):
             result['OfficeSiteId'] = self.office_site_id
         if self.office_site_type is not None:
             result['OfficeSiteType'] = self.office_site_type
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.solution_id is not None:
             result['SolutionId'] = self.solution_id
+        if self.user_count is not None:
+            result['UserCount'] = self.user_count
         if self.user_max_size is not None:
             result['UserMaxSize'] = self.user_max_size
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
         if m.get('BizType') is not None:
             self.biz_type = m.get('BizType')
+        if m.get('CdsChargeType') is not None:
+            self.cds_charge_type = m.get('CdsChargeType')
         if m.get('CenId') is not None:
             self.cen_id = m.get('CenId')
         if m.get('DomainName') is not None:
@@ -5470,10 +5526,16 @@ class CreateCloudDriveServiceRequest(TeaModel):
             self.office_site_id = m.get('OfficeSiteId')
         if m.get('OfficeSiteType') is not None:
             self.office_site_type = m.get('OfficeSiteType')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('SolutionId') is not None:
             self.solution_id = m.get('SolutionId')
+        if m.get('UserCount') is not None:
+            self.user_count = m.get('UserCount')
         if m.get('UserMaxSize') is not None:
             self.user_max_size = m.get('UserMaxSize')
         return self
@@ -5486,8 +5548,10 @@ class CreateCloudDriveServiceResponseBody(TeaModel):
         cds_name: str = None,
         cen_id: str = None,
         domain_name: str = None,
+        error_code: str = None,
         max_size: str = None,
         office_site_type: str = None,
+        order_id: str = None,
         request_id: str = None,
     ):
         # The ID of the attached cloud disk.
@@ -5496,9 +5560,11 @@ class CreateCloudDriveServiceResponseBody(TeaModel):
         self.cds_name = cds_name
         self.cen_id = cen_id
         self.domain_name = domain_name
+        self.error_code = error_code
         # The maximum capacity of each instance in Cloud Drive Service. Unit: GiB
         self.max_size = max_size
         self.office_site_type = office_site_type
+        self.order_id = order_id
         # The ID of the request.
         self.request_id = request_id
 
@@ -5519,10 +5585,14 @@ class CreateCloudDriveServiceResponseBody(TeaModel):
             result['CenId'] = self.cen_id
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         if self.max_size is not None:
             result['MaxSize'] = self.max_size
         if self.office_site_type is not None:
             result['OfficeSiteType'] = self.office_site_type
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -5537,10 +5607,14 @@ class CreateCloudDriveServiceResponseBody(TeaModel):
             self.cen_id = m.get('CenId')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         if m.get('MaxSize') is not None:
             self.max_size = m.get('MaxSize')
         if m.get('OfficeSiteType') is not None:
             self.office_site_type = m.get('OfficeSiteType')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -6624,7 +6698,7 @@ class CreateDesktopsRequest(TeaModel):
         self.amount = amount
         # Specifies whether to enable automatic payment.
         self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal. This parameter takes effect only when the ChargeType parameter is set to PrePaid.````
+        # Specifies whether to enable auto-renewal. This parameter takes effect only when the ChargeType parameter is set to PrePaid.
         self.auto_renew = auto_renew
         # The ID of the desktop template.
         self.bundle_id = bundle_id
@@ -12531,13 +12605,13 @@ class DescribeCensRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
-        # Details about CEN instances.
-        self.page_number = page_number
-        # The number of the page to return.
-        # 
+        # The page number.\
         # Default value: 1.
+        self.page_number = page_number
+        # The number of entries per page.\
+        # Default value: 50.
         self.page_size = page_size
-        # The ID of the bandwidth plan that is associated with the CEN instance.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -12573,6 +12647,7 @@ class DescribeCensResponseBodyCensPackageIds(TeaModel):
         self,
         package_id: str = None,
     ):
+        # The ID of the bandwidth plan that is associated with the CEN instance.
         self.package_id = package_id
 
     def validate(self):
@@ -12601,8 +12676,9 @@ class DescribeCensResponseBodyCensTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # DescribeCens
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -12642,24 +12718,31 @@ class DescribeCensResponseBodyCens(TeaModel):
         status: str = None,
         tags: List[DescribeCensResponseBodyCensTags] = None,
     ):
-        # The number of entries returned per page.
-        self.cen_id = cen_id
-        # The tag value of the CEN instance.
-        self.creation_time = creation_time
-        # The tag key of the CEN instance.
-        self.description = description
-        # Indicates whether IPv6 is supported. Valid value: DISABLED. This value indicates that IPv6 is not supported.
-        # 
-        # >  IPv6 is not supported.
-        self.ipv_6level = ipv_6level
-        # The ID of the request.
-        self.name = name
-        self.package_ids = package_ids
-        # The name of the CEN instance.
-        self.protection_level = protection_level
-        # The ID of the region.
-        self.status = status
         # The ID of the CEN instance.
+        self.cen_id = cen_id
+        # The time when the CEN instance was created.
+        self.creation_time = creation_time
+        # The description of the CEN instance.
+        self.description = description
+        # Indicates whether IPv6 is supported. A value of DISABLED indicates that IPv6 is not supported.
+        # 
+        # **\
+        # 
+        # **Description** IPv6 is not supported.
+        self.ipv_6level = ipv_6level
+        # The name of the CEN instance.
+        self.name = name
+        # The IDs of the bandwidth plans that are associated with the CEN instance.
+        self.package_ids = package_ids
+        # The level of CIDR block overlapping. If REDUCED returns, the CIDR blocks can overlap with each other but must not be the same.
+        self.protection_level = protection_level
+        # The status of the CEN instance. Valid values:
+        # 
+        # *   Creating
+        # *   Active
+        # *   Deleting
+        self.status = status
+        # The tags of the CEN instance.
         self.tags = tags
 
     def validate(self):
@@ -12740,19 +12823,15 @@ class DescribeCensResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The level of CIDR block overlapping. Valid value: REDUCED. This value indicates that the CIDR blocks can overlap with each other but must not be the same.
+        # Details of the CEN instances.
         self.cens = cens
-        # The status of the CEN instance. Valid values:
-        # 
-        # *   Creating: The CEN instance is being created.
-        # *   Active: The CEN instance is running.
-        # *   Deleting: The CEN instance is being deleted.
+        # The page number.
         self.page_number = page_number
-        # The description of the CEN instance.
+        # The number of entries per page.
         self.page_size = page_size
-        # The operation that you want to perform. Set the value to DescribeCens.
+        # The request ID.
         self.request_id = request_id
-        # The IDs of the bandwidth plans that are associated with the CEN instance.
+        # The total number of CEN instances returned.
         self.total_count = total_count
 
     def validate(self):
@@ -12858,39 +12937,49 @@ class DescribeClientEventsRequest(TeaModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # The ID of the Alibaba Cloud account with which the event is associated.
+        # The ID of the cloud desktop. If you do not specify a value for this parameter, events of all cloud desktops in the specified region are queried.
         self.desktop_id = desktop_id
-        # The account type of the workspace. Valid values:
-        # 
-        # *   SIMPLE: convenience account
-        # *   AD_CONNECTOR: enterprise AD account
+        # The IP address of the cloud desktop. If you do not specify a value for this parameter, events of all cloud desktops in the specified region are queried.
         self.desktop_ip = desktop_ip
-        # The types of event.
+        # The name of the cloud desktop.
         self.desktop_name = desktop_name
-        # The ID of the desktop group.
-        self.directory_id = directory_id
-        # The ID of the region where the cloud desktop resides.
-        self.end_time = end_time
         # The ID of the directory to which the cloud desktop belongs.
-        self.end_user_id = end_user_id
-        # The ID of the workspace to which the cloud desktop belongs. If you do not specify a value for this parameter, events of all workspaces in the specified region are queried.
-        self.event_type = event_type
-        # Details about the events.
-        self.event_types = event_types
-        # The status of the event. This parameter is returned if you set the EventType parameter to DESKTOP_DISCONNECT or GET_CONNECTION_TICKET. Valid values:
+        self.directory_id = directory_id
+        # The end of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
         # 
-        # *   200\. The value indicates that the request is successful.
-        # *   An error message. The value indicates that the request failed. Example: FailedToGetConnectionTicket.
+        # If you do not specify a value for this parameter, the current time is used.
+        self.end_time = end_time
+        # The information about the regular user that connects to the cloud desktop from the EDS client. The information can be the RAM user ID or Active Directory (AD) username. If you do not specify a value for this parameter, events of all regular users in the specified region are queried.
+        self.end_user_id = end_user_id
+        # The type of event that you want to query. Valid values:
+        # 
+        # *   DESKTOP_CONNECT: The desktop session is established.
+        # *   DESKTOP_DISCONNECT: The desktop session is disconnected.
+        # *   DESKTOP_REBOOT: The cloud desktop is restarted.
+        # *   CLIENT_AD_LOGIN: The AD user logs on to the client.
+        # *   GET_CONNECTION_TICKET: The request to connect to the cloud desktop is sent.
+        # *   DESKTOP_START: The cloud desktop is started.
+        # *   DESKTOP_STOP: The cloud desktop is stopped.
+        # 
+        # If you do not specify a value for this parameter, events of all types are queried.
+        self.event_type = event_type
+        # The types of event.
+        self.event_types = event_types
+        # The number of entries to return on each page.
+        # 
+        # Default value: 100.
         self.max_results = max_results
-        # The IP address of the client.
+        # The query token. Set the value to the NextToken value that is returned from the last call to the DescribeClientEvents operation.
         self.next_token = next_token
-        # The ID of the workspace to which the cloud desktop belongs.
+        # The ID of the workspace to which the cloud desktop belongs. If you do not specify a value for this parameter, events of all workspaces in the specified region are queried.
         self.office_site_id = office_site_id
-        # The OS that the client runs.
+        # The name of the workspace.
         self.office_site_name = office_site_name
-        # The number of bytes that are received.
+        # The ID of the region where the cloud desktop resides.
         self.region_id = region_id
-        # The IP address of the cloud desktop.
+        # The beginning of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+        # 
+        # If you do not specify a value for this parameter, all events that occurred before the point in time that you specify for `EndTime` are queried.
         self.start_time = start_time
 
     def validate(self):
@@ -12991,59 +13080,55 @@ class DescribeClientEventsResponseBodyEvents(TeaModel):
         region_id: str = None,
         status: str = None,
     ):
-        # The name of the cloud desktop.
+        # The ID of the Alibaba Cloud account with which the event is associated.
         self.ali_uid = ali_uid
-        # The name of the cloud desktop.
+        # The number of bytes that are received.
         self.bytes_received = bytes_received
-        # The information about the regular user that connects to the cloud desktop from the EDS client. The information can be the RAM user ID or Active Directory (AD) username. If you do not specify a value for this parameter, events of all regular users in the specified region are queried.
-        self.bytes_send = bytes_send
-        # The IP address of the cloud desktop. If you do not specify a value for this parameter, events of all cloud desktops in the specified region are queried.
-        self.client_ip = client_ip
-        # The ID of the cloud desktop.
-        self.client_os = client_os
-        # DescribeClientEvents
-        self.client_version = client_version
-        self.desktop_group_id = desktop_group_id
-        self.desktop_group_name = desktop_group_name
-        # The name of the desktop group.
-        self.desktop_id = desktop_id
-        # The name of the workspace.
-        self.desktop_ip = desktop_ip
-        self.desktop_name = desktop_name
-        # The type of the event.
-        self.directory_id = directory_id
-        # The type of event.
-        self.directory_type = directory_type
-        # The end of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
-        # 
-        # If you do not specify a value for this parameter, the current time is used.
-        self.end_user_id = end_user_id
-        # The type of event that you want to query. Valid values:
-        # 
-        # *   DESKTOP_CONNECT: The desktop session is established.
-        # *   DESKTOP_DISCONNECT: The desktop session is disconnected.
-        # *   DESKTOP_REBOOT: The cloud desktop is restarted.
-        # *   CLIENT_AD_LOGIN: The AD user logs on to the client.
-        # *   GET_CONNECTION_TICKET: The request to connect to the cloud desktop is sent.
-        # *   DESKTOP_START: The cloud desktop is started.
-        # *   DESKTOP_STOP: The cloud desktop is stopped.
-        # 
-        # If you do not specify a value for this parameter, events of all types are queried.
-        self.event_id = event_id
-        # The beginning of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
-        # 
-        # If you do not specify a value for this parameter, all events that occurred before the point in time that you specify for `EndTime` are queried.
-        self.event_time = event_time
-        # The query token. Set the value to the NextToken value that is returned from the last call to the DescribeClientEvents operation.
-        self.event_type = event_type
-        # The ID of the event.
-        self.office_site_id = office_site_id
-        self.office_site_name = office_site_name
-        # The ID of the request.
-        self.office_site_type = office_site_type
-        # The ID of the cloud desktop. If you do not specify a value for this parameter, events of all cloud desktops in the specified region are queried.
-        self.region_id = region_id
         # The number of bytes that are sent.
+        self.bytes_send = bytes_send
+        # The IP address of the client.
+        self.client_ip = client_ip
+        # The OS that the client runs.
+        self.client_os = client_os
+        # The version of the client.
+        self.client_version = client_version
+        # The ID of the desktop group.
+        self.desktop_group_id = desktop_group_id
+        # The name of the desktop group.
+        self.desktop_group_name = desktop_group_name
+        # The ID of the cloud desktop.
+        self.desktop_id = desktop_id
+        # The IP address of the cloud desktop.
+        self.desktop_ip = desktop_ip
+        # The name of the cloud desktop.
+        self.desktop_name = desktop_name
+        # The ID of the directory to which the cloud desktop belongs.
+        self.directory_id = directory_id
+        # The type of the directory.
+        self.directory_type = directory_type
+        # The information about the regular user that connects to the cloud desktop from the EDS client. The information can be the RAM user ID or AD username.
+        self.end_user_id = end_user_id
+        # The ID of the event.
+        self.event_id = event_id
+        # The time when the event occurred.
+        self.event_time = event_time
+        # The type of the event.
+        self.event_type = event_type
+        # The ID of the workspace to which the cloud desktop belongs.
+        self.office_site_id = office_site_id
+        # The name of the workspace.
+        self.office_site_name = office_site_name
+        # The account type of the workspace. Valid values:
+        # 
+        # *   SIMPLE: convenience account
+        # *   AD_CONNECTOR: enterprise AD account
+        self.office_site_type = office_site_type
+        # The ID of the region.
+        self.region_id = region_id
+        # The status of the event. This parameter is returned if you set the EventType parameter to DESKTOP_DISCONNECT or GET_CONNECTION_TICKET. Valid values:
+        # 
+        # *   200\. The value indicates that the request is successful.
+        # *   An error message. The value indicates that the request failed. Example: FailedToGetConnectionTicket.
         self.status = status
 
     def validate(self):
@@ -13157,11 +13242,11 @@ class DescribeClientEventsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The information about the regular user that connects to the cloud desktop from the EDS client. The information can be the RAM user ID or AD username.
+        # Details about the events.
         self.events = events
-        # The ID of the region.
+        # The query token that is returned in this call.
         self.next_token = next_token
-        # The type of the directory.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -15179,27 +15264,27 @@ class DescribeDesktopInfoResponseBodyDesktops(TeaModel):
         release_note: str = None,
         start_time: str = None,
     ):
-        # The connection status of the end user. Valid values:
+        # The connection status of the user. Valid values:
         # 
         # *   Connected
         # *   Disconnected
         self.connection_status = connection_status
-        # The current version of the cloud desktop.
+        # The current image version of the cloud desktop.
         self.current_app_version = current_app_version
-        # The cloud desktop ID.
+        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
-        # The status of the cloud desktop. Valid values:
+        # The state of the cloud desktop. Valid values:
         # 
-        # *   Pending
-        # *   Starting
-        # *   Running
-        # *   Stopping
-        # *   Stopped
-        # *   Expired
-        # *   Deleted
-        # *   Failed
+        # *   Pending: The cloud desktop is being created.
+        # *   Starting: The cloud desktop is being started.
+        # *   Running: The cloud desktop is running.
+        # *   Stopping: The cloud desktop is being stopped.
+        # *   Stopped: The cloud desktop is stopped.
+        # *   Expired: The cloud desktop is expired.
+        # *   Deleted: The cloud desktop is deleted.
+        # *   Failed: Failed to create the cloud desktop.
         self.desktop_status = desktop_status
-        # The flag that is used to manage the cloud desktop.
+        # The information about flags that are used to manage cloud desktops.
         self.management_flag = management_flag
         self.new_app_size = new_app_size
         self.new_app_version = new_app_version
@@ -15265,7 +15350,7 @@ class DescribeDesktopInfoResponseBody(TeaModel):
         desktops: List[DescribeDesktopInfoResponseBodyDesktops] = None,
         request_id: str = None,
     ):
-        # The details about the cloud desktops.
+        # Details of the cloud desktops.
         self.desktops = desktops
         # The request ID.
         self.request_id = request_id
@@ -21333,9 +21418,10 @@ class DescribeInvocationsRequest(TeaModel):
         # 
         # Default value: Running.
         self.invoke_status = invoke_status
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
-        # Default value: 100.
+        # *   Valid values: 1 to 50.
+        # *   Default value: 10.
         self.max_results = max_results
         # The query token. Set the value to the NextToken value that is returned from the last call to the previous DescribeInvocations operation.
         self.next_token = next_token
@@ -36393,25 +36479,25 @@ class ModifyDesktopChargeTypeRequest(TeaModel):
         region_id: str = None,
         use_duration: int = None,
     ):
-        # The IDs of the cloud desktops. You can specify 1 to 20 IDs.
-        self.auto_pay = auto_pay
-        # The ID of the sales promotion.
-        self.charge_type = charge_type
-        # The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
-        self.desktop_id = desktop_id
         # Specifies whether to enable automatic payment if you specify subscription as the new billing method for the cloud desktop.
-        self.period = period
-        # The IDs of the desktop groups. If multiple cloud desktops are created at a time, multiple cloud desktop IDs are returned.
-        self.period_unit = period_unit
-        # The unit of the subscription duration if you specify subscription as the new billing method for the cloud desktop.
-        self.promotion_id = promotion_id
+        self.auto_pay = auto_pay
+        # The new billing method that you want to use for the desktop group.
+        self.charge_type = charge_type
+        # The IDs of the cloud desktops. You can specify 1 to 20 IDs.
+        self.desktop_id = desktop_id
         # The subscription duration if you specify subscription as the new billing method for the cloud desktop. The unit of the value is specified by the `PeriodUnit` parameter. This parameter takes effect only when the `ChargeType` parameter is set to `PrePaid`.
         # 
         # *   If the `PeriodUnit` parameter is set to `Week`, the valid value of the Period parameter is 1.
         # *   If the `PeriodUnit` parameter is set to `Month`, the valid values of the Period parameter are 1, 2, 3, and 6.
         # *   If the `PeriodUnit` parameter is set to `Year`, the valid values of the Period parameter are 1, 2, 3, 4, and 5.
+        self.period = period
+        # The unit of the subscription duration if you specify subscription as the new billing method for the cloud desktop.
+        self.period_unit = period_unit
+        # The ID of the sales promotion.
+        self.promotion_id = promotion_id
+        # The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the most recent region list.
         self.region_id = region_id
-        # >  This parameter is in invitational preview and not available to the public.
+        # > 处于定向邀测中，暂不对外开放。
         self.use_duration = use_duration
 
     def validate(self):
@@ -36469,10 +36555,11 @@ class ModifyDesktopChargeTypeResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The IDs of the desktop groups. If multiple cloud desktops are created at a time, multiple cloud desktop IDs are returned.
         self.desktop_id = desktop_id
-        # The ID of the cloud desktop.
+        # The ID of the order.
         self.order_id = order_id
-        # Change the billing method of a cloud desktop
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -44700,11 +44787,11 @@ class StopInvocationRequest(TeaModel):
         invoke_id: str = None,
         region_id: str = None,
     ):
-        # StopInvocation
+        # The ID of cloud desktop N. Valid values of N: 1 to 50.
         self.desktop_id = desktop_id
-        # The operation that you want to perform. Set the value to StopInvocation.
+        # The ID of the execution.
         self.invoke_id = invoke_id
-        # The ID of the request.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -44740,6 +44827,7 @@ class StopInvocationResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
