@@ -1,3 +1,8 @@
+2024-03-12 Version: 1.3.2
+- Update API GetUser: update response param.
+- Update API ListApplications: update response param.
+
+
 2023-12-21 Version: 1.3.1
 - Generated python 2021-12-01 for Eiam.
 
