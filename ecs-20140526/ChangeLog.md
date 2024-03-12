@@ -1,3 +1,15 @@
+2024-03-12 Version: 4.0.3
+- Update API CreateAutoProvisioningGroup: add param Tag.
+- Update API CreateAutoSnapshotPolicy: add param CopyEncryptionConfiguration.
+- Update API CreateAutoSnapshotPolicy: update response param.
+- Update API DescribeAutoProvisioningGroups: add param Tag.
+- Update API DescribeAutoProvisioningGroups: update response param.
+- Update API DescribeAutoSnapshotPolicyEx: update response param.
+- Update API ModifyAutoSnapshotPolicyEx: add param CopyEncryptionConfiguration.
+- Update API RunInstances: update param NetworkInterface.
+- Update API StartTerminalSession: add param Username.
+
+
 2024-02-29 Version: 4.0.2
 - Update API CreateAutoProvisioningGroup: add param Tag.
 - Update API CreateAutoSnapshotPolicy: add param CopyEncryptionConfiguration.
