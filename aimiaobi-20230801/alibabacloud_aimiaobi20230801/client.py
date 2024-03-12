@@ -119,6 +119,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_async_task_with_options_async(request, runtime)
 
+    def clear_intervenes_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ClearIntervenesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ClearIntervenesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ClearIntervenes',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ClearIntervenesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def clear_intervenes_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ClearIntervenesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ClearIntervenesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ClearIntervenes',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ClearIntervenesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def clear_intervenes(
+        self,
+        request: ai_miao_bi_20230801_models.ClearIntervenesRequest,
+    ) -> ai_miao_bi_20230801_models.ClearIntervenesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.clear_intervenes_with_options(request, runtime)
+
+    async def clear_intervenes_async(
+        self,
+        request: ai_miao_bi_20230801_models.ClearIntervenesRequest,
+    ) -> ai_miao_bi_20230801_models.ClearIntervenesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.clear_intervenes_with_options_async(request, runtime)
+
     def create_generated_content_with_options(
         self,
         tmp_req: ai_miao_bi_20230801_models.CreateGeneratedContentRequest,
@@ -381,6 +451,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_generated_content_with_options_async(request, runtime)
 
+    def delete_intervene_rule_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteInterveneRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DeleteInterveneRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.rule_id):
+            body['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteInterveneRule',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DeleteInterveneRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_intervene_rule_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteInterveneRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DeleteInterveneRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.rule_id):
+            body['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteInterveneRule',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DeleteInterveneRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_intervene_rule(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteInterveneRuleRequest,
+    ) -> ai_miao_bi_20230801_models.DeleteInterveneRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_intervene_rule_with_options(request, runtime)
+
+    async def delete_intervene_rule_async(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteInterveneRuleRequest,
+    ) -> ai_miao_bi_20230801_models.DeleteInterveneRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_intervene_rule_with_options_async(request, runtime)
+
     def delete_material_by_id_with_options(
         self,
         request: ai_miao_bi_20230801_models.DeleteMaterialByIdRequest,
@@ -536,6 +684,76 @@ class Client(OpenApiClient):
     ) -> ai_miao_bi_20230801_models.ExportGeneratedContentResponse:
         runtime = util_models.RuntimeOptions()
         return await self.export_generated_content_with_options_async(request, runtime)
+
+    def export_intervenes_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ExportIntervenesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ExportIntervenesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ExportIntervenes',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ExportIntervenesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_intervenes_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ExportIntervenesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ExportIntervenesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ExportIntervenes',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ExportIntervenesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_intervenes(
+        self,
+        request: ai_miao_bi_20230801_models.ExportIntervenesRequest,
+    ) -> ai_miao_bi_20230801_models.ExportIntervenesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.export_intervenes_with_options(request, runtime)
+
+    async def export_intervenes_async(
+        self,
+        request: ai_miao_bi_20230801_models.ExportIntervenesRequest,
+    ) -> ai_miao_bi_20230801_models.ExportIntervenesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.export_intervenes_with_options_async(request, runtime)
 
     def feedback_dialogue_with_options(
         self,
@@ -1241,6 +1459,302 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_generated_content_with_options_async(request, runtime)
 
+    def get_intervene_global_reply_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetInterveneGlobalReplyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetInterveneGlobalReplyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetInterveneGlobalReply',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetInterveneGlobalReplyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_intervene_global_reply_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetInterveneGlobalReplyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetInterveneGlobalReplyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetInterveneGlobalReply',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetInterveneGlobalReplyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_intervene_global_reply(
+        self,
+        request: ai_miao_bi_20230801_models.GetInterveneGlobalReplyRequest,
+    ) -> ai_miao_bi_20230801_models.GetInterveneGlobalReplyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_intervene_global_reply_with_options(request, runtime)
+
+    async def get_intervene_global_reply_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetInterveneGlobalReplyRequest,
+    ) -> ai_miao_bi_20230801_models.GetInterveneGlobalReplyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_intervene_global_reply_with_options_async(request, runtime)
+
+    def get_intervene_import_task_info_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetInterveneImportTaskInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetInterveneImportTaskInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetInterveneImportTaskInfo',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetInterveneImportTaskInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_intervene_import_task_info_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetInterveneImportTaskInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetInterveneImportTaskInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetInterveneImportTaskInfo',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetInterveneImportTaskInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_intervene_import_task_info(
+        self,
+        request: ai_miao_bi_20230801_models.GetInterveneImportTaskInfoRequest,
+    ) -> ai_miao_bi_20230801_models.GetInterveneImportTaskInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_intervene_import_task_info_with_options(request, runtime)
+
+    async def get_intervene_import_task_info_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetInterveneImportTaskInfoRequest,
+    ) -> ai_miao_bi_20230801_models.GetInterveneImportTaskInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_intervene_import_task_info_with_options_async(request, runtime)
+
+    def get_intervene_rule_detail_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetInterveneRuleDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetInterveneRuleDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.rule_id):
+            body['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetInterveneRuleDetail',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetInterveneRuleDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_intervene_rule_detail_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetInterveneRuleDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetInterveneRuleDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.rule_id):
+            body['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetInterveneRuleDetail',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetInterveneRuleDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_intervene_rule_detail(
+        self,
+        request: ai_miao_bi_20230801_models.GetInterveneRuleDetailRequest,
+    ) -> ai_miao_bi_20230801_models.GetInterveneRuleDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_intervene_rule_detail_with_options(request, runtime)
+
+    async def get_intervene_rule_detail_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetInterveneRuleDetailRequest,
+    ) -> ai_miao_bi_20230801_models.GetInterveneRuleDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_intervene_rule_detail_with_options_async(request, runtime)
+
+    def get_intervene_template_file_url_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetInterveneTemplateFileUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetInterveneTemplateFileUrlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetInterveneTemplateFileUrl',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetInterveneTemplateFileUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_intervene_template_file_url_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetInterveneTemplateFileUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetInterveneTemplateFileUrlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetInterveneTemplateFileUrl',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetInterveneTemplateFileUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_intervene_template_file_url(
+        self,
+        request: ai_miao_bi_20230801_models.GetInterveneTemplateFileUrlRequest,
+    ) -> ai_miao_bi_20230801_models.GetInterveneTemplateFileUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_intervene_template_file_url_with_options(request, runtime)
+
+    async def get_intervene_template_file_url_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetInterveneTemplateFileUrlRequest,
+    ) -> ai_miao_bi_20230801_models.GetInterveneTemplateFileUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_intervene_template_file_url_with_options_async(request, runtime)
+
     def get_material_by_id_with_options(
         self,
         request: ai_miao_bi_20230801_models.GetMaterialByIdRequest,
@@ -1388,6 +1902,350 @@ class Client(OpenApiClient):
     ) -> ai_miao_bi_20230801_models.GetPropertiesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_properties_with_options_async(request, runtime)
+
+    def import_intervene_file_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ImportInterveneFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ImportInterveneFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.doc_name):
+            body['DocName'] = request.doc_name
+        if not UtilClient.is_unset(request.file_key):
+            body['FileKey'] = request.file_key
+        if not UtilClient.is_unset(request.file_url):
+            body['FileUrl'] = request.file_url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ImportInterveneFile',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ImportInterveneFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_intervene_file_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ImportInterveneFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ImportInterveneFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.doc_name):
+            body['DocName'] = request.doc_name
+        if not UtilClient.is_unset(request.file_key):
+            body['FileKey'] = request.file_key
+        if not UtilClient.is_unset(request.file_url):
+            body['FileUrl'] = request.file_url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ImportInterveneFile',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ImportInterveneFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_intervene_file(
+        self,
+        request: ai_miao_bi_20230801_models.ImportInterveneFileRequest,
+    ) -> ai_miao_bi_20230801_models.ImportInterveneFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.import_intervene_file_with_options(request, runtime)
+
+    async def import_intervene_file_async(
+        self,
+        request: ai_miao_bi_20230801_models.ImportInterveneFileRequest,
+    ) -> ai_miao_bi_20230801_models.ImportInterveneFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.import_intervene_file_with_options_async(request, runtime)
+
+    def import_intervene_file_async_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ImportInterveneFileAsyncRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ImportInterveneFileAsyncResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.doc_name):
+            body['DocName'] = request.doc_name
+        if not UtilClient.is_unset(request.file_key):
+            body['FileKey'] = request.file_key
+        if not UtilClient.is_unset(request.file_url):
+            body['FileUrl'] = request.file_url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ImportInterveneFileAsync',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ImportInterveneFileAsyncResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_intervene_file_async_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ImportInterveneFileAsyncRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ImportInterveneFileAsyncResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.doc_name):
+            body['DocName'] = request.doc_name
+        if not UtilClient.is_unset(request.file_key):
+            body['FileKey'] = request.file_key
+        if not UtilClient.is_unset(request.file_url):
+            body['FileUrl'] = request.file_url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ImportInterveneFileAsync',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ImportInterveneFileAsyncResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_intervene_file_async(
+        self,
+        request: ai_miao_bi_20230801_models.ImportInterveneFileAsyncRequest,
+    ) -> ai_miao_bi_20230801_models.ImportInterveneFileAsyncResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.import_intervene_file_async_with_options(request, runtime)
+
+    async def import_intervene_file_async_async(
+        self,
+        request: ai_miao_bi_20230801_models.ImportInterveneFileAsyncRequest,
+    ) -> ai_miao_bi_20230801_models.ImportInterveneFileAsyncResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.import_intervene_file_async_with_options_async(request, runtime)
+
+    def insert_intervene_global_reply_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.InsertInterveneGlobalReplyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.InsertInterveneGlobalReplyResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.InsertInterveneGlobalReplyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.reply_messag_list):
+            request.reply_messag_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.reply_messag_list, 'ReplyMessagList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.reply_messag_list_shrink):
+            body['ReplyMessagList'] = request.reply_messag_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InsertInterveneGlobalReply',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.InsertInterveneGlobalReplyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def insert_intervene_global_reply_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.InsertInterveneGlobalReplyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.InsertInterveneGlobalReplyResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.InsertInterveneGlobalReplyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.reply_messag_list):
+            request.reply_messag_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.reply_messag_list, 'ReplyMessagList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.reply_messag_list_shrink):
+            body['ReplyMessagList'] = request.reply_messag_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InsertInterveneGlobalReply',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.InsertInterveneGlobalReplyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def insert_intervene_global_reply(
+        self,
+        request: ai_miao_bi_20230801_models.InsertInterveneGlobalReplyRequest,
+    ) -> ai_miao_bi_20230801_models.InsertInterveneGlobalReplyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.insert_intervene_global_reply_with_options(request, runtime)
+
+    async def insert_intervene_global_reply_async(
+        self,
+        request: ai_miao_bi_20230801_models.InsertInterveneGlobalReplyRequest,
+    ) -> ai_miao_bi_20230801_models.InsertInterveneGlobalReplyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.insert_intervene_global_reply_with_options_async(request, runtime)
+
+    def insert_intervene_rule_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.InsertInterveneRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.InsertInterveneRuleResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.InsertInterveneRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.intervene_rule_config):
+            request.intervene_rule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.intervene_rule_config, 'InterveneRuleConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.intervene_rule_config_shrink):
+            body['InterveneRuleConfig'] = request.intervene_rule_config_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InsertInterveneRule',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.InsertInterveneRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def insert_intervene_rule_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.InsertInterveneRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.InsertInterveneRuleResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.InsertInterveneRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.intervene_rule_config):
+            request.intervene_rule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.intervene_rule_config, 'InterveneRuleConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.intervene_rule_config_shrink):
+            body['InterveneRuleConfig'] = request.intervene_rule_config_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InsertInterveneRule',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.InsertInterveneRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def insert_intervene_rule(
+        self,
+        request: ai_miao_bi_20230801_models.InsertInterveneRuleRequest,
+    ) -> ai_miao_bi_20230801_models.InsertInterveneRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.insert_intervene_rule_with_options(request, runtime)
+
+    async def insert_intervene_rule_async(
+        self,
+        request: ai_miao_bi_20230801_models.InsertInterveneRuleRequest,
+    ) -> ai_miao_bi_20230801_models.InsertInterveneRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.insert_intervene_rule_with_options_async(request, runtime)
 
     def list_async_tasks_with_options(
         self,
@@ -1886,6 +2744,346 @@ class Client(OpenApiClient):
     ) -> ai_miao_bi_20230801_models.ListHotNewsWithTypeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_hot_news_with_type_with_options_async(request, runtime)
+
+    def list_intervene_cnt_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ListInterveneCntRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListInterveneCntResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.page_index):
+            body['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListInterveneCnt',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListInterveneCntResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_intervene_cnt_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListInterveneCntRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListInterveneCntResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.page_index):
+            body['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListInterveneCnt',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListInterveneCntResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_intervene_cnt(
+        self,
+        request: ai_miao_bi_20230801_models.ListInterveneCntRequest,
+    ) -> ai_miao_bi_20230801_models.ListInterveneCntResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_intervene_cnt_with_options(request, runtime)
+
+    async def list_intervene_cnt_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListInterveneCntRequest,
+    ) -> ai_miao_bi_20230801_models.ListInterveneCntResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_intervene_cnt_with_options_async(request, runtime)
+
+    def list_intervene_import_tasks_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ListInterveneImportTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListInterveneImportTasksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.page_index):
+            body['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListInterveneImportTasks',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListInterveneImportTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_intervene_import_tasks_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListInterveneImportTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListInterveneImportTasksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.page_index):
+            body['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListInterveneImportTasks',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListInterveneImportTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_intervene_import_tasks(
+        self,
+        request: ai_miao_bi_20230801_models.ListInterveneImportTasksRequest,
+    ) -> ai_miao_bi_20230801_models.ListInterveneImportTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_intervene_import_tasks_with_options(request, runtime)
+
+    async def list_intervene_import_tasks_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListInterveneImportTasksRequest,
+    ) -> ai_miao_bi_20230801_models.ListInterveneImportTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_intervene_import_tasks_with_options_async(request, runtime)
+
+    def list_intervene_rules_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ListInterveneRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListInterveneRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.page_index):
+            body['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListInterveneRules',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListInterveneRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_intervene_rules_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListInterveneRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListInterveneRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.page_index):
+            body['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListInterveneRules',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListInterveneRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_intervene_rules(
+        self,
+        request: ai_miao_bi_20230801_models.ListInterveneRulesRequest,
+    ) -> ai_miao_bi_20230801_models.ListInterveneRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_intervene_rules_with_options(request, runtime)
+
+    async def list_intervene_rules_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListInterveneRulesRequest,
+    ) -> ai_miao_bi_20230801_models.ListInterveneRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_intervene_rules_with_options_async(request, runtime)
+
+    def list_intervenes_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ListIntervenesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListIntervenesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.intervene_type):
+            body['InterveneType'] = request.intervene_type
+        if not UtilClient.is_unset(request.page_index):
+            body['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query):
+            body['Query'] = request.query
+        if not UtilClient.is_unset(request.rule_id):
+            body['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListIntervenes',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListIntervenesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_intervenes_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListIntervenesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListIntervenesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.intervene_type):
+            body['InterveneType'] = request.intervene_type
+        if not UtilClient.is_unset(request.page_index):
+            body['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query):
+            body['Query'] = request.query
+        if not UtilClient.is_unset(request.rule_id):
+            body['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListIntervenes',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListIntervenesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_intervenes(
+        self,
+        request: ai_miao_bi_20230801_models.ListIntervenesRequest,
+    ) -> ai_miao_bi_20230801_models.ListIntervenesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_intervenes_with_options(request, runtime)
+
+    async def list_intervenes_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListIntervenesRequest,
+    ) -> ai_miao_bi_20230801_models.ListIntervenesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_intervenes_with_options_async(request, runtime)
 
     def list_material_documents_with_options(
         self,

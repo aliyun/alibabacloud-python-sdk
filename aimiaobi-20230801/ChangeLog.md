@@ -1,3 +1,23 @@
+2024-03-12 Version: 1.4.0
+- Support API ClearIntervenes.
+- Support API DeleteInterveneRule.
+- Support API ExportIntervenes.
+- Support API GetInterveneGlobalReply.
+- Support API GetInterveneImportTaskInfo.
+- Support API GetInterveneRuleDetail.
+- Support API GetInterveneTemplateFileUrl.
+- Support API ImportInterveneFile.
+- Support API ImportInterveneFileAsync.
+- Support API InsertInterveneGlobalReply.
+- Support API InsertInterveneRule.
+- Support API ListInterveneCnt.
+- Support API ListInterveneImportTasks.
+- Support API ListInterveneRules.
+- Support API ListIntervenes.
+- Update API GenerateFileUrlByKey: add param FileName.
+- Update API GenerateUploadConfig: update param ParentDir.
+
+
 2024-03-04 Version: 1.3.1
 - Update API GenerateFileUrlByKey: add param FileName.
 - Update API GenerateUploadConfig: update param ParentDir.
