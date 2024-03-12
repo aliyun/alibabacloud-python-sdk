@@ -28,7 +28,7 @@ pip install alibabacloud_dytnsapi20230101
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/dytnsapi-20230101/ChangeLog.md).
 
 ## References
 

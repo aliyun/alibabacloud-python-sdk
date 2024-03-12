@@ -16,13 +16,18 @@ class GetPhoneNumberIdentificationResultRequest(TeaModel):
         session_id: str = None,
         session_payload: str = None,
     ):
+        # The authorization code.
         self.auth_code = auth_code
+        # The external ID.
         self.out_id = out_id
         self.owner_id = owner_id
+        # The phone number of the subscriber. The phone number to be verified must be in the Mobile Station International Subscriber Directory Number (MSISDN) format.
         self.phone_number = phone_number
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The session ID.
         self.session_id = session_id
+        # The session payload.
         self.session_payload = session_payload
 
     def validate(self):
@@ -78,6 +83,7 @@ class GetPhoneNumberIdentificationResultResponseBodyData(TeaModel):
         self,
         is_identified: str = None,
     ):
+        # Indicates whether the phone number passed the verification.
         self.is_identified = is_identified
 
     def validate(self):
@@ -108,9 +114,18 @@ class GetPhoneNumberIdentificationResultResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The return code. Valid values:
+        # 
+        # *   OK: The request is successful.
+        # *   NoIdentificationResult: No verification result is available or the verification failed.
+        # *   SessionNotValid: The session is invalid or expired.
+        # *   MobileNumberIllegal: The format of the phone number is invalid.
         self.code = code
+        # The returned data.
         self.data = data
+        # The description of the return code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -159,9 +174,6 @@ class GetPhoneNumberIdentificationResultResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -203,11 +215,16 @@ class GetPhoneNumberIdentificationUrlRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The authorization code.
         self.auth_code = auth_code
+        # The IP address of the subscriber\"s phone.
         self.ip = ip
+        # The external ID.
         self.out_id = out_id
         self.owner_id = owner_id
+        # The phone number of the subscriber. The phone number is in the Mobile Station International Subscriber Directory Number (MSISDN) format.
         self.phone_number = phone_number
+        # Specifies whether to remember the phone number.
         self.remember_phone_number = remember_phone_number
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -266,7 +283,9 @@ class GetPhoneNumberIdentificationUrlResponseBodyData(TeaModel):
         identification_url: str = None,
         session_id: str = None,
     ):
+        # The verification URL.
         self.identification_url = identification_url
+        # The session ID.
         self.session_id = session_id
 
     def validate(self):
@@ -301,9 +320,17 @@ class GetPhoneNumberIdentificationUrlResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The return code. Valid values:
+        # 
+        # *   **OK**: The request is successful.
+        # *   **IdentificationNotAvailable**: The verification system does not support the phone number that corresponds to the IP address.
+        # *   **MobileNumberIllegal**: The format of the phone number is invalid.
         self.code = code
+        # The returned data.
         self.data = data
+        # The description of the return code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -352,9 +379,6 @@ class GetPhoneNumberIdentificationUrlResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
