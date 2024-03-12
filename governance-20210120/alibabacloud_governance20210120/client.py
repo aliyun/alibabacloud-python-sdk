@@ -46,6 +46,14 @@ class Client(OpenApiClient):
         request: governance_20210120_models.EnrollAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.EnrollAccountResponse:
+        """
+        You can call this API operation to create a new account or manage an existing account and apply the account baseline to the account.
+        Accounts are created in asynchronous mode. After you create an account, you can apply the account baseline to the account. You can call the [GetEnrolledAccount API](~~GetEnrolledAccount~~) operation to view the details about the account to obtain the result of applying the account baseline to the account.
+        
+        @param request: EnrollAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnrollAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name_prefix):
@@ -90,6 +98,14 @@ class Client(OpenApiClient):
         request: governance_20210120_models.EnrollAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.EnrollAccountResponse:
+        """
+        You can call this API operation to create a new account or manage an existing account and apply the account baseline to the account.
+        Accounts are created in asynchronous mode. After you create an account, you can apply the account baseline to the account. You can call the [GetEnrolledAccount API](~~GetEnrolledAccount~~) operation to view the details about the account to obtain the result of applying the account baseline to the account.
+        
+        @param request: EnrollAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnrollAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name_prefix):
@@ -133,6 +149,13 @@ class Client(OpenApiClient):
         self,
         request: governance_20210120_models.EnrollAccountRequest,
     ) -> governance_20210120_models.EnrollAccountResponse:
+        """
+        You can call this API operation to create a new account or manage an existing account and apply the account baseline to the account.
+        Accounts are created in asynchronous mode. After you create an account, you can apply the account baseline to the account. You can call the [GetEnrolledAccount API](~~GetEnrolledAccount~~) operation to view the details about the account to obtain the result of applying the account baseline to the account.
+        
+        @param request: EnrollAccountRequest
+        @return: EnrollAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.enroll_account_with_options(request, runtime)
 
@@ -140,6 +163,13 @@ class Client(OpenApiClient):
         self,
         request: governance_20210120_models.EnrollAccountRequest,
     ) -> governance_20210120_models.EnrollAccountResponse:
+        """
+        You can call this API operation to create a new account or manage an existing account and apply the account baseline to the account.
+        Accounts are created in asynchronous mode. After you create an account, you can apply the account baseline to the account. You can call the [GetEnrolledAccount API](~~GetEnrolledAccount~~) operation to view the details about the account to obtain the result of applying the account baseline to the account.
+        
+        @param request: EnrollAccountRequest
+        @return: EnrollAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.enroll_account_with_options_async(request, runtime)
 

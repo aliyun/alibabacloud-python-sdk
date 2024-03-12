@@ -12,9 +12,16 @@ class EnrollAccountRequestBaselineItems(TeaModel):
         skip: bool = None,
         version: str = None,
     ):
+        # The configurations of the baseline item.
         self.config = config
+        # The name of the baseline item.
         self.name = name
+        # Specifies whether to skip the baseline item. Valid values:
+        # 
+        # *   false: The baseline item is not skipped.
+        # *   true: The baseline item is skipped.
         self.skip = skip
+        # The version of the baseline item.
         self.version = version
 
     def validate(self):
@@ -62,15 +69,47 @@ class EnrollAccountRequest(TeaModel):
         region_id: str = None,
         resell_account_type: str = None,
     ):
+        # The prefix for the account name of the member.
+        # 
+        # *   If the account baseline is applied to an account that is newly created, you must configure this parameter.
+        # *   If the account baseline is applied to an existing account, you do not need to configure this parameter.
         self.account_name_prefix = account_name_prefix
+        # The account ID.
+        # 
+        # *   If the account baseline is applied to an account that is newly created, you do not need to configure this parameter.
+        # *   If the account baseline is applied to an existing account, you must configure this parameter.
         self.account_uid = account_uid
+        # The baseline ID.
+        # 
+        # If this parameter is left empty, the default baseline is used.
         self.baseline_id = baseline_id
+        # An array that contains baseline items.
+        # 
+        # If this parameter is specified, the configurations of the baseline items are merged with the baseline of the specified account. The configurations of the same baseline items are subject to the configuration of this parameter. We recommend that you leave this parameter empty and configure the `BaselineId` parameter to specify an account baseline and apply the configuration of the account baseline to the account.
         self.baseline_items = baseline_items
+        # The display name of the account.
+        # 
+        # *   If the account baseline is applied to an account that is newly created, you must configure this parameter.
+        # *   If the account baseline is applied to an existing account, you do not need to configure this parameter.
         self.display_name = display_name
+        # The ID of the parent folder.
+        # 
+        # *   If the account baseline is applied to an account that is newly created, you need to specify a parent folder. If you do not configure this parameter, the account is created in the Root folder.
+        # *   If the account baseline is applied to an existing account, you do not need to configure this parameter.
         self.folder_id = folder_id
+        # The ID of the billing account.
+        # 
+        # *   If the account baseline is applied to an account that is newly created, you need to specify a billing account. If you do not configure this parameter, the self-pay settlement method is used for the account.
+        # *   If the account baseline is applied to an existing account, you do not need to configure this parameter.
         self.payer_account_uid = payer_account_uid
-        # RegionId
+        # The region ID.
         self.region_id = region_id
+        # The identity type of the member. Valid values:
+        # 
+        # *   resell (default): The member is an account for a reseller. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
+        # *   non_resell: The member is not an account for a reseller. The member is an account that is not associated with a reseller. You can directly use the account to purchase Alibaba Cloud resources. The member is used as its own billing account.
+        # 
+        # > This parameter is available only for resellers at the international site (alibabacloud.com).
         self.resell_account_type = resell_account_type
 
     def validate(self):
@@ -139,7 +178,9 @@ class EnrollAccountResponseBody(TeaModel):
         account_uid: int = None,
         request_id: str = None,
     ):
+        # The account ID.
         self.account_uid = account_uid
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -178,9 +219,6 @@ class EnrollAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -216,8 +254,9 @@ class GetAccountFactoryBaselineRequest(TeaModel):
         baseline_id: str = None,
         region_id: str = None,
     ):
+        # The baseline ID.
         self.baseline_id = baseline_id
-        # RegionId
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -251,8 +290,13 @@ class GetAccountFactoryBaselineResponseBodyBaselineItems(TeaModel):
         name: str = None,
         version: str = None,
     ):
+        # The configuration of the baseline item.
+        # 
+        # The value is a JSON string.
         self.config = config
+        # The name of the baseline item.
         self.name = name
+        # The version of the baseline item.
         self.version = version
 
     def validate(self):
@@ -295,13 +339,24 @@ class GetAccountFactoryBaselineResponseBody(TeaModel):
         type: str = None,
         update_time: str = None,
     ):
+        # The baseline ID.
         self.baseline_id = baseline_id
+        # The baseline items.
         self.baseline_items = baseline_items
+        # The name of the baseline.
         self.baseline_name = baseline_name
+        # The time when the baseline was created.
         self.create_time = create_time
+        # The description of the baseline.
         self.description = description
+        # The request ID.
         self.request_id = request_id
+        # The type of the baseline. Valid values:
+        # 
+        # *   System: default baseline.
+        # *   Custom: custom baseline.
         self.type = type
+        # The time when the baseline was updated.
         self.update_time = update_time
 
     def validate(self):
@@ -372,9 +427,6 @@ class GetAccountFactoryBaselineResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -410,8 +462,9 @@ class GetEnrolledAccountRequest(TeaModel):
         account_uid: int = None,
         region_id: str = None,
     ):
+        # The account ID.
         self.account_uid = account_uid
-        # RegionId
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -438,52 +491,7 @@ class GetEnrolledAccountRequest(TeaModel):
         return self
 
 
-class GetEnrolledAccountResponseBodyErrorInfo(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        message: str = None,
-        recommend: str = None,
-        request_id: str = None,
-    ):
-        self.code = code
-        self.message = message
-        self.recommend = recommend
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.recommend is not None:
-            result['Recommend'] = self.recommend
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('Recommend') is not None:
-            self.recommend = m.get('Recommend')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class GetEnrolledAccountResponseBodyInputsBaselineItems(TeaModel):
+class GetEnrolledAccountResponseBodyBaselineItems(TeaModel):
     def __init__(
         self,
         config: str = None,
@@ -528,6 +536,104 @@ class GetEnrolledAccountResponseBodyInputsBaselineItems(TeaModel):
         return self
 
 
+class GetEnrolledAccountResponseBodyErrorInfo(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        recommend: str = None,
+        request_id: str = None,
+    ):
+        # The error code returned.
+        self.code = code
+        # The error message returned.
+        self.message = message
+        # The suggestions that are used to resolve the issue.
+        self.recommend = recommend
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.recommend is not None:
+            result['Recommend'] = self.recommend
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Recommend') is not None:
+            self.recommend = m.get('Recommend')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetEnrolledAccountResponseBodyInputsBaselineItems(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+        name: str = None,
+        skip: bool = None,
+        version: str = None,
+    ):
+        # The configurations of the baseline item.
+        self.config = config
+        # The name of the baseline item.
+        self.name = name
+        # Indicates whether to skip the baseline item.
+        self.skip = skip
+        # The version of the baseline item.
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.skip is not None:
+            result['Skip'] = self.skip
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Skip') is not None:
+            self.skip = m.get('Skip')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
 class GetEnrolledAccountResponseBodyInputs(TeaModel):
     def __init__(
         self,
@@ -538,11 +644,17 @@ class GetEnrolledAccountResponseBodyInputs(TeaModel):
         folder_id: str = None,
         payer_account_uid: int = None,
     ):
+        # The prefix for the account name of the member.
         self.account_name_prefix = account_name_prefix
+        # The account ID.
         self.account_uid = account_uid
+        # An array that contains baseline items.
         self.baseline_items = baseline_items
+        # The display name of the account.
         self.display_name = display_name
+        # The ID of the parent folder.
         self.folder_id = folder_id
+        # The ID of the billing account.
         self.payer_account_uid = payer_account_uid
 
     def validate(self):
@@ -599,7 +711,14 @@ class GetEnrolledAccountResponseBodyProgress(TeaModel):
         name: str = None,
         status: str = None,
     ):
+        # The name of the baseline item.
         self.name = name
+        # The status of applying the account baseline to the account. Valid values:
+        # 
+        # *   Pending: The account is waiting to be created.
+        # *   Running: The account baseline is being applied to the account.
+        # *   Finished: The account baseline is applied to the account.
+        # *   Failed: The account baseline failed to be applied to the account.
         self.status = status
 
     def validate(self):
@@ -631,6 +750,7 @@ class GetEnrolledAccountResponseBody(TeaModel):
         self,
         account_uid: int = None,
         baseline_id: str = None,
+        baseline_items: List[GetEnrolledAccountResponseBodyBaselineItems] = None,
         create_time: str = None,
         display_name: str = None,
         error_info: GetEnrolledAccountResponseBodyErrorInfo = None,
@@ -644,22 +764,48 @@ class GetEnrolledAccountResponseBody(TeaModel):
         status: str = None,
         update_time: str = None,
     ):
+        # The account ID.
         self.account_uid = account_uid
+        # The ID of the baseline that was applied to the account.
         self.baseline_id = baseline_id
+        self.baseline_items = baseline_items
+        # The time at which the account was created.
         self.create_time = create_time
+        # The display name of the account.
         self.display_name = display_name
+        # The error message returned.
         self.error_info = error_info
+        # The ID of the parent folder.
         self.folder_id = folder_id
+        # Indicates whether the account was initialized.
         self.initialized = initialized
+        # The input parameters that are used when you enrolled the account.
         self.inputs = inputs
+        # The ID of the master account to which the account belongs.
         self.master_account_uid = master_account_uid
+        # The ID of the billing account.
         self.payer_account_uid = payer_account_uid
+        # The progress of applying the account baseline to the account.
         self.progress = progress
+        # The request ID.
         self.request_id = request_id
+        # The creation status of the account. Valid values:
+        # 
+        # *   Pending: The account is waiting to be created.
+        # *   Running: The account is being created.
+        # *   Finished: The account is created.
+        # *   Failed: The account failed to be created.
+        # *   Scheduling: The account is being scheduled.
+        # *   ScheduleFailed: The account failed to be scheduled.
         self.status = status
+        # The time when the information about the account was updated.
         self.update_time = update_time
 
     def validate(self):
+        if self.baseline_items:
+            for k in self.baseline_items:
+                if k:
+                    k.validate()
         if self.error_info:
             self.error_info.validate()
         if self.inputs:
@@ -679,6 +825,10 @@ class GetEnrolledAccountResponseBody(TeaModel):
             result['AccountUid'] = self.account_uid
         if self.baseline_id is not None:
             result['BaselineId'] = self.baseline_id
+        result['BaselineItems'] = []
+        if self.baseline_items is not None:
+            for k in self.baseline_items:
+                result['BaselineItems'].append(k.to_map() if k else None)
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.display_name is not None:
@@ -713,6 +863,11 @@ class GetEnrolledAccountResponseBody(TeaModel):
             self.account_uid = m.get('AccountUid')
         if m.get('BaselineId') is not None:
             self.baseline_id = m.get('BaselineId')
+        self.baseline_items = []
+        if m.get('BaselineItems') is not None:
+            for k in m.get('BaselineItems'):
+                temp_model = GetEnrolledAccountResponseBodyBaselineItems()
+                self.baseline_items.append(temp_model.from_map(k))
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('DisplayName') is not None:
@@ -757,9 +912,6 @@ class GetEnrolledAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -796,7 +948,11 @@ class ListAccountFactoryBaselinesRequest(TeaModel):
         next_token: str = None,
         region_id: str = None,
     ):
+        # The maximum number of entries to return on each page.
+        # 
+        # Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
         self.next_token = next_token
         # RegionId
         self.region_id = region_id
@@ -839,11 +995,20 @@ class ListAccountFactoryBaselinesResponseBodyBaselines(TeaModel):
         type: str = None,
         update_time: str = None,
     ):
+        # The baseline ID.
         self.baseline_id = baseline_id
+        # The name of the baseline.
         self.baseline_name = baseline_name
+        # The time at which the baseline was created.
         self.create_time = create_time
+        # The description of the baseline.
         self.description = description
+        # The type of the baseline. Valid values:
+        # 
+        # *   System: default baseline
+        # *   Custom: custom baseline
         self.type = type
+        # The time when the baseline was updated.
         self.update_time = update_time
 
     def validate(self):
@@ -893,8 +1058,11 @@ class ListAccountFactoryBaselinesResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # An array that consists of baselines.
         self.baselines = baselines
+        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -945,9 +1113,6 @@ class ListAccountFactoryBaselinesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -984,9 +1149,13 @@ class ListEnrolledAccountsRequest(TeaModel):
         next_token: str = None,
         region_id: str = None,
     ):
+        # The maximum number of entries to return on each page.
+        # 
+        # Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
         self.next_token = next_token
-        # RegionId
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -1029,13 +1198,28 @@ class ListEnrolledAccountsResponseBodyEnrolledAccounts(TeaModel):
         status: str = None,
         update_time: str = None,
     ):
+        # The account ID.
         self.account_uid = account_uid
+        # The baseline ID.
         self.baseline_id = baseline_id
+        # The time at which the account was created.
         self.create_time = create_time
+        # The display name of the account.
         self.display_name = display_name
+        # The ID of the parent folder.
         self.folder_id = folder_id
+        # The ID of the billing account.
         self.payer_account_uid = payer_account_uid
+        # The creation status of the account. Valid values:
+        # 
+        # *   Pending: The account is waiting to be created.
+        # *   Running: The account is being created.
+        # *   Finished: The account is created.
+        # *   Failed: The account failed to be created.
+        # *   Scheduling: The account is being scheduled.
+        # *   ScheduleFailed: The account failed to be scheduled.
         self.status = status
+        # The time when the information about the account was updated.
         self.update_time = update_time
 
     def validate(self):
@@ -1093,8 +1277,11 @@ class ListEnrolledAccountsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The accounts.
         self.enrolled_accounts = enrolled_accounts
+        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1145,9 +1332,6 @@ class ListEnrolledAccountsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

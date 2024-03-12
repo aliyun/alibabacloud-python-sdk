@@ -1,3 +1,7 @@
+2024-03-12 Version: 0.0.5
+- Update API GetEnrolledAccount: update response param.
+
+
 2023-03-15 Version: 0.0.4
 - Add api params.
 
