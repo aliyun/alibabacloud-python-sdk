@@ -792,6 +792,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_csr_with_options_async(request, runtime)
 
+    def create_deployment_job_with_options(
+        self,
+        request: cas_20200407_models.CreateDeploymentJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.CreateDeploymentJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_ids):
+            query['CertIds'] = request.cert_ids
+        if not UtilClient.is_unset(request.contact_ids):
+            query['ContactIds'] = request.contact_ids
+        if not UtilClient.is_unset(request.job_type):
+            query['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.schedule_time):
+            query['ScheduleTime'] = request.schedule_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDeploymentJob',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.CreateDeploymentJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_deployment_job_with_options_async(
+        self,
+        request: cas_20200407_models.CreateDeploymentJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.CreateDeploymentJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_ids):
+            query['CertIds'] = request.cert_ids
+        if not UtilClient.is_unset(request.contact_ids):
+            query['ContactIds'] = request.contact_ids
+        if not UtilClient.is_unset(request.job_type):
+            query['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.schedule_time):
+            query['ScheduleTime'] = request.schedule_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDeploymentJob',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.CreateDeploymentJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_deployment_job(
+        self,
+        request: cas_20200407_models.CreateDeploymentJobRequest,
+    ) -> cas_20200407_models.CreateDeploymentJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_deployment_job_with_options(request, runtime)
+
+    async def create_deployment_job_async(
+        self,
+        request: cas_20200407_models.CreateDeploymentJobRequest,
+    ) -> cas_20200407_models.CreateDeploymentJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_deployment_job_with_options_async(request, runtime)
+
     def create_whclient_certificate_with_options(
         self,
         request: cas_20200407_models.CreateWHClientCertificateRequest,
@@ -1182,6 +1272,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_csr_with_options_async(request, runtime)
 
+    def delete_deployment_job_with_options(
+        self,
+        request: cas_20200407_models.DeleteDeploymentJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.DeleteDeploymentJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDeploymentJob',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.DeleteDeploymentJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_deployment_job_with_options_async(
+        self,
+        request: cas_20200407_models.DeleteDeploymentJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.DeleteDeploymentJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDeploymentJob',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.DeleteDeploymentJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_deployment_job(
+        self,
+        request: cas_20200407_models.DeleteDeploymentJobRequest,
+    ) -> cas_20200407_models.DeleteDeploymentJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_deployment_job_with_options(request, runtime)
+
+    async def delete_deployment_job_async(
+        self,
+        request: cas_20200407_models.DeleteDeploymentJobRequest,
+    ) -> cas_20200407_models.DeleteDeploymentJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_deployment_job_with_options_async(request, runtime)
+
     def delete_pcacert_with_options(
         self,
         request: cas_20200407_models.DeletePCACertRequest,
@@ -1348,6 +1508,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_user_certificate_with_options_async(request, runtime)
 
+    def delete_worker_resource_with_options(
+        self,
+        request: cas_20200407_models.DeleteWorkerResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.DeleteWorkerResourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.worker_id):
+            query['WorkerId'] = request.worker_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteWorkerResource',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.DeleteWorkerResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_worker_resource_with_options_async(
+        self,
+        request: cas_20200407_models.DeleteWorkerResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.DeleteWorkerResourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.worker_id):
+            query['WorkerId'] = request.worker_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteWorkerResource',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.DeleteWorkerResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_worker_resource(
+        self,
+        request: cas_20200407_models.DeleteWorkerResourceRequest,
+    ) -> cas_20200407_models.DeleteWorkerResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_worker_resource_with_options(request, runtime)
+
+    async def delete_worker_resource_async(
+        self,
+        request: cas_20200407_models.DeleteWorkerResourceRequest,
+    ) -> cas_20200407_models.DeleteWorkerResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_worker_resource_with_options_async(request, runtime)
+
     def describe_certificate_state_with_options(
         self,
         request: cas_20200407_models.DescribeCertificateStateRequest,
@@ -1447,6 +1681,76 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_certificate_state_with_options_async(request, runtime)
+
+    def describe_deployment_job_status_with_options(
+        self,
+        request: cas_20200407_models.DescribeDeploymentJobStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.DescribeDeploymentJobStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDeploymentJobStatus',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.DescribeDeploymentJobStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_deployment_job_status_with_options_async(
+        self,
+        request: cas_20200407_models.DescribeDeploymentJobStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.DescribeDeploymentJobStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDeploymentJobStatus',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.DescribeDeploymentJobStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_deployment_job_status(
+        self,
+        request: cas_20200407_models.DescribeDeploymentJobStatusRequest,
+    ) -> cas_20200407_models.DescribeDeploymentJobStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_deployment_job_status_with_options(request, runtime)
+
+    async def describe_deployment_job_status_async(
+        self,
+        request: cas_20200407_models.DescribeDeploymentJobStatusRequest,
+    ) -> cas_20200407_models.DescribeDeploymentJobStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_deployment_job_status_with_options_async(request, runtime)
 
     def describe_package_state_with_options(
         self,
@@ -2026,6 +2330,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_cert_warehouse_with_options_async(request, runtime)
 
+    def list_cloud_resources_with_options(
+        self,
+        request: cas_20200407_models.ListCloudResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.ListCloudResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cloud_name):
+            query['CloudName'] = request.cloud_name
+        if not UtilClient.is_unset(request.cloud_product):
+            query['CloudProduct'] = request.cloud_product
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.secret_id):
+            query['SecretId'] = request.secret_id
+        if not UtilClient.is_unset(request.show_size):
+            query['ShowSize'] = request.show_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCloudResources',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.ListCloudResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cloud_resources_with_options_async(
+        self,
+        request: cas_20200407_models.ListCloudResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.ListCloudResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cloud_name):
+            query['CloudName'] = request.cloud_name
+        if not UtilClient.is_unset(request.cloud_product):
+            query['CloudProduct'] = request.cloud_product
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.secret_id):
+            query['SecretId'] = request.secret_id
+        if not UtilClient.is_unset(request.show_size):
+            query['ShowSize'] = request.show_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCloudResources',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.ListCloudResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cloud_resources(
+        self,
+        request: cas_20200407_models.ListCloudResourcesRequest,
+    ) -> cas_20200407_models.ListCloudResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_cloud_resources_with_options(request, runtime)
+
+    async def list_cloud_resources_async(
+        self,
+        request: cas_20200407_models.ListCloudResourcesRequest,
+    ) -> cas_20200407_models.ListCloudResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_cloud_resources_with_options_async(request, runtime)
+
     def list_csr_with_options(
         self,
         request: cas_20200407_models.ListCsrRequest,
@@ -2107,6 +2501,228 @@ class Client(OpenApiClient):
     ) -> cas_20200407_models.ListCsrResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_csr_with_options_async(request, runtime)
+
+    def list_deployment_job_with_options(
+        self,
+        request: cas_20200407_models.ListDeploymentJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.ListDeploymentJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.job_type):
+            query['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.show_size):
+            query['ShowSize'] = request.show_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDeploymentJob',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.ListDeploymentJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_deployment_job_with_options_async(
+        self,
+        request: cas_20200407_models.ListDeploymentJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.ListDeploymentJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.job_type):
+            query['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.show_size):
+            query['ShowSize'] = request.show_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDeploymentJob',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.ListDeploymentJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_deployment_job(
+        self,
+        request: cas_20200407_models.ListDeploymentJobRequest,
+    ) -> cas_20200407_models.ListDeploymentJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_deployment_job_with_options(request, runtime)
+
+    async def list_deployment_job_async(
+        self,
+        request: cas_20200407_models.ListDeploymentJobRequest,
+    ) -> cas_20200407_models.ListDeploymentJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_deployment_job_with_options_async(request, runtime)
+
+    def list_deployment_job_cert_with_options(
+        self,
+        request: cas_20200407_models.ListDeploymentJobCertRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.ListDeploymentJobCertResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDeploymentJobCert',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.ListDeploymentJobCertResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_deployment_job_cert_with_options_async(
+        self,
+        request: cas_20200407_models.ListDeploymentJobCertRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.ListDeploymentJobCertResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDeploymentJobCert',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.ListDeploymentJobCertResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_deployment_job_cert(
+        self,
+        request: cas_20200407_models.ListDeploymentJobCertRequest,
+    ) -> cas_20200407_models.ListDeploymentJobCertResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_deployment_job_cert_with_options(request, runtime)
+
+    async def list_deployment_job_cert_async(
+        self,
+        request: cas_20200407_models.ListDeploymentJobCertRequest,
+    ) -> cas_20200407_models.ListDeploymentJobCertResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_deployment_job_cert_with_options_async(request, runtime)
+
+    def list_deployment_job_resource_with_options(
+        self,
+        request: cas_20200407_models.ListDeploymentJobResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.ListDeploymentJobResourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDeploymentJobResource',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.ListDeploymentJobResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_deployment_job_resource_with_options_async(
+        self,
+        request: cas_20200407_models.ListDeploymentJobResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.ListDeploymentJobResourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDeploymentJobResource',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.ListDeploymentJobResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_deployment_job_resource(
+        self,
+        request: cas_20200407_models.ListDeploymentJobResourceRequest,
+    ) -> cas_20200407_models.ListDeploymentJobResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_deployment_job_resource_with_options(request, runtime)
+
+    async def list_deployment_job_resource_async(
+        self,
+        request: cas_20200407_models.ListDeploymentJobResourceRequest,
+    ) -> cas_20200407_models.ListDeploymentJobResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_deployment_job_resource_with_options_async(request, runtime)
 
     def list_user_certificate_order_with_options(
         self,
@@ -2561,6 +3177,248 @@ class Client(OpenApiClient):
     ) -> cas_20200407_models.UpdateCsrResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_csr_with_options_async(request, runtime)
+
+    def update_deployment_job_with_options(
+        self,
+        request: cas_20200407_models.UpdateDeploymentJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.UpdateDeploymentJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_ids):
+            query['CertIds'] = request.cert_ids
+        if not UtilClient.is_unset(request.contact_ids):
+            query['ContactIds'] = request.contact_ids
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.schedule_time):
+            query['ScheduleTime'] = request.schedule_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDeploymentJob',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.UpdateDeploymentJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_deployment_job_with_options_async(
+        self,
+        request: cas_20200407_models.UpdateDeploymentJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.UpdateDeploymentJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_ids):
+            query['CertIds'] = request.cert_ids
+        if not UtilClient.is_unset(request.contact_ids):
+            query['ContactIds'] = request.contact_ids
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.schedule_time):
+            query['ScheduleTime'] = request.schedule_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDeploymentJob',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.UpdateDeploymentJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_deployment_job(
+        self,
+        request: cas_20200407_models.UpdateDeploymentJobRequest,
+    ) -> cas_20200407_models.UpdateDeploymentJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_deployment_job_with_options(request, runtime)
+
+    async def update_deployment_job_async(
+        self,
+        request: cas_20200407_models.UpdateDeploymentJobRequest,
+    ) -> cas_20200407_models.UpdateDeploymentJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_deployment_job_with_options_async(request, runtime)
+
+    def update_deployment_job_status_with_options(
+        self,
+        request: cas_20200407_models.UpdateDeploymentJobStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.UpdateDeploymentJobStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDeploymentJobStatus',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.UpdateDeploymentJobStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_deployment_job_status_with_options_async(
+        self,
+        request: cas_20200407_models.UpdateDeploymentJobStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.UpdateDeploymentJobStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDeploymentJobStatus',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.UpdateDeploymentJobStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_deployment_job_status(
+        self,
+        request: cas_20200407_models.UpdateDeploymentJobStatusRequest,
+    ) -> cas_20200407_models.UpdateDeploymentJobStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_deployment_job_status_with_options(request, runtime)
+
+    async def update_deployment_job_status_async(
+        self,
+        request: cas_20200407_models.UpdateDeploymentJobStatusRequest,
+    ) -> cas_20200407_models.UpdateDeploymentJobStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_deployment_job_status_with_options_async(request, runtime)
+
+    def update_worker_resource_status_with_options(
+        self,
+        request: cas_20200407_models.UpdateWorkerResourceStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.UpdateWorkerResourceStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.worker_id):
+            query['WorkerId'] = request.worker_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateWorkerResourceStatus',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.UpdateWorkerResourceStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_worker_resource_status_with_options_async(
+        self,
+        request: cas_20200407_models.UpdateWorkerResourceStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.UpdateWorkerResourceStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.worker_id):
+            query['WorkerId'] = request.worker_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateWorkerResourceStatus',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.UpdateWorkerResourceStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_worker_resource_status(
+        self,
+        request: cas_20200407_models.UpdateWorkerResourceStatusRequest,
+    ) -> cas_20200407_models.UpdateWorkerResourceStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_worker_resource_status_with_options(request, runtime)
+
+    async def update_worker_resource_status_async(
+        self,
+        request: cas_20200407_models.UpdateWorkerResourceStatusRequest,
+    ) -> cas_20200407_models.UpdateWorkerResourceStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_worker_resource_status_with_options_async(request, runtime)
 
     def upload_csr_with_options(
         self,
