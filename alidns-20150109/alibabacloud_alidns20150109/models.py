@@ -22860,9 +22860,11 @@ class DescribePdnsAppKeyRequest(TeaModel):
     def __init__(
         self,
         app_key_id: str = None,
+        auth_code: str = None,
         lang: str = None,
     ):
         self.app_key_id = app_key_id
+        self.auth_code = auth_code
         self.lang = lang
 
     def validate(self):
@@ -22876,6 +22878,8 @@ class DescribePdnsAppKeyRequest(TeaModel):
         result = dict()
         if self.app_key_id is not None:
             result['AppKeyId'] = self.app_key_id
+        if self.auth_code is not None:
+            result['AuthCode'] = self.auth_code
         if self.lang is not None:
             result['Lang'] = self.lang
         return result
@@ -22884,6 +22888,8 @@ class DescribePdnsAppKeyRequest(TeaModel):
         m = m or dict()
         if m.get('AppKeyId') is not None:
             self.app_key_id = m.get('AppKeyId')
+        if m.get('AuthCode') is not None:
+            self.auth_code = m.get('AuthCode')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         return self
@@ -22895,11 +22901,13 @@ class DescribePdnsAppKeyResponseBodyAppKey(TeaModel):
         app_key_id: str = None,
         app_key_secret: str = None,
         create_date: str = None,
+        create_timestamp: int = None,
         state: str = None,
     ):
         self.app_key_id = app_key_id
         self.app_key_secret = app_key_secret
         self.create_date = create_date
+        self.create_timestamp = create_timestamp
         self.state = state
 
     def validate(self):
@@ -22917,6 +22925,8 @@ class DescribePdnsAppKeyResponseBodyAppKey(TeaModel):
             result['AppKeySecret'] = self.app_key_secret
         if self.create_date is not None:
             result['CreateDate'] = self.create_date
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
         if self.state is not None:
             result['State'] = self.state
         return result
@@ -22929,6 +22939,8 @@ class DescribePdnsAppKeyResponseBodyAppKey(TeaModel):
             self.app_key_secret = m.get('AppKeySecret')
         if m.get('CreateDate') is not None:
             self.create_date = m.get('CreateDate')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
         if m.get('State') is not None:
             self.state = m.get('State')
         return self
@@ -23042,10 +23054,12 @@ class DescribePdnsAppKeysResponseBodyAppKeys(TeaModel):
         self,
         app_key_id: str = None,
         create_date: str = None,
+        create_timestamp: int = None,
         state: str = None,
     ):
         self.app_key_id = app_key_id
         self.create_date = create_date
+        self.create_timestamp = create_timestamp
         self.state = state
 
     def validate(self):
@@ -23061,6 +23075,8 @@ class DescribePdnsAppKeysResponseBodyAppKeys(TeaModel):
             result['AppKeyId'] = self.app_key_id
         if self.create_date is not None:
             result['CreateDate'] = self.create_date
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
         if self.state is not None:
             result['State'] = self.state
         return result
@@ -23071,6 +23087,8 @@ class DescribePdnsAppKeysResponseBodyAppKeys(TeaModel):
             self.app_key_id = m.get('AppKeyId')
         if m.get('CreateDate') is not None:
             self.create_date = m.get('CreateDate')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
         if m.get('State') is not None:
             self.state = m.get('State')
         return self
