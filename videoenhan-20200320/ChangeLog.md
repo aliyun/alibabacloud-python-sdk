@@ -1,3 +1,9 @@
+2024-03-13 Version: 3.0.20
+- Update API QueryFaceVideoTemplate: add param PageNo.
+- Update API QueryFaceVideoTemplate: add param PageSize.
+- Update API QueryFaceVideoTemplate: update response param.
+
+
 2023-10-10 Version: 3.0.19
 - Generated python 2020-03-20 for videoenhan.
 

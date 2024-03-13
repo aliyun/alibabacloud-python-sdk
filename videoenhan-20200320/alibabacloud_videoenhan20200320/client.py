@@ -3645,6 +3645,10 @@ class Client(OpenApiClient):
     ) -> videoenhan_20200320_models.QueryFaceVideoTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
@@ -3673,6 +3677,10 @@ class Client(OpenApiClient):
     ) -> videoenhan_20200320_models.QueryFaceVideoTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
