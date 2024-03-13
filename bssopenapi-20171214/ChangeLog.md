@@ -1,3 +1,12 @@
+2024-03-13 Version: 3.0.0
+- Delete API SaveUserCredit.
+- Delete API SetCreditLabelAction.
+- Update API DescribeInstanceBill: add param PipCode.
+- Update API QueryAccountBalance: update response param.
+- Update API QuerySavingsPlansDeductLog: update response param.
+- Update API SetRenewal: update param ProductCode.
+
+
 2023-11-21 Version: 2.2.2
 - Generated python 2017-12-14 for BssOpenApi.
 

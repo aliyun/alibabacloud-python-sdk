@@ -1975,6 +1975,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pip_code):
+            query['PipCode'] = request.pip_code
         if not UtilClient.is_unset(request.product_code):
             query['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.product_type):
@@ -2036,6 +2038,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pip_code):
+            query['PipCode'] = request.pip_code
         if not UtilClient.is_unset(request.product_code):
             query['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.product_type):
@@ -4251,7 +4255,7 @@ class Client(OpenApiClient):
         """
         1.  *Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.**\
         2.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
-        3.  For more information, see [Rules for unsubscribing from resources](https://help.aliyun.com/knowledge_detail/116043.html?spm=a2c81.e1d666e.app.2.62ae11271Kd6iM).
+        3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
         
         @param request: InquiryPriceRefundInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4294,7 +4298,7 @@ class Client(OpenApiClient):
         """
         1.  *Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.**\
         2.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
-        3.  For more information, see [Rules for unsubscribing from resources](https://help.aliyun.com/knowledge_detail/116043.html?spm=a2c81.e1d666e.app.2.62ae11271Kd6iM).
+        3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
         
         @param request: InquiryPriceRefundInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4336,7 +4340,7 @@ class Client(OpenApiClient):
         """
         1.  *Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.**\
         2.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
-        3.  For more information, see [Rules for unsubscribing from resources](https://help.aliyun.com/knowledge_detail/116043.html?spm=a2c81.e1d666e.app.2.62ae11271Kd6iM).
+        3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
         
         @param request: InquiryPriceRefundInstanceRequest
         @return: InquiryPriceRefundInstanceResponse
@@ -4351,7 +4355,7 @@ class Client(OpenApiClient):
         """
         1.  *Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.**\
         2.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
-        3.  For more information, see [Rules for unsubscribing from resources](https://help.aliyun.com/knowledge_detail/116043.html?spm=a2c81.e1d666e.app.2.62ae11271Kd6iM).
+        3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
         
         @param request: InquiryPriceRefundInstanceRequest
         @return: InquiryPriceRefundInstanceResponse
@@ -4685,7 +4689,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryAccountBillResponse:
         """
-        ##
         Before you call this operation, take note of the following items:
         *   Account bills are summarized based on instance bills. In most cases, the account bills do not include the data generated on the last day of the specified period.
         *   You can query the data generated in June 2020 or later for Cloud Communications services. However, the query results do not include the data of Alibaba Cloud Domains.
@@ -4739,7 +4742,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryAccountBillResponse:
         """
-        ##
         Before you call this operation, take note of the following items:
         *   Account bills are summarized based on instance bills. In most cases, the account bills do not include the data generated on the last day of the specified period.
         *   You can query the data generated in June 2020 or later for Cloud Communications services. However, the query results do not include the data of Alibaba Cloud Domains.
@@ -4792,7 +4794,6 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryAccountBillRequest,
     ) -> bss_open_api_20171214_models.QueryAccountBillResponse:
         """
-        ##
         Before you call this operation, take note of the following items:
         *   Account bills are summarized based on instance bills. In most cases, the account bills do not include the data generated on the last day of the specified period.
         *   You can query the data generated in June 2020 or later for Cloud Communications services. However, the query results do not include the data of Alibaba Cloud Domains.
@@ -4808,7 +4809,6 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryAccountBillRequest,
     ) -> bss_open_api_20171214_models.QueryAccountBillResponse:
         """
-        ##
         Before you call this operation, take note of the following items:
         *   Account bills are summarized based on instance bills. In most cases, the account bills do not include the data generated on the last day of the specified period.
         *   You can query the data generated in June 2020 or later for Cloud Communications services. However, the query results do not include the data of Alibaba Cloud Domains.
@@ -8155,7 +8155,7 @@ class Client(OpenApiClient):
         """
         1.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
         2.  Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.
-        3.  For more information, see [Rules for unsubscribing from resources](https://help.aliyun.com/knowledge_detail/116043.html?spm=a2c81.e1d666e.app.2.62ae11271Kd6iM).
+        3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
         
         @param request: RefundInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8200,7 +8200,7 @@ class Client(OpenApiClient):
         """
         1.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
         2.  Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.
-        3.  For more information, see [Rules for unsubscribing from resources](https://help.aliyun.com/knowledge_detail/116043.html?spm=a2c81.e1d666e.app.2.62ae11271Kd6iM).
+        3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
         
         @param request: RefundInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8244,7 +8244,7 @@ class Client(OpenApiClient):
         """
         1.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
         2.  Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.
-        3.  For more information, see [Rules for unsubscribing from resources](https://help.aliyun.com/knowledge_detail/116043.html?spm=a2c81.e1d666e.app.2.62ae11271Kd6iM).
+        3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
         
         @param request: RefundInstanceRequest
         @return: RefundInstanceResponse
@@ -8259,7 +8259,7 @@ class Client(OpenApiClient):
         """
         1.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
         2.  Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.
-        3.  For more information, see [Rules for unsubscribing from resources](https://help.aliyun.com/knowledge_detail/116043.html?spm=a2c81.e1d666e.app.2.62ae11271Kd6iM).
+        3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
         
         @param request: RefundInstanceRequest
         @return: RefundInstanceResponse
@@ -8273,8 +8273,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ReleaseInstanceResponse:
         """
-        A value of true indicates that the execution is complete.
-        A value of false indicates that an error occurs during the execution.
+        This operation is provided for only VNOs to release instances. If a non-specific VNO calls this operation, the request is blocked.
         
         @param request: ReleaseInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8321,8 +8320,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ReleaseInstanceResponse:
         """
-        A value of true indicates that the execution is complete.
-        A value of false indicates that an error occurs during the execution.
+        This operation is provided for only VNOs to release instances. If a non-specific VNO calls this operation, the request is blocked.
         
         @param request: ReleaseInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8368,8 +8366,7 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.ReleaseInstanceRequest,
     ) -> bss_open_api_20171214_models.ReleaseInstanceResponse:
         """
-        A value of true indicates that the execution is complete.
-        A value of false indicates that an error occurs during the execution.
+        This operation is provided for only VNOs to release instances. If a non-specific VNO calls this operation, the request is blocked.
         
         @param request: ReleaseInstanceRequest
         @return: ReleaseInstanceResponse
@@ -8382,8 +8379,7 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.ReleaseInstanceRequest,
     ) -> bss_open_api_20171214_models.ReleaseInstanceResponse:
         """
-        A value of true indicates that the execution is complete.
-        A value of false indicates that an error occurs during the execution.
+        This operation is provided for only VNOs to release instances. If a non-specific VNO calls this operation, the request is blocked.
         
         @param request: ReleaseInstanceRequest
         @return: ReleaseInstanceResponse
@@ -8747,104 +8743,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.renew_resource_package_with_options_async(request, runtime)
 
-    def save_user_credit_with_options(
-        self,
-        request: bss_open_api_20171214_models.SaveUserCreditRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> bss_open_api_20171214_models.SaveUserCreditResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.avoid_expiration):
-            query['AvoidExpiration'] = request.avoid_expiration
-        if not UtilClient.is_unset(request.avoid_notification):
-            query['AvoidNotification'] = request.avoid_notification
-        if not UtilClient.is_unset(request.avoid_prepaid_expiration):
-            query['AvoidPrepaidExpiration'] = request.avoid_prepaid_expiration
-        if not UtilClient.is_unset(request.avoid_prepaid_notification):
-            query['AvoidPrepaidNotification'] = request.avoid_prepaid_notification
-        if not UtilClient.is_unset(request.credit_type):
-            query['CreditType'] = request.credit_type
-        if not UtilClient.is_unset(request.credit_value):
-            query['CreditValue'] = request.credit_value
-        if not UtilClient.is_unset(request.description):
-            query['Description'] = request.description
-        if not UtilClient.is_unset(request.operator):
-            query['Operator'] = request.operator
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SaveUserCredit',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            bss_open_api_20171214_models.SaveUserCreditResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def save_user_credit_with_options_async(
-        self,
-        request: bss_open_api_20171214_models.SaveUserCreditRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> bss_open_api_20171214_models.SaveUserCreditResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.avoid_expiration):
-            query['AvoidExpiration'] = request.avoid_expiration
-        if not UtilClient.is_unset(request.avoid_notification):
-            query['AvoidNotification'] = request.avoid_notification
-        if not UtilClient.is_unset(request.avoid_prepaid_expiration):
-            query['AvoidPrepaidExpiration'] = request.avoid_prepaid_expiration
-        if not UtilClient.is_unset(request.avoid_prepaid_notification):
-            query['AvoidPrepaidNotification'] = request.avoid_prepaid_notification
-        if not UtilClient.is_unset(request.credit_type):
-            query['CreditType'] = request.credit_type
-        if not UtilClient.is_unset(request.credit_value):
-            query['CreditValue'] = request.credit_value
-        if not UtilClient.is_unset(request.description):
-            query['Description'] = request.description
-        if not UtilClient.is_unset(request.operator):
-            query['Operator'] = request.operator
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SaveUserCredit',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            bss_open_api_20171214_models.SaveUserCreditResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def save_user_credit(
-        self,
-        request: bss_open_api_20171214_models.SaveUserCreditRequest,
-    ) -> bss_open_api_20171214_models.SaveUserCreditResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.save_user_credit_with_options(request, runtime)
-
-    async def save_user_credit_async(
-        self,
-        request: bss_open_api_20171214_models.SaveUserCreditRequest,
-    ) -> bss_open_api_20171214_models.SaveUserCreditResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.save_user_credit_with_options_async(request, runtime)
-
     def set_all_expiration_day_with_options(
         self,
         request: bss_open_api_20171214_models.SetAllExpirationDayRequest,
@@ -8918,140 +8816,6 @@ class Client(OpenApiClient):
     ) -> bss_open_api_20171214_models.SetAllExpirationDayResponse:
         runtime = util_models.RuntimeOptions()
         return await self.set_all_expiration_day_with_options_async(request, runtime)
-
-    def set_credit_label_action_with_options(
-        self,
-        request: bss_open_api_20171214_models.SetCreditLabelActionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> bss_open_api_20171214_models.SetCreditLabelActionResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.action_type):
-            query['ActionType'] = request.action_type
-        if not UtilClient.is_unset(request.clear_cycle):
-            query['ClearCycle'] = request.clear_cycle
-        if not UtilClient.is_unset(request.credit_amount):
-            query['CreditAmount'] = request.credit_amount
-        if not UtilClient.is_unset(request.currency_code):
-            query['CurrencyCode'] = request.currency_code
-        if not UtilClient.is_unset(request.daily_cycle):
-            query['DailyCycle'] = request.daily_cycle
-        if not UtilClient.is_unset(request.description):
-            query['Description'] = request.description
-        if not UtilClient.is_unset(request.is_need_add_settle_label):
-            query['IsNeedAddSettleLabel'] = request.is_need_add_settle_label
-        if not UtilClient.is_unset(request.is_need_adjust_credit_account):
-            query['IsNeedAdjustCreditAccount'] = request.is_need_adjust_credit_account
-        if not UtilClient.is_unset(request.is_need_save_notify_rule):
-            query['IsNeedSaveNotifyRule'] = request.is_need_save_notify_rule
-        if not UtilClient.is_unset(request.is_need_set_credit_amount):
-            query['IsNeedSetCreditAmount'] = request.is_need_set_credit_amount
-        if not UtilClient.is_unset(request.need_notice):
-            query['NeedNotice'] = request.need_notice
-        if not UtilClient.is_unset(request.new_create_mode):
-            query['NewCreateMode'] = request.new_create_mode
-        if not UtilClient.is_unset(request.operator):
-            query['Operator'] = request.operator
-        if not UtilClient.is_unset(request.request_id):
-            query['RequestId'] = request.request_id
-        if not UtilClient.is_unset(request.site_code):
-            query['SiteCode'] = request.site_code
-        if not UtilClient.is_unset(request.source):
-            query['Source'] = request.source
-        if not UtilClient.is_unset(request.uid):
-            query['Uid'] = request.uid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SetCreditLabelAction',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            bss_open_api_20171214_models.SetCreditLabelActionResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def set_credit_label_action_with_options_async(
-        self,
-        request: bss_open_api_20171214_models.SetCreditLabelActionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> bss_open_api_20171214_models.SetCreditLabelActionResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.action_type):
-            query['ActionType'] = request.action_type
-        if not UtilClient.is_unset(request.clear_cycle):
-            query['ClearCycle'] = request.clear_cycle
-        if not UtilClient.is_unset(request.credit_amount):
-            query['CreditAmount'] = request.credit_amount
-        if not UtilClient.is_unset(request.currency_code):
-            query['CurrencyCode'] = request.currency_code
-        if not UtilClient.is_unset(request.daily_cycle):
-            query['DailyCycle'] = request.daily_cycle
-        if not UtilClient.is_unset(request.description):
-            query['Description'] = request.description
-        if not UtilClient.is_unset(request.is_need_add_settle_label):
-            query['IsNeedAddSettleLabel'] = request.is_need_add_settle_label
-        if not UtilClient.is_unset(request.is_need_adjust_credit_account):
-            query['IsNeedAdjustCreditAccount'] = request.is_need_adjust_credit_account
-        if not UtilClient.is_unset(request.is_need_save_notify_rule):
-            query['IsNeedSaveNotifyRule'] = request.is_need_save_notify_rule
-        if not UtilClient.is_unset(request.is_need_set_credit_amount):
-            query['IsNeedSetCreditAmount'] = request.is_need_set_credit_amount
-        if not UtilClient.is_unset(request.need_notice):
-            query['NeedNotice'] = request.need_notice
-        if not UtilClient.is_unset(request.new_create_mode):
-            query['NewCreateMode'] = request.new_create_mode
-        if not UtilClient.is_unset(request.operator):
-            query['Operator'] = request.operator
-        if not UtilClient.is_unset(request.request_id):
-            query['RequestId'] = request.request_id
-        if not UtilClient.is_unset(request.site_code):
-            query['SiteCode'] = request.site_code
-        if not UtilClient.is_unset(request.source):
-            query['Source'] = request.source
-        if not UtilClient.is_unset(request.uid):
-            query['Uid'] = request.uid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SetCreditLabelAction',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            bss_open_api_20171214_models.SetCreditLabelActionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def set_credit_label_action(
-        self,
-        request: bss_open_api_20171214_models.SetCreditLabelActionRequest,
-    ) -> bss_open_api_20171214_models.SetCreditLabelActionResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.set_credit_label_action_with_options(request, runtime)
-
-    async def set_credit_label_action_async(
-        self,
-        request: bss_open_api_20171214_models.SetCreditLabelActionRequest,
-    ) -> bss_open_api_20171214_models.SetCreditLabelActionResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.set_credit_label_action_with_options_async(request, runtime)
 
     def set_renewal_with_options(
         self,
