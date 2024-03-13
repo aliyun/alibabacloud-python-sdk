@@ -28,7 +28,7 @@ pip install alibabacloud_facebody20191230
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/facebody-20191230/ChangeLog.md).
 
 ## References
 
