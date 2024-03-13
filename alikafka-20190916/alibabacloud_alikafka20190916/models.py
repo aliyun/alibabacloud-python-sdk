@@ -301,12 +301,12 @@ class CreateAclRequest(TeaModel):
         region_id: str = None,
         username: str = None,
     ):
-        # The type of operation allowed by the ACL. Valid values:
+        # The operation type. Valid values:
         # 
-        # *   **Write**: data writes.
-        # *   **Read**: data reads.
-        # *   **Describe**: reads of **transaction IDs**.
-        # *   **IdempotentWrite**: idempotent data writes to **clusters**.
+        # *   **Write**: data writes
+        # *   **Read**: data reads
+        # *   **Describe**: reads of transaction IDs****\
+        # *   **IdempotentWrite**: idempotent data writes to clusters****\
         self.acl_operation_type = acl_operation_type
         # The name or ID of the resource.
         # 
@@ -320,9 +320,9 @@ class CreateAclRequest(TeaModel):
         self.acl_resource_pattern_type = acl_resource_pattern_type
         # The resource type. Valid values:
         # 
-        # *   **Topic**: topic
-        # *   **Group**: consumer group
-        # *   **Cluster**: cluster
+        # *   **Topic**\
+        # *   **Group**\
+        # *   **Cluster**\
         # *   **TransactionalId**: transaction
         self.acl_resource_type = acl_resource_type
         # The instance ID.
@@ -2005,7 +2005,7 @@ class DeleteAclRequest(TeaModel):
         region_id: str = None,
         username: str = None,
     ):
-        # The type of operation allowed by the ACL. Valid values:
+        # The operation type. Valid values:
         # 
         # *   **Write**\
         # *   **Read**\
@@ -2617,11 +2617,11 @@ class DeleteTopicResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+        # The HTTP status code. The status code 200 indicates that the request is successful.
         self.code = code
         # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
@@ -4882,6 +4882,8 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         name: str = None,
         paid_type: int = None,
         region_id: str = None,
+        reserved_publish_capacity: int = None,
+        reserved_subscribe_capacity: int = None,
         resource_group_id: str = None,
         sasl_domain_endpoint: str = None,
         security_group: str = None,
@@ -4950,6 +4952,8 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         self.paid_type = paid_type
         # The ID of the region where the instance resides.
         self.region_id = region_id
+        self.reserved_publish_capacity = reserved_publish_capacity
+        self.reserved_subscribe_capacity = reserved_subscribe_capacity
         # The resource group ID.
         self.resource_group_id = resource_group_id
         # The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode. ApsaraMQ for Kafka instances support endpoints in domain name mode and IP address mode.
@@ -5064,6 +5068,10 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
             result['PaidType'] = self.paid_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.reserved_publish_capacity is not None:
+            result['ReservedPublishCapacity'] = self.reserved_publish_capacity
+        if self.reserved_subscribe_capacity is not None:
+            result['ReservedSubscribeCapacity'] = self.reserved_subscribe_capacity
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.sasl_domain_endpoint is not None:
@@ -5139,6 +5147,10 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
             self.paid_type = m.get('PaidType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ReservedPublishCapacity') is not None:
+            self.reserved_publish_capacity = m.get('ReservedPublishCapacity')
+        if m.get('ReservedSubscribeCapacity') is not None:
+            self.reserved_subscribe_capacity = m.get('ReservedSubscribeCapacity')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SaslDomainEndpoint') is not None:
@@ -7121,12 +7133,22 @@ class QueryMessageRequest(TeaModel):
         region_id: str = None,
         topic: str = None,
     ):
+        # The beginning of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds.
         self.begin_time = begin_time
+        # The instance ID.
         self.instance_id = instance_id
+        # The consumer offset of the partition.
         self.offset = offset
+        # The partition ID.
         self.partition = partition
+        # The query type. Valid values:
+        # 
+        # *   byOffset: queries messages by offset. If you select this value, you must configure Partition and Offset.
+        # *   byTimestamp: queries messages by time. If you select this value, you must configure BeginTime.
         self.query_type = query_type
+        # The ID of the region where the resource resides.
         self.region_id = region_id
+        # The topic name.
         self.topic = topic
 
     def validate(self):
@@ -7191,19 +7213,37 @@ class QueryMessageResponseBodyMessageList(TeaModel):
         value: str = None,
         value_truncated: bool = None,
     ):
+        # The check value of the chaincode.
         self.checksum = checksum
+        # The message key.
         self.key = key
+        # Indicates whether the key is truncated.
         self.key_truncated = key_truncated
+        # The consumer offset of the partition.
         self.offset = offset
+        # The partition ID.
         self.partition = partition
+        # The size of the key after serialization. Unit: bytes.
         self.serialized_key_size = serialized_key_size
+        # The size of the value after serialization. Unit: bytes.
         self.serialized_value_size = serialized_value_size
+        # The time when the message was created. The value of this parameter is a UNIX timestamp in milliseconds.
         self.timestamp = timestamp
+        # The time type.
         self.timestamp_type = timestamp_type
+        # The topic name.
         self.topic = topic
+        # The truncated size of the message key. Unit: bytes.
+        # 
+        # *   A message is truncated only if the message exceeds 10 MB in size.
         self.truncated_key_size = truncated_key_size
+        # The truncated size of the message value. Unit: bytes.
+        # 
+        # *   A message is truncated only if the message exceeds 10 MB in size.
         self.truncated_value_size = truncated_value_size
+        # The message value.
         self.value = value
+        # Indicates whether the value is truncated.
         self.value_truncated = value_truncated
 
     def validate(self):
@@ -7287,10 +7327,18 @@ class QueryMessageResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned HTTP status code. If the request is successful, 200 is returned.
         self.code = code
+        # The returned message.
         self.message = message
+        # The messages.
         self.message_list = message_list
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -8168,10 +8216,12 @@ class UpdateAllowedIpRequest(TeaModel):
         self.instance_id = instance_id
         # The port range. Valid values:
         # 
-        # *   **9092/9092**: the port range for access from a virtual private cloud (VPC).
+        # *   **9092/9092**: the port range for access from virtual private clouds (VPCs) by using the default endpoint.
         # *   **9093/9093**: the port range for access from the Internet.
+        # *   **9094/9094**: the port range for access from VPCs by using the Simple Authentication and Security Layer (SASL) endpoint.
+        # *   **9095/9095**: the port range for access from VPCs by using the Secure Sockets Layer (SSL) endpoint.
         # 
-        # The value of this parameter must match the value of the **AllowdedListType** parameter.
+        # This parameter must correspond to **AllowdedListType**.
         self.port_range = port_range
         # The ID of the region where the instance resides.
         self.region_id = region_id
@@ -8378,9 +8428,10 @@ class UpdateConsumerOffsetRequest(TeaModel):
         # *   **timestamp** (default)
         # *   **offset**\
         self.reset_type = reset_type
-        # The point in time when message consumption starts. The value of this parameter is a UNIX timestamp. Unit: milliseconds. The value of this parameter must be **less than 0** or **within the retention period of the consumer offset**. This parameter takes effect only if you set resetType to timestamp.
+        # The point in time when message consumption starts. The value of this parameter is a UNIX timestamp in milliseconds. The value of this parameter must be **less than 0** or **within the retention period of the consumer offset**. This parameter takes effect only if you set resetType to timestamp.
         # 
-        # **If you want to reset the consumer offset to the latest offset, specify a value that is less than 0. Recommended value: -1.
+        # *   If you want to reset the consumer offset to the latest offset, set this parameter to -1.
+        # *   If you want to reset the consumer offset to the earliest offset, set this parameter to -2.
         self.time = time
         # The topic name.
         # 
@@ -8471,9 +8522,10 @@ class UpdateConsumerOffsetShrinkRequest(TeaModel):
         # *   **timestamp** (default)
         # *   **offset**\
         self.reset_type = reset_type
-        # The point in time when message consumption starts. The value of this parameter is a UNIX timestamp. Unit: milliseconds. The value of this parameter must be **less than 0** or **within the retention period of the consumer offset**. This parameter takes effect only if you set resetType to timestamp.
+        # The point in time when message consumption starts. The value of this parameter is a UNIX timestamp in milliseconds. The value of this parameter must be **less than 0** or **within the retention period of the consumer offset**. This parameter takes effect only if you set resetType to timestamp.
         # 
-        # **If you want to reset the consumer offset to the latest offset, specify a value that is less than 0. Recommended value: -1.
+        # *   If you want to reset the consumer offset to the latest offset, set this parameter to -1.
+        # *   If you want to reset the consumer offset to the earliest offset, set this parameter to -2.
         self.time = time
         # The topic name.
         # 
@@ -8759,10 +8811,24 @@ class UpdateTopicConfigRequest(TeaModel):
         topic: str = None,
         value: str = None,
     ):
+        # The key of the topic configuration.
+        # 
+        # *   Valid values: retention.hours, max.message.bytes, and replications.
+        # *   retention.hours specifies the message retention period.
+        # *   max.message.bytes specifies the maximum size of a sent message.
+        # *   replications specifies the number of topic replicas.
         self.config = config
+        # The instance ID.
         self.instance_id = instance_id
+        # The ID of the region where the instance resides.
         self.region_id = region_id
+        # The topic name.
         self.topic = topic
+        # The value of the topic configuration.
+        # 
+        # *   retention.hours specifies the message retention period. The value is a string. Valid values: 24 to 8760.
+        # *   max.message.bytes specifies the maximum size of a sent message. The value is a string. Valid values: 1048576 to 10485760.
+        # *   replications specifies the number of topic replicas. The value is a string. Valid values: 1 to 3.
         self.value = value
 
     def validate(self):
@@ -8810,11 +8876,15 @@ class UpdateTopicConfigResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. If the request is successful, 200 is returned.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
