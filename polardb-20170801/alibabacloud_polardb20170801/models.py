@@ -14570,6 +14570,7 @@ class DescribeDBNodePerformanceRequest(TeaModel):
         dbcluster_id: str = None,
         dbnode_id: str = None,
         end_time: str = None,
+        interval: str = None,
         key: str = None,
         start_time: str = None,
     ):
@@ -14579,6 +14580,7 @@ class DescribeDBNodePerformanceRequest(TeaModel):
         self.dbnode_id = dbnode_id
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
         self.end_time = end_time
+        self.interval = interval
         # The performance metrics that you want to query. Separate multiple metrics with commas (,). For more information, see [Performance parameters](~~141787~~).
         # 
         # >  You can specify a maximum of five performance metrics.
@@ -14601,6 +14603,8 @@ class DescribeDBNodePerformanceRequest(TeaModel):
             result['DBNodeId'] = self.dbnode_id
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.interval is not None:
+            result['Interval'] = self.interval
         if self.key is not None:
             result['Key'] = self.key
         if self.start_time is not None:
@@ -14615,6 +14619,8 @@ class DescribeDBNodePerformanceRequest(TeaModel):
             self.dbnode_id = m.get('DBNodeId')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
         if m.get('Key') is not None:
             self.key = m.get('Key')
         if m.get('StartTime') is not None:
@@ -15222,6 +15228,7 @@ class DescribeDBProxyPerformanceRequest(TeaModel):
         dbcluster_id: str = None,
         dbendpoint_id: str = None,
         end_time: str = None,
+        interval: str = None,
         key: str = None,
         start_time: str = None,
     ):
@@ -15231,6 +15238,7 @@ class DescribeDBProxyPerformanceRequest(TeaModel):
         self.dbendpoint_id = dbendpoint_id
         # The end of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
         self.end_time = end_time
+        self.interval = interval
         # The performance metrics that you want to query. Separate multiple indicators with commas (,). For more information, see [Performance parameters](~~141787~~).
         self.key = key
         # The beginning of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
@@ -15251,6 +15259,8 @@ class DescribeDBProxyPerformanceRequest(TeaModel):
             result['DBEndpointId'] = self.dbendpoint_id
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.interval is not None:
+            result['Interval'] = self.interval
         if self.key is not None:
             result['Key'] = self.key
         if self.start_time is not None:
@@ -15265,6 +15275,8 @@ class DescribeDBProxyPerformanceRequest(TeaModel):
             self.dbendpoint_id = m.get('DBEndpointId')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
         if m.get('Key') is not None:
             self.key = m.get('Key')
         if m.get('StartTime') is not None:
@@ -23769,6 +23781,7 @@ class ModifyAccountPasswordRequest(TeaModel):
         new_account_password: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        password_type: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
@@ -23784,6 +23797,7 @@ class ModifyAccountPasswordRequest(TeaModel):
         self.new_account_password = new_account_password
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.password_type = password_type
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -23806,6 +23820,8 @@ class ModifyAccountPasswordRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.password_type is not None:
+            result['PasswordType'] = self.password_type
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -23824,6 +23840,8 @@ class ModifyAccountPasswordRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('PasswordType') is not None:
+            self.password_type = m.get('PasswordType')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
