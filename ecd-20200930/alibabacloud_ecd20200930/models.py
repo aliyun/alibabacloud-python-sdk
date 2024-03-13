@@ -42627,14 +42627,17 @@ class ResetDesktopsRequest(TeaModel):
     def __init__(
         self,
         desktop_group_id: str = None,
+        desktop_group_ids: List[str] = None,
         desktop_id: List[str] = None,
         image_id: str = None,
         pay_type: str = None,
         region_id: str = None,
+        reset_scope: str = None,
         reset_type: str = None,
     ):
         # The ID of the desktop group. If you specify the `DesktopId` parameter, ignore the `DesktopGroupId` parameter. If you do not specify the `DesktopId` parameter, specify the `DesktopGroupId` parameter in the call to request all IDs of the cloud desktops in the specified desktop group.``
         self.desktop_group_id = desktop_group_id
+        self.desktop_group_ids = desktop_group_ids
         # The IDs of the cloud desktops. You can specify 1 to 100 cloud desktop IDs.
         self.desktop_id = desktop_id
         # The ID of the image.
@@ -42645,6 +42648,7 @@ class ResetDesktopsRequest(TeaModel):
         self.pay_type = pay_type
         # The ID of the region. You can call the [DescribeRegions](~~436773~~) operation to query the most recent region list.
         self.region_id = region_id
+        self.reset_scope = reset_scope
         # The type of the disk that you want to reset.
         self.reset_type = reset_type
 
@@ -42659,6 +42663,8 @@ class ResetDesktopsRequest(TeaModel):
         result = dict()
         if self.desktop_group_id is not None:
             result['DesktopGroupId'] = self.desktop_group_id
+        if self.desktop_group_ids is not None:
+            result['DesktopGroupIds'] = self.desktop_group_ids
         if self.desktop_id is not None:
             result['DesktopId'] = self.desktop_id
         if self.image_id is not None:
@@ -42667,6 +42673,8 @@ class ResetDesktopsRequest(TeaModel):
             result['PayType'] = self.pay_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.reset_scope is not None:
+            result['ResetScope'] = self.reset_scope
         if self.reset_type is not None:
             result['ResetType'] = self.reset_type
         return result
@@ -42675,6 +42683,8 @@ class ResetDesktopsRequest(TeaModel):
         m = m or dict()
         if m.get('DesktopGroupId') is not None:
             self.desktop_group_id = m.get('DesktopGroupId')
+        if m.get('DesktopGroupIds') is not None:
+            self.desktop_group_ids = m.get('DesktopGroupIds')
         if m.get('DesktopId') is not None:
             self.desktop_id = m.get('DesktopId')
         if m.get('ImageId') is not None:
@@ -42683,6 +42693,8 @@ class ResetDesktopsRequest(TeaModel):
             self.pay_type = m.get('PayType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResetScope') is not None:
+            self.reset_scope = m.get('ResetScope')
         if m.get('ResetType') is not None:
             self.reset_type = m.get('ResetType')
         return self

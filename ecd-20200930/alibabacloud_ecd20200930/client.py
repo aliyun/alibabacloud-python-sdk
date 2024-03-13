@@ -18214,6 +18214,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.desktop_group_id):
             query['DesktopGroupId'] = request.desktop_group_id
+        if not UtilClient.is_unset(request.desktop_group_ids):
+            query['DesktopGroupIds'] = request.desktop_group_ids
         if not UtilClient.is_unset(request.desktop_id):
             query['DesktopId'] = request.desktop_id
         if not UtilClient.is_unset(request.image_id):
@@ -18222,6 +18224,8 @@ class Client(OpenApiClient):
             query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reset_scope):
+            query['ResetScope'] = request.reset_scope
         if not UtilClient.is_unset(request.reset_type):
             query['ResetType'] = request.reset_type
         req = open_api_models.OpenApiRequest(
@@ -18259,6 +18263,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.desktop_group_id):
             query['DesktopGroupId'] = request.desktop_group_id
+        if not UtilClient.is_unset(request.desktop_group_ids):
+            query['DesktopGroupIds'] = request.desktop_group_ids
         if not UtilClient.is_unset(request.desktop_id):
             query['DesktopId'] = request.desktop_id
         if not UtilClient.is_unset(request.image_id):
@@ -18267,6 +18273,8 @@ class Client(OpenApiClient):
             query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reset_scope):
+            query['ResetScope'] = request.reset_scope
         if not UtilClient.is_unset(request.reset_type):
             query['ResetType'] = request.reset_type
         req = open_api_models.OpenApiRequest(
