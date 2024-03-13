@@ -1,3 +1,19 @@
+2024-03-13 Version: 2.4.1
+- Update API IntlFlightListingSearch: add param language.
+- Update API IntlFlightListingSearch: update param btrip_user_id.
+- Update API IntlFlightListingSearch: update param buyer_name.
+- Update API IntlFlightListingSearch: update param supplier_code.
+- Update API IntlFlightListingSearch: update response param.
+- Update API IntlFlightOtaItemDetail: add param language.
+- Update API IntlFlightOtaItemDetail: update param btrip_user_id.
+- Update API IntlFlightOtaItemDetail: update param buyer_name.
+- Update API IntlFlightOtaItemDetail: update response param.
+- Update API IntlFlightOtaSearch: add param language.
+- Update API IntlFlightOtaSearch: update param btrip_user_id.
+- Update API IntlFlightOtaSearch: update param buyer_name.
+- Update API IntlFlightOtaSearch: update response param.
+
+
 2024-03-13 Version: 2.4.0
 - Support API CooperatorFlightBillSettlementQuery.
 - Support API CooperatorHotelBillSettlementQuery.
