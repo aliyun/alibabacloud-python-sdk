@@ -59771,6 +59771,7 @@ class HotelOrderQueryResponseBodyModulePassengerList(TeaModel):
         cost_center_name: str = None,
         cost_center_number: str = None,
         itinerary_id: str = None,
+        occupant_type: int = None,
         project_code: str = None,
         project_id: int = None,
         project_title: str = None,
@@ -59786,6 +59787,7 @@ class HotelOrderQueryResponseBodyModulePassengerList(TeaModel):
         self.cost_center_name = cost_center_name
         self.cost_center_number = cost_center_number
         self.itinerary_id = itinerary_id
+        self.occupant_type = occupant_type
         self.project_code = project_code
         self.project_id = project_id
         self.project_title = project_title
@@ -59815,6 +59817,8 @@ class HotelOrderQueryResponseBodyModulePassengerList(TeaModel):
             result['cost_center_number'] = self.cost_center_number
         if self.itinerary_id is not None:
             result['itinerary_id'] = self.itinerary_id
+        if self.occupant_type is not None:
+            result['occupant_type'] = self.occupant_type
         if self.project_code is not None:
             result['project_code'] = self.project_code
         if self.project_id is not None:
@@ -59847,6 +59851,8 @@ class HotelOrderQueryResponseBodyModulePassengerList(TeaModel):
             self.cost_center_number = m.get('cost_center_number')
         if m.get('itinerary_id') is not None:
             self.itinerary_id = m.get('itinerary_id')
+        if m.get('occupant_type') is not None:
+            self.occupant_type = m.get('occupant_type')
         if m.get('project_code') is not None:
             self.project_code = m.get('project_code')
         if m.get('project_id') is not None:
