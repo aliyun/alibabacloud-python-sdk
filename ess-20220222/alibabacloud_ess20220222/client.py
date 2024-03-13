@@ -9589,15 +9589,21 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ess_20220222_models.ScaleWithAdjustmentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.lifecycle_hook_context):
+            request.lifecycle_hook_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.lifecycle_hook_context, 'LifecycleHookContext', 'json')
         if not UtilClient.is_unset(tmp_req.overrides):
             request.overrides_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.overrides, 'Overrides', 'json')
         query = {}
+        if not UtilClient.is_unset(request.activity_metadata):
+            query['ActivityMetadata'] = request.activity_metadata
         if not UtilClient.is_unset(request.adjustment_type):
             query['AdjustmentType'] = request.adjustment_type
         if not UtilClient.is_unset(request.adjustment_value):
             query['AdjustmentValue'] = request.adjustment_value
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.lifecycle_hook_context_shrink):
+            query['LifecycleHookContext'] = request.lifecycle_hook_context_shrink
         if not UtilClient.is_unset(request.min_adjustment_magnitude):
             query['MinAdjustmentMagnitude'] = request.min_adjustment_magnitude
         if not UtilClient.is_unset(request.overrides_shrink):
@@ -9651,15 +9657,21 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ess_20220222_models.ScaleWithAdjustmentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.lifecycle_hook_context):
+            request.lifecycle_hook_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.lifecycle_hook_context, 'LifecycleHookContext', 'json')
         if not UtilClient.is_unset(tmp_req.overrides):
             request.overrides_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.overrides, 'Overrides', 'json')
         query = {}
+        if not UtilClient.is_unset(request.activity_metadata):
+            query['ActivityMetadata'] = request.activity_metadata
         if not UtilClient.is_unset(request.adjustment_type):
             query['AdjustmentType'] = request.adjustment_type
         if not UtilClient.is_unset(request.adjustment_value):
             query['AdjustmentValue'] = request.adjustment_value
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.lifecycle_hook_context_shrink):
+            query['LifecycleHookContext'] = request.lifecycle_hook_context_shrink
         if not UtilClient.is_unset(request.min_adjustment_magnitude):
             query['MinAdjustmentMagnitude'] = request.min_adjustment_magnitude
         if not UtilClient.is_unset(request.overrides_shrink):

@@ -15181,9 +15181,43 @@ class DescribeScalingActivitiesRequest(TeaModel):
         return self
 
 
+class DescribeScalingActivitiesResponseBodyScalingActivitiesLifecycleHookContext(TeaModel):
+    def __init__(
+        self,
+        disable_lifecycle_hook: bool = None,
+        ignored_lifecycle_hook_ids: List[str] = None,
+    ):
+        self.disable_lifecycle_hook = disable_lifecycle_hook
+        self.ignored_lifecycle_hook_ids = ignored_lifecycle_hook_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disable_lifecycle_hook is not None:
+            result['DisableLifecycleHook'] = self.disable_lifecycle_hook
+        if self.ignored_lifecycle_hook_ids is not None:
+            result['IgnoredLifecycleHookIds'] = self.ignored_lifecycle_hook_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisableLifecycleHook') is not None:
+            self.disable_lifecycle_hook = m.get('DisableLifecycleHook')
+        if m.get('IgnoredLifecycleHookIds') is not None:
+            self.ignored_lifecycle_hook_ids = m.get('IgnoredLifecycleHookIds')
+        return self
+
+
 class DescribeScalingActivitiesResponseBodyScalingActivities(TeaModel):
     def __init__(
         self,
+        activity_metadata: str = None,
         attached_capacity: str = None,
         auto_created_capacity: str = None,
         cause: str = None,
@@ -15196,6 +15230,7 @@ class DescribeScalingActivitiesResponseBodyScalingActivities(TeaModel):
         end_time: str = None,
         error_code: str = None,
         error_message: str = None,
+        lifecycle_hook_context: DescribeScalingActivitiesResponseBodyScalingActivitiesLifecycleHookContext = None,
         progress: int = None,
         scaling_activity_id: str = None,
         scaling_group_id: str = None,
@@ -15208,7 +15243,10 @@ class DescribeScalingActivitiesResponseBodyScalingActivities(TeaModel):
         stopped_capacity: int = None,
         stopped_instances: List[str] = None,
         total_capacity: str = None,
+        trigger_source_id: str = None,
+        trigger_source_type: str = None,
     ):
+        self.activity_metadata = activity_metadata
         # The total number of instances that were manually added to the scaling group after the scaling activity was complete.
         self.attached_capacity = attached_capacity
         # The total number of instances that were created by Auto Scaling after the scaling activity was complete.
@@ -15233,6 +15271,7 @@ class DescribeScalingActivitiesResponseBodyScalingActivities(TeaModel):
         self.error_code = error_code
         # The error message that is returned when the scaling activity failed.
         self.error_message = error_message
+        self.lifecycle_hook_context = lifecycle_hook_context
         # The execution progress of the scaling activity.
         self.progress = progress
         # The ID of the scaling activity.
@@ -15265,9 +15304,12 @@ class DescribeScalingActivitiesResponseBodyScalingActivities(TeaModel):
         self.stopped_instances = stopped_instances
         # The total number of instances in the scaling group after the scaling activity was complete.
         self.total_capacity = total_capacity
+        self.trigger_source_id = trigger_source_id
+        self.trigger_source_type = trigger_source_type
 
     def validate(self):
-        pass
+        if self.lifecycle_hook_context:
+            self.lifecycle_hook_context.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -15275,6 +15317,8 @@ class DescribeScalingActivitiesResponseBodyScalingActivities(TeaModel):
             return _map
 
         result = dict()
+        if self.activity_metadata is not None:
+            result['ActivityMetadata'] = self.activity_metadata
         if self.attached_capacity is not None:
             result['AttachedCapacity'] = self.attached_capacity
         if self.auto_created_capacity is not None:
@@ -15299,6 +15343,8 @@ class DescribeScalingActivitiesResponseBodyScalingActivities(TeaModel):
             result['ErrorCode'] = self.error_code
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
+        if self.lifecycle_hook_context is not None:
+            result['LifecycleHookContext'] = self.lifecycle_hook_context.to_map()
         if self.progress is not None:
             result['Progress'] = self.progress
         if self.scaling_activity_id is not None:
@@ -15323,10 +15369,16 @@ class DescribeScalingActivitiesResponseBodyScalingActivities(TeaModel):
             result['StoppedInstances'] = self.stopped_instances
         if self.total_capacity is not None:
             result['TotalCapacity'] = self.total_capacity
+        if self.trigger_source_id is not None:
+            result['TriggerSourceId'] = self.trigger_source_id
+        if self.trigger_source_type is not None:
+            result['TriggerSourceType'] = self.trigger_source_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ActivityMetadata') is not None:
+            self.activity_metadata = m.get('ActivityMetadata')
         if m.get('AttachedCapacity') is not None:
             self.attached_capacity = m.get('AttachedCapacity')
         if m.get('AutoCreatedCapacity') is not None:
@@ -15351,6 +15403,9 @@ class DescribeScalingActivitiesResponseBodyScalingActivities(TeaModel):
             self.error_code = m.get('ErrorCode')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
+        if m.get('LifecycleHookContext') is not None:
+            temp_model = DescribeScalingActivitiesResponseBodyScalingActivitiesLifecycleHookContext()
+            self.lifecycle_hook_context = temp_model.from_map(m['LifecycleHookContext'])
         if m.get('Progress') is not None:
             self.progress = m.get('Progress')
         if m.get('ScalingActivityId') is not None:
@@ -15375,6 +15430,10 @@ class DescribeScalingActivitiesResponseBodyScalingActivities(TeaModel):
             self.stopped_instances = m.get('StoppedInstances')
         if m.get('TotalCapacity') is not None:
             self.total_capacity = m.get('TotalCapacity')
+        if m.get('TriggerSourceId') is not None:
+            self.trigger_source_id = m.get('TriggerSourceId')
+        if m.get('TriggerSourceType') is not None:
+            self.trigger_source_type = m.get('TriggerSourceType')
         return self
 
 
@@ -29744,6 +29803,39 @@ class ResumeProcessesResponse(TeaModel):
         return self
 
 
+class ScaleWithAdjustmentRequestLifecycleHookContext(TeaModel):
+    def __init__(
+        self,
+        disable_lifecycle_hook: bool = None,
+        ignored_lifecycle_hook_ids: List[str] = None,
+    ):
+        self.disable_lifecycle_hook = disable_lifecycle_hook
+        self.ignored_lifecycle_hook_ids = ignored_lifecycle_hook_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disable_lifecycle_hook is not None:
+            result['DisableLifecycleHook'] = self.disable_lifecycle_hook
+        if self.ignored_lifecycle_hook_ids is not None:
+            result['IgnoredLifecycleHookIds'] = self.ignored_lifecycle_hook_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisableLifecycleHook') is not None:
+            self.disable_lifecycle_hook = m.get('DisableLifecycleHook')
+        if m.get('IgnoredLifecycleHookIds') is not None:
+            self.ignored_lifecycle_hook_ids = m.get('IgnoredLifecycleHookIds')
+        return self
+
+
 class ScaleWithAdjustmentRequestOverridesContainerOverridesEnvironmentVars(TeaModel):
     def __init__(
         self,
@@ -29892,9 +29984,11 @@ class ScaleWithAdjustmentRequestOverrides(TeaModel):
 class ScaleWithAdjustmentRequest(TeaModel):
     def __init__(
         self,
+        activity_metadata: str = None,
         adjustment_type: str = None,
         adjustment_value: int = None,
         client_token: str = None,
+        lifecycle_hook_context: ScaleWithAdjustmentRequestLifecycleHookContext = None,
         min_adjustment_magnitude: int = None,
         overrides: ScaleWithAdjustmentRequestOverrides = None,
         owner_id: int = None,
@@ -29902,6 +29996,7 @@ class ScaleWithAdjustmentRequest(TeaModel):
         scaling_group_id: str = None,
         sync_activity: bool = None,
     ):
+        self.activity_metadata = activity_metadata
         # The type of the scaling policy. Valid values:
         # 
         # *   QuantityChangeInCapacity: adds the specified number of ECS instances to or removes the specified number of ECS instances from the scaling group.
@@ -29916,6 +30011,7 @@ class ScaleWithAdjustmentRequest(TeaModel):
         self.adjustment_value = adjustment_value
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        self.lifecycle_hook_context = lifecycle_hook_context
         # The minimum number of instances allowed in each adjustment. This parameter takes effect only if you set the `AdjustmentType` parameter to `PercentChangeInCapacity`.
         self.min_adjustment_magnitude = min_adjustment_magnitude
         self.overrides = overrides
@@ -29934,6 +30030,8 @@ class ScaleWithAdjustmentRequest(TeaModel):
         self.sync_activity = sync_activity
 
     def validate(self):
+        if self.lifecycle_hook_context:
+            self.lifecycle_hook_context.validate()
         if self.overrides:
             self.overrides.validate()
 
@@ -29943,12 +30041,16 @@ class ScaleWithAdjustmentRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.activity_metadata is not None:
+            result['ActivityMetadata'] = self.activity_metadata
         if self.adjustment_type is not None:
             result['AdjustmentType'] = self.adjustment_type
         if self.adjustment_value is not None:
             result['AdjustmentValue'] = self.adjustment_value
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.lifecycle_hook_context is not None:
+            result['LifecycleHookContext'] = self.lifecycle_hook_context.to_map()
         if self.min_adjustment_magnitude is not None:
             result['MinAdjustmentMagnitude'] = self.min_adjustment_magnitude
         if self.overrides is not None:
@@ -29965,12 +30067,17 @@ class ScaleWithAdjustmentRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ActivityMetadata') is not None:
+            self.activity_metadata = m.get('ActivityMetadata')
         if m.get('AdjustmentType') is not None:
             self.adjustment_type = m.get('AdjustmentType')
         if m.get('AdjustmentValue') is not None:
             self.adjustment_value = m.get('AdjustmentValue')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('LifecycleHookContext') is not None:
+            temp_model = ScaleWithAdjustmentRequestLifecycleHookContext()
+            self.lifecycle_hook_context = temp_model.from_map(m['LifecycleHookContext'])
         if m.get('MinAdjustmentMagnitude') is not None:
             self.min_adjustment_magnitude = m.get('MinAdjustmentMagnitude')
         if m.get('Overrides') is not None:
@@ -29990,9 +30097,11 @@ class ScaleWithAdjustmentRequest(TeaModel):
 class ScaleWithAdjustmentShrinkRequest(TeaModel):
     def __init__(
         self,
+        activity_metadata: str = None,
         adjustment_type: str = None,
         adjustment_value: int = None,
         client_token: str = None,
+        lifecycle_hook_context_shrink: str = None,
         min_adjustment_magnitude: int = None,
         overrides_shrink: str = None,
         owner_id: int = None,
@@ -30000,6 +30109,7 @@ class ScaleWithAdjustmentShrinkRequest(TeaModel):
         scaling_group_id: str = None,
         sync_activity: bool = None,
     ):
+        self.activity_metadata = activity_metadata
         # The type of the scaling policy. Valid values:
         # 
         # *   QuantityChangeInCapacity: adds the specified number of ECS instances to or removes the specified number of ECS instances from the scaling group.
@@ -30014,6 +30124,7 @@ class ScaleWithAdjustmentShrinkRequest(TeaModel):
         self.adjustment_value = adjustment_value
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        self.lifecycle_hook_context_shrink = lifecycle_hook_context_shrink
         # The minimum number of instances allowed in each adjustment. This parameter takes effect only if you set the `AdjustmentType` parameter to `PercentChangeInCapacity`.
         self.min_adjustment_magnitude = min_adjustment_magnitude
         self.overrides_shrink = overrides_shrink
@@ -30040,12 +30151,16 @@ class ScaleWithAdjustmentShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.activity_metadata is not None:
+            result['ActivityMetadata'] = self.activity_metadata
         if self.adjustment_type is not None:
             result['AdjustmentType'] = self.adjustment_type
         if self.adjustment_value is not None:
             result['AdjustmentValue'] = self.adjustment_value
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.lifecycle_hook_context_shrink is not None:
+            result['LifecycleHookContext'] = self.lifecycle_hook_context_shrink
         if self.min_adjustment_magnitude is not None:
             result['MinAdjustmentMagnitude'] = self.min_adjustment_magnitude
         if self.overrides_shrink is not None:
@@ -30062,12 +30177,16 @@ class ScaleWithAdjustmentShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ActivityMetadata') is not None:
+            self.activity_metadata = m.get('ActivityMetadata')
         if m.get('AdjustmentType') is not None:
             self.adjustment_type = m.get('AdjustmentType')
         if m.get('AdjustmentValue') is not None:
             self.adjustment_value = m.get('AdjustmentValue')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('LifecycleHookContext') is not None:
+            self.lifecycle_hook_context_shrink = m.get('LifecycleHookContext')
         if m.get('MinAdjustmentMagnitude') is not None:
             self.min_adjustment_magnitude = m.get('MinAdjustmentMagnitude')
         if m.get('Overrides') is not None:
