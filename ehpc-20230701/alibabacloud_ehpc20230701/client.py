@@ -545,6 +545,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_images_with_options_async(request, runtime)
 
+    def list_job_executors_with_options(
+        self,
+        request: ehpc20230701_models.ListJobExecutorsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20230701_models.ListJobExecutorsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListJobExecutors',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20230701_models.ListJobExecutorsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_job_executors_with_options_async(
+        self,
+        request: ehpc20230701_models.ListJobExecutorsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20230701_models.ListJobExecutorsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListJobExecutors',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20230701_models.ListJobExecutorsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_job_executors(
+        self,
+        request: ehpc20230701_models.ListJobExecutorsRequest,
+    ) -> ehpc20230701_models.ListJobExecutorsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_job_executors_with_options(request, runtime)
+
+    async def list_job_executors_async(
+        self,
+        request: ehpc20230701_models.ListJobExecutorsRequest,
+    ) -> ehpc20230701_models.ListJobExecutorsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_job_executors_with_options_async(request, runtime)
+
     def list_jobs_with_options(
         self,
         tmp_req: ehpc20230701_models.ListJobsRequest,

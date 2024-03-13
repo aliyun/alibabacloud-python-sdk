@@ -1,3 +1,19 @@
+2024-03-13 Version: 2.1.0
+- Support API ListJobExecutors.
+- Update API AddImage: delete param Action.
+- Update API AddImage: delete param RegionId.
+- Update API CreateJob: update param Tasks.
+- Update API GetImage: delete param Action.
+- Update API GetImage: delete param RegionId.
+- Update API GetJob: update response param.
+- Update API ListImages: delete param Action.
+- Update API ListImages: delete param RegionId.
+- Update API ListJobs: update param Filter.
+- Update API ListJobs: update response param.
+- Update API RemoveImage: delete param Action.
+- Update API RemoveImage: delete param RegionId.
+
+
 2024-02-19 Version: 2.0.0
 - Update API AddImage: delete param Action.
 - Update API AddImage: delete param RegionId.

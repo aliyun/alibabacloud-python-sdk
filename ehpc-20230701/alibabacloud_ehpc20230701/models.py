@@ -1107,9 +1107,11 @@ class CreateJobRequestTasksTaskSpecTaskExecutorVM(TeaModel):
         self,
         image: str = None,
         prolog_script: str = None,
+        script: str = None,
     ):
         self.image = image
         self.prolog_script = prolog_script
+        self.script = script
 
     def validate(self):
         pass
@@ -1124,6 +1126,8 @@ class CreateJobRequestTasksTaskSpecTaskExecutorVM(TeaModel):
             result['Image'] = self.image
         if self.prolog_script is not None:
             result['PrologScript'] = self.prolog_script
+        if self.script is not None:
+            result['Script'] = self.script
         return result
 
     def from_map(self, m: dict = None):
@@ -1132,6 +1136,8 @@ class CreateJobRequestTasksTaskSpecTaskExecutorVM(TeaModel):
             self.image = m.get('Image')
         if m.get('PrologScript') is not None:
             self.prolog_script = m.get('PrologScript')
+        if m.get('Script') is not None:
+            self.script = m.get('Script')
         return self
 
 
@@ -2270,9 +2276,11 @@ class GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM(TeaModel):
         self,
         image: str = None,
         prolog_script: str = None,
+        script: str = None,
     ):
         self.image = image
         self.prolog_script = prolog_script
+        self.script = script
 
     def validate(self):
         pass
@@ -2287,6 +2295,8 @@ class GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM(TeaModel):
             result['Image'] = self.image
         if self.prolog_script is not None:
             result['PrologScript'] = self.prolog_script
+        if self.script is not None:
+            result['Script'] = self.script
         return result
 
     def from_map(self, m: dict = None):
@@ -2295,6 +2305,8 @@ class GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM(TeaModel):
             self.image = m.get('Image')
         if m.get('PrologScript') is not None:
             self.prolog_script = m.get('PrologScript')
+        if m.get('Script') is not None:
+            self.script = m.get('Script')
         return self
 
 
@@ -2439,16 +2451,24 @@ class GetJobResponseBodyJobInfoTasks(TeaModel):
 class GetJobResponseBodyJobInfo(TeaModel):
     def __init__(
         self,
+        create_time: str = None,
         deployment_policy: GetJobResponseBodyJobInfoDeploymentPolicy = None,
+        end_time: str = None,
         job_description: str = None,
         job_id: str = None,
         job_name: str = None,
+        start_time: str = None,
+        status: str = None,
         tasks: List[GetJobResponseBodyJobInfoTasks] = None,
     ):
+        self.create_time = create_time
         self.deployment_policy = deployment_policy
+        self.end_time = end_time
         self.job_description = job_description
         self.job_id = job_id
         self.job_name = job_name
+        self.start_time = start_time
+        self.status = status
         self.tasks = tasks
 
     def validate(self):
@@ -2465,14 +2485,22 @@ class GetJobResponseBodyJobInfo(TeaModel):
             return _map
 
         result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
         if self.deployment_policy is not None:
             result['DeploymentPolicy'] = self.deployment_policy.to_map()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
         if self.job_description is not None:
             result['JobDescription'] = self.job_description
         if self.job_id is not None:
             result['JobId'] = self.job_id
         if self.job_name is not None:
             result['JobName'] = self.job_name
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
         result['Tasks'] = []
         if self.tasks is not None:
             for k in self.tasks:
@@ -2481,15 +2509,23 @@ class GetJobResponseBodyJobInfo(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
         if m.get('DeploymentPolicy') is not None:
             temp_model = GetJobResponseBodyJobInfoDeploymentPolicy()
             self.deployment_policy = temp_model.from_map(m['DeploymentPolicy'])
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
         if m.get('JobDescription') is not None:
             self.job_description = m.get('JobDescription')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
         if m.get('JobName') is not None:
             self.job_name = m.get('JobName')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         self.tasks = []
         if m.get('Tasks') is not None:
             for k in m.get('Tasks'):
@@ -2828,14 +2864,238 @@ class ListImagesResponse(TeaModel):
         return self
 
 
+class ListJobExecutorsRequest(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        page_number: str = None,
+        page_size: str = None,
+        task_name: str = None,
+    ):
+        self.job_id = job_id
+        self.page_number = page_number
+        self.page_size = page_size
+        # Task ID
+        self.task_name = task_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        return self
+
+
+class ListJobExecutorsResponseBodyExecutors(TeaModel):
+    def __init__(
+        self,
+        array_index: int = None,
+        create_time: str = None,
+        end_time: str = None,
+        host_name: List[str] = None,
+        ip_address: List[str] = None,
+        status: str = None,
+        status_reason: str = None,
+    ):
+        self.array_index = array_index
+        self.create_time = create_time
+        self.end_time = end_time
+        self.host_name = host_name
+        self.ip_address = ip_address
+        self.status = status
+        self.status_reason = status_reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.array_index is not None:
+            result['ArrayIndex'] = self.array_index
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.host_name is not None:
+            result['HostName'] = self.host_name
+        if self.ip_address is not None:
+            result['IpAddress'] = self.ip_address
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.status_reason is not None:
+            result['StatusReason'] = self.status_reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ArrayIndex') is not None:
+            self.array_index = m.get('ArrayIndex')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('HostName') is not None:
+            self.host_name = m.get('HostName')
+        if m.get('IpAddress') is not None:
+            self.ip_address = m.get('IpAddress')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StatusReason') is not None:
+            self.status_reason = m.get('StatusReason')
+        return self
+
+
+class ListJobExecutorsResponseBody(TeaModel):
+    def __init__(
+        self,
+        executors: List[ListJobExecutorsResponseBodyExecutors] = None,
+        job_id: str = None,
+        page_number: str = None,
+        page_size: str = None,
+        request_id: str = None,
+        task_name: str = None,
+        total_count: str = None,
+    ):
+        self.executors = executors
+        self.job_id = job_id
+        self.page_number = page_number
+        self.page_size = page_size
+        # Id of the request
+        self.request_id = request_id
+        self.task_name = task_name
+        self.total_count = total_count
+
+    def validate(self):
+        if self.executors:
+            for k in self.executors:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Executors'] = []
+        if self.executors is not None:
+            for k in self.executors:
+                result['Executors'].append(k.to_map() if k else None)
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.executors = []
+        if m.get('Executors') is not None:
+            for k in m.get('Executors'):
+                temp_model = ListJobExecutorsResponseBodyExecutors()
+                self.executors.append(temp_model.from_map(k))
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListJobExecutorsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListJobExecutorsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListJobExecutorsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListJobsRequestFilter(TeaModel):
     def __init__(
         self,
+        job_id: str = None,
         job_name: str = None,
         status: str = None,
         time_created_after: int = None,
         time_created_before: int = None,
     ):
+        self.job_id = job_id
         self.job_name = job_name
         self.status = status
         self.time_created_after = time_created_after
@@ -2850,6 +3110,8 @@ class ListJobsRequestFilter(TeaModel):
             return _map
 
         result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
         if self.job_name is not None:
             result['JobName'] = self.job_name
         if self.status is not None:
@@ -2862,6 +3124,8 @@ class ListJobsRequestFilter(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
         if m.get('JobName') is not None:
             self.job_name = m.get('JobName')
         if m.get('Status') is not None:
@@ -3005,22 +3269,28 @@ class ListJobsResponseBodyJobList(TeaModel):
     def __init__(
         self,
         create_time: str = None,
+        end_time: str = None,
         executor_count: int = None,
         job_description: str = None,
         job_id: str = None,
         job_name: str = None,
         owner_uid: str = None,
+        start_time: str = None,
         status: str = None,
         task_count: int = None,
+        task_sustainable: bool = None,
     ):
         self.create_time = create_time
+        self.end_time = end_time
         self.executor_count = executor_count
         self.job_description = job_description
         self.job_id = job_id
         self.job_name = job_name
         self.owner_uid = owner_uid
+        self.start_time = start_time
         self.status = status
         self.task_count = task_count
+        self.task_sustainable = task_sustainable
 
     def validate(self):
         pass
@@ -3033,6 +3303,8 @@ class ListJobsResponseBodyJobList(TeaModel):
         result = dict()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
         if self.executor_count is not None:
             result['ExecutorCount'] = self.executor_count
         if self.job_description is not None:
@@ -3043,16 +3315,22 @@ class ListJobsResponseBodyJobList(TeaModel):
             result['JobName'] = self.job_name
         if self.owner_uid is not None:
             result['OwnerUid'] = self.owner_uid
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
         if self.status is not None:
             result['Status'] = self.status
         if self.task_count is not None:
             result['TaskCount'] = self.task_count
+        if self.task_sustainable is not None:
+            result['TaskSustainable'] = self.task_sustainable
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
         if m.get('ExecutorCount') is not None:
             self.executor_count = m.get('ExecutorCount')
         if m.get('JobDescription') is not None:
@@ -3063,10 +3341,14 @@ class ListJobsResponseBodyJobList(TeaModel):
             self.job_name = m.get('JobName')
         if m.get('OwnerUid') is not None:
             self.owner_uid = m.get('OwnerUid')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('TaskCount') is not None:
             self.task_count = m.get('TaskCount')
+        if m.get('TaskSustainable') is not None:
+            self.task_sustainable = m.get('TaskSustainable')
         return self
 
 
