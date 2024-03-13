@@ -70,9 +70,11 @@ class AIGCFaceVerifyRequest(TeaModel):
 class AIGCFaceVerifyResponseBodyResultObject(TeaModel):
     def __init__(
         self,
+        certify_id: str = None,
         result: str = None,
         score: str = None,
     ):
+        self.certify_id = certify_id
         self.result = result
         self.score = score
 
@@ -85,6 +87,8 @@ class AIGCFaceVerifyResponseBodyResultObject(TeaModel):
             return _map
 
         result = dict()
+        if self.certify_id is not None:
+            result['CertifyId'] = self.certify_id
         if self.result is not None:
             result['Result'] = self.result
         if self.score is not None:
@@ -93,6 +97,8 @@ class AIGCFaceVerifyResponseBodyResultObject(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CertifyId') is not None:
+            self.certify_id = m.get('CertifyId')
         if m.get('Result') is not None:
             self.result = m.get('Result')
         if m.get('Score') is not None:
