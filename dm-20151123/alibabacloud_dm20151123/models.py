@@ -6283,6 +6283,7 @@ class SenderStatisticsDetailByParamResponseBodyDataMailDetail(TeaModel):
         last_update_time: str = None,
         message: str = None,
         status: int = None,
+        subject: str = None,
         to_address: str = None,
         utc_last_update_time: str = None,
     ):
@@ -6290,6 +6291,7 @@ class SenderStatisticsDetailByParamResponseBodyDataMailDetail(TeaModel):
         self.last_update_time = last_update_time
         self.message = message
         self.status = status
+        self.subject = subject
         self.to_address = to_address
         self.utc_last_update_time = utc_last_update_time
 
@@ -6310,6 +6312,8 @@ class SenderStatisticsDetailByParamResponseBodyDataMailDetail(TeaModel):
             result['Message'] = self.message
         if self.status is not None:
             result['Status'] = self.status
+        if self.subject is not None:
+            result['Subject'] = self.subject
         if self.to_address is not None:
             result['ToAddress'] = self.to_address
         if self.utc_last_update_time is not None:
@@ -6326,6 +6330,8 @@ class SenderStatisticsDetailByParamResponseBodyDataMailDetail(TeaModel):
             self.message = m.get('Message')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Subject') is not None:
+            self.subject = m.get('Subject')
         if m.get('ToAddress') is not None:
             self.to_address = m.get('ToAddress')
         if m.get('UtcLastUpdateTime') is not None:
