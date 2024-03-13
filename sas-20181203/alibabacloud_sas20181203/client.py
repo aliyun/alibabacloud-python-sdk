@@ -317,6 +317,8 @@ class Client(OpenApiClient):
             query['ActionType'] = request.action_type
         if not UtilClient.is_unset(request.cmdline):
             query['Cmdline'] = request.cmdline
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
         if not UtilClient.is_unset(request.file_path):
             query['FilePath'] = request.file_path
         if not UtilClient.is_unset(request.ip):
@@ -375,6 +377,8 @@ class Client(OpenApiClient):
             query['ActionType'] = request.action_type
         if not UtilClient.is_unset(request.cmdline):
             query['Cmdline'] = request.cmdline
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
         if not UtilClient.is_unset(request.file_path):
             query['FilePath'] = request.file_path
         if not UtilClient.is_unset(request.ip):
@@ -44239,6 +44243,8 @@ class Client(OpenApiClient):
             query['ActionType'] = request.action_type
         if not UtilClient.is_unset(request.cmdline):
             query['Cmdline'] = request.cmdline
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
         if not UtilClient.is_unset(request.file_path):
             query['FilePath'] = request.file_path
         if not UtilClient.is_unset(request.ip):
@@ -44299,6 +44305,8 @@ class Client(OpenApiClient):
             query['ActionType'] = request.action_type
         if not UtilClient.is_unset(request.cmdline):
             query['Cmdline'] = request.cmdline
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
         if not UtilClient.is_unset(request.file_path):
             query['FilePath'] = request.file_path
         if not UtilClient.is_unset(request.ip):

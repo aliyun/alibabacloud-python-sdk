@@ -1,3 +1,17 @@
+2024-03-13 Version: 2.27.3
+- Update API AddClientUserDefineRule: add param Domain.
+- Update API DescribeExposedInstanceCriteria: add param ResourceDirectoryAccountId.
+- Update API DescribeExposedInstanceDetail: add param ResourceDirectoryAccountId.
+- Update API DescribeExposedInstanceList: add param ResourceDirectoryAccountId.
+- Update API DescribeExposedStatisticsDetail: add param ResourceDirectoryAccountId.
+- Update API DescribePropertyScaItem: update param SearchItem.
+- Update API DescribePropertyScaItem: update response param.
+- Update API DescribeVersionConfig: update response param.
+- Update API GetClientUserDefineRule: update response param.
+- Update API ModifyClientUserDefineRule: add param Domain.
+- Update API ModifyClientUserDefineRule: update response param.
+
+
 2024-02-28 Version: 2.27.2
 - Update API DescribeExposedInstanceCriteria: add param ResourceDirectoryAccountId.
 - Update API DescribeExposedInstanceDetail: add param ResourceDirectoryAccountId.
