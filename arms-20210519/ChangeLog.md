@@ -1,3 +1,9 @@
+2024-03-14 Version: 2.5.35
+- Update API DeleteRetcodeApp: update param AppId.
+- Update API SaveTraceAppConfig: update param Settings.
+- Update API SaveTraceAppConfig: update response param.
+
+
 2021-07-08 Version: 2.5.34
 - Add GetPrometheusRemoteActionToken API.
 
