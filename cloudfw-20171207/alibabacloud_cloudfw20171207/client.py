@@ -609,6 +609,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_copy_vpc_firewall_control_policy_with_options_async(request, runtime)
 
+    def batch_delete_vpc_firewall_control_policy_with_options(
+        self,
+        request: cloudfw_20171207_models.BatchDeleteVpcFirewallControlPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.BatchDeleteVpcFirewallControlPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_uuid_list):
+            query['AclUuidList'] = request.acl_uuid_list
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchDeleteVpcFirewallControlPolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.BatchDeleteVpcFirewallControlPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_delete_vpc_firewall_control_policy_with_options_async(
+        self,
+        request: cloudfw_20171207_models.BatchDeleteVpcFirewallControlPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.BatchDeleteVpcFirewallControlPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_uuid_list):
+            query['AclUuidList'] = request.acl_uuid_list
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchDeleteVpcFirewallControlPolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.BatchDeleteVpcFirewallControlPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_delete_vpc_firewall_control_policy(
+        self,
+        request: cloudfw_20171207_models.BatchDeleteVpcFirewallControlPolicyRequest,
+    ) -> cloudfw_20171207_models.BatchDeleteVpcFirewallControlPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_delete_vpc_firewall_control_policy_with_options(request, runtime)
+
+    async def batch_delete_vpc_firewall_control_policy_async(
+        self,
+        request: cloudfw_20171207_models.BatchDeleteVpcFirewallControlPolicyRequest,
+    ) -> cloudfw_20171207_models.BatchDeleteVpcFirewallControlPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_delete_vpc_firewall_control_policy_with_options_async(request, runtime)
+
     def create_download_task_with_options(
         self,
         request: cloudfw_20171207_models.CreateDownloadTaskRequest,
@@ -1894,6 +1968,15 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DeleteDownloadTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteDownloadTaskResponse:
+        """
+        You can call this operation to delete file download tasks and delete the files.
+        **\
+        **Warning** Both tasks and involved files are deleted. You can no longer download the involved files by using the download links. This operation is irreversible. Proceed with caution.
+        
+        @param request: DeleteDownloadTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDownloadTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -1924,6 +2007,15 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DeleteDownloadTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteDownloadTaskResponse:
+        """
+        You can call this operation to delete file download tasks and delete the files.
+        **\
+        **Warning** Both tasks and involved files are deleted. You can no longer download the involved files by using the download links. This operation is irreversible. Proceed with caution.
+        
+        @param request: DeleteDownloadTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDownloadTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -1953,6 +2045,14 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DeleteDownloadTaskRequest,
     ) -> cloudfw_20171207_models.DeleteDownloadTaskResponse:
+        """
+        You can call this operation to delete file download tasks and delete the files.
+        **\
+        **Warning** Both tasks and involved files are deleted. You can no longer download the involved files by using the download links. This operation is irreversible. Proceed with caution.
+        
+        @param request: DeleteDownloadTaskRequest
+        @return: DeleteDownloadTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_download_task_with_options(request, runtime)
 
@@ -1960,6 +2060,14 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DeleteDownloadTaskRequest,
     ) -> cloudfw_20171207_models.DeleteDownloadTaskResponse:
+        """
+        You can call this operation to delete file download tasks and delete the files.
+        **\
+        **Warning** Both tasks and involved files are deleted. You can no longer download the involved files by using the download links. This operation is irreversible. Proceed with caution.
+        
+        @param request: DeleteDownloadTaskRequest
+        @return: DeleteDownloadTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_download_task_with_options_async(request, runtime)
 

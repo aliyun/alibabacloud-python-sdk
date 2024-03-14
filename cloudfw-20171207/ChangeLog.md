@@ -1,3 +1,38 @@
+2024-03-14 Version: 3.4.0
+- Support API BatchDeleteVpcFirewallControlPolicy.
+- Support API CreateDownloadTask.
+- Support API DeleteControlPolicyTemplate.
+- Support API DeleteDownloadTask.
+- Support API DeleteNatFirewallControlPolicyBatch.
+- Support API DescribeAssetRiskList.
+- Support API DescribeCfwRiskLevelSummary.
+- Support API DescribeDownloadTask.
+- Support API DescribeDownloadTaskType.
+- Support API DescribeInstanceRiskLevels.
+- Support API DescribeNatAclPageStatus.
+- Support API DescribePostpayTrafficDetail.
+- Support API DescribePostpayTrafficTotal.
+- Support API DescribePrefixLists.
+- Support API DescribeSignatureLibVersion.
+- Support API DescribeVpcFirewallIPSWhitelist.
+- Support API DescribeVpcListLite.
+- Support API DescribeVpcZone.
+- Support API ModifyVpcFirewallIPSWhitelist.
+- Support API ResetNatFirewallRuleHitCount.
+- Update API CreateNatFirewallControlPolicy: update param ApplicationNameList.
+- Update API CreateNatFirewallControlPolicy: update param Direction.
+- Update API DeleteNatFirewallControlPolicy: update param Direction.
+- Update API DescribeNatFirewallControlPolicy: update param CurrentPage.
+- Update API DescribeNatFirewallControlPolicy: update param PageSize.
+- Update API DescribeNatFirewallPolicyPriorUsed: update param Direction.
+- Update API DescribeRiskEventPayload: update param UUID.
+- Update API DescribeTrFirewallPolicyBackUpAssociationList: add param CandidateList.
+- Update API ModifyNatFirewallControlPolicyPosition: update param NewOrder.
+- Update API ModifyTrFirewallV2RoutePolicyScope: add param ShouldRecover.
+- Update API ModifyTrFirewallV2RoutePolicyScope: update param FirewallId.
+- Update API ModifyTrFirewallV2RoutePolicyScope: update param TrFirewallRoutePolicyId.
+
+
 2024-03-13 Version: 3.3.0
 - Support API CreateDownloadTask.
 - Support API DeleteControlPolicyTemplate.
