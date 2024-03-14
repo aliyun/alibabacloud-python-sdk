@@ -1,3 +1,9 @@
+2024-03-14 Version: 1.1.5
+- Update API CreateTrainingJob: update param body.
+- Update API GetTrainingJob: update response param.
+- Update API ListTrainingJobs: update response param.
+
+
 2024-02-29 Version: 1.1.4
 - Update API CreateTrainingJob: update param body.
 - Update API GetTrainingJob: update response param.

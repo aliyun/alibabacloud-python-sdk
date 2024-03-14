@@ -7088,6 +7088,7 @@ class GetTrainingJobResponseBody(TeaModel):
         algorithm_spec: AlgorithmSpec = None,
         algorithm_version: str = None,
         compute_resource: GetTrainingJobResponseBodyComputeResource = None,
+        duration: int = None,
         experiment_config: GetTrainingJobResponseBodyExperimentConfig = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
@@ -7122,6 +7123,7 @@ class GetTrainingJobResponseBody(TeaModel):
         self.algorithm_spec = algorithm_spec
         self.algorithm_version = algorithm_version
         self.compute_resource = compute_resource
+        self.duration = duration
         self.experiment_config = experiment_config
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
@@ -7214,6 +7216,8 @@ class GetTrainingJobResponseBody(TeaModel):
             result['AlgorithmVersion'] = self.algorithm_version
         if self.compute_resource is not None:
             result['ComputeResource'] = self.compute_resource.to_map()
+        if self.duration is not None:
+            result['Duration'] = self.duration
         if self.experiment_config is not None:
             result['ExperimentConfig'] = self.experiment_config.to_map()
         if self.gmt_create_time is not None:
@@ -7300,6 +7304,8 @@ class GetTrainingJobResponseBody(TeaModel):
         if m.get('ComputeResource') is not None:
             temp_model = GetTrainingJobResponseBodyComputeResource()
             self.compute_resource = temp_model.from_map(m['ComputeResource'])
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
         if m.get('ExperimentConfig') is not None:
             temp_model = GetTrainingJobResponseBodyExperimentConfig()
             self.experiment_config = temp_model.from_map(m['ExperimentConfig'])
