@@ -1075,6 +1075,7 @@ class GetInstanceResponseBodyInstance(TeaModel):
         creation_time: str = None,
         disk: str = None,
         enable_hive_access: str = None,
+        enable_serverless: bool = None,
         endpoints: List[GetInstanceResponseBodyInstanceEndpoints] = None,
         expiration_time: str = None,
         gateway_count: int = None,
@@ -1240,6 +1241,7 @@ class GetInstanceResponseBodyInstance(TeaModel):
         self.disk = disk
         # Indicates whether data lake acceleration is enabled.
         self.enable_hive_access = enable_hive_access
+        self.enable_serverless = enable_serverless
         # The list of endpoints.
         self.endpoints = endpoints
         # The expiration time. This parameter is invalid for pay-as-you-go instances.
@@ -1450,6 +1452,8 @@ class GetInstanceResponseBodyInstance(TeaModel):
             result['Disk'] = self.disk
         if self.enable_hive_access is not None:
             result['EnableHiveAccess'] = self.enable_hive_access
+        if self.enable_serverless is not None:
+            result['EnableServerless'] = self.enable_serverless
         result['Endpoints'] = []
         if self.endpoints is not None:
             for k in self.endpoints:
@@ -1514,6 +1518,8 @@ class GetInstanceResponseBodyInstance(TeaModel):
             self.disk = m.get('Disk')
         if m.get('EnableHiveAccess') is not None:
             self.enable_hive_access = m.get('EnableHiveAccess')
+        if m.get('EnableServerless') is not None:
+            self.enable_serverless = m.get('EnableServerless')
         self.endpoints = []
         if m.get('Endpoints') is not None:
             for k in m.get('Endpoints'):
