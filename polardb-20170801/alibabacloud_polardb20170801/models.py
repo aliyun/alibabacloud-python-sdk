@@ -14573,6 +14573,7 @@ class DescribeDBNodePerformanceRequest(TeaModel):
         interval: str = None,
         key: str = None,
         start_time: str = None,
+        type: str = None,
     ):
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
@@ -14587,6 +14588,7 @@ class DescribeDBNodePerformanceRequest(TeaModel):
         self.key = key
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
         self.start_time = start_time
+        self.type = type
 
     def validate(self):
         pass
@@ -14609,6 +14611,8 @@ class DescribeDBNodePerformanceRequest(TeaModel):
             result['Key'] = self.key
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
@@ -14625,6 +14629,8 @@ class DescribeDBNodePerformanceRequest(TeaModel):
             self.key = m.get('Key')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
@@ -15231,6 +15237,7 @@ class DescribeDBProxyPerformanceRequest(TeaModel):
         interval: str = None,
         key: str = None,
         start_time: str = None,
+        type: str = None,
     ):
         # The ID of cluster.
         self.dbcluster_id = dbcluster_id
@@ -15243,6 +15250,7 @@ class DescribeDBProxyPerformanceRequest(TeaModel):
         self.key = key
         # The beginning of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
         self.start_time = start_time
+        self.type = type
 
     def validate(self):
         pass
@@ -15265,6 +15273,8 @@ class DescribeDBProxyPerformanceRequest(TeaModel):
             result['Key'] = self.key
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
@@ -15281,6 +15291,8 @@ class DescribeDBProxyPerformanceRequest(TeaModel):
             self.key = m.get('Key')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
