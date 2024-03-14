@@ -1,3 +1,13 @@
+2024-03-14 Version: 1.4.0
+- Support API ListScripts.
+- Delete API GetApmData.
+- Delete API ListApmMetadata.
+- Delete API QueryApmComponents.
+- Delete API QueryApmGrafanaData.
+- Update API IncreaseNodes: add param MinIncreaseNodeCount.
+- Update API ListClusters: update param RegionId.
+
+
 2024-02-23 Version: 1.3.0
 - Support API CreateReport.
 - Support API GetClusterCloneMeta.
