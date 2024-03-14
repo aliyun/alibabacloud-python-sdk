@@ -28,7 +28,7 @@ pip install alibabacloud_tag20180828
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/tag-20180828/ChangeLog.md).
 
 ## References
 
