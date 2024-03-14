@@ -14207,6 +14207,426 @@ class DescribeCustomizedListHeadersResponse(TeaModel):
         return self
 
 
+class DescribeDesktopGroupSessionsRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        end_user_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        own_type: int = None,
+        region_id: str = None,
+        session_status: str = None,
+        start_time: str = None,
+    ):
+        # The end of the time range to query.
+        self.end_time = end_time
+        # The ID of the end user.
+        self.end_user_id = end_user_id
+        # The number of entries per page.
+        self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
+        self.next_token = next_token
+        # The type of the session.
+        # 
+        # Valid values:
+        # 
+        # *   0
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     single-session
+        # 
+        #     <!-- -->
+        # 
+        # *   1
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     multi-session
+        # 
+        #     <!-- -->
+        self.own_type = own_type
+        # The region ID.
+        self.region_id = region_id
+        # The status of the session.
+        # 
+        # Valid values:
+        # 
+        # *   Connected
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Disconnected
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        self.session_status = session_status
+        # The beginning of the time range to query.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.end_user_id is not None:
+            result['EndUserId'] = self.end_user_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.own_type is not None:
+            result['OwnType'] = self.own_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.session_status is not None:
+            result['SessionStatus'] = self.session_status
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('EndUserId') is not None:
+            self.end_user_id = m.get('EndUserId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OwnType') is not None:
+            self.own_type = m.get('OwnType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SessionStatus') is not None:
+            self.session_status = m.get('SessionStatus')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeDesktopGroupSessionsResponseBodySessions(TeaModel):
+    def __init__(
+        self,
+        client_ip: str = None,
+        client_os: str = None,
+        client_version: str = None,
+        desktop_group_id: str = None,
+        desktop_group_name: str = None,
+        desktop_id: str = None,
+        end_user_apply_coordinate_time: int = None,
+        end_user_id: str = None,
+        last_session_end_time: str = None,
+        last_session_start_time: str = None,
+        latest_connection_time: int = None,
+        office_site_id: str = None,
+        office_site_name: str = None,
+        os_type: str = None,
+        own_type: int = None,
+        protocol_type: str = None,
+        session_idle_time: int = None,
+        session_status: str = None,
+        total_connection_duration: int = None,
+    ):
+        # The IP address of the client.
+        self.client_ip = client_ip
+        # The OS that the client runs.
+        self.client_os = client_os
+        # The version of the client.
+        self.client_version = client_version
+        # The ID of the desktop group.
+        self.desktop_group_id = desktop_group_id
+        # The name of the desktop group.
+        self.desktop_group_name = desktop_group_name
+        # If the session is being established, the value of this parameter indicates the ID of the current cloud desktop. If the session is disconnected, the value of this parameter indicates the ID of the cloud desktop that was most recently connected.
+        self.desktop_id = desktop_id
+        # The point in time when the end user applies for administrator assistance.
+        self.end_user_apply_coordinate_time = end_user_apply_coordinate_time
+        # The ID of the end user.
+        self.end_user_id = end_user_id
+        # The end time of the most recent connection.
+        self.last_session_end_time = last_session_end_time
+        # The start time of the most recent connection.
+        self.last_session_start_time = last_session_start_time
+        # The duration of the most recent session.
+        self.latest_connection_time = latest_connection_time
+        # The ID of the workspace.
+        self.office_site_id = office_site_id
+        # The name of the workspace.
+        self.office_site_name = office_site_name
+        # The OS. Valid values:
+        # 
+        # *   Windows
+        # *   Linux
+        self.os_type = os_type
+        # The type of the session.
+        # 
+        # Valid values:
+        # 
+        # *   0
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     single-session
+        # 
+        #     <!-- -->
+        # 
+        # *   1
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     multi-session
+        # 
+        #     <!-- -->
+        self.own_type = own_type
+        # The type of the protocol.
+        self.protocol_type = protocol_type
+        # The duration during which the cloud desktop stays in the Idle state.
+        self.session_idle_time = session_idle_time
+        # The state of the session.
+        # 
+        # Valid values:
+        # 
+        # *   Connected
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Disconnected
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        self.session_status = session_status
+        # The total duration of the sessions.
+        self.total_connection_duration = total_connection_duration
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_ip is not None:
+            result['ClientIp'] = self.client_ip
+        if self.client_os is not None:
+            result['ClientOS'] = self.client_os
+        if self.client_version is not None:
+            result['ClientVersion'] = self.client_version
+        if self.desktop_group_id is not None:
+            result['DesktopGroupId'] = self.desktop_group_id
+        if self.desktop_group_name is not None:
+            result['DesktopGroupName'] = self.desktop_group_name
+        if self.desktop_id is not None:
+            result['DesktopId'] = self.desktop_id
+        if self.end_user_apply_coordinate_time is not None:
+            result['EndUserApplyCoordinateTime'] = self.end_user_apply_coordinate_time
+        if self.end_user_id is not None:
+            result['EndUserId'] = self.end_user_id
+        if self.last_session_end_time is not None:
+            result['LastSessionEndTime'] = self.last_session_end_time
+        if self.last_session_start_time is not None:
+            result['LastSessionStartTime'] = self.last_session_start_time
+        if self.latest_connection_time is not None:
+            result['LatestConnectionTime'] = self.latest_connection_time
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+        if self.office_site_name is not None:
+            result['OfficeSiteName'] = self.office_site_name
+        if self.os_type is not None:
+            result['OsType'] = self.os_type
+        if self.own_type is not None:
+            result['OwnType'] = self.own_type
+        if self.protocol_type is not None:
+            result['ProtocolType'] = self.protocol_type
+        if self.session_idle_time is not None:
+            result['SessionIdleTime'] = self.session_idle_time
+        if self.session_status is not None:
+            result['SessionStatus'] = self.session_status
+        if self.total_connection_duration is not None:
+            result['TotalConnectionDuration'] = self.total_connection_duration
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientIp') is not None:
+            self.client_ip = m.get('ClientIp')
+        if m.get('ClientOS') is not None:
+            self.client_os = m.get('ClientOS')
+        if m.get('ClientVersion') is not None:
+            self.client_version = m.get('ClientVersion')
+        if m.get('DesktopGroupId') is not None:
+            self.desktop_group_id = m.get('DesktopGroupId')
+        if m.get('DesktopGroupName') is not None:
+            self.desktop_group_name = m.get('DesktopGroupName')
+        if m.get('DesktopId') is not None:
+            self.desktop_id = m.get('DesktopId')
+        if m.get('EndUserApplyCoordinateTime') is not None:
+            self.end_user_apply_coordinate_time = m.get('EndUserApplyCoordinateTime')
+        if m.get('EndUserId') is not None:
+            self.end_user_id = m.get('EndUserId')
+        if m.get('LastSessionEndTime') is not None:
+            self.last_session_end_time = m.get('LastSessionEndTime')
+        if m.get('LastSessionStartTime') is not None:
+            self.last_session_start_time = m.get('LastSessionStartTime')
+        if m.get('LatestConnectionTime') is not None:
+            self.latest_connection_time = m.get('LatestConnectionTime')
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+        if m.get('OfficeSiteName') is not None:
+            self.office_site_name = m.get('OfficeSiteName')
+        if m.get('OsType') is not None:
+            self.os_type = m.get('OsType')
+        if m.get('OwnType') is not None:
+            self.own_type = m.get('OwnType')
+        if m.get('ProtocolType') is not None:
+            self.protocol_type = m.get('ProtocolType')
+        if m.get('SessionIdleTime') is not None:
+            self.session_idle_time = m.get('SessionIdleTime')
+        if m.get('SessionStatus') is not None:
+            self.session_status = m.get('SessionStatus')
+        if m.get('TotalConnectionDuration') is not None:
+            self.total_connection_duration = m.get('TotalConnectionDuration')
+        return self
+
+
+class DescribeDesktopGroupSessionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        request_id: str = None,
+        sessions: List[DescribeDesktopGroupSessionsResponseBodySessions] = None,
+        total_count: int = None,
+    ):
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        self.next_token = next_token
+        # The request ID.
+        self.request_id = request_id
+        # The sessions.
+        self.sessions = sessions
+        # The total number of sessions.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.sessions:
+            for k in self.sessions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Sessions'] = []
+        if self.sessions is not None:
+            for k in self.sessions:
+                result['Sessions'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.sessions = []
+        if m.get('Sessions') is not None:
+            for k in m.get('Sessions'):
+                temp_model = DescribeDesktopGroupSessionsResponseBodySessions()
+                self.sessions.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeDesktopGroupSessionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDesktopGroupSessionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDesktopGroupSessionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDesktopGroupsRequest(TeaModel):
     def __init__(
         self,

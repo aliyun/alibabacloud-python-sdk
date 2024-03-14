@@ -7394,6 +7394,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_customized_list_headers_with_options_async(request, runtime)
 
+    def describe_desktop_group_sessions_with_options(
+        self,
+        request: ecd_20200930_models.DescribeDesktopGroupSessionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeDesktopGroupSessionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.own_type):
+            query['OwnType'] = request.own_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.session_status):
+            query['SessionStatus'] = request.session_status
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDesktopGroupSessions',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeDesktopGroupSessionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_desktop_group_sessions_with_options_async(
+        self,
+        request: ecd_20200930_models.DescribeDesktopGroupSessionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeDesktopGroupSessionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.own_type):
+            query['OwnType'] = request.own_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.session_status):
+            query['SessionStatus'] = request.session_status
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDesktopGroupSessions',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeDesktopGroupSessionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_desktop_group_sessions(
+        self,
+        request: ecd_20200930_models.DescribeDesktopGroupSessionsRequest,
+    ) -> ecd_20200930_models.DescribeDesktopGroupSessionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_desktop_group_sessions_with_options(request, runtime)
+
+    async def describe_desktop_group_sessions_async(
+        self,
+        request: ecd_20200930_models.DescribeDesktopGroupSessionsRequest,
+    ) -> ecd_20200930_models.DescribeDesktopGroupSessionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_desktop_group_sessions_with_options_async(request, runtime)
+
     def describe_desktop_groups_with_options(
         self,
         request: ecd_20200930_models.DescribeDesktopGroupsRequest,
