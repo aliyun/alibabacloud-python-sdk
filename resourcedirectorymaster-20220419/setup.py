@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_resourcedirectorymaster20220419.
 
-Created on 18/12/2023
+Created on 14/03/2024
 
 @author: Alibaba Cloud SDK
 """
