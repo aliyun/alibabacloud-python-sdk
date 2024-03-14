@@ -1,3 +1,20 @@
+2024-03-14 Version: 6.3.0
+- Support API AddGatewayAuth.
+- Support API CreateIsolationRule.
+- Support API DeleteIsolationRules.
+- Support API GetGatewayAuthDetail.
+- Support API ListIsolationRules.
+- Support API UpdateIsolationRule.
+- Update API CreateOrUpdateSwimmingLane: update param GatewaySwimmingLaneRouteJson.
+- Update API CreateOrUpdateSwimmingLaneGroup: add param CanaryModel.
+- Update API CreateOrUpdateSwimmingLaneGroup: add param Paths.
+- Update API CreateOrUpdateSwimmingLaneGroup: add param RouteIds.
+- Update API CreateOrUpdateSwimmingLaneGroup: update response param.
+- Update API ListClusterTypes: update response param.
+- Update API QueryAllSwimmingLane: update response param.
+- Update API QueryAllSwimmingLaneGroup: update response param.
+
+
 2024-02-29 Version: 6.2.0
 - Support API AddGatewayAuth.
 - Support API CreateIsolationRule.

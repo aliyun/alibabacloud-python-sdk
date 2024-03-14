@@ -3458,15 +3458,23 @@ class Client(OpenApiClient):
 
     def create_or_update_swimming_lane_group_with_options(
         self,
-        request: mse_20190531_models.CreateOrUpdateSwimmingLaneGroupRequest,
+        tmp_req: mse_20190531_models.CreateOrUpdateSwimmingLaneGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneGroupResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.CreateOrUpdateSwimmingLaneGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.paths):
+            request.paths_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.paths, 'Paths', 'json')
+        if not UtilClient.is_unset(tmp_req.route_ids):
+            request.route_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.route_ids, 'RouteIds', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.app_ids):
             query['AppIds'] = request.app_ids
+        if not UtilClient.is_unset(request.canary_model):
+            query['CanaryModel'] = request.canary_model
         if not UtilClient.is_unset(request.db_gray_enable):
             query['DbGrayEnable'] = request.db_gray_enable
         if not UtilClient.is_unset(request.entry_app):
@@ -3481,10 +3489,14 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.paths_shrink):
+            query['Paths'] = request.paths_shrink
         if not UtilClient.is_unset(request.record_canary_detail):
             query['RecordCanaryDetail'] = request.record_canary_detail
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
+        if not UtilClient.is_unset(request.route_ids_shrink):
+            query['RouteIds'] = request.route_ids_shrink
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
@@ -3508,15 +3520,23 @@ class Client(OpenApiClient):
 
     async def create_or_update_swimming_lane_group_with_options_async(
         self,
-        request: mse_20190531_models.CreateOrUpdateSwimmingLaneGroupRequest,
+        tmp_req: mse_20190531_models.CreateOrUpdateSwimmingLaneGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneGroupResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.CreateOrUpdateSwimmingLaneGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.paths):
+            request.paths_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.paths, 'Paths', 'json')
+        if not UtilClient.is_unset(tmp_req.route_ids):
+            request.route_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.route_ids, 'RouteIds', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.app_ids):
             query['AppIds'] = request.app_ids
+        if not UtilClient.is_unset(request.canary_model):
+            query['CanaryModel'] = request.canary_model
         if not UtilClient.is_unset(request.db_gray_enable):
             query['DbGrayEnable'] = request.db_gray_enable
         if not UtilClient.is_unset(request.entry_app):
@@ -3531,10 +3551,14 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.paths_shrink):
+            query['Paths'] = request.paths_shrink
         if not UtilClient.is_unset(request.record_canary_detail):
             query['RecordCanaryDetail'] = request.record_canary_detail
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
+        if not UtilClient.is_unset(request.route_ids_shrink):
+            query['RouteIds'] = request.route_ids_shrink
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
