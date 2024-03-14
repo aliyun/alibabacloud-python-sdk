@@ -1,3 +1,7 @@
+2024-03-14 Version: 3.0.1
+- Update API GetOrderDetail: update response param.
+
+
 2024-03-13 Version: 3.0.0
 - Delete API SaveUserCredit.
 - Delete API SetCreditLabelAction.

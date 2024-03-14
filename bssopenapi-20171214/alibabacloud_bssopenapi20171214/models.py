@@ -12802,6 +12802,7 @@ class GetOrderDetailResponseBodyDataOrderListOrder(TeaModel):
         config: str = None,
         create_time: str = None,
         currency: str = None,
+        extend_infos: Dict[str, str] = None,
         instance_ids: str = None,
         operator: str = None,
         order_id: str = None,
@@ -12835,6 +12836,7 @@ class GetOrderDetailResponseBodyDataOrderListOrder(TeaModel):
         self.create_time = create_time
         # The currency.
         self.currency = currency
+        self.extend_infos = extend_infos
         # The instance IDs.
         self.instance_ids = instance_ids
         # The ID of the Resource Access Management (RAM) user who performs operations on the order. If no RAM user is involved, leave this parameter blank.
@@ -12917,6 +12919,8 @@ class GetOrderDetailResponseBodyDataOrderListOrder(TeaModel):
             result['CreateTime'] = self.create_time
         if self.currency is not None:
             result['Currency'] = self.currency
+        if self.extend_infos is not None:
+            result['ExtendInfos'] = self.extend_infos
         if self.instance_ids is not None:
             result['InstanceIDs'] = self.instance_ids
         if self.operator is not None:
@@ -12975,6 +12979,8 @@ class GetOrderDetailResponseBodyDataOrderListOrder(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('Currency') is not None:
             self.currency = m.get('Currency')
+        if m.get('ExtendInfos') is not None:
+            self.extend_infos = m.get('ExtendInfos')
         if m.get('InstanceIDs') is not None:
             self.instance_ids = m.get('InstanceIDs')
         if m.get('Operator') is not None:
