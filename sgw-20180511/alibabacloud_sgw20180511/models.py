@@ -136,9 +136,6 @@ class ActivateAllInOneGatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -300,9 +297,6 @@ class ActivateGatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -464,9 +458,6 @@ class AddSharesToExpressSyncResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -592,9 +583,6 @@ class AddTagsToGatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -732,9 +720,6 @@ class CheckActivationKeyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -879,9 +864,6 @@ class CheckBlockVolumeNameResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1013,9 +995,6 @@ class CheckGatewayEssdSupportResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1141,9 +1120,6 @@ class CheckMnsServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1263,9 +1239,6 @@ class CheckRoleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1403,9 +1376,6 @@ class CheckSlrRoleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1637,9 +1607,6 @@ class CheckUpgradeVersionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1783,9 +1750,6 @@ class CreateCacheResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1911,9 +1875,6 @@ class CreateElasticGatewayPrivateZoneResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2063,9 +2024,6 @@ class CreateExpressSyncResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2106,9 +2064,12 @@ class CreateGatewayRequest(TeaModel):
         public_network_bandwidth: int = None,
         release_after_expiration: bool = None,
         resource_region_id: str = None,
+        secondary_vswitch_id: str = None,
         security_token: str = None,
         storage_bundle_id: str = None,
         type: str = None,
+        untrusted_env_id: str = None,
+        untrusted_env_instance_type: str = None,
         v_switch_id: str = None,
     ):
         self.description = description
@@ -2119,9 +2080,12 @@ class CreateGatewayRequest(TeaModel):
         self.public_network_bandwidth = public_network_bandwidth
         self.release_after_expiration = release_after_expiration
         self.resource_region_id = resource_region_id
+        self.secondary_vswitch_id = secondary_vswitch_id
         self.security_token = security_token
         self.storage_bundle_id = storage_bundle_id
         self.type = type
+        self.untrusted_env_id = untrusted_env_id
+        self.untrusted_env_instance_type = untrusted_env_instance_type
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -2149,12 +2113,18 @@ class CreateGatewayRequest(TeaModel):
             result['ReleaseAfterExpiration'] = self.release_after_expiration
         if self.resource_region_id is not None:
             result['ResourceRegionId'] = self.resource_region_id
+        if self.secondary_vswitch_id is not None:
+            result['SecondaryVSwitchId'] = self.secondary_vswitch_id
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
         if self.storage_bundle_id is not None:
             result['StorageBundleId'] = self.storage_bundle_id
         if self.type is not None:
             result['Type'] = self.type
+        if self.untrusted_env_id is not None:
+            result['UntrustedEnvId'] = self.untrusted_env_id
+        if self.untrusted_env_instance_type is not None:
+            result['UntrustedEnvInstanceType'] = self.untrusted_env_instance_type
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         return result
@@ -2177,12 +2147,18 @@ class CreateGatewayRequest(TeaModel):
             self.release_after_expiration = m.get('ReleaseAfterExpiration')
         if m.get('ResourceRegionId') is not None:
             self.resource_region_id = m.get('ResourceRegionId')
+        if m.get('SecondaryVSwitchId') is not None:
+            self.secondary_vswitch_id = m.get('SecondaryVSwitchId')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
         if m.get('StorageBundleId') is not None:
             self.storage_bundle_id = m.get('StorageBundleId')
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('UntrustedEnvId') is not None:
+            self.untrusted_env_id = m.get('UntrustedEnvId')
+        if m.get('UntrustedEnvInstanceType') is not None:
+            self.untrusted_env_instance_type = m.get('UntrustedEnvInstanceType')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         return self
@@ -2257,9 +2233,6 @@ class CreateGatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2463,9 +2436,6 @@ class CreateGatewayBlockVolumeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2501,11 +2471,13 @@ class CreateGatewayCacheDiskRequest(TeaModel):
         cache_disk_category: str = None,
         cache_disk_size_in_gb: int = None,
         gateway_id: str = None,
+        performance_level: str = None,
         security_token: str = None,
     ):
         self.cache_disk_category = cache_disk_category
         self.cache_disk_size_in_gb = cache_disk_size_in_gb
         self.gateway_id = gateway_id
+        self.performance_level = performance_level
         self.security_token = security_token
 
     def validate(self):
@@ -2523,6 +2495,8 @@ class CreateGatewayCacheDiskRequest(TeaModel):
             result['CacheDiskSizeInGB'] = self.cache_disk_size_in_gb
         if self.gateway_id is not None:
             result['GatewayId'] = self.gateway_id
+        if self.performance_level is not None:
+            result['PerformanceLevel'] = self.performance_level
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
         return result
@@ -2535,6 +2509,8 @@ class CreateGatewayCacheDiskRequest(TeaModel):
             self.cache_disk_size_in_gb = m.get('CacheDiskSizeInGB')
         if m.get('GatewayId') is not None:
             self.gateway_id = m.get('GatewayId')
+        if m.get('PerformanceLevel') is not None:
+            self.performance_level = m.get('PerformanceLevel')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
         return self
@@ -2609,9 +2585,6 @@ class CreateGatewayCacheDiskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2965,9 +2938,6 @@ class CreateGatewayFileShareResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3099,9 +3069,6 @@ class CreateGatewayLoggingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3239,9 +3206,6 @@ class CreateGatewaySMBUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3379,9 +3343,6 @@ class CreateStorageBundleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3552,9 +3513,6 @@ class DeleteCSGClientsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3680,9 +3638,6 @@ class DeleteElasticGatewayPrivateZoneResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3808,9 +3763,6 @@ class DeleteExpressSyncResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3948,9 +3900,6 @@ class DeleteGatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4088,9 +4037,6 @@ class DeleteGatewayBlockVolumesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4228,9 +4174,6 @@ class DeleteGatewayCacheDiskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4368,9 +4311,6 @@ class DeleteGatewayFileSharesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4490,9 +4430,6 @@ class DeleteGatewayLoggingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4624,9 +4561,6 @@ class DeleteGatewaySMBUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4746,9 +4680,6 @@ class DeleteStorageBundleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4931,9 +4862,6 @@ class DeployCSGClientsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5077,9 +5005,6 @@ class DeployCacheDiskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5211,9 +5136,6 @@ class DeployGatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5357,9 +5279,6 @@ class DescribeAccountConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5597,9 +5516,6 @@ class DescribeBlockVolumeSnapshotsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5838,9 +5754,6 @@ class DescribeCSGClientTasksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6085,9 +5998,6 @@ class DescribeCSGClientsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6219,9 +6129,6 @@ class DescribeDashboardResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6347,9 +6254,6 @@ class DescribeExpireCachesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6593,9 +6497,6 @@ class DescribeExpressSyncSharesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6827,9 +6728,6 @@ class DescribeExpressSyncsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6942,6 +6840,7 @@ class DescribeGatewayResponseBody(TeaModel):
         gateway_region_id: str = None,
         gateway_type: str = None,
         gateway_version: str = None,
+        high_availability: bool = None,
         inner_ip: str = None,
         inner_ipv_6ip: str = None,
         ip: str = None,
@@ -6960,6 +6859,8 @@ class DescribeGatewayResponseBody(TeaModel):
         success: bool = None,
         task_id: str = None,
         type: str = None,
+        untrusted_env_instance_type: str = None,
+        untrusted_env_oss_endpoint: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
@@ -6983,6 +6884,7 @@ class DescribeGatewayResponseBody(TeaModel):
         self.gateway_region_id = gateway_region_id
         self.gateway_type = gateway_type
         self.gateway_version = gateway_version
+        self.high_availability = high_availability
         self.inner_ip = inner_ip
         self.inner_ipv_6ip = inner_ipv_6ip
         self.ip = ip
@@ -7001,6 +6903,8 @@ class DescribeGatewayResponseBody(TeaModel):
         self.success = success
         self.task_id = task_id
         self.type = type
+        self.untrusted_env_instance_type = untrusted_env_instance_type
+        self.untrusted_env_oss_endpoint = untrusted_env_oss_endpoint
         self.v_switch_id = v_switch_id
         self.vpc_id = vpc_id
 
@@ -7054,6 +6958,8 @@ class DescribeGatewayResponseBody(TeaModel):
             result['GatewayType'] = self.gateway_type
         if self.gateway_version is not None:
             result['GatewayVersion'] = self.gateway_version
+        if self.high_availability is not None:
+            result['HighAvailability'] = self.high_availability
         if self.inner_ip is not None:
             result['InnerIp'] = self.inner_ip
         if self.inner_ipv_6ip is not None:
@@ -7090,6 +6996,10 @@ class DescribeGatewayResponseBody(TeaModel):
             result['TaskId'] = self.task_id
         if self.type is not None:
             result['Type'] = self.type
+        if self.untrusted_env_instance_type is not None:
+            result['UntrustedEnvInstanceType'] = self.untrusted_env_instance_type
+        if self.untrusted_env_oss_endpoint is not None:
+            result['UntrustedEnvOssEndpoint'] = self.untrusted_env_oss_endpoint
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.vpc_id is not None:
@@ -7139,6 +7049,8 @@ class DescribeGatewayResponseBody(TeaModel):
             self.gateway_type = m.get('GatewayType')
         if m.get('GatewayVersion') is not None:
             self.gateway_version = m.get('GatewayVersion')
+        if m.get('HighAvailability') is not None:
+            self.high_availability = m.get('HighAvailability')
         if m.get('InnerIp') is not None:
             self.inner_ip = m.get('InnerIp')
         if m.get('InnerIpv6Ip') is not None:
@@ -7175,6 +7087,10 @@ class DescribeGatewayResponseBody(TeaModel):
             self.task_id = m.get('TaskId')
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('UntrustedEnvInstanceType') is not None:
+            self.untrusted_env_instance_type = m.get('UntrustedEnvInstanceType')
+        if m.get('UntrustedEnvOssEndpoint') is not None:
+            self.untrusted_env_oss_endpoint = m.get('UntrustedEnvOssEndpoint')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VpcId') is not None:
@@ -7194,9 +7110,6 @@ class DescribeGatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7340,9 +7253,6 @@ class DescribeGatewayADInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7574,9 +7484,6 @@ class DescribeGatewayActionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7714,9 +7621,6 @@ class DescribeGatewayAuthInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7937,9 +7841,6 @@ class DescribeGatewayAutoPlansResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8077,9 +7978,6 @@ class DescribeGatewayAutoUpgradeConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8420,9 +8318,6 @@ class DescribeGatewayBlockVolumesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8720,9 +8615,6 @@ class DescribeGatewayBucketCachesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8991,9 +8883,6 @@ class DescribeGatewayCachesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9137,9 +9026,6 @@ class DescribeGatewayCapacityLimitResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9265,9 +9151,6 @@ class DescribeGatewayCategoriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9387,9 +9270,6 @@ class DescribeGatewayClassesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9545,9 +9425,6 @@ class DescribeGatewayCredentialResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9673,9 +9550,6 @@ class DescribeGatewayDNSResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10292,9 +10166,6 @@ class DescribeGatewayFileSharesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10432,9 +10303,6 @@ class DescribeGatewayFileStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10672,9 +10540,6 @@ class DescribeGatewayImagesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10870,9 +10735,6 @@ class DescribeGatewayInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11022,9 +10884,6 @@ class DescribeGatewayLDAPInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11144,9 +11003,6 @@ class DescribeGatewayLocationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11284,9 +11140,6 @@ class DescribeGatewayLoggingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11418,9 +11271,6 @@ class DescribeGatewayLogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11616,9 +11466,6 @@ class DescribeGatewayModificationClassesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11874,9 +11721,6 @@ class DescribeGatewayNFSClientsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12102,9 +11946,6 @@ class DescribeGatewaySMBUsersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12254,9 +12095,6 @@ class DescribeGatewayStatisticsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12452,9 +12290,6 @@ class DescribeGatewayStockResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12580,9 +12415,6 @@ class DescribeGatewayTypesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12706,6 +12538,7 @@ class DescribeGatewaysResponseBodyGatewaysGateway(TeaModel):
         gateway_region_id: str = None,
         gateway_type: str = None,
         gateway_version: str = None,
+        high_availability: bool = None,
         inner_ip: str = None,
         inner_ipv_6ip: str = None,
         ip: str = None,
@@ -12721,6 +12554,7 @@ class DescribeGatewaysResponseBodyGatewaysGateway(TeaModel):
         storage_bundle_id: str = None,
         task_id: str = None,
         type: str = None,
+        untrusted_env_instance_type: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
@@ -12743,6 +12577,7 @@ class DescribeGatewaysResponseBodyGatewaysGateway(TeaModel):
         self.gateway_region_id = gateway_region_id
         self.gateway_type = gateway_type
         self.gateway_version = gateway_version
+        self.high_availability = high_availability
         self.inner_ip = inner_ip
         self.inner_ipv_6ip = inner_ipv_6ip
         self.ip = ip
@@ -12758,6 +12593,7 @@ class DescribeGatewaysResponseBodyGatewaysGateway(TeaModel):
         self.storage_bundle_id = storage_bundle_id
         self.task_id = task_id
         self.type = type
+        self.untrusted_env_instance_type = untrusted_env_instance_type
         self.v_switch_id = v_switch_id
         self.vpc_id = vpc_id
 
@@ -12809,6 +12645,8 @@ class DescribeGatewaysResponseBodyGatewaysGateway(TeaModel):
             result['GatewayType'] = self.gateway_type
         if self.gateway_version is not None:
             result['GatewayVersion'] = self.gateway_version
+        if self.high_availability is not None:
+            result['HighAvailability'] = self.high_availability
         if self.inner_ip is not None:
             result['InnerIp'] = self.inner_ip
         if self.inner_ipv_6ip is not None:
@@ -12839,6 +12677,8 @@ class DescribeGatewaysResponseBodyGatewaysGateway(TeaModel):
             result['TaskId'] = self.task_id
         if self.type is not None:
             result['Type'] = self.type
+        if self.untrusted_env_instance_type is not None:
+            result['UntrustedEnvInstanceType'] = self.untrusted_env_instance_type
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.vpc_id is not None:
@@ -12886,6 +12726,8 @@ class DescribeGatewaysResponseBodyGatewaysGateway(TeaModel):
             self.gateway_type = m.get('GatewayType')
         if m.get('GatewayVersion') is not None:
             self.gateway_version = m.get('GatewayVersion')
+        if m.get('HighAvailability') is not None:
+            self.high_availability = m.get('HighAvailability')
         if m.get('InnerIp') is not None:
             self.inner_ip = m.get('InnerIp')
         if m.get('InnerIpv6Ip') is not None:
@@ -12916,6 +12758,8 @@ class DescribeGatewaysResponseBodyGatewaysGateway(TeaModel):
             self.task_id = m.get('TaskId')
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('UntrustedEnvInstanceType') is not None:
+            self.untrusted_env_instance_type = m.get('UntrustedEnvInstanceType')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VpcId') is not None:
@@ -13041,9 +12885,6 @@ class DescribeGatewaysResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13275,9 +13116,6 @@ class DescribeGatewaysForCmsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13555,9 +13393,6 @@ class DescribeGatewaysTagsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13689,9 +13524,6 @@ class DescribeKmsKeyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13871,9 +13703,6 @@ class DescribeMqttConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14059,9 +13888,6 @@ class DescribeOssBucketInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14251,9 +14077,6 @@ class DescribeOssBucketsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14409,9 +14232,6 @@ class DescribePayAsYouGoPriceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14595,9 +14415,6 @@ class DescribeRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14805,9 +14622,6 @@ class DescribeSharesBucketInfoForExpressSyncResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14957,9 +14771,6 @@ class DescribeStorageBundleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15203,9 +15014,6 @@ class DescribeStorageBundlesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15373,9 +15181,6 @@ class DescribeSubscriptionPriceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15643,9 +15448,6 @@ class DescribeTasksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15783,9 +15585,6 @@ class DescribeUserBusinessStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16053,9 +15852,6 @@ class DescribeVSwitchesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16311,9 +16107,6 @@ class DescribeVpcsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16503,9 +16296,6 @@ class DescribeZonesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16625,9 +16415,6 @@ class DisableGatewayLoggingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16759,9 +16546,6 @@ class DisableGatewayNFSVersionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16887,9 +16671,6 @@ class EnableGatewayIpv6Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17009,9 +16790,6 @@ class EnableGatewayLoggingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17155,9 +16933,6 @@ class ExpandCacheDiskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17283,9 +17058,6 @@ class ExpandGatewayFileShareResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17423,9 +17195,6 @@ class ExpandGatewayNetworkBandwidthResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17551,9 +17320,6 @@ class GenerateGatewayTokenResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17685,9 +17451,6 @@ class GenerateMqttTokenResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17855,9 +17618,6 @@ class GenerateStsTokenResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17995,9 +17755,6 @@ class HandleGatewayAutoPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18264,9 +18021,6 @@ class ListTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18404,9 +18158,6 @@ class ModifyGatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18544,9 +18295,6 @@ class ModifyGatewayBlockVolumeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18684,9 +18432,6 @@ class ModifyGatewayClassResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18824,9 +18569,6 @@ class ModifyGatewayFileShareResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18964,9 +18706,6 @@ class ModifyGatewayFileShareWatermarkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19104,9 +18843,6 @@ class ModifyStorageBundleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19181,9 +18917,6 @@ class OpenSgwServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19327,9 +19060,6 @@ class OperateGatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19443,9 +19173,6 @@ class ReleaseServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19577,9 +19304,6 @@ class RemoveSharesFromExpressSyncResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19705,9 +19429,6 @@ class RemoveTagsFromGatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19839,9 +19560,6 @@ class ReportBlockVolumesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19973,9 +19691,6 @@ class ReportFileSharesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20119,9 +19834,6 @@ class ReportGatewayInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20253,9 +19965,6 @@ class ReportGatewayUsageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20393,9 +20102,6 @@ class ResetGatewayPasswordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20527,9 +20233,6 @@ class RestartFileSharesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20679,9 +20382,6 @@ class SetGatewayADInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20819,9 +20519,6 @@ class SetGatewayAutoUpgradeConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20953,9 +20650,6 @@ class SetGatewayDNSResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21117,9 +20811,6 @@ class SetGatewayLDAPInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21314,9 +21005,6 @@ class SwitchCSGClientsReverseSyncConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21436,9 +21124,6 @@ class SwitchGatewayExpirationPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21564,9 +21249,6 @@ class SwitchToSubscriptionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21733,9 +21415,6 @@ class TagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21873,9 +21552,6 @@ class TriggerGatewayRemoteSyncResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22007,9 +21683,6 @@ class UntagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22165,9 +21838,6 @@ class UpdateGatewayBlockVolumeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22473,9 +22143,6 @@ class UpdateGatewayFileShareResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22601,9 +22268,6 @@ class UpgradeGatewayResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22735,9 +22399,6 @@ class UploadCSGClientLogResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22857,9 +22518,6 @@ class UploadGatewayLogResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23009,9 +22667,6 @@ class ValidateExpressSyncConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23137,9 +22792,6 @@ class ValidateGatewayNameResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

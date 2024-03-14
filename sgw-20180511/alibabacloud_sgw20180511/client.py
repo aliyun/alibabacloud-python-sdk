@@ -1207,12 +1207,18 @@ class Client(OpenApiClient):
             query['ReleaseAfterExpiration'] = request.release_after_expiration
         if not UtilClient.is_unset(request.resource_region_id):
             query['ResourceRegionId'] = request.resource_region_id
+        if not UtilClient.is_unset(request.secondary_vswitch_id):
+            query['SecondaryVSwitchId'] = request.secondary_vswitch_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.storage_bundle_id):
             query['StorageBundleId'] = request.storage_bundle_id
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
+        if not UtilClient.is_unset(request.untrusted_env_id):
+            query['UntrustedEnvId'] = request.untrusted_env_id
+        if not UtilClient.is_unset(request.untrusted_env_instance_type):
+            query['UntrustedEnvInstanceType'] = request.untrusted_env_instance_type
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         req = open_api_models.OpenApiRequest(
@@ -1257,12 +1263,18 @@ class Client(OpenApiClient):
             query['ReleaseAfterExpiration'] = request.release_after_expiration
         if not UtilClient.is_unset(request.resource_region_id):
             query['ResourceRegionId'] = request.resource_region_id
+        if not UtilClient.is_unset(request.secondary_vswitch_id):
+            query['SecondaryVSwitchId'] = request.secondary_vswitch_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.storage_bundle_id):
             query['StorageBundleId'] = request.storage_bundle_id
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
+        if not UtilClient.is_unset(request.untrusted_env_id):
+            query['UntrustedEnvId'] = request.untrusted_env_id
+        if not UtilClient.is_unset(request.untrusted_env_instance_type):
+            query['UntrustedEnvInstanceType'] = request.untrusted_env_instance_type
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         req = open_api_models.OpenApiRequest(
@@ -1437,6 +1449,8 @@ class Client(OpenApiClient):
             query['CacheDiskSizeInGB'] = request.cache_disk_size_in_gb
         if not UtilClient.is_unset(request.gateway_id):
             query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.performance_level):
+            query['PerformanceLevel'] = request.performance_level
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
@@ -1471,6 +1485,8 @@ class Client(OpenApiClient):
             query['CacheDiskSizeInGB'] = request.cache_disk_size_in_gb
         if not UtilClient.is_unset(request.gateway_id):
             query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.performance_level):
+            query['PerformanceLevel'] = request.performance_level
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
