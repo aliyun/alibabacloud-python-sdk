@@ -1,3 +1,7 @@
+2024-03-15 Version: 2.0.5
+- Update API VerifyVATInvoice: add param InvoiceKind.
+
+
 2024-01-23 Version: 2.0.4
 - Generated python 2021-07-07 for ocr-api.
 

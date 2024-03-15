@@ -5830,6 +5830,8 @@ class Client(OpenApiClient):
             query['InvoiceCode'] = request.invoice_code
         if not UtilClient.is_unset(request.invoice_date):
             query['InvoiceDate'] = request.invoice_date
+        if not UtilClient.is_unset(request.invoice_kind):
+            query['InvoiceKind'] = request.invoice_kind
         if not UtilClient.is_unset(request.invoice_no):
             query['InvoiceNo'] = request.invoice_no
         if not UtilClient.is_unset(request.invoice_sum):
@@ -5866,6 +5868,8 @@ class Client(OpenApiClient):
             query['InvoiceCode'] = request.invoice_code
         if not UtilClient.is_unset(request.invoice_date):
             query['InvoiceDate'] = request.invoice_date
+        if not UtilClient.is_unset(request.invoice_kind):
+            query['InvoiceKind'] = request.invoice_kind
         if not UtilClient.is_unset(request.invoice_no):
             query['InvoiceNo'] = request.invoice_no
         if not UtilClient.is_unset(request.invoice_sum):
