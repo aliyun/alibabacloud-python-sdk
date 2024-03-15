@@ -2829,6 +2829,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.release_instance_with_options_async(request, runtime)
 
+    def reopen_instance_with_options(
+        self,
+        request: alikafka_20190916_models.ReopenInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.ReopenInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReopenInstance',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.ReopenInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reopen_instance_with_options_async(
+        self,
+        request: alikafka_20190916_models.ReopenInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.ReopenInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReopenInstance',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.ReopenInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reopen_instance(
+        self,
+        request: alikafka_20190916_models.ReopenInstanceRequest,
+    ) -> alikafka_20190916_models.ReopenInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.reopen_instance_with_options(request, runtime)
+
+    async def reopen_instance_async(
+        self,
+        request: alikafka_20190916_models.ReopenInstanceRequest,
+    ) -> alikafka_20190916_models.ReopenInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.reopen_instance_with_options_async(request, runtime)
+
     def start_instance_with_options(
         self,
         request: alikafka_20190916_models.StartInstanceRequest,
@@ -3004,6 +3078,80 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.start_instance_with_options_async(request, runtime)
+
+    def stop_instance_with_options(
+        self,
+        request: alikafka_20190916_models.StopInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.StopInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopInstance',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.StopInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_instance_with_options_async(
+        self,
+        request: alikafka_20190916_models.StopInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.StopInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopInstance',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.StopInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_instance(
+        self,
+        request: alikafka_20190916_models.StopInstanceRequest,
+    ) -> alikafka_20190916_models.StopInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.stop_instance_with_options(request, runtime)
+
+    async def stop_instance_async(
+        self,
+        request: alikafka_20190916_models.StopInstanceRequest,
+    ) -> alikafka_20190916_models.StopInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_instance_with_options_async(request, runtime)
 
     def tag_resources_with_options(
         self,
