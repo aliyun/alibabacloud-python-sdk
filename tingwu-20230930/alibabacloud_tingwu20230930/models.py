@@ -9,6 +9,7 @@ class CreateTaskRequestInput(TeaModel):
         self,
         file_url: str = None,
         format: str = None,
+        multiple_streams_enabled: bool = None,
         progressive_callbacks_enabled: bool = None,
         sample_rate: int = None,
         source_language: str = None,
@@ -17,6 +18,7 @@ class CreateTaskRequestInput(TeaModel):
     ):
         self.file_url = file_url
         self.format = format
+        self.multiple_streams_enabled = multiple_streams_enabled
         self.progressive_callbacks_enabled = progressive_callbacks_enabled
         self.sample_rate = sample_rate
         self.source_language = source_language
@@ -36,6 +38,8 @@ class CreateTaskRequestInput(TeaModel):
             result['FileUrl'] = self.file_url
         if self.format is not None:
             result['Format'] = self.format
+        if self.multiple_streams_enabled is not None:
+            result['MultipleStreamsEnabled'] = self.multiple_streams_enabled
         if self.progressive_callbacks_enabled is not None:
             result['ProgressiveCallbacksEnabled'] = self.progressive_callbacks_enabled
         if self.sample_rate is not None:
@@ -54,6 +58,8 @@ class CreateTaskRequestInput(TeaModel):
             self.file_url = m.get('FileUrl')
         if m.get('Format') is not None:
             self.format = m.get('Format')
+        if m.get('MultipleStreamsEnabled') is not None:
+            self.multiple_streams_enabled = m.get('MultipleStreamsEnabled')
         if m.get('ProgressiveCallbacksEnabled') is not None:
             self.progressive_callbacks_enabled = m.get('ProgressiveCallbacksEnabled')
         if m.get('SampleRate') is not None:
@@ -196,12 +202,14 @@ class CreateTaskRequestParametersTranscriptionDiarization(TeaModel):
 class CreateTaskRequestParametersTranscription(TeaModel):
     def __init__(
         self,
+        additional_stream_output_level: int = None,
         audio_event_detection_enabled: bool = None,
         diarization: CreateTaskRequestParametersTranscriptionDiarization = None,
         diarization_enabled: bool = None,
         output_level: int = None,
         phrase_id: str = None,
     ):
+        self.additional_stream_output_level = additional_stream_output_level
         self.audio_event_detection_enabled = audio_event_detection_enabled
         self.diarization = diarization
         self.diarization_enabled = diarization_enabled
@@ -218,6 +226,8 @@ class CreateTaskRequestParametersTranscription(TeaModel):
             return _map
 
         result = dict()
+        if self.additional_stream_output_level is not None:
+            result['AdditionalStreamOutputLevel'] = self.additional_stream_output_level
         if self.audio_event_detection_enabled is not None:
             result['AudioEventDetectionEnabled'] = self.audio_event_detection_enabled
         if self.diarization is not None:
@@ -232,6 +242,8 @@ class CreateTaskRequestParametersTranscription(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdditionalStreamOutputLevel') is not None:
+            self.additional_stream_output_level = m.get('AdditionalStreamOutputLevel')
         if m.get('AudioEventDetectionEnabled') is not None:
             self.audio_event_detection_enabled = m.get('AudioEventDetectionEnabled')
         if m.get('Diarization') is not None:
@@ -249,9 +261,11 @@ class CreateTaskRequestParametersTranscription(TeaModel):
 class CreateTaskRequestParametersTranslation(TeaModel):
     def __init__(
         self,
+        additional_stream_output_level: int = None,
         output_level: int = None,
         target_languages: List[str] = None,
     ):
+        self.additional_stream_output_level = additional_stream_output_level
         self.output_level = output_level
         self.target_languages = target_languages
 
@@ -264,6 +278,8 @@ class CreateTaskRequestParametersTranslation(TeaModel):
             return _map
 
         result = dict()
+        if self.additional_stream_output_level is not None:
+            result['AdditionalStreamOutputLevel'] = self.additional_stream_output_level
         if self.output_level is not None:
             result['OutputLevel'] = self.output_level
         if self.target_languages is not None:
@@ -272,6 +288,8 @@ class CreateTaskRequestParametersTranslation(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdditionalStreamOutputLevel') is not None:
+            self.additional_stream_output_level = m.get('AdditionalStreamOutputLevel')
         if m.get('OutputLevel') is not None:
             self.output_level = m.get('OutputLevel')
         if m.get('TargetLanguages') is not None:
