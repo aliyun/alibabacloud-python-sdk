@@ -1,3 +1,7 @@
+2024-03-15 Version: 3.0.1
+- Update API DescribeDBInstanceAttribute: update response param.
+
+
 2024-01-15 Version: 3.0.0
 - Generated python 2023-05-22 for selectdb.
 
