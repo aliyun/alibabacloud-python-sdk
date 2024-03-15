@@ -1,3 +1,8 @@
+2024-03-15 Version: 2.2.0
+- Support API ListExecutors.
+- Update API DeleteJobs: add param ExecutorIds.
+
+
 2024-03-13 Version: 2.1.0
 - Support API ListJobExecutors.
 - Update API AddImage: delete param Action.
