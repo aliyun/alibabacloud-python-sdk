@@ -685,13 +685,6 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetAutoScalingPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetAutoScalingPolicyResponse:
-        """
-        获取弹性伸缩策略信息。
-        
-        @param request: GetAutoScalingPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAutoScalingPolicyResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -724,13 +717,6 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetAutoScalingPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetAutoScalingPolicyResponse:
-        """
-        获取弹性伸缩策略信息。
-        
-        @param request: GetAutoScalingPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAutoScalingPolicyResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -762,12 +748,6 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.GetAutoScalingPolicyRequest,
     ) -> emr_20210320_models.GetAutoScalingPolicyResponse:
-        """
-        获取弹性伸缩策略信息。
-        
-        @param request: GetAutoScalingPolicyRequest
-        @return: GetAutoScalingPolicyResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.get_auto_scaling_policy_with_options(request, runtime)
 
@@ -775,12 +755,6 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.GetAutoScalingPolicyRequest,
     ) -> emr_20210320_models.GetAutoScalingPolicyResponse:
-        """
-        获取弹性伸缩策略信息。
-        
-        @param request: GetAutoScalingPolicyRequest
-        @return: GetAutoScalingPolicyResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.get_auto_scaling_policy_with_options_async(request, runtime)
 

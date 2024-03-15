@@ -8289,6 +8289,7 @@ class GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules(TeaModel):
         adjustment_type: str = None,
         adjustment_value: int = None,
         metrics_trigger: MetricsTrigger = None,
+        min_adjustment_value: int = None,
         rule_name: str = None,
         time_trigger: TimeTrigger = None,
         trigger_type: str = None,
@@ -8304,6 +8305,7 @@ class GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules(TeaModel):
         self.adjustment_value = adjustment_value
         # The description of scaling by load.
         self.metrics_trigger = metrics_trigger
+        self.min_adjustment_value = min_adjustment_value
         # The name of the auto scaling rule.
         self.rule_name = rule_name
         # The description of scaling by time.
@@ -8334,6 +8336,8 @@ class GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules(TeaModel):
             result['AdjustmentValue'] = self.adjustment_value
         if self.metrics_trigger is not None:
             result['MetricsTrigger'] = self.metrics_trigger.to_map()
+        if self.min_adjustment_value is not None:
+            result['MinAdjustmentValue'] = self.min_adjustment_value
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
         if self.time_trigger is not None:
@@ -8353,6 +8357,8 @@ class GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules(TeaModel):
         if m.get('MetricsTrigger') is not None:
             temp_model = MetricsTrigger()
             self.metrics_trigger = temp_model.from_map(m['MetricsTrigger'])
+        if m.get('MinAdjustmentValue') is not None:
+            self.min_adjustment_value = m.get('MinAdjustmentValue')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
         if m.get('TimeTrigger') is not None:

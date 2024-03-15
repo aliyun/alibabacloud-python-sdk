@@ -1,3 +1,7 @@
+2024-03-15 Version: 1.4.1
+- Update API GetAutoScalingPolicy: update response param.
+
+
 2024-03-14 Version: 1.4.0
 - Support API ListScripts.
 - Delete API GetApmData.
