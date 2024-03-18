@@ -73,6 +73,33 @@ class CreateTaskRequestInput(TeaModel):
         return self
 
 
+class CreateTaskRequestParametersExtraParams(TeaModel):
+    def __init__(
+        self,
+        nfix_enabled: bool = None,
+    ):
+        self.nfix_enabled = nfix_enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.nfix_enabled is not None:
+            result['NfixEnabled'] = self.nfix_enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NfixEnabled') is not None:
+            self.nfix_enabled = m.get('NfixEnabled')
+        return self
+
+
 class CreateTaskRequestParametersMeetingAssistance(TeaModel):
     def __init__(
         self,
@@ -301,6 +328,7 @@ class CreateTaskRequestParameters(TeaModel):
     def __init__(
         self,
         auto_chapters_enabled: bool = None,
+        extra_params: CreateTaskRequestParametersExtraParams = None,
         meeting_assistance: CreateTaskRequestParametersMeetingAssistance = None,
         meeting_assistance_enabled: bool = None,
         ppt_extraction_enabled: bool = None,
@@ -313,6 +341,7 @@ class CreateTaskRequestParameters(TeaModel):
         translation_enabled: bool = None,
     ):
         self.auto_chapters_enabled = auto_chapters_enabled
+        self.extra_params = extra_params
         self.meeting_assistance = meeting_assistance
         self.meeting_assistance_enabled = meeting_assistance_enabled
         self.ppt_extraction_enabled = ppt_extraction_enabled
@@ -325,6 +354,8 @@ class CreateTaskRequestParameters(TeaModel):
         self.translation_enabled = translation_enabled
 
     def validate(self):
+        if self.extra_params:
+            self.extra_params.validate()
         if self.meeting_assistance:
             self.meeting_assistance.validate()
         if self.summarization:
@@ -344,6 +375,8 @@ class CreateTaskRequestParameters(TeaModel):
         result = dict()
         if self.auto_chapters_enabled is not None:
             result['AutoChaptersEnabled'] = self.auto_chapters_enabled
+        if self.extra_params is not None:
+            result['ExtraParams'] = self.extra_params.to_map()
         if self.meeting_assistance is not None:
             result['MeetingAssistance'] = self.meeting_assistance.to_map()
         if self.meeting_assistance_enabled is not None:
@@ -370,6 +403,9 @@ class CreateTaskRequestParameters(TeaModel):
         m = m or dict()
         if m.get('AutoChaptersEnabled') is not None:
             self.auto_chapters_enabled = m.get('AutoChaptersEnabled')
+        if m.get('ExtraParams') is not None:
+            temp_model = CreateTaskRequestParametersExtraParams()
+            self.extra_params = temp_model.from_map(m['ExtraParams'])
         if m.get('MeetingAssistance') is not None:
             temp_model = CreateTaskRequestParametersMeetingAssistance()
             self.meeting_assistance = temp_model.from_map(m['MeetingAssistance'])
@@ -460,10 +496,12 @@ class CreateTaskResponseBodyData(TeaModel):
         meeting_join_url: str = None,
         task_id: str = None,
         task_key: str = None,
+        task_status: str = None,
     ):
         self.meeting_join_url = meeting_join_url
         self.task_id = task_id
         self.task_key = task_key
+        self.task_status = task_status
 
     def validate(self):
         pass
@@ -480,6 +518,8 @@ class CreateTaskResponseBodyData(TeaModel):
             result['TaskId'] = self.task_id
         if self.task_key is not None:
             result['TaskKey'] = self.task_key
+        if self.task_status is not None:
+            result['TaskStatus'] = self.task_status
         return result
 
     def from_map(self, m: dict = None):
@@ -490,6 +530,8 @@ class CreateTaskResponseBodyData(TeaModel):
             self.task_id = m.get('TaskId')
         if m.get('TaskKey') is not None:
             self.task_key = m.get('TaskKey')
+        if m.get('TaskStatus') is not None:
+            self.task_status = m.get('TaskStatus')
         return self
 
 
