@@ -1,3 +1,16 @@
+2024-03-19 Version: 2.5.0
+- Support API IntlFlightCreateOrder.
+- Support API IntlFlightInventoryPriceCheck.
+- Support API IntlFlightOrderCancel.
+- Support API IntlFlightOrderDetail.
+- Support API IntlFlightOrderPay.
+- Support API IntlFlightOrderPayCheck.
+- Support API IntlFlightSegmentAvailableCert.
+- Support API MealBillSettlementQuery.
+- Update API FlightListingSearchV2: update response param.
+- Update API FlightOtaSearchV2: update response param.
+
+
 2024-03-13 Version: 2.4.1
 - Update API IntlFlightListingSearch: add param language.
 - Update API IntlFlightListingSearch: update param btrip_user_id.
