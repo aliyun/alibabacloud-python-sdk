@@ -2943,6 +2943,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_favorite_reports_with_options_async(request, runtime)
 
+    def list_organization_role_users_with_options(
+        self,
+        request: quickbi_public_20220101_models.ListOrganizationRoleUsersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.ListOrganizationRoleUsersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.role_id):
+            query['RoleId'] = request.role_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOrganizationRoleUsers',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.ListOrganizationRoleUsersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_organization_role_users_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.ListOrganizationRoleUsersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.ListOrganizationRoleUsersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.role_id):
+            query['RoleId'] = request.role_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOrganizationRoleUsers',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.ListOrganizationRoleUsersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_organization_role_users(
+        self,
+        request: quickbi_public_20220101_models.ListOrganizationRoleUsersRequest,
+    ) -> quickbi_public_20220101_models.ListOrganizationRoleUsersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_organization_role_users_with_options(request, runtime)
+
+    async def list_organization_role_users_async(
+        self,
+        request: quickbi_public_20220101_models.ListOrganizationRoleUsersRequest,
+    ) -> quickbi_public_20220101_models.ListOrganizationRoleUsersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_organization_role_users_with_options_async(request, runtime)
+
+    def list_organization_roles_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.ListOrganizationRolesResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListOrganizationRoles',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.ListOrganizationRolesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_organization_roles_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.ListOrganizationRolesResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListOrganizationRoles',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.ListOrganizationRolesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_organization_roles(self) -> quickbi_public_20220101_models.ListOrganizationRolesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_organization_roles_with_options(runtime)
+
+    async def list_organization_roles_async(self) -> quickbi_public_20220101_models.ListOrganizationRolesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_organization_roles_with_options_async(runtime)
+
     def list_portal_menu_authorization_with_options(
         self,
         request: quickbi_public_20220101_models.ListPortalMenuAuthorizationRequest,
@@ -3328,6 +3460,162 @@ class Client(OpenApiClient):
     ) -> quickbi_public_20220101_models.ListUserGroupsByUserIdResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_user_groups_by_user_id_with_options_async(request, runtime)
+
+    def list_workspace_role_users_with_options(
+        self,
+        request: quickbi_public_20220101_models.ListWorkspaceRoleUsersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.ListWorkspaceRoleUsersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.role_id):
+            query['RoleId'] = request.role_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWorkspaceRoleUsers',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.ListWorkspaceRoleUsersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_workspace_role_users_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.ListWorkspaceRoleUsersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.ListWorkspaceRoleUsersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.role_id):
+            query['RoleId'] = request.role_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWorkspaceRoleUsers',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.ListWorkspaceRoleUsersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_workspace_role_users(
+        self,
+        request: quickbi_public_20220101_models.ListWorkspaceRoleUsersRequest,
+    ) -> quickbi_public_20220101_models.ListWorkspaceRoleUsersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_workspace_role_users_with_options(request, runtime)
+
+    async def list_workspace_role_users_async(
+        self,
+        request: quickbi_public_20220101_models.ListWorkspaceRoleUsersRequest,
+    ) -> quickbi_public_20220101_models.ListWorkspaceRoleUsersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_workspace_role_users_with_options_async(request, runtime)
+
+    def list_workspace_roles_with_options(
+        self,
+        request: quickbi_public_20220101_models.ListWorkspaceRolesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.ListWorkspaceRolesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWorkspaceRoles',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.ListWorkspaceRolesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_workspace_roles_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.ListWorkspaceRolesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.ListWorkspaceRolesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWorkspaceRoles',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.ListWorkspaceRolesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_workspace_roles(
+        self,
+        request: quickbi_public_20220101_models.ListWorkspaceRolesRequest,
+    ) -> quickbi_public_20220101_models.ListWorkspaceRolesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_workspace_roles_with_options(request, runtime)
+
+    async def list_workspace_roles_async(
+        self,
+        request: quickbi_public_20220101_models.ListWorkspaceRolesRequest,
+    ) -> quickbi_public_20220101_models.ListWorkspaceRolesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_workspace_roles_with_options_async(request, runtime)
 
     def modify_api_datasource_parameters_with_options(
         self,
@@ -4210,6 +4498,76 @@ class Client(OpenApiClient):
     ) -> quickbi_public_20220101_models.QueryEmbeddedStatusResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_embedded_status_with_options_async(request, runtime)
+
+    def query_organization_role_config_with_options(
+        self,
+        request: quickbi_public_20220101_models.QueryOrganizationRoleConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryOrganizationRoleConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.role_id):
+            query['RoleId'] = request.role_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryOrganizationRoleConfig',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryOrganizationRoleConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_organization_role_config_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.QueryOrganizationRoleConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryOrganizationRoleConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.role_id):
+            query['RoleId'] = request.role_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryOrganizationRoleConfig',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryOrganizationRoleConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_organization_role_config(
+        self,
+        request: quickbi_public_20220101_models.QueryOrganizationRoleConfigRequest,
+    ) -> quickbi_public_20220101_models.QueryOrganizationRoleConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_organization_role_config_with_options(request, runtime)
+
+    async def query_organization_role_config_async(
+        self,
+        request: quickbi_public_20220101_models.QueryOrganizationRoleConfigRequest,
+    ) -> quickbi_public_20220101_models.QueryOrganizationRoleConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_organization_role_config_with_options_async(request, runtime)
 
     def query_organization_workspace_list_with_options(
         self,
@@ -5526,6 +5884,76 @@ class Client(OpenApiClient):
     ) -> quickbi_public_20220101_models.QueryWorksByWorkspaceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_works_by_workspace_with_options_async(request, runtime)
+
+    def query_workspace_role_config_with_options(
+        self,
+        request: quickbi_public_20220101_models.QueryWorkspaceRoleConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryWorkspaceRoleConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.role_id):
+            query['RoleId'] = request.role_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryWorkspaceRoleConfig',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryWorkspaceRoleConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_workspace_role_config_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.QueryWorkspaceRoleConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryWorkspaceRoleConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.role_id):
+            query['RoleId'] = request.role_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryWorkspaceRoleConfig',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryWorkspaceRoleConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_workspace_role_config(
+        self,
+        request: quickbi_public_20220101_models.QueryWorkspaceRoleConfigRequest,
+    ) -> quickbi_public_20220101_models.QueryWorkspaceRoleConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_workspace_role_config_with_options(request, runtime)
+
+    async def query_workspace_role_config_async(
+        self,
+        request: quickbi_public_20220101_models.QueryWorkspaceRoleConfigRequest,
+    ) -> quickbi_public_20220101_models.QueryWorkspaceRoleConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_workspace_role_config_with_options_async(request, runtime)
 
     def query_workspace_user_list_with_options(
         self,

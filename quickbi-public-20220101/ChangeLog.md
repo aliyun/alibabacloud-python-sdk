@@ -1,3 +1,12 @@
+2024-03-19 Version: 1.2.0
+- Support API ListOrganizationRoleUsers.
+- Support API ListOrganizationRoles.
+- Support API ListWorkspaceRoleUsers.
+- Support API ListWorkspaceRoles.
+- Support API QueryOrganizationRoleConfig.
+- Support API QueryWorkspaceRoleConfig.
+
+
 2024-03-19 Version: 1.1.9
 - Update API AddUser: add param AuthAdminUser.
 - Update API AddUser: add param RoleIds.
