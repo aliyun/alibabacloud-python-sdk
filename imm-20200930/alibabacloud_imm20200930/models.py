@@ -1836,9 +1836,11 @@ class DataIngestionNotification(TeaModel):
 class DataIngestionStatistic(TeaModel):
     def __init__(
         self,
+        skip_files: int = None,
         submit_failure: int = None,
         submit_success: int = None,
     ):
+        self.skip_files = skip_files
         self.submit_failure = submit_failure
         self.submit_success = submit_success
 
@@ -1851,6 +1853,8 @@ class DataIngestionStatistic(TeaModel):
             return _map
 
         result = dict()
+        if self.skip_files is not None:
+            result['SkipFiles'] = self.skip_files
         if self.submit_failure is not None:
             result['SubmitFailure'] = self.submit_failure
         if self.submit_success is not None:
@@ -1859,6 +1863,8 @@ class DataIngestionStatistic(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('SkipFiles') is not None:
+            self.skip_files = m.get('SkipFiles')
         if m.get('SubmitFailure') is not None:
             self.submit_failure = m.get('SubmitFailure')
         if m.get('SubmitSuccess') is not None:
@@ -1945,6 +1951,7 @@ class DataIngestion(TeaModel):
         marker: str = None,
         notification: DataIngestionNotification = None,
         phase: str = None,
+        service_role: str = None,
         state: str = None,
         statistic: DataIngestionStatistic = None,
         tags: Dict[str, Any] = None,
@@ -1958,6 +1965,7 @@ class DataIngestion(TeaModel):
         self.marker = marker
         self.notification = notification
         self.phase = phase
+        self.service_role = service_role
         self.state = state
         self.statistic = statistic
         self.tags = tags
@@ -1999,6 +2007,8 @@ class DataIngestion(TeaModel):
             result['Notification'] = self.notification.to_map()
         if self.phase is not None:
             result['Phase'] = self.phase
+        if self.service_role is not None:
+            result['ServiceRole'] = self.service_role
         if self.state is not None:
             result['State'] = self.state
         if self.statistic is not None:
@@ -2032,6 +2042,8 @@ class DataIngestion(TeaModel):
             self.notification = temp_model.from_map(m['Notification'])
         if m.get('Phase') is not None:
             self.phase = m.get('Phase')
+        if m.get('ServiceRole') is not None:
+            self.service_role = m.get('ServiceRole')
         if m.get('State') is not None:
             self.state = m.get('State')
         if m.get('Statistic') is not None:
