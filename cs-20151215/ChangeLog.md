@@ -1,3 +1,20 @@
+2024-03-19 Version: 4.0.0
+- Support API UpdateUserPermissions.
+- Update API DeleteAlertContact: add param contact_ids.
+- Update API DeleteAlertContact: update response param.
+- Update API DeleteAlertContactGroup: add param contact_group_ids.
+- Update API DeleteAlertContactGroup: update response param.
+- Update API DescribeClusterResources: add param with_addon_resources.
+- Update API DescribeClusterResources: update response param.
+- Update API DescribeUserQuota: update response param.
+- Update API ListClusterChecks: add param target.
+- Update API RunClusterCheck: update param body.
+- Update API StartAlert: add param body.
+- Update API StopAlert: add param body.
+- Update API UpgradeClusterAddons: update response param.
+- Update API UpgradeClusterNodepool: update param body.
+
+
 2024-02-06 Version: 3.3.5
 - Generated python 2015-12-15 for CS.
 

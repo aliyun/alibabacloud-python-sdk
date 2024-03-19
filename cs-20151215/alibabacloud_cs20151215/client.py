@@ -1834,11 +1834,21 @@ class Client(OpenApiClient):
 
     def delete_alert_contact_with_options(
         self,
+        tmp_req: cs20151215_models.DeleteAlertContactRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteAlertContactResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cs20151215_models.DeleteAlertContactShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.contact_ids):
+            request.contact_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.contact_ids, 'contact_ids', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.contact_ids_shrink):
+            query['contact_ids'] = request.contact_ids_shrink
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteAlertContact',
@@ -1849,7 +1859,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='none'
+            body_type='array'
         )
         return TeaCore.from_map(
             cs20151215_models.DeleteAlertContactResponse(),
@@ -1858,11 +1868,21 @@ class Client(OpenApiClient):
 
     async def delete_alert_contact_with_options_async(
         self,
+        tmp_req: cs20151215_models.DeleteAlertContactRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteAlertContactResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cs20151215_models.DeleteAlertContactShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.contact_ids):
+            request.contact_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.contact_ids, 'contact_ids', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.contact_ids_shrink):
+            query['contact_ids'] = request.contact_ids_shrink
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteAlertContact',
@@ -1873,30 +1893,46 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='none'
+            body_type='array'
         )
         return TeaCore.from_map(
             cs20151215_models.DeleteAlertContactResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_alert_contact(self) -> cs20151215_models.DeleteAlertContactResponse:
+    def delete_alert_contact(
+        self,
+        request: cs20151215_models.DeleteAlertContactRequest,
+    ) -> cs20151215_models.DeleteAlertContactResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_alert_contact_with_options(headers, runtime)
+        return self.delete_alert_contact_with_options(request, headers, runtime)
 
-    async def delete_alert_contact_async(self) -> cs20151215_models.DeleteAlertContactResponse:
+    async def delete_alert_contact_async(
+        self,
+        request: cs20151215_models.DeleteAlertContactRequest,
+    ) -> cs20151215_models.DeleteAlertContactResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_alert_contact_with_options_async(headers, runtime)
+        return await self.delete_alert_contact_with_options_async(request, headers, runtime)
 
     def delete_alert_contact_group_with_options(
         self,
+        tmp_req: cs20151215_models.DeleteAlertContactGroupRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteAlertContactGroupResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cs20151215_models.DeleteAlertContactGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.contact_group_ids):
+            request.contact_group_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.contact_group_ids, 'contact_group_ids', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.contact_group_ids_shrink):
+            query['contact_group_ids'] = request.contact_group_ids_shrink
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteAlertContactGroup',
@@ -1907,7 +1943,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='none'
+            body_type='array'
         )
         return TeaCore.from_map(
             cs20151215_models.DeleteAlertContactGroupResponse(),
@@ -1916,11 +1952,21 @@ class Client(OpenApiClient):
 
     async def delete_alert_contact_group_with_options_async(
         self,
+        tmp_req: cs20151215_models.DeleteAlertContactGroupRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteAlertContactGroupResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cs20151215_models.DeleteAlertContactGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.contact_group_ids):
+            request.contact_group_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.contact_group_ids, 'contact_group_ids', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.contact_group_ids_shrink):
+            query['contact_group_ids'] = request.contact_group_ids_shrink
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteAlertContactGroup',
@@ -1931,22 +1977,28 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='none'
+            body_type='array'
         )
         return TeaCore.from_map(
             cs20151215_models.DeleteAlertContactGroupResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_alert_contact_group(self) -> cs20151215_models.DeleteAlertContactGroupResponse:
+    def delete_alert_contact_group(
+        self,
+        request: cs20151215_models.DeleteAlertContactGroupRequest,
+    ) -> cs20151215_models.DeleteAlertContactGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_alert_contact_group_with_options(headers, runtime)
+        return self.delete_alert_contact_group_with_options(request, headers, runtime)
 
-    async def delete_alert_contact_group_async(self) -> cs20151215_models.DeleteAlertContactGroupResponse:
+    async def delete_alert_contact_group_async(
+        self,
+        request: cs20151215_models.DeleteAlertContactGroupRequest,
+    ) -> cs20151215_models.DeleteAlertContactGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_alert_contact_group_with_options_async(headers, runtime)
+        return await self.delete_alert_contact_group_with_options_async(request, headers, runtime)
 
     def delete_cluster_with_options(
         self,
@@ -4067,11 +4119,17 @@ class Client(OpenApiClient):
     def describe_cluster_resources_with_options(
         self,
         cluster_id: str,
+        request: cs20151215_models.DescribeClusterResourcesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.with_addon_resources):
+            query['with_addon_resources'] = request.with_addon_resources
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeClusterResources',
@@ -4092,11 +4150,17 @@ class Client(OpenApiClient):
     async def describe_cluster_resources_with_options_async(
         self,
         cluster_id: str,
+        request: cs20151215_models.DescribeClusterResourcesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.with_addon_resources):
+            query['with_addon_resources'] = request.with_addon_resources
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeClusterResources',
@@ -4117,18 +4181,20 @@ class Client(OpenApiClient):
     def describe_cluster_resources(
         self,
         cluster_id: str,
+        request: cs20151215_models.DescribeClusterResourcesRequest,
     ) -> cs20151215_models.DescribeClusterResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_cluster_resources_with_options(cluster_id, headers, runtime)
+        return self.describe_cluster_resources_with_options(cluster_id, request, headers, runtime)
 
     async def describe_cluster_resources_async(
         self,
         cluster_id: str,
+        request: cs20151215_models.DescribeClusterResourcesRequest,
     ) -> cs20151215_models.DescribeClusterResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_cluster_resources_with_options_async(cluster_id, headers, runtime)
+        return await self.describe_cluster_resources_with_options_async(cluster_id, request, headers, runtime)
 
     def describe_cluster_tasks_with_options(
         self,
@@ -7305,6 +7371,8 @@ class Client(OpenApiClient):
     ) -> cs20151215_models.ListClusterChecksResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.target):
+            query['target'] = request.target
         if not UtilClient.is_unset(request.type):
             query['type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -7336,6 +7404,8 @@ class Client(OpenApiClient):
     ) -> cs20151215_models.ListClusterChecksResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.target):
+            query['target'] = request.target
         if not UtilClient.is_unset(request.type):
             query['type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -9395,6 +9465,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.options):
             body['options'] = request.options
+        if not UtilClient.is_unset(request.target):
+            body['target'] = request.target
         if not UtilClient.is_unset(request.type):
             body['type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -9428,6 +9500,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.options):
             body['options'] = request.options
+        if not UtilClient.is_unset(request.target):
+            body['target'] = request.target
         if not UtilClient.is_unset(request.type):
             body['type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -9997,11 +10071,19 @@ class Client(OpenApiClient):
     def start_alert_with_options(
         self,
         cluster_id: str,
+        request: cs20151215_models.StartAlertRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.StartAlertResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.alert_rule_group_name):
+            body['alert_rule_group_name'] = request.alert_rule_group_name
+        if not UtilClient.is_unset(request.alert_rule_name):
+            body['alert_rule_name'] = request.alert_rule_name
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='StartAlert',
@@ -10022,11 +10104,19 @@ class Client(OpenApiClient):
     async def start_alert_with_options_async(
         self,
         cluster_id: str,
+        request: cs20151215_models.StartAlertRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.StartAlertResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.alert_rule_group_name):
+            body['alert_rule_group_name'] = request.alert_rule_group_name
+        if not UtilClient.is_unset(request.alert_rule_name):
+            body['alert_rule_name'] = request.alert_rule_name
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='StartAlert',
@@ -10047,18 +10137,20 @@ class Client(OpenApiClient):
     def start_alert(
         self,
         cluster_id: str,
+        request: cs20151215_models.StartAlertRequest,
     ) -> cs20151215_models.StartAlertResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.start_alert_with_options(cluster_id, headers, runtime)
+        return self.start_alert_with_options(cluster_id, request, headers, runtime)
 
     async def start_alert_async(
         self,
         cluster_id: str,
+        request: cs20151215_models.StartAlertRequest,
     ) -> cs20151215_models.StartAlertResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.start_alert_with_options_async(cluster_id, headers, runtime)
+        return await self.start_alert_with_options_async(cluster_id, request, headers, runtime)
 
     def start_workflow_with_options(
         self,
@@ -10211,11 +10303,19 @@ class Client(OpenApiClient):
     def stop_alert_with_options(
         self,
         cluster_id: str,
+        request: cs20151215_models.StopAlertRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.StopAlertResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.alert_rule_group_name):
+            body['alert_rule_group_name'] = request.alert_rule_group_name
+        if not UtilClient.is_unset(request.alert_rule_name):
+            body['alert_rule_name'] = request.alert_rule_name
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='StopAlert',
@@ -10236,11 +10336,19 @@ class Client(OpenApiClient):
     async def stop_alert_with_options_async(
         self,
         cluster_id: str,
+        request: cs20151215_models.StopAlertRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.StopAlertResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.alert_rule_group_name):
+            body['alert_rule_group_name'] = request.alert_rule_group_name
+        if not UtilClient.is_unset(request.alert_rule_name):
+            body['alert_rule_name'] = request.alert_rule_name
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='StopAlert',
@@ -10261,18 +10369,20 @@ class Client(OpenApiClient):
     def stop_alert(
         self,
         cluster_id: str,
+        request: cs20151215_models.StopAlertRequest,
     ) -> cs20151215_models.StopAlertResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.stop_alert_with_options(cluster_id, headers, runtime)
+        return self.stop_alert_with_options(cluster_id, request, headers, runtime)
 
     async def stop_alert_async(
         self,
         cluster_id: str,
+        request: cs20151215_models.StopAlertRequest,
     ) -> cs20151215_models.StopAlertResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.stop_alert_with_options_async(cluster_id, headers, runtime)
+        return await self.stop_alert_with_options_async(cluster_id, request, headers, runtime)
 
     def sync_cluster_node_pool_with_options(
         self,
@@ -10980,6 +11090,88 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_template_with_options_async(template_id, request, headers, runtime)
 
+    def update_user_permissions_with_options(
+        self,
+        uid: str,
+        request: cs20151215_models.UpdateUserPermissionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.UpdateUserPermissionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.mode):
+            query['mode'] = request.mode
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_array(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateUserPermissions',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/permissions/users/{OpenApiUtilClient.get_encode_param(uid)}/update',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.UpdateUserPermissionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_user_permissions_with_options_async(
+        self,
+        uid: str,
+        request: cs20151215_models.UpdateUserPermissionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.UpdateUserPermissionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.mode):
+            query['mode'] = request.mode
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_array(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateUserPermissions',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/permissions/users/{OpenApiUtilClient.get_encode_param(uid)}/update',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.UpdateUserPermissionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_user_permissions(
+        self,
+        uid: str,
+        request: cs20151215_models.UpdateUserPermissionsRequest,
+    ) -> cs20151215_models.UpdateUserPermissionsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_user_permissions_with_options(uid, request, headers, runtime)
+
+    async def update_user_permissions_async(
+        self,
+        uid: str,
+        request: cs20151215_models.UpdateUserPermissionsRequest,
+    ) -> cs20151215_models.UpdateUserPermissionsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_user_permissions_with_options_async(uid, request, headers, runtime)
+
     def upgrade_cluster_with_options(
         self,
         cluster_id: str,
@@ -11168,6 +11360,10 @@ class Client(OpenApiClient):
             body['image_id'] = request.image_id
         if not UtilClient.is_unset(request.kubernetes_version):
             body['kubernetes_version'] = request.kubernetes_version
+        if not UtilClient.is_unset(request.node_names):
+            body['node_names'] = request.node_names
+        if not UtilClient.is_unset(request.rolling_policy):
+            body['rolling_policy'] = request.rolling_policy
         if not UtilClient.is_unset(request.runtime_type):
             body['runtime_type'] = request.runtime_type
         if not UtilClient.is_unset(request.runtime_version):
@@ -11216,6 +11412,10 @@ class Client(OpenApiClient):
             body['image_id'] = request.image_id
         if not UtilClient.is_unset(request.kubernetes_version):
             body['kubernetes_version'] = request.kubernetes_version
+        if not UtilClient.is_unset(request.node_names):
+            body['node_names'] = request.node_names
+        if not UtilClient.is_unset(request.rolling_policy):
+            body['rolling_policy'] = request.rolling_policy
         if not UtilClient.is_unset(request.runtime_type):
             body['runtime_type'] = request.runtime_type
         if not UtilClient.is_unset(request.runtime_version):
