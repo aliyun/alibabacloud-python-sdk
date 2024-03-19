@@ -1,3 +1,7 @@
+2024-03-19 Version: 1.1.6
+- Update API ListQuotas: update response param.
+
+
 2024-03-14 Version: 1.1.5
 - Update API CreateTrainingJob: update param body.
 - Update API GetTrainingJob: update response param.
