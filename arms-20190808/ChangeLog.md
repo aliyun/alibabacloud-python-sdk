@@ -1,3 +1,14 @@
+2024-03-19 Version: 4.7.1
+- Update API CreateEnvironment: add param FeePackage.
+- Update API CreateTimingSyntheticTask: update param MonitorConf.
+- Update API DescribeEnvironment: update response param.
+- Update API GetTimingSyntheticTask: update response param.
+- Update API UpdateEnvironment: add param EnvironmentName.
+- Update API UpdateEnvironment: add param FeePackage.
+- Update API UpdateEnvironment: update param EnvironmentName.
+- Update API UpdateTimingSyntheticTask: update param MonitorConf.
+
+
 2024-03-12 Version: 4.7.0
 - Support API ListAddons.
 - Support API ListSyntheticDetail.
