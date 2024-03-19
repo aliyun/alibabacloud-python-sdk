@@ -1,3 +1,7 @@
+2024-03-19 Version: 2.0.6
+- Update API RecognizeBasic: add param NeedRotate.
+
+
 2024-03-15 Version: 2.0.5
 - Update API VerifyVATInvoice: add param InvoiceKind.
 
