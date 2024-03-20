@@ -1,3 +1,9 @@
+2024-03-20 Version: 3.14.11
+- Update API DeleteDomainGroup: update param DomainGroupId.
+- Update API QueryDomainList: add param Ccompany.
+- Update API QueryDomainList: update response param.
+
+
 2024-01-25 Version: 3.14.10
 - Update API SaveBatchTaskForReserveDropListDomainupdate Domains param.
 

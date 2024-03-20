@@ -3080,6 +3080,8 @@ class Client(OpenApiClient):
     ) -> domain_20180129_models.QueryDomainListResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.ccompany):
+            query['Ccompany'] = request.ccompany
         if not UtilClient.is_unset(request.domain_group_id):
             query['DomainGroupId'] = request.domain_group_id
         if not UtilClient.is_unset(request.domain_name):
@@ -3138,6 +3140,8 @@ class Client(OpenApiClient):
     ) -> domain_20180129_models.QueryDomainListResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.ccompany):
+            query['Ccompany'] = request.ccompany
         if not UtilClient.is_unset(request.domain_group_id):
             query['DomainGroupId'] = request.domain_group_id
         if not UtilClient.is_unset(request.domain_name):
@@ -9854,6 +9858,13 @@ class Client(OpenApiClient):
         request: domain_20180129_models.ScrollDomainListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180129_models.ScrollDomainListResponse:
+        """
+        If you have a large number of domain names, a slow response may occur when you call an API operation to query domain names. In this case, you can call this operation to query domain names more quickly. When you call this operation for the first time, specify the request parameters except ScrollId. A scroll ID is returned without other data. In the second request, use the scroll ID obtained from the previous response. In subsequent requests, the newly specified request parameters do not take effect, and the request parameters that are specified in the first request prevail.
+        
+        @param request: ScrollDomainListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScrollDomainListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_group_id):
@@ -9926,6 +9937,13 @@ class Client(OpenApiClient):
         request: domain_20180129_models.ScrollDomainListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180129_models.ScrollDomainListResponse:
+        """
+        If you have a large number of domain names, a slow response may occur when you call an API operation to query domain names. In this case, you can call this operation to query domain names more quickly. When you call this operation for the first time, specify the request parameters except ScrollId. A scroll ID is returned without other data. In the second request, use the scroll ID obtained from the previous response. In subsequent requests, the newly specified request parameters do not take effect, and the request parameters that are specified in the first request prevail.
+        
+        @param request: ScrollDomainListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScrollDomainListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_group_id):
@@ -9997,6 +10015,12 @@ class Client(OpenApiClient):
         self,
         request: domain_20180129_models.ScrollDomainListRequest,
     ) -> domain_20180129_models.ScrollDomainListResponse:
+        """
+        If you have a large number of domain names, a slow response may occur when you call an API operation to query domain names. In this case, you can call this operation to query domain names more quickly. When you call this operation for the first time, specify the request parameters except ScrollId. A scroll ID is returned without other data. In the second request, use the scroll ID obtained from the previous response. In subsequent requests, the newly specified request parameters do not take effect, and the request parameters that are specified in the first request prevail.
+        
+        @param request: ScrollDomainListRequest
+        @return: ScrollDomainListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.scroll_domain_list_with_options(request, runtime)
 
@@ -10004,6 +10028,12 @@ class Client(OpenApiClient):
         self,
         request: domain_20180129_models.ScrollDomainListRequest,
     ) -> domain_20180129_models.ScrollDomainListResponse:
+        """
+        If you have a large number of domain names, a slow response may occur when you call an API operation to query domain names. In this case, you can call this operation to query domain names more quickly. When you call this operation for the first time, specify the request parameters except ScrollId. A scroll ID is returned without other data. In the second request, use the scroll ID obtained from the previous response. In subsequent requests, the newly specified request parameters do not take effect, and the request parameters that are specified in the first request prevail.
+        
+        @param request: ScrollDomainListRequest
+        @return: ScrollDomainListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.scroll_domain_list_with_options_async(request, runtime)
 
