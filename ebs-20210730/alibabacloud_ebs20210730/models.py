@@ -5999,7 +5999,7 @@ class DescribeDisksResponseBodyData(TeaModel):
         # 
         # Default value: false.
         self.encrypted = encrypted
-        # IOPS。
+        # IOPS.
         self.iops = iops
         # The maximum number of read operations per second. Unit: operations/s.
         self.iops_read = iops_read
@@ -8778,7 +8778,7 @@ class GetDiskResponseBodyDisk(TeaModel):
         # 
         # Default value: false.
         self.encrypted = encrypted
-        # IOPS。
+        # IOPS.
         self.iops = iops
         # The maximum number of read operations per second. Unit: operations/s.
         self.iops_read = iops_read
@@ -9720,6 +9720,119 @@ class ModifyDiskReplicaPairResponse(TeaModel):
         return self
 
 
+class QueryDedicatedBlockStorageClusterDiskThroughputStatusRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        qos_request_id: str = None,
+        region_id: str = None,
+    ):
+        self.client_token = client_token
+        self.qos_request_id = qos_request_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.qos_request_id is not None:
+            result['QosRequestId'] = self.qos_request_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('QosRequestId') is not None:
+            self.qos_request_id = m.get('QosRequestId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class QueryDedicatedBlockStorageClusterDiskThroughputStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class QueryDedicatedBlockStorageClusterDiskThroughputStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryDedicatedBlockStorageClusterDiskThroughputStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryDedicatedBlockStorageClusterDiskThroughputStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryDedicatedBlockStorageClusterInventoryDataRequest(TeaModel):
     def __init__(
         self,
@@ -10332,6 +10445,119 @@ class ReprotectDiskReplicaPairResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ReprotectDiskReplicaPairResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetDedicatedBlockStorageClusterDiskThroughputRequest(TeaModel):
+    def __init__(
+        self,
+        bps: int = None,
+        client_token: str = None,
+        disk_id: str = None,
+        region_id: str = None,
+    ):
+        self.bps = bps
+        self.client_token = client_token
+        self.disk_id = disk_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bps is not None:
+            result['Bps'] = self.bps
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.disk_id is not None:
+            result['DiskId'] = self.disk_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bps') is not None:
+            self.bps = m.get('Bps')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DiskId') is not None:
+            self.disk_id = m.get('DiskId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class SetDedicatedBlockStorageClusterDiskThroughputResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SetDedicatedBlockStorageClusterDiskThroughputResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetDedicatedBlockStorageClusterDiskThroughputResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetDedicatedBlockStorageClusterDiskThroughputResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
