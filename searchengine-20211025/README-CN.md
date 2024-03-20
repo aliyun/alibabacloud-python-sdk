@@ -29,7 +29,7 @@ pip install alibabacloud_searchengine20211025
 
 ## 发行说明
 
-每个版本的详细更改记录在[发行说明](./ChangeLog.md)中。
+每个版本的详细更改记录在[发行说明](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/searchengine-20211025/ChangeLog.md)中。
 
 ## 相关
 

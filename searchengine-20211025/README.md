@@ -28,7 +28,7 @@ pip install alibabacloud_searchengine20211025
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/searchengine-20211025/ChangeLog.md).
 
 ## References
 

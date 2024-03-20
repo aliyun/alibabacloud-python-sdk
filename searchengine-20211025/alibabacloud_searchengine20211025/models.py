@@ -164,19 +164,19 @@ class BuildIndexRequest(TeaModel):
         generation: int = None,
         partition: str = None,
     ):
-        # The mode in which reindexing is performed.
+        # The reindexing mode.
         self.build_mode = build_mode
         # The name of the data source.
         self.data_source_name = data_source_name
         # The type of the data source.
         self.data_source_type = data_source_type
-        # The timestamp in seconds. This parameter is required if you import data from the data source by calling API operations.
+        # The timestamp in seconds. It is of the INT type. This parameter is required for the API-pushed data source.
         self.data_time_sec = data_time_sec
-        # The data center in which the data source resides.
+        # The data center where the data source is deployed.
         self.domain = domain
-        # The ID of the generation.
+        # The data restoration version.
         self.generation = generation
-        # The data partition. This parameter is required if the dataSourceType parameter is set to odps.
+        # This parameter is required for the odps data source.
         self.partition = partition
 
     def validate(self):
@@ -229,9 +229,9 @@ class BuildIndexResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
-        # The ID of the request.
+        # id of request
         self.request_id = request_id
-        # The result returned.
+        # The list of clusters
         self.result = result
 
     def validate(self):
@@ -270,9 +270,6 @@ class BuildIndexResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -307,7 +304,7 @@ class CreateClusterRequestDataNode(TeaModel):
         self,
         number: int = None,
     ):
-        # The number of Searcher workers.
+        # The number of data nodes
         self.number = number
 
     def validate(self):
@@ -335,7 +332,7 @@ class CreateClusterRequestQueryNode(TeaModel):
         self,
         number: int = None,
     ):
-        # The number of QRS workers.
+        # The number of nodes to query
         self.number = number
 
     def validate(self):
@@ -367,15 +364,15 @@ class CreateClusterRequest(TeaModel):
         name: str = None,
         query_node: CreateClusterRequestQueryNode = None,
     ):
-        # Specifies whether to automatically balance the load between QRS workers.
+        # The remarks of the query node
         self.auto_load = auto_load
-        # The information about Searcher workers.
+        # The description of the data node
         self.data_node = data_node
-        # The description of the cluster.
+        # The description of the cluster
         self.description = description
-        # The name of the cluster.
+        # The name of the node
         self.name = name
-        # The information about Query Result Searcher (QRS) workers.
+        # The description of the query node
         self.query_node = query_node
 
     def validate(self):
@@ -425,9 +422,9 @@ class CreateClusterResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
-        # The ID of the request.
+        # id of request
         self.request_id = request_id
-        # The result returned.
+        # The result returned
         self.result = result
 
     def validate(self):
@@ -466,9 +463,6 @@ class CreateClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -687,6 +681,7 @@ class CreateDataSourceResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
         # The returned results.
         self.result = result
@@ -727,9 +722,6 @@ class CreateDataSourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -764,16 +756,30 @@ class CreateIndexRequestDataSourceInfoConfig(TeaModel):
         self,
         access_key: str = None,
         access_secret: str = None,
+        bucket: str = None,
         endpoint: str = None,
+        namespace: str = None,
+        oss_path: str = None,
         partition: str = None,
+        path: str = None,
         project: str = None,
         table: str = None,
     ):
+        # odps数据源ak
         self.access_key = access_key
+        # odps数据源ak secret
         self.access_secret = access_secret
+        self.bucket = bucket
+        # odps数据源的endpoint, oss数据源的endpoint
         self.endpoint = endpoint
+        self.namespace = namespace
+        self.oss_path = oss_path
+        # 数据源为odps时必填
         self.partition = partition
+        self.path = path
+        # odps数据源项目名称
         self.project = project
+        # 表名称
         self.table = table
 
     def validate(self):
@@ -789,10 +795,18 @@ class CreateIndexRequestDataSourceInfoConfig(TeaModel):
             result['accessKey'] = self.access_key
         if self.access_secret is not None:
             result['accessSecret'] = self.access_secret
+        if self.bucket is not None:
+            result['bucket'] = self.bucket
         if self.endpoint is not None:
             result['endpoint'] = self.endpoint
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        if self.oss_path is not None:
+            result['ossPath'] = self.oss_path
         if self.partition is not None:
             result['partition'] = self.partition
+        if self.path is not None:
+            result['path'] = self.path
         if self.project is not None:
             result['project'] = self.project
         if self.table is not None:
@@ -805,14 +819,55 @@ class CreateIndexRequestDataSourceInfoConfig(TeaModel):
             self.access_key = m.get('accessKey')
         if m.get('accessSecret') is not None:
             self.access_secret = m.get('accessSecret')
+        if m.get('bucket') is not None:
+            self.bucket = m.get('bucket')
         if m.get('endpoint') is not None:
             self.endpoint = m.get('endpoint')
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        if m.get('ossPath') is not None:
+            self.oss_path = m.get('ossPath')
         if m.get('partition') is not None:
             self.partition = m.get('partition')
+        if m.get('path') is not None:
+            self.path = m.get('path')
         if m.get('project') is not None:
             self.project = m.get('project')
         if m.get('table') is not None:
             self.table = m.get('table')
+        return self
+
+
+class CreateIndexRequestDataSourceInfoSaroConfig(TeaModel):
+    def __init__(
+        self,
+        namespace: str = None,
+        table_name: str = None,
+    ):
+        self.namespace = namespace
+        self.table_name = table_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        if self.table_name is not None:
+            result['tableName'] = self.table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        if m.get('tableName') is not None:
+            self.table_name = m.get('tableName')
         return self
 
 
@@ -821,17 +876,35 @@ class CreateIndexRequestDataSourceInfo(TeaModel):
         self,
         auto_build_index: bool = None,
         config: CreateIndexRequestDataSourceInfoConfig = None,
+        data_time_sec: int = None,
+        domain: str = None,
+        name: str = None,
         process_partition_count: int = None,
+        saro_config: CreateIndexRequestDataSourceInfoSaroConfig = None,
         type: str = None,
     ):
+        # 是否开启自动全量
         self.auto_build_index = auto_build_index
+        # odps相关
         self.config = config
+        self.data_time_sec = data_time_sec
+        self.domain = domain
+        self.name = name
+        # 数据更新资源数
         self.process_partition_count = process_partition_count
+        self.saro_config = saro_config
+        # 数据源类型
+        # odps
+        # swift
+        # saro
+        # oss
         self.type = type
 
     def validate(self):
         if self.config:
             self.config.validate()
+        if self.saro_config:
+            self.saro_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -843,8 +916,16 @@ class CreateIndexRequestDataSourceInfo(TeaModel):
             result['autoBuildIndex'] = self.auto_build_index
         if self.config is not None:
             result['config'] = self.config.to_map()
+        if self.data_time_sec is not None:
+            result['dataTimeSec'] = self.data_time_sec
+        if self.domain is not None:
+            result['domain'] = self.domain
+        if self.name is not None:
+            result['name'] = self.name
         if self.process_partition_count is not None:
             result['processPartitionCount'] = self.process_partition_count
+        if self.saro_config is not None:
+            result['saroConfig'] = self.saro_config.to_map()
         if self.type is not None:
             result['type'] = self.type
         return result
@@ -856,8 +937,17 @@ class CreateIndexRequestDataSourceInfo(TeaModel):
         if m.get('config') is not None:
             temp_model = CreateIndexRequestDataSourceInfoConfig()
             self.config = temp_model.from_map(m['config'])
+        if m.get('dataTimeSec') is not None:
+            self.data_time_sec = m.get('dataTimeSec')
+        if m.get('domain') is not None:
+            self.domain = m.get('domain')
+        if m.get('name') is not None:
+            self.name = m.get('name')
         if m.get('processPartitionCount') is not None:
             self.process_partition_count = m.get('processPartitionCount')
+        if m.get('saroConfig') is not None:
+            temp_model = CreateIndexRequestDataSourceInfoSaroConfig()
+            self.saro_config = temp_model.from_map(m['saroConfig'])
         if m.get('type') is not None:
             self.type = m.get('type')
         return self
@@ -877,16 +967,21 @@ class CreateIndexRequest(TeaModel):
     ):
         # The content of the index.
         self.content = content
-        # Optional. The data source, which can be MaxCompute, Message Service (MNS), Realtime Compute for Apache Flink, or StreamCompute.
+        # The data source type. Valid values: odps, mns, flink, and streaming. This parameter can be ignored.
         self.data_source = data_source
+        # 数据源相关信息 （向量检索版新版本必填）
         self.data_source_info = data_source_info
-        # The data center in which the data source resides.
+        # The data center where the data source is deployed.
         self.domain = domain
+        # 字段配置的扩展的内容
+        # key: 向量字段(vector)、
+        # 需embeding字段(embeding)
         self.extend = extend
         # The name of the index.
         self.name = name
         # The data partition.
         self.partition = partition
+        # 是否dryRun创建（仅校验数据源是否合法）。取值：-true 是 -false 否
         self.dry_run = dry_run
 
     def validate(self):
@@ -945,9 +1040,9 @@ class CreateIndexResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
-        # The ID of the request.
+        # id of request
         self.request_id = request_id
-        # The information about the index.
+        # The information about the index
         self.result = result
 
     def validate(self):
@@ -986,9 +1081,6 @@ class CreateIndexResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1024,9 +1116,9 @@ class CreateInstanceRequestComponents(TeaModel):
         code: str = None,
         value: str = None,
     ):
-        # The name of the specification. The value must be the same as the name of a parameter on the buy page.
+        # The specification code, which must be consistent with values of the corresponding module parameters.
         self.code = code
-        # The value of the specification.
+        # Values that you specify for the corresponding module components on the buy page.
         self.value = value
 
     def validate(self):
@@ -1062,9 +1154,9 @@ class CreateInstanceRequestOrder(TeaModel):
     ):
         # Specifies whether to enable auto-renewal. Valid values: true and false.
         self.auto_renew = auto_renew
-        # The billing cycle. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, and 12.
+        # The billing duration. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, and 12.
         self.duration = duration
-        # The unit of the billing cycle. Valid values: Month and Year.
+        # The unit of the billing duration. Valid values: Month and Year.
         self.pricing_cycle = pricing_cycle
 
     def validate(self):
@@ -1102,11 +1194,11 @@ class CreateInstanceRequest(TeaModel):
         components: List[CreateInstanceRequestComponents] = None,
         order: CreateInstanceRequestOrder = None,
     ):
-        # The billing method of the instance. Valid values: PREPAY and POSTPAY. PREPAY: subscription. If you set this parameter to PREPAY, make sure that your Alibaba Cloud account supports balance payment or credit payment. Otherwise, the system returns the InvalidPayMethod error message. In addition, you must specify the paymentInfo parameter. POSTPAY: pay-as-you-go. This billing method is not supported.
+        # The billing method of the instance. Valid values: PREPAY and POSTPAY. PREPAY indicates the instance is a subscription instance. When you set this parameter to PREPAY, make sure that your Alibaba Cloud account supports balance payment or credit card payment. Otherwise, the system returns the InvalidPayMethod error message. If you set this parameter to PREPAY, you must also specify the paymentInfo parameter. POSTPAY indicates that the instance is a pay-as-you-go instance. This billing method is not supported.
         self.charge_type = charge_type
-        # The specifications of the instance.
+        # A list of instance-related specifications.
         self.components = components
-        # The information about billing.
+        # The billing information.
         self.order = order
 
     def validate(self):
@@ -1153,7 +1245,7 @@ class CreateInstanceResponseBodyResult(TeaModel):
         self,
         instance_id: str = None,
     ):
-        # The ID of the instance.
+        # The ID of the instance
         self.instance_id = instance_id
 
     def validate(self):
@@ -1182,9 +1274,9 @@ class CreateInstanceResponseBody(TeaModel):
         request_id: str = None,
         result: CreateInstanceResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The ID of the request
         self.request_id = request_id
-        # The result returned.
+        # The result returned
         self.result = result
 
     def validate(self):
@@ -1225,9 +1317,6 @@ class CreateInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1304,9 +1393,6 @@ class DeleteAdvanceConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1383,9 +1469,6 @@ class DeleteDataSourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1421,6 +1504,7 @@ class DeleteIndexRequest(TeaModel):
         data_source: str = None,
         delete_data_source: bool = None,
     ):
+        # The data source
         self.data_source = data_source
         self.delete_data_source = delete_data_source
 
@@ -1456,6 +1540,7 @@ class DeleteIndexResponseBody(TeaModel):
     ):
         # id of request
         self.request_id = request_id
+        # The information about the index
         self.result = result
 
     def validate(self):
@@ -1494,9 +1579,6 @@ class DeleteIndexResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1534,6 +1616,7 @@ class DeleteIndexVersionResponseBody(TeaModel):
     ):
         # id of request
         self.request_id = request_id
+        # The result
         self.result = result
 
     def validate(self):
@@ -1572,9 +1655,6 @@ class DeleteIndexVersionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1610,7 +1690,9 @@ class DeleteInstanceResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
+        # The ID of the request
         self.request_id = request_id
+        # The result returned
         self.result = result
 
     def validate(self):
@@ -1649,9 +1731,6 @@ class DeleteInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1687,9 +1766,9 @@ class ForceSwitchResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
-        # The ID of the request.
+        # id of request
         self.request_id = request_id
-        # The index information.
+        # The information about the index
         self.result = result
 
     def validate(self):
@@ -1728,9 +1807,6 @@ class ForceSwitchResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1963,9 +2039,6 @@ class GetAdvanceConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2000,6 +2073,7 @@ class GetAdvanceConfigFileRequest(TeaModel):
         self,
         file_name: str = None,
     ):
+        # The name of the file
         self.file_name = file_name
 
     def validate(self):
@@ -2027,6 +2101,7 @@ class GetAdvanceConfigFileResponseBodyResult(TeaModel):
         self,
         content: str = None,
     ):
+        # The content of the file
         self.content = content
 
     def validate(self):
@@ -2057,6 +2132,7 @@ class GetAdvanceConfigFileResponseBody(TeaModel):
     ):
         # id of request
         self.request_id = request_id
+        # The result
         self.result = result
 
     def validate(self):
@@ -2097,9 +2173,6 @@ class GetAdvanceConfigFileResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2358,9 +2431,6 @@ class GetClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2399,10 +2469,15 @@ class GetClusterRunTimeInfoResponseBodyResultDataNodesConfigStatusList(TeaModel)
         name: str = None,
         total_size: int = None,
     ):
+        # The time when the cluster was updated.
         self.config_update_time = config_update_time
+        # The overall progress.
         self.done_percent = done_percent
+        # The number of nodes that are configured.
         self.done_size = done_size
+        # The name of the cluster.
         self.name = name
+        # The total number of nodes that you specify when you create the cluster.
         self.total_size = total_size
 
     def validate(self):
@@ -2447,7 +2522,9 @@ class GetClusterRunTimeInfoResponseBodyResultDataNodesDataStatusListAdvanceConfi
         config_meta_name: str = None,
         version: int = None,
     ):
+        # The name of the index configuration.
         self.config_meta_name = config_meta_name
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -2480,7 +2557,9 @@ class GetClusterRunTimeInfoResponseBodyResultDataNodesDataStatusListIndexConfigI
         config_meta_name: str = None,
         version: int = None,
     ):
+        # The name of the index configuration.
         self.config_meta_name = config_meta_name
+        # The version of the index template.
         self.version = version
 
     def validate(self):
@@ -2527,21 +2606,37 @@ class GetClusterRunTimeInfoResponseBodyResultDataNodesDataStatusList(TeaModel):
         name: str = None,
         total_size: int = None,
     ):
+        # The information about advanced configurations.
         self.advance_config_info = advance_config_info
+        # The name of the worker that failed because of a deployment failure.
         self.deploy_failed_worker = deploy_failed_worker
+        # The storage capacity. Unit: GB.
         self.doc_size = doc_size
+        # The overall progress.
         self.done_percent = done_percent
+        # The number of nodes that are configured.
         self.done_size = done_size
+        # The error message.
         self.error_msg = error_msg
+        # The time when the full data was updated.
         self.full_update_time = full_update_time
+        # The full version.
         self.full_version = full_version
+        # The time when the incremental data was updated.
         self.inc_update_time = inc_update_time
+        # The incremental version.
         self.inc_version = inc_version
+        # The configuration information of the index.
         self.index_config_info = index_config_info
+        # The size of the index.
         self.index_size = index_size
+        # The name of the worker that failed because of insufficient disk space.
         self.lack_disk_worker = lack_disk_worker
+        # The name of the worker that failed because of insufficient memory.
         self.lack_mem_worker = lack_mem_worker
+        # The name of the node.
         self.name = name
+        # The total number of nodes that you specify when you create the cluster.
         self.total_size = total_size
 
     def validate(self):
@@ -2637,9 +2732,13 @@ class GetClusterRunTimeInfoResponseBodyResultDataNodesServiceStatus(TeaModel):
         name: str = None,
         total_size: int = None,
     ):
+        # The overall progress.
         self.done_percent = done_percent
+        # The number of nodes being processed in the cluster.
         self.done_size = done_size
+        # The name.
         self.name = name
+        # The total number of nodes in the cluster.
         self.total_size = total_size
 
     def validate(self):
@@ -2681,8 +2780,11 @@ class GetClusterRunTimeInfoResponseBodyResultDataNodes(TeaModel):
         data_status_list: List[GetClusterRunTimeInfoResponseBodyResultDataNodesDataStatusList] = None,
         service_status: GetClusterRunTimeInfoResponseBodyResultDataNodesServiceStatus = None,
     ):
+        # The configuration status list.
         self.config_status_list = config_status_list
+        # The dataStatusList.
         self.data_status_list = data_status_list
+        # The service status.
         self.service_status = service_status
 
     def validate(self):
@@ -2742,15 +2844,15 @@ class GetClusterRunTimeInfoResponseBodyResultQueryNodeConfigStatusList(TeaModel)
         name: str = None,
         total_size: int = None,
     ):
-        # configUpdateTime
+        # The time when the cluster was updated.
         self.config_update_time = config_update_time
-        # donePercent
+        # The progress.
         self.done_percent = done_percent
-        # doneSize
+        # The number of nodes that are configured.
         self.done_size = done_size
-        # name
+        # The name of the cluster.
         self.name = name
-        # totalSize
+        # The total number of nodes that you specify when you create the cluster.
         self.total_size = total_size
 
     def validate(self):
@@ -2797,13 +2899,13 @@ class GetClusterRunTimeInfoResponseBodyResultQueryNodeServiceStatus(TeaModel):
         name: str = None,
         total_size: int = None,
     ):
-        # donePercent
+        # The progress.
         self.done_percent = done_percent
-        # doneSize
+        # The number of nodes that are configured.
         self.done_size = done_size
         # The name of the cluster.
         self.name = name
-        # totalSize
+        # The total number of nodes that you specify when you create the cluster.
         self.total_size = total_size
 
     def validate(self):
@@ -2844,9 +2946,9 @@ class GetClusterRunTimeInfoResponseBodyResultQueryNode(TeaModel):
         config_status_list: List[GetClusterRunTimeInfoResponseBodyResultQueryNodeConfigStatusList] = None,
         service_status: GetClusterRunTimeInfoResponseBodyResultQueryNodeServiceStatus = None,
     ):
-        # configStatusList
+        # The dataStatusList.
         self.config_status_list = config_status_list
-        # serviceStatus
+        # The service status.
         self.service_status = service_status
 
     def validate(self):
@@ -2891,11 +2993,11 @@ class GetClusterRunTimeInfoResponseBodyResult(TeaModel):
         data_nodes: List[GetClusterRunTimeInfoResponseBodyResultDataNodes] = None,
         query_node: GetClusterRunTimeInfoResponseBodyResultQueryNode = None,
     ):
-        # The name of the cluster
+        # The name of the cluster.
         self.cluster_name = cluster_name
-        # dataNodes
+        # The information about the data node.
         self.data_nodes = data_nodes
-        # The specifications of the query node.
+        # The information about the query node.
         self.query_node = query_node
 
     def validate(self):
@@ -2945,7 +3047,7 @@ class GetClusterRunTimeInfoResponseBody(TeaModel):
     ):
         # Id of the request
         self.request_id = request_id
-        # The configuration progress. Unit: percentage.
+        # The result set.
         self.result = result
 
     def validate(self):
@@ -2992,9 +3094,6 @@ class GetClusterRunTimeInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3034,12 +3133,17 @@ class GetDataSourceResponseBodyResult(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # The data center where the data source is deployed in offline mode
         self.domain = domain
+        # The list of index information
         self.indexes = indexes
+        # The time when an index for full data was last built
         self.last_ful_time = last_ful_time
+        # The name of the data source
         self.name = name
+        # The state of the data source
         self.status = status
-        # The type of the data source.
+        # The type of the data source
         self.type = type
 
     def validate(self):
@@ -3090,7 +3194,7 @@ class GetDataSourceResponseBody(TeaModel):
     ):
         # Id of the request
         self.request_id = request_id
-        # The information about the data source.
+        # The list of information about the data source
         self.result = result
 
     def validate(self):
@@ -3131,9 +3235,6 @@ class GetDataSourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3589,9 +3690,6 @@ class GetDataSourceDeployResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3841,11 +3939,17 @@ class GetDeployGraphResponseBodyResultGraph(TeaModel):
         zone_index_relation: Dict[str, List[str]] = None,
         zone_metas: List[GetDeployGraphResponseBodyResultGraphZoneMetas] = None,
     ):
+        # 索引元信息
         self.index_metas = index_metas
+        # 在线集群元信息
         self.online_master = online_master
+        # 数据源和索引关联关系
         self.table_index_relation = table_index_relation
+        # 数据源元信息
         self.table_metas = table_metas
+        # zone和索引关联关系
         self.zone_index_relation = zone_index_relation
+        # zone元信息
         self.zone_metas = zone_metas
 
     def validate(self):
@@ -3960,6 +4064,7 @@ class GetDeployGraphResponseBody(TeaModel):
     ):
         # Id of the request
         self.request_id = request_id
+        # The result returned
         self.result = result
 
     def validate(self):
@@ -4000,9 +4105,6 @@ class GetDeployGraphResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4037,6 +4139,7 @@ class GetFileRequest(TeaModel):
         self,
         file_name: str = None,
     ):
+        # The name of the file in full path
         self.file_name = file_name
 
     def validate(self):
@@ -4069,11 +4172,17 @@ class GetFileResponseBodyResult(TeaModel):
         name: str = None,
         partition: int = None,
     ):
+        # The content of the file.
         self.content = content
+        # The data source.
         self.data_source = data_source
+        # The name of the full path.
         self.full_path_name = full_path_name
+        # Indicates whether it is a directory.
         self.is_dir = is_dir
+        # The name of the file.
         self.name = name
+        # The number of shards.
         self.partition = partition
 
     def validate(self):
@@ -4124,6 +4233,7 @@ class GetFileResponseBody(TeaModel):
     ):
         # id of request
         self.request_id = request_id
+        # The information about the index.
         self.result = result
 
     def validate(self):
@@ -4164,9 +4274,6 @@ class GetFileResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4678,9 +4785,6 @@ class GetIndexResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4718,9 +4822,12 @@ class GetIndexVersionResponseBodyResultIndexVersions(TeaModel):
         index_name: str = None,
         versions: List[int] = None,
     ):
+        # The ID of the index deployed in offline mode
         self.build_deploy_id = build_deploy_id
         self.current_version = current_version
+        # The name of the index table
         self.index_name = index_name
+        # The version of the index
         self.versions = versions
 
     def validate(self):
@@ -4761,7 +4868,9 @@ class GetIndexVersionResponseBodyResult(TeaModel):
         cluster: str = None,
         index_versions: List[GetIndexVersionResponseBodyResultIndexVersions] = None,
     ):
+        # The name of the cluster
         self.cluster = cluster
+        # The time when the cluster was updated
         self.index_versions = index_versions
 
     def validate(self):
@@ -4804,6 +4913,7 @@ class GetIndexVersionResponseBody(TeaModel):
     ):
         # id of request
         self.request_id = request_id
+        # The list of cluster details
         self.result = result
 
     def validate(self):
@@ -4844,9 +4954,6 @@ class GetIndexVersionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4882,7 +4989,9 @@ class GetInstanceResponseBodyResultTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # 标签键
         self.key = key
+        # 标签值
         self.value = value
 
     def validate(self):
@@ -4925,76 +5034,34 @@ class GetInstanceResponseBodyResult(TeaModel):
         tags: List[GetInstanceResponseBodyResultTags] = None,
         update_time: str = None,
     ):
-        # 付费类型
+        # The billing method.
         self.charge_type = charge_type
-        # 商品code
+        # The product code.
         self.commodity_code = commodity_code
-        # 代表创建时间的资源属性字段
+        # The time when the instance was created.
         self.create_time = create_time
-        # The ID of the request.
+        # The description of the instance.
         self.description = description
-        # WB01240825
+        # The expiration time.
         self.expired_time = expired_time
-        # 是否欠费
+        # Indicates whether an overdue payment is involved.
         self.in_debt = in_debt
-        # 代表资源一级ID的资源属性字段
+        # The ID of the resource.
         self.instance_id = instance_id
-        # 锁定状态
+        # The lock status.
         self.lock_mode = lock_mode
-        # ### Sample responses
-        # 
-        # **Sample success responses**\
-        # 
-        #     {
-        #       "requestId": "90D6B8F5-FE97-4509-9AAB-367836C51818",
-        #       "result": 
-        #       {
-        #         "instanceId":"fadsfsafs",
-        #         "inDebt":true,
-        #         "lockMode":"Unlock",
-        #         "expiredTime":"asdfas",
-        #         "updateTime":"dfasf",
-        #         "createTime":"dfasf",
-        #         "resourceGroupId":"resourceGroupID",
-        #         "commodityCode":"commodityCode",
-        #         "chargeType":"POSYPAY",
-        #         "description":"this is description",
-        #         "apiVersion": "tisplus/v1",
-        #         "network": {
-        #           "vSwitchId": "vswitch_id_xxx",
-        #           "vpcId": "vpc_id_xxx",	  
-        #         },
-        #         "userName": "user",
-        #         "spec": {
-        #           "searchResource": {
-        #             "disk": 50,
-        #             "mem": 8,
-        #             "cpu": 2,
-        #             "nodeCount": 2
-        #           },
-        #           "qrsResource": {
-        #             "disk": 50,
-        #             "mem": 8,
-        #             "cpu": 2,
-        #             "nodeCount": 2
-        #           }
-        #         },
-        #        "status": "INIT",
-        #       }
-        #     }
-        # 
-        # **Sample error responses**\
-        # 
-        #     {
-        #       "requestId": "BD1EA715-DF6F-06C2-004C-C1FA0D3A9820",
-        #       "httpCode": 404,
-        #       "code": "App.NotFound",
-        #       "message": "App not found"
-        #     }
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The status of the instance. Valid values:
+        # 
+        # *   INIT: being initialized
+        # *   WAIT_CONFIG: to be configured
+        # *   CONFIG_UPDATING: configuration taking effect
+        # *   READY: normal
         self.status = status
+        # 标签。
         self.tags = tags
-        # 更新时间
+        # The time when the instance was last updated.
         self.update_time = update_time
 
     def validate(self):
@@ -5075,8 +5142,9 @@ class GetInstanceResponseBody(TeaModel):
         request_id: str = None,
         result: GetInstanceResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
-        # The description of the instance.
+        # The result returned.
         self.result = result
 
     def validate(self):
@@ -5117,9 +5185,6 @@ class GetInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5156,8 +5221,11 @@ class GetNodeConfigRequest(TeaModel):
         name: str = None,
         type: str = None,
     ):
+        # The name of the cluster
         self.cluster_name = cluster_name
+        # The name of the cluster.
         self.name = name
+        # The type of the node. Valid values: qrs, search, index, and cluster. qrs indicates a query node, search indicates a data node, index indicates an index node, and cluster indicates a cluster node.
         self.type = type
 
     def validate(self):
@@ -5194,13 +5262,20 @@ class GetNodeConfigResponseBodyResult(TeaModel):
         active: bool = None,
         data_duplicate_number: int = None,
         data_fragment_number: int = None,
+        flow_ratio: int = None,
         min_service_percent: int = None,
         published: bool = None,
     ):
+        # Indicates whether the expression is the default one.
         self.active = active
+        # The number of data replicas.
         self.data_duplicate_number = data_duplicate_number
+        # The number of data shards.
         self.data_fragment_number = data_fragment_number
+        self.flow_ratio = flow_ratio
+        # The minimum service ratio.
         self.min_service_percent = min_service_percent
+        # Indicates whether the node is associated with the cluster.
         self.published = published
 
     def validate(self):
@@ -5218,6 +5293,8 @@ class GetNodeConfigResponseBodyResult(TeaModel):
             result['dataDuplicateNumber'] = self.data_duplicate_number
         if self.data_fragment_number is not None:
             result['dataFragmentNumber'] = self.data_fragment_number
+        if self.flow_ratio is not None:
+            result['flowRatio'] = self.flow_ratio
         if self.min_service_percent is not None:
             result['minServicePercent'] = self.min_service_percent
         if self.published is not None:
@@ -5232,6 +5309,8 @@ class GetNodeConfigResponseBodyResult(TeaModel):
             self.data_duplicate_number = m.get('dataDuplicateNumber')
         if m.get('dataFragmentNumber') is not None:
             self.data_fragment_number = m.get('dataFragmentNumber')
+        if m.get('flowRatio') is not None:
+            self.flow_ratio = m.get('flowRatio')
         if m.get('minServicePercent') is not None:
             self.min_service_percent = m.get('minServicePercent')
         if m.get('published') is not None:
@@ -5247,6 +5326,7 @@ class GetNodeConfigResponseBody(TeaModel):
     ):
         # Id of the request
         self.request_id = request_id
+        # The result set.
         self.result = result
 
     def validate(self):
@@ -5287,9 +5367,6 @@ class GetNodeConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5324,6 +5401,7 @@ class ListAdvanceConfigDirRequest(TeaModel):
         self,
         dir_name: str = None,
     ):
+        # The name of the directory
         self.dir_name = dir_name
 
     def validate(self):
@@ -5354,9 +5432,13 @@ class ListAdvanceConfigDirResponseBodyResult(TeaModel):
         is_template: bool = None,
         name: str = None,
     ):
+        # The name of the absolute path.
         self.full_path_name = full_path_name
+        # Indicates whether it is a directory. Valid values: true and false. true indicates that it is a directory, and false indicates that it is not a directory.
         self.is_dir = is_dir
+        # Indicates whether it is a template. Valid values: **true** and **false**. true indicates that it is a template, and false indicates that it is not a template.
         self.is_template = is_template
+        # The name of the cluster.
         self.name = name
 
     def validate(self):
@@ -5397,7 +5479,9 @@ class ListAdvanceConfigDirResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListAdvanceConfigDirResponseBodyResult] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The file list in the advanced configuration directory.
         self.result = result
 
     def validate(self):
@@ -5444,9 +5528,6 @@ class ListAdvanceConfigDirResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5485,6 +5566,7 @@ class ListAdvanceConfigsRequest(TeaModel):
     ):
         self.data_source_name = data_source_name
         self.index_name = index_name
+        # The type of the advanced configurations. Valid values: online and offline. - online The default value is offline.
         self.type = type
 
     def validate(self):
@@ -5523,9 +5605,13 @@ class ListAdvanceConfigsResponseBodyResultFiles(TeaModel):
         is_template: bool = None,
         name: str = None,
     ):
+        # The name of the absolute path.
         self.full_path_name = full_path_name
+        # Indicates whether it is a directory. Valid values: true and false. true indicates that it is a directory, and false indicates that it is not a directory.
         self.is_dir = is_dir
+        # Indicates whether it is a template. Valid values: true and false. true indicates that it is a directory, and false indicates that it is not a directory.
         self.is_template = is_template
+        # The name of the file.
         self.name = name
 
     def validate(self):
@@ -5571,14 +5657,17 @@ class ListAdvanceConfigsResponseBodyResult(TeaModel):
         status: str = None,
         update_time: int = None,
     ):
-        # 配置内容 http，git 请求时不为空
         self.content = content
-        # 配置内容的类型 (FILE, GIT, HTTP, ODPS)
         self.content_type = content_type
+        # The description.
         self.desc = desc
+        # The list of file names.
         self.files = files
+        # The name of the advanced configuration.
         self.name = name
+        # The state of the advanced configuration. Valid values: drafting, used, unused, and trash. drafting indicates that the advanced configuration is a draft. used indicates that the advanced configuration is in use. unused indicates that the advanced configuration is unused. trash indicates that the advanced configuration is being deleted.
         self.status = status
+        # The update time.
         self.update_time = update_time
 
     def validate(self):
@@ -5639,7 +5728,9 @@ class ListAdvanceConfigsResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListAdvanceConfigsResponseBodyResult] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The list of advanced configurations.
         self.result = result
 
     def validate(self):
@@ -5686,9 +5777,6 @@ class ListAdvanceConfigsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5725,8 +5813,11 @@ class ListClusterNamesResponseBodyResult(TeaModel):
         id: int = None,
         name: str = None,
     ):
+        # The description of the cluster
         self.description = description
+        # The ID of the cluster
         self.id = id
+        # The name of the cluster
         self.name = name
 
     def validate(self):
@@ -5765,6 +5856,7 @@ class ListClusterNamesResponseBody(TeaModel):
     ):
         # id of request
         self.request_id = request_id
+        # The result set
         self.result = result
 
     def validate(self):
@@ -5805,9 +5897,6 @@ class ListClusterNamesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5843,7 +5932,9 @@ class ListClusterTasksResponseBodyResultTags(TeaModel):
         msg: str = None,
         tag_level: str = None,
     ):
+        # The content of the tag.
         self.msg = msg
+        # The level of the tag.
         self.tag_level = tag_level
 
     def validate(self):
@@ -5878,9 +5969,13 @@ class ListClusterTasksResponseBodyResultTaskNodes(TeaModel):
         name: str = None,
         status: str = None,
     ):
+        # The date when the task was completed.
         self.finish_date = finish_date
+        # The sequence number of the task.
         self.index = index
+        # The name of the task.
         self.name = name
+        # The status of the task.
         self.status = status
 
     def validate(self):
@@ -5930,29 +6025,27 @@ class ListClusterTasksResponseBodyResult(TeaModel):
         type: str = None,
         user: str = None,
     ):
+        # The additional attributes of the card.
         self.extra_attribute = extra_attribute
+        # The field3 field that is passed through when you create a state machine.
         self.field_3 = field_3
         # fsmId
         self.fsm_id = fsm_id
-        # ### Method
-        # 
-        # ```java
-        # GET
-        # ```
-        # 
-        # ### URI
-        # 
-        # ```java
-        # /openapi/ha3/instances/{instanceId}/cluster-tasks
-        # ```
+        # Indicates whether the change is a data source task change or a cluster task change.
         self.group_type = group_type
-        # Displays cluster tasks .
+        # The task name on the card.
         self.name = name
+        # The overall status of FSM.
         self.status = status
+        # The status tag of the progress bar chart.
         self.tags = tags
+        # The information about the task.
         self.task_nodes = task_nodes
+        # The timestamp of the task on the card.
         self.time = time
+        # The type of the task on the card.
         self.type = type
+        # The user who triggered the FSM process.
         self.user = user
 
     def validate(self):
@@ -6040,7 +6133,7 @@ class ListClusterTasksResponseBody(TeaModel):
     ):
         # id of request
         self.request_id = request_id
-        # The date when the task was completed.
+        # The information about the index.
         self.result = result
 
     def validate(self):
@@ -6087,9 +6180,6 @@ class ListClusterTasksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6126,8 +6216,11 @@ class ListClustersResponseBodyResultDataNode(TeaModel):
         number: int = None,
         partition: int = None,
     ):
+        # The name of the node.
         self.name = name
+        # The number of nodes.
         self.number = number
+        # The partition ID of the node.
         self.partition = partition
 
     def validate(self):
@@ -6165,8 +6258,11 @@ class ListClustersResponseBodyResultQueryNode(TeaModel):
         number: int = None,
         partition: int = None,
     ):
+        # The name of the node.
         self.name = name
+        # The number of nodes.
         self.number = number
+        # The number o replicas.
         self.partition = partition
 
     def validate(self):
@@ -6215,23 +6311,33 @@ class ListClustersResponseBodyResult(TeaModel):
         query_node: ListClustersResponseBodyResultQueryNode = None,
         status: str = None,
     ):
+        # The time when the configuration was updated.
         self.config_update_time = config_update_time
+        # The effective advanced version.
         self.current_advance_config_version = current_advance_config_version
         # 词典配置生效版本
         self.current_offline_dict_config_version = current_offline_dict_config_version
+        # The effective online configuration version.
         self.current_online_config_version = current_online_config_version
         # 查询配置生效版本
         self.current_online_query_config_version = current_online_query_config_version
+        # The information about the node in the cluster.
         self.data_node = data_node
+        # The description of the cluster.
         self.description = description
+        # The latest advanced configuration version.
         self.latest_advance_config_version = latest_advance_config_version
         # 词典配置最新版本
         self.latest_offline_dict_config_version = latest_offline_dict_config_version
+        # The latest online configuration version.
         self.latest_online_config_version = latest_online_config_version
         # 查询配置最新版本
         self.latest_online_query_config_version = latest_online_query_config_version
+        # The name of the cluster.
         self.name = name
+        # The query node of the cluster.
         self.query_node = query_node
+        # The status of the cluster. Valid values: running, starting, stopping, and stopped. running indicates the cluster is running, starting indicates the cluster is starting, stopping indicates the cluster is stopping, and stopped indicates the cluster has stopped.
         self.status = status
 
     def validate(self):
@@ -6319,6 +6425,7 @@ class ListClustersResponseBody(TeaModel):
     ):
         # id of request
         self.request_id = request_id
+        # The list of clusters.
         self.result = result
 
     def validate(self):
@@ -6365,9 +6472,6 @@ class ListClustersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6404,8 +6508,11 @@ class ListDataSourceSchemasResponseBodyResultPrimaryKey(TeaModel):
         is_primary_key: bool = None,
         is_primary_key_sorted: bool = None,
     ):
+        # Indicates whether it has the primary key property. **true** indicates that it has the primary key property, and **false** indicates that it does not have the primary key property.
         self.has_primary_key_attribute = has_primary_key_attribute
+        # Indicates whether it is the primary key. Valid values: true and false. **true** indicates that it is the primary key, and **false** indicates that it is not the primary key.
         self.is_primary_key = is_primary_key
+        # Indicates whether data is sorted based on the primary key. Valid values: true and false. **true** indicates that data is sorted based on the primary key, and **false** indicates that data is not sorted based on the primary key.
         self.is_primary_key_sorted = is_primary_key_sorted
 
     def validate(self):
@@ -6447,12 +6554,19 @@ class ListDataSourceSchemasResponseBodyResult(TeaModel):
         summary: bool = None,
         type: str = None,
     ):
+        # Indicates whether the index properties are added. Valid values: true and false. **true** indicates that the index properties are added, and **false** indicates that the index properties are not added.
         self.add_index = add_index
+        # Indicates whether it is an attribute field. Valid values: true and false. **true** indicates that it is an attribute field, and **false** indicates that it is not an attribute field.
         self.attribute = attribute
+        # Indicates whether it is a custom field. Valid values: true and false. **true** indicates that it is a custom field, and **false** indicates that it is not a custom field.
         self.custom = custom
+        # The name of the field.
         self.name = name
+        # The primary key.
         self.primary_key = primary_key
+        # Indicates whether the information can be displayed. Valid values: true and false. **true** indicates that the information can be displayed, and **false** indicates that the information cannot be displayed.
         self.summary = summary
+        # The type of the field.
         self.type = type
 
     def validate(self):
@@ -6507,7 +6621,9 @@ class ListDataSourceSchemasResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListDataSourceSchemasResponseBodyResult] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The result returned.
         self.result = result
 
     def validate(self):
@@ -6554,9 +6670,6 @@ class ListDataSourceSchemasResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6592,7 +6705,9 @@ class ListDataSourceTasksResponseBodyResultTags(TeaModel):
         msg: str = None,
         tag_level: str = None,
     ):
+        # The content of the tag.
         self.msg = msg
+        # The level of the tag.
         self.tag_level = tag_level
 
     def validate(self):
@@ -6627,9 +6742,13 @@ class ListDataSourceTasksResponseBodyResultTaskNodes(TeaModel):
         name: str = None,
         status: str = None,
     ):
+        # The date when the task was completed.
         self.finish_date = finish_date
+        # The sequence number of the task.
         self.index = index
+        # The name of the task.
         self.name = name
+        # The status of the task.
         self.status = status
 
     def validate(self):
@@ -6679,29 +6798,27 @@ class ListDataSourceTasksResponseBodyResult(TeaModel):
         type: str = None,
         user: str = None,
     ):
+        # The additional attributes of the card.
         self.extra_attribute = extra_attribute
+        # The field3 field that is passed through when you create a state machine.
         self.field_3 = field_3
         # fsmId
         self.fsm_id = fsm_id
-        # ### Method
-        # 
-        # ```java
-        # GET
-        # ```
-        # 
-        # ### URI
-        # 
-        # ```java
-        # /openapi/ha3/instances/{instanceId}/data-source-tasks
-        # ```
+        # Indicates whether the change is a data source task change or a cluster task change.
         self.group_type = group_type
-        # Displays data source tasks.
+        # The task name on the card.
         self.name = name
+        # The overall status of FSM.
         self.status = status
+        # The status tag of the progress bar chart.
         self.tags = tags
+        # The information about the task.
         self.task_nodes = task_nodes
+        # The timestamp of the task on the card.
         self.time = time
+        # The type of the task on the card.
         self.type = type
+        # The user who triggered the finite-state machine (FSM) process.
         self.user = user
 
     def validate(self):
@@ -6789,7 +6906,7 @@ class ListDataSourceTasksResponseBody(TeaModel):
     ):
         # id of request
         self.request_id = request_id
-        # The date when the task was completed.
+        # The information about the index.
         self.result = result
 
     def validate(self):
@@ -6836,9 +6953,6 @@ class ListDataSourceTasksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6878,15 +6992,15 @@ class ListDataSourcesResponseBodyResult(TeaModel):
         status: str = None,
         type: str = None,
     ):
-        # The data sources deployed in offline mode.
+        # The data center where the data source is deployed in offline mode.
         self.domain = domain
-        # The indexes.
+        # The information about indexes.
         self.indexes = indexes
-        # The time when the full data of the data source was last queried.
+        # The time when an index for full data was last built.
         self.last_ful_time = last_ful_time
         # The name of the data source.
         self.name = name
-        # The status of the data source.
+        # The state of the data source.
         self.status = status
         # The type of the data source.
         self.type = type
@@ -6937,15 +7051,9 @@ class ListDataSourcesResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListDataSourcesResponseBodyResult] = None,
     ):
-        # ## Method
-        # 
-        # `GET`
-        # 
-        # ## URI
-        # 
-        # `/openapi/ha3/instances/{instanceId}/data-sources`
+        # The ID of the request.
         self.request_id = request_id
-        # The returned results.
+        # The result returned.
         self.result = result
 
     def validate(self):
@@ -6992,9 +7100,6 @@ class ListDataSourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7187,9 +7292,6 @@ class ListDateSourceGenerationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7224,6 +7326,7 @@ class ListIndexesRequest(TeaModel):
         self,
         new_mode: bool = None,
     ):
+        # 是否为新版本控制台页面
         self.new_mode = new_mode
 
     def validate(self):
@@ -7260,20 +7363,25 @@ class ListIndexesResponseBodyResultDataSourceInfoConfig(TeaModel):
         project: str = None,
         table: str = None,
     ):
+        # odps数据源ak
         self.access_key = access_key
+        # odps数据源ak secret
         self.access_secret = access_secret
+        # oss命名空间
         self.bucket = bucket
-        # A parameter related to MaxCompute.
+        # odps相关
         self.endpoint = endpoint
-        # A parameter related to SARO.
+        # saro相关
         self.namespace = namespace
-        # A parameter related to OSS.
+        # oss数据源相关
         self.oss_path = oss_path
+        # 数据分片
         self.partition = partition
-        # A parameter related to Apsara File Storage for HDFS.
+        # hdfs相关
         self.path = path
+        # odps数据源项目名称
         self.project = project
-        # A parameter related to SARO and MaxCompute.
+        # saro、odps相关
         self.table = table
 
     def validate(self):
@@ -7338,7 +7446,9 @@ class ListIndexesResponseBodyResultDataSourceInfoSaroConfig(TeaModel):
         namespace: str = None,
         table_name: str = None,
     ):
+        # saro数据源的namespace
         self.namespace = namespace
+        # saro数据表名称
         self.table_name = table_name
 
     def validate(self):
@@ -7376,19 +7486,19 @@ class ListIndexesResponseBodyResultDataSourceInfo(TeaModel):
         saro_config: ListIndexesResponseBodyResultDataSourceInfoSaroConfig = None,
         type: str = None,
     ):
-        # Indicates whether the automatic full indexing feature is enabled.
+        # 是否开启自动全量
         self.auto_build_index = auto_build_index
-        # The configuration of MaxCompute data sources.
+        # odps 数据源配置
         self.config = config
-        # The offline deployment name of the data source.
+        # 离线部署
         self.domain = domain
-        # The name of the data source.
+        # 数据源名
         self.name = name
-        # The number of resources used for data update.
+        # 数据更新资源数
         self.process_partition_count = process_partition_count
-        # The configuration of SARO data sources.
+        # saro数据源配置
         self.saro_config = saro_config
-        # The type of the data source. Valid values: odps, swift, saro, oss, and unKnow.
+        # 数据源类型 (odps, swift, saro, oss, unKnow)
         self.type = type
 
     def validate(self):
@@ -7448,11 +7558,11 @@ class ListIndexesResponseBodyResultVersionsFiles(TeaModel):
         is_template: bool = None,
         name: str = None,
     ):
-        # The full path of the file.
+        # The name of the directory for the index.
         self.full_path_name = full_path_name
-        # Indicates whether the file is a directory.
+        # Indicates whether a directory exists.
         self.is_dir = is_dir
-        # Indicates whether the file is a template.
+        # Indicates whether it is a template.
         self.is_template = is_template
         # The name of the file.
         self.name = name
@@ -7499,17 +7609,17 @@ class ListIndexesResponseBodyResultVersions(TeaModel):
         update_time: int = None,
         version_id: int = None,
     ):
-        # The description of the version.
+        # The description.
         self.desc = desc
-        # The information about the files.
+        # The list of file names.
         self.files = files
         # The name of the version.
         self.name = name
-        # The status of the version. Valid values: drafting, used, unused, and trash.
+        # The state of the version. Valid values: drafting, used, unused and trash. drafting indicates that the version is a draft, used indicates that the version is used online, unused indicates that the version is not used, and trash indicates that the version is being deleted.
         self.status = status
-        # The last time when the version was updated.
+        # The time when the version was updated.
         self.update_time = update_time
-        # The ID of the version. The value is null for an edit version.
+        # The ID of the version. The value of this parameter is null for the edit version.
         self.version_id = version_id
 
     def validate(self):
@@ -7577,31 +7687,31 @@ class ListIndexesResponseBodyResult(TeaModel):
         partition: int = None,
         versions: List[ListIndexesResponseBodyResultVersions] = None,
     ):
-        # The content of the index.
+        # schema JSON
         self.content = content
         # The data source.
         self.data_source = data_source
-        # The information about the data source.
+        # 数据源相关信息
         self.data_source_info = data_source_info
-        # The remarks.
+        # 备注
         self.description = description
-        # The deployment name of the index.
+        # The name of the data center where the data source is deployed.
         self.domain = domain
-        # The last time when full data in the index was updated.
+        # 全量切换时间
         self.full_update_time = full_update_time
-        # The version of the data.
+        # 全量版本  即：索引版本
         self.full_version = full_version
-        # The last time when incremental data in the index was updated.
+        # 增量更新时间
         self.inc_update_time = inc_update_time
-        # The index size.
+        # 索引大小
         self.index_size = index_size
-        # The status of the index. Valid values: NEW and PUBLISH.
+        # NEW, PUBLISH
         self.index_status = index_status
         # The name of the index.
         self.name = name
-        # The number of shards.
+        # 数据分片
         self.partition = partition
-        # The information about the versions.
+        # The list of version information.
         self.versions = versions
 
     def validate(self):
@@ -7691,7 +7801,7 @@ class ListIndexesResponseBody(TeaModel):
     ):
         # id of request
         self.request_id = request_id
-        # The information about the indexes.
+        # The index list.
         self.result = result
 
     def validate(self):
@@ -7738,9 +7848,6 @@ class ListIndexesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7775,7 +7882,7 @@ class ListInstanceSpecsRequest(TeaModel):
         self,
         type: str = None,
     ):
-        # The node type. Valid values: qrs, search, index, and cluster. qrs specifies an Query Result Searcher (QRS) worker, search specifies a searcher worker, index specifies an index node, and cluster specifies a cluster.
+        # The node type. Valid values: qrs, search, index, and cluster. qrs indicates a query node, search indicates a data node, index indicates an index node, and cluster indicates a cluster.
         self.type = type
 
     def validate(self):
@@ -7806,13 +7913,13 @@ class ListInstanceSpecsResponseBodyResult(TeaModel):
         mem: int = None,
         min_disk: int = None,
     ):
-        # The number of CPU cores.
+        # None
         self.cpu = cpu
-        # The maximum storage space of a searcher worker.
+        # 单数据节点存储空间最大值
         self.max_disk = max_disk
-        # The memory size. Unit: GB.
+        # Unit: GB
         self.mem = mem
-        # The minimum storage space of a searcher worker.
+        # 单数据节点存储空间最小值
         self.min_disk = min_disk
 
     def validate(self):
@@ -7853,9 +7960,9 @@ class ListInstanceSpecsResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListInstanceSpecsResponseBodyResult] = None,
     ):
-        # The ID of the request.
+        # id of request
         self.request_id = request_id
-        # The specifications of the instances.
+        # List
         self.result = result
 
     def validate(self):
@@ -7902,9 +8009,6 @@ class ListInstanceSpecsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7940,7 +8044,9 @@ class ListInstancesRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -7978,18 +8084,19 @@ class ListInstancesRequest(TeaModel):
         resource_group_id: str = None,
         tags: List[ListInstancesRequestTags] = None,
     ):
-        # The description of the instance
-        self.description = description
-        # 实例类型，vector(向量索引版)，engine(召回引擎版)
-        self.edition = edition
-        # The time when the instance was created
-        self.instance_id = instance_id
-        # The status of the instance
-        self.page_number = page_number
         # The description of the instance. You can use this description to filter instances. Fuzzy match is supported.
-        self.page_size = page_size
+        self.description = description
+        # The Instance type, vector (vector index version),engine (recall engine version)
+        self.edition = edition
+        # The ID of the instance.
+        self.instance_id = instance_id
         # The number of the page to return. Default value: 1.
+        self.page_number = page_number
+        # The number of entries to return on each page. Valid values: 1 to 50. Default value: 10.
+        self.page_size = page_size
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
+        # The tag dictionary.
         self.tags = tags
 
     def validate(self):
@@ -8055,18 +8162,19 @@ class ListInstancesShrinkRequest(TeaModel):
         resource_group_id: str = None,
         tags_shrink: str = None,
     ):
-        # The description of the instance
-        self.description = description
-        # 实例类型，vector(向量索引版)，engine(召回引擎版)
-        self.edition = edition
-        # The time when the instance was created
-        self.instance_id = instance_id
-        # The status of the instance
-        self.page_number = page_number
         # The description of the instance. You can use this description to filter instances. Fuzzy match is supported.
-        self.page_size = page_size
+        self.description = description
+        # The Instance type, vector (vector index version),engine (recall engine version)
+        self.edition = edition
+        # The ID of the instance.
+        self.instance_id = instance_id
         # The number of the page to return. Default value: 1.
+        self.page_number = page_number
+        # The number of entries to return on each page. Valid values: 1 to 50. Default value: 10.
+        self.page_size = page_size
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
+        # The tag dictionary.
         self.tags_shrink = tags_shrink
 
     def validate(self):
@@ -8120,85 +8228,11 @@ class ListInstancesResponseBodyResultNetwork(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # 353490
+        # The access point of the gateway
         self.endpoint = endpoint
-        # ### Sample responses
-        # 
-        # **Sample success responses**\
-        # 
-        #     {
-        #         "requestId": "90D6B8F5-FE97-4509-9AAB-367836C51818",
-        #         "result": [
-        #             {
-        #                 "instanceId": "igraph-cn-xxxxxx1",
-        #                 "spec": {
-        #                     "password": "passwd",
-        #                     "searchResource": {
-        #                         "disk": 50,
-        #                         "mem": 8,
-        #                         "cpu": 2,
-        #                         "nodeCount": 2
-        #                     },
-        #                     "instanceName": "testInstance",
-        #                     "vSwitchId": "vswitch_id_xxx",
-        #                     "vpcId": "vpc_id_xxx",
-        #                     "qrsResource": {
-        #                         "disk": 50,
-        #                         "mem": 8,
-        #                         "cpu": 2,
-        #                         "nodeCount": 2
-        #                     },
-        #                     "region": "cn-hangzhou",
-        #                     "userName": "user"
-        #                 },
-        #                 "status": {
-        #                     "phase": "PENDING",
-        #                     "instancePhase": "INIT",
-        #                     "createSuccess": false
-        #                 }
-        #             },
-        #             {
-        #                 "instanceId": "igraph-cn-xxxxxx2",
-        #                 "spec": {
-        #                     "password": "passwd",
-        #                     "searchResource": {
-        #                         "disk": 50,
-        #                         "mem": 8,
-        #                         "cpu": 2,
-        #                         "nodeCount": 2
-        #                     },
-        #                     "instanceName": "testInstance",
-        #                     "vSwitchId": "vswitch_id_xxx",
-        #                     "vpcId": "vpc_id_xxx",
-        #                     "qrsResource": {
-        #                         "disk": 50,
-        #                         "mem": 8,
-        #                         "cpu": 2,
-        #                         "nodeCount": 2
-        #                     },
-        #                     "region": "cn-hangzhou",
-        #                     "userName": "user"
-        #                 },
-        #                 "status": {
-        #                     "phase": "PENDING",
-        #                     "instancePhase": "INIT",
-        #                     "createSuccess": false
-        #                 }
-        #             }
-        #         ],
-        #         "totalCount": 20
-        #     }
-        # 
-        # **Sample error responses**\
-        # 
-        #     {
-        #       "requestId": "BD1EA715-DF6F-06C2-004C-C1FA0D3A9820",
-        #       "httpCode": 404,
-        #       "code": "App.NotFound",
-        #       "message": "App not found"
-        #     }
+        # The ID of the virtual switch
         self.v_switch_id = v_switch_id
-        # Queries instances.
+        # The ID of the Virtual Private Cloud (VPC) network
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -8235,7 +8269,9 @@ class ListInstancesResponseBodyResultTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -8279,28 +8315,29 @@ class ListInstancesResponseBodyResult(TeaModel):
         tags: List[ListInstancesResponseBodyResultTags] = None,
         update_time: str = None,
     ):
-        # The ID of the resource group to which the instance belongs.
+        # The billing method
         self.charge_type = charge_type
-        # The total number of entries returned
+        # The product code
         self.commodity_code = commodity_code
-        # Havenask instance
+        # The time when the instance was created
         self.create_time = create_time
-        # The ID of the virtual switch
+        # The description of the instance
         self.description = description
-        # The ID of the Virtual Private Cloud (VPC) network
-        self.expired_time = expired_time
-        # The ID of the request
-        self.in_debt = in_debt
-        # The access point of the gateway
-        self.instance_id = instance_id
-        # Emergency test
-        self.lock_mode = lock_mode
-        # The lock status
-        self.network = network
-        # The number of entries to return on each page. Valid values: 1 to 50. Default value: 10.
-        self.resource_group_id = resource_group_id
         # The expiration time
+        self.expired_time = expired_time
+        # Indicates whether an overdue payment is involved
+        self.in_debt = in_debt
+        # The ID of the resource
+        self.instance_id = instance_id
+        # The lock status
+        self.lock_mode = lock_mode
+        # Information about the instance of the network search engine
+        self.network = network
+        # The ID of the resource group
+        self.resource_group_id = resource_group_id
+        # The status of the instance
         self.status = status
+        # The result returned.
         self.tags = tags
         # The time when the instance was last updated
         self.update_time = update_time
@@ -8391,9 +8428,11 @@ class ListInstancesResponseBody(TeaModel):
         result: List[ListInstancesResponseBodyResult] = None,
         total_count: int = None,
     ):
+        # The ID of the request
         self.request_id = request_id
         # The result returned
         self.result = result
+        # The total number of entries returned
         self.total_count = total_count
 
     def validate(self):
@@ -8444,9 +8483,6 @@ class ListInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8481,6 +8517,7 @@ class ListOnlineConfigsRequest(TeaModel):
         self,
         domain: str = None,
     ):
+        # The name of the domain
         self.domain = domain
 
     def validate(self):
@@ -8509,7 +8546,9 @@ class ListOnlineConfigsResponseBodyResult(TeaModel):
         config: str = None,
         index_name: str = None,
     ):
+        # The configuration information
         self.config = config
+        # The name of the index
         self.index_name = index_name
 
     def validate(self):
@@ -8591,9 +8630,6 @@ class ListOnlineConfigsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8629,8 +8665,9 @@ class ListQueryResultRequest(TeaModel):
         query: str = None,
         sql: str = None,
     ):
-        # 353490
+        # The query statement
         self.query = query
+        # The SQL statement that is executed in the query
         self.sql = sql
 
     def validate(self):
@@ -8662,6 +8699,7 @@ class ListQueryResultResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -8696,9 +8734,6 @@ class ListQueryResultResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8825,9 +8860,6 @@ class ModifyAdvanceConfigFileResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8932,9 +8964,6 @@ class ModifyClusterDescResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8977,20 +9006,21 @@ class ModifyClusterOfflineConfigRequest(TeaModel):
         partition: str = None,
         push_mode: str = None,
     ):
-        # The reindexing method. Valid values: api: API data source. indexRecover: data recovery through indexing.
+        # The mode of reindexing. Valid values: api and indexRecover. api indicates to push incremental data to a data source by calling the API operations. indexRecover indicates that the data source is restored from the index.
         self.build_mode = build_mode
         # The configuration name, which is stored as a key.
         self.config = config
+        # The name of the data source.
         self.data_source_name = data_source_name
-        # The type of the data source. Valid values: odps: MaxCompute. swift: Swift. unKnow: unknown type.
+        # The type of the data source. Valid values: odps, swift, saro, and unKnow.
         self.data_source_type = data_source_type
-        # This parameter is required if the API data source experiences full indexing.
+        # This parameter is required when index building by using API data sources is triggered.
         self.data_time_sec = data_time_sec
-        # The domain in which the data source is deployed.
+        # The domain where the data source is deployed.
         self.domain = domain
-        # The ID of the backward data delivery.
+        # The data restoration version.
         self.generation = generation
-        # This parameter is required if the MaxCompute data source experiences full indexing.
+        # This parameter is required when index building for full data in a MaxCompute data source is triggered.
         self.partition = partition
         self.push_mode = push_mode
 
@@ -9052,9 +9082,9 @@ class ModifyClusterOfflineConfigResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
-        # The ID of the request.
+        # The ID of the request
         self.request_id = request_id
-        # The result of the request.
+        # The result
         self.result = result
 
     def validate(self):
@@ -9093,9 +9123,6 @@ class ModifyClusterOfflineConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9207,9 +9234,6 @@ class ModifyClusterOnlineConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9245,9 +9269,9 @@ class ModifyDataSourceRequest(TeaModel):
         body: Dict[str, Any] = None,
         dry_run: bool = None,
     ):
-        # The information about the index
+        # The request body.
         self.body = body
-        # The ID of the request
+        # Specifies whether the data source is created by using the dryRun feature. This parameter only checks whether the data source is valid. Valid values: true and false. true indicates that the data source is created by using the dryRun feature, and false indicates that the data source is not created by using the dryRun feature.
         self.dry_run = dry_run
 
     def validate(self):
@@ -9280,9 +9304,9 @@ class ModifyDataSourceResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
-        # id of request
+        # The ID of the request
         self.request_id = request_id
-        # The schema information.
+        # The result returned
         self.result = result
 
     def validate(self):
@@ -9321,9 +9345,6 @@ class ModifyDataSourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9360,11 +9381,11 @@ class ModifyFileRequest(TeaModel):
         partition: int = None,
         file_name: str = None,
     ):
-        # The parameters in the request body
+        # The content of the file.
         self.content = content
-        # auditing
+        # The data partition. This parameter is required if the dataSourceType parameter is set to odps.
         self.partition = partition
-        # ha-cn-tl32m2c4u01@ha-cn-tl32m2c4u01_00@bj_vpc_domain_1@automobile_vector@index_config_edit
+        # The name of the file in the full path
         self.file_name = file_name
 
     def validate(self):
@@ -9442,9 +9463,6 @@ class ModifyFileResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9481,9 +9499,9 @@ class ModifyIndexPartitionRequestIndexInfos(TeaModel):
         parallel_num: int = None,
         partition_count: int = None,
     ):
-        # auditing
+        # The name of the index.
         self.index_name = index_name
-        # The parameters in the request body.
+        # The number of concurrency. The default value is 1.
         self.parallel_num = parallel_num
         # The number of shards of the index.
         self.partition_count = partition_count
@@ -9526,11 +9544,11 @@ class ModifyIndexPartitionRequest(TeaModel):
     ):
         # The name of the data source.
         self.data_source_name = data_source_name
-        # The information about each index.
-        self.domain_name = domain_name
         # The name of the data center.
+        self.domain_name = domain_name
+        # The primary key of generation.
         self.generation = generation
-        # The number of shards of the index.
+        # The information about shards of the index.
         self.index_infos = index_infos
 
     def validate(self):
@@ -9620,9 +9638,6 @@ class ModifyIndexPartitionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9777,9 +9792,6 @@ class ModifyIndexVersionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9815,6 +9827,7 @@ class ModifyNodeConfigRequest(TeaModel):
         active: bool = None,
         data_duplicate_number: int = None,
         data_fragment_number: int = None,
+        flow_ratio: int = None,
         min_service_percent: int = None,
         published: bool = None,
         cluster_name: str = None,
@@ -9825,15 +9838,22 @@ class ModifyNodeConfigRequest(TeaModel):
         self.active = active
         self.data_duplicate_number = data_duplicate_number
         self.data_fragment_number = data_fragment_number
+        self.flow_ratio = flow_ratio
         self.min_service_percent = min_service_percent
         self.published = published
-        # The ID of the cluster.
-        self.cluster_name = cluster_name
-        # The parameters in the request body.
-        self.data_source_name = data_source_name
         # The name of the cluster.
-        self.name = name
+        self.cluster_name = cluster_name
+        # The name of the data source. Valid values: search and not_search. search indicates to search data. not_search indicates not to search data.
+        self.data_source_name = data_source_name
         # The original name of the node.
+        self.name = name
+        # The type of the algorithm. Valid values: pop, cp, hot, hint, and suggest.
+        # 
+        # *   pop indicates the popularity model.
+        # *   cp indicates the category prediction model.
+        # *   hot indicates the top search model.
+        # *   hint indicates the hint model.
+        # *   suggest indicates the drop-down suggestion model.
         self.type = type
 
     def validate(self):
@@ -9851,6 +9871,8 @@ class ModifyNodeConfigRequest(TeaModel):
             result['dataDuplicateNumber'] = self.data_duplicate_number
         if self.data_fragment_number is not None:
             result['dataFragmentNumber'] = self.data_fragment_number
+        if self.flow_ratio is not None:
+            result['flowRatio'] = self.flow_ratio
         if self.min_service_percent is not None:
             result['minServicePercent'] = self.min_service_percent
         if self.published is not None:
@@ -9873,6 +9895,8 @@ class ModifyNodeConfigRequest(TeaModel):
             self.data_duplicate_number = m.get('dataDuplicateNumber')
         if m.get('dataFragmentNumber') is not None:
             self.data_fragment_number = m.get('dataFragmentNumber')
+        if m.get('flowRatio') is not None:
+            self.flow_ratio = m.get('flowRatio')
         if m.get('minServicePercent') is not None:
             self.min_service_percent = m.get('minServicePercent')
         if m.get('published') is not None:
@@ -9896,7 +9920,7 @@ class ModifyNodeConfigResponseBody(TeaModel):
     ):
         # id of request
         self.request_id = request_id
-        # auditing
+        # The information about the index
         self.result = result
 
     def validate(self):
@@ -9935,9 +9959,6 @@ class ModifyNodeConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10042,9 +10063,6 @@ class ModifyOnlineConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10156,9 +10174,6 @@ class ModifyPasswordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10263,9 +10278,6 @@ class PublishAdvanceConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10300,6 +10312,7 @@ class PublishIndexVersionRequest(TeaModel):
         self,
         body: Dict[str, Any] = None,
     ):
+        # The query result
         self.body = body
 
     def validate(self):
@@ -10330,6 +10343,7 @@ class PublishIndexVersionResponseBody(TeaModel):
     ):
         # id of request
         self.request_id = request_id
+        # The information about the index
         self.result = result
 
     def validate(self):
@@ -10368,9 +10382,6 @@ class PublishIndexVersionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10408,11 +10419,11 @@ class RecoverIndexRequest(TeaModel):
         generation: str = None,
         index_name: str = None,
     ):
-        # buildDeployId
+        # The ID of the index deployed in offline mode.
         self.build_deploy_id = build_deploy_id
         # The name of the data source
         self.data_source_name = data_source_name
-        # generation
+        # The primary key of generation.
         self.generation = generation
         # The name of the index
         self.index_name = index_name
@@ -10455,9 +10466,9 @@ class RecoverIndexResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
-        # id of request
+        # The ID of the request.
         self.request_id = request_id
-        # Map
+        # The result returned by data search.
         self.result = result
 
     def validate(self):
@@ -10496,9 +10507,6 @@ class RecoverIndexResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10536,6 +10544,7 @@ class RemoveClusterResponseBody(TeaModel):
     ):
         # id of request
         self.request_id = request_id
+        # The result
         self.result = result
 
     def validate(self):
@@ -10574,9 +10583,6 @@ class RemoveClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10653,9 +10659,6 @@ class StopTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10691,7 +10694,7 @@ class UpdateInstanceRequestComponents(TeaModel):
         code: str = None,
         value: str = None,
     ):
-        # The name of the specification. The value must be the same as the name of a parameter on the buy page.
+        # The specification code, which must be consistent with the values of the corresponding module parameters.
         self.code = code
         # The value of the specification.
         self.value = value
@@ -10727,11 +10730,11 @@ class UpdateInstanceRequest(TeaModel):
         description: str = None,
         order_type: str = None,
     ):
-        # The information about the instance type.
+        # A list of instance-related specifications.
         self.components = components
         # The description of the instance.
         self.description = description
-        # The type of the order. Valid values: UPGRADE and DOWNGRADE. UPGRADE indicates the instance type is to be upgraded. DOWNGRADE indicates the instance type is to be downgraded.
+        # Valid values: UPGRADE and DOWNGRADE. UPGRADE indicates to upgrade the instance specifications. DOWNGRADE indicates to downgrade the instance specifications.
         self.order_type = order_type
 
     def validate(self):
@@ -10785,27 +10788,27 @@ class UpdateInstanceResponseBodyResult(TeaModel):
         status: str = None,
         update_time: str = None,
     ):
-        # The billing method of the instance.
+        # The billing method
         self.charge_type = charge_type
-        # The service code.
+        # The product code
         self.commodity_code = commodity_code
-        # The time when the instance was created.
+        # The time when the instance was created
         self.create_time = create_time
-        # The description of the instance.
+        # The description of the instance
         self.description = description
-        # The time when the instance expires.
+        # The time when the instance expires
         self.expired_time = expired_time
-        # Indicates whether an overdue payment is involved.
+        # Indicates whether an overdue payment is involved
         self.in_debt = in_debt
-        # The ID of the instance.
+        # The ID of the resource
         self.instance_id = instance_id
-        # The lock mode of the instance.
+        # The lock status
         self.lock_mode = lock_mode
-        # The ID of the resource group.
+        # The ID of the resource group
         self.resource_group_id = resource_group_id
-        # The state of the instance.
+        # The status of the instance
         self.status = status
-        # The time when the instance was last updated.
+        # The time when the instance was last updated
         self.update_time = update_time
 
     def validate(self):
@@ -10874,9 +10877,9 @@ class UpdateInstanceResponseBody(TeaModel):
         request_id: str = None,
         result: UpdateInstanceResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The ID of the request
         self.request_id = request_id
-        # The result returned.
+        # The result returned
         self.result = result
 
     def validate(self):
@@ -10917,9 +10920,6 @@ class UpdateInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
