@@ -1481,6 +1481,7 @@ class CreateExperimentGroupRequest(TeaModel):
         self,
         config: str = None,
         crowd_id: str = None,
+        crowd_target_type: str = None,
         debug_crowd_id: str = None,
         debug_users: str = None,
         description: str = None,
@@ -1491,10 +1492,12 @@ class CreateExperimentGroupRequest(TeaModel):
         layer_id: str = None,
         name: str = None,
         need_aa: bool = None,
+        random_flow: int = None,
         reserved_buckets: str = None,
     ):
         self.config = config
         self.crowd_id = crowd_id
+        self.crowd_target_type = crowd_target_type
         self.debug_crowd_id = debug_crowd_id
         self.debug_users = debug_users
         self.description = description
@@ -1505,6 +1508,7 @@ class CreateExperimentGroupRequest(TeaModel):
         self.layer_id = layer_id
         self.name = name
         self.need_aa = need_aa
+        self.random_flow = random_flow
         self.reserved_buckets = reserved_buckets
 
     def validate(self):
@@ -1520,6 +1524,8 @@ class CreateExperimentGroupRequest(TeaModel):
             result['Config'] = self.config
         if self.crowd_id is not None:
             result['CrowdId'] = self.crowd_id
+        if self.crowd_target_type is not None:
+            result['CrowdTargetType'] = self.crowd_target_type
         if self.debug_crowd_id is not None:
             result['DebugCrowdId'] = self.debug_crowd_id
         if self.debug_users is not None:
@@ -1540,6 +1546,8 @@ class CreateExperimentGroupRequest(TeaModel):
             result['Name'] = self.name
         if self.need_aa is not None:
             result['NeedAA'] = self.need_aa
+        if self.random_flow is not None:
+            result['RandomFlow'] = self.random_flow
         if self.reserved_buckets is not None:
             result['ReservedBuckets'] = self.reserved_buckets
         return result
@@ -1550,6 +1558,8 @@ class CreateExperimentGroupRequest(TeaModel):
             self.config = m.get('Config')
         if m.get('CrowdId') is not None:
             self.crowd_id = m.get('CrowdId')
+        if m.get('CrowdTargetType') is not None:
+            self.crowd_target_type = m.get('CrowdTargetType')
         if m.get('DebugCrowdId') is not None:
             self.debug_crowd_id = m.get('DebugCrowdId')
         if m.get('DebugUsers') is not None:
@@ -1570,6 +1580,8 @@ class CreateExperimentGroupRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('NeedAA') is not None:
             self.need_aa = m.get('NeedAA')
+        if m.get('RandomFlow') is not None:
+            self.random_flow = m.get('RandomFlow')
         if m.get('ReservedBuckets') is not None:
             self.reserved_buckets = m.get('ReservedBuckets')
         return self
@@ -4870,17 +4882,20 @@ class GetExperimentGroupResponseBody(TeaModel):
         self,
         config: str = None,
         crowd_id: str = None,
+        crowd_target_type: str = None,
         debug_crowd_id: str = None,
         debug_users: str = None,
         description: str = None,
         distribution_time_duration: int = None,
         distribution_type: str = None,
         filter: str = None,
+        holding_buckets: str = None,
         laboratory_id: str = None,
         layer_id: str = None,
         name: str = None,
         need_aa: bool = None,
         owner: str = None,
+        random_flow: int = None,
         request_id: str = None,
         reserved_buckets: str = None,
         scene_id: str = None,
@@ -4888,17 +4903,20 @@ class GetExperimentGroupResponseBody(TeaModel):
     ):
         self.config = config
         self.crowd_id = crowd_id
+        self.crowd_target_type = crowd_target_type
         self.debug_crowd_id = debug_crowd_id
         self.debug_users = debug_users
         self.description = description
         self.distribution_time_duration = distribution_time_duration
         self.distribution_type = distribution_type
         self.filter = filter
+        self.holding_buckets = holding_buckets
         self.laboratory_id = laboratory_id
         self.layer_id = layer_id
         self.name = name
         self.need_aa = need_aa
         self.owner = owner
+        self.random_flow = random_flow
         # Id of the request
         self.request_id = request_id
         self.reserved_buckets = reserved_buckets
@@ -4918,6 +4936,8 @@ class GetExperimentGroupResponseBody(TeaModel):
             result['Config'] = self.config
         if self.crowd_id is not None:
             result['CrowdId'] = self.crowd_id
+        if self.crowd_target_type is not None:
+            result['CrowdTargetType'] = self.crowd_target_type
         if self.debug_crowd_id is not None:
             result['DebugCrowdId'] = self.debug_crowd_id
         if self.debug_users is not None:
@@ -4930,6 +4950,8 @@ class GetExperimentGroupResponseBody(TeaModel):
             result['DistributionType'] = self.distribution_type
         if self.filter is not None:
             result['Filter'] = self.filter
+        if self.holding_buckets is not None:
+            result['HoldingBuckets'] = self.holding_buckets
         if self.laboratory_id is not None:
             result['LaboratoryId'] = self.laboratory_id
         if self.layer_id is not None:
@@ -4940,6 +4962,8 @@ class GetExperimentGroupResponseBody(TeaModel):
             result['NeedAA'] = self.need_aa
         if self.owner is not None:
             result['Owner'] = self.owner
+        if self.random_flow is not None:
+            result['RandomFlow'] = self.random_flow
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.reserved_buckets is not None:
@@ -4956,6 +4980,8 @@ class GetExperimentGroupResponseBody(TeaModel):
             self.config = m.get('Config')
         if m.get('CrowdId') is not None:
             self.crowd_id = m.get('CrowdId')
+        if m.get('CrowdTargetType') is not None:
+            self.crowd_target_type = m.get('CrowdTargetType')
         if m.get('DebugCrowdId') is not None:
             self.debug_crowd_id = m.get('DebugCrowdId')
         if m.get('DebugUsers') is not None:
@@ -4968,6 +4994,8 @@ class GetExperimentGroupResponseBody(TeaModel):
             self.distribution_type = m.get('DistributionType')
         if m.get('Filter') is not None:
             self.filter = m.get('Filter')
+        if m.get('HoldingBuckets') is not None:
+            self.holding_buckets = m.get('HoldingBuckets')
         if m.get('LaboratoryId') is not None:
             self.laboratory_id = m.get('LaboratoryId')
         if m.get('LayerId') is not None:
@@ -4978,6 +5006,8 @@ class GetExperimentGroupResponseBody(TeaModel):
             self.need_aa = m.get('NeedAA')
         if m.get('Owner') is not None:
             self.owner = m.get('Owner')
+        if m.get('RandomFlow') is not None:
+            self.random_flow = m.get('RandomFlow')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('ReservedBuckets') is not None:
@@ -6280,16 +6310,20 @@ class GetLayerResponseBody(TeaModel):
     def __init__(
         self,
         description: str = None,
+        gmt_create_time: str = None,
         laboratory_id: str = None,
         name: str = None,
         request_id: str = None,
+        residual_flow: int = None,
         scene_id: str = None,
     ):
         self.description = description
+        self.gmt_create_time = gmt_create_time
         self.laboratory_id = laboratory_id
         self.name = name
         # Id of the request
         self.request_id = request_id
+        self.residual_flow = residual_flow
         self.scene_id = scene_id
 
     def validate(self):
@@ -6303,12 +6337,16 @@ class GetLayerResponseBody(TeaModel):
         result = dict()
         if self.description is not None:
             result['Description'] = self.description
+        if self.gmt_create_time is not None:
+            result['GmtCreateTime'] = self.gmt_create_time
         if self.laboratory_id is not None:
             result['LaboratoryId'] = self.laboratory_id
         if self.name is not None:
             result['Name'] = self.name
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.residual_flow is not None:
+            result['ResidualFlow'] = self.residual_flow
         if self.scene_id is not None:
             result['SceneId'] = self.scene_id
         return result
@@ -6317,12 +6355,16 @@ class GetLayerResponseBody(TeaModel):
         m = m or dict()
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('GmtCreateTime') is not None:
+            self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('LaboratoryId') is not None:
             self.laboratory_id = m.get('LaboratoryId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResidualFlow') is not None:
+            self.residual_flow = m.get('ResidualFlow')
         if m.get('SceneId') is not None:
             self.scene_id = m.get('SceneId')
         return self
@@ -7870,10 +7912,12 @@ class ListExperimentGroupsRequest(TeaModel):
         self,
         instance_id: str = None,
         layer_id: str = None,
+        region_id: str = None,
         status: str = None,
     ):
         self.instance_id = instance_id
         self.layer_id = layer_id
+        self.region_id = region_id
         self.status = status
 
     def validate(self):
@@ -7889,6 +7933,8 @@ class ListExperimentGroupsRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.layer_id is not None:
             result['LayerId'] = self.layer_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -7899,6 +7945,8 @@ class ListExperimentGroupsRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('LayerId') is not None:
             self.layer_id = m.get('LayerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -7909,6 +7957,7 @@ class ListExperimentGroupsResponseBodyExperimentGroups(TeaModel):
         self,
         config: str = None,
         crowd_id: str = None,
+        crowd_target_type: str = None,
         debug_crowd_id: str = None,
         debug_users: str = None,
         description: str = None,
@@ -7916,17 +7965,20 @@ class ListExperimentGroupsResponseBodyExperimentGroups(TeaModel):
         distribution_type: str = None,
         experiment_group_id: str = None,
         filter: str = None,
+        holding_buckets: str = None,
         laboratory_id: str = None,
         layer_id: str = None,
         name: str = None,
         need_aa: bool = None,
         owner: str = None,
+        random_flow: int = None,
         reserved_buckets: str = None,
         scene_id: str = None,
         status: str = None,
     ):
         self.config = config
         self.crowd_id = crowd_id
+        self.crowd_target_type = crowd_target_type
         self.debug_crowd_id = debug_crowd_id
         self.debug_users = debug_users
         self.description = description
@@ -7934,11 +7986,13 @@ class ListExperimentGroupsResponseBodyExperimentGroups(TeaModel):
         self.distribution_type = distribution_type
         self.experiment_group_id = experiment_group_id
         self.filter = filter
+        self.holding_buckets = holding_buckets
         self.laboratory_id = laboratory_id
         self.layer_id = layer_id
         self.name = name
         self.need_aa = need_aa
         self.owner = owner
+        self.random_flow = random_flow
         self.reserved_buckets = reserved_buckets
         self.scene_id = scene_id
         self.status = status
@@ -7956,6 +8010,8 @@ class ListExperimentGroupsResponseBodyExperimentGroups(TeaModel):
             result['Config'] = self.config
         if self.crowd_id is not None:
             result['CrowdId'] = self.crowd_id
+        if self.crowd_target_type is not None:
+            result['CrowdTargetType'] = self.crowd_target_type
         if self.debug_crowd_id is not None:
             result['DebugCrowdId'] = self.debug_crowd_id
         if self.debug_users is not None:
@@ -7970,6 +8026,8 @@ class ListExperimentGroupsResponseBodyExperimentGroups(TeaModel):
             result['ExperimentGroupId'] = self.experiment_group_id
         if self.filter is not None:
             result['Filter'] = self.filter
+        if self.holding_buckets is not None:
+            result['HoldingBuckets'] = self.holding_buckets
         if self.laboratory_id is not None:
             result['LaboratoryId'] = self.laboratory_id
         if self.layer_id is not None:
@@ -7980,6 +8038,8 @@ class ListExperimentGroupsResponseBodyExperimentGroups(TeaModel):
             result['NeedAA'] = self.need_aa
         if self.owner is not None:
             result['Owner'] = self.owner
+        if self.random_flow is not None:
+            result['RandomFlow'] = self.random_flow
         if self.reserved_buckets is not None:
             result['ReservedBuckets'] = self.reserved_buckets
         if self.scene_id is not None:
@@ -7994,6 +8054,8 @@ class ListExperimentGroupsResponseBodyExperimentGroups(TeaModel):
             self.config = m.get('Config')
         if m.get('CrowdId') is not None:
             self.crowd_id = m.get('CrowdId')
+        if m.get('CrowdTargetType') is not None:
+            self.crowd_target_type = m.get('CrowdTargetType')
         if m.get('DebugCrowdId') is not None:
             self.debug_crowd_id = m.get('DebugCrowdId')
         if m.get('DebugUsers') is not None:
@@ -8008,6 +8070,8 @@ class ListExperimentGroupsResponseBodyExperimentGroups(TeaModel):
             self.experiment_group_id = m.get('ExperimentGroupId')
         if m.get('Filter') is not None:
             self.filter = m.get('Filter')
+        if m.get('HoldingBuckets') is not None:
+            self.holding_buckets = m.get('HoldingBuckets')
         if m.get('LaboratoryId') is not None:
             self.laboratory_id = m.get('LaboratoryId')
         if m.get('LayerId') is not None:
@@ -8018,6 +8082,8 @@ class ListExperimentGroupsResponseBodyExperimentGroups(TeaModel):
             self.need_aa = m.get('NeedAA')
         if m.get('Owner') is not None:
             self.owner = m.get('Owner')
+        if m.get('RandomFlow') is not None:
+            self.random_flow = m.get('RandomFlow')
         if m.get('ReservedBuckets') is not None:
             self.reserved_buckets = m.get('ReservedBuckets')
         if m.get('SceneId') is not None:
@@ -10288,15 +10354,19 @@ class ListLayersResponseBodyLayers(TeaModel):
     def __init__(
         self,
         description: str = None,
+        gmt_create_time: str = None,
         laboratory_id: str = None,
         layer_id: str = None,
         name: str = None,
+        residual_flow: int = None,
         scene_id: str = None,
     ):
         self.description = description
+        self.gmt_create_time = gmt_create_time
         self.laboratory_id = laboratory_id
         self.layer_id = layer_id
         self.name = name
+        self.residual_flow = residual_flow
         self.scene_id = scene_id
 
     def validate(self):
@@ -10310,12 +10380,16 @@ class ListLayersResponseBodyLayers(TeaModel):
         result = dict()
         if self.description is not None:
             result['Description'] = self.description
+        if self.gmt_create_time is not None:
+            result['GmtCreateTime'] = self.gmt_create_time
         if self.laboratory_id is not None:
             result['LaboratoryId'] = self.laboratory_id
         if self.layer_id is not None:
             result['LayerId'] = self.layer_id
         if self.name is not None:
             result['Name'] = self.name
+        if self.residual_flow is not None:
+            result['ResidualFlow'] = self.residual_flow
         if self.scene_id is not None:
             result['SceneId'] = self.scene_id
         return result
@@ -10324,12 +10398,16 @@ class ListLayersResponseBodyLayers(TeaModel):
         m = m or dict()
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('GmtCreateTime') is not None:
+            self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('LaboratoryId') is not None:
             self.laboratory_id = m.get('LaboratoryId')
         if m.get('LayerId') is not None:
             self.layer_id = m.get('LayerId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('ResidualFlow') is not None:
+            self.residual_flow = m.get('ResidualFlow')
         if m.get('SceneId') is not None:
             self.scene_id = m.get('SceneId')
         return self
@@ -12927,6 +13005,7 @@ class UpdateExperimentGroupRequest(TeaModel):
         self,
         config: str = None,
         crowd_id: str = None,
+        crowd_target_type: str = None,
         debug_crowd_id: str = None,
         debug_users: str = None,
         description: str = None,
@@ -12937,10 +13016,12 @@ class UpdateExperimentGroupRequest(TeaModel):
         layer_id: str = None,
         name: str = None,
         need_aa: bool = None,
+        random_flow: int = None,
         reservced_buckets: str = None,
     ):
         self.config = config
         self.crowd_id = crowd_id
+        self.crowd_target_type = crowd_target_type
         self.debug_crowd_id = debug_crowd_id
         self.debug_users = debug_users
         self.description = description
@@ -12951,6 +13032,7 @@ class UpdateExperimentGroupRequest(TeaModel):
         self.layer_id = layer_id
         self.name = name
         self.need_aa = need_aa
+        self.random_flow = random_flow
         self.reservced_buckets = reservced_buckets
 
     def validate(self):
@@ -12966,6 +13048,8 @@ class UpdateExperimentGroupRequest(TeaModel):
             result['Config'] = self.config
         if self.crowd_id is not None:
             result['CrowdId'] = self.crowd_id
+        if self.crowd_target_type is not None:
+            result['CrowdTargetType'] = self.crowd_target_type
         if self.debug_crowd_id is not None:
             result['DebugCrowdId'] = self.debug_crowd_id
         if self.debug_users is not None:
@@ -12986,6 +13070,8 @@ class UpdateExperimentGroupRequest(TeaModel):
             result['Name'] = self.name
         if self.need_aa is not None:
             result['NeedAA'] = self.need_aa
+        if self.random_flow is not None:
+            result['RandomFlow'] = self.random_flow
         if self.reservced_buckets is not None:
             result['ReservcedBuckets'] = self.reservced_buckets
         return result
@@ -12996,6 +13082,8 @@ class UpdateExperimentGroupRequest(TeaModel):
             self.config = m.get('Config')
         if m.get('CrowdId') is not None:
             self.crowd_id = m.get('CrowdId')
+        if m.get('CrowdTargetType') is not None:
+            self.crowd_target_type = m.get('CrowdTargetType')
         if m.get('DebugCrowdId') is not None:
             self.debug_crowd_id = m.get('DebugCrowdId')
         if m.get('DebugUsers') is not None:
@@ -13016,6 +13104,8 @@ class UpdateExperimentGroupRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('NeedAA') is not None:
             self.need_aa = m.get('NeedAA')
+        if m.get('RandomFlow') is not None:
+            self.random_flow = m.get('RandomFlow')
         if m.get('ReservcedBuckets') is not None:
             self.reservced_buckets = m.get('ReservcedBuckets')
         return self

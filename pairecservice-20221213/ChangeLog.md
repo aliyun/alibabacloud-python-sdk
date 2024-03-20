@@ -1,3 +1,18 @@
+2024-03-20 Version: 1.3.1
+- Update API CreateExperimentGroup: add param RegionId.
+- Update API CreateExperimentGroup: update param body.
+- Update API GetExperimentGroup: add param RegionId.
+- Update API GetExperimentGroup: update response param.
+- Update API GetLayer: add param RegionId.
+- Update API GetLayer: update response param.
+- Update API ListExperimentGroups: add param RegionId.
+- Update API ListExperimentGroups: update response param.
+- Update API ListLayers: add param RegionId.
+- Update API ListLayers: update response param.
+- Update API UpdateExperimentGroup: add param RegionId.
+- Update API UpdateExperimentGroup: update param body.
+
+
 2024-03-19 Version: 1.3.0
 - Support API UploadRecommendationData.
 
