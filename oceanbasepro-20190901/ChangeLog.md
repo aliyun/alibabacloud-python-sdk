@@ -1,3 +1,23 @@
+2024-03-20 Version: 3.0.0
+- Delete API CreateOmsOpenAPIProject.
+- Delete API DeleteOmsOpenAPIProject.
+- Delete API DescribeOmsOpenAPIProject.
+- Delete API DescribeOmsOpenAPIProjectSteps.
+- Delete API ReleaseOmsOpenAPIProject.
+- Delete API ResetOmsOpenAPIProject.
+- Delete API ResumeOmsOpenAPIProject.
+- Delete API SearchOmsOpenAPIMonitorMetric.
+- Delete API SearchOmsOpenAPIProjects.
+- Delete API StartOmsOpenAPIProject.
+- Delete API StopOmsOpenAPIProject.
+- Update API CreateProject: add param Id.
+- Update API DescribeProject: update response param.
+- Update API ListProjects: add param NeedRelatedInfo.
+- Update API ListProjects: update param Status.
+- Update API ListProjects: update param VisibleSubProject.
+- Update API ListProjects: update response param.
+
+
 2024-02-06 Version: 2.4.0
 - Generated python 2019-09-01 for OceanBasePro.
 
