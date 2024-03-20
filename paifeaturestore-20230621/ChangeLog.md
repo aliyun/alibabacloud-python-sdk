@@ -1,3 +1,13 @@
+2024-03-20 Version: 3.1.2
+- Update API CreateModelFeatureTrainingSetFGTable: add param RegionId.
+- Update API ExportModelFeatureTrainingSetFGTable: add param RegionId.
+- Update API GetModelFeatureFGFeature: add param RegionId.
+- Update API GetModelFeatureFGInfo: add param RegionId.
+- Update API ListModelFeatureAvailableFeatures: add param RegionId.
+- Update API UpdateModelFeatureFGFeature: add param RegionId.
+- Update API UpdateModelFeatureFGInfo: add param RegionId.
+
+
 2024-02-02 Version: 3.1.1
 - Update API ListProjectFeatureViewsupdate response param.
 
