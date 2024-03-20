@@ -1,3 +1,15 @@
+2024-03-20 Version: 3.2.0
+- Support API DescribeKmsAssociateResources.
+- Update API CreateOrderForCreateDBNodes: update param BusinessInfo.
+- Update API CreateOrderForDeleteDBNodes: update param BusinessInfo.
+- Update API DescribeDBInstanceNetInfo: update response param.
+- Update API DescribeGadInstances: update response param.
+- Update API ModifyDBInstanceSSL: add param Certificate.
+- Update API ModifyDBInstanceSSL: add param PassWord.
+- Update API ModifyDBProxyEndpoint: update param DBProxyEndpointId.
+- Update API UpgradeDBInstanceMajorVersion: update param PayType.
+
+
 2024-02-28 Version: 3.1.0
 - Support API DescribeKmsAssociateResources.
 - Update API DescribeDBInstanceNetInfo: update response param.
