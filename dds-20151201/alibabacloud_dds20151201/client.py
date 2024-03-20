@@ -7915,8 +7915,11 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.DestroyInstanceResponse:
         """
         Before you call this operation, make sure that the instance meets the following requirements:
+        *   The instance is a replica set instance or a sharded cluster instance that uses local disks.
         *   The billing method of the instance is subscription.
         *   The instance has expired and is in the **Locking** state.
+        **\
+        **Warning** Data cannot be restored after the instance is destroyed. Proceed with caution.
         
         @param request: DestroyInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7966,8 +7969,11 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.DestroyInstanceResponse:
         """
         Before you call this operation, make sure that the instance meets the following requirements:
+        *   The instance is a replica set instance or a sharded cluster instance that uses local disks.
         *   The billing method of the instance is subscription.
         *   The instance has expired and is in the **Locking** state.
+        **\
+        **Warning** Data cannot be restored after the instance is destroyed. Proceed with caution.
         
         @param request: DestroyInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8016,8 +8022,11 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.DestroyInstanceResponse:
         """
         Before you call this operation, make sure that the instance meets the following requirements:
+        *   The instance is a replica set instance or a sharded cluster instance that uses local disks.
         *   The billing method of the instance is subscription.
         *   The instance has expired and is in the **Locking** state.
+        **\
+        **Warning** Data cannot be restored after the instance is destroyed. Proceed with caution.
         
         @param request: DestroyInstanceRequest
         @return: DestroyInstanceResponse
@@ -8031,8 +8040,11 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.DestroyInstanceResponse:
         """
         Before you call this operation, make sure that the instance meets the following requirements:
+        *   The instance is a replica set instance or a sharded cluster instance that uses local disks.
         *   The billing method of the instance is subscription.
         *   The instance has expired and is in the **Locking** state.
+        **\
+        **Warning** Data cannot be restored after the instance is destroyed. Proceed with caution.
         
         @param request: DestroyInstanceRequest
         @return: DestroyInstanceResponse
@@ -8312,6 +8324,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.effective_time):
@@ -8365,6 +8379,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.effective_time):
@@ -8655,6 +8671,100 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.ModifyAccountDescriptionResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_account_description_with_options_async(request, runtime)
+
+    def modify_active_operation_tasks_with_options(
+        self,
+        request: dds_20151201_models.ModifyActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.ModifyActiveOperationTasksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.immediate_start):
+            query['ImmediateStart'] = request.immediate_start
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.switch_time):
+            query['SwitchTime'] = request.switch_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyActiveOperationTasks',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.ModifyActiveOperationTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_active_operation_tasks_with_options_async(
+        self,
+        request: dds_20151201_models.ModifyActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.ModifyActiveOperationTasksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.immediate_start):
+            query['ImmediateStart'] = request.immediate_start
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.switch_time):
+            query['SwitchTime'] = request.switch_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyActiveOperationTasks',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.ModifyActiveOperationTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_active_operation_tasks(
+        self,
+        request: dds_20151201_models.ModifyActiveOperationTasksRequest,
+    ) -> dds_20151201_models.ModifyActiveOperationTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_active_operation_tasks_with_options(request, runtime)
+
+    async def modify_active_operation_tasks_async(
+        self,
+        request: dds_20151201_models.ModifyActiveOperationTasksRequest,
+    ) -> dds_20151201_models.ModifyActiveOperationTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_active_operation_tasks_with_options_async(request, runtime)
 
     def modify_audit_log_filter_with_options(
         self,
@@ -11639,6 +11749,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.connection_type):
+            query['ConnectionType'] = request.connection_type
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.network_type):
@@ -11687,6 +11799,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.connection_type):
+            query['ConnectionType'] = request.connection_type
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.network_type):
@@ -11755,6 +11869,8 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.ReleasePublicNetworkAddressResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.connection_type):
+            query['ConnectionType'] = request.connection_type
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.node_id):
@@ -11793,6 +11909,8 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.ReleasePublicNetworkAddressResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.connection_type):
+            query['ConnectionType'] = request.connection_type
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.node_id):
@@ -11844,8 +11962,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.RenewDBInstanceResponse:
         """
-        Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
-        This parameter is only applicable to Subscription instances.
+        Make sure that you fully understand the billing methods and pricing of ApsaraDB for MongoDB before you call this operation. For more information about the pricing of ApsaraDB for MongoDB, visit the [pricing tab of the product buy page](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        This operation is only applicable to instances that use the subscription billing method.
         
         @param request: RenewDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11900,8 +12018,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.RenewDBInstanceResponse:
         """
-        Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
-        This parameter is only applicable to Subscription instances.
+        Make sure that you fully understand the billing methods and pricing of ApsaraDB for MongoDB before you call this operation. For more information about the pricing of ApsaraDB for MongoDB, visit the [pricing tab of the product buy page](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        This operation is only applicable to instances that use the subscription billing method.
         
         @param request: RenewDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11955,8 +12073,8 @@ class Client(OpenApiClient):
         request: dds_20151201_models.RenewDBInstanceRequest,
     ) -> dds_20151201_models.RenewDBInstanceResponse:
         """
-        Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
-        This parameter is only applicable to Subscription instances.
+        Make sure that you fully understand the billing methods and pricing of ApsaraDB for MongoDB before you call this operation. For more information about the pricing of ApsaraDB for MongoDB, visit the [pricing tab of the product buy page](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        This operation is only applicable to instances that use the subscription billing method.
         
         @param request: RenewDBInstanceRequest
         @return: RenewDBInstanceResponse
@@ -11969,8 +12087,8 @@ class Client(OpenApiClient):
         request: dds_20151201_models.RenewDBInstanceRequest,
     ) -> dds_20151201_models.RenewDBInstanceResponse:
         """
-        Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
-        This parameter is only applicable to Subscription instances.
+        Make sure that you fully understand the billing methods and pricing of ApsaraDB for MongoDB before you call this operation. For more information about the pricing of ApsaraDB for MongoDB, visit the [pricing tab of the product buy page](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        This operation is only applicable to instances that use the subscription billing method.
         
         @param request: RenewDBInstanceRequest
         @return: RenewDBInstanceResponse

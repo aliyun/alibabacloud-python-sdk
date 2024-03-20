@@ -1,3 +1,20 @@
+2024-03-20 Version: 6.3.0
+- Support API DescribeBackupStorage.
+- Support API DescribeBackupTasks.
+- Support API DescribeInstanceRecoverTime.
+- Support API ModifyActiveOperationTasks.
+- Update API CreateDBInstance: update param EngineVersion.
+- Update API CreateShardingDBInstance: update param EngineVersion.
+- Update API CreateShardingDBInstance: update param NetworkType.
+- Update API DescribeBackupPolicy: update response param.
+- Update API DescribeBackups: update response param.
+- Update API DescribePrice: update response param.
+- Update API MigrateAvailableZone: add param Category.
+- Update API ModifyBackupPolicy: add param HighFrequencyBackupRetention.
+- Update API ReleaseNodePrivateNetworkAddress: add param ConnectionType.
+- Update API ReleasePublicNetworkAddress: add param ConnectionType.
+
+
 2024-03-11 Version: 6.2.0
 - Support API DescribeBackupStorage.
 - Support API DescribeBackupTasks.
