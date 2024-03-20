@@ -719,21 +719,31 @@ class EcsSpec(TeaModel):
         self,
         accelerator_type: str = None,
         cpu: int = None,
+        default_gpudriver: str = None,
         gpu: int = None,
         gpu_type: str = None,
         instance_type: str = None,
         is_available: bool = None,
         memory: int = None,
+        non_protect_spot_discount: float = None,
+        payment_types: List[str] = None,
         resource_type: str = None,
+        spot_stock_status: str = None,
+        supported_gpudrivers: List[str] = None,
     ):
         self.accelerator_type = accelerator_type
         self.cpu = cpu
+        self.default_gpudriver = default_gpudriver
         self.gpu = gpu
         self.gpu_type = gpu_type
         self.instance_type = instance_type
         self.is_available = is_available
         self.memory = memory
+        self.non_protect_spot_discount = non_protect_spot_discount
+        self.payment_types = payment_types
         self.resource_type = resource_type
+        self.spot_stock_status = spot_stock_status
+        self.supported_gpudrivers = supported_gpudrivers
 
     def validate(self):
         pass
@@ -748,6 +758,8 @@ class EcsSpec(TeaModel):
             result['AcceleratorType'] = self.accelerator_type
         if self.cpu is not None:
             result['Cpu'] = self.cpu
+        if self.default_gpudriver is not None:
+            result['DefaultGPUDriver'] = self.default_gpudriver
         if self.gpu is not None:
             result['Gpu'] = self.gpu
         if self.gpu_type is not None:
@@ -758,8 +770,16 @@ class EcsSpec(TeaModel):
             result['IsAvailable'] = self.is_available
         if self.memory is not None:
             result['Memory'] = self.memory
+        if self.non_protect_spot_discount is not None:
+            result['NonProtectSpotDiscount'] = self.non_protect_spot_discount
+        if self.payment_types is not None:
+            result['PaymentTypes'] = self.payment_types
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
+        if self.spot_stock_status is not None:
+            result['SpotStockStatus'] = self.spot_stock_status
+        if self.supported_gpudrivers is not None:
+            result['SupportedGPUDrivers'] = self.supported_gpudrivers
         return result
 
     def from_map(self, m: dict = None):
@@ -768,6 +788,8 @@ class EcsSpec(TeaModel):
             self.accelerator_type = m.get('AcceleratorType')
         if m.get('Cpu') is not None:
             self.cpu = m.get('Cpu')
+        if m.get('DefaultGPUDriver') is not None:
+            self.default_gpudriver = m.get('DefaultGPUDriver')
         if m.get('Gpu') is not None:
             self.gpu = m.get('Gpu')
         if m.get('GpuType') is not None:
@@ -778,8 +800,16 @@ class EcsSpec(TeaModel):
             self.is_available = m.get('IsAvailable')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
+        if m.get('NonProtectSpotDiscount') is not None:
+            self.non_protect_spot_discount = m.get('NonProtectSpotDiscount')
+        if m.get('PaymentTypes') is not None:
+            self.payment_types = m.get('PaymentTypes')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
+        if m.get('SpotStockStatus') is not None:
+            self.spot_stock_status = m.get('SpotStockStatus')
+        if m.get('SupportedGPUDrivers') is not None:
+            self.supported_gpudrivers = m.get('SupportedGPUDrivers')
         return self
 
 
@@ -1505,6 +1535,39 @@ class ResourceConfig(TeaModel):
         return self
 
 
+class SpotSpec(TeaModel):
+    def __init__(
+        self,
+        spot_discount_limit: float = None,
+        spot_strategy: str = None,
+    ):
+        self.spot_discount_limit = spot_discount_limit
+        self.spot_strategy = spot_strategy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.spot_discount_limit is not None:
+            result['SpotDiscountLimit'] = self.spot_discount_limit
+        if self.spot_strategy is not None:
+            result['SpotStrategy'] = self.spot_strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SpotDiscountLimit') is not None:
+            self.spot_discount_limit = m.get('SpotDiscountLimit')
+        if m.get('SpotStrategy') is not None:
+            self.spot_strategy = m.get('SpotStrategy')
+        return self
+
+
 class JobSpec(TeaModel):
     def __init__(
         self,
@@ -1514,6 +1577,7 @@ class JobSpec(TeaModel):
         image_config: ImageConfig = None,
         pod_count: int = None,
         resource_config: ResourceConfig = None,
+        spot_spec: SpotSpec = None,
         type: str = None,
         use_spot_instance: bool = None,
     ):
@@ -1523,6 +1587,7 @@ class JobSpec(TeaModel):
         self.image_config = image_config
         self.pod_count = pod_count
         self.resource_config = resource_config
+        self.spot_spec = spot_spec
         self.type = type
         self.use_spot_instance = use_spot_instance
 
@@ -1533,6 +1598,8 @@ class JobSpec(TeaModel):
             self.image_config.validate()
         if self.resource_config:
             self.resource_config.validate()
+        if self.spot_spec:
+            self.spot_spec.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1552,6 +1619,8 @@ class JobSpec(TeaModel):
             result['PodCount'] = self.pod_count
         if self.resource_config is not None:
             result['ResourceConfig'] = self.resource_config.to_map()
+        if self.spot_spec is not None:
+            result['SpotSpec'] = self.spot_spec.to_map()
         if self.type is not None:
             result['Type'] = self.type
         if self.use_spot_instance is not None:
@@ -1575,6 +1644,9 @@ class JobSpec(TeaModel):
         if m.get('ResourceConfig') is not None:
             temp_model = ResourceConfig()
             self.resource_config = temp_model.from_map(m['ResourceConfig'])
+        if m.get('SpotSpec') is not None:
+            temp_model = SpotSpec()
+            self.spot_spec = temp_model.from_map(m['SpotSpec'])
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('UseSpotInstance') is not None:
