@@ -1,3 +1,16 @@
+2024-03-20 Version: 2.6.1
+- Update API CreatePrePayOrder: add param Duration.
+- Update API CreatePrePayOrder: add param PaidType.
+- Update API CreatePrePayOrder: update param DeployType.
+- Update API CreatePrePayOrder: update param DiskSize.
+- Update API CreatePrePayOrder: update param DiskType.
+- Update API GetConsumerList: add param CurrentPage.
+- Update API GetConsumerList: add param PageSize.
+- Update API GetConsumerList: update response param.
+- Update API UpgradePrePayOrder: update param DiskSize.
+- Update API UpgradePrePayOrder: update param PaidType.
+
+
 2024-03-15 Version: 2.6.0
 - Support API EnableAutoGroupCreation.
 - Support API EnableAutoTopicCreation.

@@ -544,12 +544,16 @@ class Client(OpenApiClient):
             query['DiskSize'] = request.disk_size
         if not UtilClient.is_unset(request.disk_type):
             query['DiskType'] = request.disk_type
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
         if not UtilClient.is_unset(request.eip_max):
             query['EipMax'] = request.eip_max
         if not UtilClient.is_unset(request.io_max):
             query['IoMax'] = request.io_max
         if not UtilClient.is_unset(request.io_max_spec):
             query['IoMaxSpec'] = request.io_max_spec
+        if not UtilClient.is_unset(request.paid_type):
+            query['PaidType'] = request.paid_type
         if not UtilClient.is_unset(request.partition_num):
             query['PartitionNum'] = request.partition_num
         if not UtilClient.is_unset(request.region_id):
@@ -608,12 +612,16 @@ class Client(OpenApiClient):
             query['DiskSize'] = request.disk_size
         if not UtilClient.is_unset(request.disk_type):
             query['DiskType'] = request.disk_type
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
         if not UtilClient.is_unset(request.eip_max):
             query['EipMax'] = request.eip_max
         if not UtilClient.is_unset(request.io_max):
             query['IoMax'] = request.io_max
         if not UtilClient.is_unset(request.io_max_spec):
             query['IoMaxSpec'] = request.io_max_spec
+        if not UtilClient.is_unset(request.paid_type):
+            query['PaidType'] = request.paid_type
         if not UtilClient.is_unset(request.partition_num):
             query['PartitionNum'] = request.partition_num
         if not UtilClient.is_unset(request.region_id):
@@ -1782,8 +1790,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.consumer_id):
             query['ConsumerId'] = request.consumer_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -1814,8 +1826,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.consumer_id):
             query['ConsumerId'] = request.consumer_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
