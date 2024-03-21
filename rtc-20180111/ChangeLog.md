@@ -1,3 +1,19 @@
+2024-03-21 Version: 3.0.0
+- Support API DescribeChannel.
+- Support API DescribeChannelAllUsers.
+- Support API DescribeChannelUser.
+- Support API RemoveUsers.
+- Support API StartCloudRecord.
+- Support API StartStreamingOut.
+- Support API StopChannel.
+- Support API StopCloudRecord.
+- Support API StopStreamingOut.
+- Update API CreateAppStreamingOutTemplate: update param StreamingOutTemplate.
+- Update API DescribeAppKey: update response param.
+- Update API DescribeAppStreamingOutTemplates: update response param.
+- Update API ModifyAppStreamingOutTemplate: update param StreamingOutTemplate.
+
+
 2024-03-08 Version: 2.0.0
 - Support API DescribeChannel.
 - Support API DescribeChannelAllUsers.

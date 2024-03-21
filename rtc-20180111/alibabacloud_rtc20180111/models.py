@@ -14850,11 +14850,9 @@ class StartStreamingOutRequestPanes(TeaModel):
     def __init__(
         self,
         pane_id: str = None,
-        source: str = None,
         source_type: str = None,
     ):
         self.pane_id = pane_id
-        self.source = source
         self.source_type = source_type
 
     def validate(self):
@@ -14868,8 +14866,6 @@ class StartStreamingOutRequestPanes(TeaModel):
         result = dict()
         if self.pane_id is not None:
             result['PaneId'] = self.pane_id
-        if self.source is not None:
-            result['Source'] = self.source
         if self.source_type is not None:
             result['SourceType'] = self.source_type
         return result
@@ -14878,8 +14874,6 @@ class StartStreamingOutRequestPanes(TeaModel):
         m = m or dict()
         if m.get('PaneId') is not None:
             self.pane_id = m.get('PaneId')
-        if m.get('Source') is not None:
-            self.source = m.get('Source')
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')
         return self
