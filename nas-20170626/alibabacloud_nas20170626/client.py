@@ -1378,6 +1378,124 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_access_group_with_options_async(request, runtime)
 
+    def create_access_point_with_options(
+        self,
+        request: nas20170626_models.CreateAccessPointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nas20170626_models.CreateAccessPointResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_group):
+            query['AccessGroup'] = request.access_group
+        if not UtilClient.is_unset(request.access_point_name):
+            query['AccessPointName'] = request.access_point_name
+        if not UtilClient.is_unset(request.enabled_ram):
+            query['EnabledRam'] = request.enabled_ram
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.owner_group_id):
+            query['OwnerGroupId'] = request.owner_group_id
+        if not UtilClient.is_unset(request.owner_user_id):
+            query['OwnerUserId'] = request.owner_user_id
+        if not UtilClient.is_unset(request.permission):
+            query['Permission'] = request.permission
+        if not UtilClient.is_unset(request.posix_group_id):
+            query['PosixGroupId'] = request.posix_group_id
+        if not UtilClient.is_unset(request.posix_secondary_group_ids):
+            query['PosixSecondaryGroupIds'] = request.posix_secondary_group_ids
+        if not UtilClient.is_unset(request.posix_user_id):
+            query['PosixUserId'] = request.posix_user_id
+        if not UtilClient.is_unset(request.root_directory):
+            query['RootDirectory'] = request.root_directory
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.vsw_id):
+            query['VswId'] = request.vsw_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAccessPoint',
+            version='2017-06-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nas20170626_models.CreateAccessPointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_access_point_with_options_async(
+        self,
+        request: nas20170626_models.CreateAccessPointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nas20170626_models.CreateAccessPointResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_group):
+            query['AccessGroup'] = request.access_group
+        if not UtilClient.is_unset(request.access_point_name):
+            query['AccessPointName'] = request.access_point_name
+        if not UtilClient.is_unset(request.enabled_ram):
+            query['EnabledRam'] = request.enabled_ram
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.owner_group_id):
+            query['OwnerGroupId'] = request.owner_group_id
+        if not UtilClient.is_unset(request.owner_user_id):
+            query['OwnerUserId'] = request.owner_user_id
+        if not UtilClient.is_unset(request.permission):
+            query['Permission'] = request.permission
+        if not UtilClient.is_unset(request.posix_group_id):
+            query['PosixGroupId'] = request.posix_group_id
+        if not UtilClient.is_unset(request.posix_secondary_group_ids):
+            query['PosixSecondaryGroupIds'] = request.posix_secondary_group_ids
+        if not UtilClient.is_unset(request.posix_user_id):
+            query['PosixUserId'] = request.posix_user_id
+        if not UtilClient.is_unset(request.root_directory):
+            query['RootDirectory'] = request.root_directory
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.vsw_id):
+            query['VswId'] = request.vsw_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAccessPoint',
+            version='2017-06-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nas20170626_models.CreateAccessPointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_access_point(
+        self,
+        request: nas20170626_models.CreateAccessPointRequest,
+    ) -> nas20170626_models.CreateAccessPointResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_access_point_with_options(request, runtime)
+
+    async def create_access_point_async(
+        self,
+        request: nas20170626_models.CreateAccessPointRequest,
+    ) -> nas20170626_models.CreateAccessPointResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_access_point_with_options_async(request, runtime)
+
     def create_access_rule_with_options(
         self,
         request: nas20170626_models.CreateAccessRuleRequest,
@@ -2047,6 +2165,96 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_data_flow_task_with_options_async(request, runtime)
+
+    def create_dir_with_options(
+        self,
+        request: nas20170626_models.CreateDirRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nas20170626_models.CreateDirResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.owner_group_id):
+            query['OwnerGroupId'] = request.owner_group_id
+        if not UtilClient.is_unset(request.owner_user_id):
+            query['OwnerUserId'] = request.owner_user_id
+        if not UtilClient.is_unset(request.permission):
+            query['Permission'] = request.permission
+        if not UtilClient.is_unset(request.recursion):
+            query['Recursion'] = request.recursion
+        if not UtilClient.is_unset(request.root_directory):
+            query['RootDirectory'] = request.root_directory
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDir',
+            version='2017-06-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nas20170626_models.CreateDirResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dir_with_options_async(
+        self,
+        request: nas20170626_models.CreateDirRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nas20170626_models.CreateDirResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.owner_group_id):
+            query['OwnerGroupId'] = request.owner_group_id
+        if not UtilClient.is_unset(request.owner_user_id):
+            query['OwnerUserId'] = request.owner_user_id
+        if not UtilClient.is_unset(request.permission):
+            query['Permission'] = request.permission
+        if not UtilClient.is_unset(request.recursion):
+            query['Recursion'] = request.recursion
+        if not UtilClient.is_unset(request.root_directory):
+            query['RootDirectory'] = request.root_directory
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDir',
+            version='2017-06-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nas20170626_models.CreateDirResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dir(
+        self,
+        request: nas20170626_models.CreateDirRequest,
+    ) -> nas20170626_models.CreateDirResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_dir_with_options(request, runtime)
+
+    async def create_dir_async(
+        self,
+        request: nas20170626_models.CreateDirRequest,
+    ) -> nas20170626_models.CreateDirResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_dir_with_options_async(request, runtime)
 
     def create_file_with_options(
         self,
@@ -3752,6 +3960,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_access_group_with_options_async(request, runtime)
 
+    def delete_access_point_with_options(
+        self,
+        request: nas20170626_models.DeleteAccessPointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nas20170626_models.DeleteAccessPointResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_point_id):
+            query['AccessPointId'] = request.access_point_id
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAccessPoint',
+            version='2017-06-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nas20170626_models.DeleteAccessPointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_access_point_with_options_async(
+        self,
+        request: nas20170626_models.DeleteAccessPointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nas20170626_models.DeleteAccessPointResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_point_id):
+            query['AccessPointId'] = request.access_point_id
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAccessPoint',
+            version='2017-06-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nas20170626_models.DeleteAccessPointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_access_point(
+        self,
+        request: nas20170626_models.DeleteAccessPointRequest,
+    ) -> nas20170626_models.DeleteAccessPointResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_access_point_with_options(request, runtime)
+
+    async def delete_access_point_async(
+        self,
+        request: nas20170626_models.DeleteAccessPointRequest,
+    ) -> nas20170626_models.DeleteAccessPointResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_access_point_with_options_async(request, runtime)
+
     def delete_access_rule_with_options(
         self,
         request: nas20170626_models.DeleteAccessRuleRequest,
@@ -5049,6 +5331,162 @@ class Client(OpenApiClient):
     ) -> nas20170626_models.DescribeAccessGroupsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_access_groups_with_options_async(request, runtime)
+
+    def describe_access_point_with_options(
+        self,
+        request: nas20170626_models.DescribeAccessPointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nas20170626_models.DescribeAccessPointResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_point_id):
+            query['AccessPointId'] = request.access_point_id
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccessPoint',
+            version='2017-06-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nas20170626_models.DescribeAccessPointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_access_point_with_options_async(
+        self,
+        request: nas20170626_models.DescribeAccessPointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nas20170626_models.DescribeAccessPointResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_point_id):
+            query['AccessPointId'] = request.access_point_id
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccessPoint',
+            version='2017-06-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nas20170626_models.DescribeAccessPointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_access_point(
+        self,
+        request: nas20170626_models.DescribeAccessPointRequest,
+    ) -> nas20170626_models.DescribeAccessPointResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_access_point_with_options(request, runtime)
+
+    async def describe_access_point_async(
+        self,
+        request: nas20170626_models.DescribeAccessPointRequest,
+    ) -> nas20170626_models.DescribeAccessPointResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_access_point_with_options_async(request, runtime)
+
+    def describe_access_points_with_options(
+        self,
+        request: nas20170626_models.DescribeAccessPointsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nas20170626_models.DescribeAccessPointsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_group):
+            query['AccessGroup'] = request.access_group
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccessPoints',
+            version='2017-06-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nas20170626_models.DescribeAccessPointsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_access_points_with_options_async(
+        self,
+        request: nas20170626_models.DescribeAccessPointsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nas20170626_models.DescribeAccessPointsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_group):
+            query['AccessGroup'] = request.access_group
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccessPoints',
+            version='2017-06-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nas20170626_models.DescribeAccessPointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_access_points(
+        self,
+        request: nas20170626_models.DescribeAccessPointsRequest,
+    ) -> nas20170626_models.DescribeAccessPointsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_access_points_with_options(request, runtime)
+
+    async def describe_access_points_async(
+        self,
+        request: nas20170626_models.DescribeAccessPointsRequest,
+    ) -> nas20170626_models.DescribeAccessPointsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_access_points_with_options_async(request, runtime)
 
     def describe_access_rules_with_options(
         self,
@@ -8553,6 +8991,92 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_access_group_with_options_async(request, runtime)
+
+    def modify_access_point_with_options(
+        self,
+        request: nas20170626_models.ModifyAccessPointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nas20170626_models.ModifyAccessPointResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_group):
+            query['AccessGroup'] = request.access_group
+        if not UtilClient.is_unset(request.access_point_id):
+            query['AccessPointId'] = request.access_point_id
+        if not UtilClient.is_unset(request.access_point_name):
+            query['AccessPointName'] = request.access_point_name
+        if not UtilClient.is_unset(request.enabled_ram):
+            query['EnabledRam'] = request.enabled_ram
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAccessPoint',
+            version='2017-06-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nas20170626_models.ModifyAccessPointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_access_point_with_options_async(
+        self,
+        request: nas20170626_models.ModifyAccessPointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nas20170626_models.ModifyAccessPointResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_group):
+            query['AccessGroup'] = request.access_group
+        if not UtilClient.is_unset(request.access_point_id):
+            query['AccessPointId'] = request.access_point_id
+        if not UtilClient.is_unset(request.access_point_name):
+            query['AccessPointName'] = request.access_point_name
+        if not UtilClient.is_unset(request.enabled_ram):
+            query['EnabledRam'] = request.enabled_ram
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAccessPoint',
+            version='2017-06-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nas20170626_models.ModifyAccessPointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_access_point(
+        self,
+        request: nas20170626_models.ModifyAccessPointRequest,
+    ) -> nas20170626_models.ModifyAccessPointResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_access_point_with_options(request, runtime)
+
+    async def modify_access_point_async(
+        self,
+        request: nas20170626_models.ModifyAccessPointRequest,
+    ) -> nas20170626_models.ModifyAccessPointResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_access_point_with_options_async(request, runtime)
 
     def modify_access_rule_with_options(
         self,
