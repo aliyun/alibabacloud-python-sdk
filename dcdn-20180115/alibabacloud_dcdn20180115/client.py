@@ -103,11 +103,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.AddDcdnDomainResponse:
         """
-        >
-        *   Dynamic Content Delivery Network (DCDN) is activated.
-        *   Internet content provider (ICP) filing is complete for the accelerated domain name.
-        *   If the content of the origin server is not stored on Alibaba Cloud, the content must be reviewed. After you submit the request, the review is complete by the end of the following business day.
-        *   You can call this operation up to 30 times per second per account.
+        >    Dynamic Content Delivery Network (DCDN) is activated.
+        > *   Internet content provider (ICP) filing is complete for the accelerated domain name.
+        > *   If the content of the origin server is not stored on Alibaba Cloud, the content must be reviewed. After you submit the request, the review is complete by the end of the following business day.
+        > *   You can call this operation up to 30 times per second per account.
         
         @param request: AddDcdnDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -164,11 +163,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.AddDcdnDomainResponse:
         """
-        >
-        *   Dynamic Content Delivery Network (DCDN) is activated.
-        *   Internet content provider (ICP) filing is complete for the accelerated domain name.
-        *   If the content of the origin server is not stored on Alibaba Cloud, the content must be reviewed. After you submit the request, the review is complete by the end of the following business day.
-        *   You can call this operation up to 30 times per second per account.
+        >    Dynamic Content Delivery Network (DCDN) is activated.
+        > *   Internet content provider (ICP) filing is complete for the accelerated domain name.
+        > *   If the content of the origin server is not stored on Alibaba Cloud, the content must be reviewed. After you submit the request, the review is complete by the end of the following business day.
+        > *   You can call this operation up to 30 times per second per account.
         
         @param request: AddDcdnDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -224,11 +222,10 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.AddDcdnDomainRequest,
     ) -> dcdn_20180115_models.AddDcdnDomainResponse:
         """
-        >
-        *   Dynamic Content Delivery Network (DCDN) is activated.
-        *   Internet content provider (ICP) filing is complete for the accelerated domain name.
-        *   If the content of the origin server is not stored on Alibaba Cloud, the content must be reviewed. After you submit the request, the review is complete by the end of the following business day.
-        *   You can call this operation up to 30 times per second per account.
+        >    Dynamic Content Delivery Network (DCDN) is activated.
+        > *   Internet content provider (ICP) filing is complete for the accelerated domain name.
+        > *   If the content of the origin server is not stored on Alibaba Cloud, the content must be reviewed. After you submit the request, the review is complete by the end of the following business day.
+        > *   You can call this operation up to 30 times per second per account.
         
         @param request: AddDcdnDomainRequest
         @return: AddDcdnDomainResponse
@@ -241,11 +238,10 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.AddDcdnDomainRequest,
     ) -> dcdn_20180115_models.AddDcdnDomainResponse:
         """
-        >
-        *   Dynamic Content Delivery Network (DCDN) is activated.
-        *   Internet content provider (ICP) filing is complete for the accelerated domain name.
-        *   If the content of the origin server is not stored on Alibaba Cloud, the content must be reviewed. After you submit the request, the review is complete by the end of the following business day.
-        *   You can call this operation up to 30 times per second per account.
+        >    Dynamic Content Delivery Network (DCDN) is activated.
+        > *   Internet content provider (ICP) filing is complete for the accelerated domain name.
+        > *   If the content of the origin server is not stored on Alibaba Cloud, the content must be reviewed. After you submit the request, the review is complete by the end of the following business day.
+        > *   You can call this operation up to 30 times per second per account.
         
         @param request: AddDcdnDomainRequest
         @return: AddDcdnDomainResponse
@@ -11378,6 +11374,13 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnIpaDomainCidrRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnIpaDomainCidrResponse:
+        """
+        >  This operation can be called globally up to 50 times per second. This operation can be called up to 10 times per second per account.
+        
+        @param request: DescribeDcdnIpaDomainCidrRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDcdnIpaDomainCidrResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -11406,6 +11409,13 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnIpaDomainCidrRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnIpaDomainCidrResponse:
+        """
+        >  This operation can be called globally up to 50 times per second. This operation can be called up to 10 times per second per account.
+        
+        @param request: DescribeDcdnIpaDomainCidrRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDcdnIpaDomainCidrResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -11433,6 +11443,12 @@ class Client(OpenApiClient):
         self,
         request: dcdn_20180115_models.DescribeDcdnIpaDomainCidrRequest,
     ) -> dcdn_20180115_models.DescribeDcdnIpaDomainCidrResponse:
+        """
+        >  This operation can be called globally up to 50 times per second. This operation can be called up to 10 times per second per account.
+        
+        @param request: DescribeDcdnIpaDomainCidrRequest
+        @return: DescribeDcdnIpaDomainCidrResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dcdn_ipa_domain_cidr_with_options(request, runtime)
 
@@ -11440,6 +11456,12 @@ class Client(OpenApiClient):
         self,
         request: dcdn_20180115_models.DescribeDcdnIpaDomainCidrRequest,
     ) -> dcdn_20180115_models.DescribeDcdnIpaDomainCidrResponse:
+        """
+        >  This operation can be called globally up to 50 times per second. This operation can be called up to 10 times per second per account.
+        
+        @param request: DescribeDcdnIpaDomainCidrRequest
+        @return: DescribeDcdnIpaDomainCidrResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dcdn_ipa_domain_cidr_with_options_async(request, runtime)
 
@@ -17768,6 +17790,18 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeKvUsageDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeKvUsageDataResponse:
+        """
+        You can call this operation up to 5 times per second per account.
+        * The usage data indicates the number of requests.
+        **Time granularity:** This operation supports only the time granularity of 1 hour.
+        |Time granularity|Maximum time range per query|Historical data available|Data delay|
+        |---|---|---|---|
+        |1 hour|31 days|90 days|3 to 4 hours|
+        
+        @param request: DescribeKvUsageDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeKvUsageDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_type):
@@ -17808,6 +17842,18 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeKvUsageDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeKvUsageDataResponse:
+        """
+        You can call this operation up to 5 times per second per account.
+        * The usage data indicates the number of requests.
+        **Time granularity:** This operation supports only the time granularity of 1 hour.
+        |Time granularity|Maximum time range per query|Historical data available|Data delay|
+        |---|---|---|---|
+        |1 hour|31 days|90 days|3 to 4 hours|
+        
+        @param request: DescribeKvUsageDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeKvUsageDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_type):
@@ -17847,6 +17893,17 @@ class Client(OpenApiClient):
         self,
         request: dcdn_20180115_models.DescribeKvUsageDataRequest,
     ) -> dcdn_20180115_models.DescribeKvUsageDataResponse:
+        """
+        You can call this operation up to 5 times per second per account.
+        * The usage data indicates the number of requests.
+        **Time granularity:** This operation supports only the time granularity of 1 hour.
+        |Time granularity|Maximum time range per query|Historical data available|Data delay|
+        |---|---|---|---|
+        |1 hour|31 days|90 days|3 to 4 hours|
+        
+        @param request: DescribeKvUsageDataRequest
+        @return: DescribeKvUsageDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_kv_usage_data_with_options(request, runtime)
 
@@ -17854,6 +17911,17 @@ class Client(OpenApiClient):
         self,
         request: dcdn_20180115_models.DescribeKvUsageDataRequest,
     ) -> dcdn_20180115_models.DescribeKvUsageDataResponse:
+        """
+        You can call this operation up to 5 times per second per account.
+        * The usage data indicates the number of requests.
+        **Time granularity:** This operation supports only the time granularity of 1 hour.
+        |Time granularity|Maximum time range per query|Historical data available|Data delay|
+        |---|---|---|---|
+        |1 hour|31 days|90 days|3 to 4 hours|
+        
+        @param request: DescribeKvUsageDataRequest
+        @return: DescribeKvUsageDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_kv_usage_data_with_options_async(request, runtime)
 
@@ -20708,6 +20776,18 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.RefreshErObjectCachesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.RefreshErObjectCachesResponse:
+        """
+        DCDN supports POST requests in which parameters are sent as a form.
+        *   Related operation: such as [RefreshDcdnObjectCaches](~~130620~~).
+        *   By default, each Alibaba Cloud account can refresh content from a maximum of 10,000 URLs and 100 directories including subdirectories per day.
+        *   You can specify up to 1,000 URLs or 100 directories that you want to refresh in each request.
+        *   You can refresh a maximum of 1,000 URLs per minute for each domain name.
+        *   You can call this operation up to 30 times per second per account.
+        
+        @param request: RefreshErObjectCachesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefreshErObjectCachesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force):
@@ -20744,6 +20824,18 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.RefreshErObjectCachesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.RefreshErObjectCachesResponse:
+        """
+        DCDN supports POST requests in which parameters are sent as a form.
+        *   Related operation: such as [RefreshDcdnObjectCaches](~~130620~~).
+        *   By default, each Alibaba Cloud account can refresh content from a maximum of 10,000 URLs and 100 directories including subdirectories per day.
+        *   You can specify up to 1,000 URLs or 100 directories that you want to refresh in each request.
+        *   You can refresh a maximum of 1,000 URLs per minute for each domain name.
+        *   You can call this operation up to 30 times per second per account.
+        
+        @param request: RefreshErObjectCachesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefreshErObjectCachesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force):
@@ -20779,6 +20871,17 @@ class Client(OpenApiClient):
         self,
         request: dcdn_20180115_models.RefreshErObjectCachesRequest,
     ) -> dcdn_20180115_models.RefreshErObjectCachesResponse:
+        """
+        DCDN supports POST requests in which parameters are sent as a form.
+        *   Related operation: such as [RefreshDcdnObjectCaches](~~130620~~).
+        *   By default, each Alibaba Cloud account can refresh content from a maximum of 10,000 URLs and 100 directories including subdirectories per day.
+        *   You can specify up to 1,000 URLs or 100 directories that you want to refresh in each request.
+        *   You can refresh a maximum of 1,000 URLs per minute for each domain name.
+        *   You can call this operation up to 30 times per second per account.
+        
+        @param request: RefreshErObjectCachesRequest
+        @return: RefreshErObjectCachesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.refresh_er_object_caches_with_options(request, runtime)
 
@@ -20786,6 +20889,17 @@ class Client(OpenApiClient):
         self,
         request: dcdn_20180115_models.RefreshErObjectCachesRequest,
     ) -> dcdn_20180115_models.RefreshErObjectCachesResponse:
+        """
+        DCDN supports POST requests in which parameters are sent as a form.
+        *   Related operation: such as [RefreshDcdnObjectCaches](~~130620~~).
+        *   By default, each Alibaba Cloud account can refresh content from a maximum of 10,000 URLs and 100 directories including subdirectories per day.
+        *   You can specify up to 1,000 URLs or 100 directories that you want to refresh in each request.
+        *   You can refresh a maximum of 1,000 URLs per minute for each domain name.
+        *   You can call this operation up to 30 times per second per account.
+        
+        @param request: RefreshErObjectCachesRequest
+        @return: RefreshErObjectCachesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.refresh_er_object_caches_with_options_async(request, runtime)
 
@@ -21427,7 +21541,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.SetDcdnFullDomainsBlockIPResponse:
         """
-        > You can call this operation up to 10 times per second per account.
+        >  You can call this operation to block or unblock a large number of IP addresses or CIDR blocks. You can block or unblock up to 1,000 IP addresses or CIDR blocks in a request.
         
         @param request: SetDcdnFullDomainsBlockIPRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21468,7 +21582,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.SetDcdnFullDomainsBlockIPResponse:
         """
-        > You can call this operation up to 10 times per second per account.
+        >  You can call this operation to block or unblock a large number of IP addresses or CIDR blocks. You can block or unblock up to 1,000 IP addresses or CIDR blocks in a request.
         
         @param request: SetDcdnFullDomainsBlockIPRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21508,7 +21622,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.SetDcdnFullDomainsBlockIPRequest,
     ) -> dcdn_20180115_models.SetDcdnFullDomainsBlockIPResponse:
         """
-        > You can call this operation up to 10 times per second per account.
+        >  You can call this operation to block or unblock a large number of IP addresses or CIDR blocks. You can block or unblock up to 1,000 IP addresses or CIDR blocks in a request.
         
         @param request: SetDcdnFullDomainsBlockIPRequest
         @return: SetDcdnFullDomainsBlockIPResponse
@@ -21521,7 +21635,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.SetDcdnFullDomainsBlockIPRequest,
     ) -> dcdn_20180115_models.SetDcdnFullDomainsBlockIPResponse:
         """
-        > You can call this operation up to 10 times per second per account.
+        >  You can call this operation to block or unblock a large number of IP addresses or CIDR blocks. You can block or unblock up to 1,000 IP addresses or CIDR blocks in a request.
         
         @param request: SetDcdnFullDomainsBlockIPRequest
         @return: SetDcdnFullDomainsBlockIPResponse
