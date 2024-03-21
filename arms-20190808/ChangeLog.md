@@ -1,3 +1,7 @@
+2024-03-21 Version: 4.7.2
+- Update API UpdateEnvironment: update param EnvironmentName.
+
+
 2024-03-19 Version: 4.7.1
 - Update API CreateEnvironment: add param FeePackage.
 - Update API CreateTimingSyntheticTask: update param MonitorConf.
