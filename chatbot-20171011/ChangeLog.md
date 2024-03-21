@@ -1,3 +1,7 @@
+2024-03-21 Version: 2.0.7
+- Update API Chat: update response param.
+
+
 2022-05-26 Version: 2.0.6
 - Add DeletePerspective.
 

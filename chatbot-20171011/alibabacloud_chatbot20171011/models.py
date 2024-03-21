@@ -13,15 +13,10 @@ class Children(TeaModel):
         name: str = None,
         parent_category_id: int = None,
     ):
-        # 地区代号
         self.area_code = area_code
-        # 分类Id
         self.category_id = category_id
-        # 子元素
         self.childrens = childrens
-        # 名称
         self.name = name
-        # 父分类Id
         self.parent_category_id = parent_category_id
 
     def validate(self):
@@ -76,13 +71,9 @@ class RuleMtopDTO(TeaModel):
         text: str = None,
         warning: List[str] = None,
     ):
-        # Error
         self.error = error
-        # Strict
         self.strict = strict
-        # Text
         self.text = text
-        # Warning
         self.warning = warning
 
     def validate(self):
@@ -123,9 +114,7 @@ class TagMtopDTO(TeaModel):
         user_say_id: str = None,
         value: str = None,
     ):
-        # UserSayId
         self.user_say_id = user_say_id
-        # Value
         self.value = value
 
     def validate(self):
@@ -164,21 +153,13 @@ class SlotrecordMtopDTO(TeaModel):
         tags: List[TagMtopDTO] = None,
         value: str = None,
     ):
-        # Id
         self.id = id
-        # IsArray
         self.is_array = is_array
-        # IsNecessary
         self.is_necessary = is_necessary
-        # LifeSpan
         self.life_span = life_span
-        # Name
         self.name = name
-        # Question
         self.question = question
-        # Tags
         self.tags = tags
-        # Value
         self.value = value
 
     def validate(self):
@@ -243,9 +224,7 @@ class SectionMtopDTO(TeaModel):
         slot_id: str = None,
         text: str = None,
     ):
-        # SlotId
         self.slot_id = slot_id
-        # Text
         self.text = text
 
     def validate(self):
@@ -279,11 +258,8 @@ class UsersayMtopDTO(TeaModel):
         id: str = None,
         strict: bool = None,
     ):
-        # Data
         self.data = data
-        # Id
         self.id = id
-        # Strict
         self.strict = strict
 
     def validate(self):
@@ -331,14 +307,10 @@ class IntentCreateDTO(TeaModel):
         slot: List[SlotrecordMtopDTO] = None,
         user_say: List[UsersayMtopDTO] = None,
     ):
-        # IntentId
         self.intent_id = intent_id
-        # Name
         self.name = name
-        # RuleCheck
         self.rule_check = rule_check
         self.slot = slot
-        # UserSay
         self.user_say = user_say
 
     def validate(self):
@@ -410,11 +382,8 @@ class PaasButtonDTO(TeaModel):
         text: str = None,
         type: str = None,
     ):
-        # Name
         self.name = name
-        # Text
         self.text = text
-        # Type
         self.type = type
 
     def validate(self):
@@ -451,9 +420,7 @@ class PaasButtonListDTO(TeaModel):
         button: List[PaasButtonDTO] = None,
         intro: str = None,
     ):
-        # Button
         self.button = button
-        # Intro
         self.intro = intro
 
     def validate(self):
@@ -497,15 +464,10 @@ class PaasConditionEntryDTO(TeaModel):
         type: str = None,
         value: str = None,
     ):
-        # Id
         self.id = id
-        # Name
         self.name = name
-        # Term
         self.term = term
-        # Type
         self.type = type
-        # Value
         self.value = value
 
     def validate(self):
@@ -549,7 +511,6 @@ class PaasConditionSetDTO(TeaModel):
         self,
         condition_entries: List[PaasConditionEntryDTO] = None,
     ):
-        # ConditionEntries
         self.condition_entries = condition_entries
 
     def validate(self):
@@ -588,13 +549,9 @@ class PaasEdgeDTO(TeaModel):
         source: str = None,
         target: str = None,
     ):
-        # Id
         self.id = id
-        # Label
         self.label = label
-        # Source
         self.source = source
-        # Target
         self.target = target
 
     def validate(self):
@@ -636,11 +593,8 @@ class PaasEntryPluginFieldDataDTO(TeaModel):
         life_span: int = None,
         name: str = None,
     ):
-        # ContentEntry
         self.content_entry = content_entry
-        # LifeSpan
         self.life_span = life_span
-        # Name
         self.name = name
 
     def validate(self):
@@ -684,7 +638,6 @@ class PaasEntryDTO(TeaModel):
         self,
         plugin_field_data_entry: PaasEntryPluginFieldDataDTO = None,
     ):
-        # PluginFieldDataEntry
         self.plugin_field_data_entry = plugin_field_data_entry
 
     def validate(self):
@@ -718,15 +671,10 @@ class PaasSwitchCaseDTO(TeaModel):
         value: str = None,
         variable_name: str = None,
     ):
-        # Id
         self.id = id
-        # Label
         self.label = label
-        # Type
         self.type = type
-        # Value
         self.value = value
-        # VariableName
         self.variable_name = variable_name
 
     def validate(self):
@@ -779,25 +727,15 @@ class PaasFunctionPluginFieldDataDTO(TeaModel):
         switch: List[PaasSwitchCaseDTO] = None,
         type: str = None,
     ):
-        # AliyunFunction
         self.aliyun_function = aliyun_function
-        # AliyunService
         self.aliyun_service = aliyun_service
-        # Code
         self.code = code
-        # Description
         self.description = description
-        # EndPoint
         self.end_point = end_point
-        # Function
         self.function = function
-        # Name
         self.name = name
-        # Params
         self.params = params
-        # Switch
         self.switch = switch
-        # Type
         self.type = type
 
     def validate(self):
@@ -869,7 +807,6 @@ class PaasFunctionDTO(TeaModel):
         self,
         plugin_field_data_function: PaasFunctionPluginFieldDataDTO = None,
     ):
-        # PluginFieldDataFunction
         self.plugin_field_data_function = plugin_field_data_function
 
     def validate(self):
@@ -903,15 +840,10 @@ class PaasFunctionPluginParams(TeaModel):
         query: Dict[str, str] = None,
         url: str = None,
     ):
-        # Body
         self.body = body
-        # Header
         self.header = header
-        # Method
         self.method = method
-        # Query
         self.query = query
-        # Url
         self.url = url
 
     def validate(self):
@@ -958,13 +890,9 @@ class PaasResponseNodeContentDTO(TeaModel):
         text: str = None,
         type: str = None,
     ):
-        # ButtonList
         self.button_list = button_list
-        # Image
         self.image = image
-        # Text
         self.text = text
-        # Type
         self.type = type
 
     def validate(self):
@@ -1007,9 +935,7 @@ class PaasResponsePluginFieldDataDTO(TeaModel):
         content_response: PaasResponseNodeContentDTO = None,
         name: str = None,
     ):
-        # ContentResponse
         self.content_response = content_response
-        # Name
         self.name = name
 
     def validate(self):
@@ -1077,17 +1003,11 @@ class PaasSlotConfigDTO(TeaModel):
         question: List[str] = None,
         value: str = None,
     ):
-        # IsArray
         self.is_array = is_array
-        # IsNecessary
         self.is_necessary = is_necessary
-        # LifeSpan
         self.life_span = life_span
-        # Name
         self.name = name
-        # Question
         self.question = question
-        # Value
         self.value = value
 
     def validate(self):
@@ -1139,15 +1059,10 @@ class PaasSlotPluginFieldDataDTO(TeaModel):
         is_sys_intent: bool = None,
         name: str = None,
     ):
-        # ContentSlot
         self.content_slot = content_slot
-        # IntentId
         self.intent_id = intent_id
-        # IntentName
         self.intent_name = intent_name
-        # IsSysIntent
         self.is_sys_intent = is_sys_intent
-        # Name
         self.name = name
 
     def validate(self):
@@ -1289,17 +1204,11 @@ class PaasNodeDTO(TeaModel):
         xx: float = None,
         yy: float = None,
     ):
-        # Code
         self.code = code
-        # Id
         self.id = id
-        # Label
         self.label = label
-        # PluginData
         self.plugin_data = plugin_data
-        # Xx
         self.xx = xx
-        # Yy
         self.yy = yy
 
     def validate(self):
@@ -1350,9 +1259,7 @@ class PaasProcessData(TeaModel):
         edges: List[PaasEdgeDTO] = None,
         nodes: List[PaasNodeDTO] = None,
     ):
-        # Edges
         self.edges = edges
-        # Nodes
         self.nodes = nodes
 
     def validate(self):
@@ -1402,9 +1309,7 @@ class UpdateDialogFlowModuleDefinition(TeaModel):
         edges: List[PaasEdgeDTO] = None,
         nodes: List[PaasNodeDTO] = None,
     ):
-        # Edges
         self.edges = edges
-        # Nodes
         self.nodes = nodes
 
     def validate(self):
@@ -1454,7 +1359,6 @@ class ActivatePerspectiveRequest(TeaModel):
         agent_key: str = None,
         perspective_id: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.perspective_id = perspective_id
 
@@ -1521,9 +1425,6 @@ class ActivatePerspectiveResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1560,7 +1461,6 @@ class AddSynonymRequest(TeaModel):
         core_word_name: str = None,
         synonym: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.core_word_name = core_word_name
         self.synonym = synonym
@@ -1632,9 +1532,6 @@ class AddSynonymResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1705,7 +1602,6 @@ class AppendEntityMemberRequest(TeaModel):
         entity_id: int = None,
         member: AppendEntityMemberRequestMember = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.apply_type = apply_type
         self.entity_id = entity_id
@@ -1753,7 +1649,6 @@ class AppendEntityMemberShrinkRequest(TeaModel):
         entity_id: int = None,
         member_shrink: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.apply_type = apply_type
         self.entity_id = entity_id
@@ -1836,9 +1731,6 @@ class AppendEntityMemberResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2017,9 +1909,6 @@ class AssociateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2473,6 +2362,69 @@ class ChatResponseBodyMessagesText(TeaModel):
         return self
 
 
+class ChatResponseBodyMessagesVoiceStrategy(TeaModel):
+    def __init__(
+        self,
+        asr_max_end_silence: str = None,
+        collect_number: bool = None,
+        hang_up: bool = None,
+        interruptible: bool = None,
+        max_digits: int = None,
+        reply_timeout: int = None,
+        terminator: str = None,
+    ):
+        self.asr_max_end_silence = asr_max_end_silence
+        self.collect_number = collect_number
+        self.hang_up = hang_up
+        self.interruptible = interruptible
+        self.max_digits = max_digits
+        self.reply_timeout = reply_timeout
+        self.terminator = terminator
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asr_max_end_silence is not None:
+            result['AsrMaxEndSilence'] = self.asr_max_end_silence
+        if self.collect_number is not None:
+            result['CollectNumber'] = self.collect_number
+        if self.hang_up is not None:
+            result['HangUp'] = self.hang_up
+        if self.interruptible is not None:
+            result['Interruptible'] = self.interruptible
+        if self.max_digits is not None:
+            result['MaxDigits'] = self.max_digits
+        if self.reply_timeout is not None:
+            result['ReplyTimeout'] = self.reply_timeout
+        if self.terminator is not None:
+            result['Terminator'] = self.terminator
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AsrMaxEndSilence') is not None:
+            self.asr_max_end_silence = m.get('AsrMaxEndSilence')
+        if m.get('CollectNumber') is not None:
+            self.collect_number = m.get('CollectNumber')
+        if m.get('HangUp') is not None:
+            self.hang_up = m.get('HangUp')
+        if m.get('Interruptible') is not None:
+            self.interruptible = m.get('Interruptible')
+        if m.get('MaxDigits') is not None:
+            self.max_digits = m.get('MaxDigits')
+        if m.get('ReplyTimeout') is not None:
+            self.reply_timeout = m.get('ReplyTimeout')
+        if m.get('Terminator') is not None:
+            self.terminator = m.get('Terminator')
+        return self
+
+
 class ChatResponseBodyMessages(TeaModel):
     def __init__(
         self,
@@ -2483,6 +2435,7 @@ class ChatResponseBodyMessages(TeaModel):
         text: ChatResponseBodyMessagesText = None,
         title: str = None,
         type: str = None,
+        voice_strategy: ChatResponseBodyMessagesVoiceStrategy = None,
         voice_title: str = None,
     ):
         self.answer_source = answer_source
@@ -2490,10 +2443,9 @@ class ChatResponseBodyMessages(TeaModel):
         self.knowledge = knowledge
         self.recommends = recommends
         self.text = text
-        # 在线场景，反问标题
         self.title = title
         self.type = type
-        # 语音场景，澄清内容
+        self.voice_strategy = voice_strategy
         self.voice_title = voice_title
 
     def validate(self):
@@ -2505,6 +2457,8 @@ class ChatResponseBodyMessages(TeaModel):
                     k.validate()
         if self.text:
             self.text.validate()
+        if self.voice_strategy:
+            self.voice_strategy.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2528,6 +2482,8 @@ class ChatResponseBodyMessages(TeaModel):
             result['Title'] = self.title
         if self.type is not None:
             result['Type'] = self.type
+        if self.voice_strategy is not None:
+            result['VoiceStrategy'] = self.voice_strategy.to_map()
         if self.voice_title is not None:
             result['VoiceTitle'] = self.voice_title
         return result
@@ -2553,6 +2509,9 @@ class ChatResponseBodyMessages(TeaModel):
             self.title = m.get('Title')
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('VoiceStrategy') is not None:
+            temp_model = ChatResponseBodyMessagesVoiceStrategy()
+            self.voice_strategy = temp_model.from_map(m['VoiceStrategy'])
         if m.get('VoiceTitle') is not None:
             self.voice_title = m.get('VoiceTitle')
         return self
@@ -2629,9 +2588,6 @@ class ChatResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2671,7 +2627,6 @@ class CreateBotRequest(TeaModel):
         name: str = None,
         robot_type: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.avatar = avatar
         self.introduction = introduction
@@ -2764,9 +2719,6 @@ class CreateBotResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2800,15 +2752,10 @@ class CreateCategoryRequest(TeaModel):
     def __init__(
         self,
         agent_key: str = None,
-        biz_code: str = None,
-        knowledge_type: int = None,
         name: str = None,
         parent_category_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        self.biz_code = biz_code
-        self.knowledge_type = knowledge_type
         self.name = name
         self.parent_category_id = parent_category_id
 
@@ -2823,10 +2770,6 @@ class CreateCategoryRequest(TeaModel):
         result = dict()
         if self.agent_key is not None:
             result['AgentKey'] = self.agent_key
-        if self.biz_code is not None:
-            result['BizCode'] = self.biz_code
-        if self.knowledge_type is not None:
-            result['KnowledgeType'] = self.knowledge_type
         if self.name is not None:
             result['Name'] = self.name
         if self.parent_category_id is not None:
@@ -2837,10 +2780,6 @@ class CreateCategoryRequest(TeaModel):
         m = m or dict()
         if m.get('AgentKey') is not None:
             self.agent_key = m.get('AgentKey')
-        if m.get('BizCode') is not None:
-            self.biz_code = m.get('BizCode')
-        if m.get('KnowledgeType') is not None:
-            self.knowledge_type = m.get('KnowledgeType')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('ParentCategoryId') is not None:
@@ -2899,9 +2838,6 @@ class CreateCategoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2937,7 +2873,6 @@ class CreateCoreWordRequest(TeaModel):
         agent_key: str = None,
         core_word_name: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.core_word_name = core_word_name
 
@@ -3010,9 +2945,6 @@ class CreateCoreWordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3050,7 +2982,6 @@ class CreateDialogRequest(TeaModel):
         dialog_name: str = None,
         instance_id: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.description = description
         self.dialog_name = dialog_name
@@ -3133,9 +3064,6 @@ class CreateDialogResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3208,7 +3136,6 @@ class CreateEntityRequest(TeaModel):
         members: List[CreateEntityRequestMembers] = None,
         regex: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.dialog_id = dialog_id
         self.entity_name = entity_name
@@ -3274,7 +3201,6 @@ class CreateEntityShrinkRequest(TeaModel):
         members_shrink: str = None,
         regex: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.dialog_id = dialog_id
         self.entity_name = entity_name
@@ -3367,9 +3293,6 @@ class CreateEntityResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3406,7 +3329,6 @@ class CreateIntentRequest(TeaModel):
         dialog_id: int = None,
         intent_definition: IntentCreateDTO = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.dialog_id = dialog_id
         self.intent_definition = intent_definition
@@ -3448,7 +3370,6 @@ class CreateIntentShrinkRequest(TeaModel):
         dialog_id: int = None,
         intent_definition_shrink: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.dialog_id = dialog_id
         self.intent_definition_shrink = intent_definition_shrink
@@ -3526,9 +3447,6 @@ class CreateIntentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3764,7 +3682,6 @@ class CreateKnowledgeRequest(TeaModel):
         agent_key: str = None,
         knowledge: CreateKnowledgeRequestKnowledge = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.knowledge = knowledge
 
@@ -3800,7 +3717,6 @@ class CreateKnowledgeShrinkRequest(TeaModel):
         agent_key: str = None,
         knowledge_shrink: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.knowledge_shrink = knowledge_shrink
 
@@ -3873,9 +3789,6 @@ class CreateKnowledgeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3911,7 +3824,6 @@ class CreatePerspectiveRequest(TeaModel):
         agent_key: str = None,
         name: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.name = name
 
@@ -3984,9 +3896,6 @@ class CreatePerspectiveResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4022,7 +3931,6 @@ class DeleteBotRequest(TeaModel):
         agent_key: str = None,
         instance_id: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.instance_id = instance_id
 
@@ -4089,9 +3997,6 @@ class DeleteBotResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4127,7 +4032,6 @@ class DeleteCategoryRequest(TeaModel):
         agent_key: str = None,
         category_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.category_id = category_id
 
@@ -4200,9 +4104,6 @@ class DeleteCategoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4238,7 +4139,6 @@ class DeleteCoreWordRequest(TeaModel):
         agent_key: str = None,
         core_word_name: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.core_word_name = core_word_name
 
@@ -4311,9 +4211,6 @@ class DeleteCoreWordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4349,7 +4246,6 @@ class DeleteDialogRequest(TeaModel):
         agent_key: str = None,
         dialog_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.dialog_id = dialog_id
 
@@ -4416,9 +4312,6 @@ class DeleteDialogResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4454,7 +4347,6 @@ class DeleteEntityRequest(TeaModel):
         agent_key: str = None,
         entity_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.entity_id = entity_id
 
@@ -4527,9 +4419,6 @@ class DeleteEntityResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4565,7 +4454,6 @@ class DeleteIntentRequest(TeaModel):
         agent_key: str = None,
         intent_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.intent_id = intent_id
 
@@ -4638,9 +4526,6 @@ class DeleteIntentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4676,7 +4561,6 @@ class DeleteKnowledgeRequest(TeaModel):
         agent_key: str = None,
         knowledge_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.knowledge_id = knowledge_id
 
@@ -4743,9 +4627,6 @@ class DeleteKnowledgeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4781,7 +4662,6 @@ class DeletePerspectiveRequest(TeaModel):
         agent_key: str = None,
         perspective_id: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.perspective_id = perspective_id
 
@@ -4854,9 +4734,6 @@ class DeletePerspectiveResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4892,7 +4769,6 @@ class DescribeBotRequest(TeaModel):
         agent_key: str = None,
         instance_id: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.instance_id = instance_id
 
@@ -5060,9 +4936,6 @@ class DescribeBotResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5098,7 +4971,6 @@ class DescribeCategoryRequest(TeaModel):
         agent_key: str = None,
         category_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.category_id = category_id
 
@@ -5183,9 +5055,6 @@ class DescribeCategoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5221,7 +5090,6 @@ class DescribeCoreWordRequest(TeaModel):
         agent_key: str = None,
         core_word_name: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.core_word_name = core_word_name
 
@@ -5318,9 +5186,6 @@ class DescribeCoreWordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5356,7 +5221,6 @@ class DescribeDialogRequest(TeaModel):
         agent_key: str = None,
         dialog_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.dialog_id = dialog_id
 
@@ -5495,9 +5359,6 @@ class DescribeDialogResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5533,7 +5394,6 @@ class DescribeDialogFlowRequest(TeaModel):
         agent_key: str = None,
         dialog_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.dialog_id = dialog_id
 
@@ -5598,7 +5458,9 @@ class DescribeDialogFlowResponseBody(TeaModel):
         self.module_id = module_id
         self.module_name = module_name
         self.request_id = request_id
+        # 0 for deleted, 1 for inSandbox, 2 for draft，3 for online
         self.status = status
+        # null
         self.tags = tags
         self.templates = templates
 
@@ -5704,9 +5566,6 @@ class DescribeDialogFlowResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5742,7 +5601,6 @@ class DescribeEntitiesRequest(TeaModel):
         agent_key: str = None,
         entity_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.entity_id = entity_id
 
@@ -5916,9 +5774,6 @@ class DescribeEntitiesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5954,7 +5809,6 @@ class DescribeIntentRequest(TeaModel):
         agent_key: str = None,
         intent_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.intent_id = intent_id
 
@@ -6360,9 +6214,6 @@ class DescribeIntentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6398,8 +6249,8 @@ class DescribeKnowledgeRequest(TeaModel):
         agent_key: str = None,
         knowledge_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
+        # FAQ ID
         self.knowledge_id = knowledge_id
 
     def validate(self):
@@ -6433,6 +6284,7 @@ class DescribeKnowledgeResponseBodyOutlines(TeaModel):
         outline_id: int = None,
         title: str = None,
     ):
+        # FAQ ID
         self.knowledge_id = knowledge_id
         self.outline_id = outline_id
         self.title = title
@@ -6601,6 +6453,7 @@ class DescribeKnowledgeResponseBody(TeaModel):
         self.create_user_name = create_user_name
         self.end_date = end_date
         self.key_words = key_words
+        # FAQ ID
         self.knowledge_id = knowledge_id
         self.knowledge_status = knowledge_status
         self.knowledge_title = knowledge_title
@@ -6740,9 +6593,6 @@ class DescribeKnowledgeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6778,7 +6628,6 @@ class DescribePerspectiveRequest(TeaModel):
         agent_key: str = None,
         perspective_id: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.perspective_id = perspective_id
 
@@ -6899,9 +6748,6 @@ class DescribePerspectiveResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6937,7 +6783,6 @@ class DisableDialogFlowRequest(TeaModel):
         agent_key: str = None,
         dialog_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.dialog_id = dialog_id
 
@@ -7004,9 +6849,6 @@ class DisableDialogFlowResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7042,8 +6884,8 @@ class DisableKnowledgeRequest(TeaModel):
         agent_key: str = None,
         knowledge_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
+        # FAQ ID
         self.knowledge_id = knowledge_id
 
     def validate(self):
@@ -7109,9 +6951,6 @@ class DisableKnowledgeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7150,7 +6989,6 @@ class FeedbackRequest(TeaModel):
         message_id: str = None,
         session_id: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.feedback = feedback
         self.instance_id = instance_id
@@ -7256,9 +7094,6 @@ class FeedbackResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7294,7 +7129,6 @@ class GetAsyncResultRequest(TeaModel):
         agent_key: str = None,
         task_id: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.task_id = task_id
 
@@ -7385,9 +7219,6 @@ class GetAsyncResultResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7425,7 +7256,6 @@ class GetBotChatDataRequest(TeaModel):
         robot_instance_id: str = None,
         start_time: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.end_time = end_time
         self.robot_instance_id = robot_instance_id
@@ -7514,9 +7344,6 @@ class GetBotChatDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7554,7 +7381,6 @@ class GetBotDsStatDataRequest(TeaModel):
         robot_instance_id: str = None,
         start_time: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.end_time = end_time
         self.robot_instance_id = robot_instance_id
@@ -7643,9 +7469,6 @@ class GetBotDsStatDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7683,7 +7506,6 @@ class GetBotKnowledgeStatDataRequest(TeaModel):
         robot_instance_id: str = None,
         start_time: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.end_time = end_time
         self.robot_instance_id = robot_instance_id
@@ -7772,9 +7594,6 @@ class GetBotKnowledgeStatDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7812,7 +7631,6 @@ class GetBotSessionDataRequest(TeaModel):
         robot_instance_id: str = None,
         start_time: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.end_time = end_time
         self.robot_instance_id = robot_instance_id
@@ -7901,9 +7719,6 @@ class GetBotSessionDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7945,7 +7760,6 @@ class GetConversationListRequest(TeaModel):
         session_id: str = None,
         start_date: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.end_date = end_date
         self.instance_id = instance_id
@@ -8006,7 +7820,7 @@ class GetConversationListRequest(TeaModel):
 class GetConversationListResponseBody(TeaModel):
     def __init__(
         self,
-        messages: List[Dict[str, Any]] = None,
+        messages: List[Dict[str, str]] = None,
         page_number: int = None,
         page_size: int = None,
         request_id: str = None,
@@ -8066,9 +7880,6 @@ class GetConversationListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8107,7 +7918,6 @@ class ListBotChatHistorysRequest(TeaModel):
         robot_instance_id: str = None,
         start_time: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.end_time = end_time
         self.limit = limit
@@ -8201,9 +8011,6 @@ class ListBotChatHistorysResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8242,7 +8049,6 @@ class ListBotColdDsDatasRequest(TeaModel):
         robot_instance_id: str = None,
         start_time: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.end_time = end_time
         self.limit = limit
@@ -8336,9 +8142,6 @@ class ListBotColdDsDatasResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8377,7 +8180,6 @@ class ListBotColdKnowledgesRequest(TeaModel):
         robot_instance_id: str = None,
         start_time: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.end_time = end_time
         self.limit = limit
@@ -8471,9 +8273,6 @@ class ListBotColdKnowledgesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8512,7 +8311,6 @@ class ListBotDsDetailsRequest(TeaModel):
         robot_instance_id: str = None,
         start_time: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.end_time = end_time
         self.limit = limit
@@ -8606,9 +8404,6 @@ class ListBotDsDetailsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8647,7 +8442,6 @@ class ListBotHotDsDatasRequest(TeaModel):
         robot_instance_id: str = None,
         start_time: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.end_time = end_time
         self.limit = limit
@@ -8741,9 +8535,6 @@ class ListBotHotDsDatasResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8782,7 +8573,6 @@ class ListBotHotKnowledgesRequest(TeaModel):
         robot_instance_id: str = None,
         start_time: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.end_time = end_time
         self.limit = limit
@@ -8876,9 +8666,6 @@ class ListBotHotKnowledgesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8917,7 +8704,6 @@ class ListBotKnowledgeDetailsRequest(TeaModel):
         robot_instance_id: str = None,
         start_time: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.end_time = end_time
         self.limit = limit
@@ -9011,9 +8797,6 @@ class ListBotKnowledgeDetailsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9051,7 +8834,6 @@ class ListBotReceptionDetailDatasRequest(TeaModel):
         robot_instance_id: str = None,
         start_time: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.end_time = end_time
         self.robot_instance_id = robot_instance_id
@@ -9140,9 +8922,6 @@ class ListBotReceptionDetailDatasResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9178,7 +8957,6 @@ class ListConversationLogsRequest(TeaModel):
         agent_key: str = None,
         session_id: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.session_id = session_id
 
@@ -9257,9 +9035,6 @@ class ListConversationLogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9296,7 +9071,6 @@ class MoveKnowledgeCategoryRequest(TeaModel):
         category_id: int = None,
         knowledge_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.category_id = category_id
         self.knowledge_id = knowledge_id
@@ -9368,9 +9142,6 @@ class MoveKnowledgeCategoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9406,7 +9177,6 @@ class PublishDialogFlowRequest(TeaModel):
         agent_key: str = None,
         dialog_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.dialog_id = dialog_id
 
@@ -9473,9 +9243,6 @@ class PublishDialogFlowResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9512,7 +9279,6 @@ class PublishKnowledgeRequest(TeaModel):
         async_: bool = None,
         knowledge_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.async_ = async_
         self.knowledge_id = knowledge_id
@@ -9584,9 +9350,6 @@ class PublishKnowledgeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9623,7 +9386,6 @@ class QueryBotsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.page_number = page_number
         self.page_size = page_size
@@ -9790,9 +9552,6 @@ class QueryBotsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9830,7 +9589,6 @@ class QueryCategoriesRequest(TeaModel):
         parent_category_id: int = None,
         show_childrens: bool = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.knowledge_type = knowledge_type
         self.parent_category_id = parent_category_id
@@ -9921,9 +9679,6 @@ class QueryCategoriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9962,7 +9717,6 @@ class QueryCoreWordsRequest(TeaModel):
         page_size: int = None,
         synonym: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.core_word_name = core_word_name
         self.page_number = page_number
@@ -10127,9 +9881,6 @@ class QueryCoreWordsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10168,7 +9919,6 @@ class QueryDialogsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.dialog_name = dialog_name
         self.instance_id = instance_id
@@ -10375,9 +10125,6 @@ class QueryDialogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10416,7 +10163,6 @@ class QueryEntitiesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.dialog_id = dialog_id
         self.entity_name = entity_name
@@ -10658,9 +10404,6 @@ class QueryEntitiesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10700,10 +10443,8 @@ class QueryIntentsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.dialog_id = dialog_id
-        # 机器人实例 ID
         self.instance_id = instance_id
         self.intent_name = intent_name
         self.page_number = page_number
@@ -11168,9 +10909,6 @@ class QueryIntentsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11210,7 +10948,6 @@ class QueryKnowledgesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.category_id = category_id
         self.core_word_name = core_word_name
@@ -11279,6 +11016,7 @@ class QueryKnowledgesResponseBodyKnowledges(TeaModel):
         self.create_time = create_time
         self.create_user_name = create_user_name
         self.end_date = end_date
+        # FAQ ID
         self.knowledge_id = knowledge_id
         self.knowledge_status = knowledge_status
         self.knowledge_title = knowledge_title
@@ -11422,9 +11160,6 @@ class QueryKnowledgesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11459,7 +11194,6 @@ class QueryPerspectivesRequest(TeaModel):
         self,
         agent_key: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
 
     def validate(self):
@@ -11610,9 +11344,6 @@ class QueryPerspectivesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11648,7 +11379,6 @@ class QuerySystemEntitiesRequest(TeaModel):
         agent_key: str = None,
         entity_name: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.entity_name = entity_name
 
@@ -11768,9 +11498,6 @@ class QuerySystemEntitiesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11841,7 +11568,6 @@ class RemoveEntityMemberRequest(TeaModel):
         member: RemoveEntityMemberRequestMember = None,
         remove_type: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.entity_id = entity_id
         self.member = member
@@ -11889,7 +11615,6 @@ class RemoveEntityMemberShrinkRequest(TeaModel):
         member_shrink: str = None,
         remove_type: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.entity_id = entity_id
         self.member_shrink = member_shrink
@@ -11972,9 +11697,6 @@ class RemoveEntityMemberResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12011,7 +11733,6 @@ class RemoveSynonymRequest(TeaModel):
         core_word_name: str = None,
         synonym: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.core_word_name = core_word_name
         self.synonym = synonym
@@ -12083,9 +11804,6 @@ class RemoveSynonymResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12121,7 +11839,6 @@ class TestDialogFlowRequest(TeaModel):
         agent_key: str = None,
         dialog_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.dialog_id = dialog_id
 
@@ -12188,9 +11905,6 @@ class TestDialogFlowResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12227,7 +11941,6 @@ class UpdateCategoryRequest(TeaModel):
         category_id: int = None,
         name: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.category_id = category_id
         self.name = name
@@ -12305,9 +12018,6 @@ class UpdateCategoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12344,7 +12054,6 @@ class UpdateCoreWordRequest(TeaModel):
         core_word_code: str = None,
         core_word_name: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.core_word_code = core_word_code
         self.core_word_name = core_word_name
@@ -12422,9 +12131,6 @@ class UpdateCoreWordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12462,7 +12168,6 @@ class UpdateDialogRequest(TeaModel):
         dialog_id: int = None,
         dialog_name: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.description = description
         self.dialog_id = dialog_id
@@ -12539,9 +12244,6 @@ class UpdateDialogResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12613,7 +12315,6 @@ class UpdateDialogFlowRequest(TeaModel):
         dialog_id: int = None,
         module_definition: UpdateDialogFlowRequestModuleDefinition = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.dialog_id = dialog_id
         self.module_definition = module_definition
@@ -12655,7 +12356,6 @@ class UpdateDialogFlowShrinkRequest(TeaModel):
         dialog_id: int = None,
         module_definition_shrink: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.dialog_id = dialog_id
         self.module_definition_shrink = module_definition_shrink
@@ -12727,9 +12427,6 @@ class UpdateDialogFlowResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12802,7 +12499,6 @@ class UpdateEntityRequest(TeaModel):
         members: List[UpdateEntityRequestMembers] = None,
         regex: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.entity_id = entity_id
         self.entity_name = entity_name
@@ -12868,7 +12564,6 @@ class UpdateEntityShrinkRequest(TeaModel):
         members_shrink: str = None,
         regex: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.entity_id = entity_id
         self.entity_name = entity_name
@@ -12961,9 +12656,6 @@ class UpdateEntityResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13000,7 +12692,6 @@ class UpdateIntentRequest(TeaModel):
         intent_definition: IntentCreateDTO = None,
         intent_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.intent_definition = intent_definition
         self.intent_id = intent_id
@@ -13042,7 +12733,6 @@ class UpdateIntentShrinkRequest(TeaModel):
         intent_definition_shrink: str = None,
         intent_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.intent_definition_shrink = intent_definition_shrink
         self.intent_id = intent_id
@@ -13120,9 +12810,6 @@ class UpdateIntentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13302,6 +12989,7 @@ class UpdateKnowledgeRequestKnowledge(TeaModel):
     ):
         self.category_id = category_id
         self.end_date = end_date
+        # FAQ ID
         self.knowledge_id = knowledge_id
         self.knowledge_title = knowledge_title
         self.knowledge_type = knowledge_type
@@ -13394,7 +13082,6 @@ class UpdateKnowledgeRequest(TeaModel):
         agent_key: str = None,
         knowledge: UpdateKnowledgeRequestKnowledge = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.knowledge = knowledge
 
@@ -13430,7 +13117,6 @@ class UpdateKnowledgeShrinkRequest(TeaModel):
         agent_key: str = None,
         knowledge_shrink: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.knowledge_shrink = knowledge_shrink
 
@@ -13503,9 +13189,6 @@ class UpdateKnowledgeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13542,7 +13225,6 @@ class UpdatePerspectiveRequest(TeaModel):
         name: str = None,
         perspective_id: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.name = name
         self.perspective_id = perspective_id
@@ -13614,9 +13296,6 @@ class UpdatePerspectiveResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
