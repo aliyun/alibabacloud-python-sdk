@@ -576,6 +576,8 @@ class Client(OpenApiClient):
             query['DiagnosticKey'] = request.diagnostic_key
         if not UtilClient.is_unset(request.diagnostic_type):
             query['DiagnosticType'] = request.diagnostic_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.product):
             query['Product'] = request.product
         req = open_api_models.OpenApiRequest(
@@ -608,6 +610,8 @@ class Client(OpenApiClient):
             query['DiagnosticKey'] = request.diagnostic_key
         if not UtilClient.is_unset(request.diagnostic_type):
             query['DiagnosticType'] = request.diagnostic_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.product):
             query['Product'] = request.product
         req = open_api_models.OpenApiRequest(
@@ -3573,7 +3577,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetStackResponse:
         """
-        In this topic, the information about a stack whose ID is `c754d2a4-28f1-46df-b557-9586173a***` is queried. The stack is deployed in the China (Hangzhou) region.
+        In this example, the information about a stack whose ID is `c754d2a4-28f1-46df-b557-9586173a***` in the China (Hangzhou) region is queried.
         
         @param request: GetStackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3618,7 +3622,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetStackResponse:
         """
-        In this topic, the information about a stack whose ID is `c754d2a4-28f1-46df-b557-9586173a***` is queried. The stack is deployed in the China (Hangzhou) region.
+        In this example, the information about a stack whose ID is `c754d2a4-28f1-46df-b557-9586173a***` in the China (Hangzhou) region is queried.
         
         @param request: GetStackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3662,7 +3666,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.GetStackRequest,
     ) -> ros20190910_models.GetStackResponse:
         """
-        In this topic, the information about a stack whose ID is `c754d2a4-28f1-46df-b557-9586173a***` is queried. The stack is deployed in the China (Hangzhou) region.
+        In this example, the information about a stack whose ID is `c754d2a4-28f1-46df-b557-9586173a***` in the China (Hangzhou) region is queried.
         
         @param request: GetStackRequest
         @return: GetStackResponse
@@ -3675,7 +3679,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.GetStackRequest,
     ) -> ros20190910_models.GetStackResponse:
         """
-        In this topic, the information about a stack whose ID is `c754d2a4-28f1-46df-b557-9586173a***` is queried. The stack is deployed in the China (Hangzhou) region.
+        In this example, the information about a stack whose ID is `c754d2a4-28f1-46df-b557-9586173a***` in the China (Hangzhou) region is queried.
         
         @param request: GetStackRequest
         @return: GetStackResponse

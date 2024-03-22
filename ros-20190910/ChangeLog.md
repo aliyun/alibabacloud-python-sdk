@@ -1,3 +1,10 @@
+2024-03-22 Version: 3.3.11
+- Update API CreateDiagnostic: add param Lang.
+- Update API GetStack: update response param.
+- Update API GetStackInstance: add param OutputOption.
+- Update API GetStackInstance: update response param.
+
+
 2024-02-29 Version: 3.3.10
 - Update API GetStack: update response param.
 - Update API GetStackInstance: add param OutputOption.
