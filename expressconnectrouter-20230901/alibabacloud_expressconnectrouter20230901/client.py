@@ -772,8 +772,8 @@ class Client(OpenApiClient):
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterAllowedPrefixHistoryResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.associaton_id):
-            body['AssociatonId'] = request.associaton_id
+        if not UtilClient.is_unset(request.association_id):
+            body['AssociationId'] = request.association_id
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
@@ -810,8 +810,8 @@ class Client(OpenApiClient):
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterAllowedPrefixHistoryResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.associaton_id):
-            body['AssociatonId'] = request.associaton_id
+        if not UtilClient.is_unset(request.association_id):
+            body['AssociationId'] = request.association_id
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):

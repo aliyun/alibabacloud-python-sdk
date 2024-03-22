@@ -1717,14 +1717,14 @@ class DescribeExpressConnectRouterResponse(TeaModel):
 class DescribeExpressConnectRouterAllowedPrefixHistoryRequest(TeaModel):
     def __init__(
         self,
-        associaton_id: str = None,
+        association_id: str = None,
         client_token: str = None,
         dry_run: bool = None,
         ecr_id: str = None,
         instance_id: str = None,
         instance_type: str = None,
     ):
-        self.associaton_id = associaton_id
+        self.association_id = association_id
         self.client_token = client_token
         self.dry_run = dry_run
         self.ecr_id = ecr_id
@@ -1740,8 +1740,8 @@ class DescribeExpressConnectRouterAllowedPrefixHistoryRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.associaton_id is not None:
-            result['AssociatonId'] = self.associaton_id
+        if self.association_id is not None:
+            result['AssociationId'] = self.association_id
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
@@ -1756,8 +1756,8 @@ class DescribeExpressConnectRouterAllowedPrefixHistoryRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AssociatonId') is not None:
-            self.associaton_id = m.get('AssociatonId')
+        if m.get('AssociationId') is not None:
+            self.association_id = m.get('AssociationId')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
