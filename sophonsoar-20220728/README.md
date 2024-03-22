@@ -28,7 +28,7 @@ pip install alibabacloud_sophonsoar20220728
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/sophonsoar-20220728/ChangeLog.md).
 
 ## References
 

@@ -1,3 +1,10 @@
+2024-03-22 Version: 1.0.3
+- Update API DescribeExecutePlaybooks: add param InputMode.
+- Update API DescribePlaybook: update response param.
+- Update API DescribePlaybookInputOutput: update response param.
+- Update API DescribeProcessTasks: update response param.
+
+
 2024-01-16 Version: 1.0.2
 - Generated python 2022-07-28 for sophonsoar.
 

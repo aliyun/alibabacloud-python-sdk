@@ -94,9 +94,6 @@ class BatchModifyInstanceStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -278,9 +275,6 @@ class ComparePlaybooksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -432,9 +426,6 @@ class CreatePlaybookResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -567,9 +558,6 @@ class DebugPlaybookResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -679,9 +667,6 @@ class DeleteComponentAssetResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -791,9 +776,6 @@ class DeletePlaybookResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -951,9 +933,6 @@ class DescribeApiListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1073,9 +1052,6 @@ class DescribeComponentAssetFormResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1270,9 +1246,6 @@ class DescribeComponentAssetsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1389,9 +1362,6 @@ class DescribeComponentListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1560,9 +1530,6 @@ class DescribeComponentPlaybookResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1670,9 +1637,6 @@ class DescribeComponentsJsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1839,9 +1803,6 @@ class DescribeDistinctReleasesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2001,9 +1962,6 @@ class DescribeEnumItemsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2036,11 +1994,18 @@ class DescribeEnumItemsResponse(TeaModel):
 class DescribeExecutePlaybooksRequest(TeaModel):
     def __init__(
         self,
+        input_mode: str = None,
         lang: str = None,
         param_type: str = None,
         playbook_name: str = None,
         uuid: str = None,
     ):
+        # The entity type of the script input parameter. When you want to query multiple entity types, separate them with commas.
+        # - **ip**: IP entity.
+        # - **file**: file entity.
+        # - **process**: process entity.
+        # - **incident**: incident entity.
+        self.input_mode = input_mode
         # The language of the content within the request and the response. Valid values:
         # 
         # *   **zh**: Chinese (default)
@@ -2069,6 +2034,8 @@ class DescribeExecutePlaybooksRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.input_mode is not None:
+            result['InputMode'] = self.input_mode
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.param_type is not None:
@@ -2081,6 +2048,8 @@ class DescribeExecutePlaybooksRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('InputMode') is not None:
+            self.input_mode = m.get('InputMode')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('ParamType') is not None:
@@ -2210,9 +2179,6 @@ class DescribeExecutePlaybooksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2336,9 +2302,6 @@ class DescribeFieldResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2542,9 +2505,6 @@ class DescribeLatestRecordSchemaResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2711,9 +2671,6 @@ class DescribeNodeParamTagsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2842,9 +2799,6 @@ class DescribeNodeUsedInfosResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2949,6 +2903,7 @@ class DescribePlaybookResponseBodyPlaybook(TeaModel):
         playbook_uuid: str = None,
         success_exe_num: int = None,
         taskflow: str = None,
+        taskflow_type: str = None,
     ):
         # The ID of the Alibaba Cloud account that is used to create the playbook.
         self.creator = creator
@@ -2988,6 +2943,7 @@ class DescribePlaybookResponseBodyPlaybook(TeaModel):
         self.success_exe_num = success_exe_num
         # The XML configuration of the playbook.
         self.taskflow = taskflow
+        self.taskflow_type = taskflow_type
 
     def validate(self):
         pass
@@ -3028,6 +2984,8 @@ class DescribePlaybookResponseBodyPlaybook(TeaModel):
             result['SuccessExeNum'] = self.success_exe_num
         if self.taskflow is not None:
             result['Taskflow'] = self.taskflow
+        if self.taskflow_type is not None:
+            result['TaskflowType'] = self.taskflow_type
         return result
 
     def from_map(self, m: dict = None):
@@ -3062,6 +3020,8 @@ class DescribePlaybookResponseBodyPlaybook(TeaModel):
             self.success_exe_num = m.get('SuccessExeNum')
         if m.get('Taskflow') is not None:
             self.taskflow = m.get('Taskflow')
+        if m.get('TaskflowType') is not None:
+            self.taskflow_type = m.get('TaskflowType')
         return self
 
 
@@ -3114,9 +3074,6 @@ class DescribePlaybookResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3295,9 +3252,6 @@ class DescribePlaybookInputOutputResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3513,9 +3467,6 @@ class DescribePlaybookMetricsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3676,9 +3627,6 @@ class DescribePlaybookNodesOutputResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3823,9 +3771,6 @@ class DescribePlaybookNumberMetricsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4079,9 +4024,6 @@ class DescribePlaybookReleasesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4386,9 +4328,6 @@ class DescribePlaybooksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4611,9 +4550,6 @@ class DescribePopApiResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4774,9 +4710,6 @@ class DescribePopApiItemListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4964,9 +4897,6 @@ class DescribePopApiVersionListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5241,6 +5171,9 @@ class DescribeProcessTasksResponseBodyProcessTasks(TeaModel):
         task_id: str = None,
         task_status: int = None,
         yun_code: str = None,
+        err_code: str = None,
+        err_msg: str = None,
+        err_tip: str = None,
     ):
         # The ID of the Alibaba Cloud account that is used to submit the handling task.
         self.creator = creator
@@ -5274,6 +5207,9 @@ class DescribeProcessTasksResponseBodyProcessTasks(TeaModel):
         self.task_status = task_status
         # The code of the cloud service that is associated with the handling task.
         self.yun_code = yun_code
+        self.err_code = err_code
+        self.err_msg = err_msg
+        self.err_tip = err_tip
 
     def validate(self):
         pass
@@ -5316,6 +5252,12 @@ class DescribeProcessTasksResponseBodyProcessTasks(TeaModel):
             result['TaskStatus'] = self.task_status
         if self.yun_code is not None:
             result['YunCode'] = self.yun_code
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.err_msg is not None:
+            result['errMsg'] = self.err_msg
+        if self.err_tip is not None:
+            result['errTip'] = self.err_tip
         return result
 
     def from_map(self, m: dict = None):
@@ -5352,6 +5294,12 @@ class DescribeProcessTasksResponseBodyProcessTasks(TeaModel):
             self.task_status = m.get('TaskStatus')
         if m.get('YunCode') is not None:
             self.yun_code = m.get('YunCode')
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('errMsg') is not None:
+            self.err_msg = m.get('errMsg')
+        if m.get('errTip') is not None:
+            self.err_tip = m.get('errTip')
         return self
 
 
@@ -5420,9 +5368,6 @@ class DescribeProcessTasksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5578,9 +5523,6 @@ class DescribeSoarRecordActionOutputListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5697,9 +5639,6 @@ class DescribeSoarRecordInOutputResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6047,9 +5986,6 @@ class DescribeSoarRecordsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6411,9 +6347,6 @@ class DescribeSoarTaskAndActionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6635,9 +6568,6 @@ class DescribeSophonCommandsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6754,9 +6684,6 @@ class DescriberPython3ScriptLogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6864,9 +6791,6 @@ class ModifyComponentAssetResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6997,9 +6921,6 @@ class ModifyPlaybookResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7039,6 +6960,7 @@ class ModifyPlaybookInputOutputRequest(TeaModel):
         param_type: str = None,
         playbook_uuid: str = None,
     ):
+        # The executed mode of a playbook. The value is a JSON array.
         self.exe_config = exe_config
         # The configuration of the input parameters. The value is a JSON array.
         self.input_params = input_params
@@ -7141,9 +7063,6 @@ class ModifyPlaybookInputOutputResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7263,9 +7182,6 @@ class ModifyPlaybookInstanceStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7372,9 +7288,6 @@ class PublishPlaybookResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7482,9 +7395,6 @@ class QueryTreeDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7615,9 +7525,6 @@ class RenamePlaybookNodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7736,9 +7643,6 @@ class RevertPlaybookReleaseResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7866,9 +7770,6 @@ class RunPython3ScriptResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7982,9 +7883,6 @@ class TriggerPlaybookResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8094,9 +7992,6 @@ class TriggerProcessTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8266,9 +8161,6 @@ class TriggerSophonPlaybookResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8436,9 +8328,6 @@ class VerifyPlaybookResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8617,9 +8506,6 @@ class VerifyPythonFileResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
