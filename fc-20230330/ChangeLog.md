@@ -1,3 +1,46 @@
+2024-03-22 Version: 3.1.0
+- Support API ListTagResources.
+- Support API TagResources.
+- Support API UntagResources.
+- Update API CreateAlias: update response param.
+- Update API CreateCustomDomain: update response param.
+- Update API CreateFunction: update response param.
+- Update API CreateLayerVersion: update response param.
+- Update API CreateTrigger: update response param.
+- Update API CreateVpcBinding: update response param.
+- Update API GetAlias: update response param.
+- Update API GetAsyncInvokeConfig: update response param.
+- Update API GetConcurrencyConfig: update response param.
+- Update API GetCustomDomain: update response param.
+- Update API GetFunction: update response param.
+- Update API GetFunctionCode: update response param.
+- Update API GetLayerVersion: update response param.
+- Update API GetLayerVersionByArn: update response param.
+- Update API GetProvisionConfig: update response param.
+- Update API GetTrigger: update response param.
+- Update API InvokeFunction: update response param.
+- Update API ListAliases: update response param.
+- Update API ListAsyncInvokeConfigs: update response param.
+- Update API ListConcurrencyConfigs: update response param.
+- Update API ListCustomDomains: update response param.
+- Update API ListFunctionVersions: update response param.
+- Update API ListFunctions: update response param.
+- Update API ListInstances: update response param.
+- Update API ListLayerVersions: update response param.
+- Update API ListLayers: update response param.
+- Update API ListProvisionConfigs: update response param.
+- Update API ListTriggers: update response param.
+- Update API ListVpcBindings: update response param.
+- Update API PublishFunctionVersion: update response param.
+- Update API PutAsyncInvokeConfig: update response param.
+- Update API PutConcurrencyConfig: update response param.
+- Update API PutProvisionConfig: update response param.
+- Update API UpdateAlias: update response param.
+- Update API UpdateCustomDomain: update response param.
+- Update API UpdateFunction: update response param.
+- Update API UpdateTrigger: update response param.
+
+
 2024-02-26 Version: 3.0.3
 - Update API CreateAlias: update response param.
 - Update API CreateCustomDomain: update response param.

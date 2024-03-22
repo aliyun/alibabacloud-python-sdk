@@ -2991,6 +2991,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_provision_configs_with_options_async(request, headers, runtime)
 
+    def list_tag_resources_with_options(
+        self,
+        tmp_req: fc20230330_models.ListTagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.ListTagResourcesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = fc20230330_models.ListTagResourcesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_id):
+            request.resource_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_id, 'ResourceId', 'json')
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id_shrink):
+            query['ResourceId'] = request.resource_id_shrink
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/tags-v2',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fc20230330_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_resources_with_options_async(
+        self,
+        tmp_req: fc20230330_models.ListTagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.ListTagResourcesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = fc20230330_models.ListTagResourcesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_id):
+            request.resource_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_id, 'ResourceId', 'json')
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id_shrink):
+            query['ResourceId'] = request.resource_id_shrink
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/tags-v2',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fc20230330_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_resources(
+        self,
+        request: fc20230330_models.ListTagResourcesRequest,
+    ) -> fc20230330_models.ListTagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_tag_resources_with_options(request, headers, runtime)
+
+    async def list_tag_resources_async(
+        self,
+        request: fc20230330_models.ListTagResourcesRequest,
+    ) -> fc20230330_models.ListTagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_tag_resources_with_options_async(request, headers, runtime)
+
     def list_tagged_resources_with_options(
         self,
         request: fc20230330_models.ListTaggedResourcesRequest,
@@ -3755,6 +3859,76 @@ class Client(OpenApiClient):
         headers = {}
         return await self.tag_resource_with_options_async(request, headers, runtime)
 
+    def tag_resources_with_options(
+        self,
+        request: fc20230330_models.TagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.TagResourcesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/tags-v2',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            fc20230330_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_resources_with_options_async(
+        self,
+        request: fc20230330_models.TagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.TagResourcesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/tags-v2',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            fc20230330_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_resources(
+        self,
+        request: fc20230330_models.TagResourcesRequest,
+    ) -> fc20230330_models.TagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.tag_resources_with_options(request, headers, runtime)
+
+    async def tag_resources_async(
+        self,
+        request: fc20230330_models.TagResourcesRequest,
+    ) -> fc20230330_models.TagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.tag_resources_with_options_async(request, headers, runtime)
+
     def untag_resource_with_options(
         self,
         request: fc20230330_models.UntagResourceRequest,
@@ -3870,6 +4044,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.untag_resource_with_options_async(request, headers, runtime)
+
+    def untag_resources_with_options(
+        self,
+        tmp_req: fc20230330_models.UntagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.UntagResourcesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = fc20230330_models.UntagResourcesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_id):
+            request.resource_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_id, 'ResourceId', 'json')
+        if not UtilClient.is_unset(tmp_req.tag_key):
+            request.tag_key_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_key, 'TagKey', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.resource_id_shrink):
+            query['ResourceId'] = request.resource_id_shrink
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key_shrink):
+            query['TagKey'] = request.tag_key_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/tags-v2',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            fc20230330_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def untag_resources_with_options_async(
+        self,
+        tmp_req: fc20230330_models.UntagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.UntagResourcesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = fc20230330_models.UntagResourcesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_id):
+            request.resource_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_id, 'ResourceId', 'json')
+        if not UtilClient.is_unset(tmp_req.tag_key):
+            request.tag_key_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_key, 'TagKey', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.resource_id_shrink):
+            query['ResourceId'] = request.resource_id_shrink
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key_shrink):
+            query['TagKey'] = request.tag_key_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/tags-v2',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            fc20230330_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def untag_resources(
+        self,
+        request: fc20230330_models.UntagResourcesRequest,
+    ) -> fc20230330_models.UntagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.untag_resources_with_options(request, headers, runtime)
+
+    async def untag_resources_async(
+        self,
+        request: fc20230330_models.UntagResourcesRequest,
+    ) -> fc20230330_models.UntagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.untag_resources_with_options_async(request, headers, runtime)
 
     def update_alias_with_options(
         self,
