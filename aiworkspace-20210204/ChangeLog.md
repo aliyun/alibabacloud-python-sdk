@@ -1,3 +1,9 @@
+2024-03-23 Version: 3.0.2
+- Update API CreateDataset: update param body.
+- Update API GetPermission: add param Resource.
+- Update API ListDatasets: add param Provider.
+
+
 2023-12-26 Version: 3.0.1
 - Generated python 2021-02-04 for AIWorkSpace.
 

@@ -431,6 +431,8 @@ class Client(OpenApiClient):
             body['Options'] = request.options
         if not UtilClient.is_unset(request.property):
             body['Property'] = request.property
+        if not UtilClient.is_unset(request.provider):
+            body['Provider'] = request.provider
         if not UtilClient.is_unset(request.provider_type):
             body['ProviderType'] = request.provider_type
         if not UtilClient.is_unset(request.source_id):
@@ -485,6 +487,8 @@ class Client(OpenApiClient):
             body['Options'] = request.options
         if not UtilClient.is_unset(request.property):
             body['Property'] = request.property
+        if not UtilClient.is_unset(request.provider):
+            body['Provider'] = request.provider
         if not UtilClient.is_unset(request.provider_type):
             body['ProviderType'] = request.provider_type
         if not UtilClient.is_unset(request.source_id):
@@ -2643,6 +2647,8 @@ class Client(OpenApiClient):
             query['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.creator):
             query['Creator'] = request.creator
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2677,6 +2683,8 @@ class Client(OpenApiClient):
             query['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.creator):
             query['Creator'] = request.creator
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2983,6 +2991,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.properties):
             query['Properties'] = request.properties
+        if not UtilClient.is_unset(request.provider):
+            query['Provider'] = request.provider
         if not UtilClient.is_unset(request.source_id):
             query['SourceId'] = request.source_id
         if not UtilClient.is_unset(request.source_types):
@@ -3033,6 +3043,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.properties):
             query['Properties'] = request.properties
+        if not UtilClient.is_unset(request.provider):
+            query['Provider'] = request.provider
         if not UtilClient.is_unset(request.source_id):
             query['SourceId'] = request.source_id
         if not UtilClient.is_unset(request.source_types):
