@@ -1,3 +1,11 @@
+2024-03-23 Version: 2.6.0
+- Support API PostISConvRewriter.
+- Support API PostISRetrieveRouter.
+- Update API ADMiniCog: update response param.
+- Update API ADMiniCogResult: update response param.
+- Update API GetItemPubChEcom: update response param.
+
+
 2024-03-11 Version: 2.5.1
 - Update API ADMiniCog: update response param.
 - Update API ADMiniCogResult: update response param.
