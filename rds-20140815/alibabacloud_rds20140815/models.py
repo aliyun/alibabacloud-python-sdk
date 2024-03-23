@@ -6751,10 +6751,12 @@ class CreateDBNodesRequestDBNode(TeaModel):
     def __init__(
         self,
         class_code: str = None,
+        vsw_id: str = None,
         zone_id: str = None,
     ):
         # The specification information of the node.
         self.class_code = class_code
+        self.vsw_id = vsw_id
         # The zone ID of the node.
         self.zone_id = zone_id
 
@@ -6769,6 +6771,8 @@ class CreateDBNodesRequestDBNode(TeaModel):
         result = dict()
         if self.class_code is not None:
             result['classCode'] = self.class_code
+        if self.vsw_id is not None:
+            result['vswId'] = self.vsw_id
         if self.zone_id is not None:
             result['zoneId'] = self.zone_id
         return result
@@ -6777,6 +6781,8 @@ class CreateDBNodesRequestDBNode(TeaModel):
         m = m or dict()
         if m.get('classCode') is not None:
             self.class_code = m.get('classCode')
+        if m.get('vswId') is not None:
+            self.vsw_id = m.get('vswId')
         if m.get('zoneId') is not None:
             self.zone_id = m.get('zoneId')
         return self
@@ -9132,10 +9138,12 @@ class CreateOrderForCreateDBNodesRequestDBNode(TeaModel):
     def __init__(
         self,
         class_code: str = None,
+        vsw_id: str = None,
         zone_id: str = None,
     ):
         # The specification information of the node.
         self.class_code = class_code
+        self.vsw_id = vsw_id
         # The zone ID of the node.
         self.zone_id = zone_id
 
@@ -9150,6 +9158,8 @@ class CreateOrderForCreateDBNodesRequestDBNode(TeaModel):
         result = dict()
         if self.class_code is not None:
             result['classCode'] = self.class_code
+        if self.vsw_id is not None:
+            result['vswId'] = self.vsw_id
         if self.zone_id is not None:
             result['zoneId'] = self.zone_id
         return result
@@ -9158,6 +9168,8 @@ class CreateOrderForCreateDBNodesRequestDBNode(TeaModel):
         m = m or dict()
         if m.get('classCode') is not None:
             self.class_code = m.get('classCode')
+        if m.get('vswId') is not None:
+            self.vsw_id = m.get('vswId')
         if m.get('zoneId') is not None:
             self.zone_id = m.get('zoneId')
         return self
@@ -65709,10 +65721,12 @@ class PreCheckCreateOrderForCreateDBNodesRequestDBNode(TeaModel):
     def __init__(
         self,
         class_code: str = None,
+        vsw_id: str = None,
         zone_id: str = None,
     ):
         # The instance type of the node.
         self.class_code = class_code
+        self.vsw_id = vsw_id
         # The zone ID of the node.
         self.zone_id = zone_id
 
@@ -65727,6 +65741,8 @@ class PreCheckCreateOrderForCreateDBNodesRequestDBNode(TeaModel):
         result = dict()
         if self.class_code is not None:
             result['classCode'] = self.class_code
+        if self.vsw_id is not None:
+            result['vswId'] = self.vsw_id
         if self.zone_id is not None:
             result['zoneId'] = self.zone_id
         return result
@@ -65735,6 +65751,8 @@ class PreCheckCreateOrderForCreateDBNodesRequestDBNode(TeaModel):
         m = m or dict()
         if m.get('classCode') is not None:
             self.class_code = m.get('classCode')
+        if m.get('vswId') is not None:
+            self.vsw_id = m.get('vswId')
         if m.get('zoneId') is not None:
             self.zone_id = m.get('zoneId')
         return self
