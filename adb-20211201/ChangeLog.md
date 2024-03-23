@@ -1,3 +1,13 @@
+2024-03-23 Version: 1.3.0
+- Support API DescribeDBClusterSpaceSummary.
+- Update API CreateDBResourceGroup: add param EnableSpot.
+- Update API DescribeApsActionLogs: update response param.
+- Update API DescribeClusterResourceDetail: update response param.
+- Update API DescribeDBResourceGroup: add param RegionId.
+- Update API DescribeDBResourceGroup: update response param.
+- Update API ModifyDBResourceGroup: add param EnableSpot.
+
+
 2024-03-01 Version: 1.2.9
 - Update API CreateDBResourceGroup: add param EnableSpot.
 - Update API DescribeApsActionLogs: update response param.

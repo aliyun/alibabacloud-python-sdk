@@ -4417,10 +4417,13 @@ class DeleteSparkTemplateRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         self.dbcluster_id = dbcluster_id
-        # The ID of the directory or application to which the template belongs.
+        # The directory ID of the template files that you want to delete.
         # 
-        # > *   You can call the [GetSparkTemplateFullTree](~~456205~~) operation to query the directory ID or application ID.
-        # > *   If you specify a directory ID, the entire directory is deleted.
+        # > 
+        # 
+        # *   You can call the [GetSparkTemplateFullTree](~~456205~~) operation to query the directory ID of template files.
+        # 
+        # *   When you specify a directory ID, the directory and all template files that are included in the directory are deleted.
         self.id = id
 
     def validate(self):
@@ -4452,10 +4455,10 @@ class DeleteSparkTemplateResponseBodyData(TeaModel):
         self,
         succeeded: bool = None,
     ):
-        # Indicates whether the template is deleted. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The template is deleted.
-        # *   **false**: The template fails to be deleted.
+        # *   **True**\
+        # *   **False**\
         self.succeeded = succeeded
 
     def validate(self):
@@ -4484,9 +4487,9 @@ class DeleteSparkTemplateResponseBody(TeaModel):
         data: DeleteSparkTemplateResponseBodyData = None,
         request_id: str = None,
     ):
-        # The result returned.
+        # The returned result.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10632,6 +10635,327 @@ class DescribeDBClusterPerformanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDBClusterPerformanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDBClusterSpaceSummaryRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeDBClusterSpaceSummaryResponseBodyDataColdData(TeaModel):
+    def __init__(
+        self,
+        data_size: int = None,
+        index_size: int = None,
+        other_size: int = None,
+        primary_key_index_size: int = None,
+        total_size: int = None,
+    ):
+        self.data_size = data_size
+        self.index_size = index_size
+        self.other_size = other_size
+        self.primary_key_index_size = primary_key_index_size
+        self.total_size = total_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_size is not None:
+            result['DataSize'] = self.data_size
+        if self.index_size is not None:
+            result['IndexSize'] = self.index_size
+        if self.other_size is not None:
+            result['OtherSize'] = self.other_size
+        if self.primary_key_index_size is not None:
+            result['PrimaryKeyIndexSize'] = self.primary_key_index_size
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataSize') is not None:
+            self.data_size = m.get('DataSize')
+        if m.get('IndexSize') is not None:
+            self.index_size = m.get('IndexSize')
+        if m.get('OtherSize') is not None:
+            self.other_size = m.get('OtherSize')
+        if m.get('PrimaryKeyIndexSize') is not None:
+            self.primary_key_index_size = m.get('PrimaryKeyIndexSize')
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
+        return self
+
+
+class DescribeDBClusterSpaceSummaryResponseBodyDataDataGrowth(TeaModel):
+    def __init__(
+        self,
+        day_growth: int = None,
+        week_growth: int = None,
+    ):
+        self.day_growth = day_growth
+        self.week_growth = week_growth
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.day_growth is not None:
+            result['DayGrowth'] = self.day_growth
+        if self.week_growth is not None:
+            result['WeekGrowth'] = self.week_growth
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DayGrowth') is not None:
+            self.day_growth = m.get('DayGrowth')
+        if m.get('WeekGrowth') is not None:
+            self.week_growth = m.get('WeekGrowth')
+        return self
+
+
+class DescribeDBClusterSpaceSummaryResponseBodyDataHotData(TeaModel):
+    def __init__(
+        self,
+        data_size: int = None,
+        index_size: int = None,
+        other_size: int = None,
+        primary_key_index_size: int = None,
+        total_size: int = None,
+    ):
+        self.data_size = data_size
+        self.index_size = index_size
+        self.other_size = other_size
+        self.primary_key_index_size = primary_key_index_size
+        self.total_size = total_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_size is not None:
+            result['DataSize'] = self.data_size
+        if self.index_size is not None:
+            result['IndexSize'] = self.index_size
+        if self.other_size is not None:
+            result['OtherSize'] = self.other_size
+        if self.primary_key_index_size is not None:
+            result['PrimaryKeyIndexSize'] = self.primary_key_index_size
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataSize') is not None:
+            self.data_size = m.get('DataSize')
+        if m.get('IndexSize') is not None:
+            self.index_size = m.get('IndexSize')
+        if m.get('OtherSize') is not None:
+            self.other_size = m.get('OtherSize')
+        if m.get('PrimaryKeyIndexSize') is not None:
+            self.primary_key_index_size = m.get('PrimaryKeyIndexSize')
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
+        return self
+
+
+class DescribeDBClusterSpaceSummaryResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cold_data: DescribeDBClusterSpaceSummaryResponseBodyDataColdData = None,
+        data_growth: DescribeDBClusterSpaceSummaryResponseBodyDataDataGrowth = None,
+        hot_data: DescribeDBClusterSpaceSummaryResponseBodyDataHotData = None,
+        total_size: str = None,
+    ):
+        self.cold_data = cold_data
+        self.data_growth = data_growth
+        self.hot_data = hot_data
+        self.total_size = total_size
+
+    def validate(self):
+        if self.cold_data:
+            self.cold_data.validate()
+        if self.data_growth:
+            self.data_growth.validate()
+        if self.hot_data:
+            self.hot_data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cold_data is not None:
+            result['ColdData'] = self.cold_data.to_map()
+        if self.data_growth is not None:
+            result['DataGrowth'] = self.data_growth.to_map()
+        if self.hot_data is not None:
+            result['HotData'] = self.hot_data.to_map()
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ColdData') is not None:
+            temp_model = DescribeDBClusterSpaceSummaryResponseBodyDataColdData()
+            self.cold_data = temp_model.from_map(m['ColdData'])
+        if m.get('DataGrowth') is not None:
+            temp_model = DescribeDBClusterSpaceSummaryResponseBodyDataDataGrowth()
+            self.data_growth = temp_model.from_map(m['DataGrowth'])
+        if m.get('HotData') is not None:
+            temp_model = DescribeDBClusterSpaceSummaryResponseBodyDataHotData()
+            self.hot_data = temp_model.from_map(m['HotData'])
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
+        return self
+
+
+class DescribeDBClusterSpaceSummaryResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeDBClusterSpaceSummaryResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeDBClusterSpaceSummaryResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDBClusterSpaceSummaryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDBClusterSpaceSummaryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDBClusterSpaceSummaryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -18196,7 +18520,9 @@ class GetSparkAppLogRequest(TeaModel):
         self.dbcluster_id = dbcluster_id
         # The number of log entries to return. Valid values: 1 to 500. Default value: 300.
         self.log_length = log_length
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):
@@ -18247,6 +18573,7 @@ class GetSparkAppLogResponseBodyData(TeaModel):
         self.dbcluster_id = dbcluster_id
         # The content of the log.
         self.log_content = log_content
+        # The number of log entries. A value of 0 indicates that no valid logs are returned.
         self.log_size = log_size
         # The alert message returned for the request, such as task execution failure or insufficient resources. If no alert occurs, null is returned.
         self.message = message
@@ -23738,6 +24065,10 @@ class ModifyDBResourceGroupRequest(TeaModel):
         self.cluster_size_resource = cluster_size_resource
         # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         self.dbcluster_id = dbcluster_id
+        # Specifies whether to enable the preemptible instance feature for the resource group. This feature can be enabled only for job resource groups. Valid values:
+        # 
+        # *   **True**\
+        # *   **False**\
         self.enable_spot = enable_spot
         # The name of the resource group.
         # 

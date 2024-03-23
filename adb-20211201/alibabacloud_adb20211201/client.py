@@ -3597,6 +3597,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbcluster_performance_with_options_async(request, runtime)
 
+    def describe_dbcluster_space_summary_with_options(
+        self,
+        request: adb_20211201_models.DescribeDBClusterSpaceSummaryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeDBClusterSpaceSummaryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterSpaceSummary',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeDBClusterSpaceSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbcluster_space_summary_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeDBClusterSpaceSummaryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeDBClusterSpaceSummaryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterSpaceSummary',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeDBClusterSpaceSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbcluster_space_summary(
+        self,
+        request: adb_20211201_models.DescribeDBClusterSpaceSummaryRequest,
+    ) -> adb_20211201_models.DescribeDBClusterSpaceSummaryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbcluster_space_summary_with_options(request, runtime)
+
+    async def describe_dbcluster_space_summary_async(
+        self,
+        request: adb_20211201_models.DescribeDBClusterSpaceSummaryRequest,
+    ) -> adb_20211201_models.DescribeDBClusterSpaceSummaryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbcluster_space_summary_with_options_async(request, runtime)
+
     def describe_dbcluster_status_with_options(
         self,
         request: adb_20211201_models.DescribeDBClusterStatusRequest,
