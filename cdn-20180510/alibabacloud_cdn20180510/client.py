@@ -16372,6 +16372,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.push_object_cache_with_options_async(request, runtime)
 
+    def refresh_object_cache_by_cache_tag_with_options(
+        self,
+        request: cdn_20180510_models.RefreshObjectCacheByCacheTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.RefreshObjectCacheByCacheTagResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cache_tag):
+            query['CacheTag'] = request.cache_tag
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RefreshObjectCacheByCacheTag',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.RefreshObjectCacheByCacheTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def refresh_object_cache_by_cache_tag_with_options_async(
+        self,
+        request: cdn_20180510_models.RefreshObjectCacheByCacheTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.RefreshObjectCacheByCacheTagResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cache_tag):
+            query['CacheTag'] = request.cache_tag
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RefreshObjectCacheByCacheTag',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.RefreshObjectCacheByCacheTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def refresh_object_cache_by_cache_tag(
+        self,
+        request: cdn_20180510_models.RefreshObjectCacheByCacheTagRequest,
+    ) -> cdn_20180510_models.RefreshObjectCacheByCacheTagResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.refresh_object_cache_by_cache_tag_with_options(request, runtime)
+
+    async def refresh_object_cache_by_cache_tag_async(
+        self,
+        request: cdn_20180510_models.RefreshObjectCacheByCacheTagRequest,
+    ) -> cdn_20180510_models.RefreshObjectCacheByCacheTagResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.refresh_object_cache_by_cache_tag_with_options_async(request, runtime)
+
     def refresh_object_caches_with_options(
         self,
         request: cdn_20180510_models.RefreshObjectCachesRequest,
