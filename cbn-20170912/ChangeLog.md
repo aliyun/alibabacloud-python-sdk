@@ -1,3 +1,11 @@
+2024-03-25 Version: 1.1.0
+- Support API CreateTransitRouterEcrAttachment.
+- Support API DeleteTransitRouterEcrAttachment.
+- Support API ListTransitRouterEcrAttachments.
+- Support API UpdateTransitRouterEcrAttachmentAttribute.
+- Update API DeleteTransitRouterVbrAttachment: update response param.
+
+
 2024-02-21 Version: 1.0.40
 - Update API DeleteTransitRouterVbrAttachment: update response param.
 

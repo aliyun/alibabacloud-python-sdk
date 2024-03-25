@@ -48,7 +48,7 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ActiveFlowLogResponse:
         """
         After you create a flow log, it is enabled by default. You can call this operation to enable a disabled flow log.
-        *   `ActiveFlowLog` is an asynchronous operation. After you send a request, the system returns a**request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
+        *   `ActiveFlowLog` is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
         *   If a flow log is in the **Modifying** state, the flow log is being enabled. In this case, you can query the flow log but cannot perform other operations.
         *   If a flow log is in the **Active** state, the flow log is enabled.
         
@@ -100,7 +100,7 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ActiveFlowLogResponse:
         """
         After you create a flow log, it is enabled by default. You can call this operation to enable a disabled flow log.
-        *   `ActiveFlowLog` is an asynchronous operation. After you send a request, the system returns a**request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
+        *   `ActiveFlowLog` is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
         *   If a flow log is in the **Modifying** state, the flow log is being enabled. In this case, you can query the flow log but cannot perform other operations.
         *   If a flow log is in the **Active** state, the flow log is enabled.
         
@@ -151,7 +151,7 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ActiveFlowLogResponse:
         """
         After you create a flow log, it is enabled by default. You can call this operation to enable a disabled flow log.
-        *   `ActiveFlowLog` is an asynchronous operation. After you send a request, the system returns a**request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
+        *   `ActiveFlowLog` is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
         *   If a flow log is in the **Modifying** state, the flow log is being enabled. In this case, you can query the flow log but cannot perform other operations.
         *   If a flow log is in the **Active** state, the flow log is enabled.
         
@@ -167,7 +167,7 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ActiveFlowLogResponse:
         """
         After you create a flow log, it is enabled by default. You can call this operation to enable a disabled flow log.
-        *   `ActiveFlowLog` is an asynchronous operation. After you send a request, the system returns a**request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
+        *   `ActiveFlowLog` is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
         *   If a flow log is in the **Modifying** state, the flow log is being enabled. In this case, you can query the flow log but cannot perform other operations.
         *   If a flow log is in the **Active** state, the flow log is enabled.
         
@@ -568,8 +568,8 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.AssociateTransitRouterAttachmentWithRouteTableResponse:
         """
         After you create a network instance connection on a transit router, you can configure an associated forwarding correlation to associate the network instance connection with the route table of an Enterprise Edition transit router. The Enterprise Edition transit router forwards traffic for the network instance based on the routes in the route table. Before you begin, we recommend that you take note of the following rules:
-        *   Only route tables of an Enterprise Edition transit router support associated forwarding correlations. For more information about the regions and zones that support Enterprise Edition transit routers, see [What is CEN?](~~181681~~)
-        *   Each network instance connection can have an associated forwarding correlation with one route tables of Enterprise Edition transit router.
+        *   Only route tables of Enterprise Edition transit routers support associated forwarding correlations. For more information about the regions and zones that support Enterprise Edition transit routers, see [What is CEN?](~~181681~~)
+        *   Each network instance connection can have an associated forwarding correlation with only one route table of only one Enterprise Edition transit router.
         *   **AssociateTransitRouterAttachmentWithRouteTable** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call the **ListTransitRouterRouteTableAssociations** operation to query the status of an associated forwarding correlation.
         *   If an associated forwarding correlation is in the **Associating** state, the associated forwarding correlation is being created. You can query the associated forwarding correlation but cannot perform other operations.
         *   If an associated forwarding correlation is in the **Active** state, the associated forwarding correlation is created.
@@ -622,8 +622,8 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.AssociateTransitRouterAttachmentWithRouteTableResponse:
         """
         After you create a network instance connection on a transit router, you can configure an associated forwarding correlation to associate the network instance connection with the route table of an Enterprise Edition transit router. The Enterprise Edition transit router forwards traffic for the network instance based on the routes in the route table. Before you begin, we recommend that you take note of the following rules:
-        *   Only route tables of an Enterprise Edition transit router support associated forwarding correlations. For more information about the regions and zones that support Enterprise Edition transit routers, see [What is CEN?](~~181681~~)
-        *   Each network instance connection can have an associated forwarding correlation with one route tables of Enterprise Edition transit router.
+        *   Only route tables of Enterprise Edition transit routers support associated forwarding correlations. For more information about the regions and zones that support Enterprise Edition transit routers, see [What is CEN?](~~181681~~)
+        *   Each network instance connection can have an associated forwarding correlation with only one route table of only one Enterprise Edition transit router.
         *   **AssociateTransitRouterAttachmentWithRouteTable** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call the **ListTransitRouterRouteTableAssociations** operation to query the status of an associated forwarding correlation.
         *   If an associated forwarding correlation is in the **Associating** state, the associated forwarding correlation is being created. You can query the associated forwarding correlation but cannot perform other operations.
         *   If an associated forwarding correlation is in the **Active** state, the associated forwarding correlation is created.
@@ -675,8 +675,8 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.AssociateTransitRouterAttachmentWithRouteTableResponse:
         """
         After you create a network instance connection on a transit router, you can configure an associated forwarding correlation to associate the network instance connection with the route table of an Enterprise Edition transit router. The Enterprise Edition transit router forwards traffic for the network instance based on the routes in the route table. Before you begin, we recommend that you take note of the following rules:
-        *   Only route tables of an Enterprise Edition transit router support associated forwarding correlations. For more information about the regions and zones that support Enterprise Edition transit routers, see [What is CEN?](~~181681~~)
-        *   Each network instance connection can have an associated forwarding correlation with one route tables of Enterprise Edition transit router.
+        *   Only route tables of Enterprise Edition transit routers support associated forwarding correlations. For more information about the regions and zones that support Enterprise Edition transit routers, see [What is CEN?](~~181681~~)
+        *   Each network instance connection can have an associated forwarding correlation with only one route table of only one Enterprise Edition transit router.
         *   **AssociateTransitRouterAttachmentWithRouteTable** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call the **ListTransitRouterRouteTableAssociations** operation to query the status of an associated forwarding correlation.
         *   If an associated forwarding correlation is in the **Associating** state, the associated forwarding correlation is being created. You can query the associated forwarding correlation but cannot perform other operations.
         *   If an associated forwarding correlation is in the **Active** state, the associated forwarding correlation is created.
@@ -693,8 +693,8 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.AssociateTransitRouterAttachmentWithRouteTableResponse:
         """
         After you create a network instance connection on a transit router, you can configure an associated forwarding correlation to associate the network instance connection with the route table of an Enterprise Edition transit router. The Enterprise Edition transit router forwards traffic for the network instance based on the routes in the route table. Before you begin, we recommend that you take note of the following rules:
-        *   Only route tables of an Enterprise Edition transit router support associated forwarding correlations. For more information about the regions and zones that support Enterprise Edition transit routers, see [What is CEN?](~~181681~~)
-        *   Each network instance connection can have an associated forwarding correlation with one route tables of Enterprise Edition transit router.
+        *   Only route tables of Enterprise Edition transit routers support associated forwarding correlations. For more information about the regions and zones that support Enterprise Edition transit routers, see [What is CEN?](~~181681~~)
+        *   Each network instance connection can have an associated forwarding correlation with only one route table of only one Enterprise Edition transit router.
         *   **AssociateTransitRouterAttachmentWithRouteTable** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call the **ListTransitRouterRouteTableAssociations** operation to query the status of an associated forwarding correlation.
         *   If an associated forwarding correlation is in the **Associating** state, the associated forwarding correlation is being created. You can query the associated forwarding correlation but cannot perform other operations.
         *   If an associated forwarding correlation is in the **Active** state, the associated forwarding correlation is created.
@@ -1039,9 +1039,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateCenResponse:
         """
-        *CreateCen** is an asynchronous operation. After you send a request, the system returns the CEN instance ID but the operation is still being performed in the system background. You can call **DescribeCens** to query the status of a CEN instance.
-        * If a CEN instance is in the **Creating** state, the CEN instance is being created. You can query the CEN instance but cannot perform other operations.
-        * If a CEN instance is in the **Active** state, the CEN instance is created.
+        *CreateCen** is an asynchronous operation. After you a request is sent, the system returns a request ID and runs the task in the background. You can call **DescribeCens** to query the status of the task.
+        *   If a CEN instance is in the **Creating** state, the CEN instance is being created. You can query the CEN instance but cannot perform other operations.
+        *   If a CEN instance is in the **Active** state, the CEN instance is created.
         
         @param request: CreateCenRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1092,9 +1092,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateCenResponse:
         """
-        *CreateCen** is an asynchronous operation. After you send a request, the system returns the CEN instance ID but the operation is still being performed in the system background. You can call **DescribeCens** to query the status of a CEN instance.
-        * If a CEN instance is in the **Creating** state, the CEN instance is being created. You can query the CEN instance but cannot perform other operations.
-        * If a CEN instance is in the **Active** state, the CEN instance is created.
+        *CreateCen** is an asynchronous operation. After you a request is sent, the system returns a request ID and runs the task in the background. You can call **DescribeCens** to query the status of the task.
+        *   If a CEN instance is in the **Creating** state, the CEN instance is being created. You can query the CEN instance but cannot perform other operations.
+        *   If a CEN instance is in the **Active** state, the CEN instance is created.
         
         @param request: CreateCenRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1144,9 +1144,9 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.CreateCenRequest,
     ) -> cbn_20170912_models.CreateCenResponse:
         """
-        *CreateCen** is an asynchronous operation. After you send a request, the system returns the CEN instance ID but the operation is still being performed in the system background. You can call **DescribeCens** to query the status of a CEN instance.
-        * If a CEN instance is in the **Creating** state, the CEN instance is being created. You can query the CEN instance but cannot perform other operations.
-        * If a CEN instance is in the **Active** state, the CEN instance is created.
+        *CreateCen** is an asynchronous operation. After you a request is sent, the system returns a request ID and runs the task in the background. You can call **DescribeCens** to query the status of the task.
+        *   If a CEN instance is in the **Creating** state, the CEN instance is being created. You can query the CEN instance but cannot perform other operations.
+        *   If a CEN instance is in the **Active** state, the CEN instance is created.
         
         @param request: CreateCenRequest
         @return: CreateCenResponse
@@ -1159,9 +1159,9 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.CreateCenRequest,
     ) -> cbn_20170912_models.CreateCenResponse:
         """
-        *CreateCen** is an asynchronous operation. After you send a request, the system returns the CEN instance ID but the operation is still being performed in the system background. You can call **DescribeCens** to query the status of a CEN instance.
-        * If a CEN instance is in the **Creating** state, the CEN instance is being created. You can query the CEN instance but cannot perform other operations.
-        * If a CEN instance is in the **Active** state, the CEN instance is created.
+        *CreateCen** is an asynchronous operation. After you a request is sent, the system returns a request ID and runs the task in the background. You can call **DescribeCens** to query the status of the task.
+        *   If a CEN instance is in the **Creating** state, the CEN instance is being created. You can query the CEN instance but cannot perform other operations.
+        *   If a CEN instance is in the **Active** state, the CEN instance is created.
         
         @param request: CreateCenRequest
         @return: CreateCenResponse
@@ -3009,6 +3009,128 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_transit_router_cidr_with_options_async(request, runtime)
 
+    def create_transit_router_ecr_attachment_with_options(
+        self,
+        request: cbn_20170912_models.CreateTransitRouterEcrAttachmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.CreateTransitRouterEcrAttachmentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ecr_id):
+            query['EcrId'] = request.ecr_id
+        if not UtilClient.is_unset(request.ecr_owner_id):
+            query['EcrOwnerId'] = request.ecr_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.transit_router_attachment_description):
+            query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
+        if not UtilClient.is_unset(request.transit_router_attachment_name):
+            query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTransitRouterEcrAttachment',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterEcrAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_transit_router_ecr_attachment_with_options_async(
+        self,
+        request: cbn_20170912_models.CreateTransitRouterEcrAttachmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.CreateTransitRouterEcrAttachmentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ecr_id):
+            query['EcrId'] = request.ecr_id
+        if not UtilClient.is_unset(request.ecr_owner_id):
+            query['EcrOwnerId'] = request.ecr_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.transit_router_attachment_description):
+            query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
+        if not UtilClient.is_unset(request.transit_router_attachment_name):
+            query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTransitRouterEcrAttachment',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterEcrAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_transit_router_ecr_attachment(
+        self,
+        request: cbn_20170912_models.CreateTransitRouterEcrAttachmentRequest,
+    ) -> cbn_20170912_models.CreateTransitRouterEcrAttachmentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_transit_router_ecr_attachment_with_options(request, runtime)
+
+    async def create_transit_router_ecr_attachment_async(
+        self,
+        request: cbn_20170912_models.CreateTransitRouterEcrAttachmentRequest,
+    ) -> cbn_20170912_models.CreateTransitRouterEcrAttachmentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_transit_router_ecr_attachment_with_options_async(request, runtime)
+
     def create_transit_router_multicast_domain_with_options(
         self,
         request: cbn_20170912_models.CreateTransitRouterMulticastDomainRequest,
@@ -3371,7 +3493,7 @@ class Client(OpenApiClient):
         *   A prefix list can be associated only with one route table of an Enterprise Edition.
         *   The CIDR blocks in the prefix list cannot overlap with those in the route table of the Enterprise Edition transit router. Otherwise, the prefix list fails to be associated with the route table.
         *   If the route table of an Enterprise Edition transit router needs to be associated with multiple prefix lists, make sure that the CIDR blocks in the prefix lists do not overlap. Otherwise, the route table fails to be associated with the prefix lists.
-        # Prerequisites
+        ### Prerequisites
         *   A prefix list is created. For more information, see [CreateVpcPrefixList](~~437367~~).
         *   The prefix list is shared with the Alibaba Cloud account that owns the Enterprise Edition transit router if the prefix list and the Enterprise Edition transit router belong to different Alibaba Cloud accounts. For more information about how to share a prefix list with another Alibaba Cloud account, see [Resource sharing overview](~~160622~~) and [API reference for resource sharing](~~193445~~).
         
@@ -3436,7 +3558,7 @@ class Client(OpenApiClient):
         *   A prefix list can be associated only with one route table of an Enterprise Edition.
         *   The CIDR blocks in the prefix list cannot overlap with those in the route table of the Enterprise Edition transit router. Otherwise, the prefix list fails to be associated with the route table.
         *   If the route table of an Enterprise Edition transit router needs to be associated with multiple prefix lists, make sure that the CIDR blocks in the prefix lists do not overlap. Otherwise, the route table fails to be associated with the prefix lists.
-        # Prerequisites
+        ### Prerequisites
         *   A prefix list is created. For more information, see [CreateVpcPrefixList](~~437367~~).
         *   The prefix list is shared with the Alibaba Cloud account that owns the Enterprise Edition transit router if the prefix list and the Enterprise Edition transit router belong to different Alibaba Cloud accounts. For more information about how to share a prefix list with another Alibaba Cloud account, see [Resource sharing overview](~~160622~~) and [API reference for resource sharing](~~193445~~).
         
@@ -3500,7 +3622,7 @@ class Client(OpenApiClient):
         *   A prefix list can be associated only with one route table of an Enterprise Edition.
         *   The CIDR blocks in the prefix list cannot overlap with those in the route table of the Enterprise Edition transit router. Otherwise, the prefix list fails to be associated with the route table.
         *   If the route table of an Enterprise Edition transit router needs to be associated with multiple prefix lists, make sure that the CIDR blocks in the prefix lists do not overlap. Otherwise, the route table fails to be associated with the prefix lists.
-        # Prerequisites
+        ### Prerequisites
         *   A prefix list is created. For more information, see [CreateVpcPrefixList](~~437367~~).
         *   The prefix list is shared with the Alibaba Cloud account that owns the Enterprise Edition transit router if the prefix list and the Enterprise Edition transit router belong to different Alibaba Cloud accounts. For more information about how to share a prefix list with another Alibaba Cloud account, see [Resource sharing overview](~~160622~~) and [API reference for resource sharing](~~193445~~).
         
@@ -3519,7 +3641,7 @@ class Client(OpenApiClient):
         *   A prefix list can be associated only with one route table of an Enterprise Edition.
         *   The CIDR blocks in the prefix list cannot overlap with those in the route table of the Enterprise Edition transit router. Otherwise, the prefix list fails to be associated with the route table.
         *   If the route table of an Enterprise Edition transit router needs to be associated with multiple prefix lists, make sure that the CIDR blocks in the prefix lists do not overlap. Otherwise, the route table fails to be associated with the prefix lists.
-        # Prerequisites
+        ### Prerequisites
         *   A prefix list is created. For more information, see [CreateVpcPrefixList](~~437367~~).
         *   The prefix list is shared with the Alibaba Cloud account that owns the Enterprise Edition transit router if the prefix list and the Enterprise Edition transit router belong to different Alibaba Cloud accounts. For more information about how to share a prefix list with another Alibaba Cloud account, see [Resource sharing overview](~~160622~~) and [API reference for resource sharing](~~193445~~).
         
@@ -5705,10 +5827,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.DeleteTrafficMarkingPolicyResponse:
         """
-        The **DeleteTrafficMarkingPolicy** operation is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call **ListTrafficMarkingPolicies** to query the status of a traffic marking policy.
-        *   If a traffic marking policy is in the **Deleting** state, the traffic marking policy is being deleted. You can query the traffic marking policy, but cannot perform other operations.
+        **DeleteTrafficMarkingPolicy** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call the **ListTrafficMarkingPolicies** operation to query the status of a traffic marking policy.
+        *   If a traffic marking policy is in the **Deleting** state, the traffic marking policy is being deleted. You can query the traffic marking policy but cannot perform other operations.
         *   If a traffic marking policy cannot be found, the traffic marking policy is deleted.
-        *   Before you delete a traffic marking policy, you must delete all traffic classification rules from the policy. For more information, see [RemoveTraficMatchRuleFromTrafficMarkingPolicy](~~419012~~).
+        *   Before you delete a traffic marking policy, you must delete all traffic classification rules from the policy. For more information, see [RemoveTrafficMatchRuleFromTrafficMarkingPolicy](~~468330~~).
         
         @param request: DeleteTrafficMarkingPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5755,10 +5877,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.DeleteTrafficMarkingPolicyResponse:
         """
-        The **DeleteTrafficMarkingPolicy** operation is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call **ListTrafficMarkingPolicies** to query the status of a traffic marking policy.
-        *   If a traffic marking policy is in the **Deleting** state, the traffic marking policy is being deleted. You can query the traffic marking policy, but cannot perform other operations.
+        **DeleteTrafficMarkingPolicy** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call the **ListTrafficMarkingPolicies** operation to query the status of a traffic marking policy.
+        *   If a traffic marking policy is in the **Deleting** state, the traffic marking policy is being deleted. You can query the traffic marking policy but cannot perform other operations.
         *   If a traffic marking policy cannot be found, the traffic marking policy is deleted.
-        *   Before you delete a traffic marking policy, you must delete all traffic classification rules from the policy. For more information, see [RemoveTraficMatchRuleFromTrafficMarkingPolicy](~~419012~~).
+        *   Before you delete a traffic marking policy, you must delete all traffic classification rules from the policy. For more information, see [RemoveTrafficMatchRuleFromTrafficMarkingPolicy](~~468330~~).
         
         @param request: DeleteTrafficMarkingPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5804,10 +5926,10 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.DeleteTrafficMarkingPolicyRequest,
     ) -> cbn_20170912_models.DeleteTrafficMarkingPolicyResponse:
         """
-        The **DeleteTrafficMarkingPolicy** operation is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call **ListTrafficMarkingPolicies** to query the status of a traffic marking policy.
-        *   If a traffic marking policy is in the **Deleting** state, the traffic marking policy is being deleted. You can query the traffic marking policy, but cannot perform other operations.
+        **DeleteTrafficMarkingPolicy** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call the **ListTrafficMarkingPolicies** operation to query the status of a traffic marking policy.
+        *   If a traffic marking policy is in the **Deleting** state, the traffic marking policy is being deleted. You can query the traffic marking policy but cannot perform other operations.
         *   If a traffic marking policy cannot be found, the traffic marking policy is deleted.
-        *   Before you delete a traffic marking policy, you must delete all traffic classification rules from the policy. For more information, see [RemoveTraficMatchRuleFromTrafficMarkingPolicy](~~419012~~).
+        *   Before you delete a traffic marking policy, you must delete all traffic classification rules from the policy. For more information, see [RemoveTrafficMatchRuleFromTrafficMarkingPolicy](~~468330~~).
         
         @param request: DeleteTrafficMarkingPolicyRequest
         @return: DeleteTrafficMarkingPolicyResponse
@@ -5820,10 +5942,10 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.DeleteTrafficMarkingPolicyRequest,
     ) -> cbn_20170912_models.DeleteTrafficMarkingPolicyResponse:
         """
-        The **DeleteTrafficMarkingPolicy** operation is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call **ListTrafficMarkingPolicies** to query the status of a traffic marking policy.
-        *   If a traffic marking policy is in the **Deleting** state, the traffic marking policy is being deleted. You can query the traffic marking policy, but cannot perform other operations.
+        **DeleteTrafficMarkingPolicy** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call the **ListTrafficMarkingPolicies** operation to query the status of a traffic marking policy.
+        *   If a traffic marking policy is in the **Deleting** state, the traffic marking policy is being deleted. You can query the traffic marking policy but cannot perform other operations.
         *   If a traffic marking policy cannot be found, the traffic marking policy is deleted.
-        *   Before you delete a traffic marking policy, you must delete all traffic classification rules from the policy. For more information, see [RemoveTraficMatchRuleFromTrafficMarkingPolicy](~~419012~~).
+        *   Before you delete a traffic marking policy, you must delete all traffic classification rules from the policy. For more information, see [RemoveTrafficMatchRuleFromTrafficMarkingPolicy](~~468330~~).
         
         @param request: DeleteTrafficMarkingPolicyRequest
         @return: DeleteTrafficMarkingPolicyResponse
@@ -6255,6 +6377,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_transit_router_cidr_with_options_async(request, runtime)
 
+    def delete_transit_router_ecr_attachment_with_options(
+        self,
+        request: cbn_20170912_models.DeleteTransitRouterEcrAttachmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.DeleteTransitRouterEcrAttachmentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTransitRouterEcrAttachment',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterEcrAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_transit_router_ecr_attachment_with_options_async(
+        self,
+        request: cbn_20170912_models.DeleteTransitRouterEcrAttachmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.DeleteTransitRouterEcrAttachmentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTransitRouterEcrAttachment',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterEcrAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_transit_router_ecr_attachment(
+        self,
+        request: cbn_20170912_models.DeleteTransitRouterEcrAttachmentRequest,
+    ) -> cbn_20170912_models.DeleteTransitRouterEcrAttachmentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_transit_router_ecr_attachment_with_options(request, runtime)
+
+    async def delete_transit_router_ecr_attachment_async(
+        self,
+        request: cbn_20170912_models.DeleteTransitRouterEcrAttachmentRequest,
+    ) -> cbn_20170912_models.DeleteTransitRouterEcrAttachmentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_transit_router_ecr_attachment_with_options_async(request, runtime)
+
     def delete_transit_router_multicast_domain_with_options(
         self,
         request: cbn_20170912_models.DeleteTransitRouterMulticastDomainRequest,
@@ -6265,6 +6485,7 @@ class Client(OpenApiClient):
         *   The multicast domain is disassociated from all vSwitches. For more information, see [DisassociateTransitRouterMulticastDomain](~~429774~~).
         *   All multicast sources and members are removed from the multicast domain. For more information, see [DeregisterTransitRouterMulticastGroupSources](~~429776~~) and [DeregisterTransitRouterMulticastGroupMembers](~~429779~~).
         *   The multicast domain is not added to other multicast domains as a multicast member. If the multicast domain is added to another multicast domain as a multicast member, you must remove the multicast domain from the other multicast domain. For more information, see [DeregisterTransitRouterMulticastGroupMembers](~~429779~~).
+        *   Make sure all the request parameters are valid. If a request parameter is invalid, a request ID is returned after you call the operation, but the multicast domain is not deleted.
         
         @param request: DeleteTransitRouterMulticastDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6315,6 +6536,7 @@ class Client(OpenApiClient):
         *   The multicast domain is disassociated from all vSwitches. For more information, see [DisassociateTransitRouterMulticastDomain](~~429774~~).
         *   All multicast sources and members are removed from the multicast domain. For more information, see [DeregisterTransitRouterMulticastGroupSources](~~429776~~) and [DeregisterTransitRouterMulticastGroupMembers](~~429779~~).
         *   The multicast domain is not added to other multicast domains as a multicast member. If the multicast domain is added to another multicast domain as a multicast member, you must remove the multicast domain from the other multicast domain. For more information, see [DeregisterTransitRouterMulticastGroupMembers](~~429779~~).
+        *   Make sure all the request parameters are valid. If a request parameter is invalid, a request ID is returned after you call the operation, but the multicast domain is not deleted.
         
         @param request: DeleteTransitRouterMulticastDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6364,6 +6586,7 @@ class Client(OpenApiClient):
         *   The multicast domain is disassociated from all vSwitches. For more information, see [DisassociateTransitRouterMulticastDomain](~~429774~~).
         *   All multicast sources and members are removed from the multicast domain. For more information, see [DeregisterTransitRouterMulticastGroupSources](~~429776~~) and [DeregisterTransitRouterMulticastGroupMembers](~~429779~~).
         *   The multicast domain is not added to other multicast domains as a multicast member. If the multicast domain is added to another multicast domain as a multicast member, you must remove the multicast domain from the other multicast domain. For more information, see [DeregisterTransitRouterMulticastGroupMembers](~~429779~~).
+        *   Make sure all the request parameters are valid. If a request parameter is invalid, a request ID is returned after you call the operation, but the multicast domain is not deleted.
         
         @param request: DeleteTransitRouterMulticastDomainRequest
         @return: DeleteTransitRouterMulticastDomainResponse
@@ -6380,6 +6603,7 @@ class Client(OpenApiClient):
         *   The multicast domain is disassociated from all vSwitches. For more information, see [DisassociateTransitRouterMulticastDomain](~~429774~~).
         *   All multicast sources and members are removed from the multicast domain. For more information, see [DeregisterTransitRouterMulticastGroupSources](~~429776~~) and [DeregisterTransitRouterMulticastGroupMembers](~~429779~~).
         *   The multicast domain is not added to other multicast domains as a multicast member. If the multicast domain is added to another multicast domain as a multicast member, you must remove the multicast domain from the other multicast domain. For more information, see [DeregisterTransitRouterMulticastGroupMembers](~~429779~~).
+        *   Make sure all the request parameters are valid. If a request parameter is invalid, a request ID is returned after you call the operation, but the multicast domain is not deleted.
         
         @param request: DeleteTransitRouterMulticastDomainRequest
         @return: DeleteTransitRouterMulticastDomainResponse
@@ -6553,7 +6777,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.DeleteTransitRouterPrefixListAssociationResponse:
         """
-        # Usage notes
         After you disassociate a route table of an Enterprise Edition transit router from a prefix list, the routes that point to the CIDR blocks in the prefix list are automatically withdrawn from the route table. Before you disassociate the route table of an Enterprise Edition transit router from a prefix list, you must migrate workloads that use the routes in case services are interrupted.
         
         @param request: DeleteTransitRouterPrefixListAssociationRequest
@@ -6611,7 +6834,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.DeleteTransitRouterPrefixListAssociationResponse:
         """
-        # Usage notes
         After you disassociate a route table of an Enterprise Edition transit router from a prefix list, the routes that point to the CIDR blocks in the prefix list are automatically withdrawn from the route table. Before you disassociate the route table of an Enterprise Edition transit router from a prefix list, you must migrate workloads that use the routes in case services are interrupted.
         
         @param request: DeleteTransitRouterPrefixListAssociationRequest
@@ -6668,7 +6890,6 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.DeleteTransitRouterPrefixListAssociationRequest,
     ) -> cbn_20170912_models.DeleteTransitRouterPrefixListAssociationResponse:
         """
-        # Usage notes
         After you disassociate a route table of an Enterprise Edition transit router from a prefix list, the routes that point to the CIDR blocks in the prefix list are automatically withdrawn from the route table. Before you disassociate the route table of an Enterprise Edition transit router from a prefix list, you must migrate workloads that use the routes in case services are interrupted.
         
         @param request: DeleteTransitRouterPrefixListAssociationRequest
@@ -6682,7 +6903,6 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.DeleteTransitRouterPrefixListAssociationRequest,
     ) -> cbn_20170912_models.DeleteTransitRouterPrefixListAssociationResponse:
         """
-        # Usage notes
         After you disassociate a route table of an Enterprise Edition transit router from a prefix list, the routes that point to the CIDR blocks in the prefix list are automatically withdrawn from the route table. Before you disassociate the route table of an Enterprise Edition transit router from a prefix list, you must migrate workloads that use the routes in case services are interrupted.
         
         @param request: DeleteTransitRouterPrefixListAssociationRequest
@@ -7453,7 +7673,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.DeregisterTransitRouterMulticastGroupMembersResponse:
         """
-        `RegisterTransitRouterMulticastGroupMembers` is an asynchronous operation. After you send a request, the system returns a *request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast member.
+        `DeregisterTransitRouterMulticastGroupMembers` is an asynchronous operation. After you send a request, the system returns a *request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast member.
         *   If a multicast member is in the **Deregistering** state, the multicast member is being removed. In this case, you can query the multicast member but cannot perform other operations.
         *   If a multicast member cannot be found, the multicast member is removed from the multicast group.``
         
@@ -7508,7 +7728,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.DeregisterTransitRouterMulticastGroupMembersResponse:
         """
-        `RegisterTransitRouterMulticastGroupMembers` is an asynchronous operation. After you send a request, the system returns a *request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast member.
+        `DeregisterTransitRouterMulticastGroupMembers` is an asynchronous operation. After you send a request, the system returns a *request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast member.
         *   If a multicast member is in the **Deregistering** state, the multicast member is being removed. In this case, you can query the multicast member but cannot perform other operations.
         *   If a multicast member cannot be found, the multicast member is removed from the multicast group.``
         
@@ -7562,7 +7782,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.DeregisterTransitRouterMulticastGroupMembersRequest,
     ) -> cbn_20170912_models.DeregisterTransitRouterMulticastGroupMembersResponse:
         """
-        `RegisterTransitRouterMulticastGroupMembers` is an asynchronous operation. After you send a request, the system returns a *request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast member.
+        `DeregisterTransitRouterMulticastGroupMembers` is an asynchronous operation. After you send a request, the system returns a *request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast member.
         *   If a multicast member is in the **Deregistering** state, the multicast member is being removed. In this case, you can query the multicast member but cannot perform other operations.
         *   If a multicast member cannot be found, the multicast member is removed from the multicast group.``
         
@@ -7577,7 +7797,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.DeregisterTransitRouterMulticastGroupMembersRequest,
     ) -> cbn_20170912_models.DeregisterTransitRouterMulticastGroupMembersResponse:
         """
-        `RegisterTransitRouterMulticastGroupMembers` is an asynchronous operation. After you send a request, the system returns a *request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast member.
+        `DeregisterTransitRouterMulticastGroupMembers` is an asynchronous operation. After you send a request, the system returns a *request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast member.
         *   If a multicast member is in the **Deregistering** state, the multicast member is being removed. In this case, you can query the multicast member but cannot perform other operations.
         *   If a multicast member cannot be found, the multicast member is removed from the multicast group.``
         
@@ -7593,9 +7813,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.DeregisterTransitRouterMulticastGroupSourcesResponse:
         """
-        `DeregisterTransitRouterMulticastGroupSources` is an asynchronous operation. After you send a request, the system returns a *request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast source.
+        `DeregisterTransitRouterMulticastGroupSources` is an asynchronous operation. After a request a sent, the system returns a *request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast source.
         *   If a multicast source is in the **Deregistering** state, the multicast source is being deleted. You can query the multicast source but cannot perform other operations.
         *   If a multicast source cannot be found, the multicast source is deleted.
+        Before you call DeregisterTransitRouterMulticastGroupSources, make sure that all the request parameters are valid. If a request parameter is invalid, a request ID is returned but the multicast source is not deleted.
         
         @param request: DeregisterTransitRouterMulticastGroupSourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7646,9 +7867,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.DeregisterTransitRouterMulticastGroupSourcesResponse:
         """
-        `DeregisterTransitRouterMulticastGroupSources` is an asynchronous operation. After you send a request, the system returns a *request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast source.
+        `DeregisterTransitRouterMulticastGroupSources` is an asynchronous operation. After a request a sent, the system returns a *request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast source.
         *   If a multicast source is in the **Deregistering** state, the multicast source is being deleted. You can query the multicast source but cannot perform other operations.
         *   If a multicast source cannot be found, the multicast source is deleted.
+        Before you call DeregisterTransitRouterMulticastGroupSources, make sure that all the request parameters are valid. If a request parameter is invalid, a request ID is returned but the multicast source is not deleted.
         
         @param request: DeregisterTransitRouterMulticastGroupSourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7698,9 +7920,10 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.DeregisterTransitRouterMulticastGroupSourcesRequest,
     ) -> cbn_20170912_models.DeregisterTransitRouterMulticastGroupSourcesResponse:
         """
-        `DeregisterTransitRouterMulticastGroupSources` is an asynchronous operation. After you send a request, the system returns a *request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast source.
+        `DeregisterTransitRouterMulticastGroupSources` is an asynchronous operation. After a request a sent, the system returns a *request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast source.
         *   If a multicast source is in the **Deregistering** state, the multicast source is being deleted. You can query the multicast source but cannot perform other operations.
         *   If a multicast source cannot be found, the multicast source is deleted.
+        Before you call DeregisterTransitRouterMulticastGroupSources, make sure that all the request parameters are valid. If a request parameter is invalid, a request ID is returned but the multicast source is not deleted.
         
         @param request: DeregisterTransitRouterMulticastGroupSourcesRequest
         @return: DeregisterTransitRouterMulticastGroupSourcesResponse
@@ -7713,9 +7936,10 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.DeregisterTransitRouterMulticastGroupSourcesRequest,
     ) -> cbn_20170912_models.DeregisterTransitRouterMulticastGroupSourcesResponse:
         """
-        `DeregisterTransitRouterMulticastGroupSources` is an asynchronous operation. After you send a request, the system returns a *request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast source.
+        `DeregisterTransitRouterMulticastGroupSources` is an asynchronous operation. After a request a sent, the system returns a *request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast source.
         *   If a multicast source is in the **Deregistering** state, the multicast source is being deleted. You can query the multicast source but cannot perform other operations.
         *   If a multicast source cannot be found, the multicast source is deleted.
+        Before you call DeregisterTransitRouterMulticastGroupSources, make sure that all the request parameters are valid. If a request parameter is invalid, a request ID is returned but the multicast source is not deleted.
         
         @param request: DeregisterTransitRouterMulticastGroupSourcesRequest
         @return: DeregisterTransitRouterMulticastGroupSourcesResponse
@@ -9334,6 +9558,13 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.DescribeGrantRulesToCenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.DescribeGrantRulesToCenResponse:
+        """
+        Before you call the *DescribeGrantRulesToCen** operation, make sure that all request parameters are valid. If a request parameter is invalid, a **request ID** is returned, but the network instances are not returned.
+        
+        @param request: DescribeGrantRulesToCenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGrantRulesToCenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cen_id):
@@ -9382,6 +9613,13 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.DescribeGrantRulesToCenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.DescribeGrantRulesToCenResponse:
+        """
+        Before you call the *DescribeGrantRulesToCen** operation, make sure that all request parameters are valid. If a request parameter is invalid, a **request ID** is returned, but the network instances are not returned.
+        
+        @param request: DescribeGrantRulesToCenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGrantRulesToCenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cen_id):
@@ -9429,6 +9667,12 @@ class Client(OpenApiClient):
         self,
         request: cbn_20170912_models.DescribeGrantRulesToCenRequest,
     ) -> cbn_20170912_models.DescribeGrantRulesToCenResponse:
+        """
+        Before you call the *DescribeGrantRulesToCen** operation, make sure that all request parameters are valid. If a request parameter is invalid, a **request ID** is returned, but the network instances are not returned.
+        
+        @param request: DescribeGrantRulesToCenRequest
+        @return: DescribeGrantRulesToCenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_grant_rules_to_cen_with_options(request, runtime)
 
@@ -9436,6 +9680,12 @@ class Client(OpenApiClient):
         self,
         request: cbn_20170912_models.DescribeGrantRulesToCenRequest,
     ) -> cbn_20170912_models.DescribeGrantRulesToCenResponse:
+        """
+        Before you call the *DescribeGrantRulesToCen** operation, make sure that all request parameters are valid. If a request parameter is invalid, a **request ID** is returned, but the network instances are not returned.
+        
+        @param request: DescribeGrantRulesToCenRequest
+        @return: DescribeGrantRulesToCenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_grant_rules_to_cen_with_options_async(request, runtime)
 
@@ -11946,6 +12196,16 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ListTrafficMarkingPoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ListTrafficMarkingPoliciesResponse:
+        """
+        Take note of the following rules when you call the *ListTrafficMarkingPolicies** operation:
+        *   If you do not specify a traffic marking policy ID in the **TrafficMarkingPolicyId** parameter, the system returns the information about the traffic marking policies based on the **TransitRouterId**, **TrafficMarkingPolicyName**, and **TrafficMarkingPolicyDescription** parameters. The information about the traffic classification rules in the policies is not returned. The **TrafficMatchRules** parameter is not included in the response.
+        *   If you specify a traffic marking policy ID in the **TrafficMarkingPolicyId** parameter, this operation returns the information about the traffic marking policy and the traffic classification rules. The **TrafficMatchRules** parameter is included in the response.
+        If the **TrafficMatchRules** parameter contains an empty array, it indicates that the traffic marking policy does not contain a traffic classification rule.
+        
+        @param request: ListTrafficMarkingPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTrafficMarkingPoliciesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -11992,6 +12252,16 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ListTrafficMarkingPoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ListTrafficMarkingPoliciesResponse:
+        """
+        Take note of the following rules when you call the *ListTrafficMarkingPolicies** operation:
+        *   If you do not specify a traffic marking policy ID in the **TrafficMarkingPolicyId** parameter, the system returns the information about the traffic marking policies based on the **TransitRouterId**, **TrafficMarkingPolicyName**, and **TrafficMarkingPolicyDescription** parameters. The information about the traffic classification rules in the policies is not returned. The **TrafficMatchRules** parameter is not included in the response.
+        *   If you specify a traffic marking policy ID in the **TrafficMarkingPolicyId** parameter, this operation returns the information about the traffic marking policy and the traffic classification rules. The **TrafficMatchRules** parameter is included in the response.
+        If the **TrafficMatchRules** parameter contains an empty array, it indicates that the traffic marking policy does not contain a traffic classification rule.
+        
+        @param request: ListTrafficMarkingPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTrafficMarkingPoliciesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -12037,6 +12307,15 @@ class Client(OpenApiClient):
         self,
         request: cbn_20170912_models.ListTrafficMarkingPoliciesRequest,
     ) -> cbn_20170912_models.ListTrafficMarkingPoliciesResponse:
+        """
+        Take note of the following rules when you call the *ListTrafficMarkingPolicies** operation:
+        *   If you do not specify a traffic marking policy ID in the **TrafficMarkingPolicyId** parameter, the system returns the information about the traffic marking policies based on the **TransitRouterId**, **TrafficMarkingPolicyName**, and **TrafficMarkingPolicyDescription** parameters. The information about the traffic classification rules in the policies is not returned. The **TrafficMatchRules** parameter is not included in the response.
+        *   If you specify a traffic marking policy ID in the **TrafficMarkingPolicyId** parameter, this operation returns the information about the traffic marking policy and the traffic classification rules. The **TrafficMatchRules** parameter is included in the response.
+        If the **TrafficMatchRules** parameter contains an empty array, it indicates that the traffic marking policy does not contain a traffic classification rule.
+        
+        @param request: ListTrafficMarkingPoliciesRequest
+        @return: ListTrafficMarkingPoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_traffic_marking_policies_with_options(request, runtime)
 
@@ -12044,6 +12323,15 @@ class Client(OpenApiClient):
         self,
         request: cbn_20170912_models.ListTrafficMarkingPoliciesRequest,
     ) -> cbn_20170912_models.ListTrafficMarkingPoliciesResponse:
+        """
+        Take note of the following rules when you call the *ListTrafficMarkingPolicies** operation:
+        *   If you do not specify a traffic marking policy ID in the **TrafficMarkingPolicyId** parameter, the system returns the information about the traffic marking policies based on the **TransitRouterId**, **TrafficMarkingPolicyName**, and **TrafficMarkingPolicyDescription** parameters. The information about the traffic classification rules in the policies is not returned. The **TrafficMatchRules** parameter is not included in the response.
+        *   If you specify a traffic marking policy ID in the **TrafficMarkingPolicyId** parameter, this operation returns the information about the traffic marking policy and the traffic classification rules. The **TrafficMatchRules** parameter is included in the response.
+        If the **TrafficMatchRules** parameter contains an empty array, it indicates that the traffic marking policy does not contain a traffic classification rule.
+        
+        @param request: ListTrafficMarkingPoliciesRequest
+        @return: ListTrafficMarkingPoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_traffic_marking_policies_with_options_async(request, runtime)
 
@@ -12419,14 +12707,124 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_transit_router_cidr_allocation_with_options_async(request, runtime)
 
+    def list_transit_router_ecr_attachments_with_options(
+        self,
+        request: cbn_20170912_models.ListTransitRouterEcrAttachmentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.ListTransitRouterEcrAttachmentsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTransitRouterEcrAttachments',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterEcrAttachmentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_transit_router_ecr_attachments_with_options_async(
+        self,
+        request: cbn_20170912_models.ListTransitRouterEcrAttachmentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.ListTransitRouterEcrAttachmentsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTransitRouterEcrAttachments',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterEcrAttachmentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_transit_router_ecr_attachments(
+        self,
+        request: cbn_20170912_models.ListTransitRouterEcrAttachmentsRequest,
+    ) -> cbn_20170912_models.ListTransitRouterEcrAttachmentsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_transit_router_ecr_attachments_with_options(request, runtime)
+
+    async def list_transit_router_ecr_attachments_async(
+        self,
+        request: cbn_20170912_models.ListTransitRouterEcrAttachmentsRequest,
+    ) -> cbn_20170912_models.ListTransitRouterEcrAttachmentsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_transit_router_ecr_attachments_with_options_async(request, runtime)
+
     def list_transit_router_multicast_domain_associations_with_options(
         self,
         request: cbn_20170912_models.ListTransitRouterMulticastDomainAssociationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ListTransitRouterMulticastDomainAssociationsResponse:
         """
-        ## Usage notes
-        Multicast domains can be associated only with vSwitches that are in VPCs. You can call the **ListTransitRouterMulticastDomainAssociations** operation to query whether vSwitches in VPCs are associated with a specified multicast domain.
+        You must set at least **TransitRouterMulticastDomainId** and **TransitRouterAttachmentId**. If you set **TransitRouterAttachmentId**, the information about the vSwitches in a virtual private cloud (VPC) that are associated with a multicast domain is returned. If you set **TransitRouterMulticastDomainId**, the information about the vSwitches that are associated with a multicast domain is returned.
+        *   Before you call **ListTransitRouterMulticastDomainAssociations**, make sure that all the request parameters are valid. If a request parameter is invalid, the system returns a **request ID** but does not return the vSwitches that are associated with the multicast domain.
         
         @param request: ListTransitRouterMulticastDomainAssociationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12483,8 +12881,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ListTransitRouterMulticastDomainAssociationsResponse:
         """
-        ## Usage notes
-        Multicast domains can be associated only with vSwitches that are in VPCs. You can call the **ListTransitRouterMulticastDomainAssociations** operation to query whether vSwitches in VPCs are associated with a specified multicast domain.
+        You must set at least **TransitRouterMulticastDomainId** and **TransitRouterAttachmentId**. If you set **TransitRouterAttachmentId**, the information about the vSwitches in a virtual private cloud (VPC) that are associated with a multicast domain is returned. If you set **TransitRouterMulticastDomainId**, the information about the vSwitches that are associated with a multicast domain is returned.
+        *   Before you call **ListTransitRouterMulticastDomainAssociations**, make sure that all the request parameters are valid. If a request parameter is invalid, the system returns a **request ID** but does not return the vSwitches that are associated with the multicast domain.
         
         @param request: ListTransitRouterMulticastDomainAssociationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12540,8 +12938,8 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ListTransitRouterMulticastDomainAssociationsRequest,
     ) -> cbn_20170912_models.ListTransitRouterMulticastDomainAssociationsResponse:
         """
-        ## Usage notes
-        Multicast domains can be associated only with vSwitches that are in VPCs. You can call the **ListTransitRouterMulticastDomainAssociations** operation to query whether vSwitches in VPCs are associated with a specified multicast domain.
+        You must set at least **TransitRouterMulticastDomainId** and **TransitRouterAttachmentId**. If you set **TransitRouterAttachmentId**, the information about the vSwitches in a virtual private cloud (VPC) that are associated with a multicast domain is returned. If you set **TransitRouterMulticastDomainId**, the information about the vSwitches that are associated with a multicast domain is returned.
+        *   Before you call **ListTransitRouterMulticastDomainAssociations**, make sure that all the request parameters are valid. If a request parameter is invalid, the system returns a **request ID** but does not return the vSwitches that are associated with the multicast domain.
         
         @param request: ListTransitRouterMulticastDomainAssociationsRequest
         @return: ListTransitRouterMulticastDomainAssociationsResponse
@@ -12554,8 +12952,8 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ListTransitRouterMulticastDomainAssociationsRequest,
     ) -> cbn_20170912_models.ListTransitRouterMulticastDomainAssociationsResponse:
         """
-        ## Usage notes
-        Multicast domains can be associated only with vSwitches that are in VPCs. You can call the **ListTransitRouterMulticastDomainAssociations** operation to query whether vSwitches in VPCs are associated with a specified multicast domain.
+        You must set at least **TransitRouterMulticastDomainId** and **TransitRouterAttachmentId**. If you set **TransitRouterAttachmentId**, the information about the vSwitches in a virtual private cloud (VPC) that are associated with a multicast domain is returned. If you set **TransitRouterMulticastDomainId**, the information about the vSwitches that are associated with a multicast domain is returned.
+        *   Before you call **ListTransitRouterMulticastDomainAssociations**, make sure that all the request parameters are valid. If a request parameter is invalid, the system returns a **request ID** but does not return the vSwitches that are associated with the multicast domain.
         
         @param request: ListTransitRouterMulticastDomainAssociationsRequest
         @return: ListTransitRouterMulticastDomainAssociationsResponse
@@ -15841,7 +16239,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.RegisterTransitRouterMulticastGroupMembersResponse:
         """
-        The ID of the request.
+        Enterprise Edition transit routers allow you to specify elastic network interfaces (ENIs) as multicast members. You can call the `RegisterTransitRouterMulticastGroupMembers` operation to add ENIs in the same region or in different regions to a multicast group as multicast members.
+        *   If you specify a value for **NetworkInterfaceIds**, ENIs in the current region are specified as multicast members. Make sure that the vSwitches of the ENIs are associated with the multicast domain. For more information, see [AssociateTransitRouterMulticastDomain](~~429778~~).
+        *   If you specify a value for **PeerTransitRouterMulticastDomains**, multicast members in the multicast group that has the same IP address as the current multicast group but is in a different region are added to the current multicast group. Make sure that an inter-region connection is created. For more information, see [CreateTransitRouterPeerAttachment](~~261363~~).
+        For example, Alice created a multicast domain (Domain A) in the Australia (Sydney) region and a multicast domain (Domain B) in the UK (London) region. Domain A contains a multicast group (Group A), and Domain B contains a multicast group (Group B). Group A and Group B have the same multicast IP address. Group B in UK (London) contains a multicast member (Member B). When Alice calls the `RegisterTransitRouterMulticastGroupMembers` operation, if she sets **PeerTransitRouterMulticastDomains** to the ID of Member B in Group B that is in the UK (London) region, Member B is added to Group A in the Australia (Sydney) region.
+        *   The `RegisterTransitRouterMulticastGroupMembers` operation is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast member.
+        *   If a multicast member is in the **Registering** state, the multicast member is being added. You can query the multicast member but cannot perform other operations.
+        *   If a multicast member is in the **Registered** state, the multicast member is added.
         
         @param request: RegisterTransitRouterMulticastGroupMembersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15896,7 +16300,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.RegisterTransitRouterMulticastGroupMembersResponse:
         """
-        The ID of the request.
+        Enterprise Edition transit routers allow you to specify elastic network interfaces (ENIs) as multicast members. You can call the `RegisterTransitRouterMulticastGroupMembers` operation to add ENIs in the same region or in different regions to a multicast group as multicast members.
+        *   If you specify a value for **NetworkInterfaceIds**, ENIs in the current region are specified as multicast members. Make sure that the vSwitches of the ENIs are associated with the multicast domain. For more information, see [AssociateTransitRouterMulticastDomain](~~429778~~).
+        *   If you specify a value for **PeerTransitRouterMulticastDomains**, multicast members in the multicast group that has the same IP address as the current multicast group but is in a different region are added to the current multicast group. Make sure that an inter-region connection is created. For more information, see [CreateTransitRouterPeerAttachment](~~261363~~).
+        For example, Alice created a multicast domain (Domain A) in the Australia (Sydney) region and a multicast domain (Domain B) in the UK (London) region. Domain A contains a multicast group (Group A), and Domain B contains a multicast group (Group B). Group A and Group B have the same multicast IP address. Group B in UK (London) contains a multicast member (Member B). When Alice calls the `RegisterTransitRouterMulticastGroupMembers` operation, if she sets **PeerTransitRouterMulticastDomains** to the ID of Member B in Group B that is in the UK (London) region, Member B is added to Group A in the Australia (Sydney) region.
+        *   The `RegisterTransitRouterMulticastGroupMembers` operation is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast member.
+        *   If a multicast member is in the **Registering** state, the multicast member is being added. You can query the multicast member but cannot perform other operations.
+        *   If a multicast member is in the **Registered** state, the multicast member is added.
         
         @param request: RegisterTransitRouterMulticastGroupMembersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15950,7 +16360,13 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.RegisterTransitRouterMulticastGroupMembersRequest,
     ) -> cbn_20170912_models.RegisterTransitRouterMulticastGroupMembersResponse:
         """
-        The ID of the request.
+        Enterprise Edition transit routers allow you to specify elastic network interfaces (ENIs) as multicast members. You can call the `RegisterTransitRouterMulticastGroupMembers` operation to add ENIs in the same region or in different regions to a multicast group as multicast members.
+        *   If you specify a value for **NetworkInterfaceIds**, ENIs in the current region are specified as multicast members. Make sure that the vSwitches of the ENIs are associated with the multicast domain. For more information, see [AssociateTransitRouterMulticastDomain](~~429778~~).
+        *   If you specify a value for **PeerTransitRouterMulticastDomains**, multicast members in the multicast group that has the same IP address as the current multicast group but is in a different region are added to the current multicast group. Make sure that an inter-region connection is created. For more information, see [CreateTransitRouterPeerAttachment](~~261363~~).
+        For example, Alice created a multicast domain (Domain A) in the Australia (Sydney) region and a multicast domain (Domain B) in the UK (London) region. Domain A contains a multicast group (Group A), and Domain B contains a multicast group (Group B). Group A and Group B have the same multicast IP address. Group B in UK (London) contains a multicast member (Member B). When Alice calls the `RegisterTransitRouterMulticastGroupMembers` operation, if she sets **PeerTransitRouterMulticastDomains** to the ID of Member B in Group B that is in the UK (London) region, Member B is added to Group A in the Australia (Sydney) region.
+        *   The `RegisterTransitRouterMulticastGroupMembers` operation is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast member.
+        *   If a multicast member is in the **Registering** state, the multicast member is being added. You can query the multicast member but cannot perform other operations.
+        *   If a multicast member is in the **Registered** state, the multicast member is added.
         
         @param request: RegisterTransitRouterMulticastGroupMembersRequest
         @return: RegisterTransitRouterMulticastGroupMembersResponse
@@ -15963,7 +16379,13 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.RegisterTransitRouterMulticastGroupMembersRequest,
     ) -> cbn_20170912_models.RegisterTransitRouterMulticastGroupMembersResponse:
         """
-        The ID of the request.
+        Enterprise Edition transit routers allow you to specify elastic network interfaces (ENIs) as multicast members. You can call the `RegisterTransitRouterMulticastGroupMembers` operation to add ENIs in the same region or in different regions to a multicast group as multicast members.
+        *   If you specify a value for **NetworkInterfaceIds**, ENIs in the current region are specified as multicast members. Make sure that the vSwitches of the ENIs are associated with the multicast domain. For more information, see [AssociateTransitRouterMulticastDomain](~~429778~~).
+        *   If you specify a value for **PeerTransitRouterMulticastDomains**, multicast members in the multicast group that has the same IP address as the current multicast group but is in a different region are added to the current multicast group. Make sure that an inter-region connection is created. For more information, see [CreateTransitRouterPeerAttachment](~~261363~~).
+        For example, Alice created a multicast domain (Domain A) in the Australia (Sydney) region and a multicast domain (Domain B) in the UK (London) region. Domain A contains a multicast group (Group A), and Domain B contains a multicast group (Group B). Group A and Group B have the same multicast IP address. Group B in UK (London) contains a multicast member (Member B). When Alice calls the `RegisterTransitRouterMulticastGroupMembers` operation, if she sets **PeerTransitRouterMulticastDomains** to the ID of Member B in Group B that is in the UK (London) region, Member B is added to Group A in the Australia (Sydney) region.
+        *   The `RegisterTransitRouterMulticastGroupMembers` operation is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast member.
+        *   If a multicast member is in the **Registering** state, the multicast member is being added. You can query the multicast member but cannot perform other operations.
+        *   If a multicast member is in the **Registered** state, the multicast member is added.
         
         @param request: RegisterTransitRouterMulticastGroupMembersRequest
         @return: RegisterTransitRouterMulticastGroupMembersResponse
@@ -15978,10 +16400,10 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.RegisterTransitRouterMulticastGroupSourcesResponse:
         """
         You can specify only elastic network interfaces (ENIs) as multicast sources.
-        *   `RegisterTransitRouterMulticastGroupSources` is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call `ListTransitRouterMulticastGroups` to query the status of a multicast source.
-        *   If a multicast source is in the **Registering** state, the multicast source is being created. You can query the multicast source but cannot perform other operations.
+        *   `RegisterTransitRouterMulticastGroupSources` is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast source.
+        *   If a multicast source is in the **Registering** state, the multicast source is being created. You can query the multicast source but cannot perform other operations on the multicast source.
         *   If a multicast source is in the **Registered** state, the multicast source is created.
-        ### Prerequisites
+        ### Prerequisite
         Before you call `RegisterTransitRouterMulticastGroupSources`, make sure that the vSwitch on which the ENI is created is associated with the multicast domain. For more information, see [AssociateTransitRouterMulticastDomain](~~429778~~).
         
         @param request: RegisterTransitRouterMulticastGroupSourcesRequest
@@ -16036,10 +16458,10 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.RegisterTransitRouterMulticastGroupSourcesResponse:
         """
         You can specify only elastic network interfaces (ENIs) as multicast sources.
-        *   `RegisterTransitRouterMulticastGroupSources` is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call `ListTransitRouterMulticastGroups` to query the status of a multicast source.
-        *   If a multicast source is in the **Registering** state, the multicast source is being created. You can query the multicast source but cannot perform other operations.
+        *   `RegisterTransitRouterMulticastGroupSources` is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast source.
+        *   If a multicast source is in the **Registering** state, the multicast source is being created. You can query the multicast source but cannot perform other operations on the multicast source.
         *   If a multicast source is in the **Registered** state, the multicast source is created.
-        ### Prerequisites
+        ### Prerequisite
         Before you call `RegisterTransitRouterMulticastGroupSources`, make sure that the vSwitch on which the ENI is created is associated with the multicast domain. For more information, see [AssociateTransitRouterMulticastDomain](~~429778~~).
         
         @param request: RegisterTransitRouterMulticastGroupSourcesRequest
@@ -16093,10 +16515,10 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.RegisterTransitRouterMulticastGroupSourcesResponse:
         """
         You can specify only elastic network interfaces (ENIs) as multicast sources.
-        *   `RegisterTransitRouterMulticastGroupSources` is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call `ListTransitRouterMulticastGroups` to query the status of a multicast source.
-        *   If a multicast source is in the **Registering** state, the multicast source is being created. You can query the multicast source but cannot perform other operations.
+        *   `RegisterTransitRouterMulticastGroupSources` is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast source.
+        *   If a multicast source is in the **Registering** state, the multicast source is being created. You can query the multicast source but cannot perform other operations on the multicast source.
         *   If a multicast source is in the **Registered** state, the multicast source is created.
-        ### Prerequisites
+        ### Prerequisite
         Before you call `RegisterTransitRouterMulticastGroupSources`, make sure that the vSwitch on which the ENI is created is associated with the multicast domain. For more information, see [AssociateTransitRouterMulticastDomain](~~429778~~).
         
         @param request: RegisterTransitRouterMulticastGroupSourcesRequest
@@ -16111,10 +16533,10 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.RegisterTransitRouterMulticastGroupSourcesResponse:
         """
         You can specify only elastic network interfaces (ENIs) as multicast sources.
-        *   `RegisterTransitRouterMulticastGroupSources` is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call `ListTransitRouterMulticastGroups` to query the status of a multicast source.
-        *   If a multicast source is in the **Registering** state, the multicast source is being created. You can query the multicast source but cannot perform other operations.
+        *   `RegisterTransitRouterMulticastGroupSources` is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast source.
+        *   If a multicast source is in the **Registering** state, the multicast source is being created. You can query the multicast source but cannot perform other operations on the multicast source.
         *   If a multicast source is in the **Registered** state, the multicast source is created.
-        ### Prerequisites
+        ### Prerequisite
         Before you call `RegisterTransitRouterMulticastGroupSources`, make sure that the vSwitch on which the ENI is created is associated with the multicast domain. For more information, see [AssociateTransitRouterMulticastDomain](~~429778~~).
         
         @param request: RegisterTransitRouterMulticastGroupSourcesRequest
@@ -18098,6 +18520,108 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_transit_router_with_options_async(request, runtime)
+
+    def update_transit_router_ecr_attachment_attribute_with_options(
+        self,
+        request: cbn_20170912_models.UpdateTransitRouterEcrAttachmentAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.UpdateTransitRouterEcrAttachmentAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_description):
+            query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_attachment_name):
+            query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTransitRouterEcrAttachmentAttribute',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateTransitRouterEcrAttachmentAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_transit_router_ecr_attachment_attribute_with_options_async(
+        self,
+        request: cbn_20170912_models.UpdateTransitRouterEcrAttachmentAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.UpdateTransitRouterEcrAttachmentAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_description):
+            query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_attachment_name):
+            query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTransitRouterEcrAttachmentAttribute',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateTransitRouterEcrAttachmentAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_transit_router_ecr_attachment_attribute(
+        self,
+        request: cbn_20170912_models.UpdateTransitRouterEcrAttachmentAttributeRequest,
+    ) -> cbn_20170912_models.UpdateTransitRouterEcrAttachmentAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_transit_router_ecr_attachment_attribute_with_options(request, runtime)
+
+    async def update_transit_router_ecr_attachment_attribute_async(
+        self,
+        request: cbn_20170912_models.UpdateTransitRouterEcrAttachmentAttributeRequest,
+    ) -> cbn_20170912_models.UpdateTransitRouterEcrAttachmentAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_transit_router_ecr_attachment_attribute_with_options_async(request, runtime)
 
     def update_transit_router_peer_attachment_attribute_with_options(
         self,
