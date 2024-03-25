@@ -2893,6 +2893,8 @@ class Client(OpenApiClient):
             query['FileSystemId'] = request.file_system_id
         if not UtilClient.is_unset(request.paths):
             query['Paths'] = request.paths
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2931,6 +2933,8 @@ class Client(OpenApiClient):
             query['FileSystemId'] = request.file_system_id
         if not UtilClient.is_unset(request.paths):
             query['Paths'] = request.paths
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8440,6 +8444,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8481,6 +8487,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

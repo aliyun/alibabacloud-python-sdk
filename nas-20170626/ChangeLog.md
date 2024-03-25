@@ -1,3 +1,19 @@
+2024-03-25 Version: 2.2.1
+- Update API CreateLifecyclePolicy: update param LifecycleRuleName.
+- Update API CreateLifecyclePolicy: update param StorageType.
+- Update API CreateLifecycleRetrieveJob: add param StorageType.
+- Update API DescribeFileSystems: update response param.
+- Update API DescribeLifecyclePolicies: add param StorageType.
+- Update API DescribeLifecyclePolicies: update response param.
+- Update API GetDirectoryOrFileProperties: update response param.
+- Update API ListDirectoriesAndFiles: update param StorageType.
+- Update API ListDirectoriesAndFiles: update response param.
+- Update API ListLifecycleRetrieveJobs: add param StorageType.
+- Update API ListLifecycleRetrieveJobs: update response param.
+- Update API ModifyLifecyclePolicy: update param LifecycleRuleName.
+- Update API ModifyLifecyclePolicy: update param StorageType.
+
+
 2024-03-21 Version: 2.2.0
 - Support API CreateAccessPoint.
 - Support API CreateDir.
