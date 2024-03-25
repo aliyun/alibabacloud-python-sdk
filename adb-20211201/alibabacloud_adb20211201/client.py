@@ -761,10 +761,14 @@ class Client(OpenApiClient):
 
     def create_dbresource_group_with_options(
         self,
-        request: adb_20211201_models.CreateDBResourceGroupRequest,
+        tmp_req: adb_20211201_models.CreateDBResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateDBResourceGroupResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.CreateDBResourceGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.rules):
+            request.rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rules, 'Rules', 'json')
         query = {}
         if not UtilClient.is_unset(request.cluster_mode):
             query['ClusterMode'] = request.cluster_mode
@@ -788,6 +792,8 @@ class Client(OpenApiClient):
             query['MinComputeResource'] = request.min_compute_resource
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.rules_shrink):
+            query['Rules'] = request.rules_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -809,10 +815,14 @@ class Client(OpenApiClient):
 
     async def create_dbresource_group_with_options_async(
         self,
-        request: adb_20211201_models.CreateDBResourceGroupRequest,
+        tmp_req: adb_20211201_models.CreateDBResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateDBResourceGroupResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.CreateDBResourceGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.rules):
+            request.rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rules, 'Rules', 'json')
         query = {}
         if not UtilClient.is_unset(request.cluster_mode):
             query['ClusterMode'] = request.cluster_mode
@@ -836,6 +846,8 @@ class Client(OpenApiClient):
             query['MinComputeResource'] = request.min_compute_resource
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.rules_shrink):
+            query['Rules'] = request.rules_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9337,10 +9349,14 @@ class Client(OpenApiClient):
 
     def modify_dbresource_group_with_options(
         self,
-        request: adb_20211201_models.ModifyDBResourceGroupRequest,
+        tmp_req: adb_20211201_models.ModifyDBResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyDBResourceGroupResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.ModifyDBResourceGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.rules):
+            request.rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rules, 'Rules', 'json')
         query = {}
         if not UtilClient.is_unset(request.cluster_mode):
             query['ClusterMode'] = request.cluster_mode
@@ -9364,6 +9380,8 @@ class Client(OpenApiClient):
             query['MinComputeResource'] = request.min_compute_resource
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.rules_shrink):
+            query['Rules'] = request.rules_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9385,10 +9403,14 @@ class Client(OpenApiClient):
 
     async def modify_dbresource_group_with_options_async(
         self,
-        request: adb_20211201_models.ModifyDBResourceGroupRequest,
+        tmp_req: adb_20211201_models.ModifyDBResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyDBResourceGroupResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.ModifyDBResourceGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.rules):
+            request.rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rules, 'Rules', 'json')
         query = {}
         if not UtilClient.is_unset(request.cluster_mode):
             query['ClusterMode'] = request.cluster_mode
@@ -9412,6 +9434,8 @@ class Client(OpenApiClient):
             query['MinComputeResource'] = request.min_compute_resource
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.rules_shrink):
+            query['Rules'] = request.rules_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
