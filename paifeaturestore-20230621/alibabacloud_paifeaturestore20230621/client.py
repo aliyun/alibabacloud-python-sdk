@@ -434,6 +434,8 @@ class Client(OpenApiClient):
             body['Type'] = request.type
         if not UtilClient.is_unset(request.write_method):
             body['WriteMethod'] = request.write_method
+        if not UtilClient.is_unset(request.write_to_feature_db):
+            body['WriteToFeatureDB'] = request.write_to_feature_db
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -487,6 +489,8 @@ class Client(OpenApiClient):
             body['Type'] = request.type
         if not UtilClient.is_unset(request.write_method):
             body['WriteMethod'] = request.write_method
+        if not UtilClient.is_unset(request.write_to_feature_db):
+            body['WriteToFeatureDB'] = request.write_to_feature_db
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
