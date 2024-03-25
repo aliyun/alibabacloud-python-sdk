@@ -28,7 +28,7 @@ pip install alibabacloud_dyvmsapi_intl20211015
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/dyvmsapi-intl-20211015/ChangeLog.md).
 
 ## References
 
