@@ -555,8 +555,12 @@ class AddDevicesRequest(TeaModel):
 class AddDevicesResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
+        message: str = None,
         request_id: str = None,
     ):
+        self.code = code
+        self.message = message
         # The ID of the request.
         self.request_id = request_id
 
@@ -569,12 +573,20 @@ class AddDevicesResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -4365,13 +4377,32 @@ class CreateAndBindNasFileSystemRequest(TeaModel):
         region_id: str = None,
         storage_type: str = None,
     ):
+        # The description of the NAS file system.
         self.description = description
+        # The ID of the desktop group.
         self.desktop_group_id = desktop_group_id
+        # Specifies whether to encrypt data in the NAS file system. You can use keys that are hosted by Key Management Service (KMS) to encrypt data in a file system. When you read and write the encrypted data, the data is automatically decrypted. Valid values:
+        # 
+        # *   0: does not encrypt data in the NAS file system.
+        # *   1: encrypts data in the NAS file system by using a NAS-managed key. ` If you set  `FileSystemType`  to  `standard`  or  `extreme`, you can use a NAS-managed key to encrypt data in a NAS file system.`
+        # *   2: encrypts data in the NAS file system by using a KMS-managed key. `If` you set FileSystemType`  to  `extreme`, you can use a KMS-managed key to encrypt data in a NAS file system.`
+        # 
+        # Default value: 0.
         self.encrypt_type = encrypt_type
+        # The list of users.
         self.end_user_ids = end_user_ids
+        # The name of the NAS file system.
         self.file_system_name = file_system_name
+        # The ID of the workspace.
         self.office_site_id = office_site_id
+        # The region ID.
         self.region_id = region_id
+        # The storage type of the NAS file system. Valid values:
+        # 
+        # *   Capacity
+        # *   Performance
+        # 
+        # Default value: Capacity.
         self.storage_type = storage_type
 
     def validate(self):
@@ -4427,6 +4458,7 @@ class CreateAndBindNasFileSystemResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -29754,7 +29786,9 @@ class DisconnectDesktopSessionsRequestSessions(TeaModel):
         desktop_id: str = None,
         end_user_id: str = None,
     ):
+        # The cloud desktop ID.
         self.desktop_id = desktop_id
+        # The end user ID.
         self.end_user_id = end_user_id
 
     def validate(self):
@@ -29788,8 +29822,11 @@ class DisconnectDesktopSessionsRequest(TeaModel):
         region_id: str = None,
         sessions: List[DisconnectDesktopSessionsRequestSessions] = None,
     ):
+        # Specifies whether to perform precheck. If you perform precheck, the system does not disconnect from desktop sessions. Only the sessions that do not meet specific conditions are returned.
         self.pre_check = pre_check
+        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The session details.
         self.sessions = sessions
 
     def validate(self):
@@ -29834,7 +29871,9 @@ class DisconnectDesktopSessionsResponseBodyInvalidSessions(TeaModel):
         desktop_id: str = None,
         end_user_id: str = None,
     ):
+        # The cloud desktop ID.
         self.desktop_id = desktop_id
+        # The end user ID.
         self.end_user_id = end_user_id
 
     def validate(self):
@@ -29867,7 +29906,9 @@ class DisconnectDesktopSessionsResponseBody(TeaModel):
         invalid_sessions: List[DisconnectDesktopSessionsResponseBodyInvalidSessions] = None,
         request_id: str = None,
     ):
+        # The list of invalid sessions.
         self.invalid_sessions = invalid_sessions
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -34869,8 +34910,11 @@ class MigrateImageProtocolRequest(TeaModel):
         region_id: str = None,
         target_protocol_type: str = None,
     ):
+        # The image IDs.
         self.image_id = image_id
+        # The region ID.
         self.region_id = region_id
+        # The protocol of the image. Valid value: ASP.
         self.target_protocol_type = target_protocol_type
 
     def validate(self):
@@ -34907,7 +34951,9 @@ class MigrateImageProtocolResponseBody(TeaModel):
         failed_ids: List[str] = None,
         request_id: str = None,
     ):
+        # The IDs of images whose protocols fail to be migrated.
         self.failed_ids = failed_ids
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

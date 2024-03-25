@@ -1,3 +1,9 @@
+2024-03-25 Version: 3.5.3
+- Update API AddDevices: update response param.
+- Update API DescribeFotaPendingDesktops: update param TaskUid.
+- Update API UpdateFotaTask: update param UserStatus.
+
+
 2024-03-15 Version: 3.5.2
 - Generated python 2020-09-30 for ecd.
 
