@@ -224,6 +224,414 @@ class ActiveDeviceCertificateResponse(TeaModel):
         return self
 
 
+class AddCustomAuthConnectBlackRequest(TeaModel):
+    def __init__(
+        self,
+        client_id: str = None,
+        instance_id: str = None,
+    ):
+        self.client_id = client_id
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class AddCustomAuthConnectBlackResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AddCustomAuthConnectBlackResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddCustomAuthConnectBlackResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddCustomAuthConnectBlackResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AddCustomAuthIdentityRequest(TeaModel):
+    def __init__(
+        self,
+        client_id: str = None,
+        identity_type: str = None,
+        instance_id: str = None,
+        secret: str = None,
+        sign_mode: str = None,
+        username: str = None,
+    ):
+        self.client_id = client_id
+        self.identity_type = identity_type
+        self.instance_id = instance_id
+        self.secret = secret
+        self.sign_mode = sign_mode
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.identity_type is not None:
+            result['IdentityType'] = self.identity_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.secret is not None:
+            result['Secret'] = self.secret
+        if self.sign_mode is not None:
+            result['SignMode'] = self.sign_mode
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('IdentityType') is not None:
+            self.identity_type = m.get('IdentityType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Secret') is not None:
+            self.secret = m.get('Secret')
+        if m.get('SignMode') is not None:
+            self.sign_mode = m.get('SignMode')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class AddCustomAuthIdentityResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AddCustomAuthIdentityResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddCustomAuthIdentityResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddCustomAuthIdentityResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AddCustomAuthPermissionRequest(TeaModel):
+    def __init__(
+        self,
+        effect: str = None,
+        identity: str = None,
+        identity_type: str = None,
+        instance_id: str = None,
+        permit_action: str = None,
+        topic: str = None,
+    ):
+        self.effect = effect
+        self.identity = identity
+        self.identity_type = identity_type
+        self.instance_id = instance_id
+        self.permit_action = permit_action
+        self.topic = topic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.effect is not None:
+            result['Effect'] = self.effect
+        if self.identity is not None:
+            result['Identity'] = self.identity
+        if self.identity_type is not None:
+            result['IdentityType'] = self.identity_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.permit_action is not None:
+            result['PermitAction'] = self.permit_action
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Effect') is not None:
+            self.effect = m.get('Effect')
+        if m.get('Identity') is not None:
+            self.identity = m.get('Identity')
+        if m.get('IdentityType') is not None:
+            self.identity_type = m.get('IdentityType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PermitAction') is not None:
+            self.permit_action = m.get('PermitAction')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        return self
+
+
+class AddCustomAuthPermissionResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AddCustomAuthPermissionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddCustomAuthPermissionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddCustomAuthPermissionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ApplyTokenRequest(TeaModel):
     def __init__(
         self,
@@ -728,6 +1136,390 @@ class DeleteCaCertificateResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteCaCertificateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteCustomAuthConnectBlackRequest(TeaModel):
+    def __init__(
+        self,
+        client_id: str = None,
+        instance_id: str = None,
+    ):
+        self.client_id = client_id
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DeleteCustomAuthConnectBlackResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteCustomAuthConnectBlackResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteCustomAuthConnectBlackResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteCustomAuthConnectBlackResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteCustomAuthIdentityRequest(TeaModel):
+    def __init__(
+        self,
+        client_id: str = None,
+        identity_type: str = None,
+        instance_id: str = None,
+        username: str = None,
+    ):
+        self.client_id = client_id
+        self.identity_type = identity_type
+        self.instance_id = instance_id
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.identity_type is not None:
+            result['IdentityType'] = self.identity_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('IdentityType') is not None:
+            self.identity_type = m.get('IdentityType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class DeleteCustomAuthIdentityResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteCustomAuthIdentityResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteCustomAuthIdentityResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteCustomAuthIdentityResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteCustomAuthPermissionRequest(TeaModel):
+    def __init__(
+        self,
+        identity: str = None,
+        identity_type: str = None,
+        instance_id: str = None,
+        topic: str = None,
+    ):
+        self.identity = identity
+        self.identity_type = identity_type
+        self.instance_id = instance_id
+        self.topic = topic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identity is not None:
+            result['Identity'] = self.identity
+        if self.identity_type is not None:
+            result['IdentityType'] = self.identity_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Identity') is not None:
+            self.identity = m.get('Identity')
+        if m.get('IdentityType') is not None:
+            self.identity_type = m.get('IdentityType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        return self
+
+
+class DeleteCustomAuthPermissionResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteCustomAuthPermissionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteCustomAuthPermissionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteCustomAuthPermissionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2856,6 +3648,714 @@ class ListGroupIdResponse(TeaModel):
         return self
 
 
+class QueryCustomAuthConnectBlackRequest(TeaModel):
+    def __init__(
+        self,
+        client_id: str = None,
+        instance_id: str = None,
+        next_token: str = None,
+        size: int = None,
+    ):
+        self.client_id = client_id
+        self.instance_id = instance_id
+        self.next_token = next_token
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class QueryCustomAuthConnectBlackResponseBodyDataResults(TeaModel):
+    def __init__(
+        self,
+        client_id: str = None,
+        effect: str = None,
+        permit_action: str = None,
+    ):
+        self.client_id = client_id
+        self.effect = effect
+        self.permit_action = permit_action
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.effect is not None:
+            result['Effect'] = self.effect
+        if self.permit_action is not None:
+            result['PermitAction'] = self.permit_action
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('Effect') is not None:
+            self.effect = m.get('Effect')
+        if m.get('PermitAction') is not None:
+            self.permit_action = m.get('PermitAction')
+        return self
+
+
+class QueryCustomAuthConnectBlackResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        results: List[QueryCustomAuthConnectBlackResponseBodyDataResults] = None,
+    ):
+        self.next_token = next_token
+        self.results = results
+
+    def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['Results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['Results'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.results = []
+        if m.get('Results') is not None:
+            for k in m.get('Results'):
+                temp_model = QueryCustomAuthConnectBlackResponseBodyDataResults()
+                self.results.append(temp_model.from_map(k))
+        return self
+
+
+class QueryCustomAuthConnectBlackResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: QueryCustomAuthConnectBlackResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = QueryCustomAuthConnectBlackResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryCustomAuthConnectBlackResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryCustomAuthConnectBlackResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryCustomAuthConnectBlackResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryCustomAuthIdentityRequest(TeaModel):
+    def __init__(
+        self,
+        client_id: str = None,
+        identity_type: str = None,
+        instance_id: str = None,
+        next_token: str = None,
+        size: int = None,
+        username: str = None,
+    ):
+        self.client_id = client_id
+        self.identity_type = identity_type
+        self.instance_id = instance_id
+        self.next_token = next_token
+        self.size = size
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.identity_type is not None:
+            result['IdentityType'] = self.identity_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('IdentityType') is not None:
+            self.identity_type = m.get('IdentityType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class QueryCustomAuthIdentityResponseBodyDataResults(TeaModel):
+    def __init__(
+        self,
+        client_id: str = None,
+        identity_type: str = None,
+        secret: str = None,
+        sign_mode: str = None,
+        username: str = None,
+    ):
+        self.client_id = client_id
+        self.identity_type = identity_type
+        self.secret = secret
+        self.sign_mode = sign_mode
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.identity_type is not None:
+            result['IdentityType'] = self.identity_type
+        if self.secret is not None:
+            result['Secret'] = self.secret
+        if self.sign_mode is not None:
+            result['SignMode'] = self.sign_mode
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('IdentityType') is not None:
+            self.identity_type = m.get('IdentityType')
+        if m.get('Secret') is not None:
+            self.secret = m.get('Secret')
+        if m.get('SignMode') is not None:
+            self.sign_mode = m.get('SignMode')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class QueryCustomAuthIdentityResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        results: List[QueryCustomAuthIdentityResponseBodyDataResults] = None,
+    ):
+        self.next_token = next_token
+        self.results = results
+
+    def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['Results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['Results'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.results = []
+        if m.get('Results') is not None:
+            for k in m.get('Results'):
+                temp_model = QueryCustomAuthIdentityResponseBodyDataResults()
+                self.results.append(temp_model.from_map(k))
+        return self
+
+
+class QueryCustomAuthIdentityResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: QueryCustomAuthIdentityResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = QueryCustomAuthIdentityResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryCustomAuthIdentityResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryCustomAuthIdentityResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryCustomAuthIdentityResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryCustomAuthPermissionRequest(TeaModel):
+    def __init__(
+        self,
+        identity: str = None,
+        identity_type: str = None,
+        instance_id: str = None,
+        next_token: str = None,
+        size: int = None,
+        topic: str = None,
+    ):
+        self.identity = identity
+        self.identity_type = identity_type
+        self.instance_id = instance_id
+        self.next_token = next_token
+        self.size = size
+        self.topic = topic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identity is not None:
+            result['Identity'] = self.identity
+        if self.identity_type is not None:
+            result['IdentityType'] = self.identity_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Identity') is not None:
+            self.identity = m.get('Identity')
+        if m.get('IdentityType') is not None:
+            self.identity_type = m.get('IdentityType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        return self
+
+
+class QueryCustomAuthPermissionResponseBodyDataResults(TeaModel):
+    def __init__(
+        self,
+        effect: str = None,
+        identity: str = None,
+        identity_type: str = None,
+        permit_action: str = None,
+        topic: str = None,
+    ):
+        self.effect = effect
+        self.identity = identity
+        self.identity_type = identity_type
+        self.permit_action = permit_action
+        self.topic = topic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.effect is not None:
+            result['Effect'] = self.effect
+        if self.identity is not None:
+            result['Identity'] = self.identity
+        if self.identity_type is not None:
+            result['IdentityType'] = self.identity_type
+        if self.permit_action is not None:
+            result['PermitAction'] = self.permit_action
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Effect') is not None:
+            self.effect = m.get('Effect')
+        if m.get('Identity') is not None:
+            self.identity = m.get('Identity')
+        if m.get('IdentityType') is not None:
+            self.identity_type = m.get('IdentityType')
+        if m.get('PermitAction') is not None:
+            self.permit_action = m.get('PermitAction')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        return self
+
+
+class QueryCustomAuthPermissionResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        results: List[QueryCustomAuthPermissionResponseBodyDataResults] = None,
+    ):
+        self.next_token = next_token
+        self.results = results
+
+    def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['Results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['Results'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.results = []
+        if m.get('Results') is not None:
+            for k in m.get('Results'):
+                temp_model = QueryCustomAuthPermissionResponseBodyDataResults()
+                self.results.append(temp_model.from_map(k))
+        return self
+
+
+class QueryCustomAuthPermissionResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: QueryCustomAuthPermissionResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = QueryCustomAuthPermissionResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryCustomAuthPermissionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryCustomAuthPermissionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryCustomAuthPermissionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryMqttTraceDeviceRequest(TeaModel):
     def __init__(
         self,
@@ -4878,6 +6378,294 @@ class UnRegisterDeviceCredentialResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UnRegisterDeviceCredentialResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateCustomAuthIdentityRequest(TeaModel):
+    def __init__(
+        self,
+        client_id: str = None,
+        identity_type: str = None,
+        instance_id: str = None,
+        secret: str = None,
+        sign_mode: str = None,
+        username: str = None,
+    ):
+        self.client_id = client_id
+        self.identity_type = identity_type
+        self.instance_id = instance_id
+        self.secret = secret
+        self.sign_mode = sign_mode
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.identity_type is not None:
+            result['IdentityType'] = self.identity_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.secret is not None:
+            result['Secret'] = self.secret
+        if self.sign_mode is not None:
+            result['SignMode'] = self.sign_mode
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('IdentityType') is not None:
+            self.identity_type = m.get('IdentityType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Secret') is not None:
+            self.secret = m.get('Secret')
+        if m.get('SignMode') is not None:
+            self.sign_mode = m.get('SignMode')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class UpdateCustomAuthIdentityResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateCustomAuthIdentityResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCustomAuthIdentityResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCustomAuthIdentityResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateCustomAuthPermissionRequest(TeaModel):
+    def __init__(
+        self,
+        effect: str = None,
+        identity: str = None,
+        identity_type: str = None,
+        instance_id: str = None,
+        permit_action: str = None,
+        topic: str = None,
+    ):
+        self.effect = effect
+        self.identity = identity
+        self.identity_type = identity_type
+        self.instance_id = instance_id
+        self.permit_action = permit_action
+        self.topic = topic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.effect is not None:
+            result['Effect'] = self.effect
+        if self.identity is not None:
+            result['Identity'] = self.identity
+        if self.identity_type is not None:
+            result['IdentityType'] = self.identity_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.permit_action is not None:
+            result['PermitAction'] = self.permit_action
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Effect') is not None:
+            self.effect = m.get('Effect')
+        if m.get('Identity') is not None:
+            self.identity = m.get('Identity')
+        if m.get('IdentityType') is not None:
+            self.identity_type = m.get('IdentityType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PermitAction') is not None:
+            self.permit_action = m.get('PermitAction')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        return self
+
+
+class UpdateCustomAuthPermissionResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateCustomAuthPermissionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCustomAuthPermissionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCustomAuthPermissionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
