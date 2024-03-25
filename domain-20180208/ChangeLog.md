@@ -1,3 +1,9 @@
+2024-03-25 Version: 1.2.0
+- Support API SubmitPurchaseInfo.
+- Update API CheckSelectedDomainStatus: update response param.
+- Update API QueryBrokerDemand: update response param.
+
+
 2024-03-05 Version: 1.1.0
 - Support API SubmitPurchaseInfo.
 - Update API CheckSelectedDomainStatus: update response param.

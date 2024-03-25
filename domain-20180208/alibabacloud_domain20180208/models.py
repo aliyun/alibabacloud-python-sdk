@@ -2669,6 +2669,7 @@ class QueryBrokerDemandResponseBodyData(TeaModel):
         demand_domain: str = None,
         demand_price: float = None,
         description: str = None,
+        email: str = None,
         mobile: str = None,
         order_type: int = None,
         partner_domain: str = None,
@@ -2688,6 +2689,7 @@ class QueryBrokerDemandResponseBodyData(TeaModel):
         self.demand_domain = demand_domain
         self.demand_price = demand_price
         self.description = description
+        self.email = email
         self.mobile = mobile
         self.order_type = order_type
         self.partner_domain = partner_domain
@@ -2723,6 +2725,8 @@ class QueryBrokerDemandResponseBodyData(TeaModel):
             result['DemandPrice'] = self.demand_price
         if self.description is not None:
             result['Description'] = self.description
+        if self.email is not None:
+            result['Email'] = self.email
         if self.mobile is not None:
             result['Mobile'] = self.mobile
         if self.order_type is not None:
@@ -2763,6 +2767,8 @@ class QueryBrokerDemandResponseBodyData(TeaModel):
             self.demand_price = m.get('DemandPrice')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Email') is not None:
+            self.email = m.get('Email')
         if m.get('Mobile') is not None:
             self.mobile = m.get('Mobile')
         if m.get('OrderType') is not None:
