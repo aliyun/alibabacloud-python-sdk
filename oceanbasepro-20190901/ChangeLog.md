@@ -1,3 +1,6 @@
+2024-03-25 Version: 3.0.1
+- Generated python 2019-09-01 for OceanBasePro.
+
 2024-03-20 Version: 3.0.0
 - Delete API CreateOmsOpenAPIProject.
 - Delete API DeleteOmsOpenAPIProject.
