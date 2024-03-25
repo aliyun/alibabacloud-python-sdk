@@ -4981,6 +4981,7 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         used_partition_count: int = None,
         used_topic_count: int = None,
         v_switch_id: str = None,
+        view_instance_status_code: int = None,
         vpc_id: str = None,
         zone_id: str = None,
     ):
@@ -5095,6 +5096,7 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         self.used_topic_count = used_topic_count
         # The vSwitch ID of the instance.
         self.v_switch_id = v_switch_id
+        self.view_instance_status_code = view_instance_status_code
         # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
         # The zone ID.
@@ -5184,6 +5186,8 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
             result['UsedTopicCount'] = self.used_topic_count
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
+        if self.view_instance_status_code is not None:
+            result['ViewInstanceStatusCode'] = self.view_instance_status_code
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         if self.zone_id is not None:
@@ -5265,6 +5269,8 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
             self.used_topic_count = m.get('UsedTopicCount')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
+        if m.get('ViewInstanceStatusCode') is not None:
+            self.view_instance_status_code = m.get('ViewInstanceStatusCode')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         if m.get('ZoneId') is not None:

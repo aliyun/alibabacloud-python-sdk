@@ -1,3 +1,7 @@
+2024-03-25 Version: 2.6.2
+- Update API GetInstanceList: update response param.
+
+
 2024-03-20 Version: 2.6.1
 - Update API CreatePrePayOrder: add param Duration.
 - Update API CreatePrePayOrder: add param PaidType.
