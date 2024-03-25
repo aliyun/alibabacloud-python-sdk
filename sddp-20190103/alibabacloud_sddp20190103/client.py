@@ -3620,6 +3620,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_packages_with_options_async(request, runtime)
 
+    def describe_parent_instance_with_options(
+        self,
+        request: sddp_20190103_models.DescribeParentInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sddp_20190103_models.DescribeParentInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_status):
+            query['AuthStatus'] = request.auth_status
+        if not UtilClient.is_unset(request.check_status):
+            query['CheckStatus'] = request.check_status
+        if not UtilClient.is_unset(request.cluster_status):
+            query['ClusterStatus'] = request.cluster_status
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.engine_type):
+            query['EngineType'] = request.engine_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.service_region_id):
+            query['ServiceRegionId'] = request.service_region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeParentInstance',
+            version='2019-01-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sddp_20190103_models.DescribeParentInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_parent_instance_with_options_async(
+        self,
+        request: sddp_20190103_models.DescribeParentInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sddp_20190103_models.DescribeParentInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_status):
+            query['AuthStatus'] = request.auth_status
+        if not UtilClient.is_unset(request.check_status):
+            query['CheckStatus'] = request.check_status
+        if not UtilClient.is_unset(request.cluster_status):
+            query['ClusterStatus'] = request.cluster_status
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.engine_type):
+            query['EngineType'] = request.engine_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.service_region_id):
+            query['ServiceRegionId'] = request.service_region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeParentInstance',
+            version='2019-01-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sddp_20190103_models.DescribeParentInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_parent_instance(
+        self,
+        request: sddp_20190103_models.DescribeParentInstanceRequest,
+    ) -> sddp_20190103_models.DescribeParentInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_parent_instance_with_options(request, runtime)
+
+    async def describe_parent_instance_async(
+        self,
+        request: sddp_20190103_models.DescribeParentInstanceRequest,
+    ) -> sddp_20190103_models.DescribeParentInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_parent_instance_with_options_async(request, runtime)
+
     def describe_risk_levels_with_options(
         self,
         request: sddp_20190103_models.DescribeRiskLevelsRequest,
