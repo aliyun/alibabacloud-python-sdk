@@ -8280,10 +8280,12 @@ class ListPtsSceneResponseBodySceneViewList(TeaModel):
         create_time: str = None,
         scene_id: str = None,
         scene_name: str = None,
+        status: str = None,
     ):
         self.create_time = create_time
         self.scene_id = scene_id
         self.scene_name = scene_name
+        self.status = status
 
     def validate(self):
         pass
@@ -8300,6 +8302,8 @@ class ListPtsSceneResponseBodySceneViewList(TeaModel):
             result['SceneId'] = self.scene_id
         if self.scene_name is not None:
             result['SceneName'] = self.scene_name
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
@@ -8310,6 +8314,8 @@ class ListPtsSceneResponseBodySceneViewList(TeaModel):
             self.scene_id = m.get('SceneId')
         if m.get('SceneName') is not None:
             self.scene_name = m.get('SceneName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
