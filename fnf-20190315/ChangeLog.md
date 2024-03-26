@@ -1,3 +1,7 @@
+2024-03-26 Version: 1.1.1
+- Update API CreateSchedule: add param SignatureVersion.
+
+
 2023-10-26 Version: 1.1.0
 - Generated python 2019-03-15 for fnf.
 
