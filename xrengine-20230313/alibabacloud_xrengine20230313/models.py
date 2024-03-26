@@ -840,6 +840,7 @@ class CreateLivePortraitProjectRequest(TeaModel):
         audio_id: str = None,
         audio_url: str = None,
         content: str = None,
+        custom_params: str = None,
         image_id: str = None,
         image_url: str = None,
         intro: str = None,
@@ -855,6 +856,7 @@ class CreateLivePortraitProjectRequest(TeaModel):
         self.audio_id = audio_id
         self.audio_url = audio_url
         self.content = content
+        self.custom_params = custom_params
         self.image_id = image_id
         self.image_url = image_url
         self.intro = intro
@@ -882,6 +884,8 @@ class CreateLivePortraitProjectRequest(TeaModel):
             result['AudioUrl'] = self.audio_url
         if self.content is not None:
             result['Content'] = self.content
+        if self.custom_params is not None:
+            result['CustomParams'] = self.custom_params
         if self.image_id is not None:
             result['ImageId'] = self.image_id
         if self.image_url is not None:
@@ -914,6 +918,8 @@ class CreateLivePortraitProjectRequest(TeaModel):
             self.audio_url = m.get('AudioUrl')
         if m.get('Content') is not None:
             self.content = m.get('Content')
+        if m.get('CustomParams') is not None:
+            self.custom_params = m.get('CustomParams')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
         if m.get('ImageUrl') is not None:

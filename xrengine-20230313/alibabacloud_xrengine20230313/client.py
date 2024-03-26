@@ -487,6 +487,8 @@ class Client(OpenApiClient):
             body['AudioUrl'] = request.audio_url
         if not UtilClient.is_unset(request.content):
             body['Content'] = request.content
+        if not UtilClient.is_unset(request.custom_params):
+            body['CustomParams'] = request.custom_params
         if not UtilClient.is_unset(request.image_id):
             body['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.image_url):
@@ -543,6 +545,8 @@ class Client(OpenApiClient):
             body['AudioUrl'] = request.audio_url
         if not UtilClient.is_unset(request.content):
             body['Content'] = request.content
+        if not UtilClient.is_unset(request.custom_params):
+            body['CustomParams'] = request.custom_params
         if not UtilClient.is_unset(request.image_id):
             body['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.image_url):
