@@ -428,7 +428,6 @@ class DeleteFlowRequest(TeaModel):
         self,
         name: str = None,
     ):
-        # The name of the flow. The name can contain only letters, digits, underscores (\_), and hyphens (-). It cannot start with a digit or a hyphen (-). It must be 1 to 128 characters in length.
         self.name = name
 
     def validate(self):
@@ -526,19 +525,7 @@ class DeleteScheduleRequest(TeaModel):
         flow_name: str = None,
         schedule_name: str = None,
     ):
-        # The name of the flow that is associated with the time-based schedule. The name must be unique within the region and cannot be modified after the time-based schedule is created. The name must meet the following conventions:
-        # 
-        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
-        # *   The name must start with a letter or an underscore (\_).
-        # *   The name is case-sensitive.
-        # *   The name must be 1 to 128 characters in length.
         self.flow_name = flow_name
-        # The name of the time-based schedule. The name must meet the following conventions:
-        # 
-        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
-        # *   The name must start with a letter or an underscore (\_).
-        # *   The name is case-sensitive.
-        # *   The name must be 1 to 128 characters in length.
         self.schedule_name = schedule_name
 
     def validate(self):

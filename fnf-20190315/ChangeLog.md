@@ -1,3 +1,9 @@
+2024-03-26 Version: 1.1.2
+- Update API DeleteFlow: update param Name.
+- Update API DeleteSchedule: update param FlowName.
+- Update API DeleteSchedule: update param ScheduleName.
+
+
 2024-03-26 Version: 1.1.1
 - Update API CreateSchedule: add param SignatureVersion.
 
