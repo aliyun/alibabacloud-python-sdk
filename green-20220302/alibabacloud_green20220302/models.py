@@ -2474,8 +2474,10 @@ class VideoModerationRequest(TeaModel):
 class VideoModerationResponseBodyData(TeaModel):
     def __init__(
         self,
+        data_id: str = None,
         task_id: str = None,
     ):
+        self.data_id = data_id
         self.task_id = task_id
 
     def validate(self):
@@ -2487,12 +2489,16 @@ class VideoModerationResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         return self
@@ -2937,6 +2943,66 @@ class VideoModerationResultResponseBodyDataFrameResultFrameSummarys(TeaModel):
         return self
 
 
+class VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage(TeaModel):
+    def __init__(
+        self,
+        image_id: str = None,
+        lib_id: str = None,
+    ):
+        self.image_id = image_id
+        self.lib_id = lib_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.lib_id is not None:
+            result['LibId'] = self.lib_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('LibId') is not None:
+            self.lib_id = m.get('LibId')
+        return self
+
+
+class VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure(TeaModel):
+    def __init__(
+        self,
+        figure_id: str = None,
+    ):
+        self.figure_id = figure_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.figure_id is not None:
+            result['FigureId'] = self.figure_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FigureId') is not None:
+            self.figure_id = m.get('FigureId')
+        return self
+
+
 class VideoModerationResultResponseBodyDataFrameResultFramesResultsResult(TeaModel):
     def __init__(
         self,
@@ -2973,13 +3039,27 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResultsResult(TeaMod
 class VideoModerationResultResponseBodyDataFrameResultFramesResults(TeaModel):
     def __init__(
         self,
+        custom_image: List[VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage] = None,
+        public_figure: List[VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure] = None,
         result: List[VideoModerationResultResponseBodyDataFrameResultFramesResultsResult] = None,
         service: str = None,
+        text_in_image: Dict[str, Any] = None,
     ):
+        self.custom_image = custom_image
+        self.public_figure = public_figure
         self.result = result
         self.service = service
+        self.text_in_image = text_in_image
 
     def validate(self):
+        if self.custom_image:
+            for k in self.custom_image:
+                if k:
+                    k.validate()
+        if self.public_figure:
+            for k in self.public_figure:
+                if k:
+                    k.validate()
         if self.result:
             for k in self.result:
                 if k:
@@ -2991,16 +3071,36 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResults(TeaModel):
             return _map
 
         result = dict()
+        result['CustomImage'] = []
+        if self.custom_image is not None:
+            for k in self.custom_image:
+                result['CustomImage'].append(k.to_map() if k else None)
+        result['PublicFigure'] = []
+        if self.public_figure is not None:
+            for k in self.public_figure:
+                result['PublicFigure'].append(k.to_map() if k else None)
         result['Result'] = []
         if self.result is not None:
             for k in self.result:
                 result['Result'].append(k.to_map() if k else None)
         if self.service is not None:
             result['Service'] = self.service
+        if self.text_in_image is not None:
+            result['TextInImage'] = self.text_in_image
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.custom_image = []
+        if m.get('CustomImage') is not None:
+            for k in m.get('CustomImage'):
+                temp_model = VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage()
+                self.custom_image.append(temp_model.from_map(k))
+        self.public_figure = []
+        if m.get('PublicFigure') is not None:
+            for k in m.get('PublicFigure'):
+                temp_model = VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure()
+                self.public_figure.append(temp_model.from_map(k))
         self.result = []
         if m.get('Result') is not None:
             for k in m.get('Result'):
@@ -3008,6 +3108,8 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResults(TeaModel):
                 self.result.append(temp_model.from_map(k))
         if m.get('Service') is not None:
             self.service = m.get('Service')
+        if m.get('TextInImage') is not None:
+            self.text_in_image = m.get('TextInImage')
         return self
 
 
@@ -3127,11 +3229,13 @@ class VideoModerationResultResponseBodyData(TeaModel):
         data_id: str = None,
         frame_result: VideoModerationResultResponseBodyDataFrameResult = None,
         live_id: str = None,
+        task_id: str = None,
     ):
         self.audio_result = audio_result
         self.data_id = data_id
         self.frame_result = frame_result
         self.live_id = live_id
+        self.task_id = task_id
 
     def validate(self):
         if self.audio_result:
@@ -3153,6 +3257,8 @@ class VideoModerationResultResponseBodyData(TeaModel):
             result['FrameResult'] = self.frame_result.to_map()
         if self.live_id is not None:
             result['LiveId'] = self.live_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3167,6 +3273,8 @@ class VideoModerationResultResponseBodyData(TeaModel):
             self.frame_result = temp_model.from_map(m['FrameResult'])
         if m.get('LiveId') is not None:
             self.live_id = m.get('LiveId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
         return self
 
 
@@ -3295,8 +3403,10 @@ class VoiceModerationRequest(TeaModel):
 class VoiceModerationResponseBodyData(TeaModel):
     def __init__(
         self,
+        data_id: str = None,
         task_id: str = None,
     ):
+        self.data_id = data_id
         self.task_id = task_id
 
     def validate(self):
@@ -3308,12 +3418,16 @@ class VoiceModerationResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         return self
@@ -3651,11 +3765,13 @@ class VoiceModerationResultResponseBodyDataSliceDetails(TeaModel):
 class VoiceModerationResultResponseBodyData(TeaModel):
     def __init__(
         self,
+        data_id: str = None,
         live_id: str = None,
         slice_details: List[VoiceModerationResultResponseBodyDataSliceDetails] = None,
         task_id: str = None,
         url: str = None,
     ):
+        self.data_id = data_id
         self.live_id = live_id
         self.slice_details = slice_details
         self.task_id = task_id
@@ -3673,6 +3789,8 @@ class VoiceModerationResultResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
         if self.live_id is not None:
             result['LiveId'] = self.live_id
         result['SliceDetails'] = []
@@ -3687,6 +3805,8 @@ class VoiceModerationResultResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
         if m.get('LiveId') is not None:
             self.live_id = m.get('LiveId')
         self.slice_details = []

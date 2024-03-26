@@ -1,3 +1,10 @@
+2024-03-26 Version: 2.2.2
+- Update API VideoModeration: update response param.
+- Update API VideoModerationResult: update response param.
+- Update API VoiceModeration: update response param.
+- Update API VoiceModerationResult: update response param.
+
+
 2024-02-01 Version: 2.2.1
 - Generated python 2022-03-02 for Green.
 
