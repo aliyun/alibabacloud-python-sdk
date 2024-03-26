@@ -28,7 +28,7 @@ pip install alibabacloud_vod20170321
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/vod-20170321/ChangeLog.md).
 
 ## References
 

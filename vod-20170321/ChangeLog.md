@@ -1,3 +1,8 @@
+2024-03-26 Version: 2.20.1
+- Update API DescribeVodDomainUsageData: update response param.
+- Update API DescribeVodTranscodeData: add param AppId.
+
+
 2024-01-05 Version: 2.20.0
 - Generated python 2017-03-21 for vod.
 
