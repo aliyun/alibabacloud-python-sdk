@@ -2345,6 +2345,7 @@ class DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList(Tea
         child_instance_owner_id: int = None,
         child_instance_region_id: str = None,
         child_instance_type: str = None,
+        ecr_id: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
         owner_id: int = None,
@@ -2356,6 +2357,7 @@ class DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList(Tea
         self.child_instance_owner_id = child_instance_owner_id
         self.child_instance_region_id = child_instance_region_id
         self.child_instance_type = child_instance_type
+        self.ecr_id = ecr_id
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.owner_id = owner_id
@@ -2381,6 +2383,8 @@ class DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList(Tea
             result['ChildInstanceRegionId'] = self.child_instance_region_id
         if self.child_instance_type is not None:
             result['ChildInstanceType'] = self.child_instance_type
+        if self.ecr_id is not None:
+            result['EcrId'] = self.ecr_id
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
@@ -2405,6 +2409,8 @@ class DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList(Tea
             self.child_instance_region_id = m.get('ChildInstanceRegionId')
         if m.get('ChildInstanceType') is not None:
             self.child_instance_type = m.get('ChildInstanceType')
+        if m.get('EcrId') is not None:
+            self.ecr_id = m.get('EcrId')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
         if m.get('GmtModified') is not None:

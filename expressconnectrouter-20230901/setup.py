@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_expressconnectrouter20230901.
 
-Created on 22/03/2024
+Created on 26/03/2024
 
 @author: Alibaba Cloud SDK
 """

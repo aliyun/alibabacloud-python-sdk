@@ -1,3 +1,7 @@
+2024-03-26 Version: 3.0.1
+- Update API DescribeExpressConnectRouterChildInstance: update response param.
+
+
 2024-03-22 Version: 3.0.0
 - Update API DescribeExpressConnectRouterAllowedPrefixHistory: add param AssociationId.
 - Update API DescribeExpressConnectRouterAllowedPrefixHistory: delete param AssociatonId.
