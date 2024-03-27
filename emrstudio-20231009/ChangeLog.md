@@ -1,3 +1,14 @@
+2024-03-27 Version: 1.1.1
+- Update API DescribeWorkflow: update param projectId.
+- Update API DescribeWorkflow: update param workflowId.
+- Update API DescribeWorkflow: update param workspaceId.
+- Update API DescribeWorkflowInstance: update param workflowInstanceId.
+- Update API DescribeWorkflowInstance: update param workspaceId.
+- Update API ListWorkflowInstances: update param workspaceId.
+- Update API ListWorkflows: update param projectId.
+- Update API ListWorkflows: update param workspaceId.
+
+
 2024-03-27 Version: 1.1.0
 - Support API DescribeManualTask.
 - Support API DescribeManualTaskInstance.
