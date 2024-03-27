@@ -1,3 +1,11 @@
+2024-03-27 Version: 2.27.4
+- Update API DeleteMaliciousFileWhitelistConfig: update param ConfigId.
+- Update API DescribeVulList: update response param.
+- Update API ListCheckInstanceResult: update param PageSize.
+- Update API ListCheckItem: update response param.
+- Update API ListCheckResult: update param PageSize.
+
+
 2024-03-13 Version: 2.27.3
 - Update API AddClientUserDefineRule: add param Domain.
 - Update API DescribeExposedInstanceCriteria: add param ResourceDirectoryAccountId.
