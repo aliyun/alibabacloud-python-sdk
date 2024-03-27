@@ -86,9 +86,13 @@ class GetSummaryDataRequest(TeaModel):
         start_time: str = None,
         uids: List[str] = None,
     ):
+        # The end of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format. Example: 2023-02-01 23:59:59.
         self.end_time = end_time
+        # The statistical dimension. A value of productCode specifies that statistics are collected based on cloud service. A value of region specifies that statistics are collected based on region. A value of subUid specifies that statistics are collected based on Resource Access Management (RAM) user. If you do not specify this parameter, statistics are collected based on Alibaba Cloud account.
         self.group = group
+        # The beginning of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format. Example: 2023-01-01 00:00:00.
         self.start_time = start_time
+        # The list of Alibaba Cloud account IDs whose data needs to be queried.(used after enabling multi-account management).
         self.uids = uids
 
     def validate(self):
@@ -131,9 +135,13 @@ class GetSummaryDataShrinkRequest(TeaModel):
         start_time: str = None,
         uids_shrink: str = None,
     ):
+        # The end of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format. Example: 2023-02-01 23:59:59.
         self.end_time = end_time
+        # The statistical dimension. A value of productCode specifies that statistics are collected based on cloud service. A value of region specifies that statistics are collected based on region. A value of subUid specifies that statistics are collected based on Resource Access Management (RAM) user. If you do not specify this parameter, statistics are collected based on Alibaba Cloud account.
         self.group = group
+        # The beginning of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format. Example: 2023-01-01 00:00:00.
         self.start_time = start_time
+        # The list of Alibaba Cloud account IDs whose data needs to be queried.(used after enabling multi-account management).
         self.uids_shrink = uids_shrink
 
     def validate(self):
@@ -182,15 +190,25 @@ class GetSummaryDataResponseBodyData(TeaModel):
         total_carbon_consumption_conversion: str = None,
         tree_consumption_conversion: str = None,
     ):
+        # Converted aircraft carbon emissions.
         self.aircraft_consumption_conversion = aircraft_consumption_conversion
+        # Converted car carbon emissions.
         self.car_consumption_conversion = car_consumption_conversion
+        # The carbon emissions in the previous month, in kgCO₂e.
         self.last_month_consumption_conversion = last_month_consumption_conversion
+        # The carbon emissions in the same month of the previous year, in kgCO₂e.
         self.last_year_consumption_conversion = last_year_consumption_conversion
+        # The carbon emissions of the previous year, in kgCO₂e.
         self.last_year_consumption_conversion_sum = last_year_consumption_conversion_sum
+        # The point in time at which the data is last updated.
         self.latest_data_time = latest_data_time
+        # The carbon emissions in this month, in kgCO₂e.
         self.this_month_consumption_conversion = this_month_consumption_conversion
+        # The carbon emissions in the year of this month, in kgCO₂e.
         self.this_year_consumption_conversion = this_year_consumption_conversion
+        # The total carbon emissions within the specified time range, in kgCO₂e.
         self.total_carbon_consumption_conversion = total_carbon_consumption_conversion
+        # Converted tree carbon absorption.
         self.tree_consumption_conversion = tree_consumption_conversion
 
     def validate(self):
@@ -255,8 +273,9 @@ class GetSummaryDataResponseBody(TeaModel):
         data: GetSummaryDataResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -337,12 +356,21 @@ class QueryCarbonTrackRequest(TeaModel):
         uids: List[str] = None,
         use_code: int = None,
     ):
+        # The end of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format. Example: 2023-02-01 23:59:59.
         self.end_time = end_time
+        # Whether to count the carbon emission details of multiple accounts. You can pass it in after opening the multi-account management. The default value and 0 is No and 1 is Yes.
         self.filter_rdaccount = filter_rdaccount
+        # The statistical dimension. A value of productCode specifies that statistics are collected based on cloud service. A value of region specifies that statistics are collected based on region. A value of subUid specifies that statistics are collected based on Resource Access Management (RAM) user. If you do not specify this parameter, statistics are collected based on Alibaba Cloud account.
         self.group = group
+        # The beginning of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format. Example: 2023-01-01 00:00:00.
         self.start_time = start_time
+        # After sorting in reverse order according to the data value of the return value, only the first TopNum data will be returned. If no data is passed, all data will be returned by default.
         self.top_num = top_num
+        # The list of Alibaba Cloud account IDs whose data needs to be queried.(used after enabling multi-account management).
         self.uids = uids
+        # Whether the return result uses code as the identifier(0 meas not used and 1 means used). If not passed, the default code is used.
+        # 
+        # For example, when the return result is to summarize carbon emissions according to the cloud product dimension, the identifier of ECS is "ecs" when 0 is passed, and "Elastic Compute Service" when 1 is passed.
         self.use_code = use_code
 
     def validate(self):
@@ -400,12 +428,21 @@ class QueryCarbonTrackShrinkRequest(TeaModel):
         uids_shrink: str = None,
         use_code: int = None,
     ):
+        # The end of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format. Example: 2023-02-01 23:59:59.
         self.end_time = end_time
+        # Whether to count the carbon emission details of multiple accounts. You can pass it in after opening the multi-account management. The default value and 0 is No and 1 is Yes.
         self.filter_rdaccount = filter_rdaccount
+        # The statistical dimension. A value of productCode specifies that statistics are collected based on cloud service. A value of region specifies that statistics are collected based on region. A value of subUid specifies that statistics are collected based on Resource Access Management (RAM) user. If you do not specify this parameter, statistics are collected based on Alibaba Cloud account.
         self.group = group
+        # The beginning of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format. Example: 2023-01-01 00:00:00.
         self.start_time = start_time
+        # After sorting in reverse order according to the data value of the return value, only the first TopNum data will be returned. If no data is passed, all data will be returned by default.
         self.top_num = top_num
+        # The list of Alibaba Cloud account IDs whose data needs to be queried.(used after enabling multi-account management).
         self.uids_shrink = uids_shrink
+        # Whether the return result uses code as the identifier(0 meas not used and 1 means used). If not passed, the default code is used.
+        # 
+        # For example, when the return result is to summarize carbon emissions according to the cloud product dimension, the identifier of ECS is "ecs" when 0 is passed, and "Elastic Compute Service" when 1 is passed.
         self.use_code = use_code
 
     def validate(self):
@@ -462,11 +499,17 @@ class QueryCarbonTrackResponseBodyData(TeaModel):
         sub_uid: str = None,
         uid: str = None,
     ):
+        # The service code.
         self.product_code = product_code
+        # The carbon emissions within the specified time range, in kgCO₂e.
         self.quota_value = quota_value
+        # The region in which the cloud service resides.
         self.region = region
+        # The date when the statistics are collected, which is a timestamp in milliseconds.
         self.statistics_date = statistics_date
+        # The ID of the RAM user.
         self.sub_uid = sub_uid
+        # The ID of the Alibaba Cloud account.
         self.uid = uid
 
     def validate(self):
@@ -515,7 +558,9 @@ class QueryCarbonTrackResponseBody(TeaModel):
         data: List[QueryCarbonTrackResponseBodyData] = None,
         request_id: str = None,
     ):
+        # The data records.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
