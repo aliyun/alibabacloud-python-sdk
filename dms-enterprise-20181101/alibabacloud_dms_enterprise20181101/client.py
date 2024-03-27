@@ -202,6 +202,8 @@ class Client(OpenApiClient):
             query['Tid'] = request.tid
         if not UtilClient.is_unset(request.use_dsql):
             query['UseDsql'] = request.use_dsql
+        if not UtilClient.is_unset(request.use_ssl):
+            query['UseSsl'] = request.use_ssl
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
@@ -284,6 +286,8 @@ class Client(OpenApiClient):
             query['Tid'] = request.tid
         if not UtilClient.is_unset(request.use_dsql):
             query['UseDsql'] = request.use_dsql
+        if not UtilClient.is_unset(request.use_ssl):
+            query['UseSsl'] = request.use_ssl
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
@@ -3289,6 +3293,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateSQLReviewOrderResponse:
         """
+        You can call this operation only for database instances that are managed in Security Collaboration mode.
         For more information about the SQL review feature, see [SQL review](~~60374~~).
         
         @param tmp_req: CreateSQLReviewOrderRequest
@@ -3336,6 +3341,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateSQLReviewOrderResponse:
         """
+        You can call this operation only for database instances that are managed in Security Collaboration mode.
         For more information about the SQL review feature, see [SQL review](~~60374~~).
         
         @param tmp_req: CreateSQLReviewOrderRequest
@@ -3382,6 +3388,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateSQLReviewOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateSQLReviewOrderResponse:
         """
+        You can call this operation only for database instances that are managed in Security Collaboration mode.
         For more information about the SQL review feature, see [SQL review](~~60374~~).
         
         @param request: CreateSQLReviewOrderRequest
@@ -3395,6 +3402,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateSQLReviewOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateSQLReviewOrderResponse:
         """
+        You can call this operation only for database instances that are managed in Security Collaboration mode.
         For more information about the SQL review feature, see [SQL review](~~60374~~).
         
         @param request: CreateSQLReviewOrderRequest
@@ -15862,6 +15870,8 @@ class Client(OpenApiClient):
             query['Tid'] = request.tid
         if not UtilClient.is_unset(request.use_dsql):
             query['UseDsql'] = request.use_dsql
+        if not UtilClient.is_unset(request.use_ssl):
+            query['UseSsl'] = request.use_ssl
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
@@ -15946,6 +15956,8 @@ class Client(OpenApiClient):
             query['Tid'] = request.tid
         if not UtilClient.is_unset(request.use_dsql):
             query['UseDsql'] = request.use_dsql
+        if not UtilClient.is_unset(request.use_ssl):
+            query['UseSsl'] = request.use_ssl
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
@@ -16138,6 +16150,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.PauseDataCorrectSQLJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.PauseDataCorrectSQLJobResponse:
+        """
+        You can call this operation only for database instances that are managed in Security Collaboration mode.
+        
+        @param request: PauseDataCorrectSQLJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PauseDataCorrectSQLJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -16172,6 +16191,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.PauseDataCorrectSQLJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.PauseDataCorrectSQLJobResponse:
+        """
+        You can call this operation only for database instances that are managed in Security Collaboration mode.
+        
+        @param request: PauseDataCorrectSQLJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PauseDataCorrectSQLJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -16205,6 +16231,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.PauseDataCorrectSQLJobRequest,
     ) -> dms_enterprise_20181101_models.PauseDataCorrectSQLJobResponse:
+        """
+        You can call this operation only for database instances that are managed in Security Collaboration mode.
+        
+        @param request: PauseDataCorrectSQLJobRequest
+        @return: PauseDataCorrectSQLJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.pause_data_correct_sqljob_with_options(request, runtime)
 
@@ -16212,6 +16244,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.PauseDataCorrectSQLJobRequest,
     ) -> dms_enterprise_20181101_models.PauseDataCorrectSQLJobResponse:
+        """
+        You can call this operation only for database instances that are managed in Security Collaboration mode.
+        
+        @param request: PauseDataCorrectSQLJobRequest
+        @return: PauseDataCorrectSQLJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.pause_data_correct_sqljob_with_options_async(request, runtime)
 

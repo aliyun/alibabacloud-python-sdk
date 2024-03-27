@@ -1,3 +1,23 @@
+2024-03-27 Version: 1.59.1
+- Update API AddInstance: add param UseSsl.
+- Update API ModifyInstance: add param UseSsl.
+- Update API ModifyInstance: update param DatabasePassword.
+- Update API ModifyInstance: update param DatabaseUser.
+- Update API ModifyInstance: update param DbaId.
+- Update API ModifyInstance: update param EnvType.
+- Update API ModifyInstance: update param ExportTimeout.
+- Update API ModifyInstance: update param Host.
+- Update API ModifyInstance: update param InstanceAlias.
+- Update API ModifyInstance: update param InstanceSource.
+- Update API ModifyInstance: update param InstanceType.
+- Update API ModifyInstance: update param NetworkType.
+- Update API ModifyInstance: update param Port.
+- Update API ModifyInstance: update param QueryTimeout.
+- Update API ModifyInstance: update param SafeRule.
+- Update API RevokeUserPermission: update param DbId.
+- Update API UpdateTaskFlowNameAndDesc: update response param.
+
+
 2024-01-23 Version: 1.59.0
 - Generated python 2018-11-01 for dms-enterprise.
 
