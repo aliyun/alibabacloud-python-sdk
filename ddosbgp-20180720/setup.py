@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_ddosbgp20180720.
 
-Created on 28/02/2024
+Created on 27/03/2024
 
 @author: Alibaba Cloud SDK
 """
