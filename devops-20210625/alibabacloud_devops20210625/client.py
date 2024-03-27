@@ -10721,6 +10721,64 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_host_groups_with_options_async(organization_id, request, headers, runtime)
 
+    def list_joined_organizations_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListJoinedOrganizationsResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListJoinedOrganizations',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/users/joinedOrgs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListJoinedOrganizationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_joined_organizations_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListJoinedOrganizationsResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListJoinedOrganizations',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/users/joinedOrgs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListJoinedOrganizationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_joined_organizations(self) -> devops_20210625_models.ListJoinedOrganizationsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_joined_organizations_with_options(headers, runtime)
+
+    async def list_joined_organizations_async(self) -> devops_20210625_models.ListJoinedOrganizationsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_joined_organizations_with_options_async(headers, runtime)
+
     def list_merge_request_comments_with_options(
         self,
         request: devops_20210625_models.ListMergeRequestCommentsRequest,
