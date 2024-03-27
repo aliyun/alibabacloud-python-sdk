@@ -972,3 +972,73 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.submit_bullet_questions_v1with_options_async(request, headers, runtime)
+
+    def sync_digital_video_with_options(
+        self,
+        request: intelligent_creation_20240118_models.SyncDigitalVideoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240118_models.SyncDigitalVideoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='SyncDigitalVideo',
+            version='2024-01-18',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/digitalHuman/videos/commands/syncDigitalVideo',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.SyncDigitalVideoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sync_digital_video_with_options_async(
+        self,
+        request: intelligent_creation_20240118_models.SyncDigitalVideoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240118_models.SyncDigitalVideoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='SyncDigitalVideo',
+            version='2024-01-18',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/digitalHuman/videos/commands/syncDigitalVideo',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240118_models.SyncDigitalVideoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sync_digital_video(
+        self,
+        request: intelligent_creation_20240118_models.SyncDigitalVideoRequest,
+    ) -> intelligent_creation_20240118_models.SyncDigitalVideoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.sync_digital_video_with_options(request, headers, runtime)
+
+    async def sync_digital_video_async(
+        self,
+        request: intelligent_creation_20240118_models.SyncDigitalVideoRequest,
+    ) -> intelligent_creation_20240118_models.SyncDigitalVideoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.sync_digital_video_with_options_async(request, headers, runtime)

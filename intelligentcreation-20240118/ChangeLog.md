@@ -1,3 +1,7 @@
+2024-03-27 Version: 1.7.0
+- Support API SyncDigitalVideo.
+
+
 2024-03-13 Version: 1.6.0
 - Support API DeleteDigitalVideo.
 
