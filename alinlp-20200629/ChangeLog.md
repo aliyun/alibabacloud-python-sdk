@@ -1,3 +1,7 @@
+2024-03-27 Version: 2.7.0
+- Support API ImportServiceDataV2.
+
+
 2024-03-23 Version: 2.6.0
 - Support API PostISConvRewriter.
 - Support API PostISRetrieveRouter.

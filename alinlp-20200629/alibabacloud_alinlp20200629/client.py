@@ -4461,6 +4461,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.import_service_data_with_options_async(request, runtime)
 
+    def import_service_data_v2with_options(
+        self,
+        tmp_req: alinlp_20200629_models.ImportServiceDataV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.ImportServiceDataV2Response:
+        UtilClient.validate_model(tmp_req)
+        request = alinlp_20200629_models.ImportServiceDataV2ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.documents):
+            request.documents_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.documents, 'Documents', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.data_type):
+            body['DataType'] = request.data_type
+        if not UtilClient.is_unset(request.documents_shrink):
+            body['Documents'] = request.documents_shrink
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ImportServiceDataV2',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.ImportServiceDataV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_service_data_v2with_options_async(
+        self,
+        tmp_req: alinlp_20200629_models.ImportServiceDataV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.ImportServiceDataV2Response:
+        UtilClient.validate_model(tmp_req)
+        request = alinlp_20200629_models.ImportServiceDataV2ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.documents):
+            request.documents_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.documents, 'Documents', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.data_type):
+            body['DataType'] = request.data_type
+        if not UtilClient.is_unset(request.documents_shrink):
+            body['Documents'] = request.documents_shrink
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ImportServiceDataV2',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.ImportServiceDataV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_service_data_v2(
+        self,
+        request: alinlp_20200629_models.ImportServiceDataV2Request,
+    ) -> alinlp_20200629_models.ImportServiceDataV2Response:
+        runtime = util_models.RuntimeOptions()
+        return self.import_service_data_v2with_options(request, runtime)
+
+    async def import_service_data_v2_async(
+        self,
+        request: alinlp_20200629_models.ImportServiceDataV2Request,
+    ) -> alinlp_20200629_models.ImportServiceDataV2Response:
+        runtime = util_models.RuntimeOptions()
+        return await self.import_service_data_v2with_options_async(request, runtime)
+
     def insert_custom_with_options(
         self,
         request: alinlp_20200629_models.InsertCustomRequest,

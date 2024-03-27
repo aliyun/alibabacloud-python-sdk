@@ -6625,6 +6625,241 @@ class ImportServiceDataResponse(TeaModel):
         return self
 
 
+class ImportServiceDataV2RequestDocuments(TeaModel):
+    def __init__(
+        self,
+        biz_params: Dict[str, str] = None,
+        doc_id: str = None,
+        file_extension: str = None,
+        file_name: str = None,
+        file_path: str = None,
+        version: str = None,
+    ):
+        self.biz_params = biz_params
+        self.doc_id = doc_id
+        self.file_extension = file_extension
+        self.file_name = file_name
+        self.file_path = file_path
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_params is not None:
+            result['BizParams'] = self.biz_params
+        if self.doc_id is not None:
+            result['DocId'] = self.doc_id
+        if self.file_extension is not None:
+            result['FileExtension'] = self.file_extension
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_path is not None:
+            result['FilePath'] = self.file_path
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizParams') is not None:
+            self.biz_params = m.get('BizParams')
+        if m.get('DocId') is not None:
+            self.doc_id = m.get('DocId')
+        if m.get('FileExtension') is not None:
+            self.file_extension = m.get('FileExtension')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FilePath') is not None:
+            self.file_path = m.get('FilePath')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class ImportServiceDataV2Request(TeaModel):
+    def __init__(
+        self,
+        data_type: str = None,
+        documents: List[ImportServiceDataV2RequestDocuments] = None,
+        service_id: int = None,
+    ):
+        self.data_type = data_type
+        self.documents = documents
+        self.service_id = service_id
+
+    def validate(self):
+        if self.documents:
+            for k in self.documents:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
+        result['Documents'] = []
+        if self.documents is not None:
+            for k in self.documents:
+                result['Documents'].append(k.to_map() if k else None)
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
+        self.documents = []
+        if m.get('Documents') is not None:
+            for k in m.get('Documents'):
+                temp_model = ImportServiceDataV2RequestDocuments()
+                self.documents.append(temp_model.from_map(k))
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        return self
+
+
+class ImportServiceDataV2ShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        data_type: str = None,
+        documents_shrink: str = None,
+        service_id: int = None,
+    ):
+        self.data_type = data_type
+        self.documents_shrink = documents_shrink
+        self.service_id = service_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
+        if self.documents_shrink is not None:
+            result['Documents'] = self.documents_shrink
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
+        if m.get('Documents') is not None:
+            self.documents_shrink = m.get('Documents')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        return self
+
+
+class ImportServiceDataV2ResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: int = None,
+        msg: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.msg = msg
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ImportServiceDataV2Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ImportServiceDataV2ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ImportServiceDataV2ResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class InsertCustomRequest(TeaModel):
     def __init__(
         self,
