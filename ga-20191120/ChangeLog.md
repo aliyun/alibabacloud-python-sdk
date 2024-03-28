@@ -6,6 +6,14 @@
 - Update API UpdateListener: add param HttpVersion.
 
 
+2024-03-28 Version: 2.1.6
+- Update API CreateListener: add param HttpVersion.
+- Update API DescribeListener: update response param.
+- Update API ListAvailableAccelerateAreas: update response param.
+- Update API ListListeners: update response param.
+- Update API UpdateListener: add param HttpVersion.
+
+
 2023-12-25 Version: 2.1.5
 - Generated python 2019-11-20 for Ga.
 
