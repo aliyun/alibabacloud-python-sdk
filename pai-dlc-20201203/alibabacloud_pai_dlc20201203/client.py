@@ -275,6 +275,10 @@ class Client(OpenApiClient):
             body['SummaryPath'] = request.summary_path
         if not UtilClient.is_unset(request.summary_relative_path):
             body['SummaryRelativePath'] = request.summary_relative_path
+        if not UtilClient.is_unset(request.tensorboard_data_sources):
+            body['TensorboardDataSources'] = request.tensorboard_data_sources
+        if not UtilClient.is_unset(request.tensorboard_spec):
+            body['TensorboardSpec'] = request.tensorboard_spec
         if not UtilClient.is_unset(request.uri):
             body['Uri'] = request.uri
         if not UtilClient.is_unset(request.workspace_id):
@@ -333,6 +337,10 @@ class Client(OpenApiClient):
             body['SummaryPath'] = request.summary_path
         if not UtilClient.is_unset(request.summary_relative_path):
             body['SummaryRelativePath'] = request.summary_relative_path
+        if not UtilClient.is_unset(request.tensorboard_data_sources):
+            body['TensorboardDataSources'] = request.tensorboard_data_sources
+        if not UtilClient.is_unset(request.tensorboard_spec):
+            body['TensorboardSpec'] = request.tensorboard_spec
         if not UtilClient.is_unset(request.uri):
             body['Uri'] = request.uri
         if not UtilClient.is_unset(request.workspace_id):
@@ -1767,6 +1775,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.payment_type):
+            query['PaymentType'] = request.payment_type
         if not UtilClient.is_unset(request.show_own):
             query['ShowOwn'] = request.show_own
         if not UtilClient.is_unset(request.sort_by):
@@ -1825,6 +1835,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.payment_type):
+            query['PaymentType'] = request.payment_type
         if not UtilClient.is_unset(request.show_own):
             query['ShowOwn'] = request.show_own
         if not UtilClient.is_unset(request.sort_by):

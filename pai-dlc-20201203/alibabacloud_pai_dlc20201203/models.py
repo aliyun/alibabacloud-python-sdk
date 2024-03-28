@@ -2782,6 +2782,120 @@ class StatusTransitionItem(TeaModel):
         return self
 
 
+class TensorboardDataSourceSpec(TeaModel):
+    def __init__(
+        self,
+        data_source_type: str = None,
+        directory_name: str = None,
+        full_summary_path: str = None,
+        id: str = None,
+        name: str = None,
+        source_type: str = None,
+        summary_path: str = None,
+        uri: str = None,
+    ):
+        self.data_source_type = data_source_type
+        self.directory_name = directory_name
+        self.full_summary_path = full_summary_path
+        self.id = id
+        self.name = name
+        self.source_type = source_type
+        self.summary_path = summary_path
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_source_type is not None:
+            result['DataSourceType'] = self.data_source_type
+        if self.directory_name is not None:
+            result['DirectoryName'] = self.directory_name
+        if self.full_summary_path is not None:
+            result['FullSummaryPath'] = self.full_summary_path
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        if self.summary_path is not None:
+            result['SummaryPath'] = self.summary_path
+        if self.uri is not None:
+            result['Uri'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataSourceType') is not None:
+            self.data_source_type = m.get('DataSourceType')
+        if m.get('DirectoryName') is not None:
+            self.directory_name = m.get('DirectoryName')
+        if m.get('FullSummaryPath') is not None:
+            self.full_summary_path = m.get('FullSummaryPath')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        if m.get('SummaryPath') is not None:
+            self.summary_path = m.get('SummaryPath')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
+        return self
+
+
+class TensorboardSpec(TeaModel):
+    def __init__(
+        self,
+        ecs_type: str = None,
+        security_group_id: str = None,
+        switch_id: str = None,
+        vpc_id: str = None,
+    ):
+        self.ecs_type = ecs_type
+        self.security_group_id = security_group_id
+        self.switch_id = switch_id
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ecs_type is not None:
+            result['EcsType'] = self.ecs_type
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.switch_id is not None:
+            result['SwitchId'] = self.switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EcsType') is not None:
+            self.ecs_type = m.get('EcsType')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('SwitchId') is not None:
+            self.switch_id = m.get('SwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
 class Tensorboard(TeaModel):
     def __init__(
         self,
@@ -2796,7 +2910,9 @@ class Tensorboard(TeaModel):
         request_id: str = None,
         status: str = None,
         summary_path: str = None,
+        tensorboard_data_sources: List[TensorboardDataSourceSpec] = None,
         tensorboard_id: str = None,
+        tensorboard_spec: TensorboardSpec = None,
         tensorboard_url: str = None,
         user_id: str = None,
     ):
@@ -2811,12 +2927,19 @@ class Tensorboard(TeaModel):
         self.request_id = request_id
         self.status = status
         self.summary_path = summary_path
+        self.tensorboard_data_sources = tensorboard_data_sources
         self.tensorboard_id = tensorboard_id
+        self.tensorboard_spec = tensorboard_spec
         self.tensorboard_url = tensorboard_url
         self.user_id = user_id
 
     def validate(self):
-        pass
+        if self.tensorboard_data_sources:
+            for k in self.tensorboard_data_sources:
+                if k:
+                    k.validate()
+        if self.tensorboard_spec:
+            self.tensorboard_spec.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2846,8 +2969,14 @@ class Tensorboard(TeaModel):
             result['Status'] = self.status
         if self.summary_path is not None:
             result['SummaryPath'] = self.summary_path
+        result['TensorboardDataSources'] = []
+        if self.tensorboard_data_sources is not None:
+            for k in self.tensorboard_data_sources:
+                result['TensorboardDataSources'].append(k.to_map() if k else None)
         if self.tensorboard_id is not None:
             result['TensorboardId'] = self.tensorboard_id
+        if self.tensorboard_spec is not None:
+            result['TensorboardSpec'] = self.tensorboard_spec.to_map()
         if self.tensorboard_url is not None:
             result['TensorboardUrl'] = self.tensorboard_url
         if self.user_id is not None:
@@ -2878,8 +3007,16 @@ class Tensorboard(TeaModel):
             self.status = m.get('Status')
         if m.get('SummaryPath') is not None:
             self.summary_path = m.get('SummaryPath')
+        self.tensorboard_data_sources = []
+        if m.get('TensorboardDataSources') is not None:
+            for k in m.get('TensorboardDataSources'):
+                temp_model = TensorboardDataSourceSpec()
+                self.tensorboard_data_sources.append(temp_model.from_map(k))
         if m.get('TensorboardId') is not None:
             self.tensorboard_id = m.get('TensorboardId')
+        if m.get('TensorboardSpec') is not None:
+            temp_model = TensorboardSpec()
+            self.tensorboard_spec = temp_model.from_map(m['TensorboardSpec'])
         if m.get('TensorboardUrl') is not None:
             self.tensorboard_url = m.get('TensorboardUrl')
         if m.get('UserId') is not None:
@@ -3380,6 +3517,8 @@ class CreateTensorboardRequest(TeaModel):
         source_type: str = None,
         summary_path: str = None,
         summary_relative_path: str = None,
+        tensorboard_data_sources: List[TensorboardDataSourceSpec] = None,
+        tensorboard_spec: TensorboardSpec = None,
         uri: str = None,
         workspace_id: str = None,
     ):
@@ -3396,6 +3535,8 @@ class CreateTensorboardRequest(TeaModel):
         self.source_type = source_type
         self.summary_path = summary_path
         self.summary_relative_path = summary_relative_path
+        self.tensorboard_data_sources = tensorboard_data_sources
+        self.tensorboard_spec = tensorboard_spec
         self.uri = uri
         self.workspace_id = workspace_id
 
@@ -3404,6 +3545,12 @@ class CreateTensorboardRequest(TeaModel):
             for k in self.data_sources:
                 if k:
                     k.validate()
+        if self.tensorboard_data_sources:
+            for k in self.tensorboard_data_sources:
+                if k:
+                    k.validate()
+        if self.tensorboard_spec:
+            self.tensorboard_spec.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3439,6 +3586,12 @@ class CreateTensorboardRequest(TeaModel):
             result['SummaryPath'] = self.summary_path
         if self.summary_relative_path is not None:
             result['SummaryRelativePath'] = self.summary_relative_path
+        result['TensorboardDataSources'] = []
+        if self.tensorboard_data_sources is not None:
+            for k in self.tensorboard_data_sources:
+                result['TensorboardDataSources'].append(k.to_map() if k else None)
+        if self.tensorboard_spec is not None:
+            result['TensorboardSpec'] = self.tensorboard_spec.to_map()
         if self.uri is not None:
             result['Uri'] = self.uri
         if self.workspace_id is not None:
@@ -3476,6 +3629,14 @@ class CreateTensorboardRequest(TeaModel):
             self.summary_path = m.get('SummaryPath')
         if m.get('SummaryRelativePath') is not None:
             self.summary_relative_path = m.get('SummaryRelativePath')
+        self.tensorboard_data_sources = []
+        if m.get('TensorboardDataSources') is not None:
+            for k in m.get('TensorboardDataSources'):
+                temp_model = TensorboardDataSourceSpec()
+                self.tensorboard_data_sources.append(temp_model.from_map(k))
+        if m.get('TensorboardSpec') is not None:
+            temp_model = TensorboardSpec()
+            self.tensorboard_spec = temp_model.from_map(m['TensorboardSpec'])
         if m.get('Uri') is not None:
             self.uri = m.get('Uri')
         if m.get('WorkspaceId') is not None:
@@ -6084,6 +6245,7 @@ class ListTensorboardsRequest(TeaModel):
         order: str = None,
         page_number: int = None,
         page_size: int = None,
+        payment_type: str = None,
         show_own: bool = None,
         sort_by: str = None,
         source_id: str = None,
@@ -6100,6 +6262,7 @@ class ListTensorboardsRequest(TeaModel):
         self.order = order
         self.page_number = page_number
         self.page_size = page_size
+        self.payment_type = payment_type
         self.show_own = show_own
         self.sort_by = sort_by
         self.source_id = source_id
@@ -6131,6 +6294,8 @@ class ListTensorboardsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
         if self.show_own is not None:
             result['ShowOwn'] = self.show_own
         if self.sort_by is not None:
@@ -6165,6 +6330,8 @@ class ListTensorboardsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
         if m.get('ShowOwn') is not None:
             self.show_own = m.get('ShowOwn')
         if m.get('SortBy') is not None:

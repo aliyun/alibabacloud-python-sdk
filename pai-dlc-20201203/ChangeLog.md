@@ -1,3 +1,8 @@
+2024-03-28 Version: 1.4.4
+- Update API CreateTensorboard: update param body.
+- Update API ListTensorboards: add param PaymentType.
+
+
 2024-03-20 Version: 1.4.3
 - Update API GetJobSanityCheckResult: update param JobId.
 - Update API ListJobSanityCheckResults: update param JobId.
