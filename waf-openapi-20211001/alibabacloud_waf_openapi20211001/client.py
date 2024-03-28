@@ -1341,6 +1341,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_account_delegated_status_with_options_async(request, runtime)
 
+    def describe_certs_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeCertsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeCertsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCerts',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeCertsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_certs_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeCertsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeCertsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCerts',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeCertsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_certs(
+        self,
+        request: waf_openapi_20211001_models.DescribeCertsRequest,
+    ) -> waf_openapi_20211001_models.DescribeCertsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_certs_with_options(request, runtime)
+
+    async def describe_certs_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeCertsRequest,
+    ) -> waf_openapi_20211001_models.DescribeCertsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_certs_with_options_async(request, runtime)
+
     def describe_defense_resource_group_with_options(
         self,
         request: waf_openapi_20211001_models.DescribeDefenseResourceGroupRequest,
@@ -1982,6 +2076,88 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20211001_models.DescribeDefenseTemplatesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_defense_templates_with_options_async(request, runtime)
+
+    def describe_domain_dnsrecord_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeDomainDNSRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeDomainDNSRecordResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainDNSRecord',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDomainDNSRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_domain_dnsrecord_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeDomainDNSRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeDomainDNSRecordResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainDNSRecord',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDomainDNSRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_domain_dnsrecord(
+        self,
+        request: waf_openapi_20211001_models.DescribeDomainDNSRecordRequest,
+    ) -> waf_openapi_20211001_models.DescribeDomainDNSRecordResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_domain_dnsrecord_with_options(request, runtime)
+
+    async def describe_domain_dnsrecord_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeDomainDNSRecordRequest,
+    ) -> waf_openapi_20211001_models.DescribeDomainDNSRecordResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_domain_dnsrecord_with_options_async(request, runtime)
 
     def describe_domain_detail_with_options(
         self,
@@ -3316,6 +3492,162 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20211001_models.DescribeResourcePortResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_resource_port_with_options_async(request, runtime)
+
+    def describe_resource_region_id_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeResourceRegionIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeResourceRegionIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeResourceRegionId',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeResourceRegionIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_resource_region_id_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeResourceRegionIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeResourceRegionIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeResourceRegionId',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeResourceRegionIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_resource_region_id(
+        self,
+        request: waf_openapi_20211001_models.DescribeResourceRegionIdRequest,
+    ) -> waf_openapi_20211001_models.DescribeResourceRegionIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_resource_region_id_with_options(request, runtime)
+
+    async def describe_resource_region_id_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeResourceRegionIdRequest,
+    ) -> waf_openapi_20211001_models.DescribeResourceRegionIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_resource_region_id_with_options_async(request, runtime)
+
+    def describe_resource_support_regions_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeResourceSupportRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeResourceSupportRegionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeResourceSupportRegions',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeResourceSupportRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_resource_support_regions_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeResourceSupportRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeResourceSupportRegionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeResourceSupportRegions',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeResourceSupportRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_resource_support_regions(
+        self,
+        request: waf_openapi_20211001_models.DescribeResourceSupportRegionsRequest,
+    ) -> waf_openapi_20211001_models.DescribeResourceSupportRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_resource_support_regions_with_options(request, runtime)
+
+    async def describe_resource_support_regions_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeResourceSupportRegionsRequest,
+    ) -> waf_openapi_20211001_models.DescribeResourceSupportRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_resource_support_regions_with_options_async(request, runtime)
 
     def describe_response_code_trend_graph_with_options(
         self,
@@ -4885,6 +5217,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_defense_resource_group_with_options_async(request, runtime)
 
+    def modify_defense_resource_xff_with_options(
+        self,
+        request: waf_openapi_20211001_models.ModifyDefenseResourceXffRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ModifyDefenseResourceXffResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acw_cookie_status):
+            query['AcwCookieStatus'] = request.acw_cookie_status
+        if not UtilClient.is_unset(request.acw_secure_status):
+            query['AcwSecureStatus'] = request.acw_secure_status
+        if not UtilClient.is_unset(request.acw_v3secure_status):
+            query['AcwV3SecureStatus'] = request.acw_v3secure_status
+        if not UtilClient.is_unset(request.custom_headers):
+            query['CustomHeaders'] = request.custom_headers
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.xff_status):
+            query['XffStatus'] = request.xff_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDefenseResourceXff',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyDefenseResourceXffResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_defense_resource_xff_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.ModifyDefenseResourceXffRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ModifyDefenseResourceXffResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acw_cookie_status):
+            query['AcwCookieStatus'] = request.acw_cookie_status
+        if not UtilClient.is_unset(request.acw_secure_status):
+            query['AcwSecureStatus'] = request.acw_secure_status
+        if not UtilClient.is_unset(request.acw_v3secure_status):
+            query['AcwV3SecureStatus'] = request.acw_v3secure_status
+        if not UtilClient.is_unset(request.custom_headers):
+            query['CustomHeaders'] = request.custom_headers
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.xff_status):
+            query['XffStatus'] = request.xff_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDefenseResourceXff',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyDefenseResourceXffResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_defense_resource_xff(
+        self,
+        request: waf_openapi_20211001_models.ModifyDefenseResourceXffRequest,
+    ) -> waf_openapi_20211001_models.ModifyDefenseResourceXffResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_defense_resource_xff_with_options(request, runtime)
+
+    async def modify_defense_resource_xff_async(
+        self,
+        request: waf_openapi_20211001_models.ModifyDefenseResourceXffRequest,
+    ) -> waf_openapi_20211001_models.ModifyDefenseResourceXffResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_defense_resource_xff_with_options_async(request, runtime)
+
     def modify_defense_rule_with_options(
         self,
         request: waf_openapi_20211001_models.ModifyDefenseRuleRequest,
@@ -4974,6 +5408,92 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20211001_models.ModifyDefenseRuleResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_defense_rule_with_options_async(request, runtime)
+
+    def modify_defense_rule_cache_with_options(
+        self,
+        request: waf_openapi_20211001_models.ModifyDefenseRuleCacheRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ModifyDefenseRuleCacheResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDefenseRuleCache',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyDefenseRuleCacheResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_defense_rule_cache_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.ModifyDefenseRuleCacheRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ModifyDefenseRuleCacheResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDefenseRuleCache',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyDefenseRuleCacheResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_defense_rule_cache(
+        self,
+        request: waf_openapi_20211001_models.ModifyDefenseRuleCacheRequest,
+    ) -> waf_openapi_20211001_models.ModifyDefenseRuleCacheResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_defense_rule_cache_with_options(request, runtime)
+
+    async def modify_defense_rule_cache_async(
+        self,
+        request: waf_openapi_20211001_models.ModifyDefenseRuleCacheRequest,
+    ) -> waf_openapi_20211001_models.ModifyDefenseRuleCacheResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_defense_rule_cache_with_options_async(request, runtime)
 
     def modify_defense_rule_status_with_options(
         self,

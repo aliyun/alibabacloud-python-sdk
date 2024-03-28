@@ -1,3 +1,12 @@
+2024-03-28 Version: 3.2.0
+- Support API DescribeCerts.
+- Support API DescribeDomainDNSRecord.
+- Support API DescribeResourceRegionId.
+- Support API DescribeResourceSupportRegions.
+- Support API ModifyDefenseResourceXff.
+- Support API ModifyDefenseRuleCache.
+
+
 2024-03-26 Version: 3.1.0
 - Support API CreateMemberAccounts.
 - Support API DeleteMemberAccount.
