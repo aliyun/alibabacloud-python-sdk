@@ -3167,80 +3167,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_web_hosting_upload_credential_with_options_async(request, runtime)
 
-    def list_available_certificates_with_options(
-        self,
-        request: mpserverless_20190615_models.ListAvailableCertificatesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> mpserverless_20190615_models.ListAvailableCertificatesResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.domain):
-            body['Domain'] = request.domain
-        if not UtilClient.is_unset(request.space_id):
-            body['SpaceId'] = request.space_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ListAvailableCertificates',
-            version='2019-06-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            mpserverless_20190615_models.ListAvailableCertificatesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_available_certificates_with_options_async(
-        self,
-        request: mpserverless_20190615_models.ListAvailableCertificatesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> mpserverless_20190615_models.ListAvailableCertificatesResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.domain):
-            body['Domain'] = request.domain
-        if not UtilClient.is_unset(request.space_id):
-            body['SpaceId'] = request.space_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ListAvailableCertificates',
-            version='2019-06-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            mpserverless_20190615_models.ListAvailableCertificatesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_available_certificates(
-        self,
-        request: mpserverless_20190615_models.ListAvailableCertificatesRequest,
-    ) -> mpserverless_20190615_models.ListAvailableCertificatesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_available_certificates_with_options(request, runtime)
-
-    async def list_available_certificates_async(
-        self,
-        request: mpserverless_20190615_models.ListAvailableCertificatesRequest,
-    ) -> mpserverless_20190615_models.ListAvailableCertificatesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_available_certificates_with_options_async(request, runtime)
-
     def list_cors_domains_with_options(
         self,
         request: mpserverless_20190615_models.ListCorsDomainsRequest,
@@ -4148,10 +4074,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.allowed_ips):
             body['AllowedIps'] = request.allowed_ips
+        if not UtilClient.is_unset(request.error_http_status):
+            body['ErrorHttpStatus'] = request.error_http_status
         if not UtilClient.is_unset(request.error_path):
             body['ErrorPath'] = request.error_path
-        if not UtilClient.is_unset(request.history_mode_path):
-            body['HistoryModePath'] = request.history_mode_path
         if not UtilClient.is_unset(request.index_path):
             body['IndexPath'] = request.index_path
         if not UtilClient.is_unset(request.space_id):
@@ -4184,10 +4110,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.allowed_ips):
             body['AllowedIps'] = request.allowed_ips
+        if not UtilClient.is_unset(request.error_http_status):
+            body['ErrorHttpStatus'] = request.error_http_status
         if not UtilClient.is_unset(request.error_path):
             body['ErrorPath'] = request.error_path
-        if not UtilClient.is_unset(request.history_mode_path):
-            body['HistoryModePath'] = request.history_mode_path
         if not UtilClient.is_unset(request.index_path):
             body['IndexPath'] = request.index_path
         if not UtilClient.is_unset(request.space_id):

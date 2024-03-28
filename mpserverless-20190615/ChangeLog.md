@@ -1,3 +1,17 @@
+2024-03-28 Version: 2.0.0
+- Delete API ListAvailableCertificates.
+- Update API CreateFunction: update param Memory.
+- Update API CreateFunction: update param Runtime.
+- Update API CreateFunction: update param Timeout.
+- Update API GetWebHostingConfig: update response param.
+- Update API ModifyWebHostingConfig: add param ErrorHttpStatus.
+- Update API ModifyWebHostingConfig: delete param HistoryModePath.
+- Update API UpdateFunction: update param InstanceConcurrency.
+- Update API UpdateFunction: update param Memory.
+- Update API UpdateFunction: update param Runtime.
+- Update API UpdateFunction: update param Timeout.
+
+
 2023-07-18 Version: 1.0.10
 - Publish SDK.
 - Support cdn config.
