@@ -1,3 +1,12 @@
+2024-03-28 Version: 1.4.0
+- Support API ListAvailableZones.
+- Support API ListConsumerConnections.
+- Support API ListRegions.
+- Support API ListTopicSubscriptions.
+- Update API ListTopics: update param pageNumber.
+- Update API ListTopics: update param pageSize.
+
+
 2024-02-27 Version: 1.3.0
 - Support API ListAvailableZones.
 - Support API ListConsumerConnections.
