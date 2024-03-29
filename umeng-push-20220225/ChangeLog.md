@@ -1,3 +1,8 @@
+2024-03-29 Version: 1.0.5
+- Update API SendByAlias: add param ThirdPartyId.
+- Update API SendByDevice: add param ThirdPartyId.
+
+
 2023-09-20 Version: 1.0.4
 - Generated python 2022-02-25 for umeng-push.
 
