@@ -1936,6 +1936,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.acl_info):
+            body['aclInfo'] = request.acl_info
         if not UtilClient.is_unset(request.instance_name):
             body['instanceName'] = request.instance_name
         if not UtilClient.is_unset(request.network_info):
@@ -1981,6 +1983,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.acl_info):
+            body['aclInfo'] = request.acl_info
         if not UtilClient.is_unset(request.instance_name):
             body['instanceName'] = request.instance_name
         if not UtilClient.is_unset(request.network_info):

@@ -1809,13 +1809,27 @@ class GetInstanceResponseBodyDataAclInfo(TeaModel):
     def __init__(
         self,
         acl_type: str = None,
+        acl_types: List[str] = None,
+        default_vpc_auth_free: bool = None,
     ):
-        # The authentication type of the instance.
+        # The authentication types of the instance. Deprecated, it is recommended to use the aclTypes field.
         # 
         # Valid values:
         # 
-        # *   default: intelligent authentication
+        # default: intelligent authentication
+        # 
+        # apache_acl: apache acl authentication
         self.acl_type = acl_type
+        # The authentication types of the instance.
+        # 
+        # Valid values:
+        # 
+        # default: intelligent authentication
+        # 
+        # apache_acl: apache acl authentication
+        self.acl_types = acl_types
+        # No need for authentication in intranet.
+        self.default_vpc_auth_free = default_vpc_auth_free
 
     def validate(self):
         pass
@@ -1828,12 +1842,20 @@ class GetInstanceResponseBodyDataAclInfo(TeaModel):
         result = dict()
         if self.acl_type is not None:
             result['aclType'] = self.acl_type
+        if self.acl_types is not None:
+            result['aclTypes'] = self.acl_types
+        if self.default_vpc_auth_free is not None:
+            result['defaultVpcAuthFree'] = self.default_vpc_auth_free
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('aclType') is not None:
             self.acl_type = m.get('aclType')
+        if m.get('aclTypes') is not None:
+            self.acl_types = m.get('aclTypes')
+        if m.get('defaultVpcAuthFree') is not None:
+            self.default_vpc_auth_free = m.get('defaultVpcAuthFree')
         return self
 
 
@@ -5615,6 +5637,39 @@ class UpdateConsumerGroupResponse(TeaModel):
         return self
 
 
+class UpdateInstanceRequestAclInfo(TeaModel):
+    def __init__(
+        self,
+        acl_types: List[str] = None,
+        default_vpc_auth_free: bool = None,
+    ):
+        self.acl_types = acl_types
+        self.default_vpc_auth_free = default_vpc_auth_free
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_types is not None:
+            result['aclTypes'] = self.acl_types
+        if self.default_vpc_auth_free is not None:
+            result['defaultVpcAuthFree'] = self.default_vpc_auth_free
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aclTypes') is not None:
+            self.acl_types = m.get('aclTypes')
+        if m.get('defaultVpcAuthFree') is not None:
+            self.default_vpc_auth_free = m.get('defaultVpcAuthFree')
+        return self
+
+
 class UpdateInstanceRequestNetworkInfoInternetInfo(TeaModel):
     def __init__(
         self,
@@ -5748,11 +5803,13 @@ class UpdateInstanceRequestProductInfo(TeaModel):
 class UpdateInstanceRequest(TeaModel):
     def __init__(
         self,
+        acl_info: UpdateInstanceRequestAclInfo = None,
         instance_name: str = None,
         network_info: UpdateInstanceRequestNetworkInfo = None,
         product_info: UpdateInstanceRequestProductInfo = None,
         remark: str = None,
     ):
+        self.acl_info = acl_info
         # The updated name of the instance.
         self.instance_name = instance_name
         # The updated network information about the instance.
@@ -5763,6 +5820,8 @@ class UpdateInstanceRequest(TeaModel):
         self.remark = remark
 
     def validate(self):
+        if self.acl_info:
+            self.acl_info.validate()
         if self.network_info:
             self.network_info.validate()
         if self.product_info:
@@ -5774,6 +5833,8 @@ class UpdateInstanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.acl_info is not None:
+            result['aclInfo'] = self.acl_info.to_map()
         if self.instance_name is not None:
             result['instanceName'] = self.instance_name
         if self.network_info is not None:
@@ -5786,6 +5847,9 @@ class UpdateInstanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('aclInfo') is not None:
+            temp_model = UpdateInstanceRequestAclInfo()
+            self.acl_info = temp_model.from_map(m['aclInfo'])
         if m.get('instanceName') is not None:
             self.instance_name = m.get('instanceName')
         if m.get('networkInfo') is not None:

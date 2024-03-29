@@ -1,3 +1,8 @@
+2024-03-29 Version: 1.4.1
+- Update API GetInstance: update response param.
+- Update API UpdateInstance: update param body.
+
+
 2024-03-28 Version: 1.4.0
 - Support API ListAvailableZones.
 - Support API ListConsumerConnections.
