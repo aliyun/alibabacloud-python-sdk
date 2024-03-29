@@ -4,6 +4,319 @@ from Tea.model import TeaModel
 from typing import Dict, Any, List
 
 
+class AttachVscMountPointRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        file_system_id: str = None,
+        input_region_id: str = None,
+        instance_ids: Dict[str, Any] = None,
+        mount_point_id: str = None,
+        vsc_ids: List[str] = None,
+        vsc_type: str = None,
+    ):
+        self.description = description
+        self.file_system_id = file_system_id
+        self.input_region_id = input_region_id
+        self.instance_ids = instance_ids
+        self.mount_point_id = mount_point_id
+        self.vsc_ids = vsc_ids
+        self.vsc_type = vsc_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.input_region_id is not None:
+            result['InputRegionId'] = self.input_region_id
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.mount_point_id is not None:
+            result['MountPointId'] = self.mount_point_id
+        if self.vsc_ids is not None:
+            result['VscIds'] = self.vsc_ids
+        if self.vsc_type is not None:
+            result['VscType'] = self.vsc_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('InputRegionId') is not None:
+            self.input_region_id = m.get('InputRegionId')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('MountPointId') is not None:
+            self.mount_point_id = m.get('MountPointId')
+        if m.get('VscIds') is not None:
+            self.vsc_ids = m.get('VscIds')
+        if m.get('VscType') is not None:
+            self.vsc_type = m.get('VscType')
+        return self
+
+
+class AttachVscMountPointShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        file_system_id: str = None,
+        input_region_id: str = None,
+        instance_ids_shrink: str = None,
+        mount_point_id: str = None,
+        vsc_ids_shrink: str = None,
+        vsc_type: str = None,
+    ):
+        self.description = description
+        self.file_system_id = file_system_id
+        self.input_region_id = input_region_id
+        self.instance_ids_shrink = instance_ids_shrink
+        self.mount_point_id = mount_point_id
+        self.vsc_ids_shrink = vsc_ids_shrink
+        self.vsc_type = vsc_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.input_region_id is not None:
+            result['InputRegionId'] = self.input_region_id
+        if self.instance_ids_shrink is not None:
+            result['InstanceIds'] = self.instance_ids_shrink
+        if self.mount_point_id is not None:
+            result['MountPointId'] = self.mount_point_id
+        if self.vsc_ids_shrink is not None:
+            result['VscIds'] = self.vsc_ids_shrink
+        if self.vsc_type is not None:
+            result['VscType'] = self.vsc_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('InputRegionId') is not None:
+            self.input_region_id = m.get('InputRegionId')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids_shrink = m.get('InstanceIds')
+        if m.get('MountPointId') is not None:
+            self.mount_point_id = m.get('MountPointId')
+        if m.get('VscIds') is not None:
+            self.vsc_ids_shrink = m.get('VscIds')
+        if m.get('VscType') is not None:
+            self.vsc_type = m.get('VscType')
+        return self
+
+
+class AttachVscMountPointResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AttachVscMountPointResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AttachVscMountPointResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AttachVscMountPointResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class BindVscMountPointAliasRequest(TeaModel):
+    def __init__(
+        self,
+        alias_prefix: str = None,
+        file_system_id: str = None,
+        input_region_id: str = None,
+        mount_point_id: str = None,
+    ):
+        self.alias_prefix = alias_prefix
+        self.file_system_id = file_system_id
+        self.input_region_id = input_region_id
+        self.mount_point_id = mount_point_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias_prefix is not None:
+            result['AliasPrefix'] = self.alias_prefix
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.input_region_id is not None:
+            result['InputRegionId'] = self.input_region_id
+        if self.mount_point_id is not None:
+            result['MountPointId'] = self.mount_point_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliasPrefix') is not None:
+            self.alias_prefix = m.get('AliasPrefix')
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('InputRegionId') is not None:
+            self.input_region_id = m.get('InputRegionId')
+        if m.get('MountPointId') is not None:
+            self.mount_point_id = m.get('MountPointId')
+        return self
+
+
+class BindVscMountPointAliasResponseBody(TeaModel):
+    def __init__(
+        self,
+        mount_point_alias: str = None,
+        request_id: str = None,
+    ):
+        self.mount_point_alias = mount_point_alias
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mount_point_alias is not None:
+            result['MountPointAlias'] = self.mount_point_alias
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MountPointAlias') is not None:
+            self.mount_point_alias = m.get('MountPointAlias')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class BindVscMountPointAliasResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BindVscMountPointAliasResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BindVscMountPointAliasResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateAccessGroupRequest(TeaModel):
     def __init__(
         self,
@@ -86,14 +399,14 @@ class CreateAccessGroupResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateAccessGroupResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -105,6 +418,8 @@ class CreateAccessGroupResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -113,6 +428,8 @@ class CreateAccessGroupResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateAccessGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -213,14 +530,14 @@ class CreateAccessRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateAccessRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -232,6 +549,8 @@ class CreateAccessRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -240,6 +559,8 @@ class CreateAccessRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateAccessRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -376,14 +697,14 @@ class CreateFileSystemResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateFileSystemResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -395,6 +716,8 @@ class CreateFileSystemResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -403,6 +726,8 @@ class CreateFileSystemResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateFileSystemResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -509,14 +834,14 @@ class CreateMountPointResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateMountPointResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -528,6 +853,8 @@ class CreateMountPointResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -536,6 +863,8 @@ class CreateMountPointResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateMountPointResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -546,7 +875,7 @@ class CreateUserGroupsMappingRequest(TeaModel):
     def __init__(
         self,
         file_system_id: str = None,
-        group_names: Dict[str, Any] = None,
+        group_names: List[str] = None,
         input_region_id: str = None,
         user_name: str = None,
     ):
@@ -663,14 +992,14 @@ class CreateUserGroupsMappingResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateUserGroupsMappingResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -682,6 +1011,8 @@ class CreateUserGroupsMappingResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -690,8 +1021,174 @@ class CreateUserGroupsMappingResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateUserGroupsMappingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateVscMountPointRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        file_system_id: str = None,
+        input_region_id: str = None,
+        instance_ids: Dict[str, Any] = None,
+    ):
+        self.description = description
+        self.file_system_id = file_system_id
+        self.input_region_id = input_region_id
+        self.instance_ids = instance_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.input_region_id is not None:
+            result['InputRegionId'] = self.input_region_id
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('InputRegionId') is not None:
+            self.input_region_id = m.get('InputRegionId')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        return self
+
+
+class CreateVscMountPointShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        file_system_id: str = None,
+        input_region_id: str = None,
+        instance_ids_shrink: str = None,
+    ):
+        self.description = description
+        self.file_system_id = file_system_id
+        self.input_region_id = input_region_id
+        self.instance_ids_shrink = instance_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.input_region_id is not None:
+            result['InputRegionId'] = self.input_region_id
+        if self.instance_ids_shrink is not None:
+            result['InstanceIds'] = self.instance_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('InputRegionId') is not None:
+            self.input_region_id = m.get('InputRegionId')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids_shrink = m.get('InstanceIds')
+        return self
+
+
+class CreateVscMountPointResponseBody(TeaModel):
+    def __init__(
+        self,
+        mount_point_id: str = None,
+        request_id: str = None,
+    ):
+        self.mount_point_id = mount_point_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mount_point_id is not None:
+            result['MountPointId'] = self.mount_point_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MountPointId') is not None:
+            self.mount_point_id = m.get('MountPointId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateVscMountPointResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateVscMountPointResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateVscMountPointResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -760,14 +1257,14 @@ class DeleteAccessGroupResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteAccessGroupResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -779,6 +1276,8 @@ class DeleteAccessGroupResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -787,6 +1286,8 @@ class DeleteAccessGroupResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteAccessGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -863,14 +1364,14 @@ class DeleteAccessRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteAccessRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -882,6 +1383,8 @@ class DeleteAccessRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -890,6 +1393,8 @@ class DeleteAccessRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteAccessRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -960,14 +1465,14 @@ class DeleteFileSystemResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteFileSystemResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -979,6 +1484,8 @@ class DeleteFileSystemResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -987,6 +1494,8 @@ class DeleteFileSystemResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteFileSystemResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1063,14 +1572,14 @@ class DeleteMountPointResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteMountPointResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1082,6 +1591,8 @@ class DeleteMountPointResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1090,6 +1601,8 @@ class DeleteMountPointResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteMountPointResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1217,14 +1730,14 @@ class DeleteUserGroupsMappingResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteUserGroupsMappingResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1236,6 +1749,8 @@ class DeleteUserGroupsMappingResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1244,8 +1759,117 @@ class DeleteUserGroupsMappingResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteUserGroupsMappingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteVscMountPointRequest(TeaModel):
+    def __init__(
+        self,
+        file_system_id: str = None,
+        input_region_id: str = None,
+        mount_point_id: str = None,
+    ):
+        self.file_system_id = file_system_id
+        self.input_region_id = input_region_id
+        self.mount_point_id = mount_point_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.input_region_id is not None:
+            result['InputRegionId'] = self.input_region_id
+        if self.mount_point_id is not None:
+            result['MountPointId'] = self.mount_point_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('InputRegionId') is not None:
+            self.input_region_id = m.get('InputRegionId')
+        if m.get('MountPointId') is not None:
+            self.mount_point_id = m.get('MountPointId')
+        return self
+
+
+class DeleteVscMountPointResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteVscMountPointResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteVscMountPointResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteVscMountPointResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1396,14 +2020,14 @@ class DescribeRegionsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeRegionsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1415,6 +2039,8 @@ class DescribeRegionsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1423,8 +2049,482 @@ class DescribeRegionsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeRegionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeVscMountPointsRequest(TeaModel):
+    def __init__(
+        self,
+        file_system_id: str = None,
+        input_region_id: str = None,
+        instance_id: str = None,
+        mount_point_id: str = None,
+        status: str = None,
+        vsc_id: str = None,
+    ):
+        self.file_system_id = file_system_id
+        self.input_region_id = input_region_id
+        self.instance_id = instance_id
+        self.mount_point_id = mount_point_id
+        self.status = status
+        self.vsc_id = vsc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.input_region_id is not None:
+            result['InputRegionId'] = self.input_region_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.mount_point_id is not None:
+            result['MountPointId'] = self.mount_point_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.vsc_id is not None:
+            result['VscId'] = self.vsc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('InputRegionId') is not None:
+            self.input_region_id = m.get('InputRegionId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MountPointId') is not None:
+            self.mount_point_id = m.get('MountPointId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('VscId') is not None:
+            self.vsc_id = m.get('VscId')
+        return self
+
+
+class DescribeVscMountPointsResponseBodyMountPointsInstancesVscs(TeaModel):
+    def __init__(
+        self,
+        vsc_id: str = None,
+        vsc_status: str = None,
+        vsc_type: str = None,
+    ):
+        self.vsc_id = vsc_id
+        self.vsc_status = vsc_status
+        self.vsc_type = vsc_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.vsc_id is not None:
+            result['VscId'] = self.vsc_id
+        if self.vsc_status is not None:
+            result['VscStatus'] = self.vsc_status
+        if self.vsc_type is not None:
+            result['VscType'] = self.vsc_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VscId') is not None:
+            self.vsc_id = m.get('VscId')
+        if m.get('VscStatus') is not None:
+            self.vsc_status = m.get('VscStatus')
+        if m.get('VscType') is not None:
+            self.vsc_type = m.get('VscType')
+        return self
+
+
+class DescribeVscMountPointsResponseBodyMountPointsInstances(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        status: str = None,
+        vscs: List[DescribeVscMountPointsResponseBodyMountPointsInstancesVscs] = None,
+    ):
+        self.instance_id = instance_id
+        self.status = status
+        self.vscs = vscs
+
+    def validate(self):
+        if self.vscs:
+            for k in self.vscs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.status is not None:
+            result['Status'] = self.status
+        result['Vscs'] = []
+        if self.vscs is not None:
+            for k in self.vscs:
+                result['Vscs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.vscs = []
+        if m.get('Vscs') is not None:
+            for k in m.get('Vscs'):
+                temp_model = DescribeVscMountPointsResponseBodyMountPointsInstancesVscs()
+                self.vscs.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeVscMountPointsResponseBodyMountPoints(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        instance_total_count: int = None,
+        instances: List[DescribeVscMountPointsResponseBodyMountPointsInstances] = None,
+        mount_point_alias: str = None,
+        mount_point_id: str = None,
+    ):
+        self.description = description
+        self.instance_total_count = instance_total_count
+        self.instances = instances
+        self.mount_point_alias = mount_point_alias
+        self.mount_point_id = mount_point_id
+
+    def validate(self):
+        if self.instances:
+            for k in self.instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.instance_total_count is not None:
+            result['InstanceTotalCount'] = self.instance_total_count
+        result['Instances'] = []
+        if self.instances is not None:
+            for k in self.instances:
+                result['Instances'].append(k.to_map() if k else None)
+        if self.mount_point_alias is not None:
+            result['MountPointAlias'] = self.mount_point_alias
+        if self.mount_point_id is not None:
+            result['MountPointId'] = self.mount_point_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('InstanceTotalCount') is not None:
+            self.instance_total_count = m.get('InstanceTotalCount')
+        self.instances = []
+        if m.get('Instances') is not None:
+            for k in m.get('Instances'):
+                temp_model = DescribeVscMountPointsResponseBodyMountPointsInstances()
+                self.instances.append(temp_model.from_map(k))
+        if m.get('MountPointAlias') is not None:
+            self.mount_point_alias = m.get('MountPointAlias')
+        if m.get('MountPointId') is not None:
+            self.mount_point_id = m.get('MountPointId')
+        return self
+
+
+class DescribeVscMountPointsResponseBody(TeaModel):
+    def __init__(
+        self,
+        mount_points: List[DescribeVscMountPointsResponseBodyMountPoints] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.mount_points = mount_points
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.mount_points:
+            for k in self.mount_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['MountPoints'] = []
+        if self.mount_points is not None:
+            for k in self.mount_points:
+                result['MountPoints'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.mount_points = []
+        if m.get('MountPoints') is not None:
+            for k in m.get('MountPoints'):
+                temp_model = DescribeVscMountPointsResponseBodyMountPoints()
+                self.mount_points.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeVscMountPointsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVscMountPointsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVscMountPointsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DetachVscMountPointRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        file_system_id: str = None,
+        input_region_id: str = None,
+        instance_ids: Dict[str, Any] = None,
+        mount_point_id: str = None,
+        vsc_ids: List[str] = None,
+    ):
+        self.description = description
+        self.file_system_id = file_system_id
+        self.input_region_id = input_region_id
+        self.instance_ids = instance_ids
+        self.mount_point_id = mount_point_id
+        self.vsc_ids = vsc_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.input_region_id is not None:
+            result['InputRegionId'] = self.input_region_id
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.mount_point_id is not None:
+            result['MountPointId'] = self.mount_point_id
+        if self.vsc_ids is not None:
+            result['VscIds'] = self.vsc_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('InputRegionId') is not None:
+            self.input_region_id = m.get('InputRegionId')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('MountPointId') is not None:
+            self.mount_point_id = m.get('MountPointId')
+        if m.get('VscIds') is not None:
+            self.vsc_ids = m.get('VscIds')
+        return self
+
+
+class DetachVscMountPointShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        file_system_id: str = None,
+        input_region_id: str = None,
+        instance_ids_shrink: str = None,
+        mount_point_id: str = None,
+        vsc_ids_shrink: str = None,
+    ):
+        self.description = description
+        self.file_system_id = file_system_id
+        self.input_region_id = input_region_id
+        self.instance_ids_shrink = instance_ids_shrink
+        self.mount_point_id = mount_point_id
+        self.vsc_ids_shrink = vsc_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.input_region_id is not None:
+            result['InputRegionId'] = self.input_region_id
+        if self.instance_ids_shrink is not None:
+            result['InstanceIds'] = self.instance_ids_shrink
+        if self.mount_point_id is not None:
+            result['MountPointId'] = self.mount_point_id
+        if self.vsc_ids_shrink is not None:
+            result['VscIds'] = self.vsc_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('InputRegionId') is not None:
+            self.input_region_id = m.get('InputRegionId')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids_shrink = m.get('InstanceIds')
+        if m.get('MountPointId') is not None:
+            self.mount_point_id = m.get('MountPointId')
+        if m.get('VscIds') is not None:
+            self.vsc_ids_shrink = m.get('VscIds')
+        return self
+
+
+class DetachVscMountPointResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DetachVscMountPointResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DetachVscMountPointResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DetachVscMountPointResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1576,14 +2676,14 @@ class GetAccessGroupResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetAccessGroupResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1595,6 +2695,8 @@ class GetAccessGroupResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1603,6 +2705,8 @@ class GetAccessGroupResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAccessGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1756,14 +2860,14 @@ class GetAccessRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetAccessRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1775,6 +2879,8 @@ class GetAccessRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1783,6 +2889,8 @@ class GetAccessRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAccessRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1990,14 +3098,14 @@ class GetFileSystemResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetFileSystemResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2009,6 +3117,8 @@ class GetFileSystemResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2017,6 +3127,8 @@ class GetFileSystemResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetFileSystemResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2188,14 +3300,14 @@ class GetMountPointResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetMountPointResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2207,6 +3319,8 @@ class GetMountPointResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2215,6 +3329,8 @@ class GetMountPointResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetMountPointResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2367,14 +3483,14 @@ class GetRegionResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetRegionResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2386,6 +3502,8 @@ class GetRegionResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2394,6 +3512,8 @@ class GetRegionResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetRegionResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2577,14 +3697,14 @@ class ListAccessGroupsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListAccessGroupsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2596,6 +3716,8 @@ class ListAccessGroupsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2604,6 +3726,8 @@ class ListAccessGroupsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListAccessGroupsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2787,14 +3911,14 @@ class ListAccessRulesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListAccessRulesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2806,6 +3930,8 @@ class ListAccessRulesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2814,6 +3940,8 @@ class ListAccessRulesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListAccessRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3051,14 +4179,14 @@ class ListFileSystemsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListFileSystemsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3070,6 +4198,8 @@ class ListFileSystemsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3078,6 +4208,8 @@ class ListFileSystemsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListFileSystemsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3279,14 +4411,14 @@ class ListMountPointsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListMountPointsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3298,6 +4430,8 @@ class ListMountPointsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3306,6 +4440,8 @@ class ListMountPointsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListMountPointsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3400,7 +4536,6 @@ class ListUserGroupsMappingsResponseBody(TeaModel):
     ):
         self.has_more = has_more
         self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
         self.user_groups_mappings = user_groups_mappings
 
@@ -3448,14 +4583,14 @@ class ListUserGroupsMappingsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListUserGroupsMappingsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3467,6 +4602,8 @@ class ListUserGroupsMappingsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3475,6 +4612,8 @@ class ListUserGroupsMappingsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListUserGroupsMappingsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3557,14 +4696,14 @@ class ModifyAccessGroupResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyAccessGroupResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3576,6 +4715,8 @@ class ModifyAccessGroupResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3584,6 +4725,8 @@ class ModifyAccessGroupResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyAccessGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3678,14 +4821,14 @@ class ModifyAccessRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyAccessRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3697,6 +4840,8 @@ class ModifyAccessRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3705,6 +4850,8 @@ class ModifyAccessRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyAccessRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3805,14 +4952,14 @@ class ModifyFileSystemResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyFileSystemResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3824,6 +4971,8 @@ class ModifyFileSystemResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3832,6 +4981,8 @@ class ModifyFileSystemResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyFileSystemResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3926,14 +5077,14 @@ class ModifyMountPointResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyMountPointResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3945,6 +5096,8 @@ class ModifyMountPointResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3953,6 +5106,8 @@ class ModifyMountPointResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyMountPointResponseBody()
             self.body = temp_model.from_map(m['body'])

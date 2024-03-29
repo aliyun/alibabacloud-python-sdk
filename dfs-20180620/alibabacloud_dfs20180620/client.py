@@ -41,6 +41,220 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def attach_vsc_mount_point_with_options(
+        self,
+        tmp_req: dfs20180620_models.AttachVscMountPointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dfs20180620_models.AttachVscMountPointResponse:
+        """
+        ***\
+        
+        @param tmp_req: AttachVscMountPointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachVscMountPointResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dfs20180620_models.AttachVscMountPointShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        if not UtilClient.is_unset(tmp_req.vsc_ids):
+            request.vsc_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vsc_ids, 'VscIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.input_region_id):
+            query['InputRegionId'] = request.input_region_id
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not UtilClient.is_unset(request.mount_point_id):
+            query['MountPointId'] = request.mount_point_id
+        if not UtilClient.is_unset(request.vsc_ids_shrink):
+            query['VscIds'] = request.vsc_ids_shrink
+        if not UtilClient.is_unset(request.vsc_type):
+            query['VscType'] = request.vsc_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachVscMountPoint',
+            version='2018-06-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dfs20180620_models.AttachVscMountPointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def attach_vsc_mount_point_with_options_async(
+        self,
+        tmp_req: dfs20180620_models.AttachVscMountPointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dfs20180620_models.AttachVscMountPointResponse:
+        """
+        ***\
+        
+        @param tmp_req: AttachVscMountPointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachVscMountPointResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dfs20180620_models.AttachVscMountPointShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        if not UtilClient.is_unset(tmp_req.vsc_ids):
+            request.vsc_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vsc_ids, 'VscIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.input_region_id):
+            query['InputRegionId'] = request.input_region_id
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not UtilClient.is_unset(request.mount_point_id):
+            query['MountPointId'] = request.mount_point_id
+        if not UtilClient.is_unset(request.vsc_ids_shrink):
+            query['VscIds'] = request.vsc_ids_shrink
+        if not UtilClient.is_unset(request.vsc_type):
+            query['VscType'] = request.vsc_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachVscMountPoint',
+            version='2018-06-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dfs20180620_models.AttachVscMountPointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def attach_vsc_mount_point(
+        self,
+        request: dfs20180620_models.AttachVscMountPointRequest,
+    ) -> dfs20180620_models.AttachVscMountPointResponse:
+        """
+        ***\
+        
+        @param request: AttachVscMountPointRequest
+        @return: AttachVscMountPointResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.attach_vsc_mount_point_with_options(request, runtime)
+
+    async def attach_vsc_mount_point_async(
+        self,
+        request: dfs20180620_models.AttachVscMountPointRequest,
+    ) -> dfs20180620_models.AttachVscMountPointResponse:
+        """
+        ***\
+        
+        @param request: AttachVscMountPointRequest
+        @return: AttachVscMountPointResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.attach_vsc_mount_point_with_options_async(request, runtime)
+
+    def bind_vsc_mount_point_alias_with_options(
+        self,
+        request: dfs20180620_models.BindVscMountPointAliasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dfs20180620_models.BindVscMountPointAliasResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alias_prefix):
+            query['AliasPrefix'] = request.alias_prefix
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.input_region_id):
+            query['InputRegionId'] = request.input_region_id
+        if not UtilClient.is_unset(request.mount_point_id):
+            query['MountPointId'] = request.mount_point_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindVscMountPointAlias',
+            version='2018-06-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dfs20180620_models.BindVscMountPointAliasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bind_vsc_mount_point_alias_with_options_async(
+        self,
+        request: dfs20180620_models.BindVscMountPointAliasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dfs20180620_models.BindVscMountPointAliasResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alias_prefix):
+            query['AliasPrefix'] = request.alias_prefix
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.input_region_id):
+            query['InputRegionId'] = request.input_region_id
+        if not UtilClient.is_unset(request.mount_point_id):
+            query['MountPointId'] = request.mount_point_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindVscMountPointAlias',
+            version='2018-06-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dfs20180620_models.BindVscMountPointAliasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bind_vsc_mount_point_alias(
+        self,
+        request: dfs20180620_models.BindVscMountPointAliasRequest,
+    ) -> dfs20180620_models.BindVscMountPointAliasResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.bind_vsc_mount_point_alias_with_options(request, runtime)
+
+    async def bind_vsc_mount_point_alias_async(
+        self,
+        request: dfs20180620_models.BindVscMountPointAliasRequest,
+    ) -> dfs20180620_models.BindVscMountPointAliasResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.bind_vsc_mount_point_alias_with_options_async(request, runtime)
+
     def create_access_group_with_options(
         self,
         request: dfs20180620_models.CreateAccessGroupRequest,
@@ -495,6 +709,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_user_groups_mapping_with_options_async(request, runtime)
 
+    def create_vsc_mount_point_with_options(
+        self,
+        tmp_req: dfs20180620_models.CreateVscMountPointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dfs20180620_models.CreateVscMountPointResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dfs20180620_models.CreateVscMountPointShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.input_region_id):
+            query['InputRegionId'] = request.input_region_id
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVscMountPoint',
+            version='2018-06-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dfs20180620_models.CreateVscMountPointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_vsc_mount_point_with_options_async(
+        self,
+        tmp_req: dfs20180620_models.CreateVscMountPointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dfs20180620_models.CreateVscMountPointResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dfs20180620_models.CreateVscMountPointShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.input_region_id):
+            query['InputRegionId'] = request.input_region_id
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVscMountPoint',
+            version='2018-06-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dfs20180620_models.CreateVscMountPointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_vsc_mount_point(
+        self,
+        request: dfs20180620_models.CreateVscMountPointRequest,
+    ) -> dfs20180620_models.CreateVscMountPointResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_vsc_mount_point_with_options(request, runtime)
+
+    async def create_vsc_mount_point_async(
+        self,
+        request: dfs20180620_models.CreateVscMountPointRequest,
+    ) -> dfs20180620_models.CreateVscMountPointResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_vsc_mount_point_with_options_async(request, runtime)
+
     def delete_access_group_with_options(
         self,
         request: dfs20180620_models.DeleteAccessGroupRequest,
@@ -873,6 +1177,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_user_groups_mapping_with_options_async(request, runtime)
 
+    def delete_vsc_mount_point_with_options(
+        self,
+        request: dfs20180620_models.DeleteVscMountPointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dfs20180620_models.DeleteVscMountPointResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.input_region_id):
+            query['InputRegionId'] = request.input_region_id
+        if not UtilClient.is_unset(request.mount_point_id):
+            query['MountPointId'] = request.mount_point_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteVscMountPoint',
+            version='2018-06-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dfs20180620_models.DeleteVscMountPointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_vsc_mount_point_with_options_async(
+        self,
+        request: dfs20180620_models.DeleteVscMountPointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dfs20180620_models.DeleteVscMountPointResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.input_region_id):
+            query['InputRegionId'] = request.input_region_id
+        if not UtilClient.is_unset(request.mount_point_id):
+            query['MountPointId'] = request.mount_point_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteVscMountPoint',
+            version='2018-06-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dfs20180620_models.DeleteVscMountPointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_vsc_mount_point(
+        self,
+        request: dfs20180620_models.DeleteVscMountPointRequest,
+    ) -> dfs20180620_models.DeleteVscMountPointResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_vsc_mount_point_with_options(request, runtime)
+
+    async def delete_vsc_mount_point_async(
+        self,
+        request: dfs20180620_models.DeleteVscMountPointRequest,
+    ) -> dfs20180620_models.DeleteVscMountPointResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_vsc_mount_point_with_options_async(request, runtime)
+
     def describe_regions_with_options(
         self,
         request: dfs20180620_models.DescribeRegionsRequest,
@@ -946,6 +1328,198 @@ class Client(OpenApiClient):
     ) -> dfs20180620_models.DescribeRegionsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
+
+    def describe_vsc_mount_points_with_options(
+        self,
+        request: dfs20180620_models.DescribeVscMountPointsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dfs20180620_models.DescribeVscMountPointsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.input_region_id):
+            query['InputRegionId'] = request.input_region_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.mount_point_id):
+            query['MountPointId'] = request.mount_point_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.vsc_id):
+            query['VscId'] = request.vsc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVscMountPoints',
+            version='2018-06-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dfs20180620_models.DescribeVscMountPointsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vsc_mount_points_with_options_async(
+        self,
+        request: dfs20180620_models.DescribeVscMountPointsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dfs20180620_models.DescribeVscMountPointsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.input_region_id):
+            query['InputRegionId'] = request.input_region_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.mount_point_id):
+            query['MountPointId'] = request.mount_point_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.vsc_id):
+            query['VscId'] = request.vsc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVscMountPoints',
+            version='2018-06-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dfs20180620_models.DescribeVscMountPointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vsc_mount_points(
+        self,
+        request: dfs20180620_models.DescribeVscMountPointsRequest,
+    ) -> dfs20180620_models.DescribeVscMountPointsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vsc_mount_points_with_options(request, runtime)
+
+    async def describe_vsc_mount_points_async(
+        self,
+        request: dfs20180620_models.DescribeVscMountPointsRequest,
+    ) -> dfs20180620_models.DescribeVscMountPointsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vsc_mount_points_with_options_async(request, runtime)
+
+    def detach_vsc_mount_point_with_options(
+        self,
+        tmp_req: dfs20180620_models.DetachVscMountPointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dfs20180620_models.DetachVscMountPointResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dfs20180620_models.DetachVscMountPointShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        if not UtilClient.is_unset(tmp_req.vsc_ids):
+            request.vsc_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vsc_ids, 'VscIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.input_region_id):
+            query['InputRegionId'] = request.input_region_id
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not UtilClient.is_unset(request.mount_point_id):
+            query['MountPointId'] = request.mount_point_id
+        if not UtilClient.is_unset(request.vsc_ids_shrink):
+            query['VscIds'] = request.vsc_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetachVscMountPoint',
+            version='2018-06-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dfs20180620_models.DetachVscMountPointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detach_vsc_mount_point_with_options_async(
+        self,
+        tmp_req: dfs20180620_models.DetachVscMountPointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dfs20180620_models.DetachVscMountPointResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dfs20180620_models.DetachVscMountPointShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        if not UtilClient.is_unset(tmp_req.vsc_ids):
+            request.vsc_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vsc_ids, 'VscIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.input_region_id):
+            query['InputRegionId'] = request.input_region_id
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not UtilClient.is_unset(request.mount_point_id):
+            query['MountPointId'] = request.mount_point_id
+        if not UtilClient.is_unset(request.vsc_ids_shrink):
+            query['VscIds'] = request.vsc_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetachVscMountPoint',
+            version='2018-06-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dfs20180620_models.DetachVscMountPointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detach_vsc_mount_point(
+        self,
+        request: dfs20180620_models.DetachVscMountPointRequest,
+    ) -> dfs20180620_models.DetachVscMountPointResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.detach_vsc_mount_point_with_options(request, runtime)
+
+    async def detach_vsc_mount_point_async(
+        self,
+        request: dfs20180620_models.DetachVscMountPointRequest,
+    ) -> dfs20180620_models.DetachVscMountPointResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.detach_vsc_mount_point_with_options_async(request, runtime)
 
     def get_access_group_with_options(
         self,
