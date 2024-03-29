@@ -44,6 +44,7 @@ class ConfigureDtsJobRequest(TeaModel):
         owner_id: str = None,
         region_id: str = None,
         reserve: str = None,
+        resource_group_id: str = None,
         source_endpoint_database_name: str = None,
         source_endpoint_engine_name: str = None,
         source_endpoint_ip: str = None,
@@ -222,6 +223,7 @@ class ConfigureDtsJobRequest(TeaModel):
         # 
         # >  If the **DestinationEndpointEngineName** parameter is set to **ORACLE** and the **Oracle** database is deployed in a non-RAC architecture, this parameter is available and required.
         self.reserve = reserve
+        self.resource_group_id = resource_group_id
         # The password of the source database account.
         self.source_endpoint_database_name = source_endpoint_database_name
         # The IP address of the source instance.
@@ -422,6 +424,8 @@ class ConfigureDtsJobRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.reserve is not None:
             result['Reserve'] = self.reserve
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.source_endpoint_database_name is not None:
             result['SourceEndpointDatabaseName'] = self.source_endpoint_database_name
         if self.source_endpoint_engine_name is not None:
@@ -534,6 +538,8 @@ class ConfigureDtsJobRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Reserve') is not None:
             self.reserve = m.get('Reserve')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SourceEndpointDatabaseName') is not None:
             self.source_endpoint_database_name = m.get('SourceEndpointDatabaseName')
         if m.get('SourceEndpointEngineName') is not None:
@@ -611,6 +617,7 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         owner_id: str = None,
         region_id: str = None,
         reserve: str = None,
+        resource_group_id: str = None,
         source_endpoint_database_name: str = None,
         source_endpoint_engine_name: str = None,
         source_endpoint_ip: str = None,
@@ -789,6 +796,7 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         # 
         # >  If the **DestinationEndpointEngineName** parameter is set to **ORACLE** and the **Oracle** database is deployed in a non-RAC architecture, this parameter is available and required.
         self.reserve = reserve
+        self.resource_group_id = resource_group_id
         # The password of the source database account.
         self.source_endpoint_database_name = source_endpoint_database_name
         # The IP address of the source instance.
@@ -989,6 +997,8 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.reserve is not None:
             result['Reserve'] = self.reserve
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.source_endpoint_database_name is not None:
             result['SourceEndpointDatabaseName'] = self.source_endpoint_database_name
         if self.source_endpoint_engine_name is not None:
@@ -1101,6 +1111,8 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Reserve') is not None:
             self.reserve = m.get('Reserve')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SourceEndpointDatabaseName') is not None:
             self.source_endpoint_database_name = m.get('SourceEndpointDatabaseName')
         if m.get('SourceEndpointEngineName') is not None:
@@ -1578,6 +1590,7 @@ class ConfigureMigrationJobRequest(TeaModel):
         migration_reserved: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         self.destination_endpoint = destination_endpoint
         self.migration_mode = migration_mode
@@ -1601,6 +1614,7 @@ class ConfigureMigrationJobRequest(TeaModel):
         # 
         # >  The region ID of the data migration instance is the same as that of the destination database.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         if self.destination_endpoint:
@@ -1638,6 +1652,8 @@ class ConfigureMigrationJobRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1667,6 +1683,8 @@ class ConfigureMigrationJobRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -1772,6 +1790,7 @@ class ConfigureMigrationJobAlertRequest(TeaModel):
         migration_job_id: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
@@ -1814,6 +1833,7 @@ class ConfigureMigrationJobAlertRequest(TeaModel):
         self.migration_job_id = migration_job_id
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -1842,6 +1862,8 @@ class ConfigureMigrationJobAlertRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1864,6 +1886,8 @@ class ConfigureMigrationJobAlertRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -1976,6 +2000,7 @@ class ConfigureSubscriptionRequest(TeaModel):
         min_du: float = None,
         region_id: str = None,
         reserve: str = None,
+        resource_group_id: str = None,
         source_endpoint_database_name: str = None,
         source_endpoint_engine_name: str = None,
         source_endpoint_ip: str = None,
@@ -2043,6 +2068,7 @@ class ConfigureSubscriptionRequest(TeaModel):
         self.region_id = region_id
         # The reserved parameter of DTS. The value must be a JSON string. You can specify this parameter to add more configurations of the source or destination database to the DTS task. For example, you can specify the data storage format of the destination Kafka database and the ID of the CEN instance. For more information, see [MigrationReserved](~~176470~~).
         self.reserve = reserve
+        self.resource_group_id = resource_group_id
         # The name of the source database.
         self.source_endpoint_database_name = source_endpoint_database_name
         # The engine of the source database. Valid values: **MySQL**, **PostgreSQL**, and **Oracle**.
@@ -2160,6 +2186,8 @@ class ConfigureSubscriptionRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.reserve is not None:
             result['Reserve'] = self.reserve
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.source_endpoint_database_name is not None:
             result['SourceEndpointDatabaseName'] = self.source_endpoint_database_name
         if self.source_endpoint_engine_name is not None:
@@ -2230,6 +2258,8 @@ class ConfigureSubscriptionRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Reserve') is not None:
             self.reserve = m.get('Reserve')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SourceEndpointDatabaseName') is not None:
             self.source_endpoint_database_name = m.get('SourceEndpointDatabaseName')
         if m.get('SourceEndpointEngineName') is not None:
@@ -2582,6 +2612,7 @@ class ConfigureSubscriptionInstanceRequest(TeaModel):
         account_id: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         subscription_instance_id: str = None,
         subscription_instance_name: str = None,
         subscription_instance_network_type: str = None,
@@ -2594,6 +2625,7 @@ class ConfigureSubscriptionInstanceRequest(TeaModel):
         self.account_id = account_id
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the region in which the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
         self.subscription_instance_id = subscription_instance_id
         # The ID of the change tracking instance. You can call the [DescribeSubscriptionInstances](~~49442~~) operation to query the instance ID.
@@ -2633,6 +2665,8 @@ class ConfigureSubscriptionInstanceRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.subscription_instance_id is not None:
             result['SubscriptionInstanceId'] = self.subscription_instance_id
         if self.subscription_instance_name is not None:
@@ -2660,6 +2694,8 @@ class ConfigureSubscriptionInstanceRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SubscriptionInstanceId') is not None:
             self.subscription_instance_id = m.get('SubscriptionInstanceId')
         if m.get('SubscriptionInstanceName') is not None:
@@ -2772,6 +2808,7 @@ class ConfigureSubscriptionInstanceAlertRequest(TeaModel):
         error_alert_status: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         subscription_instance_id: str = None,
     ):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
@@ -2813,6 +2850,7 @@ class ConfigureSubscriptionInstanceAlertRequest(TeaModel):
         self.error_alert_status = error_alert_status
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
         self.subscription_instance_id = subscription_instance_id
 
@@ -2841,6 +2879,8 @@ class ConfigureSubscriptionInstanceAlertRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.subscription_instance_id is not None:
             result['SubscriptionInstanceId'] = self.subscription_instance_id
         return result
@@ -2863,6 +2903,8 @@ class ConfigureSubscriptionInstanceAlertRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SubscriptionInstanceId') is not None:
             self.subscription_instance_id = m.get('SubscriptionInstanceId')
         return self
@@ -3244,6 +3286,7 @@ class ConfigureSynchronizationJobRequest(TeaModel):
         migration_reserved: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         structure_initialization: bool = None,
         synchronization_direction: str = None,
         synchronization_job_id: str = None,
@@ -3270,6 +3313,7 @@ class ConfigureSynchronizationJobRequest(TeaModel):
         self.migration_reserved = migration_reserved
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # Specifies whether to perform initial schema synchronization. Valid values:
         # 
         # *   **true**: yes
@@ -3327,6 +3371,8 @@ class ConfigureSynchronizationJobRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.structure_initialization is not None:
             result['StructureInitialization'] = self.structure_initialization
         if self.synchronization_direction is not None:
@@ -3362,6 +3408,8 @@ class ConfigureSynchronizationJobRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('StructureInitialization') is not None:
             self.structure_initialization = m.get('StructureInitialization')
         if m.get('SynchronizationDirection') is not None:
@@ -3476,6 +3524,7 @@ class ConfigureSynchronizationJobAlertRequest(TeaModel):
         error_alert_status: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         synchronization_direction: str = None,
         synchronization_job_id: str = None,
     ):
@@ -3518,6 +3567,7 @@ class ConfigureSynchronizationJobAlertRequest(TeaModel):
         self.error_alert_status = error_alert_status
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The synchronization direction. Valid values:
         # 
         # *   **Forward**\
@@ -3553,6 +3603,8 @@ class ConfigureSynchronizationJobAlertRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.synchronization_direction is not None:
             result['SynchronizationDirection'] = self.synchronization_direction
         if self.synchronization_job_id is not None:
@@ -3577,6 +3629,8 @@ class ConfigureSynchronizationJobAlertRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SynchronizationDirection') is not None:
             self.synchronization_direction = m.get('SynchronizationDirection')
         if m.get('SynchronizationJobId') is not None:
@@ -3681,6 +3735,7 @@ class ConfigureSynchronizationJobReplicatorCompareRequest(TeaModel):
         client_token: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         synchronization_direction: str = None,
         synchronization_job_id: str = None,
         synchronization_replicator_compare_enable: bool = None,
@@ -3691,6 +3746,7 @@ class ConfigureSynchronizationJobReplicatorCompareRequest(TeaModel):
         self.client_token = client_token
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The synchronization direction. Valid values:
         # 
         # *   **Forward**\
@@ -3725,6 +3781,8 @@ class ConfigureSynchronizationJobReplicatorCompareRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.synchronization_direction is not None:
             result['SynchronizationDirection'] = self.synchronization_direction
         if self.synchronization_job_id is not None:
@@ -3743,6 +3801,8 @@ class ConfigureSynchronizationJobReplicatorCompareRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SynchronizationDirection') is not None:
             self.synchronization_direction = m.get('SynchronizationDirection')
         if m.get('SynchronizationJobId') is not None:
@@ -3851,6 +3911,7 @@ class CountJobByConditionRequest(TeaModel):
         params: str = None,
         region: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         src_db_type: str = None,
         status: str = None,
         type: str = None,
@@ -3871,6 +3932,7 @@ class CountJobByConditionRequest(TeaModel):
         self.region = region
         # The ID of the region in which the DTS instance resides. For more information, see [Supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The type of the source database.
         self.src_db_type = src_db_type
         # The status of the DTS task.
@@ -3956,6 +4018,8 @@ class CountJobByConditionRequest(TeaModel):
             result['Region'] = self.region
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.src_db_type is not None:
             result['SrcDbType'] = self.src_db_type
         if self.status is not None:
@@ -3978,6 +4042,8 @@ class CountJobByConditionRequest(TeaModel):
             self.region = m.get('Region')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SrcDbType') is not None:
             self.src_db_type = m.get('SrcDbType')
         if m.get('Status') is not None:
@@ -4116,6 +4182,7 @@ class CreateConsumerChannelRequest(TeaModel):
         dts_instance_id: str = None,
         dts_job_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         # The name of the consumer group. The name can be up to 128 characters in length. We recommend that you use an informative name for easy identification.
         self.consumer_group_name = consumer_group_name
@@ -4139,6 +4206,7 @@ class CreateConsumerChannelRequest(TeaModel):
         self.dts_job_id = dts_job_id
         # The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -4161,6 +4229,8 @@ class CreateConsumerChannelRequest(TeaModel):
             result['DtsJobId'] = self.dts_job_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4177,6 +4247,8 @@ class CreateConsumerChannelRequest(TeaModel):
             self.dts_job_id = m.get('DtsJobId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -4293,6 +4365,7 @@ class CreateConsumerGroupRequest(TeaModel):
         consumer_group_user_name: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         subscription_instance_id: str = None,
     ):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
@@ -4311,6 +4384,7 @@ class CreateConsumerGroupRequest(TeaModel):
         self.consumer_group_user_name = consumer_group_user_name
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
         self.subscription_instance_id = subscription_instance_id
 
@@ -4335,6 +4409,8 @@ class CreateConsumerGroupRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.subscription_instance_id is not None:
             result['SubscriptionInstanceId'] = self.subscription_instance_id
         return result
@@ -4353,6 +4429,8 @@ class CreateConsumerGroupRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SubscriptionInstanceId') is not None:
             self.subscription_instance_id = m.get('SubscriptionInstanceId')
         return self
@@ -4468,6 +4546,7 @@ class CreateDedicatedClusterMonitorRuleRequest(TeaModel):
         owner_id: str = None,
         phones: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         # The alert threshold for CPU utilization. Unit: percentage.
         self.cpu_alarm_threshold = cpu_alarm_threshold
@@ -4491,6 +4570,7 @@ class CreateDedicatedClusterMonitorRuleRequest(TeaModel):
         self.phones = phones
         # The ID of the region in which the Data Transmission Service (DTS) instance resides.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -4521,6 +4601,8 @@ class CreateDedicatedClusterMonitorRuleRequest(TeaModel):
             result['Phones'] = self.phones
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4545,6 +4627,8 @@ class CreateDedicatedClusterMonitorRuleRequest(TeaModel):
             self.phones = m.get('Phones')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -5032,6 +5116,7 @@ class CreateJobMonitorRuleRequest(TeaModel):
         period: int = None,
         phone: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         state: str = None,
         times: int = None,
         type: str = None,
@@ -5059,6 +5144,7 @@ class CreateJobMonitorRuleRequest(TeaModel):
         self.phone = phone
         # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # Specifies whether to enable the alert rule. Valid values:
         # 
         # *   **Y**: enables the alert rule.
@@ -5098,6 +5184,8 @@ class CreateJobMonitorRuleRequest(TeaModel):
             result['Phone'] = self.phone
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.state is not None:
             result['State'] = self.state
         if self.times is not None:
@@ -5120,6 +5208,8 @@ class CreateJobMonitorRuleRequest(TeaModel):
             self.phone = m.get('Phone')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('State') is not None:
             self.state = m.get('State')
         if m.get('Times') is not None:
@@ -5261,6 +5351,7 @@ class CreateMigrationJobRequest(TeaModel):
         owner_id: str = None,
         region: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
@@ -5277,6 +5368,7 @@ class CreateMigrationJobRequest(TeaModel):
         self.region = region
         # The ID of the region where the data migration instance resides. You do not need to specify this parameter because this parameter will be removed in the future.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -5299,6 +5391,8 @@ class CreateMigrationJobRequest(TeaModel):
             result['Region'] = self.region
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5315,6 +5409,8 @@ class CreateMigrationJobRequest(TeaModel):
             self.region = m.get('Region')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -5419,8 +5515,10 @@ class CreateReverseDtsJobRequest(TeaModel):
     def __init__(
         self,
         dts_job_id: str = None,
+        resource_group_id: str = None,
     ):
         self.dts_job_id = dts_job_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -5433,12 +5531,16 @@ class CreateReverseDtsJobRequest(TeaModel):
         result = dict()
         if self.dts_job_id is not None:
             result['DtsJobId'] = self.dts_job_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('DtsJobId') is not None:
             self.dts_job_id = m.get('DtsJobId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -5587,6 +5689,7 @@ class CreateSubscriptionInstanceRequest(TeaModel):
         period: str = None,
         region: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         used_time: int = None,
     ):
         self.source_endpoint = source_endpoint
@@ -5610,6 +5713,7 @@ class CreateSubscriptionInstanceRequest(TeaModel):
         # The region ID of the change tracking instance. The region ID is the same as that of the source instance. For more information, see [List of supported regions](~~141033~~).
         self.region = region
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The subscription length.
         # 
         # *   If the billing cycle is **Year**, the value range is **1 to 5**.
@@ -5644,6 +5748,8 @@ class CreateSubscriptionInstanceRequest(TeaModel):
             result['Region'] = self.region
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.used_time is not None:
             result['UsedTime'] = self.used_time
         return result
@@ -5667,6 +5773,8 @@ class CreateSubscriptionInstanceRequest(TeaModel):
             self.region = m.get('Region')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('UsedTime') is not None:
             self.used_time = m.get('UsedTime')
         return self
@@ -5856,6 +5964,7 @@ class CreateSynchronizationJobRequest(TeaModel):
         pay_type: str = None,
         period: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         source_region: str = None,
         synchronization_job_class: str = None,
         topology: str = None,
@@ -5888,6 +5997,7 @@ class CreateSynchronizationJobRequest(TeaModel):
         # >  You must specify this parameter only if you set the PayType parameter to **PrePaid**.
         self.period = period
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the region where the source database resides. For more information, see [List of supported regions](~~141033~~).
         self.source_region = source_region
         # The specification of the data synchronization instance. Valid values: **micro**, **small**, **medium**, and **large**.
@@ -5945,6 +6055,8 @@ class CreateSynchronizationJobRequest(TeaModel):
             result['Period'] = self.period
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.source_region is not None:
             result['SourceRegion'] = self.source_region
         if self.synchronization_job_class is not None:
@@ -5981,6 +6093,8 @@ class CreateSynchronizationJobRequest(TeaModel):
             self.period = m.get('Period')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SourceRegion') is not None:
             self.source_region = m.get('SourceRegion')
         if m.get('SynchronizationJobClass') is not None:
@@ -6098,6 +6212,7 @@ class DeleteConsumerChannelRequest(TeaModel):
         dts_instance_id: str = None,
         dts_job_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         # The ID of the consumer group. You can call the [DescribeConsumerChannel](~~264169~~) operation to query the consumer group ID.
         self.consumer_group_id = consumer_group_id
@@ -6111,6 +6226,7 @@ class DeleteConsumerChannelRequest(TeaModel):
         self.dts_job_id = dts_job_id
         # The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -6129,6 +6245,8 @@ class DeleteConsumerChannelRequest(TeaModel):
             result['DtsJobId'] = self.dts_job_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -6141,6 +6259,8 @@ class DeleteConsumerChannelRequest(TeaModel):
             self.dts_job_id = m.get('DtsJobId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -6248,6 +6368,7 @@ class DeleteConsumerGroupRequest(TeaModel):
         consumer_group_id: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         subscription_instance_id: str = None,
     ):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
@@ -6256,6 +6377,7 @@ class DeleteConsumerGroupRequest(TeaModel):
         self.consumer_group_id = consumer_group_id
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the change tracking instance. You can call the **DescribeSubscriptionInstances** operation to query the instance ID.
         self.subscription_instance_id = subscription_instance_id
 
@@ -6276,6 +6398,8 @@ class DeleteConsumerGroupRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.subscription_instance_id is not None:
             result['SubscriptionInstanceId'] = self.subscription_instance_id
         return result
@@ -6290,6 +6414,8 @@ class DeleteConsumerGroupRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SubscriptionInstanceId') is not None:
             self.subscription_instance_id = m.get('SubscriptionInstanceId')
         return self
@@ -6392,7 +6518,9 @@ class DeleteDtsJobRequest(TeaModel):
         dts_job_id: str = None,
         job_type: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         synchronization_direction: str = None,
+        zero_etl_job: bool = None,
     ):
         # The dynamic part in the error message. This parameter is used to replace the **%s** variable in the **ErrMessage** parameter.
         # 
@@ -6403,8 +6531,10 @@ class DeleteDtsJobRequest(TeaModel):
         self.job_type = job_type
         # The error code returned if the call failed.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The dynamic error code. This parameter will be removed in the future.
         self.synchronization_direction = synchronization_direction
+        self.zero_etl_job = zero_etl_job
 
     def validate(self):
         pass
@@ -6423,8 +6553,12 @@ class DeleteDtsJobRequest(TeaModel):
             result['JobType'] = self.job_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.synchronization_direction is not None:
             result['SynchronizationDirection'] = self.synchronization_direction
+        if self.zero_etl_job is not None:
+            result['ZeroEtlJob'] = self.zero_etl_job
         return result
 
     def from_map(self, m: dict = None):
@@ -6437,8 +6571,12 @@ class DeleteDtsJobRequest(TeaModel):
             self.job_type = m.get('JobType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SynchronizationDirection') is not None:
             self.synchronization_direction = m.get('SynchronizationDirection')
+        if m.get('ZeroEtlJob') is not None:
+            self.zero_etl_job = m.get('ZeroEtlJob')
         return self
 
 
@@ -6566,6 +6704,8 @@ class DeleteDtsJobsRequest(TeaModel):
         self,
         dts_job_ids: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
+        zero_etl_job: bool = None,
     ):
         # The ID of the data migration, data synchronization, or change tracking task.
         # 
@@ -6574,6 +6714,8 @@ class DeleteDtsJobsRequest(TeaModel):
         self.dts_job_ids = dts_job_ids
         # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.zero_etl_job = zero_etl_job
 
     def validate(self):
         pass
@@ -6588,6 +6730,10 @@ class DeleteDtsJobsRequest(TeaModel):
             result['DtsJobIds'] = self.dts_job_ids
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.zero_etl_job is not None:
+            result['ZeroEtlJob'] = self.zero_etl_job
         return result
 
     def from_map(self, m: dict = None):
@@ -6596,6 +6742,10 @@ class DeleteDtsJobsRequest(TeaModel):
             self.dts_job_ids = m.get('DtsJobIds')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ZeroEtlJob') is not None:
+            self.zero_etl_job = m.get('ZeroEtlJob')
         return self
 
 
@@ -6719,6 +6869,7 @@ class DeleteMigrationJobRequest(TeaModel):
         migration_job_id: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
@@ -6726,6 +6877,7 @@ class DeleteMigrationJobRequest(TeaModel):
         self.migration_job_id = migration_job_id
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -6744,6 +6896,8 @@ class DeleteMigrationJobRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -6756,6 +6910,8 @@ class DeleteMigrationJobRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -6855,12 +7011,14 @@ class DeleteSubscriptionInstanceRequest(TeaModel):
         account_id: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         subscription_instance_id: str = None,
     ):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
         self.subscription_instance_id = subscription_instance_id
 
@@ -6879,6 +7037,8 @@ class DeleteSubscriptionInstanceRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.subscription_instance_id is not None:
             result['SubscriptionInstanceId'] = self.subscription_instance_id
         return result
@@ -6891,6 +7051,8 @@ class DeleteSubscriptionInstanceRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SubscriptionInstanceId') is not None:
             self.subscription_instance_id = m.get('SubscriptionInstanceId')
         return self
@@ -6992,12 +7154,14 @@ class DeleteSynchronizationJobRequest(TeaModel):
         account_id: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         synchronization_job_id: str = None,
     ):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the data synchronization instance. You can call the DescribeSynchronizationJobs operation to query the instance ID.
         self.synchronization_job_id = synchronization_job_id
 
@@ -7016,6 +7180,8 @@ class DeleteSynchronizationJobRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.synchronization_job_id is not None:
             result['SynchronizationJobId'] = self.synchronization_job_id
         return result
@@ -7028,6 +7194,8 @@ class DeleteSynchronizationJobRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SynchronizationJobId') is not None:
             self.synchronization_job_id = m.get('SynchronizationJobId')
         return self
@@ -7310,12 +7478,14 @@ class DescribeCheckJobsRequest(TeaModel):
         job_name: str = None,
         page_number: int = None,
         page_size: int = None,
+        resource_group_id: str = None,
     ):
         self.check_type = check_type
         self.instance_id = instance_id
         self.job_name = job_name
         self.page_number = page_number
         self.page_size = page_size
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -7336,6 +7506,8 @@ class DescribeCheckJobsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -7350,6 +7522,8 @@ class DescribeCheckJobsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -7617,6 +7791,7 @@ class DescribeClusterOperateLogsRequest(TeaModel):
         owner_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        resource_group_id: str = None,
         start_time: int = None,
     ):
         # The ID of the Alibaba Cloud account.
@@ -7634,6 +7809,7 @@ class DescribeClusterOperateLogsRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return on each page. Default value: **20**.
         self.page_size = page_size
+        self.resource_group_id = resource_group_id
         # The beginning of the time range to query. The value must be in the UNIX timestamp format. Unit: milliseconds. If you do not specify this parameter, the data within the last seven days is returned by default.
         self.start_time = start_time
 
@@ -7662,6 +7838,8 @@ class DescribeClusterOperateLogsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -7684,6 +7862,8 @@ class DescribeClusterOperateLogsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -7924,6 +8104,7 @@ class DescribeClusterUsedUtilizationRequest(TeaModel):
         metric_type: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         security_token: str = None,
     ):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter is discontinued.
@@ -7944,6 +8125,7 @@ class DescribeClusterUsedUtilizationRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region in which the Data Transmission Service (DTS) instance resides.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.security_token = security_token
 
     def validate(self):
@@ -7971,6 +8153,8 @@ class DescribeClusterUsedUtilizationRequest(TeaModel):
             result['OwnerID'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
         return result
@@ -7993,6 +8177,8 @@ class DescribeClusterUsedUtilizationRequest(TeaModel):
             self.owner_id = m.get('OwnerID')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
         return self
@@ -8194,6 +8380,7 @@ class DescribeConnectionStatusRequest(TeaModel):
         destination_endpoint_region: str = None,
         destination_endpoint_user_name: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         source_endpoint_architecture: str = None,
         source_endpoint_database_name: str = None,
         source_endpoint_engine_name: str = None,
@@ -8266,6 +8453,7 @@ class DescribeConnectionStatusRequest(TeaModel):
         self.destination_endpoint_user_name = destination_endpoint_user_name
         # The ID of the region where the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # You must specify this parameter only if the **SourceEndpointEngineName** parameter is set to **Oracle**. Valid values:
         # 
         # *   **SID**: non-RAC architecture
@@ -8351,6 +8539,8 @@ class DescribeConnectionStatusRequest(TeaModel):
             result['DestinationEndpointUserName'] = self.destination_endpoint_user_name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.source_endpoint_architecture is not None:
             result['SourceEndpointArchitecture'] = self.source_endpoint_architecture
         if self.source_endpoint_database_name is not None:
@@ -8401,6 +8591,8 @@ class DescribeConnectionStatusRequest(TeaModel):
             self.destination_endpoint_user_name = m.get('DestinationEndpointUserName')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SourceEndpointArchitecture') is not None:
             self.source_endpoint_architecture = m.get('SourceEndpointArchitecture')
         if m.get('SourceEndpointDatabaseName') is not None:
@@ -8539,6 +8731,7 @@ class DescribeConsumerChannelRequest(TeaModel):
         page_size: int = None,
         parent_channel_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         # The ID of the change tracking instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
         # 
@@ -8556,6 +8749,7 @@ class DescribeConsumerChannelRequest(TeaModel):
         self.parent_channel_id = parent_channel_id
         # The ID of the region in which the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -8578,6 +8772,8 @@ class DescribeConsumerChannelRequest(TeaModel):
             result['ParentChannelId'] = self.parent_channel_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -8594,6 +8790,8 @@ class DescribeConsumerChannelRequest(TeaModel):
             self.parent_channel_id = m.get('ParentChannelId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -8807,6 +9005,7 @@ class DescribeConsumerGroupRequest(TeaModel):
         page_num: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         subscription_instance_id: str = None,
     ):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
@@ -8817,6 +9016,7 @@ class DescribeConsumerGroupRequest(TeaModel):
         # The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
         self.page_size = page_size
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
         self.subscription_instance_id = subscription_instance_id
 
@@ -8839,6 +9039,8 @@ class DescribeConsumerGroupRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.subscription_instance_id is not None:
             result['SubscriptionInstanceId'] = self.subscription_instance_id
         return result
@@ -8855,6 +9057,8 @@ class DescribeConsumerGroupRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SubscriptionInstanceId') is not None:
             self.subscription_instance_id = m.get('SubscriptionInstanceId')
         return self
@@ -9087,6 +9291,7 @@ class DescribeDTSIPRequest(TeaModel):
         self,
         destination_endpoint_region: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         source_endpoint_region: str = None,
     ):
         # The ID of the region where the destination instance resides. For more information, see [List of supported regions](~~141033~~).
@@ -9094,6 +9299,7 @@ class DescribeDTSIPRequest(TeaModel):
         # >  If the destination instance is a self-managed database with a public IP address, you can set the parameter to **cn-hangzhou** or the ID of the closest region.
         self.destination_endpoint_region = destination_endpoint_region
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the region where the source instance resides. For more information, see [List of supported regions](~~141033~~).
         # 
         # >  If the source instance is a self-managed database with a public IP address, you can set the parameter to **cn-hangzhou** or the ID of the closest region.
@@ -9112,6 +9318,8 @@ class DescribeDTSIPRequest(TeaModel):
             result['DestinationEndpointRegion'] = self.destination_endpoint_region
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.source_endpoint_region is not None:
             result['SourceEndpointRegion'] = self.source_endpoint_region
         return result
@@ -9122,6 +9330,8 @@ class DescribeDTSIPRequest(TeaModel):
             self.destination_endpoint_region = m.get('DestinationEndpointRegion')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SourceEndpointRegion') is not None:
             self.source_endpoint_region = m.get('SourceEndpointRegion')
         return self
@@ -9237,6 +9447,7 @@ class DescribeDataCheckReportUrlRequest(TeaModel):
         check_type: int = None,
         db_name: str = None,
         dts_job_id: str = None,
+        resource_group_id: str = None,
         tb_name: str = None,
     ):
         # The data verification method. Valid values:
@@ -9248,6 +9459,7 @@ class DescribeDataCheckReportUrlRequest(TeaModel):
         self.db_name = db_name
         # The ID of the Data Transmission Service (DTS) task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
         self.dts_job_id = dts_job_id
+        self.resource_group_id = resource_group_id
         # The name of the table verified in the source database.
         self.tb_name = tb_name
 
@@ -9266,6 +9478,8 @@ class DescribeDataCheckReportUrlRequest(TeaModel):
             result['DbName'] = self.db_name
         if self.dts_job_id is not None:
             result['DtsJobId'] = self.dts_job_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.tb_name is not None:
             result['TbName'] = self.tb_name
         return result
@@ -9278,6 +9492,8 @@ class DescribeDataCheckReportUrlRequest(TeaModel):
             self.db_name = m.get('DbName')
         if m.get('DtsJobId') is not None:
             self.dts_job_id = m.get('DtsJobId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('TbName') is not None:
             self.tb_name = m.get('TbName')
         return self
@@ -9394,6 +9610,7 @@ class DescribeDataCheckTableDetailsRequest(TeaModel):
         dts_job_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        resource_group_id: str = None,
         schema_name: str = None,
         status: str = None,
         table_name: str = None,
@@ -9409,6 +9626,7 @@ class DescribeDataCheckTableDetailsRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return on each page.
         self.page_size = page_size
+        self.resource_group_id = resource_group_id
         # The name of the schema whose data is verified in the source database.
         self.schema_name = schema_name
         # The status of the data verification result. Valid values:
@@ -9436,6 +9654,8 @@ class DescribeDataCheckTableDetailsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.schema_name is not None:
             result['SchemaName'] = self.schema_name
         if self.status is not None:
@@ -9454,6 +9674,8 @@ class DescribeDataCheckTableDetailsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SchemaName') is not None:
             self.schema_name = m.get('SchemaName')
         if m.get('Status') is not None:
@@ -9735,6 +9957,7 @@ class DescribeDataCheckTableDiffDetailsRequest(TeaModel):
         dts_job_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        resource_group_id: str = None,
         tb_name: str = None,
     ):
         self.check_type = check_type
@@ -9742,6 +9965,7 @@ class DescribeDataCheckTableDiffDetailsRequest(TeaModel):
         self.dts_job_id = dts_job_id
         self.page_number = page_number
         self.page_size = page_size
+        self.resource_group_id = resource_group_id
         self.tb_name = tb_name
 
     def validate(self):
@@ -9763,6 +9987,8 @@ class DescribeDataCheckTableDiffDetailsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.tb_name is not None:
             result['TbName'] = self.tb_name
         return result
@@ -9779,6 +10005,8 @@ class DescribeDataCheckTableDiffDetailsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('TbName') is not None:
             self.tb_name = m.get('TbName')
         return self
@@ -9965,12 +10193,14 @@ class DescribeDedicatedClusterRequest(TeaModel):
         dedicated_cluster_id: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         # The ID of the cluster.
         self.dedicated_cluster_id = dedicated_cluster_id
         self.owner_id = owner_id
         # The ID of the region in which the instance resides.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -9987,6 +10217,8 @@ class DescribeDedicatedClusterRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -9997,6 +10229,8 @@ class DescribeDedicatedClusterRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -10259,10 +10493,12 @@ class DescribeDedicatedClusterMonitorRuleRequest(TeaModel):
         dedicated_cluster_id: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         self.dedicated_cluster_id = dedicated_cluster_id
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -10279,6 +10515,8 @@ class DescribeDedicatedClusterMonitorRuleRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -10289,6 +10527,8 @@ class DescribeDedicatedClusterMonitorRuleRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -10434,6 +10674,7 @@ class DescribeDtsEtlJobVersionInfoRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         # The ID of the Data Transmission Service (DTS) instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
         self.dts_instance_id = dts_instance_id
@@ -10445,6 +10686,7 @@ class DescribeDtsEtlJobVersionInfoRequest(TeaModel):
         self.page_size = page_size
         # The ID of the region in which the DTS instance resides. You can call the [DescribeRegions](~~25609~~) operation to query the available Alibaba Cloud regions.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -10465,6 +10707,8 @@ class DescribeDtsEtlJobVersionInfoRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -10479,6 +10723,8 @@ class DescribeDtsEtlJobVersionInfoRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -10726,8 +10972,10 @@ class DescribeDtsJobDetailRequest(TeaModel):
         dts_instance_id: str = None,
         dts_job_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         sync_sub_job_history: bool = None,
         synchronization_direction: str = None,
+        zero_etl_job: bool = None,
     ):
         # DescribeDtsJobDetail
         self.dts_instance_id = dts_instance_id
@@ -10755,9 +11003,11 @@ class DescribeDtsJobDetailRequest(TeaModel):
         self.dts_job_id = dts_job_id
         # The ID of the data migration, data synchronization, or change tracking task.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.sync_sub_job_history = sync_sub_job_history
         # Queries the details of a data migration, data synchronization, or change tracking task.
         self.synchronization_direction = synchronization_direction
+        self.zero_etl_job = zero_etl_job
 
     def validate(self):
         pass
@@ -10774,10 +11024,14 @@ class DescribeDtsJobDetailRequest(TeaModel):
             result['DtsJobId'] = self.dts_job_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.sync_sub_job_history is not None:
             result['SyncSubJobHistory'] = self.sync_sub_job_history
         if self.synchronization_direction is not None:
             result['SynchronizationDirection'] = self.synchronization_direction
+        if self.zero_etl_job is not None:
+            result['ZeroEtlJob'] = self.zero_etl_job
         return result
 
     def from_map(self, m: dict = None):
@@ -10788,10 +11042,14 @@ class DescribeDtsJobDetailRequest(TeaModel):
             self.dts_job_id = m.get('DtsJobId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SyncSubJobHistory') is not None:
             self.sync_sub_job_history = m.get('SyncSubJobHistory')
         if m.get('SynchronizationDirection') is not None:
             self.synchronization_direction = m.get('SynchronizationDirection')
+        if m.get('ZeroEtlJob') is not None:
+            self.zero_etl_job = m.get('ZeroEtlJob')
         return self
 
 
@@ -16502,6 +16760,8 @@ class DescribeDtsJobsRequest(TeaModel):
         dts_instance_id: str = None,
         dts_job_id: str = None,
         group_id: str = None,
+        instance_id: str = None,
+        instance_type: str = None,
         job_type: str = None,
         order_column: str = None,
         order_direction: str = None,
@@ -16516,6 +16776,7 @@ class DescribeDtsJobsRequest(TeaModel):
         tags: str = None,
         type: str = None,
         without_db_list: bool = None,
+        zero_etl_job: bool = None,
     ):
         # The ID of the DTS dedicated cluster on which the task runs.
         self.dedicated_cluster_id = dedicated_cluster_id
@@ -16532,6 +16793,8 @@ class DescribeDtsJobsRequest(TeaModel):
         # 
         # >  In most cases, you do not need to specify this parameter.
         self.group_id = group_id
+        self.instance_id = instance_id
+        self.instance_type = instance_type
         # The type of the DTS task. Valid values:
         # 
         # *   **MIGRATION**: data migration. This is the default value.
@@ -16636,6 +16899,7 @@ class DescribeDtsJobsRequest(TeaModel):
         # - **true**: does not return **DbObject**.
         # - **false**: returns **DbObject**. If you set this parameter to false, the response time is shortened.
         self.without_db_list = without_db_list
+        self.zero_etl_job = zero_etl_job
 
     def validate(self):
         pass
@@ -16656,6 +16920,10 @@ class DescribeDtsJobsRequest(TeaModel):
             result['DtsJobId'] = self.dts_job_id
         if self.group_id is not None:
             result['GroupId'] = self.group_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
         if self.job_type is not None:
             result['JobType'] = self.job_type
         if self.order_column is not None:
@@ -16684,6 +16952,8 @@ class DescribeDtsJobsRequest(TeaModel):
             result['Type'] = self.type
         if self.without_db_list is not None:
             result['WithoutDbList'] = self.without_db_list
+        if self.zero_etl_job is not None:
+            result['ZeroEtlJob'] = self.zero_etl_job
         return result
 
     def from_map(self, m: dict = None):
@@ -16698,6 +16968,10 @@ class DescribeDtsJobsRequest(TeaModel):
             self.dts_job_id = m.get('DtsJobId')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
         if m.get('JobType') is not None:
             self.job_type = m.get('JobType')
         if m.get('OrderColumn') is not None:
@@ -16726,6 +17000,8 @@ class DescribeDtsJobsRequest(TeaModel):
             self.type = m.get('Type')
         if m.get('WithoutDbList') is not None:
             self.without_db_list = m.get('WithoutDbList')
+        if m.get('ZeroEtlJob') is not None:
+            self.zero_etl_job = m.get('ZeroEtlJob')
         return self
 
 
@@ -21302,9 +21578,11 @@ class DescribeDtsServiceLogRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         start_time: int = None,
         status: str = None,
         sub_job_type: str = None,
+        zero_etl_job: bool = None,
     ):
         # The ID of the data migration or synchronization task.
         self.dts_job_id = dts_job_id
@@ -21323,6 +21601,7 @@ class DescribeDtsServiceLogRequest(TeaModel):
         self.page_size = page_size
         # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The beginning of the time range to query.
         # 
         # > *   To obtain the logs that are generated for Data Transmission Service (DTS) subtasks within a specific period of time, you can call the [DescribePreCheckStatus](~~209718~~) operation to query the execution time of the subtasks.
@@ -21340,6 +21619,7 @@ class DescribeDtsServiceLogRequest(TeaModel):
         # *   **ONLINE_WRITER**: incremental migration
         # *   **SYNC_WRITER**: incremental synchronization
         self.sub_job_type = sub_job_type
+        self.zero_etl_job = zero_etl_job
 
     def validate(self):
         pass
@@ -21362,12 +21642,16 @@ class DescribeDtsServiceLogRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.status is not None:
             result['Status'] = self.status
         if self.sub_job_type is not None:
             result['SubJobType'] = self.sub_job_type
+        if self.zero_etl_job is not None:
+            result['ZeroEtlJob'] = self.zero_etl_job
         return result
 
     def from_map(self, m: dict = None):
@@ -21384,12 +21668,16 @@ class DescribeDtsServiceLogRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('SubJobType') is not None:
             self.sub_job_type = m.get('SubJobType')
+        if m.get('ZeroEtlJob') is not None:
+            self.zero_etl_job = m.get('ZeroEtlJob')
         return self
 
 
@@ -21589,6 +21877,7 @@ class DescribeEndpointSwitchStatusRequest(TeaModel):
         client_token: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         task_id: str = None,
     ):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
@@ -21597,6 +21886,7 @@ class DescribeEndpointSwitchStatusRequest(TeaModel):
         self.client_token = client_token
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The task ID, which is returned after you call the [SwitchSynchronizationEndpoint](~~201858~~) operation.
         self.task_id = task_id
 
@@ -21617,6 +21907,8 @@ class DescribeEndpointSwitchStatusRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         return result
@@ -21631,6 +21923,8 @@ class DescribeEndpointSwitchStatusRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         return self
@@ -21751,11 +22045,13 @@ class DescribeEtlJobLogsRequest(TeaModel):
         self,
         dts_job_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         # The ID of the ETL task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
         self.dts_job_id = dts_job_id
         # The ID of the region in which the Data Transmission Service (DTS) instance resides. You can call the [DescribeRegions](~~25609~~) operation to query the available Alibaba Cloud regions.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -21770,6 +22066,8 @@ class DescribeEtlJobLogsRequest(TeaModel):
             result['DtsJobId'] = self.dts_job_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -21778,6 +22076,8 @@ class DescribeEtlJobLogsRequest(TeaModel):
             self.dts_job_id = m.get('DtsJobId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -21978,6 +22278,7 @@ class DescribeInitializationStatusRequest(TeaModel):
         page_num: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         synchronization_job_id: str = None,
     ):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
@@ -21988,6 +22289,7 @@ class DescribeInitializationStatusRequest(TeaModel):
         # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **30**.
         self.page_size = page_size
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](~~49454~~) operation to query the instance ID.
         self.synchronization_job_id = synchronization_job_id
 
@@ -22010,6 +22312,8 @@ class DescribeInitializationStatusRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.synchronization_job_id is not None:
             result['SynchronizationJobId'] = self.synchronization_job_id
         return result
@@ -22026,6 +22330,8 @@ class DescribeInitializationStatusRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SynchronizationJobId') is not None:
             self.synchronization_job_id = m.get('SynchronizationJobId')
         return self
@@ -22491,11 +22797,13 @@ class DescribeJobMonitorRuleRequest(TeaModel):
         self,
         dts_job_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         # The ID of the data migration, data synchronization, or change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
         self.dts_job_id = dts_job_id
         # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -22510,6 +22818,8 @@ class DescribeJobMonitorRuleRequest(TeaModel):
             result['DtsJobId'] = self.dts_job_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -22518,6 +22828,8 @@ class DescribeJobMonitorRuleRequest(TeaModel):
             self.dts_job_id = m.get('DtsJobId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -22767,6 +23079,7 @@ class DescribeMetricListRequest(TeaModel):
         owner_id: str = None,
         param: str = None,
         period: int = None,
+        resource_group_id: str = None,
         start_time: int = None,
     ):
         # The ID of the Alibaba Cloud account.
@@ -22797,6 +23110,7 @@ class DescribeMetricListRequest(TeaModel):
         self.param = param
         # The monitoring interval. Unit: seconds. Minimum value: 15.
         self.period = period
+        self.resource_group_id = resource_group_id
         # The timestamp that indicates the beginning of the time range to query. Unit: milliseconds.
         self.start_time = start_time
 
@@ -22829,6 +23143,8 @@ class DescribeMetricListRequest(TeaModel):
             result['Param'] = self.param
         if self.period is not None:
             result['Period'] = self.period
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -22855,6 +23171,8 @@ class DescribeMetricListRequest(TeaModel):
             self.param = m.get('Param')
         if m.get('Period') is not None:
             self.period = m.get('Period')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -23069,6 +23387,7 @@ class DescribeMigrationJobAlertRequest(TeaModel):
         migration_job_id: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
@@ -23078,6 +23397,7 @@ class DescribeMigrationJobAlertRequest(TeaModel):
         self.migration_job_id = migration_job_id
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -23098,6 +23418,8 @@ class DescribeMigrationJobAlertRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -23112,6 +23434,8 @@ class DescribeMigrationJobAlertRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -23331,6 +23655,7 @@ class DescribeMigrationJobDetailRequest(TeaModel):
         page_num: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         self.migration_mode = migration_mode
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
@@ -23346,6 +23671,7 @@ class DescribeMigrationJobDetailRequest(TeaModel):
         self.page_size = page_size
         # The ID of the region where the data migration instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         if self.migration_mode:
@@ -23373,6 +23699,8 @@ class DescribeMigrationJobDetailRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -23394,6 +23722,8 @@ class DescribeMigrationJobDetailRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -23989,6 +24319,7 @@ class DescribeMigrationJobStatusRequest(TeaModel):
         migration_job_id: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
@@ -23998,6 +24329,7 @@ class DescribeMigrationJobStatusRequest(TeaModel):
         self.migration_job_id = migration_job_id
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -24018,6 +24350,8 @@ class DescribeMigrationJobStatusRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -24032,6 +24366,8 @@ class DescribeMigrationJobStatusRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -24829,6 +25165,7 @@ class DescribeMigrationJobsRequest(TeaModel):
         page_num: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         tag: List[DescribeMigrationJobsRequestTag] = None,
     ):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
@@ -24844,6 +25181,7 @@ class DescribeMigrationJobsRequest(TeaModel):
         self.page_size = page_size
         # The ID of the region where the data migration instances reside. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.tag = tag
 
     def validate(self):
@@ -24870,6 +25208,8 @@ class DescribeMigrationJobsRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -24890,6 +25230,8 @@ class DescribeMigrationJobsRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -25814,8 +26156,10 @@ class DescribePreCheckStatusRequest(TeaModel):
         page_no: str = None,
         page_size: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         struct_phase: str = None,
         struct_type: str = None,
+        zero_etl_job: bool = None,
     ):
         # The ID of the data migration, data synchronization, or change tracking task.
         self.dts_job_id = dts_job_id
@@ -25834,6 +26178,7 @@ class DescribePreCheckStatusRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The filter item used to filter tables, views, and functions during schema migration.
         self.struct_phase = struct_phase
         # The type of schema definition. Valid values:
@@ -25841,6 +26186,7 @@ class DescribePreCheckStatusRequest(TeaModel):
         # *   **before**: schema migration or initial schema synchronization
         # *   **after**: DDL operations performed during incremental data migration or synchronization
         self.struct_type = struct_type
+        self.zero_etl_job = zero_etl_job
 
     def validate(self):
         pass
@@ -25863,10 +26209,14 @@ class DescribePreCheckStatusRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.struct_phase is not None:
             result['StructPhase'] = self.struct_phase
         if self.struct_type is not None:
             result['StructType'] = self.struct_type
+        if self.zero_etl_job is not None:
+            result['ZeroEtlJob'] = self.zero_etl_job
         return result
 
     def from_map(self, m: dict = None):
@@ -25883,10 +26233,14 @@ class DescribePreCheckStatusRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('StructPhase') is not None:
             self.struct_phase = m.get('StructPhase')
         if m.get('StructType') is not None:
             self.struct_type = m.get('StructType')
+        if m.get('ZeroEtlJob') is not None:
+            self.zero_etl_job = m.get('ZeroEtlJob')
         return self
 
 
@@ -27418,6 +27772,7 @@ class DescribeSubscriptionInstanceAlertRequest(TeaModel):
         client_token: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         subscription_instance_id: str = None,
     ):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
@@ -27426,6 +27781,7 @@ class DescribeSubscriptionInstanceAlertRequest(TeaModel):
         self.client_token = client_token
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
         self.subscription_instance_id = subscription_instance_id
 
@@ -27446,6 +27802,8 @@ class DescribeSubscriptionInstanceAlertRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.subscription_instance_id is not None:
             result['SubscriptionInstanceId'] = self.subscription_instance_id
         return result
@@ -27460,6 +27818,8 @@ class DescribeSubscriptionInstanceAlertRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SubscriptionInstanceId') is not None:
             self.subscription_instance_id = m.get('SubscriptionInstanceId')
         return self
@@ -27616,12 +27976,14 @@ class DescribeSubscriptionInstanceStatusRequest(TeaModel):
         account_id: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         subscription_instance_id: str = None,
     ):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the change tracking instance. You can call the [DescribeSubscriptionInstances](~~49442~~) operation to query the instance ID.
         self.subscription_instance_id = subscription_instance_id
 
@@ -27640,6 +28002,8 @@ class DescribeSubscriptionInstanceStatusRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.subscription_instance_id is not None:
             result['SubscriptionInstanceId'] = self.subscription_instance_id
         return result
@@ -27652,6 +28016,8 @@ class DescribeSubscriptionInstanceStatusRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SubscriptionInstanceId') is not None:
             self.subscription_instance_id = m.get('SubscriptionInstanceId')
         return self
@@ -28156,6 +28522,7 @@ class DescribeSubscriptionInstancesRequest(TeaModel):
         page_num: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         subscription_instance_name: str = None,
         tag: List[DescribeSubscriptionInstancesRequestTag] = None,
     ):
@@ -28170,6 +28537,7 @@ class DescribeSubscriptionInstancesRequest(TeaModel):
         self.page_size = page_size
         # The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](~~49442~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The name of the change tracking instance.
         # 
         # >  If you specify this parameter, DTS returns all the change tracking instances that match the specified name.
@@ -28200,6 +28568,8 @@ class DescribeSubscriptionInstancesRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.subscription_instance_name is not None:
             result['SubscriptionInstanceName'] = self.subscription_instance_name
         result['Tag'] = []
@@ -28222,6 +28592,8 @@ class DescribeSubscriptionInstancesRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SubscriptionInstanceName') is not None:
             self.subscription_instance_name = m.get('SubscriptionInstanceName')
         self.tag = []
@@ -28857,6 +29229,7 @@ class DescribeSubscriptionMetaRequest(TeaModel):
         self,
         dts_instance_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         sid: str = None,
         sub_migration_job_ids: Dict[str, Any] = None,
         topics: Dict[str, Any] = None,
@@ -28865,6 +29238,7 @@ class DescribeSubscriptionMetaRequest(TeaModel):
         self.dts_instance_id = dts_instance_id
         # The ID of the region in which the change tracking instance resides.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the consumer group.
         self.sid = sid
         # The IDs of all subtasks in the distributed change tracking task. Separate multiple subtask IDs with commas (,).
@@ -28889,6 +29263,8 @@ class DescribeSubscriptionMetaRequest(TeaModel):
             result['DtsInstanceId'] = self.dts_instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.sid is not None:
             result['Sid'] = self.sid
         if self.sub_migration_job_ids is not None:
@@ -28903,6 +29279,8 @@ class DescribeSubscriptionMetaRequest(TeaModel):
             self.dts_instance_id = m.get('DtsInstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Sid') is not None:
             self.sid = m.get('Sid')
         if m.get('SubMigrationJobIds') is not None:
@@ -28917,6 +29295,7 @@ class DescribeSubscriptionMetaShrinkRequest(TeaModel):
         self,
         dts_instance_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         sid: str = None,
         sub_migration_job_ids_shrink: str = None,
         topics_shrink: str = None,
@@ -28925,6 +29304,7 @@ class DescribeSubscriptionMetaShrinkRequest(TeaModel):
         self.dts_instance_id = dts_instance_id
         # The ID of the region in which the change tracking instance resides.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the consumer group.
         self.sid = sid
         # The IDs of all subtasks in the distributed change tracking task. Separate multiple subtask IDs with commas (,).
@@ -28949,6 +29329,8 @@ class DescribeSubscriptionMetaShrinkRequest(TeaModel):
             result['DtsInstanceId'] = self.dts_instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.sid is not None:
             result['Sid'] = self.sid
         if self.sub_migration_job_ids_shrink is not None:
@@ -28963,6 +29345,8 @@ class DescribeSubscriptionMetaShrinkRequest(TeaModel):
             self.dts_instance_id = m.get('DtsInstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Sid') is not None:
             self.sid = m.get('Sid')
         if m.get('SubMigrationJobIds') is not None:
@@ -29149,6 +29533,7 @@ class DescribeSynchronizationJobAlertRequest(TeaModel):
         client_token: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         synchronization_direction: str = None,
         synchronization_job_id: str = None,
     ):
@@ -29158,6 +29543,7 @@ class DescribeSynchronizationJobAlertRequest(TeaModel):
         self.client_token = client_token
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The synchronization direction. Valid values:
         # 
         # *   **Forward**\
@@ -29185,6 +29571,8 @@ class DescribeSynchronizationJobAlertRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.synchronization_direction is not None:
             result['SynchronizationDirection'] = self.synchronization_direction
         if self.synchronization_job_id is not None:
@@ -29201,6 +29589,8 @@ class DescribeSynchronizationJobAlertRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SynchronizationDirection') is not None:
             self.synchronization_direction = m.get('SynchronizationDirection')
         if m.get('SynchronizationJobId') is not None:
@@ -29373,6 +29763,7 @@ class DescribeSynchronizationJobReplicatorCompareRequest(TeaModel):
         client_token: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         synchronization_direction: str = None,
         synchronization_job_id: str = None,
     ):
@@ -29382,6 +29773,7 @@ class DescribeSynchronizationJobReplicatorCompareRequest(TeaModel):
         self.client_token = client_token
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The synchronization direction. Valid values:
         # 
         # *   **Forward**\
@@ -29411,6 +29803,8 @@ class DescribeSynchronizationJobReplicatorCompareRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.synchronization_direction is not None:
             result['SynchronizationDirection'] = self.synchronization_direction
         if self.synchronization_job_id is not None:
@@ -29427,6 +29821,8 @@ class DescribeSynchronizationJobReplicatorCompareRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SynchronizationDirection') is not None:
             self.synchronization_direction = m.get('SynchronizationDirection')
         if m.get('SynchronizationJobId') is not None:
@@ -29541,6 +29937,7 @@ class DescribeSynchronizationJobStatusRequest(TeaModel):
         client_token: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         synchronization_direction: str = None,
         synchronization_job_id: str = None,
     ):
@@ -29551,6 +29948,7 @@ class DescribeSynchronizationJobStatusRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the data synchronization instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The synchronization direction. Valid values:
         # 
         # *   **Forward**\
@@ -29580,6 +29978,8 @@ class DescribeSynchronizationJobStatusRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.synchronization_direction is not None:
             result['SynchronizationDirection'] = self.synchronization_direction
         if self.synchronization_job_id is not None:
@@ -29596,6 +29996,8 @@ class DescribeSynchronizationJobStatusRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SynchronizationDirection') is not None:
             self.synchronization_direction = m.get('SynchronizationDirection')
         if m.get('SynchronizationJobId') is not None:
@@ -30477,6 +30879,7 @@ class DescribeSynchronizationJobStatusListRequest(TeaModel):
         client_token: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         synchronization_job_id_list_json_str: str = None,
     ):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
@@ -30485,6 +30888,7 @@ class DescribeSynchronizationJobStatusListRequest(TeaModel):
         self.client_token = client_token
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The IDs of the data synchronization instances. The value is a JSON array. You can call the [DescribeSynchronizationJobs](~~49454~~) operation to query the instance IDs.
         self.synchronization_job_id_list_json_str = synchronization_job_id_list_json_str
 
@@ -30505,6 +30909,8 @@ class DescribeSynchronizationJobStatusListRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.synchronization_job_id_list_json_str is not None:
             result['SynchronizationJobIdListJsonStr'] = self.synchronization_job_id_list_json_str
         return result
@@ -30519,6 +30925,8 @@ class DescribeSynchronizationJobStatusListRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SynchronizationJobIdListJsonStr') is not None:
             self.synchronization_job_id_list_json_str = m.get('SynchronizationJobIdListJsonStr')
         return self
@@ -30795,6 +31203,7 @@ class DescribeSynchronizationJobsRequest(TeaModel):
         page_num: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         synchronization_job_name: str = None,
         tag: List[DescribeSynchronizationJobsRequestTag] = None,
     ):
@@ -30815,6 +31224,7 @@ class DescribeSynchronizationJobsRequest(TeaModel):
         # 
         # >  Fuzzy matching is supported.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The tag key. You can call the [ListTagResources](~~191187~~) operation to query the tag key.
         # 
         # > 
@@ -30847,6 +31257,8 @@ class DescribeSynchronizationJobsRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.synchronization_job_name is not None:
             result['SynchronizationJobName'] = self.synchronization_job_name
         result['Tag'] = []
@@ -30869,6 +31281,8 @@ class DescribeSynchronizationJobsRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SynchronizationJobName') is not None:
             self.synchronization_job_name = m.get('SynchronizationJobName')
         self.tag = []
@@ -31827,6 +32241,7 @@ class DescribeSynchronizationObjectModifyStatusRequest(TeaModel):
         client_token: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         task_id: str = None,
     ):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
@@ -31836,6 +32251,7 @@ class DescribeSynchronizationObjectModifyStatusRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the data synchronization instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The task ID, which is returned after you call the [ModifySynchronizationObject](~~49451~~) operation to modify the objects to be synchronized.
         self.task_id = task_id
 
@@ -31856,6 +32272,8 @@ class DescribeSynchronizationObjectModifyStatusRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         return result
@@ -31870,6 +32288,8 @@ class DescribeSynchronizationObjectModifyStatusRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         return self
@@ -32302,6 +32722,7 @@ class DescribeTagKeysRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_id: str = None,
         resource_type: str = None,
     ):
@@ -32318,6 +32739,7 @@ class DescribeTagKeysRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the data migration, data synchronization, or change tracking instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
         self.resource_id = resource_id
         # The resource type. Set the value to **ALIYUN::DTS::INSTANCE**.
@@ -32340,6 +32762,8 @@ class DescribeTagKeysRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_type is not None:
@@ -32356,6 +32780,8 @@ class DescribeTagKeysRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceType') is not None:
@@ -32475,6 +32901,7 @@ class DescribeTagValuesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_id: str = None,
         resource_type: str = None,
     ):
@@ -32495,6 +32922,7 @@ class DescribeTagValuesRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the data migration, data synchronization, or change tracking instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
         # 
         # >  If this parameter is left empty, the values of all tag keys of the current user are returned.
@@ -32521,6 +32949,8 @@ class DescribeTagValuesRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_type is not None:
@@ -32539,6 +32969,8 @@ class DescribeTagValuesRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceType') is not None:
@@ -32659,6 +33091,7 @@ class InitDtsRdsInstanceRequest(TeaModel):
         endpoint_instance_type: str = None,
         endpoint_region: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         # The ID of the data synchronization task.
         self.dts_instance_id = dts_instance_id
@@ -32683,6 +33116,7 @@ class InitDtsRdsInstanceRequest(TeaModel):
         self.endpoint_region = endpoint_region
         # The ID of the region in which the active geo-redundancy database cluster resides.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -32705,6 +33139,8 @@ class InitDtsRdsInstanceRequest(TeaModel):
             result['EndpointRegion'] = self.endpoint_region
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -32721,6 +33157,8 @@ class InitDtsRdsInstanceRequest(TeaModel):
             self.endpoint_region = m.get('EndpointRegion')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -32845,6 +33283,7 @@ class ListDedicatedClusterRequest(TeaModel):
         page_size: int = None,
         params: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         state: str = None,
         type: str = None,
     ):
@@ -32869,6 +33308,7 @@ class ListDedicatedClusterRequest(TeaModel):
         self.params = params
         # The ID of the region.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The status of the cluster. Valid values:
         # 
         # *   **init**: The cluster is being initialized.
@@ -32912,6 +33352,8 @@ class ListDedicatedClusterRequest(TeaModel):
             result['Params'] = self.params
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.state is not None:
             result['State'] = self.state
         if self.type is not None:
@@ -32934,6 +33376,8 @@ class ListDedicatedClusterRequest(TeaModel):
             self.params = m.get('Params')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('State') is not None:
             self.state = m.get('State')
         if m.get('Type') is not None:
@@ -33321,6 +33765,7 @@ class ListTagResourcesRequest(TeaModel):
         self,
         next_token: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_id: List[str] = None,
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
@@ -33331,6 +33776,7 @@ class ListTagResourcesRequest(TeaModel):
         self.next_token = next_token
         # The ID of the region where the data migration, data synchronization, or change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_id = resource_id
         # The resource type. Valid value: **ALIYUN::DTS::INSTANCE**.
         self.resource_type = resource_type
@@ -33352,6 +33798,8 @@ class ListTagResourcesRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_type is not None:
@@ -33368,6 +33816,8 @@ class ListTagResourcesRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceType') is not None:
@@ -33582,6 +34032,7 @@ class ModifyConsumerChannelRequest(TeaModel):
         dts_instance_id: str = None,
         dts_job_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         # The ID of the consumer group. You can call the [DescribeConsumerChannel](~~264169~~) operation to query the consumer group ID.
         self.consumer_group_id = consumer_group_id
@@ -33607,6 +34058,7 @@ class ModifyConsumerChannelRequest(TeaModel):
         self.dts_job_id = dts_job_id
         # The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -33631,6 +34083,8 @@ class ModifyConsumerChannelRequest(TeaModel):
             result['DtsJobId'] = self.dts_job_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -33649,6 +34103,8 @@ class ModifyConsumerChannelRequest(TeaModel):
             self.dts_job_id = m.get('DtsJobId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -33759,6 +34215,7 @@ class ModifyConsumerGroupPasswordRequest(TeaModel):
         consumer_group_user_name: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         subscription_instance_id: str = None,
         consumer_group_new_password: str = None,
     ):
@@ -33776,6 +34233,7 @@ class ModifyConsumerGroupPasswordRequest(TeaModel):
         self.consumer_group_user_name = consumer_group_user_name
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
         self.subscription_instance_id = subscription_instance_id
         # The new password of the consumer group.
@@ -33807,6 +34265,8 @@ class ModifyConsumerGroupPasswordRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.subscription_instance_id is not None:
             result['SubscriptionInstanceId'] = self.subscription_instance_id
         if self.consumer_group_new_password is not None:
@@ -33829,6 +34289,8 @@ class ModifyConsumerGroupPasswordRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SubscriptionInstanceId') is not None:
             self.subscription_instance_id = m.get('SubscriptionInstanceId')
         if m.get('consumerGroupNewPassword') is not None:
@@ -33933,6 +34395,7 @@ class ModifyConsumptionTimestampRequest(TeaModel):
         consumption_timestamp: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         subscription_instance_id: str = None,
     ):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
@@ -33941,6 +34404,7 @@ class ModifyConsumptionTimestampRequest(TeaModel):
         self.consumption_timestamp = consumption_timestamp
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the change tracking instance. You can call the **DescribeSubscriptionInstances** operation to query the instance ID.
         self.subscription_instance_id = subscription_instance_id
 
@@ -33961,6 +34425,8 @@ class ModifyConsumptionTimestampRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.subscription_instance_id is not None:
             result['SubscriptionInstanceId'] = self.subscription_instance_id
         return result
@@ -33975,6 +34441,8 @@ class ModifyConsumptionTimestampRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SubscriptionInstanceId') is not None:
             self.subscription_instance_id = m.get('SubscriptionInstanceId')
         return self
@@ -34079,6 +34547,7 @@ class ModifyDedicatedClusterRequest(TeaModel):
         oversold_ratio: int = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         # The ID of the cluster.
         # 
@@ -34095,6 +34564,7 @@ class ModifyDedicatedClusterRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region in which the Data Transmission Service (DTS) instance resides.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -34117,6 +34587,8 @@ class ModifyDedicatedClusterRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -34133,6 +34605,8 @@ class ModifyDedicatedClusterRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -34255,8 +34729,10 @@ class ModifyDtsJobRequest(TeaModel):
         modify_type_enum: str = None,
         region_id: str = None,
         reserved: str = None,
+        resource_group_id: str = None,
         structure_initialization: bool = None,
         synchronization_direction: str = None,
+        zero_etl_job: bool = None,
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
@@ -34294,6 +34770,7 @@ class ModifyDtsJobRequest(TeaModel):
         self.region_id = region_id
         # The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](~~176470~~).
         self.reserved = reserved
+        self.resource_group_id = resource_group_id
         # Specifies whether to perform schema migration or synchronization. Valid values:
         # 
         # *   **true**\
@@ -34308,6 +34785,7 @@ class ModifyDtsJobRequest(TeaModel):
         # *   Default value: **Forward**.
         # *   This parameter is required only if the topology of the data synchronization instance is two-way synchronization.
         self.synchronization_direction = synchronization_direction
+        self.zero_etl_job = zero_etl_job
 
     def validate(self):
         pass
@@ -34342,10 +34820,14 @@ class ModifyDtsJobRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.reserved is not None:
             result['Reserved'] = self.reserved
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.structure_initialization is not None:
             result['StructureInitialization'] = self.structure_initialization
         if self.synchronization_direction is not None:
             result['SynchronizationDirection'] = self.synchronization_direction
+        if self.zero_etl_job is not None:
+            result['ZeroEtlJob'] = self.zero_etl_job
         return result
 
     def from_map(self, m: dict = None):
@@ -34374,10 +34856,14 @@ class ModifyDtsJobRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Reserved') is not None:
             self.reserved = m.get('Reserved')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('StructureInitialization') is not None:
             self.structure_initialization = m.get('StructureInitialization')
         if m.get('SynchronizationDirection') is not None:
             self.synchronization_direction = m.get('SynchronizationDirection')
+        if m.get('ZeroEtlJob') is not None:
+            self.zero_etl_job = m.get('ZeroEtlJob')
         return self
 
 
@@ -34396,8 +34882,10 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
         modify_type_enum: str = None,
         region_id: str = None,
         reserved: str = None,
+        resource_group_id: str = None,
         structure_initialization: bool = None,
         synchronization_direction: str = None,
+        zero_etl_job: bool = None,
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
@@ -34435,6 +34923,7 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
         self.region_id = region_id
         # The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](~~176470~~).
         self.reserved = reserved
+        self.resource_group_id = resource_group_id
         # Specifies whether to perform schema migration or synchronization. Valid values:
         # 
         # *   **true**\
@@ -34449,6 +34938,7 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
         # *   Default value: **Forward**.
         # *   This parameter is required only if the topology of the data synchronization instance is two-way synchronization.
         self.synchronization_direction = synchronization_direction
+        self.zero_etl_job = zero_etl_job
 
     def validate(self):
         pass
@@ -34483,10 +34973,14 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.reserved is not None:
             result['Reserved'] = self.reserved
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.structure_initialization is not None:
             result['StructureInitialization'] = self.structure_initialization
         if self.synchronization_direction is not None:
             result['SynchronizationDirection'] = self.synchronization_direction
+        if self.zero_etl_job is not None:
+            result['ZeroEtlJob'] = self.zero_etl_job
         return result
 
     def from_map(self, m: dict = None):
@@ -34515,10 +35009,14 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Reserved') is not None:
             self.reserved = m.get('Reserved')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('StructureInitialization') is not None:
             self.structure_initialization = m.get('StructureInitialization')
         if m.get('SynchronizationDirection') is not None:
             self.synchronization_direction = m.get('SynchronizationDirection')
+        if m.get('ZeroEtlJob') is not None:
+            self.zero_etl_job = m.get('ZeroEtlJob')
         return self
 
 
@@ -34537,8 +35035,10 @@ class ModifyDtsJobShrinkRequest(TeaModel):
         modify_type_enum: str = None,
         region_id: str = None,
         reserved: str = None,
+        resource_group_id: str = None,
         structure_initialization: bool = None,
         synchronization_direction: str = None,
+        zero_etl_job: bool = None,
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
@@ -34576,6 +35076,7 @@ class ModifyDtsJobShrinkRequest(TeaModel):
         self.region_id = region_id
         # The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](~~176470~~).
         self.reserved = reserved
+        self.resource_group_id = resource_group_id
         # Specifies whether to perform schema migration or synchronization. Valid values:
         # 
         # *   **true**\
@@ -34590,6 +35091,7 @@ class ModifyDtsJobShrinkRequest(TeaModel):
         # *   Default value: **Forward**.
         # *   This parameter is required only if the topology of the data synchronization instance is two-way synchronization.
         self.synchronization_direction = synchronization_direction
+        self.zero_etl_job = zero_etl_job
 
     def validate(self):
         pass
@@ -34624,10 +35126,14 @@ class ModifyDtsJobShrinkRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.reserved is not None:
             result['Reserved'] = self.reserved
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.structure_initialization is not None:
             result['StructureInitialization'] = self.structure_initialization
         if self.synchronization_direction is not None:
             result['SynchronizationDirection'] = self.synchronization_direction
+        if self.zero_etl_job is not None:
+            result['ZeroEtlJob'] = self.zero_etl_job
         return result
 
     def from_map(self, m: dict = None):
@@ -34656,10 +35162,14 @@ class ModifyDtsJobShrinkRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Reserved') is not None:
             self.reserved = m.get('Reserved')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('StructureInitialization') is not None:
             self.structure_initialization = m.get('StructureInitialization')
         if m.get('SynchronizationDirection') is not None:
             self.synchronization_direction = m.get('SynchronizationDirection')
+        if m.get('ZeroEtlJob') is not None:
+            self.zero_etl_job = m.get('ZeroEtlJob')
         return self
 
 
@@ -34776,11 +35286,13 @@ class ModifyDtsJobConfigRequest(TeaModel):
         owner_id: str = None,
         parameters: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         self.dts_job_id = dts_job_id
         self.owner_id = owner_id
         self.parameters = parameters
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -34799,6 +35311,8 @@ class ModifyDtsJobConfigRequest(TeaModel):
             result['Parameters'] = self.parameters
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -34811,6 +35325,8 @@ class ModifyDtsJobConfigRequest(TeaModel):
             self.parameters = m.get('Parameters')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -34889,11 +35405,13 @@ class ModifyDtsJobDedicatedClusterRequest(TeaModel):
         dts_job_ids: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         self.dedicated_cluster_id = dedicated_cluster_id
         self.dts_job_ids = dts_job_ids
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -34912,6 +35430,8 @@ class ModifyDtsJobDedicatedClusterRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -34924,6 +35444,8 @@ class ModifyDtsJobDedicatedClusterRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -35038,6 +35560,7 @@ class ModifyDtsJobDuLimitRequest(TeaModel):
         du_limit: int = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         # The ID of the data migration, data synchronization, or change tracking task.
         self.dts_job_id = dts_job_id
@@ -35048,6 +35571,7 @@ class ModifyDtsJobDuLimitRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region in which the DTS instance resides.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -35066,6 +35590,8 @@ class ModifyDtsJobDuLimitRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -35078,6 +35604,8 @@ class ModifyDtsJobDuLimitRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -35207,6 +35735,7 @@ class ModifyDtsJobEndpointRequest(TeaModel):
         endpoint_port: str = None,
         password: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         role_name: str = None,
         shard_password: str = None,
         shard_username: str = None,
@@ -35225,6 +35754,7 @@ class ModifyDtsJobEndpointRequest(TeaModel):
         self.endpoint_port = endpoint_port
         self.password = password
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.role_name = role_name
         self.shard_password = shard_password
         self.shard_username = shard_username
@@ -35264,6 +35794,8 @@ class ModifyDtsJobEndpointRequest(TeaModel):
             result['Password'] = self.password
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.role_name is not None:
             result['RoleName'] = self.role_name
         if self.shard_password is not None:
@@ -35302,6 +35834,8 @@ class ModifyDtsJobEndpointRequest(TeaModel):
             self.password = m.get('Password')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('RoleName') is not None:
             self.role_name = m.get('RoleName')
         if m.get('ShardPassword') is not None:
@@ -35413,6 +35947,8 @@ class ModifyDtsJobNameRequest(TeaModel):
         dts_job_id: str = None,
         dts_job_name: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
+        zero_etl_job: bool = None,
     ):
         # The ID of the data migration, data synchronization, or change tracking task.
         self.dts_job_id = dts_job_id
@@ -35422,6 +35958,8 @@ class ModifyDtsJobNameRequest(TeaModel):
         self.dts_job_name = dts_job_name
         # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.zero_etl_job = zero_etl_job
 
     def validate(self):
         pass
@@ -35438,6 +35976,10 @@ class ModifyDtsJobNameRequest(TeaModel):
             result['DtsJobName'] = self.dts_job_name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.zero_etl_job is not None:
+            result['ZeroEtlJob'] = self.zero_etl_job
         return result
 
     def from_map(self, m: dict = None):
@@ -35448,6 +35990,10 @@ class ModifyDtsJobNameRequest(TeaModel):
             self.dts_job_name = m.get('DtsJobName')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ZeroEtlJob') is not None:
+            self.zero_etl_job = m.get('ZeroEtlJob')
         return self
 
 
@@ -35571,7 +36117,9 @@ class ModifyDtsJobPasswordRequest(TeaModel):
         endpoint: str = None,
         password: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         user_name: str = None,
+        zero_etl_job: bool = None,
     ):
         # The ID of the data migration, data synchronization, or change tracking task.
         self.dts_job_id = dts_job_id
@@ -35588,10 +36136,12 @@ class ModifyDtsJobPasswordRequest(TeaModel):
         self.password = password
         # The ID of the region where the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The account of the source or destination database.
         # 
         # >  This parameter must be specified.
         self.user_name = user_name
+        self.zero_etl_job = zero_etl_job
 
     def validate(self):
         pass
@@ -35610,8 +36160,12 @@ class ModifyDtsJobPasswordRequest(TeaModel):
             result['Password'] = self.password
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.user_name is not None:
             result['UserName'] = self.user_name
+        if self.zero_etl_job is not None:
+            result['ZeroEtlJob'] = self.zero_etl_job
         return result
 
     def from_map(self, m: dict = None):
@@ -35624,8 +36178,12 @@ class ModifyDtsJobPasswordRequest(TeaModel):
             self.password = m.get('Password')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('UserName') is not None:
             self.user_name = m.get('UserName')
+        if m.get('ZeroEtlJob') is not None:
+            self.zero_etl_job = m.get('ZeroEtlJob')
         return self
 
 
@@ -35750,12 +36308,14 @@ class ModifyDynamicConfigRequest(TeaModel):
         enable_limit: bool = None,
         job_code: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         self.config_list = config_list
         self.dts_job_id = dts_job_id
         self.enable_limit = enable_limit
         self.job_code = job_code
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -35776,6 +36336,8 @@ class ModifyDynamicConfigRequest(TeaModel):
             result['JobCode'] = self.job_code
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -35790,6 +36352,8 @@ class ModifyDynamicConfigRequest(TeaModel):
             self.job_code = m.get('JobCode')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -35904,6 +36468,7 @@ class ModifySubscriptionRequest(TeaModel):
         dts_instance_id: str = None,
         dts_job_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         subscription_data_type_ddl: bool = None,
         subscription_data_type_dml: bool = None,
     ):
@@ -35917,6 +36482,7 @@ class ModifySubscriptionRequest(TeaModel):
         self.dts_job_id = dts_job_id
         # The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # Specifies whether to retrieve data definition language (DDL) statements. Valid values:
         # 
         # *   **true**: yes
@@ -35945,6 +36511,8 @@ class ModifySubscriptionRequest(TeaModel):
             result['DtsJobId'] = self.dts_job_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.subscription_data_type_ddl is not None:
             result['SubscriptionDataTypeDDL'] = self.subscription_data_type_ddl
         if self.subscription_data_type_dml is not None:
@@ -35961,6 +36529,8 @@ class ModifySubscriptionRequest(TeaModel):
             self.dts_job_id = m.get('DtsJobId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SubscriptionDataTypeDDL') is not None:
             self.subscription_data_type_ddl = m.get('SubscriptionDataTypeDDL')
         if m.get('SubscriptionDataTypeDML') is not None:
@@ -36071,6 +36641,7 @@ class ModifySubscriptionObjectRequest(TeaModel):
         account_id: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         subscription_instance_id: str = None,
         subscription_object: str = None,
     ):
@@ -36078,6 +36649,7 @@ class ModifySubscriptionObjectRequest(TeaModel):
         self.account_id = account_id
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the change tracking instance. You can call the [DescribeSubscriptionInstances](~~49442~~) operation to query the instance ID.
         self.subscription_instance_id = subscription_instance_id
         # The objects from which you want to track data changes. The value is a JSON string and can contain regular expressions. For more information, see [SubscriptionObjects](~~141902~~).
@@ -36098,6 +36670,8 @@ class ModifySubscriptionObjectRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.subscription_instance_id is not None:
             result['SubscriptionInstanceId'] = self.subscription_instance_id
         if self.subscription_object is not None:
@@ -36112,6 +36686,8 @@ class ModifySubscriptionObjectRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SubscriptionInstanceId') is not None:
             self.subscription_instance_id = m.get('SubscriptionInstanceId')
         if m.get('SubscriptionObject') is not None:
@@ -36215,6 +36791,7 @@ class ModifySynchronizationObjectRequest(TeaModel):
         account_id: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         synchronization_direction: str = None,
         synchronization_job_id: str = None,
         synchronization_objects: str = None,
@@ -36223,6 +36800,7 @@ class ModifySynchronizationObjectRequest(TeaModel):
         self.account_id = account_id
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The synchronization direction. Valid values:
         # 
         # *   **Forward**\
@@ -36251,6 +36829,8 @@ class ModifySynchronizationObjectRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.synchronization_direction is not None:
             result['SynchronizationDirection'] = self.synchronization_direction
         if self.synchronization_job_id is not None:
@@ -36267,6 +36847,8 @@ class ModifySynchronizationObjectRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SynchronizationDirection') is not None:
             self.synchronization_direction = m.get('SynchronizationDirection')
         if m.get('SynchronizationJobId') is not None:
@@ -36381,6 +36963,7 @@ class RenewInstanceRequest(TeaModel):
         dts_job_id: str = None,
         period: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         # The subscription duration of the DTS instance after renewal. Default value: 1.
         # 
@@ -36398,6 +36981,7 @@ class RenewInstanceRequest(TeaModel):
         self.period = period
         # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -36418,6 +37002,8 @@ class RenewInstanceRequest(TeaModel):
             result['Period'] = self.period
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -36432,6 +37018,8 @@ class RenewInstanceRequest(TeaModel):
             self.period = m.get('Period')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -36589,6 +37177,7 @@ class ResetDtsJobRequest(TeaModel):
         dts_instance_id: str = None,
         dts_job_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         synchronization_direction: str = None,
     ):
         # The ID of the data synchronization or change tracking instance.
@@ -36596,6 +37185,7 @@ class ResetDtsJobRequest(TeaModel):
         # The ID of the data synchronization or change tracking task.
         self.dts_job_id = dts_job_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The synchronization direction. Valid values:
         # 
         # *   **Forward**\
@@ -36621,6 +37211,8 @@ class ResetDtsJobRequest(TeaModel):
             result['DtsJobId'] = self.dts_job_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.synchronization_direction is not None:
             result['SynchronizationDirection'] = self.synchronization_direction
         return result
@@ -36633,6 +37225,8 @@ class ResetDtsJobRequest(TeaModel):
             self.dts_job_id = m.get('DtsJobId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SynchronizationDirection') is not None:
             self.synchronization_direction = m.get('SynchronizationDirection')
         return self
@@ -36757,6 +37351,7 @@ class ResetSynchronizationJobRequest(TeaModel):
         account_id: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         synchronization_direction: str = None,
         synchronization_job_id: str = None,
     ):
@@ -36764,6 +37359,7 @@ class ResetSynchronizationJobRequest(TeaModel):
         self.account_id = account_id
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The synchronization direction. Valid values:
         # 
         # *   **Forward**\
@@ -36791,6 +37387,8 @@ class ResetSynchronizationJobRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.synchronization_direction is not None:
             result['SynchronizationDirection'] = self.synchronization_direction
         if self.synchronization_job_id is not None:
@@ -36805,6 +37403,8 @@ class ResetSynchronizationJobRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SynchronizationDirection') is not None:
             self.synchronization_direction = m.get('SynchronizationDirection')
         if m.get('SynchronizationJobId') is not None:
@@ -36908,10 +37508,12 @@ class ReverseTwoWayDirectionRequest(TeaModel):
         dts_instance_id: str = None,
         ignore_error_sub_job: bool = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         self.dts_instance_id = dts_instance_id
         self.ignore_error_sub_job = ignore_error_sub_job
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -36928,6 +37530,8 @@ class ReverseTwoWayDirectionRequest(TeaModel):
             result['IgnoreErrorSubJob'] = self.ignore_error_sub_job
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -36938,6 +37542,8 @@ class ReverseTwoWayDirectionRequest(TeaModel):
             self.ignore_error_sub_job = m.get('IgnoreErrorSubJob')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -37051,6 +37657,7 @@ class ShieldPrecheckRequest(TeaModel):
         dts_instance_id: str = None,
         precheck_items: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         # The ID of the data migration or data synchronization instance. You can call the **DescribeMigrationJobs** or DescribeSynchronizationJobs operation to query the instance ID.
         self.dts_instance_id = dts_instance_id
@@ -37069,6 +37676,7 @@ class ShieldPrecheckRequest(TeaModel):
         # *   **CHECK_SERVER_ID**: value of server_id in the source database
         self.precheck_items = precheck_items
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -37085,6 +37693,8 @@ class ShieldPrecheckRequest(TeaModel):
             result['PrecheckItems'] = self.precheck_items
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -37095,6 +37705,8 @@ class ShieldPrecheckRequest(TeaModel):
             self.precheck_items = m.get('PrecheckItems')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -37194,6 +37806,7 @@ class SkipPreCheckRequest(TeaModel):
         dts_job_id: str = None,
         job_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         skip: bool = None,
         skip_pre_check_items: str = None,
         skip_pre_check_names: str = None,
@@ -37204,6 +37817,7 @@ class SkipPreCheckRequest(TeaModel):
         self.job_id = job_id
         # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # Specifies whether to skip the precheck item. Valid values:
         # 
         # *   **true**: skips the precheck item.
@@ -37259,6 +37873,8 @@ class SkipPreCheckRequest(TeaModel):
             result['JobId'] = self.job_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.skip is not None:
             result['Skip'] = self.skip
         if self.skip_pre_check_items is not None:
@@ -37275,6 +37891,8 @@ class SkipPreCheckRequest(TeaModel):
             self.job_id = m.get('JobId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Skip') is not None:
             self.skip = m.get('Skip')
         if m.get('SkipPreCheckItems') is not None:
@@ -37431,7 +38049,9 @@ class StartDtsJobRequest(TeaModel):
         dts_instance_id: str = None,
         dts_job_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         synchronization_direction: str = None,
+        zero_etl_job: bool = None,
     ):
         # The ID of the data migration, data synchronization, or change tracking instance.
         # 
@@ -37441,6 +38061,7 @@ class StartDtsJobRequest(TeaModel):
         self.dts_job_id = dts_job_id
         # The region ID of the Data Transmission Service (DTS) instance. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The synchronization direction. Default value: Forward. Valid values:
         # 
         # *   **Forward**: Data is synchronized from the source database to the destination database.
@@ -37449,6 +38070,7 @@ class StartDtsJobRequest(TeaModel):
         # 
         # >You can set this parameter to **Reverse** to start the reverse synchronization task only if the topology is two-way synchronization.
         self.synchronization_direction = synchronization_direction
+        self.zero_etl_job = zero_etl_job
 
     def validate(self):
         pass
@@ -37465,8 +38087,12 @@ class StartDtsJobRequest(TeaModel):
             result['DtsJobId'] = self.dts_job_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.synchronization_direction is not None:
             result['SynchronizationDirection'] = self.synchronization_direction
+        if self.zero_etl_job is not None:
+            result['ZeroEtlJob'] = self.zero_etl_job
         return result
 
     def from_map(self, m: dict = None):
@@ -37477,8 +38103,12 @@ class StartDtsJobRequest(TeaModel):
             self.dts_job_id = m.get('DtsJobId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SynchronizationDirection') is not None:
             self.synchronization_direction = m.get('SynchronizationDirection')
+        if m.get('ZeroEtlJob') is not None:
+            self.zero_etl_job = m.get('ZeroEtlJob')
         return self
 
 
@@ -37600,6 +38230,8 @@ class StartDtsJobsRequest(TeaModel):
         self,
         dts_job_ids: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
+        zero_etl_job: bool = None,
     ):
         # The ID of the data migration or data synchronization task.
         # 
@@ -37609,6 +38241,8 @@ class StartDtsJobsRequest(TeaModel):
         self.dts_job_ids = dts_job_ids
         # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.zero_etl_job = zero_etl_job
 
     def validate(self):
         pass
@@ -37623,6 +38257,10 @@ class StartDtsJobsRequest(TeaModel):
             result['DtsJobIds'] = self.dts_job_ids
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.zero_etl_job is not None:
+            result['ZeroEtlJob'] = self.zero_etl_job
         return result
 
     def from_map(self, m: dict = None):
@@ -37631,6 +38269,10 @@ class StartDtsJobsRequest(TeaModel):
             self.dts_job_ids = m.get('DtsJobIds')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ZeroEtlJob') is not None:
+            self.zero_etl_job = m.get('ZeroEtlJob')
         return self
 
 
@@ -37754,6 +38396,7 @@ class StartMigrationJobRequest(TeaModel):
         migration_job_id: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
@@ -37761,6 +38404,7 @@ class StartMigrationJobRequest(TeaModel):
         self.migration_job_id = migration_job_id
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -37779,6 +38423,8 @@ class StartMigrationJobRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -37791,6 +38437,8 @@ class StartMigrationJobRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -37889,6 +38537,7 @@ class StartReverseWriterRequest(TeaModel):
         self,
         check_point: str = None,
         dts_job_id: str = None,
+        resource_group_id: str = None,
     ):
         # The offset of the Incremental Write module. Specify a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. 
         # 
@@ -37896,6 +38545,7 @@ class StartReverseWriterRequest(TeaModel):
         self.check_point = check_point
         # The ID of the reverse task that was created by calling the CreateReverseDtsJob operation.
         self.dts_job_id = dts_job_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -37910,6 +38560,8 @@ class StartReverseWriterRequest(TeaModel):
             result['CheckPoint'] = self.check_point
         if self.dts_job_id is not None:
             result['DtsJobId'] = self.dts_job_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -37918,6 +38570,8 @@ class StartReverseWriterRequest(TeaModel):
             self.check_point = m.get('CheckPoint')
         if m.get('DtsJobId') is not None:
             self.dts_job_id = m.get('DtsJobId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -38017,12 +38671,14 @@ class StartSubscriptionInstanceRequest(TeaModel):
         account_id: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         subscription_instance_id: str = None,
     ):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
         self.subscription_instance_id = subscription_instance_id
 
@@ -38041,6 +38697,8 @@ class StartSubscriptionInstanceRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.subscription_instance_id is not None:
             result['SubscriptionInstanceId'] = self.subscription_instance_id
         return result
@@ -38053,6 +38711,8 @@ class StartSubscriptionInstanceRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SubscriptionInstanceId') is not None:
             self.subscription_instance_id = m.get('SubscriptionInstanceId')
         return self
@@ -38161,6 +38821,7 @@ class StartSynchronizationJobRequest(TeaModel):
         account_id: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         synchronization_direction: str = None,
         synchronization_job_id: str = None,
     ):
@@ -38168,6 +38829,7 @@ class StartSynchronizationJobRequest(TeaModel):
         self.account_id = account_id
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The synchronization direction. Valid values:
         # 
         # *   **Forward**\
@@ -38195,6 +38857,8 @@ class StartSynchronizationJobRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.synchronization_direction is not None:
             result['SynchronizationDirection'] = self.synchronization_direction
         if self.synchronization_job_id is not None:
@@ -38209,6 +38873,8 @@ class StartSynchronizationJobRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SynchronizationDirection') is not None:
             self.synchronization_direction = m.get('SynchronizationDirection')
         if m.get('SynchronizationJobId') is not None:
@@ -38314,6 +38980,7 @@ class StopDedicatedClusterRequest(TeaModel):
         instance_id: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         # The ID of the cluster.
         # 
@@ -38328,6 +38995,7 @@ class StopDedicatedClusterRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region in which the instance resides.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -38348,6 +39016,8 @@ class StopDedicatedClusterRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -38362,6 +39032,8 @@ class StopDedicatedClusterRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -38468,13 +39140,16 @@ class StopDtsJobRequest(TeaModel):
         dts_instance_id: str = None,
         dts_job_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         synchronization_direction: str = None,
+        zero_etl_job: bool = None,
     ):
         # The ID of the data migration, data synchronization, or change tracking instance.
         self.dts_instance_id = dts_instance_id
         # The ID of the data migration, data synchronization, or change tracking task.
         self.dts_job_id = dts_job_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The synchronization direction. Valid values:
         # 
         # *   **Forward**\
@@ -38484,6 +39159,7 @@ class StopDtsJobRequest(TeaModel):
         # *   Default value: **Forward**.
         # *   You can set this parameter to **Reverse** to stop the reverse synchronization task only when the topology is two-way synchronization.
         self.synchronization_direction = synchronization_direction
+        self.zero_etl_job = zero_etl_job
 
     def validate(self):
         pass
@@ -38500,8 +39176,12 @@ class StopDtsJobRequest(TeaModel):
             result['DtsJobId'] = self.dts_job_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.synchronization_direction is not None:
             result['SynchronizationDirection'] = self.synchronization_direction
+        if self.zero_etl_job is not None:
+            result['ZeroEtlJob'] = self.zero_etl_job
         return result
 
     def from_map(self, m: dict = None):
@@ -38512,8 +39192,12 @@ class StopDtsJobRequest(TeaModel):
             self.dts_job_id = m.get('DtsJobId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SynchronizationDirection') is not None:
             self.synchronization_direction = m.get('SynchronizationDirection')
+        if m.get('ZeroEtlJob') is not None:
+            self.zero_etl_job = m.get('ZeroEtlJob')
         return self
 
 
@@ -38635,6 +39319,8 @@ class StopDtsJobsRequest(TeaModel):
         self,
         dts_job_ids: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
+        zero_etl_job: bool = None,
     ):
         # The ID of the data migration or data synchronization task.
         # 
@@ -38644,6 +39330,8 @@ class StopDtsJobsRequest(TeaModel):
         self.dts_job_ids = dts_job_ids
         # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.zero_etl_job = zero_etl_job
 
     def validate(self):
         pass
@@ -38658,6 +39346,10 @@ class StopDtsJobsRequest(TeaModel):
             result['DtsJobIds'] = self.dts_job_ids
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.zero_etl_job is not None:
+            result['ZeroEtlJob'] = self.zero_etl_job
         return result
 
     def from_map(self, m: dict = None):
@@ -38666,6 +39358,10 @@ class StopDtsJobsRequest(TeaModel):
             self.dts_job_ids = m.get('DtsJobIds')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ZeroEtlJob') is not None:
+            self.zero_etl_job = m.get('ZeroEtlJob')
         return self
 
 
@@ -38790,6 +39486,7 @@ class StopMigrationJobRequest(TeaModel):
         migration_job_id: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
@@ -38799,6 +39496,7 @@ class StopMigrationJobRequest(TeaModel):
         self.migration_job_id = migration_job_id
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -38819,6 +39517,8 @@ class StopMigrationJobRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -38833,6 +39533,8 @@ class StopMigrationJobRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -38933,8 +39635,10 @@ class SummaryJobDetailRequest(TeaModel):
         dts_job_id: str = None,
         job_code: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         struct_type: str = None,
         synchronization_direction: str = None,
+        zero_etl_job: bool = None,
     ):
         # The ID of the data migration or data synchronization instance.
         # 
@@ -38951,6 +39655,7 @@ class SummaryJobDetailRequest(TeaModel):
         self.job_code = job_code
         # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The type of schema definition. Valid values:
         # 
         # *   **before**: schema migration or initial schema synchronization
@@ -38965,6 +39670,7 @@ class SummaryJobDetailRequest(TeaModel):
         # *   Default value: **Forward**.
         # *   You can set this parameter to **Reverse** to delete the reverse synchronization task only if the topology is two-way synchronization.
         self.synchronization_direction = synchronization_direction
+        self.zero_etl_job = zero_etl_job
 
     def validate(self):
         pass
@@ -38983,10 +39689,14 @@ class SummaryJobDetailRequest(TeaModel):
             result['JobCode'] = self.job_code
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.struct_type is not None:
             result['StructType'] = self.struct_type
         if self.synchronization_direction is not None:
             result['SynchronizationDirection'] = self.synchronization_direction
+        if self.zero_etl_job is not None:
+            result['ZeroEtlJob'] = self.zero_etl_job
         return result
 
     def from_map(self, m: dict = None):
@@ -38999,10 +39709,14 @@ class SummaryJobDetailRequest(TeaModel):
             self.job_code = m.get('JobCode')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('StructType') is not None:
             self.struct_type = m.get('StructType')
         if m.get('SynchronizationDirection') is not None:
             self.synchronization_direction = m.get('SynchronizationDirection')
+        if m.get('ZeroEtlJob') is not None:
+            self.zero_etl_job = m.get('ZeroEtlJob')
         return self
 
 
@@ -39178,7 +39892,9 @@ class SuspendDtsJobRequest(TeaModel):
         dts_instance_id: str = None,
         dts_job_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         synchronization_direction: str = None,
+        zero_etl_job: bool = None,
     ):
         # The ID of the data migration, data synchronization, or change tracking instance.
         self.dts_instance_id = dts_instance_id
@@ -39188,6 +39904,7 @@ class SuspendDtsJobRequest(TeaModel):
         self.dts_job_id = dts_job_id
         # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The synchronization direction. Valid values:
         # 
         # *   **Forward**: Data is synchronized from the source database to the destination database.
@@ -39197,6 +39914,7 @@ class SuspendDtsJobRequest(TeaModel):
         # *   Default value: **Forward**.
         # *   You can set this parameter to **Reverse** to pause the reverse synchronization task only if the topology is two-way synchronization.
         self.synchronization_direction = synchronization_direction
+        self.zero_etl_job = zero_etl_job
 
     def validate(self):
         pass
@@ -39213,8 +39931,12 @@ class SuspendDtsJobRequest(TeaModel):
             result['DtsJobId'] = self.dts_job_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.synchronization_direction is not None:
             result['SynchronizationDirection'] = self.synchronization_direction
+        if self.zero_etl_job is not None:
+            result['ZeroEtlJob'] = self.zero_etl_job
         return result
 
     def from_map(self, m: dict = None):
@@ -39225,8 +39947,12 @@ class SuspendDtsJobRequest(TeaModel):
             self.dts_job_id = m.get('DtsJobId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SynchronizationDirection') is not None:
             self.synchronization_direction = m.get('SynchronizationDirection')
+        if m.get('ZeroEtlJob') is not None:
+            self.zero_etl_job = m.get('ZeroEtlJob')
         return self
 
 
@@ -39348,6 +40074,8 @@ class SuspendDtsJobsRequest(TeaModel):
         self,
         dts_job_ids: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
+        zero_etl_job: bool = None,
     ):
         # The ID of the data migration or data synchronization task.
         # 
@@ -39357,6 +40085,8 @@ class SuspendDtsJobsRequest(TeaModel):
         self.dts_job_ids = dts_job_ids
         # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.zero_etl_job = zero_etl_job
 
     def validate(self):
         pass
@@ -39371,6 +40101,10 @@ class SuspendDtsJobsRequest(TeaModel):
             result['DtsJobIds'] = self.dts_job_ids
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.zero_etl_job is not None:
+            result['ZeroEtlJob'] = self.zero_etl_job
         return result
 
     def from_map(self, m: dict = None):
@@ -39379,6 +40113,10 @@ class SuspendDtsJobsRequest(TeaModel):
             self.dts_job_ids = m.get('DtsJobIds')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ZeroEtlJob') is not None:
+            self.zero_etl_job = m.get('ZeroEtlJob')
         return self
 
 
@@ -39503,6 +40241,7 @@ class SuspendMigrationJobRequest(TeaModel):
         migration_job_id: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
@@ -39512,6 +40251,7 @@ class SuspendMigrationJobRequest(TeaModel):
         self.migration_job_id = migration_job_id
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -39532,6 +40272,8 @@ class SuspendMigrationJobRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -39546,6 +40288,8 @@ class SuspendMigrationJobRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -39645,6 +40389,7 @@ class SuspendSynchronizationJobRequest(TeaModel):
         account_id: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         synchronization_direction: str = None,
         synchronization_job_id: str = None,
     ):
@@ -39652,6 +40397,7 @@ class SuspendSynchronizationJobRequest(TeaModel):
         self.account_id = account_id
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The synchronization direction. Valid values:
         # 
         # *   **Forward**\
@@ -39679,6 +40425,8 @@ class SuspendSynchronizationJobRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.synchronization_direction is not None:
             result['SynchronizationDirection'] = self.synchronization_direction
         if self.synchronization_job_id is not None:
@@ -39693,6 +40441,8 @@ class SuspendSynchronizationJobRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SynchronizationDirection') is not None:
             self.synchronization_direction = m.get('SynchronizationDirection')
         if m.get('SynchronizationJobId') is not None:
@@ -39796,11 +40546,13 @@ class SwitchPhysicalDtsJobToCloudRequest(TeaModel):
         dts_instance_id: str = None,
         dts_job_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         synchronization_direction: str = None,
     ):
         self.dts_instance_id = dts_instance_id
         self.dts_job_id = dts_job_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.synchronization_direction = synchronization_direction
 
     def validate(self):
@@ -39818,6 +40570,8 @@ class SwitchPhysicalDtsJobToCloudRequest(TeaModel):
             result['DtsJobId'] = self.dts_job_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.synchronization_direction is not None:
             result['SynchronizationDirection'] = self.synchronization_direction
         return result
@@ -39830,6 +40584,8 @@ class SwitchPhysicalDtsJobToCloudRequest(TeaModel):
             self.dts_job_id = m.get('DtsJobId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SynchronizationDirection') is not None:
             self.synchronization_direction = m.get('SynchronizationDirection')
         return self
@@ -40053,6 +40809,7 @@ class SwitchSynchronizationEndpointRequest(TeaModel):
         account_id: str = None,
         owner_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         synchronization_direction: str = None,
         synchronization_job_id: str = None,
     ):
@@ -40062,6 +40819,7 @@ class SwitchSynchronizationEndpointRequest(TeaModel):
         self.account_id = account_id
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The synchronization direction. Valid values:
         # 
         # *   **Forward**\
@@ -40096,6 +40854,8 @@ class SwitchSynchronizationEndpointRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.synchronization_direction is not None:
             result['SynchronizationDirection'] = self.synchronization_direction
         if self.synchronization_job_id is not None:
@@ -40116,6 +40876,8 @@ class SwitchSynchronizationEndpointRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SynchronizationDirection') is not None:
             self.synchronization_direction = m.get('SynchronizationDirection')
         if m.get('SynchronizationJobId') is not None:
@@ -40267,12 +41029,14 @@ class TagResourcesRequest(TeaModel):
     def __init__(
         self,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_id: List[str] = None,
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
         # The ID of the region where the data migration, data synchronization, or change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_id = resource_id
         # The resource type. Valid value: **ALIYUN::DTS::INSTANCE**.
         self.resource_type = resource_type
@@ -40292,6 +41056,8 @@ class TagResourcesRequest(TeaModel):
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_type is not None:
@@ -40306,6 +41072,8 @@ class TagResourcesRequest(TeaModel):
         m = m or dict()
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceType') is not None:
@@ -40415,6 +41183,7 @@ class TransferInstanceClassRequest(TeaModel):
         instance_class: str = None,
         order_type: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         # The ID of the data migration or data synchronization task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
         self.dts_job_id = dts_job_id
@@ -40432,6 +41201,7 @@ class TransferInstanceClassRequest(TeaModel):
         self.order_type = order_type
         # The ID of the region where the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -40450,6 +41220,8 @@ class TransferInstanceClassRequest(TeaModel):
             result['OrderType'] = self.order_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -40462,6 +41234,8 @@ class TransferInstanceClassRequest(TeaModel):
             self.order_type = m.get('OrderType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -40622,6 +41396,7 @@ class TransferPayTypeRequest(TeaModel):
         dts_job_id: str = None,
         period: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         # The subscription length.
         # 
@@ -40650,6 +41425,7 @@ class TransferPayTypeRequest(TeaModel):
         self.period = period
         # The ID of the region where the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -40670,6 +41446,8 @@ class TransferPayTypeRequest(TeaModel):
             result['Period'] = self.period
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -40684,6 +41462,8 @@ class TransferPayTypeRequest(TeaModel):
             self.period = m.get('Period')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -40843,6 +41623,7 @@ class UntagResourcesRequest(TeaModel):
         self,
         all: bool = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_id: List[str] = None,
         resource_type: str = None,
         tag_key: List[str] = None,
@@ -40858,6 +41639,7 @@ class UntagResourcesRequest(TeaModel):
         self.all = all
         # The ID of the region where the data migration, data synchronization, or change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_id = resource_id
         # The resource type. Valid value: **ALIYUN::DTS::INSTANCE**.
         self.resource_type = resource_type
@@ -40876,6 +41658,8 @@ class UntagResourcesRequest(TeaModel):
             result['All'] = self.all
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_type is not None:
@@ -40890,6 +41674,8 @@ class UntagResourcesRequest(TeaModel):
             self.all = m.get('All')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceType') is not None:
@@ -40995,6 +41781,7 @@ class UpgradeTwoWayRequest(TeaModel):
         instance_class: str = None,
         instance_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         # The instance class of the two-way synchronization task. Valid values: **large**, **medium**, **micro**, and **small**.
         # 
@@ -41004,6 +41791,7 @@ class UpgradeTwoWayRequest(TeaModel):
         self.instance_id = instance_id
         # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -41020,6 +41808,8 @@ class UpgradeTwoWayRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -41030,6 +41820,8 @@ class UpgradeTwoWayRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -41155,7 +41947,9 @@ class WhiteIpListRequest(TeaModel):
         destination_region: str = None,
         region: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         type: str = None,
+        zero_etl_job: bool = None,
     ):
         # The HTTP status code.
         self.destination_region = destination_region
@@ -41166,10 +41960,12 @@ class WhiteIpListRequest(TeaModel):
         # *   If the DTS task is a data migration or data synchronization task, you must specify this parameter.
         self.region = region
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the region where the source instance resides. For more information, see [List of supported regions](~~141033~~).
         # 
         # >  If the source instance is a self-managed database with a public IP address or a third-party cloud database, you can set the parameter to **cn-hangzhou** or the ID of the closest region.
         self.type = type
+        self.zero_etl_job = zero_etl_job
 
     def validate(self):
         pass
@@ -41186,8 +41982,12 @@ class WhiteIpListRequest(TeaModel):
             result['Region'] = self.region
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.type is not None:
             result['Type'] = self.type
+        if self.zero_etl_job is not None:
+            result['ZeroEtlJob'] = self.zero_etl_job
         return result
 
     def from_map(self, m: dict = None):
@@ -41198,8 +41998,12 @@ class WhiteIpListRequest(TeaModel):
             self.region = m.get('Region')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('ZeroEtlJob') is not None:
+            self.zero_etl_job = m.get('ZeroEtlJob')
         return self
 
 
