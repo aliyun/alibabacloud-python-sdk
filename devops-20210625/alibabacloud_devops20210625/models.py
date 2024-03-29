@@ -2097,6 +2097,429 @@ class CreateCheckRunResponse(TeaModel):
         return self
 
 
+class CreateCommentRequest(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        comment_type: str = None,
+        content: str = None,
+        draft: bool = None,
+        file_path: str = None,
+        line_number: int = None,
+        parent_comment_biz_id: str = None,
+        patch_set_biz_id: str = None,
+        resolved: bool = None,
+        local_id: int = None,
+        organization_id: str = None,
+        repository_identity: str = None,
+    ):
+        self.access_token = access_token
+        self.comment_type = comment_type
+        self.content = content
+        self.draft = draft
+        self.file_path = file_path
+        self.line_number = line_number
+        self.parent_comment_biz_id = parent_comment_biz_id
+        self.patch_set_biz_id = patch_set_biz_id
+        self.resolved = resolved
+        self.local_id = local_id
+        self.organization_id = organization_id
+        self.repository_identity = repository_identity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['accessToken'] = self.access_token
+        if self.comment_type is not None:
+            result['commentType'] = self.comment_type
+        if self.content is not None:
+            result['content'] = self.content
+        if self.draft is not None:
+            result['draft'] = self.draft
+        if self.file_path is not None:
+            result['filePath'] = self.file_path
+        if self.line_number is not None:
+            result['lineNumber'] = self.line_number
+        if self.parent_comment_biz_id is not None:
+            result['parentCommentBizId'] = self.parent_comment_biz_id
+        if self.patch_set_biz_id is not None:
+            result['patchSetBizId'] = self.patch_set_biz_id
+        if self.resolved is not None:
+            result['resolved'] = self.resolved
+        if self.local_id is not None:
+            result['localId'] = self.local_id
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.repository_identity is not None:
+            result['repositoryIdentity'] = self.repository_identity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessToken') is not None:
+            self.access_token = m.get('accessToken')
+        if m.get('commentType') is not None:
+            self.comment_type = m.get('commentType')
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('draft') is not None:
+            self.draft = m.get('draft')
+        if m.get('filePath') is not None:
+            self.file_path = m.get('filePath')
+        if m.get('lineNumber') is not None:
+            self.line_number = m.get('lineNumber')
+        if m.get('parentCommentBizId') is not None:
+            self.parent_comment_biz_id = m.get('parentCommentBizId')
+        if m.get('patchSetBizId') is not None:
+            self.patch_set_biz_id = m.get('patchSetBizId')
+        if m.get('resolved') is not None:
+            self.resolved = m.get('resolved')
+        if m.get('localId') is not None:
+            self.local_id = m.get('localId')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('repositoryIdentity') is not None:
+            self.repository_identity = m.get('repositoryIdentity')
+        return self
+
+
+class CreateCommentResponseBodyResultAuthor(TeaModel):
+    def __init__(
+        self,
+        aliyun_pk: str = None,
+        avatar_url: str = None,
+        email: str = None,
+        id: int = None,
+        name: str = None,
+        state: str = None,
+        username: str = None,
+    ):
+        self.aliyun_pk = aliyun_pk
+        self.avatar_url = avatar_url
+        self.email = email
+        self.id = id
+        self.name = name
+        self.state = state
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_pk is not None:
+            result['aliyunPk'] = self.aliyun_pk
+        if self.avatar_url is not None:
+            result['avatarUrl'] = self.avatar_url
+        if self.email is not None:
+            result['email'] = self.email
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.state is not None:
+            result['state'] = self.state
+        if self.username is not None:
+            result['username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aliyunPk') is not None:
+            self.aliyun_pk = m.get('aliyunPk')
+        if m.get('avatarUrl') is not None:
+            self.avatar_url = m.get('avatarUrl')
+        if m.get('email') is not None:
+            self.email = m.get('email')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('username') is not None:
+            self.username = m.get('username')
+        return self
+
+
+class CreateCommentResponseBodyResultRelatedPatchSet(TeaModel):
+    def __init__(
+        self,
+        commit_id: str = None,
+        created_at: str = None,
+        patch_set_biz_id: str = None,
+        patch_set_name: str = None,
+        patch_set_no: str = None,
+        related_merge_item_type: str = None,
+        short_id: str = None,
+    ):
+        self.commit_id = commit_id
+        self.created_at = created_at
+        self.patch_set_biz_id = patch_set_biz_id
+        self.patch_set_name = patch_set_name
+        self.patch_set_no = patch_set_no
+        self.related_merge_item_type = related_merge_item_type
+        self.short_id = short_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.commit_id is not None:
+            result['commitId'] = self.commit_id
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.patch_set_biz_id is not None:
+            result['patchSetBizId'] = self.patch_set_biz_id
+        if self.patch_set_name is not None:
+            result['patchSetName'] = self.patch_set_name
+        if self.patch_set_no is not None:
+            result['patchSetNo'] = self.patch_set_no
+        if self.related_merge_item_type is not None:
+            result['relatedMergeItemType'] = self.related_merge_item_type
+        if self.short_id is not None:
+            result['shortId'] = self.short_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commitId') is not None:
+            self.commit_id = m.get('commitId')
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('patchSetBizId') is not None:
+            self.patch_set_biz_id = m.get('patchSetBizId')
+        if m.get('patchSetName') is not None:
+            self.patch_set_name = m.get('patchSetName')
+        if m.get('patchSetNo') is not None:
+            self.patch_set_no = m.get('patchSetNo')
+        if m.get('relatedMergeItemType') is not None:
+            self.related_merge_item_type = m.get('relatedMergeItemType')
+        if m.get('shortId') is not None:
+            self.short_id = m.get('shortId')
+        return self
+
+
+class CreateCommentResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        author: CreateCommentResponseBodyResultAuthor = None,
+        comment_biz_id: str = None,
+        comment_time: str = None,
+        comment_type: str = None,
+        content: str = None,
+        deleted: bool = None,
+        file_path: str = None,
+        last_edit_time: str = None,
+        line_number: str = None,
+        parent_comment_biz_id: str = None,
+        related_patch_set: CreateCommentResponseBodyResultRelatedPatchSet = None,
+        resolved: bool = None,
+        root_comment_biz_id: str = None,
+        state: str = None,
+    ):
+        self.author = author
+        self.comment_biz_id = comment_biz_id
+        self.comment_time = comment_time
+        self.comment_type = comment_type
+        self.content = content
+        self.deleted = deleted
+        self.file_path = file_path
+        self.last_edit_time = last_edit_time
+        self.line_number = line_number
+        self.parent_comment_biz_id = parent_comment_biz_id
+        self.related_patch_set = related_patch_set
+        self.resolved = resolved
+        self.root_comment_biz_id = root_comment_biz_id
+        self.state = state
+
+    def validate(self):
+        if self.author:
+            self.author.validate()
+        if self.related_patch_set:
+            self.related_patch_set.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.author is not None:
+            result['author'] = self.author.to_map()
+        if self.comment_biz_id is not None:
+            result['commentBizId'] = self.comment_biz_id
+        if self.comment_time is not None:
+            result['commentTime'] = self.comment_time
+        if self.comment_type is not None:
+            result['commentType'] = self.comment_type
+        if self.content is not None:
+            result['content'] = self.content
+        if self.deleted is not None:
+            result['deleted'] = self.deleted
+        if self.file_path is not None:
+            result['filePath'] = self.file_path
+        if self.last_edit_time is not None:
+            result['lastEditTime'] = self.last_edit_time
+        if self.line_number is not None:
+            result['lineNumber'] = self.line_number
+        if self.parent_comment_biz_id is not None:
+            result['parentCommentBizId'] = self.parent_comment_biz_id
+        if self.related_patch_set is not None:
+            result['relatedPatchSet'] = self.related_patch_set.to_map()
+        if self.resolved is not None:
+            result['resolved'] = self.resolved
+        if self.root_comment_biz_id is not None:
+            result['rootCommentBizId'] = self.root_comment_biz_id
+        if self.state is not None:
+            result['state'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('author') is not None:
+            temp_model = CreateCommentResponseBodyResultAuthor()
+            self.author = temp_model.from_map(m['author'])
+        if m.get('commentBizId') is not None:
+            self.comment_biz_id = m.get('commentBizId')
+        if m.get('commentTime') is not None:
+            self.comment_time = m.get('commentTime')
+        if m.get('commentType') is not None:
+            self.comment_type = m.get('commentType')
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('deleted') is not None:
+            self.deleted = m.get('deleted')
+        if m.get('filePath') is not None:
+            self.file_path = m.get('filePath')
+        if m.get('lastEditTime') is not None:
+            self.last_edit_time = m.get('lastEditTime')
+        if m.get('lineNumber') is not None:
+            self.line_number = m.get('lineNumber')
+        if m.get('parentCommentBizId') is not None:
+            self.parent_comment_biz_id = m.get('parentCommentBizId')
+        if m.get('relatedPatchSet') is not None:
+            temp_model = CreateCommentResponseBodyResultRelatedPatchSet()
+            self.related_patch_set = temp_model.from_map(m['relatedPatchSet'])
+        if m.get('resolved') is not None:
+            self.resolved = m.get('resolved')
+        if m.get('rootCommentBizId') is not None:
+            self.root_comment_biz_id = m.get('rootCommentBizId')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        return self
+
+
+class CreateCommentResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: CreateCommentResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = CreateCommentResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CreateCommentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateCommentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateCommentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateCommitStatusRequest(TeaModel):
     def __init__(
         self,
@@ -2366,6 +2789,458 @@ class CreateCommitStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateCommitStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateCommitWithMultipleFilesRequestActions(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        content: str = None,
+        file_path: str = None,
+        previous_path: str = None,
+    ):
+        self.action = action
+        self.content = content
+        self.file_path = file_path
+        self.previous_path = previous_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['action'] = self.action
+        if self.content is not None:
+            result['content'] = self.content
+        if self.file_path is not None:
+            result['filePath'] = self.file_path
+        if self.previous_path is not None:
+            result['previousPath'] = self.previous_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('action') is not None:
+            self.action = m.get('action')
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('filePath') is not None:
+            self.file_path = m.get('filePath')
+        if m.get('previousPath') is not None:
+            self.previous_path = m.get('previousPath')
+        return self
+
+
+class CreateCommitWithMultipleFilesRequest(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        actions: List[CreateCommitWithMultipleFilesRequestActions] = None,
+        branch: str = None,
+        commit_message: str = None,
+        organization_id: str = None,
+        repository_identity: str = None,
+    ):
+        self.access_token = access_token
+        self.actions = actions
+        self.branch = branch
+        self.commit_message = commit_message
+        self.organization_id = organization_id
+        self.repository_identity = repository_identity
+
+    def validate(self):
+        if self.actions:
+            for k in self.actions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['accessToken'] = self.access_token
+        result['actions'] = []
+        if self.actions is not None:
+            for k in self.actions:
+                result['actions'].append(k.to_map() if k else None)
+        if self.branch is not None:
+            result['branch'] = self.branch
+        if self.commit_message is not None:
+            result['commitMessage'] = self.commit_message
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.repository_identity is not None:
+            result['repositoryIdentity'] = self.repository_identity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessToken') is not None:
+            self.access_token = m.get('accessToken')
+        self.actions = []
+        if m.get('actions') is not None:
+            for k in m.get('actions'):
+                temp_model = CreateCommitWithMultipleFilesRequestActions()
+                self.actions.append(temp_model.from_map(k))
+        if m.get('branch') is not None:
+            self.branch = m.get('branch')
+        if m.get('commitMessage') is not None:
+            self.commit_message = m.get('commitMessage')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('repositoryIdentity') is not None:
+            self.repository_identity = m.get('repositoryIdentity')
+        return self
+
+
+class CreateCommitWithMultipleFilesResponseBodyResultAuthor(TeaModel):
+    def __init__(
+        self,
+        aliyun_pk: str = None,
+        avatar_url: str = None,
+        email: str = None,
+        id: int = None,
+        name: str = None,
+        state: str = None,
+        username: str = None,
+        website_url: str = None,
+    ):
+        self.aliyun_pk = aliyun_pk
+        self.avatar_url = avatar_url
+        self.email = email
+        self.id = id
+        self.name = name
+        self.state = state
+        self.username = username
+        self.website_url = website_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_pk is not None:
+            result['aliyunPk'] = self.aliyun_pk
+        if self.avatar_url is not None:
+            result['avatarUrl'] = self.avatar_url
+        if self.email is not None:
+            result['email'] = self.email
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.state is not None:
+            result['state'] = self.state
+        if self.username is not None:
+            result['username'] = self.username
+        if self.website_url is not None:
+            result['websiteUrl'] = self.website_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aliyunPk') is not None:
+            self.aliyun_pk = m.get('aliyunPk')
+        if m.get('avatarUrl') is not None:
+            self.avatar_url = m.get('avatarUrl')
+        if m.get('email') is not None:
+            self.email = m.get('email')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('username') is not None:
+            self.username = m.get('username')
+        if m.get('websiteUrl') is not None:
+            self.website_url = m.get('websiteUrl')
+        return self
+
+
+class CreateCommitWithMultipleFilesResponseBodyResultCommitter(TeaModel):
+    def __init__(
+        self,
+        aliyun_pk: str = None,
+        avatar_url: str = None,
+        email: str = None,
+        id: int = None,
+        name: str = None,
+        state: str = None,
+        username: str = None,
+        website_url: str = None,
+    ):
+        self.aliyun_pk = aliyun_pk
+        self.avatar_url = avatar_url
+        self.email = email
+        self.id = id
+        self.name = name
+        self.state = state
+        self.username = username
+        self.website_url = website_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_pk is not None:
+            result['aliyunPk'] = self.aliyun_pk
+        if self.avatar_url is not None:
+            result['avatarUrl'] = self.avatar_url
+        if self.email is not None:
+            result['email'] = self.email
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.state is not None:
+            result['state'] = self.state
+        if self.username is not None:
+            result['username'] = self.username
+        if self.website_url is not None:
+            result['websiteUrl'] = self.website_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aliyunPk') is not None:
+            self.aliyun_pk = m.get('aliyunPk')
+        if m.get('avatarUrl') is not None:
+            self.avatar_url = m.get('avatarUrl')
+        if m.get('email') is not None:
+            self.email = m.get('email')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('username') is not None:
+            self.username = m.get('username')
+        if m.get('websiteUrl') is not None:
+            self.website_url = m.get('websiteUrl')
+        return self
+
+
+class CreateCommitWithMultipleFilesResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        author: CreateCommitWithMultipleFilesResponseBodyResultAuthor = None,
+        author_email: str = None,
+        author_name: str = None,
+        authored_date: str = None,
+        committed_date: str = None,
+        committer: CreateCommitWithMultipleFilesResponseBodyResultCommitter = None,
+        committer_email: str = None,
+        committer_name: str = None,
+        created_at: str = None,
+        id: str = None,
+        message: str = None,
+        parent_ids: List[str] = None,
+        short_id: str = None,
+        title: str = None,
+    ):
+        self.author = author
+        self.author_email = author_email
+        self.author_name = author_name
+        self.authored_date = authored_date
+        self.committed_date = committed_date
+        self.committer = committer
+        self.committer_email = committer_email
+        self.committer_name = committer_name
+        self.created_at = created_at
+        self.id = id
+        self.message = message
+        self.parent_ids = parent_ids
+        self.short_id = short_id
+        self.title = title
+
+    def validate(self):
+        if self.author:
+            self.author.validate()
+        if self.committer:
+            self.committer.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.author is not None:
+            result['author'] = self.author.to_map()
+        if self.author_email is not None:
+            result['authorEmail'] = self.author_email
+        if self.author_name is not None:
+            result['authorName'] = self.author_name
+        if self.authored_date is not None:
+            result['authoredDate'] = self.authored_date
+        if self.committed_date is not None:
+            result['committedDate'] = self.committed_date
+        if self.committer is not None:
+            result['committer'] = self.committer.to_map()
+        if self.committer_email is not None:
+            result['committerEmail'] = self.committer_email
+        if self.committer_name is not None:
+            result['committerName'] = self.committer_name
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.id is not None:
+            result['id'] = self.id
+        if self.message is not None:
+            result['message'] = self.message
+        if self.parent_ids is not None:
+            result['parentIds'] = self.parent_ids
+        if self.short_id is not None:
+            result['shortId'] = self.short_id
+        if self.title is not None:
+            result['title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('author') is not None:
+            temp_model = CreateCommitWithMultipleFilesResponseBodyResultAuthor()
+            self.author = temp_model.from_map(m['author'])
+        if m.get('authorEmail') is not None:
+            self.author_email = m.get('authorEmail')
+        if m.get('authorName') is not None:
+            self.author_name = m.get('authorName')
+        if m.get('authoredDate') is not None:
+            self.authored_date = m.get('authoredDate')
+        if m.get('committedDate') is not None:
+            self.committed_date = m.get('committedDate')
+        if m.get('committer') is not None:
+            temp_model = CreateCommitWithMultipleFilesResponseBodyResultCommitter()
+            self.committer = temp_model.from_map(m['committer'])
+        if m.get('committerEmail') is not None:
+            self.committer_email = m.get('committerEmail')
+        if m.get('committerName') is not None:
+            self.committer_name = m.get('committerName')
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('parentIds') is not None:
+            self.parent_ids = m.get('parentIds')
+        if m.get('shortId') is not None:
+            self.short_id = m.get('shortId')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        return self
+
+
+class CreateCommitWithMultipleFilesResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_msg: str = None,
+        request_id: str = None,
+        result: CreateCommitWithMultipleFilesResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['errorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMsg') is not None:
+            self.error_msg = m.get('errorMsg')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = CreateCommitWithMultipleFilesResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CreateCommitWithMultipleFilesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateCommitWithMultipleFilesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateCommitWithMultipleFilesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -31516,12 +32391,16 @@ class ListOrganizationsResponseBodyResult(TeaModel):
         self,
         access_level: int = None,
         id: int = None,
+        namespace_id: str = None,
+        organization_alias: str = None,
         organization_id: str = None,
         organization_name: str = None,
         organization_role: str = None,
     ):
         self.access_level = access_level
         self.id = id
+        self.namespace_id = namespace_id
+        self.organization_alias = organization_alias
         self.organization_id = organization_id
         self.organization_name = organization_name
         self.organization_role = organization_role
@@ -31539,6 +32418,10 @@ class ListOrganizationsResponseBodyResult(TeaModel):
             result['accessLevel'] = self.access_level
         if self.id is not None:
             result['id'] = self.id
+        if self.namespace_id is not None:
+            result['namespaceId'] = self.namespace_id
+        if self.organization_alias is not None:
+            result['organizationAlias'] = self.organization_alias
         if self.organization_id is not None:
             result['organizationId'] = self.organization_id
         if self.organization_name is not None:
@@ -31553,6 +32436,10 @@ class ListOrganizationsResponseBodyResult(TeaModel):
             self.access_level = m.get('accessLevel')
         if m.get('id') is not None:
             self.id = m.get('id')
+        if m.get('namespaceId') is not None:
+            self.namespace_id = m.get('namespaceId')
+        if m.get('organizationAlias') is not None:
+            self.organization_alias = m.get('organizationAlias')
         if m.get('organizationId') is not None:
             self.organization_id = m.get('organizationId')
         if m.get('organizationName') is not None:
@@ -35379,6 +36266,7 @@ class ListRepositoriesRequest(TeaModel):
         self,
         access_token: str = None,
         archived: bool = None,
+        min_access_level: int = None,
         order_by: str = None,
         organization_id: str = None,
         page: int = None,
@@ -35388,6 +36276,7 @@ class ListRepositoriesRequest(TeaModel):
     ):
         self.access_token = access_token
         self.archived = archived
+        self.min_access_level = min_access_level
         self.order_by = order_by
         self.organization_id = organization_id
         self.page = page
@@ -35408,6 +36297,8 @@ class ListRepositoriesRequest(TeaModel):
             result['accessToken'] = self.access_token
         if self.archived is not None:
             result['archived'] = self.archived
+        if self.min_access_level is not None:
+            result['minAccessLevel'] = self.min_access_level
         if self.order_by is not None:
             result['orderBy'] = self.order_by
         if self.organization_id is not None:
@@ -35428,6 +36319,8 @@ class ListRepositoriesRequest(TeaModel):
             self.access_token = m.get('accessToken')
         if m.get('archived') is not None:
             self.archived = m.get('archived')
+        if m.get('minAccessLevel') is not None:
+            self.min_access_level = m.get('minAccessLevel')
         if m.get('orderBy') is not None:
             self.order_by = m.get('orderBy')
         if m.get('organizationId') is not None:

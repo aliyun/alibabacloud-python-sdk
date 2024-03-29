@@ -845,6 +845,130 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_check_run_with_options_async(request, headers, runtime)
 
+    def create_comment_with_options(
+        self,
+        request: devops_20210625_models.CreateCommentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.CreateCommentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.local_id):
+            query['localId'] = request.local_id
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.repository_identity):
+            query['repositoryIdentity'] = request.repository_identity
+        body = {}
+        if not UtilClient.is_unset(request.comment_type):
+            body['commentType'] = request.comment_type
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.draft):
+            body['draft'] = request.draft
+        if not UtilClient.is_unset(request.file_path):
+            body['filePath'] = request.file_path
+        if not UtilClient.is_unset(request.line_number):
+            body['lineNumber'] = request.line_number
+        if not UtilClient.is_unset(request.parent_comment_biz_id):
+            body['parentCommentBizId'] = request.parent_comment_biz_id
+        if not UtilClient.is_unset(request.patch_set_biz_id):
+            body['patchSetBizId'] = request.patch_set_biz_id
+        if not UtilClient.is_unset(request.resolved):
+            body['resolved'] = request.resolved
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateComment',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/projects/code_reviews/comments/create_comment',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.CreateCommentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_comment_with_options_async(
+        self,
+        request: devops_20210625_models.CreateCommentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.CreateCommentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.local_id):
+            query['localId'] = request.local_id
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.repository_identity):
+            query['repositoryIdentity'] = request.repository_identity
+        body = {}
+        if not UtilClient.is_unset(request.comment_type):
+            body['commentType'] = request.comment_type
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.draft):
+            body['draft'] = request.draft
+        if not UtilClient.is_unset(request.file_path):
+            body['filePath'] = request.file_path
+        if not UtilClient.is_unset(request.line_number):
+            body['lineNumber'] = request.line_number
+        if not UtilClient.is_unset(request.parent_comment_biz_id):
+            body['parentCommentBizId'] = request.parent_comment_biz_id
+        if not UtilClient.is_unset(request.patch_set_biz_id):
+            body['patchSetBizId'] = request.patch_set_biz_id
+        if not UtilClient.is_unset(request.resolved):
+            body['resolved'] = request.resolved
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateComment',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/projects/code_reviews/comments/create_comment',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.CreateCommentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_comment(
+        self,
+        request: devops_20210625_models.CreateCommentRequest,
+    ) -> devops_20210625_models.CreateCommentResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_comment_with_options(request, headers, runtime)
+
+    async def create_comment_async(
+        self,
+        request: devops_20210625_models.CreateCommentRequest,
+    ) -> devops_20210625_models.CreateCommentResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_comment_with_options_async(request, headers, runtime)
+
     def create_commit_status_with_options(
         self,
         request: devops_20210625_models.CreateCommitStatusRequest,
@@ -952,6 +1076,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_commit_status_with_options_async(request, headers, runtime)
+
+    def create_commit_with_multiple_files_with_options(
+        self,
+        request: devops_20210625_models.CreateCommitWithMultipleFilesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.CreateCommitWithMultipleFilesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.repository_identity):
+            query['repositoryIdentity'] = request.repository_identity
+        body = {}
+        if not UtilClient.is_unset(request.actions):
+            body['actions'] = request.actions
+        if not UtilClient.is_unset(request.branch):
+            body['branch'] = request.branch
+        if not UtilClient.is_unset(request.commit_message):
+            body['commitMessage'] = request.commit_message
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateCommitWithMultipleFiles',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/projects/repository/commits/files',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.CreateCommitWithMultipleFilesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_commit_with_multiple_files_with_options_async(
+        self,
+        request: devops_20210625_models.CreateCommitWithMultipleFilesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.CreateCommitWithMultipleFilesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.repository_identity):
+            query['repositoryIdentity'] = request.repository_identity
+        body = {}
+        if not UtilClient.is_unset(request.actions):
+            body['actions'] = request.actions
+        if not UtilClient.is_unset(request.branch):
+            body['branch'] = request.branch
+        if not UtilClient.is_unset(request.commit_message):
+            body['commitMessage'] = request.commit_message
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateCommitWithMultipleFiles',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/projects/repository/commits/files',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.CreateCommitWithMultipleFilesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_commit_with_multiple_files(
+        self,
+        request: devops_20210625_models.CreateCommitWithMultipleFilesRequest,
+    ) -> devops_20210625_models.CreateCommitWithMultipleFilesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_commit_with_multiple_files_with_options(request, headers, runtime)
+
+    async def create_commit_with_multiple_files_async(
+        self,
+        request: devops_20210625_models.CreateCommitWithMultipleFilesRequest,
+    ) -> devops_20210625_models.CreateCommitWithMultipleFilesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_commit_with_multiple_files_with_options_async(request, headers, runtime)
 
     def create_deploy_key_with_options(
         self,
@@ -12811,6 +13035,8 @@ class Client(OpenApiClient):
             query['accessToken'] = request.access_token
         if not UtilClient.is_unset(request.archived):
             query['archived'] = request.archived
+        if not UtilClient.is_unset(request.min_access_level):
+            query['minAccessLevel'] = request.min_access_level
         if not UtilClient.is_unset(request.order_by):
             query['orderBy'] = request.order_by
         if not UtilClient.is_unset(request.organization_id):
@@ -12855,6 +13081,8 @@ class Client(OpenApiClient):
             query['accessToken'] = request.access_token
         if not UtilClient.is_unset(request.archived):
             query['archived'] = request.archived
+        if not UtilClient.is_unset(request.min_access_level):
+            query['minAccessLevel'] = request.min_access_level
         if not UtilClient.is_unset(request.order_by):
             query['orderBy'] = request.order_by
         if not UtilClient.is_unset(request.organization_id):
