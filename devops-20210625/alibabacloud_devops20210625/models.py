@@ -29606,9 +29606,11 @@ class ListJoinedOrganizationsResponseBodyOrganizations(TeaModel):
     def __init__(
         self,
         id: str = None,
+        is_org_admin: bool = None,
         name: str = None,
     ):
         self.id = id
+        self.is_org_admin = is_org_admin
         self.name = name
 
     def validate(self):
@@ -29622,6 +29624,8 @@ class ListJoinedOrganizationsResponseBodyOrganizations(TeaModel):
         result = dict()
         if self.id is not None:
             result['id'] = self.id
+        if self.is_org_admin is not None:
+            result['isOrgAdmin'] = self.is_org_admin
         if self.name is not None:
             result['name'] = self.name
         return result
@@ -29630,6 +29634,8 @@ class ListJoinedOrganizationsResponseBodyOrganizations(TeaModel):
         m = m or dict()
         if m.get('id') is not None:
             self.id = m.get('id')
+        if m.get('isOrgAdmin') is not None:
+            self.is_org_admin = m.get('isOrgAdmin')
         if m.get('name') is not None:
             self.name = m.get('name')
         return self

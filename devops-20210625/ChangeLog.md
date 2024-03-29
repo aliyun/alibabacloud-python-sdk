@@ -1,3 +1,7 @@
+2024-03-29 Version: 4.18.1
+- Update API ListJoinedOrganizations: update response param.
+
+
 2024-03-29 Version: 4.18.0
 - Support API CreateComment.
 - Support API CreateCommitWithMultipleFiles.
