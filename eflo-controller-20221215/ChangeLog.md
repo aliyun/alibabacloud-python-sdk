@@ -1,3 +1,7 @@
+2024-03-29 Version: 1.2.1
+- Update API CreateCluster: update param Networks.
+
+
 2024-03-12 Version: 1.2.0
 - Support API DescribeInvocations.
 - Support API DescribeSendFileResults.
