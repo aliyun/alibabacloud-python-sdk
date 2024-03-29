@@ -52,15 +52,10 @@ class AppUseTimeReportRequestDeviceInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
-        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
         self.encode_key = encode_key
-        # 编码类型，获取猫精的设备标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
         self.encode_type = encode_type
-        # 设备标识（deviceOpenId或deviceUnionId）
         self.id = id
-        # 设备Id的类型  - OPEN_ID：默认的设备ID标识 - UNION_ID: 组织维度的设备ID标识，在猫精技能应用开放平台申请过组织后才会有
         self.id_type = id_type
-        # 组织ID，如果IdType为UNION_ID时必填
         self.organization_id = organization_id
 
     def validate(self):
@@ -110,17 +105,11 @@ class AppUseTimeReportRequestPayload(TeaModel):
         vip_type: int = None,
         origin_uuid: str = None,
     ):
-        # 操作
         self.action = action
-        # 是否会员专享权益：1-是  0-否
         self.is_privilege = is_privilege
-        # 资源id
         self.resource_id = resource_id
-        # resourceType
         self.resource_type = resource_type
-        # 步进码
         self.step_code = step_code
-        # 会员类型
         self.vip_type = vip_type
         self.origin_uuid = origin_uuid
 
@@ -177,15 +166,10 @@ class AppUseTimeReportRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
-        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
         self.encode_key = encode_key
-        # 编码类型，获取猫精的用户标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
         self.encode_type = encode_type
-        # 用户标识（userOpenId或userUnionId）
         self.id = id
-        # 用户Id的类型  - OPEN_ID：默认的用户ID标识 - UNION_ID: 组织维度的用户ID标识，在猫精技能应用开放平台申请过组织后才会有
         self.id_type = id_type
-        # 组织ID，如果IdType为UNION_ID时必填
         self.organization_id = organization_id
 
     def validate(self):
@@ -231,10 +215,8 @@ class AppUseTimeReportRequest(TeaModel):
         payload: AppUseTimeReportRequestPayload = None,
         user_info: AppUseTimeReportRequestUserInfo = None,
     ):
-        # 设备标识信息
         self.device_info = device_info
         self.payload = payload
-        # 用户标识信息
         self.user_info = user_info
 
     def validate(self):
@@ -280,10 +262,8 @@ class AppUseTimeReportShrinkRequest(TeaModel):
         payload_shrink: str = None,
         user_info_shrink: str = None,
     ):
-        # 设备标识信息
         self.device_info_shrink = device_info_shrink
         self.payload_shrink = payload_shrink
-        # 用户标识信息
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -365,9 +345,6 @@ class AppUseTimeReportResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -445,15 +422,10 @@ class CreateReminderRequestDeviceInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
-        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
         self.encode_key = encode_key
-        # 编码类型，获取猫精的设备标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
         self.encode_type = encode_type
-        # 设备标识（deviceOpenId或deviceUnionId）
         self.id = id
-        # 设备Id的类型 - OPEN_ID：默认的设备ID标识 - UNION_ID: 组织维度的设备ID标识，在猫精技能应用开放平台申请过组织后才会有
         self.id_type = id_type
-        # 组织ID，如果IdType为UNION_ID时必填
         self.organization_id = organization_id
 
     def validate(self):
@@ -507,27 +479,16 @@ class CreateReminderRequestPayloadRecurrenceRule(TeaModel):
         start_date_time: int = None,
         year: int = None,
     ):
-        # 触发时间的日
         self.day = day
-        # 月循环相关，表示每月的几号的集合,数值范围为1-31
         self.days_of_month = days_of_month
-        # 周循环相关，表示每周几触发，数值范围为1-7
         self.days_of_week = days_of_week
-        # 结束时间，时间戳毫秒
         self.end_date_time = end_date_time
-        # 循环类型:支持单次ONCE、每天DAILY、每周WEEKLY、每月MONTHLY
         self.freq = freq
-        # 触发时间的时
         self.hour = hour
-        # 触发时间的分
         self.minute = minute
-        # 触发时间的月
         self.month = month
-        # 触发时间的秒
         self.second = second
-        # 开始时间，时间戳毫秒
         self.start_date_time = start_date_time
-        # 触发时间的年
         self.year = year
 
     def validate(self):
@@ -597,11 +558,8 @@ class CreateReminderRequestPayload(TeaModel):
         is_debug: bool = None,
         recurrence_rule: CreateReminderRequestPayloadRecurrenceRule = None,
     ):
-        # 提醒内容
         self.content = content
-        # 调试标识
         self.is_debug = is_debug
-        # 提醒调度信息
         self.recurrence_rule = recurrence_rule
 
     def validate(self):
@@ -643,15 +601,10 @@ class CreateReminderRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
-        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
         self.encode_key = encode_key
-        # 编码类型，获取猫精的用户标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
         self.encode_type = encode_type
-        # 用户标识（userOpenId或userUnionId）
         self.id = id
-        # 用户Id的类型 - OPEN_ID：默认的用户ID标识 - UNION_ID: 组织维度的用户ID标识，在猫精技能应用开放平台申请过组织后才会有
         self.id_type = id_type
-        # 组织ID，如果IdType为UNION_ID时必填
         self.organization_id = organization_id
 
     def validate(self):
@@ -697,11 +650,8 @@ class CreateReminderRequest(TeaModel):
         payload: CreateReminderRequestPayload = None,
         user_info: CreateReminderRequestUserInfo = None,
     ):
-        # 设备标识信息
         self.device_info = device_info
-        # 服务请求入参
         self.payload = payload
-        # 用户标识信息
         self.user_info = user_info
 
     def validate(self):
@@ -747,11 +697,8 @@ class CreateReminderShrinkRequest(TeaModel):
         payload_shrink: str = None,
         user_info_shrink: str = None,
     ):
-        # 设备标识信息
         self.device_info_shrink = device_info_shrink
-        # 服务请求入参
         self.payload_shrink = payload_shrink
-        # 用户标识信息
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -790,13 +737,9 @@ class CreateReminderResponseBody(TeaModel):
         model: int = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_msg = error_msg
-        # 创建的提醒id
         self.model = model
-        # 服务成功标识
         self.success = success
 
     def validate(self):
@@ -843,9 +786,6 @@ class CreateReminderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -923,15 +863,10 @@ class DeleteReminderRequestDeviceInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
-        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
         self.encode_key = encode_key
-        # 编码类型，获取猫精的设备标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
         self.encode_type = encode_type
-        # 设备标识（deviceOpenId或deviceUnionId）
         self.id = id
-        # 设备Id的类型 - OPEN_ID：默认的设备ID标识 - UNION_ID: 组织维度的设备ID标识，在猫精技能应用开放平台申请过组织后才会有
         self.id_type = id_type
-        # 组织ID，如果IdType为UNION_ID时必填
         self.organization_id = organization_id
 
     def validate(self):
@@ -976,9 +911,7 @@ class DeleteReminderRequestPayload(TeaModel):
         id: int = None,
         is_debug: bool = None,
     ):
-        # 提醒的唯一id
         self.id = id
-        # 调试标识
         self.is_debug = is_debug
 
     def validate(self):
@@ -1014,15 +947,10 @@ class DeleteReminderRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
-        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
         self.encode_key = encode_key
-        # 编码类型，获取猫精的用户标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
         self.encode_type = encode_type
-        # 用户标识（userOpenId或userUnionId）
         self.id = id
-        # 用户Id的类型 - OPEN_ID：默认的用户ID标识 - UNION_ID: 组织维度的用户ID标识，在猫精技能应用开放平台申请过组织后才会有
         self.id_type = id_type
-        # 组织ID，如果IdType为UNION_ID时必填
         self.organization_id = organization_id
 
     def validate(self):
@@ -1068,11 +996,8 @@ class DeleteReminderRequest(TeaModel):
         payload: DeleteReminderRequestPayload = None,
         user_info: DeleteReminderRequestUserInfo = None,
     ):
-        # 设备标识信息
         self.device_info = device_info
-        # 服务请求入参
         self.payload = payload
-        # 用户标识信息
         self.user_info = user_info
 
     def validate(self):
@@ -1118,11 +1043,8 @@ class DeleteReminderShrinkRequest(TeaModel):
         payload_shrink: str = None,
         user_info_shrink: str = None,
     ):
-        # 设备标识信息
         self.device_info_shrink = device_info_shrink
-        # 服务请求入参
         self.payload_shrink = payload_shrink
-        # 用户标识信息
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -1160,11 +1082,8 @@ class DeleteReminderResponseBody(TeaModel):
         error_msg: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_msg = error_msg
-        # 服务成功标识
         self.success = success
 
     def validate(self):
@@ -1207,9 +1126,6 @@ class DeleteReminderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1287,15 +1203,10 @@ class GetAccountForAppRequestDeviceInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
-        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
         self.encode_key = encode_key
-        # 编码类型，获取猫精的设备标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
         self.encode_type = encode_type
-        # 设备标识（deviceOpenId或deviceUnionId）
         self.id = id
-        # 设备Id的类型 - OPEN_ID：默认的设备ID标识 - UNION_ID: 组织维度的设备ID标识，在猫精技能应用开放平台申请过组织后才会有
         self.id_type = id_type
-        # 组织ID，如果IdType为UNION_ID时必填
         self.organization_id = organization_id
 
     def validate(self):
@@ -1376,15 +1287,10 @@ class GetAccountForAppRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
-        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
         self.encode_key = encode_key
-        # 编码类型，获取猫精的用户标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
         self.encode_type = encode_type
-        # 用户标识（userOpenId或userUnionId）
         self.id = id
-        # 用户Id的类型 - OPEN_ID：默认的用户ID标识 - UNION_ID: 组织维度的用户ID标识，在猫精技能应用开放平台申请过组织后才会有
         self.id_type = id_type
-        # 组织ID，如果IdType为UNION_ID时必填
         self.organization_id = organization_id
 
     def validate(self):
@@ -1430,10 +1336,8 @@ class GetAccountForAppRequest(TeaModel):
         payload: GetAccountForAppRequestPayload = None,
         user_info: GetAccountForAppRequestUserInfo = None,
     ):
-        # 设备标识信息
         self.device_info = device_info
         self.payload = payload
-        # 用户标识信息
         self.user_info = user_info
 
     def validate(self):
@@ -1479,10 +1383,8 @@ class GetAccountForAppShrinkRequest(TeaModel):
         payload_shrink: str = None,
         user_info_shrink: str = None,
     ):
-        # 设备标识信息
         self.device_info_shrink = device_info_shrink
         self.payload_shrink = payload_shrink
-        # 用户标识信息
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -1520,11 +1422,8 @@ class GetAccountForAppResponseBodyRetValue(TeaModel):
         str_vip_expire: str = None,
         vip_expire_at: int = None,
     ):
-        # 是否VIP
         self.is_vip = is_vip
-        # 日期格式，到期时间
         self.str_vip_expire = str_vip_expire
-        # 若以前开通过会员，返回会员失效时间，若从未开通过会员，此字段为0
         self.vip_expire_at = vip_expire_at
 
     def validate(self):
@@ -1562,11 +1461,8 @@ class GetAccountForAppResponseBody(TeaModel):
         ret_msg: str = None,
         ret_value: GetAccountForAppResponseBodyRetValue = None,
     ):
-        # 错误码
         self.ret_code = ret_code
-        # 错误信息
         self.ret_msg = ret_msg
-        # 用户信息
         self.ret_value = ret_value
 
     def validate(self):
@@ -1611,9 +1507,6 @@ class GetAccountForAppResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1639,6 +1532,387 @@ class GetAccountForAppResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAccountForAppResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetBusAppConfigHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class GetBusAppConfigRequestDeviceInfo(TeaModel):
+    def __init__(
+        self,
+        encode_key: str = None,
+        encode_type: str = None,
+        id: str = None,
+        id_type: str = None,
+        organization_id: str = None,
+    ):
+        self.encode_key = encode_key
+        self.encode_type = encode_type
+        self.id = id
+        self.id_type = id_type
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encode_key is not None:
+            result['EncodeKey'] = self.encode_key
+        if self.encode_type is not None:
+            result['EncodeType'] = self.encode_type
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.id_type is not None:
+            result['IdType'] = self.id_type
+        if self.organization_id is not None:
+            result['OrganizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncodeKey') is not None:
+            self.encode_key = m.get('EncodeKey')
+        if m.get('EncodeType') is not None:
+            self.encode_type = m.get('EncodeType')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IdType') is not None:
+            self.id_type = m.get('IdType')
+        if m.get('OrganizationId') is not None:
+            self.organization_id = m.get('OrganizationId')
+        return self
+
+
+class GetBusAppConfigRequestPayload(TeaModel):
+    def __init__(
+        self,
+        origin_uuid: str = None,
+        phone: str = None,
+    ):
+        self.origin_uuid = origin_uuid
+        self.phone = phone
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.origin_uuid is not None:
+            result['originUuid'] = self.origin_uuid
+        if self.phone is not None:
+            result['phone'] = self.phone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('originUuid') is not None:
+            self.origin_uuid = m.get('originUuid')
+        if m.get('phone') is not None:
+            self.phone = m.get('phone')
+        return self
+
+
+class GetBusAppConfigRequestUserInfo(TeaModel):
+    def __init__(
+        self,
+        encode_key: str = None,
+        encode_type: str = None,
+        id: str = None,
+        id_type: str = None,
+        organization_id: str = None,
+    ):
+        self.encode_key = encode_key
+        self.encode_type = encode_type
+        self.id = id
+        self.id_type = id_type
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encode_key is not None:
+            result['EncodeKey'] = self.encode_key
+        if self.encode_type is not None:
+            result['EncodeType'] = self.encode_type
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.id_type is not None:
+            result['IdType'] = self.id_type
+        if self.organization_id is not None:
+            result['OrganizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncodeKey') is not None:
+            self.encode_key = m.get('EncodeKey')
+        if m.get('EncodeType') is not None:
+            self.encode_type = m.get('EncodeType')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IdType') is not None:
+            self.id_type = m.get('IdType')
+        if m.get('OrganizationId') is not None:
+            self.organization_id = m.get('OrganizationId')
+        return self
+
+
+class GetBusAppConfigRequest(TeaModel):
+    def __init__(
+        self,
+        device_info: GetBusAppConfigRequestDeviceInfo = None,
+        payload: GetBusAppConfigRequestPayload = None,
+        user_info: GetBusAppConfigRequestUserInfo = None,
+    ):
+        self.device_info = device_info
+        self.payload = payload
+        self.user_info = user_info
+
+    def validate(self):
+        if self.device_info:
+            self.device_info.validate()
+        if self.payload:
+            self.payload.validate()
+        if self.user_info:
+            self.user_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_info is not None:
+            result['DeviceInfo'] = self.device_info.to_map()
+        if self.payload is not None:
+            result['Payload'] = self.payload.to_map()
+        if self.user_info is not None:
+            result['UserInfo'] = self.user_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceInfo') is not None:
+            temp_model = GetBusAppConfigRequestDeviceInfo()
+            self.device_info = temp_model.from_map(m['DeviceInfo'])
+        if m.get('Payload') is not None:
+            temp_model = GetBusAppConfigRequestPayload()
+            self.payload = temp_model.from_map(m['Payload'])
+        if m.get('UserInfo') is not None:
+            temp_model = GetBusAppConfigRequestUserInfo()
+            self.user_info = temp_model.from_map(m['UserInfo'])
+        return self
+
+
+class GetBusAppConfigShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        device_info_shrink: str = None,
+        payload_shrink: str = None,
+        user_info_shrink: str = None,
+    ):
+        self.device_info_shrink = device_info_shrink
+        self.payload_shrink = payload_shrink
+        self.user_info_shrink = user_info_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_info_shrink is not None:
+            result['DeviceInfo'] = self.device_info_shrink
+        if self.payload_shrink is not None:
+            result['Payload'] = self.payload_shrink
+        if self.user_info_shrink is not None:
+            result['UserInfo'] = self.user_info_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceInfo') is not None:
+            self.device_info_shrink = m.get('DeviceInfo')
+        if m.get('Payload') is not None:
+            self.payload_shrink = m.get('Payload')
+        if m.get('UserInfo') is not None:
+            self.user_info_shrink = m.get('UserInfo')
+        return self
+
+
+class GetBusAppConfigResponseBodyRetValue(TeaModel):
+    def __init__(
+        self,
+        shopping_bar: str = None,
+        shopping_window: str = None,
+        vip_label: str = None,
+    ):
+        self.shopping_bar = shopping_bar
+        self.shopping_window = shopping_window
+        self.vip_label = vip_label
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.shopping_bar is not None:
+            result['ShoppingBar'] = self.shopping_bar
+        if self.shopping_window is not None:
+            result['ShoppingWindow'] = self.shopping_window
+        if self.vip_label is not None:
+            result['VipLabel'] = self.vip_label
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ShoppingBar') is not None:
+            self.shopping_bar = m.get('ShoppingBar')
+        if m.get('ShoppingWindow') is not None:
+            self.shopping_window = m.get('ShoppingWindow')
+        if m.get('VipLabel') is not None:
+            self.vip_label = m.get('VipLabel')
+        return self
+
+
+class GetBusAppConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        ret_code: int = None,
+        ret_msg: str = None,
+        ret_value: GetBusAppConfigResponseBodyRetValue = None,
+    ):
+        self.ret_code = ret_code
+        self.ret_msg = ret_msg
+        self.ret_value = ret_value
+
+    def validate(self):
+        if self.ret_value:
+            self.ret_value.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ret_code is not None:
+            result['RetCode'] = self.ret_code
+        if self.ret_msg is not None:
+            result['RetMsg'] = self.ret_msg
+        if self.ret_value is not None:
+            result['RetValue'] = self.ret_value.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RetCode') is not None:
+            self.ret_code = m.get('RetCode')
+        if m.get('RetMsg') is not None:
+            self.ret_msg = m.get('RetMsg')
+        if m.get('RetValue') is not None:
+            temp_model = GetBusAppConfigResponseBodyRetValue()
+            self.ret_value = temp_model.from_map(m['RetValue'])
+        return self
+
+
+class GetBusAppConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetBusAppConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetBusAppConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1691,15 +1965,10 @@ class GetPhoneNumberRequestDeviceInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
-        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
         self.encode_key = encode_key
-        # 编码类型，获取猫精的设备标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
         self.encode_type = encode_type
-        # 设备标识（deviceOpenId或deviceUnionId）
         self.id = id
-        # 设备Id的类型  - OPEN_ID：默认的设备ID标识 - UNION_ID: 组织维度的设备ID标识，在猫精技能应用开放平台申请过组织后才会有
         self.id_type = id_type
-        # 组织ID，如果IdType为UNION_ID时必填
         self.organization_id = organization_id
 
     def validate(self):
@@ -1747,15 +2016,10 @@ class GetPhoneNumberRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
-        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
         self.encode_key = encode_key
-        # 编码类型，获取猫精的用户标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
         self.encode_type = encode_type
-        # 用户标识（userOpenId或userUnionId）
         self.id = id
-        # 用户Id的类型  - OPEN_ID：默认的用户ID标识 - UNION_ID: 组织维度的用户ID标识，在猫精技能应用开放平台申请过组织后才会有
         self.id_type = id_type
-        # 组织ID，如果IdType为UNION_ID时必填
         self.organization_id = organization_id
 
     def validate(self):
@@ -1800,9 +2064,7 @@ class GetPhoneNumberRequest(TeaModel):
         device_info: GetPhoneNumberRequestDeviceInfo = None,
         user_info: GetPhoneNumberRequestUserInfo = None,
     ):
-        # 设备标识信息
         self.device_info = device_info
-        # 用户标识信息
         self.user_info = user_info
 
     def validate(self):
@@ -1840,9 +2102,7 @@ class GetPhoneNumberShrinkRequest(TeaModel):
         device_info_shrink: str = None,
         user_info_shrink: str = None,
     ):
-        # 设备标识信息
         self.device_info_shrink = device_info_shrink
-        # 用户标识信息
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -1874,7 +2134,6 @@ class GetPhoneNumberResponseBody(TeaModel):
         self,
         phone_number: str = None,
     ):
-        # 用户手机号
         self.phone_number = phone_number
 
     def validate(self):
@@ -1909,9 +2168,6 @@ class GetPhoneNumberResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1989,15 +2245,10 @@ class GetReminderRequestDeviceInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
-        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
         self.encode_key = encode_key
-        # 编码类型，获取猫精的设备标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
         self.encode_type = encode_type
-        # 设备标识（deviceOpenId或deviceUnionId）
         self.id = id
-        # 设备Id的类型 - OPEN_ID：默认的设备ID标识 - UNION_ID: 组织维度的设备ID标识，在猫精技能应用开放平台申请过组织后才会有
         self.id_type = id_type
-        # 组织ID，如果IdType为UNION_ID时必填
         self.organization_id = organization_id
 
     def validate(self):
@@ -2042,9 +2293,7 @@ class GetReminderRequestPayload(TeaModel):
         id: int = None,
         is_debug: bool = None,
     ):
-        # 提醒的唯一id
         self.id = id
-        # 调试标识
         self.is_debug = is_debug
 
     def validate(self):
@@ -2080,15 +2329,10 @@ class GetReminderRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
-        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
         self.encode_key = encode_key
-        # 编码类型，获取猫精的用户标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
         self.encode_type = encode_type
-        # 用户标识（userOpenId或userUnionId）
         self.id = id
-        # 用户Id的类型 - OPEN_ID：默认的用户ID标识 - UNION_ID: 组织维度的用户ID标识，在猫精技能应用开放平台申请过组织后才会有
         self.id_type = id_type
-        # 组织ID，如果IdType为UNION_ID时必填
         self.organization_id = organization_id
 
     def validate(self):
@@ -2134,11 +2378,8 @@ class GetReminderRequest(TeaModel):
         payload: GetReminderRequestPayload = None,
         user_info: GetReminderRequestUserInfo = None,
     ):
-        # 设备标识信息
         self.device_info = device_info
-        # 服务请求入参
         self.payload = payload
-        # 用户标识信息
         self.user_info = user_info
 
     def validate(self):
@@ -2184,11 +2425,8 @@ class GetReminderShrinkRequest(TeaModel):
         payload_shrink: str = None,
         user_info_shrink: str = None,
     ):
-        # 设备标识信息
         self.device_info_shrink = device_info_shrink
-        # 服务请求入参
         self.payload_shrink = payload_shrink
-        # 用户标识信息
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -2234,27 +2472,16 @@ class GetReminderResponseBodyModelRemindResponsesRecurrenceRule(TeaModel):
         start_date_time: str = None,
         year: int = None,
     ):
-        # 天
         self.day = day
-        # 月的第几天 可用作月循环
         self.days_of_month = days_of_month
-        # 周循环字段，取值范围：1-7
         self.days_of_week = days_of_week
-        # 调度结束时间
         self.end_date_time = end_date_time
-        # 调度类型
         self.freq = freq
-        # 小时
         self.hour = hour
-        # 分
         self.minute = minute
-        # 月
         self.month = month
-        # 秒
         self.second = second
-        # 调度开始时间
         self.start_date_time = start_date_time
-        # 年
         self.year = year
 
     def validate(self):
@@ -2328,19 +2555,12 @@ class GetReminderResponseBodyModelRemindResponses(TeaModel):
         repeat_count: int = None,
         week: str = None,
     ):
-        # 执行动作topic
         self.action_topic = action_topic
-        # 触发条件描述
         self.day_desc = day_desc
-        # 调度信息
         self.recurrence_rule = recurrence_rule
-        # 提醒id
         self.remind_id = remind_id
-        # 下次提醒时间
         self.remind_time = remind_time
-        # 重复次数
         self.repeat_count = repeat_count
-        # 触发为周几
         self.week = week
 
     def validate(self):
@@ -2394,7 +2614,6 @@ class GetReminderResponseBodyModel(TeaModel):
         self,
         remind_responses: List[GetReminderResponseBodyModelRemindResponses] = None,
     ):
-        # 提醒信息
         self.remind_responses = remind_responses
 
     def validate(self):
@@ -2433,13 +2652,9 @@ class GetReminderResponseBody(TeaModel):
         model: GetReminderResponseBodyModel = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_msg = error_msg
-        # 提醒信息
         self.model = model
-        # 服务成功标识
         self.success = success
 
     def validate(self):
@@ -2488,9 +2703,6 @@ class GetReminderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2568,15 +2780,10 @@ class ListRemindersRequestDeviceInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
-        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
         self.encode_key = encode_key
-        # 编码类型，获取猫精的设备标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
         self.encode_type = encode_type
-        # 设备标识（deviceOpenId或deviceUnionId）
         self.id = id
-        # 设备Id的类型 - OPEN_ID：默认的设备ID标识 - UNION_ID: 组织维度的设备ID标识，在猫精技能应用开放平台申请过组织后才会有
         self.id_type = id_type
-        # 组织ID，如果IdType为UNION_ID时必填
         self.organization_id = organization_id
 
     def validate(self):
@@ -2620,7 +2827,6 @@ class ListRemindersRequestPayload(TeaModel):
         self,
         is_debug: bool = None,
     ):
-        # 调试标识
         self.is_debug = is_debug
 
     def validate(self):
@@ -2652,15 +2858,10 @@ class ListRemindersRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
-        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
         self.encode_key = encode_key
-        # 编码类型，获取猫精的用户标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
         self.encode_type = encode_type
-        # 用户标识（userOpenId或userUnionId）
         self.id = id
-        # 用户Id的类型 - OPEN_ID：默认的用户ID标识 - UNION_ID: 组织维度的用户ID标识，在猫精技能应用开放平台申请过组织后才会有
         self.id_type = id_type
-        # 组织ID，如果IdType为UNION_ID时必填
         self.organization_id = organization_id
 
     def validate(self):
@@ -2706,11 +2907,8 @@ class ListRemindersRequest(TeaModel):
         payload: ListRemindersRequestPayload = None,
         user_info: ListRemindersRequestUserInfo = None,
     ):
-        # 设备标识信息
         self.device_info = device_info
-        # 服务请求入参
         self.payload = payload
-        # 用户标识信息
         self.user_info = user_info
 
     def validate(self):
@@ -2756,11 +2954,8 @@ class ListRemindersShrinkRequest(TeaModel):
         payload_shrink: str = None,
         user_info_shrink: str = None,
     ):
-        # 设备标识信息
         self.device_info_shrink = device_info_shrink
-        # 服务请求入参
         self.payload_shrink = payload_shrink
-        # 用户标识信息
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -2806,27 +3001,16 @@ class ListRemindersResponseBodyModelRemindResponsesRecurrenceRule(TeaModel):
         start_date_time: str = None,
         year: int = None,
     ):
-        # 天
         self.day = day
-        # 月的第几天 可用作月循环
         self.days_of_month = days_of_month
-        # 周循环字段，取值范围：1-7
         self.days_of_week = days_of_week
-        # 调度结束时间
         self.end_date_time = end_date_time
-        # 调度类型
         self.freq = freq
-        # 小时
         self.hour = hour
-        # 分
         self.minute = minute
-        # 月
         self.month = month
-        # 秒
         self.second = second
-        # 调度开始时间
         self.start_date_time = start_date_time
-        # 年
         self.year = year
 
     def validate(self):
@@ -2900,19 +3084,12 @@ class ListRemindersResponseBodyModelRemindResponses(TeaModel):
         repeat_count: int = None,
         week: str = None,
     ):
-        # 执行动作topic
         self.action_topic = action_topic
-        # 触发条件描述
         self.day_desc = day_desc
-        # 调度信息
         self.recurrence_rule = recurrence_rule
-        # 提醒id
         self.remind_id = remind_id
-        # 下次提醒时间
         self.remind_time = remind_time
-        # 重复次数
         self.repeat_count = repeat_count
-        # 触发为周几
         self.week = week
 
     def validate(self):
@@ -2966,7 +3143,6 @@ class ListRemindersResponseBodyModel(TeaModel):
         self,
         remind_responses: List[ListRemindersResponseBodyModelRemindResponses] = None,
     ):
-        # 提醒信息
         self.remind_responses = remind_responses
 
     def validate(self):
@@ -3005,13 +3181,9 @@ class ListRemindersResponseBody(TeaModel):
         model: ListRemindersResponseBodyModel = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_msg = error_msg
-        # 提醒信息
         self.model = model
-        # 服务成功标识
         self.success = success
 
     def validate(self):
@@ -3060,9 +3232,6 @@ class ListRemindersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3140,15 +3309,10 @@ class PullCashierRequestDeviceInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
-        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
         self.encode_key = encode_key
-        # 编码类型，获取猫精的设备标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
         self.encode_type = encode_type
-        # 设备标识（deviceOpenId或deviceUnionId）
         self.id = id
-        # 设备Id的类型 - OPEN_ID：默认的设备ID标识 - UNION_ID: 组织维度的设备ID标识，在猫精技能应用开放平台申请过组织后才会有
         self.id_type = id_type
-        # 组织ID，如果IdType为UNION_ID时必填
         self.organization_id = organization_id
 
     def validate(self):
@@ -3223,15 +3387,10 @@ class PullCashierRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
-        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
         self.encode_key = encode_key
-        # 编码类型，获取猫精的用户标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
         self.encode_type = encode_type
-        # 用户标识（userOpenId或userUnionId）
         self.id = id
-        # 用户Id的类型  - OPEN_ID：默认的用户ID标识 - UNION_ID: 组织维度的用户ID标识，在猫精技能应用开放平台申请过组织后才会有
         self.id_type = id_type
-        # 组织ID，如果IdType为UNION_ID时必填
         self.organization_id = organization_id
 
     def validate(self):
@@ -3277,10 +3436,8 @@ class PullCashierRequest(TeaModel):
         payload: PullCashierRequestPayload = None,
         user_info: PullCashierRequestUserInfo = None,
     ):
-        # 设备标识信息
         self.device_info = device_info
         self.payload = payload
-        # 用户标识信息
         self.user_info = user_info
 
     def validate(self):
@@ -3326,10 +3483,8 @@ class PullCashierShrinkRequest(TeaModel):
         payload_shrink: str = None,
         user_info_shrink: str = None,
     ):
-        # 设备标识信息
         self.device_info_shrink = device_info_shrink
         self.payload_shrink = payload_shrink
-        # 用户标识信息
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -3367,9 +3522,7 @@ class PullCashierResponseBody(TeaModel):
         ret_msg: str = None,
         ret_value: bool = None,
     ):
-        # 错误吗
         self.ret_code = ret_code
-        # 错误信息
         self.ret_msg = ret_msg
         self.ret_value = ret_value
 
@@ -3413,9 +3566,6 @@ class PullCashierResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3490,9 +3640,7 @@ class PushNotificationsRequestNotificationUnicastRequestSendTarget(TeaModel):
         target_identity: str = None,
         target_type: str = None,
     ):
-        # 推送目标类型对应的标识值。
         self.target_identity = target_identity
-        # 推送的目标类型，获取到对应设备或用户标识时的类型 - DEVICE_UNION_ID：设备unionId - DEVICE_OPEN_ID：设备openId - USER_UNION_ID：用户unionId - USER_OPEN_ID：用户openId
         self.target_type = target_type
 
     def validate(self):
@@ -3530,19 +3678,12 @@ class PushNotificationsRequestNotificationUnicastRequest(TeaModel):
         place_holder: Dict[str, str] = None,
         send_target: PushNotificationsRequestNotificationUnicastRequestSendTarget = None,
     ):
-        # 编码类型对应的值，例如：编码类型是SKILLID，其值就为webhook服务中得到的skillId；编码类似是PACKAGENAME，其值就为对应客户端app的packageName。
         self.encode_key = encode_key
-        # 编码类型，获取猫精的设备标识的途径有多种，不同途径对应不同的编码类型： PACKAGE_NAME：apk包名 SKILL_ID：技能id
         self.encode_type = encode_type
-        # 调试标识
         self.is_debug = is_debug
-        # 消息模板，在天猫精灵应用平台中申请消息模板时得到的模板id。
         self.message_template_id = message_template_id
-        # 组织标识，推送类型是XX_UNION_XX时才需要配。当存在多种途径获取猫精设备或用户标识且又需要能互通的情况下需要找平台申请组织，申请通过后由平台分配得到。
         self.organization_id = organization_id
-        # 占位符信息，例如：模板是【你好，{nick}！】这里可以是：{"nick":"小甜甜"}
         self.place_holder = place_holder
-        # 消息推送的目标信息。
         self.send_target = send_target
 
     def validate(self):
@@ -3617,9 +3758,7 @@ class PushNotificationsRequest(TeaModel):
         notification_unicast_request: PushNotificationsRequestNotificationUnicastRequest = None,
         tenant_info: PushNotificationsRequestTenantInfo = None,
     ):
-        # 消息推送入参对象。
         self.notification_unicast_request = notification_unicast_request
-        # 身份信息。
         self.tenant_info = tenant_info
 
     def validate(self):
@@ -3657,9 +3796,7 @@ class PushNotificationsShrinkRequest(TeaModel):
         notification_unicast_request_shrink: str = None,
         tenant_info_shrink: str = None,
     ):
-        # 消息推送入参对象。
         self.notification_unicast_request_shrink = notification_unicast_request_shrink
-        # 身份信息。
         self.tenant_info_shrink = tenant_info_shrink
 
     def validate(self):
@@ -3696,8 +3833,7 @@ class PushNotificationsResponse(TeaModel):
         self.status_code = status_code
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -3768,15 +3904,10 @@ class SendNotificationsRequestDeviceInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
-        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
         self.encode_key = encode_key
-        # 编码类型，获取猫精的设备标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
         self.encode_type = encode_type
-        # 设备标识（deviceOpenId或deviceUnionId）
         self.id = id
-        # 设备Id的类型 - OPEN_ID：默认的设备ID标识 - UNION_ID: 组织维度的设备ID标识，在猫精技能应用开放平台申请过组织后才会有
         self.id_type = id_type
-        # 组织ID，如果IdType为UNION_ID时必填
         self.organization_id = organization_id
 
     def validate(self):
@@ -3843,13 +3974,9 @@ class SendNotificationsRequestNotificationUnicastRequest(TeaModel):
         place_holder: Dict[str, str] = None,
         send_target: SendNotificationsRequestNotificationUnicastRequestSendTarget = None,
     ):
-        # 调试标识
         self.is_debug = is_debug
-        # 消息模板，在天猫精灵应用平台中申请消息模板时得到的模板id。
         self.message_template_id = message_template_id
-        # 占位符信息，例如：模板是【你好，{nick}！】这里可以是：{"nick":"小甜甜"}
         self.place_holder = place_holder
-        # 消息推送的目标信息。
         self.send_target = send_target
 
     def validate(self):
@@ -3915,15 +4042,10 @@ class SendNotificationsRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
-        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
         self.encode_key = encode_key
-        # 编码类型，获取猫精的用户标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
         self.encode_type = encode_type
-        # 用户标识（userOpenId或userUnionId）
         self.id = id
-        # 用户Id的类型 - OPEN_ID：默认的用户ID标识 - UNION_ID: 组织维度的用户ID标识，在猫精技能应用开放平台申请过组织后才会有
         self.id_type = id_type
-        # 组织ID，如果IdType为UNION_ID时必填
         self.organization_id = organization_id
 
     def validate(self):
@@ -3970,13 +4092,9 @@ class SendNotificationsRequest(TeaModel):
         tenant_info: SendNotificationsRequestTenantInfo = None,
         user_info: SendNotificationsRequestUserInfo = None,
     ):
-        # 设备标识信息
         self.device_info = device_info
-        # 消息推送入参对象。
         self.notification_unicast_request = notification_unicast_request
-        # 身份信息。
         self.tenant_info = tenant_info
-        # 用户标识信息
         self.user_info = user_info
 
     def validate(self):
@@ -4030,13 +4148,9 @@ class SendNotificationsShrinkRequest(TeaModel):
         tenant_info_shrink: str = None,
         user_info_shrink: str = None,
     ):
-        # 设备标识信息
         self.device_info_shrink = device_info_shrink
-        # 消息推送入参对象。
         self.notification_unicast_request_shrink = notification_unicast_request_shrink
-        # 身份信息。
         self.tenant_info_shrink = tenant_info_shrink
-        # 用户标识信息
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -4081,8 +4195,7 @@ class SendNotificationsResponse(TeaModel):
         self.status_code = status_code
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -4153,15 +4266,10 @@ class UpdateReminderRequestDeviceInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
-        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
         self.encode_key = encode_key
-        # 编码类型，获取猫精的设备标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
         self.encode_type = encode_type
-        # 设备标识（deviceOpenId或deviceUnionId）
         self.id = id
-        # 设备Id的类型 - OPEN_ID：默认的设备ID标识 - UNION_ID: 组织维度的设备ID标识，在猫精技能应用开放平台申请过组织后才会有
         self.id_type = id_type
-        # 组织ID，如果IdType为UNION_ID时必填
         self.organization_id = organization_id
 
     def validate(self):
@@ -4215,27 +4323,16 @@ class UpdateReminderRequestPayloadRecurrenceRule(TeaModel):
         start_date_time: int = None,
         year: int = None,
     ):
-        # 触发时间的日
         self.day = day
-        # 月循环相关，表示每月的几号的集合,数值范围为1-31
         self.days_of_month = days_of_month
-        # 周循环相关，表示每周几触发，数值范围为1-7
         self.days_of_week = days_of_week
-        # 结束时间，时间戳，毫秒
         self.end_date_time = end_date_time
-        # 循环类型:支持单次ONCE、每天DAILY、每周WEEKLY、每月MONTHLY
         self.freq = freq
-        # 触发时间的时
         self.hour = hour
-        # 触发时间的分
         self.minute = minute
-        # 触发时间的月
         self.month = month
-        # 触发时间的秒
         self.second = second
-        # 开始时间，时间戳，毫秒
         self.start_date_time = start_date_time
-        # 触发时间的年
         self.year = year
 
     def validate(self):
@@ -4306,13 +4403,9 @@ class UpdateReminderRequestPayload(TeaModel):
         is_debug: bool = None,
         recurrence_rule: UpdateReminderRequestPayloadRecurrenceRule = None,
     ):
-        # 提醒内容
         self.content = content
-        # 提醒id
         self.id = id
-        # 调试标识
         self.is_debug = is_debug
-        # 提醒调度信息
         self.recurrence_rule = recurrence_rule
 
     def validate(self):
@@ -4358,15 +4451,10 @@ class UpdateReminderRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
-        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
         self.encode_key = encode_key
-        # 编码类型，获取猫精的用户标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
         self.encode_type = encode_type
-        # 用户标识（userOpenId或userUnionId）
         self.id = id
-        # 用户Id的类型 - OPEN_ID：默认的用户ID标识 - UNION_ID: 组织维度的用户ID标识，在猫精技能应用开放平台申请过组织后才会有
         self.id_type = id_type
-        # 组织ID，如果IdType为UNION_ID时必填
         self.organization_id = organization_id
 
     def validate(self):
@@ -4412,11 +4500,8 @@ class UpdateReminderRequest(TeaModel):
         payload: UpdateReminderRequestPayload = None,
         user_info: UpdateReminderRequestUserInfo = None,
     ):
-        # 设备标识信息
         self.device_info = device_info
-        # 服务请求入参
         self.payload = payload
-        # 用户标识信息
         self.user_info = user_info
 
     def validate(self):
@@ -4462,11 +4547,8 @@ class UpdateReminderShrinkRequest(TeaModel):
         payload_shrink: str = None,
         user_info_shrink: str = None,
     ):
-        # 设备标识信息
         self.device_info_shrink = device_info_shrink
-        # 服务请求入参
         self.payload_shrink = payload_shrink
-        # 用户标识信息
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -4505,13 +4587,9 @@ class UpdateReminderResponseBody(TeaModel):
         model: int = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_msg = error_msg
-        # 更新提醒的id
         self.model = model
-        # 服务成功标识
         self.success = success
 
     def validate(self):
@@ -4558,9 +4636,6 @@ class UpdateReminderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4638,15 +4713,10 @@ class VideoAppReportRequestDeviceInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
-        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
         self.encode_key = encode_key
-        # 编码类型，获取猫精的设备标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
         self.encode_type = encode_type
-        # 设备标识（deviceOpenId或deviceUnionId）
         self.id = id
-        # 设备Id的类型  - OPEN_ID：默认的设备ID标识 - UNION_ID: 组织维度的设备ID标识，在猫精技能应用开放平台申请过组织后才会有
         self.id_type = id_type
-        # 组织ID，如果IdType为UNION_ID时必填
         self.organization_id = organization_id
 
     def validate(self):
@@ -4763,15 +4833,10 @@ class VideoAppReportRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
-        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
         self.encode_key = encode_key
-        # 编码类型，获取猫精的用户标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
         self.encode_type = encode_type
-        # 用户标识（userOpenId或userUnionId）
         self.id = id
-        # 用户Id的类型  - OPEN_ID：默认的用户ID标识 - UNION_ID: 组织维度的用户ID标识，在猫精技能应用开放平台申请过组织后才会有
         self.id_type = id_type
-        # 组织ID，如果IdType为UNION_ID时必填
         self.organization_id = organization_id
 
     def validate(self):
@@ -4817,10 +4882,8 @@ class VideoAppReportRequest(TeaModel):
         payload: VideoAppReportRequestPayload = None,
         user_info: VideoAppReportRequestUserInfo = None,
     ):
-        # 设备标识信息
         self.device_info = device_info
         self.payload = payload
-        # 用户标识信息
         self.user_info = user_info
 
     def validate(self):
@@ -4866,10 +4929,8 @@ class VideoAppReportShrinkRequest(TeaModel):
         payload_shrink: str = None,
         user_info_shrink: str = None,
     ):
-        # 设备标识信息
         self.device_info_shrink = device_info_shrink
         self.payload_shrink = payload_shrink
-        # 用户标识信息
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -4951,9 +5012,6 @@ class VideoAppReportResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5031,15 +5089,10 @@ class WakeUpAppRequestTargetInfo(TeaModel):
         target_identity: str = None,
         target_type: str = None,
     ):
-        # 编码类型对应的值，例如：编码类型是SKILLID，其值就为webhook服务中得到的skillId；编码类似是PACKAGENAME，其值就为对应客户端app的packageName。
         self.encode_key = encode_key
-        # 编码类型，获取猫精的设备标识的途径有多种，不同途径对应不同的编码类型：  PACKAGE_NAME：apk包名 SKILL_ID：技能id
         self.encode_type = encode_type
-        # 组织标识，推送类型是XX_UNION_XX时才需要配。当存在多种途径获取猫精设备标识且又需要能互通的情况下需要找平台申请组织，申请通过后由平台分配得到。
         self.organization_id = organization_id
-        # 推送目标类型对应的标识值
         self.target_identity = target_identity
-        # 推送目标类型，获取到对应设备标识时的类型  DEVICE_UNION_ID：设备unionId； DEVICE_OPEN_ID：设备openId
         self.target_type = target_type
 
     def validate(self):
@@ -5085,11 +5138,8 @@ class WakeUpAppRequest(TeaModel):
         path: str = None,
         target_info: WakeUpAppRequestTargetInfo = None,
     ):
-        # 是否调试
         self.is_debug = is_debug
-        # 应用拉起路径，类似在技能应用控制台中填的唤起链接。
         self.path = path
-        # 要拉起的目标设备信息。
         self.target_info = target_info
 
     def validate(self):
@@ -5132,8 +5182,7 @@ class WakeUpAppResponse(TeaModel):
         self.status_code = status_code
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
+        pass
 
     def to_map(self):
         _map = super().to_map()

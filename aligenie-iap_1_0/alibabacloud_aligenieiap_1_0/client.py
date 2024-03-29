@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
-from typing import Dict
 from Tea.core import TeaCore
 
+from alibabacloud_gateway_spi.client import Client as SPIClient
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_util.client import Client as UtilClient
-from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_aligenieiap_1_0 import models as ali_genieiap__1__0_models
 from alibabacloud_tea_util import models as util_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
@@ -16,30 +16,129 @@ class Client(OpenApiClient):
     """
     *\
     """
+    _client: SPIClient = None
+
     def __init__(
         self, 
         config: open_api_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'AliGenie'
+        self._client = GatewayClientClient()
+        self._spi = self._client
         self._endpoint_rule = ''
-        self.check_config(config)
-        self._endpoint = self.get_endpoint('aligenie', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
+        if UtilClient.empty(self._endpoint):
+            self._endpoint = 'openapi.aligenie.com/v1.0/iap'
 
-    def get_endpoint(
+    def app_use_time_report_with_options(
         self,
-        product_id: str,
-        region_id: str,
-        endpoint_rule: str,
-        network: str,
-        suffix: str,
-        endpoint_map: Dict[str, str],
-        endpoint: str,
-    ) -> str:
-        if not UtilClient.empty(endpoint):
-            return endpoint
-        if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
-            return endpoint_map.get(region_id)
-        return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+        tmp_req: ali_genieiap__1__0_models.AppUseTimeReportRequest,
+        headers: ali_genieiap__1__0_models.AppUseTimeReportHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieiap__1__0_models.AppUseTimeReportResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieiap__1__0_models.AppUseTimeReportShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.device_info):
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.payload):
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
+        if not UtilClient.is_unset(tmp_req.user_info):
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.device_info_shrink):
+            body['DeviceInfo'] = request.device_info_shrink
+        if not UtilClient.is_unset(request.payload_shrink):
+            body['Payload'] = request.payload_shrink
+        if not UtilClient.is_unset(request.user_info_shrink):
+            body['UserInfo'] = request.user_info_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AppUseTimeReport',
+            version='iap_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/iap/vip/use/time/report',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.AppUseTimeReportResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.AppUseTimeReportResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def app_use_time_report_with_options_async(
+        self,
+        tmp_req: ali_genieiap__1__0_models.AppUseTimeReportRequest,
+        headers: ali_genieiap__1__0_models.AppUseTimeReportHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieiap__1__0_models.AppUseTimeReportResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieiap__1__0_models.AppUseTimeReportShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.device_info):
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.payload):
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
+        if not UtilClient.is_unset(tmp_req.user_info):
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.device_info_shrink):
+            body['DeviceInfo'] = request.device_info_shrink
+        if not UtilClient.is_unset(request.payload_shrink):
+            body['Payload'] = request.payload_shrink
+        if not UtilClient.is_unset(request.user_info_shrink):
+            body['UserInfo'] = request.user_info_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AppUseTimeReport',
+            version='iap_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/iap/vip/use/time/report',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.AppUseTimeReportResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.AppUseTimeReportResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def app_use_time_report(
         self,
@@ -57,21 +156,21 @@ class Client(OpenApiClient):
         headers = ali_genieiap__1__0_models.AppUseTimeReportHeaders()
         return await self.app_use_time_report_with_options_async(request, headers, runtime)
 
-    def app_use_time_report_with_options(
+    def create_reminder_with_options(
         self,
-        tmp_req: ali_genieiap__1__0_models.AppUseTimeReportRequest,
-        headers: ali_genieiap__1__0_models.AppUseTimeReportHeaders,
+        tmp_req: ali_genieiap__1__0_models.CreateReminderRequest,
+        headers: ali_genieiap__1__0_models.CreateReminderHeaders,
         runtime: util_models.RuntimeOptions,
-    ) -> ali_genieiap__1__0_models.AppUseTimeReportResponse:
+    ) -> ali_genieiap__1__0_models.CreateReminderResponse:
         UtilClient.validate_model(tmp_req)
-        request = ali_genieiap__1__0_models.AppUseTimeReportShrinkRequest()
+        request = ali_genieiap__1__0_models.CreateReminderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
@@ -91,36 +190,42 @@ class Client(OpenApiClient):
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='AppUseTimeReport',
+            action='CreateReminder',
             version='iap_1.0',
             protocol='HTTPS',
-            pathname=f'/v1.0/iap/vip/use/time/report',
+            pathname=f'/v1.0/iap/reminder/create',
             method='POST',
             auth_type='AK',
             style='ROA',
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieiap__1__0_models.AppUseTimeReportResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.CreateReminderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.CreateReminderResponse(),
+                self.execute(params, req, runtime)
+            )
 
-    async def app_use_time_report_with_options_async(
+    async def create_reminder_with_options_async(
         self,
-        tmp_req: ali_genieiap__1__0_models.AppUseTimeReportRequest,
-        headers: ali_genieiap__1__0_models.AppUseTimeReportHeaders,
+        tmp_req: ali_genieiap__1__0_models.CreateReminderRequest,
+        headers: ali_genieiap__1__0_models.CreateReminderHeaders,
         runtime: util_models.RuntimeOptions,
-    ) -> ali_genieiap__1__0_models.AppUseTimeReportResponse:
+    ) -> ali_genieiap__1__0_models.CreateReminderResponse:
         UtilClient.validate_model(tmp_req)
-        request = ali_genieiap__1__0_models.AppUseTimeReportShrinkRequest()
+        request = ali_genieiap__1__0_models.CreateReminderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
@@ -140,20 +245,26 @@ class Client(OpenApiClient):
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='AppUseTimeReport',
+            action='CreateReminder',
             version='iap_1.0',
             protocol='HTTPS',
-            pathname=f'/v1.0/iap/vip/use/time/report',
+            pathname=f'/v1.0/iap/reminder/create',
             method='POST',
             auth_type='AK',
             style='ROA',
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieiap__1__0_models.AppUseTimeReportResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.CreateReminderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.CreateReminderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_reminder(
         self,
@@ -171,28 +282,28 @@ class Client(OpenApiClient):
         headers = ali_genieiap__1__0_models.CreateReminderHeaders()
         return await self.create_reminder_with_options_async(request, headers, runtime)
 
-    def create_reminder_with_options(
+    def delete_reminder_with_options(
         self,
-        tmp_req: ali_genieiap__1__0_models.CreateReminderRequest,
-        headers: ali_genieiap__1__0_models.CreateReminderHeaders,
+        tmp_req: ali_genieiap__1__0_models.DeleteReminderRequest,
+        headers: ali_genieiap__1__0_models.DeleteReminderHeaders,
         runtime: util_models.RuntimeOptions,
-    ) -> ali_genieiap__1__0_models.CreateReminderResponse:
+    ) -> ali_genieiap__1__0_models.DeleteReminderResponse:
         UtilClient.validate_model(tmp_req)
-        request = ali_genieiap__1__0_models.CreateReminderShrinkRequest()
+        request = ali_genieiap__1__0_models.DeleteReminderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
-        body = {}
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
+        query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
-            body['DeviceInfo'] = request.device_info_shrink
+            query['DeviceInfo'] = request.device_info_shrink
         if not UtilClient.is_unset(request.payload_shrink):
-            body['Payload'] = request.payload_shrink
+            query['Payload'] = request.payload_shrink
         if not UtilClient.is_unset(request.user_info_shrink):
-            body['UserInfo'] = request.user_info_shrink
+            query['UserInfo'] = request.user_info_shrink
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -202,46 +313,52 @@ class Client(OpenApiClient):
             real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='CreateReminder',
+            action='DeleteReminder',
             version='iap_1.0',
             protocol='HTTPS',
-            pathname=f'/v1.0/iap/reminder/create',
-            method='POST',
+            pathname=f'/v1.0/iap/reminder/delete',
+            method='DELETE',
             auth_type='AK',
             style='ROA',
-            req_body_type='formData',
+            req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieiap__1__0_models.CreateReminderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.DeleteReminderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.DeleteReminderResponse(),
+                self.execute(params, req, runtime)
+            )
 
-    async def create_reminder_with_options_async(
+    async def delete_reminder_with_options_async(
         self,
-        tmp_req: ali_genieiap__1__0_models.CreateReminderRequest,
-        headers: ali_genieiap__1__0_models.CreateReminderHeaders,
+        tmp_req: ali_genieiap__1__0_models.DeleteReminderRequest,
+        headers: ali_genieiap__1__0_models.DeleteReminderHeaders,
         runtime: util_models.RuntimeOptions,
-    ) -> ali_genieiap__1__0_models.CreateReminderResponse:
+    ) -> ali_genieiap__1__0_models.DeleteReminderResponse:
         UtilClient.validate_model(tmp_req)
-        request = ali_genieiap__1__0_models.CreateReminderShrinkRequest()
+        request = ali_genieiap__1__0_models.DeleteReminderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
-        body = {}
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
+        query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
-            body['DeviceInfo'] = request.device_info_shrink
+            query['DeviceInfo'] = request.device_info_shrink
         if not UtilClient.is_unset(request.payload_shrink):
-            body['Payload'] = request.payload_shrink
+            query['Payload'] = request.payload_shrink
         if not UtilClient.is_unset(request.user_info_shrink):
-            body['UserInfo'] = request.user_info_shrink
+            query['UserInfo'] = request.user_info_shrink
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -251,23 +368,29 @@ class Client(OpenApiClient):
             real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='CreateReminder',
+            action='DeleteReminder',
             version='iap_1.0',
             protocol='HTTPS',
-            pathname=f'/v1.0/iap/reminder/create',
-            method='POST',
+            pathname=f'/v1.0/iap/reminder/delete',
+            method='DELETE',
             auth_type='AK',
             style='ROA',
-            req_body_type='formData',
+            req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieiap__1__0_models.CreateReminderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.DeleteReminderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.DeleteReminderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_reminder(
         self,
@@ -285,21 +408,21 @@ class Client(OpenApiClient):
         headers = ali_genieiap__1__0_models.DeleteReminderHeaders()
         return await self.delete_reminder_with_options_async(request, headers, runtime)
 
-    def delete_reminder_with_options(
+    def get_account_for_app_with_options(
         self,
-        tmp_req: ali_genieiap__1__0_models.DeleteReminderRequest,
-        headers: ali_genieiap__1__0_models.DeleteReminderHeaders,
+        tmp_req: ali_genieiap__1__0_models.GetAccountForAppRequest,
+        headers: ali_genieiap__1__0_models.GetAccountForAppHeaders,
         runtime: util_models.RuntimeOptions,
-    ) -> ali_genieiap__1__0_models.DeleteReminderResponse:
+    ) -> ali_genieiap__1__0_models.GetAccountForAppResponse:
         UtilClient.validate_model(tmp_req)
-        request = ali_genieiap__1__0_models.DeleteReminderShrinkRequest()
+        request = ali_genieiap__1__0_models.GetAccountForAppShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -319,36 +442,42 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DeleteReminder',
+            action='GetAccountForApp',
             version='iap_1.0',
             protocol='HTTPS',
-            pathname=f'/v1.0/iap/reminder/delete',
-            method='DELETE',
+            pathname=f'/v1.0/iap/vip/account/get',
+            method='GET',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieiap__1__0_models.DeleteReminderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.GetAccountForAppResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.GetAccountForAppResponse(),
+                self.execute(params, req, runtime)
+            )
 
-    async def delete_reminder_with_options_async(
+    async def get_account_for_app_with_options_async(
         self,
-        tmp_req: ali_genieiap__1__0_models.DeleteReminderRequest,
-        headers: ali_genieiap__1__0_models.DeleteReminderHeaders,
+        tmp_req: ali_genieiap__1__0_models.GetAccountForAppRequest,
+        headers: ali_genieiap__1__0_models.GetAccountForAppHeaders,
         runtime: util_models.RuntimeOptions,
-    ) -> ali_genieiap__1__0_models.DeleteReminderResponse:
+    ) -> ali_genieiap__1__0_models.GetAccountForAppResponse:
         UtilClient.validate_model(tmp_req)
-        request = ali_genieiap__1__0_models.DeleteReminderShrinkRequest()
+        request = ali_genieiap__1__0_models.GetAccountForAppShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -368,20 +497,26 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DeleteReminder',
+            action='GetAccountForApp',
             version='iap_1.0',
             protocol='HTTPS',
-            pathname=f'/v1.0/iap/reminder/delete',
-            method='DELETE',
+            pathname=f'/v1.0/iap/vip/account/get',
+            method='GET',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieiap__1__0_models.DeleteReminderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.GetAccountForAppResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.GetAccountForAppResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_account_for_app(
         self,
@@ -399,21 +534,21 @@ class Client(OpenApiClient):
         headers = ali_genieiap__1__0_models.GetAccountForAppHeaders()
         return await self.get_account_for_app_with_options_async(request, headers, runtime)
 
-    def get_account_for_app_with_options(
+    def get_bus_app_config_with_options(
         self,
-        tmp_req: ali_genieiap__1__0_models.GetAccountForAppRequest,
-        headers: ali_genieiap__1__0_models.GetAccountForAppHeaders,
+        tmp_req: ali_genieiap__1__0_models.GetBusAppConfigRequest,
+        headers: ali_genieiap__1__0_models.GetBusAppConfigHeaders,
         runtime: util_models.RuntimeOptions,
-    ) -> ali_genieiap__1__0_models.GetAccountForAppResponse:
+    ) -> ali_genieiap__1__0_models.GetBusAppConfigResponse:
         UtilClient.validate_model(tmp_req)
-        request = ali_genieiap__1__0_models.GetAccountForAppShrinkRequest()
+        request = ali_genieiap__1__0_models.GetBusAppConfigShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -433,36 +568,42 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetAccountForApp',
+            action='GetBusAppConfig',
             version='iap_1.0',
             protocol='HTTPS',
-            pathname=f'/v1.0/iap/vip/account/get',
+            pathname=f'/v1.0/iap/app/config/get',
             method='GET',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieiap__1__0_models.GetAccountForAppResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.GetBusAppConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.GetBusAppConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
-    async def get_account_for_app_with_options_async(
+    async def get_bus_app_config_with_options_async(
         self,
-        tmp_req: ali_genieiap__1__0_models.GetAccountForAppRequest,
-        headers: ali_genieiap__1__0_models.GetAccountForAppHeaders,
+        tmp_req: ali_genieiap__1__0_models.GetBusAppConfigRequest,
+        headers: ali_genieiap__1__0_models.GetBusAppConfigHeaders,
         runtime: util_models.RuntimeOptions,
-    ) -> ali_genieiap__1__0_models.GetAccountForAppResponse:
+    ) -> ali_genieiap__1__0_models.GetBusAppConfigResponse:
         UtilClient.validate_model(tmp_req)
-        request = ali_genieiap__1__0_models.GetAccountForAppShrinkRequest()
+        request = ali_genieiap__1__0_models.GetBusAppConfigShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -482,20 +623,144 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetAccountForApp',
+            action='GetBusAppConfig',
             version='iap_1.0',
             protocol='HTTPS',
-            pathname=f'/v1.0/iap/vip/account/get',
+            pathname=f'/v1.0/iap/app/config/get',
             method='GET',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieiap__1__0_models.GetAccountForAppResponse(),
-            await self.call_api_async(params, req, runtime)
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.GetBusAppConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.GetBusAppConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_bus_app_config(
+        self,
+        request: ali_genieiap__1__0_models.GetBusAppConfigRequest,
+    ) -> ali_genieiap__1__0_models.GetBusAppConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieiap__1__0_models.GetBusAppConfigHeaders()
+        return self.get_bus_app_config_with_options(request, headers, runtime)
+
+    async def get_bus_app_config_async(
+        self,
+        request: ali_genieiap__1__0_models.GetBusAppConfigRequest,
+    ) -> ali_genieiap__1__0_models.GetBusAppConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieiap__1__0_models.GetBusAppConfigHeaders()
+        return await self.get_bus_app_config_with_options_async(request, headers, runtime)
+
+    def get_phone_number_with_options(
+        self,
+        tmp_req: ali_genieiap__1__0_models.GetPhoneNumberRequest,
+        headers: ali_genieiap__1__0_models.GetPhoneNumberHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieiap__1__0_models.GetPhoneNumberResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieiap__1__0_models.GetPhoneNumberShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.device_info):
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.user_info):
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.device_info_shrink):
+            query['DeviceInfo'] = request.device_info_shrink
+        if not UtilClient.is_unset(request.user_info_shrink):
+            query['UserInfo'] = request.user_info_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetPhoneNumber',
+            version='iap_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/iap/profile/phoneNumber',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.GetPhoneNumberResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.GetPhoneNumberResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_phone_number_with_options_async(
+        self,
+        tmp_req: ali_genieiap__1__0_models.GetPhoneNumberRequest,
+        headers: ali_genieiap__1__0_models.GetPhoneNumberHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieiap__1__0_models.GetPhoneNumberResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieiap__1__0_models.GetPhoneNumberShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.device_info):
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.user_info):
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.device_info_shrink):
+            query['DeviceInfo'] = request.device_info_shrink
+        if not UtilClient.is_unset(request.user_info_shrink):
+            query['UserInfo'] = request.user_info_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPhoneNumber',
+            version='iap_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/iap/profile/phoneNumber',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.GetPhoneNumberResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.GetPhoneNumberResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_phone_number(
         self,
@@ -513,22 +778,26 @@ class Client(OpenApiClient):
         headers = ali_genieiap__1__0_models.GetPhoneNumberHeaders()
         return await self.get_phone_number_with_options_async(request, headers, runtime)
 
-    def get_phone_number_with_options(
+    def get_reminder_with_options(
         self,
-        tmp_req: ali_genieiap__1__0_models.GetPhoneNumberRequest,
-        headers: ali_genieiap__1__0_models.GetPhoneNumberHeaders,
+        tmp_req: ali_genieiap__1__0_models.GetReminderRequest,
+        headers: ali_genieiap__1__0_models.GetReminderHeaders,
         runtime: util_models.RuntimeOptions,
-    ) -> ali_genieiap__1__0_models.GetPhoneNumberResponse:
+    ) -> ali_genieiap__1__0_models.GetReminderResponse:
         UtilClient.validate_model(tmp_req)
-        request = ali_genieiap__1__0_models.GetPhoneNumberShrinkRequest()
+        request = ali_genieiap__1__0_models.GetReminderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.payload):
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
+        if not UtilClient.is_unset(request.payload_shrink):
+            query['Payload'] = request.payload_shrink
         if not UtilClient.is_unset(request.user_info_shrink):
             query['UserInfo'] = request.user_info_shrink
         real_headers = {}
@@ -543,37 +812,47 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetPhoneNumber',
+            action='GetReminder',
             version='iap_1.0',
             protocol='HTTPS',
-            pathname=f'/v1.0/iap/profile/phoneNumber',
+            pathname=f'/v1.0/iap/reminder/get',
             method='GET',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieiap__1__0_models.GetPhoneNumberResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.GetReminderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.GetReminderResponse(),
+                self.execute(params, req, runtime)
+            )
 
-    async def get_phone_number_with_options_async(
+    async def get_reminder_with_options_async(
         self,
-        tmp_req: ali_genieiap__1__0_models.GetPhoneNumberRequest,
-        headers: ali_genieiap__1__0_models.GetPhoneNumberHeaders,
+        tmp_req: ali_genieiap__1__0_models.GetReminderRequest,
+        headers: ali_genieiap__1__0_models.GetReminderHeaders,
         runtime: util_models.RuntimeOptions,
-    ) -> ali_genieiap__1__0_models.GetPhoneNumberResponse:
+    ) -> ali_genieiap__1__0_models.GetReminderResponse:
         UtilClient.validate_model(tmp_req)
-        request = ali_genieiap__1__0_models.GetPhoneNumberShrinkRequest()
+        request = ali_genieiap__1__0_models.GetReminderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.payload):
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
+        if not UtilClient.is_unset(request.payload_shrink):
+            query['Payload'] = request.payload_shrink
         if not UtilClient.is_unset(request.user_info_shrink):
             query['UserInfo'] = request.user_info_shrink
         real_headers = {}
@@ -588,20 +867,26 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetPhoneNumber',
+            action='GetReminder',
             version='iap_1.0',
             protocol='HTTPS',
-            pathname=f'/v1.0/iap/profile/phoneNumber',
+            pathname=f'/v1.0/iap/reminder/get',
             method='GET',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieiap__1__0_models.GetPhoneNumberResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.GetReminderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.GetReminderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_reminder(
         self,
@@ -619,21 +904,21 @@ class Client(OpenApiClient):
         headers = ali_genieiap__1__0_models.GetReminderHeaders()
         return await self.get_reminder_with_options_async(request, headers, runtime)
 
-    def get_reminder_with_options(
+    def list_reminders_with_options(
         self,
-        tmp_req: ali_genieiap__1__0_models.GetReminderRequest,
-        headers: ali_genieiap__1__0_models.GetReminderHeaders,
+        tmp_req: ali_genieiap__1__0_models.ListRemindersRequest,
+        headers: ali_genieiap__1__0_models.ListRemindersHeaders,
         runtime: util_models.RuntimeOptions,
-    ) -> ali_genieiap__1__0_models.GetReminderResponse:
+    ) -> ali_genieiap__1__0_models.ListRemindersResponse:
         UtilClient.validate_model(tmp_req)
-        request = ali_genieiap__1__0_models.GetReminderShrinkRequest()
+        request = ali_genieiap__1__0_models.ListRemindersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -653,36 +938,42 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetReminder',
+            action='ListReminders',
             version='iap_1.0',
             protocol='HTTPS',
-            pathname=f'/v1.0/iap/reminder/get',
+            pathname=f'/v1.0/iap/reminder/list',
             method='GET',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieiap__1__0_models.GetReminderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.ListRemindersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.ListRemindersResponse(),
+                self.execute(params, req, runtime)
+            )
 
-    async def get_reminder_with_options_async(
+    async def list_reminders_with_options_async(
         self,
-        tmp_req: ali_genieiap__1__0_models.GetReminderRequest,
-        headers: ali_genieiap__1__0_models.GetReminderHeaders,
+        tmp_req: ali_genieiap__1__0_models.ListRemindersRequest,
+        headers: ali_genieiap__1__0_models.ListRemindersHeaders,
         runtime: util_models.RuntimeOptions,
-    ) -> ali_genieiap__1__0_models.GetReminderResponse:
+    ) -> ali_genieiap__1__0_models.ListRemindersResponse:
         UtilClient.validate_model(tmp_req)
-        request = ali_genieiap__1__0_models.GetReminderShrinkRequest()
+        request = ali_genieiap__1__0_models.ListRemindersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -702,20 +993,26 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetReminder',
+            action='ListReminders',
             version='iap_1.0',
             protocol='HTTPS',
-            pathname=f'/v1.0/iap/reminder/get',
+            pathname=f'/v1.0/iap/reminder/list',
             method='GET',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieiap__1__0_models.GetReminderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.ListRemindersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.ListRemindersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_reminders(
         self,
@@ -733,21 +1030,21 @@ class Client(OpenApiClient):
         headers = ali_genieiap__1__0_models.ListRemindersHeaders()
         return await self.list_reminders_with_options_async(request, headers, runtime)
 
-    def list_reminders_with_options(
+    def pull_cashier_with_options(
         self,
-        tmp_req: ali_genieiap__1__0_models.ListRemindersRequest,
-        headers: ali_genieiap__1__0_models.ListRemindersHeaders,
+        tmp_req: ali_genieiap__1__0_models.PullCashierRequest,
+        headers: ali_genieiap__1__0_models.PullCashierHeaders,
         runtime: util_models.RuntimeOptions,
-    ) -> ali_genieiap__1__0_models.ListRemindersResponse:
+    ) -> ali_genieiap__1__0_models.PullCashierResponse:
         UtilClient.validate_model(tmp_req)
-        request = ali_genieiap__1__0_models.ListRemindersShrinkRequest()
+        request = ali_genieiap__1__0_models.PullCashierShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -767,36 +1064,42 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListReminders',
+            action='PullCashier',
             version='iap_1.0',
             protocol='HTTPS',
-            pathname=f'/v1.0/iap/reminder/list',
-            method='GET',
+            pathname=f'/v1.0/iap/pull/cashier/',
+            method='POST',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieiap__1__0_models.ListRemindersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.PullCashierResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.PullCashierResponse(),
+                self.execute(params, req, runtime)
+            )
 
-    async def list_reminders_with_options_async(
+    async def pull_cashier_with_options_async(
         self,
-        tmp_req: ali_genieiap__1__0_models.ListRemindersRequest,
-        headers: ali_genieiap__1__0_models.ListRemindersHeaders,
+        tmp_req: ali_genieiap__1__0_models.PullCashierRequest,
+        headers: ali_genieiap__1__0_models.PullCashierHeaders,
         runtime: util_models.RuntimeOptions,
-    ) -> ali_genieiap__1__0_models.ListRemindersResponse:
+    ) -> ali_genieiap__1__0_models.PullCashierResponse:
         UtilClient.validate_model(tmp_req)
-        request = ali_genieiap__1__0_models.ListRemindersShrinkRequest()
+        request = ali_genieiap__1__0_models.PullCashierShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -816,20 +1119,26 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListReminders',
+            action='PullCashier',
             version='iap_1.0',
             protocol='HTTPS',
-            pathname=f'/v1.0/iap/reminder/list',
-            method='GET',
+            pathname=f'/v1.0/iap/pull/cashier/',
+            method='POST',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieiap__1__0_models.ListRemindersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.PullCashierResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.PullCashierResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def pull_cashier(
         self,
@@ -847,28 +1156,24 @@ class Client(OpenApiClient):
         headers = ali_genieiap__1__0_models.PullCashierHeaders()
         return await self.pull_cashier_with_options_async(request, headers, runtime)
 
-    def pull_cashier_with_options(
+    def push_notifications_with_options(
         self,
-        tmp_req: ali_genieiap__1__0_models.PullCashierRequest,
-        headers: ali_genieiap__1__0_models.PullCashierHeaders,
+        tmp_req: ali_genieiap__1__0_models.PushNotificationsRequest,
+        headers: ali_genieiap__1__0_models.PushNotificationsHeaders,
         runtime: util_models.RuntimeOptions,
-    ) -> ali_genieiap__1__0_models.PullCashierResponse:
+    ) -> ali_genieiap__1__0_models.PushNotificationsResponse:
         UtilClient.validate_model(tmp_req)
-        request = ali_genieiap__1__0_models.PullCashierShrinkRequest()
+        request = ali_genieiap__1__0_models.PushNotificationsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
-        if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
-        if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.device_info_shrink):
-            query['DeviceInfo'] = request.device_info_shrink
-        if not UtilClient.is_unset(request.payload_shrink):
-            query['Payload'] = request.payload_shrink
-        if not UtilClient.is_unset(request.user_info_shrink):
-            query['UserInfo'] = request.user_info_shrink
+        if not UtilClient.is_unset(tmp_req.notification_unicast_request):
+            request.notification_unicast_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification_unicast_request, 'NotificationUnicastRequest', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_info):
+            request.tenant_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_info, 'TenantInfo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.notification_unicast_request_shrink):
+            body['NotificationUnicastRequest'] = request.notification_unicast_request_shrink
+        if not UtilClient.is_unset(request.tenant_info_shrink):
+            body['TenantInfo'] = request.tenant_info_shrink
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -878,46 +1183,48 @@ class Client(OpenApiClient):
             real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='PullCashier',
+            action='PushNotifications',
             version='iap_1.0',
             protocol='HTTPS',
-            pathname=f'/v1.0/iap/pull/cashier/',
-            method='POST',
+            pathname=f'/v1.0/iap/notifications',
+            method='PUT',
             auth_type='AK',
             style='ROA',
-            req_body_type='json',
-            body_type='json'
+            req_body_type='formData',
+            body_type='none'
         )
-        return TeaCore.from_map(
-            ali_genieiap__1__0_models.PullCashierResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.PushNotificationsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.PushNotificationsResponse(),
+                self.execute(params, req, runtime)
+            )
 
-    async def pull_cashier_with_options_async(
+    async def push_notifications_with_options_async(
         self,
-        tmp_req: ali_genieiap__1__0_models.PullCashierRequest,
-        headers: ali_genieiap__1__0_models.PullCashierHeaders,
+        tmp_req: ali_genieiap__1__0_models.PushNotificationsRequest,
+        headers: ali_genieiap__1__0_models.PushNotificationsHeaders,
         runtime: util_models.RuntimeOptions,
-    ) -> ali_genieiap__1__0_models.PullCashierResponse:
+    ) -> ali_genieiap__1__0_models.PushNotificationsResponse:
         UtilClient.validate_model(tmp_req)
-        request = ali_genieiap__1__0_models.PullCashierShrinkRequest()
+        request = ali_genieiap__1__0_models.PushNotificationsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
-        if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
-        if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.device_info_shrink):
-            query['DeviceInfo'] = request.device_info_shrink
-        if not UtilClient.is_unset(request.payload_shrink):
-            query['Payload'] = request.payload_shrink
-        if not UtilClient.is_unset(request.user_info_shrink):
-            query['UserInfo'] = request.user_info_shrink
+        if not UtilClient.is_unset(tmp_req.notification_unicast_request):
+            request.notification_unicast_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification_unicast_request, 'NotificationUnicastRequest', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_info):
+            request.tenant_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_info, 'TenantInfo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.notification_unicast_request_shrink):
+            body['NotificationUnicastRequest'] = request.notification_unicast_request_shrink
+        if not UtilClient.is_unset(request.tenant_info_shrink):
+            body['TenantInfo'] = request.tenant_info_shrink
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -927,23 +1234,29 @@ class Client(OpenApiClient):
             real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='PullCashier',
+            action='PushNotifications',
             version='iap_1.0',
             protocol='HTTPS',
-            pathname=f'/v1.0/iap/pull/cashier/',
-            method='POST',
+            pathname=f'/v1.0/iap/notifications',
+            method='PUT',
             auth_type='AK',
             style='ROA',
-            req_body_type='json',
-            body_type='json'
+            req_body_type='formData',
+            body_type='none'
         )
-        return TeaCore.from_map(
-            ali_genieiap__1__0_models.PullCashierResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.PushNotificationsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.PushNotificationsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def push_notifications(
         self,
@@ -961,24 +1274,32 @@ class Client(OpenApiClient):
         headers = ali_genieiap__1__0_models.PushNotificationsHeaders()
         return await self.push_notifications_with_options_async(request, headers, runtime)
 
-    def push_notifications_with_options(
+    def send_notifications_with_options(
         self,
-        tmp_req: ali_genieiap__1__0_models.PushNotificationsRequest,
-        headers: ali_genieiap__1__0_models.PushNotificationsHeaders,
+        tmp_req: ali_genieiap__1__0_models.SendNotificationsRequest,
+        headers: ali_genieiap__1__0_models.SendNotificationsHeaders,
         runtime: util_models.RuntimeOptions,
-    ) -> ali_genieiap__1__0_models.PushNotificationsResponse:
+    ) -> ali_genieiap__1__0_models.SendNotificationsResponse:
         UtilClient.validate_model(tmp_req)
-        request = ali_genieiap__1__0_models.PushNotificationsShrinkRequest()
+        request = ali_genieiap__1__0_models.SendNotificationsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.device_info):
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.notification_unicast_request):
-            request.notification_unicast_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.notification_unicast_request), 'NotificationUnicastRequest', 'json')
+            request.notification_unicast_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification_unicast_request, 'NotificationUnicastRequest', 'json')
         if not UtilClient.is_unset(tmp_req.tenant_info):
-            request.tenant_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.tenant_info), 'TenantInfo', 'json')
+            request.tenant_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_info, 'TenantInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.user_info):
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
+        if not UtilClient.is_unset(request.device_info_shrink):
+            body['DeviceInfo'] = request.device_info_shrink
         if not UtilClient.is_unset(request.notification_unicast_request_shrink):
             body['NotificationUnicastRequest'] = request.notification_unicast_request_shrink
         if not UtilClient.is_unset(request.tenant_info_shrink):
             body['TenantInfo'] = request.tenant_info_shrink
+        if not UtilClient.is_unset(request.user_info_shrink):
+            body['UserInfo'] = request.user_info_shrink
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -991,39 +1312,53 @@ class Client(OpenApiClient):
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='PushNotifications',
+            action='SendNotifications',
             version='iap_1.0',
             protocol='HTTPS',
-            pathname=f'/v1.0/iap/notifications',
+            pathname=f'/v1.0/iap/general/notifications',
             method='PUT',
             auth_type='AK',
             style='ROA',
             req_body_type='formData',
             body_type='none'
         )
-        return TeaCore.from_map(
-            ali_genieiap__1__0_models.PushNotificationsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.SendNotificationsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.SendNotificationsResponse(),
+                self.execute(params, req, runtime)
+            )
 
-    async def push_notifications_with_options_async(
+    async def send_notifications_with_options_async(
         self,
-        tmp_req: ali_genieiap__1__0_models.PushNotificationsRequest,
-        headers: ali_genieiap__1__0_models.PushNotificationsHeaders,
+        tmp_req: ali_genieiap__1__0_models.SendNotificationsRequest,
+        headers: ali_genieiap__1__0_models.SendNotificationsHeaders,
         runtime: util_models.RuntimeOptions,
-    ) -> ali_genieiap__1__0_models.PushNotificationsResponse:
+    ) -> ali_genieiap__1__0_models.SendNotificationsResponse:
         UtilClient.validate_model(tmp_req)
-        request = ali_genieiap__1__0_models.PushNotificationsShrinkRequest()
+        request = ali_genieiap__1__0_models.SendNotificationsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.device_info):
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.notification_unicast_request):
-            request.notification_unicast_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.notification_unicast_request), 'NotificationUnicastRequest', 'json')
+            request.notification_unicast_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification_unicast_request, 'NotificationUnicastRequest', 'json')
         if not UtilClient.is_unset(tmp_req.tenant_info):
-            request.tenant_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.tenant_info), 'TenantInfo', 'json')
+            request.tenant_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_info, 'TenantInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.user_info):
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
+        if not UtilClient.is_unset(request.device_info_shrink):
+            body['DeviceInfo'] = request.device_info_shrink
         if not UtilClient.is_unset(request.notification_unicast_request_shrink):
             body['NotificationUnicastRequest'] = request.notification_unicast_request_shrink
         if not UtilClient.is_unset(request.tenant_info_shrink):
             body['TenantInfo'] = request.tenant_info_shrink
+        if not UtilClient.is_unset(request.user_info_shrink):
+            body['UserInfo'] = request.user_info_shrink
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -1036,20 +1371,26 @@ class Client(OpenApiClient):
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='PushNotifications',
+            action='SendNotifications',
             version='iap_1.0',
             protocol='HTTPS',
-            pathname=f'/v1.0/iap/notifications',
+            pathname=f'/v1.0/iap/general/notifications',
             method='PUT',
             auth_type='AK',
             style='ROA',
             req_body_type='formData',
             body_type='none'
         )
-        return TeaCore.from_map(
-            ali_genieiap__1__0_models.PushNotificationsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.SendNotificationsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.SendNotificationsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def send_notifications(
         self,
@@ -1067,30 +1408,26 @@ class Client(OpenApiClient):
         headers = ali_genieiap__1__0_models.SendNotificationsHeaders()
         return await self.send_notifications_with_options_async(request, headers, runtime)
 
-    def send_notifications_with_options(
+    def update_reminder_with_options(
         self,
-        tmp_req: ali_genieiap__1__0_models.SendNotificationsRequest,
-        headers: ali_genieiap__1__0_models.SendNotificationsHeaders,
+        tmp_req: ali_genieiap__1__0_models.UpdateReminderRequest,
+        headers: ali_genieiap__1__0_models.UpdateReminderHeaders,
         runtime: util_models.RuntimeOptions,
-    ) -> ali_genieiap__1__0_models.SendNotificationsResponse:
+    ) -> ali_genieiap__1__0_models.UpdateReminderResponse:
         UtilClient.validate_model(tmp_req)
-        request = ali_genieiap__1__0_models.SendNotificationsShrinkRequest()
+        request = ali_genieiap__1__0_models.UpdateReminderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
-        if not UtilClient.is_unset(tmp_req.notification_unicast_request):
-            request.notification_unicast_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.notification_unicast_request), 'NotificationUnicastRequest', 'json')
-        if not UtilClient.is_unset(tmp_req.tenant_info):
-            request.tenant_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.tenant_info), 'TenantInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.payload):
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
-        if not UtilClient.is_unset(request.notification_unicast_request_shrink):
-            body['NotificationUnicastRequest'] = request.notification_unicast_request_shrink
-        if not UtilClient.is_unset(request.tenant_info_shrink):
-            body['TenantInfo'] = request.tenant_info_shrink
+        if not UtilClient.is_unset(request.payload_shrink):
+            body['Payload'] = request.payload_shrink
         if not UtilClient.is_unset(request.user_info_shrink):
             body['UserInfo'] = request.user_info_shrink
         real_headers = {}
@@ -1105,45 +1442,47 @@ class Client(OpenApiClient):
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='SendNotifications',
+            action='UpdateReminder',
             version='iap_1.0',
             protocol='HTTPS',
-            pathname=f'/v1.0/iap/general/notifications',
+            pathname=f'/v1.0/iap/reminder/update',
             method='PUT',
             auth_type='AK',
             style='ROA',
             req_body_type='formData',
-            body_type='none'
+            body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieiap__1__0_models.SendNotificationsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.UpdateReminderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.UpdateReminderResponse(),
+                self.execute(params, req, runtime)
+            )
 
-    async def send_notifications_with_options_async(
+    async def update_reminder_with_options_async(
         self,
-        tmp_req: ali_genieiap__1__0_models.SendNotificationsRequest,
-        headers: ali_genieiap__1__0_models.SendNotificationsHeaders,
+        tmp_req: ali_genieiap__1__0_models.UpdateReminderRequest,
+        headers: ali_genieiap__1__0_models.UpdateReminderHeaders,
         runtime: util_models.RuntimeOptions,
-    ) -> ali_genieiap__1__0_models.SendNotificationsResponse:
+    ) -> ali_genieiap__1__0_models.UpdateReminderResponse:
         UtilClient.validate_model(tmp_req)
-        request = ali_genieiap__1__0_models.SendNotificationsShrinkRequest()
+        request = ali_genieiap__1__0_models.UpdateReminderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
-        if not UtilClient.is_unset(tmp_req.notification_unicast_request):
-            request.notification_unicast_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.notification_unicast_request), 'NotificationUnicastRequest', 'json')
-        if not UtilClient.is_unset(tmp_req.tenant_info):
-            request.tenant_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.tenant_info), 'TenantInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.payload):
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
-        if not UtilClient.is_unset(request.notification_unicast_request_shrink):
-            body['NotificationUnicastRequest'] = request.notification_unicast_request_shrink
-        if not UtilClient.is_unset(request.tenant_info_shrink):
-            body['TenantInfo'] = request.tenant_info_shrink
+        if not UtilClient.is_unset(request.payload_shrink):
+            body['Payload'] = request.payload_shrink
         if not UtilClient.is_unset(request.user_info_shrink):
             body['UserInfo'] = request.user_info_shrink
         real_headers = {}
@@ -1158,20 +1497,26 @@ class Client(OpenApiClient):
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='SendNotifications',
+            action='UpdateReminder',
             version='iap_1.0',
             protocol='HTTPS',
-            pathname=f'/v1.0/iap/general/notifications',
+            pathname=f'/v1.0/iap/reminder/update',
             method='PUT',
             auth_type='AK',
             style='ROA',
             req_body_type='formData',
-            body_type='none'
+            body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieiap__1__0_models.SendNotificationsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.UpdateReminderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.UpdateReminderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_reminder(
         self,
@@ -1189,21 +1534,21 @@ class Client(OpenApiClient):
         headers = ali_genieiap__1__0_models.UpdateReminderHeaders()
         return await self.update_reminder_with_options_async(request, headers, runtime)
 
-    def update_reminder_with_options(
+    def video_app_report_with_options(
         self,
-        tmp_req: ali_genieiap__1__0_models.UpdateReminderRequest,
-        headers: ali_genieiap__1__0_models.UpdateReminderHeaders,
+        tmp_req: ali_genieiap__1__0_models.VideoAppReportRequest,
+        headers: ali_genieiap__1__0_models.VideoAppReportHeaders,
         runtime: util_models.RuntimeOptions,
-    ) -> ali_genieiap__1__0_models.UpdateReminderResponse:
+    ) -> ali_genieiap__1__0_models.VideoAppReportResponse:
         UtilClient.validate_model(tmp_req)
-        request = ali_genieiap__1__0_models.UpdateReminderShrinkRequest()
+        request = ali_genieiap__1__0_models.VideoAppReportShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
@@ -1223,36 +1568,42 @@ class Client(OpenApiClient):
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='UpdateReminder',
+            action='VideoAppReport',
             version='iap_1.0',
             protocol='HTTPS',
-            pathname=f'/v1.0/iap/reminder/update',
-            method='PUT',
+            pathname=f'/v1.0/iap/vip/use/video/report',
+            method='POST',
             auth_type='AK',
             style='ROA',
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieiap__1__0_models.UpdateReminderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.VideoAppReportResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.VideoAppReportResponse(),
+                self.execute(params, req, runtime)
+            )
 
-    async def update_reminder_with_options_async(
+    async def video_app_report_with_options_async(
         self,
-        tmp_req: ali_genieiap__1__0_models.UpdateReminderRequest,
-        headers: ali_genieiap__1__0_models.UpdateReminderHeaders,
+        tmp_req: ali_genieiap__1__0_models.VideoAppReportRequest,
+        headers: ali_genieiap__1__0_models.VideoAppReportHeaders,
         runtime: util_models.RuntimeOptions,
-    ) -> ali_genieiap__1__0_models.UpdateReminderResponse:
+    ) -> ali_genieiap__1__0_models.VideoAppReportResponse:
         UtilClient.validate_model(tmp_req)
-        request = ali_genieiap__1__0_models.UpdateReminderShrinkRequest()
+        request = ali_genieiap__1__0_models.VideoAppReportShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
@@ -1272,20 +1623,26 @@ class Client(OpenApiClient):
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='UpdateReminder',
+            action='VideoAppReport',
             version='iap_1.0',
             protocol='HTTPS',
-            pathname=f'/v1.0/iap/reminder/update',
-            method='PUT',
+            pathname=f'/v1.0/iap/vip/use/video/report',
+            method='POST',
             auth_type='AK',
             style='ROA',
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieiap__1__0_models.UpdateReminderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.VideoAppReportResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.VideoAppReportResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def video_app_report(
         self,
@@ -1302,120 +1659,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = ali_genieiap__1__0_models.VideoAppReportHeaders()
         return await self.video_app_report_with_options_async(request, headers, runtime)
-
-    def video_app_report_with_options(
-        self,
-        tmp_req: ali_genieiap__1__0_models.VideoAppReportRequest,
-        headers: ali_genieiap__1__0_models.VideoAppReportHeaders,
-        runtime: util_models.RuntimeOptions,
-    ) -> ali_genieiap__1__0_models.VideoAppReportResponse:
-        UtilClient.validate_model(tmp_req)
-        request = ali_genieiap__1__0_models.VideoAppReportShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
-        if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
-        if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.device_info_shrink):
-            body['DeviceInfo'] = request.device_info_shrink
-        if not UtilClient.is_unset(request.payload_shrink):
-            body['Payload'] = request.payload_shrink
-        if not UtilClient.is_unset(request.user_info_shrink):
-            body['UserInfo'] = request.user_info_shrink
-        real_headers = {}
-        if not UtilClient.is_unset(headers.common_headers):
-            real_headers = headers.common_headers
-        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
-            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
-        if not UtilClient.is_unset(headers.authorization):
-            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
-        req = open_api_models.OpenApiRequest(
-            headers=real_headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='VideoAppReport',
-            version='iap_1.0',
-            protocol='HTTPS',
-            pathname=f'/v1.0/iap/vip/use/video/report',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ali_genieiap__1__0_models.VideoAppReportResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def video_app_report_with_options_async(
-        self,
-        tmp_req: ali_genieiap__1__0_models.VideoAppReportRequest,
-        headers: ali_genieiap__1__0_models.VideoAppReportHeaders,
-        runtime: util_models.RuntimeOptions,
-    ) -> ali_genieiap__1__0_models.VideoAppReportResponse:
-        UtilClient.validate_model(tmp_req)
-        request = ali_genieiap__1__0_models.VideoAppReportShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
-        if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
-        if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.device_info_shrink):
-            body['DeviceInfo'] = request.device_info_shrink
-        if not UtilClient.is_unset(request.payload_shrink):
-            body['Payload'] = request.payload_shrink
-        if not UtilClient.is_unset(request.user_info_shrink):
-            body['UserInfo'] = request.user_info_shrink
-        real_headers = {}
-        if not UtilClient.is_unset(headers.common_headers):
-            real_headers = headers.common_headers
-        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
-            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
-        if not UtilClient.is_unset(headers.authorization):
-            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
-        req = open_api_models.OpenApiRequest(
-            headers=real_headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='VideoAppReport',
-            version='iap_1.0',
-            protocol='HTTPS',
-            pathname=f'/v1.0/iap/vip/use/video/report',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ali_genieiap__1__0_models.VideoAppReportResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def wake_up_app(
-        self,
-        request: ali_genieiap__1__0_models.WakeUpAppRequest,
-    ) -> ali_genieiap__1__0_models.WakeUpAppResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = ali_genieiap__1__0_models.WakeUpAppHeaders()
-        return self.wake_up_app_with_options(request, headers, runtime)
-
-    async def wake_up_app_async(
-        self,
-        request: ali_genieiap__1__0_models.WakeUpAppRequest,
-    ) -> ali_genieiap__1__0_models.WakeUpAppResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = ali_genieiap__1__0_models.WakeUpAppHeaders()
-        return await self.wake_up_app_with_options_async(request, headers, runtime)
 
     def wake_up_app_with_options(
         self,
@@ -1453,10 +1696,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='none'
         )
-        return TeaCore.from_map(
-            ali_genieiap__1__0_models.WakeUpAppResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.WakeUpAppResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.WakeUpAppResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def wake_up_app_with_options_async(
         self,
@@ -1494,7 +1743,29 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='none'
         )
-        return TeaCore.from_map(
-            ali_genieiap__1__0_models.WakeUpAppResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.WakeUpAppResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieiap__1__0_models.WakeUpAppResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def wake_up_app(
+        self,
+        request: ali_genieiap__1__0_models.WakeUpAppRequest,
+    ) -> ali_genieiap__1__0_models.WakeUpAppResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieiap__1__0_models.WakeUpAppHeaders()
+        return self.wake_up_app_with_options(request, headers, runtime)
+
+    async def wake_up_app_async(
+        self,
+        request: ali_genieiap__1__0_models.WakeUpAppRequest,
+    ) -> ali_genieiap__1__0_models.WakeUpAppResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieiap__1__0_models.WakeUpAppHeaders()
+        return await self.wake_up_app_with_options_async(request, headers, runtime)

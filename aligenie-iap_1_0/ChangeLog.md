@@ -1,3 +1,7 @@
+2024-03-29 Version: 1.1.0
+- Support API GetBusAppConfig.
+
+
 2022-06-23 Version: 1.0.20
 - SDK upgrade.
 
