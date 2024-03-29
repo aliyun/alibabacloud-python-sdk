@@ -1,3 +1,11 @@
+2024-03-29 Version: 4.6.0
+- Support API OpenComputePreCheck.
+- Update API GetLindormInstanceList: update param PageNumber.
+- Update API GetLindormInstanceList: update param PageSize.
+- Update API GetLindormInstanceList: update response param.
+- Update API UpdateInstanceIpWhiteList: update param Delete.
+
+
 2024-02-23 Version: 4.5.0
 - Support API OpenComputePreCheck.
 - Update API GetLindormInstanceList: update param PageNumber.

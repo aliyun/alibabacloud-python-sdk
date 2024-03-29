@@ -3266,7 +3266,10 @@ class GetLindormInstanceListResponseBodyInstanceList(TeaModel):
         create_milliseconds: int = None,
         create_time: str = None,
         enable_compute: bool = None,
+        enable_lts: bool = None,
+        enable_message: bool = None,
         enable_stream: bool = None,
+        enable_vector: bool = None,
         engine_type: str = None,
         expire_time: str = None,
         expired_milliseconds: int = None,
@@ -3287,7 +3290,10 @@ class GetLindormInstanceListResponseBodyInstanceList(TeaModel):
         self.create_milliseconds = create_milliseconds
         self.create_time = create_time
         self.enable_compute = enable_compute
+        self.enable_lts = enable_lts
+        self.enable_message = enable_message
         self.enable_stream = enable_stream
+        self.enable_vector = enable_vector
         self.engine_type = engine_type
         self.expire_time = expire_time
         self.expired_milliseconds = expired_milliseconds
@@ -3324,8 +3330,14 @@ class GetLindormInstanceListResponseBodyInstanceList(TeaModel):
             result['CreateTime'] = self.create_time
         if self.enable_compute is not None:
             result['EnableCompute'] = self.enable_compute
+        if self.enable_lts is not None:
+            result['EnableLts'] = self.enable_lts
+        if self.enable_message is not None:
+            result['EnableMessage'] = self.enable_message
         if self.enable_stream is not None:
             result['EnableStream'] = self.enable_stream
+        if self.enable_vector is not None:
+            result['EnableVector'] = self.enable_vector
         if self.engine_type is not None:
             result['EngineType'] = self.engine_type
         if self.expire_time is not None:
@@ -3370,8 +3382,14 @@ class GetLindormInstanceListResponseBodyInstanceList(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('EnableCompute') is not None:
             self.enable_compute = m.get('EnableCompute')
+        if m.get('EnableLts') is not None:
+            self.enable_lts = m.get('EnableLts')
+        if m.get('EnableMessage') is not None:
+            self.enable_message = m.get('EnableMessage')
         if m.get('EnableStream') is not None:
             self.enable_stream = m.get('EnableStream')
+        if m.get('EnableVector') is not None:
+            self.enable_vector = m.get('EnableVector')
         if m.get('EngineType') is not None:
             self.engine_type = m.get('EngineType')
         if m.get('ExpireTime') is not None:
