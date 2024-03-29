@@ -1,3 +1,29 @@
+2024-03-29 Version: 5.2.0
+- Support API CreateProject.
+- Support API GetAlertMessage.
+- Update API CreateDIJob: update param JobSettings.
+- Update API CreateDIJob: update response param.
+- Update API CreateQualityEntity: update param ProjectId.
+- Update API DeleteQualityEntity: update param ProjectId.
+- Update API DeleteQualityRule: update param ProjectId.
+- Update API GetDIJob: update response param.
+- Update API GetQualityEntity: update param ProjectId.
+- Update API GetQualityFollower: update param ProjectId.
+- Update API ListNodes: add param SchedulerType.
+- Update API ListQualityResultsByEntity: update param EntityId.
+- Update API ListQualityResultsByEntity: update param ProjectId.
+- Update API ListQualityResultsByEntity: update response param.
+- Update API ListQualityResultsByRule: update param ProjectId.
+- Update API ListQualityRules: update param ProjectId.
+- Update API ListQualityRules: update response param.
+- Update API RunCycleDagNodes: add param AlertNoticeType.
+- Update API RunCycleDagNodes: add param AlertType.
+- Update API RunCycleDagNodes: add param ConcurrentRuns.
+- Update API UpdateDIJob: update param JobSettings.
+- Update API UpdateDIJob: update response param.
+- Update API UpdateQualityRule: update param ProjectId.
+
+
 2024-02-29 Version: 5.1.0
 - Support API GetAlertMessage.
 - Update API CreateDIJob: update param JobSettings.

@@ -3433,6 +3433,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_permission_apply_order_with_options_async(request, runtime)
 
+    def create_project_with_options(
+        self,
+        tmp_req: dataworks_public_20200518_models.CreateProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.CreateProjectResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.CreateProjectShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.disable_development):
+            query['DisableDevelopment'] = request.disable_development
+        if not UtilClient.is_unset(request.is_allow_download):
+            query['IsAllowDownload'] = request.is_allow_download
+        if not UtilClient.is_unset(request.project_description):
+            query['ProjectDescription'] = request.project_description
+        if not UtilClient.is_unset(request.project_identifier):
+            query['ProjectIdentifier'] = request.project_identifier
+        if not UtilClient.is_unset(request.project_mode):
+            query['ProjectMode'] = request.project_mode
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateProject',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.CreateProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_project_with_options_async(
+        self,
+        tmp_req: dataworks_public_20200518_models.CreateProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.CreateProjectResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.CreateProjectShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.disable_development):
+            query['DisableDevelopment'] = request.disable_development
+        if not UtilClient.is_unset(request.is_allow_download):
+            query['IsAllowDownload'] = request.is_allow_download
+        if not UtilClient.is_unset(request.project_description):
+            query['ProjectDescription'] = request.project_description
+        if not UtilClient.is_unset(request.project_identifier):
+            query['ProjectIdentifier'] = request.project_identifier
+        if not UtilClient.is_unset(request.project_mode):
+            query['ProjectMode'] = request.project_mode
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateProject',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.CreateProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_project(
+        self,
+        request: dataworks_public_20200518_models.CreateProjectRequest,
+    ) -> dataworks_public_20200518_models.CreateProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_project_with_options(request, runtime)
+
+    async def create_project_async(
+        self,
+        request: dataworks_public_20200518_models.CreateProjectRequest,
+    ) -> dataworks_public_20200518_models.CreateProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_project_with_options_async(request, runtime)
+
     def create_project_member_with_options(
         self,
         request: dataworks_public_20200518_models.CreateProjectMemberRequest,
