@@ -1096,6 +1096,7 @@ class SendByAliasFileIdRequest(TeaModel):
         production_mode: bool = None,
         receipt_type: int = None,
         receipt_url: str = None,
+        third_party_id: str = None,
     ):
         self.alias_type = alias_type
         self.android_payload = android_payload
@@ -1107,6 +1108,7 @@ class SendByAliasFileIdRequest(TeaModel):
         self.production_mode = production_mode
         self.receipt_type = receipt_type
         self.receipt_url = receipt_url
+        self.third_party_id = third_party_id
 
     def validate(self):
         if self.android_payload:
@@ -1144,6 +1146,8 @@ class SendByAliasFileIdRequest(TeaModel):
             result['ReceiptType'] = self.receipt_type
         if self.receipt_url is not None:
             result['ReceiptUrl'] = self.receipt_url
+        if self.third_party_id is not None:
+            result['ThirdPartyId'] = self.third_party_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1172,6 +1176,8 @@ class SendByAliasFileIdRequest(TeaModel):
             self.receipt_type = m.get('ReceiptType')
         if m.get('ReceiptUrl') is not None:
             self.receipt_url = m.get('ReceiptUrl')
+        if m.get('ThirdPartyId') is not None:
+            self.third_party_id = m.get('ThirdPartyId')
         return self
 
 
@@ -1188,6 +1194,7 @@ class SendByAliasFileIdShrinkRequest(TeaModel):
         production_mode: bool = None,
         receipt_type: int = None,
         receipt_url: str = None,
+        third_party_id: str = None,
     ):
         self.alias_type = alias_type
         self.android_payload_shrink = android_payload_shrink
@@ -1199,6 +1206,7 @@ class SendByAliasFileIdShrinkRequest(TeaModel):
         self.production_mode = production_mode
         self.receipt_type = receipt_type
         self.receipt_url = receipt_url
+        self.third_party_id = third_party_id
 
     def validate(self):
         pass
@@ -1229,6 +1237,8 @@ class SendByAliasFileIdShrinkRequest(TeaModel):
             result['ReceiptType'] = self.receipt_type
         if self.receipt_url is not None:
             result['ReceiptUrl'] = self.receipt_url
+        if self.third_party_id is not None:
+            result['ThirdPartyId'] = self.third_party_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1253,6 +1263,8 @@ class SendByAliasFileIdShrinkRequest(TeaModel):
             self.receipt_type = m.get('ReceiptType')
         if m.get('ReceiptUrl') is not None:
             self.receipt_url = m.get('ReceiptUrl')
+        if m.get('ThirdPartyId') is not None:
+            self.third_party_id = m.get('ThirdPartyId')
         return self
 
 
@@ -1394,6 +1406,7 @@ class SendByAppRequest(TeaModel):
         production_mode: bool = None,
         receipt_type: int = None,
         receipt_url: str = None,
+        third_party_id: str = None,
     ):
         self.android_payload = android_payload
         self.channel_properties = channel_properties
@@ -1403,6 +1416,7 @@ class SendByAppRequest(TeaModel):
         self.production_mode = production_mode
         self.receipt_type = receipt_type
         self.receipt_url = receipt_url
+        self.third_party_id = third_party_id
 
     def validate(self):
         if self.android_payload:
@@ -1436,6 +1450,8 @@ class SendByAppRequest(TeaModel):
             result['ReceiptType'] = self.receipt_type
         if self.receipt_url is not None:
             result['ReceiptUrl'] = self.receipt_url
+        if self.third_party_id is not None:
+            result['ThirdPartyId'] = self.third_party_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1460,6 +1476,8 @@ class SendByAppRequest(TeaModel):
             self.receipt_type = m.get('ReceiptType')
         if m.get('ReceiptUrl') is not None:
             self.receipt_url = m.get('ReceiptUrl')
+        if m.get('ThirdPartyId') is not None:
+            self.third_party_id = m.get('ThirdPartyId')
         return self
 
 
@@ -1474,6 +1492,7 @@ class SendByAppShrinkRequest(TeaModel):
         production_mode: bool = None,
         receipt_type: int = None,
         receipt_url: str = None,
+        third_party_id: str = None,
     ):
         self.android_payload_shrink = android_payload_shrink
         self.channel_properties_shrink = channel_properties_shrink
@@ -1483,6 +1502,7 @@ class SendByAppShrinkRequest(TeaModel):
         self.production_mode = production_mode
         self.receipt_type = receipt_type
         self.receipt_url = receipt_url
+        self.third_party_id = third_party_id
 
     def validate(self):
         pass
@@ -1509,6 +1529,8 @@ class SendByAppShrinkRequest(TeaModel):
             result['ReceiptType'] = self.receipt_type
         if self.receipt_url is not None:
             result['ReceiptUrl'] = self.receipt_url
+        if self.third_party_id is not None:
+            result['ThirdPartyId'] = self.third_party_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1529,6 +1551,8 @@ class SendByAppShrinkRequest(TeaModel):
             self.receipt_type = m.get('ReceiptType')
         if m.get('ReceiptUrl') is not None:
             self.receipt_url = m.get('ReceiptUrl')
+        if m.get('ThirdPartyId') is not None:
+            self.third_party_id = m.get('ThirdPartyId')
         return self
 
 
@@ -1971,6 +1995,7 @@ class SendByDeviceFileIdRequest(TeaModel):
         production_mode: bool = None,
         receipt_type: int = None,
         receipt_url: str = None,
+        third_party_id: str = None,
     ):
         self.android_payload = android_payload
         self.channel_properties = channel_properties
@@ -1981,6 +2006,7 @@ class SendByDeviceFileIdRequest(TeaModel):
         self.production_mode = production_mode
         self.receipt_type = receipt_type
         self.receipt_url = receipt_url
+        self.third_party_id = third_party_id
 
     def validate(self):
         if self.android_payload:
@@ -2016,6 +2042,8 @@ class SendByDeviceFileIdRequest(TeaModel):
             result['ReceiptType'] = self.receipt_type
         if self.receipt_url is not None:
             result['ReceiptUrl'] = self.receipt_url
+        if self.third_party_id is not None:
+            result['ThirdPartyId'] = self.third_party_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2042,6 +2070,8 @@ class SendByDeviceFileIdRequest(TeaModel):
             self.receipt_type = m.get('ReceiptType')
         if m.get('ReceiptUrl') is not None:
             self.receipt_url = m.get('ReceiptUrl')
+        if m.get('ThirdPartyId') is not None:
+            self.third_party_id = m.get('ThirdPartyId')
         return self
 
 
@@ -2057,6 +2087,7 @@ class SendByDeviceFileIdShrinkRequest(TeaModel):
         production_mode: bool = None,
         receipt_type: int = None,
         receipt_url: str = None,
+        third_party_id: str = None,
     ):
         self.android_payload_shrink = android_payload_shrink
         self.channel_properties_shrink = channel_properties_shrink
@@ -2067,6 +2098,7 @@ class SendByDeviceFileIdShrinkRequest(TeaModel):
         self.production_mode = production_mode
         self.receipt_type = receipt_type
         self.receipt_url = receipt_url
+        self.third_party_id = third_party_id
 
     def validate(self):
         pass
@@ -2095,6 +2127,8 @@ class SendByDeviceFileIdShrinkRequest(TeaModel):
             result['ReceiptType'] = self.receipt_type
         if self.receipt_url is not None:
             result['ReceiptUrl'] = self.receipt_url
+        if self.third_party_id is not None:
+            result['ThirdPartyId'] = self.third_party_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2117,6 +2151,8 @@ class SendByDeviceFileIdShrinkRequest(TeaModel):
             self.receipt_type = m.get('ReceiptType')
         if m.get('ReceiptUrl') is not None:
             self.receipt_url = m.get('ReceiptUrl')
+        if m.get('ThirdPartyId') is not None:
+            self.third_party_id = m.get('ThirdPartyId')
         return self
 
 
@@ -2259,6 +2295,7 @@ class SendByFilterRequest(TeaModel):
         production_mode: bool = None,
         receipt_type: int = None,
         receipt_url: str = None,
+        third_party_id: str = None,
     ):
         self.android_payload = android_payload
         self.channel_properties = channel_properties
@@ -2269,6 +2306,7 @@ class SendByFilterRequest(TeaModel):
         self.production_mode = production_mode
         self.receipt_type = receipt_type
         self.receipt_url = receipt_url
+        self.third_party_id = third_party_id
 
     def validate(self):
         if self.android_payload:
@@ -2304,6 +2342,8 @@ class SendByFilterRequest(TeaModel):
             result['ReceiptType'] = self.receipt_type
         if self.receipt_url is not None:
             result['ReceiptUrl'] = self.receipt_url
+        if self.third_party_id is not None:
+            result['ThirdPartyId'] = self.third_party_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2330,6 +2370,8 @@ class SendByFilterRequest(TeaModel):
             self.receipt_type = m.get('ReceiptType')
         if m.get('ReceiptUrl') is not None:
             self.receipt_url = m.get('ReceiptUrl')
+        if m.get('ThirdPartyId') is not None:
+            self.third_party_id = m.get('ThirdPartyId')
         return self
 
 
@@ -2345,6 +2387,7 @@ class SendByFilterShrinkRequest(TeaModel):
         production_mode: bool = None,
         receipt_type: int = None,
         receipt_url: str = None,
+        third_party_id: str = None,
     ):
         self.android_payload_shrink = android_payload_shrink
         self.channel_properties_shrink = channel_properties_shrink
@@ -2355,6 +2398,7 @@ class SendByFilterShrinkRequest(TeaModel):
         self.production_mode = production_mode
         self.receipt_type = receipt_type
         self.receipt_url = receipt_url
+        self.third_party_id = third_party_id
 
     def validate(self):
         pass
@@ -2383,6 +2427,8 @@ class SendByFilterShrinkRequest(TeaModel):
             result['ReceiptType'] = self.receipt_type
         if self.receipt_url is not None:
             result['ReceiptUrl'] = self.receipt_url
+        if self.third_party_id is not None:
+            result['ThirdPartyId'] = self.third_party_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2405,6 +2451,8 @@ class SendByFilterShrinkRequest(TeaModel):
             self.receipt_type = m.get('ReceiptType')
         if m.get('ReceiptUrl') is not None:
             self.receipt_url = m.get('ReceiptUrl')
+        if m.get('ThirdPartyId') is not None:
+            self.third_party_id = m.get('ThirdPartyId')
         return self
 
 
