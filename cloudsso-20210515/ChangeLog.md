@@ -1,3 +1,13 @@
+2024-03-29 Version: 1.5.0
+- Support API GetLoginPreference.
+- Support API GetPasswordPolicy.
+- Support API GetUserId.
+- Support API SetLoginPreference.
+- Support API SetPasswordPolicy.
+- Update API GetUser: update response param.
+- Update API ListUsers: update response param.
+
+
 2024-02-07 Version: 1.4.0
 - Support API GetLoginPreference.
 - Support API GetPasswordPolicy.

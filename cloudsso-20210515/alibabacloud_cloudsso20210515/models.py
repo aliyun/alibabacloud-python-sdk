@@ -1776,13 +1776,33 @@ class CreateUserProvisioningRequest(TeaModel):
         target_id: str = None,
         target_type: str = None,
     ):
+        # The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
+        # 
+        # *   Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+        # *   Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
         self.deletion_strategy = deletion_strategy
+        # The description.
         self.description = description
+        # The ID of the resource directory.
         self.directory_id = directory_id
+        # The conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
+        # 
+        # *   KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
+        # *   TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
         self.duplication_strategy = duplication_strategy
+        # The identity ID of the RAM user provisioning. Valid values:
+        # 
+        # *   If you set the `PrincipalType` parameter to `Group`, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
+        # *   If you set the `PrincipalType` parameter to `User`, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
         self.principal_id = principal_id
+        # The identity type of the RAM user provisioning. Valid values:
+        # 
+        # *   User: The identity of the RAM user provisioning is a CloudSSO user.
+        # *   Group: The identity of the RAM user provisioning is a CloudSSO user group.
         self.principal_type = principal_type
+        # The ID of the object for which you create the RAM user provisioning. The value is fixed as the ID of the member in the resource directory.
         self.target_id = target_id
+        # The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
         self.target_type = target_type
 
     def validate(self):
@@ -1853,21 +1873,55 @@ class CreateUserProvisioningResponseBodyUserProvisioning(TeaModel):
         update_time: str = None,
         user_provisioning_id: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
+        # 
+        # *   Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+        # *   Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
         self.deletion_strategy = deletion_strategy
+        # The description.
         self.description = description
+        # The ID of the resource directory.
         self.directory_id = directory_id
+        # The conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
+        # 
+        # *   KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
+        # *   TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
         self.duplication_strategy = duplication_strategy
+        # The ID of the Alibaba Cloud account to which the resource directory belongs.
         self.owner_pk = owner_pk
+        # The identity ID of the RAM user provisioning. Valid values:
+        # 
+        # *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
+        # *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
         self.principal_id = principal_id
+        # The identity name of the RAM user provisioning. Valid values:
+        # 
+        # *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user group.
+        # *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user.
         self.principal_name = principal_name
+        # The identity type of the RAM user provisioning. Valid values:
+        # 
+        # *   User: The identity of the RAM user provisioning is a CloudSSO user.
+        # *   Group: The identity of the RAM user provisioning is a CloudSSO user group.
         self.principal_type = principal_type
+        # The status of the RAM user provisioning. Valid values:
+        # 
+        # *   Enabled
+        # *   Disabled
         self.status = status
+        # The ID of the object for which you create the RAM user provisioning. The value is fixed as the ID of the member in the resource directory.
         self.target_id = target_id
+        # The name of the object for which you create the RAM user provisioning. The value is fixed as the name of the member in the resource directory.
         self.target_name = target_name
+        # The path of the resource directory in which you create the RAM user provisioning for the member.
         self.target_path = target_path
+        # The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
         self.target_type = target_type
+        # The modification time.
         self.update_time = update_time
+        # The ID of the RAM user provisioning.
         self.user_provisioning_id = user_provisioning_id
 
     def validate(self):
@@ -1956,7 +2010,9 @@ class CreateUserProvisioningResponseBody(TeaModel):
         request_id: str = None,
         user_provisioning: CreateUserProvisioningResponseBodyUserProvisioning = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The information about the RAM user provisioning.
         self.user_provisioning = user_provisioning
 
     def validate(self):
@@ -2945,8 +3001,16 @@ class DeleteUserProvisioningRequest(TeaModel):
         directory_id: str = None,
         user_provisioning_id: str = None,
     ):
+        # The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
+        # 
+        # *   Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+        # *   Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+        # 
+        # >  If you do not specify this parameter, the deletion policy that is configured when you create the RAM user provisioning is used.
         self.deletion_strategy = deletion_strategy
+        # The ID of the resource directory.
         self.directory_id = directory_id
+        # The ID of the RAM user provisioning.
         self.user_provisioning_id = user_provisioning_id
 
     def validate(self):
@@ -2982,6 +3046,7 @@ class DeleteUserProvisioningResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3052,8 +3117,11 @@ class DeleteUserProvisioningEventRequest(TeaModel):
         event_id: str = None,
         user_provisioning_id: str = None,
     ):
+        # The ID of the resource directory.
         self.directory_id = directory_id
+        # The ID of the RAM user provisioning event.
         self.event_id = event_id
+        # The ID of the RAM user provisioning.
         self.user_provisioning_id = user_provisioning_id
 
     def validate(self):
@@ -3089,6 +3157,7 @@ class DeleteUserProvisioningEventResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4663,6 +4732,7 @@ class GetLoginPreferenceRequest(TeaModel):
         self,
         directory_id: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
 
     def validate(self):
@@ -4690,6 +4760,11 @@ class GetLoginPreferenceResponseBodyLoginPreference(TeaModel):
         self,
         login_network_masks: str = None,
     ):
+        # The IP address whitelist. CloudSSO users can log on to the CloudSSO user portal only by using the IP addresses in the whitelist.
+        # 
+        # The IP address whitelist takes effect only on CloudSSO users who want to log on to the CloudSSO user portal by using the username-password logon or single sign-on (SSO) method. The IP address whitelist does not take effect on CloudSSO users who access accounts in a resource directory from the CloudSSO user portal.
+        # 
+        # If the return value of this parameter is empty, no IP address whitelists are configured.
         self.login_network_masks = login_network_masks
 
     def validate(self):
@@ -4718,7 +4793,9 @@ class GetLoginPreferenceResponseBody(TeaModel):
         login_preference: GetLoginPreferenceResponseBodyLoginPreference = None,
         request_id: str = None,
     ):
+        # The logon preference.
         self.login_preference = login_preference
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5159,6 +5236,7 @@ class GetPasswordPolicyRequest(TeaModel):
         self,
         directory_id: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
 
     def validate(self):
@@ -5197,17 +5275,61 @@ class GetPasswordPolicyResponseBodyPasswordPolicy(TeaModel):
         require_symbols: bool = None,
         require_upper_case_chars: bool = None,
     ):
+        # Indicates whether to disable logon after a password expires. Valid values:
+        # 
+        # *   true: disables logon after a password expires.
+        # *   false: does not disable logon after a password expires.
         self.hard_expire = hard_expire
+        # The number of password retries.
+        # 
+        # If wrong passwords are entered for the specified consecutive times, the account is locked for 1 hour.
+        # 
+        # Valid values: 0 to 32. The value 0 indicates that the number of password retries is not limited.
         self.max_login_attempts = max_login_attempts
+        # The validity period of a password.
+        # 
+        # Valid values: 1 to 120. Unit: days.
         self.max_password_age = max_password_age
+        # The maximum password length.
         self.max_password_length = max_password_length
+        # The minimum number of different characters in a password.
+        # 
+        # The minimum value is 0, which indicates that the minimum number of different characters in a password is not limited. The maximum value is the value of the `MinPasswordLength` parameter.
         self.min_password_different_chars = min_password_different_chars
+        # The minimum password length.
+        # 
+        # Valid values: 8 to 32 characters.
         self.min_password_length = min_password_length
+        # Indicates whether to exclude the username from the password. Valid values:
+        # 
+        # *   true: A password cannot contain the username.
+        # *   false: A password can contain the username.
         self.password_not_contain_username = password_not_contain_username
+        # The policy for password history check.
+        # 
+        # The previous N passwords cannot be reused. Valid values of N: 0 to 24. The value 0 indicates that all historical passwords can be reused.
+        # 
+        # >  Passwords that are generated before January 5, 2024 are not counted as historical passwords.
         self.password_reuse_prevention = password_reuse_prevention
+        # Indicates whether lowercase letters are required in a password. Valid values:
+        # 
+        # *   true: Lowercase letters are required in a password.
+        # *   false: Lowercase letters are not required in a password.
         self.require_lower_case_chars = require_lower_case_chars
+        # Indicates whether digits are required in a password. Valid values:
+        # 
+        # *   true: Digits are required in a password.
+        # *   false: Digits are not required in a password.
         self.require_numbers = require_numbers
+        # Indicates whether special characters are required in a password. Valid values:
+        # 
+        # *   true: Special characters are required in a password.
+        # *   false: Special characters are not required in a password.
         self.require_symbols = require_symbols
+        # Indicates whether uppercase letters are required in a password. Valid values:
+        # 
+        # *   true: Uppercase letters are required in a password.
+        # *   false: Uppercase letters are not required in a password.
         self.require_upper_case_chars = require_upper_case_chars
 
     def validate(self):
@@ -5280,7 +5402,9 @@ class GetPasswordPolicyResponseBody(TeaModel):
         password_policy: GetPasswordPolicyResponseBodyPasswordPolicy = None,
         request_id: str = None,
     ):
+        # The password policy.
         self.password_policy = password_policy
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6074,6 +6198,39 @@ class GetUserRequest(TeaModel):
         return self
 
 
+class GetUserResponseBodyUserExternalId(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        issuer: str = None,
+    ):
+        self.id = id
+        self.issuer = issuer
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+        return self
+
+
 class GetUserResponseBodyUser(TeaModel):
     def __init__(
         self,
@@ -6081,6 +6238,7 @@ class GetUserResponseBodyUser(TeaModel):
         description: str = None,
         display_name: str = None,
         email: str = None,
+        external_id: GetUserResponseBodyUserExternalId = None,
         first_name: str = None,
         last_name: str = None,
         provision_type: str = None,
@@ -6097,6 +6255,7 @@ class GetUserResponseBodyUser(TeaModel):
         self.display_name = display_name
         # The email address of the user.
         self.email = email
+        self.external_id = external_id
         # The first name of the user.
         self.first_name = first_name
         # The last name of the user.
@@ -6119,7 +6278,8 @@ class GetUserResponseBodyUser(TeaModel):
         self.user_name = user_name
 
     def validate(self):
-        pass
+        if self.external_id:
+            self.external_id.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6135,6 +6295,8 @@ class GetUserResponseBodyUser(TeaModel):
             result['DisplayName'] = self.display_name
         if self.email is not None:
             result['Email'] = self.email
+        if self.external_id is not None:
+            result['ExternalId'] = self.external_id.to_map()
         if self.first_name is not None:
             result['FirstName'] = self.first_name
         if self.last_name is not None:
@@ -6161,6 +6323,9 @@ class GetUserResponseBodyUser(TeaModel):
             self.display_name = m.get('DisplayName')
         if m.get('Email') is not None:
             self.email = m.get('Email')
+        if m.get('ExternalId') is not None:
+            temp_model = GetUserResponseBodyUserExternalId()
+            self.external_id = temp_model.from_map(m['ExternalId'])
         if m.get('FirstName') is not None:
             self.first_name = m.get('FirstName')
         if m.get('LastName') is not None:
@@ -6252,6 +6417,181 @@ class GetUserResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetUserResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetUserIdRequestExternalId(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        issuer: str = None,
+    ):
+        self.id = id
+        self.issuer = issuer
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+        return self
+
+
+class GetUserIdRequest(TeaModel):
+    def __init__(
+        self,
+        directory_id: str = None,
+        external_id: GetUserIdRequestExternalId = None,
+    ):
+        self.directory_id = directory_id
+        self.external_id = external_id
+
+    def validate(self):
+        if self.external_id:
+            self.external_id.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.directory_id is not None:
+            result['DirectoryId'] = self.directory_id
+        if self.external_id is not None:
+            result['ExternalId'] = self.external_id.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DirectoryId') is not None:
+            self.directory_id = m.get('DirectoryId')
+        if m.get('ExternalId') is not None:
+            temp_model = GetUserIdRequestExternalId()
+            self.external_id = temp_model.from_map(m['ExternalId'])
+        return self
+
+
+class GetUserIdShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        directory_id: str = None,
+        external_id_shrink: str = None,
+    ):
+        self.directory_id = directory_id
+        self.external_id_shrink = external_id_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.directory_id is not None:
+            result['DirectoryId'] = self.directory_id
+        if self.external_id_shrink is not None:
+            result['ExternalId'] = self.external_id_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DirectoryId') is not None:
+            self.directory_id = m.get('DirectoryId')
+        if m.get('ExternalId') is not None:
+            self.external_id_shrink = m.get('ExternalId')
+        return self
+
+
+class GetUserIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        user_id: str = None,
+    ):
+        self.request_id = request_id
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GetUserIdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetUserIdResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetUserIdResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6376,7 +6716,9 @@ class GetUserProvisioningRequest(TeaModel):
         directory_id: str = None,
         user_provisioning_id: str = None,
     ):
+        # The ID of the resource directory.
         self.directory_id = directory_id
+        # The ID of the RAM user provisioning.
         self.user_provisioning_id = user_provisioning_id
 
     def validate(self):
@@ -6423,21 +6765,55 @@ class GetUserProvisioningResponseBodyUserProvisioning(TeaModel):
         update_time: str = None,
         user_provisioning_id: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
+        # 
+        # *   Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+        # *   Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
         self.deletion_strategy = deletion_strategy
+        # The description.
         self.description = description
+        # The ID of the resource directory.
         self.directory_id = directory_id
+        # The conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
+        # 
+        # *   KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
+        # *   TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
         self.duplication_strategy = duplication_strategy
+        # The ID of the Alibaba Cloud account to which the resource directory belongs.
         self.owner_pk = owner_pk
+        # The identity ID of the RAM user provisioning. Valid values:
+        # 
+        # *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
+        # *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
         self.principal_id = principal_id
+        # The identity name of the RAM user provisioning. Valid values:
+        # 
+        # *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user group.
+        # *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user.
         self.principal_name = principal_name
+        # The identity type of the RAM user provisioning. Valid values:
+        # 
+        # *   User: indicates that the identity of the RAM user provisioning is a CloudSSO user.
+        # *   Group: indicates that the identity of the RAM user provisioning is a CloudSSO user group.
         self.principal_type = principal_type
+        # The status of the RAM user provisioning. Valid values:
+        # 
+        # *   Enabled
+        # *   Disabled
         self.status = status
+        # The ID of the object for which you create the RAM user provisioning. The value is fixed as the ID of the member in the resource directory.
         self.target_id = target_id
+        # The name of the object for which you create the RAM user provisioning. The value is fixed as the name of the member in the resource directory.
         self.target_name = target_name
+        # The path of the resource directory in which you create the RAM user provisioning for the member.
         self.target_path = target_path
+        # The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
         self.target_type = target_type
+        # The modification time.
         self.update_time = update_time
+        # The ID of the RAM user provisioning.
         self.user_provisioning_id = user_provisioning_id
 
     def validate(self):
@@ -6526,7 +6902,9 @@ class GetUserProvisioningResponseBody(TeaModel):
         request_id: str = None,
         user_provisioning: GetUserProvisioningResponseBodyUserProvisioning = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The information about the RAM user provisioning.
         self.user_provisioning = user_provisioning
 
     def validate(self):
@@ -6601,6 +6979,7 @@ class GetUserProvisioningConfigurationRequest(TeaModel):
         self,
         directory_id: str = None,
     ):
+        # The ID of the resource directory.
         self.directory_id = directory_id
 
     def validate(self):
@@ -6632,10 +7011,23 @@ class GetUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration(
         session_duration: int = None,
         update_time: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The default URL for a CloudSSO user who logs on to the Alibaba Cloud Management Console.
+        # 
+        # Default value: https://homenew.console.aliyun.com.
         self.default_landing_page = default_landing_page
+        # The ID of the resource directory.
         self.directory_id = directory_id
+        # The duration of the logon session.
+        # 
+        # Unit: hours.
+        # 
+        # Valid values: 1 to 24.
+        # 
+        # Default value: 6.
         self.session_duration = session_duration
+        # The modification time.
         self.update_time = update_time
 
     def validate(self):
@@ -6680,7 +7072,9 @@ class GetUserProvisioningConfigurationResponseBody(TeaModel):
         request_id: str = None,
         user_provisioning_configuration: GetUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The global configurations of the RAM user provisioning.
         self.user_provisioning_configuration = user_provisioning_configuration
 
     def validate(self):
@@ -6756,7 +7150,9 @@ class GetUserProvisioningEventRequest(TeaModel):
         directory_id: str = None,
         event_id: str = None,
     ):
+        # The ID of the resource directory.
         self.directory_id = directory_id
+        # The ID of the RAM user provisioning event.
         self.event_id = event_id
 
     def validate(self):
@@ -6805,23 +7201,66 @@ class GetUserProvisioningEventResponseBodyUserProvisioningEvent(TeaModel):
         update_time: str = None,
         user_provisioning_id: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
+        # 
+        # *   Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+        # *   Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
         self.deletion_strategy = deletion_strategy
+        # The ID of the resource directory.
         self.directory_id = directory_id
+        # The conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
+        # 
+        # *   KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
+        # *   TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
         self.duplication_strategy = duplication_strategy
+        # The number of execution failures.
         self.error_count = error_count
+        # The error message that is displayed when the last execution of the RAM user provisioning event failed.
         self.error_info = error_info
+        # The ID of the RAM user provisioning event.
         self.event_id = event_id
+        # The time at which the RAM user provisioning event was last executed.
         self.latest_async_time = latest_async_time
+        # The identity ID of the RAM user provisioning. Valid values:
+        # 
+        # *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
+        # *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
         self.principal_id = principal_id
+        # The identity name of the RAM user provisioning. Valid values:
+        # 
+        # *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user group.
+        # *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user.
         self.principal_name = principal_name
+        # The identity type of the RAM user provisioning. Valid values:
+        # 
+        # *   User: The identity of the RAM user provisioning is a CloudSSO user.
+        # *   Group: The identity of the RAM user provisioning is a CloudSSO user group.
         self.principal_type = principal_type
+        # The type of the source operation. Valid values:
+        # 
+        # *   StartProvisioning: enables the RAM user provisioning.
+        # *   DeleteProvisioning: deletes the RAM user provisioning.
+        # *   AddUserToGroup: adds a user to a user group.
+        # *   RemoveUserFromGroup: removes a user from a user group.
+        # *   UserProvisioningDeletionClearing: deletes the RAM user provisioning and clears resources in the background.
         self.source_type = source_type
+        # The ID of the object for which you create the RAM user provisioning.
+        # 
+        # The value is fixed as the ID of the member in the resource directory.````
         self.target_id = target_id
+        # The name of the object for which you create the RAM user provisioning.
+        # 
+        # The value is fixed as the name of the member in the resource directory.````
         self.target_name = target_name
+        # The path of the resource directory in which you create the RAM user provisioning for the object.
         self.target_path = target_path
+        # The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
         self.target_type = target_type
+        # The modification time.
         self.update_time = update_time
+        # The ID of the RAM user provisioning event.
         self.user_provisioning_id = user_provisioning_id
 
     def validate(self):
@@ -6918,7 +7357,9 @@ class GetUserProvisioningEventResponseBody(TeaModel):
         request_id: str = None,
         user_provisioning_event: GetUserProvisioningEventResponseBodyUserProvisioningEvent = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The RAM user provisioning event.
         self.user_provisioning_event = user_provisioning_event
 
     def validate(self):
@@ -6994,7 +7435,9 @@ class GetUserProvisioningRdAccountStatisticsRequest(TeaModel):
         directory_id: str = None,
         rd_member_id: str = None,
     ):
+        # The ID of the resource directory.
         self.directory_id = directory_id
+        # The ID of the member in the resource directory.
         self.rd_member_id = rd_member_id
 
     def validate(self):
@@ -7031,11 +7474,17 @@ class GetUserProvisioningRdAccountStatisticsResponseBodyUserProvisioningStatisti
         owner_pk: str = None,
         type: str = None,
     ):
+        # The ID of the resource directory.
         self.directory_id = directory_id
+        # The entity ID, which is the ID of the member in the resource directory.
         self.entity_id = entity_id
+        # The number of failed RAM user provisioning events.
         self.failed_event_count = failed_event_count
+        # The time when the RAM user provisioning was last performed.
         self.latest_async_time = latest_async_time
+        # The ID of the Alibaba Cloud account to which the resource directory belongs.
         self.owner_pk = owner_pk
+        # The entity type. The value is fixed as `RD Account`.
         self.type = type
 
     def validate(self):
@@ -7084,7 +7533,9 @@ class GetUserProvisioningRdAccountStatisticsResponseBody(TeaModel):
         request_id: str = None,
         user_provisioning_statistics: GetUserProvisioningRdAccountStatisticsResponseBodyUserProvisioningStatistics = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The statistics of the RAM user provisioning.
         self.user_provisioning_statistics = user_provisioning_statistics
 
     def validate(self):
@@ -7160,7 +7611,9 @@ class GetUserProvisioningStatisticsRequest(TeaModel):
         directory_id: str = None,
         user_provisioning_id: str = None,
     ):
+        # The ID of the resource directory.
         self.directory_id = directory_id
+        # The ID of the RAM user provisioning.
         self.user_provisioning_id = user_provisioning_id
 
     def validate(self):
@@ -7197,11 +7650,17 @@ class GetUserProvisioningStatisticsResponseBodyUserProvisioningStatistics(TeaMod
         owner_pk: str = None,
         type: str = None,
     ):
+        # The ID of the resource directory.
         self.directory_id = directory_id
+        # The entity ID, which is the ID of the RAM user provisioning.
         self.entity_id = entity_id
+        # The number of failed RAM user provisioning events that are associated with the RAM user provisioning.
         self.failed_event_count = failed_event_count
+        # The time when the RAM user provisioning was last performed.
         self.latest_async_time = latest_async_time
+        # The ID of the Alibaba Cloud account to which the resource directory belongs.
         self.owner_pk = owner_pk
+        # The entity type. The value is fixed as `User Provisioning`.
         self.type = type
 
     def validate(self):
@@ -7250,7 +7709,9 @@ class GetUserProvisioningStatisticsResponseBody(TeaModel):
         request_id: str = None,
         user_provisioning_statistics: GetUserProvisioningStatisticsResponseBodyUserProvisioningStatistics = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The statistics of the RAM user provisioning.
         self.user_provisioning_statistics = user_provisioning_statistics
 
     def validate(self):
@@ -10300,9 +10761,19 @@ class ListUserProvisioningEventsRequest(TeaModel):
         next_token: str = None,
         user_provisioning_id: str = None,
     ):
+        # The ID of the resource directory.
         self.directory_id = directory_id
+        # The maximum number of entries per page.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 10.
         self.max_results = max_results
+        # The token that is used to initiate the next request. If this is your first time to call this operation, you do not need to specify the `NextToken` parameter.
+        # 
+        # When you call this operation for the first time, if the total number of entries to return is larger than the value of `MaxResults`, the entries are truncated. The system returns entries based on the value of `MaxResults`, and does not return the excess entries. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
         self.next_token = next_token
+        # The ID of the RAM user provisioning.
         self.user_provisioning_id = user_provisioning_id
 
     def validate(self):
@@ -10359,23 +10830,66 @@ class ListUserProvisioningEventsResponseBodyUserProvisioningEvents(TeaModel):
         update_time: str = None,
         user_provisioning_id: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
+        # 
+        # *   Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+        # *   Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
         self.deletion_strategy = deletion_strategy
+        # The ID of the resource directory.
         self.directory_id = directory_id
+        # The conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
+        # 
+        # *   KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
+        # *   TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
         self.duplication_strategy = duplication_strategy
+        # The number of execution failures.
         self.error_count = error_count
+        # The error message that is displayed when the last execution of the RAM user provisioning event failed.
         self.error_info = error_info
+        # The ID of the RAM user provisioning event.
         self.event_id = event_id
+        # The time at which the RAM user provisioning event was last executed.
         self.latest_async_time = latest_async_time
+        # The identity ID of the RAM user provisioning. Valid values:
+        # 
+        # *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
+        # *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
         self.principal_id = principal_id
+        # The identity name of the RAM user provisioning. Valid values:
+        # 
+        # *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user group.
+        # *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user.
         self.principal_name = principal_name
+        # The identity type of the RAM user provisioning. Valid values:
+        # 
+        # *   User: The identity of the RAM user provisioning is a CloudSSO user.
+        # *   Group: The identity of the RAM user provisioning is a CloudSSO user group.
         self.principal_type = principal_type
+        # The type of the source operation. Valid values:
+        # 
+        # *   StartProvisioning: enables the RAM user provisioning.
+        # *   DeleteProvisioning: deletes the RAM user provisioning.
+        # *   AddUserToGroup: adds a user to a user group.
+        # *   RemoveUserFromGroup: removes a user from a user group.
+        # *   UserProvisioningDeletionClearing: deletes the RAM user provisioning and clears resources in the background.
         self.source_type = source_type
+        # The ID of the object for which you create the RAM user provisioning.
+        # 
+        # The value is fixed as the ID of the account in the resource directory.````
         self.target_id = target_id
+        # The name of the object for which you create the RAM user provisioning.
+        # 
+        # If `RD-Account` is returned, the value of this parameter is the name of the account that is used to access the instance.``
         self.target_name = target_name
+        # The path of the resource directory in which you create the RAM user provisioning for the object.
         self.target_path = target_path
+        # The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
         self.target_type = target_type
+        # The modification time.
         self.update_time = update_time
+        # The ID of the RAM user provisioning.
         self.user_provisioning_id = user_provisioning_id
 
     def validate(self):
@@ -10476,11 +10990,26 @@ class ListUserProvisioningEventsResponseBody(TeaModel):
         total_counts: int = None,
         user_provisioning_events: List[ListUserProvisioningEventsResponseBodyUserProvisioningEvents] = None,
     ):
+        # Indicates whether the queried entries are truncated. Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_truncated = is_truncated
+        # The maximum number of entries per page.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 10.
         self.max_results = max_results
+        # The token that is used to initiate the next request.
+        # 
+        # >  This parameter is returned only when the `IsTruncated` parameter is set to `true`.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_counts = total_counts
+        # The RAM user provisioning events.
         self.user_provisioning_events = user_provisioning_events
 
     def validate(self):
@@ -10583,12 +11112,31 @@ class ListUserProvisioningsRequest(TeaModel):
         target_id: str = None,
         target_type: str = None,
     ):
+        # The ID of the resource directory.
         self.directory_id = directory_id
+        # The maximum number of entries per page.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 10.
         self.max_results = max_results
+        # The token that is used to initiate the next request. If this is your first time to call this operation, you do not need to specify the `NextToken` parameter.
+        # 
+        # When you call this operation for the first time, if the total number of entries to return is larger than the value of `MaxResults`, the entries are truncated. The system returns entries based on the value of `MaxResults`, and does not return the excess entries. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
         self.next_token = next_token
+        # The identity ID of the RAM user provisioning. Valid values:
+        # 
+        # *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
+        # *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
         self.principal_id = principal_id
+        # The identity type of the RAM user provisioning. Valid values:
+        # 
+        # *   User: The identity of the RAM user provisioning is a CloudSSO user.
+        # *   Group: The identity of the RAM user provisioning is a CloudSSO user group.
         self.principal_type = principal_type
+        # The ID of the object for which you create the RAM user provisioning. The value is fixed as the ID of the member in the resource directory.
         self.target_id = target_id
+        # The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
         self.target_type = target_type
 
     def validate(self):
@@ -10655,21 +11203,55 @@ class ListUserProvisioningsResponseBodyUserProvisionings(TeaModel):
         update_time: str = None,
         user_provisioning_id: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
+        # 
+        # *   Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+        # *   Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
         self.deletion_strategy = deletion_strategy
+        # The description.
         self.description = description
+        # The ID of the resource directory.
         self.directory_id = directory_id
+        # The conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
+        # 
+        # *   KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
+        # *   TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
         self.duplication_strategy = duplication_strategy
+        # The ID of the Alibaba Cloud account to which the resource directory belongs.
         self.owner_pk = owner_pk
+        # The identity ID of the RAM user provisioning. Valid values:
+        # 
+        # *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
+        # *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
         self.principal_id = principal_id
+        # The identity name of the RAM user provisioning. Valid values:
+        # 
+        # *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user group.
+        # *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user.
         self.principal_name = principal_name
+        # The identity type of the RAM user provisioning. Valid values:
+        # 
+        # *   User: The identity of the RAM user provisioning is a CloudSSO user.
+        # *   Group: The identity of the RAM user provisioning is a CloudSSO user group.
         self.principal_type = principal_type
+        # The status of the RAM user provisioning. Valid values:
+        # 
+        # *   Enabled
+        # *   Disabled
         self.status = status
+        # The ID of the object for which you create the RAM user provisioning. The value is fixed as the ID of the member in the resource directory.
         self.target_id = target_id
+        # The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
         self.target_name = target_name
+        # The path of the resource directory in which you create the RAM user provisioning for the object.
         self.target_path = target_path
+        # The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
         self.target_type = target_type
+        # The modification time.
         self.update_time = update_time
+        # The ID of the RAM user provisioning.
         self.user_provisioning_id = user_provisioning_id
 
     def validate(self):
@@ -10762,11 +11344,26 @@ class ListUserProvisioningsResponseBody(TeaModel):
         total_counts: int = None,
         user_provisionings: List[ListUserProvisioningsResponseBodyUserProvisionings] = None,
     ):
+        # Indicates whether the queried entries are truncated. Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_truncated = is_truncated
+        # The maximum number of entries per page.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 10.
         self.max_results = max_results
+        # The token that is used to initiate the next request.
+        # 
+        # >  This parameter is returned only when the `IsTruncated` parameter is set to `true`.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_counts = total_counts
+        # The RAM user provisionings.
         self.user_provisionings = user_provisionings
 
     def validate(self):
@@ -10937,6 +11534,39 @@ class ListUsersRequest(TeaModel):
         return self
 
 
+class ListUsersResponseBodyUsersExternalId(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        issuer: str = None,
+    ):
+        self.id = id
+        self.issuer = issuer
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+        return self
+
+
 class ListUsersResponseBodyUsers(TeaModel):
     def __init__(
         self,
@@ -10944,6 +11574,7 @@ class ListUsersResponseBodyUsers(TeaModel):
         description: str = None,
         display_name: str = None,
         email: str = None,
+        external_id: ListUsersResponseBodyUsersExternalId = None,
         first_name: str = None,
         last_name: str = None,
         provision_type: str = None,
@@ -10960,6 +11591,7 @@ class ListUsersResponseBodyUsers(TeaModel):
         self.display_name = display_name
         # The email address of the user.
         self.email = email
+        self.external_id = external_id
         # The first name of the user.
         self.first_name = first_name
         # The last name of the user.
@@ -10982,7 +11614,8 @@ class ListUsersResponseBodyUsers(TeaModel):
         self.user_name = user_name
 
     def validate(self):
-        pass
+        if self.external_id:
+            self.external_id.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -10998,6 +11631,8 @@ class ListUsersResponseBodyUsers(TeaModel):
             result['DisplayName'] = self.display_name
         if self.email is not None:
             result['Email'] = self.email
+        if self.external_id is not None:
+            result['ExternalId'] = self.external_id.to_map()
         if self.first_name is not None:
             result['FirstName'] = self.first_name
         if self.last_name is not None:
@@ -11024,6 +11659,9 @@ class ListUsersResponseBodyUsers(TeaModel):
             self.display_name = m.get('DisplayName')
         if m.get('Email') is not None:
             self.email = m.get('Email')
+        if m.get('ExternalId') is not None:
+            temp_model = ListUsersResponseBodyUsersExternalId()
+            self.external_id = temp_model.from_map(m['ExternalId'])
         if m.get('FirstName') is not None:
             self.first_name = m.get('FirstName')
         if m.get('LastName') is not None:
@@ -11877,8 +12515,14 @@ class RetryUserProvisioningEventRequest(TeaModel):
         duplication_strategy: str = None,
         event_id: str = None,
     ):
+        # The ID of the resource directory.
         self.directory_id = directory_id
+        # The conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
+        # 
+        # *   KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
+        # *   TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
         self.duplication_strategy = duplication_strategy
+        # The ID of the RAM user provisioning event.
         self.event_id = event_id
 
     def validate(self):
@@ -11914,6 +12558,7 @@ class RetryUserProvisioningEventResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12229,7 +12874,15 @@ class SetLoginPreferenceRequest(TeaModel):
         directory_id: str = None,
         login_network_masks: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The IP address whitelist. CloudSSO users can log on to the CloudSSO user portal only by using the IP addresses in the whitelist. Limits:
+        # 
+        # *   You can enter IP addresses or CIDR blocks. IPv4 addresses are supported.
+        # *   You can enter up to 100 IP addresses or CIDR blocks. Separate multiple IP addresses or CIDR blocks with semicolons `(;)`.
+        # *   If you do not specify this parameter, the original settings are retained.
+        # *   If you set this parameter to a semicolon (`;`), the value of this parameter is cleared.
+        # *   The IP address whitelist takes effect only on CloudSSO users who want to log on to the CloudSSO user portal by using the username-password logon or single sign-on (SSO) method. The IP address whitelist does not take effect on CloudSSO users who access accounts in a resource directory from the CloudSSO user portal.
         self.login_network_masks = login_network_masks
 
     def validate(self):
@@ -12261,6 +12914,7 @@ class SetLoginPreferenceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12442,12 +13096,36 @@ class SetPasswordPolicyRequest(TeaModel):
         password_not_contain_username: bool = None,
         password_reuse_prevention: int = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The number of password retries.
+        # 
+        # If you enter wrong passwords for the specified consecutive times, the account is locked for 1 hour.
+        # 
+        # Valid values: 0 to 32. The value 0 specifies that the number of password retries is not limited.
         self.max_login_attempts = max_login_attempts
+        # The validity period of a password.
+        # 
+        # Valid values: 1 to 120. Unit: days.
         self.max_password_age = max_password_age
+        # The minimum number of unique characters in a password.
+        # 
+        # The minimum value is 0, which specifies that the minimum number of unique characters in a password is not limited. The maximum value is the value of the `MinPasswordLength` parameter.
         self.min_password_different_chars = min_password_different_chars
+        # The minimum password length.
+        # 
+        # Valid values: 8 to 32 characters.
         self.min_password_length = min_password_length
+        # Specifies whether a password can contain the username. Valid value:
+        # 
+        # *   true: A password cannot contain the username.
+        # *   false: A password can contain the username.
         self.password_not_contain_username = password_not_contain_username
+        # The policy for password history check.
+        # 
+        # The previous N passwords cannot be reused. Valid values of N: 0 to 24. The value 0 specifies that all historical passwords can be reused.
+        # 
+        # >  Passwords that are generated before January 5, 2024 are not counted as historical passwords.
         self.password_reuse_prevention = password_reuse_prevention
 
     def validate(self):
@@ -12499,6 +13177,7 @@ class SetPasswordPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14062,10 +14741,21 @@ class UpdateUserProvisioningRequest(TeaModel):
         new_duplication_strategy: str = None,
         user_provisioning_id: str = None,
     ):
+        # The ID of the resource directory.
         self.directory_id = directory_id
+        # The new deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
+        # 
+        # *   Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+        # *   Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
         self.new_deletion_strategy = new_deletion_strategy
+        # The new description of the RAM user provisioning.
         self.new_description = new_description
+        # The new conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
+        # 
+        # *   KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
+        # *   TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
         self.new_duplication_strategy = new_duplication_strategy
+        # The ID of the RAM user provisioning.
         self.user_provisioning_id = user_provisioning_id
 
     def validate(self):
@@ -14124,21 +14814,55 @@ class UpdateUserProvisioningResponseBodyUserProvisioning(TeaModel):
         update_time: str = None,
         user_provisioning_id: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
+        # 
+        # *   Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+        # *   Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
         self.deletion_strategy = deletion_strategy
+        # The description for the RAM user provisioning.
         self.description = description
+        # The ID of the resource directory.
         self.directory_id = directory_id
+        # The conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
+        # 
+        # *   KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
+        # *   TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
         self.duplication_strategy = duplication_strategy
+        # The ID of the Alibaba Cloud account to which the resource directory belongs.
         self.owner_pk = owner_pk
+        # The identity ID of the RAM user provisioning. Valid values:
+        # 
+        # *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
+        # *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
         self.principal_id = principal_id
+        # The identity name of the RAM user provisioning. Valid values:
+        # 
+        # *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user group.
+        # *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user.
         self.principal_name = principal_name
+        # The identity type of the RAM user provisioning. Valid values:
+        # 
+        # *   User: indicates that the identity of the RAM user provisioning is a CloudSSO user.
+        # *   Group: indicates that the identity of the RAM user provisioning is a CloudSSO user group.
         self.principal_type = principal_type
+        # The status of the RAM user provisioning. Valid values:
+        # 
+        # *   Enabled
+        # *   Disabled
         self.status = status
+        # The ID of the object for which you create the RAM user provisioning. The value is fixed as the ID of the account in the resource directory.
         self.target_id = target_id
+        # The name of the object for which you create the RAM user provisioning. The value is fixed as the name of the resource directory.
         self.target_name = target_name
+        # The path of the resource directory in which you create the RAM user provisioning for the object.
         self.target_path = target_path
+        # The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
         self.target_type = target_type
+        # The modification time.
         self.update_time = update_time
+        # The ID of the RAM user provisioning.
         self.user_provisioning_id = user_provisioning_id
 
     def validate(self):
@@ -14227,7 +14951,9 @@ class UpdateUserProvisioningResponseBody(TeaModel):
         request_id: str = None,
         user_provisioning: UpdateUserProvisioningResponseBodyUserProvisioning = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The information about the RAM user provisioning.
         self.user_provisioning = user_provisioning
 
     def validate(self):
@@ -14304,8 +15030,19 @@ class UpdateUserProvisioningConfigurationRequest(TeaModel):
         new_default_landing_page: str = None,
         new_session_duration: int = None,
     ):
+        # The ID of the resource directory.
         self.directory_id = directory_id
+        # The new default URL for a CloudSSO user who logs on to the Alibaba Cloud Management Console.
+        # 
+        # Default value: https://homenew.console.aliyun.com.
         self.new_default_landing_page = new_default_landing_page
+        # The new duration of the logon session.
+        # 
+        # Unit: hours.
+        # 
+        # Valid values: 1 to 24.
+        # 
+        # Default value: 6.
         self.new_session_duration = new_session_duration
 
     def validate(self):
@@ -14345,10 +15082,23 @@ class UpdateUserProvisioningConfigurationResponseBodyUserProvisioningConfigurati
         session_duration: int = None,
         update_time: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The default URL for a CloudSSO user who logs on to the Alibaba Cloud Management Console.
+        # 
+        # Default value: https://homenew.console.aliyun.com.
         self.default_landing_page = default_landing_page
+        # The ID of the resource directory.
         self.directory_id = directory_id
+        # The duration of the logon session.
+        # 
+        # Unit: hours.
+        # 
+        # Valid values: 1 to 24.
+        # 
+        # Default value: 6.
         self.session_duration = session_duration
+        # The modification time.
         self.update_time = update_time
 
     def validate(self):
@@ -14393,7 +15143,9 @@ class UpdateUserProvisioningConfigurationResponseBody(TeaModel):
         request_id: str = None,
         user_provisioning_configuration: UpdateUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The global configurations of the RAM user provisioning.
         self.user_provisioning_configuration = user_provisioning_configuration
 
     def validate(self):
