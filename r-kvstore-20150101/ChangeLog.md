@@ -1,3 +1,12 @@
+2024-03-30 Version: 3.0.0
+- Update API DescribeBackupTasks: update response param.
+- Update API DescribeBackups: update param BackupId.
+- Update API DescribeBackups: update param BackupJobId.
+- Update API DescribeClusterBackupList: update param ClusterBackupId.
+- Update API DescribePrice: update response param.
+- Update API ModifyInstanceSpec: add param NodeType.
+
+
 2024-02-28 Version: 2.25.6
 - Update API DescribeClusterBackupList: update param ClusterBackupId.
 - Update API DescribePrice: update response param.

@@ -1278,8 +1278,7 @@ class Client(OpenApiClient):
         """
         Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
         You can call this operation to create an ApsaraDB for Redis instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](~~208271~~) operation.
-        **\
-        **Description** For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](~~26351~~).
+        > For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](~~26351~~).
         
         @param request: CreateInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1402,8 +1401,7 @@ class Client(OpenApiClient):
         """
         Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
         You can call this operation to create an ApsaraDB for Redis instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](~~208271~~) operation.
-        **\
-        **Description** For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](~~26351~~).
+        > For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](~~26351~~).
         
         @param request: CreateInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1525,8 +1523,7 @@ class Client(OpenApiClient):
         """
         Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
         You can call this operation to create an ApsaraDB for Redis instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](~~208271~~) operation.
-        **\
-        **Description** For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](~~26351~~).
+        > For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](~~26351~~).
         
         @param request: CreateInstanceRequest
         @return: CreateInstanceResponse
@@ -1541,8 +1538,7 @@ class Client(OpenApiClient):
         """
         Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
         You can call this operation to create an ApsaraDB for Redis instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](~~208271~~) operation.
-        **\
-        **Description** For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](~~26351~~).
+        > For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](~~26351~~).
         
         @param request: CreateInstanceRequest
         @return: CreateInstanceResponse
@@ -1714,7 +1710,6 @@ class Client(OpenApiClient):
         """
         For information about instance selection, see [Select an ApsaraDB for Redis instance](~~223808~~).
         Before you call this operation, make sure that you are familiar with the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        >
         *   For information about how to create a Tair instance in the Tair console, see [Create a Tair instance](~~443863~~).
         *   If you want to create other types of instances, such as Community Edition instances or [Tair DRAM-based](~~126164~~) instances, you can call the [CreateInstance](~~60873~~) operation.
         
@@ -1833,7 +1828,6 @@ class Client(OpenApiClient):
         """
         For information about instance selection, see [Select an ApsaraDB for Redis instance](~~223808~~).
         Before you call this operation, make sure that you are familiar with the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        >
         *   For information about how to create a Tair instance in the Tair console, see [Create a Tair instance](~~443863~~).
         *   If you want to create other types of instances, such as Community Edition instances or [Tair DRAM-based](~~126164~~) instances, you can call the [CreateInstance](~~60873~~) operation.
         
@@ -1951,7 +1945,6 @@ class Client(OpenApiClient):
         """
         For information about instance selection, see [Select an ApsaraDB for Redis instance](~~223808~~).
         Before you call this operation, make sure that you are familiar with the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        >
         *   For information about how to create a Tair instance in the Tair console, see [Create a Tair instance](~~443863~~).
         *   If you want to create other types of instances, such as Community Edition instances or [Tair DRAM-based](~~126164~~) instances, you can call the [CreateInstance](~~60873~~) operation.
         
@@ -1968,7 +1961,6 @@ class Client(OpenApiClient):
         """
         For information about instance selection, see [Select an ApsaraDB for Redis instance](~~223808~~).
         Before you call this operation, make sure that you are familiar with the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        >
         *   For information about how to create a Tair instance in the Tair console, see [Create a Tair instance](~~443863~~).
         *   If you want to create other types of instances, such as Community Edition instances or [Tair DRAM-based](~~126164~~) instances, you can call the [CreateInstance](~~60873~~) operation.
         
@@ -11176,6 +11168,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.major_version):
             query['MajorVersion'] = request.major_version
+        if not UtilClient.is_unset(request.node_type):
+            query['NodeType'] = request.node_type
         if not UtilClient.is_unset(request.order_type):
             query['OrderType'] = request.order_type
         if not UtilClient.is_unset(request.owner_account):
@@ -11251,6 +11245,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.major_version):
             query['MajorVersion'] = request.major_version
+        if not UtilClient.is_unset(request.node_type):
+            query['NodeType'] = request.node_type
         if not UtilClient.is_unset(request.order_type):
             query['OrderType'] = request.order_type
         if not UtilClient.is_unset(request.owner_account):
