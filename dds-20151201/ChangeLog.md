@@ -1,3 +1,7 @@
+2024-04-01 Version: 6.4.0
+- Support API ModifyDBInstanceDiskType.
+
+
 2024-03-25 Version: 6.3.1
 - Update API DescribeBackups: update response param.
 

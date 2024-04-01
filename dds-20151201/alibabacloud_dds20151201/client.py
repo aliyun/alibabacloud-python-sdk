@@ -1172,8 +1172,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.CreateNodeResponse:
         """
-        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
-        This operation is applicable only to sharded cluster instances.
+        Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
+        This operation applies only to sharded cluster instances.
         
         @param request: CreateNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1238,8 +1238,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.CreateNodeResponse:
         """
-        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
-        This operation is applicable only to sharded cluster instances.
+        Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
+        This operation applies only to sharded cluster instances.
         
         @param request: CreateNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1303,8 +1303,8 @@ class Client(OpenApiClient):
         request: dds_20151201_models.CreateNodeRequest,
     ) -> dds_20151201_models.CreateNodeResponse:
         """
-        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
-        This operation is applicable only to sharded cluster instances.
+        Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
+        This operation applies only to sharded cluster instances.
         
         @param request: CreateNodeRequest
         @return: CreateNodeResponse
@@ -1317,8 +1317,8 @@ class Client(OpenApiClient):
         request: dds_20151201_models.CreateNodeRequest,
     ) -> dds_20151201_models.CreateNodeResponse:
         """
-        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
-        This operation is applicable only to sharded cluster instances.
+        Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
+        This operation applies only to sharded cluster instances.
         
         @param request: CreateNodeRequest
         @return: CreateNodeResponse
@@ -9339,6 +9339,112 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.ModifyDBInstanceDescriptionResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_description_with_options_async(request, runtime)
+
+    def modify_dbinstance_disk_type_with_options(
+        self,
+        request: dds_20151201_models.ModifyDBInstanceDiskTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.ModifyDBInstanceDiskTypeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.business_info):
+            query['BusinessInfo'] = request.business_info
+        if not UtilClient.is_unset(request.coupon_no):
+            query['CouponNo'] = request.coupon_no
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.db_instance_storage_type):
+            query['DbInstanceStorageType'] = request.db_instance_storage_type
+        if not UtilClient.is_unset(request.extra_param):
+            query['ExtraParam'] = request.extra_param
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.provisioned_iops):
+            query['ProvisionedIops'] = request.provisioned_iops
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceDiskType',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.ModifyDBInstanceDiskTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dbinstance_disk_type_with_options_async(
+        self,
+        request: dds_20151201_models.ModifyDBInstanceDiskTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.ModifyDBInstanceDiskTypeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.business_info):
+            query['BusinessInfo'] = request.business_info
+        if not UtilClient.is_unset(request.coupon_no):
+            query['CouponNo'] = request.coupon_no
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.db_instance_storage_type):
+            query['DbInstanceStorageType'] = request.db_instance_storage_type
+        if not UtilClient.is_unset(request.extra_param):
+            query['ExtraParam'] = request.extra_param
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.provisioned_iops):
+            query['ProvisionedIops'] = request.provisioned_iops
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceDiskType',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.ModifyDBInstanceDiskTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dbinstance_disk_type(
+        self,
+        request: dds_20151201_models.ModifyDBInstanceDiskTypeRequest,
+    ) -> dds_20151201_models.ModifyDBInstanceDiskTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dbinstance_disk_type_with_options(request, runtime)
+
+    async def modify_dbinstance_disk_type_async(
+        self,
+        request: dds_20151201_models.ModifyDBInstanceDiskTypeRequest,
+    ) -> dds_20151201_models.ModifyDBInstanceDiskTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dbinstance_disk_type_with_options_async(request, runtime)
 
     def modify_dbinstance_maintain_time_with_options(
         self,
