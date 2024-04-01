@@ -1,3 +1,26 @@
+2024-04-01 Version: 2.14.0
+- Support API AddBlacklistCallTagging.
+- Support API ListBlacklistCallTaggings.
+- Support API RemoveBlacklistCallTagging.
+- Update API AnswerCall: update response param.
+- Update API BlindTransfer: add param QueuingOverflowThreshold.
+- Update API BlindTransfer: add param QueuingTimeoutSeconds.
+- Update API BlindTransfer: add param RoutingType.
+- Update API BlindTransfer: add param Tags.
+- Update API GetDataChannelCredentials: update response param.
+- Update API GetTurnCredentials: update response param.
+- Update API InitiateAttendedTransfer: add param QueuingOverflowThreshold.
+- Update API InitiateAttendedTransfer: add param QueuingTimeoutSeconds.
+- Update API InitiateAttendedTransfer: add param RoutingType.
+- Update API InitiateAttendedTransfer: add param Tags.
+- Update API InitiateAttendedTransfer: add param TransfereeType.
+- Update API ListConfigItems: update response param.
+- Update API RegisterDevice: update param Password.
+- Update API RegisterDevices: update param Password.
+- Update API ResetUserPassword: update param Password.
+- Update API UpdateConfigItems: update param ConfigItems.
+
+
 2024-02-22 Version: 2.13.0
 - Support API AddBlacklistCallTagging.
 - Support API RemoveBlacklistCallTagging.

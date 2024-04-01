@@ -1178,10 +1178,18 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.job_id):
             query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.queuing_overflow_threshold):
+            query['QueuingOverflowThreshold'] = request.queuing_overflow_threshold
+        if not UtilClient.is_unset(request.queuing_timeout_seconds):
+            query['QueuingTimeoutSeconds'] = request.queuing_timeout_seconds
+        if not UtilClient.is_unset(request.routing_type):
+            query['RoutingType'] = request.routing_type
         if not UtilClient.is_unset(request.strategy_name):
             query['StrategyName'] = request.strategy_name
         if not UtilClient.is_unset(request.strategy_params):
             query['StrategyParams'] = request.strategy_params
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.timeout_seconds):
             query['TimeoutSeconds'] = request.timeout_seconds
         if not UtilClient.is_unset(request.transferee):
@@ -1228,10 +1236,18 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.job_id):
             query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.queuing_overflow_threshold):
+            query['QueuingOverflowThreshold'] = request.queuing_overflow_threshold
+        if not UtilClient.is_unset(request.queuing_timeout_seconds):
+            query['QueuingTimeoutSeconds'] = request.queuing_timeout_seconds
+        if not UtilClient.is_unset(request.routing_type):
+            query['RoutingType'] = request.routing_type
         if not UtilClient.is_unset(request.strategy_name):
             query['StrategyName'] = request.strategy_name
         if not UtilClient.is_unset(request.strategy_params):
             query['StrategyParams'] = request.strategy_params
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.timeout_seconds):
             query['TimeoutSeconds'] = request.timeout_seconds
         if not UtilClient.is_unset(request.transferee):
@@ -5914,14 +5930,24 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.job_id):
             query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.queuing_overflow_threshold):
+            query['QueuingOverflowThreshold'] = request.queuing_overflow_threshold
+        if not UtilClient.is_unset(request.queuing_timeout_seconds):
+            query['QueuingTimeoutSeconds'] = request.queuing_timeout_seconds
+        if not UtilClient.is_unset(request.routing_type):
+            query['RoutingType'] = request.routing_type
         if not UtilClient.is_unset(request.strategy_name):
             query['StrategyName'] = request.strategy_name
         if not UtilClient.is_unset(request.strategy_params):
             query['StrategyParams'] = request.strategy_params
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.timeout_seconds):
             query['TimeoutSeconds'] = request.timeout_seconds
         if not UtilClient.is_unset(request.transferee):
             query['Transferee'] = request.transferee
+        if not UtilClient.is_unset(request.transferee_type):
+            query['TransfereeType'] = request.transferee_type
         if not UtilClient.is_unset(request.transferor):
             query['Transferor'] = request.transferor
         if not UtilClient.is_unset(request.user_id):
@@ -5960,14 +5986,24 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.job_id):
             query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.queuing_overflow_threshold):
+            query['QueuingOverflowThreshold'] = request.queuing_overflow_threshold
+        if not UtilClient.is_unset(request.queuing_timeout_seconds):
+            query['QueuingTimeoutSeconds'] = request.queuing_timeout_seconds
+        if not UtilClient.is_unset(request.routing_type):
+            query['RoutingType'] = request.routing_type
         if not UtilClient.is_unset(request.strategy_name):
             query['StrategyName'] = request.strategy_name
         if not UtilClient.is_unset(request.strategy_params):
             query['StrategyParams'] = request.strategy_params
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.timeout_seconds):
             query['TimeoutSeconds'] = request.timeout_seconds
         if not UtilClient.is_unset(request.transferee):
             query['Transferee'] = request.transferee
+        if not UtilClient.is_unset(request.transferee_type):
+            query['TransfereeType'] = request.transferee_type
         if not UtilClient.is_unset(request.transferor):
             query['Transferor'] = request.transferor
         if not UtilClient.is_unset(request.user_id):
@@ -6736,6 +6772,80 @@ class Client(OpenApiClient):
     ) -> ccc20200701_models.ListAudioFilesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_audio_files_with_options_async(request, runtime)
+
+    def list_blacklist_call_taggings_with_options(
+        self,
+        request: ccc20200701_models.ListBlacklistCallTaggingsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListBlacklistCallTaggingsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.number_list):
+            query['NumberList'] = request.number_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBlacklistCallTaggings',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListBlacklistCallTaggingsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_blacklist_call_taggings_with_options_async(
+        self,
+        request: ccc20200701_models.ListBlacklistCallTaggingsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListBlacklistCallTaggingsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.number_list):
+            query['NumberList'] = request.number_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBlacklistCallTaggings',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListBlacklistCallTaggingsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_blacklist_call_taggings(
+        self,
+        request: ccc20200701_models.ListBlacklistCallTaggingsRequest,
+    ) -> ccc20200701_models.ListBlacklistCallTaggingsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_blacklist_call_taggings_with_options(request, runtime)
+
+    async def list_blacklist_call_taggings_async(
+        self,
+        request: ccc20200701_models.ListBlacklistCallTaggingsRequest,
+    ) -> ccc20200701_models.ListBlacklistCallTaggingsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_blacklist_call_taggings_with_options_async(request, runtime)
 
     def list_brief_skill_groups_with_options(
         self,
