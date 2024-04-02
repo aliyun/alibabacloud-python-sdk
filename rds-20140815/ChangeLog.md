@@ -1,3 +1,8 @@
+2024-04-02 Version: 4.0.0
+- Delete API ImportDatabaseBetweenInstances.
+- Update API DescribeDBInstances: update response param.
+
+
 2024-03-23 Version: 3.2.1
 - Update API CreateDBNodes: update param DBNode.
 - Update API CreateOrderForCreateDBNodes: update param DBNode.

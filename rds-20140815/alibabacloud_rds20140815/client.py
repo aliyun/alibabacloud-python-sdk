@@ -26478,178 +26478,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.grant_operator_permission_with_options_async(request, runtime)
 
-    def import_database_between_instances_with_options(
-        self,
-        request: rds_20140815_models.ImportDatabaseBetweenInstancesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rds_20140815_models.ImportDatabaseBetweenInstancesResponse:
-        """
-        ### [](#)Supported database engine
-        *   SQL Server
-        ### [](#)Description
-        We recommend that you use Data Transmission Service (DTS). DTS provides data migration, subscription, and synchronization features that allow you to establish stable, secure transmission links. For more information, see [DTS API overview](~~49456~~).
-        ### [](#)Precautions
-        *   During the migration, the source instance is in the **Migrating** state, and the destination instance is in the **Importing** state.
-        *   Before you call this operation, **make sure that the following conditions are met**:
-        *   The source and destination instances must run SQL Server and belong to the dedicated or dedicated host instance family. For more information about the supported instance types, see [Primary instance types](~~26312~~).
-        *   The source and destination instances must be created by using the same user.
-        *   The instance is in the Running state.
-        *   The source and destination databases must be in the Running state.
-        *   The remaining storage of the destination instance must be greater than the storage capacity of the source instance.
-        > *   This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
-        > *   You can migrate the data of multiple databases at a time.
-        
-        @param request: ImportDatabaseBetweenInstancesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ImportDatabaseBetweenInstancesResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbinfo):
-            query['DBInfo'] = request.dbinfo
-        if not UtilClient.is_unset(request.dbinstance_id):
-            query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.source_dbinstance_id):
-            query['SourceDBInstanceId'] = request.source_dbinstance_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ImportDatabaseBetweenInstances',
-            version='2014-08-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            rds_20140815_models.ImportDatabaseBetweenInstancesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def import_database_between_instances_with_options_async(
-        self,
-        request: rds_20140815_models.ImportDatabaseBetweenInstancesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rds_20140815_models.ImportDatabaseBetweenInstancesResponse:
-        """
-        ### [](#)Supported database engine
-        *   SQL Server
-        ### [](#)Description
-        We recommend that you use Data Transmission Service (DTS). DTS provides data migration, subscription, and synchronization features that allow you to establish stable, secure transmission links. For more information, see [DTS API overview](~~49456~~).
-        ### [](#)Precautions
-        *   During the migration, the source instance is in the **Migrating** state, and the destination instance is in the **Importing** state.
-        *   Before you call this operation, **make sure that the following conditions are met**:
-        *   The source and destination instances must run SQL Server and belong to the dedicated or dedicated host instance family. For more information about the supported instance types, see [Primary instance types](~~26312~~).
-        *   The source and destination instances must be created by using the same user.
-        *   The instance is in the Running state.
-        *   The source and destination databases must be in the Running state.
-        *   The remaining storage of the destination instance must be greater than the storage capacity of the source instance.
-        > *   This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
-        > *   You can migrate the data of multiple databases at a time.
-        
-        @param request: ImportDatabaseBetweenInstancesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ImportDatabaseBetweenInstancesResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbinfo):
-            query['DBInfo'] = request.dbinfo
-        if not UtilClient.is_unset(request.dbinstance_id):
-            query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.source_dbinstance_id):
-            query['SourceDBInstanceId'] = request.source_dbinstance_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ImportDatabaseBetweenInstances',
-            version='2014-08-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            rds_20140815_models.ImportDatabaseBetweenInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def import_database_between_instances(
-        self,
-        request: rds_20140815_models.ImportDatabaseBetweenInstancesRequest,
-    ) -> rds_20140815_models.ImportDatabaseBetweenInstancesResponse:
-        """
-        ### [](#)Supported database engine
-        *   SQL Server
-        ### [](#)Description
-        We recommend that you use Data Transmission Service (DTS). DTS provides data migration, subscription, and synchronization features that allow you to establish stable, secure transmission links. For more information, see [DTS API overview](~~49456~~).
-        ### [](#)Precautions
-        *   During the migration, the source instance is in the **Migrating** state, and the destination instance is in the **Importing** state.
-        *   Before you call this operation, **make sure that the following conditions are met**:
-        *   The source and destination instances must run SQL Server and belong to the dedicated or dedicated host instance family. For more information about the supported instance types, see [Primary instance types](~~26312~~).
-        *   The source and destination instances must be created by using the same user.
-        *   The instance is in the Running state.
-        *   The source and destination databases must be in the Running state.
-        *   The remaining storage of the destination instance must be greater than the storage capacity of the source instance.
-        > *   This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
-        > *   You can migrate the data of multiple databases at a time.
-        
-        @param request: ImportDatabaseBetweenInstancesRequest
-        @return: ImportDatabaseBetweenInstancesResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.import_database_between_instances_with_options(request, runtime)
-
-    async def import_database_between_instances_async(
-        self,
-        request: rds_20140815_models.ImportDatabaseBetweenInstancesRequest,
-    ) -> rds_20140815_models.ImportDatabaseBetweenInstancesResponse:
-        """
-        ### [](#)Supported database engine
-        *   SQL Server
-        ### [](#)Description
-        We recommend that you use Data Transmission Service (DTS). DTS provides data migration, subscription, and synchronization features that allow you to establish stable, secure transmission links. For more information, see [DTS API overview](~~49456~~).
-        ### [](#)Precautions
-        *   During the migration, the source instance is in the **Migrating** state, and the destination instance is in the **Importing** state.
-        *   Before you call this operation, **make sure that the following conditions are met**:
-        *   The source and destination instances must run SQL Server and belong to the dedicated or dedicated host instance family. For more information about the supported instance types, see [Primary instance types](~~26312~~).
-        *   The source and destination instances must be created by using the same user.
-        *   The instance is in the Running state.
-        *   The source and destination databases must be in the Running state.
-        *   The remaining storage of the destination instance must be greater than the storage capacity of the source instance.
-        > *   This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
-        > *   You can migrate the data of multiple databases at a time.
-        
-        @param request: ImportDatabaseBetweenInstancesRequest
-        @return: ImportDatabaseBetweenInstancesResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.import_database_between_instances_with_options_async(request, runtime)
-
     def import_user_backup_file_with_options(
         self,
         request: rds_20140815_models.ImportUserBackupFileRequest,
@@ -28836,7 +28664,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyCollationTimeZoneResponse:
         """
-        > This operation is phased out.
+        ### [](#)Supported database engines
+        RDS SQL Server
+        ### [](#)References
+        >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+        [Change the character set collation and the time zone of system databases](~~95700~~)
         
         @param request: ModifyCollationTimeZoneRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28881,7 +28713,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyCollationTimeZoneResponse:
         """
-        > This operation is phased out.
+        ### [](#)Supported database engines
+        RDS SQL Server
+        ### [](#)References
+        >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+        [Change the character set collation and the time zone of system databases](~~95700~~)
         
         @param request: ModifyCollationTimeZoneRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28925,7 +28761,11 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifyCollationTimeZoneRequest,
     ) -> rds_20140815_models.ModifyCollationTimeZoneResponse:
         """
-        > This operation is phased out.
+        ### [](#)Supported database engines
+        RDS SQL Server
+        ### [](#)References
+        >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+        [Change the character set collation and the time zone of system databases](~~95700~~)
         
         @param request: ModifyCollationTimeZoneRequest
         @return: ModifyCollationTimeZoneResponse
@@ -28938,7 +28778,11 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifyCollationTimeZoneRequest,
     ) -> rds_20140815_models.ModifyCollationTimeZoneResponse:
         """
-        > This operation is phased out.
+        ### [](#)Supported database engines
+        RDS SQL Server
+        ### [](#)References
+        >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+        [Change the character set collation and the time zone of system databases](~~95700~~)
         
         @param request: ModifyCollationTimeZoneRequest
         @return: ModifyCollationTimeZoneResponse
