@@ -1358,6 +1358,892 @@ class DescribeAdvisorResourcesResponse(TeaModel):
         return self
 
 
+class DescribeCostCheckAdvicesRequest(TeaModel):
+    def __init__(
+        self,
+        check_id: str = None,
+        language: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_ids: List[str] = None,
+        resource_ids: List[str] = None,
+        resource_name: str = None,
+        severity: str = None,
+    ):
+        self.check_id = check_id
+        self.language = language
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_ids = region_ids
+        self.resource_ids = resource_ids
+        self.resource_name = resource_name
+        self.severity = severity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_id is not None:
+            result['CheckId'] = self.check_id
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_ids is not None:
+            result['RegionIds'] = self.region_ids
+        if self.resource_ids is not None:
+            result['ResourceIds'] = self.resource_ids
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckId') is not None:
+            self.check_id = m.get('CheckId')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionIds') is not None:
+            self.region_ids = m.get('RegionIds')
+        if m.get('ResourceIds') is not None:
+            self.resource_ids = m.get('ResourceIds')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        return self
+
+
+class DescribeCostCheckAdvicesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        check_id: str = None,
+        language: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_ids_shrink: str = None,
+        resource_ids_shrink: str = None,
+        resource_name: str = None,
+        severity: str = None,
+    ):
+        self.check_id = check_id
+        self.language = language
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_ids_shrink = region_ids_shrink
+        self.resource_ids_shrink = resource_ids_shrink
+        self.resource_name = resource_name
+        self.severity = severity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_id is not None:
+            result['CheckId'] = self.check_id
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_ids_shrink is not None:
+            result['RegionIds'] = self.region_ids_shrink
+        if self.resource_ids_shrink is not None:
+            result['ResourceIds'] = self.resource_ids_shrink
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckId') is not None:
+            self.check_id = m.get('CheckId')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionIds') is not None:
+            self.region_ids_shrink = m.get('RegionIds')
+        if m.get('ResourceIds') is not None:
+            self.resource_ids_shrink = m.get('ResourceIds')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        return self
+
+
+class DescribeCostCheckAdvicesResponseBodyDataAdviceListTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class DescribeCostCheckAdvicesResponseBodyDataAdviceList(TeaModel):
+    def __init__(
+        self,
+        aliyun_id: int = None,
+        content: str = None,
+        end_time: int = None,
+        gmt_deleted: int = None,
+        product: str = None,
+        region_id: str = None,
+        resource_id: str = None,
+        resource_name: str = None,
+        severity: str = None,
+        start_time: int = None,
+        tags: List[DescribeCostCheckAdvicesResponseBodyDataAdviceListTags] = None,
+        url: str = None,
+        user_name: str = None,
+        zone_id: str = None,
+    ):
+        self.aliyun_id = aliyun_id
+        self.content = content
+        self.end_time = end_time
+        self.gmt_deleted = gmt_deleted
+        self.product = product
+        self.region_id = region_id
+        self.resource_id = resource_id
+        self.resource_name = resource_name
+        self.severity = severity
+        self.start_time = start_time
+        self.tags = tags
+        self.url = url
+        self.user_name = user_name
+        self.zone_id = zone_id
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_id is not None:
+            result['AliyunId'] = self.aliyun_id
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.gmt_deleted is not None:
+            result['GmtDeleted'] = self.gmt_deleted
+        if self.product is not None:
+            result['Product'] = self.product
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliyunId') is not None:
+            self.aliyun_id = m.get('AliyunId')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('GmtDeleted') is not None:
+            self.gmt_deleted = m.get('GmtDeleted')
+        if m.get('Product') is not None:
+            self.product = m.get('Product')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeCostCheckAdvicesResponseBodyDataAdviceListTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeCostCheckAdvicesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        advice_list: List[DescribeCostCheckAdvicesResponseBodyDataAdviceList] = None,
+        check_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.advice_list = advice_list
+        self.check_id = check_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.advice_list:
+            for k in self.advice_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AdviceList'] = []
+        if self.advice_list is not None:
+            for k in self.advice_list:
+                result['AdviceList'].append(k.to_map() if k else None)
+        if self.check_id is not None:
+            result['CheckId'] = self.check_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.advice_list = []
+        if m.get('AdviceList') is not None:
+            for k in m.get('AdviceList'):
+                temp_model = DescribeCostCheckAdvicesResponseBodyDataAdviceList()
+                self.advice_list.append(temp_model.from_map(k))
+        if m.get('CheckId') is not None:
+            self.check_id = m.get('CheckId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeCostCheckAdvicesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: DescribeCostCheckAdvicesResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DescribeCostCheckAdvicesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeCostCheckAdvicesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCostCheckAdvicesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCostCheckAdvicesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCostCheckResultsRequest(TeaModel):
+    def __init__(
+        self,
+        check_ids: List[str] = None,
+        group_by: str = None,
+        product: str = None,
+        region_ids: List[str] = None,
+        resource_ids: List[str] = None,
+        resource_name: str = None,
+        severity: int = None,
+    ):
+        self.check_ids = check_ids
+        self.group_by = group_by
+        self.product = product
+        self.region_ids = region_ids
+        self.resource_ids = resource_ids
+        self.resource_name = resource_name
+        self.severity = severity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_ids is not None:
+            result['CheckIds'] = self.check_ids
+        if self.group_by is not None:
+            result['GroupBy'] = self.group_by
+        if self.product is not None:
+            result['Product'] = self.product
+        if self.region_ids is not None:
+            result['RegionIds'] = self.region_ids
+        if self.resource_ids is not None:
+            result['ResourceIds'] = self.resource_ids
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckIds') is not None:
+            self.check_ids = m.get('CheckIds')
+        if m.get('GroupBy') is not None:
+            self.group_by = m.get('GroupBy')
+        if m.get('Product') is not None:
+            self.product = m.get('Product')
+        if m.get('RegionIds') is not None:
+            self.region_ids = m.get('RegionIds')
+        if m.get('ResourceIds') is not None:
+            self.resource_ids = m.get('ResourceIds')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        return self
+
+
+class DescribeCostCheckResultsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        check_ids_shrink: str = None,
+        group_by: str = None,
+        product: str = None,
+        region_ids_shrink: str = None,
+        resource_ids_shrink: str = None,
+        resource_name: str = None,
+        severity: int = None,
+    ):
+        self.check_ids_shrink = check_ids_shrink
+        self.group_by = group_by
+        self.product = product
+        self.region_ids_shrink = region_ids_shrink
+        self.resource_ids_shrink = resource_ids_shrink
+        self.resource_name = resource_name
+        self.severity = severity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_ids_shrink is not None:
+            result['CheckIds'] = self.check_ids_shrink
+        if self.group_by is not None:
+            result['GroupBy'] = self.group_by
+        if self.product is not None:
+            result['Product'] = self.product
+        if self.region_ids_shrink is not None:
+            result['RegionIds'] = self.region_ids_shrink
+        if self.resource_ids_shrink is not None:
+            result['ResourceIds'] = self.resource_ids_shrink
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckIds') is not None:
+            self.check_ids_shrink = m.get('CheckIds')
+        if m.get('GroupBy') is not None:
+            self.group_by = m.get('GroupBy')
+        if m.get('Product') is not None:
+            self.product = m.get('Product')
+        if m.get('RegionIds') is not None:
+            self.region_ids_shrink = m.get('RegionIds')
+        if m.get('ResourceIds') is not None:
+            self.resource_ids_shrink = m.get('ResourceIds')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        return self
+
+
+class DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems(TeaModel):
+    def __init__(
+        self,
+        advice_count: int = None,
+        advice_resource_count: int = None,
+        category: str = None,
+        check_id: str = None,
+        check_name: str = None,
+        current_cost: float = None,
+        description: str = None,
+        expected_saving_cost: float = None,
+        optimized_cost: float = None,
+        product: str = None,
+        severity: int = None,
+        summary: str = None,
+        tips: str = None,
+    ):
+        self.advice_count = advice_count
+        self.advice_resource_count = advice_resource_count
+        self.category = category
+        self.check_id = check_id
+        self.check_name = check_name
+        self.current_cost = current_cost
+        self.description = description
+        self.expected_saving_cost = expected_saving_cost
+        self.optimized_cost = optimized_cost
+        self.product = product
+        self.severity = severity
+        self.summary = summary
+        self.tips = tips
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice_count is not None:
+            result['AdviceCount'] = self.advice_count
+        if self.advice_resource_count is not None:
+            result['AdviceResourceCount'] = self.advice_resource_count
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.check_id is not None:
+            result['CheckId'] = self.check_id
+        if self.check_name is not None:
+            result['CheckName'] = self.check_name
+        if self.current_cost is not None:
+            result['CurrentCost'] = self.current_cost
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.expected_saving_cost is not None:
+            result['ExpectedSavingCost'] = self.expected_saving_cost
+        if self.optimized_cost is not None:
+            result['OptimizedCost'] = self.optimized_cost
+        if self.product is not None:
+            result['Product'] = self.product
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        if self.tips is not None:
+            result['Tips'] = self.tips
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdviceCount') is not None:
+            self.advice_count = m.get('AdviceCount')
+        if m.get('AdviceResourceCount') is not None:
+            self.advice_resource_count = m.get('AdviceResourceCount')
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('CheckId') is not None:
+            self.check_id = m.get('CheckId')
+        if m.get('CheckName') is not None:
+            self.check_name = m.get('CheckName')
+        if m.get('CurrentCost') is not None:
+            self.current_cost = m.get('CurrentCost')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ExpectedSavingCost') is not None:
+            self.expected_saving_cost = m.get('ExpectedSavingCost')
+        if m.get('OptimizedCost') is not None:
+            self.optimized_cost = m.get('OptimizedCost')
+        if m.get('Product') is not None:
+            self.product = m.get('Product')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        if m.get('Tips') is not None:
+            self.tips = m.get('Tips')
+        return self
+
+
+class DescribeCostCheckResultsResponseBodyDataViewGroup(TeaModel):
+    def __init__(
+        self,
+        check_items: List[DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems] = None,
+        group_code: str = None,
+        group_count: int = None,
+        group_expected_saving_cost: float = None,
+        group_name: str = None,
+    ):
+        self.check_items = check_items
+        self.group_code = group_code
+        self.group_count = group_count
+        self.group_expected_saving_cost = group_expected_saving_cost
+        self.group_name = group_name
+
+    def validate(self):
+        if self.check_items:
+            for k in self.check_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CheckItems'] = []
+        if self.check_items is not None:
+            for k in self.check_items:
+                result['CheckItems'].append(k.to_map() if k else None)
+        if self.group_code is not None:
+            result['GroupCode'] = self.group_code
+        if self.group_count is not None:
+            result['GroupCount'] = self.group_count
+        if self.group_expected_saving_cost is not None:
+            result['GroupExpectedSavingCost'] = self.group_expected_saving_cost
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.check_items = []
+        if m.get('CheckItems') is not None:
+            for k in m.get('CheckItems'):
+                temp_model = DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems()
+                self.check_items.append(temp_model.from_map(k))
+        if m.get('GroupCode') is not None:
+            self.group_code = m.get('GroupCode')
+        if m.get('GroupCount') is not None:
+            self.group_count = m.get('GroupCount')
+        if m.get('GroupExpectedSavingCost') is not None:
+            self.group_expected_saving_cost = m.get('GroupExpectedSavingCost')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        return self
+
+
+class DescribeCostCheckResultsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        advice_resource_count: int = None,
+        group_by: str = None,
+        normal_count: int = None,
+        resource_count: int = None,
+        total_count: int = None,
+        view_group: List[DescribeCostCheckResultsResponseBodyDataViewGroup] = None,
+        warning_count: int = None,
+    ):
+        self.advice_resource_count = advice_resource_count
+        self.group_by = group_by
+        self.normal_count = normal_count
+        self.resource_count = resource_count
+        self.total_count = total_count
+        self.view_group = view_group
+        self.warning_count = warning_count
+
+    def validate(self):
+        if self.view_group:
+            for k in self.view_group:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice_resource_count is not None:
+            result['AdviceResourceCount'] = self.advice_resource_count
+        if self.group_by is not None:
+            result['GroupBy'] = self.group_by
+        if self.normal_count is not None:
+            result['NormalCount'] = self.normal_count
+        if self.resource_count is not None:
+            result['ResourceCount'] = self.resource_count
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['ViewGroup'] = []
+        if self.view_group is not None:
+            for k in self.view_group:
+                result['ViewGroup'].append(k.to_map() if k else None)
+        if self.warning_count is not None:
+            result['WarningCount'] = self.warning_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdviceResourceCount') is not None:
+            self.advice_resource_count = m.get('AdviceResourceCount')
+        if m.get('GroupBy') is not None:
+            self.group_by = m.get('GroupBy')
+        if m.get('NormalCount') is not None:
+            self.normal_count = m.get('NormalCount')
+        if m.get('ResourceCount') is not None:
+            self.resource_count = m.get('ResourceCount')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.view_group = []
+        if m.get('ViewGroup') is not None:
+            for k in m.get('ViewGroup'):
+                temp_model = DescribeCostCheckResultsResponseBodyDataViewGroup()
+                self.view_group.append(temp_model.from_map(k))
+        if m.get('WarningCount') is not None:
+            self.warning_count = m.get('WarningCount')
+        return self
+
+
+class DescribeCostCheckResultsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: DescribeCostCheckResultsResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DescribeCostCheckResultsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeCostCheckResultsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCostCheckResultsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCostCheckResultsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetHistoryAdvicesRequest(TeaModel):
     def __init__(
         self,

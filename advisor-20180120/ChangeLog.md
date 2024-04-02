@@ -1,3 +1,10 @@
+2024-04-02 Version: 1.4.0
+- Support API DescribeAdvicesFlatPage.
+- Support API DescribeCostCheckAdvices.
+- Support API DescribeCostCheckResults.
+- Support API ReportBizAlertInfo.
+
+
 2024-02-26 Version: 1.3.0
 - Support API DescribeAdvicesFlatPage.
 - Support API ReportBizAlertInfo.

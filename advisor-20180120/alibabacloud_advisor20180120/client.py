@@ -483,6 +483,226 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_advisor_resources_with_options_async(request, runtime)
 
+    def describe_cost_check_advices_with_options(
+        self,
+        tmp_req: advisor_20180120_models.DescribeCostCheckAdvicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> advisor_20180120_models.DescribeCostCheckAdvicesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = advisor_20180120_models.DescribeCostCheckAdvicesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.region_ids):
+            request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
+        if not UtilClient.is_unset(tmp_req.resource_ids):
+            request.resource_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_ids, 'ResourceIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.check_id):
+            query['CheckId'] = request.check_id
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_ids_shrink):
+            query['RegionIds'] = request.region_ids_shrink
+        if not UtilClient.is_unset(request.resource_ids_shrink):
+            query['ResourceIds'] = request.resource_ids_shrink
+        if not UtilClient.is_unset(request.resource_name):
+            query['ResourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.severity):
+            query['Severity'] = request.severity
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCostCheckAdvices',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            advisor_20180120_models.DescribeCostCheckAdvicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cost_check_advices_with_options_async(
+        self,
+        tmp_req: advisor_20180120_models.DescribeCostCheckAdvicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> advisor_20180120_models.DescribeCostCheckAdvicesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = advisor_20180120_models.DescribeCostCheckAdvicesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.region_ids):
+            request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
+        if not UtilClient.is_unset(tmp_req.resource_ids):
+            request.resource_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_ids, 'ResourceIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.check_id):
+            query['CheckId'] = request.check_id
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_ids_shrink):
+            query['RegionIds'] = request.region_ids_shrink
+        if not UtilClient.is_unset(request.resource_ids_shrink):
+            query['ResourceIds'] = request.resource_ids_shrink
+        if not UtilClient.is_unset(request.resource_name):
+            query['ResourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.severity):
+            query['Severity'] = request.severity
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCostCheckAdvices',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            advisor_20180120_models.DescribeCostCheckAdvicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cost_check_advices(
+        self,
+        request: advisor_20180120_models.DescribeCostCheckAdvicesRequest,
+    ) -> advisor_20180120_models.DescribeCostCheckAdvicesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cost_check_advices_with_options(request, runtime)
+
+    async def describe_cost_check_advices_async(
+        self,
+        request: advisor_20180120_models.DescribeCostCheckAdvicesRequest,
+    ) -> advisor_20180120_models.DescribeCostCheckAdvicesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cost_check_advices_with_options_async(request, runtime)
+
+    def describe_cost_check_results_with_options(
+        self,
+        tmp_req: advisor_20180120_models.DescribeCostCheckResultsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> advisor_20180120_models.DescribeCostCheckResultsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = advisor_20180120_models.DescribeCostCheckResultsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.check_ids):
+            request.check_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.check_ids, 'CheckIds', 'json')
+        if not UtilClient.is_unset(tmp_req.region_ids):
+            request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
+        if not UtilClient.is_unset(tmp_req.resource_ids):
+            request.resource_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_ids, 'ResourceIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.check_ids_shrink):
+            query['CheckIds'] = request.check_ids_shrink
+        if not UtilClient.is_unset(request.group_by):
+            query['GroupBy'] = request.group_by
+        if not UtilClient.is_unset(request.product):
+            query['Product'] = request.product
+        if not UtilClient.is_unset(request.region_ids_shrink):
+            query['RegionIds'] = request.region_ids_shrink
+        if not UtilClient.is_unset(request.resource_ids_shrink):
+            query['ResourceIds'] = request.resource_ids_shrink
+        if not UtilClient.is_unset(request.resource_name):
+            query['ResourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.severity):
+            query['Severity'] = request.severity
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCostCheckResults',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            advisor_20180120_models.DescribeCostCheckResultsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cost_check_results_with_options_async(
+        self,
+        tmp_req: advisor_20180120_models.DescribeCostCheckResultsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> advisor_20180120_models.DescribeCostCheckResultsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = advisor_20180120_models.DescribeCostCheckResultsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.check_ids):
+            request.check_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.check_ids, 'CheckIds', 'json')
+        if not UtilClient.is_unset(tmp_req.region_ids):
+            request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
+        if not UtilClient.is_unset(tmp_req.resource_ids):
+            request.resource_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_ids, 'ResourceIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.check_ids_shrink):
+            query['CheckIds'] = request.check_ids_shrink
+        if not UtilClient.is_unset(request.group_by):
+            query['GroupBy'] = request.group_by
+        if not UtilClient.is_unset(request.product):
+            query['Product'] = request.product
+        if not UtilClient.is_unset(request.region_ids_shrink):
+            query['RegionIds'] = request.region_ids_shrink
+        if not UtilClient.is_unset(request.resource_ids_shrink):
+            query['ResourceIds'] = request.resource_ids_shrink
+        if not UtilClient.is_unset(request.resource_name):
+            query['ResourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.severity):
+            query['Severity'] = request.severity
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCostCheckResults',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            advisor_20180120_models.DescribeCostCheckResultsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cost_check_results(
+        self,
+        request: advisor_20180120_models.DescribeCostCheckResultsRequest,
+    ) -> advisor_20180120_models.DescribeCostCheckResultsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cost_check_results_with_options(request, runtime)
+
+    async def describe_cost_check_results_async(
+        self,
+        request: advisor_20180120_models.DescribeCostCheckResultsRequest,
+    ) -> advisor_20180120_models.DescribeCostCheckResultsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cost_check_results_with_options_async(request, runtime)
+
     def get_history_advices_with_options(
         self,
         request: advisor_20180120_models.GetHistoryAdvicesRequest,
