@@ -1,3 +1,22 @@
+2024-04-03 Version: 2.6.4
+- Update API CreateAcl: add param AclOperationTypes.
+- Update API CreateAcl: add param AclPermissionType.
+- Update API CreateAcl: add param Host.
+- Update API CreateAcl: update param AclOperationType.
+- Update API CreateSaslUser: add param Mechanism.
+- Update API DeleteAcl: add param AclOperationTypes.
+- Update API DeleteAcl: add param AclPermissionType.
+- Update API DeleteAcl: add param Host.
+- Update API DeleteAcl: update param AclOperationType.
+- Update API DeleteSaslUser: add param Mechanism.
+- Update API DescribeAcls: add param AclOperationType.
+- Update API DescribeAcls: add param AclPermissionType.
+- Update API DescribeAcls: add param Host.
+- Update API DescribeAcls: update response param.
+- Update API DescribeSaslUsers: update response param.
+- Update API GetConsumerProgress: update response param.
+
+
 2024-03-25 Version: 2.6.2
 - Update API GetInstanceList: update response param.
 
