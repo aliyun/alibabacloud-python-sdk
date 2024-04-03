@@ -3826,6 +3826,8 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeMixedInvoicesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.merge_pdf_pages):
+            query['MergePdfPages'] = request.merge_pdf_pages
         if not UtilClient.is_unset(request.page_no):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.url):
@@ -3858,6 +3860,8 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeMixedInvoicesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.merge_pdf_pages):
+            query['MergePdfPages'] = request.merge_pdf_pages
         if not UtilClient.is_unset(request.page_no):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.url):

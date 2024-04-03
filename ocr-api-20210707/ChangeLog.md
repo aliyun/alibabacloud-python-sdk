@@ -1,3 +1,7 @@
+2024-04-03 Version: 2.0.8
+- Update API RecognizeMixedInvoices: add param MergePdfPages.
+
+
 2024-03-19 Version: 2.0.6
 - Update API RecognizeBasic: add param NeedRotate.
 
