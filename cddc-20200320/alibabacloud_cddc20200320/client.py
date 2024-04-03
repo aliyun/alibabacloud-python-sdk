@@ -43,15 +43,27 @@ class Client(OpenApiClient):
 
     def create_dedicated_host_with_options(
         self,
-        request: cddc_20200320_models.CreateDedicatedHostRequest,
+        tmp_req: cddc_20200320_models.CreateDedicatedHostRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cddc_20200320_models.CreateDedicatedHostResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cddc_20200320_models.CreateDedicatedHostShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cluster_services):
+            request.cluster_services_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cluster_services, 'ClusterServices', 'simple')
+        if not UtilClient.is_unset(tmp_req.my_base_ecs_class):
+            request.my_base_ecs_class_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.my_base_ecs_class, 'MyBaseEcsClass', 'json')
         query = {}
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cluster_alias):
+            query['ClusterAlias'] = request.cluster_alias
+        if not UtilClient.is_unset(request.cluster_services_shrink):
+            query['ClusterServices'] = request.cluster_services_shrink
+        if not UtilClient.is_unset(request.cluster_type):
+            query['ClusterType'] = request.cluster_type
         if not UtilClient.is_unset(request.dedicated_host_group_id):
             query['DedicatedHostGroupId'] = request.dedicated_host_group_id
         if not UtilClient.is_unset(request.host_class):
@@ -62,6 +74,8 @@ class Client(OpenApiClient):
             query['HostStorageType'] = request.host_storage_type
         if not UtilClient.is_unset(request.image_category):
             query['ImageCategory'] = request.image_category
+        if not UtilClient.is_unset(request.my_base_ecs_class_shrink):
+            query['MyBaseEcsClass'] = request.my_base_ecs_class_shrink
         if not UtilClient.is_unset(request.os_password):
             query['OsPassword'] = request.os_password
         if not UtilClient.is_unset(request.owner_id):
@@ -80,6 +94,8 @@ class Client(OpenApiClient):
             query['UsedTime'] = request.used_time
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcID'] = request.vpc_id
         if not UtilClient.is_unset(request.zone_id):
             query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
@@ -103,15 +119,27 @@ class Client(OpenApiClient):
 
     async def create_dedicated_host_with_options_async(
         self,
-        request: cddc_20200320_models.CreateDedicatedHostRequest,
+        tmp_req: cddc_20200320_models.CreateDedicatedHostRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cddc_20200320_models.CreateDedicatedHostResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cddc_20200320_models.CreateDedicatedHostShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cluster_services):
+            request.cluster_services_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cluster_services, 'ClusterServices', 'simple')
+        if not UtilClient.is_unset(tmp_req.my_base_ecs_class):
+            request.my_base_ecs_class_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.my_base_ecs_class, 'MyBaseEcsClass', 'json')
         query = {}
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cluster_alias):
+            query['ClusterAlias'] = request.cluster_alias
+        if not UtilClient.is_unset(request.cluster_services_shrink):
+            query['ClusterServices'] = request.cluster_services_shrink
+        if not UtilClient.is_unset(request.cluster_type):
+            query['ClusterType'] = request.cluster_type
         if not UtilClient.is_unset(request.dedicated_host_group_id):
             query['DedicatedHostGroupId'] = request.dedicated_host_group_id
         if not UtilClient.is_unset(request.host_class):
@@ -122,6 +150,8 @@ class Client(OpenApiClient):
             query['HostStorageType'] = request.host_storage_type
         if not UtilClient.is_unset(request.image_category):
             query['ImageCategory'] = request.image_category
+        if not UtilClient.is_unset(request.my_base_ecs_class_shrink):
+            query['MyBaseEcsClass'] = request.my_base_ecs_class_shrink
         if not UtilClient.is_unset(request.os_password):
             query['OsPassword'] = request.os_password
         if not UtilClient.is_unset(request.owner_id):
@@ -140,6 +170,8 @@ class Client(OpenApiClient):
             query['UsedTime'] = request.used_time
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcID'] = request.vpc_id
         if not UtilClient.is_unset(request.zone_id):
             query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(

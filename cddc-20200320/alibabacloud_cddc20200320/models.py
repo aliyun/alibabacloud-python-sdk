@@ -4,16 +4,149 @@ from Tea.model import TeaModel
 from typing import List, Dict, Any
 
 
+class CreateDedicatedHostRequestMyBaseEcsClass(TeaModel):
+    def __init__(
+        self,
+        amount: int = None,
+        auto_renew: bool = None,
+        charge_type: str = None,
+        data_disk_category: str = None,
+        data_disk_count: int = None,
+        data_disk_size: int = None,
+        depolyment_set_id: str = None,
+        ecs_class_code: str = None,
+        internet_charge_type: str = None,
+        internet_max_bandwidth_out: int = None,
+        key_pair_name: str = None,
+        password: str = None,
+        period: int = None,
+        period_type: str = None,
+        security_group_ids: List[str] = None,
+        system_disk_category: str = None,
+        system_disk_size: int = None,
+        tags: List[str] = None,
+    ):
+        self.amount = amount
+        self.auto_renew = auto_renew
+        self.charge_type = charge_type
+        self.data_disk_category = data_disk_category
+        self.data_disk_count = data_disk_count
+        self.data_disk_size = data_disk_size
+        self.depolyment_set_id = depolyment_set_id
+        self.ecs_class_code = ecs_class_code
+        self.internet_charge_type = internet_charge_type
+        self.internet_max_bandwidth_out = internet_max_bandwidth_out
+        self.key_pair_name = key_pair_name
+        self.password = password
+        self.period = period
+        self.period_type = period_type
+        self.security_group_ids = security_group_ids
+        self.system_disk_category = system_disk_category
+        self.system_disk_size = system_disk_size
+        self.tags = tags
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+        if self.data_disk_category is not None:
+            result['DataDiskCategory'] = self.data_disk_category
+        if self.data_disk_count is not None:
+            result['DataDiskCount'] = self.data_disk_count
+        if self.data_disk_size is not None:
+            result['DataDiskSize'] = self.data_disk_size
+        if self.depolyment_set_id is not None:
+            result['DepolymentSetId'] = self.depolyment_set_id
+        if self.ecs_class_code is not None:
+            result['EcsClassCode'] = self.ecs_class_code
+        if self.internet_charge_type is not None:
+            result['InternetChargeType'] = self.internet_charge_type
+        if self.internet_max_bandwidth_out is not None:
+            result['InternetMaxBandwidthOut'] = self.internet_max_bandwidth_out
+        if self.key_pair_name is not None:
+            result['KeyPairName'] = self.key_pair_name
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_type is not None:
+            result['PeriodType'] = self.period_type
+        if self.security_group_ids is not None:
+            result['SecurityGroupIds'] = self.security_group_ids
+        if self.system_disk_category is not None:
+            result['SystemDiskCategory'] = self.system_disk_category
+        if self.system_disk_size is not None:
+            result['SystemDiskSize'] = self.system_disk_size
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
+        if m.get('DataDiskCategory') is not None:
+            self.data_disk_category = m.get('DataDiskCategory')
+        if m.get('DataDiskCount') is not None:
+            self.data_disk_count = m.get('DataDiskCount')
+        if m.get('DataDiskSize') is not None:
+            self.data_disk_size = m.get('DataDiskSize')
+        if m.get('DepolymentSetId') is not None:
+            self.depolyment_set_id = m.get('DepolymentSetId')
+        if m.get('EcsClassCode') is not None:
+            self.ecs_class_code = m.get('EcsClassCode')
+        if m.get('InternetChargeType') is not None:
+            self.internet_charge_type = m.get('InternetChargeType')
+        if m.get('InternetMaxBandwidthOut') is not None:
+            self.internet_max_bandwidth_out = m.get('InternetMaxBandwidthOut')
+        if m.get('KeyPairName') is not None:
+            self.key_pair_name = m.get('KeyPairName')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodType') is not None:
+            self.period_type = m.get('PeriodType')
+        if m.get('SecurityGroupIds') is not None:
+            self.security_group_ids = m.get('SecurityGroupIds')
+        if m.get('SystemDiskCategory') is not None:
+            self.system_disk_category = m.get('SystemDiskCategory')
+        if m.get('SystemDiskSize') is not None:
+            self.system_disk_size = m.get('SystemDiskSize')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        return self
+
+
 class CreateDedicatedHostRequest(TeaModel):
     def __init__(
         self,
         auto_renew: str = None,
         client_token: str = None,
+        cluster_alias: str = None,
+        cluster_services: List[str] = None,
+        cluster_type: str = None,
         dedicated_host_group_id: str = None,
         host_class: str = None,
         host_storage: str = None,
         host_storage_type: str = None,
         image_category: str = None,
+        my_base_ecs_class: CreateDedicatedHostRequestMyBaseEcsClass = None,
         os_password: str = None,
         owner_id: int = None,
         pay_type: str = None,
@@ -23,6 +156,7 @@ class CreateDedicatedHostRequest(TeaModel):
         resource_owner_id: int = None,
         used_time: str = None,
         v_switch_id: str = None,
+        vpc_id: str = None,
         zone_id: str = None,
     ):
         # Specifies whether to enable the auto-renewal feature. Valid values:
@@ -34,6 +168,9 @@ class CreateDedicatedHostRequest(TeaModel):
         self.auto_renew = auto_renew
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        self.cluster_alias = cluster_alias
+        self.cluster_services = cluster_services
+        self.cluster_type = cluster_type
         # The dedicated cluster ID. You can log on to the ApsaraDB for MyBase console and go to the **Dedicated Clusters** page to view the dedicated cluster ID.
         # 
         # >  The database engine of the host is the same as the database engine of the cluster.
@@ -66,6 +203,7 @@ class CreateDedicatedHostRequest(TeaModel):
         # 
         # >  When you create a host that runs SQL Server, you must specify a host image.
         self.image_category = image_category
+        self.my_base_ecs_class = my_base_ecs_class
         # The password of the host. You can specify a password only when you create a host in a **Proprietary MyBase** dedicated cluster.
         # 
         # *   The password must be 8 to 30 characters in length.
@@ -91,11 +229,13 @@ class CreateDedicatedHostRequest(TeaModel):
         self.used_time = used_time
         # The vSwitch ID. You can log on to the Virtual Private Cloud (VPC) console to view the vSwitch ID.
         self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
         # The zone ID. You can call the [DescribeRegions](~~214103~~) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
-        pass
+        if self.my_base_ecs_class:
+            self.my_base_ecs_class.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -107,6 +247,12 @@ class CreateDedicatedHostRequest(TeaModel):
             result['AutoRenew'] = self.auto_renew
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.cluster_alias is not None:
+            result['ClusterAlias'] = self.cluster_alias
+        if self.cluster_services is not None:
+            result['ClusterServices'] = self.cluster_services
+        if self.cluster_type is not None:
+            result['ClusterType'] = self.cluster_type
         if self.dedicated_host_group_id is not None:
             result['DedicatedHostGroupId'] = self.dedicated_host_group_id
         if self.host_class is not None:
@@ -117,6 +263,8 @@ class CreateDedicatedHostRequest(TeaModel):
             result['HostStorageType'] = self.host_storage_type
         if self.image_category is not None:
             result['ImageCategory'] = self.image_category
+        if self.my_base_ecs_class is not None:
+            result['MyBaseEcsClass'] = self.my_base_ecs_class.to_map()
         if self.os_password is not None:
             result['OsPassword'] = self.os_password
         if self.owner_id is not None:
@@ -135,6 +283,8 @@ class CreateDedicatedHostRequest(TeaModel):
             result['UsedTime'] = self.used_time
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcID'] = self.vpc_id
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
         return result
@@ -145,6 +295,12 @@ class CreateDedicatedHostRequest(TeaModel):
             self.auto_renew = m.get('AutoRenew')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('ClusterAlias') is not None:
+            self.cluster_alias = m.get('ClusterAlias')
+        if m.get('ClusterServices') is not None:
+            self.cluster_services = m.get('ClusterServices')
+        if m.get('ClusterType') is not None:
+            self.cluster_type = m.get('ClusterType')
         if m.get('DedicatedHostGroupId') is not None:
             self.dedicated_host_group_id = m.get('DedicatedHostGroupId')
         if m.get('HostClass') is not None:
@@ -155,6 +311,9 @@ class CreateDedicatedHostRequest(TeaModel):
             self.host_storage_type = m.get('HostStorageType')
         if m.get('ImageCategory') is not None:
             self.image_category = m.get('ImageCategory')
+        if m.get('MyBaseEcsClass') is not None:
+            temp_model = CreateDedicatedHostRequestMyBaseEcsClass()
+            self.my_base_ecs_class = temp_model.from_map(m['MyBaseEcsClass'])
         if m.get('OsPassword') is not None:
             self.os_password = m.get('OsPassword')
         if m.get('OwnerId') is not None:
@@ -173,6 +332,212 @@ class CreateDedicatedHostRequest(TeaModel):
             self.used_time = m.get('UsedTime')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcID') is not None:
+            self.vpc_id = m.get('VpcID')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class CreateDedicatedHostShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        auto_renew: str = None,
+        client_token: str = None,
+        cluster_alias: str = None,
+        cluster_services_shrink: str = None,
+        cluster_type: str = None,
+        dedicated_host_group_id: str = None,
+        host_class: str = None,
+        host_storage: str = None,
+        host_storage_type: str = None,
+        image_category: str = None,
+        my_base_ecs_class_shrink: str = None,
+        os_password: str = None,
+        owner_id: int = None,
+        pay_type: str = None,
+        period: str = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        used_time: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+        zone_id: str = None,
+    ):
+        # Specifies whether to enable the auto-renewal feature. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # >  If you do not specify this parameter, the default value **false** is used.
+        self.auto_renew = auto_renew
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        self.client_token = client_token
+        self.cluster_alias = cluster_alias
+        self.cluster_services_shrink = cluster_services_shrink
+        self.cluster_type = cluster_type
+        # The dedicated cluster ID. You can log on to the ApsaraDB for MyBase console and go to the **Dedicated Clusters** page to view the dedicated cluster ID.
+        # 
+        # >  The database engine of the host is the same as the database engine of the cluster.
+        self.dedicated_host_group_id = dedicated_host_group_id
+        # The instance type of the host. For information about the host instance types supported by different database engines, see [Instance types of hosts](~~206343~~).
+        self.host_class = host_class
+        # The disk storage of the host. This parameter takes effect only for dedicated clusters that run Tair. Unit: GB. Valid values:
+        # 
+        # *   512
+        # *   1024
+        # *   1536
+        # *   2048
+        # *   2560
+        # *   3072
+        # *   3584
+        # *   4096
+        self.host_storage = host_storage
+        # The disk type of the host. This parameter takes effect only for dedicated clusters that run Tair. Valid values:
+        # 
+        # *   **cloud_essd**: PL1 enhanced SSD (ESSD).
+        # *   **cloud_essd0**: PL0 ESSD.
+        self.host_storage_type = host_storage_type
+        # The image of the host. Valid values:
+        # 
+        # *   **WindowsWithMssqlEntAlwaysonLicense**: SQL Server Cluster Edition.
+        # *   **WindowsWithMssqlStdLicense**: SQL Server Standard Edition.
+        # *   **WindowsWithMssqlEntLicense**: SQL Server Enterprise Edition.
+        # *   **WindowsWithMssqlWebLicense**: SQL Server Web Edition.
+        # *   **AliLinux**: other images.
+        # 
+        # >  When you create a host that runs SQL Server, you must specify a host image.
+        self.image_category = image_category
+        self.my_base_ecs_class_shrink = my_base_ecs_class_shrink
+        # The password of the host. You can specify a password only when you create a host in a **Proprietary MyBase** dedicated cluster.
+        # 
+        # *   The password must be 8 to 30 characters in length.
+        # *   The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # *   The password can contain the following special characters: () \ \` ~ ! @ # $ % ^ & \* - \_ + = | { } \[ ] : ; \" < > , . ? /\
+        self.os_password = os_password
+        self.owner_id = owner_id
+        # The billing method of the host. Set the value to **prepaid**.
+        self.pay_type = pay_type
+        # The unit of the subscription duration. Valid values:
+        # 
+        # *   **Year**\
+        # *   **Month**\
+        self.period = period
+        # The [region ID](~~198326~~) of the dedicated cluster.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # The subscription duration of the host.
+        # 
+        # *   Valid values when **Period** is set to **Year**: **1** to **5**.****\
+        # *   Valid values when **Period** is set to **Month**: **1** to **9**.
+        self.used_time = used_time
+        # The vSwitch ID. You can log on to the Virtual Private Cloud (VPC) console to view the vSwitch ID.
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
+        # The zone ID. You can call the [DescribeRegions](~~214103~~) operation to query the most recent zone list.
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.cluster_alias is not None:
+            result['ClusterAlias'] = self.cluster_alias
+        if self.cluster_services_shrink is not None:
+            result['ClusterServices'] = self.cluster_services_shrink
+        if self.cluster_type is not None:
+            result['ClusterType'] = self.cluster_type
+        if self.dedicated_host_group_id is not None:
+            result['DedicatedHostGroupId'] = self.dedicated_host_group_id
+        if self.host_class is not None:
+            result['HostClass'] = self.host_class
+        if self.host_storage is not None:
+            result['HostStorage'] = self.host_storage
+        if self.host_storage_type is not None:
+            result['HostStorageType'] = self.host_storage_type
+        if self.image_category is not None:
+            result['ImageCategory'] = self.image_category
+        if self.my_base_ecs_class_shrink is not None:
+            result['MyBaseEcsClass'] = self.my_base_ecs_class_shrink
+        if self.os_password is not None:
+            result['OsPassword'] = self.os_password
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.used_time is not None:
+            result['UsedTime'] = self.used_time
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcID'] = self.vpc_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ClusterAlias') is not None:
+            self.cluster_alias = m.get('ClusterAlias')
+        if m.get('ClusterServices') is not None:
+            self.cluster_services_shrink = m.get('ClusterServices')
+        if m.get('ClusterType') is not None:
+            self.cluster_type = m.get('ClusterType')
+        if m.get('DedicatedHostGroupId') is not None:
+            self.dedicated_host_group_id = m.get('DedicatedHostGroupId')
+        if m.get('HostClass') is not None:
+            self.host_class = m.get('HostClass')
+        if m.get('HostStorage') is not None:
+            self.host_storage = m.get('HostStorage')
+        if m.get('HostStorageType') is not None:
+            self.host_storage_type = m.get('HostStorageType')
+        if m.get('ImageCategory') is not None:
+            self.image_category = m.get('ImageCategory')
+        if m.get('MyBaseEcsClass') is not None:
+            self.my_base_ecs_class_shrink = m.get('MyBaseEcsClass')
+        if m.get('OsPassword') is not None:
+            self.os_password = m.get('OsPassword')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('UsedTime') is not None:
+            self.used_time = m.get('UsedTime')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcID') is not None:
+            self.vpc_id = m.get('VpcID')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
         return self
@@ -244,10 +609,12 @@ class CreateDedicatedHostResponseBodyDedicateHostList(TeaModel):
 class CreateDedicatedHostResponseBody(TeaModel):
     def __init__(
         self,
+        cluster_name: str = None,
         dedicate_host_list: CreateDedicatedHostResponseBodyDedicateHostList = None,
         order_id: int = None,
         request_id: str = None,
     ):
+        self.cluster_name = cluster_name
         # The created hosts.
         self.dedicate_host_list = dedicate_host_list
         # The order ID.
@@ -265,6 +632,8 @@ class CreateDedicatedHostResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
         if self.dedicate_host_list is not None:
             result['DedicateHostList'] = self.dedicate_host_list.to_map()
         if self.order_id is not None:
@@ -275,6 +644,8 @@ class CreateDedicatedHostResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
         if m.get('DedicateHostList') is not None:
             temp_model = CreateDedicatedHostResponseBodyDedicateHostList()
             self.dedicate_host_list = temp_model.from_map(m['DedicateHostList'])
@@ -297,9 +668,6 @@ class CreateDedicatedHostResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -472,9 +840,6 @@ class CreateDedicatedHostAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -689,9 +1054,6 @@ class CreateDedicatedHostGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1435,9 +1797,6 @@ class CreateMyBaseResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1574,9 +1933,6 @@ class DeleteDedicatedHostAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1702,9 +2058,6 @@ class DeleteDedicatedHostGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2114,9 +2467,6 @@ class DescribeDedicatedHostAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2384,9 +2734,6 @@ class DescribeDedicatedHostDisksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2856,9 +3203,6 @@ class DescribeDedicatedHostGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3458,9 +3802,6 @@ class DescribeDedicatedHostsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3802,9 +4143,6 @@ class DescribeHostEcsLevelInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3944,9 +4282,6 @@ class DescribeHostWebShellResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4123,9 +4458,6 @@ class DescribeRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4385,9 +4717,6 @@ class ListTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4527,9 +4856,6 @@ class ModifyDedicatedHostAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4669,9 +4995,6 @@ class ModifyDedicatedHostAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4836,9 +5159,6 @@ class ModifyDedicatedHostClassResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5027,9 +5347,6 @@ class ModifyDedicatedHostGroupAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5172,9 +5489,6 @@ class ModifyDedicatedHostPasswordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5403,9 +5717,6 @@ class QueryHostBaseInfoByInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5727,9 +6038,6 @@ class QueryHostInstanceConsoleInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5876,9 +6184,6 @@ class ReplaceDedicatedHostResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6037,9 +6342,6 @@ class RestartDedicatedHostResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6233,9 +6535,6 @@ class TagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6384,9 +6683,6 @@ class UntagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

@@ -1,3 +1,15 @@
+2024-04-03 Version: 1.1.6
+- Update API CreateDedicatedHost: add param ClusterAlias.
+- Update API CreateDedicatedHost: add param ClusterServices.
+- Update API CreateDedicatedHost: add param ClusterType.
+- Update API CreateDedicatedHost: add param MyBaseEcsClass.
+- Update API CreateDedicatedHost: add param VpcID.
+- Update API CreateDedicatedHost: update param VSwitchId.
+- Update API CreateDedicatedHost: update response param.
+- Update API CreateMyBase: update param AutoPay.
+- Update API CreateMyBase: update param Tags.
+
+
 2023-11-21 Version: 1.1.5
 - Generated python 2020-03-20 for cddc.
 
