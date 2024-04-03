@@ -11234,6 +11234,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.aliyun_lang):
             query['AliyunLang'] = request.aliyun_lang
+        if not UtilClient.is_unset(request.create_auth_token):
+            query['CreateAuthToken'] = request.create_auth_token
         if not UtilClient.is_unset(request.environment_id):
             query['EnvironmentId'] = request.environment_id
         if not UtilClient.is_unset(request.managed_type):
@@ -11268,6 +11270,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.aliyun_lang):
             query['AliyunLang'] = request.aliyun_lang
+        if not UtilClient.is_unset(request.create_auth_token):
+            query['CreateAuthToken'] = request.create_auth_token
         if not UtilClient.is_unset(request.environment_id):
             query['EnvironmentId'] = request.environment_id
         if not UtilClient.is_unset(request.managed_type):

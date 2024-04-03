@@ -1,3 +1,10 @@
+2024-04-03 Version: 4.7.4
+- Update API DeleteAppList: update param Pids.
+- Update API InitEnvironment: add param CreateAuthToken.
+- Update API ListDashboards: update response param.
+- Update API UpdateEnvironment: update param EnvironmentName.
+
+
 2024-03-21 Version: 4.7.2
 - Update API UpdateEnvironment: update param EnvironmentName.
 
