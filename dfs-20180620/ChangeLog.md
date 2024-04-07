@@ -1,3 +1,9 @@
+2024-04-07 Version: 1.0.2
+- Update API AttachVscMountPoint: update param InstanceIds.
+- Update API CreateVscMountPoint: update param InstanceIds.
+- Update API DetachVscMountPoint: update param InstanceIds.
+
+
 2024-03-29 Version: 1.0.1
 - Update API AttachVscMountPoint: update param InstanceIds.
 - Update API AttachVscMountPoint: update param VscIds.

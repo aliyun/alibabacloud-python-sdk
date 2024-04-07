@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, Any, List
+from typing import List, Dict, Any
 
 
 class AttachVscMountPointRequest(TeaModel):
@@ -10,7 +10,7 @@ class AttachVscMountPointRequest(TeaModel):
         description: str = None,
         file_system_id: str = None,
         input_region_id: str = None,
-        instance_ids: Dict[str, Any] = None,
+        instance_ids: List[str] = None,
         mount_point_id: str = None,
         vsc_ids: List[str] = None,
         vsc_type: str = None,
@@ -1035,7 +1035,7 @@ class CreateVscMountPointRequest(TeaModel):
         description: str = None,
         file_system_id: str = None,
         input_region_id: str = None,
-        instance_ids: Dict[str, Any] = None,
+        instance_ids: List[str] = None,
     ):
         self.description = description
         self.file_system_id = file_system_id
@@ -2353,7 +2353,7 @@ class DetachVscMountPointRequest(TeaModel):
         description: str = None,
         file_system_id: str = None,
         input_region_id: str = None,
-        instance_ids: Dict[str, Any] = None,
+        instance_ids: List[str] = None,
         mount_point_id: str = None,
         vsc_ids: List[str] = None,
     ):
