@@ -4586,6 +4586,7 @@ class GetRunResponseBody(TeaModel):
         self,
         app_name: str = None,
         app_revision: str = None,
+        billing_instance_ids: List[str] = None,
         calls: str = None,
         create_time: str = None,
         default_runtime: str = None,
@@ -4614,6 +4615,7 @@ class GetRunResponseBody(TeaModel):
     ):
         self.app_name = app_name
         self.app_revision = app_revision
+        self.billing_instance_ids = billing_instance_ids
         self.calls = calls
         self.create_time = create_time
         self.default_runtime = default_runtime
@@ -4654,6 +4656,8 @@ class GetRunResponseBody(TeaModel):
             result['AppName'] = self.app_name
         if self.app_revision is not None:
             result['AppRevision'] = self.app_revision
+        if self.billing_instance_ids is not None:
+            result['BillingInstanceIds'] = self.billing_instance_ids
         if self.calls is not None:
             result['Calls'] = self.calls
         if self.create_time is not None:
@@ -4712,6 +4716,8 @@ class GetRunResponseBody(TeaModel):
             self.app_name = m.get('AppName')
         if m.get('AppRevision') is not None:
             self.app_revision = m.get('AppRevision')
+        if m.get('BillingInstanceIds') is not None:
+            self.billing_instance_ids = m.get('BillingInstanceIds')
         if m.get('Calls') is not None:
             self.calls = m.get('Calls')
         if m.get('CreateTime') is not None:

@@ -3703,7 +3703,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.UpdateEntityResponse:
         """
-        @deprecated
+        @deprecated : UpdateEntity is deprecated, please use EasyGene::2021-03-15::UpdateEntityItems instead.
         
         @param tmp_req: UpdateEntityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3749,7 +3749,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.UpdateEntityResponse:
         """
-        @deprecated
+        @deprecated : UpdateEntity is deprecated, please use EasyGene::2021-03-15::UpdateEntityItems instead.
         
         @param tmp_req: UpdateEntityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3794,7 +3794,7 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.UpdateEntityRequest,
     ) -> easy_gene_20210315_models.UpdateEntityResponse:
         """
-        @deprecated
+        @deprecated : UpdateEntity is deprecated, please use EasyGene::2021-03-15::UpdateEntityItems instead.
         
         @param request: UpdateEntityRequest
         @return: UpdateEntityResponse
@@ -3808,7 +3808,7 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.UpdateEntityRequest,
     ) -> easy_gene_20210315_models.UpdateEntityResponse:
         """
-        @deprecated
+        @deprecated : UpdateEntity is deprecated, please use EasyGene::2021-03-15::UpdateEntityItems instead.
         
         @param request: UpdateEntityRequest
         @return: UpdateEntityResponse

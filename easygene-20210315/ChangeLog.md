@@ -1,3 +1,7 @@
+2024-04-07 Version: 1.3.1
+- Update API GetRun: update response param.
+
+
 2024-01-30 Version: 1.3.0
 - Support API DeleteEntity.
 
