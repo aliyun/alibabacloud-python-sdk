@@ -16626,6 +16626,7 @@ class DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo(TeaModel):
         list_price: int = None,
         month_price: int = None,
         original_stand_amount: int = None,
+        start_time: str = None,
     ):
         self.cheap_rate = cheap_rate
         self.cheap_stand_amount = cheap_stand_amount
@@ -16636,6 +16637,7 @@ class DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo(TeaModel):
         self.list_price = list_price
         self.month_price = month_price
         self.original_stand_amount = original_stand_amount
+        self.start_time = start_time
 
     def validate(self):
         if self.contract_activity:
@@ -16665,6 +16667,8 @@ class DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo(TeaModel):
             result['MonthPrice'] = self.month_price
         if self.original_stand_amount is not None:
             result['OriginalStandAmount'] = self.original_stand_amount
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
         return result
 
     def from_map(self, m: dict = None):
@@ -16688,6 +16692,8 @@ class DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo(TeaModel):
             self.month_price = m.get('MonthPrice')
         if m.get('OriginalStandAmount') is not None:
             self.original_stand_amount = m.get('OriginalStandAmount')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
         return self
 
 
@@ -21108,6 +21114,8 @@ class MigrateToOtherZoneRequest(TeaModel):
         # 
         # *   **Immediately**: immediately switched after the data is migrated.
         # *   **MaintainTime**: switched within the maintenance window.
+        # *   **0**: immediately switched after the data is migrated.
+        # *   **1**: switched within the maintenance window.
         # 
         # >  Default value: **Immediately**.
         self.effective_time = effective_time
@@ -26801,7 +26809,7 @@ class SwitchNetworkRequest(TeaModel):
         # > This parameter is available only when the network type of the instance is classic network.
         self.retain_classic = retain_classic
         self.security_token = security_token
-        # The network type to which you want to switch. Set the value to **VPC**.
+        # The network type to which you want to switch. If you want to switch to VPC network, Set the value to **VPC**.
         self.target_network_type = target_network_type
         # The ID of the vSwitch that belongs to the VPC to which you want to switch. You can call the [DescribeVpcs](~~35739~~) operation to query the VPC ID.
         # 

@@ -1,3 +1,9 @@
+2024-04-07 Version: 3.0.1
+- Update API DescribePrice: update response param.
+- Update API LockDBInstanceWrite: update param AccessKeyId.
+- Update API UnlockDBInstanceWrite: update param AccessKeyId.
+
+
 2024-03-30 Version: 3.0.0
 - Update API DescribeBackupTasks: update response param.
 - Update API DescribeBackups: update param BackupId.
