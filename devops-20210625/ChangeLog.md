@@ -1,3 +1,7 @@
+2024-04-07 Version: 4.18.2
+- Update API ListOrganizations: add param accessToken.
+
+
 2024-03-29 Version: 4.18.1
 - Update API ListJoinedOrganizations: update response param.
 

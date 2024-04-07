@@ -11645,6 +11645,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.access_level):
             query['accessLevel'] = request.access_level
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
         if not UtilClient.is_unset(request.min_access_level):
             query['minAccessLevel'] = request.min_access_level
         req = open_api_models.OpenApiRequest(
@@ -11677,6 +11679,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.access_level):
             query['accessLevel'] = request.access_level
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
         if not UtilClient.is_unset(request.min_access_level):
             query['minAccessLevel'] = request.min_access_level
         req = open_api_models.OpenApiRequest(
