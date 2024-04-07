@@ -1,3 +1,11 @@
+2024-04-07 Version: 1.0.3
+- Update API QueryConvertInstancePrice: update response param.
+- Update API QueryConvertPrepayInstancePrice: update response param.
+- Update API QueryCreateInstancePrice: update response param.
+- Update API QueryModifyInstancePrice: update response param.
+- Update API QueryRenewInstancePrice: update response param.
+
+
 2024-02-04 Version: 1.0.2
 - Update API CreateInstanceupdate CreateInstanceRequest param.
 - Update API CreateNamespaceupdate CreateNamespaceRequest param.
