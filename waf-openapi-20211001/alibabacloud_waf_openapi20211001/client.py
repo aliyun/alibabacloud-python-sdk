@@ -1435,6 +1435,124 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_certs_with_options_async(request, runtime)
 
+    def describe_cloud_resources_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeCloudResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeCloudResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_user_id):
+            query['OwnerUserId'] = request.owner_user_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_domain):
+            query['ResourceDomain'] = request.resource_domain
+        if not UtilClient.is_unset(request.resource_function):
+            query['ResourceFunction'] = request.resource_function
+        if not UtilClient.is_unset(request.resource_instance_id):
+            query['ResourceInstanceId'] = request.resource_instance_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.resource_name):
+            query['ResourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.resource_product):
+            query['ResourceProduct'] = request.resource_product
+        if not UtilClient.is_unset(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        if not UtilClient.is_unset(request.resource_route_name):
+            query['ResourceRouteName'] = request.resource_route_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudResources',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeCloudResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cloud_resources_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeCloudResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeCloudResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_user_id):
+            query['OwnerUserId'] = request.owner_user_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_domain):
+            query['ResourceDomain'] = request.resource_domain
+        if not UtilClient.is_unset(request.resource_function):
+            query['ResourceFunction'] = request.resource_function
+        if not UtilClient.is_unset(request.resource_instance_id):
+            query['ResourceInstanceId'] = request.resource_instance_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.resource_name):
+            query['ResourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.resource_product):
+            query['ResourceProduct'] = request.resource_product
+        if not UtilClient.is_unset(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        if not UtilClient.is_unset(request.resource_route_name):
+            query['ResourceRouteName'] = request.resource_route_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudResources',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeCloudResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cloud_resources(
+        self,
+        request: waf_openapi_20211001_models.DescribeCloudResourcesRequest,
+    ) -> waf_openapi_20211001_models.DescribeCloudResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cloud_resources_with_options(request, runtime)
+
+    async def describe_cloud_resources_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeCloudResourcesRequest,
+    ) -> waf_openapi_20211001_models.DescribeCloudResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cloud_resources_with_options_async(request, runtime)
+
     def describe_defense_resource_group_with_options(
         self,
         request: waf_openapi_20211001_models.DescribeDefenseResourceGroupRequest,
@@ -3238,6 +3356,116 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20211001_models.DescribePeakTrendResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_peak_trend_with_options_async(request, runtime)
+
+    def describe_product_instances_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeProductInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeProductInstancesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_user_id):
+            query['OwnerUserId'] = request.owner_user_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_instance_id):
+            query['ResourceInstanceId'] = request.resource_instance_id
+        if not UtilClient.is_unset(request.resource_ip):
+            query['ResourceIp'] = request.resource_ip
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.resource_name):
+            query['ResourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.resource_product):
+            query['ResourceProduct'] = request.resource_product
+        if not UtilClient.is_unset(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeProductInstances',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeProductInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_product_instances_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeProductInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeProductInstancesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_user_id):
+            query['OwnerUserId'] = request.owner_user_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_instance_id):
+            query['ResourceInstanceId'] = request.resource_instance_id
+        if not UtilClient.is_unset(request.resource_ip):
+            query['ResourceIp'] = request.resource_ip
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.resource_name):
+            query['ResourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.resource_product):
+            query['ResourceProduct'] = request.resource_product
+        if not UtilClient.is_unset(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeProductInstances',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeProductInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_product_instances(
+        self,
+        request: waf_openapi_20211001_models.DescribeProductInstancesRequest,
+    ) -> waf_openapi_20211001_models.DescribeProductInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_product_instances_with_options(request, runtime)
+
+    async def describe_product_instances_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeProductInstancesRequest,
+    ) -> waf_openapi_20211001_models.DescribeProductInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_product_instances_with_options_async(request, runtime)
 
     def describe_resource_instance_certs_with_options(
         self,
@@ -6312,3 +6540,107 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20211001_models.ModifyTemplateResourcesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_template_resources_with_options_async(request, runtime)
+
+    def sync_product_instance_with_options(
+        self,
+        request: waf_openapi_20211001_models.SyncProductInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.SyncProductInstanceResponse:
+        """
+        SyncProductInstance is an asynchronous operation. You can call the [DescribeProductInstances](~~2743168~~) operation to query the status of the task.
+        
+        @param request: SyncProductInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncProductInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SyncProductInstance',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.SyncProductInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sync_product_instance_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.SyncProductInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.SyncProductInstanceResponse:
+        """
+        SyncProductInstance is an asynchronous operation. You can call the [DescribeProductInstances](~~2743168~~) operation to query the status of the task.
+        
+        @param request: SyncProductInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncProductInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SyncProductInstance',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.SyncProductInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sync_product_instance(
+        self,
+        request: waf_openapi_20211001_models.SyncProductInstanceRequest,
+    ) -> waf_openapi_20211001_models.SyncProductInstanceResponse:
+        """
+        SyncProductInstance is an asynchronous operation. You can call the [DescribeProductInstances](~~2743168~~) operation to query the status of the task.
+        
+        @param request: SyncProductInstanceRequest
+        @return: SyncProductInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.sync_product_instance_with_options(request, runtime)
+
+    async def sync_product_instance_async(
+        self,
+        request: waf_openapi_20211001_models.SyncProductInstanceRequest,
+    ) -> waf_openapi_20211001_models.SyncProductInstanceResponse:
+        """
+        SyncProductInstance is an asynchronous operation. You can call the [DescribeProductInstances](~~2743168~~) operation to query the status of the task.
+        
+        @param request: SyncProductInstanceRequest
+        @return: SyncProductInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.sync_product_instance_with_options_async(request, runtime)

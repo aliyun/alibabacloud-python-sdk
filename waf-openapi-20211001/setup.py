@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_waf-openapi20211001.
 
-Created on 28/03/2024
+Created on 07/04/2024
 
 @author: Alibaba Cloud SDK
 """

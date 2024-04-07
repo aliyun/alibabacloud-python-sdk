@@ -1,3 +1,15 @@
+2024-04-07 Version: 3.3.0
+- Support API DescribeCerts.
+- Support API DescribeCloudResources.
+- Support API DescribeDomainDNSRecord.
+- Support API DescribeProductInstances.
+- Support API DescribeResourceRegionId.
+- Support API DescribeResourceSupportRegions.
+- Support API ModifyDefenseResourceXff.
+- Support API ModifyDefenseRuleCache.
+- Support API SyncProductInstance.
+
+
 2024-03-28 Version: 3.2.0
 - Support API DescribeCerts.
 - Support API DescribeDomainDNSRecord.
