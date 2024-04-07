@@ -795,6 +795,7 @@ class DeployApplicationRequest(TeaModel):
     ):
         # The ID of the application.
         self.application_id = application_id
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -951,6 +952,7 @@ class ExecuteOperationASyncRequest(TeaModel):
         # 
         #     <!-- -->
         self.attributes = attributes
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         # This operation type is the operation type of modifying the product, some operation types are generic, and some are used alone. The following is an example of ECS deployment:
         # - The name of the ECS: rename
@@ -1041,6 +1043,7 @@ class ExecuteOperationASyncShrinkRequest(TeaModel):
         # 
         #     <!-- -->
         self.attributes_shrink = attributes_shrink
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         # This operation type is the operation type of modifying the product, some operation types are generic, and some are used alone. The following is an example of ECS deployment:
         # - The name of the ECS: rename
@@ -3797,6 +3800,7 @@ class ReleaseApplicationRequest(TeaModel):
     ):
         # The ID of the application.
         self.application_id = application_id
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         # The ID of the resource.
         self.resource_group_id = resource_group_id
@@ -3928,6 +3932,7 @@ class ValidateApplicationRequest(TeaModel):
     ):
         # The ID of the application.
         self.application_id = application_id
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -4057,10 +4062,11 @@ class ValuateApplicationRequest(TeaModel):
         client_token: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the application.
+        # The operation that you want to perform. Set the value to ValuateApplication.
         self.application_id = application_id
+        # The ID of the resource group to which the application you want to query belongs.
         self.client_token = client_token
-        # The ID of the resource group.
+        # The ID of the application.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -4099,13 +4105,13 @@ class ValuateApplicationResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The HTTP status code.
+        # The code of the query task.
         self.code = code
-        # The data of the application.
-        self.data = data
-        # The error message.
-        self.message = message
         # The ID of the request.
+        self.data = data
+        # Idempotent notation
+        self.message = message
+        # The returned message.
         self.request_id = request_id
 
     def validate(self):
