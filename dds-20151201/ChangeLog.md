@@ -1,3 +1,7 @@
+2024-04-07 Version: 6.4.1
+- Update API DescribePrice: update response param.
+
+
 2024-04-01 Version: 6.4.0
 - Support API ModifyDBInstanceDiskType.
 
