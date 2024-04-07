@@ -1466,6 +1466,7 @@ class DescribeClusterResponseBody(TeaModel):
         cluster_name: str = None,
         cluster_type: str = None,
         components: List[DescribeClusterResponseBodyComponents] = None,
+        computing_ip_version: str = None,
         create_time: str = None,
         hpn_zone: str = None,
         networks: List[DescribeClusterResponseBodyNetworks] = None,
@@ -1483,6 +1484,7 @@ class DescribeClusterResponseBody(TeaModel):
         self.cluster_name = cluster_name
         self.cluster_type = cluster_type
         self.components = components
+        self.computing_ip_version = computing_ip_version
         self.create_time = create_time
         self.hpn_zone = hpn_zone
         self.networks = networks
@@ -1523,6 +1525,8 @@ class DescribeClusterResponseBody(TeaModel):
         if self.components is not None:
             for k in self.components:
                 result['Components'].append(k.to_map() if k else None)
+        if self.computing_ip_version is not None:
+            result['ComputingIpVersion'] = self.computing_ip_version
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.hpn_zone is not None:
@@ -1564,6 +1568,8 @@ class DescribeClusterResponseBody(TeaModel):
             for k in m.get('Components'):
                 temp_model = DescribeClusterResponseBodyComponents()
                 self.components.append(temp_model.from_map(k))
+        if m.get('ComputingIpVersion') is not None:
+            self.computing_ip_version = m.get('ComputingIpVersion')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('HpnZone') is not None:
@@ -4146,6 +4152,7 @@ class ListClustersResponseBodyClusters(TeaModel):
         cluster_name: str = None,
         cluster_type: str = None,
         components: Any = None,
+        computing_ip_version: str = None,
         create_time: str = None,
         hpn_zone: str = None,
         node_count: int = None,
@@ -4161,6 +4168,7 @@ class ListClustersResponseBodyClusters(TeaModel):
         self.cluster_name = cluster_name
         self.cluster_type = cluster_type
         self.components = components
+        self.computing_ip_version = computing_ip_version
         self.create_time = create_time
         self.hpn_zone = hpn_zone
         self.node_count = node_count
@@ -4190,6 +4198,8 @@ class ListClustersResponseBodyClusters(TeaModel):
             result['ClusterType'] = self.cluster_type
         if self.components is not None:
             result['Components'] = self.components
+        if self.computing_ip_version is not None:
+            result['ComputingIpVersion'] = self.computing_ip_version
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.hpn_zone is not None:
@@ -4222,6 +4232,8 @@ class ListClustersResponseBodyClusters(TeaModel):
             self.cluster_type = m.get('ClusterType')
         if m.get('Components') is not None:
             self.components = m.get('Components')
+        if m.get('ComputingIpVersion') is not None:
+            self.computing_ip_version = m.get('ComputingIpVersion')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('HpnZone') is not None:

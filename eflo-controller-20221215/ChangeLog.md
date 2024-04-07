@@ -1,3 +1,8 @@
+2024-04-07 Version: 1.2.2
+- Update API DescribeCluster: update response param.
+- Update API ListClusters: update response param.
+
+
 2024-03-29 Version: 1.2.1
 - Update API CreateCluster: update param Networks.
 
