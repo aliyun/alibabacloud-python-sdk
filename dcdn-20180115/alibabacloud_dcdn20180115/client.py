@@ -761,6 +761,166 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_delete_dcdn_domain_configs_with_options_async(request, runtime)
 
+    def batch_delete_dcdn_kv_with_options(
+        self,
+        tmp_req: dcdn_20180115_models.BatchDeleteDcdnKvRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.BatchDeleteDcdnKvResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dcdn_20180115_models.BatchDeleteDcdnKvShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.keys):
+            request.keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.keys, 'Keys', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        body = {}
+        if not UtilClient.is_unset(request.keys_shrink):
+            body['Keys'] = request.keys_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchDeleteDcdnKv',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchDeleteDcdnKvResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_delete_dcdn_kv_with_options_async(
+        self,
+        tmp_req: dcdn_20180115_models.BatchDeleteDcdnKvRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.BatchDeleteDcdnKvResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dcdn_20180115_models.BatchDeleteDcdnKvShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.keys):
+            request.keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.keys, 'Keys', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        body = {}
+        if not UtilClient.is_unset(request.keys_shrink):
+            body['Keys'] = request.keys_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchDeleteDcdnKv',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchDeleteDcdnKvResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_delete_dcdn_kv(
+        self,
+        request: dcdn_20180115_models.BatchDeleteDcdnKvRequest,
+    ) -> dcdn_20180115_models.BatchDeleteDcdnKvResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_delete_dcdn_kv_with_options(request, runtime)
+
+    async def batch_delete_dcdn_kv_async(
+        self,
+        request: dcdn_20180115_models.BatchDeleteDcdnKvRequest,
+    ) -> dcdn_20180115_models.BatchDeleteDcdnKvResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_delete_dcdn_kv_with_options_async(request, runtime)
+
+    def batch_delete_dcdn_kv_with_high_capacity_with_options(
+        self,
+        request: dcdn_20180115_models.BatchDeleteDcdnKvWithHighCapacityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.BatchDeleteDcdnKvWithHighCapacityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchDeleteDcdnKvWithHighCapacity',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchDeleteDcdnKvWithHighCapacityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_delete_dcdn_kv_with_high_capacity_with_options_async(
+        self,
+        request: dcdn_20180115_models.BatchDeleteDcdnKvWithHighCapacityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.BatchDeleteDcdnKvWithHighCapacityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchDeleteDcdnKvWithHighCapacity',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchDeleteDcdnKvWithHighCapacityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_delete_dcdn_kv_with_high_capacity(
+        self,
+        request: dcdn_20180115_models.BatchDeleteDcdnKvWithHighCapacityRequest,
+    ) -> dcdn_20180115_models.BatchDeleteDcdnKvWithHighCapacityResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_delete_dcdn_kv_with_high_capacity_with_options(request, runtime)
+
+    async def batch_delete_dcdn_kv_with_high_capacity_async(
+        self,
+        request: dcdn_20180115_models.BatchDeleteDcdnKvWithHighCapacityRequest,
+    ) -> dcdn_20180115_models.BatchDeleteDcdnKvWithHighCapacityResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_delete_dcdn_kv_with_high_capacity_with_options_async(request, runtime)
+
     def batch_delete_dcdn_waf_rules_with_options(
         self,
         request: dcdn_20180115_models.BatchDeleteDcdnWafRulesRequest,
@@ -972,12 +1132,14 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.kv_list):
             request.kv_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.kv_list, 'KvList', 'json')
         query = {}
-        if not UtilClient.is_unset(request.kv_list_shrink):
-            query['KvList'] = request.kv_list_shrink
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
+        body = {}
+        if not UtilClient.is_unset(request.kv_list_shrink):
+            body['KvList'] = request.kv_list_shrink
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BatchPutDcdnKv',
@@ -1006,12 +1168,14 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.kv_list):
             request.kv_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.kv_list, 'KvList', 'json')
         query = {}
-        if not UtilClient.is_unset(request.kv_list_shrink):
-            query['KvList'] = request.kv_list_shrink
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
+        body = {}
+        if not UtilClient.is_unset(request.kv_list_shrink):
+            body['KvList'] = request.kv_list_shrink
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BatchPutDcdnKv',
@@ -1042,6 +1206,80 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.BatchPutDcdnKvResponse:
         runtime = util_models.RuntimeOptions()
         return await self.batch_put_dcdn_kv_with_options_async(request, runtime)
+
+    def batch_put_dcdn_kv_with_high_capacity_with_options(
+        self,
+        request: dcdn_20180115_models.BatchPutDcdnKvWithHighCapacityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.BatchPutDcdnKvWithHighCapacityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchPutDcdnKvWithHighCapacity',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchPutDcdnKvWithHighCapacityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_put_dcdn_kv_with_high_capacity_with_options_async(
+        self,
+        request: dcdn_20180115_models.BatchPutDcdnKvWithHighCapacityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.BatchPutDcdnKvWithHighCapacityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchPutDcdnKvWithHighCapacity',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchPutDcdnKvWithHighCapacityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_put_dcdn_kv_with_high_capacity(
+        self,
+        request: dcdn_20180115_models.BatchPutDcdnKvWithHighCapacityRequest,
+    ) -> dcdn_20180115_models.BatchPutDcdnKvWithHighCapacityResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_put_dcdn_kv_with_high_capacity_with_options(request, runtime)
+
+    async def batch_put_dcdn_kv_with_high_capacity_async(
+        self,
+        request: dcdn_20180115_models.BatchPutDcdnKvWithHighCapacityRequest,
+    ) -> dcdn_20180115_models.BatchPutDcdnKvWithHighCapacityResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_put_dcdn_kv_with_high_capacity_with_options_async(request, runtime)
 
     def batch_set_dcdn_domain_certificate_with_options(
         self,
@@ -20622,6 +20860,84 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.PutDcdnKvNamespaceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.put_dcdn_kv_namespace_with_options_async(request, runtime)
+
+    def put_dcdn_kv_with_high_capacity_with_options(
+        self,
+        request: dcdn_20180115_models.PutDcdnKvWithHighCapacityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.PutDcdnKvWithHighCapacityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PutDcdnKvWithHighCapacity',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.PutDcdnKvWithHighCapacityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def put_dcdn_kv_with_high_capacity_with_options_async(
+        self,
+        request: dcdn_20180115_models.PutDcdnKvWithHighCapacityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.PutDcdnKvWithHighCapacityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PutDcdnKvWithHighCapacity',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.PutDcdnKvWithHighCapacityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def put_dcdn_kv_with_high_capacity(
+        self,
+        request: dcdn_20180115_models.PutDcdnKvWithHighCapacityRequest,
+    ) -> dcdn_20180115_models.PutDcdnKvWithHighCapacityResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.put_dcdn_kv_with_high_capacity_with_options(request, runtime)
+
+    async def put_dcdn_kv_with_high_capacity_async(
+        self,
+        request: dcdn_20180115_models.PutDcdnKvWithHighCapacityRequest,
+    ) -> dcdn_20180115_models.PutDcdnKvWithHighCapacityResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.put_dcdn_kv_with_high_capacity_with_options_async(request, runtime)
 
     def refresh_dcdn_object_caches_with_options(
         self,

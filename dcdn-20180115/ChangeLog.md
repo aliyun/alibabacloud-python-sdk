@@ -1,3 +1,14 @@
+2024-04-08 Version: 2.3.0
+- Support API BatchDeleteDcdnKv.
+- Support API BatchDeleteDcdnKvWithHighCapacity.
+- Support API BatchPutDcdnKvWithHighCapacity.
+- Support API PutDcdnKvWithHighCapacity.
+- Update API BatchPutDcdnKv: update param KvList.
+- Update API DescribeDcdnDomainConfigs: update param FunctionNames.
+- Update API DescribeDcdnWafGroups: update response param.
+- Update API PutDcdnKvNamespace: update param Description.
+
+
 2024-03-21 Version: 2.2.1
 - Update API DescribeDcdnKvNamespace: update response param.
 - Update API PutDcdnKvNamespace: update response param.
