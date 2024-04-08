@@ -1785,6 +1785,7 @@ class Sku(TeaModel):
         price: int = None,
         product_id: str = None,
         quantity: int = None,
+        rank_value: int = None,
         shop_id: str = None,
         sku_id: str = None,
         sku_specs: List[SkuSpec] = None,
@@ -1802,6 +1803,7 @@ class Sku(TeaModel):
         self.price = price
         self.product_id = product_id
         self.quantity = quantity
+        self.rank_value = rank_value
         self.shop_id = shop_id
         self.sku_id = sku_id
         self.sku_specs = sku_specs
@@ -1841,6 +1843,8 @@ class Sku(TeaModel):
             result['productId'] = self.product_id
         if self.quantity is not None:
             result['quantity'] = self.quantity
+        if self.rank_value is not None:
+            result['rankValue'] = self.rank_value
         if self.shop_id is not None:
             result['shopId'] = self.shop_id
         if self.sku_id is not None:
@@ -1879,6 +1883,8 @@ class Sku(TeaModel):
             self.product_id = m.get('productId')
         if m.get('quantity') is not None:
             self.quantity = m.get('quantity')
+        if m.get('rankValue') is not None:
+            self.rank_value = m.get('rankValue')
         if m.get('shopId') is not None:
             self.shop_id = m.get('shopId')
         if m.get('skuId') is not None:
