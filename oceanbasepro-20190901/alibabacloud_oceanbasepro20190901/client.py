@@ -879,6 +879,8 @@ class Client(OpenApiClient):
             request.incr_transfer_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.incr_transfer_config, 'IncrTransferConfig', 'json')
         if not UtilClient.is_unset(tmp_req.label_ids):
             request.label_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.label_ids, 'LabelIds', 'json')
+        if not UtilClient.is_unset(tmp_req.reverse_incr_transfer_config):
+            request.reverse_incr_transfer_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.reverse_incr_transfer_config, 'ReverseIncrTransferConfig', 'json')
         if not UtilClient.is_unset(tmp_req.struct_transfer_config):
             request.struct_transfer_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.struct_transfer_config, 'StructTransferConfig', 'json')
         if not UtilClient.is_unset(tmp_req.transfer_mapping):
@@ -908,6 +910,8 @@ class Client(OpenApiClient):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.oss_key):
             body['OssKey'] = request.oss_key
+        if not UtilClient.is_unset(request.reverse_incr_transfer_config_shrink):
+            body['ReverseIncrTransferConfig'] = request.reverse_incr_transfer_config_shrink
         if not UtilClient.is_unset(request.sink_endpoint_id):
             body['SinkEndpointId'] = request.sink_endpoint_id
         if not UtilClient.is_unset(request.source_endpoint_id):
@@ -957,6 +961,8 @@ class Client(OpenApiClient):
             request.incr_transfer_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.incr_transfer_config, 'IncrTransferConfig', 'json')
         if not UtilClient.is_unset(tmp_req.label_ids):
             request.label_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.label_ids, 'LabelIds', 'json')
+        if not UtilClient.is_unset(tmp_req.reverse_incr_transfer_config):
+            request.reverse_incr_transfer_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.reverse_incr_transfer_config, 'ReverseIncrTransferConfig', 'json')
         if not UtilClient.is_unset(tmp_req.struct_transfer_config):
             request.struct_transfer_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.struct_transfer_config, 'StructTransferConfig', 'json')
         if not UtilClient.is_unset(tmp_req.transfer_mapping):
@@ -986,6 +992,8 @@ class Client(OpenApiClient):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.oss_key):
             body['OssKey'] = request.oss_key
+        if not UtilClient.is_unset(request.reverse_incr_transfer_config_shrink):
+            body['ReverseIncrTransferConfig'] = request.reverse_incr_transfer_config_shrink
         if not UtilClient.is_unset(request.sink_endpoint_id):
             body['SinkEndpointId'] = request.sink_endpoint_id
         if not UtilClient.is_unset(request.source_endpoint_id):

@@ -1,3 +1,10 @@
+2024-04-08 Version: 3.0.2
+- Update API CreateProject: add param ReverseIncrTransferConfig.
+- Update API CreateProject: update param FullTransferConfig.
+- Update API CreateProject: update param IncrTransferConfig.
+- Update API DescribeProject: update response param.
+
+
 2024-03-25 Version: 3.0.1
 - Generated python 2019-09-01 for OceanBasePro.
 

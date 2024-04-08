@@ -2462,11 +2462,19 @@ class CreateProjectRequestFullTransferConfig(TeaModel):
         full_transfer_speed_mode: str = None,
         full_verify_speed_mode: str = None,
         none_pk_uk_truncate_dst_table: bool = None,
+        read_worker_num: int = None,
+        throttle_iops: int = None,
+        throttle_rps: int = None,
+        write_worker_num: int = None,
     ):
         self.allow_dest_table_not_empty = allow_dest_table_not_empty
         self.full_transfer_speed_mode = full_transfer_speed_mode
         self.full_verify_speed_mode = full_verify_speed_mode
         self.none_pk_uk_truncate_dst_table = none_pk_uk_truncate_dst_table
+        self.read_worker_num = read_worker_num
+        self.throttle_iops = throttle_iops
+        self.throttle_rps = throttle_rps
+        self.write_worker_num = write_worker_num
 
     def validate(self):
         pass
@@ -2485,6 +2493,14 @@ class CreateProjectRequestFullTransferConfig(TeaModel):
             result['FullVerifySpeedMode'] = self.full_verify_speed_mode
         if self.none_pk_uk_truncate_dst_table is not None:
             result['NonePkUkTruncateDstTable'] = self.none_pk_uk_truncate_dst_table
+        if self.read_worker_num is not None:
+            result['ReadWorkerNum'] = self.read_worker_num
+        if self.throttle_iops is not None:
+            result['ThrottleIOPS'] = self.throttle_iops
+        if self.throttle_rps is not None:
+            result['ThrottleRps'] = self.throttle_rps
+        if self.write_worker_num is not None:
+            result['WriteWorkerNum'] = self.write_worker_num
         return result
 
     def from_map(self, m: dict = None):
@@ -2497,6 +2513,14 @@ class CreateProjectRequestFullTransferConfig(TeaModel):
             self.full_verify_speed_mode = m.get('FullVerifySpeedMode')
         if m.get('NonePkUkTruncateDstTable') is not None:
             self.none_pk_uk_truncate_dst_table = m.get('NonePkUkTruncateDstTable')
+        if m.get('ReadWorkerNum') is not None:
+            self.read_worker_num = m.get('ReadWorkerNum')
+        if m.get('ThrottleIOPS') is not None:
+            self.throttle_iops = m.get('ThrottleIOPS')
+        if m.get('ThrottleRps') is not None:
+            self.throttle_rps = m.get('ThrottleRps')
+        if m.get('WriteWorkerNum') is not None:
+            self.write_worker_num = m.get('WriteWorkerNum')
         return self
 
 
@@ -2509,6 +2533,9 @@ class CreateProjectRequestIncrTransferConfig(TeaModel):
         record_type_white_list: List[str] = None,
         start_timestamp: str = None,
         store_log_kept_hour: int = None,
+        support_ddltypes: List[str] = None,
+        throttle_iops: int = None,
+        throttle_rps: int = None,
     ):
         self.enable_incr_sync_statistics = enable_incr_sync_statistics
         self.enable_sequencing_within_txn = enable_sequencing_within_txn
@@ -2516,6 +2543,9 @@ class CreateProjectRequestIncrTransferConfig(TeaModel):
         self.record_type_white_list = record_type_white_list
         self.start_timestamp = start_timestamp
         self.store_log_kept_hour = store_log_kept_hour
+        self.support_ddltypes = support_ddltypes
+        self.throttle_iops = throttle_iops
+        self.throttle_rps = throttle_rps
 
     def validate(self):
         pass
@@ -2538,6 +2568,12 @@ class CreateProjectRequestIncrTransferConfig(TeaModel):
             result['StartTimestamp'] = self.start_timestamp
         if self.store_log_kept_hour is not None:
             result['StoreLogKeptHour'] = self.store_log_kept_hour
+        if self.support_ddltypes is not None:
+            result['SupportDDLTypes'] = self.support_ddltypes
+        if self.throttle_iops is not None:
+            result['ThrottleIOPS'] = self.throttle_iops
+        if self.throttle_rps is not None:
+            result['ThrottleRps'] = self.throttle_rps
         return result
 
     def from_map(self, m: dict = None):
@@ -2554,6 +2590,87 @@ class CreateProjectRequestIncrTransferConfig(TeaModel):
             self.start_timestamp = m.get('StartTimestamp')
         if m.get('StoreLogKeptHour') is not None:
             self.store_log_kept_hour = m.get('StoreLogKeptHour')
+        if m.get('SupportDDLTypes') is not None:
+            self.support_ddltypes = m.get('SupportDDLTypes')
+        if m.get('ThrottleIOPS') is not None:
+            self.throttle_iops = m.get('ThrottleIOPS')
+        if m.get('ThrottleRps') is not None:
+            self.throttle_rps = m.get('ThrottleRps')
+        return self
+
+
+class CreateProjectRequestReverseIncrTransferConfig(TeaModel):
+    def __init__(
+        self,
+        enable_incr_sync_statistics: bool = None,
+        enable_sequencing_within_txn: bool = None,
+        incr_sync_concurrency: int = None,
+        record_type_white_list: List[str] = None,
+        start_timestamp: str = None,
+        store_log_kept_hour: int = None,
+        support_ddltypes: List[str] = None,
+        throttle_iops: int = None,
+        throttle_rps: int = None,
+    ):
+        self.enable_incr_sync_statistics = enable_incr_sync_statistics
+        self.enable_sequencing_within_txn = enable_sequencing_within_txn
+        self.incr_sync_concurrency = incr_sync_concurrency
+        self.record_type_white_list = record_type_white_list
+        self.start_timestamp = start_timestamp
+        self.store_log_kept_hour = store_log_kept_hour
+        self.support_ddltypes = support_ddltypes
+        self.throttle_iops = throttle_iops
+        self.throttle_rps = throttle_rps
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_incr_sync_statistics is not None:
+            result['EnableIncrSyncStatistics'] = self.enable_incr_sync_statistics
+        if self.enable_sequencing_within_txn is not None:
+            result['EnableSequencingWithinTxn'] = self.enable_sequencing_within_txn
+        if self.incr_sync_concurrency is not None:
+            result['IncrSyncConcurrency'] = self.incr_sync_concurrency
+        if self.record_type_white_list is not None:
+            result['RecordTypeWhiteList'] = self.record_type_white_list
+        if self.start_timestamp is not None:
+            result['StartTimestamp'] = self.start_timestamp
+        if self.store_log_kept_hour is not None:
+            result['StoreLogKeptHour'] = self.store_log_kept_hour
+        if self.support_ddltypes is not None:
+            result['SupportDDLTypes'] = self.support_ddltypes
+        if self.throttle_iops is not None:
+            result['ThrottleIOPS'] = self.throttle_iops
+        if self.throttle_rps is not None:
+            result['ThrottleRps'] = self.throttle_rps
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableIncrSyncStatistics') is not None:
+            self.enable_incr_sync_statistics = m.get('EnableIncrSyncStatistics')
+        if m.get('EnableSequencingWithinTxn') is not None:
+            self.enable_sequencing_within_txn = m.get('EnableSequencingWithinTxn')
+        if m.get('IncrSyncConcurrency') is not None:
+            self.incr_sync_concurrency = m.get('IncrSyncConcurrency')
+        if m.get('RecordTypeWhiteList') is not None:
+            self.record_type_white_list = m.get('RecordTypeWhiteList')
+        if m.get('StartTimestamp') is not None:
+            self.start_timestamp = m.get('StartTimestamp')
+        if m.get('StoreLogKeptHour') is not None:
+            self.store_log_kept_hour = m.get('StoreLogKeptHour')
+        if m.get('SupportDDLTypes') is not None:
+            self.support_ddltypes = m.get('SupportDDLTypes')
+        if m.get('ThrottleIOPS') is not None:
+            self.throttle_iops = m.get('ThrottleIOPS')
+        if m.get('ThrottleRps') is not None:
+            self.throttle_rps = m.get('ThrottleRps')
         return self
 
 
@@ -3773,6 +3890,7 @@ class CreateProjectRequest(TeaModel):
         label_ids: List[str] = None,
         name: str = None,
         oss_key: str = None,
+        reverse_incr_transfer_config: CreateProjectRequestReverseIncrTransferConfig = None,
         sink_endpoint_id: str = None,
         source_endpoint_id: str = None,
         struct_transfer_config: CreateProjectRequestStructTransferConfig = None,
@@ -3793,6 +3911,7 @@ class CreateProjectRequest(TeaModel):
         self.label_ids = label_ids
         self.name = name
         self.oss_key = oss_key
+        self.reverse_incr_transfer_config = reverse_incr_transfer_config
         self.sink_endpoint_id = sink_endpoint_id
         self.source_endpoint_id = source_endpoint_id
         self.struct_transfer_config = struct_transfer_config
@@ -3808,6 +3927,8 @@ class CreateProjectRequest(TeaModel):
             self.full_transfer_config.validate()
         if self.incr_transfer_config:
             self.incr_transfer_config.validate()
+        if self.reverse_incr_transfer_config:
+            self.reverse_incr_transfer_config.validate()
         if self.struct_transfer_config:
             self.struct_transfer_config.validate()
         if self.transfer_mapping:
@@ -3843,6 +3964,8 @@ class CreateProjectRequest(TeaModel):
             result['Name'] = self.name
         if self.oss_key is not None:
             result['OssKey'] = self.oss_key
+        if self.reverse_incr_transfer_config is not None:
+            result['ReverseIncrTransferConfig'] = self.reverse_incr_transfer_config.to_map()
         if self.sink_endpoint_id is not None:
             result['SinkEndpointId'] = self.sink_endpoint_id
         if self.source_endpoint_id is not None:
@@ -3888,6 +4011,9 @@ class CreateProjectRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('OssKey') is not None:
             self.oss_key = m.get('OssKey')
+        if m.get('ReverseIncrTransferConfig') is not None:
+            temp_model = CreateProjectRequestReverseIncrTransferConfig()
+            self.reverse_incr_transfer_config = temp_model.from_map(m['ReverseIncrTransferConfig'])
         if m.get('SinkEndpointId') is not None:
             self.sink_endpoint_id = m.get('SinkEndpointId')
         if m.get('SourceEndpointId') is not None:
@@ -3922,6 +4048,7 @@ class CreateProjectShrinkRequest(TeaModel):
         label_ids_shrink: str = None,
         name: str = None,
         oss_key: str = None,
+        reverse_incr_transfer_config_shrink: str = None,
         sink_endpoint_id: str = None,
         source_endpoint_id: str = None,
         struct_transfer_config_shrink: str = None,
@@ -3942,6 +4069,7 @@ class CreateProjectShrinkRequest(TeaModel):
         self.label_ids_shrink = label_ids_shrink
         self.name = name
         self.oss_key = oss_key
+        self.reverse_incr_transfer_config_shrink = reverse_incr_transfer_config_shrink
         self.sink_endpoint_id = sink_endpoint_id
         self.source_endpoint_id = source_endpoint_id
         self.struct_transfer_config_shrink = struct_transfer_config_shrink
@@ -3983,6 +4111,8 @@ class CreateProjectShrinkRequest(TeaModel):
             result['Name'] = self.name
         if self.oss_key is not None:
             result['OssKey'] = self.oss_key
+        if self.reverse_incr_transfer_config_shrink is not None:
+            result['ReverseIncrTransferConfig'] = self.reverse_incr_transfer_config_shrink
         if self.sink_endpoint_id is not None:
             result['SinkEndpointId'] = self.sink_endpoint_id
         if self.source_endpoint_id is not None:
@@ -4025,6 +4155,8 @@ class CreateProjectShrinkRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('OssKey') is not None:
             self.oss_key = m.get('OssKey')
+        if m.get('ReverseIncrTransferConfig') is not None:
+            self.reverse_incr_transfer_config_shrink = m.get('ReverseIncrTransferConfig')
         if m.get('SinkEndpointId') is not None:
             self.sink_endpoint_id = m.get('SinkEndpointId')
         if m.get('SourceEndpointId') is not None:
@@ -13164,17 +13296,21 @@ class DescribeInstancesRequest(TeaModel):
         resource_group_id: str = None,
         search_key: str = None,
     ):
-        # The number of CPU cores used in the cluster.
+        # The ID of the OceanBase cluster.
         self.instance_id = instance_id
-        # The size of used memory in the cluster, in GB.
+        # The name of the OceanBase cluster. It must be 1 to 20 characters in length. If this parameter is not specified, the value is the instance ID of the cluster by default.
         self.instance_name = instance_name
-        # The total memory size of the cluster, in GB.
+        # The number of the page to return.
+        # - Pages start from page 1.
+        # - Default value: 1.
         self.page_number = page_number
-        # The information about the memory resources of the cluster.
+        # The number of rows to return on each page.
+        # - Maximum value: 100.
+        # - Default value: 10.
         self.page_size = page_size
-        # The number of CPU cores of each replica node in the cluster.
+        # The ID of the resource group. If you do not specify this parameter, all resources are returned.
         self.resource_group_id = resource_group_id
-        # The memory size of each replica node in the cluster, in GB.
+        # The keyword for fuzzy search, which can be an instance ID, instance name, tenant ID, or tenant name.
         self.search_key = search_key
 
     def validate(self):
@@ -13229,13 +13365,21 @@ class DescribeInstancesResponseBodyInstancesDataDiskAutoScaleConfig(TeaModel):
         upper_threshold: int = None,
         upperbound: int = None,
     ):
+        # Specifies whether to enable the automatic scaling of the data disk.
         self.auto_scale = auto_scale
+        # The maximum size of the disk, in GB.
         self.max_disk_size = max_disk_size
+        # The size of scaling step during a major compaction.
         self.scale_step_in_merge = scale_step_in_merge
+        # The size of scaling step during daily use.
         self.scale_step_in_normal = scale_step_in_normal
+        # The maximum usage of the data disk, in percentage, that triggers the scaling of the data disk for major compactions.
         self.upper_merge_threshold = upper_merge_threshold
+        # The scale-out strategy. Valid values: RAW and PERCENTAGE.
         self.upper_scale_strategy = upper_scale_strategy
+        # The maximum usage of the data disk, in percentage, that triggers the scaling of the data disk for daily use.
         self.upper_threshold = upper_threshold
+        # The maximum space, in GB, to which the data disk can be scaled.
         self.upperbound = upperbound
 
     def validate(self):
@@ -13293,8 +13437,11 @@ class DescribeInstancesResponseBodyInstancesResourceCapacityUnit(TeaModel):
         min_capacity_unit: int = None,
         used_capacity_unit: int = None,
     ):
+        # The maximum number of capacity units.
         self.max_capacity_unit = max_capacity_unit
+        # The minimum number of capacity units.
         self.min_capacity_unit = min_capacity_unit
+        # The number of used capacity units.
         self.used_capacity_unit = used_capacity_unit
 
     def validate(self):
@@ -13333,18 +13480,13 @@ class DescribeInstancesResponseBodyInstancesResourceCpu(TeaModel):
         unit_cpu: int = None,
         used_cpu: int = None,
     ):
+        # The number of original CPU cores in the cluster.
         self.original_total_cpu = original_total_cpu
-        # The name of the OceanBase cluster.    
-        # It must be 1 to 20 characters in length.   
-        # If this parameter is not specified, the value is the instance ID of the cluster by default.
+        # The total number of CPU cores of the cluster.
         self.total_cpu = total_cpu
-        # The data replica distribution mode of the cluster. Valid values:    
-        # 
-        # - n: indicates the single-IDC mode.  
-        # - n-n: indicates the dual-IDC mode.  
-        # - n-n-n: indicates the multi-IDC mode. The integer n represents the number of OBServer nodes in each IDC.
+        # The number of CPU cores of each replica node in the cluster.
         self.unit_cpu = unit_cpu
-        # The search keyword.
+        # The number of CPU cores used in the cluster.
         self.used_cpu = used_cpu
 
     def validate(self):
@@ -13387,12 +13529,13 @@ class DescribeInstancesResponseBodyInstancesResourceDiskSize(TeaModel):
         unit_disk_size: int = None,
         used_disk_size: int = None,
     ):
+        # The original size of the disk.
         self.original_total_disk_size = original_total_disk_size
-        # The request ID.
+        # The total storage space of the cluster, in GB.
         self.total_disk_size = total_disk_size
-        # Example 1
+        # The storage space of each replica node in the cluster, in GB.
         self.unit_disk_size = unit_disk_size
-        # $.parameters[7].schema.example
+        # The size of used storage space of the cluster, in GB.
         self.used_disk_size = used_disk_size
 
     def validate(self):
@@ -13435,10 +13578,11 @@ class DescribeInstancesResponseBodyInstancesResourceMemory(TeaModel):
         unit_memory: int = None,
         used_memory: int = None,
     ):
+        # The original memory size of the cluster, in GB.
         self.original_total_memory = original_total_memory
-        # The number of CPU cores of the cluster.
+        # The total memory size of the cluster, in GB.
         self.total_memory = total_memory
-        # The size of used storage space of the cluster, in GB.
+        # The memory size of each replica node in the cluster, in GB.
         self.unit_memory = unit_memory
         # The size of used memory in the cluster, in GB.
         self.used_memory = used_memory
@@ -13484,28 +13628,15 @@ class DescribeInstancesResponseBodyInstancesResource(TeaModel):
         memory: DescribeInstancesResponseBodyInstancesResourceMemory = None,
         unit_count: int = None,
     ):
+        # The information about capacity units.
         self.capacity_unit = capacity_unit
-        # Indicates whether new nodes can be added.
+        # The information about the CPU resources of the cluster.
         self.cpu = cpu
-        # The time elapsed since the expiration of the cluster, in seconds.
+        # The information about the storage resources of the cluster.
         self.disk_size = disk_size
-        # The status of the cluster. Valid values:   
-        # - PENDING_CREATE: The cluster is being created.  
-        # - ONLINE: The cluster is running.  
-        # - TENANT_CREATING: The tenant is being created.  
-        # - TENANT_SPEC_MODIFYING: The tenant specifications are being modified.  
-        # - EXPANDING: Nodes are being added to the cluster to increase its capacity.  
-        # - REDUCING: Nodes are being removed from the cluster to reduce its capacity.  
-        # - SPEC_UPGRADING: The service plan is being upgraded.  
-        # - DISK_UPGRADING: The storage space is being expanded.  
-        # - WHITE_LIST_MODIFYING: The whitelist is being modified.  
-        # - PARAMETER_MODIFYING: Parameters are being modified.  
-        # - SSL_MODIFYING: The SSL certificate is being changed.  
-        # - PREPAID_EXPIRE_CLOSED: The payment is overdue. This parameter is valid for a cluster whose billing method is set to PREPAY.  
-        # - ARREARS_CLOSED: The payment is overdue. This parameter is valid for a cluster whose billing method is set to POSTPAY.  
-        # - PENDING_DELETE: The cluster is being deleted.   
-        # Generally, the cluster is in the ONLINE state.
+        # The information about the memory resources of the cluster.
         self.memory = memory
+        # The number of resource units in the cluster.
         self.unit_count = unit_count
 
     def validate(self):
@@ -13589,64 +13720,126 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         version: str = None,
         vpc_id: str = None,
     ):
-        # The time in UTC when the cluster expires.
+        # The information about the zone in which the cluster is deployed.
         self.available_zones = available_zones
-        # The storage space of each replica node in the cluster, in GB.
-        self.commodity_code = commodity_code
         # The product code of the OceanBase cluster.   
         # - oceanbase_oceanbasepre_public_cn: indicates an OceanBase cluster that is billed based on the subscription plan and that is deployed in a China site.  
         # - oceanbase_oceanbasepost_public_cn: indicates an OceanBase cluster that is billed based on the pay-as-you-go plan and that is deployed in a China site.  
         # - oceanbase_obpre_public_intl: indicates an OceanBase cluster that is billed based on the subscription plan and that is deployed in an international site.
+        self.commodity_code = commodity_code
+        # The number of CPU cores of the cluster.
         self.cpu = cpu
+        # The CPU architecture of the cluster.
         self.cpu_architecture = cpu_architecture
-        # The number of OceanBase clusters queried.
+        # The time in UTC when the cluster was created.
         self.create_time = create_time
+        # Specifies parameters for the automatic scaling of the data disk.
         self.data_disk_auto_scale_config = data_disk_auto_scale_config
-        # The request ID.
+        # The data replica distribution mode of the cluster. The value is in the n-n-n format, where n is the number of OBServer nodes in each IDC.
         self.deploy_mode = deploy_mode
-        # Alibaba Cloud provides SDKs in different languages to help you quickly integrate Alibaba Cloud products and services by using APIs. We recommend that you use an SDK to call APIs. In this way, you do not need to sign for verification.
+        # The deployment type of the cluster. Valid values:   
+        # - multiple: multi-IDC deployment  
+        # - single: single-IDC deployment  
+        # - dual: dual-IDC deployment
         self.deploy_type = deploy_type
-        # The information about the memory resources of the cluster.
+        # The size of the storage space, in GB.
         self.disk_size = disk_size
-        # The number of CPU cores used in the cluster.
-        self.disk_type = disk_type
-        self.enable_read_only_replica_management = enable_read_only_replica_management
-        # The ID of the OceanBase cluster.
-        self.enable_upgrade_nodes = enable_upgrade_nodes
-        # The whitelist information of the cluster.
-        self.expire_seconds = expire_seconds
-        # The information about the storage resources of the cluster.
-        self.expire_time = expire_time
-        self.in_temp_capacity_status = in_temp_capacity_status
-        # The instance type.
-        self.instance_class = instance_class
-        # The total storage space of the cluster, in GB.
-        self.instance_id = instance_id
-        # The return result of the request.
-        self.instance_name = instance_name
-        self.instance_role = instance_role
-        # You can call this operation to obtain the list of OceanBase clusters.
-        self.instance_type = instance_type
-        # The return result of the request.
-        self.maintain_time = maintain_time
-        # The information about the CPU resources of the cluster.
-        self.mem = mem
-        # It is an Alibaba Cloud asset management and configuration tool, with which you can manage multiple Alibaba Cloud products and services by using commands. It is easy to use and a good helper in migration to cloud.
-        self.pay_type = pay_type
         # The type of the storage disk where the cluster is deployed.   
         # The default value is cloud_essd_pl1, which indicates an ESSD cloud disk.
-        self.resource = resource
-        # The number of OceanBase clusters queried.
-        self.resource_group_id = resource_group_id
+        self.disk_type = disk_type
+        # Indicates whether the cluster supports read-only replicas.
+        self.enable_read_only_replica_management = enable_read_only_replica_management
+        # Indicates whether new nodes can be added.
+        self.enable_upgrade_nodes = enable_upgrade_nodes
+        # The time elapsed since the expiration of the cluster, in seconds. 
+        # > In subscription mode, if the cluster has not expired, this parameter indicates the remaining validity period of the cluster. If the cluster has expired, this parameter indicates the time elapsed since the expiration.
+        self.expire_seconds = expire_seconds
+        # The time in UTC when the cluster expires. 
+        # > This parameter is valid only for subscription instances.
+        self.expire_time = expire_time
+        # Specifies whether to indicate the temporary status of the capacity.
+        self.in_temp_capacity_status = in_temp_capacity_status
+        # The specifications of the cluster.  You can specify one of the following four plans:  
+        # - 8C32G: indicates 8 CPU cores and 32 GB of memory.  
+        # - 14C70G: indicates 14 CPU cores and 70 GB of memory.  
+        # - 30C180G: indicates 30 CPU cores and 180 GB of memory.  
+        # - 62C400G: indicates 62 CPU cores and 400 GB of memory.
+        self.instance_class = instance_class
+        # The ID of the OceanBase cluster.
+        self.instance_id = instance_id
+        # The name of the OceanBase cluster.
+        self.instance_name = instance_name
+        # The role of the instance.
+        self.instance_role = instance_role
+        # The instance type.
+        # - cluster: indicates a cluster instance.
+        # - mtenant: indicates a tenant instance in MySQL mode.
+        # - mtenant_serverless: indicates a serverless instance in MySQL mode.
+        self.instance_type = instance_type
+        # The time period in UTC for the daily routine maintenance of the cluster.
+        self.maintain_time = maintain_time
+        # The memory size of the instance, in GB.
+        self.mem = mem
         # The billing method for the OceanBase cluster. Valid values:  
         # - PREPAY: the subscription billing method.  
         # - POSTPAY: the pay-as-you-go billing method.
+        self.pay_type = pay_type
+        # The information about cluster resources.
+        self.resource = resource
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
+        # The series of the OceanBase cluster. Valid values:   
+        # - NORMAL: the high availability edition.   
+        # - BASIC: the basic edition.
         self.series = series
-        # The number of resource units in the cluster.
+        # The status of the cluster. Valid values:   
+        # - ONLINE: The cluster is running.  
+        # - PENDING_CREATE: The cluster is being created.  
+        # - ARREARS_CLOSED("arrears_closed"): The cluster is suspended due to insufficient balance.
+        # - PREPAID_EXPIRE_CLOSED("prepaid_expire_closed"): The cluster is suspended because the subscription has expired.
+        # - WHITE_LIST_MODIFYING("white_list_modifying"): The allowlist of the cluster is being modified.
+        # - SSL_MODIFYING("ssl_modifying"): The Secure Sockets Layer (SSL) settings of the cluster are being modified.
+        # - PARAMETER_MODIFYING("parameter_modifying"): Parameters of the cluster are being modified.
+        # - TENANT_CREATING("tenant_creating"): A tenant is being created in the cluster.
+        # - TENANT_SPEC_MODIFYING("tenant_spec_modifying"): The specifications of a tenant in the cluster are being modified.
+        # - EXPANDING("expanding"): Nodes are being added to the cluster.
+        # - REDUCING("reducing"): Nodes are being removed from the cluster.
+        # - ZONE_CHANGING("zone_changing"): Zones of the cluster are being modified.
+        # - SPEC_UPGRADING: The service plan is being upgraded.
+        # - SPEC_DOWNGRADING("spec_downgrading"): The plan specification is being downgraded.
+        # - DISK_UPGRADING: The storage space is being expanded.
+        # - UPGRADING("upgrading"): The version of the cluster is being upgraded.
+        # - PENDING_DELETE("pending_delete"): The cluster is being deleted.
+        # - DELETED("deleted"): The cluster has been deleted.
+        # - ABNORMAL("abnormal"): The cluster is abnormal.
+        # - OFFLINE("offline"): The cluster is offline.
+        # - STANDBY_CREATING("standby_creating"): A standby cluster is being created for the cluster.
+        # - STANDBY_DELETING("standby_deleting"): A standby cluster of the cluster is being deleted.
+        # - SWITCHOVER_SWITCHING("switchover_switching"): The cluster is undergoing a primary/standby switchover.
+        # - STANDBY_DISCONNECTING("standby_disconnecting"): The cluster is being decoupled from its standby cluster.
+        # - LOG_DISK_UPGRADING("log_disk_upgrading"): The log disk of the cluster is being scaled out.
+        # - ISOLATION_OPTIMIZATION_MODIFYING("isolation_optimization_modifying"): The isolation optimization settings of the cluster are being modified.
+        # - DISKTYPE_MODIFYING("disktype_modifying"): The data disk type of the cluster is being modified.
+        # - PROXY_SERVICE_CREATING("proxy_service_creating"): The proxy service is being enabled for the cluster.
+        # - PROXY_SERVICE_DELETING("proxy_service_deleting"): The proxy service is being disabled for the cluster.
+        # - PROXY_SERVICE_SPEC_MODIFYING("proxy_service_spec_modifying"): The proxy service specification is being modified for the cluster.
+        # - READONLY_ADD_NODE("readonly_add_node"): A read-only node is being added to the cluster.
+        # - READONLY_REDUCE_NODE("readonly_reduce_node"): A read-only node is being removed from the cluster.
+        # - READONLY_REDUCE_ZONE("readonly_reduce_zone"): A read-only zone is being removed from the cluster.
+        # - READONLY_ADD_ZONE("readonly_add_zone"): A read-only zone is being added to the cluster.
+        # - READONLY_UPGRADE_SPEC("readonly_upgrade_spec"): The specification of read-only replicas is being upgraded.
+        # - READONLY_UPGRADE_DISK("readonly_upgrade_disk"): The disk space of read-only replicas is being scaled out.
+        # - READONLY_DOWNGRADE_SPEC("readonly_downgrade_spec"): The specification of read-only replicas is being downgraded.
+        # - READONLY_DOWNGRADE_DISK("readonly_downgrade_disk"): The disk space of read-only replicas is being scaled in.
+        # - CREATING_TENANT_READONLY_REPLICA("creating_tenant_readonly_replica"): A read-only replica is being created for a tenant in the cluster.
+        # - DELETING_TENANT_READONLY_REPLICA("deleting_tenant_readonly_replica"): A read-only replica is being deleted for a tenant in the cluster.
+        # - DISK_DOWNGRADING("disk_downgrading"): The disk space of the cluster is being scaled in.
+        # - DEPLOY_MODE_MODIFYING("deploy_mode_modifying"): The deployment mode of the cluster is being modified.
+        # > Generally, the cluster is in the ONLINE state.
         self.state = state
-        # The number of resource units in the cluster.
+        # The size of used storage space of the cluster, in GB.
         self.used_disk_size = used_disk_size
-        # The total number of CPU cores of the cluster.
+        # The OBServer version.
         self.version = version
         # vpcId
         self.vpc_id = vpc_id
@@ -13799,9 +13992,11 @@ class DescribeInstancesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The total storage space of the cluster, in GB.
+        # The information of the OceanBase cluster.
         self.instances = instances
+        # The request ID.
         self.request_id = request_id
+        # The number of OceanBase clusters queried.
         self.total_count = total_count
 
     def validate(self):
@@ -19875,11 +20070,19 @@ class DescribeProjectResponseBodyDataFullTransferConfig(TeaModel):
         full_transfer_speed_mode: str = None,
         full_verify_speed_mode: str = None,
         none_pk_uk_truncate_dst_table: bool = None,
+        read_worker_num: int = None,
+        throttle_iops: int = None,
+        throttle_rps: int = None,
+        write_worker_num: int = None,
     ):
         self.allow_dest_table_not_empty = allow_dest_table_not_empty
         self.full_transfer_speed_mode = full_transfer_speed_mode
         self.full_verify_speed_mode = full_verify_speed_mode
         self.none_pk_uk_truncate_dst_table = none_pk_uk_truncate_dst_table
+        self.read_worker_num = read_worker_num
+        self.throttle_iops = throttle_iops
+        self.throttle_rps = throttle_rps
+        self.write_worker_num = write_worker_num
 
     def validate(self):
         pass
@@ -19898,6 +20101,14 @@ class DescribeProjectResponseBodyDataFullTransferConfig(TeaModel):
             result['FullVerifySpeedMode'] = self.full_verify_speed_mode
         if self.none_pk_uk_truncate_dst_table is not None:
             result['NonePkUkTruncateDstTable'] = self.none_pk_uk_truncate_dst_table
+        if self.read_worker_num is not None:
+            result['ReadWorkerNum'] = self.read_worker_num
+        if self.throttle_iops is not None:
+            result['ThrottleIOPS'] = self.throttle_iops
+        if self.throttle_rps is not None:
+            result['ThrottleRps'] = self.throttle_rps
+        if self.write_worker_num is not None:
+            result['WriteWorkerNum'] = self.write_worker_num
         return result
 
     def from_map(self, m: dict = None):
@@ -19910,6 +20121,14 @@ class DescribeProjectResponseBodyDataFullTransferConfig(TeaModel):
             self.full_verify_speed_mode = m.get('FullVerifySpeedMode')
         if m.get('NonePkUkTruncateDstTable') is not None:
             self.none_pk_uk_truncate_dst_table = m.get('NonePkUkTruncateDstTable')
+        if m.get('ReadWorkerNum') is not None:
+            self.read_worker_num = m.get('ReadWorkerNum')
+        if m.get('ThrottleIOPS') is not None:
+            self.throttle_iops = m.get('ThrottleIOPS')
+        if m.get('ThrottleRps') is not None:
+            self.throttle_rps = m.get('ThrottleRps')
+        if m.get('WriteWorkerNum') is not None:
+            self.write_worker_num = m.get('WriteWorkerNum')
         return self
 
 
@@ -19922,6 +20141,9 @@ class DescribeProjectResponseBodyDataIncrTransferConfig(TeaModel):
         record_type_white_list: List[str] = None,
         start_timestamp: int = None,
         store_log_kept_hour: int = None,
+        support_ddltypes: List[str] = None,
+        throttle_iops: int = None,
+        throttle_rps: int = None,
     ):
         self.enable_incr_sync_statistics = enable_incr_sync_statistics
         self.enable_sequencing_within_txn = enable_sequencing_within_txn
@@ -19929,6 +20151,9 @@ class DescribeProjectResponseBodyDataIncrTransferConfig(TeaModel):
         self.record_type_white_list = record_type_white_list
         self.start_timestamp = start_timestamp
         self.store_log_kept_hour = store_log_kept_hour
+        self.support_ddltypes = support_ddltypes
+        self.throttle_iops = throttle_iops
+        self.throttle_rps = throttle_rps
 
     def validate(self):
         pass
@@ -19951,6 +20176,12 @@ class DescribeProjectResponseBodyDataIncrTransferConfig(TeaModel):
             result['StartTimestamp'] = self.start_timestamp
         if self.store_log_kept_hour is not None:
             result['StoreLogKeptHour'] = self.store_log_kept_hour
+        if self.support_ddltypes is not None:
+            result['SupportDDLTypes'] = self.support_ddltypes
+        if self.throttle_iops is not None:
+            result['ThrottleIOPS'] = self.throttle_iops
+        if self.throttle_rps is not None:
+            result['ThrottleRps'] = self.throttle_rps
         return result
 
     def from_map(self, m: dict = None):
@@ -19967,6 +20198,12 @@ class DescribeProjectResponseBodyDataIncrTransferConfig(TeaModel):
             self.start_timestamp = m.get('StartTimestamp')
         if m.get('StoreLogKeptHour') is not None:
             self.store_log_kept_hour = m.get('StoreLogKeptHour')
+        if m.get('SupportDDLTypes') is not None:
+            self.support_ddltypes = m.get('SupportDDLTypes')
+        if m.get('ThrottleIOPS') is not None:
+            self.throttle_iops = m.get('ThrottleIOPS')
+        if m.get('ThrottleRps') is not None:
+            self.throttle_rps = m.get('ThrottleRps')
         return self
 
 
@@ -20000,6 +20237,81 @@ class DescribeProjectResponseBodyDataLabels(TeaModel):
             self.id = m.get('Id')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        return self
+
+
+class DescribeProjectResponseBodyDataReverseIncrTransferConfig(TeaModel):
+    def __init__(
+        self,
+        enable_incr_sync_statistics: bool = None,
+        enable_sequencing_within_txn: bool = None,
+        incr_sync_concurrency: int = None,
+        record_type_white_list: List[str] = None,
+        start_timestamp: int = None,
+        store_log_kept_hour: int = None,
+        support_ddltypes: List[str] = None,
+        throttle_iops: int = None,
+        throttle_rps: int = None,
+    ):
+        self.enable_incr_sync_statistics = enable_incr_sync_statistics
+        self.enable_sequencing_within_txn = enable_sequencing_within_txn
+        self.incr_sync_concurrency = incr_sync_concurrency
+        self.record_type_white_list = record_type_white_list
+        self.start_timestamp = start_timestamp
+        self.store_log_kept_hour = store_log_kept_hour
+        self.support_ddltypes = support_ddltypes
+        self.throttle_iops = throttle_iops
+        self.throttle_rps = throttle_rps
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_incr_sync_statistics is not None:
+            result['EnableIncrSyncStatistics'] = self.enable_incr_sync_statistics
+        if self.enable_sequencing_within_txn is not None:
+            result['EnableSequencingWithinTxn'] = self.enable_sequencing_within_txn
+        if self.incr_sync_concurrency is not None:
+            result['IncrSyncConcurrency'] = self.incr_sync_concurrency
+        if self.record_type_white_list is not None:
+            result['RecordTypeWhiteList'] = self.record_type_white_list
+        if self.start_timestamp is not None:
+            result['StartTimestamp'] = self.start_timestamp
+        if self.store_log_kept_hour is not None:
+            result['StoreLogKeptHour'] = self.store_log_kept_hour
+        if self.support_ddltypes is not None:
+            result['SupportDDLTypes'] = self.support_ddltypes
+        if self.throttle_iops is not None:
+            result['ThrottleIOPS'] = self.throttle_iops
+        if self.throttle_rps is not None:
+            result['ThrottleRps'] = self.throttle_rps
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableIncrSyncStatistics') is not None:
+            self.enable_incr_sync_statistics = m.get('EnableIncrSyncStatistics')
+        if m.get('EnableSequencingWithinTxn') is not None:
+            self.enable_sequencing_within_txn = m.get('EnableSequencingWithinTxn')
+        if m.get('IncrSyncConcurrency') is not None:
+            self.incr_sync_concurrency = m.get('IncrSyncConcurrency')
+        if m.get('RecordTypeWhiteList') is not None:
+            self.record_type_white_list = m.get('RecordTypeWhiteList')
+        if m.get('StartTimestamp') is not None:
+            self.start_timestamp = m.get('StartTimestamp')
+        if m.get('StoreLogKeptHour') is not None:
+            self.store_log_kept_hour = m.get('StoreLogKeptHour')
+        if m.get('SupportDDLTypes') is not None:
+            self.support_ddltypes = m.get('SupportDDLTypes')
+        if m.get('ThrottleIOPS') is not None:
+            self.throttle_iops = m.get('ThrottleIOPS')
+        if m.get('ThrottleRps') is not None:
+            self.throttle_rps = m.get('ThrottleRps')
         return self
 
 
@@ -21844,6 +22156,7 @@ class DescribeProjectResponseBodyData(TeaModel):
         labels: List[DescribeProjectResponseBodyDataLabels] = None,
         name: str = None,
         owner: str = None,
+        reverse_incr_transfer_config: DescribeProjectResponseBodyDataReverseIncrTransferConfig = None,
         sink_connect_info: DescribeProjectResponseBodyDataSinkConnectInfo = None,
         sink_endpoint_type: str = None,
         source_connect_info: DescribeProjectResponseBodyDataSourceConnectInfo = None,
@@ -21880,6 +22193,7 @@ class DescribeProjectResponseBodyData(TeaModel):
         self.labels = labels
         self.name = name
         self.owner = owner
+        self.reverse_incr_transfer_config = reverse_incr_transfer_config
         self.sink_connect_info = sink_connect_info
         self.sink_endpoint_type = sink_endpoint_type
         self.source_connect_info = source_connect_info
@@ -21907,6 +22221,8 @@ class DescribeProjectResponseBodyData(TeaModel):
             for k in self.labels:
                 if k:
                     k.validate()
+        if self.reverse_incr_transfer_config:
+            self.reverse_incr_transfer_config.validate()
         if self.sink_connect_info:
             self.sink_connect_info.validate()
         if self.source_connect_info:
@@ -21978,6 +22294,8 @@ class DescribeProjectResponseBodyData(TeaModel):
             result['Name'] = self.name
         if self.owner is not None:
             result['Owner'] = self.owner
+        if self.reverse_incr_transfer_config is not None:
+            result['ReverseIncrTransferConfig'] = self.reverse_incr_transfer_config.to_map()
         if self.sink_connect_info is not None:
             result['SinkConnectInfo'] = self.sink_connect_info.to_map()
         if self.sink_endpoint_type is not None:
@@ -22062,6 +22380,9 @@ class DescribeProjectResponseBodyData(TeaModel):
             self.name = m.get('Name')
         if m.get('Owner') is not None:
             self.owner = m.get('Owner')
+        if m.get('ReverseIncrTransferConfig') is not None:
+            temp_model = DescribeProjectResponseBodyDataReverseIncrTransferConfig()
+            self.reverse_incr_transfer_config = temp_model.from_map(m['ReverseIncrTransferConfig'])
         if m.get('SinkConnectInfo') is not None:
             temp_model = DescribeProjectResponseBodyDataSinkConnectInfo()
             self.sink_connect_info = temp_model.from_map(m['SinkConnectInfo'])
