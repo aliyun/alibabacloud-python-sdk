@@ -247,8 +247,12 @@ class Client(OpenApiClient):
             query['sub_corp_id'] = request.sub_corp_id
         if not UtilClient.is_unset(request.taobao_callback_url):
             query['taobao_callback_url'] = request.taobao_callback_url
+        if not UtilClient.is_unset(request.traveler_id):
+            query['traveler_id'] = request.traveler_id
         if not UtilClient.is_unset(request.type):
             query['type'] = request.type
+        if not UtilClient.is_unset(request.use_booking_proxy):
+            query['use_booking_proxy'] = request.use_booking_proxy
         if not UtilClient.is_unset(request.user_id):
             query['user_id'] = request.user_id
         real_headers = {}
@@ -308,8 +312,12 @@ class Client(OpenApiClient):
             query['sub_corp_id'] = request.sub_corp_id
         if not UtilClient.is_unset(request.taobao_callback_url):
             query['taobao_callback_url'] = request.taobao_callback_url
+        if not UtilClient.is_unset(request.traveler_id):
+            query['traveler_id'] = request.traveler_id
         if not UtilClient.is_unset(request.type):
             query['type'] = request.type
+        if not UtilClient.is_unset(request.use_booking_proxy):
+            query['use_booking_proxy'] = request.use_booking_proxy
         if not UtilClient.is_unset(request.user_id):
             query['user_id'] = request.user_id
         real_headers = {}
@@ -13544,6 +13552,182 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.MealBillSettlementQueryHeaders()
         return await self.meal_bill_settlement_query_with_options_async(request, headers, runtime)
+
+    def meal_order_detail_query_with_options(
+        self,
+        order_id: str,
+        request: btrip_open_20220520_models.MealOrderDetailQueryRequest,
+        headers: btrip_open_20220520_models.MealOrderDetailQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.MealOrderDetailQueryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_id):
+            query['user_id'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MealOrderDetailQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/meal/v1/orders/{OpenApiUtilClient.get_encode_param(order_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.MealOrderDetailQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def meal_order_detail_query_with_options_async(
+        self,
+        order_id: str,
+        request: btrip_open_20220520_models.MealOrderDetailQueryRequest,
+        headers: btrip_open_20220520_models.MealOrderDetailQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.MealOrderDetailQueryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_id):
+            query['user_id'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MealOrderDetailQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/meal/v1/orders/{OpenApiUtilClient.get_encode_param(order_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.MealOrderDetailQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def meal_order_detail_query(
+        self,
+        order_id: str,
+        request: btrip_open_20220520_models.MealOrderDetailQueryRequest,
+    ) -> btrip_open_20220520_models.MealOrderDetailQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.MealOrderDetailQueryHeaders()
+        return self.meal_order_detail_query_with_options(order_id, request, headers, runtime)
+
+    async def meal_order_detail_query_async(
+        self,
+        order_id: str,
+        request: btrip_open_20220520_models.MealOrderDetailQueryRequest,
+    ) -> btrip_open_20220520_models.MealOrderDetailQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.MealOrderDetailQueryHeaders()
+        return await self.meal_order_detail_query_with_options_async(order_id, request, headers, runtime)
+
+    def meal_order_list_query_with_options(
+        self,
+        request: btrip_open_20220520_models.MealOrderListQueryRequest,
+        headers: btrip_open_20220520_models.MealOrderListQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.MealOrderListQueryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_id):
+            query['user_id'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MealOrderListQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/meal/v1/orders',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.MealOrderListQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def meal_order_list_query_with_options_async(
+        self,
+        request: btrip_open_20220520_models.MealOrderListQueryRequest,
+        headers: btrip_open_20220520_models.MealOrderListQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.MealOrderListQueryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_id):
+            query['user_id'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MealOrderListQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/meal/v1/orders',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.MealOrderListQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def meal_order_list_query(
+        self,
+        request: btrip_open_20220520_models.MealOrderListQueryRequest,
+    ) -> btrip_open_20220520_models.MealOrderListQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.MealOrderListQueryHeaders()
+        return self.meal_order_list_query_with_options(request, headers, runtime)
+
+    async def meal_order_list_query_async(
+        self,
+        request: btrip_open_20220520_models.MealOrderListQueryRequest,
+    ) -> btrip_open_20220520_models.MealOrderListQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.MealOrderListQueryHeaders()
+        return await self.meal_order_list_query_with_options_async(request, headers, runtime)
 
     def month_bill_confirm_with_options(
         self,

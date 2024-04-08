@@ -1,3 +1,16 @@
+2024-04-08 Version: 2.6.0
+- Support API MealOrderDetailQuery.
+- Support API MealOrderListQuery.
+- Update API AddressGet: add param traveler_id.
+- Update API AddressGet: add param use_booking_proxy.
+- Update API ApplyInvoiceTask: update param invoice_task_list.
+- Update API HotelOrderPay: update param total_price.
+- Update API HotelRoomInfo: update response param.
+- Update API HotelStaticInfo: update response param.
+- Update API MealBillSettlementQuery: update response param.
+- Update API WaitApplyInvoiceTaskDetailQuery: update response param.
+
+
 2024-03-19 Version: 2.5.0
 - Support API IntlFlightCreateOrder.
 - Support API IntlFlightInventoryPriceCheck.
