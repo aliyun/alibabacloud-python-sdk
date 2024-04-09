@@ -7,6 +7,15 @@
 - Update API UpdateService: add param UpdateType.
 
 
+2024-04-09 Version: 4.1.0
+- Support API CloneService.
+- Update API ListResourceInstanceWorker: update response param.
+- Update API ListServiceVersions: update response param.
+- Update API ListServices: add param QuotaId.
+- Update API UpdateAppService: update param body.
+- Update API UpdateService: add param UpdateType.
+
+
 2024-01-26 Version: 4.0.1
 - Update API ListResourceInstanceWorkerupdate response param.
 - Update API ListServiceVersionsupdate response param.
