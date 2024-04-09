@@ -1,3 +1,7 @@
+2024-04-09 Version: 1.1.1
+- Update API GetStatTrend: update response param.
+
+
 2023-08-11 Version: 1.1.0
 - Generated python 2022-02-14 for umeng-apm.
 

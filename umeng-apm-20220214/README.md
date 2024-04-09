@@ -28,7 +28,7 @@ pip install alibabacloud_umeng_apm20220214
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/umeng-apm-20220214/ChangeLog.md).
 
 ## References
 
