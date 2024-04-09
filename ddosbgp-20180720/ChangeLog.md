@@ -1,3 +1,10 @@
+2024-04-09 Version: 2.4.0
+- Support API AddRdMemberList.
+- Support API DeleteRdMemberList.
+- Support API DescribeRdMemberList.
+- Support API DescribeRdStatus.
+
+
 2024-03-27 Version: 2.3.0
 - Support API AttachAssetGroupToInstance.
 - Support API DescribeAssetGroup.

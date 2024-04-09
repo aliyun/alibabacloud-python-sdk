@@ -145,6 +145,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_ip_with_options_async(request, runtime)
 
+    def add_rd_member_list_with_options(
+        self,
+        tmp_req: ddosbgp_20180720_models.AddRdMemberListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.AddRdMemberListResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ddosbgp_20180720_models.AddRdMemberListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.member_list):
+            request.member_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.member_list, 'MemberList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.member_list_shrink):
+            query['MemberList'] = request.member_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddRdMemberList',
+            version='2018-07-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.AddRdMemberListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_rd_member_list_with_options_async(
+        self,
+        tmp_req: ddosbgp_20180720_models.AddRdMemberListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.AddRdMemberListResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ddosbgp_20180720_models.AddRdMemberListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.member_list):
+            request.member_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.member_list, 'MemberList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.member_list_shrink):
+            query['MemberList'] = request.member_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddRdMemberList',
+            version='2018-07-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.AddRdMemberListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_rd_member_list(
+        self,
+        request: ddosbgp_20180720_models.AddRdMemberListRequest,
+    ) -> ddosbgp_20180720_models.AddRdMemberListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_rd_member_list_with_options(request, runtime)
+
+    async def add_rd_member_list_async(
+        self,
+        request: ddosbgp_20180720_models.AddRdMemberListRequest,
+    ) -> ddosbgp_20180720_models.AddRdMemberListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_rd_member_list_with_options_async(request, runtime)
+
     def attach_asset_group_to_instance_with_options(
         self,
         tmp_req: ddosbgp_20180720_models.AttachAssetGroupToInstanceRequest,
@@ -864,6 +942,84 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_ip_with_options_async(request, runtime)
+
+    def delete_rd_member_list_with_options(
+        self,
+        tmp_req: ddosbgp_20180720_models.DeleteRdMemberListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.DeleteRdMemberListResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ddosbgp_20180720_models.DeleteRdMemberListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.member_list):
+            request.member_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.member_list, 'MemberList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.member_list_shrink):
+            query['MemberList'] = request.member_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRdMemberList',
+            version='2018-07-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DeleteRdMemberListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_rd_member_list_with_options_async(
+        self,
+        tmp_req: ddosbgp_20180720_models.DeleteRdMemberListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.DeleteRdMemberListResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ddosbgp_20180720_models.DeleteRdMemberListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.member_list):
+            request.member_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.member_list, 'MemberList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.member_list_shrink):
+            query['MemberList'] = request.member_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRdMemberList',
+            version='2018-07-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DeleteRdMemberListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_rd_member_list(
+        self,
+        request: ddosbgp_20180720_models.DeleteRdMemberListRequest,
+    ) -> ddosbgp_20180720_models.DeleteRdMemberListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_rd_member_list_with_options(request, runtime)
+
+    async def delete_rd_member_list_async(
+        self,
+        request: ddosbgp_20180720_models.DeleteRdMemberListRequest,
+    ) -> ddosbgp_20180720_models.DeleteRdMemberListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_rd_member_list_with_options_async(request, runtime)
 
     def delete_schedrule_on_demand_with_options(
         self,
@@ -2128,6 +2284,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_pack_ip_list_with_options_async(request, runtime)
+
+    def describe_rd_member_list_with_options(
+        self,
+        request: ddosbgp_20180720_models.DescribeRdMemberListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.DescribeRdMemberListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_directory_id):
+            query['ResourceDirectoryId'] = request.resource_directory_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRdMemberList',
+            version='2018-07-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribeRdMemberListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_rd_member_list_with_options_async(
+        self,
+        request: ddosbgp_20180720_models.DescribeRdMemberListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.DescribeRdMemberListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_directory_id):
+            query['ResourceDirectoryId'] = request.resource_directory_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRdMemberList',
+            version='2018-07-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribeRdMemberListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_rd_member_list(
+        self,
+        request: ddosbgp_20180720_models.DescribeRdMemberListRequest,
+    ) -> ddosbgp_20180720_models.DescribeRdMemberListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_rd_member_list_with_options(request, runtime)
+
+    async def describe_rd_member_list_async(
+        self,
+        request: ddosbgp_20180720_models.DescribeRdMemberListRequest,
+    ) -> ddosbgp_20180720_models.DescribeRdMemberListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_rd_member_list_with_options_async(request, runtime)
+
+    def describe_rd_status_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.DescribeRdStatusResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeRdStatus',
+            version='2018-07-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribeRdStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_rd_status_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.DescribeRdStatusResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeRdStatus',
+            version='2018-07-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribeRdStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_rd_status(self) -> ddosbgp_20180720_models.DescribeRdStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_rd_status_with_options(runtime)
+
+    async def describe_rd_status_async(self) -> ddosbgp_20180720_models.DescribeRdStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_rd_status_with_options_async(runtime)
 
     def describe_regions_with_options(
         self,
