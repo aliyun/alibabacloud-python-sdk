@@ -3542,13 +3542,16 @@ class CreateAccountRequest(TeaModel):
         # 
         # > : The name cannot start with http:// or https://.
         self.account_description = account_description
-        # The username of the account.
+        # The name of the database account.
         # 
-        # *   The value must be unique.
         # 
-        # *   The value must start with a lowercase letter, and end with a lowercase letter or a digit.
+        # *   The name must be unique.
         # 
-        # *   The value can contain lowercase letters, digits, and underscores (\_).
+        # *   The name can contain lowercase letters, digits, and underscores (\_). For MySQL databases, the name can contain uppercase letters.
+        # 
+        # *   The name must start with a letter and end with a letter or digit.
+        # 
+        # *   For MySQL databases, the name of the privileged account cannot be the same as that of the standard account. For example, if the name of the privileged account is `Test1`, the name of the standard account cannot be `test1`.
         # 
         # *   The length of the value must meet the following requirements:
         # 
@@ -3559,7 +3562,7 @@ class CreateAccountRequest(TeaModel):
         #     *   If the instance runs PostgreSQL with local disks, the value must be 2 to 16 characters in length.
         #     *   If the instance runs MariaDB, the value must be 2 to 16 characters in length.
         # 
-        # *   For more information about invalid characters, see [Forbidden keywords table](~~26317~~).
+        # *   For more information about invalid characters, see [Forbidden keywords](~~26317~~).
         self.account_name = account_name
         # The password of the account.
         #  
@@ -16468,7 +16471,7 @@ class DescribeAvailableRecoveryTimeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the cross-region backup file. You can call the DescribeCrossRegionBackups operation to query the backup file ID.
+        # The ID of the cross-region data backup file. You can call the DescribeCrossRegionBackups operation to query the backup file ID.
         self.cross_backup_id = cross_backup_id
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         self.dbinstance_id = dbinstance_id
@@ -16535,7 +16538,7 @@ class DescribeAvailableRecoveryTimeResponseBody(TeaModel):
     ):
         # The ID of the cross-region data backup file.
         self.cross_backup_id = cross_backup_id
-        # The start time to which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The start time from which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.recovery_begin_time = recovery_begin_time
         # The end time to which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.recovery_end_time = recovery_end_time
@@ -17205,8 +17208,8 @@ class DescribeBackupPolicyRequest(TeaModel):
         # *   **0**: Backup data is not compressed.
         # *   **1**: Backup data is compressed by using zlib.
         # *   **2**: Backup data is compressed by using zlib that invokes more than one thread in parallel for each backup.
-        # *   **4**: Backup data is compressed by using QuickLZ and can be used to restore individual databases and tables.
-        # *   **8**: Backup data is compressed by using QuickLZ but cannot be used to restore individual databases or tables. This value is available only when the instance runs MySQL 8.0.
+        # *   **4**: Backup data is compressed by using QuickLZ and can be used to restore individual databases or tables.
+        # *   **8**: Backup data is compressed by using QuickLZ but cannot be used to restore individual databases or tables.
         self.compress_type = compress_type
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         self.dbinstance_id = dbinstance_id
@@ -17345,25 +17348,25 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         # *   **0**: Backup data is not compressed.
         # *   **1**: Backup data is compressed by using zlib.
         # *   **2**: Backup data is compressed by using zlib that invokes more than one thread in parallel for each backup.
-        # *   **4**: Backup data is compressed by using QuickLZ and can be used to restore individual databases and tables.
-        # *   **8**: Backup data is compressed by using QuickLZ but cannot be used to restore individual databases or tables. This value is available only when the instance runs MySQL 8.0.
+        # *   **4**: Backup data is compressed by using QuickLZ and can be used to restore individual databases or tables.
+        # *   **8**: Backup data is compressed by using QuickLZ but cannot be used to restore individual databases or tables.
         self.compress_type = compress_type
         # Indicates whether the log backup feature is enabled. Valid values:
         # 
-        # *   **1**: The log backup feature is enabled.
-        # *   **0**: The log backup feature is disabled.
+        # *   **1**: enabled
+        # *   **0**: disabled
         self.enable_backup_log = enable_backup_log
         # Indicates whether incremental backup is enabled. Valid values:
         # 
         # *   **True**: Incremental backup is enabled.
         # *   **False**: Incremental backup is disabled.
         self.enable_increment_data_backup = enable_increment_data_backup
-        # Whether PITR recovery is enabled at any point in time (the upgraded version of the original log backup). Return value:
+        # Indicates whether the point-in-time restoration (PITR) feature is enabled. The PITR feature is an enhancement of the log backup feature. Valid values:
         # 
-        # - True: Yes
-        # - False: no
+        # *   **True**\
+        # *   **False**\
         # 
-        # > Only MySQL instances return this parameter.
+        # >  This parameter is returned only when the instance runs MySQL. For more information, see [Configure the PITR feature](~~2666046~~).
         self.enable_pitr_protection = enable_pitr_protection
         # Indicates whether the log backup deletion feature is enabled. If the disk usage exceeds 80% or the remaining disk space is less than 5 GB on the instance, this feature deletes binary log files. Valid values:
         # 
@@ -17379,13 +17382,13 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         # *   **LogInterval**: Log backups are performed every 30 minutes.
         # *   Default value: same as the value of the **PreferredBackupPeriod** parameter.
         # 
-        # > The **LogBackupFrequency** parameter is supported only when the instance runs **SQL Server**.
+        # >  This parameter is returned only when the instance runs SQL Server.
         self.log_backup_frequency = log_backup_frequency
         # The number of binary log files that you want to retain on the instance.
         self.log_backup_local_retention_number = log_backup_local_retention_number
         # The number of days for which log backup files are retained.
         self.log_backup_retention_period = log_backup_retention_period
-        # The number of days to restore at any point in time.
+        # The number of days during which you can restore data of the instance to any point in time.
         self.pitr_retention_period = pitr_retention_period
         # The cycle based on which you want to perform a backup. Separate multiple values with commas (,). Valid values:
         # 
@@ -17421,7 +17424,7 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         # *   **1**: The instance supports snapshot backups.
         # *   **0**: The instance does not support snapshot backups.
         # 
-        # > This parameter is returned only when the instance runs SQL Server.
+        # >  This parameter is returned only when the instance runs SQL Server.
         self.support_volume_shadow_copy = support_volume_shadow_copy
 
     def validate(self):
@@ -28345,11 +28348,11 @@ class DescribeDBInstancesResponseBodyItemsDBInstance(TeaModel):
         connection_mode: str = None,
         connection_string: str = None,
         create_time: str = None,
+        dbinstance_cpu: str = None,
         dbinstance_class: str = None,
-        dbinstance_cpu_cores: str = None,
         dbinstance_description: str = None,
         dbinstance_id: str = None,
-        dbinstance_memory: str = None,
+        dbinstance_memory: int = None,
         dbinstance_net_type: str = None,
         dbinstance_status: str = None,
         dbinstance_storage_type: str = None,
@@ -28421,9 +28424,9 @@ class DescribeDBInstancesResponseBodyItemsDBInstance(TeaModel):
         self.connection_string = connection_string
         # The creation time of the instance. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.create_time = create_time
+        self.dbinstance_cpu = dbinstance_cpu
         # The instance type of the instance. For information, see [Primary ApsaraDB RDS instance types](~~26312~~).
         self.dbinstance_class = dbinstance_class
-        self.dbinstance_cpu_cores = dbinstance_cpu_cores
         # The instance description.
         self.dbinstance_description = dbinstance_description
         # The instance ID.
@@ -28576,10 +28579,10 @@ class DescribeDBInstancesResponseBodyItemsDBInstance(TeaModel):
             result['ConnectionString'] = self.connection_string
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.dbinstance_cpu is not None:
+            result['DBInstanceCPU'] = self.dbinstance_cpu
         if self.dbinstance_class is not None:
             result['DBInstanceClass'] = self.dbinstance_class
-        if self.dbinstance_cpu_cores is not None:
-            result['DBInstanceCpuCores'] = self.dbinstance_cpu_cores
         if self.dbinstance_description is not None:
             result['DBInstanceDescription'] = self.dbinstance_description
         if self.dbinstance_id is not None:
@@ -28686,10 +28689,10 @@ class DescribeDBInstancesResponseBodyItemsDBInstance(TeaModel):
             self.connection_string = m.get('ConnectionString')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('DBInstanceCPU') is not None:
+            self.dbinstance_cpu = m.get('DBInstanceCPU')
         if m.get('DBInstanceClass') is not None:
             self.dbinstance_class = m.get('DBInstanceClass')
-        if m.get('DBInstanceCpuCores') is not None:
-            self.dbinstance_cpu_cores = m.get('DBInstanceCpuCores')
         if m.get('DBInstanceDescription') is not None:
             self.dbinstance_description = m.get('DBInstanceDescription')
         if m.get('DBInstanceId') is not None:
@@ -38519,7 +38522,7 @@ class DescribeKmsAssociateResourcesRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
         resource_owner_account: str = None,
-        resource_owner_id: str = None,
+        resource_owner_id: int = None,
     ):
         self.client_token = client_token
         self.kms_resource_id = kms_resource_id
@@ -59707,10 +59710,10 @@ class ModifyDBInstanceSSLRequest(TeaModel):
         # *   **aliyun**: a cloud certificate
         # *   **custom**: a custom certificate
         self.catype = catype
-        # User-defined certificate. The custom certificate is in pfx format.
+        # The custom certificate. The custom certificate is in the `PFX` format.
         # 
-        # - Public address: `oss-<region ID>.aliyuncs.com:<Bucket name >:< certificate file name (with file suffix)>`
-        # - Intranet address: `oss-<region ID>-internal.aliyuncs.com:<Bucket name >:< certificate file name (with file suffix)>`
+        # *   Public endpoint: `oss-<The ID of the region>.aliyuncs.com:<The name of the bucket>:<The name of the certificate file (The file name contains the extension.)>`
+        # *   Internal endpoint: `oss-<The ID of the region>-internal.aliyuncs.com:<The name of the bucket>:<The name of the certificate file (The file name contains the extension.)>`
         self.certificate = certificate
         # The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with cloud disks. This parameter must be specified when ClientCAEbabled is set to **1**.
         self.client_cacert = client_cacert
@@ -59739,7 +59742,7 @@ class ModifyDBInstanceSSLRequest(TeaModel):
         self.owner_id = owner_id
         # The password of the certificate.
         self.pass_word = pass_word
-        # The method that is used to verify the replication permissions. This parameter is supported only when the instance runs PostgreSQL with cloud disks. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
+        # The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with cloud disks. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
         # 
         # *   **cert**\
         # *   **prefer**\
@@ -64824,7 +64827,7 @@ class ModifySecurityGroupConfigurationRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the ECS security group. Each instance can be added to up to three security groups. Separate the security group IDs with commas (,). To delete an ECS security group for the instance, leave this parameter empty. You can call the DescribeSecurityGroups operation to query the ID of the ECS security group.
+        # The ID of the ECS security group. Each instance can be added to up to 10 security groups. Separate multiple security groups with commas (,). To delete an ECS security group, leave this parameter empty. You can call the DescribeSecurityGroups operation to query the ID of the ECS security group.
         self.security_group_id = security_group_id
 
     def validate(self):
@@ -70783,7 +70786,7 @@ class TransformDBInstancePayTypeRequest(TeaModel):
         self.business_info = business_info
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
+        # The instance ID. You can call the DescribeDBInstances operation to query the ID of the instance.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id

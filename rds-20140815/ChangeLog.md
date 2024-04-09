@@ -1,3 +1,10 @@
+2024-04-09 Version: 4.0.1
+- Update API DescribeDBInstances: update response param.
+- Update API DescribeDatabases: update response param.
+- Update API DescribeKmsAssociateResources: update param ResourceOwnerId.
+- Update API ModifyDBInstanceSpec: update param DBInstanceStorage.
+
+
 2024-04-02 Version: 4.0.0
 - Delete API ImportDatabaseBetweenInstances.
 - Update API DescribeDBInstances: update response param.

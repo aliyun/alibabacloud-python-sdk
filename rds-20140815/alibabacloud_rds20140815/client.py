@@ -1030,11 +1030,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.CancelImportResponse:
         """
-        ### [](#)Supported database engine
-        *   SQL Server
-        ### [](#)Usage notes
+        This operation is phased out.
+        ### [](#)Supported database engines
+        *   RDS SQL Server
+        ### [](#)Description
         This operation is supported for instances that run SQL Server and belong to the dedicated or dedicated host instance family. For more information about how to start a migration task, see [ImportDatabaseBetweenInstances](~~610592~~).
-        ### [](#)Precautions
+        ### [](#)Usage notes
         This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
         
         @param request: CancelImportRequest
@@ -1082,11 +1083,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.CancelImportResponse:
         """
-        ### [](#)Supported database engine
-        *   SQL Server
-        ### [](#)Usage notes
+        This operation is phased out.
+        ### [](#)Supported database engines
+        *   RDS SQL Server
+        ### [](#)Description
         This operation is supported for instances that run SQL Server and belong to the dedicated or dedicated host instance family. For more information about how to start a migration task, see [ImportDatabaseBetweenInstances](~~610592~~).
-        ### [](#)Precautions
+        ### [](#)Usage notes
         This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
         
         @param request: CancelImportRequest
@@ -1133,11 +1135,12 @@ class Client(OpenApiClient):
         request: rds_20140815_models.CancelImportRequest,
     ) -> rds_20140815_models.CancelImportResponse:
         """
-        ### [](#)Supported database engine
-        *   SQL Server
-        ### [](#)Usage notes
+        This operation is phased out.
+        ### [](#)Supported database engines
+        *   RDS SQL Server
+        ### [](#)Description
         This operation is supported for instances that run SQL Server and belong to the dedicated or dedicated host instance family. For more information about how to start a migration task, see [ImportDatabaseBetweenInstances](~~610592~~).
-        ### [](#)Precautions
+        ### [](#)Usage notes
         This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
         
         @param request: CancelImportRequest
@@ -1151,11 +1154,12 @@ class Client(OpenApiClient):
         request: rds_20140815_models.CancelImportRequest,
     ) -> rds_20140815_models.CancelImportResponse:
         """
-        ### [](#)Supported database engine
-        *   SQL Server
-        ### [](#)Usage notes
+        This operation is phased out.
+        ### [](#)Supported database engines
+        *   RDS SQL Server
+        ### [](#)Description
         This operation is supported for instances that run SQL Server and belong to the dedicated or dedicated host instance family. For more information about how to start a migration task, see [ImportDatabaseBetweenInstances](~~610592~~).
-        ### [](#)Precautions
+        ### [](#)Usage notes
         This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
         
         @param request: CancelImportRequest
@@ -10728,12 +10732,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeAvailableRecoveryTimeResponse:
         """
-        >  To view the time range within which you can restore data from a standard backup set, see [DescribeBackups](~~26273~~)
+        >  To view the time range within which you can restore data from a standard backup set, see DescribeBackups.
         ### [](#)Supported database engines
-        MySQL
+        ApsaraDB RDS for MySQL instances with local disks
         ### [](#)References
-        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
-        [Use the cross-region backup feature of an ApsaraDB RDS for MySQL instance](~~120824~~)
+        >  Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        [Use the cross-region backup feature](~~120824~~)
         
         @param request: DescribeAvailableRecoveryTimeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10780,12 +10784,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeAvailableRecoveryTimeResponse:
         """
-        >  To view the time range within which you can restore data from a standard backup set, see [DescribeBackups](~~26273~~)
+        >  To view the time range within which you can restore data from a standard backup set, see DescribeBackups.
         ### [](#)Supported database engines
-        MySQL
+        ApsaraDB RDS for MySQL instances with local disks
         ### [](#)References
-        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
-        [Use the cross-region backup feature of an ApsaraDB RDS for MySQL instance](~~120824~~)
+        >  Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        [Use the cross-region backup feature](~~120824~~)
         
         @param request: DescribeAvailableRecoveryTimeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10831,12 +10835,12 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeAvailableRecoveryTimeRequest,
     ) -> rds_20140815_models.DescribeAvailableRecoveryTimeResponse:
         """
-        >  To view the time range within which you can restore data from a standard backup set, see [DescribeBackups](~~26273~~)
+        >  To view the time range within which you can restore data from a standard backup set, see DescribeBackups.
         ### [](#)Supported database engines
-        MySQL
+        ApsaraDB RDS for MySQL instances with local disks
         ### [](#)References
-        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
-        [Use the cross-region backup feature of an ApsaraDB RDS for MySQL instance](~~120824~~)
+        >  Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        [Use the cross-region backup feature](~~120824~~)
         
         @param request: DescribeAvailableRecoveryTimeRequest
         @return: DescribeAvailableRecoveryTimeResponse
@@ -10849,12 +10853,12 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeAvailableRecoveryTimeRequest,
     ) -> rds_20140815_models.DescribeAvailableRecoveryTimeResponse:
         """
-        >  To view the time range within which you can restore data from a standard backup set, see [DescribeBackups](~~26273~~)
+        >  To view the time range within which you can restore data from a standard backup set, see DescribeBackups.
         ### [](#)Supported database engines
-        MySQL
+        ApsaraDB RDS for MySQL instances with local disks
         ### [](#)References
-        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
-        [Use the cross-region backup feature of an ApsaraDB RDS for MySQL instance](~~120824~~)
+        >  Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        [Use the cross-region backup feature](~~120824~~)
         
         @param request: DescribeAvailableRecoveryTimeRequest
         @return: DescribeAvailableRecoveryTimeResponse
@@ -12673,15 +12677,15 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.DescribeCrossRegionBackupsResponse:
         """
         ### [](#)Supported database engines
-        *   MySQL
-        *   PostgreSQL
-        *   SQL Server
+        *   ApsaraDB RDS for MySQL instances with local disks
+        *   RDS PostgreSQL
+        *   RDS SQL Server
         ### [](#)References
-        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        >  Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
         *   [Use the cross-region backup feature for an ApsaraDB RDS for MySQL instance](~~120824~~)
         *   [Use the cross-region backup feature for an ApsaraDB RDS for SQL Server instance](~~187923~~)
         *   [Use the cross-region backup feature for an ApsaraDB RDS for PostgreSQL instance](~~206671~~)
-        >  For more information about how to query cross-region log backup files, see [DescribeCrossRegionLogBackupFiles](~~121734~~).
+        >  For more information about how to query cross-region log backup files, see DescribeCrossRegionLogBackupFiles.
         
         @param request: DescribeCrossRegionBackupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12741,15 +12745,15 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.DescribeCrossRegionBackupsResponse:
         """
         ### [](#)Supported database engines
-        *   MySQL
-        *   PostgreSQL
-        *   SQL Server
+        *   ApsaraDB RDS for MySQL instances with local disks
+        *   RDS PostgreSQL
+        *   RDS SQL Server
         ### [](#)References
-        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        >  Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
         *   [Use the cross-region backup feature for an ApsaraDB RDS for MySQL instance](~~120824~~)
         *   [Use the cross-region backup feature for an ApsaraDB RDS for SQL Server instance](~~187923~~)
         *   [Use the cross-region backup feature for an ApsaraDB RDS for PostgreSQL instance](~~206671~~)
-        >  For more information about how to query cross-region log backup files, see [DescribeCrossRegionLogBackupFiles](~~121734~~).
+        >  For more information about how to query cross-region log backup files, see DescribeCrossRegionLogBackupFiles.
         
         @param request: DescribeCrossRegionBackupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12808,15 +12812,15 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.DescribeCrossRegionBackupsResponse:
         """
         ### [](#)Supported database engines
-        *   MySQL
-        *   PostgreSQL
-        *   SQL Server
+        *   ApsaraDB RDS for MySQL instances with local disks
+        *   RDS PostgreSQL
+        *   RDS SQL Server
         ### [](#)References
-        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        >  Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
         *   [Use the cross-region backup feature for an ApsaraDB RDS for MySQL instance](~~120824~~)
         *   [Use the cross-region backup feature for an ApsaraDB RDS for SQL Server instance](~~187923~~)
         *   [Use the cross-region backup feature for an ApsaraDB RDS for PostgreSQL instance](~~206671~~)
-        >  For more information about how to query cross-region log backup files, see [DescribeCrossRegionLogBackupFiles](~~121734~~).
+        >  For more information about how to query cross-region log backup files, see DescribeCrossRegionLogBackupFiles.
         
         @param request: DescribeCrossRegionBackupsRequest
         @return: DescribeCrossRegionBackupsResponse
@@ -12830,15 +12834,15 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.DescribeCrossRegionBackupsResponse:
         """
         ### [](#)Supported database engines
-        *   MySQL
-        *   PostgreSQL
-        *   SQL Server
+        *   ApsaraDB RDS for MySQL instances with local disks
+        *   RDS PostgreSQL
+        *   RDS SQL Server
         ### [](#)References
-        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        >  Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
         *   [Use the cross-region backup feature for an ApsaraDB RDS for MySQL instance](~~120824~~)
         *   [Use the cross-region backup feature for an ApsaraDB RDS for SQL Server instance](~~187923~~)
         *   [Use the cross-region backup feature for an ApsaraDB RDS for PostgreSQL instance](~~206671~~)
-        >  For more information about how to query cross-region log backup files, see [DescribeCrossRegionLogBackupFiles](~~121734~~).
+        >  For more information about how to query cross-region log backup files, see DescribeCrossRegionLogBackupFiles.
         
         @param request: DescribeCrossRegionBackupsRequest
         @return: DescribeCrossRegionBackupsResponse
