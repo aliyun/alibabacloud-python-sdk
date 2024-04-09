@@ -1,3 +1,6 @@
+2024-04-09 Version: 1.0.4
+- Generated python 2018-06-12 for VoiceNavigator.
+
 2024-02-04 Version: 1.0.3
 - Update API AssociateChatbotInstanceadd NluServiceType param.
 update ChatbotInstanceId param.
