@@ -1,3 +1,7 @@
+2024-04-09 Version: 5.0.7
+- Update API DescribeDBClusters: update response param.
+
+
 2024-03-14 Version: 5.0.6
 - Update API DescribeDBClusterAttribute: update response param.
 - Update API DescribeDBClusterParameters: update response param.

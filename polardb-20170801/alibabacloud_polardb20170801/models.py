@@ -2894,6 +2894,7 @@ class CreateDBNodesRequest(TeaModel):
         # 
         # *   RO
         # *   STANDBY
+        # *   DLNode
         self.dbnode_type = dbnode_type
         # The ID of the cluster endpoint to which the read-only node is added. If you want to add the read-only node to multiple endpoints at the same time, separate the endpoint IDs with commas (,).
         # > - You can call the [DescribeDBClusterEndpoints](~~98205~~) operation to query the details of cluster endpoints, including endpoint IDs.
@@ -7501,7 +7502,7 @@ class DescribeBackupsRequest(TeaModel):
         self.owner_id = owner_id
         # The page number. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Valid values:
+        # The number of entries to return on each page. Valid values:
         # 
         # *   **30**\
         # *   **50**\
@@ -7633,7 +7634,8 @@ class DescribeBackupsResponseBodyItemsBackup(TeaModel):
         self.consistent_time = consistent_time
         # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
-        # �The expected expiration time of the backup set (This parameter is supported only for instances that are enabled with sparse backup).
+        # The expected expiration time of the backup set.
+        # > This parameter is supported only for instances that are enabled with sparse backup.
         self.expect_expire_time = expect_expire_time
         # The expected expiration type of the backup set (This parameter is supported only for instances that are enabled with sparse backup).
         # 
@@ -12514,11 +12516,12 @@ class DescribeDBClusterVersionRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The revision version of the database engine.
-        # 
-        # >  For a cluster of the PolarDB for MySQL 5.6, the DBRevisionVersion parameter returns the revision version information only if the `Revision Version` is released later than August 31, 2020. Otherwise, this parameter returns an empty value. For more information about the kernel version of a cluster that runs the PolarDB for MySQL, see [PolarDB for MySQL](~~423884~~).
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
-        # The ID of the request.
+        # Specify to return the latest version information or a list of upgradeable versions.Valid values:
+        # 
+        # - AVAILABLE_VERSION
+        # - LATEST_VERSION
         self.describe_type = describe_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -12573,9 +12576,17 @@ class DescribeDBClusterVersionResponseBodyDBRevisionVersionList(TeaModel):
         revision_version_code: str = None,
         revision_version_name: str = None,
     ):
+        # The release notes for the revision version.
         self.release_note = release_note
+        # The release status of the revision version. Valid values:
+        # 
+        # *   **Stable**: The revision version is stable.
+        # *   **Old**: The revision version is outdated. We recommend that you do not update the cluster to this version.
+        # *   **HighRisk**: The revision version has critical defects. We recommend that you do not update the cluster to this version.
         self.release_type = release_type
+        # The code of the revision version of the database engine to which the cluster can be upgraded.
         self.revision_version_code = revision_version_code
+        # The revision version of the database engine.
         self.revision_version_name = revision_version_name
 
     def validate(self):
@@ -12627,56 +12638,58 @@ class DescribeDBClusterVersionResponseBody(TeaModel):
         proxy_version_status: str = None,
         request_id: str = None,
     ):
-        # The latest version of the database engine.
+        # The ID of cluster.
         self.dbcluster_id = dbcluster_id
-        # The release note of the kernel version.
+        # The latest version of the database engine.
         self.dblatest_version = dblatest_version
-        # The versions to which the cluster can be upgraded.
-        self.dbminor_version = dbminor_version
-        # The version of PolarProxy.
-        self.dbrevision_version = dbrevision_version
-        self.dbrevision_version_list = dbrevision_version_list
         # The minor version of the database engine.
         # 
-        # *   If `DBVersion` is **8.0**, the valid values of this parameter are:
+        # - If DBVersion is 8.0, the valid values of this parameter are:
+        #   - 8.0.2
+        #   - 8.0.1
+        # - If DBVersion is 5.7, set the value of this parameter to 5.7.28.
+        # - If DBVersion is 5.6, the value of this parameter is 5.6.16.
+        self.dbminor_version = dbminor_version
+        # The revision version of the database engine.
+        # >For a cluster of the PolarDB for MySQL 5.6, the DBRevisionVersion parameter returns the revision version information only if the Revision Version is released later than August 31, 2020. Otherwise, this parameter returns an empty value.
+        self.dbrevision_version = dbrevision_version
+        self.dbrevision_version_list = dbrevision_version_list
+        # The version of the database engine. Valid values:
         # 
-        #     *   **8.0.2**\
-        #     *   **8.0.1**\
-        # 
-        # *   If `DBVersion` is **5.7**, set the value of this parameter to **5.7.28**.
-        # 
-        # *   If `DBVersion` is **5.6**, the value of this parameter is **5.6.16**.
+        # - 5.6
+        # - 5.7
+        # - 8.0
         self.dbversion = dbversion
-        # The latest version of PolarProxy.
-        self.dbversion_status = dbversion_status
         # The status of the minor version. Valid values:
         # 
         # *   **Stable**: The minor version is stable.
         # *   **Old**: The minor version is outdated. We recommend that you upgrade the cluster to the latest version.
-        # *   **HighRisk**: The minor version has critical defects. We recommend that you immediately upgrade the cluster to the latest version.
+        # *   **HighRisk**: The minor version has critical defects. We recommend that you immediately update the cluster to the latest minor version.
         # 
-        # > For more information about how to upgrade the minor version, see [Upgrade versions](~~158572~~).
+        # >  For more information about how to update the minor version, see [Minor version update](~~158572~~).
+        self.dbversion_status = dbversion_status
+        # Indicates whether the kernel is of the latest version. Valid values:
+        # 
+        # - true
+        # - false
         self.is_latest_version = is_latest_version
-        # The ID of the cluster.
-        self.is_proxy_latest_version = is_proxy_latest_version
-        # The revision version of the database engine.
-        self.proxy_latest_version = proxy_latest_version
-        # The release status of the kernel version. Valid values:
+        # Indicates whether PolarProxy uses the latest version. Valid values:
         # 
-        # *   **Stable**: The kernel version is stable.
-        # *   **Old**: The kernel version is old. We recommend that you do not upgrade the cluster to this version returned for this parameter.
-        # *   **HighRisk**: The kernel version has critical defects. We recommend that you do not upgrade the cluster to this version returned for this parameter.
+        # - true
+        # - false
+        self.is_proxy_latest_version = is_proxy_latest_version
+        # The latest version of PolarProxy.
+        self.proxy_latest_version = proxy_latest_version
+        # The revision version of the database engine.
         self.proxy_revision_version = proxy_revision_version
-        # The code of the revision version of the database engine to which the cluster can be upgraded.
-        self.proxy_version_status = proxy_version_status
         # The status of PolarProxy. Valid values:
         # 
-        # *   **Stable**: The minor version is stable.
-        # *   **Old**: The minor version is outdated. We recommend that you upgrade the cluster to the latest version.
-        # *   **HighRisk**: The minor version has critical defects. We recommend that you immediately upgrade the cluster to the latest version.
-        # *   **Beta**: The minor version is a beta version.
-        # 
-        # > For more information about how to upgrade the PolarProxy version, see [Upgrade versions](~~158572~~).
+        # - Stable: The minor version is stable.
+        # - Old: The minor version is outdated. We recommend that you upgrade the cluster to the latest version.
+        # - HighRisk: The minor version has critical defects. We recommend that you immediately upgrade the cluster to the latest version.
+        # - Beta: The minor version is a beta version.
+        self.proxy_version_status = proxy_version_status
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -12878,7 +12891,9 @@ class DescribeDBClustersRequest(TeaModel):
         self.dbtype = dbtype
         # The database engine version of the cluster.
         self.dbversion = dbversion
-        # 查询方式，当取值为Simple时，将返回简略版参数
+        # The query mode of the list. The value Simple indicates that the simple mode is used. In this mode, only the basic metadata information of the cluster is returned.
+        # 
+        # > If you do not specify this parameter, the detailed mode is used by default. Detailed information about the cluster is returned.
         self.describe_type = describe_type
         # Specifies whether the cluster has expired. Valid values:
         # 
@@ -13040,7 +13055,7 @@ class DescribeDBClustersResponseBodyItemsDBClusterDBNodesDBNode(TeaModel):
         # The role of the node. Valid values:
         # 
         # *   **Writer**: The node is the primary node.
-        # *   **Reader**: The node is a read-only node.
+        # *   **Reader**: The node is the read-only node.
         self.dbnode_role = dbnode_role
         # Indicates whether the hot standby feature is enabled. Valid values:
         # 
@@ -13054,7 +13069,10 @@ class DescribeDBClustersResponseBodyItemsDBClusterDBNodesDBNode(TeaModel):
         self.imci_switch = imci_switch
         # The ID of the region in which the node resides.
         self.region_id = region_id
-        # Indicates whether the serverless feature is enabled for the current node. **ON** indicates that the serverless feature is enabled. An empty value indicates that the serverless feature is disabled.
+        # Indicates whether the serverless feature is enabled for the current node.
+        # 
+        # *   **ON** indicates that the serverless feature is enabled.
+        # *   An empty value indicates that the serverless feature is disabled.
         self.serverless = serverless
         # The zone ID of the node.
         self.zone_id = zone_id
@@ -13217,6 +13235,7 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         self,
         ai_type: str = None,
         category: str = None,
+        cpu_cores: str = None,
         create_time: str = None,
         dbcluster_description: str = None,
         dbcluster_id: str = None,
@@ -13232,14 +13251,17 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         expire_time: str = None,
         expired: str = None,
         lock_mode: str = None,
+        memory_size: str = None,
         pay_type: str = None,
         region_id: str = None,
+        remote_memory_size: str = None,
         resource_group_id: str = None,
         serverless_type: str = None,
         storage_pay_type: str = None,
         storage_space: int = None,
         storage_used: int = None,
         strict_consistency: str = None,
+        sub_category: str = None,
         tags: DescribeDBClustersResponseBodyItemsDBClusterTags = None,
         vpc_id: str = None,
         vswitch_id: str = None,
@@ -13247,52 +13269,8 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
     ):
         # The type of the AI node. Valid values:
         # 
-        # *   SearchNode: Search node
-        # *   DLNode: ai node
-        # 
-        # Enumeration values:
-        # 
-        # *   SearchNode | DLNode
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     both
-        # 
-        #     <!-- -->
-        # 
-        #     .
-        # 
-        # *   DLNode
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     DLNode
-        # 
-        #     <!-- -->
-        # 
-        #     .
-        # 
-        # *   DLNode
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     DLNode
-        # 
-        #     <!-- -->
-        # 
-        #     .
+        # *   SearchNode: search node.
+        # *   DLNode: AI node.
         self.ai_type = ai_type
         # The edition of the cluster. Valid values:
         # 
@@ -13301,6 +13279,7 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         # *   **Archive**: X-Engine Edition
         # *   **NormalMultimaster**: Multi-master Cluster (Database/Table)
         self.category = category
+        self.cpu_cores = cpu_cores
         # The time when the cluster was created.
         self.create_time = create_time
         # The description of the cluster.
@@ -13326,7 +13305,7 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         # *   **0**: The cluster is not locked.
         # *   **1**: The cluster is locked.
         # 
-        # > If the cluster is locked, you cannot delete the cluster.
+        # > You cannot delete clusters that are locked.
         self.deletion_lock = deletion_lock
         # The engine of the cluster.
         self.engine = engine
@@ -13341,29 +13320,31 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         # 
         # > A specific value is returned only for subscription (**Prepaid**) clusters.
         self.expired = expired
-        # The lock status of the cluster. Valid values:
+        # The lock state of the cluster. Valid values:
         # 
         # *   **Unlock**: The cluster is not locked.
         # *   **ManualLock**: The cluster is manually locked.
         # *   **LockByExpiration**: The cluster is automatically locked due to cluster expiration.
         self.lock_mode = lock_mode
+        self.memory_size = memory_size
         # The billing method of the cluster. Valid values:
         # 
-        # *   **Postpaid**: pay-as-you-go.
-        # *   **Prepaid**: subscription.
+        # *   **Postpaid**: pay-as-you-go
+        # *   **Prepaid**: subscription
         self.pay_type = pay_type
         # The ID of the region in which the node resides.
         self.region_id = region_id
+        self.remote_memory_size = remote_memory_size
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # Indicates whether the cluster is a serverless cluster. **AgileServerless** indicates a serverless cluster. An empty value indicates a common cluster.
         self.serverless_type = serverless_type
         # The billing method of the storage space. Valid values:
         # 
-        # *   **Postpaid**: pay-as-you-go.
-        # *   **Prepaid**: subscription.
+        # *   **Postpaid**: pay-as-you-go
+        # *   **Prepaid**: subscription
         self.storage_pay_type = storage_pay_type
-        # The storage space that is billed based on the subscription billing method. Unit: bytes.
+        # The storage capacity that is billed based on the subscription billing method. Unit: byte.
         self.storage_space = storage_space
         # The storage space this is occupied by the cluster. Unit: bytes.
         self.storage_used = storage_used
@@ -13372,6 +13353,7 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         # *   **ON**: multi-zone data consistency is enabled, which is suitable for Standard Edition clusters of Multi-zone Edition.
         # *   **OFF**: multi-zone data consistency is disabled.
         self.strict_consistency = strict_consistency
+        self.sub_category = sub_category
         # The tags of the cluster.
         self.tags = tags
         # The VPC ID of the cluster.
@@ -13397,6 +13379,8 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
             result['AiType'] = self.ai_type
         if self.category is not None:
             result['Category'] = self.category
+        if self.cpu_cores is not None:
+            result['CpuCores'] = self.cpu_cores
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.dbcluster_description is not None:
@@ -13427,10 +13411,14 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
             result['Expired'] = self.expired
         if self.lock_mode is not None:
             result['LockMode'] = self.lock_mode
+        if self.memory_size is not None:
+            result['MemorySize'] = self.memory_size
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.remote_memory_size is not None:
+            result['RemoteMemorySize'] = self.remote_memory_size
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.serverless_type is not None:
@@ -13443,6 +13431,8 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
             result['StorageUsed'] = self.storage_used
         if self.strict_consistency is not None:
             result['StrictConsistency'] = self.strict_consistency
+        if self.sub_category is not None:
+            result['SubCategory'] = self.sub_category
         if self.tags is not None:
             result['Tags'] = self.tags.to_map()
         if self.vpc_id is not None:
@@ -13459,6 +13449,8 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
             self.ai_type = m.get('AiType')
         if m.get('Category') is not None:
             self.category = m.get('Category')
+        if m.get('CpuCores') is not None:
+            self.cpu_cores = m.get('CpuCores')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('DBClusterDescription') is not None:
@@ -13490,10 +13482,14 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
             self.expired = m.get('Expired')
         if m.get('LockMode') is not None:
             self.lock_mode = m.get('LockMode')
+        if m.get('MemorySize') is not None:
+            self.memory_size = m.get('MemorySize')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('RemoteMemorySize') is not None:
+            self.remote_memory_size = m.get('RemoteMemorySize')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ServerlessType') is not None:
@@ -13506,6 +13502,8 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
             self.storage_used = m.get('StorageUsed')
         if m.get('StrictConsistency') is not None:
             self.strict_consistency = m.get('StrictConsistency')
+        if m.get('SubCategory') is not None:
+            self.sub_category = m.get('SubCategory')
         if m.get('Tags') is not None:
             temp_model = DescribeDBClustersResponseBodyItemsDBClusterTags()
             self.tags = temp_model.from_map(m['Tags'])
@@ -17019,7 +17017,7 @@ class DescribeGlobalDatabaseNetworksRequest(TeaModel):
         self.filter_region = filter_region
         # The description of the GDN. The description must meet the following requirements:
         # 
-        # *   It cannot start with [http:// or https://.](http://https://。)
+        # *   It cannot start with `http://` or `https://`.
         # *   It must start with a letter.
         # *   It can contain letters, digits, underscores (\_), and hyphens (-).
         # *   It must be 2 to 126 characters in length.
@@ -17030,7 +17028,7 @@ class DescribeGlobalDatabaseNetworksRequest(TeaModel):
         self.owner_id = owner_id
         # The page number. Default value: 1. The value must be an integer that is greater than 0.
         self.page_number = page_number
-        # The number of entries per page. Default value: 30. Valid values:
+        # The number of entries to return on each page. Default value: 30. Valid values:
         # 
         # *   30
         # *   50
@@ -17174,7 +17172,7 @@ class DescribeGlobalDatabaseNetworksResponseBodyItems(TeaModel):
         self.dbversion = dbversion
         # The description of the GDN. The description must meet the following requirements:
         # 
-        # *   It cannot start with [http:// or https://.](http://https://。)
+        # *   It cannot start with `http://` or `https://`.
         # *   It must start with a letter.
         # *   It can contain letters, digits, underscores (\_), and hyphens (-).
         # *   It must be 2 to 126 characters in length.
@@ -27599,6 +27597,11 @@ class ModifyDBNodeClassRequest(TeaModel):
         self.dbcluster_id = dbcluster_id
         # The specifications of all nodes. For more information, see [Specifications of computing nodes](~~102542~~).
         self.dbnode_target_class = dbnode_target_class
+        # The type of the node. Valid values:
+        # 
+        # *   RO
+        # *   STANDBY
+        # *   DLNode
         self.dbnode_type = dbnode_type
         # The type of the configuration change. Valid values:
         # 
@@ -27607,23 +27610,23 @@ class ModifyDBNodeClassRequest(TeaModel):
         self.modify_type = modify_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The latest start time to run the task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+        # The latest start time to upgrade the specifications within the scheduled time period. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
         # 
-        # > *   The value of this parameter must be at least 30 minutes later than the value of the PlannedStartTime parameter.
-        # > *   If you specify the `PlannedStartTime` parameter but do not specify a value for the PlannedEndTime parameter, the latest start time of the task is set to a value that is calculated by `the value of the PlannedEndTime parameter + 30 minutes` by default. For example, if you set the `PlannedStartTime` parameter to `2021-01-14T09:00:00Z` and you do not specify the PlannedEndTime parameter, the latest start time of the task is set to `2021-01-14T09:30:00Z`.
+        # > *   The value of this parameter must be at least 30 minutes later than the value of PlannedStartTime.
+        # >*   By default, if you specify `PlannedStartTime` but do not specify PlannedEndTime, the latest start time of the task is set to `Value of PlannedEndTime + 30 minutes`. For example, if you set `PlannedStartTime` to `2021-01-14T09:00:00Z` and you do not specify PlannedEndTime, the latest start time of the task is `2021-01-14T09:30:00Z`.
         self.planned_end_time = planned_end_time
-        # The earliest time to upgrade the specifications within the scheduled time period. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+        # The earliest start time to upgrade the specifications within the scheduled time period. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
         # 
-        # > *   This parameter takes effect only when `ModifyType` is set to `Upgrade`.
-        # > *   The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in the time range from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
-        # > *   If this parameter is empty, the upgrade task is immediately performed.
+        # >*   This parameter takes effect only when `ModifyType` is set to `Upgrade`.
+        # >*   The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in the time that ranges from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
+        # >*   If this parameter is left empty, the upgrade task is immediately performed.
         self.planned_start_time = planned_start_time
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The category of the cluster. Valid values:
         # 
-        # *   **normal_exclusive**: dedicated
-        # *   **normal_general**: genera-purpose
+        # *   **normal_exclusive**: dedicated.
+        # *   **normal_general**: genera-purpose.
         self.sub_category = sub_category
 
     def validate(self):
@@ -27697,11 +27700,11 @@ class ModifyDBNodeClassResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the PolarDB cluster.
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The ID of the order.
+        # The order ID.
         self.order_id = order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -31723,12 +31726,12 @@ class UpgradeDBClusterVersionRequest(TeaModel):
     ):
         # The ID of cluster.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether to immediately run the task to modify parameters and restart the cluster. Valid values: 
+        # Specifies whether to immediately run the kernel upgrade task. Valid values:
         # 
-        # - false: runs the task on schedule. 
-        # - true: runs the task immediately. Default value: false.
+        # *   **false** (default)
+        # *   **true**\
         # 
-        # > No need to use this parameter when calling this interface
+        # >  This parameter is not required when you call the operation.
         self.from_time_service = from_time_service
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -31746,19 +31749,21 @@ class UpgradeDBClusterVersionRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The code of the version to which you want to upgrade the cluster. You can call the [DescribeDBClusterVersion](~~2319145~~) operation to query the version code.
         self.target_dbrevision_version_code = target_dbrevision_version_code
-        # Kernel version upgrade label. The value is fixed as INNOVATE.
-        # > this parameter is passed in, UpgradePolicy must pass COLD.
+        # The upgrade tag. The value is fixed as **INNOVATE**.
+        # 
+        # > *   This parameter is applicable only when you upgrade PolarDB for MySQL 8.0.1 to PolarDB for MySQL 8.0.2.
+        # >*   If you specify this parameter, you must set `UpgradePolicy` to **COLD**.
         self.upgrade_label = upgrade_label
-        # Kernel version upgrade strategy. Value:
+        # The upgrade policy. Valid values:
         # 
-        # - HOT: Hot Upgrade
-        # - COLD: Cold upgrade. Currently, only PolarDB MySQL version 8.0 cluster version supports this upgrade method.
+        # *   **HOT**: hot upgrade.
+        # *   **COLD**: cold upgrade. Only PolarDB for MySQL Cluster Edition that runs MySQL 8.0 supports this upgrade method.
         self.upgrade_policy = upgrade_policy
-        # There is no need to use this parameter to upgrade the type when calling this interface. Value:
+        # The update type. Valid values:
         # 
-        # - PROXY: Upgrade database proxy only (Proxy)
-        # - DB: Upgrade kernel engine only
-        # - ALL (default): Upgrade both database proxy and kernel engine simultaneously
+        # *   **PROXY**: specifies to upgrade PloarProxy.
+        # *   **DB**: specifies to upgrade the kernel version.
+        # *   **ALL**: specifies to upgrade both PloarProxy and kernel version.
         self.upgrade_type = upgrade_type
 
     def validate(self):

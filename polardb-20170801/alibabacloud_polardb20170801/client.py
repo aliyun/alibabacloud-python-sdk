@@ -6030,13 +6030,6 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDBClusterVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterVersionResponse:
-        """
-        The release note of the kernel version.
-        
-        @param request: DescribeDBClusterVersionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeDBClusterVersionResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -6075,13 +6068,6 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDBClusterVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterVersionResponse:
-        """
-        The release note of the kernel version.
-        
-        @param request: DescribeDBClusterVersionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeDBClusterVersionResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -6119,12 +6105,6 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DescribeDBClusterVersionRequest,
     ) -> polardb_20170801_models.DescribeDBClusterVersionResponse:
-        """
-        The release note of the kernel version.
-        
-        @param request: DescribeDBClusterVersionRequest
-        @return: DescribeDBClusterVersionResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbcluster_version_with_options(request, runtime)
 
@@ -6132,12 +6112,6 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DescribeDBClusterVersionRequest,
     ) -> polardb_20170801_models.DescribeDBClusterVersionResponse:
-        """
-        The release note of the kernel version.
-        
-        @param request: DescribeDBClusterVersionRequest
-        @return: DescribeDBClusterVersionResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbcluster_version_with_options_async(request, runtime)
 
