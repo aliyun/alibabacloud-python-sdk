@@ -7,8 +7,8 @@ from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
-from alibabacloud_tea_util import models as util_models
 from alibabacloud_eas20210701 import models as eas_20210701_models
+from alibabacloud_tea_util import models as util_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
@@ -57,6 +57,84 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+
+    def clone_service_with_options(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.CloneServiceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.CloneServiceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=request.body
+        )
+        params = open_api_models.Params(
+            action='CloneService',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/clone',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.CloneServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def clone_service_with_options_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.CloneServiceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.CloneServiceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=request.body
+        )
+        params = open_api_models.Params(
+            action='CloneService',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/clone',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.CloneServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def clone_service(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.CloneServiceRequest,
+    ) -> eas_20210701_models.CloneServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.clone_service_with_options(cluster_id, service_name, request, headers, runtime)
+
+    async def clone_service_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.CloneServiceRequest,
+    ) -> eas_20210701_models.CloneServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.clone_service_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def commit_service_with_options(
         self,
@@ -496,6 +574,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateResourceResponse:
+        """
+        *Before you call this operation, make sure that you are familiar with the [billing](~~144261~~) of Elastic Algorithm Service (EAS).
+        
+        @param request: CreateResourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_renewal):
@@ -540,6 +626,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateResourceResponse:
+        """
+        *Before you call this operation, make sure that you are familiar with the [billing](~~144261~~) of Elastic Algorithm Service (EAS).
+        
+        @param request: CreateResourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_renewal):
@@ -582,6 +676,12 @@ class Client(OpenApiClient):
         self,
         request: eas_20210701_models.CreateResourceRequest,
     ) -> eas_20210701_models.CreateResourceResponse:
+        """
+        *Before you call this operation, make sure that you are familiar with the [billing](~~144261~~) of Elastic Algorithm Service (EAS).
+        
+        @param request: CreateResourceRequest
+        @return: CreateResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_resource_with_options(request, headers, runtime)
@@ -590,6 +690,12 @@ class Client(OpenApiClient):
         self,
         request: eas_20210701_models.CreateResourceRequest,
     ) -> eas_20210701_models.CreateResourceResponse:
+        """
+        *Before you call this operation, make sure that you are familiar with the [billing](~~144261~~) of Elastic Algorithm Service (EAS).
+        
+        @param request: CreateResourceRequest
+        @return: CreateResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_resource_with_options_async(request, headers, runtime)
