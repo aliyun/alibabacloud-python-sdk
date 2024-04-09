@@ -5881,6 +5881,7 @@ class ListJobsRequest(TeaModel):
         page_size: int = None,
         pipeline_id: str = None,
         resource_id: str = None,
+        resource_quota_name: str = None,
         show_own: bool = None,
         sort_by: str = None,
         start_time: str = None,
@@ -5902,6 +5903,7 @@ class ListJobsRequest(TeaModel):
         self.page_size = page_size
         self.pipeline_id = pipeline_id
         self.resource_id = resource_id
+        self.resource_quota_name = resource_quota_name
         self.show_own = show_own
         self.sort_by = sort_by
         self.start_time = start_time
@@ -5944,6 +5946,8 @@ class ListJobsRequest(TeaModel):
             result['PipelineId'] = self.pipeline_id
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
+        if self.resource_quota_name is not None:
+            result['ResourceQuotaName'] = self.resource_quota_name
         if self.show_own is not None:
             result['ShowOwn'] = self.show_own
         if self.sort_by is not None:
@@ -5988,6 +5992,8 @@ class ListJobsRequest(TeaModel):
             self.pipeline_id = m.get('PipelineId')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
+        if m.get('ResourceQuotaName') is not None:
+            self.resource_quota_name = m.get('ResourceQuotaName')
         if m.get('ShowOwn') is not None:
             self.show_own = m.get('ShowOwn')
         if m.get('SortBy') is not None:
@@ -6022,6 +6028,7 @@ class ListJobsShrinkRequest(TeaModel):
         page_size: int = None,
         pipeline_id: str = None,
         resource_id: str = None,
+        resource_quota_name: str = None,
         show_own: bool = None,
         sort_by: str = None,
         start_time: str = None,
@@ -6043,6 +6050,7 @@ class ListJobsShrinkRequest(TeaModel):
         self.page_size = page_size
         self.pipeline_id = pipeline_id
         self.resource_id = resource_id
+        self.resource_quota_name = resource_quota_name
         self.show_own = show_own
         self.sort_by = sort_by
         self.start_time = start_time
@@ -6085,6 +6093,8 @@ class ListJobsShrinkRequest(TeaModel):
             result['PipelineId'] = self.pipeline_id
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
+        if self.resource_quota_name is not None:
+            result['ResourceQuotaName'] = self.resource_quota_name
         if self.show_own is not None:
             result['ShowOwn'] = self.show_own
         if self.sort_by is not None:
@@ -6129,6 +6139,8 @@ class ListJobsShrinkRequest(TeaModel):
             self.pipeline_id = m.get('PipelineId')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
+        if m.get('ResourceQuotaName') is not None:
+            self.resource_quota_name = m.get('ResourceQuotaName')
         if m.get('ShowOwn') is not None:
             self.show_own = m.get('ShowOwn')
         if m.get('SortBy') is not None:

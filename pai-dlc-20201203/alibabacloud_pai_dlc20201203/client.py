@@ -1631,6 +1631,8 @@ class Client(OpenApiClient):
             query['PipelineId'] = request.pipeline_id
         if not UtilClient.is_unset(request.resource_id):
             query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_quota_name):
+            query['ResourceQuotaName'] = request.resource_quota_name
         if not UtilClient.is_unset(request.show_own):
             query['ShowOwn'] = request.show_own
         if not UtilClient.is_unset(request.sort_by):
@@ -1703,6 +1705,8 @@ class Client(OpenApiClient):
             query['PipelineId'] = request.pipeline_id
         if not UtilClient.is_unset(request.resource_id):
             query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_quota_name):
+            query['ResourceQuotaName'] = request.resource_quota_name
         if not UtilClient.is_unset(request.show_own):
             query['ShowOwn'] = request.show_own
         if not UtilClient.is_unset(request.sort_by):
