@@ -1,3 +1,6 @@
+2024-04-09 Version: 1.3.2
+- Generated python 2021-12-01 for adb.
+
 2024-03-25 Version: 1.3.1
 - Update API CreateDBResourceGroup: add param Rules.
 - Update API DescribeDBResourceGroup: update response param.
