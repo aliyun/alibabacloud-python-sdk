@@ -1,3 +1,7 @@
+2024-04-09 Version: 1.1.0
+- Support API GenerateCopilotResponse.
+
+
 2024-04-09 Version: 1.0.1
 - Generated python 2023-12-30 for SysOM.
 
