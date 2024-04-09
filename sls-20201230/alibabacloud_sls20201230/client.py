@@ -26,6 +26,7 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._client = GatewayClientClient()
         self._spi = self._client
+        self._signature_algorithm = 'v2'
         self._endpoint_rule = 'central'
 
     def apply_config_to_machine_group_with_options(
@@ -2778,13 +2779,111 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_scheduled_sqlwith_options_async(project, request, headers, runtime)
 
+    def create_sql_instance_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateSqlInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateSqlInstanceResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.cu):
+            body['cu'] = request.cu
+        if not UtilClient.is_unset(request.use_as_default):
+            body['useAsDefault'] = request.use_as_default
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSqlInstance',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/sqlinstance',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateSqlInstanceResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_sql_instance_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateSqlInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateSqlInstanceResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.cu):
+            body['cu'] = request.cu
+        if not UtilClient.is_unset(request.use_as_default):
+            body['useAsDefault'] = request.use_as_default
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSqlInstance',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/sqlinstance',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateSqlInstanceResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_sql_instance(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateSqlInstanceRequest,
+    ) -> sls_20201230_models.CreateSqlInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_sql_instance_with_options(project, request, headers, runtime)
+
+    async def create_sql_instance_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateSqlInstanceRequest,
+    ) -> sls_20201230_models.CreateSqlInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_sql_instance_with_options_async(project, request, headers, runtime)
+
     def create_ticket_with_options(
         self,
+        request: sls_20201230_models.CreateTicketRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateTicketResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token_expiration_time):
+            query['accessTokenExpirationTime'] = request.access_token_expiration_time
+        if not UtilClient.is_unset(request.expiration_time):
+            query['expirationTime'] = request.expiration_time
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateTicket',
@@ -2804,11 +2903,19 @@ class Client(OpenApiClient):
 
     async def create_ticket_with_options_async(
         self,
+        request: sls_20201230_models.CreateTicketRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateTicketResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token_expiration_time):
+            query['accessTokenExpirationTime'] = request.access_token_expiration_time
+        if not UtilClient.is_unset(request.expiration_time):
+            query['expirationTime'] = request.expiration_time
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateTicket',
@@ -2826,15 +2933,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def create_ticket(self) -> sls_20201230_models.CreateTicketResponse:
+    def create_ticket(
+        self,
+        request: sls_20201230_models.CreateTicketRequest,
+    ) -> sls_20201230_models.CreateTicketResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_ticket_with_options(headers, runtime)
+        return self.create_ticket_with_options(request, headers, runtime)
 
-    async def create_ticket_async(self) -> sls_20201230_models.CreateTicketResponse:
+    async def create_ticket_async(
+        self,
+        request: sls_20201230_models.CreateTicketRequest,
+    ) -> sls_20201230_models.CreateTicketResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_ticket_with_options_async(headers, runtime)
+        return await self.create_ticket_with_options_async(request, headers, runtime)
 
     def delete_alert_with_options(
         self,
@@ -7438,8 +7551,6 @@ class Client(OpenApiClient):
             body['reverse'] = request.reverse
         if not UtilClient.is_unset(request.session):
             body['session'] = request.session
-        if not UtilClient.is_unset(request.shard):
-            body['shard'] = request.shard
         if not UtilClient.is_unset(request.to):
             body['to'] = request.to
         if not UtilClient.is_unset(request.topic):
@@ -7512,8 +7623,6 @@ class Client(OpenApiClient):
             body['reverse'] = request.reverse
         if not UtilClient.is_unset(request.session):
             body['session'] = request.session
-        if not UtilClient.is_unset(request.shard):
-            body['shard'] = request.shard
         if not UtilClient.is_unset(request.to):
             body['to'] = request.to
         if not UtilClient.is_unset(request.topic):
@@ -8758,6 +8867,136 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_shipper_status_with_options_async(project, logstore, shipper_name, request, headers, runtime)
 
+    def get_sls_service_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetSlsServiceResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetSlsService',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/slsservice',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetSlsServiceResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_sls_service_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetSlsServiceResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetSlsService',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/slsservice',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetSlsServiceResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_sls_service(self) -> sls_20201230_models.GetSlsServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_sls_service_with_options(headers, runtime)
+
+    async def get_sls_service_async(self) -> sls_20201230_models.GetSlsServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_sls_service_with_options_async(headers, runtime)
+
+    def get_sql_instance_with_options(
+        self,
+        project: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetSqlInstanceResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetSqlInstance',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/sqlinstance',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetSqlInstanceResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_sql_instance_with_options_async(
+        self,
+        project: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetSqlInstanceResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetSqlInstance',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/sqlinstance',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetSqlInstanceResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_sql_instance(
+        self,
+        project: str,
+    ) -> sls_20201230_models.GetSqlInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_sql_instance_with_options(project, headers, runtime)
+
+    async def get_sql_instance_async(
+        self,
+        project: str,
+    ) -> sls_20201230_models.GetSqlInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_sql_instance_with_options_async(project, headers, runtime)
+
     def list_alerts_with_options(
         self,
         project: str,
@@ -9721,6 +9960,8 @@ class Client(OpenApiClient):
         host_map = {}
         host_map['project'] = project
         query = {}
+        if not UtilClient.is_unset(request.logstore):
+            query['logstore'] = request.logstore
         if not UtilClient.is_unset(request.offset):
             query['offset'] = request.offset
         if not UtilClient.is_unset(request.size):
@@ -9757,6 +9998,8 @@ class Client(OpenApiClient):
         host_map = {}
         host_map['project'] = project
         query = {}
+        if not UtilClient.is_unset(request.logstore):
+            query['logstore'] = request.logstore
         if not UtilClient.is_unset(request.offset):
             query['offset'] = request.offset
         if not UtilClient.is_unset(request.size):
@@ -10469,6 +10712,8 @@ class Client(OpenApiClient):
         host_map = {}
         host_map['project'] = project
         query = {}
+        if not UtilClient.is_unset(request.logstore):
+            query['logstore'] = request.logstore
         if not UtilClient.is_unset(request.offset):
             query['offset'] = request.offset
         if not UtilClient.is_unset(request.size):
@@ -10505,6 +10750,8 @@ class Client(OpenApiClient):
         host_map = {}
         host_map['project'] = project
         query = {}
+        if not UtilClient.is_unset(request.logstore):
+            query['logstore'] = request.logstore
         if not UtilClient.is_unset(request.offset):
             query['offset'] = request.offset
         if not UtilClient.is_unset(request.size):
@@ -10559,6 +10806,8 @@ class Client(OpenApiClient):
         host_map = {}
         host_map['project'] = project
         query = {}
+        if not UtilClient.is_unset(request.logstore):
+            query['logstore'] = request.logstore
         if not UtilClient.is_unset(request.offset):
             query['offset'] = request.offset
         if not UtilClient.is_unset(request.size):
@@ -10595,6 +10844,8 @@ class Client(OpenApiClient):
         host_map = {}
         host_map['project'] = project
         query = {}
+        if not UtilClient.is_unset(request.logstore):
+            query['logstore'] = request.logstore
         if not UtilClient.is_unset(request.offset):
             query['offset'] = request.offset
         if not UtilClient.is_unset(request.size):
@@ -10649,6 +10900,8 @@ class Client(OpenApiClient):
         host_map = {}
         host_map['project'] = project
         query = {}
+        if not UtilClient.is_unset(request.logstore):
+            query['logstore'] = request.logstore
         if not UtilClient.is_unset(request.offset):
             query['offset'] = request.offset
         if not UtilClient.is_unset(request.size):
@@ -10685,6 +10938,8 @@ class Client(OpenApiClient):
         host_map = {}
         host_map['project'] = project
         query = {}
+        if not UtilClient.is_unset(request.logstore):
+            query['logstore'] = request.logstore
         if not UtilClient.is_unset(request.offset):
             query['offset'] = request.offset
         if not UtilClient.is_unset(request.size):
@@ -10981,6 +11236,8 @@ class Client(OpenApiClient):
         host_map = {}
         host_map['project'] = project
         query = {}
+        if not UtilClient.is_unset(request.logstore):
+            query['logstore'] = request.logstore
         if not UtilClient.is_unset(request.offset):
             query['offset'] = request.offset
         if not UtilClient.is_unset(request.size):
@@ -11017,6 +11274,8 @@ class Client(OpenApiClient):
         host_map = {}
         host_map['project'] = project
         query = {}
+        if not UtilClient.is_unset(request.logstore):
+            query['logstore'] = request.logstore
         if not UtilClient.is_unset(request.offset):
             query['offset'] = request.offset
         if not UtilClient.is_unset(request.size):
@@ -11452,6 +11711,64 @@ class Client(OpenApiClient):
         headers = {}
         return await self.merge_shard_with_options_async(project, logstore, shard, headers, runtime)
 
+    def open_sls_service_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.OpenSlsServiceResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='OpenSlsService',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/slsservice',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.OpenSlsServiceResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def open_sls_service_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.OpenSlsServiceResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='OpenSlsService',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/slsservice',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.OpenSlsServiceResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def open_sls_service(self) -> sls_20201230_models.OpenSlsServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.open_sls_service_with_options(headers, runtime)
+
+    async def open_sls_service_async(self) -> sls_20201230_models.OpenSlsServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.open_sls_service_with_options_async(headers, runtime)
+
     def put_annotation_data_with_options(
         self,
         dataset_id: str,
@@ -11804,7 +12121,7 @@ class Client(OpenApiClient):
             protocol='HTTPS',
             pathname=f'/logstores/{logstore_name}/track',
             method='POST',
-            auth_type='AK',
+            auth_type='Anonymous',
             style='ROA',
             req_body_type='json',
             body_type='none'
@@ -11860,7 +12177,7 @@ class Client(OpenApiClient):
             protocol='HTTPS',
             pathname=f'/logstores/{logstore_name}/track',
             method='POST',
-            auth_type='AK',
+            auth_type='Anonymous',
             style='ROA',
             req_body_type='json',
             body_type='none'
@@ -12029,6 +12346,86 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.query_mlservice_results_with_options_async(service_name, request, headers, runtime)
+
+    def refresh_token_with_options(
+        self,
+        request: sls_20201230_models.RefreshTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.RefreshTokenResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token_expiration_time):
+            query['accessTokenExpirationTime'] = request.access_token_expiration_time
+        if not UtilClient.is_unset(request.ticket):
+            query['ticket'] = request.ticket
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RefreshToken',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/token/refresh',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.RefreshTokenResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def refresh_token_with_options_async(
+        self,
+        request: sls_20201230_models.RefreshTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.RefreshTokenResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token_expiration_time):
+            query['accessTokenExpirationTime'] = request.access_token_expiration_time
+        if not UtilClient.is_unset(request.ticket):
+            query['ticket'] = request.ticket
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RefreshToken',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/token/refresh',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.RefreshTokenResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def refresh_token(
+        self,
+        request: sls_20201230_models.RefreshTokenRequest,
+    ) -> sls_20201230_models.RefreshTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.refresh_token_with_options(request, headers, runtime)
+
+    async def refresh_token_async(
+        self,
+        request: sls_20201230_models.RefreshTokenRequest,
+    ) -> sls_20201230_models.RefreshTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.refresh_token_with_options_async(request, headers, runtime)
 
     def remove_config_from_machine_group_with_options(
         self,
@@ -15687,6 +16084,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_scheduled_sqlwith_options_async(project, scheduled_sqlname, request, headers, runtime)
+
+    def update_sql_instance_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.UpdateSqlInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateSqlInstanceResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.cu):
+            body['cu'] = request.cu
+        if not UtilClient.is_unset(request.use_as_default):
+            body['useAsDefault'] = request.use_as_default
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSqlInstance',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/sqlinstance',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateSqlInstanceResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def update_sql_instance_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.UpdateSqlInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateSqlInstanceResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.cu):
+            body['cu'] = request.cu
+        if not UtilClient.is_unset(request.use_as_default):
+            body['useAsDefault'] = request.use_as_default
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSqlInstance',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/sqlinstance',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateSqlInstanceResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def update_sql_instance(
+        self,
+        project: str,
+        request: sls_20201230_models.UpdateSqlInstanceRequest,
+    ) -> sls_20201230_models.UpdateSqlInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_sql_instance_with_options(project, request, headers, runtime)
+
+    async def update_sql_instance_async(
+        self,
+        project: str,
+        request: sls_20201230_models.UpdateSqlInstanceRequest,
+    ) -> sls_20201230_models.UpdateSqlInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_sql_instance_with_options_async(project, request, headers, runtime)
 
     def upsert_collection_policy_with_options(
         self,

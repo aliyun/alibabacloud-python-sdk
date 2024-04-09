@@ -1,3 +1,35 @@
+2024-04-09 Version: 5.1.0
+- Support API CreateSqlInstance.
+- Support API GetSlsService.
+- Support API GetSqlInstance.
+- Support API OpenSlsService.
+- Support API RefreshToken.
+- Support API UpdateSqlInstance.
+- Update API CreateTicket: add param accessTokenExpirationTime.
+- Update API CreateTicket: add param expirationTime.
+- Update API DeleteAlert: update param project.
+- Update API DeleteAlert: update param alertName.
+- Update API DisableAlert: update param project.
+- Update API DisableAlert: update param alertName.
+- Update API EnableAlert: update param project.
+- Update API EnableAlert: update param alertName.
+- Update API GetAlert: update param project.
+- Update API GetAlert: update param alertName.
+- Update API GetLogsV2: update param project.
+- Update API GetLogsV2: update param logstore.
+- Update API GetLogsV2: update param Accept-Encoding.
+- Update API GetLogsV2: update param body.
+- Update API ListETLs: add param logstore.
+- Update API ListETLs: update param project.
+- Update API ListExternalStore: update response param.
+- Update API ListOSSExports: add param logstore.
+- Update API ListOSSHDFSExports: add param logstore.
+- Update API ListOSSIngestions: add param logstore.
+- Update API ListScheduledSQLs: add param logstore.
+- Update API UpdateAlert: update param project.
+- Update API UpdateAlert: update param alertName.
+
+
 2024-02-06 Version: 5.0.0
 - Generated python 2020-12-30 for Sls.
 
