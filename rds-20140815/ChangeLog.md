@@ -1,3 +1,6 @@
+2024-04-09 Version: 4.0.2
+- Generated python 2014-08-15 for Rds.
+
 2024-04-09 Version: 4.0.1
 - Update API DescribeDBInstances: update response param.
 - Update API DescribeDatabases: update response param.
