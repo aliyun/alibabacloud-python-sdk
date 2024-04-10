@@ -1,3 +1,8 @@
+2024-04-10 Version: 2.5.3
+- Update API QueryAvatar: update response param.
+- Update API QueryAvatarList: update response param.
+
+
 2024-02-27 Version: 2.5.2
 - Update API QueryAvatar: update response param.
 - Update API QueryAvatarList: update response param.
