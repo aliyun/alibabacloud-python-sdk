@@ -1,3 +1,8 @@
+2024-04-10 Version: 6.3.2
+- Update API ListListenersByConfig: update response param.
+- Update API ListListenersByIp: update response param.
+
+
 2024-04-07 Version: 6.3.1
 - Generated python 2019-05-31 for mse.
 
