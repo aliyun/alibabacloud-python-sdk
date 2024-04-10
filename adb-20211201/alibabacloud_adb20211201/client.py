@@ -2510,6 +2510,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workload_id):
+            body['WorkloadId'] = request.workload_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -2538,6 +2542,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workload_id):
+            body['WorkloadId'] = request.workload_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )

@@ -1,3 +1,8 @@
+2024-04-10 Version: 1.3.3
+- Update API DescribeApsResourceGroups: add param RegionId.
+- Update API DescribeApsResourceGroups: add param WorkloadId.
+
+
 2024-04-09 Version: 1.3.2
 - Generated python 2021-12-01 for adb.
 
