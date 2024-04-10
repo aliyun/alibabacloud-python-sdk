@@ -883,6 +883,7 @@ class GetTaskInfoResponseBodyDataResult(TeaModel):
         meeting_assistance: str = None,
         ppt_extraction: str = None,
         summarization: str = None,
+        text_polish: str = None,
         transcription: str = None,
         translation: str = None,
     ):
@@ -890,6 +891,7 @@ class GetTaskInfoResponseBodyDataResult(TeaModel):
         self.meeting_assistance = meeting_assistance
         self.ppt_extraction = ppt_extraction
         self.summarization = summarization
+        self.text_polish = text_polish
         self.transcription = transcription
         self.translation = translation
 
@@ -910,6 +912,8 @@ class GetTaskInfoResponseBodyDataResult(TeaModel):
             result['PptExtraction'] = self.ppt_extraction
         if self.summarization is not None:
             result['Summarization'] = self.summarization
+        if self.text_polish is not None:
+            result['TextPolish'] = self.text_polish
         if self.transcription is not None:
             result['Transcription'] = self.transcription
         if self.translation is not None:
@@ -926,6 +930,8 @@ class GetTaskInfoResponseBodyDataResult(TeaModel):
             self.ppt_extraction = m.get('PptExtraction')
         if m.get('Summarization') is not None:
             self.summarization = m.get('Summarization')
+        if m.get('TextPolish') is not None:
+            self.text_polish = m.get('TextPolish')
         if m.get('Transcription') is not None:
             self.transcription = m.get('Transcription')
         if m.get('Translation') is not None:
