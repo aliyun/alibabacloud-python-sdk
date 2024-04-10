@@ -1,3 +1,9 @@
+2024-04-10 Version: 4.0.4
+- Update API DescribeAvailableResource: update param SpotDuration.
+- Update API ImportImage: add param StorageLocationArn.
+- Update API ImportImage: update response param.
+
+
 2024-03-12 Version: 4.0.3
 - Update API CreateAutoProvisioningGroup: add param Tag.
 - Update API CreateAutoSnapshotPolicy: add param CopyEncryptionConfiguration.

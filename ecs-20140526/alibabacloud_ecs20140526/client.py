@@ -3934,13 +3934,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ConvertNatPublicIpToEipResponse:
         """
-        After a public IP address is converted into an EIP, the EIP is billed separately. Make sure that you understand the billing methods of EIPs. For more information, see [Billing overview](~~122035~~).
-        When you call this operation, make sure that the following requirements are met:
-        *   The instance is in the `Stopped` or `Running` state.********\
-        *   No EIPs are associated with the instance.
+        ## [](#)Usage notes
+        After a public IP address is converted into an EIP, the EIP is billed separately. Make sure that you fully understand the billing methods of EIPs. For more information, see [Billing overview](~~122035~~).
+        When you call this operation, make sure that the ECS instance meets the following requirements:
+        *   The instance is in the **Stopped** (`Stopped`) or **Running** (`Running`) state.
+        *   The instance has no EIPs associated.
         *   The instance has no configuration change tasks that have not taken effect.
         *   The public bandwidth of the instance is not 0 Mbit/s.
-        *   The instance uses the pay-by-traffic billing method for network usage.
+        *   If the instance is a subscription instance, the billing method for network usage of the instance must be `pay-by-traffic`. The public IP address of a subscription instance that uses the `pay-by-bandwidth` billing method for network usage cannot be converted into an EIP. This requirement does not apply to pay-as-you-go instances. For more information, see [Change the billing method for network usage](~~178883~~).
         *   If the instance is a subscription instance that resides in a VPC, the instance does not expire within 24 hours.
         
         @param request: ConvertNatPublicIpToEipRequest
@@ -3984,13 +3985,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ConvertNatPublicIpToEipResponse:
         """
-        After a public IP address is converted into an EIP, the EIP is billed separately. Make sure that you understand the billing methods of EIPs. For more information, see [Billing overview](~~122035~~).
-        When you call this operation, make sure that the following requirements are met:
-        *   The instance is in the `Stopped` or `Running` state.********\
-        *   No EIPs are associated with the instance.
+        ## [](#)Usage notes
+        After a public IP address is converted into an EIP, the EIP is billed separately. Make sure that you fully understand the billing methods of EIPs. For more information, see [Billing overview](~~122035~~).
+        When you call this operation, make sure that the ECS instance meets the following requirements:
+        *   The instance is in the **Stopped** (`Stopped`) or **Running** (`Running`) state.
+        *   The instance has no EIPs associated.
         *   The instance has no configuration change tasks that have not taken effect.
         *   The public bandwidth of the instance is not 0 Mbit/s.
-        *   The instance uses the pay-by-traffic billing method for network usage.
+        *   If the instance is a subscription instance, the billing method for network usage of the instance must be `pay-by-traffic`. The public IP address of a subscription instance that uses the `pay-by-bandwidth` billing method for network usage cannot be converted into an EIP. This requirement does not apply to pay-as-you-go instances. For more information, see [Change the billing method for network usage](~~178883~~).
         *   If the instance is a subscription instance that resides in a VPC, the instance does not expire within 24 hours.
         
         @param request: ConvertNatPublicIpToEipRequest
@@ -4033,13 +4035,14 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ConvertNatPublicIpToEipRequest,
     ) -> ecs_20140526_models.ConvertNatPublicIpToEipResponse:
         """
-        After a public IP address is converted into an EIP, the EIP is billed separately. Make sure that you understand the billing methods of EIPs. For more information, see [Billing overview](~~122035~~).
-        When you call this operation, make sure that the following requirements are met:
-        *   The instance is in the `Stopped` or `Running` state.********\
-        *   No EIPs are associated with the instance.
+        ## [](#)Usage notes
+        After a public IP address is converted into an EIP, the EIP is billed separately. Make sure that you fully understand the billing methods of EIPs. For more information, see [Billing overview](~~122035~~).
+        When you call this operation, make sure that the ECS instance meets the following requirements:
+        *   The instance is in the **Stopped** (`Stopped`) or **Running** (`Running`) state.
+        *   The instance has no EIPs associated.
         *   The instance has no configuration change tasks that have not taken effect.
         *   The public bandwidth of the instance is not 0 Mbit/s.
-        *   The instance uses the pay-by-traffic billing method for network usage.
+        *   If the instance is a subscription instance, the billing method for network usage of the instance must be `pay-by-traffic`. The public IP address of a subscription instance that uses the `pay-by-bandwidth` billing method for network usage cannot be converted into an EIP. This requirement does not apply to pay-as-you-go instances. For more information, see [Change the billing method for network usage](~~178883~~).
         *   If the instance is a subscription instance that resides in a VPC, the instance does not expire within 24 hours.
         
         @param request: ConvertNatPublicIpToEipRequest
@@ -4053,13 +4056,14 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ConvertNatPublicIpToEipRequest,
     ) -> ecs_20140526_models.ConvertNatPublicIpToEipResponse:
         """
-        After a public IP address is converted into an EIP, the EIP is billed separately. Make sure that you understand the billing methods of EIPs. For more information, see [Billing overview](~~122035~~).
-        When you call this operation, make sure that the following requirements are met:
-        *   The instance is in the `Stopped` or `Running` state.********\
-        *   No EIPs are associated with the instance.
+        ## [](#)Usage notes
+        After a public IP address is converted into an EIP, the EIP is billed separately. Make sure that you fully understand the billing methods of EIPs. For more information, see [Billing overview](~~122035~~).
+        When you call this operation, make sure that the ECS instance meets the following requirements:
+        *   The instance is in the **Stopped** (`Stopped`) or **Running** (`Running`) state.
+        *   The instance has no EIPs associated.
         *   The instance has no configuration change tasks that have not taken effect.
         *   The public bandwidth of the instance is not 0 Mbit/s.
-        *   The instance uses the pay-by-traffic billing method for network usage.
+        *   If the instance is a subscription instance, the billing method for network usage of the instance must be `pay-by-traffic`. The public IP address of a subscription instance that uses the `pay-by-bandwidth` billing method for network usage cannot be converted into an EIP. This requirement does not apply to pay-as-you-go instances. For more information, see [Change the billing method for network usage](~~178883~~).
         *   If the instance is a subscription instance that resides in a VPC, the instance does not expire within 24 hours.
         
         @param request: ConvertNatPublicIpToEipRequest
@@ -4602,10 +4606,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateAutoProvisioningGroupResponse:
         """
-        ## Usage notes
-        *   Auto Provisioning is a service that allows quick deployment of an instance cluster that consists of preemptible and pay-as-you-go instances. Auto Provisioning supports push-button deployment of instance clusters across different billing methods, instance families, and zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](~~200772~~).
+        ## [](#)Usage notes
+        *   Auto Provisioning is a service that allows quick deployment of an instance cluster that consists of preemptible instances and pay-as-you-go instances. Auto Provisioning supports push-button deployment of instance clusters across different billing methods, instance families, and zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](~~200772~~).
         *   Auto Provisioning uses auto provisioning groups to schedule and maintain computing resources. You can use auto provisioning groups to obtain a steady supply of computing resources. This helps reduce the impact on compute capacity when preemptible instances are reclaimed.
-        *   Auto Provisioning is provided free-of-charge. However, you are charged for instance resources that are created in auto provisioning groups. For more information about the billing, see [Overview of preemptible instances](~~52088~~) and [Pay-as-you-go](~~40653~~).
+        *   Auto Provisioning is provided free of charge. However, you are charged for instance resources that are created in auto provisioning groups. For more information, see [Overview of preemptible instances](~~52088~~) and [Pay-as-you-go](~~40653~~).
         *   When you specify both a launch template (`LaunchTemplateId`) and extended configurations (`LaunchConfiguration.*` parameters), LaunchTemplateId takes precedence.
         
         @param request: CreateAutoProvisioningGroupRequest
@@ -4705,10 +4709,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateAutoProvisioningGroupResponse:
         """
-        ## Usage notes
-        *   Auto Provisioning is a service that allows quick deployment of an instance cluster that consists of preemptible and pay-as-you-go instances. Auto Provisioning supports push-button deployment of instance clusters across different billing methods, instance families, and zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](~~200772~~).
+        ## [](#)Usage notes
+        *   Auto Provisioning is a service that allows quick deployment of an instance cluster that consists of preemptible instances and pay-as-you-go instances. Auto Provisioning supports push-button deployment of instance clusters across different billing methods, instance families, and zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](~~200772~~).
         *   Auto Provisioning uses auto provisioning groups to schedule and maintain computing resources. You can use auto provisioning groups to obtain a steady supply of computing resources. This helps reduce the impact on compute capacity when preemptible instances are reclaimed.
-        *   Auto Provisioning is provided free-of-charge. However, you are charged for instance resources that are created in auto provisioning groups. For more information about the billing, see [Overview of preemptible instances](~~52088~~) and [Pay-as-you-go](~~40653~~).
+        *   Auto Provisioning is provided free of charge. However, you are charged for instance resources that are created in auto provisioning groups. For more information, see [Overview of preemptible instances](~~52088~~) and [Pay-as-you-go](~~40653~~).
         *   When you specify both a launch template (`LaunchTemplateId`) and extended configurations (`LaunchConfiguration.*` parameters), LaunchTemplateId takes precedence.
         
         @param request: CreateAutoProvisioningGroupRequest
@@ -4807,10 +4811,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateAutoProvisioningGroupRequest,
     ) -> ecs_20140526_models.CreateAutoProvisioningGroupResponse:
         """
-        ## Usage notes
-        *   Auto Provisioning is a service that allows quick deployment of an instance cluster that consists of preemptible and pay-as-you-go instances. Auto Provisioning supports push-button deployment of instance clusters across different billing methods, instance families, and zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](~~200772~~).
+        ## [](#)Usage notes
+        *   Auto Provisioning is a service that allows quick deployment of an instance cluster that consists of preemptible instances and pay-as-you-go instances. Auto Provisioning supports push-button deployment of instance clusters across different billing methods, instance families, and zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](~~200772~~).
         *   Auto Provisioning uses auto provisioning groups to schedule and maintain computing resources. You can use auto provisioning groups to obtain a steady supply of computing resources. This helps reduce the impact on compute capacity when preemptible instances are reclaimed.
-        *   Auto Provisioning is provided free-of-charge. However, you are charged for instance resources that are created in auto provisioning groups. For more information about the billing, see [Overview of preemptible instances](~~52088~~) and [Pay-as-you-go](~~40653~~).
+        *   Auto Provisioning is provided free of charge. However, you are charged for instance resources that are created in auto provisioning groups. For more information, see [Overview of preemptible instances](~~52088~~) and [Pay-as-you-go](~~40653~~).
         *   When you specify both a launch template (`LaunchTemplateId`) and extended configurations (`LaunchConfiguration.*` parameters), LaunchTemplateId takes precedence.
         
         @param request: CreateAutoProvisioningGroupRequest
@@ -4824,10 +4828,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateAutoProvisioningGroupRequest,
     ) -> ecs_20140526_models.CreateAutoProvisioningGroupResponse:
         """
-        ## Usage notes
-        *   Auto Provisioning is a service that allows quick deployment of an instance cluster that consists of preemptible and pay-as-you-go instances. Auto Provisioning supports push-button deployment of instance clusters across different billing methods, instance families, and zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](~~200772~~).
+        ## [](#)Usage notes
+        *   Auto Provisioning is a service that allows quick deployment of an instance cluster that consists of preemptible instances and pay-as-you-go instances. Auto Provisioning supports push-button deployment of instance clusters across different billing methods, instance families, and zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](~~200772~~).
         *   Auto Provisioning uses auto provisioning groups to schedule and maintain computing resources. You can use auto provisioning groups to obtain a steady supply of computing resources. This helps reduce the impact on compute capacity when preemptible instances are reclaimed.
-        *   Auto Provisioning is provided free-of-charge. However, you are charged for instance resources that are created in auto provisioning groups. For more information about the billing, see [Overview of preemptible instances](~~52088~~) and [Pay-as-you-go](~~40653~~).
+        *   Auto Provisioning is provided free of charge. However, you are charged for instance resources that are created in auto provisioning groups. For more information, see [Overview of preemptible instances](~~52088~~) and [Pay-as-you-go](~~40653~~).
         *   When you specify both a launch template (`LaunchTemplateId`) and extended configurations (`LaunchConfiguration.*` parameters), LaunchTemplateId takes precedence.
         
         @param request: CreateAutoProvisioningGroupRequest
@@ -4842,11 +4846,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateAutoSnapshotPolicyResponse:
         """
-        When you call this operation to create an automatic snapshot policy, you can specify the days of the week on which to create automatic snapshots, the retention period of the automatic snapshots, and whether to enable cross-region replication for the snapshots in the policy to meet your diverse data backup requirements. After you create an automatic snapshot policy, you must call the [ApplyAutoSnapshotPolicy](~~25531~~) operation to apply it to disks. If you want to modify the automatic snapshot policy, you must call the [ModifyAutoSnapshotPolicyEx](~~25529~~) operation.
+        ## [](#)Usage notes
+        When you call this operation to create an automatic snapshot policy, you can specify the days of the week on which to create automatic snapshots, the retention period of the automatic snapshots, and whether to enable cross-region replication for the snapshots in the policy to meet your diverse data backup requirements. After the automatic snapshot policy is created, call the [ApplyAutoSnapshotPolicy](~~25531~~) operation to apply the policy to disks. If you want to modify the automatic snapshot policy, call the [ModifyAutoSnapshotPolicyEx](~~25529~~) operation.
         Take note of the following items:
-        *   You can create a maximum of 100 automatic snapshot policies per region for a single Alibaba Cloud account.
-        *   If an automatic snapshot is being created when the time scheduled for creating another automatic snapshot is due, the new snapshot task is skipped. This may occur when a disk contains a large volume of data. For example, you have scheduled snapshots to be created at 09:00:00, 10:00:00, 11:00:00, and 12:00:00 for a disk. The system starts to create a snapshot for the disk at 09:00:00. The process takes 80 minutes to complete because the disk contains a large volume of data and ends at 10:20:00. The system skips the automatic snapshot task scheduled for 10:00:00 and creates the next automatic snapshot for the disk at 11:00:00.
-        *   For information about how to copy a snapshot from one region to another, see the "Background information" section in [Copy a snapshot](~~159441~~).
+        *   You can create up to 100 automatic snapshot policies per region for a single Alibaba Cloud account.
+        *   If an automatic snapshot is being created when the time scheduled for creating another automatic snapshot is due, the new snapshot task is skipped. This may occur when a disk contains a large volume of data. For example, you have scheduled snapshots to be created at 09:00:00, 10:00:00, 11:00:00, and 12:00:00 for a disk. The system starts to create a snapshot for the disk at 09:00:00. The process takes 80 minutes to complete because the disk contains a large volume of data and ends at 10:20:00. In this case, the system does not create a snapshot at 10:00, but creates a snapshot at 11:00.
+        *   For information about how to copy a snapshot from one region to another region, see the "Background information" section in [Copy a snapshot](~~159441~~).
         
         @param request: CreateAutoSnapshotPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4909,11 +4914,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateAutoSnapshotPolicyResponse:
         """
-        When you call this operation to create an automatic snapshot policy, you can specify the days of the week on which to create automatic snapshots, the retention period of the automatic snapshots, and whether to enable cross-region replication for the snapshots in the policy to meet your diverse data backup requirements. After you create an automatic snapshot policy, you must call the [ApplyAutoSnapshotPolicy](~~25531~~) operation to apply it to disks. If you want to modify the automatic snapshot policy, you must call the [ModifyAutoSnapshotPolicyEx](~~25529~~) operation.
+        ## [](#)Usage notes
+        When you call this operation to create an automatic snapshot policy, you can specify the days of the week on which to create automatic snapshots, the retention period of the automatic snapshots, and whether to enable cross-region replication for the snapshots in the policy to meet your diverse data backup requirements. After the automatic snapshot policy is created, call the [ApplyAutoSnapshotPolicy](~~25531~~) operation to apply the policy to disks. If you want to modify the automatic snapshot policy, call the [ModifyAutoSnapshotPolicyEx](~~25529~~) operation.
         Take note of the following items:
-        *   You can create a maximum of 100 automatic snapshot policies per region for a single Alibaba Cloud account.
-        *   If an automatic snapshot is being created when the time scheduled for creating another automatic snapshot is due, the new snapshot task is skipped. This may occur when a disk contains a large volume of data. For example, you have scheduled snapshots to be created at 09:00:00, 10:00:00, 11:00:00, and 12:00:00 for a disk. The system starts to create a snapshot for the disk at 09:00:00. The process takes 80 minutes to complete because the disk contains a large volume of data and ends at 10:20:00. The system skips the automatic snapshot task scheduled for 10:00:00 and creates the next automatic snapshot for the disk at 11:00:00.
-        *   For information about how to copy a snapshot from one region to another, see the "Background information" section in [Copy a snapshot](~~159441~~).
+        *   You can create up to 100 automatic snapshot policies per region for a single Alibaba Cloud account.
+        *   If an automatic snapshot is being created when the time scheduled for creating another automatic snapshot is due, the new snapshot task is skipped. This may occur when a disk contains a large volume of data. For example, you have scheduled snapshots to be created at 09:00:00, 10:00:00, 11:00:00, and 12:00:00 for a disk. The system starts to create a snapshot for the disk at 09:00:00. The process takes 80 minutes to complete because the disk contains a large volume of data and ends at 10:20:00. In this case, the system does not create a snapshot at 10:00, but creates a snapshot at 11:00.
+        *   For information about how to copy a snapshot from one region to another region, see the "Background information" section in [Copy a snapshot](~~159441~~).
         
         @param request: CreateAutoSnapshotPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4975,11 +4981,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateAutoSnapshotPolicyRequest,
     ) -> ecs_20140526_models.CreateAutoSnapshotPolicyResponse:
         """
-        When you call this operation to create an automatic snapshot policy, you can specify the days of the week on which to create automatic snapshots, the retention period of the automatic snapshots, and whether to enable cross-region replication for the snapshots in the policy to meet your diverse data backup requirements. After you create an automatic snapshot policy, you must call the [ApplyAutoSnapshotPolicy](~~25531~~) operation to apply it to disks. If you want to modify the automatic snapshot policy, you must call the [ModifyAutoSnapshotPolicyEx](~~25529~~) operation.
+        ## [](#)Usage notes
+        When you call this operation to create an automatic snapshot policy, you can specify the days of the week on which to create automatic snapshots, the retention period of the automatic snapshots, and whether to enable cross-region replication for the snapshots in the policy to meet your diverse data backup requirements. After the automatic snapshot policy is created, call the [ApplyAutoSnapshotPolicy](~~25531~~) operation to apply the policy to disks. If you want to modify the automatic snapshot policy, call the [ModifyAutoSnapshotPolicyEx](~~25529~~) operation.
         Take note of the following items:
-        *   You can create a maximum of 100 automatic snapshot policies per region for a single Alibaba Cloud account.
-        *   If an automatic snapshot is being created when the time scheduled for creating another automatic snapshot is due, the new snapshot task is skipped. This may occur when a disk contains a large volume of data. For example, you have scheduled snapshots to be created at 09:00:00, 10:00:00, 11:00:00, and 12:00:00 for a disk. The system starts to create a snapshot for the disk at 09:00:00. The process takes 80 minutes to complete because the disk contains a large volume of data and ends at 10:20:00. The system skips the automatic snapshot task scheduled for 10:00:00 and creates the next automatic snapshot for the disk at 11:00:00.
-        *   For information about how to copy a snapshot from one region to another, see the "Background information" section in [Copy a snapshot](~~159441~~).
+        *   You can create up to 100 automatic snapshot policies per region for a single Alibaba Cloud account.
+        *   If an automatic snapshot is being created when the time scheduled for creating another automatic snapshot is due, the new snapshot task is skipped. This may occur when a disk contains a large volume of data. For example, you have scheduled snapshots to be created at 09:00:00, 10:00:00, 11:00:00, and 12:00:00 for a disk. The system starts to create a snapshot for the disk at 09:00:00. The process takes 80 minutes to complete because the disk contains a large volume of data and ends at 10:20:00. In this case, the system does not create a snapshot at 10:00, but creates a snapshot at 11:00.
+        *   For information about how to copy a snapshot from one region to another region, see the "Background information" section in [Copy a snapshot](~~159441~~).
         
         @param request: CreateAutoSnapshotPolicyRequest
         @return: CreateAutoSnapshotPolicyResponse
@@ -4992,11 +4999,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateAutoSnapshotPolicyRequest,
     ) -> ecs_20140526_models.CreateAutoSnapshotPolicyResponse:
         """
-        When you call this operation to create an automatic snapshot policy, you can specify the days of the week on which to create automatic snapshots, the retention period of the automatic snapshots, and whether to enable cross-region replication for the snapshots in the policy to meet your diverse data backup requirements. After you create an automatic snapshot policy, you must call the [ApplyAutoSnapshotPolicy](~~25531~~) operation to apply it to disks. If you want to modify the automatic snapshot policy, you must call the [ModifyAutoSnapshotPolicyEx](~~25529~~) operation.
+        ## [](#)Usage notes
+        When you call this operation to create an automatic snapshot policy, you can specify the days of the week on which to create automatic snapshots, the retention period of the automatic snapshots, and whether to enable cross-region replication for the snapshots in the policy to meet your diverse data backup requirements. After the automatic snapshot policy is created, call the [ApplyAutoSnapshotPolicy](~~25531~~) operation to apply the policy to disks. If you want to modify the automatic snapshot policy, call the [ModifyAutoSnapshotPolicyEx](~~25529~~) operation.
         Take note of the following items:
-        *   You can create a maximum of 100 automatic snapshot policies per region for a single Alibaba Cloud account.
-        *   If an automatic snapshot is being created when the time scheduled for creating another automatic snapshot is due, the new snapshot task is skipped. This may occur when a disk contains a large volume of data. For example, you have scheduled snapshots to be created at 09:00:00, 10:00:00, 11:00:00, and 12:00:00 for a disk. The system starts to create a snapshot for the disk at 09:00:00. The process takes 80 minutes to complete because the disk contains a large volume of data and ends at 10:20:00. The system skips the automatic snapshot task scheduled for 10:00:00 and creates the next automatic snapshot for the disk at 11:00:00.
-        *   For information about how to copy a snapshot from one region to another, see the "Background information" section in [Copy a snapshot](~~159441~~).
+        *   You can create up to 100 automatic snapshot policies per region for a single Alibaba Cloud account.
+        *   If an automatic snapshot is being created when the time scheduled for creating another automatic snapshot is due, the new snapshot task is skipped. This may occur when a disk contains a large volume of data. For example, you have scheduled snapshots to be created at 09:00:00, 10:00:00, 11:00:00, and 12:00:00 for a disk. The system starts to create a snapshot for the disk at 09:00:00. The process takes 80 minutes to complete because the disk contains a large volume of data and ends at 10:20:00. In this case, the system does not create a snapshot at 10:00, but creates a snapshot at 11:00.
+        *   For information about how to copy a snapshot from one region to another region, see the "Background information" section in [Copy a snapshot](~~159441~~).
         
         @param request: CreateAutoSnapshotPolicyRequest
         @return: CreateAutoSnapshotPolicyResponse
@@ -7336,42 +7344,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateInstanceResponse:
         """
-        > You can call the [DescribeAvailableResource](~~66186~~) operation to query available resources in a specific region or zone. If you want to batch create instances that automatically enter the Running state after they are created, we recommend that you call the [RunInstances](~~63440~~) operation.
-        When you call this operation, take note of the following items:
-        * **Billing**:
-        * You must fully understand the ECS billing methods before you create an instance because you may be charged for resources used by the instance. For more information, see [Billing overview](~~25398~~).
-        * If you create a subscription instance (`PrePaid`), available coupons within your account are used by default.
-        * **Instance type**:
-        * You can use the `IoOptimized` parameter to specify whether to create an I/O optimized instance.
-        * Select an instance type. See [Instance families](~~25378~~) or call the [DescribeInstanceTypes](~~25620~~) operation to query the performance data of an instance type, or see [Best practices for instance type selection](~~58291~~) to learn about how to select instance types.
-        * Query available resources. Call the [DescribeAvailableResource](~~66186~~) operation to query available resources in a specific region or zone.
-        > If the `QuotaExceed.ElasticQuota` error is returned when you call this operation, it indicates that you have reached the maximum number of instances of the specified instance type that can be created within the specified region or the maximum number of vCPUs for all instance types in a zone. You can go to the [ECS console](https://ecs.console.aliyun.com/?spm=a2c8b.12215451.favorites.decs.5e3a336aMGTtzy#/privileges/quota) or [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas) to request a quota increase.
-        * **Image**:
-        * The image determines the system disk configurations of the new instance. The system disk of the new instance is a clone of the specified image.
-        * If you want to create instances with 512 MiB of memory, you cannot use Windows Server images except for Windows Server Semi-Annual Channel images.
-        * If you want to create instances with 4 GiB or more of memory, you cannot use 32-bit OS image.
-        * **Network type**:
-        * Each instance that resides in a virtual private cloud (VPC) must be connected to only a single vSwitch.
-        * If the `VSwitchId` parameter is specified, the security group specified by `SecurityGroupId` and the vSwitch specified by `VSwitchId` must belong to the same VPC.
-        * The value of `PrivateIpAddress` depends on that of `VSwitchId` and cannot be separately specified.`` If both the `VSwitchId` and `PrivateIpAddress` parameters are specified, the IP address specified by `PrivateIpAddress` must be available in the CIDR block of the specified vSwitch.
-        * **Public bandwidth**:
-        * As of November 27, 2020, the maximum bandwidth value available for you to create ECS instances or to change ECS instance configurations is subject to the throttling policy for your account. To increase the maximum bandwidth value, submit a ticket. The throttling policy imposes the following constraints: Within a single region, the total maximum bandwidth value of all instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s and that of all instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
-        * If you call the `CreateInstance` operation to create an instance, no public IP addresses are assigned to the instance. You can call the [AllocatePublicIpAddress](~~25544~~) operation to manually assign public IP addresses to instances.
-        * Network usage fees are determined based on the settings of `InternetChargeType` and `InternetMaxBandwidthOut`.
-        * The `InternetMaxBandwidthIn` value is irrelevant to billing because inbound data traffic is free of charge.
-        * If `InternetChargeType` is set to PayByBandwidth, `InternetMaxBandwidthOut` specifies the fixed bandwidth value. A fixed bandwidth is a specified amount of public bandwidth allocated to an instance that uses the pay-by-bandwidth billing method for network usage.
-        * If `InternetChargeType` is set to PayByTraffic, `InternetMaxBandwidthOut` specifies the peak bandwidth value. A peak bandwidth is the maximum amount of public bandwidth that an instance can consume when it uses the pay-by-traffic billing method for network usage. Network usage costs are calculated based on the volume of network traffic.
-        * **Security group**:
-        * If no security groups are available in the region where you want to create an instance, you must call the [CreateSecurityGroup](~~25553~~) operation to create a security group in that region first.
-        * The maximum number of instances that a security group can contain varies based on the security group type. For more information, see the "Security group limits" section in [Limits](~~25412~~).
-        * Instances in the same security group can communicate with each other over the internal network. By default, instances in different security groups cannot communicate with each other. You can allow communication between instances by allowing mutual access between their security groups. For more information, see [AuthorizeSecurityGroup](~~25554~~) and [AuthorizeSecurityGroupEgress](~~25560~~).
-        * **Storage**:
-        * The instance is assigned a system disk whose size is determined based on the specified image. The size of the system disk must be at least `20 GiB` and greater than or equal to the image size. For more information about system disk categories, see the description of the `SystemDisk.Category` parameter.
-        * The system disk of an I/O optimized instance can only be an enhanced SSD (ESSD) (`cloud_essd`), a standard SSD (`cloud_ssd`), or an ultra disk (`cloud_efficiency`).
-        * The maximum size of a data disk varies based on its category. For more information, see the description of the `DataDisk.N.Size` parameter.
-        * A maximum of 16 data disks can be attached to each instance. The mount points of data disks are allocated by the system in alphabetical order from /dev/xvdb to /dev/xvdz.
-        * **User data**: If the instance type supports [user data](~~49121~~), you can use the UserData parameter to pass in user data. User data is encoded in Base64. We recommend that you do not pass in confidential information (such as passwords or private keys) in plaintext as user data. This is because the system does not encrypt `UserData` values when API requests are transmitted. If you must pass in confidential information, we recommend that you encrypt and encode the information in Base64 and then decode and decrypt the information in the same way within the instance.
-        * **Others**: When you call API operations by using Alibaba Cloud CLI or SDKs, you must delete periods (.) from some request parameters before you use the parameters. For example, use `SystemDiskCategory` instead of `SystemDisk.Category` as a request parameter.
+        ## [](#)Usage notes
+        >  You can call the [DescribeAvailableResource](~~66186~~) operation to query available resources in a specific region or zone. If you want to batch create instances that automatically enter the Running state after they are created, we recommend that you call the [RunInstances](~~63440~~) operation.
+        Take note of the following items:
+        *   **Billing**:
+        *   You must familiarize yourself with ECS billing methods before you create an instance because you may be charged for the resources used by the instance. For more information, see [Billing overview](~~25398~~).
+        *   If you create a subscription instance (`PrePaid`), available coupons in your account are used by default.
+        *   **Instance type**:
+        *   You can use the `IoOptimized` parameter to specify whether to create an I/O optimized instance.
+        *   Instance type selection: See [Instance families](~~25378~~) or call the [DescribeInstanceTypes](~~25620~~) operation to query the performance data of instance types, or see [Best practices for instance type selection](~~58291~~) to learn about how to select instance types.
+        *   Query of available resources: Call the [DescribeAvailableResource](~~66186~~) operation to query resources available in a specific region or zone.
+        >  If the `QuotaExceed.ElasticQuota` error is returned when you call this operation, it indicates that the maximum number of instances of the specified instance type in the region has been reached, or the maximum number of vCPUs for all instance types in a zone has been reached. You can go to the [ECS console](https://ecs.console.aliyun.com/?spm=a2c8b.12215451.favorites.decs.5e3a336aMGTtzy#/privileges/quota) or [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas) to request a quota increase.
+        *   **Image**:
+        *   The image determines the system disk configurations of the new instance. The system disk of the new instance is a clone of the specified image.
+        *   If you want to create instances with 512 MiB of memory, you cannot use Windows Server images except for Windows Server Semi-Annual Channel images.
+        *   If you want to create instances with 4 GiB or more of memory, you cannot use 32-bit OS image.
+        *   **Network type**:
+        *   Each instance that resides in a virtual private cloud (VPC) must be connected to only a single vSwitch.
+        *   If `VSwitchId` is specified, the security group specified by `SecurityGroupId` and the vSwitch specified by `VSwitchId` must belong to the same VPC.
+        *   The value of `PrivateIpAddress` varies based on the value of `VSwitchId`. `PrivateIpAddress` cannot be separately specified. If `VSwitchId` and `PrivateIpAddress` are specified, the IP address specified by `PrivateIpAddress` must be an idle IP address in the CIDR block of the specified vSwitch.
+        *   **Public bandwidth**:
+        *   Starting November 27, 2020, the maximum bandwidth value that is available for you to create ECS instances or change ECS instance configurations is subject to the throttling policy of your account. To increase the bandwidth limit, submit a ticket. The throttling policy imposes the following constraints: In a single region, the total maximum bandwidth value of all instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s and the total maximum bandwidth value of all instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
+        *   If you call the `CreateInstance` operation to create an instance, no public IP addresses are assigned to the instance. You can call the [AllocatePublicIpAddress](~~25544~~) operation to assign a public IP address to an instance.
+        *   Network usage fees vary based on the settings of `InternetChargeType` and `InternetMaxBandwidthOut`.
+        *   The value of `InternetMaxBandwidthIn` does not affect billing because inbound data traffic is free of charge.
+        *   If `InternetChargeType` is set to PayByBandwidth, `InternetMaxBandwidthOut` specifies the fixed bandwidth. A fixed bandwidth is a specified amount of public bandwidth allocated to an instance that uses the pay-by-bandwidth billing method for network usage.
+        *   If `InternetChargeType` is set to PayByTraffic, `InternetMaxBandwidthOut` specifies the peak bandwidth. A peak bandwidth is the maximum amount of public bandwidth that an instance can consume when the instance uses the pay-by-traffic billing method for network usage. Network usage costs are calculated based on the volume of network traffic.
+        *   **Security group**:
+        *   If no security groups are available in the region where you want to create an instance, you must call the [CreateSecurityGroup](~~25553~~) operation to create a security group in that region first.
+        *   The maximum number of instances that a security group can contain varies based on the security group type. For more information, see the "Security group limits" section in the [Limits](~~25412~~) topic.
+        *   Instances in the same security group can communicate with each other over the internal network. By default, instances in different security groups cannot communicate with each other. You can allow communication between instances by allowing mutual access between the security groups to which the instances belong. For more information, see [AuthorizeSecurityGroup](~~25554~~) and [AuthorizeSecurityGroupEgress](~~25560~~).
+        *   **Storage**:
+        *   The instance is assigned a system disk whose capacity varies based on the size of the specified image. The size of the system disk must be at least `20 GiB` and greater than or equal to the image size. For information about system disk categories, see the description of `SystemDisk.Category`.
+        *   The system disk of an I/O optimized instance can only be an enhanced SSD (ESSD) (`cloud_essd`), a standard SSD (`cloud_ssd`), or an ultra disk (`cloud_efficiency`).
+        *   The maximum size of a data disk varies based on the disk category. For more information, see the description of `DataDisk.N.Size`.
+        *   Up to 16 data disks can be added to an instance. Mount points /dev/xvd\\[b-z] are automatically assigned to data disks in ascending alphanumeric order.
+        >  If the `QuotaExceed.DiskCapacity` error is returned when you call this operation, it indicates that the maximum capacity of the disks of the selected disk category in the specified zone has been reached. You can go to the [Quota Center](https://quotas.console.aliyun.com/products/disk/quotas) to query and request a quota increase.
+        *   **User data**: If the instance type supports user data, you can use the UserData parameter to pass in user data.[](~~49121~~) User data is encoded in Base64. We recommend that you do not pass in confidential information (such as passwords or private keys) in plaintext as user data. This is because the system does not encrypt `UserData` values when API requests are transmitted. If you must pass in confidential information, we recommend that you encrypt and encode the information in Base64 before you pass in the information. Then decode and decrypt the information in the same way within the instance.
+        *   **Others**: When you call API operations by using Alibaba Cloud CLI or SDKs, you must delete periods (.) from some request parameters before you use the parameters. For example, use `SystemDiskCategory` instead of `SystemDisk.Category` as a request parameter.
         
         @param request: CreateInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7526,42 +7536,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateInstanceResponse:
         """
-        > You can call the [DescribeAvailableResource](~~66186~~) operation to query available resources in a specific region or zone. If you want to batch create instances that automatically enter the Running state after they are created, we recommend that you call the [RunInstances](~~63440~~) operation.
-        When you call this operation, take note of the following items:
-        * **Billing**:
-        * You must fully understand the ECS billing methods before you create an instance because you may be charged for resources used by the instance. For more information, see [Billing overview](~~25398~~).
-        * If you create a subscription instance (`PrePaid`), available coupons within your account are used by default.
-        * **Instance type**:
-        * You can use the `IoOptimized` parameter to specify whether to create an I/O optimized instance.
-        * Select an instance type. See [Instance families](~~25378~~) or call the [DescribeInstanceTypes](~~25620~~) operation to query the performance data of an instance type, or see [Best practices for instance type selection](~~58291~~) to learn about how to select instance types.
-        * Query available resources. Call the [DescribeAvailableResource](~~66186~~) operation to query available resources in a specific region or zone.
-        > If the `QuotaExceed.ElasticQuota` error is returned when you call this operation, it indicates that you have reached the maximum number of instances of the specified instance type that can be created within the specified region or the maximum number of vCPUs for all instance types in a zone. You can go to the [ECS console](https://ecs.console.aliyun.com/?spm=a2c8b.12215451.favorites.decs.5e3a336aMGTtzy#/privileges/quota) or [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas) to request a quota increase.
-        * **Image**:
-        * The image determines the system disk configurations of the new instance. The system disk of the new instance is a clone of the specified image.
-        * If you want to create instances with 512 MiB of memory, you cannot use Windows Server images except for Windows Server Semi-Annual Channel images.
-        * If you want to create instances with 4 GiB or more of memory, you cannot use 32-bit OS image.
-        * **Network type**:
-        * Each instance that resides in a virtual private cloud (VPC) must be connected to only a single vSwitch.
-        * If the `VSwitchId` parameter is specified, the security group specified by `SecurityGroupId` and the vSwitch specified by `VSwitchId` must belong to the same VPC.
-        * The value of `PrivateIpAddress` depends on that of `VSwitchId` and cannot be separately specified.`` If both the `VSwitchId` and `PrivateIpAddress` parameters are specified, the IP address specified by `PrivateIpAddress` must be available in the CIDR block of the specified vSwitch.
-        * **Public bandwidth**:
-        * As of November 27, 2020, the maximum bandwidth value available for you to create ECS instances or to change ECS instance configurations is subject to the throttling policy for your account. To increase the maximum bandwidth value, submit a ticket. The throttling policy imposes the following constraints: Within a single region, the total maximum bandwidth value of all instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s and that of all instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
-        * If you call the `CreateInstance` operation to create an instance, no public IP addresses are assigned to the instance. You can call the [AllocatePublicIpAddress](~~25544~~) operation to manually assign public IP addresses to instances.
-        * Network usage fees are determined based on the settings of `InternetChargeType` and `InternetMaxBandwidthOut`.
-        * The `InternetMaxBandwidthIn` value is irrelevant to billing because inbound data traffic is free of charge.
-        * If `InternetChargeType` is set to PayByBandwidth, `InternetMaxBandwidthOut` specifies the fixed bandwidth value. A fixed bandwidth is a specified amount of public bandwidth allocated to an instance that uses the pay-by-bandwidth billing method for network usage.
-        * If `InternetChargeType` is set to PayByTraffic, `InternetMaxBandwidthOut` specifies the peak bandwidth value. A peak bandwidth is the maximum amount of public bandwidth that an instance can consume when it uses the pay-by-traffic billing method for network usage. Network usage costs are calculated based on the volume of network traffic.
-        * **Security group**:
-        * If no security groups are available in the region where you want to create an instance, you must call the [CreateSecurityGroup](~~25553~~) operation to create a security group in that region first.
-        * The maximum number of instances that a security group can contain varies based on the security group type. For more information, see the "Security group limits" section in [Limits](~~25412~~).
-        * Instances in the same security group can communicate with each other over the internal network. By default, instances in different security groups cannot communicate with each other. You can allow communication between instances by allowing mutual access between their security groups. For more information, see [AuthorizeSecurityGroup](~~25554~~) and [AuthorizeSecurityGroupEgress](~~25560~~).
-        * **Storage**:
-        * The instance is assigned a system disk whose size is determined based on the specified image. The size of the system disk must be at least `20 GiB` and greater than or equal to the image size. For more information about system disk categories, see the description of the `SystemDisk.Category` parameter.
-        * The system disk of an I/O optimized instance can only be an enhanced SSD (ESSD) (`cloud_essd`), a standard SSD (`cloud_ssd`), or an ultra disk (`cloud_efficiency`).
-        * The maximum size of a data disk varies based on its category. For more information, see the description of the `DataDisk.N.Size` parameter.
-        * A maximum of 16 data disks can be attached to each instance. The mount points of data disks are allocated by the system in alphabetical order from /dev/xvdb to /dev/xvdz.
-        * **User data**: If the instance type supports [user data](~~49121~~), you can use the UserData parameter to pass in user data. User data is encoded in Base64. We recommend that you do not pass in confidential information (such as passwords or private keys) in plaintext as user data. This is because the system does not encrypt `UserData` values when API requests are transmitted. If you must pass in confidential information, we recommend that you encrypt and encode the information in Base64 and then decode and decrypt the information in the same way within the instance.
-        * **Others**: When you call API operations by using Alibaba Cloud CLI or SDKs, you must delete periods (.) from some request parameters before you use the parameters. For example, use `SystemDiskCategory` instead of `SystemDisk.Category` as a request parameter.
+        ## [](#)Usage notes
+        >  You can call the [DescribeAvailableResource](~~66186~~) operation to query available resources in a specific region or zone. If you want to batch create instances that automatically enter the Running state after they are created, we recommend that you call the [RunInstances](~~63440~~) operation.
+        Take note of the following items:
+        *   **Billing**:
+        *   You must familiarize yourself with ECS billing methods before you create an instance because you may be charged for the resources used by the instance. For more information, see [Billing overview](~~25398~~).
+        *   If you create a subscription instance (`PrePaid`), available coupons in your account are used by default.
+        *   **Instance type**:
+        *   You can use the `IoOptimized` parameter to specify whether to create an I/O optimized instance.
+        *   Instance type selection: See [Instance families](~~25378~~) or call the [DescribeInstanceTypes](~~25620~~) operation to query the performance data of instance types, or see [Best practices for instance type selection](~~58291~~) to learn about how to select instance types.
+        *   Query of available resources: Call the [DescribeAvailableResource](~~66186~~) operation to query resources available in a specific region or zone.
+        >  If the `QuotaExceed.ElasticQuota` error is returned when you call this operation, it indicates that the maximum number of instances of the specified instance type in the region has been reached, or the maximum number of vCPUs for all instance types in a zone has been reached. You can go to the [ECS console](https://ecs.console.aliyun.com/?spm=a2c8b.12215451.favorites.decs.5e3a336aMGTtzy#/privileges/quota) or [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas) to request a quota increase.
+        *   **Image**:
+        *   The image determines the system disk configurations of the new instance. The system disk of the new instance is a clone of the specified image.
+        *   If you want to create instances with 512 MiB of memory, you cannot use Windows Server images except for Windows Server Semi-Annual Channel images.
+        *   If you want to create instances with 4 GiB or more of memory, you cannot use 32-bit OS image.
+        *   **Network type**:
+        *   Each instance that resides in a virtual private cloud (VPC) must be connected to only a single vSwitch.
+        *   If `VSwitchId` is specified, the security group specified by `SecurityGroupId` and the vSwitch specified by `VSwitchId` must belong to the same VPC.
+        *   The value of `PrivateIpAddress` varies based on the value of `VSwitchId`. `PrivateIpAddress` cannot be separately specified. If `VSwitchId` and `PrivateIpAddress` are specified, the IP address specified by `PrivateIpAddress` must be an idle IP address in the CIDR block of the specified vSwitch.
+        *   **Public bandwidth**:
+        *   Starting November 27, 2020, the maximum bandwidth value that is available for you to create ECS instances or change ECS instance configurations is subject to the throttling policy of your account. To increase the bandwidth limit, submit a ticket. The throttling policy imposes the following constraints: In a single region, the total maximum bandwidth value of all instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s and the total maximum bandwidth value of all instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
+        *   If you call the `CreateInstance` operation to create an instance, no public IP addresses are assigned to the instance. You can call the [AllocatePublicIpAddress](~~25544~~) operation to assign a public IP address to an instance.
+        *   Network usage fees vary based on the settings of `InternetChargeType` and `InternetMaxBandwidthOut`.
+        *   The value of `InternetMaxBandwidthIn` does not affect billing because inbound data traffic is free of charge.
+        *   If `InternetChargeType` is set to PayByBandwidth, `InternetMaxBandwidthOut` specifies the fixed bandwidth. A fixed bandwidth is a specified amount of public bandwidth allocated to an instance that uses the pay-by-bandwidth billing method for network usage.
+        *   If `InternetChargeType` is set to PayByTraffic, `InternetMaxBandwidthOut` specifies the peak bandwidth. A peak bandwidth is the maximum amount of public bandwidth that an instance can consume when the instance uses the pay-by-traffic billing method for network usage. Network usage costs are calculated based on the volume of network traffic.
+        *   **Security group**:
+        *   If no security groups are available in the region where you want to create an instance, you must call the [CreateSecurityGroup](~~25553~~) operation to create a security group in that region first.
+        *   The maximum number of instances that a security group can contain varies based on the security group type. For more information, see the "Security group limits" section in the [Limits](~~25412~~) topic.
+        *   Instances in the same security group can communicate with each other over the internal network. By default, instances in different security groups cannot communicate with each other. You can allow communication between instances by allowing mutual access between the security groups to which the instances belong. For more information, see [AuthorizeSecurityGroup](~~25554~~) and [AuthorizeSecurityGroupEgress](~~25560~~).
+        *   **Storage**:
+        *   The instance is assigned a system disk whose capacity varies based on the size of the specified image. The size of the system disk must be at least `20 GiB` and greater than or equal to the image size. For information about system disk categories, see the description of `SystemDisk.Category`.
+        *   The system disk of an I/O optimized instance can only be an enhanced SSD (ESSD) (`cloud_essd`), a standard SSD (`cloud_ssd`), or an ultra disk (`cloud_efficiency`).
+        *   The maximum size of a data disk varies based on the disk category. For more information, see the description of `DataDisk.N.Size`.
+        *   Up to 16 data disks can be added to an instance. Mount points /dev/xvd\\[b-z] are automatically assigned to data disks in ascending alphanumeric order.
+        >  If the `QuotaExceed.DiskCapacity` error is returned when you call this operation, it indicates that the maximum capacity of the disks of the selected disk category in the specified zone has been reached. You can go to the [Quota Center](https://quotas.console.aliyun.com/products/disk/quotas) to query and request a quota increase.
+        *   **User data**: If the instance type supports user data, you can use the UserData parameter to pass in user data.[](~~49121~~) User data is encoded in Base64. We recommend that you do not pass in confidential information (such as passwords or private keys) in plaintext as user data. This is because the system does not encrypt `UserData` values when API requests are transmitted. If you must pass in confidential information, we recommend that you encrypt and encode the information in Base64 before you pass in the information. Then decode and decrypt the information in the same way within the instance.
+        *   **Others**: When you call API operations by using Alibaba Cloud CLI or SDKs, you must delete periods (.) from some request parameters before you use the parameters. For example, use `SystemDiskCategory` instead of `SystemDisk.Category` as a request parameter.
         
         @param request: CreateInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7715,42 +7727,44 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateInstanceRequest,
     ) -> ecs_20140526_models.CreateInstanceResponse:
         """
-        > You can call the [DescribeAvailableResource](~~66186~~) operation to query available resources in a specific region or zone. If you want to batch create instances that automatically enter the Running state after they are created, we recommend that you call the [RunInstances](~~63440~~) operation.
-        When you call this operation, take note of the following items:
-        * **Billing**:
-        * You must fully understand the ECS billing methods before you create an instance because you may be charged for resources used by the instance. For more information, see [Billing overview](~~25398~~).
-        * If you create a subscription instance (`PrePaid`), available coupons within your account are used by default.
-        * **Instance type**:
-        * You can use the `IoOptimized` parameter to specify whether to create an I/O optimized instance.
-        * Select an instance type. See [Instance families](~~25378~~) or call the [DescribeInstanceTypes](~~25620~~) operation to query the performance data of an instance type, or see [Best practices for instance type selection](~~58291~~) to learn about how to select instance types.
-        * Query available resources. Call the [DescribeAvailableResource](~~66186~~) operation to query available resources in a specific region or zone.
-        > If the `QuotaExceed.ElasticQuota` error is returned when you call this operation, it indicates that you have reached the maximum number of instances of the specified instance type that can be created within the specified region or the maximum number of vCPUs for all instance types in a zone. You can go to the [ECS console](https://ecs.console.aliyun.com/?spm=a2c8b.12215451.favorites.decs.5e3a336aMGTtzy#/privileges/quota) or [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas) to request a quota increase.
-        * **Image**:
-        * The image determines the system disk configurations of the new instance. The system disk of the new instance is a clone of the specified image.
-        * If you want to create instances with 512 MiB of memory, you cannot use Windows Server images except for Windows Server Semi-Annual Channel images.
-        * If you want to create instances with 4 GiB or more of memory, you cannot use 32-bit OS image.
-        * **Network type**:
-        * Each instance that resides in a virtual private cloud (VPC) must be connected to only a single vSwitch.
-        * If the `VSwitchId` parameter is specified, the security group specified by `SecurityGroupId` and the vSwitch specified by `VSwitchId` must belong to the same VPC.
-        * The value of `PrivateIpAddress` depends on that of `VSwitchId` and cannot be separately specified.`` If both the `VSwitchId` and `PrivateIpAddress` parameters are specified, the IP address specified by `PrivateIpAddress` must be available in the CIDR block of the specified vSwitch.
-        * **Public bandwidth**:
-        * As of November 27, 2020, the maximum bandwidth value available for you to create ECS instances or to change ECS instance configurations is subject to the throttling policy for your account. To increase the maximum bandwidth value, submit a ticket. The throttling policy imposes the following constraints: Within a single region, the total maximum bandwidth value of all instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s and that of all instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
-        * If you call the `CreateInstance` operation to create an instance, no public IP addresses are assigned to the instance. You can call the [AllocatePublicIpAddress](~~25544~~) operation to manually assign public IP addresses to instances.
-        * Network usage fees are determined based on the settings of `InternetChargeType` and `InternetMaxBandwidthOut`.
-        * The `InternetMaxBandwidthIn` value is irrelevant to billing because inbound data traffic is free of charge.
-        * If `InternetChargeType` is set to PayByBandwidth, `InternetMaxBandwidthOut` specifies the fixed bandwidth value. A fixed bandwidth is a specified amount of public bandwidth allocated to an instance that uses the pay-by-bandwidth billing method for network usage.
-        * If `InternetChargeType` is set to PayByTraffic, `InternetMaxBandwidthOut` specifies the peak bandwidth value. A peak bandwidth is the maximum amount of public bandwidth that an instance can consume when it uses the pay-by-traffic billing method for network usage. Network usage costs are calculated based on the volume of network traffic.
-        * **Security group**:
-        * If no security groups are available in the region where you want to create an instance, you must call the [CreateSecurityGroup](~~25553~~) operation to create a security group in that region first.
-        * The maximum number of instances that a security group can contain varies based on the security group type. For more information, see the "Security group limits" section in [Limits](~~25412~~).
-        * Instances in the same security group can communicate with each other over the internal network. By default, instances in different security groups cannot communicate with each other. You can allow communication between instances by allowing mutual access between their security groups. For more information, see [AuthorizeSecurityGroup](~~25554~~) and [AuthorizeSecurityGroupEgress](~~25560~~).
-        * **Storage**:
-        * The instance is assigned a system disk whose size is determined based on the specified image. The size of the system disk must be at least `20 GiB` and greater than or equal to the image size. For more information about system disk categories, see the description of the `SystemDisk.Category` parameter.
-        * The system disk of an I/O optimized instance can only be an enhanced SSD (ESSD) (`cloud_essd`), a standard SSD (`cloud_ssd`), or an ultra disk (`cloud_efficiency`).
-        * The maximum size of a data disk varies based on its category. For more information, see the description of the `DataDisk.N.Size` parameter.
-        * A maximum of 16 data disks can be attached to each instance. The mount points of data disks are allocated by the system in alphabetical order from /dev/xvdb to /dev/xvdz.
-        * **User data**: If the instance type supports [user data](~~49121~~), you can use the UserData parameter to pass in user data. User data is encoded in Base64. We recommend that you do not pass in confidential information (such as passwords or private keys) in plaintext as user data. This is because the system does not encrypt `UserData` values when API requests are transmitted. If you must pass in confidential information, we recommend that you encrypt and encode the information in Base64 and then decode and decrypt the information in the same way within the instance.
-        * **Others**: When you call API operations by using Alibaba Cloud CLI or SDKs, you must delete periods (.) from some request parameters before you use the parameters. For example, use `SystemDiskCategory` instead of `SystemDisk.Category` as a request parameter.
+        ## [](#)Usage notes
+        >  You can call the [DescribeAvailableResource](~~66186~~) operation to query available resources in a specific region or zone. If you want to batch create instances that automatically enter the Running state after they are created, we recommend that you call the [RunInstances](~~63440~~) operation.
+        Take note of the following items:
+        *   **Billing**:
+        *   You must familiarize yourself with ECS billing methods before you create an instance because you may be charged for the resources used by the instance. For more information, see [Billing overview](~~25398~~).
+        *   If you create a subscription instance (`PrePaid`), available coupons in your account are used by default.
+        *   **Instance type**:
+        *   You can use the `IoOptimized` parameter to specify whether to create an I/O optimized instance.
+        *   Instance type selection: See [Instance families](~~25378~~) or call the [DescribeInstanceTypes](~~25620~~) operation to query the performance data of instance types, or see [Best practices for instance type selection](~~58291~~) to learn about how to select instance types.
+        *   Query of available resources: Call the [DescribeAvailableResource](~~66186~~) operation to query resources available in a specific region or zone.
+        >  If the `QuotaExceed.ElasticQuota` error is returned when you call this operation, it indicates that the maximum number of instances of the specified instance type in the region has been reached, or the maximum number of vCPUs for all instance types in a zone has been reached. You can go to the [ECS console](https://ecs.console.aliyun.com/?spm=a2c8b.12215451.favorites.decs.5e3a336aMGTtzy#/privileges/quota) or [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas) to request a quota increase.
+        *   **Image**:
+        *   The image determines the system disk configurations of the new instance. The system disk of the new instance is a clone of the specified image.
+        *   If you want to create instances with 512 MiB of memory, you cannot use Windows Server images except for Windows Server Semi-Annual Channel images.
+        *   If you want to create instances with 4 GiB or more of memory, you cannot use 32-bit OS image.
+        *   **Network type**:
+        *   Each instance that resides in a virtual private cloud (VPC) must be connected to only a single vSwitch.
+        *   If `VSwitchId` is specified, the security group specified by `SecurityGroupId` and the vSwitch specified by `VSwitchId` must belong to the same VPC.
+        *   The value of `PrivateIpAddress` varies based on the value of `VSwitchId`. `PrivateIpAddress` cannot be separately specified. If `VSwitchId` and `PrivateIpAddress` are specified, the IP address specified by `PrivateIpAddress` must be an idle IP address in the CIDR block of the specified vSwitch.
+        *   **Public bandwidth**:
+        *   Starting November 27, 2020, the maximum bandwidth value that is available for you to create ECS instances or change ECS instance configurations is subject to the throttling policy of your account. To increase the bandwidth limit, submit a ticket. The throttling policy imposes the following constraints: In a single region, the total maximum bandwidth value of all instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s and the total maximum bandwidth value of all instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
+        *   If you call the `CreateInstance` operation to create an instance, no public IP addresses are assigned to the instance. You can call the [AllocatePublicIpAddress](~~25544~~) operation to assign a public IP address to an instance.
+        *   Network usage fees vary based on the settings of `InternetChargeType` and `InternetMaxBandwidthOut`.
+        *   The value of `InternetMaxBandwidthIn` does not affect billing because inbound data traffic is free of charge.
+        *   If `InternetChargeType` is set to PayByBandwidth, `InternetMaxBandwidthOut` specifies the fixed bandwidth. A fixed bandwidth is a specified amount of public bandwidth allocated to an instance that uses the pay-by-bandwidth billing method for network usage.
+        *   If `InternetChargeType` is set to PayByTraffic, `InternetMaxBandwidthOut` specifies the peak bandwidth. A peak bandwidth is the maximum amount of public bandwidth that an instance can consume when the instance uses the pay-by-traffic billing method for network usage. Network usage costs are calculated based on the volume of network traffic.
+        *   **Security group**:
+        *   If no security groups are available in the region where you want to create an instance, you must call the [CreateSecurityGroup](~~25553~~) operation to create a security group in that region first.
+        *   The maximum number of instances that a security group can contain varies based on the security group type. For more information, see the "Security group limits" section in the [Limits](~~25412~~) topic.
+        *   Instances in the same security group can communicate with each other over the internal network. By default, instances in different security groups cannot communicate with each other. You can allow communication between instances by allowing mutual access between the security groups to which the instances belong. For more information, see [AuthorizeSecurityGroup](~~25554~~) and [AuthorizeSecurityGroupEgress](~~25560~~).
+        *   **Storage**:
+        *   The instance is assigned a system disk whose capacity varies based on the size of the specified image. The size of the system disk must be at least `20 GiB` and greater than or equal to the image size. For information about system disk categories, see the description of `SystemDisk.Category`.
+        *   The system disk of an I/O optimized instance can only be an enhanced SSD (ESSD) (`cloud_essd`), a standard SSD (`cloud_ssd`), or an ultra disk (`cloud_efficiency`).
+        *   The maximum size of a data disk varies based on the disk category. For more information, see the description of `DataDisk.N.Size`.
+        *   Up to 16 data disks can be added to an instance. Mount points /dev/xvd\\[b-z] are automatically assigned to data disks in ascending alphanumeric order.
+        >  If the `QuotaExceed.DiskCapacity` error is returned when you call this operation, it indicates that the maximum capacity of the disks of the selected disk category in the specified zone has been reached. You can go to the [Quota Center](https://quotas.console.aliyun.com/products/disk/quotas) to query and request a quota increase.
+        *   **User data**: If the instance type supports user data, you can use the UserData parameter to pass in user data.[](~~49121~~) User data is encoded in Base64. We recommend that you do not pass in confidential information (such as passwords or private keys) in plaintext as user data. This is because the system does not encrypt `UserData` values when API requests are transmitted. If you must pass in confidential information, we recommend that you encrypt and encode the information in Base64 before you pass in the information. Then decode and decrypt the information in the same way within the instance.
+        *   **Others**: When you call API operations by using Alibaba Cloud CLI or SDKs, you must delete periods (.) from some request parameters before you use the parameters. For example, use `SystemDiskCategory` instead of `SystemDisk.Category` as a request parameter.
         
         @param request: CreateInstanceRequest
         @return: CreateInstanceResponse
@@ -7763,42 +7777,44 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateInstanceRequest,
     ) -> ecs_20140526_models.CreateInstanceResponse:
         """
-        > You can call the [DescribeAvailableResource](~~66186~~) operation to query available resources in a specific region or zone. If you want to batch create instances that automatically enter the Running state after they are created, we recommend that you call the [RunInstances](~~63440~~) operation.
-        When you call this operation, take note of the following items:
-        * **Billing**:
-        * You must fully understand the ECS billing methods before you create an instance because you may be charged for resources used by the instance. For more information, see [Billing overview](~~25398~~).
-        * If you create a subscription instance (`PrePaid`), available coupons within your account are used by default.
-        * **Instance type**:
-        * You can use the `IoOptimized` parameter to specify whether to create an I/O optimized instance.
-        * Select an instance type. See [Instance families](~~25378~~) or call the [DescribeInstanceTypes](~~25620~~) operation to query the performance data of an instance type, or see [Best practices for instance type selection](~~58291~~) to learn about how to select instance types.
-        * Query available resources. Call the [DescribeAvailableResource](~~66186~~) operation to query available resources in a specific region or zone.
-        > If the `QuotaExceed.ElasticQuota` error is returned when you call this operation, it indicates that you have reached the maximum number of instances of the specified instance type that can be created within the specified region or the maximum number of vCPUs for all instance types in a zone. You can go to the [ECS console](https://ecs.console.aliyun.com/?spm=a2c8b.12215451.favorites.decs.5e3a336aMGTtzy#/privileges/quota) or [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas) to request a quota increase.
-        * **Image**:
-        * The image determines the system disk configurations of the new instance. The system disk of the new instance is a clone of the specified image.
-        * If you want to create instances with 512 MiB of memory, you cannot use Windows Server images except for Windows Server Semi-Annual Channel images.
-        * If you want to create instances with 4 GiB or more of memory, you cannot use 32-bit OS image.
-        * **Network type**:
-        * Each instance that resides in a virtual private cloud (VPC) must be connected to only a single vSwitch.
-        * If the `VSwitchId` parameter is specified, the security group specified by `SecurityGroupId` and the vSwitch specified by `VSwitchId` must belong to the same VPC.
-        * The value of `PrivateIpAddress` depends on that of `VSwitchId` and cannot be separately specified.`` If both the `VSwitchId` and `PrivateIpAddress` parameters are specified, the IP address specified by `PrivateIpAddress` must be available in the CIDR block of the specified vSwitch.
-        * **Public bandwidth**:
-        * As of November 27, 2020, the maximum bandwidth value available for you to create ECS instances or to change ECS instance configurations is subject to the throttling policy for your account. To increase the maximum bandwidth value, submit a ticket. The throttling policy imposes the following constraints: Within a single region, the total maximum bandwidth value of all instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s and that of all instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
-        * If you call the `CreateInstance` operation to create an instance, no public IP addresses are assigned to the instance. You can call the [AllocatePublicIpAddress](~~25544~~) operation to manually assign public IP addresses to instances.
-        * Network usage fees are determined based on the settings of `InternetChargeType` and `InternetMaxBandwidthOut`.
-        * The `InternetMaxBandwidthIn` value is irrelevant to billing because inbound data traffic is free of charge.
-        * If `InternetChargeType` is set to PayByBandwidth, `InternetMaxBandwidthOut` specifies the fixed bandwidth value. A fixed bandwidth is a specified amount of public bandwidth allocated to an instance that uses the pay-by-bandwidth billing method for network usage.
-        * If `InternetChargeType` is set to PayByTraffic, `InternetMaxBandwidthOut` specifies the peak bandwidth value. A peak bandwidth is the maximum amount of public bandwidth that an instance can consume when it uses the pay-by-traffic billing method for network usage. Network usage costs are calculated based on the volume of network traffic.
-        * **Security group**:
-        * If no security groups are available in the region where you want to create an instance, you must call the [CreateSecurityGroup](~~25553~~) operation to create a security group in that region first.
-        * The maximum number of instances that a security group can contain varies based on the security group type. For more information, see the "Security group limits" section in [Limits](~~25412~~).
-        * Instances in the same security group can communicate with each other over the internal network. By default, instances in different security groups cannot communicate with each other. You can allow communication between instances by allowing mutual access between their security groups. For more information, see [AuthorizeSecurityGroup](~~25554~~) and [AuthorizeSecurityGroupEgress](~~25560~~).
-        * **Storage**:
-        * The instance is assigned a system disk whose size is determined based on the specified image. The size of the system disk must be at least `20 GiB` and greater than or equal to the image size. For more information about system disk categories, see the description of the `SystemDisk.Category` parameter.
-        * The system disk of an I/O optimized instance can only be an enhanced SSD (ESSD) (`cloud_essd`), a standard SSD (`cloud_ssd`), or an ultra disk (`cloud_efficiency`).
-        * The maximum size of a data disk varies based on its category. For more information, see the description of the `DataDisk.N.Size` parameter.
-        * A maximum of 16 data disks can be attached to each instance. The mount points of data disks are allocated by the system in alphabetical order from /dev/xvdb to /dev/xvdz.
-        * **User data**: If the instance type supports [user data](~~49121~~), you can use the UserData parameter to pass in user data. User data is encoded in Base64. We recommend that you do not pass in confidential information (such as passwords or private keys) in plaintext as user data. This is because the system does not encrypt `UserData` values when API requests are transmitted. If you must pass in confidential information, we recommend that you encrypt and encode the information in Base64 and then decode and decrypt the information in the same way within the instance.
-        * **Others**: When you call API operations by using Alibaba Cloud CLI or SDKs, you must delete periods (.) from some request parameters before you use the parameters. For example, use `SystemDiskCategory` instead of `SystemDisk.Category` as a request parameter.
+        ## [](#)Usage notes
+        >  You can call the [DescribeAvailableResource](~~66186~~) operation to query available resources in a specific region or zone. If you want to batch create instances that automatically enter the Running state after they are created, we recommend that you call the [RunInstances](~~63440~~) operation.
+        Take note of the following items:
+        *   **Billing**:
+        *   You must familiarize yourself with ECS billing methods before you create an instance because you may be charged for the resources used by the instance. For more information, see [Billing overview](~~25398~~).
+        *   If you create a subscription instance (`PrePaid`), available coupons in your account are used by default.
+        *   **Instance type**:
+        *   You can use the `IoOptimized` parameter to specify whether to create an I/O optimized instance.
+        *   Instance type selection: See [Instance families](~~25378~~) or call the [DescribeInstanceTypes](~~25620~~) operation to query the performance data of instance types, or see [Best practices for instance type selection](~~58291~~) to learn about how to select instance types.
+        *   Query of available resources: Call the [DescribeAvailableResource](~~66186~~) operation to query resources available in a specific region or zone.
+        >  If the `QuotaExceed.ElasticQuota` error is returned when you call this operation, it indicates that the maximum number of instances of the specified instance type in the region has been reached, or the maximum number of vCPUs for all instance types in a zone has been reached. You can go to the [ECS console](https://ecs.console.aliyun.com/?spm=a2c8b.12215451.favorites.decs.5e3a336aMGTtzy#/privileges/quota) or [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas) to request a quota increase.
+        *   **Image**:
+        *   The image determines the system disk configurations of the new instance. The system disk of the new instance is a clone of the specified image.
+        *   If you want to create instances with 512 MiB of memory, you cannot use Windows Server images except for Windows Server Semi-Annual Channel images.
+        *   If you want to create instances with 4 GiB or more of memory, you cannot use 32-bit OS image.
+        *   **Network type**:
+        *   Each instance that resides in a virtual private cloud (VPC) must be connected to only a single vSwitch.
+        *   If `VSwitchId` is specified, the security group specified by `SecurityGroupId` and the vSwitch specified by `VSwitchId` must belong to the same VPC.
+        *   The value of `PrivateIpAddress` varies based on the value of `VSwitchId`. `PrivateIpAddress` cannot be separately specified. If `VSwitchId` and `PrivateIpAddress` are specified, the IP address specified by `PrivateIpAddress` must be an idle IP address in the CIDR block of the specified vSwitch.
+        *   **Public bandwidth**:
+        *   Starting November 27, 2020, the maximum bandwidth value that is available for you to create ECS instances or change ECS instance configurations is subject to the throttling policy of your account. To increase the bandwidth limit, submit a ticket. The throttling policy imposes the following constraints: In a single region, the total maximum bandwidth value of all instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s and the total maximum bandwidth value of all instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
+        *   If you call the `CreateInstance` operation to create an instance, no public IP addresses are assigned to the instance. You can call the [AllocatePublicIpAddress](~~25544~~) operation to assign a public IP address to an instance.
+        *   Network usage fees vary based on the settings of `InternetChargeType` and `InternetMaxBandwidthOut`.
+        *   The value of `InternetMaxBandwidthIn` does not affect billing because inbound data traffic is free of charge.
+        *   If `InternetChargeType` is set to PayByBandwidth, `InternetMaxBandwidthOut` specifies the fixed bandwidth. A fixed bandwidth is a specified amount of public bandwidth allocated to an instance that uses the pay-by-bandwidth billing method for network usage.
+        *   If `InternetChargeType` is set to PayByTraffic, `InternetMaxBandwidthOut` specifies the peak bandwidth. A peak bandwidth is the maximum amount of public bandwidth that an instance can consume when the instance uses the pay-by-traffic billing method for network usage. Network usage costs are calculated based on the volume of network traffic.
+        *   **Security group**:
+        *   If no security groups are available in the region where you want to create an instance, you must call the [CreateSecurityGroup](~~25553~~) operation to create a security group in that region first.
+        *   The maximum number of instances that a security group can contain varies based on the security group type. For more information, see the "Security group limits" section in the [Limits](~~25412~~) topic.
+        *   Instances in the same security group can communicate with each other over the internal network. By default, instances in different security groups cannot communicate with each other. You can allow communication between instances by allowing mutual access between the security groups to which the instances belong. For more information, see [AuthorizeSecurityGroup](~~25554~~) and [AuthorizeSecurityGroupEgress](~~25560~~).
+        *   **Storage**:
+        *   The instance is assigned a system disk whose capacity varies based on the size of the specified image. The size of the system disk must be at least `20 GiB` and greater than or equal to the image size. For information about system disk categories, see the description of `SystemDisk.Category`.
+        *   The system disk of an I/O optimized instance can only be an enhanced SSD (ESSD) (`cloud_essd`), a standard SSD (`cloud_ssd`), or an ultra disk (`cloud_efficiency`).
+        *   The maximum size of a data disk varies based on the disk category. For more information, see the description of `DataDisk.N.Size`.
+        *   Up to 16 data disks can be added to an instance. Mount points /dev/xvd\\[b-z] are automatically assigned to data disks in ascending alphanumeric order.
+        >  If the `QuotaExceed.DiskCapacity` error is returned when you call this operation, it indicates that the maximum capacity of the disks of the selected disk category in the specified zone has been reached. You can go to the [Quota Center](https://quotas.console.aliyun.com/products/disk/quotas) to query and request a quota increase.
+        *   **User data**: If the instance type supports user data, you can use the UserData parameter to pass in user data.[](~~49121~~) User data is encoded in Base64. We recommend that you do not pass in confidential information (such as passwords or private keys) in plaintext as user data. This is because the system does not encrypt `UserData` values when API requests are transmitted. If you must pass in confidential information, we recommend that you encrypt and encode the information in Base64 before you pass in the information. Then decode and decrypt the information in the same way within the instance.
+        *   **Others**: When you call API operations by using Alibaba Cloud CLI or SDKs, you must delete periods (.) from some request parameters before you use the parameters. For example, use `SystemDiskCategory` instead of `SystemDisk.Category` as a request parameter.
         
         @param request: CreateInstanceRequest
         @return: CreateInstanceResponse
@@ -8671,8 +8687,8 @@ class Client(OpenApiClient):
         *   An ENI can be attached only to a single instance that resides in a virtual private cloud (VPC).
         *   When an ENI is detached from an instance and attached to another instance, the attributes of the ENI remain unchanged and network traffic is redirected to the new instance.
         *   If you want to assign IPv6 addresses when you create an ENI, make sure that IPv6 is enabled for the vSwitch with which you want to associate the ENI. For more information, see [What is an IPv6 gateway?](~~98896~~)
-        *   A quota is imposed on the number of ENIs that can be created per Alibaba Cloud region per account. You can view the quota on the ECS console. For more information, see [View and increase resource quotas](~~184115~~).
-        **For information about examples on how to call the CreateNetworkInterface operation, see **[Create an ENI](~~471552~~).
+        *   A quota is imposed on the number of ENIs that can be created per Alibaba Cloud region per account. You can view the quota in the ECS console. For more information, see [View and increase resource quotas](~~184115~~).
+        **For information about examples on how to call this operation, see** [Create an ENI](~~471552~~).
         
         @param request: CreateNetworkInterfaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8776,8 +8792,8 @@ class Client(OpenApiClient):
         *   An ENI can be attached only to a single instance that resides in a virtual private cloud (VPC).
         *   When an ENI is detached from an instance and attached to another instance, the attributes of the ENI remain unchanged and network traffic is redirected to the new instance.
         *   If you want to assign IPv6 addresses when you create an ENI, make sure that IPv6 is enabled for the vSwitch with which you want to associate the ENI. For more information, see [What is an IPv6 gateway?](~~98896~~)
-        *   A quota is imposed on the number of ENIs that can be created per Alibaba Cloud region per account. You can view the quota on the ECS console. For more information, see [View and increase resource quotas](~~184115~~).
-        **For information about examples on how to call the CreateNetworkInterface operation, see **[Create an ENI](~~471552~~).
+        *   A quota is imposed on the number of ENIs that can be created per Alibaba Cloud region per account. You can view the quota in the ECS console. For more information, see [View and increase resource quotas](~~184115~~).
+        **For information about examples on how to call this operation, see** [Create an ENI](~~471552~~).
         
         @param request: CreateNetworkInterfaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8880,8 +8896,8 @@ class Client(OpenApiClient):
         *   An ENI can be attached only to a single instance that resides in a virtual private cloud (VPC).
         *   When an ENI is detached from an instance and attached to another instance, the attributes of the ENI remain unchanged and network traffic is redirected to the new instance.
         *   If you want to assign IPv6 addresses when you create an ENI, make sure that IPv6 is enabled for the vSwitch with which you want to associate the ENI. For more information, see [What is an IPv6 gateway?](~~98896~~)
-        *   A quota is imposed on the number of ENIs that can be created per Alibaba Cloud region per account. You can view the quota on the ECS console. For more information, see [View and increase resource quotas](~~184115~~).
-        **For information about examples on how to call the CreateNetworkInterface operation, see **[Create an ENI](~~471552~~).
+        *   A quota is imposed on the number of ENIs that can be created per Alibaba Cloud region per account. You can view the quota in the ECS console. For more information, see [View and increase resource quotas](~~184115~~).
+        **For information about examples on how to call this operation, see** [Create an ENI](~~471552~~).
         
         @param request: CreateNetworkInterfaceRequest
         @return: CreateNetworkInterfaceResponse
@@ -8901,8 +8917,8 @@ class Client(OpenApiClient):
         *   An ENI can be attached only to a single instance that resides in a virtual private cloud (VPC).
         *   When an ENI is detached from an instance and attached to another instance, the attributes of the ENI remain unchanged and network traffic is redirected to the new instance.
         *   If you want to assign IPv6 addresses when you create an ENI, make sure that IPv6 is enabled for the vSwitch with which you want to associate the ENI. For more information, see [What is an IPv6 gateway?](~~98896~~)
-        *   A quota is imposed on the number of ENIs that can be created per Alibaba Cloud region per account. You can view the quota on the ECS console. For more information, see [View and increase resource quotas](~~184115~~).
-        **For information about examples on how to call the CreateNetworkInterface operation, see **[Create an ENI](~~471552~~).
+        *   A quota is imposed on the number of ENIs that can be created per Alibaba Cloud region per account. You can view the quota in the ECS console. For more information, see [View and increase resource quotas](~~184115~~).
+        **For information about examples on how to call this operation, see** [Create an ENI](~~471552~~).
         
         @param request: CreateNetworkInterfaceRequest
         @return: CreateNetworkInterfaceResponse
@@ -9186,7 +9202,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreatePrefixListResponse:
         """
-        PrefixListNameSample
+        A prefix list is a collection of network prefixes (CIDR blocks) and can be referenced to configure network rules for other resources. For more information, see [Overview](~~206223~~).
+        *   When you create a prefix list, take note of the following items:
+        *   You must specify an IP address family (IPv4 or IPv6) for the prefix list, and cannot change the IP address family after the prefix list is created. You cannot combine IPv4 and IPv6 CIDR blocks in a single prefix list.
+        *   You must specify the maximum number of entries that the prefix list can contain. You cannot modify the maximum number of entries after the prefix list is created.
+        *   You can specify entries for the prefix list. Each entry consists of a CIDR block and the description for the CIDR block. The total number of entries cannot exceed the maximum number of entries that you specified.
+        *   For more information about the limits on prefix lists and other resources, see [Limits](~~25412~~).
+        *   You can create Resource Access Management (RAM) users and grant them minimum permissions. This eliminates the need to share the AccessKey pair of your Alibaba Cloud account with other users and reduces security risks for your enterprises. For information about how to grant permissions on prefix lists to RAM users, see [Grant a RAM user permissions on prefix lists](~~206175~~)
         
         @param request: CreatePrefixListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9243,7 +9265,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreatePrefixListResponse:
         """
-        PrefixListNameSample
+        A prefix list is a collection of network prefixes (CIDR blocks) and can be referenced to configure network rules for other resources. For more information, see [Overview](~~206223~~).
+        *   When you create a prefix list, take note of the following items:
+        *   You must specify an IP address family (IPv4 or IPv6) for the prefix list, and cannot change the IP address family after the prefix list is created. You cannot combine IPv4 and IPv6 CIDR blocks in a single prefix list.
+        *   You must specify the maximum number of entries that the prefix list can contain. You cannot modify the maximum number of entries after the prefix list is created.
+        *   You can specify entries for the prefix list. Each entry consists of a CIDR block and the description for the CIDR block. The total number of entries cannot exceed the maximum number of entries that you specified.
+        *   For more information about the limits on prefix lists and other resources, see [Limits](~~25412~~).
+        *   You can create Resource Access Management (RAM) users and grant them minimum permissions. This eliminates the need to share the AccessKey pair of your Alibaba Cloud account with other users and reduces security risks for your enterprises. For information about how to grant permissions on prefix lists to RAM users, see [Grant a RAM user permissions on prefix lists](~~206175~~)
         
         @param request: CreatePrefixListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9299,7 +9327,13 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreatePrefixListRequest,
     ) -> ecs_20140526_models.CreatePrefixListResponse:
         """
-        PrefixListNameSample
+        A prefix list is a collection of network prefixes (CIDR blocks) and can be referenced to configure network rules for other resources. For more information, see [Overview](~~206223~~).
+        *   When you create a prefix list, take note of the following items:
+        *   You must specify an IP address family (IPv4 or IPv6) for the prefix list, and cannot change the IP address family after the prefix list is created. You cannot combine IPv4 and IPv6 CIDR blocks in a single prefix list.
+        *   You must specify the maximum number of entries that the prefix list can contain. You cannot modify the maximum number of entries after the prefix list is created.
+        *   You can specify entries for the prefix list. Each entry consists of a CIDR block and the description for the CIDR block. The total number of entries cannot exceed the maximum number of entries that you specified.
+        *   For more information about the limits on prefix lists and other resources, see [Limits](~~25412~~).
+        *   You can create Resource Access Management (RAM) users and grant them minimum permissions. This eliminates the need to share the AccessKey pair of your Alibaba Cloud account with other users and reduces security risks for your enterprises. For information about how to grant permissions on prefix lists to RAM users, see [Grant a RAM user permissions on prefix lists](~~206175~~)
         
         @param request: CreatePrefixListRequest
         @return: CreatePrefixListResponse
@@ -9312,7 +9346,13 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreatePrefixListRequest,
     ) -> ecs_20140526_models.CreatePrefixListResponse:
         """
-        PrefixListNameSample
+        A prefix list is a collection of network prefixes (CIDR blocks) and can be referenced to configure network rules for other resources. For more information, see [Overview](~~206223~~).
+        *   When you create a prefix list, take note of the following items:
+        *   You must specify an IP address family (IPv4 or IPv6) for the prefix list, and cannot change the IP address family after the prefix list is created. You cannot combine IPv4 and IPv6 CIDR blocks in a single prefix list.
+        *   You must specify the maximum number of entries that the prefix list can contain. You cannot modify the maximum number of entries after the prefix list is created.
+        *   You can specify entries for the prefix list. Each entry consists of a CIDR block and the description for the CIDR block. The total number of entries cannot exceed the maximum number of entries that you specified.
+        *   For more information about the limits on prefix lists and other resources, see [Limits](~~25412~~).
+        *   You can create Resource Access Management (RAM) users and grant them minimum permissions. This eliminates the need to share the AccessKey pair of your Alibaba Cloud account with other users and reduces security risks for your enterprises. For information about how to grant permissions on prefix lists to RAM users, see [Grant a RAM user permissions on prefix lists](~~206175~~)
         
         @param request: CreatePrefixListRequest
         @return: CreatePrefixListResponse
@@ -10072,7 +10112,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateSnapshotResponse:
         """
-        The request ID.
+        ## [](#)Usage notes
+        The local snapshot feature is replaced by the instant access feature. Take note of the following items:
+        *   If you have used the local snapshot feature before December 14, 2020, you can use the Category parameter.
+        *   If you have not used the local snapshot feature before December 14, 2020, new snapshots of your enhanced SSDs (ESSDs) at performance levels 0, 1, 2, and 3 (PL0, PL1, PL2, and PL3 ESSDs) and ESSD AutoPL disks are instantly available after creation without the need for additional configurations, regardless of whether the snapshots are manually or automatically created. The InstantAccess, InstantAccessRetentionDays, and DisableInstantAccess parameters in this operation that are related to the instant access feature no longer take effect. Available is added to the response parameters of the DescribeSnapshots and DescribeSnapshotGroup operations to indicate whether the snapshot is available.
+        In the following scenarios, you cannot create snapshots for a disk:
+        *   The number of manual snapshots of the disk has reached 256.
+        *   A snapshot is being created for the disk.
+        *   The Elastic Compute Service (ECS) instance to which the disk is attached has never been started.
+        *   The ECS instance to which the disk is attached is not in the **Stopped** (`Stopped`) or **Running** (`Running`) state.
+        *   If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of the instance, the instance is locked for security reasons and all operations are prohibited on it.
+        When you create a snapshot, take note of the following items:
+        *   If a snapshot is being created, you cannot use this snapshot to create a custom image by calling the [CreateImage](~~25535~~) operation.
+        *   When a snapshot is being created for a disk that is attached to an ECS instance, do not change the instance state.
+        *   You can create snapshots for a disk that is in the **Expired** (`Expired`) state. If the release time scheduled for a disk arrives while a snapshot is being created for the disk, the snapshot is in the **Creating** (`Creating` state and is deleted when the disk is released.
         
         @param request: CreateSnapshotRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10135,7 +10188,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateSnapshotResponse:
         """
-        The request ID.
+        ## [](#)Usage notes
+        The local snapshot feature is replaced by the instant access feature. Take note of the following items:
+        *   If you have used the local snapshot feature before December 14, 2020, you can use the Category parameter.
+        *   If you have not used the local snapshot feature before December 14, 2020, new snapshots of your enhanced SSDs (ESSDs) at performance levels 0, 1, 2, and 3 (PL0, PL1, PL2, and PL3 ESSDs) and ESSD AutoPL disks are instantly available after creation without the need for additional configurations, regardless of whether the snapshots are manually or automatically created. The InstantAccess, InstantAccessRetentionDays, and DisableInstantAccess parameters in this operation that are related to the instant access feature no longer take effect. Available is added to the response parameters of the DescribeSnapshots and DescribeSnapshotGroup operations to indicate whether the snapshot is available.
+        In the following scenarios, you cannot create snapshots for a disk:
+        *   The number of manual snapshots of the disk has reached 256.
+        *   A snapshot is being created for the disk.
+        *   The Elastic Compute Service (ECS) instance to which the disk is attached has never been started.
+        *   The ECS instance to which the disk is attached is not in the **Stopped** (`Stopped`) or **Running** (`Running`) state.
+        *   If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of the instance, the instance is locked for security reasons and all operations are prohibited on it.
+        When you create a snapshot, take note of the following items:
+        *   If a snapshot is being created, you cannot use this snapshot to create a custom image by calling the [CreateImage](~~25535~~) operation.
+        *   When a snapshot is being created for a disk that is attached to an ECS instance, do not change the instance state.
+        *   You can create snapshots for a disk that is in the **Expired** (`Expired`) state. If the release time scheduled for a disk arrives while a snapshot is being created for the disk, the snapshot is in the **Creating** (`Creating` state and is deleted when the disk is released.
         
         @param request: CreateSnapshotRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10197,7 +10263,20 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateSnapshotRequest,
     ) -> ecs_20140526_models.CreateSnapshotResponse:
         """
-        The request ID.
+        ## [](#)Usage notes
+        The local snapshot feature is replaced by the instant access feature. Take note of the following items:
+        *   If you have used the local snapshot feature before December 14, 2020, you can use the Category parameter.
+        *   If you have not used the local snapshot feature before December 14, 2020, new snapshots of your enhanced SSDs (ESSDs) at performance levels 0, 1, 2, and 3 (PL0, PL1, PL2, and PL3 ESSDs) and ESSD AutoPL disks are instantly available after creation without the need for additional configurations, regardless of whether the snapshots are manually or automatically created. The InstantAccess, InstantAccessRetentionDays, and DisableInstantAccess parameters in this operation that are related to the instant access feature no longer take effect. Available is added to the response parameters of the DescribeSnapshots and DescribeSnapshotGroup operations to indicate whether the snapshot is available.
+        In the following scenarios, you cannot create snapshots for a disk:
+        *   The number of manual snapshots of the disk has reached 256.
+        *   A snapshot is being created for the disk.
+        *   The Elastic Compute Service (ECS) instance to which the disk is attached has never been started.
+        *   The ECS instance to which the disk is attached is not in the **Stopped** (`Stopped`) or **Running** (`Running`) state.
+        *   If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of the instance, the instance is locked for security reasons and all operations are prohibited on it.
+        When you create a snapshot, take note of the following items:
+        *   If a snapshot is being created, you cannot use this snapshot to create a custom image by calling the [CreateImage](~~25535~~) operation.
+        *   When a snapshot is being created for a disk that is attached to an ECS instance, do not change the instance state.
+        *   You can create snapshots for a disk that is in the **Expired** (`Expired`) state. If the release time scheduled for a disk arrives while a snapshot is being created for the disk, the snapshot is in the **Creating** (`Creating` state and is deleted when the disk is released.
         
         @param request: CreateSnapshotRequest
         @return: CreateSnapshotResponse
@@ -10210,7 +10289,20 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateSnapshotRequest,
     ) -> ecs_20140526_models.CreateSnapshotResponse:
         """
-        The request ID.
+        ## [](#)Usage notes
+        The local snapshot feature is replaced by the instant access feature. Take note of the following items:
+        *   If you have used the local snapshot feature before December 14, 2020, you can use the Category parameter.
+        *   If you have not used the local snapshot feature before December 14, 2020, new snapshots of your enhanced SSDs (ESSDs) at performance levels 0, 1, 2, and 3 (PL0, PL1, PL2, and PL3 ESSDs) and ESSD AutoPL disks are instantly available after creation without the need for additional configurations, regardless of whether the snapshots are manually or automatically created. The InstantAccess, InstantAccessRetentionDays, and DisableInstantAccess parameters in this operation that are related to the instant access feature no longer take effect. Available is added to the response parameters of the DescribeSnapshots and DescribeSnapshotGroup operations to indicate whether the snapshot is available.
+        In the following scenarios, you cannot create snapshots for a disk:
+        *   The number of manual snapshots of the disk has reached 256.
+        *   A snapshot is being created for the disk.
+        *   The Elastic Compute Service (ECS) instance to which the disk is attached has never been started.
+        *   The ECS instance to which the disk is attached is not in the **Stopped** (`Stopped`) or **Running** (`Running`) state.
+        *   If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of the instance, the instance is locked for security reasons and all operations are prohibited on it.
+        When you create a snapshot, take note of the following items:
+        *   If a snapshot is being created, you cannot use this snapshot to create a custom image by calling the [CreateImage](~~25535~~) operation.
+        *   When a snapshot is being created for a disk that is attached to an ECS instance, do not change the instance state.
+        *   You can create snapshots for a disk that is in the **Expired** (`Expired`) state. If the release time scheduled for a disk arrives while a snapshot is being created for the disk, the snapshot is in the **Creating** (`Creating` state and is deleted when the disk is released.
         
         @param request: CreateSnapshotRequest
         @return: CreateSnapshotResponse
@@ -10224,16 +10316,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateSnapshotGroupResponse:
         """
-        You can specify `InstanceId` to create a snapshot-consistent group for the specified cloud disks of an instance. You can also specify `DiskId.N` to create a snapshot-consistent group for multiple cloud disks that are attached to multiple instances within the same zone.
-        > You cannot specify both `DiskId.N` and `ExcludeDiskId.N` in the same request. If `InstanceId` is set, you can use `DiskId.N` to specify only cloud disks attached to the instance specified by InstanceId. You cannot use DiskId.N to specify cloud disks attached to multiple instances.
-        When you call this operation, take note of the following items:
-        *   The cloud disk for which you want to create a snapshot must be in the **In Use** or **Unattached** (`Available`) state.``
-        *   If the cloud disk is in the **In Use** state, the instance to which the cloud disk is attached must be in the **Running** or **Stopped** state.``````
-        *   If the cloud disk is in the **Unattached** (`Available`) state, make sure that the cloud disk has been attached to an ECS instance. Snapshots cannot be created for cloud disks that have never been attached to an ECS instance.
-        *   The snapshot-consistent group feature can be used to create snapshots only for enhanced SSDs (ESSDs).
-        *   A snapshot-consistent group can contain snapshots of up to 16 cloud disks (including the system disk and data disks) whose total disk size does not exceed 32 TiB.
-        *   Snapshots that you created by using the snapshot-consistent group feature are retained until they are deleted. We recommend that you delete unnecessary snapshots on a regular basis to prevent them from incurring excess fees.
-        *   Snapshot-consistent groups cannot be created for cloud disks that have the multi-attach feature enabled. If cloud disks for which the multi-attach feature is enabled are attached to an instance, you must set `ExcludeDiskId.N` to exclude these cloud disks.
+        ## [](#)Usage notes
+        You can specify `InstanceId` to create a snapshot-consistent group for disks on a specific (ECS instance. You can also specify `DiskId.N` to create a snapshot-consistent group for multiple disks on multiple ECS instances within the same zone.
+        >  You cannot specify both `DiskId.N` and `ExcludeDiskId.N` in the same request. If `InstanceId` is specified, you can use `DiskId.N` to specify only disks on the ECS instance specified by InstanceId and cannot use DiskId.N to specify disks across ECS instances.
+        Take note of the following items:
+        *   The disks for which you want to create a snapshot must be in the **In Use** (`In_use`) or **Unattached** (`Available`) state.
+        *   If a disk is in the **In Use** (`In_use`) state, make sure that the ECS instance to which the disk is attached is in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
+        *   If a disk is in the **Unattached** (`Available`) state, make sure that the disk has been attached to ECS instances. Snapshots cannot be created for disks that have never been attached to an ECS instance.
+        *   Snapshot-consistent groups can be used to create snapshots only for enhanced SSDs (ESSDs).
+        *   A snapshot-consistent group can contain snapshots of up to 16 disks, including system disks and data disks, and cannot exceed 32 TiB in size.
+        *   Snapshots that you created are stored indefinitely until you delete the snapshots. We recommend that you delete unnecessary snapshots on a regular basis to prevent excess snapshot storage fees.
+        *   Snapshot-consistent groups cannot be created for disks for which multi-attach feature is enabled. If disks for which the multi-attach feature is enabled are attached to an ECS instance, specify the `ExcludeDiskId.N` parameter to exclude the disks.
         For more information about the snapshot-consistent group feature, see [Create a snapshot-consistent group](~~199625~~).
         
         @param request: CreateSnapshotGroupRequest
@@ -10297,16 +10390,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateSnapshotGroupResponse:
         """
-        You can specify `InstanceId` to create a snapshot-consistent group for the specified cloud disks of an instance. You can also specify `DiskId.N` to create a snapshot-consistent group for multiple cloud disks that are attached to multiple instances within the same zone.
-        > You cannot specify both `DiskId.N` and `ExcludeDiskId.N` in the same request. If `InstanceId` is set, you can use `DiskId.N` to specify only cloud disks attached to the instance specified by InstanceId. You cannot use DiskId.N to specify cloud disks attached to multiple instances.
-        When you call this operation, take note of the following items:
-        *   The cloud disk for which you want to create a snapshot must be in the **In Use** or **Unattached** (`Available`) state.``
-        *   If the cloud disk is in the **In Use** state, the instance to which the cloud disk is attached must be in the **Running** or **Stopped** state.``````
-        *   If the cloud disk is in the **Unattached** (`Available`) state, make sure that the cloud disk has been attached to an ECS instance. Snapshots cannot be created for cloud disks that have never been attached to an ECS instance.
-        *   The snapshot-consistent group feature can be used to create snapshots only for enhanced SSDs (ESSDs).
-        *   A snapshot-consistent group can contain snapshots of up to 16 cloud disks (including the system disk and data disks) whose total disk size does not exceed 32 TiB.
-        *   Snapshots that you created by using the snapshot-consistent group feature are retained until they are deleted. We recommend that you delete unnecessary snapshots on a regular basis to prevent them from incurring excess fees.
-        *   Snapshot-consistent groups cannot be created for cloud disks that have the multi-attach feature enabled. If cloud disks for which the multi-attach feature is enabled are attached to an instance, you must set `ExcludeDiskId.N` to exclude these cloud disks.
+        ## [](#)Usage notes
+        You can specify `InstanceId` to create a snapshot-consistent group for disks on a specific (ECS instance. You can also specify `DiskId.N` to create a snapshot-consistent group for multiple disks on multiple ECS instances within the same zone.
+        >  You cannot specify both `DiskId.N` and `ExcludeDiskId.N` in the same request. If `InstanceId` is specified, you can use `DiskId.N` to specify only disks on the ECS instance specified by InstanceId and cannot use DiskId.N to specify disks across ECS instances.
+        Take note of the following items:
+        *   The disks for which you want to create a snapshot must be in the **In Use** (`In_use`) or **Unattached** (`Available`) state.
+        *   If a disk is in the **In Use** (`In_use`) state, make sure that the ECS instance to which the disk is attached is in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
+        *   If a disk is in the **Unattached** (`Available`) state, make sure that the disk has been attached to ECS instances. Snapshots cannot be created for disks that have never been attached to an ECS instance.
+        *   Snapshot-consistent groups can be used to create snapshots only for enhanced SSDs (ESSDs).
+        *   A snapshot-consistent group can contain snapshots of up to 16 disks, including system disks and data disks, and cannot exceed 32 TiB in size.
+        *   Snapshots that you created are stored indefinitely until you delete the snapshots. We recommend that you delete unnecessary snapshots on a regular basis to prevent excess snapshot storage fees.
+        *   Snapshot-consistent groups cannot be created for disks for which multi-attach feature is enabled. If disks for which the multi-attach feature is enabled are attached to an ECS instance, specify the `ExcludeDiskId.N` parameter to exclude the disks.
         For more information about the snapshot-consistent group feature, see [Create a snapshot-consistent group](~~199625~~).
         
         @param request: CreateSnapshotGroupRequest
@@ -10369,16 +10463,17 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateSnapshotGroupRequest,
     ) -> ecs_20140526_models.CreateSnapshotGroupResponse:
         """
-        You can specify `InstanceId` to create a snapshot-consistent group for the specified cloud disks of an instance. You can also specify `DiskId.N` to create a snapshot-consistent group for multiple cloud disks that are attached to multiple instances within the same zone.
-        > You cannot specify both `DiskId.N` and `ExcludeDiskId.N` in the same request. If `InstanceId` is set, you can use `DiskId.N` to specify only cloud disks attached to the instance specified by InstanceId. You cannot use DiskId.N to specify cloud disks attached to multiple instances.
-        When you call this operation, take note of the following items:
-        *   The cloud disk for which you want to create a snapshot must be in the **In Use** or **Unattached** (`Available`) state.``
-        *   If the cloud disk is in the **In Use** state, the instance to which the cloud disk is attached must be in the **Running** or **Stopped** state.``````
-        *   If the cloud disk is in the **Unattached** (`Available`) state, make sure that the cloud disk has been attached to an ECS instance. Snapshots cannot be created for cloud disks that have never been attached to an ECS instance.
-        *   The snapshot-consistent group feature can be used to create snapshots only for enhanced SSDs (ESSDs).
-        *   A snapshot-consistent group can contain snapshots of up to 16 cloud disks (including the system disk and data disks) whose total disk size does not exceed 32 TiB.
-        *   Snapshots that you created by using the snapshot-consistent group feature are retained until they are deleted. We recommend that you delete unnecessary snapshots on a regular basis to prevent them from incurring excess fees.
-        *   Snapshot-consistent groups cannot be created for cloud disks that have the multi-attach feature enabled. If cloud disks for which the multi-attach feature is enabled are attached to an instance, you must set `ExcludeDiskId.N` to exclude these cloud disks.
+        ## [](#)Usage notes
+        You can specify `InstanceId` to create a snapshot-consistent group for disks on a specific (ECS instance. You can also specify `DiskId.N` to create a snapshot-consistent group for multiple disks on multiple ECS instances within the same zone.
+        >  You cannot specify both `DiskId.N` and `ExcludeDiskId.N` in the same request. If `InstanceId` is specified, you can use `DiskId.N` to specify only disks on the ECS instance specified by InstanceId and cannot use DiskId.N to specify disks across ECS instances.
+        Take note of the following items:
+        *   The disks for which you want to create a snapshot must be in the **In Use** (`In_use`) or **Unattached** (`Available`) state.
+        *   If a disk is in the **In Use** (`In_use`) state, make sure that the ECS instance to which the disk is attached is in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
+        *   If a disk is in the **Unattached** (`Available`) state, make sure that the disk has been attached to ECS instances. Snapshots cannot be created for disks that have never been attached to an ECS instance.
+        *   Snapshot-consistent groups can be used to create snapshots only for enhanced SSDs (ESSDs).
+        *   A snapshot-consistent group can contain snapshots of up to 16 disks, including system disks and data disks, and cannot exceed 32 TiB in size.
+        *   Snapshots that you created are stored indefinitely until you delete the snapshots. We recommend that you delete unnecessary snapshots on a regular basis to prevent excess snapshot storage fees.
+        *   Snapshot-consistent groups cannot be created for disks for which multi-attach feature is enabled. If disks for which the multi-attach feature is enabled are attached to an ECS instance, specify the `ExcludeDiskId.N` parameter to exclude the disks.
         For more information about the snapshot-consistent group feature, see [Create a snapshot-consistent group](~~199625~~).
         
         @param request: CreateSnapshotGroupRequest
@@ -10392,16 +10487,17 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateSnapshotGroupRequest,
     ) -> ecs_20140526_models.CreateSnapshotGroupResponse:
         """
-        You can specify `InstanceId` to create a snapshot-consistent group for the specified cloud disks of an instance. You can also specify `DiskId.N` to create a snapshot-consistent group for multiple cloud disks that are attached to multiple instances within the same zone.
-        > You cannot specify both `DiskId.N` and `ExcludeDiskId.N` in the same request. If `InstanceId` is set, you can use `DiskId.N` to specify only cloud disks attached to the instance specified by InstanceId. You cannot use DiskId.N to specify cloud disks attached to multiple instances.
-        When you call this operation, take note of the following items:
-        *   The cloud disk for which you want to create a snapshot must be in the **In Use** or **Unattached** (`Available`) state.``
-        *   If the cloud disk is in the **In Use** state, the instance to which the cloud disk is attached must be in the **Running** or **Stopped** state.``````
-        *   If the cloud disk is in the **Unattached** (`Available`) state, make sure that the cloud disk has been attached to an ECS instance. Snapshots cannot be created for cloud disks that have never been attached to an ECS instance.
-        *   The snapshot-consistent group feature can be used to create snapshots only for enhanced SSDs (ESSDs).
-        *   A snapshot-consistent group can contain snapshots of up to 16 cloud disks (including the system disk and data disks) whose total disk size does not exceed 32 TiB.
-        *   Snapshots that you created by using the snapshot-consistent group feature are retained until they are deleted. We recommend that you delete unnecessary snapshots on a regular basis to prevent them from incurring excess fees.
-        *   Snapshot-consistent groups cannot be created for cloud disks that have the multi-attach feature enabled. If cloud disks for which the multi-attach feature is enabled are attached to an instance, you must set `ExcludeDiskId.N` to exclude these cloud disks.
+        ## [](#)Usage notes
+        You can specify `InstanceId` to create a snapshot-consistent group for disks on a specific (ECS instance. You can also specify `DiskId.N` to create a snapshot-consistent group for multiple disks on multiple ECS instances within the same zone.
+        >  You cannot specify both `DiskId.N` and `ExcludeDiskId.N` in the same request. If `InstanceId` is specified, you can use `DiskId.N` to specify only disks on the ECS instance specified by InstanceId and cannot use DiskId.N to specify disks across ECS instances.
+        Take note of the following items:
+        *   The disks for which you want to create a snapshot must be in the **In Use** (`In_use`) or **Unattached** (`Available`) state.
+        *   If a disk is in the **In Use** (`In_use`) state, make sure that the ECS instance to which the disk is attached is in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
+        *   If a disk is in the **Unattached** (`Available`) state, make sure that the disk has been attached to ECS instances. Snapshots cannot be created for disks that have never been attached to an ECS instance.
+        *   Snapshot-consistent groups can be used to create snapshots only for enhanced SSDs (ESSDs).
+        *   A snapshot-consistent group can contain snapshots of up to 16 disks, including system disks and data disks, and cannot exceed 32 TiB in size.
+        *   Snapshots that you created are stored indefinitely until you delete the snapshots. We recommend that you delete unnecessary snapshots on a regular basis to prevent excess snapshot storage fees.
+        *   Snapshot-consistent groups cannot be created for disks for which multi-attach feature is enabled. If disks for which the multi-attach feature is enabled are attached to an ECS instance, specify the `ExcludeDiskId.N` parameter to exclude the disks.
         For more information about the snapshot-consistent group feature, see [Create a snapshot-consistent group](~~199625~~).
         
         @param request: CreateSnapshotGroupRequest
@@ -12928,14 +13024,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteInstanceResponse:
         """
-        After an instance is released, all the physical resources used by the instance are reclaimed by Alibaba Cloud. Data stored on the instance is deleted permanently and cannot be restored.
-        *   Disk settings may affect their behavior when the instances they are attached to are released. Take note of the following items:
-        *   If `DeleteWithInstance` is set to false, the disks are retained as pay-as-you-go disks.
-        *   If `DeleteWithInstance` is set to true, the disks are released along with the instance.
-        *   If `DeleteAutoSnapshot` is set to false, automatic snapshots of the disks are retained.
-        *   If `DeleteAutoSnapshot` is set to true, automatic snapshots of the disks are released.
+        ## [](#)Usage notes
+        *   After an ECS instance is released, all the physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
+        *   When you release an ECS instance, take note of the following items for the disks attached to the instance:
+        *   The disks for which `DeleteWithInstance` is set to false are retained as pay-as-you-go disks after the instance is released.
+        *   The disks for which `DeleteWithInstance` is set to true are released along with the instance.
+        *   For disks for which `DeleteAutoSnapshot` is set to false, the automatic snapshots of the disks are retained after the instance is released.
+        *   For disks for which `DeleteAutoSnapshot` is set to true, the automatic snapshots of the disks are released along with the instance.
         *   Manual snapshots of the disks are retained.
-        *   If the response contains `{"OperationLocks": {"LockReason" : "security"}}`, the instance is locked for security reasons. In this case, even if the `DeleteWithInstance` parameter is set to `false` for the data disks that are attached to the instance, the parameter is ignored and the data disks are released along with the instance. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).``
+        *   If `OperationLocks` in the response contains `"LockReason" : "security"` when you query the information of the instance, the instance is locked for security reasons. In this case, even if `DeleteWithInstance` is set to `false` for the disks that are attached to the instance, the system ignores the DeleteWithInstance value and releases the disks along with the instance. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
         
         @param request: DeleteInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12984,14 +13081,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteInstanceResponse:
         """
-        After an instance is released, all the physical resources used by the instance are reclaimed by Alibaba Cloud. Data stored on the instance is deleted permanently and cannot be restored.
-        *   Disk settings may affect their behavior when the instances they are attached to are released. Take note of the following items:
-        *   If `DeleteWithInstance` is set to false, the disks are retained as pay-as-you-go disks.
-        *   If `DeleteWithInstance` is set to true, the disks are released along with the instance.
-        *   If `DeleteAutoSnapshot` is set to false, automatic snapshots of the disks are retained.
-        *   If `DeleteAutoSnapshot` is set to true, automatic snapshots of the disks are released.
+        ## [](#)Usage notes
+        *   After an ECS instance is released, all the physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
+        *   When you release an ECS instance, take note of the following items for the disks attached to the instance:
+        *   The disks for which `DeleteWithInstance` is set to false are retained as pay-as-you-go disks after the instance is released.
+        *   The disks for which `DeleteWithInstance` is set to true are released along with the instance.
+        *   For disks for which `DeleteAutoSnapshot` is set to false, the automatic snapshots of the disks are retained after the instance is released.
+        *   For disks for which `DeleteAutoSnapshot` is set to true, the automatic snapshots of the disks are released along with the instance.
         *   Manual snapshots of the disks are retained.
-        *   If the response contains `{"OperationLocks": {"LockReason" : "security"}}`, the instance is locked for security reasons. In this case, even if the `DeleteWithInstance` parameter is set to `false` for the data disks that are attached to the instance, the parameter is ignored and the data disks are released along with the instance. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).``
+        *   If `OperationLocks` in the response contains `"LockReason" : "security"` when you query the information of the instance, the instance is locked for security reasons. In this case, even if `DeleteWithInstance` is set to `false` for the disks that are attached to the instance, the system ignores the DeleteWithInstance value and releases the disks along with the instance. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
         
         @param request: DeleteInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13039,14 +13137,15 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteInstanceRequest,
     ) -> ecs_20140526_models.DeleteInstanceResponse:
         """
-        After an instance is released, all the physical resources used by the instance are reclaimed by Alibaba Cloud. Data stored on the instance is deleted permanently and cannot be restored.
-        *   Disk settings may affect their behavior when the instances they are attached to are released. Take note of the following items:
-        *   If `DeleteWithInstance` is set to false, the disks are retained as pay-as-you-go disks.
-        *   If `DeleteWithInstance` is set to true, the disks are released along with the instance.
-        *   If `DeleteAutoSnapshot` is set to false, automatic snapshots of the disks are retained.
-        *   If `DeleteAutoSnapshot` is set to true, automatic snapshots of the disks are released.
+        ## [](#)Usage notes
+        *   After an ECS instance is released, all the physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
+        *   When you release an ECS instance, take note of the following items for the disks attached to the instance:
+        *   The disks for which `DeleteWithInstance` is set to false are retained as pay-as-you-go disks after the instance is released.
+        *   The disks for which `DeleteWithInstance` is set to true are released along with the instance.
+        *   For disks for which `DeleteAutoSnapshot` is set to false, the automatic snapshots of the disks are retained after the instance is released.
+        *   For disks for which `DeleteAutoSnapshot` is set to true, the automatic snapshots of the disks are released along with the instance.
         *   Manual snapshots of the disks are retained.
-        *   If the response contains `{"OperationLocks": {"LockReason" : "security"}}`, the instance is locked for security reasons. In this case, even if the `DeleteWithInstance` parameter is set to `false` for the data disks that are attached to the instance, the parameter is ignored and the data disks are released along with the instance. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).``
+        *   If `OperationLocks` in the response contains `"LockReason" : "security"` when you query the information of the instance, the instance is locked for security reasons. In this case, even if `DeleteWithInstance` is set to `false` for the disks that are attached to the instance, the system ignores the DeleteWithInstance value and releases the disks along with the instance. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
         
         @param request: DeleteInstanceRequest
         @return: DeleteInstanceResponse
@@ -13059,14 +13158,15 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteInstanceRequest,
     ) -> ecs_20140526_models.DeleteInstanceResponse:
         """
-        After an instance is released, all the physical resources used by the instance are reclaimed by Alibaba Cloud. Data stored on the instance is deleted permanently and cannot be restored.
-        *   Disk settings may affect their behavior when the instances they are attached to are released. Take note of the following items:
-        *   If `DeleteWithInstance` is set to false, the disks are retained as pay-as-you-go disks.
-        *   If `DeleteWithInstance` is set to true, the disks are released along with the instance.
-        *   If `DeleteAutoSnapshot` is set to false, automatic snapshots of the disks are retained.
-        *   If `DeleteAutoSnapshot` is set to true, automatic snapshots of the disks are released.
+        ## [](#)Usage notes
+        *   After an ECS instance is released, all the physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
+        *   When you release an ECS instance, take note of the following items for the disks attached to the instance:
+        *   The disks for which `DeleteWithInstance` is set to false are retained as pay-as-you-go disks after the instance is released.
+        *   The disks for which `DeleteWithInstance` is set to true are released along with the instance.
+        *   For disks for which `DeleteAutoSnapshot` is set to false, the automatic snapshots of the disks are retained after the instance is released.
+        *   For disks for which `DeleteAutoSnapshot` is set to true, the automatic snapshots of the disks are released along with the instance.
         *   Manual snapshots of the disks are retained.
-        *   If the response contains `{"OperationLocks": {"LockReason" : "security"}}`, the instance is locked for security reasons. In this case, even if the `DeleteWithInstance` parameter is set to `false` for the data disks that are attached to the instance, the parameter is ignored and the data disks are released along with the instance. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).``
+        *   If `OperationLocks` in the response contains `"LockReason" : "security"` when you query the information of the instance, the instance is locked for security reasons. In this case, even if `DeleteWithInstance` is set to `false` for the disks that are attached to the instance, the system ignores the DeleteWithInstance value and releases the disks along with the instance. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
         
         @param request: DeleteInstanceRequest
         @return: DeleteInstanceResponse
@@ -13672,15 +13772,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteNetworkInterfaceResponse:
         """
-        ##
-        *   The ENI must be in the Available state.
-        *   If the ENI is attached to an Elastic Compute Service (ECS) instance, you must call [DetachNetworkInterface](~~58514~~) to detach the ENI from the instance before you can delete the ENI.
+        Take note of the following items:
+        *   The ENI to be deleted must be in the Available state.
+        *   If the ENI to be deleted is attached to an Elastic Compute Service (ECS) instance, you must detach the ENI from the instance before you can delete the ENI. To detach the ENI, you can call the [DetachNetworkInterface](~~58514~~) operation.
         *   After an ENI is deleted, the following situations occur:
-        *   All the private IP addresses (including primary and secondary private IP addresses) of the ENI are automatically released.
-        *   The ENI is automatically removed from its security groups.
-        *   This operation is an asynchronous operation. After this operation is called to delete an ENI, you can check the state or events of the ENI to determine whether the ENI is deleted. The following figure shows the transitions between the states of the ENI.
-        ![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/file-manage-files/zh-CN/20221208/xual/DeleteNetworkInterface.jpg) - If the ENI is in the Deleting state, the ENI deletion request is sent, and the ENI is being deleted. - If the ENI is not found, the ENI is deleted. - If the ENI is stuck in the Deleting state, the ENI fails to be deleted, and you can re-initiate the request to delete the ENI.
-        **For information about examples on how to call this operation, see **[Delete an ENI](~~471553~~).
+        *   All private IP addresses (including primary and secondary private IP addresses) of the ENI are automatically released.
+        *   The ENI is automatically removed from all security groups.
+        *   The DeleteNetworkInterface operation is an asynchronous operation. After this operation is called to delete an ENI, you can check the status or events of the ENI to determine whether the ENI is deleted. The following figure shows the transitions between the states of the ENI.![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/file-manage-files/zh-CN/20221208/xual/DeleteNetworkInterface.jpg)
+        *   If the ENI is in the Deleting state, the ENI deletion request is sent and the ENI is being deleted.
+        *   If the ENI is not found, the ENI is deleted.
+        *   If the ENI is stuck in the Deleting state, the ENI fails to be deleted. You can re-initiate the request to delete the ENI.
+        **For information about examples on how to call the DeleteNetworkInterface operation, see **[Delete an ENI](~~471553~~).
         
         @param request: DeleteNetworkInterfaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13727,15 +13829,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteNetworkInterfaceResponse:
         """
-        ##
-        *   The ENI must be in the Available state.
-        *   If the ENI is attached to an Elastic Compute Service (ECS) instance, you must call [DetachNetworkInterface](~~58514~~) to detach the ENI from the instance before you can delete the ENI.
+        Take note of the following items:
+        *   The ENI to be deleted must be in the Available state.
+        *   If the ENI to be deleted is attached to an Elastic Compute Service (ECS) instance, you must detach the ENI from the instance before you can delete the ENI. To detach the ENI, you can call the [DetachNetworkInterface](~~58514~~) operation.
         *   After an ENI is deleted, the following situations occur:
-        *   All the private IP addresses (including primary and secondary private IP addresses) of the ENI are automatically released.
-        *   The ENI is automatically removed from its security groups.
-        *   This operation is an asynchronous operation. After this operation is called to delete an ENI, you can check the state or events of the ENI to determine whether the ENI is deleted. The following figure shows the transitions between the states of the ENI.
-        ![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/file-manage-files/zh-CN/20221208/xual/DeleteNetworkInterface.jpg) - If the ENI is in the Deleting state, the ENI deletion request is sent, and the ENI is being deleted. - If the ENI is not found, the ENI is deleted. - If the ENI is stuck in the Deleting state, the ENI fails to be deleted, and you can re-initiate the request to delete the ENI.
-        **For information about examples on how to call this operation, see **[Delete an ENI](~~471553~~).
+        *   All private IP addresses (including primary and secondary private IP addresses) of the ENI are automatically released.
+        *   The ENI is automatically removed from all security groups.
+        *   The DeleteNetworkInterface operation is an asynchronous operation. After this operation is called to delete an ENI, you can check the status or events of the ENI to determine whether the ENI is deleted. The following figure shows the transitions between the states of the ENI.![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/file-manage-files/zh-CN/20221208/xual/DeleteNetworkInterface.jpg)
+        *   If the ENI is in the Deleting state, the ENI deletion request is sent and the ENI is being deleted.
+        *   If the ENI is not found, the ENI is deleted.
+        *   If the ENI is stuck in the Deleting state, the ENI fails to be deleted. You can re-initiate the request to delete the ENI.
+        **For information about examples on how to call the DeleteNetworkInterface operation, see **[Delete an ENI](~~471553~~).
         
         @param request: DeleteNetworkInterfaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13781,15 +13885,17 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteNetworkInterfaceRequest,
     ) -> ecs_20140526_models.DeleteNetworkInterfaceResponse:
         """
-        ##
-        *   The ENI must be in the Available state.
-        *   If the ENI is attached to an Elastic Compute Service (ECS) instance, you must call [DetachNetworkInterface](~~58514~~) to detach the ENI from the instance before you can delete the ENI.
+        Take note of the following items:
+        *   The ENI to be deleted must be in the Available state.
+        *   If the ENI to be deleted is attached to an Elastic Compute Service (ECS) instance, you must detach the ENI from the instance before you can delete the ENI. To detach the ENI, you can call the [DetachNetworkInterface](~~58514~~) operation.
         *   After an ENI is deleted, the following situations occur:
-        *   All the private IP addresses (including primary and secondary private IP addresses) of the ENI are automatically released.
-        *   The ENI is automatically removed from its security groups.
-        *   This operation is an asynchronous operation. After this operation is called to delete an ENI, you can check the state or events of the ENI to determine whether the ENI is deleted. The following figure shows the transitions between the states of the ENI.
-        ![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/file-manage-files/zh-CN/20221208/xual/DeleteNetworkInterface.jpg) - If the ENI is in the Deleting state, the ENI deletion request is sent, and the ENI is being deleted. - If the ENI is not found, the ENI is deleted. - If the ENI is stuck in the Deleting state, the ENI fails to be deleted, and you can re-initiate the request to delete the ENI.
-        **For information about examples on how to call this operation, see **[Delete an ENI](~~471553~~).
+        *   All private IP addresses (including primary and secondary private IP addresses) of the ENI are automatically released.
+        *   The ENI is automatically removed from all security groups.
+        *   The DeleteNetworkInterface operation is an asynchronous operation. After this operation is called to delete an ENI, you can check the status or events of the ENI to determine whether the ENI is deleted. The following figure shows the transitions between the states of the ENI.![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/file-manage-files/zh-CN/20221208/xual/DeleteNetworkInterface.jpg)
+        *   If the ENI is in the Deleting state, the ENI deletion request is sent and the ENI is being deleted.
+        *   If the ENI is not found, the ENI is deleted.
+        *   If the ENI is stuck in the Deleting state, the ENI fails to be deleted. You can re-initiate the request to delete the ENI.
+        **For information about examples on how to call the DeleteNetworkInterface operation, see **[Delete an ENI](~~471553~~).
         
         @param request: DeleteNetworkInterfaceRequest
         @return: DeleteNetworkInterfaceResponse
@@ -13802,15 +13908,17 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteNetworkInterfaceRequest,
     ) -> ecs_20140526_models.DeleteNetworkInterfaceResponse:
         """
-        ##
-        *   The ENI must be in the Available state.
-        *   If the ENI is attached to an Elastic Compute Service (ECS) instance, you must call [DetachNetworkInterface](~~58514~~) to detach the ENI from the instance before you can delete the ENI.
+        Take note of the following items:
+        *   The ENI to be deleted must be in the Available state.
+        *   If the ENI to be deleted is attached to an Elastic Compute Service (ECS) instance, you must detach the ENI from the instance before you can delete the ENI. To detach the ENI, you can call the [DetachNetworkInterface](~~58514~~) operation.
         *   After an ENI is deleted, the following situations occur:
-        *   All the private IP addresses (including primary and secondary private IP addresses) of the ENI are automatically released.
-        *   The ENI is automatically removed from its security groups.
-        *   This operation is an asynchronous operation. After this operation is called to delete an ENI, you can check the state or events of the ENI to determine whether the ENI is deleted. The following figure shows the transitions between the states of the ENI.
-        ![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/file-manage-files/zh-CN/20221208/xual/DeleteNetworkInterface.jpg) - If the ENI is in the Deleting state, the ENI deletion request is sent, and the ENI is being deleted. - If the ENI is not found, the ENI is deleted. - If the ENI is stuck in the Deleting state, the ENI fails to be deleted, and you can re-initiate the request to delete the ENI.
-        **For information about examples on how to call this operation, see **[Delete an ENI](~~471553~~).
+        *   All private IP addresses (including primary and secondary private IP addresses) of the ENI are automatically released.
+        *   The ENI is automatically removed from all security groups.
+        *   The DeleteNetworkInterface operation is an asynchronous operation. After this operation is called to delete an ENI, you can check the status or events of the ENI to determine whether the ENI is deleted. The following figure shows the transitions between the states of the ENI.![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/file-manage-files/zh-CN/20221208/xual/DeleteNetworkInterface.jpg)
+        *   If the ENI is in the Deleting state, the ENI deletion request is sent and the ENI is being deleted.
+        *   If the ENI is not found, the ENI is deleted.
+        *   If the ENI is stuck in the Deleting state, the ENI fails to be deleted. You can re-initiate the request to delete the ENI.
+        **For information about examples on how to call the DeleteNetworkInterface operation, see **[Delete an ENI](~~471553~~).
         
         @param request: DeleteNetworkInterfaceRequest
         @return: DeleteNetworkInterfaceResponse
@@ -14076,7 +14184,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeletePrefixListResponse:
         """
-        The region ID of the prefix list. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+        If a prefix list is associated with resources, you cannot delete the prefix list. You must disassociate the prefix list from the resources before you delete the prefix list. You can call the [DescribePrefixListAssociations](~~204724~~) operation to query resources that are associated with a specific prefix list.
         
         @param request: DeletePrefixListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14123,7 +14231,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeletePrefixListResponse:
         """
-        The region ID of the prefix list. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+        If a prefix list is associated with resources, you cannot delete the prefix list. You must disassociate the prefix list from the resources before you delete the prefix list. You can call the [DescribePrefixListAssociations](~~204724~~) operation to query resources that are associated with a specific prefix list.
         
         @param request: DeletePrefixListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14169,7 +14277,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeletePrefixListRequest,
     ) -> ecs_20140526_models.DeletePrefixListResponse:
         """
-        The region ID of the prefix list. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+        If a prefix list is associated with resources, you cannot delete the prefix list. You must disassociate the prefix list from the resources before you delete the prefix list. You can call the [DescribePrefixListAssociations](~~204724~~) operation to query resources that are associated with a specific prefix list.
         
         @param request: DeletePrefixListRequest
         @return: DeletePrefixListResponse
@@ -14182,7 +14290,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeletePrefixListRequest,
     ) -> ecs_20140526_models.DeletePrefixListResponse:
         """
-        The region ID of the prefix list. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+        If a prefix list is associated with resources, you cannot delete the prefix list. You must disassociate the prefix list from the resources before you delete the prefix list. You can call the [DescribePrefixListAssociations](~~204724~~) operation to query resources that are associated with a specific prefix list.
         
         @param request: DeletePrefixListRequest
         @return: DeletePrefixListResponse
@@ -14456,8 +14564,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteSecurityGroupResponse:
         """
-        - Before you delete a security group, make sure that the security group does not contain instances and is not referenced by other security groups. Otherwise, the DeleteSecurityGroup request fails. You can call the [DescribeSecurityGroupReferences](~~57320~~) operation to query the reference details of the security group.
-        - If the error code InvalidOperation.DeletionProtection is returned when you call the DeleteSecurityGroup operation to delete a security group or if a deletion protection-related message appears when you delete a security group in the console, the deletion protection feature is enabled for the security group. When you create a Container Service for Kubernetes (ACK) cluster, the deletion protection feature is enabled for an associated security group to prevent accidental deletion. You cannot manually disable the deletion protection feature for the security group. The deletion protection feature can be automatically disabled only after the ACK cluster is deleted. For more information, see [Disable deletion protection for a security group](~~353191~~)
+        ## [](#)Usage notes
+        Take note of the following items:
+        *   Before you delete a security group, make sure that the security group does not contain instances and is not referenced by other security groups. Otherwise, the DeleteSecurityGroup request fails. You can call the [DescribeSecurityGroupReferences](~~57320~~) operation to query the reference details of the security group.
+        *   If the InvalidOperation.DeletionProtection error code is returned when you call the DeleteSecurityGroup operation to delete a security group or if a deletion protection-related message appears when you delete a security group in the Elastic Compute Service (ECS) console, the deletion protection feature is enabled for the security group. When you create a Container Service for Kubernetes (ACK) cluster, the deletion protection feature is enabled for an associated security group to prevent accidental deletion. You cannot manually disable the deletion protection feature for the security group. The deletion protection feature can be automatically disabled only after the ACK cluster is deleted. For more information, see [Disable deletion protection for a security group](~~353191~~).
         
         @param request: DeleteSecurityGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14502,8 +14612,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteSecurityGroupResponse:
         """
-        - Before you delete a security group, make sure that the security group does not contain instances and is not referenced by other security groups. Otherwise, the DeleteSecurityGroup request fails. You can call the [DescribeSecurityGroupReferences](~~57320~~) operation to query the reference details of the security group.
-        - If the error code InvalidOperation.DeletionProtection is returned when you call the DeleteSecurityGroup operation to delete a security group or if a deletion protection-related message appears when you delete a security group in the console, the deletion protection feature is enabled for the security group. When you create a Container Service for Kubernetes (ACK) cluster, the deletion protection feature is enabled for an associated security group to prevent accidental deletion. You cannot manually disable the deletion protection feature for the security group. The deletion protection feature can be automatically disabled only after the ACK cluster is deleted. For more information, see [Disable deletion protection for a security group](~~353191~~)
+        ## [](#)Usage notes
+        Take note of the following items:
+        *   Before you delete a security group, make sure that the security group does not contain instances and is not referenced by other security groups. Otherwise, the DeleteSecurityGroup request fails. You can call the [DescribeSecurityGroupReferences](~~57320~~) operation to query the reference details of the security group.
+        *   If the InvalidOperation.DeletionProtection error code is returned when you call the DeleteSecurityGroup operation to delete a security group or if a deletion protection-related message appears when you delete a security group in the Elastic Compute Service (ECS) console, the deletion protection feature is enabled for the security group. When you create a Container Service for Kubernetes (ACK) cluster, the deletion protection feature is enabled for an associated security group to prevent accidental deletion. You cannot manually disable the deletion protection feature for the security group. The deletion protection feature can be automatically disabled only after the ACK cluster is deleted. For more information, see [Disable deletion protection for a security group](~~353191~~).
         
         @param request: DeleteSecurityGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14547,8 +14659,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteSecurityGroupRequest,
     ) -> ecs_20140526_models.DeleteSecurityGroupResponse:
         """
-        - Before you delete a security group, make sure that the security group does not contain instances and is not referenced by other security groups. Otherwise, the DeleteSecurityGroup request fails. You can call the [DescribeSecurityGroupReferences](~~57320~~) operation to query the reference details of the security group.
-        - If the error code InvalidOperation.DeletionProtection is returned when you call the DeleteSecurityGroup operation to delete a security group or if a deletion protection-related message appears when you delete a security group in the console, the deletion protection feature is enabled for the security group. When you create a Container Service for Kubernetes (ACK) cluster, the deletion protection feature is enabled for an associated security group to prevent accidental deletion. You cannot manually disable the deletion protection feature for the security group. The deletion protection feature can be automatically disabled only after the ACK cluster is deleted. For more information, see [Disable deletion protection for a security group](~~353191~~)
+        ## [](#)Usage notes
+        Take note of the following items:
+        *   Before you delete a security group, make sure that the security group does not contain instances and is not referenced by other security groups. Otherwise, the DeleteSecurityGroup request fails. You can call the [DescribeSecurityGroupReferences](~~57320~~) operation to query the reference details of the security group.
+        *   If the InvalidOperation.DeletionProtection error code is returned when you call the DeleteSecurityGroup operation to delete a security group or if a deletion protection-related message appears when you delete a security group in the Elastic Compute Service (ECS) console, the deletion protection feature is enabled for the security group. When you create a Container Service for Kubernetes (ACK) cluster, the deletion protection feature is enabled for an associated security group to prevent accidental deletion. You cannot manually disable the deletion protection feature for the security group. The deletion protection feature can be automatically disabled only after the ACK cluster is deleted. For more information, see [Disable deletion protection for a security group](~~353191~~).
         
         @param request: DeleteSecurityGroupRequest
         @return: DeleteSecurityGroupResponse
@@ -14561,8 +14675,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteSecurityGroupRequest,
     ) -> ecs_20140526_models.DeleteSecurityGroupResponse:
         """
-        - Before you delete a security group, make sure that the security group does not contain instances and is not referenced by other security groups. Otherwise, the DeleteSecurityGroup request fails. You can call the [DescribeSecurityGroupReferences](~~57320~~) operation to query the reference details of the security group.
-        - If the error code InvalidOperation.DeletionProtection is returned when you call the DeleteSecurityGroup operation to delete a security group or if a deletion protection-related message appears when you delete a security group in the console, the deletion protection feature is enabled for the security group. When you create a Container Service for Kubernetes (ACK) cluster, the deletion protection feature is enabled for an associated security group to prevent accidental deletion. You cannot manually disable the deletion protection feature for the security group. The deletion protection feature can be automatically disabled only after the ACK cluster is deleted. For more information, see [Disable deletion protection for a security group](~~353191~~)
+        ## [](#)Usage notes
+        Take note of the following items:
+        *   Before you delete a security group, make sure that the security group does not contain instances and is not referenced by other security groups. Otherwise, the DeleteSecurityGroup request fails. You can call the [DescribeSecurityGroupReferences](~~57320~~) operation to query the reference details of the security group.
+        *   If the InvalidOperation.DeletionProtection error code is returned when you call the DeleteSecurityGroup operation to delete a security group or if a deletion protection-related message appears when you delete a security group in the Elastic Compute Service (ECS) console, the deletion protection feature is enabled for the security group. When you create a Container Service for Kubernetes (ACK) cluster, the deletion protection feature is enabled for an associated security group to prevent accidental deletion. You cannot manually disable the deletion protection feature for the security group. The deletion protection feature can be automatically disabled only after the ACK cluster is deleted. For more information, see [Disable deletion protection for a security group](~~353191~~).
         
         @param request: DeleteSecurityGroupRequest
         @return: DeleteSecurityGroupResponse
@@ -15505,7 +15621,7 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DescribeAccountAttributesResponse:
         """
         After you [create](https://account.alibabacloud.com/register/intl_register.htm) an Alibaba Cloud account, you can create a specific number of ECS instances in different regions within the account. For more information, see [Limits](~~25412~~).
-        You can apply for a quota increase in the [Quota Center console](https://ecs.console.aliyun.com/?#/privilegeQuotaV2/region/cn-hangzhou?subTab=userQuota).
+        You can apply for a quota increase in the [Quota Center console](https://quotas.console.aliyun.com/products).
         
         @param request: DescribeAccountAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15551,7 +15667,7 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DescribeAccountAttributesResponse:
         """
         After you [create](https://account.alibabacloud.com/register/intl_register.htm) an Alibaba Cloud account, you can create a specific number of ECS instances in different regions within the account. For more information, see [Limits](~~25412~~).
-        You can apply for a quota increase in the [Quota Center console](https://ecs.console.aliyun.com/?#/privilegeQuotaV2/region/cn-hangzhou?subTab=userQuota).
+        You can apply for a quota increase in the [Quota Center console](https://quotas.console.aliyun.com/products).
         
         @param request: DescribeAccountAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15596,7 +15712,7 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DescribeAccountAttributesResponse:
         """
         After you [create](https://account.alibabacloud.com/register/intl_register.htm) an Alibaba Cloud account, you can create a specific number of ECS instances in different regions within the account. For more information, see [Limits](~~25412~~).
-        You can apply for a quota increase in the [Quota Center console](https://ecs.console.aliyun.com/?#/privilegeQuotaV2/region/cn-hangzhou?subTab=userQuota).
+        You can apply for a quota increase in the [Quota Center console](https://quotas.console.aliyun.com/products).
         
         @param request: DescribeAccountAttributesRequest
         @return: DescribeAccountAttributesResponse
@@ -15610,7 +15726,7 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DescribeAccountAttributesResponse:
         """
         After you [create](https://account.alibabacloud.com/register/intl_register.htm) an Alibaba Cloud account, you can create a specific number of ECS instances in different regions within the account. For more information, see [Limits](~~25412~~).
-        You can apply for a quota increase in the [Quota Center console](https://ecs.console.aliyun.com/?#/privilegeQuotaV2/region/cn-hangzhou?subTab=userQuota).
+        You can apply for a quota increase in the [Quota Center console](https://quotas.console.aliyun.com/products).
         
         @param request: DescribeAccountAttributesRequest
         @return: DescribeAccountAttributesResponse
@@ -18712,13 +18828,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeDiskMonitorDataResponse:
         """
-        The monitoring data includes read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (microseconds), and write latency (microseconds) of the disk.
-        When you call this operation, take note of the following items:
-        *   Only the monitoring data of disks that are in the Running (`In_use`) state can be queried. For more information, see [Disk states](~~25689~~).
+        ## [](#)Usage notes
+        You can query the following monitoring data of a disk: the read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (microseconds), and write latency (microseconds).
+        Take note of the following items:
+        *   You can query the monitoring data only of the disks that are in the In Use (`In_Use`) state. For more information, see [Disk states](~~25689~~).
         **\
-        **Note**Some information may be missing from the monitoring data of a disk because the disk is not in the In Use (`In_Use`) state and the system cannot obtain the relevant information.
-        *   A maximum of 400 monitoring data entries can be returned at a time. An error is returned if the value calculated based on the following formula is greater than 400: `(EndTime - StartTime)/Period`.
-        *   You can query the monitoring data in a maximum of the last 30 days. If the value of `StartTime` is greater than 30 days before the current time, an error is returned.
+        **Note** Some information may be missing from the monitoring data of a disk because the disk is not in the In Use (`In_Use`) state and the system cannot obtain the relevant information.
+        *   Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
+        *   You can query the monitoring data in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
         
         @param request: DescribeDiskMonitorDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18767,13 +18884,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeDiskMonitorDataResponse:
         """
-        The monitoring data includes read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (microseconds), and write latency (microseconds) of the disk.
-        When you call this operation, take note of the following items:
-        *   Only the monitoring data of disks that are in the Running (`In_use`) state can be queried. For more information, see [Disk states](~~25689~~).
+        ## [](#)Usage notes
+        You can query the following monitoring data of a disk: the read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (microseconds), and write latency (microseconds).
+        Take note of the following items:
+        *   You can query the monitoring data only of the disks that are in the In Use (`In_Use`) state. For more information, see [Disk states](~~25689~~).
         **\
-        **Note**Some information may be missing from the monitoring data of a disk because the disk is not in the In Use (`In_Use`) state and the system cannot obtain the relevant information.
-        *   A maximum of 400 monitoring data entries can be returned at a time. An error is returned if the value calculated based on the following formula is greater than 400: `(EndTime - StartTime)/Period`.
-        *   You can query the monitoring data in a maximum of the last 30 days. If the value of `StartTime` is greater than 30 days before the current time, an error is returned.
+        **Note** Some information may be missing from the monitoring data of a disk because the disk is not in the In Use (`In_Use`) state and the system cannot obtain the relevant information.
+        *   Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
+        *   You can query the monitoring data in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
         
         @param request: DescribeDiskMonitorDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18821,13 +18939,14 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeDiskMonitorDataRequest,
     ) -> ecs_20140526_models.DescribeDiskMonitorDataResponse:
         """
-        The monitoring data includes read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (microseconds), and write latency (microseconds) of the disk.
-        When you call this operation, take note of the following items:
-        *   Only the monitoring data of disks that are in the Running (`In_use`) state can be queried. For more information, see [Disk states](~~25689~~).
+        ## [](#)Usage notes
+        You can query the following monitoring data of a disk: the read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (microseconds), and write latency (microseconds).
+        Take note of the following items:
+        *   You can query the monitoring data only of the disks that are in the In Use (`In_Use`) state. For more information, see [Disk states](~~25689~~).
         **\
-        **Note**Some information may be missing from the monitoring data of a disk because the disk is not in the In Use (`In_Use`) state and the system cannot obtain the relevant information.
-        *   A maximum of 400 monitoring data entries can be returned at a time. An error is returned if the value calculated based on the following formula is greater than 400: `(EndTime - StartTime)/Period`.
-        *   You can query the monitoring data in a maximum of the last 30 days. If the value of `StartTime` is greater than 30 days before the current time, an error is returned.
+        **Note** Some information may be missing from the monitoring data of a disk because the disk is not in the In Use (`In_Use`) state and the system cannot obtain the relevant information.
+        *   Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
+        *   You can query the monitoring data in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
         
         @param request: DescribeDiskMonitorDataRequest
         @return: DescribeDiskMonitorDataResponse
@@ -18840,13 +18959,14 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeDiskMonitorDataRequest,
     ) -> ecs_20140526_models.DescribeDiskMonitorDataResponse:
         """
-        The monitoring data includes read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (microseconds), and write latency (microseconds) of the disk.
-        When you call this operation, take note of the following items:
-        *   Only the monitoring data of disks that are in the Running (`In_use`) state can be queried. For more information, see [Disk states](~~25689~~).
+        ## [](#)Usage notes
+        You can query the following monitoring data of a disk: the read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (microseconds), and write latency (microseconds).
+        Take note of the following items:
+        *   You can query the monitoring data only of the disks that are in the In Use (`In_Use`) state. For more information, see [Disk states](~~25689~~).
         **\
-        **Note**Some information may be missing from the monitoring data of a disk because the disk is not in the In Use (`In_Use`) state and the system cannot obtain the relevant information.
-        *   A maximum of 400 monitoring data entries can be returned at a time. An error is returned if the value calculated based on the following formula is greater than 400: `(EndTime - StartTime)/Period`.
-        *   You can query the monitoring data in a maximum of the last 30 days. If the value of `StartTime` is greater than 30 days before the current time, an error is returned.
+        **Note** Some information may be missing from the monitoring data of a disk because the disk is not in the In Use (`In_Use`) state and the system cannot obtain the relevant information.
+        *   Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
+        *   You can query the monitoring data in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
         
         @param request: DescribeDiskMonitorDataRequest
         @return: DescribeDiskMonitorDataResponse
@@ -19822,9 +19942,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeEniMonitorDataResponse:
         """
-        The monitoring data includes traffic sent and received over the internal network, the number of packets sent and received by the secondary ENI, and the number of dropped packets sent and received by the secondary ENI. Specific information may be missing from the returned monitoring data. This is because the system cannot obtain the relevant information. For example, if the instance to which the secondary ENI is bound is in the Stopped state, or if the secondary ENI is not bound to an instance and is in the Available state, the monitoring data of the secondary ENI cannot be obtained. When you call this operation, take note of the following items:
-        *   Up to 400 monitoring data entries can be returned at a time. If the value that is calculated by using the following formula is greater than 400: (EndTime - StartTime)/Period, an error is returned.
-        *   Only the monitoring data within the last 30 days can be queried. If the value of StartTime is more than 30 days earlier than the time when you call this operation, an error is returned.
+        ## [](#)Usage notes
+        The monitoring data of a secondary ENI includes the amount of traffic sent and received over the internal network, the number of packets sent and received by the secondary ENI, and the number of sent and received packets that are dropped by the secondary ENI. Specific information may be missing from the returned monitoring data. This may be because the system cannot obtain the relevant information. For example, if the instance to which the secondary ENI is attached is in the Stopped state or if the secondary ENI is not attached to an instance and is in the Available state, the monitoring data of the secondary ENI cannot be obtained. Take note of the following items:
+        *   Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
+        *   You can query the monitoring data in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
         
         @param request: DescribeEniMonitorDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19877,9 +19998,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeEniMonitorDataResponse:
         """
-        The monitoring data includes traffic sent and received over the internal network, the number of packets sent and received by the secondary ENI, and the number of dropped packets sent and received by the secondary ENI. Specific information may be missing from the returned monitoring data. This is because the system cannot obtain the relevant information. For example, if the instance to which the secondary ENI is bound is in the Stopped state, or if the secondary ENI is not bound to an instance and is in the Available state, the monitoring data of the secondary ENI cannot be obtained. When you call this operation, take note of the following items:
-        *   Up to 400 monitoring data entries can be returned at a time. If the value that is calculated by using the following formula is greater than 400: (EndTime - StartTime)/Period, an error is returned.
-        *   Only the monitoring data within the last 30 days can be queried. If the value of StartTime is more than 30 days earlier than the time when you call this operation, an error is returned.
+        ## [](#)Usage notes
+        The monitoring data of a secondary ENI includes the amount of traffic sent and received over the internal network, the number of packets sent and received by the secondary ENI, and the number of sent and received packets that are dropped by the secondary ENI. Specific information may be missing from the returned monitoring data. This may be because the system cannot obtain the relevant information. For example, if the instance to which the secondary ENI is attached is in the Stopped state or if the secondary ENI is not attached to an instance and is in the Available state, the monitoring data of the secondary ENI cannot be obtained. Take note of the following items:
+        *   Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
+        *   You can query the monitoring data in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
         
         @param request: DescribeEniMonitorDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19931,9 +20053,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeEniMonitorDataRequest,
     ) -> ecs_20140526_models.DescribeEniMonitorDataResponse:
         """
-        The monitoring data includes traffic sent and received over the internal network, the number of packets sent and received by the secondary ENI, and the number of dropped packets sent and received by the secondary ENI. Specific information may be missing from the returned monitoring data. This is because the system cannot obtain the relevant information. For example, if the instance to which the secondary ENI is bound is in the Stopped state, or if the secondary ENI is not bound to an instance and is in the Available state, the monitoring data of the secondary ENI cannot be obtained. When you call this operation, take note of the following items:
-        *   Up to 400 monitoring data entries can be returned at a time. If the value that is calculated by using the following formula is greater than 400: (EndTime - StartTime)/Period, an error is returned.
-        *   Only the monitoring data within the last 30 days can be queried. If the value of StartTime is more than 30 days earlier than the time when you call this operation, an error is returned.
+        ## [](#)Usage notes
+        The monitoring data of a secondary ENI includes the amount of traffic sent and received over the internal network, the number of packets sent and received by the secondary ENI, and the number of sent and received packets that are dropped by the secondary ENI. Specific information may be missing from the returned monitoring data. This may be because the system cannot obtain the relevant information. For example, if the instance to which the secondary ENI is attached is in the Stopped state or if the secondary ENI is not attached to an instance and is in the Available state, the monitoring data of the secondary ENI cannot be obtained. Take note of the following items:
+        *   Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
+        *   You can query the monitoring data in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
         
         @param request: DescribeEniMonitorDataRequest
         @return: DescribeEniMonitorDataResponse
@@ -19946,9 +20069,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeEniMonitorDataRequest,
     ) -> ecs_20140526_models.DescribeEniMonitorDataResponse:
         """
-        The monitoring data includes traffic sent and received over the internal network, the number of packets sent and received by the secondary ENI, and the number of dropped packets sent and received by the secondary ENI. Specific information may be missing from the returned monitoring data. This is because the system cannot obtain the relevant information. For example, if the instance to which the secondary ENI is bound is in the Stopped state, or if the secondary ENI is not bound to an instance and is in the Available state, the monitoring data of the secondary ENI cannot be obtained. When you call this operation, take note of the following items:
-        *   Up to 400 monitoring data entries can be returned at a time. If the value that is calculated by using the following formula is greater than 400: (EndTime - StartTime)/Period, an error is returned.
-        *   Only the monitoring data within the last 30 days can be queried. If the value of StartTime is more than 30 days earlier than the time when you call this operation, an error is returned.
+        ## [](#)Usage notes
+        The monitoring data of a secondary ENI includes the amount of traffic sent and received over the internal network, the number of packets sent and received by the secondary ENI, and the number of sent and received packets that are dropped by the secondary ENI. Specific information may be missing from the returned monitoring data. This may be because the system cannot obtain the relevant information. For example, if the instance to which the secondary ENI is attached is in the Stopped state or if the secondary ENI is not attached to an instance and is in the Available state, the monitoring data of the secondary ENI cannot be obtained. Take note of the following items:
+        *   Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
+        *   You can query the monitoring data in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
         
         @param request: DescribeEniMonitorDataRequest
         @return: DescribeEniMonitorDataResponse
@@ -21088,9 +21212,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeImagesResponse:
         """
-        You can query your custom images, public images provided by Alibaba Cloud, Alibaba Cloud Marketplace images, and shared images from other Alibaba Cloud accounts.
-        *   This operation supports paged query. The response contains the total number of available images as well as the number of images on the returned page. By default, 10 entries are displayed on each page.
-        *   When you call an API operation by using Alibaba Cloud CLI, you must specify the request parameter values in their required formats. For more information, see [Parameter format overview](~~110340~~).
+        ## [](#)Usage notes
+        *   You can query your custom images, public images provided by Alibaba Cloud, Alibaba Cloud Marketplace images, and shared images from other Alibaba Cloud accounts.
+        *   This is a paginated query. The response contains the total number of available images and the images on the returned page. By default,10 entries are displayed on each page.
+        *   When you call an API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in the required formats. For more information, see [Parameter formats](~~110340~~).
+        *   If you set ImageOwnerAlias to system or others when you call the DescribeImages operation to query public images that are provided by Alibaba Cloud or shared images, Resource Access Management (RAM) policies are ignored in the request. For more information, see [RAM authorization](~~25497~~).
         
         @param request: DescribeImagesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21177,9 +21303,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeImagesResponse:
         """
-        You can query your custom images, public images provided by Alibaba Cloud, Alibaba Cloud Marketplace images, and shared images from other Alibaba Cloud accounts.
-        *   This operation supports paged query. The response contains the total number of available images as well as the number of images on the returned page. By default, 10 entries are displayed on each page.
-        *   When you call an API operation by using Alibaba Cloud CLI, you must specify the request parameter values in their required formats. For more information, see [Parameter format overview](~~110340~~).
+        ## [](#)Usage notes
+        *   You can query your custom images, public images provided by Alibaba Cloud, Alibaba Cloud Marketplace images, and shared images from other Alibaba Cloud accounts.
+        *   This is a paginated query. The response contains the total number of available images and the images on the returned page. By default,10 entries are displayed on each page.
+        *   When you call an API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in the required formats. For more information, see [Parameter formats](~~110340~~).
+        *   If you set ImageOwnerAlias to system or others when you call the DescribeImages operation to query public images that are provided by Alibaba Cloud or shared images, Resource Access Management (RAM) policies are ignored in the request. For more information, see [RAM authorization](~~25497~~).
         
         @param request: DescribeImagesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21265,9 +21393,11 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeImagesRequest,
     ) -> ecs_20140526_models.DescribeImagesResponse:
         """
-        You can query your custom images, public images provided by Alibaba Cloud, Alibaba Cloud Marketplace images, and shared images from other Alibaba Cloud accounts.
-        *   This operation supports paged query. The response contains the total number of available images as well as the number of images on the returned page. By default, 10 entries are displayed on each page.
-        *   When you call an API operation by using Alibaba Cloud CLI, you must specify the request parameter values in their required formats. For more information, see [Parameter format overview](~~110340~~).
+        ## [](#)Usage notes
+        *   You can query your custom images, public images provided by Alibaba Cloud, Alibaba Cloud Marketplace images, and shared images from other Alibaba Cloud accounts.
+        *   This is a paginated query. The response contains the total number of available images and the images on the returned page. By default,10 entries are displayed on each page.
+        *   When you call an API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in the required formats. For more information, see [Parameter formats](~~110340~~).
+        *   If you set ImageOwnerAlias to system or others when you call the DescribeImages operation to query public images that are provided by Alibaba Cloud or shared images, Resource Access Management (RAM) policies are ignored in the request. For more information, see [RAM authorization](~~25497~~).
         
         @param request: DescribeImagesRequest
         @return: DescribeImagesResponse
@@ -21280,9 +21410,11 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeImagesRequest,
     ) -> ecs_20140526_models.DescribeImagesResponse:
         """
-        You can query your custom images, public images provided by Alibaba Cloud, Alibaba Cloud Marketplace images, and shared images from other Alibaba Cloud accounts.
-        *   This operation supports paged query. The response contains the total number of available images as well as the number of images on the returned page. By default, 10 entries are displayed on each page.
-        *   When you call an API operation by using Alibaba Cloud CLI, you must specify the request parameter values in their required formats. For more information, see [Parameter format overview](~~110340~~).
+        ## [](#)Usage notes
+        *   You can query your custom images, public images provided by Alibaba Cloud, Alibaba Cloud Marketplace images, and shared images from other Alibaba Cloud accounts.
+        *   This is a paginated query. The response contains the total number of available images and the images on the returned page. By default,10 entries are displayed on each page.
+        *   When you call an API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in the required formats. For more information, see [Parameter formats](~~110340~~).
+        *   If you set ImageOwnerAlias to system or others when you call the DescribeImages operation to query public images that are provided by Alibaba Cloud or shared images, Resource Access Management (RAM) policies are ignored in the request. For more information, see [RAM authorization](~~25497~~).
         
         @param request: DescribeImagesRequest
         @return: DescribeImagesResponse
@@ -22090,10 +22222,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceMonitorDataResponse:
         """
+        ## [](#)Usage notes
         Take note of the following items:
-        *   Up to 400 monitoring data entries can be returned at a time. An error is returned if the value that is calculated by using the following formula is greater than 400: `(EndTime - StartTime)/Period`.
-        *   You can query the monitoring data of the last 30 days. If the value of the `StartTime` parameter is more than 30 days earlier than the current time, an error is returned.
-        *   In some scenarios, such as when the instance is in the Stopped state, the system cannot obtain the relevant information and a portion may be missing from the returned monitoring data.
+        *   Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
+        *   You can query the monitoring data in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
+        *   In some scenarios, such as when the instance is in the Stopped state, the system cannot obtain the relevant information and specific information may be missing from the returned monitoring data.
+        *   You cannot call this operation to obtain the CPU basic monitoring information of an ECS bare metal instance. To obtain the CPU monitoring information of an ECS bare metal instance, install the CloudMonitor agent on the instance. For more information, see [InstallCloudMonitor](~~183482~~).
         
         @param request: DescribeInstanceMonitorDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22142,10 +22276,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceMonitorDataResponse:
         """
+        ## [](#)Usage notes
         Take note of the following items:
-        *   Up to 400 monitoring data entries can be returned at a time. An error is returned if the value that is calculated by using the following formula is greater than 400: `(EndTime - StartTime)/Period`.
-        *   You can query the monitoring data of the last 30 days. If the value of the `StartTime` parameter is more than 30 days earlier than the current time, an error is returned.
-        *   In some scenarios, such as when the instance is in the Stopped state, the system cannot obtain the relevant information and a portion may be missing from the returned monitoring data.
+        *   Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
+        *   You can query the monitoring data in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
+        *   In some scenarios, such as when the instance is in the Stopped state, the system cannot obtain the relevant information and specific information may be missing from the returned monitoring data.
+        *   You cannot call this operation to obtain the CPU basic monitoring information of an ECS bare metal instance. To obtain the CPU monitoring information of an ECS bare metal instance, install the CloudMonitor agent on the instance. For more information, see [InstallCloudMonitor](~~183482~~).
         
         @param request: DescribeInstanceMonitorDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22193,10 +22329,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceMonitorDataRequest,
     ) -> ecs_20140526_models.DescribeInstanceMonitorDataResponse:
         """
+        ## [](#)Usage notes
         Take note of the following items:
-        *   Up to 400 monitoring data entries can be returned at a time. An error is returned if the value that is calculated by using the following formula is greater than 400: `(EndTime - StartTime)/Period`.
-        *   You can query the monitoring data of the last 30 days. If the value of the `StartTime` parameter is more than 30 days earlier than the current time, an error is returned.
-        *   In some scenarios, such as when the instance is in the Stopped state, the system cannot obtain the relevant information and a portion may be missing from the returned monitoring data.
+        *   Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
+        *   You can query the monitoring data in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
+        *   In some scenarios, such as when the instance is in the Stopped state, the system cannot obtain the relevant information and specific information may be missing from the returned monitoring data.
+        *   You cannot call this operation to obtain the CPU basic monitoring information of an ECS bare metal instance. To obtain the CPU monitoring information of an ECS bare metal instance, install the CloudMonitor agent on the instance. For more information, see [InstallCloudMonitor](~~183482~~).
         
         @param request: DescribeInstanceMonitorDataRequest
         @return: DescribeInstanceMonitorDataResponse
@@ -22209,10 +22347,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceMonitorDataRequest,
     ) -> ecs_20140526_models.DescribeInstanceMonitorDataResponse:
         """
+        ## [](#)Usage notes
         Take note of the following items:
-        *   Up to 400 monitoring data entries can be returned at a time. An error is returned if the value that is calculated by using the following formula is greater than 400: `(EndTime - StartTime)/Period`.
-        *   You can query the monitoring data of the last 30 days. If the value of the `StartTime` parameter is more than 30 days earlier than the current time, an error is returned.
-        *   In some scenarios, such as when the instance is in the Stopped state, the system cannot obtain the relevant information and a portion may be missing from the returned monitoring data.
+        *   Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
+        *   You can query the monitoring data in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
+        *   In some scenarios, such as when the instance is in the Stopped state, the system cannot obtain the relevant information and specific information may be missing from the returned monitoring data.
+        *   You cannot call this operation to obtain the CPU basic monitoring information of an ECS bare metal instance. To obtain the CPU monitoring information of an ECS bare metal instance, install the CloudMonitor agent on the instance. For more information, see [InstallCloudMonitor](~~183482~~).
         
         @param request: DescribeInstanceMonitorDataRequest
         @return: DescribeInstanceMonitorDataResponse
@@ -22968,26 +23108,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceVncUrlResponse:
         """
-        ## Description
-        When you call this operation, take note of the following items:
-        *   The URL returned is valid only for 15 seconds. If a connection is not established within 15 seconds after a successful query, the URL expires and you must query it again.
-        *   The **KeepAlive** time of a connection to a VNC management terminal is 60 seconds. If you do not interact with the VNC management terminal for 60 seconds, the VNC management terminal is automatically disconnected.
-        *   When you disconnect from the VNC management terminal, you can reconnect to the VNC management terminal up to 30 times a minute.
-        *   You must append the following parameters to the end of the `https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?` URL: `vncUrl`, `instanceId`, `isWindows` (True or False), and `password`. Connect these parameters with ampersands (`&`).
-        *   `vncUrl:` the `VncUrl` value returned after a successful query.
-        *   `instanceId:` the ID of your instance.
-        *   `isWindows:` specifies whether the operating system of the instance is Windows. Set the parameter to `true` if the operating system is Windows. Set the parameter to `false` if the operating system is not Windows.
-        *   `password:` Optional. A six-character password used to connect to the VNC management terminal. It can contain digits and letters. You do not need to enter your password again when the connection is being established if you set this parameter.
-        Example:
-        ```
+        ## [](#)Usage notes
+        Take note of the following items:
+        *   The **keepalive** time of a connection to a VNC management terminal is 300 seconds. If you do not interact with the VNC management terminal for 300 seconds, the VNC management terminal is automatically disconnected.
+        *   If the connection is interrupted, you must recall this operation to obtain a new logon address that is specified by `VncUrl` and use the new logon address to construct a URL that can be used to reconnect to the VNC management terminal. You can reconnect to a VNC management terminal for a maximum of 30 times per minute.
+        *   You need to add the `vncUrl=\\*\\*\\*\\*`, `instanceId=\\*\\*\\*\\*`, and `isWindows=true/false` parameters to the end of the link `https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?` and use an ampersand (`&`) between the parameters.
+        *   `vncUrl`: the value of `VncUrl` that is returned after a successful call of this operation.
+        *   `instanceId`: the ID of your instance.
+        *   `isWindows`: specifies whether the operating system of your instance is Windows. A value of `true` indicates that the operating system is Windows. A value of `false` indicates that the operating system is not Windows.
+        >  You can connect to an instance without a VNC logon password. Therefore, you do not need to configure the `password` parameter.
+        Sample URL:
         https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?vncUrl=ws%3A%2F%****&instanceId=i-wz9hhwq5a6tm****&isWindows=true
-        
-        ```
-        Or:
-        ```
-        https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?vncUrl=ws%3A%2F%****&instanceId=i-wz9hhwq5a6tm****&isWindows=true&password=****\
-        
-        ```
         
         @param request: DescribeInstanceVncUrlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23032,26 +23163,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceVncUrlResponse:
         """
-        ## Description
-        When you call this operation, take note of the following items:
-        *   The URL returned is valid only for 15 seconds. If a connection is not established within 15 seconds after a successful query, the URL expires and you must query it again.
-        *   The **KeepAlive** time of a connection to a VNC management terminal is 60 seconds. If you do not interact with the VNC management terminal for 60 seconds, the VNC management terminal is automatically disconnected.
-        *   When you disconnect from the VNC management terminal, you can reconnect to the VNC management terminal up to 30 times a minute.
-        *   You must append the following parameters to the end of the `https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?` URL: `vncUrl`, `instanceId`, `isWindows` (True or False), and `password`. Connect these parameters with ampersands (`&`).
-        *   `vncUrl:` the `VncUrl` value returned after a successful query.
-        *   `instanceId:` the ID of your instance.
-        *   `isWindows:` specifies whether the operating system of the instance is Windows. Set the parameter to `true` if the operating system is Windows. Set the parameter to `false` if the operating system is not Windows.
-        *   `password:` Optional. A six-character password used to connect to the VNC management terminal. It can contain digits and letters. You do not need to enter your password again when the connection is being established if you set this parameter.
-        Example:
-        ```
+        ## [](#)Usage notes
+        Take note of the following items:
+        *   The **keepalive** time of a connection to a VNC management terminal is 300 seconds. If you do not interact with the VNC management terminal for 300 seconds, the VNC management terminal is automatically disconnected.
+        *   If the connection is interrupted, you must recall this operation to obtain a new logon address that is specified by `VncUrl` and use the new logon address to construct a URL that can be used to reconnect to the VNC management terminal. You can reconnect to a VNC management terminal for a maximum of 30 times per minute.
+        *   You need to add the `vncUrl=\\*\\*\\*\\*`, `instanceId=\\*\\*\\*\\*`, and `isWindows=true/false` parameters to the end of the link `https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?` and use an ampersand (`&`) between the parameters.
+        *   `vncUrl`: the value of `VncUrl` that is returned after a successful call of this operation.
+        *   `instanceId`: the ID of your instance.
+        *   `isWindows`: specifies whether the operating system of your instance is Windows. A value of `true` indicates that the operating system is Windows. A value of `false` indicates that the operating system is not Windows.
+        >  You can connect to an instance without a VNC logon password. Therefore, you do not need to configure the `password` parameter.
+        Sample URL:
         https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?vncUrl=ws%3A%2F%****&instanceId=i-wz9hhwq5a6tm****&isWindows=true
-        
-        ```
-        Or:
-        ```
-        https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?vncUrl=ws%3A%2F%****&instanceId=i-wz9hhwq5a6tm****&isWindows=true&password=****\
-        
-        ```
         
         @param request: DescribeInstanceVncUrlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23095,26 +23217,17 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceVncUrlRequest,
     ) -> ecs_20140526_models.DescribeInstanceVncUrlResponse:
         """
-        ## Description
-        When you call this operation, take note of the following items:
-        *   The URL returned is valid only for 15 seconds. If a connection is not established within 15 seconds after a successful query, the URL expires and you must query it again.
-        *   The **KeepAlive** time of a connection to a VNC management terminal is 60 seconds. If you do not interact with the VNC management terminal for 60 seconds, the VNC management terminal is automatically disconnected.
-        *   When you disconnect from the VNC management terminal, you can reconnect to the VNC management terminal up to 30 times a minute.
-        *   You must append the following parameters to the end of the `https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?` URL: `vncUrl`, `instanceId`, `isWindows` (True or False), and `password`. Connect these parameters with ampersands (`&`).
-        *   `vncUrl:` the `VncUrl` value returned after a successful query.
-        *   `instanceId:` the ID of your instance.
-        *   `isWindows:` specifies whether the operating system of the instance is Windows. Set the parameter to `true` if the operating system is Windows. Set the parameter to `false` if the operating system is not Windows.
-        *   `password:` Optional. A six-character password used to connect to the VNC management terminal. It can contain digits and letters. You do not need to enter your password again when the connection is being established if you set this parameter.
-        Example:
-        ```
+        ## [](#)Usage notes
+        Take note of the following items:
+        *   The **keepalive** time of a connection to a VNC management terminal is 300 seconds. If you do not interact with the VNC management terminal for 300 seconds, the VNC management terminal is automatically disconnected.
+        *   If the connection is interrupted, you must recall this operation to obtain a new logon address that is specified by `VncUrl` and use the new logon address to construct a URL that can be used to reconnect to the VNC management terminal. You can reconnect to a VNC management terminal for a maximum of 30 times per minute.
+        *   You need to add the `vncUrl=\\*\\*\\*\\*`, `instanceId=\\*\\*\\*\\*`, and `isWindows=true/false` parameters to the end of the link `https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?` and use an ampersand (`&`) between the parameters.
+        *   `vncUrl`: the value of `VncUrl` that is returned after a successful call of this operation.
+        *   `instanceId`: the ID of your instance.
+        *   `isWindows`: specifies whether the operating system of your instance is Windows. A value of `true` indicates that the operating system is Windows. A value of `false` indicates that the operating system is not Windows.
+        >  You can connect to an instance without a VNC logon password. Therefore, you do not need to configure the `password` parameter.
+        Sample URL:
         https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?vncUrl=ws%3A%2F%****&instanceId=i-wz9hhwq5a6tm****&isWindows=true
-        
-        ```
-        Or:
-        ```
-        https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?vncUrl=ws%3A%2F%****&instanceId=i-wz9hhwq5a6tm****&isWindows=true&password=****\
-        
-        ```
         
         @param request: DescribeInstanceVncUrlRequest
         @return: DescribeInstanceVncUrlResponse
@@ -23127,26 +23240,17 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceVncUrlRequest,
     ) -> ecs_20140526_models.DescribeInstanceVncUrlResponse:
         """
-        ## Description
-        When you call this operation, take note of the following items:
-        *   The URL returned is valid only for 15 seconds. If a connection is not established within 15 seconds after a successful query, the URL expires and you must query it again.
-        *   The **KeepAlive** time of a connection to a VNC management terminal is 60 seconds. If you do not interact with the VNC management terminal for 60 seconds, the VNC management terminal is automatically disconnected.
-        *   When you disconnect from the VNC management terminal, you can reconnect to the VNC management terminal up to 30 times a minute.
-        *   You must append the following parameters to the end of the `https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?` URL: `vncUrl`, `instanceId`, `isWindows` (True or False), and `password`. Connect these parameters with ampersands (`&`).
-        *   `vncUrl:` the `VncUrl` value returned after a successful query.
-        *   `instanceId:` the ID of your instance.
-        *   `isWindows:` specifies whether the operating system of the instance is Windows. Set the parameter to `true` if the operating system is Windows. Set the parameter to `false` if the operating system is not Windows.
-        *   `password:` Optional. A six-character password used to connect to the VNC management terminal. It can contain digits and letters. You do not need to enter your password again when the connection is being established if you set this parameter.
-        Example:
-        ```
+        ## [](#)Usage notes
+        Take note of the following items:
+        *   The **keepalive** time of a connection to a VNC management terminal is 300 seconds. If you do not interact with the VNC management terminal for 300 seconds, the VNC management terminal is automatically disconnected.
+        *   If the connection is interrupted, you must recall this operation to obtain a new logon address that is specified by `VncUrl` and use the new logon address to construct a URL that can be used to reconnect to the VNC management terminal. You can reconnect to a VNC management terminal for a maximum of 30 times per minute.
+        *   You need to add the `vncUrl=\\*\\*\\*\\*`, `instanceId=\\*\\*\\*\\*`, and `isWindows=true/false` parameters to the end of the link `https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?` and use an ampersand (`&`) between the parameters.
+        *   `vncUrl`: the value of `VncUrl` that is returned after a successful call of this operation.
+        *   `instanceId`: the ID of your instance.
+        *   `isWindows`: specifies whether the operating system of your instance is Windows. A value of `true` indicates that the operating system is Windows. A value of `false` indicates that the operating system is not Windows.
+        >  You can connect to an instance without a VNC logon password. Therefore, you do not need to configure the `password` parameter.
+        Sample URL:
         https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?vncUrl=ws%3A%2F%****&instanceId=i-wz9hhwq5a6tm****&isWindows=true
-        
-        ```
-        Or:
-        ```
-        https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?vncUrl=ws%3A%2F%****&instanceId=i-wz9hhwq5a6tm****&isWindows=true&password=****\
-        
-        ```
         
         @param request: DescribeInstanceVncUrlRequest
         @return: DescribeInstanceVncUrlResponse
@@ -24998,7 +25102,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeNetworkInterfacesResponse:
         """
-        You can call the `DescribeNetworkInterfaces` operation for paged query by specifying the `MaxResults` or `NextToken` parameter. During a paged query, when you call the DescribeNetworkInterfaces operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you call the DescribeNetworkInterfaces operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
+        ## [](#)Usage notes
+        The `DescribeNetworkInterfaces` operation supports paged queries. During a paged query, when you call the DescribeNetworkInterfaces operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you call the DescribeNetworkInterfaces operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
+        >  If you specify `MaxResults` or `NextToken`, the system uses the preceding paged query method to return results. Otherwise, the system returns results based on the combination of `PageNumber` and `PageSize`.
         
         @param request: DescribeNetworkInterfacesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25081,7 +25187,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeNetworkInterfacesResponse:
         """
-        You can call the `DescribeNetworkInterfaces` operation for paged query by specifying the `MaxResults` or `NextToken` parameter. During a paged query, when you call the DescribeNetworkInterfaces operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you call the DescribeNetworkInterfaces operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
+        ## [](#)Usage notes
+        The `DescribeNetworkInterfaces` operation supports paged queries. During a paged query, when you call the DescribeNetworkInterfaces operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you call the DescribeNetworkInterfaces operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
+        >  If you specify `MaxResults` or `NextToken`, the system uses the preceding paged query method to return results. Otherwise, the system returns results based on the combination of `PageNumber` and `PageSize`.
         
         @param request: DescribeNetworkInterfacesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25163,7 +25271,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeNetworkInterfacesRequest,
     ) -> ecs_20140526_models.DescribeNetworkInterfacesResponse:
         """
-        You can call the `DescribeNetworkInterfaces` operation for paged query by specifying the `MaxResults` or `NextToken` parameter. During a paged query, when you call the DescribeNetworkInterfaces operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you call the DescribeNetworkInterfaces operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
+        ## [](#)Usage notes
+        The `DescribeNetworkInterfaces` operation supports paged queries. During a paged query, when you call the DescribeNetworkInterfaces operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you call the DescribeNetworkInterfaces operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
+        >  If you specify `MaxResults` or `NextToken`, the system uses the preceding paged query method to return results. Otherwise, the system returns results based on the combination of `PageNumber` and `PageSize`.
         
         @param request: DescribeNetworkInterfacesRequest
         @return: DescribeNetworkInterfacesResponse
@@ -25176,7 +25286,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeNetworkInterfacesRequest,
     ) -> ecs_20140526_models.DescribeNetworkInterfacesResponse:
         """
-        You can call the `DescribeNetworkInterfaces` operation for paged query by specifying the `MaxResults` or `NextToken` parameter. During a paged query, when you call the DescribeNetworkInterfaces operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you call the DescribeNetworkInterfaces operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
+        ## [](#)Usage notes
+        The `DescribeNetworkInterfaces` operation supports paged queries. During a paged query, when you call the DescribeNetworkInterfaces operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you call the DescribeNetworkInterfaces operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
+        >  If you specify `MaxResults` or `NextToken`, the system uses the preceding paged query method to return results. Otherwise, the system returns results based on the combination of `PageNumber` and `PageSize`.
         
         @param request: DescribeNetworkInterfacesRequest
         @return: DescribeNetworkInterfacesResponse
@@ -27616,10 +27728,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSecurityGroupsResponse:
         """
+        ## [](#)Usage notes
         Take note of the following items:
-        *   The basic information about security groups includes their IDs and descriptions. The response returns security groups ordered in descending order based on their IDs.
-        *   We recommend that you use NextToken and MaxResults for a paged query. We recommend that you use MaxResults to specify the maximum number of entries to return in each request. The return value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. When you perform the next request, set NextToken to the value that is returned for NextToken in the previous call and use MaxResults to specify the maximum number of entries to return in this call. If the return value of NextToken is empty, the current page of results is the last page and no more results are to be returned.
-        *   When you use Alibaba Cloud CLI to call an API operation, you must specify values for request parameters of different data types in the required formats. For more information, see [Parameter format overview](~~110340~~).
+        *   The basic information about security groups includes their IDs and descriptions. The response returns security groups in descending order of the IDs of the security groups.
+        *   We recommend that you use `MaxResults` and `NextToken` for a paged query. We recommend that you use `MaxResults` to specify the maximum number of entries to return for each request. The return value of `NextToken` is a pagination token, which can be used in the next request to retrieve a new page of results. When you call the DescribeSecurityGroups operation to retrieve a new page of results, set `NextToken` to the `NextToken` value that is returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call. If the return value of `NextToken` is empty, the current page of results is the last page and no more results are to be returned.
+        *   When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](~~110340~~).
         
         @param request: DescribeSecurityGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27694,10 +27807,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSecurityGroupsResponse:
         """
+        ## [](#)Usage notes
         Take note of the following items:
-        *   The basic information about security groups includes their IDs and descriptions. The response returns security groups ordered in descending order based on their IDs.
-        *   We recommend that you use NextToken and MaxResults for a paged query. We recommend that you use MaxResults to specify the maximum number of entries to return in each request. The return value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. When you perform the next request, set NextToken to the value that is returned for NextToken in the previous call and use MaxResults to specify the maximum number of entries to return in this call. If the return value of NextToken is empty, the current page of results is the last page and no more results are to be returned.
-        *   When you use Alibaba Cloud CLI to call an API operation, you must specify values for request parameters of different data types in the required formats. For more information, see [Parameter format overview](~~110340~~).
+        *   The basic information about security groups includes their IDs and descriptions. The response returns security groups in descending order of the IDs of the security groups.
+        *   We recommend that you use `MaxResults` and `NextToken` for a paged query. We recommend that you use `MaxResults` to specify the maximum number of entries to return for each request. The return value of `NextToken` is a pagination token, which can be used in the next request to retrieve a new page of results. When you call the DescribeSecurityGroups operation to retrieve a new page of results, set `NextToken` to the `NextToken` value that is returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call. If the return value of `NextToken` is empty, the current page of results is the last page and no more results are to be returned.
+        *   When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](~~110340~~).
         
         @param request: DescribeSecurityGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27771,10 +27885,11 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSecurityGroupsRequest,
     ) -> ecs_20140526_models.DescribeSecurityGroupsResponse:
         """
+        ## [](#)Usage notes
         Take note of the following items:
-        *   The basic information about security groups includes their IDs and descriptions. The response returns security groups ordered in descending order based on their IDs.
-        *   We recommend that you use NextToken and MaxResults for a paged query. We recommend that you use MaxResults to specify the maximum number of entries to return in each request. The return value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. When you perform the next request, set NextToken to the value that is returned for NextToken in the previous call and use MaxResults to specify the maximum number of entries to return in this call. If the return value of NextToken is empty, the current page of results is the last page and no more results are to be returned.
-        *   When you use Alibaba Cloud CLI to call an API operation, you must specify values for request parameters of different data types in the required formats. For more information, see [Parameter format overview](~~110340~~).
+        *   The basic information about security groups includes their IDs and descriptions. The response returns security groups in descending order of the IDs of the security groups.
+        *   We recommend that you use `MaxResults` and `NextToken` for a paged query. We recommend that you use `MaxResults` to specify the maximum number of entries to return for each request. The return value of `NextToken` is a pagination token, which can be used in the next request to retrieve a new page of results. When you call the DescribeSecurityGroups operation to retrieve a new page of results, set `NextToken` to the `NextToken` value that is returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call. If the return value of `NextToken` is empty, the current page of results is the last page and no more results are to be returned.
+        *   When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](~~110340~~).
         
         @param request: DescribeSecurityGroupsRequest
         @return: DescribeSecurityGroupsResponse
@@ -27787,10 +27902,11 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSecurityGroupsRequest,
     ) -> ecs_20140526_models.DescribeSecurityGroupsResponse:
         """
+        ## [](#)Usage notes
         Take note of the following items:
-        *   The basic information about security groups includes their IDs and descriptions. The response returns security groups ordered in descending order based on their IDs.
-        *   We recommend that you use NextToken and MaxResults for a paged query. We recommend that you use MaxResults to specify the maximum number of entries to return in each request. The return value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. When you perform the next request, set NextToken to the value that is returned for NextToken in the previous call and use MaxResults to specify the maximum number of entries to return in this call. If the return value of NextToken is empty, the current page of results is the last page and no more results are to be returned.
-        *   When you use Alibaba Cloud CLI to call an API operation, you must specify values for request parameters of different data types in the required formats. For more information, see [Parameter format overview](~~110340~~).
+        *   The basic information about security groups includes their IDs and descriptions. The response returns security groups in descending order of the IDs of the security groups.
+        *   We recommend that you use `MaxResults` and `NextToken` for a paged query. We recommend that you use `MaxResults` to specify the maximum number of entries to return for each request. The return value of `NextToken` is a pagination token, which can be used in the next request to retrieve a new page of results. When you call the DescribeSecurityGroups operation to retrieve a new page of results, set `NextToken` to the `NextToken` value that is returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call. If the return value of `NextToken` is empty, the current page of results is the last page and no more results are to be returned.
+        *   When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](~~110340~~).
         
         @param request: DescribeSecurityGroupsRequest
         @return: DescribeSecurityGroupsResponse
@@ -28132,9 +28248,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSnapshotLinksResponse:
         """
-        When you call this operation, take note of the following items:
-        *   You can configure multiple request parameters, such as `RegionId`, `DiskIds`, and `InstanceId`, to query snapshot chains. The parameters have logical AND relations.
-        *   Only the configured parameters are used as filter conditions. If `DiskIds` and `SnapshotLinkIds` are set to empty JSON arrays, the values are considered as valid filter conditions. In this case, an empty result is returned.
+        ## [](#)Usage notes
+        Take note of the following items:
+        *   You can specify multiple request parameters, such as `RegionId`, `DiskIds`, and `InstanceId`, to query snapshot chains. Specified parameters have logical AND relations.
+        *   Only the specified parameters are used as filter conditions. If the `DiskIds` and `SnapshotLinkIds` parameters are set to empty JSON arrays, the values are considered as valid filter conditions. In this case, an empty result is returned.
         
         @param request: DescribeSnapshotLinksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28187,9 +28304,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSnapshotLinksResponse:
         """
-        When you call this operation, take note of the following items:
-        *   You can configure multiple request parameters, such as `RegionId`, `DiskIds`, and `InstanceId`, to query snapshot chains. The parameters have logical AND relations.
-        *   Only the configured parameters are used as filter conditions. If `DiskIds` and `SnapshotLinkIds` are set to empty JSON arrays, the values are considered as valid filter conditions. In this case, an empty result is returned.
+        ## [](#)Usage notes
+        Take note of the following items:
+        *   You can specify multiple request parameters, such as `RegionId`, `DiskIds`, and `InstanceId`, to query snapshot chains. Specified parameters have logical AND relations.
+        *   Only the specified parameters are used as filter conditions. If the `DiskIds` and `SnapshotLinkIds` parameters are set to empty JSON arrays, the values are considered as valid filter conditions. In this case, an empty result is returned.
         
         @param request: DescribeSnapshotLinksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28241,9 +28359,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSnapshotLinksRequest,
     ) -> ecs_20140526_models.DescribeSnapshotLinksResponse:
         """
-        When you call this operation, take note of the following items:
-        *   You can configure multiple request parameters, such as `RegionId`, `DiskIds`, and `InstanceId`, to query snapshot chains. The parameters have logical AND relations.
-        *   Only the configured parameters are used as filter conditions. If `DiskIds` and `SnapshotLinkIds` are set to empty JSON arrays, the values are considered as valid filter conditions. In this case, an empty result is returned.
+        ## [](#)Usage notes
+        Take note of the following items:
+        *   You can specify multiple request parameters, such as `RegionId`, `DiskIds`, and `InstanceId`, to query snapshot chains. Specified parameters have logical AND relations.
+        *   Only the specified parameters are used as filter conditions. If the `DiskIds` and `SnapshotLinkIds` parameters are set to empty JSON arrays, the values are considered as valid filter conditions. In this case, an empty result is returned.
         
         @param request: DescribeSnapshotLinksRequest
         @return: DescribeSnapshotLinksResponse
@@ -28256,9 +28375,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSnapshotLinksRequest,
     ) -> ecs_20140526_models.DescribeSnapshotLinksResponse:
         """
-        When you call this operation, take note of the following items:
-        *   You can configure multiple request parameters, such as `RegionId`, `DiskIds`, and `InstanceId`, to query snapshot chains. The parameters have logical AND relations.
-        *   Only the configured parameters are used as filter conditions. If `DiskIds` and `SnapshotLinkIds` are set to empty JSON arrays, the values are considered as valid filter conditions. In this case, an empty result is returned.
+        ## [](#)Usage notes
+        Take note of the following items:
+        *   You can specify multiple request parameters, such as `RegionId`, `DiskIds`, and `InstanceId`, to query snapshot chains. Specified parameters have logical AND relations.
+        *   Only the specified parameters are used as filter conditions. If the `DiskIds` and `SnapshotLinkIds` parameters are set to empty JSON arrays, the values are considered as valid filter conditions. In this case, an empty result is returned.
         
         @param request: DescribeSnapshotLinksRequest
         @return: DescribeSnapshotLinksResponse
@@ -28272,9 +28392,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSnapshotMonitorDataResponse:
         """
+        ## [](#)Usage notes
         Take note of the following items:
-        *   Up to 400 entries of monitoring data can be returned at a time. If the result of the `(EndTime - StartTime)/Period` formula is greater than 400, an error is returned.
-        *   Only the monitored data within the last 30 days can be queried. If the value of `StartTime` is more than 30 days earlier than the time when you call this operation, an error is returned.
+        *   Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
+        *   You can query the monitoring data of snapshot sizes in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
         
         @param request: DescribeSnapshotMonitorDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28325,9 +28446,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSnapshotMonitorDataResponse:
         """
+        ## [](#)Usage notes
         Take note of the following items:
-        *   Up to 400 entries of monitoring data can be returned at a time. If the result of the `(EndTime - StartTime)/Period` formula is greater than 400, an error is returned.
-        *   Only the monitored data within the last 30 days can be queried. If the value of `StartTime` is more than 30 days earlier than the time when you call this operation, an error is returned.
+        *   Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
+        *   You can query the monitoring data of snapshot sizes in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
         
         @param request: DescribeSnapshotMonitorDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28377,9 +28499,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSnapshotMonitorDataRequest,
     ) -> ecs_20140526_models.DescribeSnapshotMonitorDataResponse:
         """
+        ## [](#)Usage notes
         Take note of the following items:
-        *   Up to 400 entries of monitoring data can be returned at a time. If the result of the `(EndTime - StartTime)/Period` formula is greater than 400, an error is returned.
-        *   Only the monitored data within the last 30 days can be queried. If the value of `StartTime` is more than 30 days earlier than the time when you call this operation, an error is returned.
+        *   Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
+        *   You can query the monitoring data of snapshot sizes in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
         
         @param request: DescribeSnapshotMonitorDataRequest
         @return: DescribeSnapshotMonitorDataResponse
@@ -28392,9 +28515,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSnapshotMonitorDataRequest,
     ) -> ecs_20140526_models.DescribeSnapshotMonitorDataResponse:
         """
+        ## [](#)Usage notes
         Take note of the following items:
-        *   Up to 400 entries of monitoring data can be returned at a time. If the result of the `(EndTime - StartTime)/Period` formula is greater than 400, an error is returned.
-        *   Only the monitored data within the last 30 days can be queried. If the value of `StartTime` is more than 30 days earlier than the time when you call this operation, an error is returned.
+        *   Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
+        *   You can query the monitoring data of snapshot sizes in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
         
         @param request: DescribeSnapshotMonitorDataRequest
         @return: DescribeSnapshotMonitorDataResponse
@@ -28698,7 +28822,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSnapshotsUsageResponse:
         """
-        If you want to view the snapshot usage information about each disk in the current region, we recommend that you call the [DescribeSnapshotLinks](~~55837~~) operation to query snapshot chain information.
+        ## [](#)Usage notes
+        If you want to view the snapshot usage of each disk in the current region, we recommend that you call the [DescribeSnapshotLinks](~~55837~~) operation to query snapshot chain information.
         
         @param request: DescribeSnapshotsUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28710,8 +28835,6 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -28743,7 +28866,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSnapshotsUsageResponse:
         """
-        If you want to view the snapshot usage information about each disk in the current region, we recommend that you call the [DescribeSnapshotLinks](~~55837~~) operation to query snapshot chain information.
+        ## [](#)Usage notes
+        If you want to view the snapshot usage of each disk in the current region, we recommend that you call the [DescribeSnapshotLinks](~~55837~~) operation to query snapshot chain information.
         
         @param request: DescribeSnapshotsUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28755,8 +28879,6 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -28787,7 +28909,8 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSnapshotsUsageRequest,
     ) -> ecs_20140526_models.DescribeSnapshotsUsageResponse:
         """
-        If you want to view the snapshot usage information about each disk in the current region, we recommend that you call the [DescribeSnapshotLinks](~~55837~~) operation to query snapshot chain information.
+        ## [](#)Usage notes
+        If you want to view the snapshot usage of each disk in the current region, we recommend that you call the [DescribeSnapshotLinks](~~55837~~) operation to query snapshot chain information.
         
         @param request: DescribeSnapshotsUsageRequest
         @return: DescribeSnapshotsUsageResponse
@@ -28800,7 +28923,8 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSnapshotsUsageRequest,
     ) -> ecs_20140526_models.DescribeSnapshotsUsageResponse:
         """
-        If you want to view the snapshot usage information about each disk in the current region, we recommend that you call the [DescribeSnapshotLinks](~~55837~~) operation to query snapshot chain information.
+        ## [](#)Usage notes
+        If you want to view the snapshot usage of each disk in the current region, we recommend that you call the [DescribeSnapshotLinks](~~55837~~) operation to query snapshot chain information.
         
         @param request: DescribeSnapshotsUsageRequest
         @return: DescribeSnapshotsUsageResponse
@@ -31292,7 +31416,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DetachNetworkInterfaceResponse:
         """
-        The operation that you want to perform. Set the value to *DetachNetworkInterface**.
+        Take note of the following items:
+        *   You cannot detach the primary ENI of an instance.
+        *   Make sure that the ENI to be detached is in the Detaching (Unbinding) or InUse (Bound) state.
+        *   Make sure that the instance from which you want to detach an ENI is in the Running (Running) or Stopped (Stopped) state.
+        *   The DetachNetworkInterface operation is an asynchronous operation. After this operation is called to detach an ENI, you can check the status or events of the ENI to determine whether the ENI is detached. The following figure shows the transitions between the states of the ENI.![](https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/en-US/20230223/uemr/DetachNetworkInterface.png)
+        *   If the ENI is in the Detaching state, the ENI detachment request is sent and the ENI is being detached from the associated instance.
+        *   If the ENI is in the Available state, the ENI is detached from the associated instance.
+        *   If the ENI is stuck in the Detaching state, the ENI may fail to be detached from the associated instance due to specific reasons. For example, the ENI may fail to be detached because the operating system of the instance did not respond to the ENI detachment request. If this issue occurs, you can re-initiate the request to detach the ENI. If the issue persists, restart the instance.
+        For information about examples on how to call the DetachNetworkInterface operation, see [Detach an ENI from an ECS instance](~~471551~~).
         
         @param request: DetachNetworkInterfaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31343,7 +31475,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DetachNetworkInterfaceResponse:
         """
-        The operation that you want to perform. Set the value to *DetachNetworkInterface**.
+        Take note of the following items:
+        *   You cannot detach the primary ENI of an instance.
+        *   Make sure that the ENI to be detached is in the Detaching (Unbinding) or InUse (Bound) state.
+        *   Make sure that the instance from which you want to detach an ENI is in the Running (Running) or Stopped (Stopped) state.
+        *   The DetachNetworkInterface operation is an asynchronous operation. After this operation is called to detach an ENI, you can check the status or events of the ENI to determine whether the ENI is detached. The following figure shows the transitions between the states of the ENI.![](https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/en-US/20230223/uemr/DetachNetworkInterface.png)
+        *   If the ENI is in the Detaching state, the ENI detachment request is sent and the ENI is being detached from the associated instance.
+        *   If the ENI is in the Available state, the ENI is detached from the associated instance.
+        *   If the ENI is stuck in the Detaching state, the ENI may fail to be detached from the associated instance due to specific reasons. For example, the ENI may fail to be detached because the operating system of the instance did not respond to the ENI detachment request. If this issue occurs, you can re-initiate the request to detach the ENI. If the issue persists, restart the instance.
+        For information about examples on how to call the DetachNetworkInterface operation, see [Detach an ENI from an ECS instance](~~471551~~).
         
         @param request: DetachNetworkInterfaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31393,7 +31533,15 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DetachNetworkInterfaceRequest,
     ) -> ecs_20140526_models.DetachNetworkInterfaceResponse:
         """
-        The operation that you want to perform. Set the value to *DetachNetworkInterface**.
+        Take note of the following items:
+        *   You cannot detach the primary ENI of an instance.
+        *   Make sure that the ENI to be detached is in the Detaching (Unbinding) or InUse (Bound) state.
+        *   Make sure that the instance from which you want to detach an ENI is in the Running (Running) or Stopped (Stopped) state.
+        *   The DetachNetworkInterface operation is an asynchronous operation. After this operation is called to detach an ENI, you can check the status or events of the ENI to determine whether the ENI is detached. The following figure shows the transitions between the states of the ENI.![](https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/en-US/20230223/uemr/DetachNetworkInterface.png)
+        *   If the ENI is in the Detaching state, the ENI detachment request is sent and the ENI is being detached from the associated instance.
+        *   If the ENI is in the Available state, the ENI is detached from the associated instance.
+        *   If the ENI is stuck in the Detaching state, the ENI may fail to be detached from the associated instance due to specific reasons. For example, the ENI may fail to be detached because the operating system of the instance did not respond to the ENI detachment request. If this issue occurs, you can re-initiate the request to detach the ENI. If the issue persists, restart the instance.
+        For information about examples on how to call the DetachNetworkInterface operation, see [Detach an ENI from an ECS instance](~~471551~~).
         
         @param request: DetachNetworkInterfaceRequest
         @return: DetachNetworkInterfaceResponse
@@ -31406,7 +31554,15 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DetachNetworkInterfaceRequest,
     ) -> ecs_20140526_models.DetachNetworkInterfaceResponse:
         """
-        The operation that you want to perform. Set the value to *DetachNetworkInterface**.
+        Take note of the following items:
+        *   You cannot detach the primary ENI of an instance.
+        *   Make sure that the ENI to be detached is in the Detaching (Unbinding) or InUse (Bound) state.
+        *   Make sure that the instance from which you want to detach an ENI is in the Running (Running) or Stopped (Stopped) state.
+        *   The DetachNetworkInterface operation is an asynchronous operation. After this operation is called to detach an ENI, you can check the status or events of the ENI to determine whether the ENI is detached. The following figure shows the transitions between the states of the ENI.![](https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/en-US/20230223/uemr/DetachNetworkInterface.png)
+        *   If the ENI is in the Detaching state, the ENI detachment request is sent and the ENI is being detached from the associated instance.
+        *   If the ENI is in the Available state, the ENI is detached from the associated instance.
+        *   If the ENI is stuck in the Detaching state, the ENI may fail to be detached from the associated instance due to specific reasons. For example, the ENI may fail to be detached because the operating system of the instance did not respond to the ENI detachment request. If this issue occurs, you can re-initiate the request to detach the ENI. If the issue persists, restart the instance.
+        For information about examples on how to call the DetachNetworkInterface operation, see [Detach an ENI from an ECS instance](~~471551~~).
         
         @param request: DetachNetworkInterfaceRequest
         @return: DetachNetworkInterfaceResponse
@@ -32044,12 +32200,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ExportImageResponse:
         """
-        Before you export a custom image, complete the following operations:
-        *   Understand the prerequisites and precautions. For more information, see [Export images](~~58181~~).
-        *   The Image Format parameter is available only for the following regions: India (Mumbai), Japan (Tokyo), Australia (Sydney), Indonesia (Jakarta), Germany (Frankfurt), UAE (Dubai), US (Virginia), UK (London), Singapore, US (Silicon Valley), and Malaysia (Kuala Lumpur). By default, custom images are exported in the RAW format in regions where the Image Format parameter is unavailable.
+        ## [](#)Usage notes
+        Before you export images, take note of the following items:
+        *   Make sure that you are familiar with the prerequisites and precautions. For more information, see [Export a custom image](~~58181~~).
+        *   The `ImageFormat` parameter is available only for the following regions: India (Mumbai), Japan (Tokyo), Australia (Sydney), Indonesia (Jakarta), Germany (Frankfurt), UAE (Dubai), US (Virginia), UK (London), Singapore, Malaysia (Kuala Lumpur), and US (Silicon Valley). By default, custom images are exported in the RAW format in regions where ImageFormat is unsupported.
         *   Use Resource Access Management (RAM) to grant Elastic Compute Service (ECS) the permissions to write data to OSS. To complete the authorization, perform the following operations:
-        1.  Create a role named `AliyunECSImageExportDefaultRole`, and attach the following policy to the role:
-        ```json
+        *   Create a role named `AliyunECSImageExportDefaultRole`, and attach the following policy to the role:
         {
         "Statement": [
         {
@@ -32064,9 +32220,7 @@ class Client(OpenApiClient):
         ],
         "Version": "1"
         }
-        ```
-        2.  Attach the `AliyunECSImageExportRolePolicy` system policy to the `AliyunECSImageExportDefaultRole` role. This policy is the default policy that grants ECS the permissions to export images. For more information, go to the [Cloud Resource Access Authorization](https://ram.console.aliyun.com/?spm=5176.2020520101.0.0.64c64df5dfpmdY#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunECSImageImportDefaultRole%22,%20%22TemplateId%22:%20%22ECSImportRole%22%7D,%20%22request2%22:%20%7B%22RoleName%22:%20%22AliyunECSImageExportDefaultRole%22,%20%22TemplateId%22:%20%22ECSExportRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fecs.console.aliyun.com%2F%22,%20%22Service%22:%20%22ECS%22%7D) page. You can also create a custom policy that contains the following content and attach the policy to the role:
-        ```json
+        *   Attach the `AliyunECSImageExportRolePolicy` system policy to the `AliyunECSImageExportDefaultRole` role. This policy is the default policy that grants ECS the permissions to export images. For more information, go to the [Cloud Resource Access Authorization](https://ram.console.aliyun.com/?spm=5176.2020520101.0.0.64c64df5dfpmdY#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunECSImageImportDefaultRole%22,%20%22TemplateId%22:%20%22ECSImportRole%22%7D,%20%22request2%22:%20%7B%22RoleName%22:%20%22AliyunECSImageExportDefaultRole%22,%20%22TemplateId%22:%20%22ECSExportRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fecs.console.aliyun.com%2F%22,%20%22Service%22:%20%22ECS%22%7D) page. You can also create a custom policy that contains the following content and attach the policy to the role:
         {
         "Version": "1",
         "Statement": [
@@ -32086,9 +32240,8 @@ class Client(OpenApiClient):
         }
         ]
         }
-        ```
-        After you export a custom image, the following situation occurs:
-        The custom image is stored in the specified OSS bucket. You can download the custom image. For more information, see [Download objects](~~31912~~).
+        After you export the images, take note of the following items:
+        Each exported custom image is stored in the specified OSS bucket. You can download the custom image. For more information, see [Download objects](~~31912~~).
         
         @param request: ExportImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32139,12 +32292,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ExportImageResponse:
         """
-        Before you export a custom image, complete the following operations:
-        *   Understand the prerequisites and precautions. For more information, see [Export images](~~58181~~).
-        *   The Image Format parameter is available only for the following regions: India (Mumbai), Japan (Tokyo), Australia (Sydney), Indonesia (Jakarta), Germany (Frankfurt), UAE (Dubai), US (Virginia), UK (London), Singapore, US (Silicon Valley), and Malaysia (Kuala Lumpur). By default, custom images are exported in the RAW format in regions where the Image Format parameter is unavailable.
+        ## [](#)Usage notes
+        Before you export images, take note of the following items:
+        *   Make sure that you are familiar with the prerequisites and precautions. For more information, see [Export a custom image](~~58181~~).
+        *   The `ImageFormat` parameter is available only for the following regions: India (Mumbai), Japan (Tokyo), Australia (Sydney), Indonesia (Jakarta), Germany (Frankfurt), UAE (Dubai), US (Virginia), UK (London), Singapore, Malaysia (Kuala Lumpur), and US (Silicon Valley). By default, custom images are exported in the RAW format in regions where ImageFormat is unsupported.
         *   Use Resource Access Management (RAM) to grant Elastic Compute Service (ECS) the permissions to write data to OSS. To complete the authorization, perform the following operations:
-        1.  Create a role named `AliyunECSImageExportDefaultRole`, and attach the following policy to the role:
-        ```json
+        *   Create a role named `AliyunECSImageExportDefaultRole`, and attach the following policy to the role:
         {
         "Statement": [
         {
@@ -32159,9 +32312,7 @@ class Client(OpenApiClient):
         ],
         "Version": "1"
         }
-        ```
-        2.  Attach the `AliyunECSImageExportRolePolicy` system policy to the `AliyunECSImageExportDefaultRole` role. This policy is the default policy that grants ECS the permissions to export images. For more information, go to the [Cloud Resource Access Authorization](https://ram.console.aliyun.com/?spm=5176.2020520101.0.0.64c64df5dfpmdY#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunECSImageImportDefaultRole%22,%20%22TemplateId%22:%20%22ECSImportRole%22%7D,%20%22request2%22:%20%7B%22RoleName%22:%20%22AliyunECSImageExportDefaultRole%22,%20%22TemplateId%22:%20%22ECSExportRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fecs.console.aliyun.com%2F%22,%20%22Service%22:%20%22ECS%22%7D) page. You can also create a custom policy that contains the following content and attach the policy to the role:
-        ```json
+        *   Attach the `AliyunECSImageExportRolePolicy` system policy to the `AliyunECSImageExportDefaultRole` role. This policy is the default policy that grants ECS the permissions to export images. For more information, go to the [Cloud Resource Access Authorization](https://ram.console.aliyun.com/?spm=5176.2020520101.0.0.64c64df5dfpmdY#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunECSImageImportDefaultRole%22,%20%22TemplateId%22:%20%22ECSImportRole%22%7D,%20%22request2%22:%20%7B%22RoleName%22:%20%22AliyunECSImageExportDefaultRole%22,%20%22TemplateId%22:%20%22ECSExportRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fecs.console.aliyun.com%2F%22,%20%22Service%22:%20%22ECS%22%7D) page. You can also create a custom policy that contains the following content and attach the policy to the role:
         {
         "Version": "1",
         "Statement": [
@@ -32181,9 +32332,8 @@ class Client(OpenApiClient):
         }
         ]
         }
-        ```
-        After you export a custom image, the following situation occurs:
-        The custom image is stored in the specified OSS bucket. You can download the custom image. For more information, see [Download objects](~~31912~~).
+        After you export the images, take note of the following items:
+        Each exported custom image is stored in the specified OSS bucket. You can download the custom image. For more information, see [Download objects](~~31912~~).
         
         @param request: ExportImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32233,12 +32383,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ExportImageRequest,
     ) -> ecs_20140526_models.ExportImageResponse:
         """
-        Before you export a custom image, complete the following operations:
-        *   Understand the prerequisites and precautions. For more information, see [Export images](~~58181~~).
-        *   The Image Format parameter is available only for the following regions: India (Mumbai), Japan (Tokyo), Australia (Sydney), Indonesia (Jakarta), Germany (Frankfurt), UAE (Dubai), US (Virginia), UK (London), Singapore, US (Silicon Valley), and Malaysia (Kuala Lumpur). By default, custom images are exported in the RAW format in regions where the Image Format parameter is unavailable.
+        ## [](#)Usage notes
+        Before you export images, take note of the following items:
+        *   Make sure that you are familiar with the prerequisites and precautions. For more information, see [Export a custom image](~~58181~~).
+        *   The `ImageFormat` parameter is available only for the following regions: India (Mumbai), Japan (Tokyo), Australia (Sydney), Indonesia (Jakarta), Germany (Frankfurt), UAE (Dubai), US (Virginia), UK (London), Singapore, Malaysia (Kuala Lumpur), and US (Silicon Valley). By default, custom images are exported in the RAW format in regions where ImageFormat is unsupported.
         *   Use Resource Access Management (RAM) to grant Elastic Compute Service (ECS) the permissions to write data to OSS. To complete the authorization, perform the following operations:
-        1.  Create a role named `AliyunECSImageExportDefaultRole`, and attach the following policy to the role:
-        ```json
+        *   Create a role named `AliyunECSImageExportDefaultRole`, and attach the following policy to the role:
         {
         "Statement": [
         {
@@ -32253,9 +32403,7 @@ class Client(OpenApiClient):
         ],
         "Version": "1"
         }
-        ```
-        2.  Attach the `AliyunECSImageExportRolePolicy` system policy to the `AliyunECSImageExportDefaultRole` role. This policy is the default policy that grants ECS the permissions to export images. For more information, go to the [Cloud Resource Access Authorization](https://ram.console.aliyun.com/?spm=5176.2020520101.0.0.64c64df5dfpmdY#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunECSImageImportDefaultRole%22,%20%22TemplateId%22:%20%22ECSImportRole%22%7D,%20%22request2%22:%20%7B%22RoleName%22:%20%22AliyunECSImageExportDefaultRole%22,%20%22TemplateId%22:%20%22ECSExportRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fecs.console.aliyun.com%2F%22,%20%22Service%22:%20%22ECS%22%7D) page. You can also create a custom policy that contains the following content and attach the policy to the role:
-        ```json
+        *   Attach the `AliyunECSImageExportRolePolicy` system policy to the `AliyunECSImageExportDefaultRole` role. This policy is the default policy that grants ECS the permissions to export images. For more information, go to the [Cloud Resource Access Authorization](https://ram.console.aliyun.com/?spm=5176.2020520101.0.0.64c64df5dfpmdY#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunECSImageImportDefaultRole%22,%20%22TemplateId%22:%20%22ECSImportRole%22%7D,%20%22request2%22:%20%7B%22RoleName%22:%20%22AliyunECSImageExportDefaultRole%22,%20%22TemplateId%22:%20%22ECSExportRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fecs.console.aliyun.com%2F%22,%20%22Service%22:%20%22ECS%22%7D) page. You can also create a custom policy that contains the following content and attach the policy to the role:
         {
         "Version": "1",
         "Statement": [
@@ -32275,9 +32423,8 @@ class Client(OpenApiClient):
         }
         ]
         }
-        ```
-        After you export a custom image, the following situation occurs:
-        The custom image is stored in the specified OSS bucket. You can download the custom image. For more information, see [Download objects](~~31912~~).
+        After you export the images, take note of the following items:
+        Each exported custom image is stored in the specified OSS bucket. You can download the custom image. For more information, see [Download objects](~~31912~~).
         
         @param request: ExportImageRequest
         @return: ExportImageResponse
@@ -32290,12 +32437,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ExportImageRequest,
     ) -> ecs_20140526_models.ExportImageResponse:
         """
-        Before you export a custom image, complete the following operations:
-        *   Understand the prerequisites and precautions. For more information, see [Export images](~~58181~~).
-        *   The Image Format parameter is available only for the following regions: India (Mumbai), Japan (Tokyo), Australia (Sydney), Indonesia (Jakarta), Germany (Frankfurt), UAE (Dubai), US (Virginia), UK (London), Singapore, US (Silicon Valley), and Malaysia (Kuala Lumpur). By default, custom images are exported in the RAW format in regions where the Image Format parameter is unavailable.
+        ## [](#)Usage notes
+        Before you export images, take note of the following items:
+        *   Make sure that you are familiar with the prerequisites and precautions. For more information, see [Export a custom image](~~58181~~).
+        *   The `ImageFormat` parameter is available only for the following regions: India (Mumbai), Japan (Tokyo), Australia (Sydney), Indonesia (Jakarta), Germany (Frankfurt), UAE (Dubai), US (Virginia), UK (London), Singapore, Malaysia (Kuala Lumpur), and US (Silicon Valley). By default, custom images are exported in the RAW format in regions where ImageFormat is unsupported.
         *   Use Resource Access Management (RAM) to grant Elastic Compute Service (ECS) the permissions to write data to OSS. To complete the authorization, perform the following operations:
-        1.  Create a role named `AliyunECSImageExportDefaultRole`, and attach the following policy to the role:
-        ```json
+        *   Create a role named `AliyunECSImageExportDefaultRole`, and attach the following policy to the role:
         {
         "Statement": [
         {
@@ -32310,9 +32457,7 @@ class Client(OpenApiClient):
         ],
         "Version": "1"
         }
-        ```
-        2.  Attach the `AliyunECSImageExportRolePolicy` system policy to the `AliyunECSImageExportDefaultRole` role. This policy is the default policy that grants ECS the permissions to export images. For more information, go to the [Cloud Resource Access Authorization](https://ram.console.aliyun.com/?spm=5176.2020520101.0.0.64c64df5dfpmdY#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunECSImageImportDefaultRole%22,%20%22TemplateId%22:%20%22ECSImportRole%22%7D,%20%22request2%22:%20%7B%22RoleName%22:%20%22AliyunECSImageExportDefaultRole%22,%20%22TemplateId%22:%20%22ECSExportRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fecs.console.aliyun.com%2F%22,%20%22Service%22:%20%22ECS%22%7D) page. You can also create a custom policy that contains the following content and attach the policy to the role:
-        ```json
+        *   Attach the `AliyunECSImageExportRolePolicy` system policy to the `AliyunECSImageExportDefaultRole` role. This policy is the default policy that grants ECS the permissions to export images. For more information, go to the [Cloud Resource Access Authorization](https://ram.console.aliyun.com/?spm=5176.2020520101.0.0.64c64df5dfpmdY#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunECSImageImportDefaultRole%22,%20%22TemplateId%22:%20%22ECSImportRole%22%7D,%20%22request2%22:%20%7B%22RoleName%22:%20%22AliyunECSImageExportDefaultRole%22,%20%22TemplateId%22:%20%22ECSExportRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fecs.console.aliyun.com%2F%22,%20%22Service%22:%20%22ECS%22%7D) page. You can also create a custom policy that contains the following content and attach the policy to the role:
         {
         "Version": "1",
         "Statement": [
@@ -32332,9 +32477,8 @@ class Client(OpenApiClient):
         }
         ]
         }
-        ```
-        After you export a custom image, the following situation occurs:
-        The custom image is stored in the specified OSS bucket. You can download the custom image. For more information, see [Download objects](~~31912~~).
+        After you export the images, take note of the following items:
+        Each exported custom image is stored in the specified OSS bucket. You can download the custom image. For more information, see [Download objects](~~31912~~).
         
         @param request: ExportImageRequest
         @return: ExportImageResponse
@@ -32740,11 +32884,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ImportImageResponse:
         """
-        When you call this operation, take note of the following items:
-        *   Before you can import an image, you must upload the image to an Object Storage Service (OSS) bucket. For more information, see [Upload objects](~~31886~~).
-        *   In some scenarios, you may want to create an image based on the operating system data of a source server, import the image to ECS, and then create an ECS instance from the imported image. The source server can be a physical server, a virtual machine, or a cloud host. If the virtio driver is not installed on the source server, the created ECS instance may be unable to start. To prevent this issue, make sure that the virtio driver is installed on the source server before you import an image to Alibaba Cloud. For more information, see [Install the virtio driver](~~62423~~).
-        *   Before you import images for the first time, you must use Resource Access Management (RAM) to authorize ECS to access your OSS buckets. If ECS is not authorized to access your OSS buckets, the `NoSetRoletoECSServiceAcount` error code is returned when you call the ImportImage operation. The [Cloud Resource Access Authorization](https://ram.console.aliyun.com/?spm=5176.2020520101image.0.0.2ffa4df57kSoHX#/role/authorize?request=%7B%22Requests%22%3A%20%7B%22request1%22%3A%20%7B%22RoleName%22%3A%20%22AliyunECSImageImportDefaultRole%22%2C%20%22TemplateId%22%3A%20%22ECSImportRole%22%7D%2C%20%22request2%22%3A%20%7B%22RoleName%22%3A%20%22AliyunECSImageExportDefaultRole%22%2C%20%22TemplateId%22%3A%20%22ECSExportRole%22%7D%7D%2C%20%22ReturnUrl%22%3A%20%22https%3A//ecs.console.aliyun.com/%22%2C%20%22Service%22%3A%20%22ECS%22%7D) page in the RAM console provides a convenient push-button authorization feature for this operation. You can also perform the authorization by using a RAM role and RAM policies. The following examples show the policies and permissions required for some steps in the authorization procedure. For more information, see [Control access to resources by using RAM users](~~25481~~).
-        1.  Create a role named `AliyunECSImageImportDefaultRole`. You must use this exact name. Otherwise, the image cannot be imported. Configure the following trust policy for the role:
+        ### [](#)Usage notes
+        Take note of the following items:
+        *   Before you import an image, you must upload the image to an Object Storage Service (OSS) bucket. For more information, see [Upload objects](~~31886~~).
+        *   In some scenarios, you may want to create a custom image based on the operating system data of a source server, import the image to Alibaba Cloud, and then create an ECS instance from the image. The source server can be a physical server, a virtual machine, or a cloud host. If the virtio driver is not installed on the source server, the created ECS instance may be unable to start. To prevent this issue, verify that the virtio driver is installed on the source server before you import the image to Alibaba Cloud. For more information, see [Install the virtio driver](~~62423~~).
+        *   Before you import images for the first time, you must use Resource Access Management (RAM) to authorize ECS to access your OSS buckets. If ECS is not authorized to access your OSS buckets, the `NoSetRoletoECSServiceAcount` error code is returned when you call the ImportImage operation. You can complete the authorization with one click on the [Cloud Resource Access Authorization](https://ram.console.aliyun.com/?spm=5176.2020520101image.0.0.2ffa4df57kSoHX#/role/authorize?request=%7B%22Requests%22%3A%20%7B%22request1%22%3A%20%7B%22RoleName%22%3A%20%22AliyunECSImageImportDefaultRole%22%2C%20%22TemplateId%22%3A%20%22ECSImportRole%22%7D%2C%20%22request2%22%3A%20%7B%22RoleName%22%3A%20%22AliyunECSImageExportDefaultRole%22%2C%20%22TemplateId%22%3A%20%22ECSExportRole%22%7D%7D%2C%20%22ReturnUrl%22%3A%20%22https%3A//ecs.console.aliyun.com/%22%2C%20%22Service%22%3A%20%22ECS%22%7D) page of the RAM console. You can also complete the authorization by using a RAM role and RAM policies. The following examples show the policies and permissions required for some steps in the authorization procedure. For more information, see [Control access to resources by using RAM users](~~25481~~).
+        1.  Create a RAM role named `AliyunECSImageImportDefaultRole`. You must use this exact role name. Otherwise, the image cannot be imported. Configure the following trust policy for the role:
         {
         "Statement": [
         {
@@ -32759,7 +32904,7 @@ class Client(OpenApiClient):
         ],
         "Version": "1"
         }
-        2.  Attach the `AliyunECSImageImportRolePolicy` system policy to the role. You can also create a custom policy that contains the following content and attach the policy to the role:
+        2.  Attach the `AliyunECSImageImportRolePolicy` system policy to the RAM role. You can also create a custom policy that contains the following content and attach the policy to the role:
         ```
         {
         "Version": "1",
@@ -32777,19 +32922,20 @@ class Client(OpenApiClient):
         }
         ```
         *   You cannot delete an image that is being imported. However, you can call the [CancelTask](~~25624~~) operation to cancel the image import task.
-        *   You can import an image only to the same region as the OSS bucket to which the image was uploaded.
-        *   The valid values of N in the `DiskDeviceMapping.N` parameter range from 1 to 17. When N is set to 1, the disk is a system disk. When N is set to a value from 2 to 17, the disk is a data disk.
+        *   You can import an image only to the same region as the OSS bucket to which the image file is uploaded.
+        *   The valid values of N in `DiskDeviceMapping.N` range from 1 to 17. When N is set to 1, the disk is a system disk. When N is set to a value from 2 to 17, the disk is a data disk. When N is set to a value greater than 17, parameters prefixed with DiskDeviceMapping.N are ignored.
         *   When you set `Architecture` to `arm64` or when you set `Platform` to `CentOS Stream`, `Anolis`, `AlmaLinux`, `UOS`, `Kylin`, or `Rocky Linux`, take note of the following items:
-        *   To ensure that the password can be set, or that the key pair can be modified for an imported image, the image must meet the following requirements:
-        *   The operating system kernel supports the `CONFIG_FW_CFG_SYSFS` feature. By default, Linux community kernel 4.6 and later, as well as CentOS kernel 3.10.0-826.el7 and later, support this feature. You can run the `grep -nr CONFIG_FW_CFG_SYSFS /boot/config-$(uname -r)` command in the source server of the image. If the command output contains `CONFIG_FW_CFG_SYSFS=y`, the kernel of this image supports the `CONFIG_FW_CFG_SYSFS` feature.
-        *   The latest version of Alibaba Cloud cloud-init is installed on the operating system. If the installed version of cloud-init is 19.1, make sure that the minor version is 19.1.3 or later. If the installed version of cloud-init is 0.7.6a as in some early versions of operating systems, make sure that the minor version is 0.7.6a15 or later. For more information, see [Install cloud-init](~~57803~~).
+        *   To ensure that the password can be set or the key pair can be modified for an imported image, make sure that the image meets the following requirements before you import it:
+        *   The kernel of the operating system supports the `CONFIG_FW_CFG_SYSFS` feature. By default, Linux community kernel 4.6 and later and CentOS kernel 3.10.0-826.el7 and later support the CONFIG_FW_CFG_SYSFS feature. You can run the `grep -nr CONFIG_FW_CFG_SYSFS /boot/config-$(uname -r)` command on the source server of the image. If the command output contains `CONFIG_FW_CFG_SYSFS=y`, the kernel of the image supports the `CONFIG_FW_CFG_SYSFS` feature.
+        *   Alibaba Cloud cloud-init of the latest version is installed on the operating system. If the version of cloud-init is 19.1, the minor version must be 19.1.3 or later. If the version of cloud-init is 0.7.6a in some early versions of operating systems, the minor version must be 0.7.6a15 or later. For more information, see [Install cloud-init](~~57803~~).
         *   The operating system supports the SHA-512 encryption algorithm.
         *   If you want an imported image to support the resizing of disks and file systems, make sure that the image meets the following requirements before you import it:
         *   The kernel version of the operating system is later than 3.6.
-        *   The image supports the growpart command. To support this command, you must install the `cloud-utils-growpart` package. Package installation methods vary based on operating systems. For more information, see [Resize partitions and file systems of Linux system disks](~~111738~~).
-        *   The image supports the resize2fs command. To support this command, you must install the `e2fsprogs` package. By default, the package is installed on the operating system. If the package is not installed, you must install it.
-        *   The latest version of Alibaba Cloud cloud-init is installed on the operating system. If the installed version of cloud-init is 19.1, make sure that the minor version is 19.1.3 or later. If the installed version of cloud-init is 0.7.6a as in some early versions of operating systems, make sure that the minor version is 0.7.6a15 or later. For more information, see [Install cloud-init](~~57803~~).
-        *   If the image that you want to import uses the ARM64 architecture, you must configure the real-time clock (RTC) to use the Coordinated Universal Time (UTC) time standard. For more information, see [Linux time and time zones](~~405080~~).
+        *   The image supports the growpart command. To support this command, you must install the `cloud-utils-growpart` package. The methods of installing the package vary based on operating systems. For more information, see [Extend the partitions and file systems of disks on a Linux instance](~~25451~~).
+        *   The image supports the resize2fs command. To support this command, you must install the `e2fsprogs` package. By default, the package is installed on the operating system. If the package is not installed, install it.
+        *   Alibaba Cloud cloud-init of the latest version is installed on the operating system. If the version of cloud-init is 19.1, the minor version must be 19.1.3 or later. If the version of cloud-init is 0.7.6a in some early versions of operating systems, the minor version must be 0.7.6a15 or later. For more information, see [Install cloud-init](~~57803~~).
+        *   If the image that you want to import uses the Arm64 architecture, configure the real-time clock (RTC) to use the Coordinated Universal Time (UTC) time standard. For more information, see [Linux time and time zones](~~405080~~).
+        *   When you import images, we recommend that you specify DetectionStrategy. This way, you can optimize the images based on the image check results. For more information, see [Overview](~~439819~~).
         
         @param request: ImportImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32827,6 +32973,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.role_name):
             query['RoleName'] = request.role_name
+        if not UtilClient.is_unset(request.storage_location_arn):
+            query['StorageLocationArn'] = request.storage_location_arn
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
@@ -32854,11 +33002,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ImportImageResponse:
         """
-        When you call this operation, take note of the following items:
-        *   Before you can import an image, you must upload the image to an Object Storage Service (OSS) bucket. For more information, see [Upload objects](~~31886~~).
-        *   In some scenarios, you may want to create an image based on the operating system data of a source server, import the image to ECS, and then create an ECS instance from the imported image. The source server can be a physical server, a virtual machine, or a cloud host. If the virtio driver is not installed on the source server, the created ECS instance may be unable to start. To prevent this issue, make sure that the virtio driver is installed on the source server before you import an image to Alibaba Cloud. For more information, see [Install the virtio driver](~~62423~~).
-        *   Before you import images for the first time, you must use Resource Access Management (RAM) to authorize ECS to access your OSS buckets. If ECS is not authorized to access your OSS buckets, the `NoSetRoletoECSServiceAcount` error code is returned when you call the ImportImage operation. The [Cloud Resource Access Authorization](https://ram.console.aliyun.com/?spm=5176.2020520101image.0.0.2ffa4df57kSoHX#/role/authorize?request=%7B%22Requests%22%3A%20%7B%22request1%22%3A%20%7B%22RoleName%22%3A%20%22AliyunECSImageImportDefaultRole%22%2C%20%22TemplateId%22%3A%20%22ECSImportRole%22%7D%2C%20%22request2%22%3A%20%7B%22RoleName%22%3A%20%22AliyunECSImageExportDefaultRole%22%2C%20%22TemplateId%22%3A%20%22ECSExportRole%22%7D%7D%2C%20%22ReturnUrl%22%3A%20%22https%3A//ecs.console.aliyun.com/%22%2C%20%22Service%22%3A%20%22ECS%22%7D) page in the RAM console provides a convenient push-button authorization feature for this operation. You can also perform the authorization by using a RAM role and RAM policies. The following examples show the policies and permissions required for some steps in the authorization procedure. For more information, see [Control access to resources by using RAM users](~~25481~~).
-        1.  Create a role named `AliyunECSImageImportDefaultRole`. You must use this exact name. Otherwise, the image cannot be imported. Configure the following trust policy for the role:
+        ### [](#)Usage notes
+        Take note of the following items:
+        *   Before you import an image, you must upload the image to an Object Storage Service (OSS) bucket. For more information, see [Upload objects](~~31886~~).
+        *   In some scenarios, you may want to create a custom image based on the operating system data of a source server, import the image to Alibaba Cloud, and then create an ECS instance from the image. The source server can be a physical server, a virtual machine, or a cloud host. If the virtio driver is not installed on the source server, the created ECS instance may be unable to start. To prevent this issue, verify that the virtio driver is installed on the source server before you import the image to Alibaba Cloud. For more information, see [Install the virtio driver](~~62423~~).
+        *   Before you import images for the first time, you must use Resource Access Management (RAM) to authorize ECS to access your OSS buckets. If ECS is not authorized to access your OSS buckets, the `NoSetRoletoECSServiceAcount` error code is returned when you call the ImportImage operation. You can complete the authorization with one click on the [Cloud Resource Access Authorization](https://ram.console.aliyun.com/?spm=5176.2020520101image.0.0.2ffa4df57kSoHX#/role/authorize?request=%7B%22Requests%22%3A%20%7B%22request1%22%3A%20%7B%22RoleName%22%3A%20%22AliyunECSImageImportDefaultRole%22%2C%20%22TemplateId%22%3A%20%22ECSImportRole%22%7D%2C%20%22request2%22%3A%20%7B%22RoleName%22%3A%20%22AliyunECSImageExportDefaultRole%22%2C%20%22TemplateId%22%3A%20%22ECSExportRole%22%7D%7D%2C%20%22ReturnUrl%22%3A%20%22https%3A//ecs.console.aliyun.com/%22%2C%20%22Service%22%3A%20%22ECS%22%7D) page of the RAM console. You can also complete the authorization by using a RAM role and RAM policies. The following examples show the policies and permissions required for some steps in the authorization procedure. For more information, see [Control access to resources by using RAM users](~~25481~~).
+        1.  Create a RAM role named `AliyunECSImageImportDefaultRole`. You must use this exact role name. Otherwise, the image cannot be imported. Configure the following trust policy for the role:
         {
         "Statement": [
         {
@@ -32873,7 +33022,7 @@ class Client(OpenApiClient):
         ],
         "Version": "1"
         }
-        2.  Attach the `AliyunECSImageImportRolePolicy` system policy to the role. You can also create a custom policy that contains the following content and attach the policy to the role:
+        2.  Attach the `AliyunECSImageImportRolePolicy` system policy to the RAM role. You can also create a custom policy that contains the following content and attach the policy to the role:
         ```
         {
         "Version": "1",
@@ -32891,19 +33040,20 @@ class Client(OpenApiClient):
         }
         ```
         *   You cannot delete an image that is being imported. However, you can call the [CancelTask](~~25624~~) operation to cancel the image import task.
-        *   You can import an image only to the same region as the OSS bucket to which the image was uploaded.
-        *   The valid values of N in the `DiskDeviceMapping.N` parameter range from 1 to 17. When N is set to 1, the disk is a system disk. When N is set to a value from 2 to 17, the disk is a data disk.
+        *   You can import an image only to the same region as the OSS bucket to which the image file is uploaded.
+        *   The valid values of N in `DiskDeviceMapping.N` range from 1 to 17. When N is set to 1, the disk is a system disk. When N is set to a value from 2 to 17, the disk is a data disk. When N is set to a value greater than 17, parameters prefixed with DiskDeviceMapping.N are ignored.
         *   When you set `Architecture` to `arm64` or when you set `Platform` to `CentOS Stream`, `Anolis`, `AlmaLinux`, `UOS`, `Kylin`, or `Rocky Linux`, take note of the following items:
-        *   To ensure that the password can be set, or that the key pair can be modified for an imported image, the image must meet the following requirements:
-        *   The operating system kernel supports the `CONFIG_FW_CFG_SYSFS` feature. By default, Linux community kernel 4.6 and later, as well as CentOS kernel 3.10.0-826.el7 and later, support this feature. You can run the `grep -nr CONFIG_FW_CFG_SYSFS /boot/config-$(uname -r)` command in the source server of the image. If the command output contains `CONFIG_FW_CFG_SYSFS=y`, the kernel of this image supports the `CONFIG_FW_CFG_SYSFS` feature.
-        *   The latest version of Alibaba Cloud cloud-init is installed on the operating system. If the installed version of cloud-init is 19.1, make sure that the minor version is 19.1.3 or later. If the installed version of cloud-init is 0.7.6a as in some early versions of operating systems, make sure that the minor version is 0.7.6a15 or later. For more information, see [Install cloud-init](~~57803~~).
+        *   To ensure that the password can be set or the key pair can be modified for an imported image, make sure that the image meets the following requirements before you import it:
+        *   The kernel of the operating system supports the `CONFIG_FW_CFG_SYSFS` feature. By default, Linux community kernel 4.6 and later and CentOS kernel 3.10.0-826.el7 and later support the CONFIG_FW_CFG_SYSFS feature. You can run the `grep -nr CONFIG_FW_CFG_SYSFS /boot/config-$(uname -r)` command on the source server of the image. If the command output contains `CONFIG_FW_CFG_SYSFS=y`, the kernel of the image supports the `CONFIG_FW_CFG_SYSFS` feature.
+        *   Alibaba Cloud cloud-init of the latest version is installed on the operating system. If the version of cloud-init is 19.1, the minor version must be 19.1.3 or later. If the version of cloud-init is 0.7.6a in some early versions of operating systems, the minor version must be 0.7.6a15 or later. For more information, see [Install cloud-init](~~57803~~).
         *   The operating system supports the SHA-512 encryption algorithm.
         *   If you want an imported image to support the resizing of disks and file systems, make sure that the image meets the following requirements before you import it:
         *   The kernel version of the operating system is later than 3.6.
-        *   The image supports the growpart command. To support this command, you must install the `cloud-utils-growpart` package. Package installation methods vary based on operating systems. For more information, see [Resize partitions and file systems of Linux system disks](~~111738~~).
-        *   The image supports the resize2fs command. To support this command, you must install the `e2fsprogs` package. By default, the package is installed on the operating system. If the package is not installed, you must install it.
-        *   The latest version of Alibaba Cloud cloud-init is installed on the operating system. If the installed version of cloud-init is 19.1, make sure that the minor version is 19.1.3 or later. If the installed version of cloud-init is 0.7.6a as in some early versions of operating systems, make sure that the minor version is 0.7.6a15 or later. For more information, see [Install cloud-init](~~57803~~).
-        *   If the image that you want to import uses the ARM64 architecture, you must configure the real-time clock (RTC) to use the Coordinated Universal Time (UTC) time standard. For more information, see [Linux time and time zones](~~405080~~).
+        *   The image supports the growpart command. To support this command, you must install the `cloud-utils-growpart` package. The methods of installing the package vary based on operating systems. For more information, see [Extend the partitions and file systems of disks on a Linux instance](~~25451~~).
+        *   The image supports the resize2fs command. To support this command, you must install the `e2fsprogs` package. By default, the package is installed on the operating system. If the package is not installed, install it.
+        *   Alibaba Cloud cloud-init of the latest version is installed on the operating system. If the version of cloud-init is 19.1, the minor version must be 19.1.3 or later. If the version of cloud-init is 0.7.6a in some early versions of operating systems, the minor version must be 0.7.6a15 or later. For more information, see [Install cloud-init](~~57803~~).
+        *   If the image that you want to import uses the Arm64 architecture, configure the real-time clock (RTC) to use the Coordinated Universal Time (UTC) time standard. For more information, see [Linux time and time zones](~~405080~~).
+        *   When you import images, we recommend that you specify DetectionStrategy. This way, you can optimize the images based on the image check results. For more information, see [Overview](~~439819~~).
         
         @param request: ImportImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32941,6 +33091,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.role_name):
             query['RoleName'] = request.role_name
+        if not UtilClient.is_unset(request.storage_location_arn):
+            query['StorageLocationArn'] = request.storage_location_arn
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
@@ -32967,11 +33119,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ImportImageRequest,
     ) -> ecs_20140526_models.ImportImageResponse:
         """
-        When you call this operation, take note of the following items:
-        *   Before you can import an image, you must upload the image to an Object Storage Service (OSS) bucket. For more information, see [Upload objects](~~31886~~).
-        *   In some scenarios, you may want to create an image based on the operating system data of a source server, import the image to ECS, and then create an ECS instance from the imported image. The source server can be a physical server, a virtual machine, or a cloud host. If the virtio driver is not installed on the source server, the created ECS instance may be unable to start. To prevent this issue, make sure that the virtio driver is installed on the source server before you import an image to Alibaba Cloud. For more information, see [Install the virtio driver](~~62423~~).
-        *   Before you import images for the first time, you must use Resource Access Management (RAM) to authorize ECS to access your OSS buckets. If ECS is not authorized to access your OSS buckets, the `NoSetRoletoECSServiceAcount` error code is returned when you call the ImportImage operation. The [Cloud Resource Access Authorization](https://ram.console.aliyun.com/?spm=5176.2020520101image.0.0.2ffa4df57kSoHX#/role/authorize?request=%7B%22Requests%22%3A%20%7B%22request1%22%3A%20%7B%22RoleName%22%3A%20%22AliyunECSImageImportDefaultRole%22%2C%20%22TemplateId%22%3A%20%22ECSImportRole%22%7D%2C%20%22request2%22%3A%20%7B%22RoleName%22%3A%20%22AliyunECSImageExportDefaultRole%22%2C%20%22TemplateId%22%3A%20%22ECSExportRole%22%7D%7D%2C%20%22ReturnUrl%22%3A%20%22https%3A//ecs.console.aliyun.com/%22%2C%20%22Service%22%3A%20%22ECS%22%7D) page in the RAM console provides a convenient push-button authorization feature for this operation. You can also perform the authorization by using a RAM role and RAM policies. The following examples show the policies and permissions required for some steps in the authorization procedure. For more information, see [Control access to resources by using RAM users](~~25481~~).
-        1.  Create a role named `AliyunECSImageImportDefaultRole`. You must use this exact name. Otherwise, the image cannot be imported. Configure the following trust policy for the role:
+        ### [](#)Usage notes
+        Take note of the following items:
+        *   Before you import an image, you must upload the image to an Object Storage Service (OSS) bucket. For more information, see [Upload objects](~~31886~~).
+        *   In some scenarios, you may want to create a custom image based on the operating system data of a source server, import the image to Alibaba Cloud, and then create an ECS instance from the image. The source server can be a physical server, a virtual machine, or a cloud host. If the virtio driver is not installed on the source server, the created ECS instance may be unable to start. To prevent this issue, verify that the virtio driver is installed on the source server before you import the image to Alibaba Cloud. For more information, see [Install the virtio driver](~~62423~~).
+        *   Before you import images for the first time, you must use Resource Access Management (RAM) to authorize ECS to access your OSS buckets. If ECS is not authorized to access your OSS buckets, the `NoSetRoletoECSServiceAcount` error code is returned when you call the ImportImage operation. You can complete the authorization with one click on the [Cloud Resource Access Authorization](https://ram.console.aliyun.com/?spm=5176.2020520101image.0.0.2ffa4df57kSoHX#/role/authorize?request=%7B%22Requests%22%3A%20%7B%22request1%22%3A%20%7B%22RoleName%22%3A%20%22AliyunECSImageImportDefaultRole%22%2C%20%22TemplateId%22%3A%20%22ECSImportRole%22%7D%2C%20%22request2%22%3A%20%7B%22RoleName%22%3A%20%22AliyunECSImageExportDefaultRole%22%2C%20%22TemplateId%22%3A%20%22ECSExportRole%22%7D%7D%2C%20%22ReturnUrl%22%3A%20%22https%3A//ecs.console.aliyun.com/%22%2C%20%22Service%22%3A%20%22ECS%22%7D) page of the RAM console. You can also complete the authorization by using a RAM role and RAM policies. The following examples show the policies and permissions required for some steps in the authorization procedure. For more information, see [Control access to resources by using RAM users](~~25481~~).
+        1.  Create a RAM role named `AliyunECSImageImportDefaultRole`. You must use this exact role name. Otherwise, the image cannot be imported. Configure the following trust policy for the role:
         {
         "Statement": [
         {
@@ -32986,7 +33139,7 @@ class Client(OpenApiClient):
         ],
         "Version": "1"
         }
-        2.  Attach the `AliyunECSImageImportRolePolicy` system policy to the role. You can also create a custom policy that contains the following content and attach the policy to the role:
+        2.  Attach the `AliyunECSImageImportRolePolicy` system policy to the RAM role. You can also create a custom policy that contains the following content and attach the policy to the role:
         ```
         {
         "Version": "1",
@@ -33004,19 +33157,20 @@ class Client(OpenApiClient):
         }
         ```
         *   You cannot delete an image that is being imported. However, you can call the [CancelTask](~~25624~~) operation to cancel the image import task.
-        *   You can import an image only to the same region as the OSS bucket to which the image was uploaded.
-        *   The valid values of N in the `DiskDeviceMapping.N` parameter range from 1 to 17. When N is set to 1, the disk is a system disk. When N is set to a value from 2 to 17, the disk is a data disk.
+        *   You can import an image only to the same region as the OSS bucket to which the image file is uploaded.
+        *   The valid values of N in `DiskDeviceMapping.N` range from 1 to 17. When N is set to 1, the disk is a system disk. When N is set to a value from 2 to 17, the disk is a data disk. When N is set to a value greater than 17, parameters prefixed with DiskDeviceMapping.N are ignored.
         *   When you set `Architecture` to `arm64` or when you set `Platform` to `CentOS Stream`, `Anolis`, `AlmaLinux`, `UOS`, `Kylin`, or `Rocky Linux`, take note of the following items:
-        *   To ensure that the password can be set, or that the key pair can be modified for an imported image, the image must meet the following requirements:
-        *   The operating system kernel supports the `CONFIG_FW_CFG_SYSFS` feature. By default, Linux community kernel 4.6 and later, as well as CentOS kernel 3.10.0-826.el7 and later, support this feature. You can run the `grep -nr CONFIG_FW_CFG_SYSFS /boot/config-$(uname -r)` command in the source server of the image. If the command output contains `CONFIG_FW_CFG_SYSFS=y`, the kernel of this image supports the `CONFIG_FW_CFG_SYSFS` feature.
-        *   The latest version of Alibaba Cloud cloud-init is installed on the operating system. If the installed version of cloud-init is 19.1, make sure that the minor version is 19.1.3 or later. If the installed version of cloud-init is 0.7.6a as in some early versions of operating systems, make sure that the minor version is 0.7.6a15 or later. For more information, see [Install cloud-init](~~57803~~).
+        *   To ensure that the password can be set or the key pair can be modified for an imported image, make sure that the image meets the following requirements before you import it:
+        *   The kernel of the operating system supports the `CONFIG_FW_CFG_SYSFS` feature. By default, Linux community kernel 4.6 and later and CentOS kernel 3.10.0-826.el7 and later support the CONFIG_FW_CFG_SYSFS feature. You can run the `grep -nr CONFIG_FW_CFG_SYSFS /boot/config-$(uname -r)` command on the source server of the image. If the command output contains `CONFIG_FW_CFG_SYSFS=y`, the kernel of the image supports the `CONFIG_FW_CFG_SYSFS` feature.
+        *   Alibaba Cloud cloud-init of the latest version is installed on the operating system. If the version of cloud-init is 19.1, the minor version must be 19.1.3 or later. If the version of cloud-init is 0.7.6a in some early versions of operating systems, the minor version must be 0.7.6a15 or later. For more information, see [Install cloud-init](~~57803~~).
         *   The operating system supports the SHA-512 encryption algorithm.
         *   If you want an imported image to support the resizing of disks and file systems, make sure that the image meets the following requirements before you import it:
         *   The kernel version of the operating system is later than 3.6.
-        *   The image supports the growpart command. To support this command, you must install the `cloud-utils-growpart` package. Package installation methods vary based on operating systems. For more information, see [Resize partitions and file systems of Linux system disks](~~111738~~).
-        *   The image supports the resize2fs command. To support this command, you must install the `e2fsprogs` package. By default, the package is installed on the operating system. If the package is not installed, you must install it.
-        *   The latest version of Alibaba Cloud cloud-init is installed on the operating system. If the installed version of cloud-init is 19.1, make sure that the minor version is 19.1.3 or later. If the installed version of cloud-init is 0.7.6a as in some early versions of operating systems, make sure that the minor version is 0.7.6a15 or later. For more information, see [Install cloud-init](~~57803~~).
-        *   If the image that you want to import uses the ARM64 architecture, you must configure the real-time clock (RTC) to use the Coordinated Universal Time (UTC) time standard. For more information, see [Linux time and time zones](~~405080~~).
+        *   The image supports the growpart command. To support this command, you must install the `cloud-utils-growpart` package. The methods of installing the package vary based on operating systems. For more information, see [Extend the partitions and file systems of disks on a Linux instance](~~25451~~).
+        *   The image supports the resize2fs command. To support this command, you must install the `e2fsprogs` package. By default, the package is installed on the operating system. If the package is not installed, install it.
+        *   Alibaba Cloud cloud-init of the latest version is installed on the operating system. If the version of cloud-init is 19.1, the minor version must be 19.1.3 or later. If the version of cloud-init is 0.7.6a in some early versions of operating systems, the minor version must be 0.7.6a15 or later. For more information, see [Install cloud-init](~~57803~~).
+        *   If the image that you want to import uses the Arm64 architecture, configure the real-time clock (RTC) to use the Coordinated Universal Time (UTC) time standard. For more information, see [Linux time and time zones](~~405080~~).
+        *   When you import images, we recommend that you specify DetectionStrategy. This way, you can optimize the images based on the image check results. For more information, see [Overview](~~439819~~).
         
         @param request: ImportImageRequest
         @return: ImportImageResponse
@@ -33029,11 +33183,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ImportImageRequest,
     ) -> ecs_20140526_models.ImportImageResponse:
         """
-        When you call this operation, take note of the following items:
-        *   Before you can import an image, you must upload the image to an Object Storage Service (OSS) bucket. For more information, see [Upload objects](~~31886~~).
-        *   In some scenarios, you may want to create an image based on the operating system data of a source server, import the image to ECS, and then create an ECS instance from the imported image. The source server can be a physical server, a virtual machine, or a cloud host. If the virtio driver is not installed on the source server, the created ECS instance may be unable to start. To prevent this issue, make sure that the virtio driver is installed on the source server before you import an image to Alibaba Cloud. For more information, see [Install the virtio driver](~~62423~~).
-        *   Before you import images for the first time, you must use Resource Access Management (RAM) to authorize ECS to access your OSS buckets. If ECS is not authorized to access your OSS buckets, the `NoSetRoletoECSServiceAcount` error code is returned when you call the ImportImage operation. The [Cloud Resource Access Authorization](https://ram.console.aliyun.com/?spm=5176.2020520101image.0.0.2ffa4df57kSoHX#/role/authorize?request=%7B%22Requests%22%3A%20%7B%22request1%22%3A%20%7B%22RoleName%22%3A%20%22AliyunECSImageImportDefaultRole%22%2C%20%22TemplateId%22%3A%20%22ECSImportRole%22%7D%2C%20%22request2%22%3A%20%7B%22RoleName%22%3A%20%22AliyunECSImageExportDefaultRole%22%2C%20%22TemplateId%22%3A%20%22ECSExportRole%22%7D%7D%2C%20%22ReturnUrl%22%3A%20%22https%3A//ecs.console.aliyun.com/%22%2C%20%22Service%22%3A%20%22ECS%22%7D) page in the RAM console provides a convenient push-button authorization feature for this operation. You can also perform the authorization by using a RAM role and RAM policies. The following examples show the policies and permissions required for some steps in the authorization procedure. For more information, see [Control access to resources by using RAM users](~~25481~~).
-        1.  Create a role named `AliyunECSImageImportDefaultRole`. You must use this exact name. Otherwise, the image cannot be imported. Configure the following trust policy for the role:
+        ### [](#)Usage notes
+        Take note of the following items:
+        *   Before you import an image, you must upload the image to an Object Storage Service (OSS) bucket. For more information, see [Upload objects](~~31886~~).
+        *   In some scenarios, you may want to create a custom image based on the operating system data of a source server, import the image to Alibaba Cloud, and then create an ECS instance from the image. The source server can be a physical server, a virtual machine, or a cloud host. If the virtio driver is not installed on the source server, the created ECS instance may be unable to start. To prevent this issue, verify that the virtio driver is installed on the source server before you import the image to Alibaba Cloud. For more information, see [Install the virtio driver](~~62423~~).
+        *   Before you import images for the first time, you must use Resource Access Management (RAM) to authorize ECS to access your OSS buckets. If ECS is not authorized to access your OSS buckets, the `NoSetRoletoECSServiceAcount` error code is returned when you call the ImportImage operation. You can complete the authorization with one click on the [Cloud Resource Access Authorization](https://ram.console.aliyun.com/?spm=5176.2020520101image.0.0.2ffa4df57kSoHX#/role/authorize?request=%7B%22Requests%22%3A%20%7B%22request1%22%3A%20%7B%22RoleName%22%3A%20%22AliyunECSImageImportDefaultRole%22%2C%20%22TemplateId%22%3A%20%22ECSImportRole%22%7D%2C%20%22request2%22%3A%20%7B%22RoleName%22%3A%20%22AliyunECSImageExportDefaultRole%22%2C%20%22TemplateId%22%3A%20%22ECSExportRole%22%7D%7D%2C%20%22ReturnUrl%22%3A%20%22https%3A//ecs.console.aliyun.com/%22%2C%20%22Service%22%3A%20%22ECS%22%7D) page of the RAM console. You can also complete the authorization by using a RAM role and RAM policies. The following examples show the policies and permissions required for some steps in the authorization procedure. For more information, see [Control access to resources by using RAM users](~~25481~~).
+        1.  Create a RAM role named `AliyunECSImageImportDefaultRole`. You must use this exact role name. Otherwise, the image cannot be imported. Configure the following trust policy for the role:
         {
         "Statement": [
         {
@@ -33048,7 +33203,7 @@ class Client(OpenApiClient):
         ],
         "Version": "1"
         }
-        2.  Attach the `AliyunECSImageImportRolePolicy` system policy to the role. You can also create a custom policy that contains the following content and attach the policy to the role:
+        2.  Attach the `AliyunECSImageImportRolePolicy` system policy to the RAM role. You can also create a custom policy that contains the following content and attach the policy to the role:
         ```
         {
         "Version": "1",
@@ -33066,19 +33221,20 @@ class Client(OpenApiClient):
         }
         ```
         *   You cannot delete an image that is being imported. However, you can call the [CancelTask](~~25624~~) operation to cancel the image import task.
-        *   You can import an image only to the same region as the OSS bucket to which the image was uploaded.
-        *   The valid values of N in the `DiskDeviceMapping.N` parameter range from 1 to 17. When N is set to 1, the disk is a system disk. When N is set to a value from 2 to 17, the disk is a data disk.
+        *   You can import an image only to the same region as the OSS bucket to which the image file is uploaded.
+        *   The valid values of N in `DiskDeviceMapping.N` range from 1 to 17. When N is set to 1, the disk is a system disk. When N is set to a value from 2 to 17, the disk is a data disk. When N is set to a value greater than 17, parameters prefixed with DiskDeviceMapping.N are ignored.
         *   When you set `Architecture` to `arm64` or when you set `Platform` to `CentOS Stream`, `Anolis`, `AlmaLinux`, `UOS`, `Kylin`, or `Rocky Linux`, take note of the following items:
-        *   To ensure that the password can be set, or that the key pair can be modified for an imported image, the image must meet the following requirements:
-        *   The operating system kernel supports the `CONFIG_FW_CFG_SYSFS` feature. By default, Linux community kernel 4.6 and later, as well as CentOS kernel 3.10.0-826.el7 and later, support this feature. You can run the `grep -nr CONFIG_FW_CFG_SYSFS /boot/config-$(uname -r)` command in the source server of the image. If the command output contains `CONFIG_FW_CFG_SYSFS=y`, the kernel of this image supports the `CONFIG_FW_CFG_SYSFS` feature.
-        *   The latest version of Alibaba Cloud cloud-init is installed on the operating system. If the installed version of cloud-init is 19.1, make sure that the minor version is 19.1.3 or later. If the installed version of cloud-init is 0.7.6a as in some early versions of operating systems, make sure that the minor version is 0.7.6a15 or later. For more information, see [Install cloud-init](~~57803~~).
+        *   To ensure that the password can be set or the key pair can be modified for an imported image, make sure that the image meets the following requirements before you import it:
+        *   The kernel of the operating system supports the `CONFIG_FW_CFG_SYSFS` feature. By default, Linux community kernel 4.6 and later and CentOS kernel 3.10.0-826.el7 and later support the CONFIG_FW_CFG_SYSFS feature. You can run the `grep -nr CONFIG_FW_CFG_SYSFS /boot/config-$(uname -r)` command on the source server of the image. If the command output contains `CONFIG_FW_CFG_SYSFS=y`, the kernel of the image supports the `CONFIG_FW_CFG_SYSFS` feature.
+        *   Alibaba Cloud cloud-init of the latest version is installed on the operating system. If the version of cloud-init is 19.1, the minor version must be 19.1.3 or later. If the version of cloud-init is 0.7.6a in some early versions of operating systems, the minor version must be 0.7.6a15 or later. For more information, see [Install cloud-init](~~57803~~).
         *   The operating system supports the SHA-512 encryption algorithm.
         *   If you want an imported image to support the resizing of disks and file systems, make sure that the image meets the following requirements before you import it:
         *   The kernel version of the operating system is later than 3.6.
-        *   The image supports the growpart command. To support this command, you must install the `cloud-utils-growpart` package. Package installation methods vary based on operating systems. For more information, see [Resize partitions and file systems of Linux system disks](~~111738~~).
-        *   The image supports the resize2fs command. To support this command, you must install the `e2fsprogs` package. By default, the package is installed on the operating system. If the package is not installed, you must install it.
-        *   The latest version of Alibaba Cloud cloud-init is installed on the operating system. If the installed version of cloud-init is 19.1, make sure that the minor version is 19.1.3 or later. If the installed version of cloud-init is 0.7.6a as in some early versions of operating systems, make sure that the minor version is 0.7.6a15 or later. For more information, see [Install cloud-init](~~57803~~).
-        *   If the image that you want to import uses the ARM64 architecture, you must configure the real-time clock (RTC) to use the Coordinated Universal Time (UTC) time standard. For more information, see [Linux time and time zones](~~405080~~).
+        *   The image supports the growpart command. To support this command, you must install the `cloud-utils-growpart` package. The methods of installing the package vary based on operating systems. For more information, see [Extend the partitions and file systems of disks on a Linux instance](~~25451~~).
+        *   The image supports the resize2fs command. To support this command, you must install the `e2fsprogs` package. By default, the package is installed on the operating system. If the package is not installed, install it.
+        *   Alibaba Cloud cloud-init of the latest version is installed on the operating system. If the version of cloud-init is 19.1, the minor version must be 19.1.3 or later. If the version of cloud-init is 0.7.6a in some early versions of operating systems, the minor version must be 0.7.6a15 or later. For more information, see [Install cloud-init](~~57803~~).
+        *   If the image that you want to import uses the Arm64 architecture, configure the real-time clock (RTC) to use the Coordinated Universal Time (UTC) time standard. For more information, see [Linux time and time zones](~~405080~~).
+        *   When you import images, we recommend that you specify DetectionStrategy. This way, you can optimize the images based on the image check results. For more information, see [Overview](~~439819~~).
         
         @param request: ImportImageRequest
         @return: ImportImageResponse
@@ -33392,21 +33548,21 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.InvokeCommandResponse:
         """
-        ## Usage notes
-        *   ECS instances on which you want to run the Cloud Assistant command must meet the following requirements. If multiple ECS instances are specified and one of the instances does not meet the requirements for running the command, the call fails. You must specify instances that meet the requirements and call the InvokeCommand operation again.
-        *   The instances are in the Running (`Running`) state. You can call the [DescribeInstances](~~25506~~) operation to query instance states.
+        ## [](#)Usage notes
+        *   The Elastic Compute Service (ECS) instances on which you want to run the Cloud Assistant command must meet the following requirements. If multiple ECS instances are specified and one of the instances does not meet the requirements for running the command, the call fails. You must specify instances that meet the requirements and call the InvokeCommand operation again.
+        *   The instances are in the Running (`Running`) state. You can call the [DescribeInstances](~~25506~~) operation to query the status of instances.
         *   Cloud Assistant Agent is installed on the instances. For more information, see [Install Cloud Assistant Agent](~~64921~~).
         *   Before you run PowerShell commands on the instances, make sure that the instances have the PowerShell module configured.
-        *   The command can run only once on the instances.
-        *   The command can run multiple times on the instances based on a schedule.
-        *   The schedule is specified by the Frequency parameter. The results of each execution of a command do not affect the next execution of the command.
-        *   If you want to specify a schedule by using a cron expression, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instance. Make sure that the time or time zone of the instance meets your business requirements. For more information about time zones, see [Configure the NTP service for ECS instances that run CentOS 6](~~92803~~) or [Configure the NTP service for Windows instances](~~51890~~).
-        To ensure that scheduled tasks can run as expected, make sure that the version of Cloud Assistant Agent is not earlier than the following ones. You can configure a command to run at a fixed interval based on a rate expression, run only once at a specified time, or run at designated times based on a cron expression. If the ClientNeedUpgrade error code is returned, you must upgrade Cloud Assistant Agent to the latest version. For more information, see [Update or disable updates for Cloud Assistant Agent](~~134383~~).
+        *   You can configure the command to run only once on the instances.
+        *   You can configure the command to run multiple times on the instances based on a schedule.
+        *   The schedule is specified by the Frequency parameter. The results of each execution of the command do not affect the next execution of the command.
+        *   If you use a cron expression to specify a schedule, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instance. Make sure that the time or time zone of the instance meets your business requirements. For more information, see [Configure the NTP service for ECS instances that run CentOS 6](~~92803~~) or [Configure the NTP service for Windows instances](~~51890~~).
+        To ensure that scheduled tasks can run as expected, make sure that the version of Cloud Assistant Agent is not earlier than the following ones. You can configure a command to run at a fixed interval based on a rate expression, run only once at a specified time, or run at designated times based on a cron expression. If the ClientNeedUpgrade error code is returned, you must upgrade Cloud Assistant Agent to the latest version. For more information, see [Upgrade or disable upgrades for Cloud Assistant Agent](~~134383~~).
         *   Linux: 2.2.3.282
         *   Windows: 2.1.3.282
         *   Commands may fail to run due to instance status exceptions, network exceptions, or exceptions on Cloud Assistant Agent. If a command fails to run, no execution information is generated. For more information, see [Check execution results and troubleshoot common issues](~~87029~~).
-        *   If you enable the custom parameter feature when you create the command, you must specify custom parameters (`Parameters`) to run the command.
-        *   Before you run a command on instances, especially new instances, we recommend that you call the [DescribeCloudAssistantStatus](~~87346~~) operation to query the state of Cloud Assistant Agent installed on the instances and make sure that the return value of CloudAssistantStatus is true.
+        *   If you enabled the custom parameter feature when you created the command, you must specify custom parameters (`Parameters`) to run the command.
+        *   Before you run the command on instances, especially new instances, we recommend that you call the [DescribeCloudAssistantStatus](~~87346~~) operation to query the status of Cloud Assistant Agent on the instances. Run the command when the return value of CloudAssistantStatus is true.
         
         @param tmp_req: InvokeCommandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -33485,21 +33641,21 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.InvokeCommandResponse:
         """
-        ## Usage notes
-        *   ECS instances on which you want to run the Cloud Assistant command must meet the following requirements. If multiple ECS instances are specified and one of the instances does not meet the requirements for running the command, the call fails. You must specify instances that meet the requirements and call the InvokeCommand operation again.
-        *   The instances are in the Running (`Running`) state. You can call the [DescribeInstances](~~25506~~) operation to query instance states.
+        ## [](#)Usage notes
+        *   The Elastic Compute Service (ECS) instances on which you want to run the Cloud Assistant command must meet the following requirements. If multiple ECS instances are specified and one of the instances does not meet the requirements for running the command, the call fails. You must specify instances that meet the requirements and call the InvokeCommand operation again.
+        *   The instances are in the Running (`Running`) state. You can call the [DescribeInstances](~~25506~~) operation to query the status of instances.
         *   Cloud Assistant Agent is installed on the instances. For more information, see [Install Cloud Assistant Agent](~~64921~~).
         *   Before you run PowerShell commands on the instances, make sure that the instances have the PowerShell module configured.
-        *   The command can run only once on the instances.
-        *   The command can run multiple times on the instances based on a schedule.
-        *   The schedule is specified by the Frequency parameter. The results of each execution of a command do not affect the next execution of the command.
-        *   If you want to specify a schedule by using a cron expression, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instance. Make sure that the time or time zone of the instance meets your business requirements. For more information about time zones, see [Configure the NTP service for ECS instances that run CentOS 6](~~92803~~) or [Configure the NTP service for Windows instances](~~51890~~).
-        To ensure that scheduled tasks can run as expected, make sure that the version of Cloud Assistant Agent is not earlier than the following ones. You can configure a command to run at a fixed interval based on a rate expression, run only once at a specified time, or run at designated times based on a cron expression. If the ClientNeedUpgrade error code is returned, you must upgrade Cloud Assistant Agent to the latest version. For more information, see [Update or disable updates for Cloud Assistant Agent](~~134383~~).
+        *   You can configure the command to run only once on the instances.
+        *   You can configure the command to run multiple times on the instances based on a schedule.
+        *   The schedule is specified by the Frequency parameter. The results of each execution of the command do not affect the next execution of the command.
+        *   If you use a cron expression to specify a schedule, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instance. Make sure that the time or time zone of the instance meets your business requirements. For more information, see [Configure the NTP service for ECS instances that run CentOS 6](~~92803~~) or [Configure the NTP service for Windows instances](~~51890~~).
+        To ensure that scheduled tasks can run as expected, make sure that the version of Cloud Assistant Agent is not earlier than the following ones. You can configure a command to run at a fixed interval based on a rate expression, run only once at a specified time, or run at designated times based on a cron expression. If the ClientNeedUpgrade error code is returned, you must upgrade Cloud Assistant Agent to the latest version. For more information, see [Upgrade or disable upgrades for Cloud Assistant Agent](~~134383~~).
         *   Linux: 2.2.3.282
         *   Windows: 2.1.3.282
         *   Commands may fail to run due to instance status exceptions, network exceptions, or exceptions on Cloud Assistant Agent. If a command fails to run, no execution information is generated. For more information, see [Check execution results and troubleshoot common issues](~~87029~~).
-        *   If you enable the custom parameter feature when you create the command, you must specify custom parameters (`Parameters`) to run the command.
-        *   Before you run a command on instances, especially new instances, we recommend that you call the [DescribeCloudAssistantStatus](~~87346~~) operation to query the state of Cloud Assistant Agent installed on the instances and make sure that the return value of CloudAssistantStatus is true.
+        *   If you enabled the custom parameter feature when you created the command, you must specify custom parameters (`Parameters`) to run the command.
+        *   Before you run the command on instances, especially new instances, we recommend that you call the [DescribeCloudAssistantStatus](~~87346~~) operation to query the status of Cloud Assistant Agent on the instances. Run the command when the return value of CloudAssistantStatus is true.
         
         @param tmp_req: InvokeCommandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -33577,21 +33733,21 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.InvokeCommandRequest,
     ) -> ecs_20140526_models.InvokeCommandResponse:
         """
-        ## Usage notes
-        *   ECS instances on which you want to run the Cloud Assistant command must meet the following requirements. If multiple ECS instances are specified and one of the instances does not meet the requirements for running the command, the call fails. You must specify instances that meet the requirements and call the InvokeCommand operation again.
-        *   The instances are in the Running (`Running`) state. You can call the [DescribeInstances](~~25506~~) operation to query instance states.
+        ## [](#)Usage notes
+        *   The Elastic Compute Service (ECS) instances on which you want to run the Cloud Assistant command must meet the following requirements. If multiple ECS instances are specified and one of the instances does not meet the requirements for running the command, the call fails. You must specify instances that meet the requirements and call the InvokeCommand operation again.
+        *   The instances are in the Running (`Running`) state. You can call the [DescribeInstances](~~25506~~) operation to query the status of instances.
         *   Cloud Assistant Agent is installed on the instances. For more information, see [Install Cloud Assistant Agent](~~64921~~).
         *   Before you run PowerShell commands on the instances, make sure that the instances have the PowerShell module configured.
-        *   The command can run only once on the instances.
-        *   The command can run multiple times on the instances based on a schedule.
-        *   The schedule is specified by the Frequency parameter. The results of each execution of a command do not affect the next execution of the command.
-        *   If you want to specify a schedule by using a cron expression, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instance. Make sure that the time or time zone of the instance meets your business requirements. For more information about time zones, see [Configure the NTP service for ECS instances that run CentOS 6](~~92803~~) or [Configure the NTP service for Windows instances](~~51890~~).
-        To ensure that scheduled tasks can run as expected, make sure that the version of Cloud Assistant Agent is not earlier than the following ones. You can configure a command to run at a fixed interval based on a rate expression, run only once at a specified time, or run at designated times based on a cron expression. If the ClientNeedUpgrade error code is returned, you must upgrade Cloud Assistant Agent to the latest version. For more information, see [Update or disable updates for Cloud Assistant Agent](~~134383~~).
+        *   You can configure the command to run only once on the instances.
+        *   You can configure the command to run multiple times on the instances based on a schedule.
+        *   The schedule is specified by the Frequency parameter. The results of each execution of the command do not affect the next execution of the command.
+        *   If you use a cron expression to specify a schedule, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instance. Make sure that the time or time zone of the instance meets your business requirements. For more information, see [Configure the NTP service for ECS instances that run CentOS 6](~~92803~~) or [Configure the NTP service for Windows instances](~~51890~~).
+        To ensure that scheduled tasks can run as expected, make sure that the version of Cloud Assistant Agent is not earlier than the following ones. You can configure a command to run at a fixed interval based on a rate expression, run only once at a specified time, or run at designated times based on a cron expression. If the ClientNeedUpgrade error code is returned, you must upgrade Cloud Assistant Agent to the latest version. For more information, see [Upgrade or disable upgrades for Cloud Assistant Agent](~~134383~~).
         *   Linux: 2.2.3.282
         *   Windows: 2.1.3.282
         *   Commands may fail to run due to instance status exceptions, network exceptions, or exceptions on Cloud Assistant Agent. If a command fails to run, no execution information is generated. For more information, see [Check execution results and troubleshoot common issues](~~87029~~).
-        *   If you enable the custom parameter feature when you create the command, you must specify custom parameters (`Parameters`) to run the command.
-        *   Before you run a command on instances, especially new instances, we recommend that you call the [DescribeCloudAssistantStatus](~~87346~~) operation to query the state of Cloud Assistant Agent installed on the instances and make sure that the return value of CloudAssistantStatus is true.
+        *   If you enabled the custom parameter feature when you created the command, you must specify custom parameters (`Parameters`) to run the command.
+        *   Before you run the command on instances, especially new instances, we recommend that you call the [DescribeCloudAssistantStatus](~~87346~~) operation to query the status of Cloud Assistant Agent on the instances. Run the command when the return value of CloudAssistantStatus is true.
         
         @param request: InvokeCommandRequest
         @return: InvokeCommandResponse
@@ -33604,21 +33760,21 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.InvokeCommandRequest,
     ) -> ecs_20140526_models.InvokeCommandResponse:
         """
-        ## Usage notes
-        *   ECS instances on which you want to run the Cloud Assistant command must meet the following requirements. If multiple ECS instances are specified and one of the instances does not meet the requirements for running the command, the call fails. You must specify instances that meet the requirements and call the InvokeCommand operation again.
-        *   The instances are in the Running (`Running`) state. You can call the [DescribeInstances](~~25506~~) operation to query instance states.
+        ## [](#)Usage notes
+        *   The Elastic Compute Service (ECS) instances on which you want to run the Cloud Assistant command must meet the following requirements. If multiple ECS instances are specified and one of the instances does not meet the requirements for running the command, the call fails. You must specify instances that meet the requirements and call the InvokeCommand operation again.
+        *   The instances are in the Running (`Running`) state. You can call the [DescribeInstances](~~25506~~) operation to query the status of instances.
         *   Cloud Assistant Agent is installed on the instances. For more information, see [Install Cloud Assistant Agent](~~64921~~).
         *   Before you run PowerShell commands on the instances, make sure that the instances have the PowerShell module configured.
-        *   The command can run only once on the instances.
-        *   The command can run multiple times on the instances based on a schedule.
-        *   The schedule is specified by the Frequency parameter. The results of each execution of a command do not affect the next execution of the command.
-        *   If you want to specify a schedule by using a cron expression, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instance. Make sure that the time or time zone of the instance meets your business requirements. For more information about time zones, see [Configure the NTP service for ECS instances that run CentOS 6](~~92803~~) or [Configure the NTP service for Windows instances](~~51890~~).
-        To ensure that scheduled tasks can run as expected, make sure that the version of Cloud Assistant Agent is not earlier than the following ones. You can configure a command to run at a fixed interval based on a rate expression, run only once at a specified time, or run at designated times based on a cron expression. If the ClientNeedUpgrade error code is returned, you must upgrade Cloud Assistant Agent to the latest version. For more information, see [Update or disable updates for Cloud Assistant Agent](~~134383~~).
+        *   You can configure the command to run only once on the instances.
+        *   You can configure the command to run multiple times on the instances based on a schedule.
+        *   The schedule is specified by the Frequency parameter. The results of each execution of the command do not affect the next execution of the command.
+        *   If you use a cron expression to specify a schedule, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instance. Make sure that the time or time zone of the instance meets your business requirements. For more information, see [Configure the NTP service for ECS instances that run CentOS 6](~~92803~~) or [Configure the NTP service for Windows instances](~~51890~~).
+        To ensure that scheduled tasks can run as expected, make sure that the version of Cloud Assistant Agent is not earlier than the following ones. You can configure a command to run at a fixed interval based on a rate expression, run only once at a specified time, or run at designated times based on a cron expression. If the ClientNeedUpgrade error code is returned, you must upgrade Cloud Assistant Agent to the latest version. For more information, see [Upgrade or disable upgrades for Cloud Assistant Agent](~~134383~~).
         *   Linux: 2.2.3.282
         *   Windows: 2.1.3.282
         *   Commands may fail to run due to instance status exceptions, network exceptions, or exceptions on Cloud Assistant Agent. If a command fails to run, no execution information is generated. For more information, see [Check execution results and troubleshoot common issues](~~87029~~).
-        *   If you enable the custom parameter feature when you create the command, you must specify custom parameters (`Parameters`) to run the command.
-        *   Before you run a command on instances, especially new instances, we recommend that you call the [DescribeCloudAssistantStatus](~~87346~~) operation to query the state of Cloud Assistant Agent installed on the instances and make sure that the return value of CloudAssistantStatus is true.
+        *   If you enabled the custom parameter feature when you created the command, you must specify custom parameters (`Parameters`) to run the command.
+        *   Before you run the command on instances, especially new instances, we recommend that you call the [DescribeCloudAssistantStatus](~~87346~~) operation to query the status of Cloud Assistant Agent on the instances. Run the command when the return value of CloudAssistantStatus is true.
         
         @param request: InvokeCommandRequest
         @return: InvokeCommandResponse
@@ -33756,16 +33912,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.JoinSecurityGroupResponse:
         """
-        ## Usage notes
-        > This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](~~25503~~) operation to add an instance to or remove an instance from a security group, and call the [ModifyNetworkInterfaceAttribute](~~58513~~) operation to add an ENI to or remove an ENI from a security group.
+        ## [](#)Usage notes
+        >  This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](~~25503~~) operation to add an instance to or remove an instance from a security group, and call the [ModifyNetworkInterfaceAttribute](~~58513~~) operation to add an ENI to or remove an ENI from a security group.
         Take note of the following items:
-        *   Before you add an instance to a security group, the instance must be in the **Stopped** or **Running** state.
-        *   An instance can be added to up to five security groups.
-        *   You can increase this number to 16 by [submitting a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
+        *   Before you add an instance to a security group, the instance must be in the **Stopped** (Stopped) or **Running** (Running) state.
+        *   An instance can be added to up to five security groups by default.
+        *   To add an instance to more security groups, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex). An instance can be added to up to 16 security groups.
         *   A basic security group can contain up to 2,000 instances. An advanced security group can contain up to 65,536 instances.
         *   The security group and the instance must reside in the same region.
-        *   The security group and the instance must be of the same network type. If the network type is virtual private cloud (VPC), the security group and the instance must be in the same VPC.
-        *   An instance and an ENI cannot be added to a security group at the same time. You cannot configure the `InstanceId` and `NetworkInterfaceId` parameters at the same time.
+        *   The security group and the instance must be of the same network type. If the network type is virtual private cloud (VPC), the security group and the instance must reside in the same VPC.
+        *   An instance and an ENI cannot be added to a security group at the same time. You cannot specify `InstanceId` and `NetworkInterfaceId` at the same time in a request.
         
         @param request: JoinSecurityGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -33814,16 +33970,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.JoinSecurityGroupResponse:
         """
-        ## Usage notes
-        > This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](~~25503~~) operation to add an instance to or remove an instance from a security group, and call the [ModifyNetworkInterfaceAttribute](~~58513~~) operation to add an ENI to or remove an ENI from a security group.
+        ## [](#)Usage notes
+        >  This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](~~25503~~) operation to add an instance to or remove an instance from a security group, and call the [ModifyNetworkInterfaceAttribute](~~58513~~) operation to add an ENI to or remove an ENI from a security group.
         Take note of the following items:
-        *   Before you add an instance to a security group, the instance must be in the **Stopped** or **Running** state.
-        *   An instance can be added to up to five security groups.
-        *   You can increase this number to 16 by [submitting a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
+        *   Before you add an instance to a security group, the instance must be in the **Stopped** (Stopped) or **Running** (Running) state.
+        *   An instance can be added to up to five security groups by default.
+        *   To add an instance to more security groups, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex). An instance can be added to up to 16 security groups.
         *   A basic security group can contain up to 2,000 instances. An advanced security group can contain up to 65,536 instances.
         *   The security group and the instance must reside in the same region.
-        *   The security group and the instance must be of the same network type. If the network type is virtual private cloud (VPC), the security group and the instance must be in the same VPC.
-        *   An instance and an ENI cannot be added to a security group at the same time. You cannot configure the `InstanceId` and `NetworkInterfaceId` parameters at the same time.
+        *   The security group and the instance must be of the same network type. If the network type is virtual private cloud (VPC), the security group and the instance must reside in the same VPC.
+        *   An instance and an ENI cannot be added to a security group at the same time. You cannot specify `InstanceId` and `NetworkInterfaceId` at the same time in a request.
         
         @param request: JoinSecurityGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -33871,16 +34027,16 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.JoinSecurityGroupRequest,
     ) -> ecs_20140526_models.JoinSecurityGroupResponse:
         """
-        ## Usage notes
-        > This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](~~25503~~) operation to add an instance to or remove an instance from a security group, and call the [ModifyNetworkInterfaceAttribute](~~58513~~) operation to add an ENI to or remove an ENI from a security group.
+        ## [](#)Usage notes
+        >  This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](~~25503~~) operation to add an instance to or remove an instance from a security group, and call the [ModifyNetworkInterfaceAttribute](~~58513~~) operation to add an ENI to or remove an ENI from a security group.
         Take note of the following items:
-        *   Before you add an instance to a security group, the instance must be in the **Stopped** or **Running** state.
-        *   An instance can be added to up to five security groups.
-        *   You can increase this number to 16 by [submitting a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
+        *   Before you add an instance to a security group, the instance must be in the **Stopped** (Stopped) or **Running** (Running) state.
+        *   An instance can be added to up to five security groups by default.
+        *   To add an instance to more security groups, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex). An instance can be added to up to 16 security groups.
         *   A basic security group can contain up to 2,000 instances. An advanced security group can contain up to 65,536 instances.
         *   The security group and the instance must reside in the same region.
-        *   The security group and the instance must be of the same network type. If the network type is virtual private cloud (VPC), the security group and the instance must be in the same VPC.
-        *   An instance and an ENI cannot be added to a security group at the same time. You cannot configure the `InstanceId` and `NetworkInterfaceId` parameters at the same time.
+        *   The security group and the instance must be of the same network type. If the network type is virtual private cloud (VPC), the security group and the instance must reside in the same VPC.
+        *   An instance and an ENI cannot be added to a security group at the same time. You cannot specify `InstanceId` and `NetworkInterfaceId` at the same time in a request.
         
         @param request: JoinSecurityGroupRequest
         @return: JoinSecurityGroupResponse
@@ -33893,16 +34049,16 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.JoinSecurityGroupRequest,
     ) -> ecs_20140526_models.JoinSecurityGroupResponse:
         """
-        ## Usage notes
-        > This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](~~25503~~) operation to add an instance to or remove an instance from a security group, and call the [ModifyNetworkInterfaceAttribute](~~58513~~) operation to add an ENI to or remove an ENI from a security group.
+        ## [](#)Usage notes
+        >  This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](~~25503~~) operation to add an instance to or remove an instance from a security group, and call the [ModifyNetworkInterfaceAttribute](~~58513~~) operation to add an ENI to or remove an ENI from a security group.
         Take note of the following items:
-        *   Before you add an instance to a security group, the instance must be in the **Stopped** or **Running** state.
-        *   An instance can be added to up to five security groups.
-        *   You can increase this number to 16 by [submitting a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
+        *   Before you add an instance to a security group, the instance must be in the **Stopped** (Stopped) or **Running** (Running) state.
+        *   An instance can be added to up to five security groups by default.
+        *   To add an instance to more security groups, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex). An instance can be added to up to 16 security groups.
         *   A basic security group can contain up to 2,000 instances. An advanced security group can contain up to 65,536 instances.
         *   The security group and the instance must reside in the same region.
-        *   The security group and the instance must be of the same network type. If the network type is virtual private cloud (VPC), the security group and the instance must be in the same VPC.
-        *   An instance and an ENI cannot be added to a security group at the same time. You cannot configure the `InstanceId` and `NetworkInterfaceId` parameters at the same time.
+        *   The security group and the instance must be of the same network type. If the network type is virtual private cloud (VPC), the security group and the instance must reside in the same VPC.
+        *   An instance and an ENI cannot be added to a security group at the same time. You cannot specify `InstanceId` and `NetworkInterfaceId` at the same time in a request.
         
         @param request: JoinSecurityGroupRequest
         @return: JoinSecurityGroupResponse
@@ -37670,17 +37826,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyImageSharePermissionResponse:
         """
-        When you call this operation, take note of the following items:
-        *   You can share only your own custom images with other Alibaba Cloud accounts.
-        *   You can share a custom image with up to 10 Alibaba Cloud accounts at a time. You can specify up to 10 Alibaba Cloud account IDs by using the AddAccount.N or RemoveAccount.N parameter. If you specify more than 10 account IDs, the parameter will be ignored.
-        *   You can share a custom image with up to 50 Alibaba Cloud accounts.
-        *   After you create an instance from a shared custom image by calling the [RunInstances](~~63440~~) operation, you cannot call the [ReInitDisk](~~25519~~) operation to reinitialize the system disk of the instance if the image owner unshares the image or calls the [DeleteImage](~~25537~~) operation to delete the image.
+        ## [](#)Usage notes
+        Take note of the following items:
+        *   You can share only your own custom images to other Alibaba Cloud accounts.
+        *   You can share a custom image to up to 10 Alibaba Cloud accounts at a time. You can specify up to 10 Alibaba Cloud account IDs by using AddAccount.N or RemoveAccount.N. If you specify more than 10 account IDs, the system processes only the first 10 account IDs. The excess account IDs are ignored.
+        *   You can share a custom image to up to 50 Alibaba Cloud accounts.
+        *   If an Elastic Compute Service (ECS) instance was created ([RunInstances](~~63440~~)) from a shared image, you cannot re-initialize the instance ([ReInitDisk](~~25519~~)) after the image owner unshares or deletes the image ([DeleteImage](~~25537~~)).
         When you publish or unpublish a community image, take note of the following items:
-        *   Alibaba Cloud provides only the platform on which community images can be published and managed. The owner of a community image is responsible for the quality and updates of the image. Make sure that you read and agree to the Community Image Agreement. Otherwise, you cannot publish community images. For more information, see [Publish a community image](~~208370~~)
+        *   Alibaba Cloud provides only the platform on which community images can be published and managed. The owner of a community image is responsible for the quality and updates of the image. Make sure that you acknowledge and agree to the Community Image Agreement. Otherwise, you cannot publish community images. For more information, see [Publish a community image](~~208370~~).
         *   You cannot publish encrypted images as community images.
-        *   All community images are publicly available. All Alibaba Cloud accounts that reside in the same region as a community image can access the image.
+        *   Community images are publicly available. A community image is available to all Alibaba Cloud accounts in the region where the image resides.
         *   You cannot share, export, or copy community images.
-        *   After a community image is unpublished, it is no longer available to other Alibaba Cloud accounts. If a custom image is shared to other Alibaba cloud accounts before it is published as a community image, the accounts can still use the image after it is unpublished.
+        *   After you unpublish a community image, the image is no longer available to other Alibaba Cloud accounts. If an image is shared to other Alibaba Cloud accounts before it is unpublished, the image remains available to the accounts.
         
         @param request: ModifyImageSharePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -37733,17 +37890,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyImageSharePermissionResponse:
         """
-        When you call this operation, take note of the following items:
-        *   You can share only your own custom images with other Alibaba Cloud accounts.
-        *   You can share a custom image with up to 10 Alibaba Cloud accounts at a time. You can specify up to 10 Alibaba Cloud account IDs by using the AddAccount.N or RemoveAccount.N parameter. If you specify more than 10 account IDs, the parameter will be ignored.
-        *   You can share a custom image with up to 50 Alibaba Cloud accounts.
-        *   After you create an instance from a shared custom image by calling the [RunInstances](~~63440~~) operation, you cannot call the [ReInitDisk](~~25519~~) operation to reinitialize the system disk of the instance if the image owner unshares the image or calls the [DeleteImage](~~25537~~) operation to delete the image.
+        ## [](#)Usage notes
+        Take note of the following items:
+        *   You can share only your own custom images to other Alibaba Cloud accounts.
+        *   You can share a custom image to up to 10 Alibaba Cloud accounts at a time. You can specify up to 10 Alibaba Cloud account IDs by using AddAccount.N or RemoveAccount.N. If you specify more than 10 account IDs, the system processes only the first 10 account IDs. The excess account IDs are ignored.
+        *   You can share a custom image to up to 50 Alibaba Cloud accounts.
+        *   If an Elastic Compute Service (ECS) instance was created ([RunInstances](~~63440~~)) from a shared image, you cannot re-initialize the instance ([ReInitDisk](~~25519~~)) after the image owner unshares or deletes the image ([DeleteImage](~~25537~~)).
         When you publish or unpublish a community image, take note of the following items:
-        *   Alibaba Cloud provides only the platform on which community images can be published and managed. The owner of a community image is responsible for the quality and updates of the image. Make sure that you read and agree to the Community Image Agreement. Otherwise, you cannot publish community images. For more information, see [Publish a community image](~~208370~~)
+        *   Alibaba Cloud provides only the platform on which community images can be published and managed. The owner of a community image is responsible for the quality and updates of the image. Make sure that you acknowledge and agree to the Community Image Agreement. Otherwise, you cannot publish community images. For more information, see [Publish a community image](~~208370~~).
         *   You cannot publish encrypted images as community images.
-        *   All community images are publicly available. All Alibaba Cloud accounts that reside in the same region as a community image can access the image.
+        *   Community images are publicly available. A community image is available to all Alibaba Cloud accounts in the region where the image resides.
         *   You cannot share, export, or copy community images.
-        *   After a community image is unpublished, it is no longer available to other Alibaba Cloud accounts. If a custom image is shared to other Alibaba cloud accounts before it is published as a community image, the accounts can still use the image after it is unpublished.
+        *   After you unpublish a community image, the image is no longer available to other Alibaba Cloud accounts. If an image is shared to other Alibaba Cloud accounts before it is unpublished, the image remains available to the accounts.
         
         @param request: ModifyImageSharePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -37795,17 +37953,18 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyImageSharePermissionRequest,
     ) -> ecs_20140526_models.ModifyImageSharePermissionResponse:
         """
-        When you call this operation, take note of the following items:
-        *   You can share only your own custom images with other Alibaba Cloud accounts.
-        *   You can share a custom image with up to 10 Alibaba Cloud accounts at a time. You can specify up to 10 Alibaba Cloud account IDs by using the AddAccount.N or RemoveAccount.N parameter. If you specify more than 10 account IDs, the parameter will be ignored.
-        *   You can share a custom image with up to 50 Alibaba Cloud accounts.
-        *   After you create an instance from a shared custom image by calling the [RunInstances](~~63440~~) operation, you cannot call the [ReInitDisk](~~25519~~) operation to reinitialize the system disk of the instance if the image owner unshares the image or calls the [DeleteImage](~~25537~~) operation to delete the image.
+        ## [](#)Usage notes
+        Take note of the following items:
+        *   You can share only your own custom images to other Alibaba Cloud accounts.
+        *   You can share a custom image to up to 10 Alibaba Cloud accounts at a time. You can specify up to 10 Alibaba Cloud account IDs by using AddAccount.N or RemoveAccount.N. If you specify more than 10 account IDs, the system processes only the first 10 account IDs. The excess account IDs are ignored.
+        *   You can share a custom image to up to 50 Alibaba Cloud accounts.
+        *   If an Elastic Compute Service (ECS) instance was created ([RunInstances](~~63440~~)) from a shared image, you cannot re-initialize the instance ([ReInitDisk](~~25519~~)) after the image owner unshares or deletes the image ([DeleteImage](~~25537~~)).
         When you publish or unpublish a community image, take note of the following items:
-        *   Alibaba Cloud provides only the platform on which community images can be published and managed. The owner of a community image is responsible for the quality and updates of the image. Make sure that you read and agree to the Community Image Agreement. Otherwise, you cannot publish community images. For more information, see [Publish a community image](~~208370~~)
+        *   Alibaba Cloud provides only the platform on which community images can be published and managed. The owner of a community image is responsible for the quality and updates of the image. Make sure that you acknowledge and agree to the Community Image Agreement. Otherwise, you cannot publish community images. For more information, see [Publish a community image](~~208370~~).
         *   You cannot publish encrypted images as community images.
-        *   All community images are publicly available. All Alibaba Cloud accounts that reside in the same region as a community image can access the image.
+        *   Community images are publicly available. A community image is available to all Alibaba Cloud accounts in the region where the image resides.
         *   You cannot share, export, or copy community images.
-        *   After a community image is unpublished, it is no longer available to other Alibaba Cloud accounts. If a custom image is shared to other Alibaba cloud accounts before it is published as a community image, the accounts can still use the image after it is unpublished.
+        *   After you unpublish a community image, the image is no longer available to other Alibaba Cloud accounts. If an image is shared to other Alibaba Cloud accounts before it is unpublished, the image remains available to the accounts.
         
         @param request: ModifyImageSharePermissionRequest
         @return: ModifyImageSharePermissionResponse
@@ -37818,17 +37977,18 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyImageSharePermissionRequest,
     ) -> ecs_20140526_models.ModifyImageSharePermissionResponse:
         """
-        When you call this operation, take note of the following items:
-        *   You can share only your own custom images with other Alibaba Cloud accounts.
-        *   You can share a custom image with up to 10 Alibaba Cloud accounts at a time. You can specify up to 10 Alibaba Cloud account IDs by using the AddAccount.N or RemoveAccount.N parameter. If you specify more than 10 account IDs, the parameter will be ignored.
-        *   You can share a custom image with up to 50 Alibaba Cloud accounts.
-        *   After you create an instance from a shared custom image by calling the [RunInstances](~~63440~~) operation, you cannot call the [ReInitDisk](~~25519~~) operation to reinitialize the system disk of the instance if the image owner unshares the image or calls the [DeleteImage](~~25537~~) operation to delete the image.
+        ## [](#)Usage notes
+        Take note of the following items:
+        *   You can share only your own custom images to other Alibaba Cloud accounts.
+        *   You can share a custom image to up to 10 Alibaba Cloud accounts at a time. You can specify up to 10 Alibaba Cloud account IDs by using AddAccount.N or RemoveAccount.N. If you specify more than 10 account IDs, the system processes only the first 10 account IDs. The excess account IDs are ignored.
+        *   You can share a custom image to up to 50 Alibaba Cloud accounts.
+        *   If an Elastic Compute Service (ECS) instance was created ([RunInstances](~~63440~~)) from a shared image, you cannot re-initialize the instance ([ReInitDisk](~~25519~~)) after the image owner unshares or deletes the image ([DeleteImage](~~25537~~)).
         When you publish or unpublish a community image, take note of the following items:
-        *   Alibaba Cloud provides only the platform on which community images can be published and managed. The owner of a community image is responsible for the quality and updates of the image. Make sure that you read and agree to the Community Image Agreement. Otherwise, you cannot publish community images. For more information, see [Publish a community image](~~208370~~)
+        *   Alibaba Cloud provides only the platform on which community images can be published and managed. The owner of a community image is responsible for the quality and updates of the image. Make sure that you acknowledge and agree to the Community Image Agreement. Otherwise, you cannot publish community images. For more information, see [Publish a community image](~~208370~~).
         *   You cannot publish encrypted images as community images.
-        *   All community images are publicly available. All Alibaba Cloud accounts that reside in the same region as a community image can access the image.
+        *   Community images are publicly available. A community image is available to all Alibaba Cloud accounts in the region where the image resides.
         *   You cannot share, export, or copy community images.
-        *   After a community image is unpublished, it is no longer available to other Alibaba Cloud accounts. If a custom image is shared to other Alibaba cloud accounts before it is published as a community image, the accounts can still use the image after it is unpublished.
+        *   After you unpublish a community image, the image is no longer available to other Alibaba Cloud accounts. If an image is shared to other Alibaba Cloud accounts before it is unpublished, the image remains available to the accounts.
         
         @param request: ModifyImageSharePermissionRequest
         @return: ModifyImageSharePermissionResponse
@@ -39266,16 +39426,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceSpecResponse:
         """
+        ## [](#)Usage notes
         For information about how to use ECS SDK for Python to change resource configurations, see [Query available resources for configuration changes](~~109517~~).
         Take note of the following items:
         *   Make sure that you have no overdue payments in your account.
-        *   You can modify the public bandwidth of an instance only when the instance is in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
-        *   Before you change the instance type of a pay-as-you-go instance, you can call the [DescribeResourcesModification](~~66187~~) operation to query the instance types to which you can change.
+        *   You can adjust the public bandwidth of an instance only when the instance is in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
+        *   Before you change the instance type of a pay-as-you-go instance, call the [DescribeResourcesModification](~~66187~~) operation to query compatible instance types.
         *   You can change the instance type of an instance only when the instance is in the **Stopped** (`Stopped`) state.
         *   The instance type and the public bandwidth of an instance cannot be changed together.
-        *   As of November 27, 2020, the maximum bandwidth value available for you to create ECS instances or to change ECS instance configurations is subject to the throttling policy specified for your account. To increase the maximum bandwidth value, submit a ticket. The following throttling policies apply:
-        *   Within a single region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s.
-        *   Within a single region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
+        *   Starting November 27, 2020, the maximum bandwidth value that is available for you to create ECS instances or change ECS instance configurations is subject to the throttling policy of your account. To increase the maximum bandwidth value, submit a ticket. The following throttling policies apply:
+        *   In each region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s.
+        *   In each region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
         
         @param request: ModifyInstanceSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -39340,16 +39501,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceSpecResponse:
         """
+        ## [](#)Usage notes
         For information about how to use ECS SDK for Python to change resource configurations, see [Query available resources for configuration changes](~~109517~~).
         Take note of the following items:
         *   Make sure that you have no overdue payments in your account.
-        *   You can modify the public bandwidth of an instance only when the instance is in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
-        *   Before you change the instance type of a pay-as-you-go instance, you can call the [DescribeResourcesModification](~~66187~~) operation to query the instance types to which you can change.
+        *   You can adjust the public bandwidth of an instance only when the instance is in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
+        *   Before you change the instance type of a pay-as-you-go instance, call the [DescribeResourcesModification](~~66187~~) operation to query compatible instance types.
         *   You can change the instance type of an instance only when the instance is in the **Stopped** (`Stopped`) state.
         *   The instance type and the public bandwidth of an instance cannot be changed together.
-        *   As of November 27, 2020, the maximum bandwidth value available for you to create ECS instances or to change ECS instance configurations is subject to the throttling policy specified for your account. To increase the maximum bandwidth value, submit a ticket. The following throttling policies apply:
-        *   Within a single region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s.
-        *   Within a single region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
+        *   Starting November 27, 2020, the maximum bandwidth value that is available for you to create ECS instances or change ECS instance configurations is subject to the throttling policy of your account. To increase the maximum bandwidth value, submit a ticket. The following throttling policies apply:
+        *   In each region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s.
+        *   In each region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
         
         @param request: ModifyInstanceSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -39413,16 +39575,17 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceSpecRequest,
     ) -> ecs_20140526_models.ModifyInstanceSpecResponse:
         """
+        ## [](#)Usage notes
         For information about how to use ECS SDK for Python to change resource configurations, see [Query available resources for configuration changes](~~109517~~).
         Take note of the following items:
         *   Make sure that you have no overdue payments in your account.
-        *   You can modify the public bandwidth of an instance only when the instance is in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
-        *   Before you change the instance type of a pay-as-you-go instance, you can call the [DescribeResourcesModification](~~66187~~) operation to query the instance types to which you can change.
+        *   You can adjust the public bandwidth of an instance only when the instance is in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
+        *   Before you change the instance type of a pay-as-you-go instance, call the [DescribeResourcesModification](~~66187~~) operation to query compatible instance types.
         *   You can change the instance type of an instance only when the instance is in the **Stopped** (`Stopped`) state.
         *   The instance type and the public bandwidth of an instance cannot be changed together.
-        *   As of November 27, 2020, the maximum bandwidth value available for you to create ECS instances or to change ECS instance configurations is subject to the throttling policy specified for your account. To increase the maximum bandwidth value, submit a ticket. The following throttling policies apply:
-        *   Within a single region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s.
-        *   Within a single region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
+        *   Starting November 27, 2020, the maximum bandwidth value that is available for you to create ECS instances or change ECS instance configurations is subject to the throttling policy of your account. To increase the maximum bandwidth value, submit a ticket. The following throttling policies apply:
+        *   In each region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s.
+        *   In each region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
         
         @param request: ModifyInstanceSpecRequest
         @return: ModifyInstanceSpecResponse
@@ -39435,16 +39598,17 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceSpecRequest,
     ) -> ecs_20140526_models.ModifyInstanceSpecResponse:
         """
+        ## [](#)Usage notes
         For information about how to use ECS SDK for Python to change resource configurations, see [Query available resources for configuration changes](~~109517~~).
         Take note of the following items:
         *   Make sure that you have no overdue payments in your account.
-        *   You can modify the public bandwidth of an instance only when the instance is in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
-        *   Before you change the instance type of a pay-as-you-go instance, you can call the [DescribeResourcesModification](~~66187~~) operation to query the instance types to which you can change.
+        *   You can adjust the public bandwidth of an instance only when the instance is in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
+        *   Before you change the instance type of a pay-as-you-go instance, call the [DescribeResourcesModification](~~66187~~) operation to query compatible instance types.
         *   You can change the instance type of an instance only when the instance is in the **Stopped** (`Stopped`) state.
         *   The instance type and the public bandwidth of an instance cannot be changed together.
-        *   As of November 27, 2020, the maximum bandwidth value available for you to create ECS instances or to change ECS instance configurations is subject to the throttling policy specified for your account. To increase the maximum bandwidth value, submit a ticket. The following throttling policies apply:
-        *   Within a single region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s.
-        *   Within a single region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
+        *   Starting November 27, 2020, the maximum bandwidth value that is available for you to create ECS instances or change ECS instance configurations is subject to the throttling policy of your account. To increase the maximum bandwidth value, submit a ticket. The following throttling policies apply:
+        *   In each region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s.
+        *   In each region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
         
         @param request: ModifyInstanceSpecRequest
         @return: ModifyInstanceSpecResponse
@@ -39590,17 +39754,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceVpcAttributeResponse:
         """
-        The instance must be in the *Stopped** state.``
+        ## [](#)Usage notes
+        The instance that you want to manage must be in the **Stopped** (`Stopped`) state.
         *   When you call this operation to change the private IP address or vSwitch of an instance, take note of the following items:
         *   If the instance is a new instance, you must restart the instance before you call this operation.
-        *   After the private IP address or vSwitch of the instance is changed, you must restart the instance before you call this operation again.
+        *   After the private IP address or vSwitch of the instance is changed, you must restart the instance before you can recall this operation.
         *   When you call this operation to change the VPC of an instance, take note of the following items:
         *   **Instance:**\
         *   The instance cannot be associated with Server Load Balancer (SLB) instances.
-        *   The instance cannot be in the Locked, To Be Released, Expired, Expired and Being Recycled, or Overdue and Being Recycled state. For more information, see [ECS instance lifecycle](~~25380~~).
+        *   The instance cannot be in the Locked, To Be Released, Expired, Expired and Being Recycled, or Overdue and Being Recycled state. For more information, see [Instance lifecycle](~~25380~~).
         *   The instance cannot be used in other Alibaba Cloud services. For example, the instance cannot be in the process of being migrated or having its VPC changed, or the databases deployed on the instance cannot be managed by Data Transmission Service (DTS).
         *   **Network:**\
-        *   The cut-through mode or the multi-EIP-to-ENI mode cannot be enabled for the instance.
+        *   The cut-through mode or the multi-elastic IP address (EIP)-to-elastic network interface (ENI) mode cannot be enabled for the instance.
         *   The instance cannot be associated with a high-availability virtual IP address (HAVIP).
         *   The vSwitch of the instance cannot be associated with a custom route table.
         *   Global Accelerator (GA) cannot be activated for the instance.
@@ -39609,14 +39774,13 @@ class Client(OpenApiClient):
         *   The primary ENI of the instance cannot be associated with multiple IP addresses.
         *   The new vSwitch that you specify must belong to the new VPC.
         *   The original and new vSwitches must reside in the same zone.
-        *   If you assign a private IP address to the primary ENI of the instance, the private IP address must an idle IP address within the CIDR block of the new vSwitch. If you do not assign a private IP address to the primary ENI of the instance, a private IP address is randomly assigned to the ENI. Sufficient IP addresses must be available in the CIDR block of the new vSwitch.
-        *   If advanced features are enabled for the new VPC, take note of the instance families that do not support advanced VPC features. For more information, see [Instance families that do not support advanced VPC features](~~163466~~).
+        *   If you assign a private IP address to the primary ENI of the instance, the private IP address must be an idle IP address within the CIDR block of the new vSwitch. If you do not assign a private IP address to the primary ENI of the instance, a private IP address is randomly assigned to the ENI. Make sure that sufficient IP addresses are available in the CIDR block of the new vSwitch.
         *   The Alibaba Cloud account that owns the new VPC cannot share the VPC with other accounts.
         *   **Security group (SecurityGroupId.N):**\
         *   All security groups must be of the same type.
-        *   The valid values of N depend on the maximum number of security groups to which an instance can belong. For more information, see [Limits](~~25412~~).
+        *   The valid values of N vary based on the maximum number of security groups to which an instance can belong. For more information, see the "Security group limits" section in [Limits](~~25412~~).
         *   The security groups that you specify must belong to the new VPC.
-        *   You can switch the instance to a security group of a different type. If you want to switch an instance to a security group of a different type, we recommend that you familiarize yourself with the differences between the rule configurations of the two security group types to avoid impacts on the instance network. For more information, see [Overview](~~25387~~).
+        *   You can switch the instance to security groups of a different type. To ensure network connectivity, we recommend that you understand the differences in rule configurations of the two security group types before you switch an instance to security groups of a different type. For more information, see [Overview](~~25387~~).
         
         @param request: ModifyInstanceVpcAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -39667,17 +39831,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceVpcAttributeResponse:
         """
-        The instance must be in the *Stopped** state.``
+        ## [](#)Usage notes
+        The instance that you want to manage must be in the **Stopped** (`Stopped`) state.
         *   When you call this operation to change the private IP address or vSwitch of an instance, take note of the following items:
         *   If the instance is a new instance, you must restart the instance before you call this operation.
-        *   After the private IP address or vSwitch of the instance is changed, you must restart the instance before you call this operation again.
+        *   After the private IP address or vSwitch of the instance is changed, you must restart the instance before you can recall this operation.
         *   When you call this operation to change the VPC of an instance, take note of the following items:
         *   **Instance:**\
         *   The instance cannot be associated with Server Load Balancer (SLB) instances.
-        *   The instance cannot be in the Locked, To Be Released, Expired, Expired and Being Recycled, or Overdue and Being Recycled state. For more information, see [ECS instance lifecycle](~~25380~~).
+        *   The instance cannot be in the Locked, To Be Released, Expired, Expired and Being Recycled, or Overdue and Being Recycled state. For more information, see [Instance lifecycle](~~25380~~).
         *   The instance cannot be used in other Alibaba Cloud services. For example, the instance cannot be in the process of being migrated or having its VPC changed, or the databases deployed on the instance cannot be managed by Data Transmission Service (DTS).
         *   **Network:**\
-        *   The cut-through mode or the multi-EIP-to-ENI mode cannot be enabled for the instance.
+        *   The cut-through mode or the multi-elastic IP address (EIP)-to-elastic network interface (ENI) mode cannot be enabled for the instance.
         *   The instance cannot be associated with a high-availability virtual IP address (HAVIP).
         *   The vSwitch of the instance cannot be associated with a custom route table.
         *   Global Accelerator (GA) cannot be activated for the instance.
@@ -39686,14 +39851,13 @@ class Client(OpenApiClient):
         *   The primary ENI of the instance cannot be associated with multiple IP addresses.
         *   The new vSwitch that you specify must belong to the new VPC.
         *   The original and new vSwitches must reside in the same zone.
-        *   If you assign a private IP address to the primary ENI of the instance, the private IP address must an idle IP address within the CIDR block of the new vSwitch. If you do not assign a private IP address to the primary ENI of the instance, a private IP address is randomly assigned to the ENI. Sufficient IP addresses must be available in the CIDR block of the new vSwitch.
-        *   If advanced features are enabled for the new VPC, take note of the instance families that do not support advanced VPC features. For more information, see [Instance families that do not support advanced VPC features](~~163466~~).
+        *   If you assign a private IP address to the primary ENI of the instance, the private IP address must be an idle IP address within the CIDR block of the new vSwitch. If you do not assign a private IP address to the primary ENI of the instance, a private IP address is randomly assigned to the ENI. Make sure that sufficient IP addresses are available in the CIDR block of the new vSwitch.
         *   The Alibaba Cloud account that owns the new VPC cannot share the VPC with other accounts.
         *   **Security group (SecurityGroupId.N):**\
         *   All security groups must be of the same type.
-        *   The valid values of N depend on the maximum number of security groups to which an instance can belong. For more information, see [Limits](~~25412~~).
+        *   The valid values of N vary based on the maximum number of security groups to which an instance can belong. For more information, see the "Security group limits" section in [Limits](~~25412~~).
         *   The security groups that you specify must belong to the new VPC.
-        *   You can switch the instance to a security group of a different type. If you want to switch an instance to a security group of a different type, we recommend that you familiarize yourself with the differences between the rule configurations of the two security group types to avoid impacts on the instance network. For more information, see [Overview](~~25387~~).
+        *   You can switch the instance to security groups of a different type. To ensure network connectivity, we recommend that you understand the differences in rule configurations of the two security group types before you switch an instance to security groups of a different type. For more information, see [Overview](~~25387~~).
         
         @param request: ModifyInstanceVpcAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -39743,17 +39907,18 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceVpcAttributeRequest,
     ) -> ecs_20140526_models.ModifyInstanceVpcAttributeResponse:
         """
-        The instance must be in the *Stopped** state.``
+        ## [](#)Usage notes
+        The instance that you want to manage must be in the **Stopped** (`Stopped`) state.
         *   When you call this operation to change the private IP address or vSwitch of an instance, take note of the following items:
         *   If the instance is a new instance, you must restart the instance before you call this operation.
-        *   After the private IP address or vSwitch of the instance is changed, you must restart the instance before you call this operation again.
+        *   After the private IP address or vSwitch of the instance is changed, you must restart the instance before you can recall this operation.
         *   When you call this operation to change the VPC of an instance, take note of the following items:
         *   **Instance:**\
         *   The instance cannot be associated with Server Load Balancer (SLB) instances.
-        *   The instance cannot be in the Locked, To Be Released, Expired, Expired and Being Recycled, or Overdue and Being Recycled state. For more information, see [ECS instance lifecycle](~~25380~~).
+        *   The instance cannot be in the Locked, To Be Released, Expired, Expired and Being Recycled, or Overdue and Being Recycled state. For more information, see [Instance lifecycle](~~25380~~).
         *   The instance cannot be used in other Alibaba Cloud services. For example, the instance cannot be in the process of being migrated or having its VPC changed, or the databases deployed on the instance cannot be managed by Data Transmission Service (DTS).
         *   **Network:**\
-        *   The cut-through mode or the multi-EIP-to-ENI mode cannot be enabled for the instance.
+        *   The cut-through mode or the multi-elastic IP address (EIP)-to-elastic network interface (ENI) mode cannot be enabled for the instance.
         *   The instance cannot be associated with a high-availability virtual IP address (HAVIP).
         *   The vSwitch of the instance cannot be associated with a custom route table.
         *   Global Accelerator (GA) cannot be activated for the instance.
@@ -39762,14 +39927,13 @@ class Client(OpenApiClient):
         *   The primary ENI of the instance cannot be associated with multiple IP addresses.
         *   The new vSwitch that you specify must belong to the new VPC.
         *   The original and new vSwitches must reside in the same zone.
-        *   If you assign a private IP address to the primary ENI of the instance, the private IP address must an idle IP address within the CIDR block of the new vSwitch. If you do not assign a private IP address to the primary ENI of the instance, a private IP address is randomly assigned to the ENI. Sufficient IP addresses must be available in the CIDR block of the new vSwitch.
-        *   If advanced features are enabled for the new VPC, take note of the instance families that do not support advanced VPC features. For more information, see [Instance families that do not support advanced VPC features](~~163466~~).
+        *   If you assign a private IP address to the primary ENI of the instance, the private IP address must be an idle IP address within the CIDR block of the new vSwitch. If you do not assign a private IP address to the primary ENI of the instance, a private IP address is randomly assigned to the ENI. Make sure that sufficient IP addresses are available in the CIDR block of the new vSwitch.
         *   The Alibaba Cloud account that owns the new VPC cannot share the VPC with other accounts.
         *   **Security group (SecurityGroupId.N):**\
         *   All security groups must be of the same type.
-        *   The valid values of N depend on the maximum number of security groups to which an instance can belong. For more information, see [Limits](~~25412~~).
+        *   The valid values of N vary based on the maximum number of security groups to which an instance can belong. For more information, see the "Security group limits" section in [Limits](~~25412~~).
         *   The security groups that you specify must belong to the new VPC.
-        *   You can switch the instance to a security group of a different type. If you want to switch an instance to a security group of a different type, we recommend that you familiarize yourself with the differences between the rule configurations of the two security group types to avoid impacts on the instance network. For more information, see [Overview](~~25387~~).
+        *   You can switch the instance to security groups of a different type. To ensure network connectivity, we recommend that you understand the differences in rule configurations of the two security group types before you switch an instance to security groups of a different type. For more information, see [Overview](~~25387~~).
         
         @param request: ModifyInstanceVpcAttributeRequest
         @return: ModifyInstanceVpcAttributeResponse
@@ -39782,17 +39946,18 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceVpcAttributeRequest,
     ) -> ecs_20140526_models.ModifyInstanceVpcAttributeResponse:
         """
-        The instance must be in the *Stopped** state.``
+        ## [](#)Usage notes
+        The instance that you want to manage must be in the **Stopped** (`Stopped`) state.
         *   When you call this operation to change the private IP address or vSwitch of an instance, take note of the following items:
         *   If the instance is a new instance, you must restart the instance before you call this operation.
-        *   After the private IP address or vSwitch of the instance is changed, you must restart the instance before you call this operation again.
+        *   After the private IP address or vSwitch of the instance is changed, you must restart the instance before you can recall this operation.
         *   When you call this operation to change the VPC of an instance, take note of the following items:
         *   **Instance:**\
         *   The instance cannot be associated with Server Load Balancer (SLB) instances.
-        *   The instance cannot be in the Locked, To Be Released, Expired, Expired and Being Recycled, or Overdue and Being Recycled state. For more information, see [ECS instance lifecycle](~~25380~~).
+        *   The instance cannot be in the Locked, To Be Released, Expired, Expired and Being Recycled, or Overdue and Being Recycled state. For more information, see [Instance lifecycle](~~25380~~).
         *   The instance cannot be used in other Alibaba Cloud services. For example, the instance cannot be in the process of being migrated or having its VPC changed, or the databases deployed on the instance cannot be managed by Data Transmission Service (DTS).
         *   **Network:**\
-        *   The cut-through mode or the multi-EIP-to-ENI mode cannot be enabled for the instance.
+        *   The cut-through mode or the multi-elastic IP address (EIP)-to-elastic network interface (ENI) mode cannot be enabled for the instance.
         *   The instance cannot be associated with a high-availability virtual IP address (HAVIP).
         *   The vSwitch of the instance cannot be associated with a custom route table.
         *   Global Accelerator (GA) cannot be activated for the instance.
@@ -39801,14 +39966,13 @@ class Client(OpenApiClient):
         *   The primary ENI of the instance cannot be associated with multiple IP addresses.
         *   The new vSwitch that you specify must belong to the new VPC.
         *   The original and new vSwitches must reside in the same zone.
-        *   If you assign a private IP address to the primary ENI of the instance, the private IP address must an idle IP address within the CIDR block of the new vSwitch. If you do not assign a private IP address to the primary ENI of the instance, a private IP address is randomly assigned to the ENI. Sufficient IP addresses must be available in the CIDR block of the new vSwitch.
-        *   If advanced features are enabled for the new VPC, take note of the instance families that do not support advanced VPC features. For more information, see [Instance families that do not support advanced VPC features](~~163466~~).
+        *   If you assign a private IP address to the primary ENI of the instance, the private IP address must be an idle IP address within the CIDR block of the new vSwitch. If you do not assign a private IP address to the primary ENI of the instance, a private IP address is randomly assigned to the ENI. Make sure that sufficient IP addresses are available in the CIDR block of the new vSwitch.
         *   The Alibaba Cloud account that owns the new VPC cannot share the VPC with other accounts.
         *   **Security group (SecurityGroupId.N):**\
         *   All security groups must be of the same type.
-        *   The valid values of N depend on the maximum number of security groups to which an instance can belong. For more information, see [Limits](~~25412~~).
+        *   The valid values of N vary based on the maximum number of security groups to which an instance can belong. For more information, see the "Security group limits" section in [Limits](~~25412~~).
         *   The security groups that you specify must belong to the new VPC.
-        *   You can switch the instance to a security group of a different type. If you want to switch an instance to a security group of a different type, we recommend that you familiarize yourself with the differences between the rule configurations of the two security group types to avoid impacts on the instance network. For more information, see [Overview](~~25387~~).
+        *   You can switch the instance to security groups of a different type. To ensure network connectivity, we recommend that you understand the differences in rule configurations of the two security group types before you switch an instance to security groups of a different type. For more information, see [Overview](~~25387~~).
         
         @param request: ModifyInstanceVpcAttributeRequest
         @return: ModifyInstanceVpcAttributeResponse
@@ -39821,6 +39985,24 @@ class Client(OpenApiClient):
         tmp_req: ecs_20140526_models.ModifyInvocationAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInvocationAttributeResponse:
+        """
+        You can modify the execution information of a command that is run in one of the following modes:
+        *   Period: The command is run on a schedule.
+        *   NextRebootOnly: The command is run the next time the instance starts.
+        *   EveryReboot: The command is run every time the instance starts.
+        *   You can modify the execution information of a command that is in one of the following status (For more information, see the [InvocationStatus](~~64840~~) response parameter of `DescribeInvocations`.):
+        *   Pending: The command is being verified or sent. When the execution status on at least one instance is Pending, the overall execution status is Pending.
+        *   Running: The command is being run on the instance. When the execution status on at least one instance is Running, the overall execution status is Running.
+        *   Scheduled: The command that is set to run on a schedule is sent and waiting to be run. When the execution status on at least one instance is Scheduled, the overall execution status is Scheduled.
+        *   Stopping: The command that is running is being stopped. When the execution status on at least one instance is Stopping, the overall execution status is Stopping.
+        *   The Cloud Assistant Agent version that is installed on the instance must be later than one of the following versions to support the ModifyInvocationAttribute operation. If the `ClientNeedUpgrade` error code is returned, update Cloud Assistant Agent to the latest version.
+        *   Linux: 2.2.3.541
+        *   Windows: 2.1.3.541
+        
+        @param tmp_req: ModifyInvocationAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInvocationAttributeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ecs_20140526_models.ModifyInvocationAttributeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -39877,6 +40059,24 @@ class Client(OpenApiClient):
         tmp_req: ecs_20140526_models.ModifyInvocationAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInvocationAttributeResponse:
+        """
+        You can modify the execution information of a command that is run in one of the following modes:
+        *   Period: The command is run on a schedule.
+        *   NextRebootOnly: The command is run the next time the instance starts.
+        *   EveryReboot: The command is run every time the instance starts.
+        *   You can modify the execution information of a command that is in one of the following status (For more information, see the [InvocationStatus](~~64840~~) response parameter of `DescribeInvocations`.):
+        *   Pending: The command is being verified or sent. When the execution status on at least one instance is Pending, the overall execution status is Pending.
+        *   Running: The command is being run on the instance. When the execution status on at least one instance is Running, the overall execution status is Running.
+        *   Scheduled: The command that is set to run on a schedule is sent and waiting to be run. When the execution status on at least one instance is Scheduled, the overall execution status is Scheduled.
+        *   Stopping: The command that is running is being stopped. When the execution status on at least one instance is Stopping, the overall execution status is Stopping.
+        *   The Cloud Assistant Agent version that is installed on the instance must be later than one of the following versions to support the ModifyInvocationAttribute operation. If the `ClientNeedUpgrade` error code is returned, update Cloud Assistant Agent to the latest version.
+        *   Linux: 2.2.3.541
+        *   Windows: 2.1.3.541
+        
+        @param tmp_req: ModifyInvocationAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInvocationAttributeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ecs_20140526_models.ModifyInvocationAttributeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -39932,6 +40132,23 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyInvocationAttributeRequest,
     ) -> ecs_20140526_models.ModifyInvocationAttributeResponse:
+        """
+        You can modify the execution information of a command that is run in one of the following modes:
+        *   Period: The command is run on a schedule.
+        *   NextRebootOnly: The command is run the next time the instance starts.
+        *   EveryReboot: The command is run every time the instance starts.
+        *   You can modify the execution information of a command that is in one of the following status (For more information, see the [InvocationStatus](~~64840~~) response parameter of `DescribeInvocations`.):
+        *   Pending: The command is being verified or sent. When the execution status on at least one instance is Pending, the overall execution status is Pending.
+        *   Running: The command is being run on the instance. When the execution status on at least one instance is Running, the overall execution status is Running.
+        *   Scheduled: The command that is set to run on a schedule is sent and waiting to be run. When the execution status on at least one instance is Scheduled, the overall execution status is Scheduled.
+        *   Stopping: The command that is running is being stopped. When the execution status on at least one instance is Stopping, the overall execution status is Stopping.
+        *   The Cloud Assistant Agent version that is installed on the instance must be later than one of the following versions to support the ModifyInvocationAttribute operation. If the `ClientNeedUpgrade` error code is returned, update Cloud Assistant Agent to the latest version.
+        *   Linux: 2.2.3.541
+        *   Windows: 2.1.3.541
+        
+        @param request: ModifyInvocationAttributeRequest
+        @return: ModifyInvocationAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_invocation_attribute_with_options(request, runtime)
 
@@ -39939,6 +40156,23 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyInvocationAttributeRequest,
     ) -> ecs_20140526_models.ModifyInvocationAttributeResponse:
+        """
+        You can modify the execution information of a command that is run in one of the following modes:
+        *   Period: The command is run on a schedule.
+        *   NextRebootOnly: The command is run the next time the instance starts.
+        *   EveryReboot: The command is run every time the instance starts.
+        *   You can modify the execution information of a command that is in one of the following status (For more information, see the [InvocationStatus](~~64840~~) response parameter of `DescribeInvocations`.):
+        *   Pending: The command is being verified or sent. When the execution status on at least one instance is Pending, the overall execution status is Pending.
+        *   Running: The command is being run on the instance. When the execution status on at least one instance is Running, the overall execution status is Running.
+        *   Scheduled: The command that is set to run on a schedule is sent and waiting to be run. When the execution status on at least one instance is Scheduled, the overall execution status is Scheduled.
+        *   Stopping: The command that is running is being stopped. When the execution status on at least one instance is Stopping, the overall execution status is Stopping.
+        *   The Cloud Assistant Agent version that is installed on the instance must be later than one of the following versions to support the ModifyInvocationAttribute operation. If the `ClientNeedUpgrade` error code is returned, update Cloud Assistant Agent to the latest version.
+        *   Linux: 2.2.3.541
+        *   Windows: 2.1.3.541
+        
+        @param request: ModifyInvocationAttributeRequest
+        @return: ModifyInvocationAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_invocation_attribute_with_options_async(request, runtime)
 
@@ -40490,13 +40724,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyPrefixListResponse:
         """
-        ## Description
-        *   The specified CIDR block must be valid. For example, 10.0.0.0/8 is a valid CIDR block while 10.0.0.1/8 is not. For more information, see the [What is CIDR?](https://www.alibabacloud.com/help/doc-detail/40637.htm#section-jua-0tj-q5m) section in Network FAQ.
+        The specified CIDR block must be valid. For example, 10.0.0.0/8 is a valid CIDR block while 10.0.0.1/8 is not. For more information, see the [What is CIDR?](~~40637~~#section-jua-0tj-q5m) section in the "Network FAQ" topic.
         *   When you add or delete an entry, you cannot specify duplicate CIDR blocks. Examples:
-        *   For IPv4 CIDR blocks, you cannot specify the 10.0.0.0/8 CIDR block in two entries. You cannot specify the 10.0.0.1/32 CIDR block in one entry and the 10.0.0.1 CIDR block in another entry. These two CIDR blocks are the same.
-        *   For IPv6 CIDR blocks, you cannot specify the 2001:fd01:0:0:0:0:0:0/32 CIDR block in one entry and the 2001:fd01::/32 CIDR block in another entry. These two CIDR blocks are the same.
-        *   The CIDR block in an entry to be added cannot the same as that in an entry to be deleted. For example, when you add an entry in which the 10.0.0.0/8 CIDR block is specified, the entry to be deleted cannot have the 10.0.0.0/8 CIDR block specified.
-        *   If you want to modify the description of an entry, you must specify the CIDR block (`AddEntry.N.Cidr`) and new description (`AddEntry.N.Description`) in the entry.
+        *   For IPv4 CIDR blocks, you cannot specify the 10.0.0.0/8 CIDR block in two entries. You cannot specify the 10.0.0.1/32 CIDR block in one entry and the 10.0.0.1 CIDR block in another entry. The two CIDR blocks are the same.
+        *   For IPv6 CIDR blocks, you cannot specify the 2001:fd01:0:0:0:0:0:0/32 CIDR block in one entry and the 2001:fd01::/32 CIDR block in another entry. The two CIDR blocks are the same.
+        *   The CIDR block in an entry to be added cannot the same as that in an entry to be deleted. For example, when you add an entry in which the 10.0.0.0/8 CIDR block is specified, make sure the 10.0.0.0/8 CIDR block is not specified in an entry to be deleted.
+        *   If you want to modify the description of an entry, you must specify the CIDR block (`AddEntry.N.Cidr`) and new description (`AddEntry.N.Description`) for the entry.
         
         @param request: ModifyPrefixListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -40551,13 +40784,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyPrefixListResponse:
         """
-        ## Description
-        *   The specified CIDR block must be valid. For example, 10.0.0.0/8 is a valid CIDR block while 10.0.0.1/8 is not. For more information, see the [What is CIDR?](https://www.alibabacloud.com/help/doc-detail/40637.htm#section-jua-0tj-q5m) section in Network FAQ.
+        The specified CIDR block must be valid. For example, 10.0.0.0/8 is a valid CIDR block while 10.0.0.1/8 is not. For more information, see the [What is CIDR?](~~40637~~#section-jua-0tj-q5m) section in the "Network FAQ" topic.
         *   When you add or delete an entry, you cannot specify duplicate CIDR blocks. Examples:
-        *   For IPv4 CIDR blocks, you cannot specify the 10.0.0.0/8 CIDR block in two entries. You cannot specify the 10.0.0.1/32 CIDR block in one entry and the 10.0.0.1 CIDR block in another entry. These two CIDR blocks are the same.
-        *   For IPv6 CIDR blocks, you cannot specify the 2001:fd01:0:0:0:0:0:0/32 CIDR block in one entry and the 2001:fd01::/32 CIDR block in another entry. These two CIDR blocks are the same.
-        *   The CIDR block in an entry to be added cannot the same as that in an entry to be deleted. For example, when you add an entry in which the 10.0.0.0/8 CIDR block is specified, the entry to be deleted cannot have the 10.0.0.0/8 CIDR block specified.
-        *   If you want to modify the description of an entry, you must specify the CIDR block (`AddEntry.N.Cidr`) and new description (`AddEntry.N.Description`) in the entry.
+        *   For IPv4 CIDR blocks, you cannot specify the 10.0.0.0/8 CIDR block in two entries. You cannot specify the 10.0.0.1/32 CIDR block in one entry and the 10.0.0.1 CIDR block in another entry. The two CIDR blocks are the same.
+        *   For IPv6 CIDR blocks, you cannot specify the 2001:fd01:0:0:0:0:0:0/32 CIDR block in one entry and the 2001:fd01::/32 CIDR block in another entry. The two CIDR blocks are the same.
+        *   The CIDR block in an entry to be added cannot the same as that in an entry to be deleted. For example, when you add an entry in which the 10.0.0.0/8 CIDR block is specified, make sure the 10.0.0.0/8 CIDR block is not specified in an entry to be deleted.
+        *   If you want to modify the description of an entry, you must specify the CIDR block (`AddEntry.N.Cidr`) and new description (`AddEntry.N.Description`) for the entry.
         
         @param request: ModifyPrefixListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -40611,13 +40843,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyPrefixListRequest,
     ) -> ecs_20140526_models.ModifyPrefixListResponse:
         """
-        ## Description
-        *   The specified CIDR block must be valid. For example, 10.0.0.0/8 is a valid CIDR block while 10.0.0.1/8 is not. For more information, see the [What is CIDR?](https://www.alibabacloud.com/help/doc-detail/40637.htm#section-jua-0tj-q5m) section in Network FAQ.
+        The specified CIDR block must be valid. For example, 10.0.0.0/8 is a valid CIDR block while 10.0.0.1/8 is not. For more information, see the [What is CIDR?](~~40637~~#section-jua-0tj-q5m) section in the "Network FAQ" topic.
         *   When you add or delete an entry, you cannot specify duplicate CIDR blocks. Examples:
-        *   For IPv4 CIDR blocks, you cannot specify the 10.0.0.0/8 CIDR block in two entries. You cannot specify the 10.0.0.1/32 CIDR block in one entry and the 10.0.0.1 CIDR block in another entry. These two CIDR blocks are the same.
-        *   For IPv6 CIDR blocks, you cannot specify the 2001:fd01:0:0:0:0:0:0/32 CIDR block in one entry and the 2001:fd01::/32 CIDR block in another entry. These two CIDR blocks are the same.
-        *   The CIDR block in an entry to be added cannot the same as that in an entry to be deleted. For example, when you add an entry in which the 10.0.0.0/8 CIDR block is specified, the entry to be deleted cannot have the 10.0.0.0/8 CIDR block specified.
-        *   If you want to modify the description of an entry, you must specify the CIDR block (`AddEntry.N.Cidr`) and new description (`AddEntry.N.Description`) in the entry.
+        *   For IPv4 CIDR blocks, you cannot specify the 10.0.0.0/8 CIDR block in two entries. You cannot specify the 10.0.0.1/32 CIDR block in one entry and the 10.0.0.1 CIDR block in another entry. The two CIDR blocks are the same.
+        *   For IPv6 CIDR blocks, you cannot specify the 2001:fd01:0:0:0:0:0:0/32 CIDR block in one entry and the 2001:fd01::/32 CIDR block in another entry. The two CIDR blocks are the same.
+        *   The CIDR block in an entry to be added cannot the same as that in an entry to be deleted. For example, when you add an entry in which the 10.0.0.0/8 CIDR block is specified, make sure the 10.0.0.0/8 CIDR block is not specified in an entry to be deleted.
+        *   If you want to modify the description of an entry, you must specify the CIDR block (`AddEntry.N.Cidr`) and new description (`AddEntry.N.Description`) for the entry.
         
         @param request: ModifyPrefixListRequest
         @return: ModifyPrefixListResponse
@@ -40630,13 +40861,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyPrefixListRequest,
     ) -> ecs_20140526_models.ModifyPrefixListResponse:
         """
-        ## Description
-        *   The specified CIDR block must be valid. For example, 10.0.0.0/8 is a valid CIDR block while 10.0.0.1/8 is not. For more information, see the [What is CIDR?](https://www.alibabacloud.com/help/doc-detail/40637.htm#section-jua-0tj-q5m) section in Network FAQ.
+        The specified CIDR block must be valid. For example, 10.0.0.0/8 is a valid CIDR block while 10.0.0.1/8 is not. For more information, see the [What is CIDR?](~~40637~~#section-jua-0tj-q5m) section in the "Network FAQ" topic.
         *   When you add or delete an entry, you cannot specify duplicate CIDR blocks. Examples:
-        *   For IPv4 CIDR blocks, you cannot specify the 10.0.0.0/8 CIDR block in two entries. You cannot specify the 10.0.0.1/32 CIDR block in one entry and the 10.0.0.1 CIDR block in another entry. These two CIDR blocks are the same.
-        *   For IPv6 CIDR blocks, you cannot specify the 2001:fd01:0:0:0:0:0:0/32 CIDR block in one entry and the 2001:fd01::/32 CIDR block in another entry. These two CIDR blocks are the same.
-        *   The CIDR block in an entry to be added cannot the same as that in an entry to be deleted. For example, when you add an entry in which the 10.0.0.0/8 CIDR block is specified, the entry to be deleted cannot have the 10.0.0.0/8 CIDR block specified.
-        *   If you want to modify the description of an entry, you must specify the CIDR block (`AddEntry.N.Cidr`) and new description (`AddEntry.N.Description`) in the entry.
+        *   For IPv4 CIDR blocks, you cannot specify the 10.0.0.0/8 CIDR block in two entries. You cannot specify the 10.0.0.1/32 CIDR block in one entry and the 10.0.0.1 CIDR block in another entry. The two CIDR blocks are the same.
+        *   For IPv6 CIDR blocks, you cannot specify the 2001:fd01:0:0:0:0:0:0/32 CIDR block in one entry and the 2001:fd01::/32 CIDR block in another entry. The two CIDR blocks are the same.
+        *   The CIDR block in an entry to be added cannot the same as that in an entry to be deleted. For example, when you add an entry in which the 10.0.0.0/8 CIDR block is specified, make sure the 10.0.0.0/8 CIDR block is not specified in an entry to be deleted.
+        *   If you want to modify the description of an entry, you must specify the CIDR block (`AddEntry.N.Cidr`) and new description (`AddEntry.N.Description`) for the entry.
         
         @param request: ModifyPrefixListRequest
         @return: ModifyPrefixListResponse
@@ -40650,18 +40880,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyPrepayInstanceSpecResponse:
         """
-        Before you call this operation, we recommend that you familiarize yourself with the billing methods, pricing schedule, and refund rules of [ECS](https://www.alibabacloud.com/product/ecs#pricing). For more information, see [Refund rules for real-time configuration downgrade](~~476339~~).
-        Before you change the instance type of a subscription instance, you can call the [DescribeResourcesModification](~~66187~~) operation to query the instance types to which you can change the instance. You can use ECS SDK for Python to query the instance types to which you can change. For more information, see [Query available resources for configuration changes](~~109517~~).
-        When you call this operation, take note of the following items:
-        *   You cannot change the instance type of an expired instance. Renew the instance and try again.
+        ## [](#)Usage notes
+        Before you call this operation, we recommend that you familiarize yourself with the billing methods, pricing schedule, and refund rules of [ECS](https://www.alibabacloud.com/product/ecs#pricing). For information about the refund rules, see [Rules for unsubscribing from resources](~~476339~~).
+        Before you change the instance type of a subscription instance, call the [DescribeResourcesModification](~~66187~~) operation to query the instance types to which you can change the instance. You can use ECS SDK for Python. For more information, see [Query available resources for configuration changes](~~109517~~).
+        Take note of the following items:
+        *   To change the instance type of an expired instance, you must first renew the instance.
         *   When you downgrade the instance type of an instance, take note of the following items:
-        *   The instance must be in the `Stopped` state.****\
-        *   You must specify the operation type by setting `OperatorType` to downgrade.
-        *   You can downgrade the configurations of an instance up to three times. Therefore, up to three refunds for the price difference can be made for an instance. Downgrade operations include instance type downgrades, bandwidth configuration downgrades, and the change of the disk billing method from subscription to pay-as-you-go.
-        *   The price difference is refunded to the payment account you used. Vouchers that have been redeemed during purchase are not refundable.
-        *   This operation is asynchronous. It takes 5 to 10 seconds for the instance type to change. You must restart the instance by calling the RebootInstance operation or by using the ECS console for the instance type change to take effect. If you restart only the operating system of the instance, the instance type change does not take effect.
+        *   The instance must be in the **Stopped** (`Stopped`) state.
+        *   The price difference is refunded to the payment account you used. Vouchers that have been redeemed are not refundable.
+        *   The operation is asynchronous. Wait 5 to 10 seconds for the instance type change to complete. Then, restart the instance by calling the RebootInstance operation or by using the ECS console for the instance type change to take effect. If you restart only the operating system of the instance, the instance type change does not take effect.
         *   If the instance is in the **Stopped** state, you only need to start the instance. You do not need to restart the instance after it enters the Running state.
-        *   If `RebootWhenFinished` is set to true for the instance, you do not need to manually restart the instance.
+        *   If `RebootWhenFinished` is set to true for the instance, you do not need to restart the instance.
         
         @param request: ModifyPrepayInstanceSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -40728,18 +40957,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyPrepayInstanceSpecResponse:
         """
-        Before you call this operation, we recommend that you familiarize yourself with the billing methods, pricing schedule, and refund rules of [ECS](https://www.alibabacloud.com/product/ecs#pricing). For more information, see [Refund rules for real-time configuration downgrade](~~476339~~).
-        Before you change the instance type of a subscription instance, you can call the [DescribeResourcesModification](~~66187~~) operation to query the instance types to which you can change the instance. You can use ECS SDK for Python to query the instance types to which you can change. For more information, see [Query available resources for configuration changes](~~109517~~).
-        When you call this operation, take note of the following items:
-        *   You cannot change the instance type of an expired instance. Renew the instance and try again.
+        ## [](#)Usage notes
+        Before you call this operation, we recommend that you familiarize yourself with the billing methods, pricing schedule, and refund rules of [ECS](https://www.alibabacloud.com/product/ecs#pricing). For information about the refund rules, see [Rules for unsubscribing from resources](~~476339~~).
+        Before you change the instance type of a subscription instance, call the [DescribeResourcesModification](~~66187~~) operation to query the instance types to which you can change the instance. You can use ECS SDK for Python. For more information, see [Query available resources for configuration changes](~~109517~~).
+        Take note of the following items:
+        *   To change the instance type of an expired instance, you must first renew the instance.
         *   When you downgrade the instance type of an instance, take note of the following items:
-        *   The instance must be in the `Stopped` state.****\
-        *   You must specify the operation type by setting `OperatorType` to downgrade.
-        *   You can downgrade the configurations of an instance up to three times. Therefore, up to three refunds for the price difference can be made for an instance. Downgrade operations include instance type downgrades, bandwidth configuration downgrades, and the change of the disk billing method from subscription to pay-as-you-go.
-        *   The price difference is refunded to the payment account you used. Vouchers that have been redeemed during purchase are not refundable.
-        *   This operation is asynchronous. It takes 5 to 10 seconds for the instance type to change. You must restart the instance by calling the RebootInstance operation or by using the ECS console for the instance type change to take effect. If you restart only the operating system of the instance, the instance type change does not take effect.
+        *   The instance must be in the **Stopped** (`Stopped`) state.
+        *   The price difference is refunded to the payment account you used. Vouchers that have been redeemed are not refundable.
+        *   The operation is asynchronous. Wait 5 to 10 seconds for the instance type change to complete. Then, restart the instance by calling the RebootInstance operation or by using the ECS console for the instance type change to take effect. If you restart only the operating system of the instance, the instance type change does not take effect.
         *   If the instance is in the **Stopped** state, you only need to start the instance. You do not need to restart the instance after it enters the Running state.
-        *   If `RebootWhenFinished` is set to true for the instance, you do not need to manually restart the instance.
+        *   If `RebootWhenFinished` is set to true for the instance, you do not need to restart the instance.
         
         @param request: ModifyPrepayInstanceSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -40805,18 +41033,17 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyPrepayInstanceSpecRequest,
     ) -> ecs_20140526_models.ModifyPrepayInstanceSpecResponse:
         """
-        Before you call this operation, we recommend that you familiarize yourself with the billing methods, pricing schedule, and refund rules of [ECS](https://www.alibabacloud.com/product/ecs#pricing). For more information, see [Refund rules for real-time configuration downgrade](~~476339~~).
-        Before you change the instance type of a subscription instance, you can call the [DescribeResourcesModification](~~66187~~) operation to query the instance types to which you can change the instance. You can use ECS SDK for Python to query the instance types to which you can change. For more information, see [Query available resources for configuration changes](~~109517~~).
-        When you call this operation, take note of the following items:
-        *   You cannot change the instance type of an expired instance. Renew the instance and try again.
+        ## [](#)Usage notes
+        Before you call this operation, we recommend that you familiarize yourself with the billing methods, pricing schedule, and refund rules of [ECS](https://www.alibabacloud.com/product/ecs#pricing). For information about the refund rules, see [Rules for unsubscribing from resources](~~476339~~).
+        Before you change the instance type of a subscription instance, call the [DescribeResourcesModification](~~66187~~) operation to query the instance types to which you can change the instance. You can use ECS SDK for Python. For more information, see [Query available resources for configuration changes](~~109517~~).
+        Take note of the following items:
+        *   To change the instance type of an expired instance, you must first renew the instance.
         *   When you downgrade the instance type of an instance, take note of the following items:
-        *   The instance must be in the `Stopped` state.****\
-        *   You must specify the operation type by setting `OperatorType` to downgrade.
-        *   You can downgrade the configurations of an instance up to three times. Therefore, up to three refunds for the price difference can be made for an instance. Downgrade operations include instance type downgrades, bandwidth configuration downgrades, and the change of the disk billing method from subscription to pay-as-you-go.
-        *   The price difference is refunded to the payment account you used. Vouchers that have been redeemed during purchase are not refundable.
-        *   This operation is asynchronous. It takes 5 to 10 seconds for the instance type to change. You must restart the instance by calling the RebootInstance operation or by using the ECS console for the instance type change to take effect. If you restart only the operating system of the instance, the instance type change does not take effect.
+        *   The instance must be in the **Stopped** (`Stopped`) state.
+        *   The price difference is refunded to the payment account you used. Vouchers that have been redeemed are not refundable.
+        *   The operation is asynchronous. Wait 5 to 10 seconds for the instance type change to complete. Then, restart the instance by calling the RebootInstance operation or by using the ECS console for the instance type change to take effect. If you restart only the operating system of the instance, the instance type change does not take effect.
         *   If the instance is in the **Stopped** state, you only need to start the instance. You do not need to restart the instance after it enters the Running state.
-        *   If `RebootWhenFinished` is set to true for the instance, you do not need to manually restart the instance.
+        *   If `RebootWhenFinished` is set to true for the instance, you do not need to restart the instance.
         
         @param request: ModifyPrepayInstanceSpecRequest
         @return: ModifyPrepayInstanceSpecResponse
@@ -40829,18 +41056,17 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyPrepayInstanceSpecRequest,
     ) -> ecs_20140526_models.ModifyPrepayInstanceSpecResponse:
         """
-        Before you call this operation, we recommend that you familiarize yourself with the billing methods, pricing schedule, and refund rules of [ECS](https://www.alibabacloud.com/product/ecs#pricing). For more information, see [Refund rules for real-time configuration downgrade](~~476339~~).
-        Before you change the instance type of a subscription instance, you can call the [DescribeResourcesModification](~~66187~~) operation to query the instance types to which you can change the instance. You can use ECS SDK for Python to query the instance types to which you can change. For more information, see [Query available resources for configuration changes](~~109517~~).
-        When you call this operation, take note of the following items:
-        *   You cannot change the instance type of an expired instance. Renew the instance and try again.
+        ## [](#)Usage notes
+        Before you call this operation, we recommend that you familiarize yourself with the billing methods, pricing schedule, and refund rules of [ECS](https://www.alibabacloud.com/product/ecs#pricing). For information about the refund rules, see [Rules for unsubscribing from resources](~~476339~~).
+        Before you change the instance type of a subscription instance, call the [DescribeResourcesModification](~~66187~~) operation to query the instance types to which you can change the instance. You can use ECS SDK for Python. For more information, see [Query available resources for configuration changes](~~109517~~).
+        Take note of the following items:
+        *   To change the instance type of an expired instance, you must first renew the instance.
         *   When you downgrade the instance type of an instance, take note of the following items:
-        *   The instance must be in the `Stopped` state.****\
-        *   You must specify the operation type by setting `OperatorType` to downgrade.
-        *   You can downgrade the configurations of an instance up to three times. Therefore, up to three refunds for the price difference can be made for an instance. Downgrade operations include instance type downgrades, bandwidth configuration downgrades, and the change of the disk billing method from subscription to pay-as-you-go.
-        *   The price difference is refunded to the payment account you used. Vouchers that have been redeemed during purchase are not refundable.
-        *   This operation is asynchronous. It takes 5 to 10 seconds for the instance type to change. You must restart the instance by calling the RebootInstance operation or by using the ECS console for the instance type change to take effect. If you restart only the operating system of the instance, the instance type change does not take effect.
+        *   The instance must be in the **Stopped** (`Stopped`) state.
+        *   The price difference is refunded to the payment account you used. Vouchers that have been redeemed are not refundable.
+        *   The operation is asynchronous. Wait 5 to 10 seconds for the instance type change to complete. Then, restart the instance by calling the RebootInstance operation or by using the ECS console for the instance type change to take effect. If you restart only the operating system of the instance, the instance type change does not take effect.
         *   If the instance is in the **Stopped** state, you only need to start the instance. You do not need to restart the instance after it enters the Running state.
-        *   If `RebootWhenFinished` is set to true for the instance, you do not need to manually restart the instance.
+        *   If `RebootWhenFinished` is set to true for the instance, you do not need to restart the instance.
         
         @param request: ModifyPrepayInstanceSpecRequest
         @return: ModifyPrepayInstanceSpecResponse
@@ -46890,23 +47116,23 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RunCommandResponse:
         """
-        ## Usage notes
+        ## [](#)Usage notes
         Unlike the [CreateCommand](~~64844~~) and [InvokeCommand](~~64841~~) operations, RunCommand can be used to create and run a command in a single request.
         Take note of the following items:
         *   The instances on which you want to run a command must be in the Running (`Running`) state. You can call the [DescribeInstances](~~25506~~) operation to query the status of instances.
-        *   [Cloud Assistant Agent](~~64921~~) is pre-installed on the instances.
+        *   [Cloud Assistant Agent](~~64921~~) must be installed on the instances.
         *   Before you run a PowerShell command on a Windows instance, make sure that the PowerShell module is installed on the instance.
-        *   When you use a cron expression to specify a schedule, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instance. Make sure that the time or time zone of the instance meets your business requirements. For information about time zones, see [Configure the NTP service for ECS instances that run CentOS 6](~~92803~~) or [Configure the NTP service for Windows instances](~~51890~~).
+        *   When you use a cron expression to specify a schedule, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instance. Make sure that the time or time zone of the instances meets your business requirements. For information about time zones, see [Configure the NTP service for a CentOS 6 instance](~~92803~~) or [Configure the NTP service for a Windows instance](~~51890~~).
         *   You can set `Timeout` to specify the timeout period for executions of the command on ECS instances. If an execution times out, Cloud Assistant Agent forcefully terminates the command process.
-        *   When the one-time execution of a command times out, the execution state ([InvokeRecordStatus](~~64845~~)) of the command becomes Failed.
-        *   For a scheduled task, the timeout period takes effect on each execution of the command. The timeout of one execution does not affect the subsequent executions of the command. When a scheduled execution of a command times out, the execution state ([InvokeRecordStatus](~~64845~~)) of the command becomes Failed.
-        To ensure that scheduled tasks can run as expected, make sure that the version of Cloud Assistant Agent is not earlier than the following ones. A scheduled task can run a command at a specified interval, only once at a specified time, or at designated times based on a cron expression with a specified year or time zone. If the `ClientNeedUpgrade` error code is returned, you must upgrade Cloud Assistant Agent to the latest version. For more information, see [Update or disable updates for the Cloud Assistant client](~~134383~~).
-        *   Linux: 2.2.3.282.
-        *   Windows: 2.1.3.282.
+        *   When the one-time execution of the command times out, the execution state ([InvokeRecordStatus](~~64845~~)) of the command becomes Failed.
+        *   For a scheduled task, the timeout period takes effect on each execution of the command. When a command execution times out, the subsequent executions of the command are not affected. When a scheduled execution of the command times out, the execution state ([InvokeRecordStatus](~~64845~~)) of the command becomes Failed.
+        To ensure that scheduled tasks can run as expected, make sure that the version of Cloud Assistant Agent is not earlier than the following ones. A scheduled task can run a command at a specified interval, only once at a specified time, or at designated times based on a cron expression in a specified year or time zone. If the `ClientNeedUpgrade` error code is returned, you must update Cloud Assistant Agent to the latest version. For more information, see [Upgrade or disable upgrades for Cloud Assistant Agent](~~134383~~).
+        - Linux: 2.2.3.282
+        - Windows: 2.1.3.282
         *   Command executions may fail due to instance status exceptions, network exceptions, or exceptions on Cloud Assistant Agent. If a command execution fails, no execution information is generated. For more information, see [Check execution results and troubleshoot common issues](~~87029~~).
-        *   When `EnableParameter` is set to true, the custom parameter feature is enabled. When you specify `CommandContent`, you can specify custom parameters in the `{{parameter}}` format. Then, when the command is run, the key-value pairs of the custom parameters are passed in.
-        *   You can retain up to 500 to 10,000 Cloud Assistant commands in each region based on your ECS usage. You can perform operations that are described in the [View and increase resource quotas](~~184115~~) topic or call the [DescribeAccountAttribute](~~73772~~) operation to query resource quotas.
-        *   Before you run a command on instances, especially new instances, we recommend that you call the [DescribeCloudAssistantStatus](~~87346~~) operation to query the status of Cloud Assistant Agent on the instances, and then run the command when the value of CloudAssistantStatus in the response is true for the instances.
+        *   If you set the `EnableParameter` parameter to true, the custom parameter feature is enabled. When you configure the `CommandContent` parameter, you can define custom parameters in the `{{parameter}}` format. Then, when the command is run, the key-value pairs of the custom parameters are passed in.
+        *   You can retain up to 500 to 10,000 Cloud Assistant commands in each region based on your usage. You can perform operations that are described in the [View and increase resource quotas](~~184115~~) topic or call the [DescribeAccountAttribute](~~73772~~) operation to query resource quotas.
+        *   Before you run a command on instances, especially new instances, we recommend that you call the [DescribeCloudAssistantStatus](~~87346~~) operation to query the status of Cloud Assistant Agent on the instances and run the command when the value of CloudAssistantStatus in the response is true for the instances.
         
         @param tmp_req: RunCommandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -46999,23 +47225,23 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RunCommandResponse:
         """
-        ## Usage notes
+        ## [](#)Usage notes
         Unlike the [CreateCommand](~~64844~~) and [InvokeCommand](~~64841~~) operations, RunCommand can be used to create and run a command in a single request.
         Take note of the following items:
         *   The instances on which you want to run a command must be in the Running (`Running`) state. You can call the [DescribeInstances](~~25506~~) operation to query the status of instances.
-        *   [Cloud Assistant Agent](~~64921~~) is pre-installed on the instances.
+        *   [Cloud Assistant Agent](~~64921~~) must be installed on the instances.
         *   Before you run a PowerShell command on a Windows instance, make sure that the PowerShell module is installed on the instance.
-        *   When you use a cron expression to specify a schedule, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instance. Make sure that the time or time zone of the instance meets your business requirements. For information about time zones, see [Configure the NTP service for ECS instances that run CentOS 6](~~92803~~) or [Configure the NTP service for Windows instances](~~51890~~).
+        *   When you use a cron expression to specify a schedule, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instance. Make sure that the time or time zone of the instances meets your business requirements. For information about time zones, see [Configure the NTP service for a CentOS 6 instance](~~92803~~) or [Configure the NTP service for a Windows instance](~~51890~~).
         *   You can set `Timeout` to specify the timeout period for executions of the command on ECS instances. If an execution times out, Cloud Assistant Agent forcefully terminates the command process.
-        *   When the one-time execution of a command times out, the execution state ([InvokeRecordStatus](~~64845~~)) of the command becomes Failed.
-        *   For a scheduled task, the timeout period takes effect on each execution of the command. The timeout of one execution does not affect the subsequent executions of the command. When a scheduled execution of a command times out, the execution state ([InvokeRecordStatus](~~64845~~)) of the command becomes Failed.
-        To ensure that scheduled tasks can run as expected, make sure that the version of Cloud Assistant Agent is not earlier than the following ones. A scheduled task can run a command at a specified interval, only once at a specified time, or at designated times based on a cron expression with a specified year or time zone. If the `ClientNeedUpgrade` error code is returned, you must upgrade Cloud Assistant Agent to the latest version. For more information, see [Update or disable updates for the Cloud Assistant client](~~134383~~).
-        *   Linux: 2.2.3.282.
-        *   Windows: 2.1.3.282.
+        *   When the one-time execution of the command times out, the execution state ([InvokeRecordStatus](~~64845~~)) of the command becomes Failed.
+        *   For a scheduled task, the timeout period takes effect on each execution of the command. When a command execution times out, the subsequent executions of the command are not affected. When a scheduled execution of the command times out, the execution state ([InvokeRecordStatus](~~64845~~)) of the command becomes Failed.
+        To ensure that scheduled tasks can run as expected, make sure that the version of Cloud Assistant Agent is not earlier than the following ones. A scheduled task can run a command at a specified interval, only once at a specified time, or at designated times based on a cron expression in a specified year or time zone. If the `ClientNeedUpgrade` error code is returned, you must update Cloud Assistant Agent to the latest version. For more information, see [Upgrade or disable upgrades for Cloud Assistant Agent](~~134383~~).
+        - Linux: 2.2.3.282
+        - Windows: 2.1.3.282
         *   Command executions may fail due to instance status exceptions, network exceptions, or exceptions on Cloud Assistant Agent. If a command execution fails, no execution information is generated. For more information, see [Check execution results and troubleshoot common issues](~~87029~~).
-        *   When `EnableParameter` is set to true, the custom parameter feature is enabled. When you specify `CommandContent`, you can specify custom parameters in the `{{parameter}}` format. Then, when the command is run, the key-value pairs of the custom parameters are passed in.
-        *   You can retain up to 500 to 10,000 Cloud Assistant commands in each region based on your ECS usage. You can perform operations that are described in the [View and increase resource quotas](~~184115~~) topic or call the [DescribeAccountAttribute](~~73772~~) operation to query resource quotas.
-        *   Before you run a command on instances, especially new instances, we recommend that you call the [DescribeCloudAssistantStatus](~~87346~~) operation to query the status of Cloud Assistant Agent on the instances, and then run the command when the value of CloudAssistantStatus in the response is true for the instances.
+        *   If you set the `EnableParameter` parameter to true, the custom parameter feature is enabled. When you configure the `CommandContent` parameter, you can define custom parameters in the `{{parameter}}` format. Then, when the command is run, the key-value pairs of the custom parameters are passed in.
+        *   You can retain up to 500 to 10,000 Cloud Assistant commands in each region based on your usage. You can perform operations that are described in the [View and increase resource quotas](~~184115~~) topic or call the [DescribeAccountAttribute](~~73772~~) operation to query resource quotas.
+        *   Before you run a command on instances, especially new instances, we recommend that you call the [DescribeCloudAssistantStatus](~~87346~~) operation to query the status of Cloud Assistant Agent on the instances and run the command when the value of CloudAssistantStatus in the response is true for the instances.
         
         @param tmp_req: RunCommandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -47107,23 +47333,23 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RunCommandRequest,
     ) -> ecs_20140526_models.RunCommandResponse:
         """
-        ## Usage notes
+        ## [](#)Usage notes
         Unlike the [CreateCommand](~~64844~~) and [InvokeCommand](~~64841~~) operations, RunCommand can be used to create and run a command in a single request.
         Take note of the following items:
         *   The instances on which you want to run a command must be in the Running (`Running`) state. You can call the [DescribeInstances](~~25506~~) operation to query the status of instances.
-        *   [Cloud Assistant Agent](~~64921~~) is pre-installed on the instances.
+        *   [Cloud Assistant Agent](~~64921~~) must be installed on the instances.
         *   Before you run a PowerShell command on a Windows instance, make sure that the PowerShell module is installed on the instance.
-        *   When you use a cron expression to specify a schedule, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instance. Make sure that the time or time zone of the instance meets your business requirements. For information about time zones, see [Configure the NTP service for ECS instances that run CentOS 6](~~92803~~) or [Configure the NTP service for Windows instances](~~51890~~).
+        *   When you use a cron expression to specify a schedule, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instance. Make sure that the time or time zone of the instances meets your business requirements. For information about time zones, see [Configure the NTP service for a CentOS 6 instance](~~92803~~) or [Configure the NTP service for a Windows instance](~~51890~~).
         *   You can set `Timeout` to specify the timeout period for executions of the command on ECS instances. If an execution times out, Cloud Assistant Agent forcefully terminates the command process.
-        *   When the one-time execution of a command times out, the execution state ([InvokeRecordStatus](~~64845~~)) of the command becomes Failed.
-        *   For a scheduled task, the timeout period takes effect on each execution of the command. The timeout of one execution does not affect the subsequent executions of the command. When a scheduled execution of a command times out, the execution state ([InvokeRecordStatus](~~64845~~)) of the command becomes Failed.
-        To ensure that scheduled tasks can run as expected, make sure that the version of Cloud Assistant Agent is not earlier than the following ones. A scheduled task can run a command at a specified interval, only once at a specified time, or at designated times based on a cron expression with a specified year or time zone. If the `ClientNeedUpgrade` error code is returned, you must upgrade Cloud Assistant Agent to the latest version. For more information, see [Update or disable updates for the Cloud Assistant client](~~134383~~).
-        *   Linux: 2.2.3.282.
-        *   Windows: 2.1.3.282.
+        *   When the one-time execution of the command times out, the execution state ([InvokeRecordStatus](~~64845~~)) of the command becomes Failed.
+        *   For a scheduled task, the timeout period takes effect on each execution of the command. When a command execution times out, the subsequent executions of the command are not affected. When a scheduled execution of the command times out, the execution state ([InvokeRecordStatus](~~64845~~)) of the command becomes Failed.
+        To ensure that scheduled tasks can run as expected, make sure that the version of Cloud Assistant Agent is not earlier than the following ones. A scheduled task can run a command at a specified interval, only once at a specified time, or at designated times based on a cron expression in a specified year or time zone. If the `ClientNeedUpgrade` error code is returned, you must update Cloud Assistant Agent to the latest version. For more information, see [Upgrade or disable upgrades for Cloud Assistant Agent](~~134383~~).
+        - Linux: 2.2.3.282
+        - Windows: 2.1.3.282
         *   Command executions may fail due to instance status exceptions, network exceptions, or exceptions on Cloud Assistant Agent. If a command execution fails, no execution information is generated. For more information, see [Check execution results and troubleshoot common issues](~~87029~~).
-        *   When `EnableParameter` is set to true, the custom parameter feature is enabled. When you specify `CommandContent`, you can specify custom parameters in the `{{parameter}}` format. Then, when the command is run, the key-value pairs of the custom parameters are passed in.
-        *   You can retain up to 500 to 10,000 Cloud Assistant commands in each region based on your ECS usage. You can perform operations that are described in the [View and increase resource quotas](~~184115~~) topic or call the [DescribeAccountAttribute](~~73772~~) operation to query resource quotas.
-        *   Before you run a command on instances, especially new instances, we recommend that you call the [DescribeCloudAssistantStatus](~~87346~~) operation to query the status of Cloud Assistant Agent on the instances, and then run the command when the value of CloudAssistantStatus in the response is true for the instances.
+        *   If you set the `EnableParameter` parameter to true, the custom parameter feature is enabled. When you configure the `CommandContent` parameter, you can define custom parameters in the `{{parameter}}` format. Then, when the command is run, the key-value pairs of the custom parameters are passed in.
+        *   You can retain up to 500 to 10,000 Cloud Assistant commands in each region based on your usage. You can perform operations that are described in the [View and increase resource quotas](~~184115~~) topic or call the [DescribeAccountAttribute](~~73772~~) operation to query resource quotas.
+        *   Before you run a command on instances, especially new instances, we recommend that you call the [DescribeCloudAssistantStatus](~~87346~~) operation to query the status of Cloud Assistant Agent on the instances and run the command when the value of CloudAssistantStatus in the response is true for the instances.
         
         @param request: RunCommandRequest
         @return: RunCommandResponse
@@ -47136,23 +47362,23 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RunCommandRequest,
     ) -> ecs_20140526_models.RunCommandResponse:
         """
-        ## Usage notes
+        ## [](#)Usage notes
         Unlike the [CreateCommand](~~64844~~) and [InvokeCommand](~~64841~~) operations, RunCommand can be used to create and run a command in a single request.
         Take note of the following items:
         *   The instances on which you want to run a command must be in the Running (`Running`) state. You can call the [DescribeInstances](~~25506~~) operation to query the status of instances.
-        *   [Cloud Assistant Agent](~~64921~~) is pre-installed on the instances.
+        *   [Cloud Assistant Agent](~~64921~~) must be installed on the instances.
         *   Before you run a PowerShell command on a Windows instance, make sure that the PowerShell module is installed on the instance.
-        *   When you use a cron expression to specify a schedule, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instance. Make sure that the time or time zone of the instance meets your business requirements. For information about time zones, see [Configure the NTP service for ECS instances that run CentOS 6](~~92803~~) or [Configure the NTP service for Windows instances](~~51890~~).
+        *   When you use a cron expression to specify a schedule, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instance. Make sure that the time or time zone of the instances meets your business requirements. For information about time zones, see [Configure the NTP service for a CentOS 6 instance](~~92803~~) or [Configure the NTP service for a Windows instance](~~51890~~).
         *   You can set `Timeout` to specify the timeout period for executions of the command on ECS instances. If an execution times out, Cloud Assistant Agent forcefully terminates the command process.
-        *   When the one-time execution of a command times out, the execution state ([InvokeRecordStatus](~~64845~~)) of the command becomes Failed.
-        *   For a scheduled task, the timeout period takes effect on each execution of the command. The timeout of one execution does not affect the subsequent executions of the command. When a scheduled execution of a command times out, the execution state ([InvokeRecordStatus](~~64845~~)) of the command becomes Failed.
-        To ensure that scheduled tasks can run as expected, make sure that the version of Cloud Assistant Agent is not earlier than the following ones. A scheduled task can run a command at a specified interval, only once at a specified time, or at designated times based on a cron expression with a specified year or time zone. If the `ClientNeedUpgrade` error code is returned, you must upgrade Cloud Assistant Agent to the latest version. For more information, see [Update or disable updates for the Cloud Assistant client](~~134383~~).
-        *   Linux: 2.2.3.282.
-        *   Windows: 2.1.3.282.
+        *   When the one-time execution of the command times out, the execution state ([InvokeRecordStatus](~~64845~~)) of the command becomes Failed.
+        *   For a scheduled task, the timeout period takes effect on each execution of the command. When a command execution times out, the subsequent executions of the command are not affected. When a scheduled execution of the command times out, the execution state ([InvokeRecordStatus](~~64845~~)) of the command becomes Failed.
+        To ensure that scheduled tasks can run as expected, make sure that the version of Cloud Assistant Agent is not earlier than the following ones. A scheduled task can run a command at a specified interval, only once at a specified time, or at designated times based on a cron expression in a specified year or time zone. If the `ClientNeedUpgrade` error code is returned, you must update Cloud Assistant Agent to the latest version. For more information, see [Upgrade or disable upgrades for Cloud Assistant Agent](~~134383~~).
+        - Linux: 2.2.3.282
+        - Windows: 2.1.3.282
         *   Command executions may fail due to instance status exceptions, network exceptions, or exceptions on Cloud Assistant Agent. If a command execution fails, no execution information is generated. For more information, see [Check execution results and troubleshoot common issues](~~87029~~).
-        *   When `EnableParameter` is set to true, the custom parameter feature is enabled. When you specify `CommandContent`, you can specify custom parameters in the `{{parameter}}` format. Then, when the command is run, the key-value pairs of the custom parameters are passed in.
-        *   You can retain up to 500 to 10,000 Cloud Assistant commands in each region based on your ECS usage. You can perform operations that are described in the [View and increase resource quotas](~~184115~~) topic or call the [DescribeAccountAttribute](~~73772~~) operation to query resource quotas.
-        *   Before you run a command on instances, especially new instances, we recommend that you call the [DescribeCloudAssistantStatus](~~87346~~) operation to query the status of Cloud Assistant Agent on the instances, and then run the command when the value of CloudAssistantStatus in the response is true for the instances.
+        *   If you set the `EnableParameter` parameter to true, the custom parameter feature is enabled. When you configure the `CommandContent` parameter, you can define custom parameters in the `{{parameter}}` format. Then, when the command is run, the key-value pairs of the custom parameters are passed in.
+        *   You can retain up to 500 to 10,000 Cloud Assistant commands in each region based on your usage. You can perform operations that are described in the [View and increase resource quotas](~~184115~~) topic or call the [DescribeAccountAttribute](~~73772~~) operation to query resource quotas.
+        *   Before you run a command on instances, especially new instances, we recommend that you call the [DescribeCloudAssistantStatus](~~87346~~) operation to query the status of Cloud Assistant Agent on the instances and run the command when the value of CloudAssistantStatus in the response is true for the instances.
         
         @param request: RunCommandRequest
         @return: RunCommandResponse
@@ -47169,9 +47395,9 @@ class Client(OpenApiClient):
         ## [](#)Usage notes
         *   **Preparations**:
         *   Cost estimation: Learn about the billing methods of ECS resources. For more information, see [Billing overview](~~25398~~).
-        *   Instance type selection: Call the [DescribeInstanceTypes](~~25620~~) operation to query the performance data of instance types, or see [Best practices for instance type selection](~~58291~~) to learn about how to select instance types.
+        *   Instance type selection: Call the [DescribeInstanceTypes](~~25620~~) operation to query the performance data of instance types, or see [Best practices for selecting instance types](~~58291~~) to learn about how to select instance types.
         *   Query of available resources: Call the [DescribeAvailableResource](~~66186~~) operation to query resources available in a specific region or zone.
-        *   Network planning: Make sure that you have security groups available for use. For more information, see [CreateSecurityGroup](~~25553~~). Before you create an instance of the Virtual Private Cloud (VPC) type, create a VPC in the region where you want to create the instance. For more information, see [Create a VPC](~~65430~~).
+        *   Network planning: Make sure that you have security groups available for use. For more information, see [CreateSecurityGroup](~~25553~~). Before you create an instance of the Virtual Private Cloud (VPC) type, [create a VPC](~~65430~~) in the region where you want to create the instance.
         *   **Comparison with CreateInstance**:
         RunInstances has the following advantages over CreateInstance:
         *   You can call the RunInstances operation to create up to 100 instances at a time, instead of repeatedly calling the CreateInstance operation.
@@ -47189,16 +47415,18 @@ class Client(OpenApiClient):
         *   By default, instances automatically start after they are created. Instances are ready for use when they are in the Running (`Running`) state.
         *   Starting November 27, 2020, the maximum bandwidth value that is available for you to create ECS instances or change ECS instance configurations is subject to the throttling policy of your account. To increase the maximum bandwidth value, submit a ticket. The throttling policy imposes the following constraints: In a single region, the total maximum bandwidth value of all instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s and the total maximum bandwidth value of all instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
         *   Different from the [CreateInstance](~~25499~~) operation, the `RunInstances` operation allows the system to assign public IP addresses to new instances if you set `InternetMaxBandwidthOut` to a value greater than 0.
-        *   When you call the RunInstances operation to create an instance, you can use one of the following methods to attach a primary elastic network interface (ENI) to the instance. Take note that you can use only one of the methods to configure the primary ENI in each call. Otherwise, the call fails and an error message is returned. - Specify parameters such as `SecurityGroupId`, `VSwitchId`, `PrivateIpAddress`, `NetworkInterfaceQueueNumber`, and `Ipv6AddressCount` to configure the primary ENI. - Specify parameters that start with `NetworkInterface.N.` to configure the primary and secondary ENIs. If `NetworkInterface.N.InstanceType` is set to `Primary`, the primary ENI is attached to the instance. If `NetworkInterface.N.InstanceType` is set to `Secondary` or left empty, a secondary ENI is attached to the instance.
+        *   When you call the RunInstances operation to create an instance, you can use one of the following methods to attach a primary elastic network interface (ENI) to the instance. Take note that you can use only one of the methods to configure the primary ENI in each call. Otherwise, the call fails and an error message is returned.
+        *   Specify parameters such as `SecurityGroupId`, `VSwitchId`, `PrivateIpAddress`, `NetworkInterfaceQueueNumber`, and `Ipv6AddressCount` to configure the primary ENI.
+        *   Specify parameters that start with `NetworkInterface.N.` to configure the primary and secondary ENIs. If `NetworkInterface.N.InstanceType` is set to `Primary`, the primary ENI is attached to the instance. If `NetworkInterface.N.InstanceType` is set to `Secondary` or left empty, the secondary ENI is attached to the instance.
         *   If a parameter is invalid or available resources are insufficient, an error is returned after you call the RunInstances operation. For more information, see the "Error codes" section of this topic.
-        - If the maximum number of instances of the specified instance type that can be created in the specified region or the maximum number of vCPUs for all instance types in a zone is exceeded, the QuotaExceed.ElasticQuota error is returned when you call the operation. You can go to the ECS console (https://ecs.console.aliyun.com/?spm=a2c8b.12215451.favorites.decs.5e3a336aMGTtzy#/privileges/quota) or Quota Center (https://quotas.console.aliyun.com/products/ecs/quotas) to request a quota increase. If the capacity of disks that belong to the specified disk category exceeds the quota limit for the specified zone, the QuotaExceed.DiskCapacity error is returned when you call the operation. You can go to the Quota Center (https://quotas.console.aliyun.com/products/disk/quotas) to view and increase the disk capacity quota.
+        *   If the maximum number of instances of the specified instance type that can be created in the specified region or the maximum number of vCPUs for all instance types in a zone is exceeded, the `QuotaExceed.ElasticQuota` error is returned when you call the operation. You can go to the [ECS console](https://ecs.console.aliyun.com/?spm=a2c8b.12215451.favorites.decs.5e3a336aMGTtzy#/privileges/quota) or the [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas) to request a quota increase.
+        *   If the capacity of disks that belong to the specified disk category exceeds the quota limit for the specified zone, the `QuotaExceed.DiskCapacity` error is returned when you call the operation. You can go to the [Quota Center](https://quotas.console.aliyun.com/products/disk/quotas) to view and increase the disk capacity quota.
         *   **Best practices**:
-        *   We recommend that you use auto provisioning groups in the following scenarios: Resources are insufficient to create more than 100 instances at a time, you want to quickly create instances regardless of resource configurations such as instance types or zones, or you want to create instances to consume a specific total number of vCPUs regardless of the number of instances. You can call the [CreateAutoProvisioningGroup](~~122738~~) operation to create an auto provisioning group to deploy an instance cluster across different zones and by using different billing methods and instance families. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](~~200772~~).
+        *   We recommend that you use auto provisioning groups in the following scenarios: Resources are insufficient to create more than 100 instances at a time, you want to quickly create instances regardless of resource configurations such as instance types or zones, or you want to create instances to consume a specific total number of vCPUs regardless of the number of instances. You can call the [CreateAutoProvisioningGroup](~~122738~~) operation to create an auto provisioning group to deploy an instance cluster across different zones, different billing methods, and instance families. For more information, see [Use auto provisioning group-related API operations to batch create ECS instances](~~200772~~).
         *   You can call the `RunInstances` operation to batch create instances. To better manage and search for the instances, we recommend that you add tags to the instances by specifying `Tag.N.Key` and `Tag.N.Value`. You can also append incremental suffixes (`UniqueSuffix`) to the hostname (`HostName`) and to the instance name (`InstanceName`).
         *   A launch template contains parameters required to create an instance so that you do not have to specify these parameters every time you create instances. You can call the [CreateLaunchTemplate](~~74686~~) operation to create a launch template. Then, in your request to call the `RunInstances` operation, you can specify `LaunchTemplateId` and `LaunchTemplateVersion` to use the launch template.
-        *   [](https://api.alibabacloud.com/api/Ecs/)``****``********\
         ### [](#-1)Example 1: Create a subscription instance
-        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a one-month subscription instance of the ecs.g7.large instance type in the China (Hangzhou) region, and enable auto-renewal to renew the instance for one month on expiration. The instance uses a 40 GiB enhanced SSD (ESSD) as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a one-month subscription instance of the ecs.g7.large instance type in the China (Hangzhou) region, and enable auto-renewal to renew the instance for one month on expiration. The instance uses a 40 GiB enhanced SSD (ESSD) as the system disk and a 100 GiB ESSD as a data disk and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
         http(s)://ecs.aliyuncs.com/?Action=RunInstances
         &RegionId=cn-hangzhou
         &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
@@ -47220,7 +47448,7 @@ class Client(OpenApiClient):
         &InternetMaxBandwidthOut=10
         &<Common request parameters>
         ### [](#-2)Example 2: Create a pay-as-you-go instance
-        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a pay-as-you-go instance of the ecs.g7.large instance type in the China (Hangzhou) region. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a pay-as-you-go instance of the ecs.g7.large instance type in the China (Hangzhou) region. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
         http(s)://ecs.aliyuncs.com/?Action=RunInstances
         &RegionId=cn-hangzhou
         &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
@@ -47237,7 +47465,7 @@ class Client(OpenApiClient):
         &InternetMaxBandwidthOut=10
         &<Common request parameters>
         ### [](#-3)Example 3: Create a preemptible instance
-        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a preemptible instance of the ecs.g7.large instance type that has a 1-hour protection period in the China (Hangzhou) region. The market price of the instance type at the time of purchase is automatically used as the bidding price. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a preemptible instance of the ecs.g7.large instance type that has a 1-hour protection period in the China (Hangzhou) region. The market price of the instance type at the time of purchase is automatically used as the bidding price. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
         http(s)://ecs.aliyuncs.com/?Action=RunInstances
         &RegionId=cn-hangzhou
         &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
@@ -47256,7 +47484,7 @@ class Client(OpenApiClient):
         &SpotDuration=1
         &<Common request parameters>
         ### [](#-4)Example 4: Create a subscription instance on a dedicated host
-        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a one-month subscription instance of the ecs.g7.large instance type on the dh-bp12w10wll9xcjq2\\*\\*\\*\\* dedicated host. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a one-month subscription instance of the ecs.g7.large instance type on the dh-bp12w10wll9xcjq2\\*\\*\\*\\* dedicated host in the China (Hangzhou) region. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
         http(s)://ecs.aliyuncs.com/?Action=RunInstances
         &RegionId=cn-hangzhou
         &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
@@ -47465,9 +47693,9 @@ class Client(OpenApiClient):
         ## [](#)Usage notes
         *   **Preparations**:
         *   Cost estimation: Learn about the billing methods of ECS resources. For more information, see [Billing overview](~~25398~~).
-        *   Instance type selection: Call the [DescribeInstanceTypes](~~25620~~) operation to query the performance data of instance types, or see [Best practices for instance type selection](~~58291~~) to learn about how to select instance types.
+        *   Instance type selection: Call the [DescribeInstanceTypes](~~25620~~) operation to query the performance data of instance types, or see [Best practices for selecting instance types](~~58291~~) to learn about how to select instance types.
         *   Query of available resources: Call the [DescribeAvailableResource](~~66186~~) operation to query resources available in a specific region or zone.
-        *   Network planning: Make sure that you have security groups available for use. For more information, see [CreateSecurityGroup](~~25553~~). Before you create an instance of the Virtual Private Cloud (VPC) type, create a VPC in the region where you want to create the instance. For more information, see [Create a VPC](~~65430~~).
+        *   Network planning: Make sure that you have security groups available for use. For more information, see [CreateSecurityGroup](~~25553~~). Before you create an instance of the Virtual Private Cloud (VPC) type, [create a VPC](~~65430~~) in the region where you want to create the instance.
         *   **Comparison with CreateInstance**:
         RunInstances has the following advantages over CreateInstance:
         *   You can call the RunInstances operation to create up to 100 instances at a time, instead of repeatedly calling the CreateInstance operation.
@@ -47485,16 +47713,18 @@ class Client(OpenApiClient):
         *   By default, instances automatically start after they are created. Instances are ready for use when they are in the Running (`Running`) state.
         *   Starting November 27, 2020, the maximum bandwidth value that is available for you to create ECS instances or change ECS instance configurations is subject to the throttling policy of your account. To increase the maximum bandwidth value, submit a ticket. The throttling policy imposes the following constraints: In a single region, the total maximum bandwidth value of all instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s and the total maximum bandwidth value of all instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
         *   Different from the [CreateInstance](~~25499~~) operation, the `RunInstances` operation allows the system to assign public IP addresses to new instances if you set `InternetMaxBandwidthOut` to a value greater than 0.
-        *   When you call the RunInstances operation to create an instance, you can use one of the following methods to attach a primary elastic network interface (ENI) to the instance. Take note that you can use only one of the methods to configure the primary ENI in each call. Otherwise, the call fails and an error message is returned. - Specify parameters such as `SecurityGroupId`, `VSwitchId`, `PrivateIpAddress`, `NetworkInterfaceQueueNumber`, and `Ipv6AddressCount` to configure the primary ENI. - Specify parameters that start with `NetworkInterface.N.` to configure the primary and secondary ENIs. If `NetworkInterface.N.InstanceType` is set to `Primary`, the primary ENI is attached to the instance. If `NetworkInterface.N.InstanceType` is set to `Secondary` or left empty, a secondary ENI is attached to the instance.
+        *   When you call the RunInstances operation to create an instance, you can use one of the following methods to attach a primary elastic network interface (ENI) to the instance. Take note that you can use only one of the methods to configure the primary ENI in each call. Otherwise, the call fails and an error message is returned.
+        *   Specify parameters such as `SecurityGroupId`, `VSwitchId`, `PrivateIpAddress`, `NetworkInterfaceQueueNumber`, and `Ipv6AddressCount` to configure the primary ENI.
+        *   Specify parameters that start with `NetworkInterface.N.` to configure the primary and secondary ENIs. If `NetworkInterface.N.InstanceType` is set to `Primary`, the primary ENI is attached to the instance. If `NetworkInterface.N.InstanceType` is set to `Secondary` or left empty, the secondary ENI is attached to the instance.
         *   If a parameter is invalid or available resources are insufficient, an error is returned after you call the RunInstances operation. For more information, see the "Error codes" section of this topic.
-        - If the maximum number of instances of the specified instance type that can be created in the specified region or the maximum number of vCPUs for all instance types in a zone is exceeded, the QuotaExceed.ElasticQuota error is returned when you call the operation. You can go to the ECS console (https://ecs.console.aliyun.com/?spm=a2c8b.12215451.favorites.decs.5e3a336aMGTtzy#/privileges/quota) or Quota Center (https://quotas.console.aliyun.com/products/ecs/quotas) to request a quota increase. If the capacity of disks that belong to the specified disk category exceeds the quota limit for the specified zone, the QuotaExceed.DiskCapacity error is returned when you call the operation. You can go to the Quota Center (https://quotas.console.aliyun.com/products/disk/quotas) to view and increase the disk capacity quota.
+        *   If the maximum number of instances of the specified instance type that can be created in the specified region or the maximum number of vCPUs for all instance types in a zone is exceeded, the `QuotaExceed.ElasticQuota` error is returned when you call the operation. You can go to the [ECS console](https://ecs.console.aliyun.com/?spm=a2c8b.12215451.favorites.decs.5e3a336aMGTtzy#/privileges/quota) or the [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas) to request a quota increase.
+        *   If the capacity of disks that belong to the specified disk category exceeds the quota limit for the specified zone, the `QuotaExceed.DiskCapacity` error is returned when you call the operation. You can go to the [Quota Center](https://quotas.console.aliyun.com/products/disk/quotas) to view and increase the disk capacity quota.
         *   **Best practices**:
-        *   We recommend that you use auto provisioning groups in the following scenarios: Resources are insufficient to create more than 100 instances at a time, you want to quickly create instances regardless of resource configurations such as instance types or zones, or you want to create instances to consume a specific total number of vCPUs regardless of the number of instances. You can call the [CreateAutoProvisioningGroup](~~122738~~) operation to create an auto provisioning group to deploy an instance cluster across different zones and by using different billing methods and instance families. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](~~200772~~).
+        *   We recommend that you use auto provisioning groups in the following scenarios: Resources are insufficient to create more than 100 instances at a time, you want to quickly create instances regardless of resource configurations such as instance types or zones, or you want to create instances to consume a specific total number of vCPUs regardless of the number of instances. You can call the [CreateAutoProvisioningGroup](~~122738~~) operation to create an auto provisioning group to deploy an instance cluster across different zones, different billing methods, and instance families. For more information, see [Use auto provisioning group-related API operations to batch create ECS instances](~~200772~~).
         *   You can call the `RunInstances` operation to batch create instances. To better manage and search for the instances, we recommend that you add tags to the instances by specifying `Tag.N.Key` and `Tag.N.Value`. You can also append incremental suffixes (`UniqueSuffix`) to the hostname (`HostName`) and to the instance name (`InstanceName`).
         *   A launch template contains parameters required to create an instance so that you do not have to specify these parameters every time you create instances. You can call the [CreateLaunchTemplate](~~74686~~) operation to create a launch template. Then, in your request to call the `RunInstances` operation, you can specify `LaunchTemplateId` and `LaunchTemplateVersion` to use the launch template.
-        *   [](https://api.alibabacloud.com/api/Ecs/)``****``********\
         ### [](#-1)Example 1: Create a subscription instance
-        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a one-month subscription instance of the ecs.g7.large instance type in the China (Hangzhou) region, and enable auto-renewal to renew the instance for one month on expiration. The instance uses a 40 GiB enhanced SSD (ESSD) as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a one-month subscription instance of the ecs.g7.large instance type in the China (Hangzhou) region, and enable auto-renewal to renew the instance for one month on expiration. The instance uses a 40 GiB enhanced SSD (ESSD) as the system disk and a 100 GiB ESSD as a data disk and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
         http(s)://ecs.aliyuncs.com/?Action=RunInstances
         &RegionId=cn-hangzhou
         &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
@@ -47516,7 +47746,7 @@ class Client(OpenApiClient):
         &InternetMaxBandwidthOut=10
         &<Common request parameters>
         ### [](#-2)Example 2: Create a pay-as-you-go instance
-        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a pay-as-you-go instance of the ecs.g7.large instance type in the China (Hangzhou) region. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a pay-as-you-go instance of the ecs.g7.large instance type in the China (Hangzhou) region. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
         http(s)://ecs.aliyuncs.com/?Action=RunInstances
         &RegionId=cn-hangzhou
         &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
@@ -47533,7 +47763,7 @@ class Client(OpenApiClient):
         &InternetMaxBandwidthOut=10
         &<Common request parameters>
         ### [](#-3)Example 3: Create a preemptible instance
-        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a preemptible instance of the ecs.g7.large instance type that has a 1-hour protection period in the China (Hangzhou) region. The market price of the instance type at the time of purchase is automatically used as the bidding price. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a preemptible instance of the ecs.g7.large instance type that has a 1-hour protection period in the China (Hangzhou) region. The market price of the instance type at the time of purchase is automatically used as the bidding price. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
         http(s)://ecs.aliyuncs.com/?Action=RunInstances
         &RegionId=cn-hangzhou
         &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
@@ -47552,7 +47782,7 @@ class Client(OpenApiClient):
         &SpotDuration=1
         &<Common request parameters>
         ### [](#-4)Example 4: Create a subscription instance on a dedicated host
-        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a one-month subscription instance of the ecs.g7.large instance type on the dh-bp12w10wll9xcjq2\\*\\*\\*\\* dedicated host. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a one-month subscription instance of the ecs.g7.large instance type on the dh-bp12w10wll9xcjq2\\*\\*\\*\\* dedicated host in the China (Hangzhou) region. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
         http(s)://ecs.aliyuncs.com/?Action=RunInstances
         &RegionId=cn-hangzhou
         &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
@@ -47760,9 +47990,9 @@ class Client(OpenApiClient):
         ## [](#)Usage notes
         *   **Preparations**:
         *   Cost estimation: Learn about the billing methods of ECS resources. For more information, see [Billing overview](~~25398~~).
-        *   Instance type selection: Call the [DescribeInstanceTypes](~~25620~~) operation to query the performance data of instance types, or see [Best practices for instance type selection](~~58291~~) to learn about how to select instance types.
+        *   Instance type selection: Call the [DescribeInstanceTypes](~~25620~~) operation to query the performance data of instance types, or see [Best practices for selecting instance types](~~58291~~) to learn about how to select instance types.
         *   Query of available resources: Call the [DescribeAvailableResource](~~66186~~) operation to query resources available in a specific region or zone.
-        *   Network planning: Make sure that you have security groups available for use. For more information, see [CreateSecurityGroup](~~25553~~). Before you create an instance of the Virtual Private Cloud (VPC) type, create a VPC in the region where you want to create the instance. For more information, see [Create a VPC](~~65430~~).
+        *   Network planning: Make sure that you have security groups available for use. For more information, see [CreateSecurityGroup](~~25553~~). Before you create an instance of the Virtual Private Cloud (VPC) type, [create a VPC](~~65430~~) in the region where you want to create the instance.
         *   **Comparison with CreateInstance**:
         RunInstances has the following advantages over CreateInstance:
         *   You can call the RunInstances operation to create up to 100 instances at a time, instead of repeatedly calling the CreateInstance operation.
@@ -47780,16 +48010,18 @@ class Client(OpenApiClient):
         *   By default, instances automatically start after they are created. Instances are ready for use when they are in the Running (`Running`) state.
         *   Starting November 27, 2020, the maximum bandwidth value that is available for you to create ECS instances or change ECS instance configurations is subject to the throttling policy of your account. To increase the maximum bandwidth value, submit a ticket. The throttling policy imposes the following constraints: In a single region, the total maximum bandwidth value of all instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s and the total maximum bandwidth value of all instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
         *   Different from the [CreateInstance](~~25499~~) operation, the `RunInstances` operation allows the system to assign public IP addresses to new instances if you set `InternetMaxBandwidthOut` to a value greater than 0.
-        *   When you call the RunInstances operation to create an instance, you can use one of the following methods to attach a primary elastic network interface (ENI) to the instance. Take note that you can use only one of the methods to configure the primary ENI in each call. Otherwise, the call fails and an error message is returned. - Specify parameters such as `SecurityGroupId`, `VSwitchId`, `PrivateIpAddress`, `NetworkInterfaceQueueNumber`, and `Ipv6AddressCount` to configure the primary ENI. - Specify parameters that start with `NetworkInterface.N.` to configure the primary and secondary ENIs. If `NetworkInterface.N.InstanceType` is set to `Primary`, the primary ENI is attached to the instance. If `NetworkInterface.N.InstanceType` is set to `Secondary` or left empty, a secondary ENI is attached to the instance.
+        *   When you call the RunInstances operation to create an instance, you can use one of the following methods to attach a primary elastic network interface (ENI) to the instance. Take note that you can use only one of the methods to configure the primary ENI in each call. Otherwise, the call fails and an error message is returned.
+        *   Specify parameters such as `SecurityGroupId`, `VSwitchId`, `PrivateIpAddress`, `NetworkInterfaceQueueNumber`, and `Ipv6AddressCount` to configure the primary ENI.
+        *   Specify parameters that start with `NetworkInterface.N.` to configure the primary and secondary ENIs. If `NetworkInterface.N.InstanceType` is set to `Primary`, the primary ENI is attached to the instance. If `NetworkInterface.N.InstanceType` is set to `Secondary` or left empty, the secondary ENI is attached to the instance.
         *   If a parameter is invalid or available resources are insufficient, an error is returned after you call the RunInstances operation. For more information, see the "Error codes" section of this topic.
-        - If the maximum number of instances of the specified instance type that can be created in the specified region or the maximum number of vCPUs for all instance types in a zone is exceeded, the QuotaExceed.ElasticQuota error is returned when you call the operation. You can go to the ECS console (https://ecs.console.aliyun.com/?spm=a2c8b.12215451.favorites.decs.5e3a336aMGTtzy#/privileges/quota) or Quota Center (https://quotas.console.aliyun.com/products/ecs/quotas) to request a quota increase. If the capacity of disks that belong to the specified disk category exceeds the quota limit for the specified zone, the QuotaExceed.DiskCapacity error is returned when you call the operation. You can go to the Quota Center (https://quotas.console.aliyun.com/products/disk/quotas) to view and increase the disk capacity quota.
+        *   If the maximum number of instances of the specified instance type that can be created in the specified region or the maximum number of vCPUs for all instance types in a zone is exceeded, the `QuotaExceed.ElasticQuota` error is returned when you call the operation. You can go to the [ECS console](https://ecs.console.aliyun.com/?spm=a2c8b.12215451.favorites.decs.5e3a336aMGTtzy#/privileges/quota) or the [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas) to request a quota increase.
+        *   If the capacity of disks that belong to the specified disk category exceeds the quota limit for the specified zone, the `QuotaExceed.DiskCapacity` error is returned when you call the operation. You can go to the [Quota Center](https://quotas.console.aliyun.com/products/disk/quotas) to view and increase the disk capacity quota.
         *   **Best practices**:
-        *   We recommend that you use auto provisioning groups in the following scenarios: Resources are insufficient to create more than 100 instances at a time, you want to quickly create instances regardless of resource configurations such as instance types or zones, or you want to create instances to consume a specific total number of vCPUs regardless of the number of instances. You can call the [CreateAutoProvisioningGroup](~~122738~~) operation to create an auto provisioning group to deploy an instance cluster across different zones and by using different billing methods and instance families. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](~~200772~~).
+        *   We recommend that you use auto provisioning groups in the following scenarios: Resources are insufficient to create more than 100 instances at a time, you want to quickly create instances regardless of resource configurations such as instance types or zones, or you want to create instances to consume a specific total number of vCPUs regardless of the number of instances. You can call the [CreateAutoProvisioningGroup](~~122738~~) operation to create an auto provisioning group to deploy an instance cluster across different zones, different billing methods, and instance families. For more information, see [Use auto provisioning group-related API operations to batch create ECS instances](~~200772~~).
         *   You can call the `RunInstances` operation to batch create instances. To better manage and search for the instances, we recommend that you add tags to the instances by specifying `Tag.N.Key` and `Tag.N.Value`. You can also append incremental suffixes (`UniqueSuffix`) to the hostname (`HostName`) and to the instance name (`InstanceName`).
         *   A launch template contains parameters required to create an instance so that you do not have to specify these parameters every time you create instances. You can call the [CreateLaunchTemplate](~~74686~~) operation to create a launch template. Then, in your request to call the `RunInstances` operation, you can specify `LaunchTemplateId` and `LaunchTemplateVersion` to use the launch template.
-        *   [](https://api.alibabacloud.com/api/Ecs/)``****``********\
         ### [](#-1)Example 1: Create a subscription instance
-        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a one-month subscription instance of the ecs.g7.large instance type in the China (Hangzhou) region, and enable auto-renewal to renew the instance for one month on expiration. The instance uses a 40 GiB enhanced SSD (ESSD) as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a one-month subscription instance of the ecs.g7.large instance type in the China (Hangzhou) region, and enable auto-renewal to renew the instance for one month on expiration. The instance uses a 40 GiB enhanced SSD (ESSD) as the system disk and a 100 GiB ESSD as a data disk and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
         http(s)://ecs.aliyuncs.com/?Action=RunInstances
         &RegionId=cn-hangzhou
         &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
@@ -47811,7 +48043,7 @@ class Client(OpenApiClient):
         &InternetMaxBandwidthOut=10
         &<Common request parameters>
         ### [](#-2)Example 2: Create a pay-as-you-go instance
-        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a pay-as-you-go instance of the ecs.g7.large instance type in the China (Hangzhou) region. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a pay-as-you-go instance of the ecs.g7.large instance type in the China (Hangzhou) region. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
         http(s)://ecs.aliyuncs.com/?Action=RunInstances
         &RegionId=cn-hangzhou
         &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
@@ -47828,7 +48060,7 @@ class Client(OpenApiClient):
         &InternetMaxBandwidthOut=10
         &<Common request parameters>
         ### [](#-3)Example 3: Create a preemptible instance
-        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a preemptible instance of the ecs.g7.large instance type that has a 1-hour protection period in the China (Hangzhou) region. The market price of the instance type at the time of purchase is automatically used as the bidding price. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a preemptible instance of the ecs.g7.large instance type that has a 1-hour protection period in the China (Hangzhou) region. The market price of the instance type at the time of purchase is automatically used as the bidding price. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
         http(s)://ecs.aliyuncs.com/?Action=RunInstances
         &RegionId=cn-hangzhou
         &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
@@ -47847,7 +48079,7 @@ class Client(OpenApiClient):
         &SpotDuration=1
         &<Common request parameters>
         ### [](#-4)Example 4: Create a subscription instance on a dedicated host
-        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a one-month subscription instance of the ecs.g7.large instance type on the dh-bp12w10wll9xcjq2\\*\\*\\*\\* dedicated host. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a one-month subscription instance of the ecs.g7.large instance type on the dh-bp12w10wll9xcjq2\\*\\*\\*\\* dedicated host in the China (Hangzhou) region. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
         http(s)://ecs.aliyuncs.com/?Action=RunInstances
         &RegionId=cn-hangzhou
         &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
@@ -47882,9 +48114,9 @@ class Client(OpenApiClient):
         ## [](#)Usage notes
         *   **Preparations**:
         *   Cost estimation: Learn about the billing methods of ECS resources. For more information, see [Billing overview](~~25398~~).
-        *   Instance type selection: Call the [DescribeInstanceTypes](~~25620~~) operation to query the performance data of instance types, or see [Best practices for instance type selection](~~58291~~) to learn about how to select instance types.
+        *   Instance type selection: Call the [DescribeInstanceTypes](~~25620~~) operation to query the performance data of instance types, or see [Best practices for selecting instance types](~~58291~~) to learn about how to select instance types.
         *   Query of available resources: Call the [DescribeAvailableResource](~~66186~~) operation to query resources available in a specific region or zone.
-        *   Network planning: Make sure that you have security groups available for use. For more information, see [CreateSecurityGroup](~~25553~~). Before you create an instance of the Virtual Private Cloud (VPC) type, create a VPC in the region where you want to create the instance. For more information, see [Create a VPC](~~65430~~).
+        *   Network planning: Make sure that you have security groups available for use. For more information, see [CreateSecurityGroup](~~25553~~). Before you create an instance of the Virtual Private Cloud (VPC) type, [create a VPC](~~65430~~) in the region where you want to create the instance.
         *   **Comparison with CreateInstance**:
         RunInstances has the following advantages over CreateInstance:
         *   You can call the RunInstances operation to create up to 100 instances at a time, instead of repeatedly calling the CreateInstance operation.
@@ -47902,16 +48134,18 @@ class Client(OpenApiClient):
         *   By default, instances automatically start after they are created. Instances are ready for use when they are in the Running (`Running`) state.
         *   Starting November 27, 2020, the maximum bandwidth value that is available for you to create ECS instances or change ECS instance configurations is subject to the throttling policy of your account. To increase the maximum bandwidth value, submit a ticket. The throttling policy imposes the following constraints: In a single region, the total maximum bandwidth value of all instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s and the total maximum bandwidth value of all instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
         *   Different from the [CreateInstance](~~25499~~) operation, the `RunInstances` operation allows the system to assign public IP addresses to new instances if you set `InternetMaxBandwidthOut` to a value greater than 0.
-        *   When you call the RunInstances operation to create an instance, you can use one of the following methods to attach a primary elastic network interface (ENI) to the instance. Take note that you can use only one of the methods to configure the primary ENI in each call. Otherwise, the call fails and an error message is returned. - Specify parameters such as `SecurityGroupId`, `VSwitchId`, `PrivateIpAddress`, `NetworkInterfaceQueueNumber`, and `Ipv6AddressCount` to configure the primary ENI. - Specify parameters that start with `NetworkInterface.N.` to configure the primary and secondary ENIs. If `NetworkInterface.N.InstanceType` is set to `Primary`, the primary ENI is attached to the instance. If `NetworkInterface.N.InstanceType` is set to `Secondary` or left empty, a secondary ENI is attached to the instance.
+        *   When you call the RunInstances operation to create an instance, you can use one of the following methods to attach a primary elastic network interface (ENI) to the instance. Take note that you can use only one of the methods to configure the primary ENI in each call. Otherwise, the call fails and an error message is returned.
+        *   Specify parameters such as `SecurityGroupId`, `VSwitchId`, `PrivateIpAddress`, `NetworkInterfaceQueueNumber`, and `Ipv6AddressCount` to configure the primary ENI.
+        *   Specify parameters that start with `NetworkInterface.N.` to configure the primary and secondary ENIs. If `NetworkInterface.N.InstanceType` is set to `Primary`, the primary ENI is attached to the instance. If `NetworkInterface.N.InstanceType` is set to `Secondary` or left empty, the secondary ENI is attached to the instance.
         *   If a parameter is invalid or available resources are insufficient, an error is returned after you call the RunInstances operation. For more information, see the "Error codes" section of this topic.
-        - If the maximum number of instances of the specified instance type that can be created in the specified region or the maximum number of vCPUs for all instance types in a zone is exceeded, the QuotaExceed.ElasticQuota error is returned when you call the operation. You can go to the ECS console (https://ecs.console.aliyun.com/?spm=a2c8b.12215451.favorites.decs.5e3a336aMGTtzy#/privileges/quota) or Quota Center (https://quotas.console.aliyun.com/products/ecs/quotas) to request a quota increase. If the capacity of disks that belong to the specified disk category exceeds the quota limit for the specified zone, the QuotaExceed.DiskCapacity error is returned when you call the operation. You can go to the Quota Center (https://quotas.console.aliyun.com/products/disk/quotas) to view and increase the disk capacity quota.
+        *   If the maximum number of instances of the specified instance type that can be created in the specified region or the maximum number of vCPUs for all instance types in a zone is exceeded, the `QuotaExceed.ElasticQuota` error is returned when you call the operation. You can go to the [ECS console](https://ecs.console.aliyun.com/?spm=a2c8b.12215451.favorites.decs.5e3a336aMGTtzy#/privileges/quota) or the [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas) to request a quota increase.
+        *   If the capacity of disks that belong to the specified disk category exceeds the quota limit for the specified zone, the `QuotaExceed.DiskCapacity` error is returned when you call the operation. You can go to the [Quota Center](https://quotas.console.aliyun.com/products/disk/quotas) to view and increase the disk capacity quota.
         *   **Best practices**:
-        *   We recommend that you use auto provisioning groups in the following scenarios: Resources are insufficient to create more than 100 instances at a time, you want to quickly create instances regardless of resource configurations such as instance types or zones, or you want to create instances to consume a specific total number of vCPUs regardless of the number of instances. You can call the [CreateAutoProvisioningGroup](~~122738~~) operation to create an auto provisioning group to deploy an instance cluster across different zones and by using different billing methods and instance families. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](~~200772~~).
+        *   We recommend that you use auto provisioning groups in the following scenarios: Resources are insufficient to create more than 100 instances at a time, you want to quickly create instances regardless of resource configurations such as instance types or zones, or you want to create instances to consume a specific total number of vCPUs regardless of the number of instances. You can call the [CreateAutoProvisioningGroup](~~122738~~) operation to create an auto provisioning group to deploy an instance cluster across different zones, different billing methods, and instance families. For more information, see [Use auto provisioning group-related API operations to batch create ECS instances](~~200772~~).
         *   You can call the `RunInstances` operation to batch create instances. To better manage and search for the instances, we recommend that you add tags to the instances by specifying `Tag.N.Key` and `Tag.N.Value`. You can also append incremental suffixes (`UniqueSuffix`) to the hostname (`HostName`) and to the instance name (`InstanceName`).
         *   A launch template contains parameters required to create an instance so that you do not have to specify these parameters every time you create instances. You can call the [CreateLaunchTemplate](~~74686~~) operation to create a launch template. Then, in your request to call the `RunInstances` operation, you can specify `LaunchTemplateId` and `LaunchTemplateVersion` to use the launch template.
-        *   [](https://api.alibabacloud.com/api/Ecs/)``****``********\
         ### [](#-1)Example 1: Create a subscription instance
-        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a one-month subscription instance of the ecs.g7.large instance type in the China (Hangzhou) region, and enable auto-renewal to renew the instance for one month on expiration. The instance uses a 40 GiB enhanced SSD (ESSD) as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a one-month subscription instance of the ecs.g7.large instance type in the China (Hangzhou) region, and enable auto-renewal to renew the instance for one month on expiration. The instance uses a 40 GiB enhanced SSD (ESSD) as the system disk and a 100 GiB ESSD as a data disk and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
         http(s)://ecs.aliyuncs.com/?Action=RunInstances
         &RegionId=cn-hangzhou
         &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
@@ -47933,7 +48167,7 @@ class Client(OpenApiClient):
         &InternetMaxBandwidthOut=10
         &<Common request parameters>
         ### [](#-2)Example 2: Create a pay-as-you-go instance
-        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a pay-as-you-go instance of the ecs.g7.large instance type in the China (Hangzhou) region. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a pay-as-you-go instance of the ecs.g7.large instance type in the China (Hangzhou) region. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
         http(s)://ecs.aliyuncs.com/?Action=RunInstances
         &RegionId=cn-hangzhou
         &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
@@ -47950,7 +48184,7 @@ class Client(OpenApiClient):
         &InternetMaxBandwidthOut=10
         &<Common request parameters>
         ### [](#-3)Example 3: Create a preemptible instance
-        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a preemptible instance of the ecs.g7.large instance type that has a 1-hour protection period in the China (Hangzhou) region. The market price of the instance type at the time of purchase is automatically used as the bidding price. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a preemptible instance of the ecs.g7.large instance type that has a 1-hour protection period in the China (Hangzhou) region. The market price of the instance type at the time of purchase is automatically used as the bidding price. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
         http(s)://ecs.aliyuncs.com/?Action=RunInstances
         &RegionId=cn-hangzhou
         &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
@@ -47969,7 +48203,7 @@ class Client(OpenApiClient):
         &SpotDuration=1
         &<Common request parameters>
         ### [](#-4)Example 4: Create a subscription instance on a dedicated host
-        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a one-month subscription instance of the ecs.g7.large instance type on the dh-bp12w10wll9xcjq2\\*\\*\\*\\* dedicated host. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk, and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
+        Use the aliyun\\_3\\_x64\\_20G_alibase\\_20221102.vhd image to create a one-month subscription instance of the ecs.g7.large instance type on the dh-bp12w10wll9xcjq2\\*\\*\\*\\* dedicated host in the China (Hangzhou) region. The instance uses a 40 GiB ESSD as the system disk and a 100 GiB ESSD as a data disk and is automatically assigned private and public IP addresses. The outbound public bandwidth of the instance is 10 Mbit/s. The instance name is ECS-test and the logon password of the instance is ECS@test1234.
         http(s)://ecs.aliyuncs.com/?Action=RunInstances
         &RegionId=cn-hangzhou
         &ImageId=aliyun_3_x64_20G_alibase_20221102.vhd
@@ -48710,16 +48944,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.StartTerminalSessionResponse:
         """
-        The session management feature is in public preview. To use this feature, log on to the ECS console with your Alibaba Cloud account and enable this feature.
+        ## [](#)Usage notes
         When you use custom code to connect to an ECS instance that serves as a client, you can call this operation to obtain the WebSocket URL that is used to connect to the instance. Take note of the following items:
-        *   The ECS instance must be in the Running (Running) state.
+        *   The ECS instance must be in the Running state.
         *   Cloud Assistant Agent must be installed on the ECS instance. You can call the [DescribeCloudAssistantStatus](~~87346~~) operation to check whether Cloud Assistant Agent is installed on the ECS instance and query the version number of the installed Cloud Assistant Agent.
         *   If Cloud Assistant Agent is not installed on the ECS instance, call the [InstallCloudAssistant](~~85916~~) operation to install Cloud Assistant Agent.
-        *   Only the Cloud Assistant Agent versions that are later than the following ones support the session management feature. You can upgrade Cloud Assistant Agent. For information about how to upgrade Cloud Assistant Agent, see [Update or disable updates for Cloud Assistant Agent](~~134383~~).
-        *   For Linux operating systems: 2.2.3.256
-        *   For Windows operating systems: 2.1.3.256
+        *   The Cloud Assistant Agent versions that are later than the following ones support the session management feature. If you need to upgrade the Cloud Assistant Agent version, follow the instructions in [Upgrade or disable upgrades for Cloud Assistant Agent](~~134383~~).
+        *   Linux operating system: 2.2.3.256
+        *   Windows operating system: 2.1.3.256
         *   Each WebSocket URL returned by the StartTerminalSession operation remains valid for 10 minutes.
-        *   Up to 1,000 sessions can be created and available per region. Each ECS instance can have up to 10 sessions in the connected state.
+        *   Up to 1,000 sessions can be created and available in a region. Each ECS instance can have up to 20 sessions in the connected state.
         
         @param request: StartTerminalSessionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -48774,16 +49008,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.StartTerminalSessionResponse:
         """
-        The session management feature is in public preview. To use this feature, log on to the ECS console with your Alibaba Cloud account and enable this feature.
+        ## [](#)Usage notes
         When you use custom code to connect to an ECS instance that serves as a client, you can call this operation to obtain the WebSocket URL that is used to connect to the instance. Take note of the following items:
-        *   The ECS instance must be in the Running (Running) state.
+        *   The ECS instance must be in the Running state.
         *   Cloud Assistant Agent must be installed on the ECS instance. You can call the [DescribeCloudAssistantStatus](~~87346~~) operation to check whether Cloud Assistant Agent is installed on the ECS instance and query the version number of the installed Cloud Assistant Agent.
         *   If Cloud Assistant Agent is not installed on the ECS instance, call the [InstallCloudAssistant](~~85916~~) operation to install Cloud Assistant Agent.
-        *   Only the Cloud Assistant Agent versions that are later than the following ones support the session management feature. You can upgrade Cloud Assistant Agent. For information about how to upgrade Cloud Assistant Agent, see [Update or disable updates for Cloud Assistant Agent](~~134383~~).
-        *   For Linux operating systems: 2.2.3.256
-        *   For Windows operating systems: 2.1.3.256
+        *   The Cloud Assistant Agent versions that are later than the following ones support the session management feature. If you need to upgrade the Cloud Assistant Agent version, follow the instructions in [Upgrade or disable upgrades for Cloud Assistant Agent](~~134383~~).
+        *   Linux operating system: 2.2.3.256
+        *   Windows operating system: 2.1.3.256
         *   Each WebSocket URL returned by the StartTerminalSession operation remains valid for 10 minutes.
-        *   Up to 1,000 sessions can be created and available per region. Each ECS instance can have up to 10 sessions in the connected state.
+        *   Up to 1,000 sessions can be created and available in a region. Each ECS instance can have up to 20 sessions in the connected state.
         
         @param request: StartTerminalSessionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -48837,16 +49071,16 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.StartTerminalSessionRequest,
     ) -> ecs_20140526_models.StartTerminalSessionResponse:
         """
-        The session management feature is in public preview. To use this feature, log on to the ECS console with your Alibaba Cloud account and enable this feature.
+        ## [](#)Usage notes
         When you use custom code to connect to an ECS instance that serves as a client, you can call this operation to obtain the WebSocket URL that is used to connect to the instance. Take note of the following items:
-        *   The ECS instance must be in the Running (Running) state.
+        *   The ECS instance must be in the Running state.
         *   Cloud Assistant Agent must be installed on the ECS instance. You can call the [DescribeCloudAssistantStatus](~~87346~~) operation to check whether Cloud Assistant Agent is installed on the ECS instance and query the version number of the installed Cloud Assistant Agent.
         *   If Cloud Assistant Agent is not installed on the ECS instance, call the [InstallCloudAssistant](~~85916~~) operation to install Cloud Assistant Agent.
-        *   Only the Cloud Assistant Agent versions that are later than the following ones support the session management feature. You can upgrade Cloud Assistant Agent. For information about how to upgrade Cloud Assistant Agent, see [Update or disable updates for Cloud Assistant Agent](~~134383~~).
-        *   For Linux operating systems: 2.2.3.256
-        *   For Windows operating systems: 2.1.3.256
+        *   The Cloud Assistant Agent versions that are later than the following ones support the session management feature. If you need to upgrade the Cloud Assistant Agent version, follow the instructions in [Upgrade or disable upgrades for Cloud Assistant Agent](~~134383~~).
+        *   Linux operating system: 2.2.3.256
+        *   Windows operating system: 2.1.3.256
         *   Each WebSocket URL returned by the StartTerminalSession operation remains valid for 10 minutes.
-        *   Up to 1,000 sessions can be created and available per region. Each ECS instance can have up to 10 sessions in the connected state.
+        *   Up to 1,000 sessions can be created and available in a region. Each ECS instance can have up to 20 sessions in the connected state.
         
         @param request: StartTerminalSessionRequest
         @return: StartTerminalSessionResponse
@@ -48859,16 +49093,16 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.StartTerminalSessionRequest,
     ) -> ecs_20140526_models.StartTerminalSessionResponse:
         """
-        The session management feature is in public preview. To use this feature, log on to the ECS console with your Alibaba Cloud account and enable this feature.
+        ## [](#)Usage notes
         When you use custom code to connect to an ECS instance that serves as a client, you can call this operation to obtain the WebSocket URL that is used to connect to the instance. Take note of the following items:
-        *   The ECS instance must be in the Running (Running) state.
+        *   The ECS instance must be in the Running state.
         *   Cloud Assistant Agent must be installed on the ECS instance. You can call the [DescribeCloudAssistantStatus](~~87346~~) operation to check whether Cloud Assistant Agent is installed on the ECS instance and query the version number of the installed Cloud Assistant Agent.
         *   If Cloud Assistant Agent is not installed on the ECS instance, call the [InstallCloudAssistant](~~85916~~) operation to install Cloud Assistant Agent.
-        *   Only the Cloud Assistant Agent versions that are later than the following ones support the session management feature. You can upgrade Cloud Assistant Agent. For information about how to upgrade Cloud Assistant Agent, see [Update or disable updates for Cloud Assistant Agent](~~134383~~).
-        *   For Linux operating systems: 2.2.3.256
-        *   For Windows operating systems: 2.1.3.256
+        *   The Cloud Assistant Agent versions that are later than the following ones support the session management feature. If you need to upgrade the Cloud Assistant Agent version, follow the instructions in [Upgrade or disable upgrades for Cloud Assistant Agent](~~134383~~).
+        *   Linux operating system: 2.2.3.256
+        *   Windows operating system: 2.1.3.256
         *   Each WebSocket URL returned by the StartTerminalSession operation remains valid for 10 minutes.
-        *   Up to 1,000 sessions can be created and available per region. Each ECS instance can have up to 10 sessions in the connected state.
+        *   Up to 1,000 sessions can be created and available in a region. Each ECS instance can have up to 20 sessions in the connected state.
         
         @param request: StartTerminalSessionRequest
         @return: StartTerminalSessionResponse
