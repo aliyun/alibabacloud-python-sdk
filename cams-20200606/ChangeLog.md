@@ -1,3 +1,24 @@
+2024-04-10 Version: 1.4.1
+- Update API DeleteChatappTemplate: add param Language.
+- Update API DeleteChatappTemplate: add param TemplateName.
+- Update API DeleteChatappTemplate: add param TemplateType.
+- Update API DeleteChatappTemplate: update param TemplateCode.
+- Update API GetChatappTemplateDetail: add param TemplateName.
+- Update API GetChatappTemplateDetail: update param TemplateCode.
+- Update API ModifyChatappTemplate: add param TemplateName.
+- Update API ModifyChatappTemplate: update param TemplateCode.
+- Update API ModifyPhoneBusinessProfile: add param About.
+- Update API ModifyPhoneBusinessProfile: update response param.
+- Update API QueryChatappPhoneNumbers: add param Status.
+- Update API QueryChatappPhoneNumbers: update response param.
+- Update API QueryPhoneBusinessProfile: update response param.
+- Update API SendChatappMassMessage: add param TemplateName.
+- Update API SendChatappMassMessage: update param FallBackDuration.
+- Update API SendChatappMassMessage: update param TemplateCode.
+- Update API SendChatappMessage: add param TemplateName.
+- Update API SendChatappMessage: update param FallBackDuration.
+
+
 2023-11-22 Version: 1.4.0
 - Generated python 2020-06-06 for cams.
 
