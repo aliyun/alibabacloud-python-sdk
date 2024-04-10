@@ -121,6 +121,7 @@ class CreateInstanceRequest(TeaModel):
         cold_storage_size: int = None,
         cpu: int = None,
         duration: int = None,
+        enable_serverless_computing: bool = None,
         gateway_count: int = None,
         initial_databases: str = None,
         instance_name: str = None,
@@ -181,6 +182,7 @@ class CreateInstanceRequest(TeaModel):
         # 
         # > You do not need to configure this parameter for pay-as-you-go instances.
         self.duration = duration
+        self.enable_serverless_computing = enable_serverless_computing
         # The number of gateways. Valid values: 2 to 50.
         # 
         # > This parameter is required only for virtual warehouse instances.
@@ -258,6 +260,8 @@ class CreateInstanceRequest(TeaModel):
             result['cpu'] = self.cpu
         if self.duration is not None:
             result['duration'] = self.duration
+        if self.enable_serverless_computing is not None:
+            result['enableServerlessComputing'] = self.enable_serverless_computing
         if self.gateway_count is not None:
             result['gatewayCount'] = self.gateway_count
         if self.initial_databases is not None:
@@ -298,6 +302,8 @@ class CreateInstanceRequest(TeaModel):
             self.cpu = m.get('cpu')
         if m.get('duration') is not None:
             self.duration = m.get('duration')
+        if m.get('enableServerlessComputing') is not None:
+            self.enable_serverless_computing = m.get('enableServerlessComputing')
         if m.get('gatewayCount') is not None:
             self.gateway_count = m.get('gatewayCount')
         if m.get('initialDatabases') is not None:
@@ -3062,6 +3068,7 @@ class ScaleInstanceRequest(TeaModel):
         self,
         cold_storage_size: int = None,
         cpu: int = None,
+        enable_serverless_computing: bool = None,
         gateway_count: int = None,
         scale_type: str = None,
         storage_size: int = None,
@@ -3090,6 +3097,7 @@ class ScaleInstanceRequest(TeaModel):
         # 
         # *   The specifications of 8-core 32GB (number of compute nodes: 1) are for trial use only and cannot be used for production.
         self.cpu = cpu
+        self.enable_serverless_computing = enable_serverless_computing
         # The number of gateways. Valid values: 2 to 50.
         # 
         # > This parameter is required only for virtual warehouse instances.
@@ -3123,6 +3131,8 @@ class ScaleInstanceRequest(TeaModel):
             result['coldStorageSize'] = self.cold_storage_size
         if self.cpu is not None:
             result['cpu'] = self.cpu
+        if self.enable_serverless_computing is not None:
+            result['enableServerlessComputing'] = self.enable_serverless_computing
         if self.gateway_count is not None:
             result['gatewayCount'] = self.gateway_count
         if self.scale_type is not None:
@@ -3137,6 +3147,8 @@ class ScaleInstanceRequest(TeaModel):
             self.cold_storage_size = m.get('coldStorageSize')
         if m.get('cpu') is not None:
             self.cpu = m.get('cpu')
+        if m.get('enableServerlessComputing') is not None:
+            self.enable_serverless_computing = m.get('enableServerlessComputing')
         if m.get('gatewayCount') is not None:
             self.gateway_count = m.get('gatewayCount')
         if m.get('scaleType') is not None:

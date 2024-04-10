@@ -1,3 +1,8 @@
+2024-04-10 Version: 1.3.1
+- Update API CreateInstance: update param body.
+- Update API ScaleInstance: update param body.
+
+
 2024-03-14 Version: 1.3.0
 - Support API ChangeResourceGroup.
 - Support API DisableHiveAccess.
