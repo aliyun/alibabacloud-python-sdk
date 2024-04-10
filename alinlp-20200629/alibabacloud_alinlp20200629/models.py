@@ -7882,6 +7882,7 @@ class PostMSSearchEnhanceRequest(TeaModel):
         debug: bool = None,
         fields: List[str] = None,
         filters: str = None,
+        min_score: float = None,
         page: int = None,
         queries: str = None,
         rank_model_info: Dict[str, Any] = None,
@@ -7896,6 +7897,7 @@ class PostMSSearchEnhanceRequest(TeaModel):
         self.debug = debug
         self.fields = fields
         self.filters = filters
+        self.min_score = min_score
         self.page = page
         self.queries = queries
         self.rank_model_info = rank_model_info
@@ -7924,6 +7926,8 @@ class PostMSSearchEnhanceRequest(TeaModel):
             result['Fields'] = self.fields
         if self.filters is not None:
             result['Filters'] = self.filters
+        if self.min_score is not None:
+            result['MinScore'] = self.min_score
         if self.page is not None:
             result['Page'] = self.page
         if self.queries is not None:
@@ -7954,6 +7958,8 @@ class PostMSSearchEnhanceRequest(TeaModel):
             self.fields = m.get('Fields')
         if m.get('Filters') is not None:
             self.filters = m.get('Filters')
+        if m.get('MinScore') is not None:
+            self.min_score = m.get('MinScore')
         if m.get('Page') is not None:
             self.page = m.get('Page')
         if m.get('Queries') is not None:
@@ -7981,6 +7987,7 @@ class PostMSSearchEnhanceShrinkRequest(TeaModel):
         debug: bool = None,
         fields_shrink: str = None,
         filters: str = None,
+        min_score: float = None,
         page: int = None,
         queries: str = None,
         rank_model_info_shrink: str = None,
@@ -7995,6 +8002,7 @@ class PostMSSearchEnhanceShrinkRequest(TeaModel):
         self.debug = debug
         self.fields_shrink = fields_shrink
         self.filters = filters
+        self.min_score = min_score
         self.page = page
         self.queries = queries
         self.rank_model_info_shrink = rank_model_info_shrink
@@ -8023,6 +8031,8 @@ class PostMSSearchEnhanceShrinkRequest(TeaModel):
             result['Fields'] = self.fields_shrink
         if self.filters is not None:
             result['Filters'] = self.filters
+        if self.min_score is not None:
+            result['MinScore'] = self.min_score
         if self.page is not None:
             result['Page'] = self.page
         if self.queries is not None:
@@ -8053,6 +8063,8 @@ class PostMSSearchEnhanceShrinkRequest(TeaModel):
             self.fields_shrink = m.get('Fields')
         if m.get('Filters') is not None:
             self.filters = m.get('Filters')
+        if m.get('MinScore') is not None:
+            self.min_score = m.get('MinScore')
         if m.get('Page') is not None:
             self.page = m.get('Page')
         if m.get('Queries') is not None:

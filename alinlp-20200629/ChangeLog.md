@@ -1,3 +1,7 @@
+2024-04-10 Version: 2.8.1
+- Update API PostMSSearchEnhance: add param MinScore.
+
+
 2024-03-29 Version: 2.8.0
 - Support API PostMSServiceDataImport.
 
