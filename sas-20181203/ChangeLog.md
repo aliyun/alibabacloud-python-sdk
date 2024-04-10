@@ -1,3 +1,22 @@
+2024-04-10 Version: 2.27.5
+- Update API BindAuthToMachine: add param IsPreBind.
+- Update API BindAuthToMachine: add param NtmVersion.
+- Update API BindAuthToMachine: add param PreBindOrderId.
+- Update API BindAuthToMachine: update param AuthVersion.
+- Update API BindAuthToMachine: update response param.
+- Update API CreateOssBucketScanTask: add param DecompressMaxFileCount.
+- Update API CreateOssBucketScanTask: add param DecompressMaxLayer.
+- Update API CreateOssScanConfig: add param DecompressMaxFileCount.
+- Update API CreateOssScanConfig: add param DecompressMaxLayer.
+- Update API GetOssScanConfig: update response param.
+- Update API ListObjectScanEvent: add param ParentEventId.
+- Update API ListObjectScanEvent: update response param.
+- Update API ListOssBucketScanInfo: update response param.
+- Update API ListOssScanConfig: update response param.
+- Update API UpdateOssScanConfig: add param DecompressMaxFileCount.
+- Update API UpdateOssScanConfig: add param DecompressMaxLayer.
+
+
 2024-03-27 Version: 2.27.4
 - Update API DeleteMaliciousFileWhitelistConfig: update param ConfigId.
 - Update API DescribeVulList: update response param.
