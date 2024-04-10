@@ -6384,16 +6384,20 @@ class SenderStatisticsDetailByParamResponseBodyDataMailDetail(TeaModel):
     def __init__(
         self,
         account_name: str = None,
+        error_classification: str = None,
         last_update_time: str = None,
         message: str = None,
         status: int = None,
+        subject: str = None,
         to_address: str = None,
         utc_last_update_time: str = None,
     ):
         self.account_name = account_name
+        self.error_classification = error_classification
         self.last_update_time = last_update_time
         self.message = message
         self.status = status
+        self.subject = subject
         self.to_address = to_address
         self.utc_last_update_time = utc_last_update_time
 
@@ -6408,12 +6412,16 @@ class SenderStatisticsDetailByParamResponseBodyDataMailDetail(TeaModel):
         result = dict()
         if self.account_name is not None:
             result['AccountName'] = self.account_name
+        if self.error_classification is not None:
+            result['ErrorClassification'] = self.error_classification
         if self.last_update_time is not None:
             result['LastUpdateTime'] = self.last_update_time
         if self.message is not None:
             result['Message'] = self.message
         if self.status is not None:
             result['Status'] = self.status
+        if self.subject is not None:
+            result['Subject'] = self.subject
         if self.to_address is not None:
             result['ToAddress'] = self.to_address
         if self.utc_last_update_time is not None:
@@ -6424,12 +6432,16 @@ class SenderStatisticsDetailByParamResponseBodyDataMailDetail(TeaModel):
         m = m or dict()
         if m.get('AccountName') is not None:
             self.account_name = m.get('AccountName')
+        if m.get('ErrorClassification') is not None:
+            self.error_classification = m.get('ErrorClassification')
         if m.get('LastUpdateTime') is not None:
             self.last_update_time = m.get('LastUpdateTime')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Subject') is not None:
+            self.subject = m.get('Subject')
         if m.get('ToAddress') is not None:
             self.to_address = m.get('ToAddress')
         if m.get('UtcLastUpdateTime') is not None:
