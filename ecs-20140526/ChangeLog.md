@@ -1,3 +1,9 @@
+2024-04-10 Version: 4.1.0
+- Support API DescribeCloudAssistantSettings.
+- Support API DescribeTerminalSessions.
+- Support API ModifyCloudAssistantSettings.
+
+
 2024-04-10 Version: 4.0.4
 - Update API DescribeAvailableResource: update param SpotDuration.
 - Update API ImportImage: add param StorageLocationArn.

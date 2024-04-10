@@ -17116,6 +17116,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_classic_link_instances_with_options_async(request, runtime)
 
+    def describe_cloud_assistant_settings_with_options(
+        self,
+        request: ecs_20140526_models.DescribeCloudAssistantSettingsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeCloudAssistantSettingsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.setting_type):
+            query['SettingType'] = request.setting_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudAssistantSettings',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeCloudAssistantSettingsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cloud_assistant_settings_with_options_async(
+        self,
+        request: ecs_20140526_models.DescribeCloudAssistantSettingsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeCloudAssistantSettingsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.setting_type):
+            query['SettingType'] = request.setting_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudAssistantSettings',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeCloudAssistantSettingsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cloud_assistant_settings(
+        self,
+        request: ecs_20140526_models.DescribeCloudAssistantSettingsRequest,
+    ) -> ecs_20140526_models.DescribeCloudAssistantSettingsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cloud_assistant_settings_with_options(request, runtime)
+
+    async def describe_cloud_assistant_settings_async(
+        self,
+        request: ecs_20140526_models.DescribeCloudAssistantSettingsRequest,
+    ) -> ecs_20140526_models.DescribeCloudAssistantSettingsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cloud_assistant_settings_with_options_async(request, runtime)
+
     def describe_cloud_assistant_status_with_options(
         self,
         request: ecs_20140526_models.DescribeCloudAssistantStatusRequest,
@@ -29946,6 +30036,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_tasks_with_options_async(request, runtime)
 
+    def describe_terminal_sessions_with_options(
+        self,
+        request: ecs_20140526_models.DescribeTerminalSessionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeTerminalSessionsResponse:
+        """
+        You can query the session records of Session Manager that were generated in the last four weeks.
+        
+        @param request: DescribeTerminalSessionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTerminalSessionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTerminalSessions',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeTerminalSessionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_terminal_sessions_with_options_async(
+        self,
+        request: ecs_20140526_models.DescribeTerminalSessionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeTerminalSessionsResponse:
+        """
+        You can query the session records of Session Manager that were generated in the last four weeks.
+        
+        @param request: DescribeTerminalSessionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTerminalSessionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTerminalSessions',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeTerminalSessionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_terminal_sessions(
+        self,
+        request: ecs_20140526_models.DescribeTerminalSessionsRequest,
+    ) -> ecs_20140526_models.DescribeTerminalSessionsResponse:
+        """
+        You can query the session records of Session Manager that were generated in the last four weeks.
+        
+        @param request: DescribeTerminalSessionsRequest
+        @return: DescribeTerminalSessionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_terminal_sessions_with_options(request, runtime)
+
+    async def describe_terminal_sessions_async(
+        self,
+        request: ecs_20140526_models.DescribeTerminalSessionsRequest,
+    ) -> ecs_20140526_models.DescribeTerminalSessionsResponse:
+        """
+        You can query the session records of Session Manager that were generated in the last four weeks.
+        
+        @param request: DescribeTerminalSessionsRequest
+        @return: DescribeTerminalSessionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_terminal_sessions_with_options_async(request, runtime)
+
     def describe_user_business_behavior_with_options(
         self,
         request: ecs_20140526_models.DescribeUserBusinessBehaviorRequest,
@@ -35189,6 +35407,124 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.ModifyCapacityReservationResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_capacity_reservation_with_options_async(request, runtime)
+
+    def modify_cloud_assistant_settings_with_options(
+        self,
+        tmp_req: ecs_20140526_models.ModifyCloudAssistantSettingsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ModifyCloudAssistantSettingsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ecs_20140526_models.ModifyCloudAssistantSettingsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.agent_upgrade_config):
+            request.agent_upgrade_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.agent_upgrade_config, 'AgentUpgradeConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.oss_delivery_config):
+            request.oss_delivery_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.oss_delivery_config, 'OssDeliveryConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.sls_delivery_config):
+            request.sls_delivery_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sls_delivery_config, 'SlsDeliveryConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_upgrade_config_shrink):
+            query['AgentUpgradeConfig'] = request.agent_upgrade_config_shrink
+        if not UtilClient.is_unset(request.oss_delivery_config_shrink):
+            query['OssDeliveryConfig'] = request.oss_delivery_config_shrink
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.setting_type):
+            query['SettingType'] = request.setting_type
+        if not UtilClient.is_unset(request.sls_delivery_config_shrink):
+            query['SlsDeliveryConfig'] = request.sls_delivery_config_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCloudAssistantSettings',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyCloudAssistantSettingsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_cloud_assistant_settings_with_options_async(
+        self,
+        tmp_req: ecs_20140526_models.ModifyCloudAssistantSettingsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ModifyCloudAssistantSettingsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ecs_20140526_models.ModifyCloudAssistantSettingsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.agent_upgrade_config):
+            request.agent_upgrade_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.agent_upgrade_config, 'AgentUpgradeConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.oss_delivery_config):
+            request.oss_delivery_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.oss_delivery_config, 'OssDeliveryConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.sls_delivery_config):
+            request.sls_delivery_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sls_delivery_config, 'SlsDeliveryConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_upgrade_config_shrink):
+            query['AgentUpgradeConfig'] = request.agent_upgrade_config_shrink
+        if not UtilClient.is_unset(request.oss_delivery_config_shrink):
+            query['OssDeliveryConfig'] = request.oss_delivery_config_shrink
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.setting_type):
+            query['SettingType'] = request.setting_type
+        if not UtilClient.is_unset(request.sls_delivery_config_shrink):
+            query['SlsDeliveryConfig'] = request.sls_delivery_config_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCloudAssistantSettings',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyCloudAssistantSettingsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_cloud_assistant_settings(
+        self,
+        request: ecs_20140526_models.ModifyCloudAssistantSettingsRequest,
+    ) -> ecs_20140526_models.ModifyCloudAssistantSettingsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_cloud_assistant_settings_with_options(request, runtime)
+
+    async def modify_cloud_assistant_settings_async(
+        self,
+        request: ecs_20140526_models.ModifyCloudAssistantSettingsRequest,
+    ) -> ecs_20140526_models.ModifyCloudAssistantSettingsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_cloud_assistant_settings_with_options_async(request, runtime)
 
     def modify_command_with_options(
         self,
