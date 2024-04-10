@@ -1,3 +1,7 @@
+2024-04-10 Version: 1.1.2
+- Update API GetTodayStatTrend: update response param.
+
+
 2024-04-09 Version: 1.1.1
 - Update API GetStatTrend: update response param.
 

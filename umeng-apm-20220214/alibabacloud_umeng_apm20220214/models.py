@@ -1345,9 +1345,9 @@ class GetTodayStatTrendResponseBodyData(TeaModel):
     def __init__(
         self,
         affected_user_count: int = None,
-        affected_user_rate: int = None,
+        affected_user_rate: float = None,
         error_count: int = None,
-        error_rate: int = None,
+        error_rate: float = None,
         time_point: str = None,
     ):
         self.affected_user_count = affected_user_count
