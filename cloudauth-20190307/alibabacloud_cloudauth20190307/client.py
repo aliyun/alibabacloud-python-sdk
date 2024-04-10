@@ -145,6 +145,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.a_igcface_verify_with_options_async(request, runtime)
 
+    def bank_meta_verify_with_options(
+        self,
+        request: cloudauth_20190307_models.BankMetaVerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.BankMetaVerifyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bank_card):
+            query['BankCard'] = request.bank_card
+        if not UtilClient.is_unset(request.identify_num):
+            query['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.verify_mode):
+            query['VerifyMode'] = request.verify_mode
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BankMetaVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.BankMetaVerifyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bank_meta_verify_with_options_async(
+        self,
+        request: cloudauth_20190307_models.BankMetaVerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.BankMetaVerifyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bank_card):
+            query['BankCard'] = request.bank_card
+        if not UtilClient.is_unset(request.identify_num):
+            query['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.verify_mode):
+            query['VerifyMode'] = request.verify_mode
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BankMetaVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.BankMetaVerifyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bank_meta_verify(
+        self,
+        request: cloudauth_20190307_models.BankMetaVerifyRequest,
+    ) -> cloudauth_20190307_models.BankMetaVerifyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.bank_meta_verify_with_options(request, runtime)
+
+    async def bank_meta_verify_async(
+        self,
+        request: cloudauth_20190307_models.BankMetaVerifyRequest,
+    ) -> cloudauth_20190307_models.BankMetaVerifyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.bank_meta_verify_with_options_async(request, runtime)
+
     def compare_face_verify_with_options(
         self,
         request: cloudauth_20190307_models.CompareFaceVerifyRequest,
@@ -1030,6 +1124,96 @@ class Client(OpenApiClient):
     async def describe_oss_upload_token_async(self) -> cloudauth_20190307_models.DescribeOssUploadTokenResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_oss_upload_token_with_options_async(runtime)
+
+    def describe_page_face_verify_data_with_options(
+        self,
+        request: cloudauth_20190307_models.DescribePageFaceVerifyDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribePageFaceVerifyDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePageFaceVerifyData',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribePageFaceVerifyDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_page_face_verify_data_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DescribePageFaceVerifyDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribePageFaceVerifyDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePageFaceVerifyData',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribePageFaceVerifyDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_page_face_verify_data(
+        self,
+        request: cloudauth_20190307_models.DescribePageFaceVerifyDataRequest,
+    ) -> cloudauth_20190307_models.DescribePageFaceVerifyDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_page_face_verify_data_with_options(request, runtime)
+
+    async def describe_page_face_verify_data_async(
+        self,
+        request: cloudauth_20190307_models.DescribePageFaceVerifyDataRequest,
+    ) -> cloudauth_20190307_models.DescribePageFaceVerifyDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_page_face_verify_data_with_options_async(request, runtime)
 
     def describe_smart_statistics_page_list_with_options(
         self,
@@ -2034,6 +2218,228 @@ class Client(OpenApiClient):
     ) -> cloudauth_20190307_models.Mobile3MetaSimpleVerifyResponse:
         runtime = util_models.RuntimeOptions()
         return await self.mobile_3meta_simple_verify_with_options_async(request, runtime)
+
+    def mobile_detect_with_options(
+        self,
+        request: cloudauth_20190307_models.MobileDetectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.MobileDetectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.mobiles):
+            query['Mobiles'] = request.mobiles
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MobileDetect',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.MobileDetectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def mobile_detect_with_options_async(
+        self,
+        request: cloudauth_20190307_models.MobileDetectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.MobileDetectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.mobiles):
+            query['Mobiles'] = request.mobiles
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MobileDetect',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.MobileDetectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def mobile_detect(
+        self,
+        request: cloudauth_20190307_models.MobileDetectRequest,
+    ) -> cloudauth_20190307_models.MobileDetectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.mobile_detect_with_options(request, runtime)
+
+    async def mobile_detect_async(
+        self,
+        request: cloudauth_20190307_models.MobileDetectRequest,
+    ) -> cloudauth_20190307_models.MobileDetectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.mobile_detect_with_options_async(request, runtime)
+
+    def mobile_online_status_with_options(
+        self,
+        request: cloudauth_20190307_models.MobileOnlineStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.MobileOnlineStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MobileOnlineStatus',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.MobileOnlineStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def mobile_online_status_with_options_async(
+        self,
+        request: cloudauth_20190307_models.MobileOnlineStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.MobileOnlineStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MobileOnlineStatus',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.MobileOnlineStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def mobile_online_status(
+        self,
+        request: cloudauth_20190307_models.MobileOnlineStatusRequest,
+    ) -> cloudauth_20190307_models.MobileOnlineStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.mobile_online_status_with_options(request, runtime)
+
+    async def mobile_online_status_async(
+        self,
+        request: cloudauth_20190307_models.MobileOnlineStatusRequest,
+    ) -> cloudauth_20190307_models.MobileOnlineStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.mobile_online_status_with_options_async(request, runtime)
+
+    def mobile_online_time_with_options(
+        self,
+        request: cloudauth_20190307_models.MobileOnlineTimeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.MobileOnlineTimeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MobileOnlineTime',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.MobileOnlineTimeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def mobile_online_time_with_options_async(
+        self,
+        request: cloudauth_20190307_models.MobileOnlineTimeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.MobileOnlineTimeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MobileOnlineTime',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.MobileOnlineTimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def mobile_online_time(
+        self,
+        request: cloudauth_20190307_models.MobileOnlineTimeRequest,
+    ) -> cloudauth_20190307_models.MobileOnlineTimeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.mobile_online_time_with_options(request, runtime)
+
+    async def mobile_online_time_async(
+        self,
+        request: cloudauth_20190307_models.MobileOnlineTimeRequest,
+    ) -> cloudauth_20190307_models.MobileOnlineTimeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.mobile_online_time_with_options_async(request, runtime)
 
     def modify_device_info_with_options(
         self,

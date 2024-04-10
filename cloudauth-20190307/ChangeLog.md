@@ -1,3 +1,11 @@
+2024-04-10 Version: 2.5.0
+- Support API BankMetaVerify.
+- Support API DescribePageFaceVerifyData.
+- Support API MobileDetect.
+- Support API MobileOnlineStatus.
+- Support API MobileOnlineTime.
+
+
 2024-03-13 Version: 2.4.0
 - Support API AIGCFaceVerify.
 
