@@ -971,6 +971,7 @@ class GetInternetTupleRequest(TeaModel):
         account_ids: List[int] = None,
         begin_time: int = None,
         cloud_ip: str = None,
+        cloud_ip_list: List[str] = None,
         cloud_isp: str = None,
         cloud_port: str = None,
         direction: str = None,
@@ -996,6 +997,8 @@ class GetInternetTupleRequest(TeaModel):
         self.begin_time = begin_time
         # The local IP address.
         self.cloud_ip = cloud_ip
+        # The local IP addresses for filtering.
+        self.cloud_ip_list = cloud_ip_list
         # The local Internet service provider (ISP).
         # 
         # >  In most cases, the value is Alibaba or Alibaba Cloud.
@@ -1096,6 +1099,8 @@ class GetInternetTupleRequest(TeaModel):
             result['BeginTime'] = self.begin_time
         if self.cloud_ip is not None:
             result['CloudIp'] = self.cloud_ip
+        if self.cloud_ip_list is not None:
+            result['CloudIpList'] = self.cloud_ip_list
         if self.cloud_isp is not None:
             result['CloudIsp'] = self.cloud_isp
         if self.cloud_port is not None:
@@ -1142,6 +1147,8 @@ class GetInternetTupleRequest(TeaModel):
             self.begin_time = m.get('BeginTime')
         if m.get('CloudIp') is not None:
             self.cloud_ip = m.get('CloudIp')
+        if m.get('CloudIpList') is not None:
+            self.cloud_ip_list = m.get('CloudIpList')
         if m.get('CloudIsp') is not None:
             self.cloud_isp = m.get('CloudIsp')
         if m.get('CloudPort') is not None:
@@ -1187,6 +1194,7 @@ class GetInternetTupleShrinkRequest(TeaModel):
         account_ids: List[int] = None,
         begin_time: int = None,
         cloud_ip: str = None,
+        cloud_ip_list_shrink: str = None,
         cloud_isp: str = None,
         cloud_port: str = None,
         direction: str = None,
@@ -1212,6 +1220,8 @@ class GetInternetTupleShrinkRequest(TeaModel):
         self.begin_time = begin_time
         # The local IP address.
         self.cloud_ip = cloud_ip
+        # The local IP addresses for filtering.
+        self.cloud_ip_list_shrink = cloud_ip_list_shrink
         # The local Internet service provider (ISP).
         # 
         # >  In most cases, the value is Alibaba or Alibaba Cloud.
@@ -1312,6 +1322,8 @@ class GetInternetTupleShrinkRequest(TeaModel):
             result['BeginTime'] = self.begin_time
         if self.cloud_ip is not None:
             result['CloudIp'] = self.cloud_ip
+        if self.cloud_ip_list_shrink is not None:
+            result['CloudIpList'] = self.cloud_ip_list_shrink
         if self.cloud_isp is not None:
             result['CloudIsp'] = self.cloud_isp
         if self.cloud_port is not None:
@@ -1358,6 +1370,8 @@ class GetInternetTupleShrinkRequest(TeaModel):
             self.begin_time = m.get('BeginTime')
         if m.get('CloudIp') is not None:
             self.cloud_ip = m.get('CloudIp')
+        if m.get('CloudIpList') is not None:
+            self.cloud_ip_list_shrink = m.get('CloudIpList')
         if m.get('CloudIsp') is not None:
             self.cloud_isp = m.get('CloudIsp')
         if m.get('CloudPort') is not None:

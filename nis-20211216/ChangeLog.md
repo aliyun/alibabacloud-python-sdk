@@ -1,3 +1,7 @@
+2024-04-10 Version: 2.0.2
+- Update API GetInternetTuple: add param CloudIpList.
+
+
 2024-03-21 Version: 2.0.1
 - Update API DeleteNetworkPath: update response param.
 - Update API DeleteNetworkReachableAnalysis: update response param.
