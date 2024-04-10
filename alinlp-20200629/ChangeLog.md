@@ -1,3 +1,6 @@
+2024-04-10 Version: 2.8.2
+- Generated python 2020-06-29 for alinlp.
+
 2024-04-10 Version: 2.8.1
 - Update API PostMSSearchEnhance: add param MinScore.
 
