@@ -6130,6 +6130,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_vod_domain_usage_data_with_options_async(request, runtime)
 
+    def describe_vod_media_play_data_with_options(
+        self,
+        request: vod_20170321_models.DescribeVodMediaPlayDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodMediaPlayDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.order_name):
+            query['OrderName'] = request.order_name
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.os):
+            query['Os'] = request.os
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.play_date):
+            query['PlayDate'] = request.play_date
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.terminal_type):
+            query['TerminalType'] = request.terminal_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodMediaPlayData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodMediaPlayDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vod_media_play_data_with_options_async(
+        self,
+        request: vod_20170321_models.DescribeVodMediaPlayDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodMediaPlayDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.order_name):
+            query['OrderName'] = request.order_name
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.os):
+            query['Os'] = request.os
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.play_date):
+            query['PlayDate'] = request.play_date
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.terminal_type):
+            query['TerminalType'] = request.terminal_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodMediaPlayData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodMediaPlayDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vod_media_play_data(
+        self,
+        request: vod_20170321_models.DescribeVodMediaPlayDataRequest,
+    ) -> vod_20170321_models.DescribeVodMediaPlayDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vod_media_play_data_with_options(request, runtime)
+
+    async def describe_vod_media_play_data_async(
+        self,
+        request: vod_20170321_models.DescribeVodMediaPlayDataRequest,
+    ) -> vod_20170321_models.DescribeVodMediaPlayDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vod_media_play_data_with_options_async(request, runtime)
+
     def describe_vod_refresh_quota_with_options(
         self,
         request: vod_20170321_models.DescribeVodRefreshQuotaRequest,
@@ -12432,6 +12534,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
         if not UtilClient.is_unset(request.object_path):
             query['ObjectPath'] = request.object_path
         if not UtilClient.is_unset(request.object_type):
@@ -12475,6 +12579,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
         if not UtilClient.is_unset(request.object_path):
             query['ObjectPath'] = request.object_path
         if not UtilClient.is_unset(request.object_type):
@@ -13244,8 +13350,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SetDefaultAITemplateResponse:
         """
-        Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
-        *   Before you can call this operation to specify an AI template as the default template, you must obtain the ID of the AI template. You cannot delete an AI template that is set as the default template.
+        Specifies an AI template as the default template.
         
         @param request: SetDefaultAITemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13280,8 +13385,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SetDefaultAITemplateResponse:
         """
-        Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
-        *   Before you can call this operation to specify an AI template as the default template, you must obtain the ID of the AI template. You cannot delete an AI template that is set as the default template.
+        Specifies an AI template as the default template.
         
         @param request: SetDefaultAITemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13315,8 +13419,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SetDefaultAITemplateRequest,
     ) -> vod_20170321_models.SetDefaultAITemplateResponse:
         """
-        Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
-        *   Before you can call this operation to specify an AI template as the default template, you must obtain the ID of the AI template. You cannot delete an AI template that is set as the default template.
+        Specifies an AI template as the default template.
         
         @param request: SetDefaultAITemplateRequest
         @return: SetDefaultAITemplateResponse
@@ -13329,8 +13432,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SetDefaultAITemplateRequest,
     ) -> vod_20170321_models.SetDefaultAITemplateResponse:
         """
-        Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
-        *   Before you can call this operation to specify an AI template as the default template, you must obtain the ID of the AI template. You cannot delete an AI template that is set as the default template.
+        Specifies an AI template as the default template.
         
         @param request: SetDefaultAITemplateRequest
         @return: SetDefaultAITemplateResponse

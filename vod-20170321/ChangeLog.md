@@ -1,3 +1,14 @@
+2024-04-11 Version: 2.21.0
+- Support API DescribeVodMediaPlayData.
+- Update API DeleteAttachedMedia: update param MediaIds.
+- Update API DescribeVodStorageData: update param Storage.
+- Update API DescribeVodStorageData: update param StorageType.
+- Update API DescribeVodTranscodeData: update param Specification.
+- Update API DescribeVodTranscodeData: update param Storage.
+- Update API RefreshVodObjectCaches: add param Force.
+- Update API RestoreMedia: update param MediaIds.
+
+
 2024-03-26 Version: 2.20.1
 - Update API DescribeVodDomainUsageData: update response param.
 - Update API DescribeVodTranscodeData: add param AppId.

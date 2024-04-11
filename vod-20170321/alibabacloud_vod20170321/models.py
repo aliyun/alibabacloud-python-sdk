@@ -9510,6 +9510,250 @@ class DescribeVodDomainUsageDataResponse(TeaModel):
         return self
 
 
+class DescribeVodMediaPlayDataRequest(TeaModel):
+    def __init__(
+        self,
+        media_id: str = None,
+        order_name: str = None,
+        order_type: str = None,
+        os: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        play_date: str = None,
+        region: str = None,
+        terminal_type: str = None,
+    ):
+        self.media_id = media_id
+        self.order_name = order_name
+        self.order_type = order_type
+        self.os = os
+        self.page_no = page_no
+        self.page_size = page_size
+        self.play_date = play_date
+        self.region = region
+        self.terminal_type = terminal_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.media_id is not None:
+            result['MediaId'] = self.media_id
+        if self.order_name is not None:
+            result['OrderName'] = self.order_name
+        if self.order_type is not None:
+            result['OrderType'] = self.order_type
+        if self.os is not None:
+            result['Os'] = self.os
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.play_date is not None:
+            result['PlayDate'] = self.play_date
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.terminal_type is not None:
+            result['TerminalType'] = self.terminal_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
+        if m.get('OrderName') is not None:
+            self.order_name = m.get('OrderName')
+        if m.get('OrderType') is not None:
+            self.order_type = m.get('OrderType')
+        if m.get('Os') is not None:
+            self.os = m.get('Os')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PlayDate') is not None:
+            self.play_date = m.get('PlayDate')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('TerminalType') is not None:
+            self.terminal_type = m.get('TerminalType')
+        return self
+
+
+class DescribeVodMediaPlayDataResponseBodyQoeInfoList(TeaModel):
+    def __init__(
+        self,
+        dau: float = None,
+        media_id: str = None,
+        play_duration: float = None,
+        play_duration_per_uv: float = None,
+        play_per_vv: float = None,
+        play_success_vv: float = None,
+        video_duration: float = None,
+        video_title: float = None,
+    ):
+        self.dau = dau
+        self.media_id = media_id
+        self.play_duration = play_duration
+        self.play_duration_per_uv = play_duration_per_uv
+        self.play_per_vv = play_per_vv
+        self.play_success_vv = play_success_vv
+        self.video_duration = video_duration
+        self.video_title = video_title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dau is not None:
+            result['DAU'] = self.dau
+        if self.media_id is not None:
+            result['MediaId'] = self.media_id
+        if self.play_duration is not None:
+            result['PlayDuration'] = self.play_duration
+        if self.play_duration_per_uv is not None:
+            result['PlayDurationPerUv'] = self.play_duration_per_uv
+        if self.play_per_vv is not None:
+            result['PlayPerVv'] = self.play_per_vv
+        if self.play_success_vv is not None:
+            result['PlaySuccessVv'] = self.play_success_vv
+        if self.video_duration is not None:
+            result['VideoDuration'] = self.video_duration
+        if self.video_title is not None:
+            result['VideoTitle'] = self.video_title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DAU') is not None:
+            self.dau = m.get('DAU')
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
+        if m.get('PlayDuration') is not None:
+            self.play_duration = m.get('PlayDuration')
+        if m.get('PlayDurationPerUv') is not None:
+            self.play_duration_per_uv = m.get('PlayDurationPerUv')
+        if m.get('PlayPerVv') is not None:
+            self.play_per_vv = m.get('PlayPerVv')
+        if m.get('PlaySuccessVv') is not None:
+            self.play_success_vv = m.get('PlaySuccessVv')
+        if m.get('VideoDuration') is not None:
+            self.video_duration = m.get('VideoDuration')
+        if m.get('VideoTitle') is not None:
+            self.video_title = m.get('VideoTitle')
+        return self
+
+
+class DescribeVodMediaPlayDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_no: int = None,
+        page_size: int = None,
+        qoe_info_list: List[DescribeVodMediaPlayDataResponseBodyQoeInfoList] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.page_no = page_no
+        self.page_size = page_size
+        self.qoe_info_list = qoe_info_list
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.qoe_info_list:
+            for k in self.qoe_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['QoeInfoList'] = []
+        if self.qoe_info_list is not None:
+            for k in self.qoe_info_list:
+                result['QoeInfoList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.qoe_info_list = []
+        if m.get('QoeInfoList') is not None:
+            for k in m.get('QoeInfoList'):
+                temp_model = DescribeVodMediaPlayDataResponseBodyQoeInfoList()
+                self.qoe_info_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeVodMediaPlayDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVodMediaPlayDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVodMediaPlayDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeVodRefreshQuotaRequest(TeaModel):
     def __init__(
         self,
@@ -11435,9 +11679,13 @@ class GenerateKMSDataKeyResponseBody(TeaModel):
         plaintext: str = None,
         request_id: str = None,
     ):
+        # The ciphertext of the encrypted data key. This is used as CipherText when you create a transcoding job.
         self.ciphertext_blob = ciphertext_blob
+        # The ID of the customer master key (CMK). The ID must be globally unique.
         self.key_id = key_id
+        # The Base64-encoded plaintext of the data key.
         self.plaintext = plaintext
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -28214,17 +28462,30 @@ class RefreshUploadVideoResponse(TeaModel):
 class RefreshVodObjectCachesRequest(TeaModel):
     def __init__(
         self,
+        force: bool = None,
         object_path: str = None,
         object_type: str = None,
         owner_id: int = None,
         security_token: str = None,
     ):
+        # Specifies whether to refresh resources in a directory if the resources are different from the resources in the same directory in the origin server. Default value: false.
+        # 
+        #    - true:refresh all resources in the directory.
+        # 
+        #    - false:refresh the changed resources in the directory.
+        self.force = force
         # The URL of the file to be prefetched. Separate multiple URLs with line breaks (\n or \r\n).
         self.object_path = object_path
         # The type of the object that you want to refresh. Valid values:
         # 
         # *   **File** (default): refreshes files.
         # *   **Directory**: refreshes the files in specified directories.
+        # *   **Regex**: refreshes content based on regular expressions.
+        # *   **ExQuery**: omits parameters after the question mark in the URL and refreshes content.
+        # 
+        # If you set the ObjectType parameter to File or Directory, you can view Refresh and prefetch resources to obtain more information. If you set the ObjectType parameter to Regex, you can view Configure URL refresh rules that contain regular expressions to obtain more information.
+        # 
+        # If you set the ObjectType parameter to Directory, the resources in the directory that you want to refresh are marked as expired. You cannot delete the directory. If clients request resources on POPs that are marked as expired, Alibaba Cloud CDN checks whether the resources on your origin server are updated. If resources are updated, Alibaba Cloud CDN retrieves the latest version of the resources and returns the resources to the clients. Otherwise, the origin server returns the 304 status code.
         self.object_type = object_type
         self.owner_id = owner_id
         self.security_token = security_token
@@ -28238,6 +28499,8 @@ class RefreshVodObjectCachesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.force is not None:
+            result['Force'] = self.force
         if self.object_path is not None:
             result['ObjectPath'] = self.object_path
         if self.object_type is not None:
@@ -28250,6 +28513,8 @@ class RefreshVodObjectCachesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Force') is not None:
+            self.force = m.get('Force')
         if m.get('ObjectPath') is not None:
             self.object_path = m.get('ObjectPath')
         if m.get('ObjectType') is not None:
@@ -30617,10 +30882,6 @@ class SetDefaultAITemplateRequest(TeaModel):
         self,
         template_id: str = None,
     ):
-        # The ID of the AI template. You can use one of the following methods to obtain the ID of the AI template:
-        # 
-        # *   Call the [AddAITemplate](~~102930~~) operation to add an AI template if no AI template exists. The value of TemplateId in the response is the ID of the AI template.
-        # *   Call the [ListAITemplate](~~102936~~) operation if the template already exists. The value of TemplateId in the response is the ID of the AI template.
         self.template_id = template_id
 
     def validate(self):
@@ -30649,9 +30910,7 @@ class SetDefaultAITemplateResponseBody(TeaModel):
         request_id: str = None,
         template_id: str = None,
     ):
-        # The request ID.
         self.request_id = request_id
-        # The ID of the AI template.
         self.template_id = template_id
 
     def validate(self):
