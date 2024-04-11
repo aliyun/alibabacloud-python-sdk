@@ -1,3 +1,7 @@
+2024-04-11 Version: 4.0.4
+- Update API DescribePrice: update response param.
+
+
 2024-04-09 Version: 4.0.3
 - Generated python 2014-08-15 for Rds.
 
