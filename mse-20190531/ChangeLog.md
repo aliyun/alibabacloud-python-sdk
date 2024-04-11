@@ -1,3 +1,10 @@
+2024-04-11 Version: 6.3.3
+- Update API AddGatewayAuth: add param AuthResourceConfig.
+- Update API AddGatewayAuth: add param AuthResourceMode.
+- Update API AddGatewayAuth: update response param.
+- Update API GetGatewayAuthDetail: update response param.
+
+
 2024-04-10 Version: 6.3.2
 - Update API ListListenersByConfig: update response param.
 - Update API ListListenersByIp: update response param.

@@ -543,8 +543,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.auth_resource_config):
+            query['AuthResourceConfig'] = request.auth_resource_config
         if not UtilClient.is_unset(request.auth_resource_list_shrink):
             query['AuthResourceList'] = request.auth_resource_list_shrink
+        if not UtilClient.is_unset(request.auth_resource_mode):
+            query['AuthResourceMode'] = request.auth_resource_mode
         if not UtilClient.is_unset(request.client_id):
             query['ClientId'] = request.client_id
         if not UtilClient.is_unset(request.client_secret):
@@ -619,8 +623,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.auth_resource_config):
+            query['AuthResourceConfig'] = request.auth_resource_config
         if not UtilClient.is_unset(request.auth_resource_list_shrink):
             query['AuthResourceList'] = request.auth_resource_list_shrink
+        if not UtilClient.is_unset(request.auth_resource_mode):
+            query['AuthResourceMode'] = request.auth_resource_mode
         if not UtilClient.is_unset(request.client_id):
             query['ClientId'] = request.client_id
         if not UtilClient.is_unset(request.client_secret):
