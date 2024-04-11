@@ -2704,6 +2704,368 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_flow_rule_with_options_async(request, runtime)
 
+    def create_gateway_circuit_breaker_rule_with_options(
+        self,
+        request: mse_20190531_models.CreateGatewayCircuitBreakerRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.CreateGatewayCircuitBreakerRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.behavior_type):
+            query['BehaviorType'] = request.behavior_type
+        if not UtilClient.is_unset(request.body_encoding):
+            query['BodyEncoding'] = request.body_encoding
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.max_allowed_ms):
+            query['MaxAllowedMs'] = request.max_allowed_ms
+        if not UtilClient.is_unset(request.min_request_amount):
+            query['MinRequestAmount'] = request.min_request_amount
+        if not UtilClient.is_unset(request.recovery_timeout_sec):
+            query['RecoveryTimeoutSec'] = request.recovery_timeout_sec
+        if not UtilClient.is_unset(request.response_content_body):
+            query['ResponseContentBody'] = request.response_content_body
+        if not UtilClient.is_unset(request.response_redirect_url):
+            query['ResponseRedirectUrl'] = request.response_redirect_url
+        if not UtilClient.is_unset(request.response_status_code):
+            query['ResponseStatusCode'] = request.response_status_code
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
+        if not UtilClient.is_unset(request.route_name):
+            query['RouteName'] = request.route_name
+        if not UtilClient.is_unset(request.stat_duration_sec):
+            query['StatDurationSec'] = request.stat_duration_sec
+        if not UtilClient.is_unset(request.strategy):
+            query['Strategy'] = request.strategy
+        if not UtilClient.is_unset(request.trigger_ratio):
+            query['TriggerRatio'] = request.trigger_ratio
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateGatewayCircuitBreakerRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.CreateGatewayCircuitBreakerRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_gateway_circuit_breaker_rule_with_options_async(
+        self,
+        request: mse_20190531_models.CreateGatewayCircuitBreakerRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.CreateGatewayCircuitBreakerRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.behavior_type):
+            query['BehaviorType'] = request.behavior_type
+        if not UtilClient.is_unset(request.body_encoding):
+            query['BodyEncoding'] = request.body_encoding
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.max_allowed_ms):
+            query['MaxAllowedMs'] = request.max_allowed_ms
+        if not UtilClient.is_unset(request.min_request_amount):
+            query['MinRequestAmount'] = request.min_request_amount
+        if not UtilClient.is_unset(request.recovery_timeout_sec):
+            query['RecoveryTimeoutSec'] = request.recovery_timeout_sec
+        if not UtilClient.is_unset(request.response_content_body):
+            query['ResponseContentBody'] = request.response_content_body
+        if not UtilClient.is_unset(request.response_redirect_url):
+            query['ResponseRedirectUrl'] = request.response_redirect_url
+        if not UtilClient.is_unset(request.response_status_code):
+            query['ResponseStatusCode'] = request.response_status_code
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
+        if not UtilClient.is_unset(request.route_name):
+            query['RouteName'] = request.route_name
+        if not UtilClient.is_unset(request.stat_duration_sec):
+            query['StatDurationSec'] = request.stat_duration_sec
+        if not UtilClient.is_unset(request.strategy):
+            query['Strategy'] = request.strategy
+        if not UtilClient.is_unset(request.trigger_ratio):
+            query['TriggerRatio'] = request.trigger_ratio
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateGatewayCircuitBreakerRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.CreateGatewayCircuitBreakerRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_gateway_circuit_breaker_rule(
+        self,
+        request: mse_20190531_models.CreateGatewayCircuitBreakerRuleRequest,
+    ) -> mse_20190531_models.CreateGatewayCircuitBreakerRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_gateway_circuit_breaker_rule_with_options(request, runtime)
+
+    async def create_gateway_circuit_breaker_rule_async(
+        self,
+        request: mse_20190531_models.CreateGatewayCircuitBreakerRuleRequest,
+    ) -> mse_20190531_models.CreateGatewayCircuitBreakerRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_gateway_circuit_breaker_rule_with_options_async(request, runtime)
+
+    def create_gateway_flow_rule_with_options(
+        self,
+        request: mse_20190531_models.CreateGatewayFlowRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.CreateGatewayFlowRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.behavior_type):
+            query['BehaviorType'] = request.behavior_type
+        if not UtilClient.is_unset(request.body_encoding):
+            query['BodyEncoding'] = request.body_encoding
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.response_content_body):
+            query['ResponseContentBody'] = request.response_content_body
+        if not UtilClient.is_unset(request.response_redirect_url):
+            query['ResponseRedirectUrl'] = request.response_redirect_url
+        if not UtilClient.is_unset(request.response_status_code):
+            query['ResponseStatusCode'] = request.response_status_code
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
+        if not UtilClient.is_unset(request.route_name):
+            query['RouteName'] = request.route_name
+        if not UtilClient.is_unset(request.threshold):
+            query['Threshold'] = request.threshold
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateGatewayFlowRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.CreateGatewayFlowRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_gateway_flow_rule_with_options_async(
+        self,
+        request: mse_20190531_models.CreateGatewayFlowRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.CreateGatewayFlowRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.behavior_type):
+            query['BehaviorType'] = request.behavior_type
+        if not UtilClient.is_unset(request.body_encoding):
+            query['BodyEncoding'] = request.body_encoding
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.response_content_body):
+            query['ResponseContentBody'] = request.response_content_body
+        if not UtilClient.is_unset(request.response_redirect_url):
+            query['ResponseRedirectUrl'] = request.response_redirect_url
+        if not UtilClient.is_unset(request.response_status_code):
+            query['ResponseStatusCode'] = request.response_status_code
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
+        if not UtilClient.is_unset(request.route_name):
+            query['RouteName'] = request.route_name
+        if not UtilClient.is_unset(request.threshold):
+            query['Threshold'] = request.threshold
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateGatewayFlowRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.CreateGatewayFlowRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_gateway_flow_rule(
+        self,
+        request: mse_20190531_models.CreateGatewayFlowRuleRequest,
+    ) -> mse_20190531_models.CreateGatewayFlowRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_gateway_flow_rule_with_options(request, runtime)
+
+    async def create_gateway_flow_rule_async(
+        self,
+        request: mse_20190531_models.CreateGatewayFlowRuleRequest,
+    ) -> mse_20190531_models.CreateGatewayFlowRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_gateway_flow_rule_with_options_async(request, runtime)
+
+    def create_gateway_isolation_rule_with_options(
+        self,
+        request: mse_20190531_models.CreateGatewayIsolationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.CreateGatewayIsolationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.behavior_type):
+            query['BehaviorType'] = request.behavior_type
+        if not UtilClient.is_unset(request.body_encoding):
+            query['BodyEncoding'] = request.body_encoding
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.max_concurrency):
+            query['MaxConcurrency'] = request.max_concurrency
+        if not UtilClient.is_unset(request.response_content_body):
+            query['ResponseContentBody'] = request.response_content_body
+        if not UtilClient.is_unset(request.response_redirect_url):
+            query['ResponseRedirectUrl'] = request.response_redirect_url
+        if not UtilClient.is_unset(request.response_status_code):
+            query['ResponseStatusCode'] = request.response_status_code
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
+        if not UtilClient.is_unset(request.route_name):
+            query['RouteName'] = request.route_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateGatewayIsolationRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.CreateGatewayIsolationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_gateway_isolation_rule_with_options_async(
+        self,
+        request: mse_20190531_models.CreateGatewayIsolationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.CreateGatewayIsolationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.behavior_type):
+            query['BehaviorType'] = request.behavior_type
+        if not UtilClient.is_unset(request.body_encoding):
+            query['BodyEncoding'] = request.body_encoding
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.max_concurrency):
+            query['MaxConcurrency'] = request.max_concurrency
+        if not UtilClient.is_unset(request.response_content_body):
+            query['ResponseContentBody'] = request.response_content_body
+        if not UtilClient.is_unset(request.response_redirect_url):
+            query['ResponseRedirectUrl'] = request.response_redirect_url
+        if not UtilClient.is_unset(request.response_status_code):
+            query['ResponseStatusCode'] = request.response_status_code
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
+        if not UtilClient.is_unset(request.route_name):
+            query['RouteName'] = request.route_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateGatewayIsolationRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.CreateGatewayIsolationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_gateway_isolation_rule(
+        self,
+        request: mse_20190531_models.CreateGatewayIsolationRuleRequest,
+    ) -> mse_20190531_models.CreateGatewayIsolationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_gateway_isolation_rule_with_options(request, runtime)
+
+    async def create_gateway_isolation_rule_async(
+        self,
+        request: mse_20190531_models.CreateGatewayIsolationRuleRequest,
+    ) -> mse_20190531_models.CreateGatewayIsolationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_gateway_isolation_rule_with_options_async(request, runtime)
+
     def create_isolation_rule_with_options(
         self,
         request: mse_20190531_models.CreateIsolationRuleRequest,
@@ -4336,6 +4698,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_gateway_auth_consumer_resource_with_options_async(request, runtime)
 
+    def delete_gateway_circuit_breaker_rule_with_options(
+        self,
+        request: mse_20190531_models.DeleteGatewayCircuitBreakerRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.DeleteGatewayCircuitBreakerRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteGatewayCircuitBreakerRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.DeleteGatewayCircuitBreakerRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_gateway_circuit_breaker_rule_with_options_async(
+        self,
+        request: mse_20190531_models.DeleteGatewayCircuitBreakerRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.DeleteGatewayCircuitBreakerRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteGatewayCircuitBreakerRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.DeleteGatewayCircuitBreakerRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_gateway_circuit_breaker_rule(
+        self,
+        request: mse_20190531_models.DeleteGatewayCircuitBreakerRuleRequest,
+    ) -> mse_20190531_models.DeleteGatewayCircuitBreakerRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_gateway_circuit_breaker_rule_with_options(request, runtime)
+
+    async def delete_gateway_circuit_breaker_rule_async(
+        self,
+        request: mse_20190531_models.DeleteGatewayCircuitBreakerRuleRequest,
+    ) -> mse_20190531_models.DeleteGatewayCircuitBreakerRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_gateway_circuit_breaker_rule_with_options_async(request, runtime)
+
     def delete_gateway_domain_with_options(
         self,
         request: mse_20190531_models.DeleteGatewayDomainRequest,
@@ -4413,6 +4857,170 @@ class Client(OpenApiClient):
     ) -> mse_20190531_models.DeleteGatewayDomainResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_gateway_domain_with_options_async(request, runtime)
+
+    def delete_gateway_flow_rule_with_options(
+        self,
+        request: mse_20190531_models.DeleteGatewayFlowRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.DeleteGatewayFlowRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteGatewayFlowRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.DeleteGatewayFlowRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_gateway_flow_rule_with_options_async(
+        self,
+        request: mse_20190531_models.DeleteGatewayFlowRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.DeleteGatewayFlowRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteGatewayFlowRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.DeleteGatewayFlowRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_gateway_flow_rule(
+        self,
+        request: mse_20190531_models.DeleteGatewayFlowRuleRequest,
+    ) -> mse_20190531_models.DeleteGatewayFlowRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_gateway_flow_rule_with_options(request, runtime)
+
+    async def delete_gateway_flow_rule_async(
+        self,
+        request: mse_20190531_models.DeleteGatewayFlowRuleRequest,
+    ) -> mse_20190531_models.DeleteGatewayFlowRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_gateway_flow_rule_with_options_async(request, runtime)
+
+    def delete_gateway_isolation_rule_with_options(
+        self,
+        request: mse_20190531_models.DeleteGatewayIsolationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.DeleteGatewayIsolationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteGatewayIsolationRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.DeleteGatewayIsolationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_gateway_isolation_rule_with_options_async(
+        self,
+        request: mse_20190531_models.DeleteGatewayIsolationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.DeleteGatewayIsolationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteGatewayIsolationRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.DeleteGatewayIsolationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_gateway_isolation_rule(
+        self,
+        request: mse_20190531_models.DeleteGatewayIsolationRuleRequest,
+    ) -> mse_20190531_models.DeleteGatewayIsolationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_gateway_isolation_rule_with_options(request, runtime)
+
+    async def delete_gateway_isolation_rule_async(
+        self,
+        request: mse_20190531_models.DeleteGatewayIsolationRuleRequest,
+    ) -> mse_20190531_models.DeleteGatewayIsolationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_gateway_isolation_rule_with_options_async(request, runtime)
 
     def delete_gateway_route_with_options(
         self,
@@ -11264,6 +11872,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_gateway_auth_consumer_resource_with_options_async(request, runtime)
 
+    def list_gateway_circuit_breaker_rule_with_options(
+        self,
+        request: mse_20190531_models.ListGatewayCircuitBreakerRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListGatewayCircuitBreakerRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.filter_params):
+            query['FilterParams'] = request.filter_params
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGatewayCircuitBreakerRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListGatewayCircuitBreakerRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_gateway_circuit_breaker_rule_with_options_async(
+        self,
+        request: mse_20190531_models.ListGatewayCircuitBreakerRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListGatewayCircuitBreakerRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.filter_params):
+            query['FilterParams'] = request.filter_params
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGatewayCircuitBreakerRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListGatewayCircuitBreakerRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_gateway_circuit_breaker_rule(
+        self,
+        request: mse_20190531_models.ListGatewayCircuitBreakerRuleRequest,
+    ) -> mse_20190531_models.ListGatewayCircuitBreakerRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_gateway_circuit_breaker_rule_with_options(request, runtime)
+
+    async def list_gateway_circuit_breaker_rule_async(
+        self,
+        request: mse_20190531_models.ListGatewayCircuitBreakerRuleRequest,
+    ) -> mse_20190531_models.ListGatewayCircuitBreakerRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_gateway_circuit_breaker_rule_with_options_async(request, runtime)
+
     def list_gateway_domain_with_options(
         self,
         request: mse_20190531_models.ListGatewayDomainRequest,
@@ -11345,6 +12027,154 @@ class Client(OpenApiClient):
     ) -> mse_20190531_models.ListGatewayDomainResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_gateway_domain_with_options_async(request, runtime)
+
+    def list_gateway_flow_rule_with_options(
+        self,
+        request: mse_20190531_models.ListGatewayFlowRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListGatewayFlowRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.filter_params):
+            query['FilterParams'] = request.filter_params
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGatewayFlowRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListGatewayFlowRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_gateway_flow_rule_with_options_async(
+        self,
+        request: mse_20190531_models.ListGatewayFlowRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListGatewayFlowRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.filter_params):
+            query['FilterParams'] = request.filter_params
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGatewayFlowRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListGatewayFlowRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_gateway_flow_rule(
+        self,
+        request: mse_20190531_models.ListGatewayFlowRuleRequest,
+    ) -> mse_20190531_models.ListGatewayFlowRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_gateway_flow_rule_with_options(request, runtime)
+
+    async def list_gateway_flow_rule_async(
+        self,
+        request: mse_20190531_models.ListGatewayFlowRuleRequest,
+    ) -> mse_20190531_models.ListGatewayFlowRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_gateway_flow_rule_with_options_async(request, runtime)
+
+    def list_gateway_isolation_rule_with_options(
+        self,
+        request: mse_20190531_models.ListGatewayIsolationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListGatewayIsolationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.filter_params):
+            query['FilterParams'] = request.filter_params
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGatewayIsolationRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListGatewayIsolationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_gateway_isolation_rule_with_options_async(
+        self,
+        request: mse_20190531_models.ListGatewayIsolationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListGatewayIsolationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.filter_params):
+            query['FilterParams'] = request.filter_params
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGatewayIsolationRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListGatewayIsolationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_gateway_isolation_rule(
+        self,
+        request: mse_20190531_models.ListGatewayIsolationRuleRequest,
+    ) -> mse_20190531_models.ListGatewayIsolationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_gateway_isolation_rule_with_options(request, runtime)
+
+    async def list_gateway_isolation_rule_async(
+        self,
+        request: mse_20190531_models.ListGatewayIsolationRuleRequest,
+    ) -> mse_20190531_models.ListGatewayIsolationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_gateway_isolation_rule_with_options_async(request, runtime)
 
     def list_gateway_route_with_options(
         self,
@@ -16908,6 +17738,144 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_auth_consumer_status_with_options_async(request, runtime)
 
+    def update_gateway_circuit_breaker_rule_with_options(
+        self,
+        request: mse_20190531_models.UpdateGatewayCircuitBreakerRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateGatewayCircuitBreakerRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.behavior_type):
+            query['BehaviorType'] = request.behavior_type
+        if not UtilClient.is_unset(request.body_encoding):
+            query['BodyEncoding'] = request.body_encoding
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.max_allowed_ms):
+            query['MaxAllowedMs'] = request.max_allowed_ms
+        if not UtilClient.is_unset(request.min_request_amount):
+            query['MinRequestAmount'] = request.min_request_amount
+        if not UtilClient.is_unset(request.recovery_timeout_sec):
+            query['RecoveryTimeoutSec'] = request.recovery_timeout_sec
+        if not UtilClient.is_unset(request.response_content_body):
+            query['ResponseContentBody'] = request.response_content_body
+        if not UtilClient.is_unset(request.response_redirect_url):
+            query['ResponseRedirectUrl'] = request.response_redirect_url
+        if not UtilClient.is_unset(request.response_status_code):
+            query['ResponseStatusCode'] = request.response_status_code
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
+        if not UtilClient.is_unset(request.route_name):
+            query['RouteName'] = request.route_name
+        if not UtilClient.is_unset(request.stat_duration_sec):
+            query['StatDurationSec'] = request.stat_duration_sec
+        if not UtilClient.is_unset(request.strategy):
+            query['Strategy'] = request.strategy
+        if not UtilClient.is_unset(request.trigger_ratio):
+            query['TriggerRatio'] = request.trigger_ratio
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGatewayCircuitBreakerRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateGatewayCircuitBreakerRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_gateway_circuit_breaker_rule_with_options_async(
+        self,
+        request: mse_20190531_models.UpdateGatewayCircuitBreakerRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateGatewayCircuitBreakerRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.behavior_type):
+            query['BehaviorType'] = request.behavior_type
+        if not UtilClient.is_unset(request.body_encoding):
+            query['BodyEncoding'] = request.body_encoding
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.max_allowed_ms):
+            query['MaxAllowedMs'] = request.max_allowed_ms
+        if not UtilClient.is_unset(request.min_request_amount):
+            query['MinRequestAmount'] = request.min_request_amount
+        if not UtilClient.is_unset(request.recovery_timeout_sec):
+            query['RecoveryTimeoutSec'] = request.recovery_timeout_sec
+        if not UtilClient.is_unset(request.response_content_body):
+            query['ResponseContentBody'] = request.response_content_body
+        if not UtilClient.is_unset(request.response_redirect_url):
+            query['ResponseRedirectUrl'] = request.response_redirect_url
+        if not UtilClient.is_unset(request.response_status_code):
+            query['ResponseStatusCode'] = request.response_status_code
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
+        if not UtilClient.is_unset(request.route_name):
+            query['RouteName'] = request.route_name
+        if not UtilClient.is_unset(request.stat_duration_sec):
+            query['StatDurationSec'] = request.stat_duration_sec
+        if not UtilClient.is_unset(request.strategy):
+            query['Strategy'] = request.strategy
+        if not UtilClient.is_unset(request.trigger_ratio):
+            query['TriggerRatio'] = request.trigger_ratio
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGatewayCircuitBreakerRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateGatewayCircuitBreakerRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_gateway_circuit_breaker_rule(
+        self,
+        request: mse_20190531_models.UpdateGatewayCircuitBreakerRuleRequest,
+    ) -> mse_20190531_models.UpdateGatewayCircuitBreakerRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_gateway_circuit_breaker_rule_with_options(request, runtime)
+
+    async def update_gateway_circuit_breaker_rule_async(
+        self,
+        request: mse_20190531_models.UpdateGatewayCircuitBreakerRuleRequest,
+    ) -> mse_20190531_models.UpdateGatewayCircuitBreakerRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_gateway_circuit_breaker_rule_with_options_async(request, runtime)
+
     def update_gateway_domain_with_options(
         self,
         request: mse_20190531_models.UpdateGatewayDomainRequest,
@@ -17009,6 +17977,242 @@ class Client(OpenApiClient):
     ) -> mse_20190531_models.UpdateGatewayDomainResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_domain_with_options_async(request, runtime)
+
+    def update_gateway_flow_rule_with_options(
+        self,
+        request: mse_20190531_models.UpdateGatewayFlowRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateGatewayFlowRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.behavior_type):
+            query['BehaviorType'] = request.behavior_type
+        if not UtilClient.is_unset(request.body_encoding):
+            query['BodyEncoding'] = request.body_encoding
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.response_content_body):
+            query['ResponseContentBody'] = request.response_content_body
+        if not UtilClient.is_unset(request.response_redirect_url):
+            query['ResponseRedirectUrl'] = request.response_redirect_url
+        if not UtilClient.is_unset(request.response_status_code):
+            query['ResponseStatusCode'] = request.response_status_code
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
+        if not UtilClient.is_unset(request.route_name):
+            query['RouteName'] = request.route_name
+        if not UtilClient.is_unset(request.threshold):
+            query['Threshold'] = request.threshold
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGatewayFlowRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateGatewayFlowRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_gateway_flow_rule_with_options_async(
+        self,
+        request: mse_20190531_models.UpdateGatewayFlowRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateGatewayFlowRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.behavior_type):
+            query['BehaviorType'] = request.behavior_type
+        if not UtilClient.is_unset(request.body_encoding):
+            query['BodyEncoding'] = request.body_encoding
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.response_content_body):
+            query['ResponseContentBody'] = request.response_content_body
+        if not UtilClient.is_unset(request.response_redirect_url):
+            query['ResponseRedirectUrl'] = request.response_redirect_url
+        if not UtilClient.is_unset(request.response_status_code):
+            query['ResponseStatusCode'] = request.response_status_code
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
+        if not UtilClient.is_unset(request.route_name):
+            query['RouteName'] = request.route_name
+        if not UtilClient.is_unset(request.threshold):
+            query['Threshold'] = request.threshold
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGatewayFlowRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateGatewayFlowRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_gateway_flow_rule(
+        self,
+        request: mse_20190531_models.UpdateGatewayFlowRuleRequest,
+    ) -> mse_20190531_models.UpdateGatewayFlowRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_gateway_flow_rule_with_options(request, runtime)
+
+    async def update_gateway_flow_rule_async(
+        self,
+        request: mse_20190531_models.UpdateGatewayFlowRuleRequest,
+    ) -> mse_20190531_models.UpdateGatewayFlowRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_gateway_flow_rule_with_options_async(request, runtime)
+
+    def update_gateway_isolation_rule_with_options(
+        self,
+        request: mse_20190531_models.UpdateGatewayIsolationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateGatewayIsolationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.behavior_type):
+            query['BehaviorType'] = request.behavior_type
+        if not UtilClient.is_unset(request.body_encoding):
+            query['BodyEncoding'] = request.body_encoding
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.max_concurrency):
+            query['MaxConcurrency'] = request.max_concurrency
+        if not UtilClient.is_unset(request.response_content_body):
+            query['ResponseContentBody'] = request.response_content_body
+        if not UtilClient.is_unset(request.response_redirect_url):
+            query['ResponseRedirectUrl'] = request.response_redirect_url
+        if not UtilClient.is_unset(request.response_status_code):
+            query['ResponseStatusCode'] = request.response_status_code
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
+        if not UtilClient.is_unset(request.route_name):
+            query['RouteName'] = request.route_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGatewayIsolationRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateGatewayIsolationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_gateway_isolation_rule_with_options_async(
+        self,
+        request: mse_20190531_models.UpdateGatewayIsolationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateGatewayIsolationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.behavior_type):
+            query['BehaviorType'] = request.behavior_type
+        if not UtilClient.is_unset(request.body_encoding):
+            query['BodyEncoding'] = request.body_encoding
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.max_concurrency):
+            query['MaxConcurrency'] = request.max_concurrency
+        if not UtilClient.is_unset(request.response_content_body):
+            query['ResponseContentBody'] = request.response_content_body
+        if not UtilClient.is_unset(request.response_redirect_url):
+            query['ResponseRedirectUrl'] = request.response_redirect_url
+        if not UtilClient.is_unset(request.response_status_code):
+            query['ResponseStatusCode'] = request.response_status_code
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
+        if not UtilClient.is_unset(request.route_name):
+            query['RouteName'] = request.route_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGatewayIsolationRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateGatewayIsolationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_gateway_isolation_rule(
+        self,
+        request: mse_20190531_models.UpdateGatewayIsolationRuleRequest,
+    ) -> mse_20190531_models.UpdateGatewayIsolationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_gateway_isolation_rule_with_options(request, runtime)
+
+    async def update_gateway_isolation_rule_async(
+        self,
+        request: mse_20190531_models.UpdateGatewayIsolationRuleRequest,
+    ) -> mse_20190531_models.UpdateGatewayIsolationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_gateway_isolation_rule_with_options_async(request, runtime)
 
     def update_gateway_name_with_options(
         self,

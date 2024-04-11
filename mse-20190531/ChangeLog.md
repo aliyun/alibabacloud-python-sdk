@@ -1,3 +1,18 @@
+2024-04-11 Version: 6.4.0
+- Support API CreateGatewayCircuitBreakerRule.
+- Support API CreateGatewayFlowRule.
+- Support API CreateGatewayIsolationRule.
+- Support API DeleteGatewayCircuitBreakerRule.
+- Support API DeleteGatewayFlowRule.
+- Support API DeleteGatewayIsolationRule.
+- Support API ListGatewayCircuitBreakerRule.
+- Support API ListGatewayFlowRule.
+- Support API ListGatewayIsolationRule.
+- Support API UpdateGatewayCircuitBreakerRule.
+- Support API UpdateGatewayFlowRule.
+- Support API UpdateGatewayIsolationRule.
+
+
 2024-04-11 Version: 6.3.3
 - Update API AddGatewayAuth: add param AuthResourceConfig.
 - Update API AddGatewayAuth: add param AuthResourceMode.
