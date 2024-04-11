@@ -2509,10 +2509,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.CreateDcdnSubTaskResponse:
         """
-        *\
-        ****\
-        *\
-        *\
+        >    This operation allows you to create a custom operations report for a specific domain name. You can view the statistics about the domain name in the report.
+        > *   You can call this operation up to three times per second per account.
         
         @param request: CreateDcdnSubTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2549,10 +2547,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.CreateDcdnSubTaskResponse:
         """
-        *\
-        ****\
-        *\
-        *\
+        >    This operation allows you to create a custom operations report for a specific domain name. You can view the statistics about the domain name in the report.
+        > *   You can call this operation up to three times per second per account.
         
         @param request: CreateDcdnSubTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2588,10 +2584,8 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.CreateDcdnSubTaskRequest,
     ) -> dcdn_20180115_models.CreateDcdnSubTaskResponse:
         """
-        *\
-        ****\
-        *\
-        *\
+        >    This operation allows you to create a custom operations report for a specific domain name. You can view the statistics about the domain name in the report.
+        > *   You can call this operation up to three times per second per account.
         
         @param request: CreateDcdnSubTaskRequest
         @return: CreateDcdnSubTaskResponse
@@ -2604,10 +2598,8 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.CreateDcdnSubTaskRequest,
     ) -> dcdn_20180115_models.CreateDcdnSubTaskResponse:
         """
-        *\
-        ****\
-        *\
-        *\
+        >    This operation allows you to create a custom operations report for a specific domain name. You can view the statistics about the domain name in the report.
+        > *   You can call this operation up to three times per second per account.
         
         @param request: CreateDcdnSubTaskRequest
         @return: CreateDcdnSubTaskResponse
@@ -9847,7 +9839,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnDomainStagingConfigResponse:
         """
-        The name of the accelerated domain.
+        > You can call this operation up to 30 times per second per account.
         
         @param request: DescribeDcdnDomainStagingConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9884,7 +9876,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnDomainStagingConfigResponse:
         """
-        The name of the accelerated domain.
+        > You can call this operation up to 30 times per second per account.
         
         @param request: DescribeDcdnDomainStagingConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9920,7 +9912,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnDomainStagingConfigRequest,
     ) -> dcdn_20180115_models.DescribeDcdnDomainStagingConfigResponse:
         """
-        The name of the accelerated domain.
+        > You can call this operation up to 30 times per second per account.
         
         @param request: DescribeDcdnDomainStagingConfigRequest
         @return: DescribeDcdnDomainStagingConfigResponse
@@ -9933,7 +9925,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnDomainStagingConfigRequest,
     ) -> dcdn_20180115_models.DescribeDcdnDomainStagingConfigResponse:
         """
-        The name of the accelerated domain.
+        > You can call this operation up to 30 times per second per account.
         
         @param request: DescribeDcdnDomainStagingConfigRequest
         @return: DescribeDcdnDomainStagingConfigResponse
@@ -11413,7 +11405,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnHttpsDomainListResponse:
         """
-        >  The maximum number of times that each user can call this operation per second is 100.
+        > You can call this operation up to 100 times per second per account.
         
         @param request: DescribeDcdnHttpsDomainListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11452,7 +11444,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnHttpsDomainListResponse:
         """
-        >  The maximum number of times that each user can call this operation per second is 100.
+        > You can call this operation up to 100 times per second per account.
         
         @param request: DescribeDcdnHttpsDomainListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11490,7 +11482,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnHttpsDomainListRequest,
     ) -> dcdn_20180115_models.DescribeDcdnHttpsDomainListResponse:
         """
-        >  The maximum number of times that each user can call this operation per second is 100.
+        > You can call this operation up to 100 times per second per account.
         
         @param request: DescribeDcdnHttpsDomainListRequest
         @return: DescribeDcdnHttpsDomainListResponse
@@ -11503,7 +11495,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnHttpsDomainListRequest,
     ) -> dcdn_20180115_models.DescribeDcdnHttpsDomainListResponse:
         """
-        >  The maximum number of times that each user can call this operation per second is 100.
+        > You can call this operation up to 100 times per second per account.
         
         @param request: DescribeDcdnHttpsDomainListRequest
         @return: DescribeDcdnHttpsDomainListResponse
@@ -18780,7 +18772,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeRoutineUserInfoResponse:
         """
-        >  You can call this operation up to 100 times per second per account.
+        > You can call this operation up to 100 times per second per account.
         
         @param request: DescribeRoutineUserInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18808,7 +18800,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeRoutineUserInfoResponse:
         """
-        >  You can call this operation up to 100 times per second per account.
+        > You can call this operation up to 100 times per second per account.
         
         @param request: DescribeRoutineUserInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18833,7 +18825,7 @@ class Client(OpenApiClient):
 
     def describe_routine_user_info(self) -> dcdn_20180115_models.DescribeRoutineUserInfoResponse:
         """
-        >  You can call this operation up to 100 times per second per account.
+        > You can call this operation up to 100 times per second per account.
         
         @return: DescribeRoutineUserInfoResponse
         """
@@ -18842,7 +18834,7 @@ class Client(OpenApiClient):
 
     async def describe_routine_user_info_async(self) -> dcdn_20180115_models.DescribeRoutineUserInfoResponse:
         """
-        >  You can call this operation up to 100 times per second per account.
+        > You can call this operation up to 100 times per second per account.
         
         @return: DescribeRoutineUserInfoResponse
         """
@@ -20939,6 +20931,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.put_dcdn_kv_with_high_capacity_with_options_async(request, runtime)
 
+    def refresh_dcdn_object_cache_by_cache_tag_with_options(
+        self,
+        request: dcdn_20180115_models.RefreshDcdnObjectCacheByCacheTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.RefreshDcdnObjectCacheByCacheTagResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cache_tag):
+            query['CacheTag'] = request.cache_tag
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RefreshDcdnObjectCacheByCacheTag',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.RefreshDcdnObjectCacheByCacheTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def refresh_dcdn_object_cache_by_cache_tag_with_options_async(
+        self,
+        request: dcdn_20180115_models.RefreshDcdnObjectCacheByCacheTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.RefreshDcdnObjectCacheByCacheTagResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cache_tag):
+            query['CacheTag'] = request.cache_tag
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RefreshDcdnObjectCacheByCacheTag',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.RefreshDcdnObjectCacheByCacheTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def refresh_dcdn_object_cache_by_cache_tag(
+        self,
+        request: dcdn_20180115_models.RefreshDcdnObjectCacheByCacheTagRequest,
+    ) -> dcdn_20180115_models.RefreshDcdnObjectCacheByCacheTagResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.refresh_dcdn_object_cache_by_cache_tag_with_options(request, runtime)
+
+    async def refresh_dcdn_object_cache_by_cache_tag_async(
+        self,
+        request: dcdn_20180115_models.RefreshDcdnObjectCacheByCacheTagRequest,
+    ) -> dcdn_20180115_models.RefreshDcdnObjectCacheByCacheTagResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.refresh_dcdn_object_cache_by_cache_tag_with_options_async(request, runtime)
+
     def refresh_dcdn_object_caches_with_options(
         self,
         request: dcdn_20180115_models.RefreshDcdnObjectCachesRequest,
@@ -22961,7 +23031,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.UpdateDcdnDomainResponse:
         """
-        >  You can call this operation up to 30 times per second per account.
+        > You can call this operation up to 30 times per second per account.
         
         @param request: UpdateDcdnDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23006,7 +23076,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.UpdateDcdnDomainResponse:
         """
-        >  You can call this operation up to 30 times per second per account.
+        > You can call this operation up to 30 times per second per account.
         
         @param request: UpdateDcdnDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23050,7 +23120,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.UpdateDcdnDomainRequest,
     ) -> dcdn_20180115_models.UpdateDcdnDomainResponse:
         """
-        >  You can call this operation up to 30 times per second per account.
+        > You can call this operation up to 30 times per second per account.
         
         @param request: UpdateDcdnDomainRequest
         @return: UpdateDcdnDomainResponse
@@ -23063,7 +23133,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.UpdateDcdnDomainRequest,
     ) -> dcdn_20180115_models.UpdateDcdnDomainResponse:
         """
-        >  You can call this operation up to 30 times per second per account.
+        > You can call this operation up to 30 times per second per account.
         
         @param request: UpdateDcdnDomainRequest
         @return: UpdateDcdnDomainResponse

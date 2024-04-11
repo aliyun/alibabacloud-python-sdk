@@ -3326,24 +3326,26 @@ class CreateDcdnSubTaskRequest(TeaModel):
         domain_name: str = None,
         report_ids: str = None,
     ):
-        # [](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex)
+        # The domain names to be tracked. Separate multiple domain names with commas (,). You can specify up to 500 domain names. If you want to specify more than 500 domain names, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
         # 
-        # **\
-        # 
-        # ****\
+        # > If you do not specify a domain name, the tracking task is created for all domain names that belong to your Alibaba Cloud account.
         self.domain_name = domain_name
-        # *   ****\
-        # *   ****\
-        # *   ****\
-        # *   ****\
-        # *   ****\
-        # *   ****\
-        # *   ****\
-        # *   ****\
-        # *   ****\
-        # *   ****\
-        # *   ****\
-        # *   ****\
+        # The IDs of the metrics that you want to include in the report. Separate multiple IDs with commas (,). Valid values:
+        # 
+        # *   **2**: Popular URLs by Request
+        # *   **4**: Popular URLs by Traffic
+        # *   **6**: Popular Referer by Request
+        # *   **8**: Popular Referer by Traffic
+        # *   **10**: Popular Back-to-origin URLs by Request
+        # *   **12**: Popular Back-to-origin URLs by Traffic
+        # *   **14**: Top Client IPs by Request
+        # *   **16**: Top Client IPs by Traffic
+        # *   **18**: Popular Domain Names by Traffic
+        # *   **20**: PV/UV
+        # *   **22**: Visit Distribution by Region
+        # *   **24**: Distribution of ISPs
+        # *   **26**: Peak IPv4/IPv6 Bandwidth
+        # *   **27**: Back-to-origin bandwidth
         self.report_ids = report_ids
 
     def validate(self):
@@ -3375,6 +3377,7 @@ class CreateDcdnSubTaskResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4485,7 +4488,7 @@ class DeleteDcdnKvRequest(TeaModel):
         key: str = None,
         namespace: str = None,
     ):
-        # The ID of the request.
+        # The name of the key that you want to delete.
         self.key = key
         # The namespace that you specify when you call the PutDcdnKvNamespace operation.
         self.namespace = namespace
@@ -4519,7 +4522,7 @@ class DeleteDcdnKvResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The name of the key to delete.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -16765,9 +16768,9 @@ class DescribeDcdnDomainStagingConfigRequest(TeaModel):
         domain_name: str = None,
         function_names: str = None,
     ):
-        # The names of the features to query. You can specify multiple features and separate them with commas (,).
+        # The accelerated domain name.
         self.domain_name = domain_name
-        # The ID of the request.
+        # The names of the features to query. You can separate multiple features with commas (,).
         self.function_names = function_names
 
     def validate(self):
@@ -16800,8 +16803,9 @@ class DescribeDcdnDomainStagingConfigResponseBodyDomainConfigsFunctionArgs(TeaMo
         arg_name: str = None,
         arg_value: str = None,
     ):
-        # The value of the configuration.
+        # The name of the configuration.
         self.arg_name = arg_name
+        # The value of the configuration.
         self.arg_value = arg_value
 
     def validate(self):
@@ -16836,13 +16840,18 @@ class DescribeDcdnDomainStagingConfigResponseBodyDomainConfigs(TeaModel):
         function_name: str = None,
         status: str = None,
     ):
-        # The name of the feature.
-        self.config_id = config_id
-        # The name of the configuration.
-        self.function_args = function_args
-        # The descriptions of a feature.
-        self.function_name = function_name
         # The ID of the configuration.
+        self.config_id = config_id
+        # The following table describes the features.
+        self.function_args = function_args
+        # The name of the feature.
+        self.function_name = function_name
+        # The status. Valid values:
+        # 
+        # *   success: The configuration is successful.
+        # *   testing: The configuration is under testing.
+        # *   failed: The task failed.
+        # *   configuring: The feature is being configured.
         self.status = status
 
     def validate(self):
@@ -16891,14 +16900,9 @@ class DescribeDcdnDomainStagingConfigResponseBody(TeaModel):
         domain_configs: List[DescribeDcdnDomainStagingConfigResponseBodyDomainConfigs] = None,
         request_id: str = None,
     ):
-        # The status of the feature. Valid values:
-        # 
-        # *   success
-        # *   testing
-        # *   failed
-        # *   configuring
-        self.domain_configs = domain_configs
         # The configurations of accelerated domain names returned.
+        self.domain_configs = domain_configs
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -20293,20 +20297,11 @@ class DescribeDcdnHttpsDomainListRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The status of the certificate. Valid values:
-        # 
-        # *   **ok**: The certificate is working as expected.
-        # *   **mismatch**: The certificate does not match the specified domain name.
-        # *   **expired**: The certificate has expired.
-        # *   **expire_soon**: The certificate is about to expire.
+        # The keyword that is used to search for certificates.
         self.keyword = keyword
-        # The total number of entries returned.
+        # The number of returned pages. Valid values: **1 to 100000**.
         self.page_number = page_number
-        # The type of the certificate. Valid values:
-        # 
-        # *   **free**: A free certificate.
-        # *   **cas**: A certificate that is purchased through Alibaba Cloud SSL Certificates Service.
-        # *   **upload**: A user-uploaded certificate.
+        # The number of entries to return on each page. Valid values: **1 to 500**. Default value: **20**.
         self.page_size = page_size
 
     def validate(self):
@@ -20349,21 +20344,29 @@ class DescribeDcdnHttpsDomainListResponseBodyCertInfosCertInfo(TeaModel):
         cert_update_time: str = None,
         domain_name: str = None,
     ):
-        # The certificate information about the domain name.
+        # The returned primary domain name of the certificate.
         self.cert_common_name = cert_common_name
-        # The name of the certificate.
+        # The time at which the certificate expires.
         self.cert_expire_time = cert_expire_time
-        # The accelerated domain name for which the certificate information was queried.
+        # The name of the certificate.
         self.cert_name = cert_name
-        # The time when the certificate expires.
+        # The time at which the certificate became effective.
         self.cert_start_time = cert_start_time
-        # The number of pages to return. Valid values: **1 to 100000**.
+        # The status of the certificate. Valid values:
+        # 
+        # *   **ok**: The certificate is working as expected.
+        # *   **mismatch**: The certificate does not match the specified domain name.
+        # *   **expired**: The certificate has expired.
+        # *   **expire_soon**: The certificate is about to expire.
         self.cert_status = cert_status
-        # The operation that you want to perform. Set the value to **DescribeDcdnHttpsDomainList**.
+        # The type of the certificate. Valid values:
+        # 
+        # *   **cas**: a certificate that is purchased by using Certificate Management Service
+        # *   **upload**: a custom certificate that you upload
         self.cert_type = cert_type
-        # The keyword used for search.
+        # The time at which the certificate was updated.
         self.cert_update_time = cert_update_time
-        # The time when the certificate was updated.
+        # The accelerated domain name.
         self.domain_name = domain_name
 
     def validate(self):
@@ -20456,11 +20459,11 @@ class DescribeDcdnHttpsDomainListResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The time when the certificate became effective.
+        # The information about the certificate.
         self.cert_infos = cert_infos
-        # The returned primary domain name of the certificate.
+        # The ID of the request.
         self.request_id = request_id
-        # The number of entries to return on each page. Valid values: **1 to 500**. Default value: **20**.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -36221,9 +36224,9 @@ class DescribeRoutineUserInfoResponseBody(TeaModel):
         content: Dict[str, Any] = None,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The content returned by calling the operation.
         self.content = content
-        # The operation that you want to perform. Set the value to **DescribeRoutineUserInfo**.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -39201,6 +39204,119 @@ class PutDcdnKvWithHighCapacityResponse(TeaModel):
         return self
 
 
+class RefreshDcdnObjectCacheByCacheTagRequest(TeaModel):
+    def __init__(
+        self,
+        cache_tag: str = None,
+        domain_name: str = None,
+        force: bool = None,
+    ):
+        self.cache_tag = cache_tag
+        self.domain_name = domain_name
+        self.force = force
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cache_tag is not None:
+            result['CacheTag'] = self.cache_tag
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.force is not None:
+            result['Force'] = self.force
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CacheTag') is not None:
+            self.cache_tag = m.get('CacheTag')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('Force') is not None:
+            self.force = m.get('Force')
+        return self
+
+
+class RefreshDcdnObjectCacheByCacheTagResponseBody(TeaModel):
+    def __init__(
+        self,
+        refresh_task_id: str = None,
+        request_id: str = None,
+    ):
+        self.refresh_task_id = refresh_task_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.refresh_task_id is not None:
+            result['RefreshTaskId'] = self.refresh_task_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RefreshTaskId') is not None:
+            self.refresh_task_id = m.get('RefreshTaskId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RefreshDcdnObjectCacheByCacheTagResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RefreshDcdnObjectCacheByCacheTagResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RefreshDcdnObjectCacheByCacheTagResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RefreshDcdnObjectCachesRequest(TeaModel):
     def __init__(
         self,
@@ -40199,7 +40315,7 @@ class SetDcdnDomainStagingConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the region.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -41525,15 +41641,15 @@ class UpdateDcdnDomainRequest(TeaModel):
         sources: str = None,
         top_level_domain: str = None,
     ):
-        # The top-level domain name.
+        # The accelerated domain name. You can specify only one domain name in each call.
         self.domain_name = domain_name
         self.owner_id = owner_id
-        # The ID of the request.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.security_token = security_token
-        # The accelerated domain name. You can specify only one domain name in each call.
+        # The information about the addresses of origin servers.
         self.sources = sources
-        # The operation that you want to perform. Set the value to **UpdateDcdnDomain**.
+        # The top-level domain.
         self.top_level_domain = top_level_domain
 
     def validate(self):
@@ -41581,7 +41697,7 @@ class UpdateDcdnDomainResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The information about the addresses of origin servers.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

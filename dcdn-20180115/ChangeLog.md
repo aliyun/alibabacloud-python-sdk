@@ -1,3 +1,7 @@
+2024-04-11 Version: 2.4.0
+- Support API RefreshDcdnObjectCacheByCacheTag.
+
+
 2024-04-08 Version: 2.3.0
 - Support API BatchDeleteDcdnKv.
 - Support API BatchDeleteDcdnKvWithHighCapacity.
