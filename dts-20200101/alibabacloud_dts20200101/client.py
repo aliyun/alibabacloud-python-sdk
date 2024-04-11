@@ -12327,6 +12327,10 @@ class Client(OpenApiClient):
             query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.dts_job_id):
             query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.max_du):
+            query['MaxDu'] = request.max_du
+        if not UtilClient.is_unset(request.min_du):
+            query['MinDu'] = request.min_du
         if not UtilClient.is_unset(request.period):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.region_id):
@@ -12375,6 +12379,10 @@ class Client(OpenApiClient):
             query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.dts_job_id):
             query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.max_du):
+            query['MaxDu'] = request.max_du
+        if not UtilClient.is_unset(request.min_du):
+            query['MinDu'] = request.min_du
         if not UtilClient.is_unset(request.period):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.region_id):

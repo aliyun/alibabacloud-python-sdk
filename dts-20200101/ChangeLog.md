@@ -1,3 +1,8 @@
+2024-04-11 Version: 5.5.4
+- Update API TransferPayType: add param MaxDu.
+- Update API TransferPayType: add param MinDu.
+
+
 2024-03-29 Version: 5.5.3
 - Update API ConfigureDtsJob: add param MaxDu.
 - Update API ConfigureDtsJob: add param MinDu.

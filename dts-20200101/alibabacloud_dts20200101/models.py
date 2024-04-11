@@ -41394,6 +41394,8 @@ class TransferPayTypeRequest(TeaModel):
         buy_count: str = None,
         charge_type: str = None,
         dts_job_id: str = None,
+        max_du: int = None,
+        min_du: int = None,
         period: str = None,
         region_id: str = None,
         resource_group_id: str = None,
@@ -41416,6 +41418,8 @@ class TransferPayTypeRequest(TeaModel):
         self.charge_type = charge_type
         # The ID of the data synchronization or change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
         self.dts_job_id = dts_job_id
+        self.max_du = max_du
+        self.min_du = min_du
         # The billing cycle of the subscription instance. Valid values:
         # 
         # *   **Year**\
@@ -41442,6 +41446,10 @@ class TransferPayTypeRequest(TeaModel):
             result['ChargeType'] = self.charge_type
         if self.dts_job_id is not None:
             result['DtsJobId'] = self.dts_job_id
+        if self.max_du is not None:
+            result['MaxDu'] = self.max_du
+        if self.min_du is not None:
+            result['MinDu'] = self.min_du
         if self.period is not None:
             result['Period'] = self.period
         if self.region_id is not None:
@@ -41458,6 +41466,10 @@ class TransferPayTypeRequest(TeaModel):
             self.charge_type = m.get('ChargeType')
         if m.get('DtsJobId') is not None:
             self.dts_job_id = m.get('DtsJobId')
+        if m.get('MaxDu') is not None:
+            self.max_du = m.get('MaxDu')
+        if m.get('MinDu') is not None:
+            self.min_du = m.get('MinDu')
         if m.get('Period') is not None:
             self.period = m.get('Period')
         if m.get('RegionId') is not None:
