@@ -1,3 +1,11 @@
+2024-04-11 Version: 2.6.5
+- Update API CreatePostPayOrder: add param PaidType.
+- Update API CreatePostPayOrder: add param ServerlessConfig.
+- Update API CreatePostPayOrder: update param DiskSize.
+- Update API CreatePostPayOrder: update param DiskType.
+- Update API GetInstanceList: update response param.
+
+
 2024-04-03 Version: 2.6.4
 - Update API CreateAcl: add param AclOperationTypes.
 - Update API CreateAcl: add param AclPermissionType.

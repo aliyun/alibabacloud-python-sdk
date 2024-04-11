@@ -391,17 +391,21 @@ class Client(OpenApiClient):
 
     def create_post_pay_order_with_options(
         self,
-        request: alikafka_20190916_models.CreatePostPayOrderRequest,
+        tmp_req: alikafka_20190916_models.CreatePostPayOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.CreatePostPayOrderResponse:
         """
         Before you call this operation, make sure that you understand the billing method and pricing of pay-as-you-go Message Queue for Apache Kafka instances. For more information, see [Billing](~~84737~~).
         
-        @param request: CreatePostPayOrderRequest
+        @param tmp_req: CreatePostPayOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreatePostPayOrderResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = alikafka_20190916_models.CreatePostPayOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.serverless_config):
+            request.serverless_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.serverless_config, 'ServerlessConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.deploy_type):
             query['DeployType'] = request.deploy_type
@@ -415,12 +419,16 @@ class Client(OpenApiClient):
             query['IoMax'] = request.io_max
         if not UtilClient.is_unset(request.io_max_spec):
             query['IoMaxSpec'] = request.io_max_spec
+        if not UtilClient.is_unset(request.paid_type):
+            query['PaidType'] = request.paid_type
         if not UtilClient.is_unset(request.partition_num):
             query['PartitionNum'] = request.partition_num
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.serverless_config_shrink):
+            query['ServerlessConfig'] = request.serverless_config_shrink
         if not UtilClient.is_unset(request.spec_type):
             query['SpecType'] = request.spec_type
         if not UtilClient.is_unset(request.tag):
@@ -448,17 +456,21 @@ class Client(OpenApiClient):
 
     async def create_post_pay_order_with_options_async(
         self,
-        request: alikafka_20190916_models.CreatePostPayOrderRequest,
+        tmp_req: alikafka_20190916_models.CreatePostPayOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.CreatePostPayOrderResponse:
         """
         Before you call this operation, make sure that you understand the billing method and pricing of pay-as-you-go Message Queue for Apache Kafka instances. For more information, see [Billing](~~84737~~).
         
-        @param request: CreatePostPayOrderRequest
+        @param tmp_req: CreatePostPayOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreatePostPayOrderResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = alikafka_20190916_models.CreatePostPayOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.serverless_config):
+            request.serverless_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.serverless_config, 'ServerlessConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.deploy_type):
             query['DeployType'] = request.deploy_type
@@ -472,12 +484,16 @@ class Client(OpenApiClient):
             query['IoMax'] = request.io_max
         if not UtilClient.is_unset(request.io_max_spec):
             query['IoMaxSpec'] = request.io_max_spec
+        if not UtilClient.is_unset(request.paid_type):
+            query['PaidType'] = request.paid_type
         if not UtilClient.is_unset(request.partition_num):
             query['PartitionNum'] = request.partition_num
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.serverless_config_shrink):
+            query['ServerlessConfig'] = request.serverless_config_shrink
         if not UtilClient.is_unset(request.spec_type):
             query['SpecType'] = request.spec_type
         if not UtilClient.is_unset(request.tag):
