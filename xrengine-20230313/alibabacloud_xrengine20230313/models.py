@@ -19971,12 +19971,14 @@ class QueryMotionShopVideoDetectResultResponseBodyDataDetectResult(TeaModel):
         box: List[float] = None,
         code: int = None,
         cover_url: str = None,
+        human_boxes: List[List[float]] = None,
         message: str = None,
         selected_frame_index: int = None,
     ):
         self.box = box
         self.code = code
         self.cover_url = cover_url
+        self.human_boxes = human_boxes
         self.message = message
         self.selected_frame_index = selected_frame_index
 
@@ -19995,6 +19997,8 @@ class QueryMotionShopVideoDetectResultResponseBodyDataDetectResult(TeaModel):
             result['Code'] = self.code
         if self.cover_url is not None:
             result['CoverUrl'] = self.cover_url
+        if self.human_boxes is not None:
+            result['HumanBoxes'] = self.human_boxes
         if self.message is not None:
             result['Message'] = self.message
         if self.selected_frame_index is not None:
@@ -20009,6 +20013,8 @@ class QueryMotionShopVideoDetectResultResponseBodyDataDetectResult(TeaModel):
             self.code = m.get('Code')
         if m.get('CoverUrl') is not None:
             self.cover_url = m.get('CoverUrl')
+        if m.get('HumanBoxes') is not None:
+            self.human_boxes = m.get('HumanBoxes')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('SelectedFrameIndex') is not None:
@@ -20287,11 +20293,13 @@ class SubmitMotionShopTaskRequest(TeaModel):
         self,
         avatar_id: str = None,
         jwt_token: str = None,
+        selected_box_index: int = None,
         title: str = None,
         video_id: str = None,
     ):
         self.avatar_id = avatar_id
         self.jwt_token = jwt_token
+        self.selected_box_index = selected_box_index
         self.title = title
         self.video_id = video_id
 
@@ -20308,6 +20316,8 @@ class SubmitMotionShopTaskRequest(TeaModel):
             result['AvatarId'] = self.avatar_id
         if self.jwt_token is not None:
             result['JwtToken'] = self.jwt_token
+        if self.selected_box_index is not None:
+            result['SelectedBoxIndex'] = self.selected_box_index
         if self.title is not None:
             result['Title'] = self.title
         if self.video_id is not None:
@@ -20320,6 +20330,8 @@ class SubmitMotionShopTaskRequest(TeaModel):
             self.avatar_id = m.get('AvatarId')
         if m.get('JwtToken') is not None:
             self.jwt_token = m.get('JwtToken')
+        if m.get('SelectedBoxIndex') is not None:
+            self.selected_box_index = m.get('SelectedBoxIndex')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         if m.get('VideoId') is not None:

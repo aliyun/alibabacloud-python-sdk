@@ -5018,6 +5018,8 @@ class Client(OpenApiClient):
             body['AvatarId'] = request.avatar_id
         if not UtilClient.is_unset(request.jwt_token):
             body['JwtToken'] = request.jwt_token
+        if not UtilClient.is_unset(request.selected_box_index):
+            body['SelectedBoxIndex'] = request.selected_box_index
         if not UtilClient.is_unset(request.title):
             body['Title'] = request.title
         if not UtilClient.is_unset(request.video_id):
@@ -5052,6 +5054,8 @@ class Client(OpenApiClient):
             body['AvatarId'] = request.avatar_id
         if not UtilClient.is_unset(request.jwt_token):
             body['JwtToken'] = request.jwt_token
+        if not UtilClient.is_unset(request.selected_box_index):
+            body['SelectedBoxIndex'] = request.selected_box_index
         if not UtilClient.is_unset(request.title):
             body['Title'] = request.title
         if not UtilClient.is_unset(request.video_id):

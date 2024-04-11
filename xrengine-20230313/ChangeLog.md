@@ -1,3 +1,8 @@
+2024-04-11 Version: 2.9.3
+- Update API QueryMotionShopVideoDetectResult: update response param.
+- Update API SubmitMotionShopTask: add param SelectedBoxIndex.
+
+
 2024-03-26 Version: 2.9.2
 - Update API CreateLivePortraitProject: add param CustomParams.
 - Update API CreateLivePortraitProject: update param LightModel.
