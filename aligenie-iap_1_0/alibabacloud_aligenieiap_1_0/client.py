@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
+from typing import Dict
 from Tea.core import TeaCore
 
-from alibabacloud_gateway_spi.client import Client as SPIClient
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
-from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_util.client import Client as UtilClient
+from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_aligenieiap_1_0 import models as ali_genieiap__1__0_models
 from alibabacloud_tea_util import models as util_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
@@ -16,19 +16,30 @@ class Client(OpenApiClient):
     """
     *\
     """
-    _client: SPIClient = None
-
     def __init__(
         self, 
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._product_id = 'AliGenie'
-        self._client = GatewayClientClient()
-        self._spi = self._client
         self._endpoint_rule = ''
-        if UtilClient.empty(self._endpoint):
-            self._endpoint = 'openapi.aligenie.com/v1.0/iap'
+        self.check_config(config)
+        self._endpoint = self.get_endpoint('aligenie', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
+
+    def get_endpoint(
+        self,
+        product_id: str,
+        region_id: str,
+        endpoint_rule: str,
+        network: str,
+        suffix: str,
+        endpoint_map: Dict[str, str],
+        endpoint: str,
+    ) -> str:
+        if not UtilClient.empty(endpoint):
+            return endpoint
+        if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
+            return endpoint_map.get(region_id)
+        return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
     def app_use_time_report_with_options(
         self,
@@ -74,16 +85,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.AppUseTimeReportResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.AppUseTimeReportResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.AppUseTimeReportResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def app_use_time_report_with_options_async(
         self,
@@ -129,16 +134,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.AppUseTimeReportResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.AppUseTimeReportResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.AppUseTimeReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def app_use_time_report(
         self,
@@ -200,16 +199,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.CreateReminderResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.CreateReminderResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.CreateReminderResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_reminder_with_options_async(
         self,
@@ -255,16 +248,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.CreateReminderResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.CreateReminderResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.CreateReminderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_reminder(
         self,
@@ -326,16 +313,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.DeleteReminderResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.DeleteReminderResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.DeleteReminderResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_reminder_with_options_async(
         self,
@@ -381,16 +362,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.DeleteReminderResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.DeleteReminderResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.DeleteReminderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_reminder(
         self,
@@ -452,16 +427,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.GetAccountForAppResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.GetAccountForAppResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.GetAccountForAppResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_account_for_app_with_options_async(
         self,
@@ -507,16 +476,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.GetAccountForAppResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.GetAccountForAppResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.GetAccountForAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_account_for_app(
         self,
@@ -578,16 +541,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.GetBusAppConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.GetBusAppConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.GetBusAppConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_bus_app_config_with_options_async(
         self,
@@ -633,16 +590,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.GetBusAppConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.GetBusAppConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.GetBusAppConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_bus_app_config(
         self,
@@ -700,16 +651,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.GetPhoneNumberResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.GetPhoneNumberResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.GetPhoneNumberResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_phone_number_with_options_async(
         self,
@@ -751,16 +696,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.GetPhoneNumberResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.GetPhoneNumberResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.GetPhoneNumberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_phone_number(
         self,
@@ -822,16 +761,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.GetReminderResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.GetReminderResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.GetReminderResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_reminder_with_options_async(
         self,
@@ -877,16 +810,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.GetReminderResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.GetReminderResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.GetReminderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_reminder(
         self,
@@ -948,16 +875,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.ListRemindersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.ListRemindersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.ListRemindersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_reminders_with_options_async(
         self,
@@ -1003,16 +924,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.ListRemindersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.ListRemindersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.ListRemindersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_reminders(
         self,
@@ -1074,16 +989,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.PullCashierResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.PullCashierResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.PullCashierResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def pull_cashier_with_options_async(
         self,
@@ -1129,16 +1038,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.PullCashierResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.PullCashierResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.PullCashierResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def pull_cashier(
         self,
@@ -1196,16 +1099,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='none'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.PushNotificationsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.PushNotificationsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.PushNotificationsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def push_notifications_with_options_async(
         self,
@@ -1247,16 +1144,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='none'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.PushNotificationsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.PushNotificationsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.PushNotificationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def push_notifications(
         self,
@@ -1322,16 +1213,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='none'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.SendNotificationsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.SendNotificationsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.SendNotificationsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def send_notifications_with_options_async(
         self,
@@ -1381,16 +1266,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='none'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.SendNotificationsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.SendNotificationsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.SendNotificationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def send_notifications(
         self,
@@ -1452,16 +1331,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.UpdateReminderResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.UpdateReminderResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.UpdateReminderResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_reminder_with_options_async(
         self,
@@ -1507,16 +1380,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.UpdateReminderResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.UpdateReminderResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.UpdateReminderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_reminder(
         self,
@@ -1578,16 +1445,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.VideoAppReportResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.VideoAppReportResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.VideoAppReportResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def video_app_report_with_options_async(
         self,
@@ -1633,16 +1494,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.VideoAppReportResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.VideoAppReportResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.VideoAppReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def video_app_report(
         self,
@@ -1696,16 +1551,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='none'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.WakeUpAppResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.WakeUpAppResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.WakeUpAppResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def wake_up_app_with_options_async(
         self,
@@ -1743,16 +1592,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='none'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.WakeUpAppResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ali_genieiap__1__0_models.WakeUpAppResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.WakeUpAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def wake_up_app(
         self,

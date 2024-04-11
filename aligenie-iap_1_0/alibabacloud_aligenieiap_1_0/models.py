@@ -1799,10 +1799,12 @@ class GetBusAppConfigShrinkRequest(TeaModel):
 class GetBusAppConfigResponseBodyRetValue(TeaModel):
     def __init__(
         self,
+        cashier: str = None,
         shopping_bar: str = None,
         shopping_window: str = None,
         vip_label: str = None,
     ):
+        self.cashier = cashier
         self.shopping_bar = shopping_bar
         self.shopping_window = shopping_window
         self.vip_label = vip_label
@@ -1816,6 +1818,8 @@ class GetBusAppConfigResponseBodyRetValue(TeaModel):
             return _map
 
         result = dict()
+        if self.cashier is not None:
+            result['Cashier'] = self.cashier
         if self.shopping_bar is not None:
             result['ShoppingBar'] = self.shopping_bar
         if self.shopping_window is not None:
@@ -1826,6 +1830,8 @@ class GetBusAppConfigResponseBodyRetValue(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Cashier') is not None:
+            self.cashier = m.get('Cashier')
         if m.get('ShoppingBar') is not None:
             self.shopping_bar = m.get('ShoppingBar')
         if m.get('ShoppingWindow') is not None:

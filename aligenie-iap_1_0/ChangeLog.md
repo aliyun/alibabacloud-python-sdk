@@ -1,3 +1,7 @@
+2024-04-11 Version: 1.1.1
+- Update API GetBusAppConfig: update response param.
+
+
 2024-03-29 Version: 1.1.0
 - Support API GetBusAppConfig.
 
