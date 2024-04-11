@@ -1,3 +1,6 @@
+2024-04-11 Version: 6.4.1
+- Generated python 2019-05-31 for mse.
+
 2024-04-11 Version: 6.4.0
 - Support API CreateGatewayCircuitBreakerRule.
 - Support API CreateGatewayFlowRule.
