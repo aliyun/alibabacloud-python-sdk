@@ -96,9 +96,6 @@ class CancelArtifactBuildTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -224,9 +221,6 @@ class CancelRepoBuildRecordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -263,9 +257,11 @@ class ChangeResourceGroupRequest(TeaModel):
         resource_id: str = None,
         resource_region_id: str = None,
     ):
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # Id of the request
         self.resource_id = resource_id
+        # The region ID of the resource group.
         self.resource_region_id = resource_region_id
 
     def validate(self):
@@ -301,6 +297,7 @@ class ChangeResourceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -335,9 +332,6 @@ class ChangeResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -376,10 +370,21 @@ class CreateArtifactBuildRuleRequest(TeaModel):
         scope_id: str = None,
         scope_type: str = None,
     ):
+        # The type of the artifact.
+        # 
+        # *   `ACCELERATED_IMAGE`: accelerated images.
         self.artifact_type = artifact_type
+        # The instance ID.
         self.instance_id = instance_id
+        # Additional parameters.
         self.parameters = parameters
+        # The ID of the effective range of the rule.
+        # 
+        # *   Set the value to the ID of the image repository.
         self.scope_id = scope_id
+        # The effective range of the rule. Valid values:
+        # 
+        # *   `REPOSITORY`
         self.scope_type = scope_type
 
     def validate(self):
@@ -427,10 +432,21 @@ class CreateArtifactBuildRuleShrinkRequest(TeaModel):
         scope_id: str = None,
         scope_type: str = None,
     ):
+        # The type of the artifact.
+        # 
+        # *   `ACCELERATED_IMAGE`: accelerated images.
         self.artifact_type = artifact_type
+        # The instance ID.
         self.instance_id = instance_id
+        # Additional parameters.
         self.parameters_shrink = parameters_shrink
+        # The ID of the effective range of the rule.
+        # 
+        # *   Set the value to the ID of the image repository.
         self.scope_id = scope_id
+        # The effective range of the rule. Valid values:
+        # 
+        # *   `REPOSITORY`
         self.scope_type = scope_type
 
     def validate(self):
@@ -477,9 +493,13 @@ class CreateArtifactBuildRuleResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The ID of the accelerated image building rule.
         self.build_rule_id = build_rule_id
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -526,9 +546,6 @@ class CreateArtifactBuildRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -654,9 +671,6 @@ class CreateBuildRecordByRecordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -789,9 +803,6 @@ class CreateBuildRecordByRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -952,9 +963,6 @@ class CreateChainResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1097,9 +1105,6 @@ class CreateChartNamespaceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1254,9 +1259,6 @@ class CreateChartRepositoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1402,9 +1404,6 @@ class CreateInstanceEndpointAclPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1443,10 +1442,23 @@ class CreateInstanceVpcEndpointLinkedVpcRequest(TeaModel):
         vpc_id: str = None,
         vswitch_id: str = None,
     ):
+        # Specifies whether to automatically create Alibaba Cloud DNS PrivateZone records. Valid values:
+        # 
+        # >  If you enable automatic creation of PrivateZone records, a PrivateZone record is automatically created when you associate a VPC with the instance.
+        # 
+        # *   `true`
+        # *   `false`
         self.enable_create_dnsrecord_in_pvzt = enable_create_dnsrecord_in_pvzt
+        # The instance ID.
         self.instance_id = instance_id
+        # The name of the module that you want to access. Valid values:
+        # 
+        # *   `Registry`: image repositories.
+        # *   `Chart`: Helm charts.
         self.module_name = module_name
+        # The VPC ID.
         self.vpc_id = vpc_id
+        # The ID of the vSwitch that is associated with the specified VPC.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -1492,8 +1504,14 @@ class CreateInstanceVpcEndpointLinkedVpcResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1536,9 +1554,6 @@ class CreateInstanceVpcEndpointLinkedVpcResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1674,9 +1689,6 @@ class CreateNamespaceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1865,9 +1877,6 @@ class CreateRepoBuildRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2037,9 +2046,6 @@ class CreateRepoSourceCodeRepoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2219,9 +2225,6 @@ class CreateRepoSyncRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2389,9 +2392,6 @@ class CreateRepoSyncTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2534,9 +2534,6 @@ class CreateRepoSyncTaskByRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2676,9 +2673,6 @@ class CreateRepoTagResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2824,9 +2818,6 @@ class CreateRepoTagScanTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2991,9 +2982,6 @@ class CreateRepoTriggerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3160,9 +3148,6 @@ class CreateRepositoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3281,9 +3266,6 @@ class DeleteChainResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3405,9 +3387,6 @@ class DeleteChartNamespaceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3547,9 +3526,6 @@ class DeleteChartReleaseResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3678,9 +3654,6 @@ class DeleteChartRepositoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3792,9 +3765,6 @@ class DeleteEventCenterRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3933,9 +3903,6 @@ class DeleteInstanceEndpointAclPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4074,9 +4041,6 @@ class DeleteInstanceVpcEndpointLinkedVpcResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4195,9 +4159,6 @@ class DeleteNamespaceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4323,9 +4284,6 @@ class DeleteRepoBuildRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4444,9 +4402,6 @@ class DeleteRepoSyncRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4572,9 +4527,6 @@ class DeleteRepoTagResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4703,9 +4655,6 @@ class DeleteRepoTriggerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4747,7 +4696,9 @@ class DeleteRepositoryRequest(TeaModel):
         self.instance_id = instance_id
         # The ID of the image repository.
         self.repo_id = repo_id
+        # The name of the repository.
         self.repo_name = repo_name
+        # The name of the namespace to which the repository belongs.
         self.repo_namespace_name = repo_namespace_name
 
     def validate(self):
@@ -4789,14 +4740,14 @@ class DeleteRepositoryResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
-        # The return value.
+        # Return values
         self.code = code
         # Indicates whether the request is successful. Valid values:
         # 
         # *   `true`: The request is successful.
         # *   `false`: The request fails.
         self.is_success = is_success
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4839,9 +4790,6 @@ class DeleteRepositoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4922,6 +4870,33 @@ class GetArtifactBuildRuleRequest(TeaModel):
         return self
 
 
+class GetArtifactBuildRuleResponseBodyParameters(TeaModel):
+    def __init__(
+        self,
+        image_index_only: bool = None,
+    ):
+        self.image_index_only = image_index_only
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_index_only is not None:
+            result['ImageIndexOnly'] = self.image_index_only
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageIndexOnly') is not None:
+            self.image_index_only = m.get('ImageIndexOnly')
+        return self
+
+
 class GetArtifactBuildRuleResponseBody(TeaModel):
     def __init__(
         self,
@@ -4929,6 +4904,7 @@ class GetArtifactBuildRuleResponseBody(TeaModel):
         build_rule_id: str = None,
         code: str = None,
         is_success: bool = None,
+        parameters: GetArtifactBuildRuleResponseBodyParameters = None,
         request_id: str = None,
         scope_id: str = None,
         scope_type: str = None,
@@ -4937,12 +4913,14 @@ class GetArtifactBuildRuleResponseBody(TeaModel):
         self.build_rule_id = build_rule_id
         self.code = code
         self.is_success = is_success
+        self.parameters = parameters
         self.request_id = request_id
         self.scope_id = scope_id
         self.scope_type = scope_type
 
     def validate(self):
-        pass
+        if self.parameters:
+            self.parameters.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4958,6 +4936,8 @@ class GetArtifactBuildRuleResponseBody(TeaModel):
             result['Code'] = self.code
         if self.is_success is not None:
             result['IsSuccess'] = self.is_success
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.scope_id is not None:
@@ -4976,6 +4956,9 @@ class GetArtifactBuildRuleResponseBody(TeaModel):
             self.code = m.get('Code')
         if m.get('IsSuccess') is not None:
             self.is_success = m.get('IsSuccess')
+        if m.get('Parameters') is not None:
+            temp_model = GetArtifactBuildRuleResponseBodyParameters()
+            self.parameters = temp_model.from_map(m['Parameters'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('ScopeId') is not None:
@@ -4997,9 +4980,6 @@ class GetArtifactBuildRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5270,9 +5250,6 @@ class GetArtifactBuildTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5412,9 +5389,6 @@ class GetAuthorizationTokenResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5901,9 +5875,6 @@ class GetChainResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6082,9 +6053,6 @@ class GetChartNamespaceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6288,9 +6256,6 @@ class GetChartRepositoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6347,6 +6312,39 @@ class GetInstanceRequest(TeaModel):
         return self
 
 
+class GetInstanceResponseBodyTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
 class GetInstanceResponseBody(TeaModel):
     def __init__(
         self,
@@ -6361,6 +6359,7 @@ class GetInstanceResponseBody(TeaModel):
         modified_time: int = None,
         request_id: str = None,
         resource_group_id: str = None,
+        tags: List[GetInstanceResponseBodyTags] = None,
     ):
         self.code = code
         self.create_time = create_time
@@ -6373,9 +6372,13 @@ class GetInstanceResponseBody(TeaModel):
         self.modified_time = modified_time
         self.request_id = request_id
         self.resource_group_id = resource_group_id
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6405,6 +6408,10 @@ class GetInstanceResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -6431,6 +6438,11 @@ class GetInstanceResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetInstanceResponseBodyTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -6446,9 +6458,6 @@ class GetInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6535,9 +6544,6 @@ class GetInstanceCountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6791,9 +6797,6 @@ class GetInstanceEndpointResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6964,9 +6967,6 @@ class GetInstanceUsageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7187,9 +7187,6 @@ class GetInstanceVpcEndpointResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7366,9 +7363,6 @@ class GetNamespaceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7566,9 +7560,6 @@ class GetRepoBuildRecordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7701,9 +7692,6 @@ class GetRepoBuildRecordStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7890,9 +7878,6 @@ class GetRepoSourceCodeRepoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8287,9 +8272,6 @@ class GetRepoSyncTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8466,9 +8448,6 @@ class GetRepoTagResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8675,9 +8654,6 @@ class GetRepoTagLayersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9130,9 +9106,6 @@ class GetRepoTagManifestResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9276,9 +9249,6 @@ class GetRepoTagScanStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9455,9 +9425,6 @@ class GetRepoTagScanSummaryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9689,9 +9656,6 @@ class GetRepositoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9884,9 +9848,6 @@ class ListArtifactBuildTaskLogResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10146,9 +10107,6 @@ class ListChainResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10462,9 +10420,6 @@ class ListChainInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10718,9 +10673,6 @@ class ListChartNamespaceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10973,9 +10925,6 @@ class ListChartReleaseResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11259,9 +11208,6 @@ class ListChartRepositoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11298,6 +11244,8 @@ class ListEventCenterRecordRequest(TeaModel):
         instance_id: str = None,
         page_no: int = None,
         page_size: int = None,
+        repo_name: str = None,
+        repo_namespace_name: str = None,
         rule_id: str = None,
     ):
         # The type of the event. Valid values:
@@ -11314,6 +11262,8 @@ class ListEventCenterRecordRequest(TeaModel):
         self.page_no = page_no
         # The number of entries to return on each page.
         self.page_size = page_size
+        self.repo_name = repo_name
+        self.repo_namespace_name = repo_namespace_name
         # The ID of the event notification rule.
         self.rule_id = rule_id
 
@@ -11334,6 +11284,10 @@ class ListEventCenterRecordRequest(TeaModel):
             result['PageNo'] = self.page_no
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.repo_name is not None:
+            result['RepoName'] = self.repo_name
+        if self.repo_namespace_name is not None:
+            result['RepoNamespaceName'] = self.repo_namespace_name
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
         return result
@@ -11348,6 +11302,10 @@ class ListEventCenterRecordRequest(TeaModel):
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RepoName') is not None:
+            self.repo_name = m.get('RepoName')
+        if m.get('RepoNamespaceName') is not None:
+            self.repo_namespace_name = m.get('RepoNamespaceName')
         if m.get('RuleId') is not None:
             self.rule_id = m.get('RuleId')
         return self
@@ -11559,9 +11517,6 @@ class ListEventCenterRecordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11723,9 +11678,6 @@ class ListEventCenterRuleNameResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11764,10 +11716,24 @@ class ListInstanceRequest(TeaModel):
         page_size: int = None,
         resource_group_id: str = None,
     ):
+        # The instance name.
         self.instance_name = instance_name
+        # The status of the instance. Valid values:
+        # 
+        # *   `PENDING`: The instance is being initialized.
+        # *   `INIT_ERROR`: The initialization of the instance fails.
+        # *   `STARTING`: The instance is being started.
+        # *   `RUNNING`: The instance is running.
+        # *   `STOPPING`: The instance is being stopped.
+        # *   `STOPPED`: The instance is stopped.
+        # *   `DELETING`: The instance is being deleted.
+        # *   `DELETED`: The instance is deleted.
         self.instance_status = instance_status
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -11806,6 +11772,39 @@ class ListInstanceRequest(TeaModel):
         return self
 
 
+class ListInstanceResponseBodyInstancesTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
 class ListInstanceResponseBodyInstances(TeaModel):
     def __init__(
         self,
@@ -11818,19 +11817,33 @@ class ListInstanceResponseBodyInstances(TeaModel):
         modified_time: str = None,
         region_id: str = None,
         resource_group_id: str = None,
+        tags: List[ListInstanceResponseBodyInstancesTags] = None,
     ):
+        # The time when the instance was created.
         self.create_time = create_time
+        # The instance ID.
         self.instance_id = instance_id
+        # The issue occurs on the instance.
         self.instance_issue = instance_issue
+        # The name of the instance.
         self.instance_name = instance_name
+        # The edition of the Container Registry Enterprise Edition instance.
         self.instance_specification = instance_specification
+        # The status of the instance.
         self.instance_status = instance_status
+        # The time when the instance was last modified.
         self.modified_time = modified_time
+        # The region ID of the instance.
         self.region_id = region_id
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -11856,6 +11869,10 @@ class ListInstanceResponseBodyInstances(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -11878,6 +11895,11 @@ class ListInstanceResponseBodyInstances(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListInstanceResponseBodyInstancesTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -11892,12 +11914,19 @@ class ListInstanceResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The return value.
         self.code = code
+        # The queried instances.
         self.instances = instances
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 30.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -11964,9 +11993,6 @@ class ListInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12001,6 +12027,7 @@ class ListInstanceEndpointRequest(TeaModel):
         self,
         instance_id: str = None,
         module_name: str = None,
+        summary: bool = None,
     ):
         # The ID of the instance.
         self.instance_id = instance_id
@@ -12009,6 +12036,7 @@ class ListInstanceEndpointRequest(TeaModel):
         # *   `Registry`: the image repository.
         # *   `Chart`: a Helm chart.
         self.module_name = module_name
+        self.summary = summary
 
     def validate(self):
         pass
@@ -12023,6 +12051,8 @@ class ListInstanceEndpointRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.module_name is not None:
             result['ModuleName'] = self.module_name
+        if self.summary is not None:
+            result['Summary'] = self.summary
         return result
 
     def from_map(self, m: dict = None):
@@ -12031,6 +12061,8 @@ class ListInstanceEndpointRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('ModuleName') is not None:
             self.module_name = m.get('ModuleName')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
         return self
 
 
@@ -12290,9 +12322,6 @@ class ListInstanceEndpointResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12457,9 +12486,6 @@ class ListInstanceRegionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12691,9 +12717,6 @@ class ListNamespaceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12972,9 +12995,6 @@ class ListRepoBuildRecordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13185,9 +13205,6 @@ class ListRepoBuildRecordLogResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13437,9 +13454,6 @@ class ListRepoBuildRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13783,9 +13797,6 @@ class ListRepoSyncRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14161,9 +14172,6 @@ class ListRepoSyncTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14402,9 +14410,6 @@ class ListRepoTagResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14748,9 +14753,6 @@ class ListRepoTagScanResultResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14957,9 +14959,6 @@ class ListRepoTriggerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15222,9 +15221,6 @@ class ListRepositoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15250,6 +15246,803 @@ class ListRepositoryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListRepositoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListScanBaselineByTaskRequest(TeaModel):
+    def __init__(
+        self,
+        digest: str = None,
+        instance_id: str = None,
+        level: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        repo_id: str = None,
+        scan_task_id: str = None,
+        tag: str = None,
+    ):
+        self.digest = digest
+        self.instance_id = instance_id
+        self.level = level
+        self.page_no = page_no
+        self.page_size = page_size
+        self.repo_id = repo_id
+        self.scan_task_id = scan_task_id
+        self.tag = tag
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.digest is not None:
+            result['Digest'] = self.digest
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.repo_id is not None:
+            result['RepoId'] = self.repo_id
+        if self.scan_task_id is not None:
+            result['ScanTaskId'] = self.scan_task_id
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Digest') is not None:
+            self.digest = m.get('Digest')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RepoId') is not None:
+            self.repo_id = m.get('RepoId')
+        if m.get('ScanTaskId') is not None:
+            self.scan_task_id = m.get('ScanTaskId')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        return self
+
+
+class ListScanBaselineByTaskResponseBodyScanBaselines(TeaModel):
+    def __init__(
+        self,
+        baseline_class_alias: str = None,
+        baseline_detail_advice: str = None,
+        baseline_detail_description: str = None,
+        baseline_detail_prompt: str = None,
+        baseline_item_count: int = None,
+        baseline_name_alias: str = None,
+        baseline_name_key: str = None,
+        baseline_name_level: str = None,
+        create_time: int = None,
+        first_scan_time: int = None,
+        high_risk_item_count: int = None,
+        low_risk_item_count: int = None,
+        middle_risk_item_count: int = None,
+        scan_task_id: str = None,
+        update_time: int = None,
+    ):
+        self.baseline_class_alias = baseline_class_alias
+        self.baseline_detail_advice = baseline_detail_advice
+        self.baseline_detail_description = baseline_detail_description
+        self.baseline_detail_prompt = baseline_detail_prompt
+        self.baseline_item_count = baseline_item_count
+        self.baseline_name_alias = baseline_name_alias
+        self.baseline_name_key = baseline_name_key
+        self.baseline_name_level = baseline_name_level
+        self.create_time = create_time
+        self.first_scan_time = first_scan_time
+        self.high_risk_item_count = high_risk_item_count
+        self.low_risk_item_count = low_risk_item_count
+        self.middle_risk_item_count = middle_risk_item_count
+        self.scan_task_id = scan_task_id
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.baseline_class_alias is not None:
+            result['BaselineClassAlias'] = self.baseline_class_alias
+        if self.baseline_detail_advice is not None:
+            result['BaselineDetailAdvice'] = self.baseline_detail_advice
+        if self.baseline_detail_description is not None:
+            result['BaselineDetailDescription'] = self.baseline_detail_description
+        if self.baseline_detail_prompt is not None:
+            result['BaselineDetailPrompt'] = self.baseline_detail_prompt
+        if self.baseline_item_count is not None:
+            result['BaselineItemCount'] = self.baseline_item_count
+        if self.baseline_name_alias is not None:
+            result['BaselineNameAlias'] = self.baseline_name_alias
+        if self.baseline_name_key is not None:
+            result['BaselineNameKey'] = self.baseline_name_key
+        if self.baseline_name_level is not None:
+            result['BaselineNameLevel'] = self.baseline_name_level
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.first_scan_time is not None:
+            result['FirstScanTime'] = self.first_scan_time
+        if self.high_risk_item_count is not None:
+            result['HighRiskItemCount'] = self.high_risk_item_count
+        if self.low_risk_item_count is not None:
+            result['LowRiskItemCount'] = self.low_risk_item_count
+        if self.middle_risk_item_count is not None:
+            result['MiddleRiskItemCount'] = self.middle_risk_item_count
+        if self.scan_task_id is not None:
+            result['ScanTaskId'] = self.scan_task_id
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaselineClassAlias') is not None:
+            self.baseline_class_alias = m.get('BaselineClassAlias')
+        if m.get('BaselineDetailAdvice') is not None:
+            self.baseline_detail_advice = m.get('BaselineDetailAdvice')
+        if m.get('BaselineDetailDescription') is not None:
+            self.baseline_detail_description = m.get('BaselineDetailDescription')
+        if m.get('BaselineDetailPrompt') is not None:
+            self.baseline_detail_prompt = m.get('BaselineDetailPrompt')
+        if m.get('BaselineItemCount') is not None:
+            self.baseline_item_count = m.get('BaselineItemCount')
+        if m.get('BaselineNameAlias') is not None:
+            self.baseline_name_alias = m.get('BaselineNameAlias')
+        if m.get('BaselineNameKey') is not None:
+            self.baseline_name_key = m.get('BaselineNameKey')
+        if m.get('BaselineNameLevel') is not None:
+            self.baseline_name_level = m.get('BaselineNameLevel')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('FirstScanTime') is not None:
+            self.first_scan_time = m.get('FirstScanTime')
+        if m.get('HighRiskItemCount') is not None:
+            self.high_risk_item_count = m.get('HighRiskItemCount')
+        if m.get('LowRiskItemCount') is not None:
+            self.low_risk_item_count = m.get('LowRiskItemCount')
+        if m.get('MiddleRiskItemCount') is not None:
+            self.middle_risk_item_count = m.get('MiddleRiskItemCount')
+        if m.get('ScanTaskId') is not None:
+            self.scan_task_id = m.get('ScanTaskId')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListScanBaselineByTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        is_success: bool = None,
+        page_no: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        scan_baselines: List[ListScanBaselineByTaskResponseBodyScanBaselines] = None,
+        total_count: int = None,
+    ):
+        self.code = code
+        self.is_success = is_success
+        self.page_no = page_no
+        self.page_size = page_size
+        # Id of the request
+        self.request_id = request_id
+        self.scan_baselines = scan_baselines
+        self.total_count = total_count
+
+    def validate(self):
+        if self.scan_baselines:
+            for k in self.scan_baselines:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.is_success is not None:
+            result['IsSuccess'] = self.is_success
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ScanBaselines'] = []
+        if self.scan_baselines is not None:
+            for k in self.scan_baselines:
+                result['ScanBaselines'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('IsSuccess') is not None:
+            self.is_success = m.get('IsSuccess')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.scan_baselines = []
+        if m.get('ScanBaselines') is not None:
+            for k in m.get('ScanBaselines'):
+                temp_model = ListScanBaselineByTaskResponseBodyScanBaselines()
+                self.scan_baselines.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListScanBaselineByTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListScanBaselineByTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListScanBaselineByTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListScanMaliciousFileByTaskRequest(TeaModel):
+    def __init__(
+        self,
+        digest: str = None,
+        instance_id: str = None,
+        level: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        repo_id: str = None,
+        scan_task_id: str = None,
+        tag: str = None,
+    ):
+        self.digest = digest
+        self.instance_id = instance_id
+        self.level = level
+        self.page_no = page_no
+        self.page_size = page_size
+        self.repo_id = repo_id
+        self.scan_task_id = scan_task_id
+        self.tag = tag
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.digest is not None:
+            result['Digest'] = self.digest
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.repo_id is not None:
+            result['RepoId'] = self.repo_id
+        if self.scan_task_id is not None:
+            result['ScanTaskId'] = self.scan_task_id
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Digest') is not None:
+            self.digest = m.get('Digest')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RepoId') is not None:
+            self.repo_id = m.get('RepoId')
+        if m.get('ScanTaskId') is not None:
+            self.scan_task_id = m.get('ScanTaskId')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        return self
+
+
+class ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        file_path: str = None,
+        first_scan_time: int = None,
+        level: str = None,
+        malicious_md_5: str = None,
+        malicious_name: str = None,
+        scan_task_id: str = None,
+        update_time: int = None,
+    ):
+        self.create_time = create_time
+        self.file_path = file_path
+        self.first_scan_time = first_scan_time
+        self.level = level
+        self.malicious_md_5 = malicious_md_5
+        self.malicious_name = malicious_name
+        self.scan_task_id = scan_task_id
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.file_path is not None:
+            result['FilePath'] = self.file_path
+        if self.first_scan_time is not None:
+            result['FirstScanTime'] = self.first_scan_time
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.malicious_md_5 is not None:
+            result['MaliciousMd5'] = self.malicious_md_5
+        if self.malicious_name is not None:
+            result['MaliciousName'] = self.malicious_name
+        if self.scan_task_id is not None:
+            result['ScanTaskId'] = self.scan_task_id
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('FilePath') is not None:
+            self.file_path = m.get('FilePath')
+        if m.get('FirstScanTime') is not None:
+            self.first_scan_time = m.get('FirstScanTime')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('MaliciousMd5') is not None:
+            self.malicious_md_5 = m.get('MaliciousMd5')
+        if m.get('MaliciousName') is not None:
+            self.malicious_name = m.get('MaliciousName')
+        if m.get('ScanTaskId') is not None:
+            self.scan_task_id = m.get('ScanTaskId')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListScanMaliciousFileByTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        is_success: bool = None,
+        page_no: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        scan_malicious_files: List[ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles] = None,
+        total_count: int = None,
+    ):
+        self.code = code
+        self.is_success = is_success
+        self.page_no = page_no
+        self.page_size = page_size
+        self.request_id = request_id
+        self.scan_malicious_files = scan_malicious_files
+        self.total_count = total_count
+
+    def validate(self):
+        if self.scan_malicious_files:
+            for k in self.scan_malicious_files:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.is_success is not None:
+            result['IsSuccess'] = self.is_success
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ScanMaliciousFiles'] = []
+        if self.scan_malicious_files is not None:
+            for k in self.scan_malicious_files:
+                result['ScanMaliciousFiles'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('IsSuccess') is not None:
+            self.is_success = m.get('IsSuccess')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.scan_malicious_files = []
+        if m.get('ScanMaliciousFiles') is not None:
+            for k in m.get('ScanMaliciousFiles'):
+                temp_model = ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles()
+                self.scan_malicious_files.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListScanMaliciousFileByTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListScanMaliciousFileByTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListScanMaliciousFileByTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTagResourcesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListTagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag: List[ListTagResourcesRequestTag] = None,
+    ):
+        self.next_token = next_token
+        self.region_id = region_id
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListTagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_type: str = None,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class ListTagResourcesResponseBodyTagResources(TeaModel):
+    def __init__(
+        self,
+        tag_resource: List[ListTagResourcesResponseBodyTagResourcesTagResource] = None,
+    ):
+        self.tag_resource = tag_resource
+
+    def validate(self):
+        if self.tag_resource:
+            for k in self.tag_resource:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['TagResource'] = []
+        if self.tag_resource is not None:
+            for k in self.tag_resource:
+                result['TagResource'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag_resource = []
+        if m.get('TagResource') is not None:
+            for k in m.get('TagResource'):
+                temp_model = ListTagResourcesResponseBodyTagResourcesTagResource()
+                self.tag_resource.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        request_id: str = None,
+        tag_resources: ListTagResourcesResponseBodyTagResources = None,
+    ):
+        self.next_token = next_token
+        self.request_id = request_id
+        self.tag_resources = tag_resources
+
+    def validate(self):
+        if self.tag_resources:
+            self.tag_resources.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.tag_resources is not None:
+            result['TagResources'] = self.tag_resources.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TagResources') is not None:
+            temp_model = ListTagResourcesResponseBodyTagResources()
+            self.tag_resources = temp_model.from_map(m['TagResources'])
+        return self
+
+
+class ListTagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15346,9 +16139,6 @@ class ResetLoginPasswordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15374,6 +16164,279 @@ class ResetLoginPasswordResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ResetLoginPasswordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TagResourcesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class TagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag: List[TagResourcesRequestTag] = None,
+    ):
+        self.region_id = region_id
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = TagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class TagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class TagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UntagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        all: bool = None,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag_key: List[str] = None,
+    ):
+        self.all = all
+        self.region_id = region_id
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.tag_key = tag_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all is not None:
+            result['All'] = self.all
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        return self
+
+
+class UntagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UntagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UntagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UntagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15495,9 +16558,6 @@ class UpdateChainResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15639,9 +16699,6 @@ class UpdateChartNamespaceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15787,9 +16844,6 @@ class UpdateChartRepositoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16079,9 +17133,6 @@ class UpdateEventCenterRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16223,9 +17274,6 @@ class UpdateInstanceEndpointStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16361,9 +17409,6 @@ class UpdateNamespaceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16559,9 +17604,6 @@ class UpdateRepoBuildRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16738,9 +17780,6 @@ class UpdateRepoSourceCodeRepoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16900,9 +17939,6 @@ class UpdateRepoTriggerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17052,9 +18088,6 @@ class UpdateRepositoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
