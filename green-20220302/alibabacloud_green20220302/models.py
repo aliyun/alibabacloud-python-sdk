@@ -754,14 +754,16 @@ class DescribeImageResultExtResponseBodyDataPublicFigure(TeaModel):
         return self
 
 
-class DescribeImageResultExtResponseBodyDataTextInImage(TeaModel):
+class DescribeImageResultExtResponseBodyDataTextInImageCustomTexts(TeaModel):
     def __init__(
         self,
-        ocr_datas: List[str] = None,
-        risk_words: List[str] = None,
+        key_words: str = None,
+        lib_id: str = None,
+        lib_name: str = None,
     ):
-        self.ocr_datas = ocr_datas
-        self.risk_words = risk_words
+        self.key_words = key_words
+        self.lib_id = lib_id
+        self.lib_name = lib_name
 
     def validate(self):
         pass
@@ -772,6 +774,52 @@ class DescribeImageResultExtResponseBodyDataTextInImage(TeaModel):
             return _map
 
         result = dict()
+        if self.key_words is not None:
+            result['KeyWords'] = self.key_words
+        if self.lib_id is not None:
+            result['LibId'] = self.lib_id
+        if self.lib_name is not None:
+            result['LibName'] = self.lib_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('KeyWords') is not None:
+            self.key_words = m.get('KeyWords')
+        if m.get('LibId') is not None:
+            self.lib_id = m.get('LibId')
+        if m.get('LibName') is not None:
+            self.lib_name = m.get('LibName')
+        return self
+
+
+class DescribeImageResultExtResponseBodyDataTextInImage(TeaModel):
+    def __init__(
+        self,
+        custom_texts: List[DescribeImageResultExtResponseBodyDataTextInImageCustomTexts] = None,
+        ocr_datas: List[str] = None,
+        risk_words: List[str] = None,
+    ):
+        self.custom_texts = custom_texts
+        self.ocr_datas = ocr_datas
+        self.risk_words = risk_words
+
+    def validate(self):
+        if self.custom_texts:
+            for k in self.custom_texts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CustomTexts'] = []
+        if self.custom_texts is not None:
+            for k in self.custom_texts:
+                result['CustomTexts'].append(k.to_map() if k else None)
         if self.ocr_datas is not None:
             result['OcrDatas'] = self.ocr_datas
         if self.risk_words is not None:
@@ -780,6 +828,11 @@ class DescribeImageResultExtResponseBodyDataTextInImage(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.custom_texts = []
+        if m.get('CustomTexts') is not None:
+            for k in m.get('CustomTexts'):
+                temp_model = DescribeImageResultExtResponseBodyDataTextInImageCustomTexts()
+                self.custom_texts.append(temp_model.from_map(k))
         if m.get('OcrDatas') is not None:
             self.ocr_datas = m.get('OcrDatas')
         if m.get('RiskWords') is not None:

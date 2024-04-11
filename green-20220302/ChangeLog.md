@@ -1,3 +1,7 @@
+2024-04-11 Version: 2.2.3
+- Update API DescribeImageResultExt: update response param.
+
+
 2024-03-26 Version: 2.2.2
 - Update API VideoModeration: update response param.
 - Update API VideoModerationResult: update response param.
