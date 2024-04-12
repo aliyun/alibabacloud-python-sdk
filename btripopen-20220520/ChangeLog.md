@@ -1,3 +1,13 @@
+2024-04-12 Version: 2.7.0
+- Support API TravelStandardListQuery.
+- Support API TravelStandardQuery.
+- Update API ApplyAdd: update param external_traveler_standard.
+- Update API ApplyAdd: update param traveler_standard.
+- Update API ApplyModify: update param external_traveler_standard.
+- Update API ApplyModify: update param traveler_standard.
+- Update API ApplyQuery: update response param.
+
+
 2024-04-08 Version: 2.6.0
 - Support API MealOrderDetailQuery.
 - Support API MealOrderListQuery.

@@ -15995,6 +15995,206 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.TrainTicketScanQueryHeaders()
         return await self.train_ticket_scan_query_with_options_async(request, headers, runtime)
 
+    def travel_standard_list_query_with_options(
+        self,
+        request: btrip_open_20220520_models.TravelStandardListQueryRequest,
+        headers: btrip_open_20220520_models.TravelStandardListQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TravelStandardListQueryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_group):
+            query['from_group'] = request.from_group
+        if not UtilClient.is_unset(request.page_no):
+            query['page_no'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['page_size'] = request.page_size
+        if not UtilClient.is_unset(request.rule_name):
+            query['rule_name'] = request.rule_name
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TravelStandardListQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/travel-manage/v1/standards/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TravelStandardListQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def travel_standard_list_query_with_options_async(
+        self,
+        request: btrip_open_20220520_models.TravelStandardListQueryRequest,
+        headers: btrip_open_20220520_models.TravelStandardListQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TravelStandardListQueryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_group):
+            query['from_group'] = request.from_group
+        if not UtilClient.is_unset(request.page_no):
+            query['page_no'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['page_size'] = request.page_size
+        if not UtilClient.is_unset(request.rule_name):
+            query['rule_name'] = request.rule_name
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TravelStandardListQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/travel-manage/v1/standards/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TravelStandardListQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def travel_standard_list_query(
+        self,
+        request: btrip_open_20220520_models.TravelStandardListQueryRequest,
+    ) -> btrip_open_20220520_models.TravelStandardListQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TravelStandardListQueryHeaders()
+        return self.travel_standard_list_query_with_options(request, headers, runtime)
+
+    async def travel_standard_list_query_async(
+        self,
+        request: btrip_open_20220520_models.TravelStandardListQueryRequest,
+    ) -> btrip_open_20220520_models.TravelStandardListQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TravelStandardListQueryHeaders()
+        return await self.travel_standard_list_query_with_options_async(request, headers, runtime)
+
+    def travel_standard_query_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.TravelStandardQueryRequest,
+        headers: btrip_open_20220520_models.TravelStandardQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TravelStandardQueryResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.TravelStandardQueryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.service_type_list):
+            request.service_type_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.service_type_list, 'service_type_list', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.from_group):
+            query['from_group'] = request.from_group
+        if not UtilClient.is_unset(request.rule_code):
+            query['rule_code'] = request.rule_code
+        if not UtilClient.is_unset(request.service_type_list_shrink):
+            query['service_type_list'] = request.service_type_list_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TravelStandardQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/travel-manage/v1/standards/detail',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TravelStandardQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def travel_standard_query_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.TravelStandardQueryRequest,
+        headers: btrip_open_20220520_models.TravelStandardQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TravelStandardQueryResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.TravelStandardQueryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.service_type_list):
+            request.service_type_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.service_type_list, 'service_type_list', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.from_group):
+            query['from_group'] = request.from_group
+        if not UtilClient.is_unset(request.rule_code):
+            query['rule_code'] = request.rule_code
+        if not UtilClient.is_unset(request.service_type_list_shrink):
+            query['service_type_list'] = request.service_type_list_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TravelStandardQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/travel-manage/v1/standards/detail',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TravelStandardQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def travel_standard_query(
+        self,
+        request: btrip_open_20220520_models.TravelStandardQueryRequest,
+    ) -> btrip_open_20220520_models.TravelStandardQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TravelStandardQueryHeaders()
+        return self.travel_standard_query_with_options(request, headers, runtime)
+
+    async def travel_standard_query_async(
+        self,
+        request: btrip_open_20220520_models.TravelStandardQueryRequest,
+    ) -> btrip_open_20220520_models.TravelStandardQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TravelStandardQueryHeaders()
+        return await self.travel_standard_query_with_options_async(request, headers, runtime)
+
     def user_query_with_options(
         self,
         request: btrip_open_20220520_models.UserQueryRequest,
