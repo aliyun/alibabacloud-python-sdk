@@ -2647,6 +2647,8 @@ class Client(OpenApiClient):
             query['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.creator):
             query['Creator'] = request.creator
+        if not UtilClient.is_unset(request.option):
+            query['Option'] = request.option
         if not UtilClient.is_unset(request.resource):
             query['Resource'] = request.resource
         req = open_api_models.OpenApiRequest(
@@ -2683,6 +2685,8 @@ class Client(OpenApiClient):
             query['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.creator):
             query['Creator'] = request.creator
+        if not UtilClient.is_unset(request.option):
+            query['Option'] = request.option
         if not UtilClient.is_unset(request.resource):
             query['Resource'] = request.resource
         req = open_api_models.OpenApiRequest(
