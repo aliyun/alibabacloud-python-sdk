@@ -3724,6 +3724,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.all_sub_clusters_success):
             query['AllSubClustersSuccess'] = request.all_sub_clusters_success
+        if not UtilClient.is_unset(request.archive_duration):
+            query['ArchiveDuration'] = request.archive_duration
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.cluster_name):
@@ -3776,6 +3778,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.all_sub_clusters_success):
             query['AllSubClustersSuccess'] = request.all_sub_clusters_success
+        if not UtilClient.is_unset(request.archive_duration):
+            query['ArchiveDuration'] = request.archive_duration
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.cluster_name):
@@ -19694,6 +19698,92 @@ class Client(OpenApiClient):
     ) -> arms20190808_models.UpdatePrometheusGlobalViewResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_prometheus_global_view_with_options_async(request, runtime)
+
+    def update_prometheus_instance_with_options(
+        self,
+        request: arms20190808_models.UpdatePrometheusInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.UpdatePrometheusInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.archive_duration):
+            query['ArchiveDuration'] = request.archive_duration
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.storage_duration):
+            query['StorageDuration'] = request.storage_duration
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePrometheusInstance',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.UpdatePrometheusInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_prometheus_instance_with_options_async(
+        self,
+        request: arms20190808_models.UpdatePrometheusInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.UpdatePrometheusInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.archive_duration):
+            query['ArchiveDuration'] = request.archive_duration
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.storage_duration):
+            query['StorageDuration'] = request.storage_duration
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePrometheusInstance',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.UpdatePrometheusInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_prometheus_instance(
+        self,
+        request: arms20190808_models.UpdatePrometheusInstanceRequest,
+    ) -> arms20190808_models.UpdatePrometheusInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_prometheus_instance_with_options(request, runtime)
+
+    async def update_prometheus_instance_async(
+        self,
+        request: arms20190808_models.UpdatePrometheusInstanceRequest,
+    ) -> arms20190808_models.UpdatePrometheusInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_prometheus_instance_with_options_async(request, runtime)
 
     def update_prometheus_integration_with_options(
         self,

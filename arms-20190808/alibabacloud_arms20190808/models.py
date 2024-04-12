@@ -1229,6 +1229,7 @@ class GrafanaWorkspaceIntegrationDataSource(TeaModel):
         datasource_url: str = None,
         description: str = None,
         explore_url: str = None,
+        extra: Dict[str, str] = None,
         folder_url: str = None,
         region_id: str = None,
         status: str = None,
@@ -1240,6 +1241,7 @@ class GrafanaWorkspaceIntegrationDataSource(TeaModel):
         self.datasource_url = datasource_url
         self.description = description
         self.explore_url = explore_url
+        self.extra = extra
         self.folder_url = folder_url
         self.region_id = region_id
         self.status = status
@@ -1266,6 +1268,8 @@ class GrafanaWorkspaceIntegrationDataSource(TeaModel):
             result['description'] = self.description
         if self.explore_url is not None:
             result['exploreUrl'] = self.explore_url
+        if self.extra is not None:
+            result['extra'] = self.extra
         if self.folder_url is not None:
             result['folderUrl'] = self.folder_url
         if self.region_id is not None:
@@ -1290,6 +1294,8 @@ class GrafanaWorkspaceIntegrationDataSource(TeaModel):
             self.description = m.get('description')
         if m.get('exploreUrl') is not None:
             self.explore_url = m.get('exploreUrl')
+        if m.get('extra') is not None:
+            self.extra = m.get('extra')
         if m.get('folderUrl') is not None:
             self.folder_url = m.get('folderUrl')
         if m.get('regionId') is not None:
@@ -10702,6 +10708,7 @@ class CreatePrometheusInstanceRequest(TeaModel):
     def __init__(
         self,
         all_sub_clusters_success: bool = None,
+        archive_duration: int = None,
         cluster_id: str = None,
         cluster_name: str = None,
         cluster_type: str = None,
@@ -10715,39 +10722,39 @@ class CreatePrometheusInstanceRequest(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # To edit a GlobalView aggregated instance, do you require all passed child instances to be verified successfully before creating a GlobalView instance (optional, default to false):
-        # - true
-        # - false
+        # Does it require all child instances to be verified successfully before creating a GlobalView instance. The default is false, which means partial success is possible.
         self.all_sub_clusters_success = all_sub_clusters_success
-        # The ID of the cluster. This parameter is required if you set ClusterType to aliyun-cs.
+        # The number of days for automatic archiving after storage expiration (optional values: 60, 90, 180, 365). 0 means not archive.
+        self.archive_duration = archive_duration
+        # The ID of the ACK cluster. This parameter is required if you set the ClusterType parameter to aliyun-cs.
         self.cluster_id = cluster_id
-        # The name of the cluster. This parameter is required if you set ClusterType to remote-write, ecs, or global-view.
+        # The name of the created cluster. This parameter is required if you set the ClusterType parameter to remote-write or ecs.
         self.cluster_name = cluster_name
-        # Types include:
-        # - remote-write: General-purpose Instance
-        # - ecs: Prometheus for ECS
-        # - global-view: Global Aggregation Instance
-        # - aliyun-cs: Prometheus Instance for Container Service
-        # - cloud-product: Prometheus for cloud monitor
-        # - cloud-monitor: Prometheus for enterprise cloud monitor
-        # - flink: Prometheus for Flink
+        # The type of the cluster to which the Prometheus instance belongs. Valid values: 
+        # * remote-write: Prometheus instance for remote write.
+        # * ecs(Not supported): Prometheus instance for ECS.
+        # * cloud-monitor(Not supported): Prometheus instance for Alibaba Cloud services in China.
+        # * cloud-product(Not supported): Prometheus instance for Alibaba Cloud services outside China.
+        # * global-view: Prometheus instance for GlobalView.
+        # * aliyun-cs(Not supported): Prometheus instance for Container Service for Kubernetes (ACK).
         self.cluster_type = cluster_type
+        # Data storage duration (in days).
         self.duration = duration
-        # The ID of the Grafana dedicated instance. This parameter is available if you set ClusterType to ecs.
+        # The ID of the Grafana dedicated instance. This parameter is available if you set the ClusterType parameter to ecs.
         self.grafana_instance_id = grafana_instance_id
-        # The region ID. If you create a Prometheus instance for a cloud service in China, set this parameter to cn-shanghai.
+        # The ID of the region. If you use a Prometheus instance to monitor an Alibaba Cloud service in China, this parameter must be set to cn-shanghai.
         self.region_id = region_id
-        # The ID of the custom resource group. You can specify this parameter to bind the instance to the resource group.
+        # The ID of the custom resource group. You can configure this parameter to bind the instance to the resource group.
         self.resource_group_id = resource_group_id
-        # The ID of the security group. This parameter is required if you set ClusterType to ecs or create an ASK managed cluster.
+        # The ID of the security group. This parameter is required if you set the ClusterType parameter to ecs.
         self.security_group_id = security_group_id
-        # The child instances of the Prometheus instance for GlobalView. The value is a JSON string.
+        # JSON string for child instances of the globalView instance.
         self.sub_clusters_json = sub_clusters_json
-        # The tags of the instance. You can specify this parameter to manage tags for the instance.
+        # The tags of the instance. You can configure this parameter to manage tags for the instance.
         self.tags = tags
-        # The ID of the vSwitch. This parameter is required if you set ClusterType to ecs or create an ASK managed cluster.
+        # The ID of the vSwitch. This parameter is required if you set the ClusterType parameter to ecs.
         self.v_switch_id = v_switch_id
-        # The ID of the virtual private cloud (VPC). This parameter is required if you set ClusterType to ecs or create a serverless Kubernetes (ASK) managed cluster.
+        # The ID of virtual private cloud (VPC). This parameter is required if you set the ClusterType parameter to ecs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -10764,6 +10771,8 @@ class CreatePrometheusInstanceRequest(TeaModel):
         result = dict()
         if self.all_sub_clusters_success is not None:
             result['AllSubClustersSuccess'] = self.all_sub_clusters_success
+        if self.archive_duration is not None:
+            result['ArchiveDuration'] = self.archive_duration
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
         if self.cluster_name is not None:
@@ -10796,6 +10805,8 @@ class CreatePrometheusInstanceRequest(TeaModel):
         m = m or dict()
         if m.get('AllSubClustersSuccess') is not None:
             self.all_sub_clusters_success = m.get('AllSubClustersSuccess')
+        if m.get('ArchiveDuration') is not None:
+            self.archive_duration = m.get('ArchiveDuration')
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
         if m.get('ClusterName') is not None:
@@ -10834,18 +10845,13 @@ class CreatePrometheusInstanceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code that is returned. Valid values:
-        # 
-        # *   `2XX: The request is successful.`
-        # *   `3XX: A redirection message is returned.`
-        # *   `4XX: The request is invalid.`
-        # *   `5XX: A server error occurred.`
+        # The status code. The status code 200 indicates that the request was successful.
         self.code = code
         # The ID of the created Prometheus instance.
         self.data = data
-        # The error message that is returned if the request failed.
+        # The message returned.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -12805,6 +12811,45 @@ class CreateTimingSyntheticTaskRequestCommonSettingCustomHost(TeaModel):
         return self
 
 
+class CreateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting(TeaModel):
+    def __init__(
+        self,
+        prometheus_cluster_id: str = None,
+        prometheus_cluster_region: str = None,
+        prometheus_labels: Dict[str, str] = None,
+    ):
+        self.prometheus_cluster_id = prometheus_cluster_id
+        self.prometheus_cluster_region = prometheus_cluster_region
+        self.prometheus_labels = prometheus_labels
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.prometheus_cluster_id is not None:
+            result['PrometheusClusterId'] = self.prometheus_cluster_id
+        if self.prometheus_cluster_region is not None:
+            result['PrometheusClusterRegion'] = self.prometheus_cluster_region
+        if self.prometheus_labels is not None:
+            result['PrometheusLabels'] = self.prometheus_labels
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PrometheusClusterId') is not None:
+            self.prometheus_cluster_id = m.get('PrometheusClusterId')
+        if m.get('PrometheusClusterRegion') is not None:
+            self.prometheus_cluster_region = m.get('PrometheusClusterRegion')
+        if m.get('PrometheusLabels') is not None:
+            self.prometheus_labels = m.get('PrometheusLabels')
+        return self
+
+
 class CreateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting(TeaModel):
     def __init__(
         self,
@@ -12854,6 +12899,7 @@ class CreateTimingSyntheticTaskRequestCommonSetting(TeaModel):
     def __init__(
         self,
         custom_host: CreateTimingSyntheticTaskRequestCommonSettingCustomHost = None,
+        custom_prometheus_setting: CreateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting = None,
         custom_vpcsetting: CreateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting = None,
         ip_type: int = None,
         is_open_trace: bool = None,
@@ -12862,6 +12908,7 @@ class CreateTimingSyntheticTaskRequestCommonSetting(TeaModel):
         xtrace_region: str = None,
     ):
         self.custom_host = custom_host
+        self.custom_prometheus_setting = custom_prometheus_setting
         self.custom_vpcsetting = custom_vpcsetting
         self.ip_type = ip_type
         self.is_open_trace = is_open_trace
@@ -12872,6 +12919,8 @@ class CreateTimingSyntheticTaskRequestCommonSetting(TeaModel):
     def validate(self):
         if self.custom_host:
             self.custom_host.validate()
+        if self.custom_prometheus_setting:
+            self.custom_prometheus_setting.validate()
         if self.custom_vpcsetting:
             self.custom_vpcsetting.validate()
 
@@ -12883,6 +12932,8 @@ class CreateTimingSyntheticTaskRequestCommonSetting(TeaModel):
         result = dict()
         if self.custom_host is not None:
             result['CustomHost'] = self.custom_host.to_map()
+        if self.custom_prometheus_setting is not None:
+            result['CustomPrometheusSetting'] = self.custom_prometheus_setting.to_map()
         if self.custom_vpcsetting is not None:
             result['CustomVPCSetting'] = self.custom_vpcsetting.to_map()
         if self.ip_type is not None:
@@ -12902,6 +12953,9 @@ class CreateTimingSyntheticTaskRequestCommonSetting(TeaModel):
         if m.get('CustomHost') is not None:
             temp_model = CreateTimingSyntheticTaskRequestCommonSettingCustomHost()
             self.custom_host = temp_model.from_map(m['CustomHost'])
+        if m.get('CustomPrometheusSetting') is not None:
+            temp_model = CreateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting()
+            self.custom_prometheus_setting = temp_model.from_map(m['CustomPrometheusSetting'])
         if m.get('CustomVPCSetting') is not None:
             temp_model = CreateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting()
             self.custom_vpcsetting = temp_model.from_map(m['CustomVPCSetting'])
@@ -27004,6 +27058,7 @@ class GetPrometheusInstanceResponseBodyDataTags(TeaModel):
 class GetPrometheusInstanceResponseBodyData(TeaModel):
     def __init__(
         self,
+        archive_duration: int = None,
         auth_token: str = None,
         cluster_id: str = None,
         cluster_name: str = None,
@@ -27022,12 +27077,14 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         resource_group_id: str = None,
         resource_type: str = None,
         security_group_id: str = None,
+        storage_duration: int = None,
         sub_clusters_json: str = None,
         tags: List[GetPrometheusInstanceResponseBodyDataTags] = None,
         user_id: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        self.archive_duration = archive_duration
         # auth token string.
         self.auth_token = auth_token
         # The ID of the Prometheus instance.
@@ -27072,6 +27129,7 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         self.resource_type = resource_type
         # The ID of the security group.
         self.security_group_id = security_group_id
+        self.storage_duration = storage_duration
         # The child instances of the Prometheus instance for GlobalView. The value is a JSON string.
         self.sub_clusters_json = sub_clusters_json
         # The tags of the instance.
@@ -27095,6 +27153,8 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.archive_duration is not None:
+            result['ArchiveDuration'] = self.archive_duration
         if self.auth_token is not None:
             result['AuthToken'] = self.auth_token
         if self.cluster_id is not None:
@@ -27131,6 +27191,8 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
             result['ResourceType'] = self.resource_type
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+        if self.storage_duration is not None:
+            result['StorageDuration'] = self.storage_duration
         if self.sub_clusters_json is not None:
             result['SubClustersJson'] = self.sub_clusters_json
         result['Tags'] = []
@@ -27147,6 +27209,8 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ArchiveDuration') is not None:
+            self.archive_duration = m.get('ArchiveDuration')
         if m.get('AuthToken') is not None:
             self.auth_token = m.get('AuthToken')
         if m.get('ClusterId') is not None:
@@ -27183,6 +27247,8 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
             self.resource_type = m.get('ResourceType')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+        if m.get('StorageDuration') is not None:
+            self.storage_duration = m.get('StorageDuration')
         if m.get('SubClustersJson') is not None:
             self.sub_clusters_json = m.get('SubClustersJson')
         self.tags = []
@@ -31437,6 +31503,45 @@ class GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost(TeaModel):
         return self
 
 
+class GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomPrometheusSetting(TeaModel):
+    def __init__(
+        self,
+        prometheus_cluster_id: str = None,
+        prometheus_cluster_region: str = None,
+        prometheus_labels: Dict[str, str] = None,
+    ):
+        self.prometheus_cluster_id = prometheus_cluster_id
+        self.prometheus_cluster_region = prometheus_cluster_region
+        self.prometheus_labels = prometheus_labels
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.prometheus_cluster_id is not None:
+            result['PrometheusClusterId'] = self.prometheus_cluster_id
+        if self.prometheus_cluster_region is not None:
+            result['PrometheusClusterRegion'] = self.prometheus_cluster_region
+        if self.prometheus_labels is not None:
+            result['PrometheusLabels'] = self.prometheus_labels
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PrometheusClusterId') is not None:
+            self.prometheus_cluster_id = m.get('PrometheusClusterId')
+        if m.get('PrometheusClusterRegion') is not None:
+            self.prometheus_cluster_region = m.get('PrometheusClusterRegion')
+        if m.get('PrometheusLabels') is not None:
+            self.prometheus_labels = m.get('PrometheusLabels')
+        return self
+
+
 class GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomVPCSetting(TeaModel):
     def __init__(
         self,
@@ -31486,6 +31591,7 @@ class GetTimingSyntheticTaskResponseBodyDataCommonSetting(TeaModel):
     def __init__(
         self,
         custom_host: GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost = None,
+        custom_prometheus_setting: GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomPrometheusSetting = None,
         custom_vpcsetting: GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomVPCSetting = None,
         ip_type: int = None,
         is_open_trace: bool = None,
@@ -31495,6 +31601,7 @@ class GetTimingSyntheticTaskResponseBodyDataCommonSetting(TeaModel):
     ):
         # The custom host.
         self.custom_host = custom_host
+        self.custom_prometheus_setting = custom_prometheus_setting
         self.custom_vpcsetting = custom_vpcsetting
         # The IP version. Valid values:
         # 
@@ -31521,6 +31628,8 @@ class GetTimingSyntheticTaskResponseBodyDataCommonSetting(TeaModel):
     def validate(self):
         if self.custom_host:
             self.custom_host.validate()
+        if self.custom_prometheus_setting:
+            self.custom_prometheus_setting.validate()
         if self.custom_vpcsetting:
             self.custom_vpcsetting.validate()
 
@@ -31532,6 +31641,8 @@ class GetTimingSyntheticTaskResponseBodyDataCommonSetting(TeaModel):
         result = dict()
         if self.custom_host is not None:
             result['CustomHost'] = self.custom_host.to_map()
+        if self.custom_prometheus_setting is not None:
+            result['CustomPrometheusSetting'] = self.custom_prometheus_setting.to_map()
         if self.custom_vpcsetting is not None:
             result['CustomVPCSetting'] = self.custom_vpcsetting.to_map()
         if self.ip_type is not None:
@@ -31551,6 +31662,9 @@ class GetTimingSyntheticTaskResponseBodyDataCommonSetting(TeaModel):
         if m.get('CustomHost') is not None:
             temp_model = GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost()
             self.custom_host = temp_model.from_map(m['CustomHost'])
+        if m.get('CustomPrometheusSetting') is not None:
+            temp_model = GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomPrometheusSetting()
+            self.custom_prometheus_setting = temp_model.from_map(m['CustomPrometheusSetting'])
         if m.get('CustomVPCSetting') is not None:
             temp_model = GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomVPCSetting()
             self.custom_vpcsetting = temp_model.from_map(m['CustomVPCSetting'])
@@ -33722,13 +33836,15 @@ class InitEnvironmentRequest(TeaModel):
     ):
         # The language. Valid values: zh and en. Default value: zh.
         self.aliyun_lang = aliyun_lang
+        # Whether to create a Token in order to enhance the security of data retrieval.
         self.create_auth_token = create_auth_token
         # The ID of the environment instance.
         self.environment_id = environment_id
-        # type of managed:
-        # - none: not managed. default value of prometheus for ACK.
-        # - agent: managed agent. default value of promehtues for ASK/ACS/AckOne.
-        # - agent-exproter: maanged agent and exporter. default of prometheus for Cloud.
+        # Whether agents or exporters are managed. Valid values:
+        # 
+        # *   none: No. By default, no managed agents or exporters are provided for ACK clusters.
+        # *   agent: Agents are managed. By default, managed agents are provided for ASK clusters, ACS clusters, and ACK One clusters.
+        # *   agent-exproter: Agents and exporters are managed. By default, managed agents and exporters are provided for cloud services.
         self.managed_type = managed_type
         # The region ID.
         self.region_id = region_id
@@ -46298,6 +46414,247 @@ class ListTimingSyntheticTasksShrinkRequest(TeaModel):
         return self
 
 
+class ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHostHosts(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        ip_type: int = None,
+        ips: List[str] = None,
+    ):
+        self.domain = domain
+        self.ip_type = ip_type
+        self.ips = ips
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.ip_type is not None:
+            result['IpType'] = self.ip_type
+        if self.ips is not None:
+            result['Ips'] = self.ips
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('IpType') is not None:
+            self.ip_type = m.get('IpType')
+        if m.get('Ips') is not None:
+            self.ips = m.get('Ips')
+        return self
+
+
+class ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHost(TeaModel):
+    def __init__(
+        self,
+        hosts: List[ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHostHosts] = None,
+        select_type: int = None,
+    ):
+        self.hosts = hosts
+        self.select_type = select_type
+
+    def validate(self):
+        if self.hosts:
+            for k in self.hosts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Hosts'] = []
+        if self.hosts is not None:
+            for k in self.hosts:
+                result['Hosts'].append(k.to_map() if k else None)
+        if self.select_type is not None:
+            result['SelectType'] = self.select_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.hosts = []
+        if m.get('Hosts') is not None:
+            for k in m.get('Hosts'):
+                temp_model = ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHostHosts()
+                self.hosts.append(temp_model.from_map(k))
+        if m.get('SelectType') is not None:
+            self.select_type = m.get('SelectType')
+        return self
+
+
+class ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomPrometheusSetting(TeaModel):
+    def __init__(
+        self,
+        prometheus_cluster_id: str = None,
+        prometheus_cluster_region: str = None,
+        prometheus_labels: Dict[str, str] = None,
+    ):
+        self.prometheus_cluster_id = prometheus_cluster_id
+        self.prometheus_cluster_region = prometheus_cluster_region
+        self.prometheus_labels = prometheus_labels
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.prometheus_cluster_id is not None:
+            result['PrometheusClusterId'] = self.prometheus_cluster_id
+        if self.prometheus_cluster_region is not None:
+            result['PrometheusClusterRegion'] = self.prometheus_cluster_region
+        if self.prometheus_labels is not None:
+            result['PrometheusLabels'] = self.prometheus_labels
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PrometheusClusterId') is not None:
+            self.prometheus_cluster_id = m.get('PrometheusClusterId')
+        if m.get('PrometheusClusterRegion') is not None:
+            self.prometheus_cluster_region = m.get('PrometheusClusterRegion')
+        if m.get('PrometheusLabels') is not None:
+            self.prometheus_labels = m.get('PrometheusLabels')
+        return self
+
+
+class ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomVPCSetting(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        secure_group_id: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+    ):
+        self.region_id = region_id
+        self.secure_group_id = secure_group_id
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.secure_group_id is not None:
+            result['SecureGroupId'] = self.secure_group_id
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecureGroupId') is not None:
+            self.secure_group_id = m.get('SecureGroupId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class ListTimingSyntheticTasksResponseBodyDataItemsCommonSetting(TeaModel):
+    def __init__(
+        self,
+        custom_host: ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHost = None,
+        custom_prometheus_setting: ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomPrometheusSetting = None,
+        custom_vpcsetting: ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomVPCSetting = None,
+        ip_type: int = None,
+        is_open_trace: bool = None,
+        monitor_samples: int = None,
+        trace_client_type: int = None,
+        xtrace_region: str = None,
+    ):
+        self.custom_host = custom_host
+        self.custom_prometheus_setting = custom_prometheus_setting
+        self.custom_vpcsetting = custom_vpcsetting
+        self.ip_type = ip_type
+        self.is_open_trace = is_open_trace
+        self.monitor_samples = monitor_samples
+        self.trace_client_type = trace_client_type
+        self.xtrace_region = xtrace_region
+
+    def validate(self):
+        if self.custom_host:
+            self.custom_host.validate()
+        if self.custom_prometheus_setting:
+            self.custom_prometheus_setting.validate()
+        if self.custom_vpcsetting:
+            self.custom_vpcsetting.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_host is not None:
+            result['CustomHost'] = self.custom_host.to_map()
+        if self.custom_prometheus_setting is not None:
+            result['CustomPrometheusSetting'] = self.custom_prometheus_setting.to_map()
+        if self.custom_vpcsetting is not None:
+            result['CustomVPCSetting'] = self.custom_vpcsetting.to_map()
+        if self.ip_type is not None:
+            result['IpType'] = self.ip_type
+        if self.is_open_trace is not None:
+            result['IsOpenTrace'] = self.is_open_trace
+        if self.monitor_samples is not None:
+            result['MonitorSamples'] = self.monitor_samples
+        if self.trace_client_type is not None:
+            result['TraceClientType'] = self.trace_client_type
+        if self.xtrace_region is not None:
+            result['XtraceRegion'] = self.xtrace_region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomHost') is not None:
+            temp_model = ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHost()
+            self.custom_host = temp_model.from_map(m['CustomHost'])
+        if m.get('CustomPrometheusSetting') is not None:
+            temp_model = ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomPrometheusSetting()
+            self.custom_prometheus_setting = temp_model.from_map(m['CustomPrometheusSetting'])
+        if m.get('CustomVPCSetting') is not None:
+            temp_model = ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomVPCSetting()
+            self.custom_vpcsetting = temp_model.from_map(m['CustomVPCSetting'])
+        if m.get('IpType') is not None:
+            self.ip_type = m.get('IpType')
+        if m.get('IsOpenTrace') is not None:
+            self.is_open_trace = m.get('IsOpenTrace')
+        if m.get('MonitorSamples') is not None:
+            self.monitor_samples = m.get('MonitorSamples')
+        if m.get('TraceClientType') is not None:
+            self.trace_client_type = m.get('TraceClientType')
+        if m.get('XtraceRegion') is not None:
+            self.xtrace_region = m.get('XtraceRegion')
+        return self
+
+
 class ListTimingSyntheticTasksResponseBodyDataItemsTags(TeaModel):
     def __init__(
         self,
@@ -46336,6 +46693,7 @@ class ListTimingSyntheticTasksResponseBodyDataItemsTags(TeaModel):
 class ListTimingSyntheticTasksResponseBodyDataItems(TeaModel):
     def __init__(
         self,
+        common_setting: ListTimingSyntheticTasksResponseBodyDataItemsCommonSetting = None,
         frequency: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
@@ -46350,6 +46708,7 @@ class ListTimingSyntheticTasksResponseBodyDataItems(TeaModel):
         task_type: int = None,
         url: str = None,
     ):
+        self.common_setting = common_setting
         # The detection frequency. Valid values: 1m, 5m, 10m, 15m, 20m, 30m, 1h, 2h, 3h, 4h, 6h, 8h, 12h, and 24h.
         self.frequency = frequency
         # The time when the task was created.
@@ -46380,6 +46739,8 @@ class ListTimingSyntheticTasksResponseBodyDataItems(TeaModel):
         self.url = url
 
     def validate(self):
+        if self.common_setting:
+            self.common_setting.validate()
         if self.tags:
             for k in self.tags:
                 if k:
@@ -46391,6 +46752,8 @@ class ListTimingSyntheticTasksResponseBodyDataItems(TeaModel):
             return _map
 
         result = dict()
+        if self.common_setting is not None:
+            result['CommonSetting'] = self.common_setting.to_map()
         if self.frequency is not None:
             result['Frequency'] = self.frequency
         if self.gmt_create is not None:
@@ -46423,6 +46786,9 @@ class ListTimingSyntheticTasksResponseBodyDataItems(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CommonSetting') is not None:
+            temp_model = ListTimingSyntheticTasksResponseBodyDataItemsCommonSetting()
+            self.common_setting = temp_model.from_map(m['CommonSetting'])
         if m.get('Frequency') is not None:
             self.frequency = m.get('Frequency')
         if m.get('GmtCreate') is not None:
@@ -58170,6 +58536,144 @@ class UpdatePrometheusGlobalViewResponse(TeaModel):
         return self
 
 
+class UpdatePrometheusInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        archive_duration: int = None,
+        cluster_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        storage_duration: int = None,
+    ):
+        self.archive_duration = archive_duration
+        self.cluster_id = cluster_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.storage_duration = storage_duration
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.archive_duration is not None:
+            result['ArchiveDuration'] = self.archive_duration
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.storage_duration is not None:
+            result['StorageDuration'] = self.storage_duration
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ArchiveDuration') is not None:
+            self.archive_duration = m.get('ArchiveDuration')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('StorageDuration') is not None:
+            self.storage_duration = m.get('StorageDuration')
+        return self
+
+
+class UpdatePrometheusInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdatePrometheusInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdatePrometheusInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdatePrometheusInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdatePrometheusIntegrationRequest(TeaModel):
     def __init__(
         self,
@@ -58937,6 +59441,45 @@ class UpdateTimingSyntheticTaskRequestCommonSettingCustomHost(TeaModel):
         return self
 
 
+class UpdateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting(TeaModel):
+    def __init__(
+        self,
+        prometheus_cluster_id: str = None,
+        prometheus_cluster_region: str = None,
+        prometheus_labels: Dict[str, str] = None,
+    ):
+        self.prometheus_cluster_id = prometheus_cluster_id
+        self.prometheus_cluster_region = prometheus_cluster_region
+        self.prometheus_labels = prometheus_labels
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.prometheus_cluster_id is not None:
+            result['PrometheusClusterId'] = self.prometheus_cluster_id
+        if self.prometheus_cluster_region is not None:
+            result['PrometheusClusterRegion'] = self.prometheus_cluster_region
+        if self.prometheus_labels is not None:
+            result['PrometheusLabels'] = self.prometheus_labels
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PrometheusClusterId') is not None:
+            self.prometheus_cluster_id = m.get('PrometheusClusterId')
+        if m.get('PrometheusClusterRegion') is not None:
+            self.prometheus_cluster_region = m.get('PrometheusClusterRegion')
+        if m.get('PrometheusLabels') is not None:
+            self.prometheus_labels = m.get('PrometheusLabels')
+        return self
+
+
 class UpdateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting(TeaModel):
     def __init__(
         self,
@@ -58986,6 +59529,7 @@ class UpdateTimingSyntheticTaskRequestCommonSetting(TeaModel):
     def __init__(
         self,
         custom_host: UpdateTimingSyntheticTaskRequestCommonSettingCustomHost = None,
+        custom_prometheus_setting: UpdateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting = None,
         custom_vpcsetting: UpdateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting = None,
         ip_type: int = None,
         is_open_trace: bool = None,
@@ -58995,6 +59539,7 @@ class UpdateTimingSyntheticTaskRequestCommonSetting(TeaModel):
     ):
         # The custom host.
         self.custom_host = custom_host
+        self.custom_prometheus_setting = custom_prometheus_setting
         self.custom_vpcsetting = custom_vpcsetting
         # The IP version. Valid values:
         # 
@@ -59021,6 +59566,8 @@ class UpdateTimingSyntheticTaskRequestCommonSetting(TeaModel):
     def validate(self):
         if self.custom_host:
             self.custom_host.validate()
+        if self.custom_prometheus_setting:
+            self.custom_prometheus_setting.validate()
         if self.custom_vpcsetting:
             self.custom_vpcsetting.validate()
 
@@ -59032,6 +59579,8 @@ class UpdateTimingSyntheticTaskRequestCommonSetting(TeaModel):
         result = dict()
         if self.custom_host is not None:
             result['CustomHost'] = self.custom_host.to_map()
+        if self.custom_prometheus_setting is not None:
+            result['CustomPrometheusSetting'] = self.custom_prometheus_setting.to_map()
         if self.custom_vpcsetting is not None:
             result['CustomVPCSetting'] = self.custom_vpcsetting.to_map()
         if self.ip_type is not None:
@@ -59051,6 +59600,9 @@ class UpdateTimingSyntheticTaskRequestCommonSetting(TeaModel):
         if m.get('CustomHost') is not None:
             temp_model = UpdateTimingSyntheticTaskRequestCommonSettingCustomHost()
             self.custom_host = temp_model.from_map(m['CustomHost'])
+        if m.get('CustomPrometheusSetting') is not None:
+            temp_model = UpdateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting()
+            self.custom_prometheus_setting = temp_model.from_map(m['CustomPrometheusSetting'])
         if m.get('CustomVPCSetting') is not None:
             temp_model = UpdateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting()
             self.custom_vpcsetting = temp_model.from_map(m['CustomVPCSetting'])
