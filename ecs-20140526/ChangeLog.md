@@ -1,3 +1,19 @@
+2024-04-12 Version: 4.1.1
+- Update API DescribeDedicatedHosts: add param MaxResults.
+- Update API DescribeDedicatedHosts: add param NextToken.
+- Update API DescribeDedicatedHosts: update response param.
+- Update API DescribeInstanceTypes: add param CpuArchitectures.
+- Update API DescribeInstanceTypes: add param GpuSpecs.
+- Update API DescribeInstanceTypes: add param InstanceCategories.
+- Update API DescribeInstanceTypes: add param InstanceTypeFamilies.
+- Update API DescribeInstanceTypes: add param LocalStorageCategories.
+- Update API DescribeInstanceTypes: add param PhysicalProcessorModels.
+- Update API DescribeInstanceTypes: update param InstanceCategory.
+- Update API DescribeInstanceTypes: update response param.
+- Update API InvokeCommand: update param InstanceId.
+- Update API RunCommand: update param InstanceId.
+
+
 2024-04-10 Version: 4.1.0
 - Support API DescribeCloudAssistantSettings.
 - Support API DescribeTerminalSessions.
