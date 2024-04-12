@@ -28,7 +28,7 @@ pip install alibabacloud_eci20180808
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/eci-20180808/ChangeLog.md).
 
 ## References
 

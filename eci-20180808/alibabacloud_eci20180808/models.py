@@ -280,9 +280,6 @@ class CommitContainerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -517,9 +514,6 @@ class CopyDataCacheResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1290,9 +1284,9 @@ class CreateContainerGroupRequestContainerEnvironmentVar(TeaModel):
         value: str = None,
     ):
         self.field_ref = field_ref
-        # The name of the environment variable. The name must be 1 to 128 characters in length, and can contain letters, digits, and underscores (\_). It cannot start with a digit.``
+        # The name of the environment variable. The name must be 1 to 128 bits in length and can contain letters, digits, and underscores (\_). It cannot start with a digit.``
         self.key = key
-        # The value of the environment variable. The value can be up to 256 characters in length.
+        # The value of the environment variable. The value must be 0 to 256 bits in length.
         self.value = value
 
     def validate(self):
@@ -1331,7 +1325,7 @@ class CreateContainerGroupRequestContainerLifecyclePostStartHandlerHttpGetHttpHe
         name: str = None,
         value: str = None,
     ):
-        # The key of the custom field in the HTTP GET request header when you use HTTP requests to specify the postStart callback function.
+        # The name of the custom field in the HTTP GET request header when you use HTTP requests to specify the postStart callback function.
         self.name = name
         # The value of the custom field in the HTTP GET request header when you use HTTP requests to specify the postStart callback function.
         self.value = value
@@ -1448,13 +1442,13 @@ class CreateContainerGroupRequestContainerVolumeMount(TeaModel):
         self.mount_path = mount_path
         # The mount propagation settings of the volume. Mount propagation allows volumes that are mounted on one container to be shared with other containers in the same pod, or even with other pods on the same node. Valid values:
         # 
-        # *   None: This volume mount does not receive subsequent mounts that are performed on this volume or subdirectories of this volume.
+        # *   None: The volume mount does not receive subsequent mounts that are performed on this volume or subdirectories of this volume.
         # *   HostToCotainer: The volume mount receives subsequent mounts that are performed on this volume or the subdirectories of this volume.
-        # *   Bidirectional: The volume mount behaves the same as the HostToCotainer mount. The volume mount receives subsequent mounts that are performed on the volume or the subdirectories of the volume. In addition, all volume mounts created by the container are propagated back to the host and to all containers of all pods that use the same volume.
+        # *   Bidirectional: This value is similar to HostToContainer. The volume mount receives subsequent mounts that are performed on this volume or the subdirectories of this volume. In addition, all volume mounts that are mounted on the container are propagated back to the host and all containers of all pods that use the same volume.
         # 
         # Default value: None.
         self.mount_propagation = mount_propagation
-        # The name of the volume. This parameter is the same as Name in the Volume object.
+        # The name of the volume. The name of this parameter is the same as the name of the volume that is mounted to the containers.
         self.name = name
         # Specifies whether the volume is read-only. Default value: false.
         self.read_only = read_only
@@ -1543,18 +1537,18 @@ class CreateContainerGroupRequestContainer(TeaModel):
         self.liveness_probe = liveness_probe
         self.readiness_probe = readiness_probe
         self.security_context = security_context
-        # The arguments that are passed to the startup command of the container. You can specify a maximum of 10 arguments.
+        # The arguments that are passed to the startup command of the container. You can specify up to 10 arguments.
         self.arg = arg
-        # The commands that you want to run to perform checks in containers.
+        # The commands that you want to run to perform health checks on containers.
         self.command = command
-        # The number of vCPUs that you want to allocate to the container. Unit: cores.
+        # The number of vCPUs that you want to allocate to the container.
         self.cpu = cpu
-        # The environment variable of the container.
+        # The value of the environment variable for the container.
         self.environment_var = environment_var
-        # Specifies whether to hide the information about the environment variable when you query the details of an elastic container instance (ECI). Valid values:
+        # Specifies whether to hide the information about environment variables when you query the details of an elastic container instance. Default value: false. Valid values:
         # 
-        # *   false (default): does not hide the information about the environment variable.
-        # *   true: does not return the information about the environment variable. If the environment variable contains sensitive information, you can set this parameter to true to improve the security of the information.
+        # *   false
+        # *   true If environment variables contain sensitive information, you can set this parameter to true to improve security of the information.
         self.environment_var_hide = environment_var_hide
         # The number of GPUs that you want to allocate to the container.
         self.gpu = gpu
@@ -1562,70 +1556,72 @@ class CreateContainerGroupRequestContainer(TeaModel):
         self.image = image
         # The policy that you want to use to pull an image. Valid values:
         # 
-        # *   Always: Image pulling is always performed.
-        # *   IfNotPresent: On-premises images are used first. If no on-premises images are available, image pulling is performed.
-        # *   Never: Image pulling is not performed. On-premises images are always used.
+        # *   Always: Each time instances are created, image pulling is performed.
+        # *   IfNotPresent: On-premises images are preferentially used. If no on-premises images are available, image pulling is performed.
+        # *   Never: On-premises images are always used. Image pulling is not performed.
         self.image_pull_policy = image_pull_policy
-        # The commands to be executed in containers when you use the CLI to specify the postStart callback function.
+        # The commands to be executed in containers when you use a CLI to specify the postStart callback function.
         self.lifecycle_post_start_handler_exec = lifecycle_post_start_handler_exec
-        # The IP address of the host that receives HTTP GET requests when you use HTTP requests to specify the postStart callback function.
+        # The IP address of the host that receives the HTTP GET request when you use an HTTP request to specify the postStart callback function.
         self.lifecycle_post_start_handler_http_get_host = lifecycle_post_start_handler_http_get_host
         # The HTTP GET request header.
         self.lifecycle_post_start_handler_http_get_http_header = lifecycle_post_start_handler_http_get_http_header
-        # The path to which HTTP GET requests are sent when you use HTTP requests to specify the postStart callback function.
+        # The path to which the system sends an HTTP GET request for a health check when you use an HTTP request to specify the postStart callback function.
         self.lifecycle_post_start_handler_http_get_path = lifecycle_post_start_handler_http_get_path
-        # The port to which HTTP GET requests are sent when you use HTTP requests to specify the postStart callback function.
+        # The port to which the system sends an HTTP GET request when you use an HTTP request to specify the postStart callback function.
         self.lifecycle_post_start_handler_http_get_port = lifecycle_post_start_handler_http_get_port
         # The protocol type of HTTP GET requests when you use HTTP requests to specify the postStart callback function. Valid values:
         # 
         # *   HTTP
         # *   HTTPS
         self.lifecycle_post_start_handler_http_get_scheme = lifecycle_post_start_handler_http_get_scheme
-        # The port that is detected by TCP sockets when you use TCP sockets to specify the postStart callback function.
+        # The port to which the system sends a TCP socket request for a health check when you use TCP sockets to specify the postStart callback function.
         self.lifecycle_post_start_handler_tcp_socket_host = lifecycle_post_start_handler_tcp_socket_host
-        # The port that is detected by TCP sockets when you use TCP sockets to specify the postStart callback function.
+        # The port to which the system sends a TCP socket request for a health check when you use TCP sockets to specify the postStart callback function.
         self.lifecycle_post_start_handler_tcp_socket_port = lifecycle_post_start_handler_tcp_socket_port
-        # The commands to be executed in containers when you use the CLI to specify the preStop callback function.
+        # The commands to be executed in containers when you use a CLI to specify the preStop callback function.
         self.lifecycle_pre_stop_handler_exec = lifecycle_pre_stop_handler_exec
-        # The IP address of the host that receives HTTP GET requests when you use HTTP requests to specify the preStop callback function.
+        # The IP address of the host that receives the HTTP GET request when you use an HTTP request to specify the preStop callback function.
         self.lifecycle_pre_stop_handler_http_get_host = lifecycle_pre_stop_handler_http_get_host
         # The HTTP GET request header.
         self.lifecycle_pre_stop_handler_http_get_http_header = lifecycle_pre_stop_handler_http_get_http_header
-        # The path to which HTTP GET requests are sent when you use HTTP requests to specify the preStop callback function.
+        # The path to which the system sends an HTTP GET request for a health check when you use an HTTP request to specify the preSop callback function.
         self.lifecycle_pre_stop_handler_http_get_path = lifecycle_pre_stop_handler_http_get_path
-        # The port to which HTTP GET requests are sent when you use HTTP requests to specify the preStop callback function.
+        # The port to which the system sends an HTTP GET request for a health check when you use HTTP requests to specify the preStop callback function.
         self.lifecycle_pre_stop_handler_http_get_port = lifecycle_pre_stop_handler_http_get_port
-        # The protocol type of HTTP GET requests when you use HTTP requests to specify the preStop callback function. Valid values:
+        # The protocol type of the HTTP GET request when you use an HTTP request to specify the preStop callback function. Valid values:
         # 
         # *   HTTP
         # *   HTTPS
         self.lifecycle_pre_stop_handler_http_get_scheme = lifecycle_pre_stop_handler_http_get_scheme
-        # The host IP address that is detected by TCP sockets when you use TCP sockets to specify the preStop callback function.
+        # The IP address of the host that receives the TCP socket request when you use a TCP socket request to specify the preStop callback function.
         self.lifecycle_pre_stop_handler_tcp_socket_host = lifecycle_pre_stop_handler_tcp_socket_host
-        # The port that is detected by TCP sockets when you use TCP sockets to specify the preStop callback function.
+        # The port to which the system sends a TCP socket request for a health check when you use TCP sockets to specify the preStop callback function.
         self.lifecycle_pre_stop_handler_tcp_socket_port = lifecycle_pre_stop_handler_tcp_socket_port
-        # The memory size of the container. Unit: GiB
+        # The memory size that you want to allocate to the container. Unit: GiB
         self.memory = memory
-        # The container name.
+        # The name of the container.
         self.name = name
-        # The port to which HTTP GET requests are sent when you use HTTP requests to perform health checks.
+        # The port to which the system sends an HTTP GET request for a health check when you use HTTP requests to perform health checks.
         self.port = port
+        # The user group that runs the container.
         self.security_context_run_as_group = security_context_run_as_group
+        # Specifies whether to run the container as a non-root user.
         self.security_context_run_as_non_root = security_context_run_as_non_root
-        # Specifies whether the container allocates a buffer for standard input in the container runtime. If you do not specify this parameter, an end-of-file (EOF) error occurs when standard input in the container is read. Default value: false.
+        # Specifies whether the container allocates buffer resources to standard input streams when the container is running. If you do not specify this parameter, an end-of-file (EOF) error may occur when standard input streams in the container are read. Default value: false.
         self.stdin = stdin
-        # Specifies whether to keep the standard input stream open in the container runtime across multiple attach sessions if Stdin is set to true.\
-        # If StdinOnce is set to true, the standard input stream is opened when the container is started, remains empty until the first client is attached to standard input, and then remains open and receives data until the client is disconnected. When the client is disconnected, the standard input stream is closed and remains closed until the container is restarted.
+        # Specifies whether standard input streams are disconnected from multiple sessions after a client is disconnected.\
+        # If StdinOnce is set to true, standard input streams are connected after the container is started, and remain idle until a client is connected to receive data. After the client is disconnected, standard input streams are also disconnected, and remain disconnected until the container restarts.
         self.stdin_once = stdin_once
         # The path of the file from which the system retrieves termination messages of the container when the container exits.
         self.termination_message_path = termination_message_path
-        # The message notification policy. This parameter is empty by default. You can use only Message Service (MNS) queues to configure notifications.
+        # The message notification policy. This parameter is empty by default. Only Message Service (MNS) queue message notifications can be sent.
         self.termination_message_policy = termination_message_policy
         # Specifies whether to enable interaction. Default value: false.
         # 
-        # If you set Command to /bin/bash, you must set this parameter to true.
+        # If the command is a /bin/bash command, set the value to true.
         self.tty = tty
-        # The information about the volume that you want to mount on the container.
+        # The information about the volume that you want to mount to the container.
         self.volume_mount = volume_mount
         # The working directory of the container.
         self.working_dir = working_dir
@@ -2333,6 +2329,7 @@ class CreateContainerGroupRequestOverheadReservationOption(TeaModel):
         self,
         enable_overhead_reservation: bool = None,
     ):
+        # Specify whether to enable the overhead reservation feature. Default: false. Valid values: true and false. After you enable the overhead reservation feature, the system automatically adds the overhead to the specification of the elastic container instance, and then adjusts the specification of the instance upward to the most approximate specification. You are charged based on the new specification after the adjustment.
         self.enable_overhead_reservation = enable_overhead_reservation
 
     def validate(self):
@@ -2755,6 +2752,7 @@ class CreateContainerGroupRequest(TeaModel):
         auto_create_eip: bool = None,
         auto_match_image_cache: bool = None,
         client_token: str = None,
+        compute_category: List[str] = None,
         container: List[CreateContainerGroupRequestContainer] = None,
         container_group_name: str = None,
         container_resource_view: bool = None,
@@ -2778,6 +2776,7 @@ class CreateContainerGroupRequest(TeaModel):
         ephemeral_storage: int = None,
         fixed_ip: str = None,
         fixed_ip_retain_hour: int = None,
+        gpu_driver_version: str = None,
         host_aliase: List[CreateContainerGroupRequestHostAliase] = None,
         host_name: str = None,
         image_accelerate_mode: str = None,
@@ -2830,6 +2829,8 @@ class CreateContainerGroupRequest(TeaModel):
         self.auto_match_image_cache = auto_match_image_cache
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotency of requests?](~~25693~~)
         self.client_token = client_token
+        # The computing power type of the instance.
+        self.compute_category = compute_category
         # The information about the containers.
         self.container = container
         # The name of the elastic container instance. Format requirements:
@@ -2845,6 +2846,10 @@ class CreateContainerGroupRequest(TeaModel):
         self.core_pattern = core_pattern
         # The number of vCPUs that you want to allocate to the elastic container instance.
         self.cpu = cpu
+        # The CPU architecture of the instance. Default value: AMD64. Valid values:
+        # 
+        # *   AMD64
+        # *   ARM64
         self.cpu_architecture = cpu_architecture
         # The number of physical CPU cores. You can specify this parameter only for specific instance types. For more information, see [Specify custom CPU options](~~197781~~).
         self.cpu_options_core = cpu_options_core
@@ -2894,6 +2899,7 @@ class CreateContainerGroupRequest(TeaModel):
         self.fixed_ip = fixed_ip
         # The retention period of the fixed IP address after the original instance is released and the fixed IP address becomes idle. Unit: hours. Default value: 48.
         self.fixed_ip_retain_hour = fixed_ip_retain_hour
+        self.gpu_driver_version = gpu_driver_version
         # The alias of the elastic container instance.
         self.host_aliase = host_aliase
         # The hostname of the instance.
@@ -2937,7 +2943,14 @@ class CreateContainerGroupRequest(TeaModel):
         self.memory = memory
         # The domain names of the NTP server.
         self.ntp_server = ntp_server
+        # The operating system of the elastic container instance. Default value: Linux. Valid values:
+        # 
+        # *   Linux
+        # *   Windows
+        # 
+        # >  Windows instances are in invitational preview. To use the operating system, submit a ticket.
         self.os_type = os_type
+        # The options that you can configure when you enable the overhead reservation feature.
         self.overhead_reservation_option = overhead_reservation_option
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -3072,6 +3085,8 @@ class CreateContainerGroupRequest(TeaModel):
             result['AutoMatchImageCache'] = self.auto_match_image_cache
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.compute_category is not None:
+            result['ComputeCategory'] = self.compute_category
         result['Container'] = []
         if self.container is not None:
             for k in self.container:
@@ -3120,6 +3135,8 @@ class CreateContainerGroupRequest(TeaModel):
             result['FixedIp'] = self.fixed_ip
         if self.fixed_ip_retain_hour is not None:
             result['FixedIpRetainHour'] = self.fixed_ip_retain_hour
+        if self.gpu_driver_version is not None:
+            result['GpuDriverVersion'] = self.gpu_driver_version
         result['HostAliase'] = []
         if self.host_aliase is not None:
             for k in self.host_aliase:
@@ -3232,6 +3249,8 @@ class CreateContainerGroupRequest(TeaModel):
             self.auto_match_image_cache = m.get('AutoMatchImageCache')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('ComputeCategory') is not None:
+            self.compute_category = m.get('ComputeCategory')
         self.container = []
         if m.get('Container') is not None:
             for k in m.get('Container'):
@@ -3281,6 +3300,8 @@ class CreateContainerGroupRequest(TeaModel):
             self.fixed_ip = m.get('FixedIp')
         if m.get('FixedIpRetainHour') is not None:
             self.fixed_ip_retain_hour = m.get('FixedIpRetainHour')
+        if m.get('GpuDriverVersion') is not None:
+            self.gpu_driver_version = m.get('GpuDriverVersion')
         self.host_aliase = []
         if m.get('HostAliase') is not None:
             for k in m.get('HostAliase'):
@@ -3423,9 +3444,6 @@ class CreateContainerGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3798,9 +3816,6 @@ class CreateDataCacheResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4269,9 +4284,6 @@ class CreateImageCacheResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4445,9 +4457,6 @@ class CreateInstanceOpsTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4623,7 +4632,7 @@ class CreateVirtualNodeRequest(TeaModel):
         # 
         # You can specify 1 to 10 vSwitches for a VPC.
         self.v_switch_id = v_switch_id
-        # he name of the VNode. The name must be 2 to 128 characters in length, and can contain lowercase letters, digits, periods (.), and hyphens (-).
+        # The name of the VNode. The name must be 2 to 128 characters in length, and can contain lowercase letters, digits, periods (.), and hyphens (-).
         self.virtual_node_name = virtual_node_name
         # The zone ID of the VNode.
         self.zone_id = zone_id
@@ -4788,9 +4797,6 @@ class CreateVirtualNodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4926,9 +4932,6 @@ class DeleteContainerGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5078,9 +5081,6 @@ class DeleteDataCacheResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5216,9 +5216,6 @@ class DeleteImageCacheResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5354,9 +5351,6 @@ class DeleteVirtualNodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5854,9 +5848,6 @@ class DescribeAvailableResourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6198,9 +6189,6 @@ class DescribeCommitContainerTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6741,9 +6729,6 @@ class DescribeContainerGroupEventsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7519,9 +7504,6 @@ class DescribeContainerGroupMetricResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7554,6 +7536,7 @@ class DescribeContainerGroupMetricResponse(TeaModel):
 class DescribeContainerGroupPriceRequest(TeaModel):
     def __init__(
         self,
+        compute_category: str = None,
         cpu: float = None,
         ephemeral_storage: int = None,
         instance_type: str = None,
@@ -7568,6 +7551,8 @@ class DescribeContainerGroupPriceRequest(TeaModel):
         spot_strategy: str = None,
         zone_id: str = None,
     ):
+        # The computing power type. A value of economy specifies economic instances.
+        self.compute_category = compute_category
         # The number of vCPUs. For information about the vCPU and memory specifications that are supported by Elastic Container Instance, see [vCPU and memory specifications](~~114662~~).
         self.cpu = cpu
         # The storage size of the temporary storage space. Unit: GiB.
@@ -7608,6 +7593,8 @@ class DescribeContainerGroupPriceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.compute_category is not None:
+            result['ComputeCategory'] = self.compute_category
         if self.cpu is not None:
             result['Cpu'] = self.cpu
         if self.ephemeral_storage is not None:
@@ -7638,6 +7625,8 @@ class DescribeContainerGroupPriceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ComputeCategory') is not None:
+            self.compute_category = m.get('ComputeCategory')
         if m.get('Cpu') is not None:
             self.cpu = m.get('Cpu')
         if m.get('EphemeralStorage') is not None:
@@ -8144,9 +8133,6 @@ class DescribeContainerGroupPriceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9091,9 +9077,6 @@ class DescribeContainerGroupStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9161,6 +9144,7 @@ class DescribeContainerGroupsRequestTag(TeaModel):
 class DescribeContainerGroupsRequest(TeaModel):
     def __init__(
         self,
+        compute_category: str = None,
         container_group_ids: str = None,
         container_group_name: str = None,
         limit: int = None,
@@ -9178,6 +9162,8 @@ class DescribeContainerGroupsRequest(TeaModel):
         with_event: bool = None,
         zone_id: str = None,
     ):
+        # The computing power type of the elastic container instance. A value of economy specifies economic elastic container instances.
+        self.compute_category = compute_category
         # The IDs of the elastic container instances in JSON format. You can specify up to 20 IDs.
         self.container_group_ids = container_group_ids
         # The name of the elastic container instance.
@@ -9194,10 +9180,11 @@ class DescribeContainerGroupsRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the instance.
         self.region_id = region_id
-        # The ID of the resource group to which the elastic container instances belong. If you do not specify a resource group when you create an elastic container instance, the system automatically adds the instance to the default resource group in your account.
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the security group to which the instance belongs.
         self.security_group_id = security_group_id
         # The status of the elastic container instance. Valid values:
         # 
@@ -9216,7 +9203,7 @@ class DescribeContainerGroupsRequest(TeaModel):
         self.tag = tag
         # The ID of the vSwitch to which the elastic container instances are connected.
         self.v_switch_id = v_switch_id
-        # Specifies whether to return event information.
+        # Specify whether to return event information.
         self.with_event = with_event
         # The ID of the zone in which the elastic container instances are deployed. If you do not specify this parameter, the system selects a zone.
         # 
@@ -9235,6 +9222,8 @@ class DescribeContainerGroupsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.compute_category is not None:
+            result['ComputeCategory'] = self.compute_category
         if self.container_group_ids is not None:
             result['ContainerGroupIds'] = self.container_group_ids
         if self.container_group_name is not None:
@@ -9273,6 +9262,8 @@ class DescribeContainerGroupsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ComputeCategory') is not None:
+            self.compute_category = m.get('ComputeCategory')
         if m.get('ContainerGroupIds') is not None:
             self.container_group_ids = m.get('ContainerGroupIds')
         if m.get('ContainerGroupName') is not None:
@@ -9457,11 +9448,11 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVar
         value: str = None,
         value_from: DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFrom = None,
     ):
-        # The environment variable.
+        # The name of the environment variable.
         self.key = key
         # The value of the environment variable.
         self.value = value
-        # The source of the variable value. This parameter has a value only when the Value parameter is not empty.
+        # The source of the environment variable value. This parameter has a value only when the Value parameter is not empty.
         self.value_from = value_from
 
     def validate(self):
@@ -9501,11 +9492,11 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeH
         port: int = None,
         scheme: str = None,
     ):
-        # The path to which HTTP GET requests were sent.
+        # The path to which the system sends an HTTP GET request for a health check.
         self.path = path
-        # The port to which HTTP GET requests were sent.
+        # The port to which the system sends an HTTP GET request for a health check.
         self.port = port
-        # The protocol type of the HTTP GET requests.
+        # The protocol type supported by the method. Valid values: HTTP and HTTPS.
         self.scheme = scheme
 
     def validate(self):
@@ -9587,17 +9578,17 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe(
         self.execs = execs
         # The minimum number of consecutive failures that must occur for the check to be considered failed. Default value: 3.
         self.failure_threshold = failure_threshold
-        # The HTTP GET method that is used to check the container.
+        # The HTTP GET method used to check the container.
         self.http_get = http_get
-        # The number of seconds between the time when the startup of the container ends and the time when the check starts.
+        # The number of seconds between the time when the startup of the container ends and the time when the probe starts.
         self.initial_delay_seconds = initial_delay_seconds
-        # The interval at which the container is checked. Unit: seconds. Default value: 10. Minimum value: 1.
+        # The interval at which the health check is performed. Unit: seconds. Default value: 10. Minimum value: 1.
         self.period_seconds = period_seconds
         # The minimum number of consecutive successes that must occur for the check to be considered successful. Default value: 1. Set the value to 1.
         self.success_threshold = success_threshold
         # The TCP socket method that is used to check the container.
         self.tcp_socket = tcp_socket
-        # The timeout period of the health check. Unit: seconds. Default value: 1. Minimum value: 1.
+        # The timeout period of the check. Default value: 1. Minimum value: 1. Unit: seconds.
         self.timeout_seconds = timeout_seconds
 
     def validate(self):
@@ -9661,7 +9652,7 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersPorts(TeaModel
     ):
         # The port number. Valid values: 1 to 65535.
         self.port = port
-        # The protocol.
+        # The protocol type.
         self.protocol = protocol
 
     def validate(self):
@@ -9776,11 +9767,11 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe
         port: int = None,
         scheme: str = None,
     ):
-        # The path to which the system sends an HTTP GET request for a probe.
+        # The path to which the system sends an HTTP GET request for a health check.
         self.path = path
         # The port to which the system sends an HTTP GET request for a health check.
         self.port = port
-        # The protocol type of the HTTP GET requests.
+        # The protocol type supported by the method. Valid values: HTTP and HTTPS.
         self.scheme = scheme
 
     def validate(self):
@@ -9817,7 +9808,7 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe
         host: str = None,
         port: int = None,
     ):
-        # The IP address of the host.
+        # The hostname.
         self.host = host
         # The port number.
         self.port = port
@@ -9858,21 +9849,21 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe
         tcp_socket: DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeTcpSocket = None,
         timeout_seconds: int = None,
     ):
-        # The commands to be executed in containers when you use a command-line interface (CLI) to perform health checks.
+        # The commands that are run in the container when you use a CLI to perform health checks.
         self.execs = execs
         # The minimum number of consecutive failures that must occur for the check to be considered failed. Default value: 3.
         self.failure_threshold = failure_threshold
         # The HTTP GET method that is used to check the container.
         self.http_get = http_get
-        # The number of seconds between the time when the startup of the container ends and the time when the check starts.
+        # The number of seconds between the time when the startup of the container ends and the time when the probe starts.
         self.initial_delay_seconds = initial_delay_seconds
-        # The interval at which the container is checked. Unit: seconds. Default value: 10. Minimum value: 1.
+        # The interval at which the health check is performed. Unit: seconds. Default value: 10. Minimum value: 1.
         self.period_seconds = period_seconds
         # The minimum number of consecutive successes that must occur for the check to be considered successful. Default value: 1. Set the value to 1.
         self.success_threshold = success_threshold
         # The TCP socket method that is used to check the container.
         self.tcp_socket = tcp_socket
-        # The timeout period of the health check. Unit: seconds. Default value: 1. Minimum value: 1.
+        # The timeout period of the check. Default value: 1. Minimum value: 1. Unit: seconds.
         self.timeout_seconds = timeout_seconds
 
     def validate(self):
@@ -9933,7 +9924,7 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContex
         self,
         adds: List[str] = None,
     ):
-        # The permissions specific to the process in the container.
+        # The permissions specific to the processes in the container.
         self.adds = adds
 
     def validate(self):
@@ -9965,9 +9956,9 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContex
     ):
         # The permissions specific to the processes in the container.
         self.capability = capability
-        # Indicates whether the root file system is set to the read-only mode. The only valid value is true.
+        # Indicates whether permissions on the root file system are read-only.
         self.read_only_root_filesystem = read_only_root_filesystem
-        # The ID of the user that runs the container.
+        # The user ID (UID) that is used to run the container.
         self.run_as_user = run_as_user
 
     def validate(self):
@@ -10009,19 +10000,19 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts(T
         read_only: bool = None,
         sub_path: str = None,
     ):
-        # The directory to which the volume is mounted. Data under this directory is overwritten by the data on the volume.
+        # The directory of the volume that is mounted to the container. The data in this directory is overwritten by the data on the volume.
         self.mount_path = mount_path
-        # The mount propagation settings of volumes. Mount propagation allows the sharing of volumes that are mounted on a container to other containers in the same pod, or even to other pods on the same node. Valid values:
+        # The mount propagation settings of the volume. Mount propagation allows volumes that are mounted on one container to be shared with other containers in the same pod, or even with other pods on the same node. Valid values:
         # 
-        # *   None: The volume mount does not receive subsequent mounts that are mounted to the volume or the subdirectories of the volume.
-        # *   HostToCotainer: The volume mount receives all subsequent mounts that are mounted to the volume or to the subdirectories of the volume.
-        # *   Bidirectional: The volume mount behaves the same as the HostToCotainer mount. The volume mount receives all subsequent mounts that are mounted to the volume or to the subdirectories of the volume. In addition, all volume mounts created by the container are propagated back to the host and to all containers of all pods that use the same volume.
+        # *   None: The volume mount does not receive subsequent mounts that are performed on the volume or on the subdirectories of the volume.
+        # *   HostToCotainer: The volume mount receives subsequent mounts that are performed on this volume or the subdirectories of this volume.
+        # *   Bidirectional: The volume mount behaves the same as the HostToContainer mount. The volume mount receives subsequent mounts that are performed on the volume or on the subdirectories of the volume. In addition, all volume mounts that are performed on the container are propagated back to the host and all containers of all pods that use the same volume.
         self.mount_propagation = mount_propagation
         # The volume name.
         self.name = name
         # Indicates whether the volume is read-only.
         self.read_only = read_only
-        # The subdirectory of the volume. This parameter specifies different subdirectories of the same volume that the instance can mount to different subdirectories of containers.
+        # The subdirectory of the volume. You can use this parameter to mount the same volume to different subdirectories of the container.
         self.sub_path = sub_path
 
     def validate(self):
@@ -10086,35 +10077,35 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainers(TeaModel):
         volume_mounts: List[DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts] = None,
         working_dir: str = None,
     ):
-        # The arguments that are passed to the startup command of the container.
+        # The arguments that are passed to the startup commands of the container.
         self.args = args
-        # The container startup commands.
+        # The startup commands of the container.
         self.commands = commands
-        # The number of vCPUs that you want to allocate to the container.
+        # The number of vCPUs that are allocated to the container.
         self.cpu = cpu
         # The current container status.
         self.current_state = current_state
-        # The environment variables.
+        # The environment variables of the container.
         self.environment_vars = environment_vars
         # The number of GPUs.
         self.gpu = gpu
-        # The image of the container.
+        # The image in the container.
         self.image = image
-        # The policy for image pulling. Valid values:
+        # The image pulling policy. Valid values:
         # 
-        # *   Always: Image pulling is always performed.
-        # *   IfNotPresent: On-premises images are preferentially used. If no on-premises images are available, image pulling is performed.
+        # *   Always: Each time the instance is updated, image pulling is performed.
+        # *   IfNotPresent: On-premises images are used first. If no on-premises images are available, image pulling is performed.
         # *   Never: On-premises images are always used. Image pulling is not performed.
         self.image_pull_policy = image_pull_policy
         # The liveness probe of the container.
         self.liveness_probe = liveness_probe
         # The memory size of the container. Unit: GiB.
         self.memory = memory
-        # The container name.
+        # The name of the container.
         self.name = name
-        # The exposed port and protocol of the container.
+        # The exposed ports and protocols of the container.
         self.ports = ports
-        # The previous state of the container.
+        # The previous status of the container.
         self.previous_state = previous_state
         # The readiness probe that is used to check whether the container is ready to serve a request.
         self.readiness_probe = readiness_probe
@@ -10126,9 +10117,9 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainers(TeaModel):
         self.security_context = security_context
         # Indicates whether the container allocates buffer resources to standard input streams when the container is running. If you do not specify this parameter, an end-of-file (EOF) error may occur when standard input streams in the container are read. Default value: false.
         self.stdin = stdin
-        # Indicates whether the container runtime closes the stdin channel after the stdin channel has been opened by a sing attach. If stdin is true, the stdin stream remains open across multiple attach sessions. If StdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and receive data until the client disconnects. When the client disconnects, stdin is closed and remains closed until the container is restarted.
+        # Indicates whether standard input streams are disconnected after a client is disconnected. If Stdin is set to true, standard input streams remain connected among multiple sessions. If StdinOnce is set to true, standard input streams are connected after the container is started, and remain idle until a client is connected to receive data. After the client is disconnected, streams are also disconnected, and remain disconnected until the container restarts.
         self.stdin_once = stdin_once
-        # Indicates whether interaction is enabled. Default value: false If the Command parameter is a `/bin/bash` command, the value is true.
+        # Indicates whether interaction is enabled. Default value: false. If the value of the Command parameter is `/bin/bash`, the value of this parameter is true.
         self.tty = tty
         # Information about the mounted volumes.
         self.volume_mounts = volume_mounts
@@ -10288,7 +10279,7 @@ class DescribeContainerGroupsResponseBodyContainerGroupsDnsConfigOptions(TeaMode
     ):
         # The variable name of the option.
         self.name = name
-        # The value of the object.
+        # The variable value of the option.
         self.value = value
 
     def validate(self):
@@ -10324,9 +10315,9 @@ class DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig(TeaModel):
     ):
         # The IP addresses of DNS servers.
         self.name_servers = name_servers
-        # The objects. Each object is a name-value pair. The value is optional.
+        # The options. Each option is a name-value pair. The value in the name-value pair is optional.
         self.options = options
-        # The lookup domains of DNS server N.
+        # The search domain of the DNS server.
         self.searches = searches
 
     def validate(self):
@@ -10405,7 +10396,7 @@ class DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContext(TeaMo
         self,
         sysctls: List[DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContextSysctls] = None,
     ):
-        # The Sysctl parameters.
+        # sysctl parameters.
         self.sysctls = sysctls
 
     def validate(self):
@@ -10449,11 +10440,11 @@ class DescribeContainerGroupsResponseBodyContainerGroupsEvents(TeaModel):
     ):
         # The number of the events.
         self.count = count
-        # The time when the event started.
+        # The start time of the event.
         self.first_timestamp = first_timestamp
-        # The time when the event ended.
+        # The end time of the event.
         self.last_timestamp = last_timestamp
-        # The message about the event.
+        # The event message.
         self.message = message
         # The category to which the event belongs.
         self.name = name
@@ -10515,9 +10506,9 @@ class DescribeContainerGroupsResponseBodyContainerGroupsHostAliases(TeaModel):
         hostnames: List[str] = None,
         ip: str = None,
     ):
-        # The information about the host.
+        # The information about the hosts.
         self.hostnames = hostnames
-        # The IP address.
+        # The IP address of the instance.
         self.ip = ip
 
     def validate(self):
@@ -10562,7 +10553,7 @@ class DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentSta
         self.exit_code = exit_code
         # The time when the container stopped running.
         self.finish_time = finish_time
-        # The message about the event.
+        # The event message.
         self.message = message
         # The reason why the container is in this state.
         self.reason = reason
@@ -10630,7 +10621,7 @@ class DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmen
         self,
         field_path: str = None,
     ):
-        # The path from which the fields come in the specified version. Only `status.podIP` is supported.
+        # The path of the field. Only `status.podIP` is supported.
         self.field_path = field_path
 
     def validate(self):
@@ -10658,7 +10649,7 @@ class DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmen
         self,
         field_ref: DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFromFieldRef = None,
     ):
-        # The specified field.
+        # The specified fields.
         self.field_ref = field_ref
 
     def validate(self):
@@ -10690,11 +10681,11 @@ class DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmen
         value: str = None,
         value_from: DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFrom = None,
     ):
-        # The environment variable.
+        # The name of the environment variable.
         self.key = key
         # The value of the environment variable.
         self.value = value
-        # The source of the variable value. This parameter has a value only when the Value parameter is not empty.
+        # The source of the environment variable value. This parameter has a value only when the Value parameter is not empty.
         self.value_from = value_from
 
     def validate(self):
@@ -10735,7 +10726,7 @@ class DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPorts(TeaM
     ):
         # The port number. Valid values: 1 to 65535.
         self.port = port
-        # The protocol.
+        # The protocol type.
         self.protocol = protocol
 
     def validate(self):
@@ -10788,7 +10779,7 @@ class DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousSt
         self.signal = signal
         # The time when the container started to run.
         self.start_time = start_time
-        # The status of the container. Valid values: Waiting, Running, and Terminated.
+        # The container status. Valid values: Waiting, Running, and Terminated.
         self.state = state
 
     def validate(self):
@@ -10844,7 +10835,7 @@ class DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityCo
         self,
         adds: List[str] = None,
     ):
-        # The permissions specific to the process in the container.
+        # The permissions specific to the processes in the container.
         self.adds = adds
 
     def validate(self):
@@ -10876,9 +10867,9 @@ class DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityCo
     ):
         # The permissions specific to the processes in the container.
         self.capability = capability
-        # Indicates whether the root file system is set to the read-only mode. The only valid value is true.
+        # Indicates whether permissions on the root file system are read-only.
         self.read_only_root_filesystem = read_only_root_filesystem
-        # The UID that is used to run the entry point of the container process.
+        # The UID this is used to run the entry point of the container process.
         self.run_as_user = run_as_user
 
     def validate(self):
@@ -10919,15 +10910,15 @@ class DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMoun
         name: str = None,
         read_only: bool = None,
     ):
-        # The directory to which the volume is mounted. Data under this directory is overwritten by the data on the volume.
+        # The directory of the volume that is mounted to the container. The data in this directory is overwritten by the data on the volume.
         self.mount_path = mount_path
-        # The mount propagation settings of volumes. Mount propagation allows the sharing of volumes that are mounted on a container to other containers in the same pod, or even to other pods on the same node. Valid values:
+        # The mount propagation settings of the volume. Mount propagation allows volumes that are mounted on one container to be shared with other containers in the same pod, or even with other pods on the same node. Valid values:
         # 
-        # *   None: The volume mount does not receive subsequent mounts that are mounted to the volume or the subdirectories of the volume.
-        # *   HostToCotainer: The volume mount receives all subsequent mounts that are mounted to the volume or to the subdirectories of the volume.
-        # *   Bidirectional: The volume mount behaves the same as the HostToCotainer mount. The volume mount receives all subsequent mounts that are mounted to the volume or to the subdirectories of the volume. In addition, all volume mounts created by the container are propagated back to the host and to all containers of all pods that use the same volume.
+        # *   None: The volume mount does not receive subsequent mounts that are performed on the volume or on the subdirectories of the volume.
+        # *   HostToCotainer: The volume mount receives subsequent mounts that are performed on this volume or the subdirectories of this volume.
+        # *   Bidirectional: The volume mount behaves the same as the HostToContainer mount. The volume mount receives subsequent mounts that are performed on the volume or on the subdirectories of the volume. In addition, all volume mounts that are performed on the container are propagated back to the host and all containers of all pods that use the same volume.
         self.mount_propagation = mount_propagation
-        # The name of the volume. The name is the same as the volume you selected when you purchased the container.
+        # The name of the volume. The value of this parameter is the same as the name of the volume that you selected when you purchased the container.
         self.name = name
         # Default value: false.
         self.read_only = read_only
@@ -10985,31 +10976,31 @@ class DescribeContainerGroupsResponseBodyContainerGroupsInitContainers(TeaModel)
         volume_mounts: List[DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts] = None,
         working_dir: str = None,
     ):
-        # The arguments that are passed to the startup command.
+        # The arguments that are passed to the startup commands of the container.
         self.args = args
         # The startup commands of the containers.
         self.command = command
-        # The number of vCPUs.
+        # The number of vCPUs that are allocated to the container.
         self.cpu = cpu
         # The current container status.
         self.current_state = current_state
-        # The environment variables.
+        # The environment variables of the container.
         self.environment_vars = environment_vars
         # The number of GPUs.
         self.gpu = gpu
-        # The image.
+        # The image of the container.
         self.image = image
-        # The policy for image pulling. Valid values:
+        # The image pulling policy. Valid values:
         # 
-        # *   Always: Image pulling is always performed.
-        # *   IfNotPresent: On-premises images are preferentially used. If no on-premises images are available, image pulling is performed.
+        # *   Always: Each time the instance is updated, image pulling is performed.
+        # *   IfNotPresent: On-premises images are used first. If no on-premises images are available, image pulling is performed.
         # *   Never: On-premises images are always used. Image pulling is not performed.
         self.image_pull_policy = image_pull_policy
-        # The size of memory that is allocated to the init container. Unit: GiB.
+        # The memory size of the init container. Unit: GiB.
         self.memory = memory
         # The name of the init container.
         self.name = name
-        # The exposed port and protocol of the container.
+        # The exposed ports and protocols of the container.
         self.ports = ports
         # The previous state of the container.
         self.previous_state = previous_state
@@ -11149,9 +11140,9 @@ class DescribeContainerGroupsResponseBodyContainerGroupsTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -11184,9 +11175,9 @@ class DescribeContainerGroupsResponseBodyContainerGroupsVolumesConfigFileVolumeC
         content: str = None,
         path: str = None,
     ):
-        # The content of the configuration file. Maximum size: 32 KB.
+        # The content of the ConfigFile volume. Maximum size: 32 KB.
         self.content = content
-        # The relative path of the configuration file.
+        # The relative path of the ConfigFile volume.
         self.path = path
 
     def validate(self):
@@ -11230,28 +11221,28 @@ class DescribeContainerGroupsResponseBodyContainerGroupsVolumes(TeaModel):
         name: str = None,
         type: str = None,
     ):
-        # The paths to configuration files.
+        # The path of the ConfigFile volume.
         self.config_file_volume_config_file_to_paths = config_file_volume_config_file_to_paths
         # The ID of the disk when you set the Type parameter to DiskVolume.
         self.disk_volume_disk_id = disk_volume_disk_id
         # The file system type of the disk volume.
         self.disk_volume_fs_type = disk_volume_fs_type
-        # The storage media of emptyDir volume N. This parameter is empty by default, indicating that the node file system is used as the storage media. Valid values:
+        # The storage media for the emptyDir volume. This parameter is empty by default, indicating that the node file system is used as the storage media. Valid values:
         # 
-        # *   Memory: uses memory as the storage media.
-        # *   LocalRaid0: forms local disks into RAID 0. This value is applicable only to scenarios in which an elastic container instance that has local disks mounted is created. For more information, see [Create an elastic container instance that has local disks mounted](~~114664~~).
+        # *   Memory: Memory is used as the storage media.
+        # *   LocalRaid0: Local disks are formed into RAID 0. This value is valid only if an elastic container instance that has local disks mounted is created. For more information, see [Create an elastic container instance that has local disks mounted](~~114664~~).
         self.empty_dir_volume_medium = empty_dir_volume_medium
-        # The storage capacity of emptyDir volume N.
+        # The storage size of the emptyDir volume.
         self.empty_dir_volume_size_limit = empty_dir_volume_size_limit
-        # The name of the FlexVolume driver.
+        # The name of the driver when you set the Type parameter to FlexVolume.
         self.flex_volume_driver = flex_volume_driver
-        # The file system type when you set the Type parameter to FlexVolume. The default value is determined by the script of the FlexVolume plug-in.
+        # The file system type when you set the Type parameter to FlexVolume. The default value varies based on the script of the FlexVolume plug-in.
         self.flex_volume_fs_type = flex_volume_fs_type
-        # The options when you set the Volume.N.Type parameter to FlexVolume.
+        # The options when you set the Type parameter to FlexVolume.
         self.flex_volume_options = flex_volume_options
         # The path of the NFS volume.
         self.nfsvolume_path = nfsvolume_path
-        # Indicates whether the volume is read-only.
+        # Indicates whether the NFS volume is read-only.
         self.nfsvolume_read_only = nfsvolume_read_only
         # The endpoint of the server when you set the Type parameter to NFSVolume.
         self.nfsvolume_server = nfsvolume_server
@@ -11384,16 +11375,17 @@ class DescribeContainerGroupsResponseBodyContainerGroups(TeaModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # The computing power type of the elastic container instance. A value of economy indicates economic instances.
         self.compute_category = compute_category
         # The instance ID.
         self.container_group_id = container_group_id
         # The instance name.
         self.container_group_name = container_group_name
-        # The containers in the elastic container instance.
+        # The information about containers in the elastic container instance.
         self.containers = containers
         # The number of vCPUs that are allocated to the elastic container instance.
         self.cpu = cpu
-        # The time when the system created the elastic container instance after the system received the request. The time follows the RFC 3339 standard and must be in UTC.
+        # The time when the system created the elastic container instance after the system received the request. The time follows the RFC 3339 standard. The time is displayed in UTC.
         self.creation_time = creation_time
         # The discount.
         self.discount = discount
@@ -11405,80 +11397,80 @@ class DescribeContainerGroupsResponseBodyContainerGroups(TeaModel):
         self.eni_instance_id = eni_instance_id
         # The size of the temporary storage space. Unit: GiB.
         self.ephemeral_storage = ephemeral_storage
-        # The events about the elastic container instance. A maximum of 50 events can be returned.
+        # The events of the elastic container instance. A maximum of 50 events can be returned.
         self.events = events
-        # The time when the elastic container instance failed to run due to overdue payments. The time follows the RFC 3339 standard and must be in UTC.
+        # The time when the elastic container instance failed to run due to overdue payments. The time follows the RFC 3339 standard. The time is displayed in UTC.
         self.expired_time = expired_time
-        # The time when the instance failed to run. The time follows the RFC 3339 standard and must be in UTC.
+        # The time when the instance failed to run. The time follows the RFC 3339 standard. The time is displayed in UTC.
         self.failed_time = failed_time
-        # The hostname mapping of a container in the elastic container instance.
+        # The hostnames and IP addresses for a container that are added to the hosts file of the elastic container instance.
         self.host_aliases = host_aliases
         # The information about the init containers.
         self.init_containers = init_containers
-        # The instance type of the Elastic Compute Service (ECS) instance that is used to create the elastic container instance.
+        # The instance type of the specified Elastic Compute Service (ECS) instance.
         self.instance_type = instance_type
         # The public IP address.
         self.internet_ip = internet_ip
         # The private IP address.
         self.intranet_ip = intranet_ip
-        # The IPv6 address.
+        # The IPv6 address of the instance.
         self.ipv_6address = ipv_6address
-        # The memory size of the elastic container instance. Unit: GiB.
+        # The memory size of the instance. Unit: GiB.
         self.memory = memory
-        # The name of the instance RAM role. You can use an instance RAM role to access both elastic container instances and ECS instances. For more information, see [Use the instance RAM role by calling APIs](~~61178~~).
+        # The name of the instance RAM role. The elastic container instance and the ECS instance share a RAM role. For more information, see [Use an instance RAM role by calling API operations](~~61178~~).
         self.ram_role_name = ram_role_name
         # The region ID of the instance.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The restart policy of the elastic container instance. Valid values:
         # 
-        # *   Never: never restarts the elastic container instance.
-        # *   Always: always restarts the elastic container instance.
-        # *   OnFailure: restarts the instance if it fails to run.
+        # *   Never: Never restarts the instance if a container in the instance exits.
+        # *   Always: Always restarts the instance if a container in the instance exits.
+        # *   OnFailure: Restarts the instance only if a container in the instance exists upon failure with a status code of non-zero.
         self.restart_policy = restart_policy
-        # The ID of the security group to which the instance belongs.
+        # The security group ID.
         self.security_group_id = security_group_id
         # The maximum hourly price for the preemptible elastic container instance.
         # 
-        # This parameter is returned only if you set the SpotStrategy parameter to SpotWithPriceLimit.
+        # This parameter is returned only when SpotStrategy is set to SpotWithPriceLimit.
         self.spot_price_limit = spot_price_limit
-        # The bidding policy for the instance. Valid values:
+        # The bid policy for the instance. Default value: NoSpot. Valid values:
         # 
-        # *   NoSpot (default): The instance is created as a regular pay-as-you-go instance.
+        # *   NoSpot: The instance is a regular pay-as-you-go instance.
         # *   SpotWithPriceLimit: The instance is a preemptible instance that has a maximum price.
-        # *   SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is automatically used as the bidding price.
+        # *   SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is used as the bid price.
         self.spot_strategy = spot_strategy
-        # The status of the instance. Valid values:
+        # The state of the instance. Valid values:
         # 
-        # *   Pending: The elastic container instance is being started.
-        # *   Running: The elastic container instance is running.
-        # *   Succeeded: The elastic container instance runs successfully.
-        # *   Failed: The elastic container instance fails to run.
-        # *   Scheduling: The elastic container instance is being created.
-        # *   ScheduleFailed: The elastic container instance fails to be created.
-        # *   Restarting: The elastic container instance is being restarted.
-        # *   Updating: The elastic container instance is being updated.
-        # *   Terminating: The elastic container instance is being terminated.
-        # *   Expired: The instance expired.
+        # *   Pending: The instance is being started.
+        # *   Running: The instance is running.
+        # *   Succeeded: The instance successfully runs.
+        # *   Failed: The instance fails to run.
+        # *   Scheduling: The instance is being created.
+        # *   ScheduleFailed: The instance fails to be created.
+        # *   Restarting: The instance is being restarted.
+        # *   Updating: The instance is being updated.
+        # *   Terminating: The instance is being terminated.
+        # *   Expired: The instance is expired.
         self.status = status
-        # The time when all containers in the elastic container instance exit. The time follows the RFC 3339 standard and must be in UTC.
+        # The time when all containers exited on success. The time follows the RFC 3339 standard. The time is displayed in UTC.
         self.succeeded_time = succeeded_time
         # The tags of the instance.
         self.tags = tags
-        # This parameter is unavailable.
+        # This parameter is not publicly available.
         self.tenant_eni_instance_id = tenant_eni_instance_id
-        # This parameter is unavailable.
+        # This parameter is not publicly available.
         self.tenant_eni_ip = tenant_eni_ip
-        # This parameter is unavailable.
+        # This parameter is not publicly available.
         self.tenant_security_group_id = tenant_security_group_id
-        # This parameter is unavailable.
+        # This parameter is not publicly available.
         self.tenant_vswitch_id = tenant_vswitch_id
-        # The ID of the vSwitch.
+        # The ID of the vSwitch to which the instance is connected.
         self.v_switch_id = v_switch_id
-        # The information about the volumes.
+        # Information about the volumes.
         self.volumes = volumes
-        # The ID of the virtual private cloud (VPC) to which the elastic container instances belong.
+        # The ID of the VPC to which the instance belongs.
         self.vpc_id = vpc_id
         # The zone to which the instance belongs.
         self.zone_id = zone_id
@@ -11783,9 +11775,6 @@ class DescribeContainerGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11987,9 +11976,6 @@ class DescribeContainerLogResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12220,13 +12206,13 @@ class DescribeDataCachesResponseBodyDataCachesEvents(TeaModel):
         self.first_timestamp = first_timestamp
         # The time when the event ended.
         self.last_timestamp = last_timestamp
-        # The information about the event.
+        # The message about the event.
         self.message = message
         # The event name.
         self.name = name
-        # The event cause.
+        # The reason for the transition into the current status of the event.
         self.reason = reason
-        # The event type. Valid values:
+        # The type of the event. Valid values:
         # 
         # *   Normal
         # *   Warning
@@ -12339,7 +12325,7 @@ class DescribeDataCachesResponseBodyDataCaches(TeaModel):
         self.container_group_id = container_group_id
         # The time when the data cache was created.
         self.creation_time = creation_time
-        # The data cache ID.
+        # The ID of the data cache.
         self.data_cache_id = data_cache_id
         # The information about the data source.
         self.data_source = data_source
@@ -12347,25 +12333,25 @@ class DescribeDataCachesResponseBodyDataCaches(TeaModel):
         self.events = events
         # The time when the data cache expires.
         self.expire_date_time = expire_date_time
-        # The ID of the local snapshot.
+        # The ID of the on-premises snapshot.
         self.flash_snapshot_id = flash_snapshot_id
         # The time when the data cache was last matched.
         self.last_matched_time = last_matched_time
-        # The data cache name.
+        # The name of the data cache.
         self.name = name
-        # The vHost directory in which the data cache resides.
+        # The directory in which the virtual host of the data cache resides.
         self.path = path
         # The creation progress of the data cache.
         self.progress = progress
         # The region ID.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The size of the data cache. Unit: GiB.
         self.size = size
         # The snapshot ID.
         self.snapshot_id = snapshot_id
-        # The state of the data cache. Valid values:
+        # The status of the data cache. Valid values:
         # 
         # *   Loading: The data cache is loading data.
         # *   Creating: The data cache is being created.
@@ -12374,7 +12360,7 @@ class DescribeDataCachesResponseBodyDataCaches(TeaModel):
         # *   Updating: The data cache is being updated.
         # *   UpdateFailed: The data cache failed to be updated.
         # 
-        # The data cache is available when it is in the Ready state.
+        # If the data cache is in the Available state, the data cache can be used.
         self.status = status
         # The tags that are attached to the data cache.
         self.tags = tags
@@ -12556,9 +12542,6 @@ class DescribeDataCachesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13106,9 +13089,6 @@ class DescribeImageCachesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13325,9 +13305,6 @@ class DescribeInstanceOpsRecordsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14115,9 +14092,6 @@ class DescribeMultiContainerGroupMetricResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14303,9 +14277,6 @@ class DescribeRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14804,9 +14775,6 @@ class DescribeVirtualNodesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14994,9 +14962,6 @@ class ExecContainerCommandResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15134,9 +15099,6 @@ class ListUsageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15293,9 +15255,6 @@ class ResizeContainerGroupVolumeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15431,9 +15390,6 @@ class RestartContainerGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15505,7 +15461,7 @@ class UpdateContainerGroupRequestDnsConfig(TeaModel):
         option: List[UpdateContainerGroupRequestDnsConfigOption] = None,
         search: List[str] = None,
     ):
-        # The IP addresses of the DNS servers.
+        # The IP addresses of DNS servers.
         self.name_server = name_server
         # The configurations of DNS.
         self.option = option
@@ -15556,13 +15512,13 @@ class UpdateContainerGroupRequestAcrRegistryInfo(TeaModel):
         instance_name: str = None,
         region_id: str = None,
     ):
-        # The domain names of the Container Registry Enterprise Edition instance. By default, all domain names of the instance are displayed. You can specify one or more domain names. Separate multiple domain names with commas (,).
+        # The domain names of the Container Registry Enterprise Edition instance. By default, all domain names of the instance are displayed. You can specify specific domain names. Separate multiple domain names with commas (,).
         self.domain = domain
         # The ID of the Container Registry Enterprise Edition instance.
         self.instance_id = instance_id
         # The name of the Container Registry Enterprise Edition instance.
         self.instance_name = instance_name
-        # The region ID of the Container Registry Enterprise Edition instance.
+        # The ID of the region where the Container Registry Enterprise Edition instance resides.
         self.region_id = region_id
 
     def validate(self):
@@ -16081,9 +16037,9 @@ class UpdateContainerGroupRequestContainerLifecyclePostStartHandlerHttpGetHttpHe
         name: str = None,
         value: str = None,
     ):
-        # The request parameter of HTTP GET requests when you use HTTP requests to specify the postStart callback function.
+        # The request parameter of the HTTP GET request when you use an HTTP request to specify the postStart callback function.
         self.name = name
-        # The request parameter value of HTTP GET requests when you use HTTP requests to specify the postStart callback function.
+        # The request parameter value of the HTTP GET request when you use an HTTP request to specify the postStart callback function.
         self.value = value
 
     def validate(self):
@@ -16116,9 +16072,9 @@ class UpdateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpHead
         name: str = None,
         value: str = None,
     ):
-        # The request parameter of HTTP GET requests when you use HTTP requests to specify the preStop callback function.
+        # The request parameter of the HTTP GET request when you use an HTTP request to specify the preStop callback function.
         self.name = name
-        # The request parameter value of HTTP GET requests when you use HTTP requests to specify the preStop callback function.
+        # The request parameter value of the HTTP GET request when you use an HTTP request to specify the preStop callback function.
         self.value = value
 
     def validate(self):
@@ -16191,11 +16147,11 @@ class UpdateContainerGroupRequestContainerVolumeMount(TeaModel):
     ):
         # The directory of the volume that is mounted to the container. The data in this directory is overwritten by the data on the volume. Specify this parameter with caution.
         self.mount_path = mount_path
-        # The mount propagation setting of the volume. Mount propagation allows volumes that are mounted on one container to be shared with other containers in the same pod, or even with other pods on the same node. Valid values:
+        # The mount propagation settings of the volume. Mount propagation allows volumes that are mounted on one container to be shared with other containers in the same pod, or even with other pods on the same node. Valid values:
         # 
-        # *   None: This volume mount does not receive subsequent mounts that are mounted to this volume or subdirectories of this volume by the host.
-        # *   HostToCotainer: This volume mount receives all subsequent mounts that are mounted to this volume or subdirectories of this volume.
-        # *   Bidirectional: The volume mount behaves the same as the HostToCotainer mount. The volume mount receives all subsequent mounts that are mounted to this volume or subdirectories of this volume. In addition, all volume mounts created by the container are propagated back to the host and to all containers of all pods that use the same volume.
+        # *   None: This volume mount does not receive subsequent mounts that are performed on this volume or subdirectories of this volume.
+        # *   HostToCotainer: The volume mount receives subsequent mounts that are performed on this volume or the subdirectories of this volume.
+        # *   Bidirectional: The volume mount behaves the same as the HostToContainer mount. The volume mount receives subsequent mounts that are performed on the volume or the subdirectories of the volume. In addition, all volume mounts that are mounted on the container are propagated back to the host and all containers of all pods that use the same volume.
         # 
         # Default value: None.
         self.mount_propagation = mount_propagation
@@ -16203,7 +16159,7 @@ class UpdateContainerGroupRequestContainerVolumeMount(TeaModel):
         self.name = name
         # Specifies whether the volume is read-only. Default value: false.
         self.read_only = read_only
-        # The subdirectory of the volume that is mounted to the container. The pod can mount different directories of the same volume to different subdirectories of containers.
+        # The subdirectory of the volume that is mounted to the container. You can use this parameter to mount the same volume to different subdirectories of the container.
         self.sub_path = sub_path
 
     def validate(self):
@@ -16283,11 +16239,11 @@ class UpdateContainerGroupRequestContainer(TeaModel):
         self.liveness_probe = liveness_probe
         self.readiness_probe = readiness_probe
         self.security_context = security_context
-        # The arguments that are passed to the container startup command. You can specify up to 10 arguments.
+        # The arguments that you want to pass to the startup command of the container. You can specify up to 10 arguments.
         self.arg = arg
-        # The commands that are used to run the probe.
+        # The commands that you want to run to perform the health check.
         self.command = command
-        # The number of vCPUs that you want to allocate to the container.
+        # The number of vCPUs that you want to allocate to the container
         self.cpu = cpu
         # The environment variables for the container.
         self.environment_var = environment_var
@@ -16295,42 +16251,46 @@ class UpdateContainerGroupRequestContainer(TeaModel):
         self.gpu = gpu
         # The image of the container.
         self.image = image
-        # The image pulling policy.
+        # The image pulling policy. Valid values:
+        # 
+        # *   Always: Each time the instance is updated, image pulling is performed.
+        # *   IfNotPresent: On-premises images are used first. If no on-premises images are available, image pulling is performed.
+        # *   Never: On-premises images are always used. Image pulling is not performed.
         self.image_pull_policy = image_pull_policy
-        # The command that you run in the container when you use a command-line interface (CLI) to specify the postStart callback function.
+        # The commands to be executed in the container when you use the CLI to specify the postStart callback function.
         self.lifecycle_post_start_handler_exec = lifecycle_post_start_handler_exec
-        # The IP address of the host that receives HTTP GET requests when you use HTTP requests to specify the postStart callback function.
+        # The IP address of the host that receives the HTTP GET request when you use an HTTP request to specify the postStart callback function.
         self.lifecycle_post_start_handler_http_get_host = lifecycle_post_start_handler_http_get_host
         # The information about the valid HTTP request headers among the generated HTTP request headers.
         self.lifecycle_post_start_handler_http_get_http_headers = lifecycle_post_start_handler_http_get_http_headers
-        # The path to which HTTP GET requests are sent when you use HTTP requests to specify the postStart callback function.
+        # The path to which the system sends an HTTP GET request for a health check when you use an HTTP request to specify the postStart callback function.
         self.lifecycle_post_start_handler_http_get_path = lifecycle_post_start_handler_http_get_path
-        # The port to which HTTP GET requests are sent when you use HTTP requests to specify the postStart callback function.
+        # The port to which the system sends the HTTP GET request when you use an HTTP request to specify the postStart callback function.
         self.lifecycle_post_start_handler_http_get_port = lifecycle_post_start_handler_http_get_port
-        # The path to which HTTP GET requests are sent when you use HTTP requests to specify the postStart callback function.
+        # The path to which the system sends an HTTP GET request for a health check when you use an HTTP request to specify the postStart callback function.
         self.lifecycle_post_start_handler_http_get_scheme = lifecycle_post_start_handler_http_get_scheme
-        # The host IP address of TCP socket probes when you use TCP sockets to specify the postStart callback function.
+        # The IP address of the host that receives the TCP socket request when you use a TCP socket request to specify the postStart callback function.
         self.lifecycle_post_start_handler_tcp_socket_host = lifecycle_post_start_handler_tcp_socket_host
-        # The port of TCP socket probes when you use TCP sockets to specify the postStart callback function.
+        # The port to which the system sends a TCP socket request for a health check when you use TCP sockets to specify the postStart callback function.
         self.lifecycle_post_start_handler_tcp_socket_port = lifecycle_post_start_handler_tcp_socket_port
-        # The command that you run in the container when you use a CLI to specify the preStop callback function.
+        # The commands to be executed in the container when you use the CLI to specify the preStop callback function.
         self.lifecycle_pre_stop_handler_exec = lifecycle_pre_stop_handler_exec
-        # The IP address of the host that receives HTTP GET requests when you use HTTP requests to specify the preStop callback function.
+        # The IP address of the host that receives the HTTP GET request when you use an HTTP request to specify the preStop callback function.
         self.lifecycle_pre_stop_handler_http_get_host = lifecycle_pre_stop_handler_http_get_host
-        # The information about the generated HTTP request headers.
+        # The information about the generated HTTP request header.
         self.lifecycle_pre_stop_handler_http_get_http_header = lifecycle_pre_stop_handler_http_get_http_header
-        # The path to which HTTP GET requests are sent when you use HTTP requests to specify the preStop callback function.
+        # The path to which the system sends an HTTP GET request for a health check when you use an HTTP request to specify the preSop callback function.
         self.lifecycle_pre_stop_handler_http_get_path = lifecycle_pre_stop_handler_http_get_path
-        # The port to which HTTP GET requests are sent when you use HTTP requests to specify the preStop callback function.
+        # The port to which the system sends the HTTP GET request for a health check when you use an HTTP request to specify the preStop callback function.
         self.lifecycle_pre_stop_handler_http_get_port = lifecycle_pre_stop_handler_http_get_port
-        # The protocol type of HTTP GET requests when you use HTTP requests to specify the preStop callback function. Valid values:
+        # The protocol type of the HTTP GET request when you use an HTTP request to specify the preStop callback function. Valid values:
         # 
         # *   HTTP
         # *   HTTPS
         self.lifecycle_pre_stop_handler_http_get_scheme = lifecycle_pre_stop_handler_http_get_scheme
-        # The host IP address of TCP socket probes when you use TCP sockets to specify the preStop callback function.
+        # The IP address of the host that receives the TCP socket request when you use a TCP socket request to specify the preStop callback function.
         self.lifecycle_pre_stop_handler_tcp_socket_host = lifecycle_pre_stop_handler_tcp_socket_host
-        # The port of TCP socket probes when you use TCP sockets to specify the preStop callback function.
+        # The port to which the system sends a TCP socket request for a health check when you use TCP sockets to specify the preStop callback function.
         self.lifecycle_pre_stop_handler_tcp_socket_port = lifecycle_pre_stop_handler_tcp_socket_port
         # The memory size of the container.
         self.memory = memory
@@ -16340,11 +16300,11 @@ class UpdateContainerGroupRequestContainer(TeaModel):
         self.port = port
         # Specifies whether the container allocates buffer resources to standard input streams when the container is running. If you do not specify this parameter, an end-of-file (EOF) error may occur when standard input streams in the container are read. Default value: false.
         self.stdin = stdin
-        # Whether the container runtime closes the stdin channel after the stdin channel has been opened by a sing attach. If stdin is true, the stdin stream remains open across multiple attach sessions. If StdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and receive data until the client disconnects. When the client disconnects, stdin is closed and remains closed until the container is restarted.
+        # Specifies whether standard input streams are disconnected after a client is disconnected. If Stdin is set to true, standard input streams remain connected among multiple sessions. If StdinOnce is set to true, standard input streams are connected after the container is started, and remain idle until a client is connected to receive data. After the client is disconnected, streams are also disconnected, and remain disconnected until the container restarts.
         self.stdin_once = stdin_once
         # Specifies whether to enable interaction. Default value: false. If the command is a /bin/bash command, set the value to true.
         self.tty = tty
-        # Pod volumes to mount into the filesystem of the container.
+        # Pod volumes that you want to mount into the filesystem of the container.
         self.volume_mount = volume_mount
         # The working directory of the container.
         self.working_dir = working_dir
@@ -16561,11 +16521,11 @@ class UpdateContainerGroupRequestImageRegistryCredential(TeaModel):
         server: str = None,
         user_name: str = None,
     ):
-        # The password that is used to access the image repository.
+        # The password that you use to access the image repository.
         self.password = password
         # The address of the image repository. This address does not contain `http://` or `https://`.
         self.server = server
-        # The username that is used to access the image repository.
+        # The username that you use to access the image repository.
         self.user_name = user_name
 
     def validate(self):
@@ -16778,13 +16738,13 @@ class UpdateContainerGroupRequestInitContainerVolumeMount(TeaModel):
         read_only: bool = None,
         sub_path: str = None,
     ):
-        # The directory of the volume that is mounted to the init container. The data in this directory is overwritten by the data on the volume. Specify this parameter with caution.
+        # The mount directory of the init container. The data in this directory is overwritten by the data on the volume. Specify this parameter with caution.
         self.mount_path = mount_path
-        # The mount propagation setting of the volume. Mount propagation allows volumes that are mounted on one container to be shared with other containers in the same pod, or even with other pods on the same node. Valid values:
+        # The mount propagation settings of the volume. Mount propagation allows volumes that are mounted on one container to be shared with other containers in the same pod, or even with other pods on the same node. Valid values:
         # 
-        # *   None: This volume mount does not receive subsequent mounts that are mounted to this volume or subdirectories of this volume by the host.
-        # *   HostToCotainer: This volume mount receives all subsequent mounts that are mounted to this volume or subdirectories of this volume.
-        # *   Bidirectional: The volume mount behaves the same as the HostToCotainer mount. The volume mount receives all subsequent mounts that are mounted to this volume or subdirectories of this volume. In addition, all volume mounts created by the container are propagated back to the host and to all containers of all pods that use the same volume.
+        # *   None: The volume mount does not receive subsequent mounts that are performed on this volume or subdirectories of this volume.
+        # *   HostToContainer: The volume mount receives all subsequent mounts that are performed on this volume or subdirectories of this volume.
+        # *   Bidirectional: The volume mount behaves the same as the HostToContainer mount. The volume mount receives subsequent mounts that are performed on the volume or the subdirectories of the volume. In addition, all volume mounts that are mounted on the container are propagated back to the host and all containers of all pods that use the same volume.
         # 
         # Default value: None.
         self.mount_propagation = mount_propagation
@@ -16792,7 +16752,7 @@ class UpdateContainerGroupRequestInitContainerVolumeMount(TeaModel):
         self.name = name
         # Specifies whether the volume is read-only. Default value: false.
         self.read_only = read_only
-        # The subdirectory of the volume that is mounted to the init container. The pod can mount different directories of the same volume to different subdirectories of init containers.
+        # The subdirectory of the volume that is mounted to the init container. You can use this parameter to mount the same volume to different subdirectories of the init container.
         self.sub_path = sub_path
 
     def validate(self):
@@ -16852,21 +16812,25 @@ class UpdateContainerGroupRequestInitContainer(TeaModel):
         working_dir: str = None,
     ):
         self.security_context = security_context
-        # The startup arguments of the init container.
+        # The arguments that you want to pass to the startup command of the init container.
         self.arg = arg
-        # The commands of the init container.
+        # The commands that are used to start the init container.
         self.command = command
         # The number of vCPUs that you want to allocate to the init container.
         self.cpu = cpu
-        # The environment variables for the init container.
+        # The environment variable of the init container.
         self.environment_var = environment_var
-        # The number of GPUs that you want to allocate to the init container.
+        # The number of GPUs you want to allocate to the init container.
         self.gpu = gpu
         # The image of the init container.
         self.image = image
-        # The image pulling policy.
+        # The image pulling policy. Valid values:
+        # 
+        # *   Always: Each time the instance is updated, image pulling is performed.
+        # *   IfNotPresent: On-premises images are used first. If no on-premises images are available, image pulling is performed.
+        # *   Never: On-premises images are always used. Image pulling is not performed.
         self.image_pull_policy = image_pull_policy
-        # The size of memory that you want to allocate to the init container.
+        # The memory size of the init container.
         self.memory = memory
         # The name of the init container.
         self.name = name
@@ -16874,11 +16838,11 @@ class UpdateContainerGroupRequestInitContainer(TeaModel):
         self.port = port
         # Specifies whether the init container allocates buffer resources to standard input streams when the init container is running. If you do not specify this parameter, an EOF error may occur when standard input streams in the init container are read. Default value: false.
         self.stdin = stdin
-        # Whether the container runtime closes the stdin channel after the stdin channel has been opened by a sing attach. If stdin is true, the stdin stream remains open across multiple attach sessions. If StdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and receive data until the client disconnects. When the client disconnects, stdin is closed and remains closed until the container is restarted.
+        # Specifies whether standard input streams are disconnected after a client is disconnected. If Stdin is set to true, standard input streams remain connected among multiple sessions. If StdinOnce is set to true, standard input streams are connected after the init container is started, and remain idle until a client is connected to receive data. After the client is disconnected, streams are also disconnected, and remain disconnected until the init container restarts.
         self.stdin_once = stdin_once
         # Specifies whether to enable interaction. Default value: false. If the command is a /bin/bash command, set the value to true.
         self.tty = tty
-        # Pod volumes to mount into the filesystem of the init container.
+        # The information about the volume that you want to mount on the init container.
         self.volume_mount = volume_mount
         # The working directory of the init container.
         self.working_dir = working_dir
@@ -16998,9 +16962,9 @@ class UpdateContainerGroupRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -17255,14 +17219,14 @@ class UpdateContainerGroupRequestVolume(TeaModel):
         self.flex_volume = flex_volume
         self.host_path_volume = host_path_volume
         self.nfsvolume = nfsvolume
-        # The name of the volume.
+        # The volume name.
         self.name = name
         # The type of the HostPath volume. Valid values:
         # 
         # *   Directory
         # *   File
         # 
-        # > This parameter is unavailable.
+        # >  This parameter is not publicly available.
         self.type = type
 
     def validate(self):
@@ -17347,7 +17311,7 @@ class UpdateContainerGroupRequest(TeaModel):
         volume: List[UpdateContainerGroupRequestVolume] = None,
     ):
         self.dns_config = dns_config
-        # The information about the Container Registry Enterprise Edition instance.
+        # Details of the Container Registry Enterprise Edition instance that hosts the image of the init container.
         self.acr_registry_info = acr_registry_info
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotency](~~25693~~).
         self.client_token = client_token
@@ -17355,13 +17319,13 @@ class UpdateContainerGroupRequest(TeaModel):
         self.container = container
         # The ID of the elastic container instance that you want to update.
         self.container_group_id = container_group_id
-        # The number of vCPUs allocated to the elastic container instance.
+        # The number of vCPUs that are allocated to the elastic container instance.
         self.cpu = cpu
         # The information about the credentials of the image repository.
         self.image_registry_credential = image_registry_credential
-        # The information about the new init containers.
+        # The information about the new init container.
         self.init_container = init_container
-        # The memory size allocated to the elastic container instance. Unit: GiB.
+        # The size of the memory that is allocated to the elastic container instance. Unit: GiB.
         self.memory = memory
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -17381,8 +17345,8 @@ class UpdateContainerGroupRequest(TeaModel):
         self.tag = tag
         # The update type. Valid values:
         # 
-        # *   RenewUpdate: full update. You must specify all relevant parameters to update the instance. For a parameter of the List type, you must specify all the items contained in the parameter even if you want to update only some of the items. For a parameter of the struct type, you must specify all the members if you want to update only some of the members.
-        # *   IncrementalUpdate: incremental update. You can specify only the parameter that needs to be updated. Other related parameters remain unchanged.
+        # *   RenewUpdate: full updates. You must specify all relevant parameters to update the elastic container instance. For a parameter of the list type, you must specify all the items contained in the parameter even if you want to update only some of the items. For a parameter of the struct type, you must specify all the members even if you want to update only some of the members.
+        # *   IncrementalUpdate: incremental updates. You may specify only the parameter that you want to update. Other related parameters remain unchanged.
         # 
         # Default value: RenewUpdate.
         self.update_type = update_type
@@ -17542,7 +17506,7 @@ class UpdateContainerGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17577,9 +17541,6 @@ class UpdateContainerGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17943,9 +17904,6 @@ class UpdateDataCacheResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18363,9 +18321,6 @@ class UpdateImageCacheResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18579,9 +18534,6 @@ class UpdateVirtualNodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

@@ -1,3 +1,11 @@
+2024-04-12 Version: 2.0.5
+- Update API CreateContainerGroup: add param ComputeCategory.
+- Update API CreateContainerGroup: add param GpuDriverVersion.
+- Update API DescribeContainerGroupPrice: add param ComputeCategory.
+- Update API DescribeContainerGroups: add param ComputeCategory.
+- Update API DescribeContainerGroups: update response param.
+
+
 2023-12-25 Version: 2.0.4
 - Generated python 2018-08-08 for Eci.
 
