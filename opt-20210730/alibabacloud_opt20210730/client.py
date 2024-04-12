@@ -7,8 +7,9 @@ from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
-from alibabacloud_opt20210730 import models as opt_20210730_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_opt20210730 import models as opt_20210730_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -40,47 +41,55 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def get_order_usage_with_options(
+    def get_open_status_with_options(
         self,
-        request: opt_20210730_models.GetOrderUsageRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> opt_20210730_models.GetOrderUsageResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+    ) -> opt_20210730_models.GetOpenStatusResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetOpenStatus',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
-            opt_20210730_models.GetOrderUsageResponse(),
-            self.do_rpcrequest('GetOrderUsage', '2021-07-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            opt_20210730_models.GetOpenStatusResponse(),
+            self.call_api(params, req, runtime)
         )
 
-    async def get_order_usage_with_options_async(
+    async def get_open_status_with_options_async(
         self,
-        request: opt_20210730_models.GetOrderUsageRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> opt_20210730_models.GetOrderUsageResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+    ) -> opt_20210730_models.GetOpenStatusResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetOpenStatus',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
-            opt_20210730_models.GetOrderUsageResponse(),
-            await self.do_rpcrequest_async('GetOrderUsage', '2021-07-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            opt_20210730_models.GetOpenStatusResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
-    def get_order_usage(
-        self,
-        request: opt_20210730_models.GetOrderUsageRequest,
-    ) -> opt_20210730_models.GetOrderUsageResponse:
+    def get_open_status(self) -> opt_20210730_models.GetOpenStatusResponse:
         runtime = util_models.RuntimeOptions()
-        return self.get_order_usage_with_options(request, runtime)
+        return self.get_open_status_with_options(runtime)
 
-    async def get_order_usage_async(
-        self,
-        request: opt_20210730_models.GetOrderUsageRequest,
-    ) -> opt_20210730_models.GetOrderUsageResponse:
+    async def get_open_status_async(self) -> opt_20210730_models.GetOpenStatusResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.get_order_usage_with_options_async(request, runtime)
+        return await self.get_open_status_with_options_async(runtime)
 
     def get_order_info_with_options(
         self,
@@ -88,12 +97,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> opt_20210730_models.GetOrderInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.rel_service):
+            query['RelService'] = request.rel_service
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOrderInfo',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             opt_20210730_models.GetOrderInfoResponse(),
-            self.do_rpcrequest('GetOrderInfo', '2021-07-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_order_info_with_options_async(
@@ -102,12 +127,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> opt_20210730_models.GetOrderInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.rel_service):
+            query['RelService'] = request.rel_service
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOrderInfo',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             opt_20210730_models.GetOrderInfoResponse(),
-            await self.do_rpcrequest_async('GetOrderInfo', '2021-07-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_order_info(
@@ -124,30 +165,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_order_info_with_options_async(request, runtime)
 
-    def get_open_status_with_options(
+    def get_order_usage_with_options(
         self,
+        request: opt_20210730_models.GetOrderUsageRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> opt_20210730_models.GetOpenStatusResponse:
-        req = open_api_models.OpenApiRequest()
+    ) -> opt_20210730_models.GetOrderUsageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.license_key):
+            query['LicenseKey'] = request.license_key
+        if not UtilClient.is_unset(request.rel_service):
+            query['RelService'] = request.rel_service
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.time_range):
+            query['TimeRange'] = request.time_range
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOrderUsage',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
-            opt_20210730_models.GetOpenStatusResponse(),
-            self.do_rpcrequest('GetOpenStatus', '2021-07-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            opt_20210730_models.GetOrderUsageResponse(),
+            self.call_api(params, req, runtime)
         )
 
-    async def get_open_status_with_options_async(
+    async def get_order_usage_with_options_async(
         self,
+        request: opt_20210730_models.GetOrderUsageRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> opt_20210730_models.GetOpenStatusResponse:
-        req = open_api_models.OpenApiRequest()
+    ) -> opt_20210730_models.GetOrderUsageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.license_key):
+            query['LicenseKey'] = request.license_key
+        if not UtilClient.is_unset(request.rel_service):
+            query['RelService'] = request.rel_service
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.time_range):
+            query['TimeRange'] = request.time_range
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOrderUsage',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
-            opt_20210730_models.GetOpenStatusResponse(),
-            await self.do_rpcrequest_async('GetOpenStatus', '2021-07-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            opt_20210730_models.GetOrderUsageResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
-    def get_open_status(self) -> opt_20210730_models.GetOpenStatusResponse:
+    def get_order_usage(
+        self,
+        request: opt_20210730_models.GetOrderUsageRequest,
+    ) -> opt_20210730_models.GetOrderUsageResponse:
         runtime = util_models.RuntimeOptions()
-        return self.get_open_status_with_options(runtime)
+        return self.get_order_usage_with_options(request, runtime)
 
-    async def get_open_status_async(self) -> opt_20210730_models.GetOpenStatusResponse:
+    async def get_order_usage_async(
+        self,
+        request: opt_20210730_models.GetOrderUsageRequest,
+    ) -> opt_20210730_models.GetOrderUsageResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.get_open_status_with_options_async(runtime)
+        return await self.get_order_usage_with_options_async(request, runtime)
