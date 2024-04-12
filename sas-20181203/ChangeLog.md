@@ -1,3 +1,7 @@
+2024-04-12 Version: 2.27.6
+- Update API DescribeVulList: add param Ids.
+
+
 2024-04-10 Version: 2.27.5
 - Update API BindAuthToMachine: add param IsPreBind.
 - Update API BindAuthToMachine: add param NtmVersion.

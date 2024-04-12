@@ -26955,6 +26955,8 @@ class Client(OpenApiClient):
             query['Dealed'] = request.dealed
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.name):
@@ -27015,6 +27017,8 @@ class Client(OpenApiClient):
             query['Dealed'] = request.dealed
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.name):
