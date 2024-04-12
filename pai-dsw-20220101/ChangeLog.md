@@ -1,3 +1,8 @@
+2024-04-12 Version: 1.3.0
+- Support API GetInstanceEvents.
+- Update API GetInstance: update response param.
+
+
 2024-02-22 Version: 1.2.0
 - Support API GetInstanceEvents.
 
