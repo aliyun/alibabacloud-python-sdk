@@ -239,6 +239,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.accept_operation_ticket_with_options_async(request, runtime)
 
+    def add_databases_to_group_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.AddDatabasesToGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.AddDatabasesToGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_ids):
+            query['DatabaseIds'] = request.database_ids
+        if not UtilClient.is_unset(request.host_group_id):
+            query['HostGroupId'] = request.host_group_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddDatabasesToGroup',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AddDatabasesToGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_databases_to_group_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.AddDatabasesToGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.AddDatabasesToGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_ids):
+            query['DatabaseIds'] = request.database_ids
+        if not UtilClient.is_unset(request.host_group_id):
+            query['HostGroupId'] = request.host_group_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddDatabasesToGroup',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AddDatabasesToGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_databases_to_group(
+        self,
+        request: yundun_bastionhost_20191209_models.AddDatabasesToGroupRequest,
+    ) -> yundun_bastionhost_20191209_models.AddDatabasesToGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_databases_to_group_with_options(request, runtime)
+
+    async def add_databases_to_group_async(
+        self,
+        request: yundun_bastionhost_20191209_models.AddDatabasesToGroupRequest,
+    ) -> yundun_bastionhost_20191209_models.AddDatabasesToGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_databases_to_group_with_options_async(request, runtime)
+
     def add_hosts_to_group_with_options(
         self,
         request: yundun_bastionhost_20191209_models.AddHostsToGroupRequest,
@@ -474,6 +556,170 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.add_users_to_group_with_options_async(request, runtime)
+
+    def attach_database_accounts_to_user_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.databases):
+            query['Databases'] = request.databases
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachDatabaseAccountsToUser',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def attach_database_accounts_to_user_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.databases):
+            query['Databases'] = request.databases
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachDatabaseAccountsToUser',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def attach_database_accounts_to_user(
+        self,
+        request: yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserRequest,
+    ) -> yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.attach_database_accounts_to_user_with_options(request, runtime)
+
+    async def attach_database_accounts_to_user_async(
+        self,
+        request: yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserRequest,
+    ) -> yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.attach_database_accounts_to_user_with_options_async(request, runtime)
+
+    def attach_database_accounts_to_user_group_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.databases):
+            query['Databases'] = request.databases
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_group_id):
+            query['UserGroupId'] = request.user_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachDatabaseAccountsToUserGroup',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def attach_database_accounts_to_user_group_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.databases):
+            query['Databases'] = request.databases
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_group_id):
+            query['UserGroupId'] = request.user_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachDatabaseAccountsToUserGroup',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def attach_database_accounts_to_user_group(
+        self,
+        request: yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserGroupRequest,
+    ) -> yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.attach_database_accounts_to_user_group_with_options(request, runtime)
+
+    async def attach_database_accounts_to_user_group_async(
+        self,
+        request: yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserGroupRequest,
+    ) -> yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.attach_database_accounts_to_user_group_with_options_async(request, runtime)
 
     def attach_host_accounts_to_host_share_key_with_options(
         self,
@@ -999,7 +1245,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.ConfigInstanceWhiteListResponse:
         """
-        The ID of the request, which is used to locate and troubleshoot issues.
+        ## Usage notes
+        You can call this operation to configure a whitelist of public IP addresses for a bastion host. By default, a bastion host is accessible from all public IP addresses. If you want to allow the requests from specific public IP addresses, you can call this operation to add trusted IP addresses to the whitelist of the bastion host.
+        ## Limits
+        You can call this operation up to 30 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: ConfigInstanceWhiteListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1038,7 +1287,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.ConfigInstanceWhiteListResponse:
         """
-        The ID of the request, which is used to locate and troubleshoot issues.
+        ## Usage notes
+        You can call this operation to configure a whitelist of public IP addresses for a bastion host. By default, a bastion host is accessible from all public IP addresses. If you want to allow the requests from specific public IP addresses, you can call this operation to add trusted IP addresses to the whitelist of the bastion host.
+        ## Limits
+        You can call this operation up to 30 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: ConfigInstanceWhiteListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1076,7 +1328,10 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.ConfigInstanceWhiteListRequest,
     ) -> yundun_bastionhost_20191209_models.ConfigInstanceWhiteListResponse:
         """
-        The ID of the request, which is used to locate and troubleshoot issues.
+        ## Usage notes
+        You can call this operation to configure a whitelist of public IP addresses for a bastion host. By default, a bastion host is accessible from all public IP addresses. If you want to allow the requests from specific public IP addresses, you can call this operation to add trusted IP addresses to the whitelist of the bastion host.
+        ## Limits
+        You can call this operation up to 30 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: ConfigInstanceWhiteListRequest
         @return: ConfigInstanceWhiteListResponse
@@ -1089,13 +1344,232 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.ConfigInstanceWhiteListRequest,
     ) -> yundun_bastionhost_20191209_models.ConfigInstanceWhiteListResponse:
         """
-        The ID of the request, which is used to locate and troubleshoot issues.
+        ## Usage notes
+        You can call this operation to configure a whitelist of public IP addresses for a bastion host. By default, a bastion host is accessible from all public IP addresses. If you want to allow the requests from specific public IP addresses, you can call this operation to add trusted IP addresses to the whitelist of the bastion host.
+        ## Limits
+        You can call this operation up to 30 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: ConfigInstanceWhiteListRequest
         @return: ConfigInstanceWhiteListResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.config_instance_white_list_with_options_async(request, runtime)
+
+    def create_database_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.CreateDatabaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.CreateDatabaseResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.active_address_type):
+            query['ActiveAddressType'] = request.active_address_type
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.database_port):
+            query['DatabasePort'] = request.database_port
+        if not UtilClient.is_unset(request.database_private_address):
+            query['DatabasePrivateAddress'] = request.database_private_address
+        if not UtilClient.is_unset(request.database_public_address):
+            query['DatabasePublicAddress'] = request.database_public_address
+        if not UtilClient.is_unset(request.database_type):
+            query['DatabaseType'] = request.database_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_domain_id):
+            query['NetworkDomainId'] = request.network_domain_id
+        if not UtilClient.is_unset(request.polar_dbendpoint_type):
+            query['PolarDBEndpointType'] = request.polar_dbendpoint_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.source_instance_id):
+            query['SourceInstanceId'] = request.source_instance_id
+        if not UtilClient.is_unset(request.source_instance_region_id):
+            query['SourceInstanceRegionId'] = request.source_instance_region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDatabase',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateDatabaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_database_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.CreateDatabaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.CreateDatabaseResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.active_address_type):
+            query['ActiveAddressType'] = request.active_address_type
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.database_port):
+            query['DatabasePort'] = request.database_port
+        if not UtilClient.is_unset(request.database_private_address):
+            query['DatabasePrivateAddress'] = request.database_private_address
+        if not UtilClient.is_unset(request.database_public_address):
+            query['DatabasePublicAddress'] = request.database_public_address
+        if not UtilClient.is_unset(request.database_type):
+            query['DatabaseType'] = request.database_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_domain_id):
+            query['NetworkDomainId'] = request.network_domain_id
+        if not UtilClient.is_unset(request.polar_dbendpoint_type):
+            query['PolarDBEndpointType'] = request.polar_dbendpoint_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.source_instance_id):
+            query['SourceInstanceId'] = request.source_instance_id
+        if not UtilClient.is_unset(request.source_instance_region_id):
+            query['SourceInstanceRegionId'] = request.source_instance_region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDatabase',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateDatabaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_database(
+        self,
+        request: yundun_bastionhost_20191209_models.CreateDatabaseRequest,
+    ) -> yundun_bastionhost_20191209_models.CreateDatabaseResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_database_with_options(request, runtime)
+
+    async def create_database_async(
+        self,
+        request: yundun_bastionhost_20191209_models.CreateDatabaseRequest,
+    ) -> yundun_bastionhost_20191209_models.CreateDatabaseResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_database_with_options_async(request, runtime)
+
+    def create_database_account_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.CreateDatabaseAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.CreateDatabaseAccountResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_account_name):
+            query['DatabaseAccountName'] = request.database_account_name
+        if not UtilClient.is_unset(request.database_id):
+            query['DatabaseId'] = request.database_id
+        if not UtilClient.is_unset(request.database_schema):
+            query['DatabaseSchema'] = request.database_schema
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.login_attribute):
+            query['LoginAttribute'] = request.login_attribute
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDatabaseAccount',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateDatabaseAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_database_account_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.CreateDatabaseAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.CreateDatabaseAccountResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_account_name):
+            query['DatabaseAccountName'] = request.database_account_name
+        if not UtilClient.is_unset(request.database_id):
+            query['DatabaseId'] = request.database_id
+        if not UtilClient.is_unset(request.database_schema):
+            query['DatabaseSchema'] = request.database_schema
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.login_attribute):
+            query['LoginAttribute'] = request.login_attribute
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDatabaseAccount',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateDatabaseAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_database_account(
+        self,
+        request: yundun_bastionhost_20191209_models.CreateDatabaseAccountRequest,
+    ) -> yundun_bastionhost_20191209_models.CreateDatabaseAccountResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_database_account_with_options(request, runtime)
+
+    async def create_database_account_async(
+        self,
+        request: yundun_bastionhost_20191209_models.CreateDatabaseAccountRequest,
+    ) -> yundun_bastionhost_20191209_models.CreateDatabaseAccountResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_database_account_with_options_async(request, runtime)
 
     def create_host_with_options(
         self,
@@ -1480,6 +1954,292 @@ class Client(OpenApiClient):
     ) -> yundun_bastionhost_20191209_models.CreateHostShareKeyResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_host_share_key_with_options_async(request, runtime)
+
+    def create_network_domain_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.CreateNetworkDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.CreateNetworkDomainResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_domain_name):
+            query['NetworkDomainName'] = request.network_domain_name
+        if not UtilClient.is_unset(request.network_domain_type):
+            query['NetworkDomainType'] = request.network_domain_type
+        if not UtilClient.is_unset(request.proxies):
+            query['Proxies'] = request.proxies
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateNetworkDomain',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateNetworkDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_network_domain_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.CreateNetworkDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.CreateNetworkDomainResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_domain_name):
+            query['NetworkDomainName'] = request.network_domain_name
+        if not UtilClient.is_unset(request.network_domain_type):
+            query['NetworkDomainType'] = request.network_domain_type
+        if not UtilClient.is_unset(request.proxies):
+            query['Proxies'] = request.proxies
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateNetworkDomain',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateNetworkDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_network_domain(
+        self,
+        request: yundun_bastionhost_20191209_models.CreateNetworkDomainRequest,
+    ) -> yundun_bastionhost_20191209_models.CreateNetworkDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_network_domain_with_options(request, runtime)
+
+    async def create_network_domain_async(
+        self,
+        request: yundun_bastionhost_20191209_models.CreateNetworkDomainRequest,
+    ) -> yundun_bastionhost_20191209_models.CreateNetworkDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_network_domain_with_options_async(request, runtime)
+
+    def create_policy_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.CreatePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.CreatePolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePolicy',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreatePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_policy_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.CreatePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.CreatePolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePolicy',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreatePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_policy(
+        self,
+        request: yundun_bastionhost_20191209_models.CreatePolicyRequest,
+    ) -> yundun_bastionhost_20191209_models.CreatePolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_policy_with_options(request, runtime)
+
+    async def create_policy_async(
+        self,
+        request: yundun_bastionhost_20191209_models.CreatePolicyRequest,
+    ) -> yundun_bastionhost_20191209_models.CreatePolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_policy_with_options_async(request, runtime)
+
+    def create_rule_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.CreateRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.CreateRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.databases):
+            query['Databases'] = request.databases
+        if not UtilClient.is_unset(request.effective_end_time):
+            query['EffectiveEndTime'] = request.effective_end_time
+        if not UtilClient.is_unset(request.effective_start_time):
+            query['EffectiveStartTime'] = request.effective_start_time
+        if not UtilClient.is_unset(request.host_groups):
+            query['HostGroups'] = request.host_groups
+        if not UtilClient.is_unset(request.hosts):
+            query['Hosts'] = request.hosts
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.user_group_ids):
+            query['UserGroupIds'] = request.user_group_ids
+        if not UtilClient.is_unset(request.user_ids):
+            query['UserIds'] = request.user_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRule',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_rule_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.CreateRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.CreateRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.databases):
+            query['Databases'] = request.databases
+        if not UtilClient.is_unset(request.effective_end_time):
+            query['EffectiveEndTime'] = request.effective_end_time
+        if not UtilClient.is_unset(request.effective_start_time):
+            query['EffectiveStartTime'] = request.effective_start_time
+        if not UtilClient.is_unset(request.host_groups):
+            query['HostGroups'] = request.host_groups
+        if not UtilClient.is_unset(request.hosts):
+            query['Hosts'] = request.hosts
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.user_group_ids):
+            query['UserGroupIds'] = request.user_group_ids
+        if not UtilClient.is_unset(request.user_ids):
+            query['UserIds'] = request.user_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRule',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_rule(
+        self,
+        request: yundun_bastionhost_20191209_models.CreateRuleRequest,
+    ) -> yundun_bastionhost_20191209_models.CreateRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_rule_with_options(request, runtime)
+
+    async def create_rule_async(
+        self,
+        request: yundun_bastionhost_20191209_models.CreateRuleRequest,
+    ) -> yundun_bastionhost_20191209_models.CreateRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_rule_with_options_async(request, runtime)
 
     def create_user_with_options(
         self,
@@ -1885,6 +2645,162 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_user_public_key_with_options_async(request, runtime)
 
+    def delete_database_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.DeleteDatabaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.DeleteDatabaseResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_id):
+            query['DatabaseId'] = request.database_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDatabase',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteDatabaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_database_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.DeleteDatabaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.DeleteDatabaseResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_id):
+            query['DatabaseId'] = request.database_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDatabase',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteDatabaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_database(
+        self,
+        request: yundun_bastionhost_20191209_models.DeleteDatabaseRequest,
+    ) -> yundun_bastionhost_20191209_models.DeleteDatabaseResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_database_with_options(request, runtime)
+
+    async def delete_database_async(
+        self,
+        request: yundun_bastionhost_20191209_models.DeleteDatabaseRequest,
+    ) -> yundun_bastionhost_20191209_models.DeleteDatabaseResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_database_with_options_async(request, runtime)
+
+    def delete_database_account_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.DeleteDatabaseAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.DeleteDatabaseAccountResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_account_id):
+            query['DatabaseAccountId'] = request.database_account_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDatabaseAccount',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteDatabaseAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_database_account_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.DeleteDatabaseAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.DeleteDatabaseAccountResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_account_id):
+            query['DatabaseAccountId'] = request.database_account_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDatabaseAccount',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteDatabaseAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_database_account(
+        self,
+        request: yundun_bastionhost_20191209_models.DeleteDatabaseAccountRequest,
+    ) -> yundun_bastionhost_20191209_models.DeleteDatabaseAccountResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_database_account_with_options(request, runtime)
+
+    async def delete_database_account_async(
+        self,
+        request: yundun_bastionhost_20191209_models.DeleteDatabaseAccountRequest,
+    ) -> yundun_bastionhost_20191209_models.DeleteDatabaseAccountResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_database_account_with_options_async(request, runtime)
+
     def delete_host_with_options(
         self,
         request: yundun_bastionhost_20191209_models.DeleteHostRequest,
@@ -1970,10 +2886,10 @@ class Client(OpenApiClient):
     ) -> yundun_bastionhost_20191209_models.DeleteHostAccountResponse:
         """
         ## Usage notes
-        You can call this operation to remove a single host account. If you no longer use a host account that is added to a host in Bastionhost, you can call this operation to remove the host account from the host.
+        This interface is used to delete individual host accounts. If a host account is no longer in use, you can invoke this interface to delete the host account for that host that has been configured on the bastion.
         >  After you remove the host account, you must enter the username and password of the host when you log on to the host in Bastionhost.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        ## QPS Limit
+        The single-user QPS limit of this interface is 10 times/second. If the limit is exceeded, the API call will be stream-limited, which may affect your business, please call reasonably.
         
         @param request: DeleteHostAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2013,10 +2929,10 @@ class Client(OpenApiClient):
     ) -> yundun_bastionhost_20191209_models.DeleteHostAccountResponse:
         """
         ## Usage notes
-        You can call this operation to remove a single host account. If you no longer use a host account that is added to a host in Bastionhost, you can call this operation to remove the host account from the host.
+        This interface is used to delete individual host accounts. If a host account is no longer in use, you can invoke this interface to delete the host account for that host that has been configured on the bastion.
         >  After you remove the host account, you must enter the username and password of the host when you log on to the host in Bastionhost.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        ## QPS Limit
+        The single-user QPS limit of this interface is 10 times/second. If the limit is exceeded, the API call will be stream-limited, which may affect your business, please call reasonably.
         
         @param request: DeleteHostAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2055,10 +2971,10 @@ class Client(OpenApiClient):
     ) -> yundun_bastionhost_20191209_models.DeleteHostAccountResponse:
         """
         ## Usage notes
-        You can call this operation to remove a single host account. If you no longer use a host account that is added to a host in Bastionhost, you can call this operation to remove the host account from the host.
+        This interface is used to delete individual host accounts. If a host account is no longer in use, you can invoke this interface to delete the host account for that host that has been configured on the bastion.
         >  After you remove the host account, you must enter the username and password of the host when you log on to the host in Bastionhost.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        ## QPS Limit
+        The single-user QPS limit of this interface is 10 times/second. If the limit is exceeded, the API call will be stream-limited, which may affect your business, please call reasonably.
         
         @param request: DeleteHostAccountRequest
         @return: DeleteHostAccountResponse
@@ -2072,10 +2988,10 @@ class Client(OpenApiClient):
     ) -> yundun_bastionhost_20191209_models.DeleteHostAccountResponse:
         """
         ## Usage notes
-        You can call this operation to remove a single host account. If you no longer use a host account that is added to a host in Bastionhost, you can call this operation to remove the host account from the host.
+        This interface is used to delete individual host accounts. If a host account is no longer in use, you can invoke this interface to delete the host account for that host that has been configured on the bastion.
         >  After you remove the host account, you must enter the username and password of the host when you log on to the host in Bastionhost.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        ## QPS Limit
+        The single-user QPS limit of this interface is 10 times/second. If the limit is exceeded, the API call will be stream-limited, which may affect your business, please call reasonably.
         
         @param request: DeleteHostAccountRequest
         @return: DeleteHostAccountResponse
@@ -2272,6 +3188,240 @@ class Client(OpenApiClient):
     ) -> yundun_bastionhost_20191209_models.DeleteHostShareKeyResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_host_share_key_with_options_async(request, runtime)
+
+    def delete_network_domain_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.DeleteNetworkDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.DeleteNetworkDomainResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_domain_id):
+            query['NetworkDomainId'] = request.network_domain_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNetworkDomain',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteNetworkDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_network_domain_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.DeleteNetworkDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.DeleteNetworkDomainResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_domain_id):
+            query['NetworkDomainId'] = request.network_domain_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNetworkDomain',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteNetworkDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_network_domain(
+        self,
+        request: yundun_bastionhost_20191209_models.DeleteNetworkDomainRequest,
+    ) -> yundun_bastionhost_20191209_models.DeleteNetworkDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_network_domain_with_options(request, runtime)
+
+    async def delete_network_domain_async(
+        self,
+        request: yundun_bastionhost_20191209_models.DeleteNetworkDomainRequest,
+    ) -> yundun_bastionhost_20191209_models.DeleteNetworkDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_network_domain_with_options_async(request, runtime)
+
+    def delete_policy_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.DeletePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.DeletePolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePolicy',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeletePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_policy_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.DeletePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.DeletePolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePolicy',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeletePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_policy(
+        self,
+        request: yundun_bastionhost_20191209_models.DeletePolicyRequest,
+    ) -> yundun_bastionhost_20191209_models.DeletePolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_policy_with_options(request, runtime)
+
+    async def delete_policy_async(
+        self,
+        request: yundun_bastionhost_20191209_models.DeletePolicyRequest,
+    ) -> yundun_bastionhost_20191209_models.DeletePolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_policy_with_options_async(request, runtime)
+
+    def delete_rule_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.DeleteRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.DeleteRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRule',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_rule_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.DeleteRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.DeleteRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRule',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_rule(
+        self,
+        request: yundun_bastionhost_20191209_models.DeleteRuleRequest,
+    ) -> yundun_bastionhost_20191209_models.DeleteRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_rule_with_options(request, runtime)
+
+    async def delete_rule_async(
+        self,
+        request: yundun_bastionhost_20191209_models.DeleteRuleRequest,
+    ) -> yundun_bastionhost_20191209_models.DeleteRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_rule_with_options_async(request, runtime)
 
     def delete_user_with_options(
         self,
@@ -2778,6 +3928,170 @@ class Client(OpenApiClient):
     ) -> yundun_bastionhost_20191209_models.DescribeRegionsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
+
+    def detach_database_accounts_from_user_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.databases):
+            query['Databases'] = request.databases
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetachDatabaseAccountsFromUser',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detach_database_accounts_from_user_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.databases):
+            query['Databases'] = request.databases
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetachDatabaseAccountsFromUser',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detach_database_accounts_from_user(
+        self,
+        request: yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserRequest,
+    ) -> yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.detach_database_accounts_from_user_with_options(request, runtime)
+
+    async def detach_database_accounts_from_user_async(
+        self,
+        request: yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserRequest,
+    ) -> yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.detach_database_accounts_from_user_with_options_async(request, runtime)
+
+    def detach_database_accounts_from_user_group_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.databases):
+            query['Databases'] = request.databases
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_group_id):
+            query['UserGroupId'] = request.user_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetachDatabaseAccountsFromUserGroup',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detach_database_accounts_from_user_group_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.databases):
+            query['Databases'] = request.databases
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_group_id):
+            query['UserGroupId'] = request.user_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetachDatabaseAccountsFromUserGroup',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detach_database_accounts_from_user_group(
+        self,
+        request: yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserGroupRequest,
+    ) -> yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.detach_database_accounts_from_user_group_with_options(request, runtime)
+
+    async def detach_database_accounts_from_user_group_async(
+        self,
+        request: yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserGroupRequest,
+    ) -> yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.detach_database_accounts_from_user_group_with_options_async(request, runtime)
 
     def detach_host_accounts_from_host_share_key_with_options(
         self,
@@ -3289,6 +4603,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.disable_instance_public_access_with_options_async(request, runtime)
 
+    def disable_rule_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.DisableRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.DisableRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableRule',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DisableRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_rule_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.DisableRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.DisableRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableRule',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DisableRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_rule(
+        self,
+        request: yundun_bastionhost_20191209_models.DisableRuleRequest,
+    ) -> yundun_bastionhost_20191209_models.DisableRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.disable_rule_with_options(request, runtime)
+
+    async def disable_rule_async(
+        self,
+        request: yundun_bastionhost_20191209_models.DisableRuleRequest,
+    ) -> yundun_bastionhost_20191209_models.DisableRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_rule_with_options_async(request, runtime)
+
     def enable_instance_public_access_with_options(
         self,
         request: yundun_bastionhost_20191209_models.EnableInstancePublicAccessRequest,
@@ -3362,6 +4754,338 @@ class Client(OpenApiClient):
     ) -> yundun_bastionhost_20191209_models.EnableInstancePublicAccessResponse:
         runtime = util_models.RuntimeOptions()
         return await self.enable_instance_public_access_with_options_async(request, runtime)
+
+    def enable_rule_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.EnableRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.EnableRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableRule',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.EnableRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_rule_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.EnableRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.EnableRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableRule',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.EnableRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_rule(
+        self,
+        request: yundun_bastionhost_20191209_models.EnableRuleRequest,
+    ) -> yundun_bastionhost_20191209_models.EnableRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.enable_rule_with_options(request, runtime)
+
+    async def enable_rule_async(
+        self,
+        request: yundun_bastionhost_20191209_models.EnableRuleRequest,
+    ) -> yundun_bastionhost_20191209_models.EnableRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_rule_with_options_async(request, runtime)
+
+    def generate_asset_operation_token_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.GenerateAssetOperationTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.GenerateAssetOperationTokenResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asset_account_id):
+            query['AssetAccountId'] = request.asset_account_id
+        if not UtilClient.is_unset(request.asset_account_name):
+            query['AssetAccountName'] = request.asset_account_name
+        if not UtilClient.is_unset(request.asset_account_password):
+            query['AssetAccountPassword'] = request.asset_account_password
+        if not UtilClient.is_unset(request.asset_account_protocol_name):
+            query['AssetAccountProtocolName'] = request.asset_account_protocol_name
+        if not UtilClient.is_unset(request.asset_id):
+            query['AssetId'] = request.asset_id
+        if not UtilClient.is_unset(request.asset_type):
+            query['AssetType'] = request.asset_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateAssetOperationToken',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GenerateAssetOperationTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generate_asset_operation_token_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.GenerateAssetOperationTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.GenerateAssetOperationTokenResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asset_account_id):
+            query['AssetAccountId'] = request.asset_account_id
+        if not UtilClient.is_unset(request.asset_account_name):
+            query['AssetAccountName'] = request.asset_account_name
+        if not UtilClient.is_unset(request.asset_account_password):
+            query['AssetAccountPassword'] = request.asset_account_password
+        if not UtilClient.is_unset(request.asset_account_protocol_name):
+            query['AssetAccountProtocolName'] = request.asset_account_protocol_name
+        if not UtilClient.is_unset(request.asset_id):
+            query['AssetId'] = request.asset_id
+        if not UtilClient.is_unset(request.asset_type):
+            query['AssetType'] = request.asset_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateAssetOperationToken',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GenerateAssetOperationTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generate_asset_operation_token(
+        self,
+        request: yundun_bastionhost_20191209_models.GenerateAssetOperationTokenRequest,
+    ) -> yundun_bastionhost_20191209_models.GenerateAssetOperationTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.generate_asset_operation_token_with_options(request, runtime)
+
+    async def generate_asset_operation_token_async(
+        self,
+        request: yundun_bastionhost_20191209_models.GenerateAssetOperationTokenRequest,
+    ) -> yundun_bastionhost_20191209_models.GenerateAssetOperationTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.generate_asset_operation_token_with_options_async(request, runtime)
+
+    def get_database_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.GetDatabaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.GetDatabaseResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_id):
+            query['DatabaseId'] = request.database_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDatabase',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetDatabaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_database_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.GetDatabaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.GetDatabaseResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_id):
+            query['DatabaseId'] = request.database_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDatabase',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetDatabaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_database(
+        self,
+        request: yundun_bastionhost_20191209_models.GetDatabaseRequest,
+    ) -> yundun_bastionhost_20191209_models.GetDatabaseResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_database_with_options(request, runtime)
+
+    async def get_database_async(
+        self,
+        request: yundun_bastionhost_20191209_models.GetDatabaseRequest,
+    ) -> yundun_bastionhost_20191209_models.GetDatabaseResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_database_with_options_async(request, runtime)
+
+    def get_database_account_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.GetDatabaseAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.GetDatabaseAccountResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_account_id):
+            query['DatabaseAccountId'] = request.database_account_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDatabaseAccount',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetDatabaseAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_database_account_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.GetDatabaseAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.GetDatabaseAccountResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_account_id):
+            query['DatabaseAccountId'] = request.database_account_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDatabaseAccount',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetDatabaseAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_database_account(
+        self,
+        request: yundun_bastionhost_20191209_models.GetDatabaseAccountRequest,
+    ) -> yundun_bastionhost_20191209_models.GetDatabaseAccountResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_database_account_with_options(request, runtime)
+
+    async def get_database_account_async(
+        self,
+        request: yundun_bastionhost_20191209_models.GetDatabaseAccountRequest,
+    ) -> yundun_bastionhost_20191209_models.GetDatabaseAccountResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_database_account_with_options_async(request, runtime)
 
     def get_host_with_options(
         self,
@@ -3681,7 +5405,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.GetInstanceADAuthServerResponse:
         """
-        The condition that is used to filter users.
+        ###
+        You can call this operation to query the settings of AD authentication on a bastion host. After you configure AD authentication on a bastion host, you can import AD-authenticated users into the bastion host. After the AD-authenticated users are imported into the bastion host, the AD-authenticated users can log on to the bastion host to perform O\\&M operations on servers.
+        ### Limit
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: GetInstanceADAuthServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3718,7 +5445,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.GetInstanceADAuthServerResponse:
         """
-        The condition that is used to filter users.
+        ###
+        You can call this operation to query the settings of AD authentication on a bastion host. After you configure AD authentication on a bastion host, you can import AD-authenticated users into the bastion host. After the AD-authenticated users are imported into the bastion host, the AD-authenticated users can log on to the bastion host to perform O\\&M operations on servers.
+        ### Limit
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: GetInstanceADAuthServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3754,7 +5484,10 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.GetInstanceADAuthServerRequest,
     ) -> yundun_bastionhost_20191209_models.GetInstanceADAuthServerResponse:
         """
-        The condition that is used to filter users.
+        ###
+        You can call this operation to query the settings of AD authentication on a bastion host. After you configure AD authentication on a bastion host, you can import AD-authenticated users into the bastion host. After the AD-authenticated users are imported into the bastion host, the AD-authenticated users can log on to the bastion host to perform O\\&M operations on servers.
+        ### Limit
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: GetInstanceADAuthServerRequest
         @return: GetInstanceADAuthServerResponse
@@ -3767,7 +5500,10 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.GetInstanceADAuthServerRequest,
     ) -> yundun_bastionhost_20191209_models.GetInstanceADAuthServerResponse:
         """
-        The condition that is used to filter users.
+        ###
+        You can call this operation to query the settings of AD authentication on a bastion host. After you configure AD authentication on a bastion host, you can import AD-authenticated users into the bastion host. After the AD-authenticated users are imported into the bastion host, the AD-authenticated users can log on to the bastion host to perform O\\&M operations on servers.
+        ### Limit
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: GetInstanceADAuthServerRequest
         @return: GetInstanceADAuthServerResponse
@@ -3855,9 +5591,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.GetInstanceTwoFactorResponse:
         """
-        Indicates whether two-factor authentication is enabled. Valid values:
-        *   **true**: enabled
-        *   **false**: disabled
+        You can call this operation to query the settings of two-factor authentication on a bastion host. After you enable two-factor authentication, Bastionhost sends a verification code to a local user when the local user logs on to a bastion host. A local user can log on to the bastion host only when the local user enters the valid username and password and the verification code. This reduces the security risks caused by account information leaks.
+        ### Limit
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: GetInstanceTwoFactorRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3894,9 +5630,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.GetInstanceTwoFactorResponse:
         """
-        Indicates whether two-factor authentication is enabled. Valid values:
-        *   **true**: enabled
-        *   **false**: disabled
+        You can call this operation to query the settings of two-factor authentication on a bastion host. After you enable two-factor authentication, Bastionhost sends a verification code to a local user when the local user logs on to a bastion host. A local user can log on to the bastion host only when the local user enters the valid username and password and the verification code. This reduces the security risks caused by account information leaks.
+        ### Limit
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: GetInstanceTwoFactorRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3932,9 +5668,9 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.GetInstanceTwoFactorRequest,
     ) -> yundun_bastionhost_20191209_models.GetInstanceTwoFactorResponse:
         """
-        Indicates whether two-factor authentication is enabled. Valid values:
-        *   **true**: enabled
-        *   **false**: disabled
+        You can call this operation to query the settings of two-factor authentication on a bastion host. After you enable two-factor authentication, Bastionhost sends a verification code to a local user when the local user logs on to a bastion host. A local user can log on to the bastion host only when the local user enters the valid username and password and the verification code. This reduces the security risks caused by account information leaks.
+        ### Limit
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: GetInstanceTwoFactorRequest
         @return: GetInstanceTwoFactorResponse
@@ -3947,15 +5683,405 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.GetInstanceTwoFactorRequest,
     ) -> yundun_bastionhost_20191209_models.GetInstanceTwoFactorResponse:
         """
-        Indicates whether two-factor authentication is enabled. Valid values:
-        *   **true**: enabled
-        *   **false**: disabled
+        You can call this operation to query the settings of two-factor authentication on a bastion host. After you enable two-factor authentication, Bastionhost sends a verification code to a local user when the local user logs on to a bastion host. A local user can log on to the bastion host only when the local user enters the valid username and password and the verification code. This reduces the security risks caused by account information leaks.
+        ### Limit
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: GetInstanceTwoFactorRequest
         @return: GetInstanceTwoFactorResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_instance_two_factor_with_options_async(request, runtime)
+
+    def get_network_domain_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.GetNetworkDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.GetNetworkDomainResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_domain_id):
+            query['NetworkDomainId'] = request.network_domain_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetNetworkDomain',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetNetworkDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_network_domain_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.GetNetworkDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.GetNetworkDomainResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_domain_id):
+            query['NetworkDomainId'] = request.network_domain_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetNetworkDomain',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetNetworkDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_network_domain(
+        self,
+        request: yundun_bastionhost_20191209_models.GetNetworkDomainRequest,
+    ) -> yundun_bastionhost_20191209_models.GetNetworkDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_network_domain_with_options(request, runtime)
+
+    async def get_network_domain_async(
+        self,
+        request: yundun_bastionhost_20191209_models.GetNetworkDomainRequest,
+    ) -> yundun_bastionhost_20191209_models.GetNetworkDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_network_domain_with_options_async(request, runtime)
+
+    def get_policy_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.GetPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.GetPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPolicy',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_policy_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.GetPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.GetPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPolicy',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_policy(
+        self,
+        request: yundun_bastionhost_20191209_models.GetPolicyRequest,
+    ) -> yundun_bastionhost_20191209_models.GetPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_policy_with_options(request, runtime)
+
+    async def get_policy_async(
+        self,
+        request: yundun_bastionhost_20191209_models.GetPolicyRequest,
+    ) -> yundun_bastionhost_20191209_models.GetPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_policy_with_options_async(request, runtime)
+
+    def get_policy_asset_scope_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.GetPolicyAssetScopeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.GetPolicyAssetScopeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPolicyAssetScope',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetPolicyAssetScopeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_policy_asset_scope_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.GetPolicyAssetScopeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.GetPolicyAssetScopeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPolicyAssetScope',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetPolicyAssetScopeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_policy_asset_scope(
+        self,
+        request: yundun_bastionhost_20191209_models.GetPolicyAssetScopeRequest,
+    ) -> yundun_bastionhost_20191209_models.GetPolicyAssetScopeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_policy_asset_scope_with_options(request, runtime)
+
+    async def get_policy_asset_scope_async(
+        self,
+        request: yundun_bastionhost_20191209_models.GetPolicyAssetScopeRequest,
+    ) -> yundun_bastionhost_20191209_models.GetPolicyAssetScopeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_policy_asset_scope_with_options_async(request, runtime)
+
+    def get_policy_user_scope_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.GetPolicyUserScopeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.GetPolicyUserScopeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPolicyUserScope',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetPolicyUserScopeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_policy_user_scope_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.GetPolicyUserScopeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.GetPolicyUserScopeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPolicyUserScope',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetPolicyUserScopeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_policy_user_scope(
+        self,
+        request: yundun_bastionhost_20191209_models.GetPolicyUserScopeRequest,
+    ) -> yundun_bastionhost_20191209_models.GetPolicyUserScopeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_policy_user_scope_with_options(request, runtime)
+
+    async def get_policy_user_scope_async(
+        self,
+        request: yundun_bastionhost_20191209_models.GetPolicyUserScopeRequest,
+    ) -> yundun_bastionhost_20191209_models.GetPolicyUserScopeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_policy_user_scope_with_options_async(request, runtime)
+
+    def get_rule_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.GetRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.GetRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRule',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_rule_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.GetRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.GetRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRule',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_rule(
+        self,
+        request: yundun_bastionhost_20191209_models.GetRuleRequest,
+    ) -> yundun_bastionhost_20191209_models.GetRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_rule_with_options(request, runtime)
+
+    async def get_rule_async(
+        self,
+        request: yundun_bastionhost_20191209_models.GetRuleRequest,
+    ) -> yundun_bastionhost_20191209_models.GetRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_rule_with_options_async(request, runtime)
 
     def get_user_with_options(
         self,
@@ -4194,6 +6320,586 @@ class Client(OpenApiClient):
     ) -> yundun_bastionhost_20191209_models.ListApproveCommandsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_approve_commands_with_options_async(request, runtime)
+
+    def list_database_accounts_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.ListDatabaseAccountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListDatabaseAccountsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_account_name):
+            query['DatabaseAccountName'] = request.database_account_name
+        if not UtilClient.is_unset(request.database_id):
+            query['DatabaseId'] = request.database_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatabaseAccounts',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListDatabaseAccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_database_accounts_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListDatabaseAccountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListDatabaseAccountsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_account_name):
+            query['DatabaseAccountName'] = request.database_account_name
+        if not UtilClient.is_unset(request.database_id):
+            query['DatabaseId'] = request.database_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatabaseAccounts',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListDatabaseAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_database_accounts(
+        self,
+        request: yundun_bastionhost_20191209_models.ListDatabaseAccountsRequest,
+    ) -> yundun_bastionhost_20191209_models.ListDatabaseAccountsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_database_accounts_with_options(request, runtime)
+
+    async def list_database_accounts_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListDatabaseAccountsRequest,
+    ) -> yundun_bastionhost_20191209_models.ListDatabaseAccountsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_database_accounts_with_options_async(request, runtime)
+
+    def list_database_accounts_for_user_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_account_name):
+            query['DatabaseAccountName'] = request.database_account_name
+        if not UtilClient.is_unset(request.database_id):
+            query['DatabaseId'] = request.database_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatabaseAccountsForUser',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_database_accounts_for_user_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_account_name):
+            query['DatabaseAccountName'] = request.database_account_name
+        if not UtilClient.is_unset(request.database_id):
+            query['DatabaseId'] = request.database_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatabaseAccountsForUser',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_database_accounts_for_user(
+        self,
+        request: yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserRequest,
+    ) -> yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_database_accounts_for_user_with_options(request, runtime)
+
+    async def list_database_accounts_for_user_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserRequest,
+    ) -> yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_database_accounts_for_user_with_options_async(request, runtime)
+
+    def list_database_accounts_for_user_group_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_account_name):
+            query['DatabaseAccountName'] = request.database_account_name
+        if not UtilClient.is_unset(request.database_id):
+            query['DatabaseId'] = request.database_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_group_id):
+            query['UserGroupId'] = request.user_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatabaseAccountsForUserGroup',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_database_accounts_for_user_group_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_account_name):
+            query['DatabaseAccountName'] = request.database_account_name
+        if not UtilClient.is_unset(request.database_id):
+            query['DatabaseId'] = request.database_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_group_id):
+            query['UserGroupId'] = request.user_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatabaseAccountsForUserGroup',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_database_accounts_for_user_group(
+        self,
+        request: yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserGroupRequest,
+    ) -> yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_database_accounts_for_user_group_with_options(request, runtime)
+
+    async def list_database_accounts_for_user_group_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserGroupRequest,
+    ) -> yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_database_accounts_for_user_group_with_options_async(request, runtime)
+
+    def list_databases_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.ListDatabasesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListDatabasesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_type):
+            query['DatabaseType'] = request.database_type
+        if not UtilClient.is_unset(request.host_group_id):
+            query['HostGroupId'] = request.host_group_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_domain_id):
+            query['NetworkDomainId'] = request.network_domain_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatabases',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListDatabasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_databases_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListDatabasesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListDatabasesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_type):
+            query['DatabaseType'] = request.database_type
+        if not UtilClient.is_unset(request.host_group_id):
+            query['HostGroupId'] = request.host_group_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_domain_id):
+            query['NetworkDomainId'] = request.network_domain_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatabases',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListDatabasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_databases(
+        self,
+        request: yundun_bastionhost_20191209_models.ListDatabasesRequest,
+    ) -> yundun_bastionhost_20191209_models.ListDatabasesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_databases_with_options(request, runtime)
+
+    async def list_databases_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListDatabasesRequest,
+    ) -> yundun_bastionhost_20191209_models.ListDatabasesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_databases_with_options_async(request, runtime)
+
+    def list_databases_for_user_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.ListDatabasesForUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListDatabasesForUserResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_address):
+            query['DatabaseAddress'] = request.database_address
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.database_type):
+            query['DatabaseType'] = request.database_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_domain_id):
+            query['NetworkDomainId'] = request.network_domain_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatabasesForUser',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListDatabasesForUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_databases_for_user_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListDatabasesForUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListDatabasesForUserResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_address):
+            query['DatabaseAddress'] = request.database_address
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.database_type):
+            query['DatabaseType'] = request.database_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_domain_id):
+            query['NetworkDomainId'] = request.network_domain_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatabasesForUser',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListDatabasesForUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_databases_for_user(
+        self,
+        request: yundun_bastionhost_20191209_models.ListDatabasesForUserRequest,
+    ) -> yundun_bastionhost_20191209_models.ListDatabasesForUserResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_databases_for_user_with_options(request, runtime)
+
+    async def list_databases_for_user_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListDatabasesForUserRequest,
+    ) -> yundun_bastionhost_20191209_models.ListDatabasesForUserResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_databases_for_user_with_options_async(request, runtime)
+
+    def list_databases_for_user_group_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.ListDatabasesForUserGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListDatabasesForUserGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_address):
+            query['DatabaseAddress'] = request.database_address
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.database_type):
+            query['DatabaseType'] = request.database_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_domain_id):
+            query['NetworkDomainId'] = request.network_domain_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_group_id):
+            query['UserGroupId'] = request.user_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatabasesForUserGroup',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListDatabasesForUserGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_databases_for_user_group_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListDatabasesForUserGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListDatabasesForUserGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_address):
+            query['DatabaseAddress'] = request.database_address
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.database_type):
+            query['DatabaseType'] = request.database_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_domain_id):
+            query['NetworkDomainId'] = request.network_domain_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_group_id):
+            query['UserGroupId'] = request.user_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatabasesForUserGroup',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListDatabasesForUserGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_databases_for_user_group(
+        self,
+        request: yundun_bastionhost_20191209_models.ListDatabasesForUserGroupRequest,
+    ) -> yundun_bastionhost_20191209_models.ListDatabasesForUserGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_databases_for_user_group_with_options(request, runtime)
+
+    async def list_databases_for_user_group_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListDatabasesForUserGroupRequest,
+    ) -> yundun_bastionhost_20191209_models.ListDatabasesForUserGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_databases_for_user_group_with_options_async(request, runtime)
 
     def list_host_accounts_with_options(
         self,
@@ -5397,6 +8103,488 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_hosts_for_user_group_with_options_async(request, runtime)
 
+    def list_network_domains_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.ListNetworkDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListNetworkDomainsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_domain_name):
+            query['NetworkDomainName'] = request.network_domain_name
+        if not UtilClient.is_unset(request.network_domain_type):
+            query['NetworkDomainType'] = request.network_domain_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListNetworkDomains',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListNetworkDomainsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_network_domains_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListNetworkDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListNetworkDomainsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_domain_name):
+            query['NetworkDomainName'] = request.network_domain_name
+        if not UtilClient.is_unset(request.network_domain_type):
+            query['NetworkDomainType'] = request.network_domain_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListNetworkDomains',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListNetworkDomainsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_network_domains(
+        self,
+        request: yundun_bastionhost_20191209_models.ListNetworkDomainsRequest,
+    ) -> yundun_bastionhost_20191209_models.ListNetworkDomainsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_network_domains_with_options(request, runtime)
+
+    async def list_network_domains_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListNetworkDomainsRequest,
+    ) -> yundun_bastionhost_20191209_models.ListNetworkDomainsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_network_domains_with_options_async(request, runtime)
+
+    def list_operation_database_accounts_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.ListOperationDatabaseAccountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListOperationDatabaseAccountsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_account_name):
+            query['DatabaseAccountName'] = request.database_account_name
+        if not UtilClient.is_unset(request.database_id):
+            query['DatabaseId'] = request.database_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOperationDatabaseAccounts',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListOperationDatabaseAccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_operation_database_accounts_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListOperationDatabaseAccountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListOperationDatabaseAccountsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_account_name):
+            query['DatabaseAccountName'] = request.database_account_name
+        if not UtilClient.is_unset(request.database_id):
+            query['DatabaseId'] = request.database_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOperationDatabaseAccounts',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListOperationDatabaseAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_operation_database_accounts(
+        self,
+        request: yundun_bastionhost_20191209_models.ListOperationDatabaseAccountsRequest,
+    ) -> yundun_bastionhost_20191209_models.ListOperationDatabaseAccountsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_operation_database_accounts_with_options(request, runtime)
+
+    async def list_operation_database_accounts_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListOperationDatabaseAccountsRequest,
+    ) -> yundun_bastionhost_20191209_models.ListOperationDatabaseAccountsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_operation_database_accounts_with_options_async(request, runtime)
+
+    def list_operation_databases_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.ListOperationDatabasesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListOperationDatabasesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_address):
+            query['DatabaseAddress'] = request.database_address
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.database_type):
+            query['DatabaseType'] = request.database_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.source_instance_id):
+            query['SourceInstanceId'] = request.source_instance_id
+        if not UtilClient.is_unset(request.source_instance_state):
+            query['SourceInstanceState'] = request.source_instance_state
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOperationDatabases',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListOperationDatabasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_operation_databases_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListOperationDatabasesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListOperationDatabasesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_address):
+            query['DatabaseAddress'] = request.database_address
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.database_type):
+            query['DatabaseType'] = request.database_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.source_instance_id):
+            query['SourceInstanceId'] = request.source_instance_id
+        if not UtilClient.is_unset(request.source_instance_state):
+            query['SourceInstanceState'] = request.source_instance_state
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOperationDatabases',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListOperationDatabasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_operation_databases(
+        self,
+        request: yundun_bastionhost_20191209_models.ListOperationDatabasesRequest,
+    ) -> yundun_bastionhost_20191209_models.ListOperationDatabasesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_operation_databases_with_options(request, runtime)
+
+    async def list_operation_databases_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListOperationDatabasesRequest,
+    ) -> yundun_bastionhost_20191209_models.ListOperationDatabasesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_operation_databases_with_options_async(request, runtime)
+
+    def list_operation_host_accounts_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.ListOperationHostAccountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListOperationHostAccountsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.host_account_name):
+            query['HostAccountName'] = request.host_account_name
+        if not UtilClient.is_unset(request.host_id):
+            query['HostId'] = request.host_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOperationHostAccounts',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListOperationHostAccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_operation_host_accounts_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListOperationHostAccountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListOperationHostAccountsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.host_account_name):
+            query['HostAccountName'] = request.host_account_name
+        if not UtilClient.is_unset(request.host_id):
+            query['HostId'] = request.host_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOperationHostAccounts',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListOperationHostAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_operation_host_accounts(
+        self,
+        request: yundun_bastionhost_20191209_models.ListOperationHostAccountsRequest,
+    ) -> yundun_bastionhost_20191209_models.ListOperationHostAccountsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_operation_host_accounts_with_options(request, runtime)
+
+    async def list_operation_host_accounts_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListOperationHostAccountsRequest,
+    ) -> yundun_bastionhost_20191209_models.ListOperationHostAccountsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_operation_host_accounts_with_options_async(request, runtime)
+
+    def list_operation_hosts_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.ListOperationHostsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListOperationHostsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.host_address):
+            query['HostAddress'] = request.host_address
+        if not UtilClient.is_unset(request.host_name):
+            query['HostName'] = request.host_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ostype):
+            query['OSType'] = request.ostype
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.source_instance_id):
+            query['SourceInstanceId'] = request.source_instance_id
+        if not UtilClient.is_unset(request.source_instance_state):
+            query['SourceInstanceState'] = request.source_instance_state
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOperationHosts',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListOperationHostsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_operation_hosts_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListOperationHostsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListOperationHostsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.host_address):
+            query['HostAddress'] = request.host_address
+        if not UtilClient.is_unset(request.host_name):
+            query['HostName'] = request.host_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ostype):
+            query['OSType'] = request.ostype
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.source_instance_id):
+            query['SourceInstanceId'] = request.source_instance_id
+        if not UtilClient.is_unset(request.source_instance_state):
+            query['SourceInstanceState'] = request.source_instance_state
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOperationHosts',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListOperationHostsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_operation_hosts(
+        self,
+        request: yundun_bastionhost_20191209_models.ListOperationHostsRequest,
+    ) -> yundun_bastionhost_20191209_models.ListOperationHostsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_operation_hosts_with_options(request, runtime)
+
+    async def list_operation_hosts_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListOperationHostsRequest,
+    ) -> yundun_bastionhost_20191209_models.ListOperationHostsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_operation_hosts_with_options_async(request, runtime)
+
     def list_operation_tickets_with_options(
         self,
         request: yundun_bastionhost_20191209_models.ListOperationTicketsRequest,
@@ -5482,6 +8670,182 @@ class Client(OpenApiClient):
     ) -> yundun_bastionhost_20191209_models.ListOperationTicketsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_operation_tickets_with_options_async(request, runtime)
+
+    def list_policies_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.ListPoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListPoliciesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPolicies',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListPoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_policies_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListPoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListPoliciesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPolicies',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListPoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_policies(
+        self,
+        request: yundun_bastionhost_20191209_models.ListPoliciesRequest,
+    ) -> yundun_bastionhost_20191209_models.ListPoliciesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_policies_with_options(request, runtime)
+
+    async def list_policies_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListPoliciesRequest,
+    ) -> yundun_bastionhost_20191209_models.ListPoliciesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_policies_with_options_async(request, runtime)
+
+    def list_rules_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.ListRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.rule_state):
+            query['RuleState'] = request.rule_state
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRules',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_rules_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.rule_state):
+            query['RuleState'] = request.rule_state
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRules',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_rules(
+        self,
+        request: yundun_bastionhost_20191209_models.ListRulesRequest,
+    ) -> yundun_bastionhost_20191209_models.ListRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_rules_with_options(request, runtime)
+
+    async def list_rules_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListRulesRequest,
+    ) -> yundun_bastionhost_20191209_models.ListRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_rules_with_options_async(request, runtime)
 
     def list_tag_keys_with_options(
         self,
@@ -6048,6 +9412,206 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.lock_users_with_options_async(request, runtime)
+
+    def modify_database_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.ModifyDatabaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ModifyDatabaseResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.active_address_type):
+            query['ActiveAddressType'] = request.active_address_type
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.database_id):
+            query['DatabaseId'] = request.database_id
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.database_port):
+            query['DatabasePort'] = request.database_port
+        if not UtilClient.is_unset(request.database_private_address):
+            query['DatabasePrivateAddress'] = request.database_private_address
+        if not UtilClient.is_unset(request.database_public_address):
+            query['DatabasePublicAddress'] = request.database_public_address
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_domain_id):
+            query['NetworkDomainId'] = request.network_domain_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_instance_id):
+            query['SourceInstanceId'] = request.source_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDatabase',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyDatabaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_database_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ModifyDatabaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ModifyDatabaseResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.active_address_type):
+            query['ActiveAddressType'] = request.active_address_type
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.database_id):
+            query['DatabaseId'] = request.database_id
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.database_port):
+            query['DatabasePort'] = request.database_port
+        if not UtilClient.is_unset(request.database_private_address):
+            query['DatabasePrivateAddress'] = request.database_private_address
+        if not UtilClient.is_unset(request.database_public_address):
+            query['DatabasePublicAddress'] = request.database_public_address
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_domain_id):
+            query['NetworkDomainId'] = request.network_domain_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_instance_id):
+            query['SourceInstanceId'] = request.source_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDatabase',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyDatabaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_database(
+        self,
+        request: yundun_bastionhost_20191209_models.ModifyDatabaseRequest,
+    ) -> yundun_bastionhost_20191209_models.ModifyDatabaseResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_database_with_options(request, runtime)
+
+    async def modify_database_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ModifyDatabaseRequest,
+    ) -> yundun_bastionhost_20191209_models.ModifyDatabaseResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_database_with_options_async(request, runtime)
+
+    def modify_database_account_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.ModifyDatabaseAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ModifyDatabaseAccountResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_account_id):
+            query['DatabaseAccountId'] = request.database_account_id
+        if not UtilClient.is_unset(request.database_account_name):
+            query['DatabaseAccountName'] = request.database_account_name
+        if not UtilClient.is_unset(request.database_schema):
+            query['DatabaseSchema'] = request.database_schema
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDatabaseAccount',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyDatabaseAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_database_account_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ModifyDatabaseAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ModifyDatabaseAccountResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_account_id):
+            query['DatabaseAccountId'] = request.database_account_id
+        if not UtilClient.is_unset(request.database_account_name):
+            query['DatabaseAccountName'] = request.database_account_name
+        if not UtilClient.is_unset(request.database_schema):
+            query['DatabaseSchema'] = request.database_schema
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDatabaseAccount',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyDatabaseAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_database_account(
+        self,
+        request: yundun_bastionhost_20191209_models.ModifyDatabaseAccountRequest,
+    ) -> yundun_bastionhost_20191209_models.ModifyDatabaseAccountResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_database_account_with_options(request, runtime)
+
+    async def modify_database_account_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ModifyDatabaseAccountRequest,
+    ) -> yundun_bastionhost_20191209_models.ModifyDatabaseAccountResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_database_account_with_options_async(request, runtime)
 
     def modify_host_with_options(
         self,
@@ -7073,6 +10637,304 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_two_factor_with_options_async(request, runtime)
 
+    def modify_network_domain_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.ModifyNetworkDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ModifyNetworkDomainResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_domain_id):
+            query['NetworkDomainId'] = request.network_domain_id
+        if not UtilClient.is_unset(request.network_domain_name):
+            query['NetworkDomainName'] = request.network_domain_name
+        if not UtilClient.is_unset(request.network_domain_type):
+            query['NetworkDomainType'] = request.network_domain_type
+        if not UtilClient.is_unset(request.proxies):
+            query['Proxies'] = request.proxies
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyNetworkDomain',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyNetworkDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_network_domain_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ModifyNetworkDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ModifyNetworkDomainResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_domain_id):
+            query['NetworkDomainId'] = request.network_domain_id
+        if not UtilClient.is_unset(request.network_domain_name):
+            query['NetworkDomainName'] = request.network_domain_name
+        if not UtilClient.is_unset(request.network_domain_type):
+            query['NetworkDomainType'] = request.network_domain_type
+        if not UtilClient.is_unset(request.proxies):
+            query['Proxies'] = request.proxies
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyNetworkDomain',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyNetworkDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_network_domain(
+        self,
+        request: yundun_bastionhost_20191209_models.ModifyNetworkDomainRequest,
+    ) -> yundun_bastionhost_20191209_models.ModifyNetworkDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_network_domain_with_options(request, runtime)
+
+    async def modify_network_domain_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ModifyNetworkDomainRequest,
+    ) -> yundun_bastionhost_20191209_models.ModifyNetworkDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_network_domain_with_options_async(request, runtime)
+
+    def modify_policy_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.ModifyPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ModifyPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyPolicy',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_policy_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ModifyPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ModifyPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyPolicy',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_policy(
+        self,
+        request: yundun_bastionhost_20191209_models.ModifyPolicyRequest,
+    ) -> yundun_bastionhost_20191209_models.ModifyPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_policy_with_options(request, runtime)
+
+    async def modify_policy_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ModifyPolicyRequest,
+    ) -> yundun_bastionhost_20191209_models.ModifyPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_policy_with_options_async(request, runtime)
+
+    def modify_rule_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.ModifyRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ModifyRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.databases):
+            query['Databases'] = request.databases
+        if not UtilClient.is_unset(request.effective_end_time):
+            query['EffectiveEndTime'] = request.effective_end_time
+        if not UtilClient.is_unset(request.effective_start_time):
+            query['EffectiveStartTime'] = request.effective_start_time
+        if not UtilClient.is_unset(request.host_groups):
+            query['HostGroups'] = request.host_groups
+        if not UtilClient.is_unset(request.hosts):
+            query['Hosts'] = request.hosts
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.user_group_ids):
+            query['UserGroupIds'] = request.user_group_ids
+        if not UtilClient.is_unset(request.user_ids):
+            query['UserIds'] = request.user_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyRule',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_rule_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ModifyRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ModifyRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.databases):
+            query['Databases'] = request.databases
+        if not UtilClient.is_unset(request.effective_end_time):
+            query['EffectiveEndTime'] = request.effective_end_time
+        if not UtilClient.is_unset(request.effective_start_time):
+            query['EffectiveStartTime'] = request.effective_start_time
+        if not UtilClient.is_unset(request.host_groups):
+            query['HostGroups'] = request.host_groups
+        if not UtilClient.is_unset(request.hosts):
+            query['Hosts'] = request.hosts
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.user_group_ids):
+            query['UserGroupIds'] = request.user_group_ids
+        if not UtilClient.is_unset(request.user_ids):
+            query['UserIds'] = request.user_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyRule',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_rule(
+        self,
+        request: yundun_bastionhost_20191209_models.ModifyRuleRequest,
+    ) -> yundun_bastionhost_20191209_models.ModifyRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_rule_with_options(request, runtime)
+
+    async def modify_rule_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ModifyRuleRequest,
+    ) -> yundun_bastionhost_20191209_models.ModifyRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_rule_with_options_async(request, runtime)
+
     def modify_user_with_options(
         self,
         request: yundun_bastionhost_20191209_models.ModifyUserRequest,
@@ -7288,6 +11150,260 @@ class Client(OpenApiClient):
     ) -> yundun_bastionhost_20191209_models.ModifyUserGroupResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_user_group_with_options_async(request, runtime)
+
+    def modify_user_public_key_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.ModifyUserPublicKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ModifyUserPublicKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.public_key):
+            query['PublicKey'] = request.public_key
+        if not UtilClient.is_unset(request.public_key_id):
+            query['PublicKeyId'] = request.public_key_id
+        if not UtilClient.is_unset(request.public_key_name):
+            query['PublicKeyName'] = request.public_key_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyUserPublicKey',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyUserPublicKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_user_public_key_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ModifyUserPublicKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ModifyUserPublicKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.public_key):
+            query['PublicKey'] = request.public_key
+        if not UtilClient.is_unset(request.public_key_id):
+            query['PublicKeyId'] = request.public_key_id
+        if not UtilClient.is_unset(request.public_key_name):
+            query['PublicKeyName'] = request.public_key_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyUserPublicKey',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyUserPublicKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_user_public_key(
+        self,
+        request: yundun_bastionhost_20191209_models.ModifyUserPublicKeyRequest,
+    ) -> yundun_bastionhost_20191209_models.ModifyUserPublicKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_user_public_key_with_options(request, runtime)
+
+    async def modify_user_public_key_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ModifyUserPublicKeyRequest,
+    ) -> yundun_bastionhost_20191209_models.ModifyUserPublicKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_user_public_key_with_options_async(request, runtime)
+
+    def move_databases_to_network_domain_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.MoveDatabasesToNetworkDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.MoveDatabasesToNetworkDomainResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_ids):
+            query['DatabaseIds'] = request.database_ids
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_domain_id):
+            query['NetworkDomainId'] = request.network_domain_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MoveDatabasesToNetworkDomain',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.MoveDatabasesToNetworkDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def move_databases_to_network_domain_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.MoveDatabasesToNetworkDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.MoveDatabasesToNetworkDomainResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_ids):
+            query['DatabaseIds'] = request.database_ids
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_domain_id):
+            query['NetworkDomainId'] = request.network_domain_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MoveDatabasesToNetworkDomain',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.MoveDatabasesToNetworkDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def move_databases_to_network_domain(
+        self,
+        request: yundun_bastionhost_20191209_models.MoveDatabasesToNetworkDomainRequest,
+    ) -> yundun_bastionhost_20191209_models.MoveDatabasesToNetworkDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.move_databases_to_network_domain_with_options(request, runtime)
+
+    async def move_databases_to_network_domain_async(
+        self,
+        request: yundun_bastionhost_20191209_models.MoveDatabasesToNetworkDomainRequest,
+    ) -> yundun_bastionhost_20191209_models.MoveDatabasesToNetworkDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.move_databases_to_network_domain_with_options_async(request, runtime)
+
+    def move_hosts_to_network_domain_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.MoveHostsToNetworkDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.MoveHostsToNetworkDomainResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.host_ids):
+            query['HostIds'] = request.host_ids
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_domain_id):
+            query['NetworkDomainId'] = request.network_domain_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MoveHostsToNetworkDomain',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.MoveHostsToNetworkDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def move_hosts_to_network_domain_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.MoveHostsToNetworkDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.MoveHostsToNetworkDomainResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.host_ids):
+            query['HostIds'] = request.host_ids
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_domain_id):
+            query['NetworkDomainId'] = request.network_domain_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MoveHostsToNetworkDomain',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.MoveHostsToNetworkDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def move_hosts_to_network_domain(
+        self,
+        request: yundun_bastionhost_20191209_models.MoveHostsToNetworkDomainRequest,
+    ) -> yundun_bastionhost_20191209_models.MoveHostsToNetworkDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.move_hosts_to_network_domain_with_options(request, runtime)
+
+    async def move_hosts_to_network_domain_async(
+        self,
+        request: yundun_bastionhost_20191209_models.MoveHostsToNetworkDomainRequest,
+    ) -> yundun_bastionhost_20191209_models.MoveHostsToNetworkDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.move_hosts_to_network_domain_with_options_async(request, runtime)
 
     def move_resource_group_with_options(
         self,
@@ -7557,6 +11673,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.reject_operation_ticket_with_options_async(request, runtime)
 
+    def remove_databases_from_group_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.RemoveDatabasesFromGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.RemoveDatabasesFromGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_ids):
+            query['DatabaseIds'] = request.database_ids
+        if not UtilClient.is_unset(request.host_group_id):
+            query['HostGroupId'] = request.host_group_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveDatabasesFromGroup',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.RemoveDatabasesFromGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_databases_from_group_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.RemoveDatabasesFromGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.RemoveDatabasesFromGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_ids):
+            query['DatabaseIds'] = request.database_ids
+        if not UtilClient.is_unset(request.host_group_id):
+            query['HostGroupId'] = request.host_group_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveDatabasesFromGroup',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.RemoveDatabasesFromGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_databases_from_group(
+        self,
+        request: yundun_bastionhost_20191209_models.RemoveDatabasesFromGroupRequest,
+    ) -> yundun_bastionhost_20191209_models.RemoveDatabasesFromGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.remove_databases_from_group_with_options(request, runtime)
+
+    async def remove_databases_from_group_async(
+        self,
+        request: yundun_bastionhost_20191209_models.RemoveDatabasesFromGroupRequest,
+    ) -> yundun_bastionhost_20191209_models.RemoveDatabasesFromGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.remove_databases_from_group_with_options_async(request, runtime)
+
     def remove_hosts_from_group_with_options(
         self,
         request: yundun_bastionhost_20191209_models.RemoveHostsFromGroupRequest,
@@ -7755,6 +11953,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.remove_users_from_group_with_options_async(request, runtime)
 
+    def renew_asset_operation_token_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.RenewAssetOperationTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.RenewAssetOperationTokenResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.token_id):
+            query['TokenId'] = request.token_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RenewAssetOperationToken',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.RenewAssetOperationTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def renew_asset_operation_token_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.RenewAssetOperationTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.RenewAssetOperationTokenResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.token_id):
+            query['TokenId'] = request.token_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RenewAssetOperationToken',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.RenewAssetOperationTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def renew_asset_operation_token(
+        self,
+        request: yundun_bastionhost_20191209_models.RenewAssetOperationTokenRequest,
+    ) -> yundun_bastionhost_20191209_models.RenewAssetOperationTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.renew_asset_operation_token_with_options(request, runtime)
+
+    async def renew_asset_operation_token_async(
+        self,
+        request: yundun_bastionhost_20191209_models.RenewAssetOperationTokenRequest,
+    ) -> yundun_bastionhost_20191209_models.RenewAssetOperationTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.renew_asset_operation_token_with_options_async(request, runtime)
+
     def reset_host_account_credential_with_options(
         self,
         request: yundun_bastionhost_20191209_models.ResetHostAccountCredentialRequest,
@@ -7836,6 +12112,640 @@ class Client(OpenApiClient):
     ) -> yundun_bastionhost_20191209_models.ResetHostAccountCredentialResponse:
         runtime = util_models.RuntimeOptions()
         return await self.reset_host_account_credential_with_options_async(request, runtime)
+
+    def set_policy_access_time_range_config_with_options(
+        self,
+        tmp_req: yundun_bastionhost_20191209_models.SetPolicyAccessTimeRangeConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.SetPolicyAccessTimeRangeConfigResponse:
+        UtilClient.validate_model(tmp_req)
+        request = yundun_bastionhost_20191209_models.SetPolicyAccessTimeRangeConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.access_time_range_config):
+            request.access_time_range_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.access_time_range_config, 'AccessTimeRangeConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.access_time_range_config_shrink):
+            query['AccessTimeRangeConfig'] = request.access_time_range_config_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetPolicyAccessTimeRangeConfig',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.SetPolicyAccessTimeRangeConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_policy_access_time_range_config_with_options_async(
+        self,
+        tmp_req: yundun_bastionhost_20191209_models.SetPolicyAccessTimeRangeConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.SetPolicyAccessTimeRangeConfigResponse:
+        UtilClient.validate_model(tmp_req)
+        request = yundun_bastionhost_20191209_models.SetPolicyAccessTimeRangeConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.access_time_range_config):
+            request.access_time_range_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.access_time_range_config, 'AccessTimeRangeConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.access_time_range_config_shrink):
+            query['AccessTimeRangeConfig'] = request.access_time_range_config_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetPolicyAccessTimeRangeConfig',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.SetPolicyAccessTimeRangeConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_policy_access_time_range_config(
+        self,
+        request: yundun_bastionhost_20191209_models.SetPolicyAccessTimeRangeConfigRequest,
+    ) -> yundun_bastionhost_20191209_models.SetPolicyAccessTimeRangeConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_policy_access_time_range_config_with_options(request, runtime)
+
+    async def set_policy_access_time_range_config_async(
+        self,
+        request: yundun_bastionhost_20191209_models.SetPolicyAccessTimeRangeConfigRequest,
+    ) -> yundun_bastionhost_20191209_models.SetPolicyAccessTimeRangeConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_policy_access_time_range_config_with_options_async(request, runtime)
+
+    def set_policy_approval_config_with_options(
+        self,
+        tmp_req: yundun_bastionhost_20191209_models.SetPolicyApprovalConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.SetPolicyApprovalConfigResponse:
+        UtilClient.validate_model(tmp_req)
+        request = yundun_bastionhost_20191209_models.SetPolicyApprovalConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.approval_config):
+            request.approval_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.approval_config, 'ApprovalConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.approval_config_shrink):
+            query['ApprovalConfig'] = request.approval_config_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetPolicyApprovalConfig',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.SetPolicyApprovalConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_policy_approval_config_with_options_async(
+        self,
+        tmp_req: yundun_bastionhost_20191209_models.SetPolicyApprovalConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.SetPolicyApprovalConfigResponse:
+        UtilClient.validate_model(tmp_req)
+        request = yundun_bastionhost_20191209_models.SetPolicyApprovalConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.approval_config):
+            request.approval_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.approval_config, 'ApprovalConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.approval_config_shrink):
+            query['ApprovalConfig'] = request.approval_config_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetPolicyApprovalConfig',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.SetPolicyApprovalConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_policy_approval_config(
+        self,
+        request: yundun_bastionhost_20191209_models.SetPolicyApprovalConfigRequest,
+    ) -> yundun_bastionhost_20191209_models.SetPolicyApprovalConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_policy_approval_config_with_options(request, runtime)
+
+    async def set_policy_approval_config_async(
+        self,
+        request: yundun_bastionhost_20191209_models.SetPolicyApprovalConfigRequest,
+    ) -> yundun_bastionhost_20191209_models.SetPolicyApprovalConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_policy_approval_config_with_options_async(request, runtime)
+
+    def set_policy_asset_scope_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.SetPolicyAssetScopeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.SetPolicyAssetScopeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.databases):
+            query['Databases'] = request.databases
+        if not UtilClient.is_unset(request.host_groups):
+            query['HostGroups'] = request.host_groups
+        if not UtilClient.is_unset(request.hosts):
+            query['Hosts'] = request.hosts
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scope_type):
+            query['ScopeType'] = request.scope_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetPolicyAssetScope',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.SetPolicyAssetScopeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_policy_asset_scope_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.SetPolicyAssetScopeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.SetPolicyAssetScopeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.databases):
+            query['Databases'] = request.databases
+        if not UtilClient.is_unset(request.host_groups):
+            query['HostGroups'] = request.host_groups
+        if not UtilClient.is_unset(request.hosts):
+            query['Hosts'] = request.hosts
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scope_type):
+            query['ScopeType'] = request.scope_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetPolicyAssetScope',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.SetPolicyAssetScopeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_policy_asset_scope(
+        self,
+        request: yundun_bastionhost_20191209_models.SetPolicyAssetScopeRequest,
+    ) -> yundun_bastionhost_20191209_models.SetPolicyAssetScopeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_policy_asset_scope_with_options(request, runtime)
+
+    async def set_policy_asset_scope_async(
+        self,
+        request: yundun_bastionhost_20191209_models.SetPolicyAssetScopeRequest,
+    ) -> yundun_bastionhost_20191209_models.SetPolicyAssetScopeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_policy_asset_scope_with_options_async(request, runtime)
+
+    def set_policy_command_config_with_options(
+        self,
+        tmp_req: yundun_bastionhost_20191209_models.SetPolicyCommandConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.SetPolicyCommandConfigResponse:
+        UtilClient.validate_model(tmp_req)
+        request = yundun_bastionhost_20191209_models.SetPolicyCommandConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.command_config):
+            request.command_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.command_config, 'CommandConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.command_config_shrink):
+            query['CommandConfig'] = request.command_config_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetPolicyCommandConfig',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.SetPolicyCommandConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_policy_command_config_with_options_async(
+        self,
+        tmp_req: yundun_bastionhost_20191209_models.SetPolicyCommandConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.SetPolicyCommandConfigResponse:
+        UtilClient.validate_model(tmp_req)
+        request = yundun_bastionhost_20191209_models.SetPolicyCommandConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.command_config):
+            request.command_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.command_config, 'CommandConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.command_config_shrink):
+            query['CommandConfig'] = request.command_config_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetPolicyCommandConfig',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.SetPolicyCommandConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_policy_command_config(
+        self,
+        request: yundun_bastionhost_20191209_models.SetPolicyCommandConfigRequest,
+    ) -> yundun_bastionhost_20191209_models.SetPolicyCommandConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_policy_command_config_with_options(request, runtime)
+
+    async def set_policy_command_config_async(
+        self,
+        request: yundun_bastionhost_20191209_models.SetPolicyCommandConfigRequest,
+    ) -> yundun_bastionhost_20191209_models.SetPolicyCommandConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_policy_command_config_with_options_async(request, runtime)
+
+    def set_policy_ipacl_config_with_options(
+        self,
+        tmp_req: yundun_bastionhost_20191209_models.SetPolicyIPAclConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.SetPolicyIPAclConfigResponse:
+        UtilClient.validate_model(tmp_req)
+        request = yundun_bastionhost_20191209_models.SetPolicyIPAclConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ipacl_config):
+            request.ipacl_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ipacl_config, 'IPAclConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ipacl_config_shrink):
+            query['IPAclConfig'] = request.ipacl_config_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetPolicyIPAclConfig',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.SetPolicyIPAclConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_policy_ipacl_config_with_options_async(
+        self,
+        tmp_req: yundun_bastionhost_20191209_models.SetPolicyIPAclConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.SetPolicyIPAclConfigResponse:
+        UtilClient.validate_model(tmp_req)
+        request = yundun_bastionhost_20191209_models.SetPolicyIPAclConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ipacl_config):
+            request.ipacl_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ipacl_config, 'IPAclConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ipacl_config_shrink):
+            query['IPAclConfig'] = request.ipacl_config_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetPolicyIPAclConfig',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.SetPolicyIPAclConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_policy_ipacl_config(
+        self,
+        request: yundun_bastionhost_20191209_models.SetPolicyIPAclConfigRequest,
+    ) -> yundun_bastionhost_20191209_models.SetPolicyIPAclConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_policy_ipacl_config_with_options(request, runtime)
+
+    async def set_policy_ipacl_config_async(
+        self,
+        request: yundun_bastionhost_20191209_models.SetPolicyIPAclConfigRequest,
+    ) -> yundun_bastionhost_20191209_models.SetPolicyIPAclConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_policy_ipacl_config_with_options_async(request, runtime)
+
+    def set_policy_protocol_config_with_options(
+        self,
+        tmp_req: yundun_bastionhost_20191209_models.SetPolicyProtocolConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.SetPolicyProtocolConfigResponse:
+        UtilClient.validate_model(tmp_req)
+        request = yundun_bastionhost_20191209_models.SetPolicyProtocolConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.protocol_config):
+            request.protocol_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.protocol_config, 'ProtocolConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.protocol_config_shrink):
+            query['ProtocolConfig'] = request.protocol_config_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetPolicyProtocolConfig',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.SetPolicyProtocolConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_policy_protocol_config_with_options_async(
+        self,
+        tmp_req: yundun_bastionhost_20191209_models.SetPolicyProtocolConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.SetPolicyProtocolConfigResponse:
+        UtilClient.validate_model(tmp_req)
+        request = yundun_bastionhost_20191209_models.SetPolicyProtocolConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.protocol_config):
+            request.protocol_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.protocol_config, 'ProtocolConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.protocol_config_shrink):
+            query['ProtocolConfig'] = request.protocol_config_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetPolicyProtocolConfig',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.SetPolicyProtocolConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_policy_protocol_config(
+        self,
+        request: yundun_bastionhost_20191209_models.SetPolicyProtocolConfigRequest,
+    ) -> yundun_bastionhost_20191209_models.SetPolicyProtocolConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_policy_protocol_config_with_options(request, runtime)
+
+    async def set_policy_protocol_config_async(
+        self,
+        request: yundun_bastionhost_20191209_models.SetPolicyProtocolConfigRequest,
+    ) -> yundun_bastionhost_20191209_models.SetPolicyProtocolConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_policy_protocol_config_with_options_async(request, runtime)
+
+    def set_policy_user_scope_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.SetPolicyUserScopeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.SetPolicyUserScopeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scope_type):
+            query['ScopeType'] = request.scope_type
+        if not UtilClient.is_unset(request.user_group_ids):
+            query['UserGroupIds'] = request.user_group_ids
+        if not UtilClient.is_unset(request.user_ids):
+            query['UserIds'] = request.user_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetPolicyUserScope',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.SetPolicyUserScopeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_policy_user_scope_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.SetPolicyUserScopeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.SetPolicyUserScopeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scope_type):
+            query['ScopeType'] = request.scope_type
+        if not UtilClient.is_unset(request.user_group_ids):
+            query['UserGroupIds'] = request.user_group_ids
+        if not UtilClient.is_unset(request.user_ids):
+            query['UserIds'] = request.user_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetPolicyUserScope',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.SetPolicyUserScopeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_policy_user_scope(
+        self,
+        request: yundun_bastionhost_20191209_models.SetPolicyUserScopeRequest,
+    ) -> yundun_bastionhost_20191209_models.SetPolicyUserScopeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_policy_user_scope_with_options(request, runtime)
+
+    async def set_policy_user_scope_async(
+        self,
+        request: yundun_bastionhost_20191209_models.SetPolicyUserScopeRequest,
+    ) -> yundun_bastionhost_20191209_models.SetPolicyUserScopeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_policy_user_scope_with_options_async(request, runtime)
 
     def start_instance_with_options(
         self,
@@ -8198,3 +13108,219 @@ class Client(OpenApiClient):
     ) -> yundun_bastionhost_20191209_models.UntagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
+
+    def verify_instance_adauth_server_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.VerifyInstanceADAuthServerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.VerifyInstanceADAuthServerResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account):
+            query['Account'] = request.account
+        if not UtilClient.is_unset(request.base_dn):
+            query['BaseDN'] = request.base_dn
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.is_ssl):
+            query['IsSSL'] = request.is_ssl
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.server):
+            query['Server'] = request.server
+        if not UtilClient.is_unset(request.standby_server):
+            query['StandbyServer'] = request.standby_server
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VerifyInstanceADAuthServer',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.VerifyInstanceADAuthServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def verify_instance_adauth_server_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.VerifyInstanceADAuthServerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.VerifyInstanceADAuthServerResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account):
+            query['Account'] = request.account
+        if not UtilClient.is_unset(request.base_dn):
+            query['BaseDN'] = request.base_dn
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.is_ssl):
+            query['IsSSL'] = request.is_ssl
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.server):
+            query['Server'] = request.server
+        if not UtilClient.is_unset(request.standby_server):
+            query['StandbyServer'] = request.standby_server
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VerifyInstanceADAuthServer',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.VerifyInstanceADAuthServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def verify_instance_adauth_server(
+        self,
+        request: yundun_bastionhost_20191209_models.VerifyInstanceADAuthServerRequest,
+    ) -> yundun_bastionhost_20191209_models.VerifyInstanceADAuthServerResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.verify_instance_adauth_server_with_options(request, runtime)
+
+    async def verify_instance_adauth_server_async(
+        self,
+        request: yundun_bastionhost_20191209_models.VerifyInstanceADAuthServerRequest,
+    ) -> yundun_bastionhost_20191209_models.VerifyInstanceADAuthServerResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.verify_instance_adauth_server_with_options_async(request, runtime)
+
+    def verify_instance_ldapauth_server_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.VerifyInstanceLDAPAuthServerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.VerifyInstanceLDAPAuthServerResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account):
+            query['Account'] = request.account
+        if not UtilClient.is_unset(request.base_dn):
+            query['BaseDN'] = request.base_dn
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.is_ssl):
+            query['IsSSL'] = request.is_ssl
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.server):
+            query['Server'] = request.server
+        if not UtilClient.is_unset(request.standby_server):
+            query['StandbyServer'] = request.standby_server
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VerifyInstanceLDAPAuthServer',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.VerifyInstanceLDAPAuthServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def verify_instance_ldapauth_server_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.VerifyInstanceLDAPAuthServerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.VerifyInstanceLDAPAuthServerResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account):
+            query['Account'] = request.account
+        if not UtilClient.is_unset(request.base_dn):
+            query['BaseDN'] = request.base_dn
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.is_ssl):
+            query['IsSSL'] = request.is_ssl
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.server):
+            query['Server'] = request.server
+        if not UtilClient.is_unset(request.standby_server):
+            query['StandbyServer'] = request.standby_server
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VerifyInstanceLDAPAuthServer',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.VerifyInstanceLDAPAuthServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def verify_instance_ldapauth_server(
+        self,
+        request: yundun_bastionhost_20191209_models.VerifyInstanceLDAPAuthServerRequest,
+    ) -> yundun_bastionhost_20191209_models.VerifyInstanceLDAPAuthServerResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.verify_instance_ldapauth_server_with_options(request, runtime)
+
+    async def verify_instance_ldapauth_server_async(
+        self,
+        request: yundun_bastionhost_20191209_models.VerifyInstanceLDAPAuthServerRequest,
+    ) -> yundun_bastionhost_20191209_models.VerifyInstanceLDAPAuthServerResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.verify_instance_ldapauth_server_with_options_async(request, runtime)
