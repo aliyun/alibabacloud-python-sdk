@@ -1,3 +1,7 @@
+2024-04-12 Version: 2.0.8
+- Update API GetTaskInfo: update response param.
+
+
 2024-04-10 Version: 2.0.7
 - Update API GetTaskInfo: update response param.
 

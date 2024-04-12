@@ -944,6 +944,10 @@ class GetTaskInfoResponseBodyData(TeaModel):
         self,
         error_code: str = None,
         error_message: str = None,
+        output_mp_3path: str = None,
+        output_mp_4path: str = None,
+        output_spectrum_path: str = None,
+        output_thumbnail_path: str = None,
         result: GetTaskInfoResponseBodyDataResult = None,
         task_id: str = None,
         task_key: str = None,
@@ -951,6 +955,10 @@ class GetTaskInfoResponseBodyData(TeaModel):
     ):
         self.error_code = error_code
         self.error_message = error_message
+        self.output_mp_3path = output_mp_3path
+        self.output_mp_4path = output_mp_4path
+        self.output_spectrum_path = output_spectrum_path
+        self.output_thumbnail_path = output_thumbnail_path
         self.result = result
         self.task_id = task_id
         self.task_key = task_key
@@ -970,6 +978,14 @@ class GetTaskInfoResponseBodyData(TeaModel):
             result['ErrorCode'] = self.error_code
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
+        if self.output_mp_3path is not None:
+            result['OutputMp3Path'] = self.output_mp_3path
+        if self.output_mp_4path is not None:
+            result['OutputMp4Path'] = self.output_mp_4path
+        if self.output_spectrum_path is not None:
+            result['OutputSpectrumPath'] = self.output_spectrum_path
+        if self.output_thumbnail_path is not None:
+            result['OutputThumbnailPath'] = self.output_thumbnail_path
         if self.result is not None:
             result['Result'] = self.result.to_map()
         if self.task_id is not None:
@@ -986,6 +1002,14 @@ class GetTaskInfoResponseBodyData(TeaModel):
             self.error_code = m.get('ErrorCode')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
+        if m.get('OutputMp3Path') is not None:
+            self.output_mp_3path = m.get('OutputMp3Path')
+        if m.get('OutputMp4Path') is not None:
+            self.output_mp_4path = m.get('OutputMp4Path')
+        if m.get('OutputSpectrumPath') is not None:
+            self.output_spectrum_path = m.get('OutputSpectrumPath')
+        if m.get('OutputThumbnailPath') is not None:
+            self.output_thumbnail_path = m.get('OutputThumbnailPath')
         if m.get('Result') is not None:
             temp_model = GetTaskInfoResponseBodyDataResult()
             self.result = temp_model.from_map(m['Result'])
