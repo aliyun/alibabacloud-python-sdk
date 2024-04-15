@@ -1,3 +1,14 @@
+2024-04-15 Version: 3.6.0
+- Support API DescribeRecordings.
+- Update API CreateDesktopOversoldGroup: add param IdleDisconnectDuration.
+- Update API CreateDesktopOversoldGroup: add param KeepDuration.
+- Update API DescribeDesktopSessions: add param DesktopId.
+- Update API DescribeDesktopSessions: add param DesktopName.
+- Update API DescribeDesktopSessions: update response param.
+- Update API ModifyDesktopOversoldGroup: add param IdleDisconnectDuration.
+- Update API ModifyDesktopOversoldGroup: add param KeepDuration.
+
+
 2024-03-25 Version: 3.5.3
 - Update API AddDevices: update response param.
 - Update API DescribeFotaPendingDesktops: update param TaskUid.
