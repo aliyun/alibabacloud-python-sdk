@@ -1,3 +1,11 @@
+2024-04-15 Version: 4.0.0
+- Delete API GetResourceTags.
+- Delete API ListTaggedResources.
+- Delete API TagResource.
+- Delete API UntagResource.
+- Update API InvokeFunction: add param x-fc-async-task-id.
+
+
 2024-03-22 Version: 3.1.0
 - Support API ListTagResources.
 - Support API TagResources.
