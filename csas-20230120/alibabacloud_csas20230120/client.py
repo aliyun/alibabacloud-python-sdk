@@ -351,6 +351,8 @@ class Client(OpenApiClient):
             body_flat['CustomUserAttributes'] = request.custom_user_attributes
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.device_attribute_id):
+            body['DeviceAttributeId'] = request.device_attribute_id
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.policy_action):
@@ -402,6 +404,8 @@ class Client(OpenApiClient):
             body_flat['CustomUserAttributes'] = request.custom_user_attributes
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.device_attribute_id):
+            body['DeviceAttributeId'] = request.device_attribute_id
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.policy_action):
@@ -2219,6 +2223,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_polices_for_user_group_with_options_async(request, runtime)
 
+    def list_pop_traffic_statistics_with_options(
+        self,
+        request: csas_20230120_models.ListPopTrafficStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListPopTrafficStatisticsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPopTrafficStatistics',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListPopTrafficStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_pop_traffic_statistics_with_options_async(
+        self,
+        request: csas_20230120_models.ListPopTrafficStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListPopTrafficStatisticsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPopTrafficStatistics',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListPopTrafficStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_pop_traffic_statistics(
+        self,
+        request: csas_20230120_models.ListPopTrafficStatisticsRequest,
+    ) -> csas_20230120_models.ListPopTrafficStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_pop_traffic_statistics_with_options(request, runtime)
+
+    async def list_pop_traffic_statistics_async(
+        self,
+        request: csas_20230120_models.ListPopTrafficStatisticsRequest,
+    ) -> csas_20230120_models.ListPopTrafficStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_pop_traffic_statistics_with_options_async(request, runtime)
+
     def list_private_access_applications_with_options(
         self,
         request: csas_20230120_models.ListPrivateAccessApplicationsRequest,
@@ -3143,6 +3213,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_user_groups_for_registration_policy_with_options_async(request, runtime)
 
+    def list_users_with_options(
+        self,
+        request: csas_20230120_models.ListUsersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListUsersResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUsers',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListUsersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_users_with_options_async(
+        self,
+        request: csas_20230120_models.ListUsersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListUsersResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUsers',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListUsersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_users(
+        self,
+        request: csas_20230120_models.ListUsersRequest,
+    ) -> csas_20230120_models.ListUsersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_users_with_options(request, runtime)
+
+    async def list_users_async(
+        self,
+        request: csas_20230120_models.ListUsersRequest,
+    ) -> csas_20230120_models.ListUsersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_users_with_options_async(request, runtime)
+
     def update_dynamic_route_with_options(
         self,
         request: csas_20230120_models.UpdateDynamicRouteRequest,
@@ -3463,6 +3599,8 @@ class Client(OpenApiClient):
             body_flat['CustomUserAttributes'] = request.custom_user_attributes
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.device_attribute_id):
+            body['DeviceAttributeId'] = request.device_attribute_id
         if not UtilClient.is_unset(request.modify_type):
             body['ModifyType'] = request.modify_type
         if not UtilClient.is_unset(request.policy_action):
@@ -3516,6 +3654,8 @@ class Client(OpenApiClient):
             body_flat['CustomUserAttributes'] = request.custom_user_attributes
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.device_attribute_id):
+            body['DeviceAttributeId'] = request.device_attribute_id
         if not UtilClient.is_unset(request.modify_type):
             body['ModifyType'] = request.modify_type
         if not UtilClient.is_unset(request.policy_action):
@@ -3946,3 +4086,77 @@ class Client(OpenApiClient):
     ) -> csas_20230120_models.UpdateUserGroupResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_user_group_with_options_async(request, runtime)
+
+    def update_users_status_with_options(
+        self,
+        request: csas_20230120_models.UpdateUsersStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.UpdateUsersStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.sase_user_ids):
+            query['SaseUserIds'] = request.sase_user_ids
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateUsersStatus',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.UpdateUsersStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_users_status_with_options_async(
+        self,
+        request: csas_20230120_models.UpdateUsersStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.UpdateUsersStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.sase_user_ids):
+            query['SaseUserIds'] = request.sase_user_ids
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateUsersStatus',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.UpdateUsersStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_users_status(
+        self,
+        request: csas_20230120_models.UpdateUsersStatusRequest,
+    ) -> csas_20230120_models.UpdateUsersStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_users_status_with_options(request, runtime)
+
+    async def update_users_status_async(
+        self,
+        request: csas_20230120_models.UpdateUsersStatusRequest,
+    ) -> csas_20230120_models.UpdateUsersStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_users_status_with_options_async(request, runtime)

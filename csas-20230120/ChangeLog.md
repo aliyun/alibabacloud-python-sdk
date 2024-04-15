@@ -1,3 +1,16 @@
+2024-04-15 Version: 1.3.0
+- Support API ListPopTrafficStatistics.
+- Support API ListUsers.
+- Support API UpdateUsersStatus.
+- Update API CreatePrivateAccessPolicy: add param DeviceAttributeId.
+- Update API CreatePrivateAccessPolicy: update param CustomUserAttributes.
+- Update API GetPrivateAccessPolicy: update response param.
+- Update API ListPrivateAccessPolices: add param ApplicationName.
+- Update API ListPrivateAccessPolices: add param TagName.
+- Update API ListPrivateAccessPolices: update response param.
+- Update API UpdatePrivateAccessPolicy: add param DeviceAttributeId.
+
+
 2023-11-15 Version: 1.2.1
 - Generated python 2023-01-20 for csas.
 

@@ -111,9 +111,6 @@ class AttachApplication2ConnectorResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -269,9 +266,6 @@ class CreateDynamicRouteResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -450,9 +444,6 @@ class CreatePrivateAccessApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -534,6 +525,7 @@ class CreatePrivateAccessPolicyRequest(TeaModel):
         application_type: str = None,
         custom_user_attributes: List[CreatePrivateAccessPolicyRequestCustomUserAttributes] = None,
         description: str = None,
+        device_attribute_id: str = None,
         name: str = None,
         policy_action: str = None,
         priority: int = None,
@@ -546,6 +538,7 @@ class CreatePrivateAccessPolicyRequest(TeaModel):
         self.application_type = application_type
         self.custom_user_attributes = custom_user_attributes
         self.description = description
+        self.device_attribute_id = device_attribute_id
         self.name = name
         self.policy_action = policy_action
         self.priority = priority
@@ -580,6 +573,8 @@ class CreatePrivateAccessPolicyRequest(TeaModel):
                 result['CustomUserAttributes'].append(k.to_map() if k else None)
         if self.description is not None:
             result['Description'] = self.description
+        if self.device_attribute_id is not None:
+            result['DeviceAttributeId'] = self.device_attribute_id
         if self.name is not None:
             result['Name'] = self.name
         if self.policy_action is not None:
@@ -609,6 +604,8 @@ class CreatePrivateAccessPolicyRequest(TeaModel):
                 self.custom_user_attributes.append(temp_model.from_map(k))
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DeviceAttributeId') is not None:
+            self.device_attribute_id = m.get('DeviceAttributeId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('PolicyAction') is not None:
@@ -671,9 +668,6 @@ class CreatePrivateAccessPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -781,9 +775,6 @@ class CreatePrivateAccessTagResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1286,9 +1277,6 @@ class CreateRegistrationPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1455,9 +1443,6 @@ class CreateUserGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1553,9 +1538,6 @@ class DeleteDynamicRouteResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1651,9 +1633,6 @@ class DeletePrivateAccessApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1749,9 +1728,6 @@ class DeletePrivateAccessPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1847,9 +1823,6 @@ class DeletePrivateAccessTagResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1945,9 +1918,6 @@ class DeleteRegistrationPoliciesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2043,9 +2013,6 @@ class DeleteUserGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2182,9 +2149,6 @@ class DetachApplication2ConnectorResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2381,9 +2345,6 @@ class GetDynamicRouteResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2615,9 +2576,6 @@ class GetPrivateAccessApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2727,6 +2685,7 @@ class GetPrivateAccessPolicyResponseBodyPolicy(TeaModel):
         create_time: str = None,
         custom_user_attributes: List[GetPrivateAccessPolicyResponseBodyPolicyCustomUserAttributes] = None,
         description: str = None,
+        device_attribute_id: str = None,
         name: str = None,
         policy_action: str = None,
         policy_id: str = None,
@@ -2741,6 +2700,7 @@ class GetPrivateAccessPolicyResponseBodyPolicy(TeaModel):
         self.create_time = create_time
         self.custom_user_attributes = custom_user_attributes
         self.description = description
+        self.device_attribute_id = device_attribute_id
         self.name = name
         self.policy_action = policy_action
         self.policy_id = policy_id
@@ -2774,6 +2734,8 @@ class GetPrivateAccessPolicyResponseBodyPolicy(TeaModel):
                 result['CustomUserAttributes'].append(k.to_map() if k else None)
         if self.description is not None:
             result['Description'] = self.description
+        if self.device_attribute_id is not None:
+            result['DeviceAttributeId'] = self.device_attribute_id
         if self.name is not None:
             result['Name'] = self.name
         if self.policy_action is not None:
@@ -2807,6 +2769,8 @@ class GetPrivateAccessPolicyResponseBodyPolicy(TeaModel):
                 self.custom_user_attributes.append(temp_model.from_map(k))
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DeviceAttributeId') is not None:
+            self.device_attribute_id = m.get('DeviceAttributeId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('PolicyAction') is not None:
@@ -2873,9 +2837,6 @@ class GetPrivateAccessPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3119,9 +3080,6 @@ class GetRegistrationPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3443,9 +3401,6 @@ class GetUserDeviceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3653,9 +3608,6 @@ class GetUserGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3916,9 +3868,6 @@ class ListApplicationsForPrivateAccessPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4180,9 +4129,6 @@ class ListApplicationsForPrivateAccessTagResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4535,9 +4481,6 @@ class ListConnectorsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4618,9 +4561,6 @@ class ListDynamicRouteRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4877,9 +4817,6 @@ class ListDynamicRoutesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5142,9 +5079,6 @@ class ListExcessiveDeviceRegistrationApplicationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5429,9 +5363,6 @@ class ListPolicesForPrivateAccessApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5732,9 +5663,6 @@ class ListPolicesForPrivateAccessTagResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5924,9 +5852,6 @@ class ListPolicesForUserGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5952,6 +5877,202 @@ class ListPolicesForUserGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListPolicesForUserGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListPopTrafficStatisticsRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        region: str = None,
+        start_time: str = None,
+    ):
+        self.end_time = end_time
+        self.region = region
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class ListPopTrafficStatisticsResponseBodyTrafficDataDatapoints(TeaModel):
+    def __init__(
+        self,
+        average: float = None,
+        date_time: str = None,
+    ):
+        self.average = average
+        self.date_time = date_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.average is not None:
+            result['Average'] = self.average
+        if self.date_time is not None:
+            result['DateTime'] = self.date_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Average') is not None:
+            self.average = m.get('Average')
+        if m.get('DateTime') is not None:
+            self.date_time = m.get('DateTime')
+        return self
+
+
+class ListPopTrafficStatisticsResponseBodyTrafficData(TeaModel):
+    def __init__(
+        self,
+        datapoints: List[ListPopTrafficStatisticsResponseBodyTrafficDataDatapoints] = None,
+        metric_name: str = None,
+    ):
+        self.datapoints = datapoints
+        self.metric_name = metric_name
+
+    def validate(self):
+        if self.datapoints:
+            for k in self.datapoints:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Datapoints'] = []
+        if self.datapoints is not None:
+            for k in self.datapoints:
+                result['Datapoints'].append(k.to_map() if k else None)
+        if self.metric_name is not None:
+            result['MetricName'] = self.metric_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.datapoints = []
+        if m.get('Datapoints') is not None:
+            for k in m.get('Datapoints'):
+                temp_model = ListPopTrafficStatisticsResponseBodyTrafficDataDatapoints()
+                self.datapoints.append(temp_model.from_map(k))
+        if m.get('MetricName') is not None:
+            self.metric_name = m.get('MetricName')
+        return self
+
+
+class ListPopTrafficStatisticsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        traffic_data: List[ListPopTrafficStatisticsResponseBodyTrafficData] = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.traffic_data = traffic_data
+
+    def validate(self):
+        if self.traffic_data:
+            for k in self.traffic_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['TrafficData'] = []
+        if self.traffic_data is not None:
+            for k in self.traffic_data:
+                result['TrafficData'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.traffic_data = []
+        if m.get('TrafficData') is not None:
+            for k in m.get('TrafficData'):
+                temp_model = ListPopTrafficStatisticsResponseBodyTrafficData()
+                self.traffic_data.append(temp_model.from_map(k))
+        return self
+
+
+class ListPopTrafficStatisticsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPopTrafficStatisticsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPopTrafficStatisticsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6218,9 +6339,6 @@ class ListPrivateAccessApplicationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6481,9 +6599,6 @@ class ListPrivateAccessApplicationsForDynamicRouteResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6517,6 +6632,7 @@ class ListPrivateAccessPolicesRequest(TeaModel):
     def __init__(
         self,
         application_id: str = None,
+        application_name: str = None,
         current_page: int = None,
         name: str = None,
         page_size: int = None,
@@ -6524,9 +6640,11 @@ class ListPrivateAccessPolicesRequest(TeaModel):
         policy_ids: List[str] = None,
         status: str = None,
         tag_id: str = None,
+        tag_name: str = None,
         user_group_id: str = None,
     ):
         self.application_id = application_id
+        self.application_name = application_name
         self.current_page = current_page
         self.name = name
         self.page_size = page_size
@@ -6534,6 +6652,7 @@ class ListPrivateAccessPolicesRequest(TeaModel):
         self.policy_ids = policy_ids
         self.status = status
         self.tag_id = tag_id
+        self.tag_name = tag_name
         # 用户组ID。取值来源：
         # - [ListUserGroups](~~ListUserGroups~~)：批量查询用户组。
         # - [CreateUserGroup](~~CreateUserGroup~~)：创建用户组。
@@ -6550,6 +6669,8 @@ class ListPrivateAccessPolicesRequest(TeaModel):
         result = dict()
         if self.application_id is not None:
             result['ApplicationId'] = self.application_id
+        if self.application_name is not None:
+            result['ApplicationName'] = self.application_name
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
         if self.name is not None:
@@ -6564,6 +6685,8 @@ class ListPrivateAccessPolicesRequest(TeaModel):
             result['Status'] = self.status
         if self.tag_id is not None:
             result['TagId'] = self.tag_id
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
         if self.user_group_id is not None:
             result['UserGroupId'] = self.user_group_id
         return result
@@ -6572,6 +6695,8 @@ class ListPrivateAccessPolicesRequest(TeaModel):
         m = m or dict()
         if m.get('ApplicationId') is not None:
             self.application_id = m.get('ApplicationId')
+        if m.get('ApplicationName') is not None:
+            self.application_name = m.get('ApplicationName')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
         if m.get('Name') is not None:
@@ -6586,6 +6711,8 @@ class ListPrivateAccessPolicesRequest(TeaModel):
             self.status = m.get('Status')
         if m.get('TagId') is not None:
             self.tag_id = m.get('TagId')
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
         if m.get('UserGroupId') is not None:
             self.user_group_id = m.get('UserGroupId')
         return self
@@ -6644,6 +6771,7 @@ class ListPrivateAccessPolicesResponseBodyPolices(TeaModel):
         create_time: str = None,
         custom_user_attributes: List[ListPrivateAccessPolicesResponseBodyPolicesCustomUserAttributes] = None,
         description: str = None,
+        device_attribute_id: str = None,
         name: str = None,
         policy_action: str = None,
         policy_id: str = None,
@@ -6658,6 +6786,7 @@ class ListPrivateAccessPolicesResponseBodyPolices(TeaModel):
         self.create_time = create_time
         self.custom_user_attributes = custom_user_attributes
         self.description = description
+        self.device_attribute_id = device_attribute_id
         self.name = name
         self.policy_action = policy_action
         self.policy_id = policy_id
@@ -6691,6 +6820,8 @@ class ListPrivateAccessPolicesResponseBodyPolices(TeaModel):
                 result['CustomUserAttributes'].append(k.to_map() if k else None)
         if self.description is not None:
             result['Description'] = self.description
+        if self.device_attribute_id is not None:
+            result['DeviceAttributeId'] = self.device_attribute_id
         if self.name is not None:
             result['Name'] = self.name
         if self.policy_action is not None:
@@ -6724,6 +6855,8 @@ class ListPrivateAccessPolicesResponseBodyPolices(TeaModel):
                 self.custom_user_attributes.append(temp_model.from_map(k))
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DeviceAttributeId') is not None:
+            self.device_attribute_id = m.get('DeviceAttributeId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('PolicyAction') is not None:
@@ -6802,9 +6935,6 @@ class ListPrivateAccessPolicesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6845,12 +6975,25 @@ class ListPrivateAccessTagsRequest(TeaModel):
         simple_mode: bool = None,
         tag_ids: List[str] = None,
     ):
+        # The ID of the internal access application. You can obtain the application ID by calling the following operations:
+        # 
+        # *   [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): queries all internal access applications.
+        # *   [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): creates an internal access application.
         self.application_id = application_id
+        # The page number. Valid values: 1 to 10000.
         self.current_page = current_page
+        # The name of the internal access tag. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
         self.name = name
+        # The number of entries per page. Valid values: 1 to 1000.
         self.page_size = page_size
+        # The ID of the internal access policy. You can obtain the policy ID by calling the following operations:
+        # 
+        # *   [ListPrivateAccessPolices](~~ListPrivateAccessPolices~~): queries all internal access policies.
+        # *   [CreatePrivateAccessPolicy](~~CreatePrivateAccessPolicy~~): creates an internal access policy.
         self.policy_id = policy_id
+        # Specifies whether to enable the simple query mode. A value of true specifies that policy IDs are not queried.
         self.simple_mode = simple_mode
+        # The IDs of internal access tags. You can specify up to 100 tag IDs.
         self.tag_ids = tag_ids
 
     def validate(self):
@@ -6908,12 +7051,22 @@ class ListPrivateAccessTagsResponseBodyTags(TeaModel):
         tag_id: str = None,
         tag_type: str = None,
     ):
+        # The IDs of the internal access applications.
         self.application_ids = application_ids
+        # The time when the internal access tag was created.
         self.create_time = create_time
+        # The description of the internal access tag.
         self.description = description
+        # The name of the internal access tag.
         self.name = name
+        # The IDs of the internal access policies.
         self.policy_ids = policy_ids
+        # The ID of the internal access tag.
         self.tag_id = tag_id
+        # The type of the internal access tag. Valid values:
+        # 
+        # *   **Default**\
+        # *   **Custom**\
         self.tag_type = tag_type
 
     def validate(self):
@@ -6967,8 +7120,11 @@ class ListPrivateAccessTagsResponseBody(TeaModel):
         tags: List[ListPrivateAccessTagsResponseBodyTags] = None,
         total_num: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The internal access tags.
         self.tags = tags
+        # The total number of internal access tags.
         self.total_num = total_num
 
     def validate(self):
@@ -7019,9 +7175,6 @@ class ListPrivateAccessTagsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7223,9 +7376,6 @@ class ListPrivateAccessTagsForDynamicRouteResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7558,9 +7708,6 @@ class ListRegistrationPoliciesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7874,9 +8021,6 @@ class ListRegistrationPoliciesForUserGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8049,9 +8193,6 @@ class ListSoftwareForUserDeviceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8253,9 +8394,6 @@ class ListTagsForPrivateAccessApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8458,9 +8596,6 @@ class ListTagsForPrivateAccessPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8849,9 +8984,6 @@ class ListUserDevicesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9102,9 +9234,6 @@ class ListUserGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9360,9 +9489,6 @@ class ListUserGroupsForPrivateAccessPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9617,9 +9743,6 @@ class ListUserGroupsForRegistrationPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9645,6 +9768,220 @@ class ListUserGroupsForRegistrationPolicyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListUserGroupsForRegistrationPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListUsersRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        department: str = None,
+        fuzzy_username: str = None,
+        page_size: int = None,
+        precise_username: str = None,
+        sase_user_ids: List[str] = None,
+        status: str = None,
+    ):
+        self.current_page = current_page
+        self.department = department
+        self.fuzzy_username = fuzzy_username
+        self.page_size = page_size
+        self.precise_username = precise_username
+        self.sase_user_ids = sase_user_ids
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.department is not None:
+            result['Department'] = self.department
+        if self.fuzzy_username is not None:
+            result['FuzzyUsername'] = self.fuzzy_username
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.precise_username is not None:
+            result['PreciseUsername'] = self.precise_username
+        if self.sase_user_ids is not None:
+            result['SaseUserIds'] = self.sase_user_ids
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('Department') is not None:
+            self.department = m.get('Department')
+        if m.get('FuzzyUsername') is not None:
+            self.fuzzy_username = m.get('FuzzyUsername')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PreciseUsername') is not None:
+            self.precise_username = m.get('PreciseUsername')
+        if m.get('SaseUserIds') is not None:
+            self.sase_user_ids = m.get('SaseUserIds')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListUsersResponseBodyUsers(TeaModel):
+    def __init__(
+        self,
+        department: str = None,
+        email: str = None,
+        idp_name: str = None,
+        phone: str = None,
+        sase_user_id: str = None,
+        status: str = None,
+        username: str = None,
+    ):
+        self.department = department
+        self.email = email
+        self.idp_name = idp_name
+        self.phone = phone
+        self.sase_user_id = sase_user_id
+        self.status = status
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.department is not None:
+            result['Department'] = self.department
+        if self.email is not None:
+            result['Email'] = self.email
+        if self.idp_name is not None:
+            result['IdpName'] = self.idp_name
+        if self.phone is not None:
+            result['Phone'] = self.phone
+        if self.sase_user_id is not None:
+            result['SaseUserId'] = self.sase_user_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Department') is not None:
+            self.department = m.get('Department')
+        if m.get('Email') is not None:
+            self.email = m.get('Email')
+        if m.get('IdpName') is not None:
+            self.idp_name = m.get('IdpName')
+        if m.get('Phone') is not None:
+            self.phone = m.get('Phone')
+        if m.get('SaseUserId') is not None:
+            self.sase_user_id = m.get('SaseUserId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class ListUsersResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        total_num: str = None,
+        users: List[ListUsersResponseBodyUsers] = None,
+    ):
+        self.request_id = request_id
+        self.total_num = total_num
+        self.users = users
+
+    def validate(self):
+        if self.users:
+            for k in self.users:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_num is not None:
+            result['TotalNum'] = self.total_num
+        result['Users'] = []
+        if self.users is not None:
+            for k in self.users:
+                result['Users'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalNum') is not None:
+            self.total_num = m.get('TotalNum')
+        self.users = []
+        if m.get('Users') is not None:
+            for k in m.get('Users'):
+                temp_model = ListUsersResponseBodyUsers()
+                self.users.append(temp_model.from_map(k))
+        return self
+
+
+class ListUsersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListUsersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListUsersResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9781,9 +10118,6 @@ class UpdateDynamicRouteResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9992,9 +10326,6 @@ class UpdateExcessiveDeviceRegistrationApplicationsStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10173,9 +10504,6 @@ class UpdatePrivateAccessApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10257,6 +10585,7 @@ class UpdatePrivateAccessPolicyRequest(TeaModel):
         application_type: str = None,
         custom_user_attributes: List[UpdatePrivateAccessPolicyRequestCustomUserAttributes] = None,
         description: str = None,
+        device_attribute_id: str = None,
         modify_type: str = None,
         policy_action: str = None,
         policy_id: str = None,
@@ -10270,6 +10599,7 @@ class UpdatePrivateAccessPolicyRequest(TeaModel):
         self.application_type = application_type
         self.custom_user_attributes = custom_user_attributes
         self.description = description
+        self.device_attribute_id = device_attribute_id
         self.modify_type = modify_type
         self.policy_action = policy_action
         self.policy_id = policy_id
@@ -10305,6 +10635,8 @@ class UpdatePrivateAccessPolicyRequest(TeaModel):
                 result['CustomUserAttributes'].append(k.to_map() if k else None)
         if self.description is not None:
             result['Description'] = self.description
+        if self.device_attribute_id is not None:
+            result['DeviceAttributeId'] = self.device_attribute_id
         if self.modify_type is not None:
             result['ModifyType'] = self.modify_type
         if self.policy_action is not None:
@@ -10336,6 +10668,8 @@ class UpdatePrivateAccessPolicyRequest(TeaModel):
                 self.custom_user_attributes.append(temp_model.from_map(k))
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DeviceAttributeId') is not None:
+            self.device_attribute_id = m.get('DeviceAttributeId')
         if m.get('ModifyType') is not None:
             self.modify_type = m.get('ModifyType')
         if m.get('PolicyAction') is not None:
@@ -10394,9 +10728,6 @@ class UpdatePrivateAccessPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10911,9 +11242,6 @@ class UpdateRegistrationPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11200,9 +11528,6 @@ class UpdateUserDevicesSharingStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11489,9 +11814,6 @@ class UpdateUserDevicesStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11658,9 +11980,6 @@ class UpdateUserGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11686,6 +12005,107 @@ class UpdateUserGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateUserGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateUsersStatusRequest(TeaModel):
+    def __init__(
+        self,
+        sase_user_ids: List[str] = None,
+        status: str = None,
+    ):
+        self.sase_user_ids = sase_user_ids
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sase_user_ids is not None:
+            result['SaseUserIds'] = self.sase_user_ids
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SaseUserIds') is not None:
+            self.sase_user_ids = m.get('SaseUserIds')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class UpdateUsersStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateUsersStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateUsersStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateUsersStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
