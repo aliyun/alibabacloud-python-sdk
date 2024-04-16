@@ -28,7 +28,7 @@ pip install alibabacloud_sasti20200512
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/sasti-20200512/ChangeLog.md).
 
 ## References
 
