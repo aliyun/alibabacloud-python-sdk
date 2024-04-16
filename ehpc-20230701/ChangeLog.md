@@ -1,3 +1,10 @@
+2024-04-16 Version: 3.0.0
+- Support API DescribeJobMetricData.
+- Support API DescribeJobMetricLast.
+- Update API CreateJob: update param Tasks.
+- Update API ListExecutors: update response param.
+
+
 2024-03-15 Version: 2.2.0
 - Support API ListExecutors.
 - Update API DeleteJobs: add param ExecutorIds.
