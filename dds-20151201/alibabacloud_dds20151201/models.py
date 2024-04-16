@@ -6617,7 +6617,7 @@ class DescribeBackupStorageResponse(TeaModel):
 class DescribeBackupTasksRequest(TeaModel):
     def __init__(
         self,
-        backup_job_id: int = None,
+        backup_job_id: str = None,
         dbinstance_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -6682,7 +6682,7 @@ class DescribeBackupTasksResponseBodyBackupJobs(TeaModel):
         self,
         backup_set_status: str = None,
         backup_start_time: str = None,
-        backupjob_id: int = None,
+        backupjob_id: str = None,
         job_mode: str = None,
         progress: str = None,
     ):
@@ -6920,9 +6920,9 @@ class DescribeBackupsResponseBodyBackupsBackup(TeaModel):
         backup_dbnames: str = None,
         backup_download_url: str = None,
         backup_end_time: str = None,
-        backup_id: int = None,
+        backup_id: str = None,
         backup_intranet_download_url: str = None,
-        backup_job_id: int = None,
+        backup_job_id: str = None,
         backup_method: str = None,
         backup_mode: str = None,
         backup_size: int = None,
@@ -21155,7 +21155,6 @@ class ListTagResourcesResponse(TeaModel):
 class MigrateAvailableZoneRequest(TeaModel):
     def __init__(
         self,
-        category: str = None,
         dbinstance_id: str = None,
         effective_time: str = None,
         owner_account: str = None,
@@ -21165,7 +21164,6 @@ class MigrateAvailableZoneRequest(TeaModel):
         vswitch: str = None,
         zone_id: str = None,
     ):
-        self.category = category
         # The ID of the instance.
         # 
         # > If the instance is deployed in a VPC, you must specify the **Vswitch** parameter.
@@ -21203,8 +21201,6 @@ class MigrateAvailableZoneRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.category is not None:
-            result['Category'] = self.category
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
         if self.effective_time is not None:
@@ -21225,8 +21221,6 @@ class MigrateAvailableZoneRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Category') is not None:
-            self.category = m.get('Category')
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
         if m.get('EffectiveTime') is not None:

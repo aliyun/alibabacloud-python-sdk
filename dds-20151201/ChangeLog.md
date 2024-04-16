@@ -1,3 +1,12 @@
+2024-04-16 Version: 7.0.0
+- Update API DescribeBackupTasks: update param BackupJobId.
+- Update API DescribeBackupTasks: update response param.
+- Update API DescribeBackups: update response param.
+- Update API MigrateAvailableZone: delete param Category.
+- Update API ModifyTaskInfo: update param StepName.
+- Update API ModifyTaskInfo: update param TaskAction.
+
+
 2024-04-07 Version: 6.4.1
 - Update API DescribePrice: update response param.
 
