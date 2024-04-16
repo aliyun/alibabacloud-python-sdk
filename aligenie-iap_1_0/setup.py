@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_aligenieiap_1_0.
 
-Created on 11/04/2024
+Created on 16/04/2024
 
 @author: Alibaba Cloud SDK
 """

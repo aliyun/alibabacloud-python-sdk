@@ -1,3 +1,8 @@
+2024-04-16 Version: 1.2.0
+- Support API CallBackThirdRightSendPlan.
+- Support API CheckThirdRightSendPlan.
+
+
 2024-04-11 Version: 1.1.1
 - Update API GetBusAppConfig: update response param.
 

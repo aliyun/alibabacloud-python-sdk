@@ -155,6 +155,250 @@ class Client(OpenApiClient):
         headers = ali_genieiap__1__0_models.AppUseTimeReportHeaders()
         return await self.app_use_time_report_with_options_async(request, headers, runtime)
 
+    def call_back_third_right_send_plan_with_options(
+        self,
+        tmp_req: ali_genieiap__1__0_models.CallBackThirdRightSendPlanRequest,
+        headers: ali_genieiap__1__0_models.CallBackThirdRightSendPlanHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieiap__1__0_models.CallBackThirdRightSendPlanResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieiap__1__0_models.CallBackThirdRightSendPlanShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extend_info):
+            request.extend_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extend_info, 'ExtendInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_group):
+            query['BizGroup'] = request.biz_group
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.card_type):
+            query['CardType'] = request.card_type
+        if not UtilClient.is_unset(request.error_msg):
+            query['ErrorMsg'] = request.error_msg
+        if not UtilClient.is_unset(request.extend_info_shrink):
+            query['ExtendInfo'] = request.extend_info_shrink
+        if not UtilClient.is_unset(request.genie_open_id):
+            query['GenieOpenId'] = request.genie_open_id
+        if not UtilClient.is_unset(request.receive_status):
+            query['ReceiveStatus'] = request.receive_status
+        if not UtilClient.is_unset(request.sn):
+            query['Sn'] = request.sn
+        if not UtilClient.is_unset(request.supplier_id):
+            query['SupplierId'] = request.supplier_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CallBackThirdRightSendPlan',
+            version='iap_1.0',
+            protocol='HTTPS',
+            pathname=f'/1.0/iap/business/CallBackThirdRightSendPlan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.CallBackThirdRightSendPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def call_back_third_right_send_plan_with_options_async(
+        self,
+        tmp_req: ali_genieiap__1__0_models.CallBackThirdRightSendPlanRequest,
+        headers: ali_genieiap__1__0_models.CallBackThirdRightSendPlanHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieiap__1__0_models.CallBackThirdRightSendPlanResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieiap__1__0_models.CallBackThirdRightSendPlanShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extend_info):
+            request.extend_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extend_info, 'ExtendInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_group):
+            query['BizGroup'] = request.biz_group
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.card_type):
+            query['CardType'] = request.card_type
+        if not UtilClient.is_unset(request.error_msg):
+            query['ErrorMsg'] = request.error_msg
+        if not UtilClient.is_unset(request.extend_info_shrink):
+            query['ExtendInfo'] = request.extend_info_shrink
+        if not UtilClient.is_unset(request.genie_open_id):
+            query['GenieOpenId'] = request.genie_open_id
+        if not UtilClient.is_unset(request.receive_status):
+            query['ReceiveStatus'] = request.receive_status
+        if not UtilClient.is_unset(request.sn):
+            query['Sn'] = request.sn
+        if not UtilClient.is_unset(request.supplier_id):
+            query['SupplierId'] = request.supplier_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CallBackThirdRightSendPlan',
+            version='iap_1.0',
+            protocol='HTTPS',
+            pathname=f'/1.0/iap/business/CallBackThirdRightSendPlan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.CallBackThirdRightSendPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def call_back_third_right_send_plan(
+        self,
+        request: ali_genieiap__1__0_models.CallBackThirdRightSendPlanRequest,
+    ) -> ali_genieiap__1__0_models.CallBackThirdRightSendPlanResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieiap__1__0_models.CallBackThirdRightSendPlanHeaders()
+        return self.call_back_third_right_send_plan_with_options(request, headers, runtime)
+
+    async def call_back_third_right_send_plan_async(
+        self,
+        request: ali_genieiap__1__0_models.CallBackThirdRightSendPlanRequest,
+    ) -> ali_genieiap__1__0_models.CallBackThirdRightSendPlanResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieiap__1__0_models.CallBackThirdRightSendPlanHeaders()
+        return await self.call_back_third_right_send_plan_with_options_async(request, headers, runtime)
+
+    def check_third_right_send_plan_with_options(
+        self,
+        tmp_req: ali_genieiap__1__0_models.CheckThirdRightSendPlanRequest,
+        headers: ali_genieiap__1__0_models.CheckThirdRightSendPlanHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieiap__1__0_models.CheckThirdRightSendPlanResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieiap__1__0_models.CheckThirdRightSendPlanShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extend_info):
+            request.extend_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extend_info, 'ExtendInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_group):
+            query['BizGroup'] = request.biz_group
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.extend_info_shrink):
+            query['ExtendInfo'] = request.extend_info_shrink
+        if not UtilClient.is_unset(request.sn):
+            query['Sn'] = request.sn
+        if not UtilClient.is_unset(request.supplier_id):
+            query['SupplierId'] = request.supplier_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckThirdRightSendPlan',
+            version='iap_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/iap/business/CheckThirdRightSendPlan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.CheckThirdRightSendPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_third_right_send_plan_with_options_async(
+        self,
+        tmp_req: ali_genieiap__1__0_models.CheckThirdRightSendPlanRequest,
+        headers: ali_genieiap__1__0_models.CheckThirdRightSendPlanHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieiap__1__0_models.CheckThirdRightSendPlanResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieiap__1__0_models.CheckThirdRightSendPlanShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extend_info):
+            request.extend_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extend_info, 'ExtendInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_group):
+            query['BizGroup'] = request.biz_group
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.extend_info_shrink):
+            query['ExtendInfo'] = request.extend_info_shrink
+        if not UtilClient.is_unset(request.sn):
+            query['Sn'] = request.sn
+        if not UtilClient.is_unset(request.supplier_id):
+            query['SupplierId'] = request.supplier_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckThirdRightSendPlan',
+            version='iap_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/iap/business/CheckThirdRightSendPlan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieiap__1__0_models.CheckThirdRightSendPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_third_right_send_plan(
+        self,
+        request: ali_genieiap__1__0_models.CheckThirdRightSendPlanRequest,
+    ) -> ali_genieiap__1__0_models.CheckThirdRightSendPlanResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieiap__1__0_models.CheckThirdRightSendPlanHeaders()
+        return self.check_third_right_send_plan_with_options(request, headers, runtime)
+
+    async def check_third_right_send_plan_async(
+        self,
+        request: ali_genieiap__1__0_models.CheckThirdRightSendPlanRequest,
+    ) -> ali_genieiap__1__0_models.CheckThirdRightSendPlanResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieiap__1__0_models.CheckThirdRightSendPlanHeaders()
+        return await self.check_third_right_send_plan_with_options_async(request, headers, runtime)
+
     def create_reminder_with_options(
         self,
         tmp_req: ali_genieiap__1__0_models.CreateReminderRequest,
