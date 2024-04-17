@@ -13223,6 +13223,227 @@ class DesensitizeDataResponse(TeaModel):
         return self
 
 
+class DsgQuerySensResultRequest(TeaModel):
+    def __init__(
+        self,
+        col: str = None,
+        db_type: str = None,
+        level: str = None,
+        node_name: str = None,
+        order: str = None,
+        order_field: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        project_name: str = None,
+        schema_name: str = None,
+        sens_status: str = None,
+        sensitive_id: str = None,
+        sensitive_name: str = None,
+        table: str = None,
+        tenant_id: str = None,
+    ):
+        self.col = col
+        self.db_type = db_type
+        self.level = level
+        self.node_name = node_name
+        self.order = order
+        self.order_field = order_field
+        self.page_no = page_no
+        self.page_size = page_size
+        self.project_name = project_name
+        self.schema_name = schema_name
+        self.sens_status = sens_status
+        self.sensitive_id = sensitive_id
+        self.sensitive_name = sensitive_name
+        self.table = table
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.col is not None:
+            result['Col'] = self.col
+        if self.db_type is not None:
+            result['DbType'] = self.db_type
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.order_field is not None:
+            result['OrderField'] = self.order_field
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.schema_name is not None:
+            result['SchemaName'] = self.schema_name
+        if self.sens_status is not None:
+            result['SensStatus'] = self.sens_status
+        if self.sensitive_id is not None:
+            result['SensitiveId'] = self.sensitive_id
+        if self.sensitive_name is not None:
+            result['SensitiveName'] = self.sensitive_name
+        if self.table is not None:
+            result['Table'] = self.table
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Col') is not None:
+            self.col = m.get('Col')
+        if m.get('DbType') is not None:
+            self.db_type = m.get('DbType')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('OrderField') is not None:
+            self.order_field = m.get('OrderField')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SchemaName') is not None:
+            self.schema_name = m.get('SchemaName')
+        if m.get('SensStatus') is not None:
+            self.sens_status = m.get('SensStatus')
+        if m.get('SensitiveId') is not None:
+            self.sensitive_id = m.get('SensitiveId')
+        if m.get('SensitiveName') is not None:
+            self.sensitive_name = m.get('SensitiveName')
+        if m.get('Table') is not None:
+            self.table = m.get('Table')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        return self
+
+
+class DsgQuerySensResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: Any = None,
+        dynamic_error_code: str = None,
+        dynamic_error_message: str = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.dynamic_error_code = dynamic_error_code
+        self.dynamic_error_message = dynamic_error_message
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.dynamic_error_code is not None:
+            result['DynamicErrorCode'] = self.dynamic_error_code
+        if self.dynamic_error_message is not None:
+            result['DynamicErrorMessage'] = self.dynamic_error_message
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('DynamicErrorCode') is not None:
+            self.dynamic_error_code = m.get('DynamicErrorCode')
+        if m.get('DynamicErrorMessage') is not None:
+            self.dynamic_error_message = m.get('DynamicErrorMessage')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DsgQuerySensResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DsgQuerySensResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DsgQuerySensResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class EstablishRelationTableToBusinessRequest(TeaModel):
     def __init__(
         self,

@@ -1,3 +1,10 @@
+2024-04-17 Version: 5.3.0
+- Support API DsgQuerySensResult.
+- Update API CreateFile: update param DependentType.
+- Update API ListInstances: update param NodeId.
+- Update API UpdateFile: update param DependentType.
+
+
 2024-03-29 Version: 5.2.0
 - Support API CreateProject.
 - Support API GetAlertMessage.
