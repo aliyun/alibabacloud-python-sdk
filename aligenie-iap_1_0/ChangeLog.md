@@ -1,3 +1,6 @@
+2024-04-17 Version: 1.2.1
+- Generated python iap_1.0 for AliGenie.
+
 2024-04-16 Version: 1.2.0
 - Support API CallBackThirdRightSendPlan.
 - Support API CheckThirdRightSendPlan.
