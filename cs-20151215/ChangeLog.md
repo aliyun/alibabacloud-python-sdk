@@ -1,3 +1,7 @@
+2024-04-17 Version: 4.0.1
+- Update API ModifyNodePoolNodeConfig: update param body.
+
+
 2024-03-19 Version: 4.0.0
 - Support API UpdateUserPermissions.
 - Update API DeleteAlertContact: add param contact_ids.
