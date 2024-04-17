@@ -1,3 +1,7 @@
+2024-04-17 Version: 1.2.1
+- Update API QueryBookingDomainInfo: update response param.
+
+
 2024-03-25 Version: 1.2.0
 - Support API SubmitPurchaseInfo.
 - Update API CheckSelectedDomainStatus: update response param.
