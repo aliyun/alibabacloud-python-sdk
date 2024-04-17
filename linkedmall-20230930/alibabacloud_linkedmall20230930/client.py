@@ -1594,3 +1594,73 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.render_refund_order_with_options_async(request, headers, runtime)
+
+    def split_purchase_order_with_options(
+        self,
+        request: linkedmall_20230930_models.SplitPurchaseOrderRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.SplitPurchaseOrderResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='SplitPurchaseOrder',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v2/purchaseOrders/commands/split',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.SplitPurchaseOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def split_purchase_order_with_options_async(
+        self,
+        request: linkedmall_20230930_models.SplitPurchaseOrderRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.SplitPurchaseOrderResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='SplitPurchaseOrder',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v2/purchaseOrders/commands/split',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.SplitPurchaseOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def split_purchase_order(
+        self,
+        request: linkedmall_20230930_models.SplitPurchaseOrderRequest,
+    ) -> linkedmall_20230930_models.SplitPurchaseOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.split_purchase_order_with_options(request, headers, runtime)
+
+    async def split_purchase_order_async(
+        self,
+        request: linkedmall_20230930_models.SplitPurchaseOrderRequest,
+    ) -> linkedmall_20230930_models.SplitPurchaseOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.split_purchase_order_with_options_async(request, headers, runtime)
