@@ -55461,6 +55461,7 @@ class DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorde
         ecc_id: str = None,
         ecr_attatch_status: str = None,
         ecr_id: str = None,
+        ecr_owner_id: str = None,
         enable_ipv_6: bool = None,
         local_gateway_ip: str = None,
         local_ipv_6gateway_ip: str = None,
@@ -55517,6 +55518,7 @@ class DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorde
         self.ecc_id = ecc_id
         self.ecr_attatch_status = ecr_attatch_status
         self.ecr_id = ecr_id
+        self.ecr_owner_id = ecr_owner_id
         # Indicates whether IPv6 is enabled. Valid values:
         # 
         # *   **true**\
@@ -55638,6 +55640,8 @@ class DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorde
             result['EcrAttatchStatus'] = self.ecr_attatch_status
         if self.ecr_id is not None:
             result['EcrId'] = self.ecr_id
+        if self.ecr_owner_id is not None:
+            result['EcrOwnerId'] = self.ecr_owner_id
         if self.enable_ipv_6 is not None:
             result['EnableIpv6'] = self.enable_ipv_6
         if self.local_gateway_ip is not None:
@@ -55724,6 +55728,8 @@ class DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorde
             self.ecr_attatch_status = m.get('EcrAttatchStatus')
         if m.get('EcrId') is not None:
             self.ecr_id = m.get('EcrId')
+        if m.get('EcrOwnerId') is not None:
+            self.ecr_owner_id = m.get('EcrOwnerId')
         if m.get('EnableIpv6') is not None:
             self.enable_ipv_6 = m.get('EnableIpv6')
         if m.get('LocalGatewayIp') is not None:
