@@ -1,3 +1,14 @@
+2024-04-17 Version: 2.28.0
+- Support API ListCompressFileDetectResult.
+- Update API AddSasModuleTrial: update response param.
+- Update API CreateFileDetect: add param Decompress.
+- Update API CreateFileDetect: add param DecompressMaxFileCount.
+- Update API CreateFileDetect: add param DecompressMaxLayer.
+- Update API DescribeVersionConfig: update response param.
+- Update API GetFileDetectResult: update response param.
+- Update API GetModuleTrialAuthInfo: update response param.
+
+
 2024-04-12 Version: 2.27.6
 - Update API DescribeVulList: add param Ids.
 

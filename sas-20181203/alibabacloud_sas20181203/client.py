@@ -3418,6 +3418,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.decompress):
+            query['Decompress'] = request.decompress
+        if not UtilClient.is_unset(request.decompress_max_file_count):
+            query['DecompressMaxFileCount'] = request.decompress_max_file_count
+        if not UtilClient.is_unset(request.decompress_max_layer):
+            query['DecompressMaxLayer'] = request.decompress_max_layer
         if not UtilClient.is_unset(request.download_url):
             query['DownloadUrl'] = request.download_url
         if not UtilClient.is_unset(request.hash_key):
@@ -3465,6 +3471,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.decompress):
+            query['Decompress'] = request.decompress
+        if not UtilClient.is_unset(request.decompress_max_file_count):
+            query['DecompressMaxFileCount'] = request.decompress_max_file_count
+        if not UtilClient.is_unset(request.decompress_max_layer):
+            query['DecompressMaxLayer'] = request.decompress_max_layer
         if not UtilClient.is_unset(request.download_url):
             query['DownloadUrl'] = request.download_url
         if not UtilClient.is_unset(request.hash_key):
@@ -38907,6 +38919,88 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.ListClusterPluginInfoResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_cluster_plugin_info_with_options_async(request, runtime)
+
+    def list_compress_file_detect_result_with_options(
+        self,
+        request: sas_20181203_models.ListCompressFileDetectResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListCompressFileDetectResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.hash_key):
+            query['HashKey'] = request.hash_key
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCompressFileDetectResult',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListCompressFileDetectResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_compress_file_detect_result_with_options_async(
+        self,
+        request: sas_20181203_models.ListCompressFileDetectResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListCompressFileDetectResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.hash_key):
+            query['HashKey'] = request.hash_key
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCompressFileDetectResult',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListCompressFileDetectResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_compress_file_detect_result(
+        self,
+        request: sas_20181203_models.ListCompressFileDetectResultRequest,
+    ) -> sas_20181203_models.ListCompressFileDetectResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_compress_file_detect_result_with_options(request, runtime)
+
+    async def list_compress_file_detect_result_async(
+        self,
+        request: sas_20181203_models.ListCompressFileDetectResultRequest,
+    ) -> sas_20181203_models.ListCompressFileDetectResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_compress_file_detect_result_with_options_async(request, runtime)
 
     def list_container_defense_rule_with_options(
         self,
