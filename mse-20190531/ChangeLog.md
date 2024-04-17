@@ -1,3 +1,8 @@
+2024-04-17 Version: 6.5.0
+- Support API BindSentinelBlockFallbackDefinition.
+- Support API ListSentinelBlockFallbackDefinitions.
+
+
 2024-04-11 Version: 6.4.1
 - Generated python 2019-05-31 for mse.
 
