@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_maxcompute20220104.
 
-Created on 28/02/2024
+Created on 17/04/2024
 
 @author: Alibaba Cloud SDK
 """
