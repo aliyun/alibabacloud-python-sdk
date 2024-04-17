@@ -1,3 +1,6 @@
+2024-04-17 Version: 1.5.1
+- Generated python 2022-02-22 for Ess.
+
 2024-03-20 Version: 1.5.0
 - Support API ApplyEciScalingConfiguration.
 - Support API DescribeEciScalingConfigurationDetail.
