@@ -398,6 +398,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.decrease_nodes_with_options_async(request, runtime)
 
+    def delete_api_template_with_options(
+        self,
+        request: emr_20210320_models.DeleteApiTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.DeleteApiTemplateResponse:
+        """
+        创建集群模板
+        
+        @param request: DeleteApiTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApiTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_name):
+            query['ApiName'] = request.api_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteApiTemplate',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.DeleteApiTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_api_template_with_options_async(
+        self,
+        request: emr_20210320_models.DeleteApiTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.DeleteApiTemplateResponse:
+        """
+        创建集群模板
+        
+        @param request: DeleteApiTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApiTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_name):
+            query['ApiName'] = request.api_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteApiTemplate',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.DeleteApiTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_api_template(
+        self,
+        request: emr_20210320_models.DeleteApiTemplateRequest,
+    ) -> emr_20210320_models.DeleteApiTemplateResponse:
+        """
+        创建集群模板
+        
+        @param request: DeleteApiTemplateRequest
+        @return: DeleteApiTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_api_template_with_options(request, runtime)
+
+    async def delete_api_template_async(
+        self,
+        request: emr_20210320_models.DeleteApiTemplateRequest,
+    ) -> emr_20210320_models.DeleteApiTemplateResponse:
+        """
+        创建集群模板
+        
+        @param request: DeleteApiTemplateRequest
+        @return: DeleteApiTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_api_template_with_options_async(request, runtime)
+
     def delete_cluster_with_options(
         self,
         request: emr_20210320_models.DeleteClusterRequest,
@@ -471,6 +579,80 @@ class Client(OpenApiClient):
     ) -> emr_20210320_models.DeleteClusterResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_cluster_with_options_async(request, runtime)
+
+    def get_api_template_with_options(
+        self,
+        request: emr_20210320_models.GetApiTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.GetApiTemplateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetApiTemplate',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.GetApiTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_api_template_with_options_async(
+        self,
+        request: emr_20210320_models.GetApiTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.GetApiTemplateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetApiTemplate',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.GetApiTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_api_template(
+        self,
+        request: emr_20210320_models.GetApiTemplateRequest,
+    ) -> emr_20210320_models.GetApiTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_api_template_with_options(request, runtime)
+
+    async def get_api_template_async(
+        self,
+        request: emr_20210320_models.GetApiTemplateRequest,
+    ) -> emr_20210320_models.GetApiTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_api_template_with_options_async(request, runtime)
 
     def get_application_with_options(
         self,
@@ -2723,6 +2905,104 @@ class Client(OpenApiClient):
     ) -> emr_20210320_models.JoinResourceGroupResponse:
         runtime = util_models.RuntimeOptions()
         return await self.join_resource_group_with_options_async(request, runtime)
+
+    def list_api_templates_with_options(
+        self,
+        request: emr_20210320_models.ListApiTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.ListApiTemplatesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_name):
+            query['ApiName'] = request.api_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_ids):
+            query['TemplateIds'] = request.template_ids
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApiTemplates',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.ListApiTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_api_templates_with_options_async(
+        self,
+        request: emr_20210320_models.ListApiTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.ListApiTemplatesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_name):
+            query['ApiName'] = request.api_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_ids):
+            query['TemplateIds'] = request.template_ids
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApiTemplates',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.ListApiTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_api_templates(
+        self,
+        request: emr_20210320_models.ListApiTemplatesRequest,
+    ) -> emr_20210320_models.ListApiTemplatesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_api_templates_with_options(request, runtime)
+
+    async def list_api_templates_async(
+        self,
+        request: emr_20210320_models.ListApiTemplatesRequest,
+    ) -> emr_20210320_models.ListApiTemplatesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_api_templates_with_options_async(request, runtime)
 
     def list_application_configs_with_options(
         self,
@@ -5651,6 +5931,114 @@ class Client(OpenApiClient):
     ) -> emr_20210320_models.RemoveAutoScalingPolicyResponse:
         runtime = util_models.RuntimeOptions()
         return await self.remove_auto_scaling_policy_with_options_async(request, runtime)
+
+    def run_api_template_with_options(
+        self,
+        request: emr_20210320_models.RunApiTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.RunApiTemplateResponse:
+        """
+        执行集群模板
+        
+        @param request: RunApiTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunApiTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_name):
+            query['ApiName'] = request.api_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RunApiTemplate',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.RunApiTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_api_template_with_options_async(
+        self,
+        request: emr_20210320_models.RunApiTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.RunApiTemplateResponse:
+        """
+        执行集群模板
+        
+        @param request: RunApiTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunApiTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_name):
+            query['ApiName'] = request.api_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RunApiTemplate',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.RunApiTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_api_template(
+        self,
+        request: emr_20210320_models.RunApiTemplateRequest,
+    ) -> emr_20210320_models.RunApiTemplateResponse:
+        """
+        执行集群模板
+        
+        @param request: RunApiTemplateRequest
+        @return: RunApiTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_api_template_with_options(request, runtime)
+
+    async def run_api_template_async(
+        self,
+        request: emr_20210320_models.RunApiTemplateRequest,
+    ) -> emr_20210320_models.RunApiTemplateResponse:
+        """
+        执行集群模板
+        
+        @param request: RunApiTemplateRequest
+        @return: RunApiTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_api_template_with_options_async(request, runtime)
 
     def run_application_action_with_options(
         self,

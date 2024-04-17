@@ -1,3 +1,10 @@
+2024-04-17 Version: 1.5.0
+- Support API DeleteApiTemplate.
+- Support API GetApiTemplate.
+- Support API ListApiTemplates.
+- Support API RunApiTemplate.
+
+
 2024-03-26 Version: 1.4.2
 - Generated python 2021-03-20 for Emr.
 
