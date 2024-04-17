@@ -6287,6 +6287,360 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_express_cloud_connection_with_options_async(request, runtime)
 
+    def create_express_connect_traffic_qos_with_options(
+        self,
+        request: vpc_20160428_models.CreateExpressConnectTrafficQosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.CreateExpressConnectTrafficQosResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qos_description):
+            query['QosDescription'] = request.qos_description
+        if not UtilClient.is_unset(request.qos_name):
+            query['QosName'] = request.qos_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateExpressConnectTrafficQos',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.CreateExpressConnectTrafficQosResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_express_connect_traffic_qos_with_options_async(
+        self,
+        request: vpc_20160428_models.CreateExpressConnectTrafficQosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.CreateExpressConnectTrafficQosResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qos_description):
+            query['QosDescription'] = request.qos_description
+        if not UtilClient.is_unset(request.qos_name):
+            query['QosName'] = request.qos_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateExpressConnectTrafficQos',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.CreateExpressConnectTrafficQosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_express_connect_traffic_qos(
+        self,
+        request: vpc_20160428_models.CreateExpressConnectTrafficQosRequest,
+    ) -> vpc_20160428_models.CreateExpressConnectTrafficQosResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_express_connect_traffic_qos_with_options(request, runtime)
+
+    async def create_express_connect_traffic_qos_async(
+        self,
+        request: vpc_20160428_models.CreateExpressConnectTrafficQosRequest,
+    ) -> vpc_20160428_models.CreateExpressConnectTrafficQosResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_express_connect_traffic_qos_with_options_async(request, runtime)
+
+    def create_express_connect_traffic_qos_queue_with_options(
+        self,
+        request: vpc_20160428_models.CreateExpressConnectTrafficQosQueueRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.CreateExpressConnectTrafficQosQueueResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bandwidth_percent):
+            query['BandwidthPercent'] = request.bandwidth_percent
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qos_id):
+            query['QosId'] = request.qos_id
+        if not UtilClient.is_unset(request.queue_description):
+            query['QueueDescription'] = request.queue_description
+        if not UtilClient.is_unset(request.queue_name):
+            query['QueueName'] = request.queue_name
+        if not UtilClient.is_unset(request.queue_type):
+            query['QueueType'] = request.queue_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateExpressConnectTrafficQosQueue',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.CreateExpressConnectTrafficQosQueueResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_express_connect_traffic_qos_queue_with_options_async(
+        self,
+        request: vpc_20160428_models.CreateExpressConnectTrafficQosQueueRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.CreateExpressConnectTrafficQosQueueResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bandwidth_percent):
+            query['BandwidthPercent'] = request.bandwidth_percent
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qos_id):
+            query['QosId'] = request.qos_id
+        if not UtilClient.is_unset(request.queue_description):
+            query['QueueDescription'] = request.queue_description
+        if not UtilClient.is_unset(request.queue_name):
+            query['QueueName'] = request.queue_name
+        if not UtilClient.is_unset(request.queue_type):
+            query['QueueType'] = request.queue_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateExpressConnectTrafficQosQueue',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.CreateExpressConnectTrafficQosQueueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_express_connect_traffic_qos_queue(
+        self,
+        request: vpc_20160428_models.CreateExpressConnectTrafficQosQueueRequest,
+    ) -> vpc_20160428_models.CreateExpressConnectTrafficQosQueueResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_express_connect_traffic_qos_queue_with_options(request, runtime)
+
+    async def create_express_connect_traffic_qos_queue_async(
+        self,
+        request: vpc_20160428_models.CreateExpressConnectTrafficQosQueueRequest,
+    ) -> vpc_20160428_models.CreateExpressConnectTrafficQosQueueResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_express_connect_traffic_qos_queue_with_options_async(request, runtime)
+
+    def create_express_connect_traffic_qos_rule_with_options(
+        self,
+        request: vpc_20160428_models.CreateExpressConnectTrafficQosRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.CreateExpressConnectTrafficQosRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dst_cidr):
+            query['DstCidr'] = request.dst_cidr
+        if not UtilClient.is_unset(request.dst_ipv_6cidr):
+            query['DstIPv6Cidr'] = request.dst_ipv_6cidr
+        if not UtilClient.is_unset(request.dst_port_range):
+            query['DstPortRange'] = request.dst_port_range
+        if not UtilClient.is_unset(request.match_dscp):
+            query['MatchDscp'] = request.match_dscp
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.qos_id):
+            query['QosId'] = request.qos_id
+        if not UtilClient.is_unset(request.queue_id):
+            query['QueueId'] = request.queue_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.remarking_dscp):
+            query['RemarkingDscp'] = request.remarking_dscp
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.rule_description):
+            query['RuleDescription'] = request.rule_description
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.src_cidr):
+            query['SrcCidr'] = request.src_cidr
+        if not UtilClient.is_unset(request.src_ipv_6cidr):
+            query['SrcIPv6Cidr'] = request.src_ipv_6cidr
+        if not UtilClient.is_unset(request.src_port_range):
+            query['SrcPortRange'] = request.src_port_range
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateExpressConnectTrafficQosRule',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.CreateExpressConnectTrafficQosRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_express_connect_traffic_qos_rule_with_options_async(
+        self,
+        request: vpc_20160428_models.CreateExpressConnectTrafficQosRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.CreateExpressConnectTrafficQosRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dst_cidr):
+            query['DstCidr'] = request.dst_cidr
+        if not UtilClient.is_unset(request.dst_ipv_6cidr):
+            query['DstIPv6Cidr'] = request.dst_ipv_6cidr
+        if not UtilClient.is_unset(request.dst_port_range):
+            query['DstPortRange'] = request.dst_port_range
+        if not UtilClient.is_unset(request.match_dscp):
+            query['MatchDscp'] = request.match_dscp
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.qos_id):
+            query['QosId'] = request.qos_id
+        if not UtilClient.is_unset(request.queue_id):
+            query['QueueId'] = request.queue_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.remarking_dscp):
+            query['RemarkingDscp'] = request.remarking_dscp
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.rule_description):
+            query['RuleDescription'] = request.rule_description
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.src_cidr):
+            query['SrcCidr'] = request.src_cidr
+        if not UtilClient.is_unset(request.src_ipv_6cidr):
+            query['SrcIPv6Cidr'] = request.src_ipv_6cidr
+        if not UtilClient.is_unset(request.src_port_range):
+            query['SrcPortRange'] = request.src_port_range
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateExpressConnectTrafficQosRule',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.CreateExpressConnectTrafficQosRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_express_connect_traffic_qos_rule(
+        self,
+        request: vpc_20160428_models.CreateExpressConnectTrafficQosRuleRequest,
+    ) -> vpc_20160428_models.CreateExpressConnectTrafficQosRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_express_connect_traffic_qos_rule_with_options(request, runtime)
+
+    async def create_express_connect_traffic_qos_rule_async(
+        self,
+        request: vpc_20160428_models.CreateExpressConnectTrafficQosRuleRequest,
+    ) -> vpc_20160428_models.CreateExpressConnectTrafficQosRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_express_connect_traffic_qos_rule_with_options_async(request, runtime)
+
     def create_failover_test_job_with_options(
         self,
         request: vpc_20160428_models.CreateFailoverTestJobRequest,
@@ -6407,7 +6761,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateFlowLogResponse:
         """
-        *CreateFlowLog** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeFlowLogs](~~87923~~) operation to query the status of a flow log:
+        *CreateFlowLog** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeFlowLogs](~~87923~~) operation to query the status of the flow log.
         *   If the flow log is in the **Activating** state, the flow log is being created.
         *   If the flow log is in the **Active** state, the flow log is created and started.
         
@@ -6474,7 +6828,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateFlowLogResponse:
         """
-        *CreateFlowLog** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeFlowLogs](~~87923~~) operation to query the status of a flow log:
+        *CreateFlowLog** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeFlowLogs](~~87923~~) operation to query the status of the flow log.
         *   If the flow log is in the **Activating** state, the flow log is being created.
         *   If the flow log is in the **Active** state, the flow log is created and started.
         
@@ -6540,7 +6894,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateFlowLogRequest,
     ) -> vpc_20160428_models.CreateFlowLogResponse:
         """
-        *CreateFlowLog** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeFlowLogs](~~87923~~) operation to query the status of a flow log:
+        *CreateFlowLog** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeFlowLogs](~~87923~~) operation to query the status of the flow log.
         *   If the flow log is in the **Activating** state, the flow log is being created.
         *   If the flow log is in the **Active** state, the flow log is created and started.
         
@@ -6555,7 +6909,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateFlowLogRequest,
     ) -> vpc_20160428_models.CreateFlowLogResponse:
         """
-        *CreateFlowLog** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeFlowLogs](~~87923~~) operation to query the status of a flow log:
+        *CreateFlowLog** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeFlowLogs](~~87923~~) operation to query the status of the flow log.
         *   If the flow log is in the **Activating** state, the flow log is being created.
         *   If the flow log is in the **Active** state, the flow log is created and started.
         
@@ -7786,10 +8140,11 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.CreateIpsecServerResponse:
         """
         Before you create an IPsec server, you must create a VPN gateway and enable the SSL-VPN feature for the VPN gateway. For more information, see [CreateVpnGateway](~~120363~~).
-        *   **CreateIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task:
+        *   Before you create an IPsec server, make sure that no IPsec-VPN connection exists on the VPN gateway. For more information, see [DeleteVpnConnection](~~2526948~~).
+        *   **CreateIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the IPsec server is being created.
         *   If the VPN gateway is in the **active** state, the IPsec server is created.
-        *   You cannot repeatedly call the **CreateIpsecServer** operation for the same VPN gateway within the specified period of time.
+        *   You cannot repeatedly call **CreateIpsecServer** within the specified period of time.
         
         @param request: CreateIpsecServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7847,10 +8202,11 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.CreateIpsecServerResponse:
         """
         Before you create an IPsec server, you must create a VPN gateway and enable the SSL-VPN feature for the VPN gateway. For more information, see [CreateVpnGateway](~~120363~~).
-        *   **CreateIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task:
+        *   Before you create an IPsec server, make sure that no IPsec-VPN connection exists on the VPN gateway. For more information, see [DeleteVpnConnection](~~2526948~~).
+        *   **CreateIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the IPsec server is being created.
         *   If the VPN gateway is in the **active** state, the IPsec server is created.
-        *   You cannot repeatedly call the **CreateIpsecServer** operation for the same VPN gateway within the specified period of time.
+        *   You cannot repeatedly call **CreateIpsecServer** within the specified period of time.
         
         @param request: CreateIpsecServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7907,10 +8263,11 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.CreateIpsecServerResponse:
         """
         Before you create an IPsec server, you must create a VPN gateway and enable the SSL-VPN feature for the VPN gateway. For more information, see [CreateVpnGateway](~~120363~~).
-        *   **CreateIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task:
+        *   Before you create an IPsec server, make sure that no IPsec-VPN connection exists on the VPN gateway. For more information, see [DeleteVpnConnection](~~2526948~~).
+        *   **CreateIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the IPsec server is being created.
         *   If the VPN gateway is in the **active** state, the IPsec server is created.
-        *   You cannot repeatedly call the **CreateIpsecServer** operation for the same VPN gateway within the specified period of time.
+        *   You cannot repeatedly call **CreateIpsecServer** within the specified period of time.
         
         @param request: CreateIpsecServerRequest
         @return: CreateIpsecServerResponse
@@ -7924,10 +8281,11 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.CreateIpsecServerResponse:
         """
         Before you create an IPsec server, you must create a VPN gateway and enable the SSL-VPN feature for the VPN gateway. For more information, see [CreateVpnGateway](~~120363~~).
-        *   **CreateIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task:
+        *   Before you create an IPsec server, make sure that no IPsec-VPN connection exists on the VPN gateway. For more information, see [DeleteVpnConnection](~~2526948~~).
+        *   **CreateIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the IPsec server is being created.
         *   If the VPN gateway is in the **active** state, the IPsec server is created.
-        *   You cannot repeatedly call the **CreateIpsecServer** operation for the same VPN gateway within the specified period of time.
+        *   You cannot repeatedly call **CreateIpsecServer** within the specified period of time.
         
         @param request: CreateIpsecServerRequest
         @return: CreateIpsecServerResponse
@@ -10177,7 +10535,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateRouterInterfaceResponse:
         """
-        ## [](#)
         When you call this operation, take note of the following limits:
         *   You can create only one pair of interfaces to be connected between two routers.
         *   You can create a maximum of five router interfaces for a router.
@@ -10277,7 +10634,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateRouterInterfaceResponse:
         """
-        ## [](#)
         When you call this operation, take note of the following limits:
         *   You can create only one pair of interfaces to be connected between two routers.
         *   You can create a maximum of five router interfaces for a router.
@@ -10376,7 +10732,6 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateRouterInterfaceRequest,
     ) -> vpc_20160428_models.CreateRouterInterfaceResponse:
         """
-        ## [](#)
         When you call this operation, take note of the following limits:
         *   You can create only one pair of interfaces to be connected between two routers.
         *   You can create a maximum of five router interfaces for a router.
@@ -10396,7 +10751,6 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateRouterInterfaceRequest,
     ) -> vpc_20160428_models.CreateRouterInterfaceResponse:
         """
-        ## [](#)
         When you call this operation, take note of the following limits:
         *   You can create only one pair of interfaces to be connected between two routers.
         *   You can create a maximum of five router interfaces for a router.
@@ -10690,7 +11044,9 @@ class Client(OpenApiClient):
         **CreateSslVpnServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the SSL server is being created.
         *   If the VPN gateway is in the **active** state, the SSL server is created.
-        *   You cannot repeatedly call the **CreateSslVpnServer** operation for the same VPN gateway within the specified period of time.
+        *   You cannot call the **CreateSslVpnServer** operation to create multiple SSL servers at a time for the same VPN gateway.
+        ### [](#)Prerequisites
+        A VPN gateway is created, and the SSL-VPN feature is enabled for the VPN gateway. For more information, see [CreateVpnGateway](~~2526913~~).
         
         @param request: CreateSslVpnServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10760,7 +11116,9 @@ class Client(OpenApiClient):
         **CreateSslVpnServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the SSL server is being created.
         *   If the VPN gateway is in the **active** state, the SSL server is created.
-        *   You cannot repeatedly call the **CreateSslVpnServer** operation for the same VPN gateway within the specified period of time.
+        *   You cannot call the **CreateSslVpnServer** operation to create multiple SSL servers at a time for the same VPN gateway.
+        ### [](#)Prerequisites
+        A VPN gateway is created, and the SSL-VPN feature is enabled for the VPN gateway. For more information, see [CreateVpnGateway](~~2526913~~).
         
         @param request: CreateSslVpnServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10829,7 +11187,9 @@ class Client(OpenApiClient):
         **CreateSslVpnServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the SSL server is being created.
         *   If the VPN gateway is in the **active** state, the SSL server is created.
-        *   You cannot repeatedly call the **CreateSslVpnServer** operation for the same VPN gateway within the specified period of time.
+        *   You cannot call the **CreateSslVpnServer** operation to create multiple SSL servers at a time for the same VPN gateway.
+        ### [](#)Prerequisites
+        A VPN gateway is created, and the SSL-VPN feature is enabled for the VPN gateway. For more information, see [CreateVpnGateway](~~2526913~~).
         
         @param request: CreateSslVpnServerRequest
         @return: CreateSslVpnServerResponse
@@ -10845,7 +11205,9 @@ class Client(OpenApiClient):
         **CreateSslVpnServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the SSL server is being created.
         *   If the VPN gateway is in the **active** state, the SSL server is created.
-        *   You cannot repeatedly call the **CreateSslVpnServer** operation for the same VPN gateway within the specified period of time.
+        *   You cannot call the **CreateSslVpnServer** operation to create multiple SSL servers at a time for the same VPN gateway.
+        ### [](#)Prerequisites
+        A VPN gateway is created, and the SSL-VPN feature is enabled for the VPN gateway. For more information, see [CreateVpnGateway](~~2526913~~).
         
         @param request: CreateSslVpnServerRequest
         @return: CreateSslVpnServerResponse
@@ -11813,12 +12175,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVcoRouteEntryResponse:
         """
-        You cannot create a destination-based route whose destination CIDR block is 0.0.0.0/0.
-        *   Do not add a route whose destination CIDR block is 100.64.0.0/10, a subset of 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10. If such a route is added, the status of the IPsec-VPN connection cannot be displayed in the console or IPsec negotiations fail.
-        *   **CreateVcoRouteEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the task.
-        *   If the IPsec-VPN connection is in the **updating** state, the route is being created.
-        *   If the IPsec-VPN connection is in the **attached** state, the route is created.
-        *   You cannot repeatedly call **CreateVcoRouteEntry** to create a route for the same IPsec-VPN connection within the specified period of time.
+        The IPsec-VPN connection must be associated with a transit router. For more information, see [CreateTransitRouterVpnAttachment](~~468249~~).
+        *   You cannot create a destination-based route whose destination CIDR block is 0.0.0.0/0.
+        *   Do not add a destination-based route whose destination CIDR block is 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10 or belongs to 100.64.0.0/10. Such a route will make the console fail to display the status of the IPsec-VPN connection or cause IPsec negotiation failures.
+        *   **CreateVcoRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnConnection](~~53046~~) to query the status of the task.
+        *   If the IPsec-VPN connection is in the **updating** state, the destination-based route is being created.
+        *   If the IPsec-VPN connection is in the **attached** state, the destination-based route is created.
+        *   You cannot repeatedly call **CreateVcoRouteEntry** within the specified period of time.
         
         @param request: CreateVcoRouteEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11873,12 +12236,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVcoRouteEntryResponse:
         """
-        You cannot create a destination-based route whose destination CIDR block is 0.0.0.0/0.
-        *   Do not add a route whose destination CIDR block is 100.64.0.0/10, a subset of 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10. If such a route is added, the status of the IPsec-VPN connection cannot be displayed in the console or IPsec negotiations fail.
-        *   **CreateVcoRouteEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the task.
-        *   If the IPsec-VPN connection is in the **updating** state, the route is being created.
-        *   If the IPsec-VPN connection is in the **attached** state, the route is created.
-        *   You cannot repeatedly call **CreateVcoRouteEntry** to create a route for the same IPsec-VPN connection within the specified period of time.
+        The IPsec-VPN connection must be associated with a transit router. For more information, see [CreateTransitRouterVpnAttachment](~~468249~~).
+        *   You cannot create a destination-based route whose destination CIDR block is 0.0.0.0/0.
+        *   Do not add a destination-based route whose destination CIDR block is 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10 or belongs to 100.64.0.0/10. Such a route will make the console fail to display the status of the IPsec-VPN connection or cause IPsec negotiation failures.
+        *   **CreateVcoRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnConnection](~~53046~~) to query the status of the task.
+        *   If the IPsec-VPN connection is in the **updating** state, the destination-based route is being created.
+        *   If the IPsec-VPN connection is in the **attached** state, the destination-based route is created.
+        *   You cannot repeatedly call **CreateVcoRouteEntry** within the specified period of time.
         
         @param request: CreateVcoRouteEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11932,12 +12296,13 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVcoRouteEntryRequest,
     ) -> vpc_20160428_models.CreateVcoRouteEntryResponse:
         """
-        You cannot create a destination-based route whose destination CIDR block is 0.0.0.0/0.
-        *   Do not add a route whose destination CIDR block is 100.64.0.0/10, a subset of 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10. If such a route is added, the status of the IPsec-VPN connection cannot be displayed in the console or IPsec negotiations fail.
-        *   **CreateVcoRouteEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the task.
-        *   If the IPsec-VPN connection is in the **updating** state, the route is being created.
-        *   If the IPsec-VPN connection is in the **attached** state, the route is created.
-        *   You cannot repeatedly call **CreateVcoRouteEntry** to create a route for the same IPsec-VPN connection within the specified period of time.
+        The IPsec-VPN connection must be associated with a transit router. For more information, see [CreateTransitRouterVpnAttachment](~~468249~~).
+        *   You cannot create a destination-based route whose destination CIDR block is 0.0.0.0/0.
+        *   Do not add a destination-based route whose destination CIDR block is 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10 or belongs to 100.64.0.0/10. Such a route will make the console fail to display the status of the IPsec-VPN connection or cause IPsec negotiation failures.
+        *   **CreateVcoRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnConnection](~~53046~~) to query the status of the task.
+        *   If the IPsec-VPN connection is in the **updating** state, the destination-based route is being created.
+        *   If the IPsec-VPN connection is in the **attached** state, the destination-based route is created.
+        *   You cannot repeatedly call **CreateVcoRouteEntry** within the specified period of time.
         
         @param request: CreateVcoRouteEntryRequest
         @return: CreateVcoRouteEntryResponse
@@ -11950,12 +12315,13 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVcoRouteEntryRequest,
     ) -> vpc_20160428_models.CreateVcoRouteEntryResponse:
         """
-        You cannot create a destination-based route whose destination CIDR block is 0.0.0.0/0.
-        *   Do not add a route whose destination CIDR block is 100.64.0.0/10, a subset of 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10. If such a route is added, the status of the IPsec-VPN connection cannot be displayed in the console or IPsec negotiations fail.
-        *   **CreateVcoRouteEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the task.
-        *   If the IPsec-VPN connection is in the **updating** state, the route is being created.
-        *   If the IPsec-VPN connection is in the **attached** state, the route is created.
-        *   You cannot repeatedly call **CreateVcoRouteEntry** to create a route for the same IPsec-VPN connection within the specified period of time.
+        The IPsec-VPN connection must be associated with a transit router. For more information, see [CreateTransitRouterVpnAttachment](~~468249~~).
+        *   You cannot create a destination-based route whose destination CIDR block is 0.0.0.0/0.
+        *   Do not add a destination-based route whose destination CIDR block is 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10 or belongs to 100.64.0.0/10. Such a route will make the console fail to display the status of the IPsec-VPN connection or cause IPsec negotiation failures.
+        *   **CreateVcoRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnConnection](~~53046~~) to query the status of the task.
+        *   If the IPsec-VPN connection is in the **updating** state, the destination-based route is being created.
+        *   If the IPsec-VPN connection is in the **attached** state, the destination-based route is created.
+        *   You cannot repeatedly call **CreateVcoRouteEntry** within the specified period of time.
         
         @param request: CreateVcoRouteEntryRequest
         @return: CreateVcoRouteEntryResponse
@@ -11969,7 +12335,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVirtualBorderRouterResponse:
         """
-        When you create a VBR, the VBR is in the *active** state by default.
+        After you create a VBR, the VBR is in the *active** state.
         
         @param request: CreateVirtualBorderRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12046,7 +12412,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVirtualBorderRouterResponse:
         """
-        When you create a VBR, the VBR is in the *active** state by default.
+        After you create a VBR, the VBR is in the *active** state.
         
         @param request: CreateVirtualBorderRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12122,7 +12488,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVirtualBorderRouterRequest,
     ) -> vpc_20160428_models.CreateVirtualBorderRouterResponse:
         """
-        When you create a VBR, the VBR is in the *active** state by default.
+        After you create a VBR, the VBR is in the *active** state.
         
         @param request: CreateVirtualBorderRouterRequest
         @return: CreateVirtualBorderRouterResponse
@@ -12135,7 +12501,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVirtualBorderRouterRequest,
     ) -> vpc_20160428_models.CreateVirtualBorderRouterResponse:
         """
-        When you create a VBR, the VBR is in the *active** state by default.
+        After you create a VBR, the VBR is in the *active** state.
         
         @param request: CreateVirtualBorderRouterRequest
         @return: CreateVirtualBorderRouterResponse
@@ -12488,6 +12854,16 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpcGatewayEndpointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpcGatewayEndpointResponse:
+        """
+        **CreateVpcGatewayEndpoint** is an asynchronous operation. After a request is sent, the system returns an **EndpointId** and runs the task in the background. You can call the [ListVpcGatewayEndpoints](~~448682~~) operation to query the status of the task.
+        *   If the gateway endpoint is in the **Creating** state, the gateway endpoint is being created.
+        *   If the gateway endpoint is in the **Created** state, the gateway endpoint is created.
+        *   You cannot repeatedly call the **CreateVpcGatewayEndpoint** operation for the same endpoint service within the specified period of time.
+        
+        @param request: CreateVpcGatewayEndpointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVpcGatewayEndpointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -12542,6 +12918,16 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpcGatewayEndpointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpcGatewayEndpointResponse:
+        """
+        **CreateVpcGatewayEndpoint** is an asynchronous operation. After a request is sent, the system returns an **EndpointId** and runs the task in the background. You can call the [ListVpcGatewayEndpoints](~~448682~~) operation to query the status of the task.
+        *   If the gateway endpoint is in the **Creating** state, the gateway endpoint is being created.
+        *   If the gateway endpoint is in the **Created** state, the gateway endpoint is created.
+        *   You cannot repeatedly call the **CreateVpcGatewayEndpoint** operation for the same endpoint service within the specified period of time.
+        
+        @param request: CreateVpcGatewayEndpointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVpcGatewayEndpointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -12595,6 +12981,15 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.CreateVpcGatewayEndpointRequest,
     ) -> vpc_20160428_models.CreateVpcGatewayEndpointResponse:
+        """
+        **CreateVpcGatewayEndpoint** is an asynchronous operation. After a request is sent, the system returns an **EndpointId** and runs the task in the background. You can call the [ListVpcGatewayEndpoints](~~448682~~) operation to query the status of the task.
+        *   If the gateway endpoint is in the **Creating** state, the gateway endpoint is being created.
+        *   If the gateway endpoint is in the **Created** state, the gateway endpoint is created.
+        *   You cannot repeatedly call the **CreateVpcGatewayEndpoint** operation for the same endpoint service within the specified period of time.
+        
+        @param request: CreateVpcGatewayEndpointRequest
+        @return: CreateVpcGatewayEndpointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_vpc_gateway_endpoint_with_options(request, runtime)
 
@@ -12602,6 +12997,15 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.CreateVpcGatewayEndpointRequest,
     ) -> vpc_20160428_models.CreateVpcGatewayEndpointResponse:
+        """
+        **CreateVpcGatewayEndpoint** is an asynchronous operation. After a request is sent, the system returns an **EndpointId** and runs the task in the background. You can call the [ListVpcGatewayEndpoints](~~448682~~) operation to query the status of the task.
+        *   If the gateway endpoint is in the **Creating** state, the gateway endpoint is being created.
+        *   If the gateway endpoint is in the **Created** state, the gateway endpoint is created.
+        *   You cannot repeatedly call the **CreateVpcGatewayEndpoint** operation for the same endpoint service within the specified period of time.
+        
+        @param request: CreateVpcGatewayEndpointRequest
+        @return: CreateVpcGatewayEndpointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_vpc_gateway_endpoint_with_options_async(request, runtime)
 
@@ -12611,7 +13015,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpcPrefixListResponse:
         """
-        You cannot repeatedly call the *CreateVpcPrefixList** operation to create a prefix list in a region within the specified period of time.
+        You cannot repeatedly call the *CreateVpcPrefixList** operation within the specified period of time.
         
         @param request: CreateVpcPrefixListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12672,7 +13076,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpcPrefixListResponse:
         """
-        You cannot repeatedly call the *CreateVpcPrefixList** operation to create a prefix list in a region within the specified period of time.
+        You cannot repeatedly call the *CreateVpcPrefixList** operation within the specified period of time.
         
         @param request: CreateVpcPrefixListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12732,7 +13136,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpcPrefixListRequest,
     ) -> vpc_20160428_models.CreateVpcPrefixListResponse:
         """
-        You cannot repeatedly call the *CreateVpcPrefixList** operation to create a prefix list in a region within the specified period of time.
+        You cannot repeatedly call the *CreateVpcPrefixList** operation within the specified period of time.
         
         @param request: CreateVpcPrefixListRequest
         @return: CreateVpcPrefixListResponse
@@ -12745,7 +13149,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpcPrefixListRequest,
     ) -> vpc_20160428_models.CreateVpcPrefixListResponse:
         """
-        You cannot repeatedly call the *CreateVpcPrefixList** operation to create a prefix list in a region within the specified period of time.
+        You cannot repeatedly call the *CreateVpcPrefixList** operation within the specified period of time.
         
         @param request: CreateVpcPrefixListRequest
         @return: CreateVpcPrefixListResponse
@@ -14668,6 +15072,300 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dhcp_options_set_with_options_async(request, runtime)
+
+    def delete_express_connect_traffic_qos_with_options(
+        self,
+        request: vpc_20160428_models.DeleteExpressConnectTrafficQosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DeleteExpressConnectTrafficQosResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qos_id):
+            query['QosId'] = request.qos_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteExpressConnectTrafficQos',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DeleteExpressConnectTrafficQosResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_express_connect_traffic_qos_with_options_async(
+        self,
+        request: vpc_20160428_models.DeleteExpressConnectTrafficQosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DeleteExpressConnectTrafficQosResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qos_id):
+            query['QosId'] = request.qos_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteExpressConnectTrafficQos',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DeleteExpressConnectTrafficQosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_express_connect_traffic_qos(
+        self,
+        request: vpc_20160428_models.DeleteExpressConnectTrafficQosRequest,
+    ) -> vpc_20160428_models.DeleteExpressConnectTrafficQosResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_express_connect_traffic_qos_with_options(request, runtime)
+
+    async def delete_express_connect_traffic_qos_async(
+        self,
+        request: vpc_20160428_models.DeleteExpressConnectTrafficQosRequest,
+    ) -> vpc_20160428_models.DeleteExpressConnectTrafficQosResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_express_connect_traffic_qos_with_options_async(request, runtime)
+
+    def delete_express_connect_traffic_qos_queue_with_options(
+        self,
+        request: vpc_20160428_models.DeleteExpressConnectTrafficQosQueueRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DeleteExpressConnectTrafficQosQueueResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qos_id):
+            query['QosId'] = request.qos_id
+        if not UtilClient.is_unset(request.queue_id):
+            query['QueueId'] = request.queue_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteExpressConnectTrafficQosQueue',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DeleteExpressConnectTrafficQosQueueResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_express_connect_traffic_qos_queue_with_options_async(
+        self,
+        request: vpc_20160428_models.DeleteExpressConnectTrafficQosQueueRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DeleteExpressConnectTrafficQosQueueResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qos_id):
+            query['QosId'] = request.qos_id
+        if not UtilClient.is_unset(request.queue_id):
+            query['QueueId'] = request.queue_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteExpressConnectTrafficQosQueue',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DeleteExpressConnectTrafficQosQueueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_express_connect_traffic_qos_queue(
+        self,
+        request: vpc_20160428_models.DeleteExpressConnectTrafficQosQueueRequest,
+    ) -> vpc_20160428_models.DeleteExpressConnectTrafficQosQueueResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_express_connect_traffic_qos_queue_with_options(request, runtime)
+
+    async def delete_express_connect_traffic_qos_queue_async(
+        self,
+        request: vpc_20160428_models.DeleteExpressConnectTrafficQosQueueRequest,
+    ) -> vpc_20160428_models.DeleteExpressConnectTrafficQosQueueResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_express_connect_traffic_qos_queue_with_options_async(request, runtime)
+
+    def delete_express_connect_traffic_qos_rule_with_options(
+        self,
+        request: vpc_20160428_models.DeleteExpressConnectTrafficQosRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DeleteExpressConnectTrafficQosRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qos_id):
+            query['QosId'] = request.qos_id
+        if not UtilClient.is_unset(request.queue_id):
+            query['QueueId'] = request.queue_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteExpressConnectTrafficQosRule',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DeleteExpressConnectTrafficQosRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_express_connect_traffic_qos_rule_with_options_async(
+        self,
+        request: vpc_20160428_models.DeleteExpressConnectTrafficQosRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DeleteExpressConnectTrafficQosRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qos_id):
+            query['QosId'] = request.qos_id
+        if not UtilClient.is_unset(request.queue_id):
+            query['QueueId'] = request.queue_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteExpressConnectTrafficQosRule',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DeleteExpressConnectTrafficQosRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_express_connect_traffic_qos_rule(
+        self,
+        request: vpc_20160428_models.DeleteExpressConnectTrafficQosRuleRequest,
+    ) -> vpc_20160428_models.DeleteExpressConnectTrafficQosRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_express_connect_traffic_qos_rule_with_options(request, runtime)
+
+    async def delete_express_connect_traffic_qos_rule_async(
+        self,
+        request: vpc_20160428_models.DeleteExpressConnectTrafficQosRuleRequest,
+    ) -> vpc_20160428_models.DeleteExpressConnectTrafficQosRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_express_connect_traffic_qos_rule_with_options_async(request, runtime)
 
     def delete_failover_test_job_with_options(
         self,
@@ -19332,7 +20030,7 @@ class Client(OpenApiClient):
         Before you call this operation, take note of the following limits:
         *   Before you delete a VBR, you must delete all router interfaces of the VBR.
         *   You can delete only a VBR in the **unconfirmed**, **active**, or **terminated** state.
-        *   If the VBR belongs to another Alibaba Cloud account, you can delete the VBR only if it is in the **unconfirmed** state.
+        *   The owner of an Express Connect circuit can delete a VBR that belongs to another account only if the VBR is in the **unconfirmed** state.
         
         @param request: DeleteVirtualBorderRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19382,7 +20080,7 @@ class Client(OpenApiClient):
         Before you call this operation, take note of the following limits:
         *   Before you delete a VBR, you must delete all router interfaces of the VBR.
         *   You can delete only a VBR in the **unconfirmed**, **active**, or **terminated** state.
-        *   If the VBR belongs to another Alibaba Cloud account, you can delete the VBR only if it is in the **unconfirmed** state.
+        *   The owner of an Express Connect circuit can delete a VBR that belongs to another account only if the VBR is in the **unconfirmed** state.
         
         @param request: DeleteVirtualBorderRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19431,7 +20129,7 @@ class Client(OpenApiClient):
         Before you call this operation, take note of the following limits:
         *   Before you delete a VBR, you must delete all router interfaces of the VBR.
         *   You can delete only a VBR in the **unconfirmed**, **active**, or **terminated** state.
-        *   If the VBR belongs to another Alibaba Cloud account, you can delete the VBR only if it is in the **unconfirmed** state.
+        *   The owner of an Express Connect circuit can delete a VBR that belongs to another account only if the VBR is in the **unconfirmed** state.
         
         @param request: DeleteVirtualBorderRouterRequest
         @return: DeleteVirtualBorderRouterResponse
@@ -19447,7 +20145,7 @@ class Client(OpenApiClient):
         Before you call this operation, take note of the following limits:
         *   Before you delete a VBR, you must delete all router interfaces of the VBR.
         *   You can delete only a VBR in the **unconfirmed**, **active**, or **terminated** state.
-        *   If the VBR belongs to another Alibaba Cloud account, you can delete the VBR only if it is in the **unconfirmed** state.
+        *   The owner of an Express Connect circuit can delete a VBR that belongs to another account only if the VBR is in the **unconfirmed** state.
         
         @param request: DeleteVirtualBorderRouterRequest
         @return: DeleteVirtualBorderRouterResponse
@@ -19831,8 +20529,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVpnAttachmentResponse:
         """
-        If the IPsec-VPN connection is associated with a transit router, you must first disassociate the IPsec-VPN connection from the transit router before you delete the IPsec-VPN connection.
-        *   If the IPsec-VPN connection is not associated with a resource, you can call the `DeleteVpnAttachment` to delete the IPsec-VPN connection.
+        If an IPsec-VPN connection is associated with a transit router, you must disassociate the transit router from the IPsec-VPN connection before you delete the IPsec-VPN connection. For more information, see [DeleteTransitRouterVpnAttachment](~~468251~~).
+        *   If an IPsec-VPN connection is not associated with a resource, you can call `DeleteVpnAttachment` to directly delete the IPsec-VPN connection.
         
         @param request: DeleteVpnAttachmentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19877,8 +20575,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVpnAttachmentResponse:
         """
-        If the IPsec-VPN connection is associated with a transit router, you must first disassociate the IPsec-VPN connection from the transit router before you delete the IPsec-VPN connection.
-        *   If the IPsec-VPN connection is not associated with a resource, you can call the `DeleteVpnAttachment` to delete the IPsec-VPN connection.
+        If an IPsec-VPN connection is associated with a transit router, you must disassociate the transit router from the IPsec-VPN connection before you delete the IPsec-VPN connection. For more information, see [DeleteTransitRouterVpnAttachment](~~468251~~).
+        *   If an IPsec-VPN connection is not associated with a resource, you can call `DeleteVpnAttachment` to directly delete the IPsec-VPN connection.
         
         @param request: DeleteVpnAttachmentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19922,8 +20620,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteVpnAttachmentRequest,
     ) -> vpc_20160428_models.DeleteVpnAttachmentResponse:
         """
-        If the IPsec-VPN connection is associated with a transit router, you must first disassociate the IPsec-VPN connection from the transit router before you delete the IPsec-VPN connection.
-        *   If the IPsec-VPN connection is not associated with a resource, you can call the `DeleteVpnAttachment` to delete the IPsec-VPN connection.
+        If an IPsec-VPN connection is associated with a transit router, you must disassociate the transit router from the IPsec-VPN connection before you delete the IPsec-VPN connection. For more information, see [DeleteTransitRouterVpnAttachment](~~468251~~).
+        *   If an IPsec-VPN connection is not associated with a resource, you can call `DeleteVpnAttachment` to directly delete the IPsec-VPN connection.
         
         @param request: DeleteVpnAttachmentRequest
         @return: DeleteVpnAttachmentResponse
@@ -19936,8 +20634,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteVpnAttachmentRequest,
     ) -> vpc_20160428_models.DeleteVpnAttachmentResponse:
         """
-        If the IPsec-VPN connection is associated with a transit router, you must first disassociate the IPsec-VPN connection from the transit router before you delete the IPsec-VPN connection.
-        *   If the IPsec-VPN connection is not associated with a resource, you can call the `DeleteVpnAttachment` to delete the IPsec-VPN connection.
+        If an IPsec-VPN connection is associated with a transit router, you must disassociate the transit router from the IPsec-VPN connection before you delete the IPsec-VPN connection. For more information, see [DeleteTransitRouterVpnAttachment](~~468251~~).
+        *   If an IPsec-VPN connection is not associated with a resource, you can call `DeleteVpnAttachment` to directly delete the IPsec-VPN connection.
         
         @param request: DeleteVpnAttachmentRequest
         @return: DeleteVpnAttachmentResponse
@@ -20632,6 +21330,104 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.deletion_protection_with_options_async(request, runtime)
+
+    def describe_95traffic_with_options(
+        self,
+        request: vpc_20160428_models.Describe95TrafficRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.Describe95TrafficResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.day):
+            query['Day'] = request.day
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Describe95Traffic',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.Describe95TrafficResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_95traffic_with_options_async(
+        self,
+        request: vpc_20160428_models.Describe95TrafficRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.Describe95TrafficResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.day):
+            query['Day'] = request.day
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Describe95Traffic',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.Describe95TrafficResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_95traffic(
+        self,
+        request: vpc_20160428_models.Describe95TrafficRequest,
+    ) -> vpc_20160428_models.Describe95TrafficResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_95traffic_with_options(request, runtime)
+
+    async def describe_95traffic_async(
+        self,
+        request: vpc_20160428_models.Describe95TrafficRequest,
+    ) -> vpc_20160428_models.Describe95TrafficResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_95traffic_with_options_async(request, runtime)
 
     def describe_access_points_with_options(
         self,
@@ -21501,6 +22297,8 @@ class Client(OpenApiClient):
             query['SecurityProtectionEnabled'] = request.security_protection_enabled
         if not UtilClient.is_unset(request.segment_instance_id):
             query['SegmentInstanceId'] = request.segment_instance_id
+        if not UtilClient.is_unset(request.service_managed):
+            query['ServiceManaged'] = request.service_managed
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.tag):
@@ -21582,6 +22380,8 @@ class Client(OpenApiClient):
             query['SecurityProtectionEnabled'] = request.security_protection_enabled
         if not UtilClient.is_unset(request.segment_instance_id):
             query['SegmentInstanceId'] = request.segment_instance_id
+        if not UtilClient.is_unset(request.service_managed):
+            query['ServiceManaged'] = request.service_managed
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.tag):
@@ -21982,6 +22782,320 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.DescribeEipSegmentResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_eip_segment_with_options_async(request, runtime)
+
+    def describe_express_connect_traffic_qos_with_options(
+        self,
+        request: vpc_20160428_models.DescribeExpressConnectTrafficQosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DescribeExpressConnectTrafficQosResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qos_id_list):
+            query['QosIdList'] = request.qos_id_list
+        if not UtilClient.is_unset(request.qos_name_list):
+            query['QosNameList'] = request.qos_name_list
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeExpressConnectTrafficQos',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DescribeExpressConnectTrafficQosResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_express_connect_traffic_qos_with_options_async(
+        self,
+        request: vpc_20160428_models.DescribeExpressConnectTrafficQosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DescribeExpressConnectTrafficQosResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qos_id_list):
+            query['QosIdList'] = request.qos_id_list
+        if not UtilClient.is_unset(request.qos_name_list):
+            query['QosNameList'] = request.qos_name_list
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeExpressConnectTrafficQos',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DescribeExpressConnectTrafficQosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_express_connect_traffic_qos(
+        self,
+        request: vpc_20160428_models.DescribeExpressConnectTrafficQosRequest,
+    ) -> vpc_20160428_models.DescribeExpressConnectTrafficQosResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_express_connect_traffic_qos_with_options(request, runtime)
+
+    async def describe_express_connect_traffic_qos_async(
+        self,
+        request: vpc_20160428_models.DescribeExpressConnectTrafficQosRequest,
+    ) -> vpc_20160428_models.DescribeExpressConnectTrafficQosResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_express_connect_traffic_qos_with_options_async(request, runtime)
+
+    def describe_express_connect_traffic_qos_queue_with_options(
+        self,
+        request: vpc_20160428_models.DescribeExpressConnectTrafficQosQueueRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DescribeExpressConnectTrafficQosQueueResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qos_id):
+            query['QosId'] = request.qos_id
+        if not UtilClient.is_unset(request.queue_id_list):
+            query['QueueIdList'] = request.queue_id_list
+        if not UtilClient.is_unset(request.queue_name_list):
+            query['QueueNameList'] = request.queue_name_list
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeExpressConnectTrafficQosQueue',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DescribeExpressConnectTrafficQosQueueResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_express_connect_traffic_qos_queue_with_options_async(
+        self,
+        request: vpc_20160428_models.DescribeExpressConnectTrafficQosQueueRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DescribeExpressConnectTrafficQosQueueResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qos_id):
+            query['QosId'] = request.qos_id
+        if not UtilClient.is_unset(request.queue_id_list):
+            query['QueueIdList'] = request.queue_id_list
+        if not UtilClient.is_unset(request.queue_name_list):
+            query['QueueNameList'] = request.queue_name_list
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeExpressConnectTrafficQosQueue',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DescribeExpressConnectTrafficQosQueueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_express_connect_traffic_qos_queue(
+        self,
+        request: vpc_20160428_models.DescribeExpressConnectTrafficQosQueueRequest,
+    ) -> vpc_20160428_models.DescribeExpressConnectTrafficQosQueueResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_express_connect_traffic_qos_queue_with_options(request, runtime)
+
+    async def describe_express_connect_traffic_qos_queue_async(
+        self,
+        request: vpc_20160428_models.DescribeExpressConnectTrafficQosQueueRequest,
+    ) -> vpc_20160428_models.DescribeExpressConnectTrafficQosQueueResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_express_connect_traffic_qos_queue_with_options_async(request, runtime)
+
+    def describe_express_connect_traffic_qos_rule_with_options(
+        self,
+        request: vpc_20160428_models.DescribeExpressConnectTrafficQosRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DescribeExpressConnectTrafficQosRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qos_id):
+            query['QosId'] = request.qos_id
+        if not UtilClient.is_unset(request.queue_id):
+            query['QueueId'] = request.queue_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.rule_id_list):
+            query['RuleIdList'] = request.rule_id_list
+        if not UtilClient.is_unset(request.rule_name_list):
+            query['RuleNameList'] = request.rule_name_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeExpressConnectTrafficQosRule',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DescribeExpressConnectTrafficQosRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_express_connect_traffic_qos_rule_with_options_async(
+        self,
+        request: vpc_20160428_models.DescribeExpressConnectTrafficQosRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DescribeExpressConnectTrafficQosRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qos_id):
+            query['QosId'] = request.qos_id
+        if not UtilClient.is_unset(request.queue_id):
+            query['QueueId'] = request.queue_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.rule_id_list):
+            query['RuleIdList'] = request.rule_id_list
+        if not UtilClient.is_unset(request.rule_name_list):
+            query['RuleNameList'] = request.rule_name_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeExpressConnectTrafficQosRule',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DescribeExpressConnectTrafficQosRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_express_connect_traffic_qos_rule(
+        self,
+        request: vpc_20160428_models.DescribeExpressConnectTrafficQosRuleRequest,
+    ) -> vpc_20160428_models.DescribeExpressConnectTrafficQosRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_express_connect_traffic_qos_rule_with_options(request, runtime)
+
+    async def describe_express_connect_traffic_qos_rule_async(
+        self,
+        request: vpc_20160428_models.DescribeExpressConnectTrafficQosRuleRequest,
+    ) -> vpc_20160428_models.DescribeExpressConnectTrafficQosRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_express_connect_traffic_qos_rule_with_options_async(request, runtime)
 
     def describe_failover_test_job_with_options(
         self,
@@ -23486,6 +24600,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.service_managed):
+            query['ServiceManaged'] = request.service_managed
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.v_switch_id):
@@ -23552,6 +24668,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.service_managed):
+            query['ServiceManaged'] = request.service_managed
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.v_switch_id):
@@ -24767,7 +25885,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeRouteEntryListResponse:
         """
-        ## [](#)References
         Before you call the [DeleteRouteEntry](~~36013~~) operation to delete a route, you can call this operation to query the next hop of the route that you want to delete.
         
         @param request: DescribeRouteEntryListRequest
@@ -24837,7 +25954,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeRouteEntryListResponse:
         """
-        ## [](#)References
         Before you call the [DeleteRouteEntry](~~36013~~) operation to delete a route, you can call this operation to query the next hop of the route that you want to delete.
         
         @param request: DescribeRouteEntryListRequest
@@ -24906,7 +26022,6 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeRouteEntryListRequest,
     ) -> vpc_20160428_models.DescribeRouteEntryListResponse:
         """
-        ## [](#)References
         Before you call the [DeleteRouteEntry](~~36013~~) operation to delete a route, you can call this operation to query the next hop of the route that you want to delete.
         
         @param request: DescribeRouteEntryListRequest
@@ -24920,7 +26035,6 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeRouteEntryListRequest,
     ) -> vpc_20160428_models.DescribeRouteEntryListResponse:
         """
-        ## [](#)References
         Before you call the [DeleteRouteEntry](~~36013~~) operation to delete a route, you can call this operation to query the next hop of the route that you want to delete.
         
         @param request: DescribeRouteEntryListRequest
@@ -35135,6 +36249,376 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_express_cloud_connection_bandwidth_with_options_async(request, runtime)
 
+    def modify_express_connect_traffic_qos_with_options(
+        self,
+        request: vpc_20160428_models.ModifyExpressConnectTrafficQosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ModifyExpressConnectTrafficQosResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.add_instance_list):
+            query['AddInstanceList'] = request.add_instance_list
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qos_description):
+            query['QosDescription'] = request.qos_description
+        if not UtilClient.is_unset(request.qos_id):
+            query['QosId'] = request.qos_id
+        if not UtilClient.is_unset(request.qos_name):
+            query['QosName'] = request.qos_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.remove_instance_list):
+            query['RemoveInstanceList'] = request.remove_instance_list
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyExpressConnectTrafficQos',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ModifyExpressConnectTrafficQosResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_express_connect_traffic_qos_with_options_async(
+        self,
+        request: vpc_20160428_models.ModifyExpressConnectTrafficQosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ModifyExpressConnectTrafficQosResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.add_instance_list):
+            query['AddInstanceList'] = request.add_instance_list
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qos_description):
+            query['QosDescription'] = request.qos_description
+        if not UtilClient.is_unset(request.qos_id):
+            query['QosId'] = request.qos_id
+        if not UtilClient.is_unset(request.qos_name):
+            query['QosName'] = request.qos_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.remove_instance_list):
+            query['RemoveInstanceList'] = request.remove_instance_list
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyExpressConnectTrafficQos',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ModifyExpressConnectTrafficQosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_express_connect_traffic_qos(
+        self,
+        request: vpc_20160428_models.ModifyExpressConnectTrafficQosRequest,
+    ) -> vpc_20160428_models.ModifyExpressConnectTrafficQosResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_express_connect_traffic_qos_with_options(request, runtime)
+
+    async def modify_express_connect_traffic_qos_async(
+        self,
+        request: vpc_20160428_models.ModifyExpressConnectTrafficQosRequest,
+    ) -> vpc_20160428_models.ModifyExpressConnectTrafficQosResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_express_connect_traffic_qos_with_options_async(request, runtime)
+
+    def modify_express_connect_traffic_qos_queue_with_options(
+        self,
+        request: vpc_20160428_models.ModifyExpressConnectTrafficQosQueueRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ModifyExpressConnectTrafficQosQueueResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bandwidth_percent):
+            query['BandwidthPercent'] = request.bandwidth_percent
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qos_id):
+            query['QosId'] = request.qos_id
+        if not UtilClient.is_unset(request.queue_description):
+            query['QueueDescription'] = request.queue_description
+        if not UtilClient.is_unset(request.queue_id):
+            query['QueueId'] = request.queue_id
+        if not UtilClient.is_unset(request.queue_name):
+            query['QueueName'] = request.queue_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyExpressConnectTrafficQosQueue',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ModifyExpressConnectTrafficQosQueueResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_express_connect_traffic_qos_queue_with_options_async(
+        self,
+        request: vpc_20160428_models.ModifyExpressConnectTrafficQosQueueRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ModifyExpressConnectTrafficQosQueueResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bandwidth_percent):
+            query['BandwidthPercent'] = request.bandwidth_percent
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qos_id):
+            query['QosId'] = request.qos_id
+        if not UtilClient.is_unset(request.queue_description):
+            query['QueueDescription'] = request.queue_description
+        if not UtilClient.is_unset(request.queue_id):
+            query['QueueId'] = request.queue_id
+        if not UtilClient.is_unset(request.queue_name):
+            query['QueueName'] = request.queue_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyExpressConnectTrafficQosQueue',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ModifyExpressConnectTrafficQosQueueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_express_connect_traffic_qos_queue(
+        self,
+        request: vpc_20160428_models.ModifyExpressConnectTrafficQosQueueRequest,
+    ) -> vpc_20160428_models.ModifyExpressConnectTrafficQosQueueResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_express_connect_traffic_qos_queue_with_options(request, runtime)
+
+    async def modify_express_connect_traffic_qos_queue_async(
+        self,
+        request: vpc_20160428_models.ModifyExpressConnectTrafficQosQueueRequest,
+    ) -> vpc_20160428_models.ModifyExpressConnectTrafficQosQueueResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_express_connect_traffic_qos_queue_with_options_async(request, runtime)
+
+    def modify_express_connect_traffic_qos_rule_with_options(
+        self,
+        request: vpc_20160428_models.ModifyExpressConnectTrafficQosRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ModifyExpressConnectTrafficQosRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dst_cidr):
+            query['DstCidr'] = request.dst_cidr
+        if not UtilClient.is_unset(request.dst_ipv_6cidr):
+            query['DstIPv6Cidr'] = request.dst_ipv_6cidr
+        if not UtilClient.is_unset(request.dst_port_range):
+            query['DstPortRange'] = request.dst_port_range
+        if not UtilClient.is_unset(request.match_dscp):
+            query['MatchDscp'] = request.match_dscp
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.qos_id):
+            query['QosId'] = request.qos_id
+        if not UtilClient.is_unset(request.queue_id):
+            query['QueueId'] = request.queue_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.remarking_dscp):
+            query['RemarkingDscp'] = request.remarking_dscp
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.rule_description):
+            query['RuleDescription'] = request.rule_description
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.src_cidr):
+            query['SrcCidr'] = request.src_cidr
+        if not UtilClient.is_unset(request.src_ipv_6cidr):
+            query['SrcIPv6Cidr'] = request.src_ipv_6cidr
+        if not UtilClient.is_unset(request.src_port_range):
+            query['SrcPortRange'] = request.src_port_range
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyExpressConnectTrafficQosRule',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ModifyExpressConnectTrafficQosRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_express_connect_traffic_qos_rule_with_options_async(
+        self,
+        request: vpc_20160428_models.ModifyExpressConnectTrafficQosRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ModifyExpressConnectTrafficQosRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dst_cidr):
+            query['DstCidr'] = request.dst_cidr
+        if not UtilClient.is_unset(request.dst_ipv_6cidr):
+            query['DstIPv6Cidr'] = request.dst_ipv_6cidr
+        if not UtilClient.is_unset(request.dst_port_range):
+            query['DstPortRange'] = request.dst_port_range
+        if not UtilClient.is_unset(request.match_dscp):
+            query['MatchDscp'] = request.match_dscp
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.qos_id):
+            query['QosId'] = request.qos_id
+        if not UtilClient.is_unset(request.queue_id):
+            query['QueueId'] = request.queue_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.remarking_dscp):
+            query['RemarkingDscp'] = request.remarking_dscp
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.rule_description):
+            query['RuleDescription'] = request.rule_description
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.src_cidr):
+            query['SrcCidr'] = request.src_cidr
+        if not UtilClient.is_unset(request.src_ipv_6cidr):
+            query['SrcIPv6Cidr'] = request.src_ipv_6cidr
+        if not UtilClient.is_unset(request.src_port_range):
+            query['SrcPortRange'] = request.src_port_range
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyExpressConnectTrafficQosRule',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ModifyExpressConnectTrafficQosRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_express_connect_traffic_qos_rule(
+        self,
+        request: vpc_20160428_models.ModifyExpressConnectTrafficQosRuleRequest,
+    ) -> vpc_20160428_models.ModifyExpressConnectTrafficQosRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_express_connect_traffic_qos_rule_with_options(request, runtime)
+
+    async def modify_express_connect_traffic_qos_rule_async(
+        self,
+        request: vpc_20160428_models.ModifyExpressConnectTrafficQosRuleRequest,
+    ) -> vpc_20160428_models.ModifyExpressConnectTrafficQosRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_express_connect_traffic_qos_rule_with_options_async(request, runtime)
+
     def modify_flow_log_attribute_with_options(
         self,
         request: vpc_20160428_models.ModifyFlowLogAttributeRequest,
@@ -38119,8 +39603,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyRouterInterfaceSpecResponse:
         """
-        ## [](#)Description
-        After you call this operation, the router interface enters the **Activating** state. After the router interface is activated, the router interface enters the **Active** state.
+        After you call this operation, the router interface enters the *Activating** state. After the router interface is activated, the router interface enters the **Active** state.
         >  You cannot modify the specification of a router interface that has overdue payments.
         
         @param request: ModifyRouterInterfaceSpecRequest
@@ -38170,8 +39653,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyRouterInterfaceSpecResponse:
         """
-        ## [](#)Description
-        After you call this operation, the router interface enters the **Activating** state. After the router interface is activated, the router interface enters the **Active** state.
+        After you call this operation, the router interface enters the *Activating** state. After the router interface is activated, the router interface enters the **Active** state.
         >  You cannot modify the specification of a router interface that has overdue payments.
         
         @param request: ModifyRouterInterfaceSpecRequest
@@ -38220,8 +39702,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyRouterInterfaceSpecRequest,
     ) -> vpc_20160428_models.ModifyRouterInterfaceSpecResponse:
         """
-        ## [](#)Description
-        After you call this operation, the router interface enters the **Activating** state. After the router interface is activated, the router interface enters the **Active** state.
+        After you call this operation, the router interface enters the *Activating** state. After the router interface is activated, the router interface enters the **Active** state.
         >  You cannot modify the specification of a router interface that has overdue payments.
         
         @param request: ModifyRouterInterfaceSpecRequest
@@ -38235,8 +39716,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyRouterInterfaceSpecRequest,
     ) -> vpc_20160428_models.ModifyRouterInterfaceSpecResponse:
         """
-        ## [](#)Description
-        After you call this operation, the router interface enters the **Activating** state. After the router interface is activated, the router interface enters the **Active** state.
+        After you call this operation, the router interface enters the *Activating** state. After the router interface is activated, the router interface enters the **Active** state.
         >  You cannot modify the specification of a router interface that has overdue payments.
         
         @param request: ModifyRouterInterfaceSpecRequest
@@ -39683,10 +41163,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVpcPrefixListResponse:
         """
-        The **ModifyVpcPrefixList** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPrefixLists](~~311535~~) to query the status of a prefix list.
+        **ModifyVpcPrefixList** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListPrefixLists](~~311535~~) to query the status of the task.
         *   If the prefix list is in the **Modifying** state, the configuration of the prefix list is being modified.
         *   If the prefix list is in the **Created** state, the configuration of the prefix list is modified.
-        *   After the configuration of the prefix list is modified, you can call the [GetVpcPrefixListAssociations](~~445478~~) operation to query information about the network instances that are associated with the prefix list and determine whether the associated network instances use the new CIDR blocks. If the association **status** of the prefix list is **Created**, the new CIDR blocks are used by the network instances that are associated with the prefix list.
+        *   After the configuration of the prefix list is modified, you can call the [GetVpcPrefixListAssociations](~~445478~~) operation to query the information about the network instances that are associated with the prefix list and determine whether the associated network instances use the new CIDR blocks. If the association **status** of the prefix list is **Created**, the new CIDR blocks are used by the network instances that are associated with the prefix list.
         *   You cannot repeatedly call **ModifyVpcPrefixList** to modify the configuration of a prefix list within the specified period of time.
         
         @param request: ModifyVpcPrefixListRequest
@@ -39746,10 +41226,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVpcPrefixListResponse:
         """
-        The **ModifyVpcPrefixList** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPrefixLists](~~311535~~) to query the status of a prefix list.
+        **ModifyVpcPrefixList** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListPrefixLists](~~311535~~) to query the status of the task.
         *   If the prefix list is in the **Modifying** state, the configuration of the prefix list is being modified.
         *   If the prefix list is in the **Created** state, the configuration of the prefix list is modified.
-        *   After the configuration of the prefix list is modified, you can call the [GetVpcPrefixListAssociations](~~445478~~) operation to query information about the network instances that are associated with the prefix list and determine whether the associated network instances use the new CIDR blocks. If the association **status** of the prefix list is **Created**, the new CIDR blocks are used by the network instances that are associated with the prefix list.
+        *   After the configuration of the prefix list is modified, you can call the [GetVpcPrefixListAssociations](~~445478~~) operation to query the information about the network instances that are associated with the prefix list and determine whether the associated network instances use the new CIDR blocks. If the association **status** of the prefix list is **Created**, the new CIDR blocks are used by the network instances that are associated with the prefix list.
         *   You cannot repeatedly call **ModifyVpcPrefixList** to modify the configuration of a prefix list within the specified period of time.
         
         @param request: ModifyVpcPrefixListRequest
@@ -39808,10 +41288,10 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyVpcPrefixListRequest,
     ) -> vpc_20160428_models.ModifyVpcPrefixListResponse:
         """
-        The **ModifyVpcPrefixList** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPrefixLists](~~311535~~) to query the status of a prefix list.
+        **ModifyVpcPrefixList** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListPrefixLists](~~311535~~) to query the status of the task.
         *   If the prefix list is in the **Modifying** state, the configuration of the prefix list is being modified.
         *   If the prefix list is in the **Created** state, the configuration of the prefix list is modified.
-        *   After the configuration of the prefix list is modified, you can call the [GetVpcPrefixListAssociations](~~445478~~) operation to query information about the network instances that are associated with the prefix list and determine whether the associated network instances use the new CIDR blocks. If the association **status** of the prefix list is **Created**, the new CIDR blocks are used by the network instances that are associated with the prefix list.
+        *   After the configuration of the prefix list is modified, you can call the [GetVpcPrefixListAssociations](~~445478~~) operation to query the information about the network instances that are associated with the prefix list and determine whether the associated network instances use the new CIDR blocks. If the association **status** of the prefix list is **Created**, the new CIDR blocks are used by the network instances that are associated with the prefix list.
         *   You cannot repeatedly call **ModifyVpcPrefixList** to modify the configuration of a prefix list within the specified period of time.
         
         @param request: ModifyVpcPrefixListRequest
@@ -39825,10 +41305,10 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyVpcPrefixListRequest,
     ) -> vpc_20160428_models.ModifyVpcPrefixListResponse:
         """
-        The **ModifyVpcPrefixList** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPrefixLists](~~311535~~) to query the status of a prefix list.
+        **ModifyVpcPrefixList** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListPrefixLists](~~311535~~) to query the status of the task.
         *   If the prefix list is in the **Modifying** state, the configuration of the prefix list is being modified.
         *   If the prefix list is in the **Created** state, the configuration of the prefix list is modified.
-        *   After the configuration of the prefix list is modified, you can call the [GetVpcPrefixListAssociations](~~445478~~) operation to query information about the network instances that are associated with the prefix list and determine whether the associated network instances use the new CIDR blocks. If the association **status** of the prefix list is **Created**, the new CIDR blocks are used by the network instances that are associated with the prefix list.
+        *   After the configuration of the prefix list is modified, you can call the [GetVpcPrefixListAssociations](~~445478~~) operation to query the information about the network instances that are associated with the prefix list and determine whether the associated network instances use the new CIDR blocks. If the association **status** of the prefix list is **Created**, the new CIDR blocks are used by the network instances that are associated with the prefix list.
         *   You cannot repeatedly call **ModifyVpcPrefixList** to modify the configuration of a prefix list within the specified period of time.
         
         @param request: ModifyVpcPrefixListRequest
@@ -41793,7 +43273,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.RecoverVirtualBorderRouterResponse:
         """
-        After the operation is called, the VBR changes from the *terminated** state to the **recovering** state. When the VBR recovers, it enters the **active** state.
+        After you call this operation, the VBR changes from the *terminated** state to the **recovering** state. After the operation is performed, the VBR enters the **active** state.
         When you call this operation, take note of the following items:
         *   Only the owner of the Express Connect circuit can call this operation.
         *   The Express Connect circuit to which the VBR connects must be in the **Enabled** state.
@@ -41843,7 +43323,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.RecoverVirtualBorderRouterResponse:
         """
-        After the operation is called, the VBR changes from the *terminated** state to the **recovering** state. When the VBR recovers, it enters the **active** state.
+        After you call this operation, the VBR changes from the *terminated** state to the **recovering** state. After the operation is performed, the VBR enters the **active** state.
         When you call this operation, take note of the following items:
         *   Only the owner of the Express Connect circuit can call this operation.
         *   The Express Connect circuit to which the VBR connects must be in the **Enabled** state.
@@ -41892,7 +43372,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.RecoverVirtualBorderRouterRequest,
     ) -> vpc_20160428_models.RecoverVirtualBorderRouterResponse:
         """
-        After the operation is called, the VBR changes from the *terminated** state to the **recovering** state. When the VBR recovers, it enters the **active** state.
+        After you call this operation, the VBR changes from the *terminated** state to the **recovering** state. After the operation is performed, the VBR enters the **active** state.
         When you call this operation, take note of the following items:
         *   Only the owner of the Express Connect circuit can call this operation.
         *   The Express Connect circuit to which the VBR connects must be in the **Enabled** state.
@@ -41908,7 +43388,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.RecoverVirtualBorderRouterRequest,
     ) -> vpc_20160428_models.RecoverVirtualBorderRouterResponse:
         """
-        After the operation is called, the VBR changes from the *terminated** state to the **recovering** state. When the VBR recovers, it enters the **active** state.
+        After you call this operation, the VBR changes from the *terminated** state to the **recovering** state. After the operation is performed, the VBR enters the **active** state.
         When you call this operation, take note of the following items:
         *   Only the owner of the Express Connect circuit can call this operation.
         *   The Express Connect circuit to which the VBR connects must be in the **Enabled** state.
@@ -44137,7 +45617,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.TerminateVirtualBorderRouterResponse:
         """
-        After the operation is performed, the VBR changes from the *active** state to the **terminating** state. After the VBR is terminated, it enters the **terminated** state.
+        After you call this operation, the VBR enters the *terminating** state from the **active** state. After the VBR is terminated, the VBR enters the **terminated** state.
         >  Only the owner of an Express Connect circuit can call this operation.
         
         @param request: TerminateVirtualBorderRouterRequest
@@ -44185,7 +45665,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.TerminateVirtualBorderRouterResponse:
         """
-        After the operation is performed, the VBR changes from the *active** state to the **terminating** state. After the VBR is terminated, it enters the **terminated** state.
+        After you call this operation, the VBR enters the *terminating** state from the **active** state. After the VBR is terminated, the VBR enters the **terminated** state.
         >  Only the owner of an Express Connect circuit can call this operation.
         
         @param request: TerminateVirtualBorderRouterRequest
@@ -44232,7 +45712,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.TerminateVirtualBorderRouterRequest,
     ) -> vpc_20160428_models.TerminateVirtualBorderRouterResponse:
         """
-        After the operation is performed, the VBR changes from the *active** state to the **terminating** state. After the VBR is terminated, it enters the **terminated** state.
+        After you call this operation, the VBR enters the *terminating** state from the **active** state. After the VBR is terminated, the VBR enters the **terminated** state.
         >  Only the owner of an Express Connect circuit can call this operation.
         
         @param request: TerminateVirtualBorderRouterRequest
@@ -44246,7 +45726,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.TerminateVirtualBorderRouterRequest,
     ) -> vpc_20160428_models.TerminateVirtualBorderRouterResponse:
         """
-        After the operation is performed, the VBR changes from the *active** state to the **terminating** state. After the VBR is terminated, it enters the **terminated** state.
+        After you call this operation, the VBR enters the *terminating** state from the **active** state. After the VBR is terminated, the VBR enters the **terminated** state.
         >  Only the owner of an Express Connect circuit can call this operation.
         
         @param request: TerminateVirtualBorderRouterRequest

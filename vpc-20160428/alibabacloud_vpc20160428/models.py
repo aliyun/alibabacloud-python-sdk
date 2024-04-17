@@ -1128,8 +1128,11 @@ class AddPublicIpAddressPoolCidrBlockRequest(TeaModel):
 class AddPublicIpAddressPoolCidrBlockResponseBody(TeaModel):
     def __init__(
         self,
+        cidr_block: str = None,
         request_id: str = None,
     ):
+        # The CIDR blocks.
+        self.cidr_block = cidr_block
         # The request ID.
         self.request_id = request_id
 
@@ -1142,12 +1145,16 @@ class AddPublicIpAddressPoolCidrBlockResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.cidr_block is not None:
+            result['CidrBlock'] = self.cidr_block
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CidrBlock') is not None:
+            self.cidr_block = m.get('CidrBlock')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -1740,13 +1747,13 @@ class AllocateEipAddressProRequest(TeaModel):
         # 
         # This parameter is required if **InstanceChargeType** is set to **PrePaid**. This parameter is optional if **InstanceChargeType** is set to **PostPaid**.
         self.auto_pay = auto_pay
-        # The maximum bandwidth of the EIP. Unit: Mbit/s.
+        # The maximum bandwidth of the specified EIP. Unit: Mbit/s.
         # 
-        # *   Valid values when **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByBandwidth**: **1** to **500**.****\
-        # *   Valid values when **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByTraffic**: **1** to **200**.****\
-        # *   Valid values when **InstanceChargeType** is set to **PrePaid**: **1** to **1000**.****\
+        # *   When **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByBandwidth**, valid values for **Bandwidth** are **1** to **500**.
+        # *   When **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByTraffic**, valid values for **Bandwidth** are **1** to **200**.
+        # *   When **InstanceChargeType** is set to **PrePaid**, valid values for **Bandwidth** are **1** to **1000**.
         # 
-        # Default value: **5**. Unit: Mbit/s.
+        # Default value: **5** Mbit /s.
         self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -1945,7 +1952,9 @@ class AllocateEipAddressProResponseBody(TeaModel):
         self.allocation_id = allocation_id
         # The IP address that is allocated to the EIP. This parameter is returned only when **InstanceChargeType** is set to **PostPaid**.
         self.eip_address = eip_address
-        # The order ID. This parameter is returned only when **InstanceChargeType** is set to **PrePaid**.
+        # The order ID.
+        # 
+        # This parameter is returned when InstanceChargeType is set to PrePaid. If AutoPay is set to false, you must manually complete the payment in the [Order Center](https://usercenter2-intl.aliyun.com/order/list).
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id
@@ -2258,7 +2267,13 @@ class AllocateIpv6AddressRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N to add to the resource. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
+        # The value of tag N to add to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
         self.value = value
 
     def validate(self):
@@ -2302,18 +2317,32 @@ class AllocateIpv6AddressRequest(TeaModel):
         tag: List[AllocateIpv6AddressRequestTag] = None,
         v_switch_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # *   false (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The IPv6 address. The IPv6 address must be an idle one that falls within the vSwitch CIDR block.
         self.ipv_6address = ipv_6address
+        # The description of the IPv6 address.
         self.ipv_6address_description = ipv_6address_description
+        # The name of the IPv6 address.
         self.ipv_6address_name = ipv_6address_name
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
+        # The resource group ID. For more information about resource groups, see related documentation.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tag list.
         self.tag = tag
+        # The ID of the vSwitch to which the IPv6 address belongs.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -2400,9 +2429,13 @@ class AllocateIpv6AddressResponseBody(TeaModel):
         request_id: str = None,
         resource_group_id: str = None,
     ):
+        # The IPv6 address.
         self.ipv_6address = ipv_6address
+        # The ID of the IPv6 address.
         self.ipv_6address_id = ipv_6address_id
+        # The request ID.
         self.request_id = request_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -5717,12 +5750,12 @@ class CheckVpnBgpEnabledRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** of each API request may be different.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         self.owner_account = owner_account
-        # The ID of the region to which the IPsec-VPN connection belongs.
+        # The region ID of the IPsec-VPN connection.
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -5771,12 +5804,12 @@ class CheckVpnBgpEnabledResponseBody(TeaModel):
         bgp_enabled: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether the BGP feature is supported in the current region.
+        # Indicates whether the region supports BGP.
         # 
-        # *   **true**: supported.
-        # *   **false**: not supported.
+        # *   **true**\
+        # *   **false**\
         self.bgp_enabled = bgp_enabled
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7018,20 +7051,22 @@ class CreateCommonBandwidthPackageRequest(TeaModel):
         self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate a token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the **client token**. The value of **RequestId** is different for each API request.
+        # > 
+        # 
+        # If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The description of the Internet Shared Bandwidth instance.
         # 
-        # The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+        # The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
         self.description = description
         # The line type. Valid values:
         # 
-        # *   **BGP**: BGP (Multi-ISP) All regions support BGP (Multi-ISP).
-        # *   **BGP_PRO**: BGP (Multi-ISP) Pro Only the following regions support BGP (Multi-ISP) Pro lines: China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok).
+        # *   **BGP** All regions support BGP (Multi-ISP).
+        # *   **BGP_PRO** BGP (Multi-ISP) Pro lines are available in the China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
         # 
-        # If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
+        # If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
         # 
         # *   **ChinaTelecom**\
         # *   **ChinaUnicom**\
@@ -7042,34 +7077,30 @@ class CreateCommonBandwidthPackageRequest(TeaModel):
         # 
         # If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to **BGP_FinanceCloud**.
         self.isp = isp
-        # The billing method of the Internet Shared Bandwidth instance. Valid values: **PayByTraffic**: pay-by-data-transfer
+        # The billing method of the Internet Shared Bandwidth instance. Set the value to **PayByTraffic**, which specifies the pay-by-data-transfer billing method.
         self.internet_charge_type = internet_charge_type
         # The name of the Internet Shared Bandwidth instance.
         # 
-        # The name must be 2 to 128 characters in length and start with a letter, and can contain letters, digits, underscores (\_), and hyphens (-).
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The percentage of the minimum bandwidth commitment. Set the parameter to **20**.
         # 
-        # >  This parameter is supported only on the Alibaba Cloud China site.
+        # > 
+        # 
+        # This parameter is available only on the Alibaba Cloud China site.
         self.ratio = ratio
         # The region ID of the Internet Shared Bandwidth instance.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
+        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The editions of Anti-DDoS.
-        # 
-        # *   If you do not specify this parameter, Anti-DDoS Origin Basic is used.
-        # *   If you set the parameter to **AntiDDoS_Enhanced**, Anti-DDoS Pro/Premium is used.
-        # 
-        # You can specify up to 10 editions of Anti-DDoS.
         self.security_protection_types = security_protection_types
-        # The zone of the Internet Shared Bandwidth instance. This parameter must be specified when you create an Internet Shared Bandwidth instance for a cloud box.
+        # The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
         self.zone = zone
 
     def validate(self):
@@ -8357,6 +8388,525 @@ class CreateExpressCloudConnectionResponse(TeaModel):
         return self
 
 
+class CreateExpressConnectTrafficQosRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        qos_description: str = None,
+        qos_name: str = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+    ):
+        self.client_token = client_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.qos_description = qos_description
+        self.qos_name = qos_name
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.qos_description is not None:
+            result['QosDescription'] = self.qos_description
+        if self.qos_name is not None:
+            result['QosName'] = self.qos_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('QosDescription') is not None:
+            self.qos_description = m.get('QosDescription')
+        if m.get('QosName') is not None:
+            self.qos_name = m.get('QosName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        return self
+
+
+class CreateExpressConnectTrafficQosResponseBody(TeaModel):
+    def __init__(
+        self,
+        qos_id: str = None,
+        request_id: str = None,
+    ):
+        self.qos_id = qos_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.qos_id is not None:
+            result['QosId'] = self.qos_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('QosId') is not None:
+            self.qos_id = m.get('QosId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateExpressConnectTrafficQosResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateExpressConnectTrafficQosResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateExpressConnectTrafficQosResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateExpressConnectTrafficQosQueueRequest(TeaModel):
+    def __init__(
+        self,
+        bandwidth_percent: str = None,
+        client_token: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        qos_id: str = None,
+        queue_description: str = None,
+        queue_name: str = None,
+        queue_type: str = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+    ):
+        self.bandwidth_percent = bandwidth_percent
+        self.client_token = client_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.qos_id = qos_id
+        self.queue_description = queue_description
+        self.queue_name = queue_name
+        self.queue_type = queue_type
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bandwidth_percent is not None:
+            result['BandwidthPercent'] = self.bandwidth_percent
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.qos_id is not None:
+            result['QosId'] = self.qos_id
+        if self.queue_description is not None:
+            result['QueueDescription'] = self.queue_description
+        if self.queue_name is not None:
+            result['QueueName'] = self.queue_name
+        if self.queue_type is not None:
+            result['QueueType'] = self.queue_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BandwidthPercent') is not None:
+            self.bandwidth_percent = m.get('BandwidthPercent')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('QosId') is not None:
+            self.qos_id = m.get('QosId')
+        if m.get('QueueDescription') is not None:
+            self.queue_description = m.get('QueueDescription')
+        if m.get('QueueName') is not None:
+            self.queue_name = m.get('QueueName')
+        if m.get('QueueType') is not None:
+            self.queue_type = m.get('QueueType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        return self
+
+
+class CreateExpressConnectTrafficQosQueueResponseBody(TeaModel):
+    def __init__(
+        self,
+        qos_id: str = None,
+        queue_id: str = None,
+        request_id: str = None,
+    ):
+        self.qos_id = qos_id
+        self.queue_id = queue_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.qos_id is not None:
+            result['QosId'] = self.qos_id
+        if self.queue_id is not None:
+            result['QueueId'] = self.queue_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('QosId') is not None:
+            self.qos_id = m.get('QosId')
+        if m.get('QueueId') is not None:
+            self.queue_id = m.get('QueueId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateExpressConnectTrafficQosQueueResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateExpressConnectTrafficQosQueueResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateExpressConnectTrafficQosQueueResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateExpressConnectTrafficQosRuleRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dst_cidr: str = None,
+        dst_ipv_6cidr: str = None,
+        dst_port_range: str = None,
+        match_dscp: int = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        priority: int = None,
+        protocol: str = None,
+        qos_id: str = None,
+        queue_id: str = None,
+        region_id: str = None,
+        remarking_dscp: int = None,
+        resource_owner_account: str = None,
+        rule_description: str = None,
+        rule_name: str = None,
+        src_cidr: str = None,
+        src_ipv_6cidr: str = None,
+        src_port_range: str = None,
+    ):
+        self.client_token = client_token
+        self.dst_cidr = dst_cidr
+        self.dst_ipv_6cidr = dst_ipv_6cidr
+        self.dst_port_range = dst_port_range
+        self.match_dscp = match_dscp
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.priority = priority
+        self.protocol = protocol
+        self.qos_id = qos_id
+        self.queue_id = queue_id
+        self.region_id = region_id
+        self.remarking_dscp = remarking_dscp
+        self.resource_owner_account = resource_owner_account
+        self.rule_description = rule_description
+        self.rule_name = rule_name
+        self.src_cidr = src_cidr
+        self.src_ipv_6cidr = src_ipv_6cidr
+        self.src_port_range = src_port_range
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dst_cidr is not None:
+            result['DstCidr'] = self.dst_cidr
+        if self.dst_ipv_6cidr is not None:
+            result['DstIPv6Cidr'] = self.dst_ipv_6cidr
+        if self.dst_port_range is not None:
+            result['DstPortRange'] = self.dst_port_range
+        if self.match_dscp is not None:
+            result['MatchDscp'] = self.match_dscp
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.qos_id is not None:
+            result['QosId'] = self.qos_id
+        if self.queue_id is not None:
+            result['QueueId'] = self.queue_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.remarking_dscp is not None:
+            result['RemarkingDscp'] = self.remarking_dscp
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.rule_description is not None:
+            result['RuleDescription'] = self.rule_description
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.src_cidr is not None:
+            result['SrcCidr'] = self.src_cidr
+        if self.src_ipv_6cidr is not None:
+            result['SrcIPv6Cidr'] = self.src_ipv_6cidr
+        if self.src_port_range is not None:
+            result['SrcPortRange'] = self.src_port_range
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DstCidr') is not None:
+            self.dst_cidr = m.get('DstCidr')
+        if m.get('DstIPv6Cidr') is not None:
+            self.dst_ipv_6cidr = m.get('DstIPv6Cidr')
+        if m.get('DstPortRange') is not None:
+            self.dst_port_range = m.get('DstPortRange')
+        if m.get('MatchDscp') is not None:
+            self.match_dscp = m.get('MatchDscp')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('QosId') is not None:
+            self.qos_id = m.get('QosId')
+        if m.get('QueueId') is not None:
+            self.queue_id = m.get('QueueId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RemarkingDscp') is not None:
+            self.remarking_dscp = m.get('RemarkingDscp')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('RuleDescription') is not None:
+            self.rule_description = m.get('RuleDescription')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('SrcCidr') is not None:
+            self.src_cidr = m.get('SrcCidr')
+        if m.get('SrcIPv6Cidr') is not None:
+            self.src_ipv_6cidr = m.get('SrcIPv6Cidr')
+        if m.get('SrcPortRange') is not None:
+            self.src_port_range = m.get('SrcPortRange')
+        return self
+
+
+class CreateExpressConnectTrafficQosRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        qos_id: str = None,
+        queue_id: str = None,
+        request_id: str = None,
+        rule_id: str = None,
+    ):
+        self.qos_id = qos_id
+        self.queue_id = queue_id
+        self.request_id = request_id
+        self.rule_id = rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.qos_id is not None:
+            result['QosId'] = self.qos_id
+        if self.queue_id is not None:
+            result['QueueId'] = self.queue_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('QosId') is not None:
+            self.qos_id = m.get('QosId')
+        if m.get('QueueId') is not None:
+            self.queue_id = m.get('QueueId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        return self
+
+
+class CreateExpressConnectTrafficQosRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateExpressConnectTrafficQosRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateExpressConnectTrafficQosRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateFailoverTestJobRequest(TeaModel):
     def __init__(
         self,
@@ -8524,7 +9074,13 @@ class CreateFlowLogRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be at most 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
+        # The value of tag N to add to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
         self.value = value
 
     def validate(self):
@@ -8609,7 +9165,12 @@ class CreateFlowLogRequest(TeaModel):
         # *   **VSwitch**: all ENIs in a vSwitch
         # *   **VPC**: all ENIs in a virtual private cloud (VPC)
         self.resource_type = resource_type
+        # The tag of the resource.
         self.tag = tag
+        # The scope of the traffic that you want to capture. Valid values:
+        # 
+        # *   **all**: all traffic.
+        # *   **internetGateway**: Internet traffic.
         self.traffic_path = traffic_path
         # The type of traffic that you want to capture. Valid values:
         # 
@@ -10761,9 +11322,9 @@ class CreateIpsecServerRequest(TeaModel):
         # *   **LocalId**: the identifier of the IPsec server. The value can be a fully qualified domain name (FQDN) or an IP address. The default value is the public IP address of the VPN gateway.
         # *   **RemoteId**: the peer identifier. The value can be an FQDN or an IP address. The default value is empty.
         self.ike_config = ike_config
-        # The IPsec server name.
+        # The name of the IPsec server.
         # 
-        # The name must be 1 to 100 characters in length and cannot start with `http://` or `https://`.
+        # The name must be 1 to 100 characters in length.
         self.ip_sec_server_name = ip_sec_server_name
         # The configuration of Phase 2 negotiation. Valid values:
         # 
@@ -10784,7 +11345,9 @@ class CreateIpsecServerRequest(TeaModel):
         # 
         # >  The pre-shared key of the IPsec server must be the same as the client key. Otherwise, the IPsec server cannot be connected to the client.
         self.psk = psk
-        # Specifies whether to enable pre-shared key authentication. If you set the value to **true**, pre-shared key authentication is enabled.
+        # Indicates whether pre-shared key authentication is enabled. If you set the value to **true**, pre-shared key authentication is enabled.
+        # 
+        # >  This parameter is required.
         self.psk_enabled = psk_enabled
         # The ID of the region where the VPN gateway is deployed.
         self.region_id = region_id
@@ -13942,6 +14505,9 @@ class CreatePublicIpAddressPoolRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The editions of Anti-DDoS.
+        # - If you do not specify this parameter, Anti-DDoS Origin Basic is used.
+        # - If you set the parameter to AntiDDoS_Enhanced, Anti-DDoS Pro/Premium is used.
         self.security_protection_types = security_protection_types
         # The tag of the resource.
         self.tag = tag
@@ -14035,10 +14601,12 @@ class CreatePublicIpAddressPoolRequest(TeaModel):
 class CreatePublicIpAddressPoolResponseBody(TeaModel):
     def __init__(
         self,
+        public_ip_address_pool_id: str = None,
         pulbic_ip_address_pool_id: str = None,
         request_id: str = None,
         resource_group_id: str = None,
     ):
+        self.public_ip_address_pool_id = public_ip_address_pool_id
         # The ID of the IP address pool.
         self.pulbic_ip_address_pool_id = pulbic_ip_address_pool_id
         # The request ID.
@@ -14055,6 +14623,8 @@ class CreatePublicIpAddressPoolResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.public_ip_address_pool_id is not None:
+            result['PublicIpAddressPoolId'] = self.public_ip_address_pool_id
         if self.pulbic_ip_address_pool_id is not None:
             result['PulbicIpAddressPoolId'] = self.pulbic_ip_address_pool_id
         if self.request_id is not None:
@@ -14065,6 +14635,8 @@ class CreatePublicIpAddressPoolResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('PublicIpAddressPoolId') is not None:
+            self.public_ip_address_pool_id = m.get('PublicIpAddressPoolId')
         if m.get('PulbicIpAddressPoolId') is not None:
             self.pulbic_ip_address_pool_id = m.get('PulbicIpAddressPoolId')
         if m.get('RequestId') is not None:
@@ -15767,20 +16339,58 @@ class CreateSslVpnServerRequest(TeaModel):
         resource_owner_id: int = None,
         vpn_gateway_id: str = None,
     ):
-        # The encryption algorithm that is used for the SSL-VPN connection. Valid values:
+        # The encryption algorithm that is used by the SSL-VPN connection.
         # 
-        # *   **AES-128-CBC** (default)
-        # *   **AES-192-CBC**\
-        # *   **AES-256-CBC**\
-        # *   **none**\
+        # *   If the client uses Tunnelblick or OpenVPN 2.4.0 or later, the SSL server dynamically negotiates with the client about the encryption algorithm and uses the most secure encryption algorithm that is supported by the SSL server and the client. The encryption algorithm that you specify for the SSL server does not take effect.
+        # 
+        # *   If the client uses OpenVPN of a version that is earlier than 2.4.0, the SSL server and the client use the encryption algorithm that you specify for the SSL server. You can specify one of the following encryption algorithms for the SSL server:
+        # 
+        #     *   **AES-128-CBC** (default)
+        #     *   **AES-192-CBC**\
+        #     *   **AES-256-CBC**\
+        #     *   **none**\
         self.cipher = cipher
         # The client CIDR block.
         # 
-        # The client CIDR block from which an IP address is allocated to the virtual network interface controller (NIC) of the client. It is not the CIDR block where the client resides.
+        # It is the CIDR block from which an IP address is allocated to the virtual network interface controller (NIC) of the client. It is not the private CIDR block of the client.
         # 
-        # When the client accesses the local virtual private cloud (VPC) by using an SSL-VPN connection, the VPN gateway allocates an IP address from the client CIDR block to the client.
+        # If the client accesses the SSL server over an SSL-VPN connection, the VPN gateway assigns an IP address from the specified client CIDR block to the client. The client uses the assigned IP address to access cloud resources.
         # 
-        # >  This CIDR block cannot overlap with the CIDR block specified by **LocalSubnet**.
+        # Make sure that the number of IP addresses in the client CIDR block is at least four times the maximum number of SSL-VPN connections supported by the VPN gateway.
+        # 
+        # <details>
+        # <summary>Click to view the reason.</summary>
+        # 
+        # For example, if you specify 192.168.0.0/24 as the client CIDR block, the system first divides a subnet CIDR block with a subnet mask of 30 from 192.168.0.0/24, such as 192.168.0.4/30. This subnet provides up to four IP addresses. Then, the system allocates an IP address from 192.168.0.4/30 to the client and uses the other three IP addresses to ensure network communication. In this case, one client consumes four IP addresses. Therefore, to ensure that an IP address is assigned to your client, you must make sure that the number of IP addresses in the client CIDR block is at least four times the maximum number of SSL-VPN connections supported by the VPN gateway with which the SSL server is associated.
+        # </details>
+        # 
+        # <details>
+        # <summary>Click to view the CIDR blocks that are not supported.</summary>
+        # 
+        # *   100.64.0.0~100.127.255.255
+        # *   127.0.0.0~127.255.255.255
+        # *   169.254.0.0~169.254.255.255
+        # *   224.0.0.0~239.255.255.255
+        # *   255.0.0.0~255.255.255.255
+        # </details>
+        # 
+        # <details>
+        # <summary>Click to view the recommended client CIDR blocks for different numbers of SSL-VPN connections.</summary>
+        # 
+        # *   If the number of SSL-VPN connections is 5, we recommend that you specify a client CIDR block with a subnet mask that is less than or equal to 27 bits in length. Examples: 10.0.0.0/27 and 10.0.0.0/26.
+        # *   If the number of SSL-VPN connections is 10, we recommend that you specify a client CIDR block with a subnet mask that is less than or equal to 26 bits in length. Examples: 10.0.0.0/26 and 10.0.0.0/25.
+        # *   If the number of SSL-VPN connections is 20, we recommend that you specify a client CIDR block with a subnet mask that is less than or equal to 25 bits in length. Examples: 10.0.0.0/25 and 10.0.0.0/24.
+        # *   If the number of SSL-VPN connections is 50, we recommend that you specify a client CIDR block with a subnet mask that is less than or equal to 24 bits in length. Examples: 10.0.0.0/24 and 10.0.0.0/23.
+        # *   If the number of SSL-VPN connections is 100, we recommend that you specify a client CIDR block with a subnet mask that is less than or equal to 23 bits in length. Examples: 10.0.0.0/23 and 10.0.0.0/22.
+        # *   If the number of SSL-VPN connections is 200, we recommend that you specify a client CIDR block with a subnet mask that is less than or equal to 22 bits in length. Examples: 10.0.0.0/22 and 10.0.0.0/21.
+        # *   If the number of SSL-VPN connections is 500, we recommend that you specify a client CIDR block with a subnet mask that is less than or equal to 21 bits in length. Examples: 10.0.0.0/21 and 10.0.0.0/20.
+        # *   If the number of SSL-VPN connections is 1,000, we recommend that you specify a client CIDR block with a subnet mask that is less than or equal to 20 bits in length. Examples: 10.0.0.0/20 and 10.0.0.0/19.
+        # </details>
+        # 
+        # > - The subnet mask of the client CIDR block must be 16 to 29 bits in length.
+        # > - Make sure that the local CIDR block and the client CIDR block do not overlap with each other.
+        # > - We recommend that you use 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16, or one of their subnets as the client CIDR block. If you want to specify a public CIDR block as the client CIDR block, you must specify the public CIDR block as the user CIDR block of the virtual private cloud (VPC). This way, the VPC can access the public CIDR block. For more information, see [VPC FAQ](~~185311~~).
+        # > - After you create an SSL server, the system automatically adds routes that point to the client CIDR block to the VPC route table, which is not displayed in the console by default. Do not add routes that point to the client CIDR block to the VPC route table again. Otherwise, SSL-VPN connections cannot work as expected.
         self.client_ip_pool = client_ip_pool
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -15793,13 +16403,13 @@ class CreateSslVpnServerRequest(TeaModel):
         # *   **true**\
         # *   **false** (default)
         self.compress = compress
-        # Specifies whether to enable two-factor authentication. If you enable two-factor authentication, you must also specify an IDaaS instance ID. Valid values:
+        # Specifies whether to enable two-factor authentication. If you enable two-factor authentication, you must configure `IDaaSInstanceId` and `IDaaSRegionId`. Valid values:
         # 
-        # *   **true**\
-        # *   **false** (default)
+        # *   **true**: enables this feature.
+        # *   **false** (default): disables this feature.
         # 
-        # >*   Two-factor authentication supports only IDaaS instances of earlier versions. If you do not have and cannot create IDaaS instances of earlier versions, you cannot enable two-factor authentication.
-        # >*   For existing SSL servers, if two-factor authentication is already enabled, you can continue to use two-factor authentication.
+        # > - Two-factor authentication supports only earlier versions of IDaaS instances. If you do not have and cannot create earlier versions of IDaaS instances, you cannot enable two-factor authentication.
+        # > - If two-factor authentication is already enabled for existing SSL servers, you can continue to use two-factor authentication.
         self.enable_multi_factor_auth = enable_multi_factor_auth
         # The Identity as a Service (IDaaS) instance ID.
         self.idaa_sinstance_id = idaa_sinstance_id
@@ -15807,9 +16417,17 @@ class CreateSslVpnServerRequest(TeaModel):
         self.idaa_sregion_id = idaa_sregion_id
         # The local CIDR block.
         # 
-        # The CIDR block to be accessed by the client by using the SSL-VPN connection.
+        # It is the CIDR block that your client needs to access by using the SSL-VPN connection.
         # 
         # This value can be the CIDR block of a VPC, a vSwitch, a data center that is connected to a VPC by using an Express Connect circuit, or an Alibaba Cloud service such as Object Storage Service (OSS).
+        # 
+        # The subnet mask of the specified local CIDR block must be 8 to 32 bits in length. You cannot specify the following CIDR blocks as the local CIDR blocks:
+        # 
+        # *   100.64.0.0~100.127.255.255
+        # *   127.0.0.0~127.255.255.255
+        # *   169.254.0.0~169.254.255.255
+        # *   224.0.0.0~239.255.255.255
+        # *   255.0.0.0~255.255.255.255
         self.local_subnet = local_subnet
         # The SSL server name.
         # 
@@ -17719,16 +18337,18 @@ class CreateVbrHaRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # The client token must be unique among different requests. It can contain only ASCII characters and cannot exceed 64 characters in length.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The description of the VBR failover group.
         # 
-        # The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://`or `https://`.
+        # The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
         self.description = description
-        # Specifies whether to precheck the request. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values: Valid Values:
         # 
-        # *   **true**: prechecks the request without performing the operation. The system checks the request format, instance status, and whether the required parameters are specified. An error message is returned if the request fails the precheck. If the request passes the precheck, `DRYRUN.SUCCESS` is returned.
-        # *   **false**: prechecks the request. After the request passes the precheck, the operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and instance status. If the request fails the dry run, an error message is returned. If the request passes the dry run, `DRYRUN.SUCCESS` is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, the operation is performed.
         self.dry_run = dry_run
         # The name of the VBR failover group.
         self.name = name
@@ -17736,7 +18356,7 @@ class CreateVbrHaRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the other VBR in the VBR failover group.
         self.peer_vbr_id = peer_vbr_id
-        # The ID of the region where the VBR is deployed.
+        # The ID of the region in which the VBR is deployed.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -17809,7 +18429,7 @@ class CreateVbrHaResponseBody(TeaModel):
         request_id: str = None,
         vbr_ha_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The ID of the VBR failover group.
         self.vbr_ha_id = vbr_ha_id
@@ -18020,8 +18640,8 @@ class CreateVcoRouteEntryResponseBody(TeaModel):
         self.vpn_connection_id = vpn_connection_id
         # The weight of the destination-based route. Valid values:
         # 
-        # *   **0**: a low priority
-        # *   **100**: a high priority
+        # *   **0**: a low priority.
+        # *   **100**: a high priority.
         self.weight = weight
 
     def validate(self):
@@ -18123,13 +18743,13 @@ class CreateVirtualBorderRouterRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # The tag key. You must enter at least one tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The key cannot exceed 128 characters in length, and cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # A tag key can be at most 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value. You can specify at most 20 tag values. It can be an empty string.
+        # The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value cannot exceed 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
         self.value = value
 
     def validate(self):
@@ -18244,13 +18864,13 @@ class CreateVirtualBorderRouterRequest(TeaModel):
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         # 
         # For more information about resource group, see [What is Resource Management?](~~94475~~)
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tag list.
+        # The tags.
         self.tags = tags
         # The account ID of the VBR owner.
         # 
@@ -19018,13 +19638,13 @@ class CreateVpcGatewayEndpointRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N to add to the resource. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # The key of tag N to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # A tag key can be at most 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The value of tag N to add to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
+        # The value of tag N to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # A tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
+        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
         self.value = value
 
     def validate(self):
@@ -19106,6 +19726,7 @@ class CreateVpcGatewayEndpointRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The name of the endpoint service.
         self.service_name = service_name
+        # The tags of the resource.
         self.tag = tag
         # The ID of the virtual private cloud (VPC) where you want to create the gateway endpoint.
         # 
@@ -19339,7 +19960,13 @@ class CreateVpcPrefixListRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
+        # The value of tag N. You can specify at most 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
         self.value = value
 
     def validate(self):
@@ -19408,6 +20035,7 @@ class CreateVpcPrefixListRequest(TeaModel):
         # 
         # The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         self.prefix_list_description = prefix_list_description
+        # The CIDR block information specified in the prefix list.
         self.prefix_list_entries = prefix_list_entries
         # The name of the prefix list.
         # 
@@ -19421,6 +20049,7 @@ class CreateVpcPrefixListRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tag list.
         self.tag = tag
 
     def validate(self):
@@ -22890,6 +23519,399 @@ class DeleteDhcpOptionsSetResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteDhcpOptionsSetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteExpressConnectTrafficQosRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        qos_id: str = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+    ):
+        self.client_token = client_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.qos_id = qos_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.qos_id is not None:
+            result['QosId'] = self.qos_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('QosId') is not None:
+            self.qos_id = m.get('QosId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        return self
+
+
+class DeleteExpressConnectTrafficQosResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteExpressConnectTrafficQosResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteExpressConnectTrafficQosResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteExpressConnectTrafficQosResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteExpressConnectTrafficQosQueueRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        qos_id: str = None,
+        queue_id: str = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+    ):
+        self.client_token = client_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.qos_id = qos_id
+        self.queue_id = queue_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.qos_id is not None:
+            result['QosId'] = self.qos_id
+        if self.queue_id is not None:
+            result['QueueId'] = self.queue_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('QosId') is not None:
+            self.qos_id = m.get('QosId')
+        if m.get('QueueId') is not None:
+            self.queue_id = m.get('QueueId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        return self
+
+
+class DeleteExpressConnectTrafficQosQueueResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteExpressConnectTrafficQosQueueResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteExpressConnectTrafficQosQueueResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteExpressConnectTrafficQosQueueResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteExpressConnectTrafficQosRuleRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        qos_id: str = None,
+        queue_id: str = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        rule_id: str = None,
+    ):
+        self.client_token = client_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.qos_id = qos_id
+        self.queue_id = queue_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.rule_id = rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.qos_id is not None:
+            result['QosId'] = self.qos_id
+        if self.queue_id is not None:
+            result['QueueId'] = self.queue_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('QosId') is not None:
+            self.qos_id = m.get('QosId')
+        if m.get('QueueId') is not None:
+            self.queue_id = m.get('QueueId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        return self
+
+
+class DeleteExpressConnectTrafficQosRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteExpressConnectTrafficQosRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteExpressConnectTrafficQosRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteExpressConnectTrafficQosRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -27799,13 +28821,15 @@ class DeleteVbrHaRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The ID of the VBR failover group.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the VBR is deployed.
+        # The ID of the region in which the VBR is deployed.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -27859,7 +28883,7 @@ class DeleteVbrHaResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -29629,6 +30653,313 @@ class DeletionProtectionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeletionProtectionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class Describe95TrafficRequest(TeaModel):
+    def __init__(
+        self,
+        day: str = None,
+        instance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        resource_type: str = None,
+    ):
+        # The date in UTC+8. Format: year-month-day.
+        self.day = day
+        # The resource ID.
+        self.instance_id = instance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The region ID of the resource.
+        # 
+        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # The resource type. Set the value to cbwp, which specifies Internet Shared Bandwidth.
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.day is not None:
+            result['Day'] = self.day
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Day') is not None:
+            self.day = m.get('Day')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class Describe95TrafficResponseBodyTraffic95SummaryTraffic95DetailListTraffic95Detail(TeaModel):
+    def __init__(
+        self,
+        bill_bandwidth: str = None,
+        in_bandwidth: str = None,
+        out_bandwidth: str = None,
+        time: str = None,
+    ):
+        # The sampled bandwidth value, which is the larger bandwidth value in the inbound and outbound directions within a sampling interval. Unit: Mbit/s.
+        self.bill_bandwidth = bill_bandwidth
+        # The inbound bandwidth. Unit: Mbit/s.
+        self.in_bandwidth = in_bandwidth
+        # The outbound bandwidth. Unit: Mbit/s.
+        self.out_bandwidth = out_bandwidth
+        # The statistical time. The value is a string.
+        self.time = time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bill_bandwidth is not None:
+            result['BillBandwidth'] = self.bill_bandwidth
+        if self.in_bandwidth is not None:
+            result['InBandwidth'] = self.in_bandwidth
+        if self.out_bandwidth is not None:
+            result['OutBandwidth'] = self.out_bandwidth
+        if self.time is not None:
+            result['Time'] = self.time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BillBandwidth') is not None:
+            self.bill_bandwidth = m.get('BillBandwidth')
+        if m.get('InBandwidth') is not None:
+            self.in_bandwidth = m.get('InBandwidth')
+        if m.get('OutBandwidth') is not None:
+            self.out_bandwidth = m.get('OutBandwidth')
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
+        return self
+
+
+class Describe95TrafficResponseBodyTraffic95SummaryTraffic95DetailList(TeaModel):
+    def __init__(
+        self,
+        traffic_95detail: List[Describe95TrafficResponseBodyTraffic95SummaryTraffic95DetailListTraffic95Detail] = None,
+    ):
+        self.traffic_95detail = traffic_95detail
+
+    def validate(self):
+        if self.traffic_95detail:
+            for k in self.traffic_95detail:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Traffic95Detail'] = []
+        if self.traffic_95detail is not None:
+            for k in self.traffic_95detail:
+                result['Traffic95Detail'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.traffic_95detail = []
+        if m.get('Traffic95Detail') is not None:
+            for k in m.get('Traffic95Detail'):
+                temp_model = Describe95TrafficResponseBodyTraffic95SummaryTraffic95DetailListTraffic95Detail()
+                self.traffic_95detail.append(temp_model.from_map(k))
+        return self
+
+
+class Describe95TrafficResponseBodyTraffic95Summary(TeaModel):
+    def __init__(
+        self,
+        bandwidth: int = None,
+        fifth_peak_bandwidth: str = None,
+        instance_id: str = None,
+        internet_charge_type: str = None,
+        minimum_consume_bandwidth: str = None,
+        traffic_95detail_list: Describe95TrafficResponseBodyTraffic95SummaryTraffic95DetailList = None,
+    ):
+        # The peak bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+        self.bandwidth = bandwidth
+        # The daily peak bandwidth. Unit: Mbit/s.
+        # <props="china"> For more information, see [Daily peak bandwidth](~~89729~~).</props>
+        self.fifth_peak_bandwidth = fifth_peak_bandwidth
+        # The resource ID.
+        self.instance_id = instance_id
+        # The metering method of the Internet Shared Bandwidth instance. Valid values:
+        # 
+        # *   PayBy95: pay-by-enhanced-95th-percentile
+        # *   PayByBandwidth: pay-by-bandwidth
+        # *   PayByDominantTraffic: pay-by-dominant-traffic
+        self.internet_charge_type = internet_charge_type
+        # The guaranteed bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+        self.minimum_consume_bandwidth = minimum_consume_bandwidth
+        # The average bandwidth every 5 minutes in the inbound and outbound directions.
+        self.traffic_95detail_list = traffic_95detail_list
+
+    def validate(self):
+        if self.traffic_95detail_list:
+            self.traffic_95detail_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
+        if self.fifth_peak_bandwidth is not None:
+            result['FifthPeakBandwidth'] = self.fifth_peak_bandwidth
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.internet_charge_type is not None:
+            result['InternetChargeType'] = self.internet_charge_type
+        if self.minimum_consume_bandwidth is not None:
+            result['MinimumConsumeBandwidth'] = self.minimum_consume_bandwidth
+        if self.traffic_95detail_list is not None:
+            result['Traffic95DetailList'] = self.traffic_95detail_list.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
+        if m.get('FifthPeakBandwidth') is not None:
+            self.fifth_peak_bandwidth = m.get('FifthPeakBandwidth')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InternetChargeType') is not None:
+            self.internet_charge_type = m.get('InternetChargeType')
+        if m.get('MinimumConsumeBandwidth') is not None:
+            self.minimum_consume_bandwidth = m.get('MinimumConsumeBandwidth')
+        if m.get('Traffic95DetailList') is not None:
+            temp_model = Describe95TrafficResponseBodyTraffic95SummaryTraffic95DetailList()
+            self.traffic_95detail_list = temp_model.from_map(m['Traffic95DetailList'])
+        return self
+
+
+class Describe95TrafficResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        traffic_95summary: Describe95TrafficResponseBodyTraffic95Summary = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+        # The information returned.
+        self.traffic_95summary = traffic_95summary
+
+    def validate(self):
+        if self.traffic_95summary:
+            self.traffic_95summary.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.traffic_95summary is not None:
+            result['Traffic95Summary'] = self.traffic_95summary.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Traffic95Summary') is not None:
+            temp_model = Describe95TrafficResponseBodyTraffic95Summary()
+            self.traffic_95summary = temp_model.from_map(m['Traffic95Summary'])
+        return self
+
+
+class Describe95TrafficResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: Describe95TrafficResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = Describe95TrafficResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -32871,6 +34202,7 @@ class DescribeEipAddressesRequest(TeaModel):
         resource_owner_id: int = None,
         security_protection_enabled: bool = None,
         segment_instance_id: str = None,
+        service_managed: bool = None,
         status: str = None,
         tag: List[DescribeEipAddressesRequestTag] = None,
     ):
@@ -32965,6 +34297,7 @@ class DescribeEipAddressesRequest(TeaModel):
         self.security_protection_enabled = security_protection_enabled
         # The ID of the contiguous EIP group.
         self.segment_instance_id = segment_instance_id
+        self.service_managed = service_managed
         # The state of the EIP. Valid values:
         # 
         # *   **Associating**\
@@ -33038,6 +34371,8 @@ class DescribeEipAddressesRequest(TeaModel):
             result['SecurityProtectionEnabled'] = self.security_protection_enabled
         if self.segment_instance_id is not None:
             result['SegmentInstanceId'] = self.segment_instance_id
+        if self.service_managed is not None:
+            result['ServiceManaged'] = self.service_managed
         if self.status is not None:
             result['Status'] = self.status
         result['Tag'] = []
@@ -33095,6 +34430,8 @@ class DescribeEipAddressesRequest(TeaModel):
             self.security_protection_enabled = m.get('SecurityProtectionEnabled')
         if m.get('SegmentInstanceId') is not None:
             self.segment_instance_id = m.get('SegmentInstanceId')
+        if m.get('ServiceManaged') is not None:
+            self.service_managed = m.get('ServiceManaged')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         self.tag = []
@@ -34591,6 +35928,994 @@ class DescribeEipSegmentResponse(TeaModel):
         return self
 
 
+class DescribeExpressConnectTrafficQosRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        qos_id_list: List[str] = None,
+        qos_name_list: List[str] = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+    ):
+        self.client_token = client_token
+        self.max_results = max_results
+        self.next_token = next_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.qos_id_list = qos_id_list
+        self.qos_name_list = qos_name_list
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.qos_id_list is not None:
+            result['QosIdList'] = self.qos_id_list
+        if self.qos_name_list is not None:
+            result['QosNameList'] = self.qos_name_list
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('QosIdList') is not None:
+            self.qos_id_list = m.get('QosIdList')
+        if m.get('QosNameList') is not None:
+            self.qos_name_list = m.get('QosNameList')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        return self
+
+
+class DescribeExpressConnectTrafficQosResponseBodyQosListAssociatedInstanceList(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        instance_progressing: int = None,
+        instance_status: str = None,
+        instance_type: str = None,
+    ):
+        self.instance_id = instance_id
+        self.instance_progressing = instance_progressing
+        self.instance_status = instance_status
+        self.instance_type = instance_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_progressing is not None:
+            result['InstanceProgressing'] = self.instance_progressing
+        if self.instance_status is not None:
+            result['InstanceStatus'] = self.instance_status
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceProgressing') is not None:
+            self.instance_progressing = m.get('InstanceProgressing')
+        if m.get('InstanceStatus') is not None:
+            self.instance_status = m.get('InstanceStatus')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        return self
+
+
+class DescribeExpressConnectTrafficQosResponseBodyQosListQueueList(TeaModel):
+    def __init__(
+        self,
+        bandwidth_percent: str = None,
+        qos_id: str = None,
+        queue_description: str = None,
+        queue_id: str = None,
+        queue_name: str = None,
+        queue_type: str = None,
+        status: str = None,
+    ):
+        self.bandwidth_percent = bandwidth_percent
+        self.qos_id = qos_id
+        self.queue_description = queue_description
+        self.queue_id = queue_id
+        self.queue_name = queue_name
+        self.queue_type = queue_type
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bandwidth_percent is not None:
+            result['BandwidthPercent'] = self.bandwidth_percent
+        if self.qos_id is not None:
+            result['QosId'] = self.qos_id
+        if self.queue_description is not None:
+            result['QueueDescription'] = self.queue_description
+        if self.queue_id is not None:
+            result['QueueId'] = self.queue_id
+        if self.queue_name is not None:
+            result['QueueName'] = self.queue_name
+        if self.queue_type is not None:
+            result['QueueType'] = self.queue_type
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BandwidthPercent') is not None:
+            self.bandwidth_percent = m.get('BandwidthPercent')
+        if m.get('QosId') is not None:
+            self.qos_id = m.get('QosId')
+        if m.get('QueueDescription') is not None:
+            self.queue_description = m.get('QueueDescription')
+        if m.get('QueueId') is not None:
+            self.queue_id = m.get('QueueId')
+        if m.get('QueueName') is not None:
+            self.queue_name = m.get('QueueName')
+        if m.get('QueueType') is not None:
+            self.queue_type = m.get('QueueType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeExpressConnectTrafficQosResponseBodyQosList(TeaModel):
+    def __init__(
+        self,
+        associated_instance_list: List[DescribeExpressConnectTrafficQosResponseBodyQosListAssociatedInstanceList] = None,
+        progressing: int = None,
+        qos_description: str = None,
+        qos_id: str = None,
+        qos_name: str = None,
+        queue_list: List[DescribeExpressConnectTrafficQosResponseBodyQosListQueueList] = None,
+        status: str = None,
+    ):
+        self.associated_instance_list = associated_instance_list
+        self.progressing = progressing
+        self.qos_description = qos_description
+        self.qos_id = qos_id
+        self.qos_name = qos_name
+        self.queue_list = queue_list
+        self.status = status
+
+    def validate(self):
+        if self.associated_instance_list:
+            for k in self.associated_instance_list:
+                if k:
+                    k.validate()
+        if self.queue_list:
+            for k in self.queue_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AssociatedInstanceList'] = []
+        if self.associated_instance_list is not None:
+            for k in self.associated_instance_list:
+                result['AssociatedInstanceList'].append(k.to_map() if k else None)
+        if self.progressing is not None:
+            result['Progressing'] = self.progressing
+        if self.qos_description is not None:
+            result['QosDescription'] = self.qos_description
+        if self.qos_id is not None:
+            result['QosId'] = self.qos_id
+        if self.qos_name is not None:
+            result['QosName'] = self.qos_name
+        result['QueueList'] = []
+        if self.queue_list is not None:
+            for k in self.queue_list:
+                result['QueueList'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.associated_instance_list = []
+        if m.get('AssociatedInstanceList') is not None:
+            for k in m.get('AssociatedInstanceList'):
+                temp_model = DescribeExpressConnectTrafficQosResponseBodyQosListAssociatedInstanceList()
+                self.associated_instance_list.append(temp_model.from_map(k))
+        if m.get('Progressing') is not None:
+            self.progressing = m.get('Progressing')
+        if m.get('QosDescription') is not None:
+            self.qos_description = m.get('QosDescription')
+        if m.get('QosId') is not None:
+            self.qos_id = m.get('QosId')
+        if m.get('QosName') is not None:
+            self.qos_name = m.get('QosName')
+        self.queue_list = []
+        if m.get('QueueList') is not None:
+            for k in m.get('QueueList'):
+                temp_model = DescribeExpressConnectTrafficQosResponseBodyQosListQueueList()
+                self.queue_list.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeExpressConnectTrafficQosResponseBody(TeaModel):
+    def __init__(
+        self,
+        count: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        qos_list: List[DescribeExpressConnectTrafficQosResponseBodyQosList] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.count = count
+        self.max_results = max_results
+        self.next_token = next_token
+        self.qos_list = qos_list
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.qos_list:
+            for k in self.qos_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['QosList'] = []
+        if self.qos_list is not None:
+            for k in self.qos_list:
+                result['QosList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.qos_list = []
+        if m.get('QosList') is not None:
+            for k in m.get('QosList'):
+                temp_model = DescribeExpressConnectTrafficQosResponseBodyQosList()
+                self.qos_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeExpressConnectTrafficQosResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeExpressConnectTrafficQosResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeExpressConnectTrafficQosResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeExpressConnectTrafficQosQueueRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        qos_id: str = None,
+        queue_id_list: List[str] = None,
+        queue_name_list: List[str] = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+    ):
+        self.client_token = client_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.qos_id = qos_id
+        self.queue_id_list = queue_id_list
+        self.queue_name_list = queue_name_list
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.qos_id is not None:
+            result['QosId'] = self.qos_id
+        if self.queue_id_list is not None:
+            result['QueueIdList'] = self.queue_id_list
+        if self.queue_name_list is not None:
+            result['QueueNameList'] = self.queue_name_list
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('QosId') is not None:
+            self.qos_id = m.get('QosId')
+        if m.get('QueueIdList') is not None:
+            self.queue_id_list = m.get('QueueIdList')
+        if m.get('QueueNameList') is not None:
+            self.queue_name_list = m.get('QueueNameList')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        return self
+
+
+class DescribeExpressConnectTrafficQosQueueResponseBodyQueueListRuleList(TeaModel):
+    def __init__(
+        self,
+        dst_cidr: str = None,
+        dst_ipv_6cidr: str = None,
+        dst_port_range: str = None,
+        match_dscp: int = None,
+        priority: int = None,
+        protocol: str = None,
+        qos_id: str = None,
+        queue_id: str = None,
+        remarking_dscp: int = None,
+        rule_description: str = None,
+        rule_id: str = None,
+        rule_name: str = None,
+        src_cidr: str = None,
+        src_ipv_6cidr: str = None,
+        src_port_range: str = None,
+        status: str = None,
+    ):
+        self.dst_cidr = dst_cidr
+        self.dst_ipv_6cidr = dst_ipv_6cidr
+        self.dst_port_range = dst_port_range
+        self.match_dscp = match_dscp
+        self.priority = priority
+        self.protocol = protocol
+        self.qos_id = qos_id
+        self.queue_id = queue_id
+        self.remarking_dscp = remarking_dscp
+        self.rule_description = rule_description
+        self.rule_id = rule_id
+        self.rule_name = rule_name
+        self.src_cidr = src_cidr
+        self.src_ipv_6cidr = src_ipv_6cidr
+        self.src_port_range = src_port_range
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dst_cidr is not None:
+            result['DstCidr'] = self.dst_cidr
+        if self.dst_ipv_6cidr is not None:
+            result['DstIPv6Cidr'] = self.dst_ipv_6cidr
+        if self.dst_port_range is not None:
+            result['DstPortRange'] = self.dst_port_range
+        if self.match_dscp is not None:
+            result['MatchDscp'] = self.match_dscp
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.qos_id is not None:
+            result['QosId'] = self.qos_id
+        if self.queue_id is not None:
+            result['QueueId'] = self.queue_id
+        if self.remarking_dscp is not None:
+            result['RemarkingDscp'] = self.remarking_dscp
+        if self.rule_description is not None:
+            result['RuleDescription'] = self.rule_description
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.src_cidr is not None:
+            result['SrcCidr'] = self.src_cidr
+        if self.src_ipv_6cidr is not None:
+            result['SrcIPv6Cidr'] = self.src_ipv_6cidr
+        if self.src_port_range is not None:
+            result['SrcPortRange'] = self.src_port_range
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DstCidr') is not None:
+            self.dst_cidr = m.get('DstCidr')
+        if m.get('DstIPv6Cidr') is not None:
+            self.dst_ipv_6cidr = m.get('DstIPv6Cidr')
+        if m.get('DstPortRange') is not None:
+            self.dst_port_range = m.get('DstPortRange')
+        if m.get('MatchDscp') is not None:
+            self.match_dscp = m.get('MatchDscp')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('QosId') is not None:
+            self.qos_id = m.get('QosId')
+        if m.get('QueueId') is not None:
+            self.queue_id = m.get('QueueId')
+        if m.get('RemarkingDscp') is not None:
+            self.remarking_dscp = m.get('RemarkingDscp')
+        if m.get('RuleDescription') is not None:
+            self.rule_description = m.get('RuleDescription')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('SrcCidr') is not None:
+            self.src_cidr = m.get('SrcCidr')
+        if m.get('SrcIPv6Cidr') is not None:
+            self.src_ipv_6cidr = m.get('SrcIPv6Cidr')
+        if m.get('SrcPortRange') is not None:
+            self.src_port_range = m.get('SrcPortRange')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeExpressConnectTrafficQosQueueResponseBodyQueueList(TeaModel):
+    def __init__(
+        self,
+        bandwidth_percent: str = None,
+        qos_id: str = None,
+        queue_description: str = None,
+        queue_id: str = None,
+        queue_name: str = None,
+        queue_type: str = None,
+        rule_list: List[DescribeExpressConnectTrafficQosQueueResponseBodyQueueListRuleList] = None,
+        status: str = None,
+    ):
+        self.bandwidth_percent = bandwidth_percent
+        self.qos_id = qos_id
+        self.queue_description = queue_description
+        self.queue_id = queue_id
+        self.queue_name = queue_name
+        self.queue_type = queue_type
+        self.rule_list = rule_list
+        self.status = status
+
+    def validate(self):
+        if self.rule_list:
+            for k in self.rule_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bandwidth_percent is not None:
+            result['BandwidthPercent'] = self.bandwidth_percent
+        if self.qos_id is not None:
+            result['QosId'] = self.qos_id
+        if self.queue_description is not None:
+            result['QueueDescription'] = self.queue_description
+        if self.queue_id is not None:
+            result['QueueId'] = self.queue_id
+        if self.queue_name is not None:
+            result['QueueName'] = self.queue_name
+        if self.queue_type is not None:
+            result['QueueType'] = self.queue_type
+        result['RuleList'] = []
+        if self.rule_list is not None:
+            for k in self.rule_list:
+                result['RuleList'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BandwidthPercent') is not None:
+            self.bandwidth_percent = m.get('BandwidthPercent')
+        if m.get('QosId') is not None:
+            self.qos_id = m.get('QosId')
+        if m.get('QueueDescription') is not None:
+            self.queue_description = m.get('QueueDescription')
+        if m.get('QueueId') is not None:
+            self.queue_id = m.get('QueueId')
+        if m.get('QueueName') is not None:
+            self.queue_name = m.get('QueueName')
+        if m.get('QueueType') is not None:
+            self.queue_type = m.get('QueueType')
+        self.rule_list = []
+        if m.get('RuleList') is not None:
+            for k in m.get('RuleList'):
+                temp_model = DescribeExpressConnectTrafficQosQueueResponseBodyQueueListRuleList()
+                self.rule_list.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeExpressConnectTrafficQosQueueResponseBody(TeaModel):
+    def __init__(
+        self,
+        queue_list: List[DescribeExpressConnectTrafficQosQueueResponseBodyQueueList] = None,
+        request_id: str = None,
+    ):
+        self.queue_list = queue_list
+        self.request_id = request_id
+
+    def validate(self):
+        if self.queue_list:
+            for k in self.queue_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['QueueList'] = []
+        if self.queue_list is not None:
+            for k in self.queue_list:
+                result['QueueList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.queue_list = []
+        if m.get('QueueList') is not None:
+            for k in m.get('QueueList'):
+                temp_model = DescribeExpressConnectTrafficQosQueueResponseBodyQueueList()
+                self.queue_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeExpressConnectTrafficQosQueueResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeExpressConnectTrafficQosQueueResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeExpressConnectTrafficQosQueueResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeExpressConnectTrafficQosRuleRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        qos_id: str = None,
+        queue_id: str = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        rule_id_list: List[str] = None,
+        rule_name_list: List[str] = None,
+    ):
+        self.client_token = client_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.qos_id = qos_id
+        self.queue_id = queue_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.rule_id_list = rule_id_list
+        self.rule_name_list = rule_name_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.qos_id is not None:
+            result['QosId'] = self.qos_id
+        if self.queue_id is not None:
+            result['QueueId'] = self.queue_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.rule_id_list is not None:
+            result['RuleIdList'] = self.rule_id_list
+        if self.rule_name_list is not None:
+            result['RuleNameList'] = self.rule_name_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('QosId') is not None:
+            self.qos_id = m.get('QosId')
+        if m.get('QueueId') is not None:
+            self.queue_id = m.get('QueueId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('RuleIdList') is not None:
+            self.rule_id_list = m.get('RuleIdList')
+        if m.get('RuleNameList') is not None:
+            self.rule_name_list = m.get('RuleNameList')
+        return self
+
+
+class DescribeExpressConnectTrafficQosRuleResponseBodyRuleList(TeaModel):
+    def __init__(
+        self,
+        dst_cidr: str = None,
+        dst_ipv_6cidr: str = None,
+        dst_port_range: str = None,
+        match_dscp: int = None,
+        priority: int = None,
+        protocol: str = None,
+        qos_id: str = None,
+        queue_id: str = None,
+        remarking_dscp: int = None,
+        rule_description: str = None,
+        rule_id: str = None,
+        rule_name: str = None,
+        src_cidr: str = None,
+        src_ipv_6cidr: str = None,
+        src_port_range: str = None,
+        status: str = None,
+    ):
+        self.dst_cidr = dst_cidr
+        self.dst_ipv_6cidr = dst_ipv_6cidr
+        self.dst_port_range = dst_port_range
+        self.match_dscp = match_dscp
+        self.priority = priority
+        self.protocol = protocol
+        self.qos_id = qos_id
+        self.queue_id = queue_id
+        self.remarking_dscp = remarking_dscp
+        self.rule_description = rule_description
+        self.rule_id = rule_id
+        self.rule_name = rule_name
+        self.src_cidr = src_cidr
+        self.src_ipv_6cidr = src_ipv_6cidr
+        self.src_port_range = src_port_range
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dst_cidr is not None:
+            result['DstCidr'] = self.dst_cidr
+        if self.dst_ipv_6cidr is not None:
+            result['DstIPv6Cidr'] = self.dst_ipv_6cidr
+        if self.dst_port_range is not None:
+            result['DstPortRange'] = self.dst_port_range
+        if self.match_dscp is not None:
+            result['MatchDscp'] = self.match_dscp
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.qos_id is not None:
+            result['QosId'] = self.qos_id
+        if self.queue_id is not None:
+            result['QueueId'] = self.queue_id
+        if self.remarking_dscp is not None:
+            result['RemarkingDscp'] = self.remarking_dscp
+        if self.rule_description is not None:
+            result['RuleDescription'] = self.rule_description
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.src_cidr is not None:
+            result['SrcCidr'] = self.src_cidr
+        if self.src_ipv_6cidr is not None:
+            result['SrcIPv6Cidr'] = self.src_ipv_6cidr
+        if self.src_port_range is not None:
+            result['SrcPortRange'] = self.src_port_range
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DstCidr') is not None:
+            self.dst_cidr = m.get('DstCidr')
+        if m.get('DstIPv6Cidr') is not None:
+            self.dst_ipv_6cidr = m.get('DstIPv6Cidr')
+        if m.get('DstPortRange') is not None:
+            self.dst_port_range = m.get('DstPortRange')
+        if m.get('MatchDscp') is not None:
+            self.match_dscp = m.get('MatchDscp')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('QosId') is not None:
+            self.qos_id = m.get('QosId')
+        if m.get('QueueId') is not None:
+            self.queue_id = m.get('QueueId')
+        if m.get('RemarkingDscp') is not None:
+            self.remarking_dscp = m.get('RemarkingDscp')
+        if m.get('RuleDescription') is not None:
+            self.rule_description = m.get('RuleDescription')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('SrcCidr') is not None:
+            self.src_cidr = m.get('SrcCidr')
+        if m.get('SrcIPv6Cidr') is not None:
+            self.src_ipv_6cidr = m.get('SrcIPv6Cidr')
+        if m.get('SrcPortRange') is not None:
+            self.src_port_range = m.get('SrcPortRange')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeExpressConnectTrafficQosRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        rule_list: List[DescribeExpressConnectTrafficQosRuleResponseBodyRuleList] = None,
+    ):
+        self.request_id = request_id
+        self.rule_list = rule_list
+
+    def validate(self):
+        if self.rule_list:
+            for k in self.rule_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['RuleList'] = []
+        if self.rule_list is not None:
+            for k in self.rule_list:
+                result['RuleList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.rule_list = []
+        if m.get('RuleList') is not None:
+            for k in m.get('RuleList'):
+                temp_model = DescribeExpressConnectTrafficQosRuleResponseBodyRuleList()
+                self.rule_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeExpressConnectTrafficQosRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeExpressConnectTrafficQosRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeExpressConnectTrafficQosRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeFailoverTestJobRequest(TeaModel):
     def __init__(
         self,
@@ -35206,6 +37531,7 @@ class DescribeFlowLogsRequest(TeaModel):
         # *   **Activating**\
         # *   **Inactive**\
         self.status = status
+        # The list of tags.
         self.tags = tags
         # The type of traffic that is captured. Valid values:
         # 
@@ -37001,9 +39327,7 @@ class DescribeHaVipsRequestFilter(TeaModel):
         key: str = None,
         value: List[str] = None,
     ):
-        # The filter keys. You can specify at most five filter keys. Valid values of **N**: **1 to 5**.
-        # 
-        # The following filter keys are supported:
+        # The filter keys. You can specify at most five filter keys. Valid values of **N**: **1 to 5**. The following filter keys are supported:
         # 
         # *   **VpcId**: virtual private cloud (VPC) ID
         # *   **VSwitchId**: vSwitch ID
@@ -37015,6 +39339,7 @@ class DescribeHaVipsRequestFilter(TeaModel):
         # 
         # The logical operator among multiple filter keys is AND. HAVIPs can be queried only if all filter keys are matched.
         self.key = key
+        # The value of the filter key. Valid values of **N**: **1 to 5**.
         self.value = value
 
     def validate(self):
@@ -37047,13 +39372,13 @@ class DescribeHaVipsRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can specify at most 20 tag keys. It cannot be an empty string.
+        # The key of tag N to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value. You can specify at most 20 tag values. It can be an empty string.
+        # The value of tag N to add to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
         self.value = value
 
     def validate(self):
@@ -37094,14 +39419,15 @@ class DescribeHaVipsRequest(TeaModel):
         resource_owner_id: int = None,
         tags: List[DescribeHaVipsRequestTags] = None,
     ):
+        # The details of the filter condition.
         self.filter = filter
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The ID of the region to which the HAVIP belongs.
+        # The region ID of the HAVIP.
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -37109,6 +39435,7 @@ class DescribeHaVipsRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tag list.
         self.tags = tags
 
     def validate(self):
@@ -37244,9 +39571,9 @@ class DescribeHaVipsResponseBodyHaVipsHaVipTagsTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of tag N added to the resource.
         self.key = key
-        # The tag value.
+        # The value of tag N added to the resource.
         self.value = value
 
     def validate(self):
@@ -37328,14 +39655,14 @@ class DescribeHaVipsResponseBodyHaVipsHaVip(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The elastic IP address (EIP) associated with the HAVIP.
+        # The list of EIPs associated with the HAVIP.
         self.associated_eip_addresses = associated_eip_addresses
         # The type of the instance with which the HAVIP is associated. Valid values:
         # 
-        # *   **EcsInstance**: an ECS instance
-        # *   **NetworkInterface**: an ENI
+        # *   **EcsInstance**: Elastic Compute Service (ECS) instance
+        # *   **NetworkInterface**: elastic network interface (ENI)
         self.associated_instance_type = associated_instance_type
-        # The ID of the instance with which the HAVIP is associated.
+        # The information about the instance associated with the HAVIP.
         self.associated_instances = associated_instances
         # The parameter is invalid. No value is returned.
         self.charge_type = charge_type
@@ -37357,11 +39684,11 @@ class DescribeHaVipsResponseBodyHaVipsHaVip(TeaModel):
         self.resource_group_id = resource_group_id
         # The status of the HAVIP. Valid values:
         # 
-        # *   **Creating**\
-        # *   **Available**\
+        # *   **Creating**: The server group is being created.
+        # *   **Available**: The FULLNAT entry is available.
         # *   **Deleting**\
         self.status = status
-        # The list of tags.
+        # The tag list.
         self.tags = tags
         # The ID of the vSwitch to which the HAVIP belongs.
         self.v_switch_id = v_switch_id
@@ -37502,13 +39829,13 @@ class DescribeHaVipsResponseBody(TeaModel):
     ):
         # The details about the HAVIP.
         self.ha_vips = ha_vips
-        # The number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -39191,6 +41518,7 @@ class DescribeIpv6AddressesRequest(TeaModel):
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        service_managed: bool = None,
         tag: List[DescribeIpv6AddressesRequestTag] = None,
         v_switch_id: str = None,
         vpc_id: str = None,
@@ -39199,7 +41527,8 @@ class DescribeIpv6AddressesRequest(TeaModel):
         self.associated_instance_id = associated_instance_id
         # The type of instance associated with the IPv6 address. Valid values:
         # 
-        # **EcsInstance**: Elastic Compute Service (ECS) instance in a virtual private cloud (VPC).
+        # *   **EcsInstance**: Elastic Compute Service (ECS) instance in a virtual private cloud (VPC)
+        # *   **NetworkInterface**: secondary elastic network interface (ENI)
         self.associated_instance_type = associated_instance_type
         # Specifies whether to return information about pending orders. Valid values:
         # 
@@ -39233,6 +41562,13 @@ class DescribeIpv6AddressesRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Indicates whether the instance is managed. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # If you do not specify this parameter, all instances are queried.
+        self.service_managed = service_managed
         # The tag list.
         self.tag = tag
         # The ID of the vSwitch to which the IPv6 address belongs.
@@ -39284,6 +41620,8 @@ class DescribeIpv6AddressesRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.service_managed is not None:
+            result['ServiceManaged'] = self.service_managed
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -39328,6 +41666,8 @@ class DescribeIpv6AddressesRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ServiceManaged') is not None:
+            self.service_managed = m.get('ServiceManaged')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -39374,18 +41714,18 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandw
         # The billing method of the Internet bandwidth of the IPv6 address. Valid values:
         # 
         # *   **PayByTraffic**\
-        # *   **PayByBandwidth**: pay-by-bandwidth
+        # *   **PayByBandwidth**\
         self.internet_charge_type = internet_charge_type
         # The Internet bandwidth ID of the IPv6 address.
         self.ipv_6internet_bandwidth_id = ipv_6internet_bandwidth_id
-        # The time when the renewal took effect. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format.
+        # The time when the renewal takes effect. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.reservation_active_time = reservation_active_time
         # The maximum bandwidth after the renewal takes effect. Unit: Mbit/s.
         self.reservation_bandwidth = reservation_bandwidth
         # The metering method that is used after the renewal takes effect.
         # 
         # *   **PayByTraffic**\
-        # *   **PayByBandwidth**: pay-by-bandwidth
+        # *   **PayByBandwidth**\
         self.reservation_internet_charge_type = reservation_internet_charge_type
         # The type of the renewal order. Only **RENEW** may be returned, which indicates that the order is placed for service renewal.
         self.reservation_order_type = reservation_order_type
@@ -39452,11 +41792,11 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressTagsTag(TeaModel)
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag key can be up to 128 characters in length. The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The value of tag N.
+        # The tag value.
         # 
         # The tag value can be up to 128 characters in length. It can be an empty string. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         # 
@@ -39538,6 +41878,7 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(TeaModel):
         network_type: str = None,
         real_bandwidth: int = None,
         resource_group_id: str = None,
+        service_managed: int = None,
         status: str = None,
         tags: DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressTags = None,
         v_switch_id: str = None,
@@ -39561,7 +41902,7 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(TeaModel):
         self.ipv_6gateway_id = ipv_6gateway_id
         # The Internet bandwidth of the IPv6 address.
         self.ipv_6internet_bandwidth = ipv_6internet_bandwidth
-        # The ISP of the IPv6 address.
+        # The ISP of the IPv6 address. Valid values:
         # 
         # *   **BGP** (default)
         # *   **ChinaMobile**\
@@ -39577,6 +41918,11 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(TeaModel):
         self.real_bandwidth = real_bandwidth
         # The ID of the resource group to which the IPv6 gateway belongs.
         self.resource_group_id = resource_group_id
+        # Indicates whether the instance is managed. Valid values:
+        # 
+        # *   **1**: yes
+        # *   **0**: no
+        self.service_managed = service_managed
         # The status of the IPv6 address.
         # 
         # *   **Pending**\
@@ -39627,6 +41973,8 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(TeaModel):
             result['RealBandwidth'] = self.real_bandwidth
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.service_managed is not None:
+            result['ServiceManaged'] = self.service_managed
         if self.status is not None:
             result['Status'] = self.status
         if self.tags is not None:
@@ -39666,6 +42014,8 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(TeaModel):
             self.real_bandwidth = m.get('RealBandwidth')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ServiceManaged') is not None:
+            self.service_managed = m.get('ServiceManaged')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('Tags') is not None:
@@ -40177,9 +42527,13 @@ class DescribeIpv6GatewayAttributeResponseBodyTagsTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of tag N. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 128 characters in length. It must start with a letter and can contain digits, periods (.), underscores (\_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value.
+        # The value of tag N. You can specify at most 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length. It must start with a letter and can contain digits, periods (.), underscores (\_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -40259,11 +42613,11 @@ class DescribeIpv6GatewayAttributeResponseBody(TeaModel):
         tags: DescribeIpv6GatewayAttributeResponseBodyTags = None,
         vpc_id: str = None,
     ):
-        # The service status of the IPv6 gateway. Valid values:
+        # The status of the IPv6 gateway. Valid values:
         # 
-        # *   **Normal**: The IPv6 gateway runs as expected.
-        # *   **FinacialLocked**: The IPv6 gateway is locked due to overdue payments.
-        # *   **SecurityLocked**: The IPv6 gateway is locked due to security reasons.
+        # *   **Normal**\
+        # *   **FinancialLocked**\
+        # *   **SecurityLocked**\
         self.business_status = business_status
         # The time when the IPv6 gateway was created.
         self.creation_time = creation_time
@@ -40292,7 +42646,7 @@ class DescribeIpv6GatewayAttributeResponseBody(TeaModel):
         # *   **Pending**\
         # *   **Available**\
         self.status = status
-        # The list of tags.
+        # The information about the tags.
         self.tags = tags
         # The ID of the virtual private cloud (VPC) to which the IPv6 gateway belongs.
         self.vpc_id = vpc_id
@@ -44850,9 +47204,9 @@ class DescribeRegionsResponseBodyRegionsRegion(TeaModel):
     ):
         # The name of the region.
         self.local_name = local_name
-        # The endpoint of the region.
+        # The endpoint of the region service.
         self.region_endpoint = region_endpoint
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -44926,7 +47280,7 @@ class DescribeRegionsResponseBody(TeaModel):
     ):
         # The list of regions.
         self.regions = regions
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -45030,16 +47384,20 @@ class DescribeRouteEntryListRequest(TeaModel):
         self.max_result = max_result
         # The ID of the next hop.
         self.next_hop_id = next_hop_id
-        # The type of the next hop. Valid values:
+        # The next hop type. Valid values:
         # 
-        # *   **Instance** (default): an Elastic Compute Service (ECS) instance
+        # *   **Instance**: an Elastic Compute Service (ECS) instance. This is the default value.
         # *   **HaVip**: a high-availability virtual IP address (HAVIP).
-        # *   **VpnGateway**: a VPN gateway
-        # *   **NatGateway**: a NAT gateway
-        # *   **NetworkInterface**: a secondary elastic network interface (ENI)
-        # *   **RouterInterface**: a router interface
-        # *   **IPv6Gateway**: an IPv6 gateway
-        # *   **Attachment**: a transit router
+        # *   **VpnGateway**: a VPN gateway.
+        # *   **NatGateway**: a NAT gateway.
+        # *   **NetworkInterface**: a secondary elastic network interface (ENI).
+        # *   **RouterInterface**: a router interface.
+        # *   **IPv6Gateway**: an IPv6 gateway.
+        # *   **Attachment**: a transit router.
+        # *   **Ipv4Gateway**: an IPv4 gateway.
+        # *   **GatewayEndpoint**: a gateway endpoint.
+        # *   **CenBasic**: CEN does not support transit routers.
+        # *   **Ecr**: Express Connect Router (ECR).
         self.next_hop_type = next_hop_type
         # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
@@ -45062,10 +47420,11 @@ class DescribeRouteEntryListRequest(TeaModel):
         self.route_entry_name = route_entry_name
         # The route type. Valid values:
         # 
-        # *   **Custom**\
-        # *   **System**\
-        # *   **BGP**\
-        # *   **CEN**\
+        # *   **Custom**: custom routes.
+        # *   **System**: system routes.
+        # *   **BGP**: BGP routes.
+        # *   **CEN**: Cloud Enterprise Network (CEN) routes.
+        # *   **ECR**: Express Connect Router (ECR) routes.
         self.route_entry_type = route_entry_type
         # The ID of the route table that you want to query.
         self.route_table_id = route_table_id
@@ -45165,7 +47524,7 @@ class DescribeRouteEntryListResponseBodyRouteEntrysRouteEntryNextHopsNextHopNext
         instance_type: str = None,
         region_id: str = None,
     ):
-        # The ID of the instance associated with the next hop.
+        # The ID of the instance that is associated with the next hop.
         self.instance_id = instance_id
         # The type of the instance associated with the next hop. Valid values:
         # 
@@ -45173,7 +47532,7 @@ class DescribeRouteEntryListResponseBodyRouteEntrysRouteEntryNextHopsNextHopNext
         # *   **VBR**: a VBR
         # *   **PCONN**: an Express Connect circuit
         self.instance_type = instance_type
-        # The region ID of the instance associated with the next hop.
+        # The region ID of the instance associated with the next hop. Valid values:
         self.region_id = region_id
 
     def validate(self):
@@ -45219,30 +47578,34 @@ class DescribeRouteEntryListResponseBodyRouteEntrysRouteEntryNextHopsNextHop(Tea
         # *   **0**: unavailable
         # *   **1**: available
         # 
-        # >  This parameter is returned if the next hop type is set to **RouterInterface**.
+        # >  This parameter is returned when the next hop type is set to **RouterInterface**.
         self.enabled = enabled
         # The ID of the next hop.
         self.next_hop_id = next_hop_id
-        # The region ID of the next hop.
+        # The ID of the region where the next hop is deployed.
         # 
-        # >  This parameter is returned if the next hop type is set to **RouterInterface**.
+        # >  This parameter is returned when the next hop type is set to **RouterInterface**.
         self.next_hop_region_id = next_hop_region_id
         # The information about the next hop.
         self.next_hop_related_info = next_hop_related_info
-        # The type of the next hop. Valid values:
+        # The next hop type. Valid values:
         # 
-        # *   **Instance**: an ECS instance
-        # *   **HaVip**: an HAVIP
-        # *   **VpnGateway**: a VPN gateway
-        # *   **NatGateway**: a NAT gateway
-        # *   **NetworkInterface**: a secondary ENI
-        # *   **RouterInterface**: a router interface
-        # *   **IPv6Gateway**: an IPv6 gateway
-        # *   **Attachment**: a transit router
+        # *   **Instance**: an ECS instance.
+        # *   **HaVip**: an HAVIP.
+        # *   **VpnGateway**: a VPN gateway.
+        # *   **NatGateway**: a NAT gateway.
+        # *   **NetworkInterface**: a secondary ENI.
+        # *   **RouterInterface**: a router interface.
+        # *   **IPv6Gateway**: an IPv6 gateway.
+        # *   **Attachment**: a transit router.
+        # *   **Ipv4Gateway**: an IPv4 gateway.
+        # *   **GatewayEndpoint**: a gateway endpoint.
+        # *   **CenBasic**: CEN does not support transit routers.
+        # *   **Ecr**: ECR.
         self.next_hop_type = next_hop_type
         # The weight of the route.
         # 
-        # >  This parameter is returned if the next hop type is set to **RouterInterface**.
+        # >  This parameter is returned when the next hop type is set to **RouterInterface**.
         self.weight = weight
 
     def validate(self):
@@ -45342,19 +47705,23 @@ class DescribeRouteEntryListResponseBodyRouteEntrysRouteEntry(TeaModel):
         self.description = description
         # The destination CIDR block of the route.
         self.destination_cidr_block = destination_cidr_block
-        # The time when the route was modified. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format in UTC.
+        # The time when the route was modified. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
         self.gmt_modified = gmt_modified
-        # The IP version. Valid values:
+        # The IP version. Valid values: Valid values:
         # 
-        # *   **IPv4**\
-        # *   **IPv6**\
+        # *   **ipv4**\
+        # *   **ipv6**\
         self.ip_version = ip_version
-        # The information about the next hop.
+        # The information about the next hops.
         self.next_hops = next_hops
+        # The route origin. Valid values:
+        # * **RoutePropagation**: The route is created by a dynamic propagation source.
+        # * **SystemCreate**: The route is created by the system.
+        # * **CustomCreate**: The route is created by a user.
         self.origin = origin
         # The ID of the route.
         self.route_entry_id = route_entry_id
-        # The route name.
+        # The name of the route.
         self.route_entry_name = route_entry_name
         # The ID of the route table.
         self.route_table_id = route_table_id
@@ -45362,7 +47729,7 @@ class DescribeRouteEntryListResponseBodyRouteEntrysRouteEntry(TeaModel):
         # 
         # If **TR** is returned, the route is hosted by a transit router.
         self.service_type = service_type
-        # The status of the route. Valid values:
+        # The route status. Valid values:
         # 
         # *   **Pending**\
         # *   **Available**\
@@ -45370,10 +47737,11 @@ class DescribeRouteEntryListResponseBodyRouteEntrysRouteEntry(TeaModel):
         self.status = status
         # The route type. Valid values:
         # 
-        # *   **Custom**\
-        # *   **System**\
-        # *   **BGP**\
-        # *   **CEN**\
+        # *   **Custom**: custom routes.
+        # *   **System**: system routes.
+        # *   **BGP**: BGP routes.
+        # *   **CEN**: CEN routes.
+        # *   **ECR**: ECR routes.
         self.type = type
 
     def validate(self):
@@ -45571,13 +47939,9 @@ class DescribeRouteTableListRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
-        # 
-        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The detailed information about the route tables.
         self.key = key
-        # The value of tag N to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
-        # 
-        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # The ID of the VPC to which the route table belongs.
         self.value = value
 
     def validate(self):
@@ -45625,38 +47989,38 @@ class DescribeRouteTableListRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Default value: **1**.
-        self.page_number = page_number
-        # The number of entries returned per page. Maximum value: **50**. Default value: **10**.
-        self.page_size = page_size
-        # The region ID of the VPC to which the route table belongs.
+        # The value of tag N to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        self.page_number = page_number
+        # The type of the route table.
+        # 
+        # *   **System**\
+        # *   **Custom**\
+        self.page_size = page_size
+        # The number of entries per page.
         self.region_id = region_id
-        # The ID of the resource group to which the route table to be queried belongs.
+        # The details of the route table.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the route table that you want to query.
+        # The tags.
         self.route_table_id = route_table_id
-        # The name of the route table that you want to query.
+        # The key of tag N to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.route_table_name = route_table_name
-        # The type of the route table. Valid values:
-        # - **System**\
-        # - **Custom**\
+        # The time when the route table was created.
         self.route_table_type = route_table_type
-        # The ID of the router to which the route table belongs.
+        # The region ID of the VPC to which the route table belongs.
+        # 
+        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.router_id = router_id
-        # The type of the router to which the route table belongs. Valid values:
-        # 
-        # *   **VRouter** (default)
-        # *   **VBR**\
+        # The ID of the resource group to which the route table to be queried belongs.
         self.router_type = router_type
-        # The tags of the resource.
+        # The page number.
         self.tag = tag
-        # The ID of the virtual private cloud (VPC) to which the route table belongs.
-        # 
-        # After this parameter is specified, the value of the **RouterType** parameter is automatically set to **VRouter**.
+        # The tags of the resource.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -45776,9 +48140,13 @@ class DescribeRouteTableListResponseBodyRouterTableListRouterTableListTypeTagsTa
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N added to the resource.
+        # The key of tag N to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
         self.key = key
-        # The value of tag N added to the resource.
+        # The value of tag N to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
         self.value = value
 
     def validate(self):
@@ -45887,49 +48255,44 @@ class DescribeRouteTableListResponseBodyRouterTableListRouterTableListType(TeaMo
         v_switch_ids: DescribeRouteTableListResponseBodyRouterTableListRouterTableListTypeVSwitchIds = None,
         vpc_id: str = None,
     ):
-        # The type of the cloud resource with which the route table is associated. Valid values:
-        # 
-        # *   **VSwitch**: a vSwitch
-        # *   **Gateway**: an IPv4 gateway
+        # The tags.
         self.associate_type = associate_type
-        # The time when the route table was created.
-        self.creation_time = creation_time
-        # The description of the route table.
-        self.description = description
-        # The detailed information about the IPv4 gateway.
-        self.gateway_ids = gateway_ids
-        # The ID of the Alibaba Cloud account to which the route table belongs.
-        self.owner_id = owner_id
-        # The ID of the resource group to which the route table belongs.
-        self.resource_group_id = resource_group_id
-        self.route_propagation_enable = route_propagation_enable
-        # The ID of the route table.
-        self.route_table_id = route_table_id
-        # The name of the route table.
-        self.route_table_name = route_table_name
-        # The type of the route table. Valid values:
-        # 
-        # *   **Custom**\
-        # *   **System**\
-        self.route_table_type = route_table_type
-        # The ID of the router to which the route table belongs.
-        self.router_id = router_id
         # The type of the router to which the route table belongs. Valid values:
         # 
         # *   **VRouter**\
         # *   **VBR**\
-        self.router_type = router_type
-        # The status of the route table. Valid values:
-        # 
-        # *   **Pending**\
-        # *   **Available**\
-        # *   **Deleting**\
-        self.status = status
-        # The tag added to the route table.
-        self.tags = tags
+        self.creation_time = creation_time
         # The information about the vSwitches.
+        self.description = description
+        # The detailed information about the IPv4 gateway.
+        self.gateway_ids = gateway_ids
+        # The value of tag N added to the resource.
+        self.owner_id = owner_id
+        # The detailed information about the IPv4 gateway.
+        self.resource_group_id = resource_group_id
+        # Whether to receive the propagation routes. Valid Values:
+        # 
+        # *   **True**: The propagation route is received.
+        # 
+        # *   **False**: The propagation route is not received.
+        self.route_propagation_enable = route_propagation_enable
+        # The key of tag N added to the resource.
+        self.route_table_id = route_table_id
+        # The name of the route table.
+        self.route_table_name = route_table_name
+        # The ID of the vSwitch.
+        self.route_table_type = route_table_type
+        # The tag added to the route table.
+        self.router_id = router_id
+        # The detailed information about the IPv4 gateway.
+        self.router_type = router_type
+        # The name of the route table.
+        self.status = status
+        # The tags.
+        self.tags = tags
+        # The vSwitch IDs.
         self.v_switch_ids = v_switch_ids
-        # The ID of the VPC to which the route table belongs.
+        # The ID of the resource group to which the route table belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -46064,15 +48427,18 @@ class DescribeRouteTableListResponseBody(TeaModel):
         router_table_list: DescribeRouteTableListResponseBodyRouterTableList = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The ID of the route table.
         self.page_number = page_number
-        # The number of entries per page.
+        # The type of the cloud resource with which the route table is associated. Valid values:
+        # 
+        # *   **VSwitch**: vSwitch
+        # *   **Gateway**: IPv4 gateway
         self.page_size = page_size
-        # The request ID.
+        # The ID of the vRouter to which the route table belongs.
         self.request_id = request_id
-        # The detailed information about the route tables.
+        # The description of the route table.
         self.router_table_list = router_table_list
-        # The total number of entries returned.
+        # The ID of the Alibaba Cloud account to which the route table belongs.
         self.total_count = total_count
 
     def validate(self):
@@ -52043,22 +54409,24 @@ class DescribeVbrHaRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
-        self.client_token = client_token
-        # Specifies whether to precheck the request. Valid values:
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # *   **true**: prechecks the request without performing the operation. The system checks the request format, instance status, and whether the required parameters are specified. An error message is returned if the request fails the precheck. If the request passes the precheck, `DRYRUN.SUCCESS` is returned.
-        # *   **false**: prechecks the request. After the request passes the precheck, the operation is performed.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid Values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, `DRYRUN.SUCCESS` is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the VBR is deployed.
+        # The ID of the region in which the VBR is deployed.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the VBR failover group.
         self.vbr_ha_id = vbr_ha_id
-        # The ID of the VBR.
+        # The VBR ID.
         self.vbr_id = vbr_id
 
     def validate(self):
@@ -52130,24 +54498,24 @@ class DescribeVbrHaResponseBody(TeaModel):
         self.creation_time = creation_time
         # The description of the VBR failover group.
         # 
-        # The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://`or `https://`.
+        # The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
         self.description = description
         # The name of the VBR failover group.
         self.name = name
         # The ID of the other VBR in the VBR failover group.
         self.peer_vbr_id = peer_vbr_id
-        # The ID of the region where the VBR is deployed.
+        # The ID of the region in which the VBR is deployed.
         self.region_id = region_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The state of the VBR failover group.
+        # The status of the VBR failover group.
         # 
-        # *   **Creating**: The VBR failover group is being created.
-        # *   **Active**: The VBR failover group is running as expected.
+        # *   **Creating**\
+        # *   **Active**\
         self.status = status
         # The ID of the VBR failover group.
         self.vbr_ha_id = vbr_ha_id
-        # The ID of the VBR.
+        # The VBR ID.
         self.vbr_id = vbr_id
 
     def validate(self):
@@ -53554,7 +55922,7 @@ class DescribeVirtualBorderRoutersForPhysicalConnectionRequestFilter(TeaModel):
         key: str = None,
         value: List[str] = None,
     ):
-        # The filter conditions. You can specify up to five filter conditions. The following filter conditions are supported:
+        # The filter conditions. You can specify at most five filter conditions. The following filter conditions are supported:
         # 
         # *   **PhysicalConnectionId**: filter VBRs by the Express Connect circuit ID.
         # *   **VbrId**: filter VBRs by ID.
@@ -53564,7 +55932,7 @@ class DescribeVirtualBorderRoutersForPhysicalConnectionRequestFilter(TeaModel):
         # *   **eccId**: filter VBRs by ID of Express Cloud Connect (ECC) instance.
         # *   **type**: filter VBRs by type.
         self.key = key
-        # The filter values for keys. You can specify multiple filter values for a key. The logical operator between filter values is OR. If one filter value is matched, the filter condition is matched.
+        # The filter value for the key. You can specify multiple filter values for one key. The logical operator among filter values is OR. If one filter value is matched, the filter condition is matched.
         self.value = value
 
     def validate(self):
@@ -53603,7 +55971,7 @@ class DescribeVirtualBorderRoutersForPhysicalConnectionRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # 25425
+        # The filter keys.
         self.filter = filter
         self.owner_id = owner_id
         # The page number. Default value: **1**.
@@ -53709,7 +56077,7 @@ class DescribeVirtualBorderRoutersForPhysicalConnectionResponseBodyVirtualBorder
         # *   **Active**\
         # *   **Inactive**\
         self.bandwidth_status = bandwidth_status
-        # The circuit code of the Express Connect circuit. The circuit code is provided by the Internet service provider (ISP).
+        # The circuit code of the Express Connect circuit. The circuit code is provided by the connectivity provider.
         self.circuit_code = circuit_code
         # The time when the VBR was created.
         self.creation_time = creation_time
@@ -53724,54 +56092,54 @@ class DescribeVirtualBorderRoutersForPhysicalConnectionResponseBodyVirtualBorder
         self.local_gateway_ip = local_gateway_ip
         # The IPv6 address of the gateway device on the Alibaba Cloud side.
         self.local_ipv_6gateway_ip = local_ipv_6gateway_ip
-        # The status of the VBR that is associated with the Express Connect circuit. Valid values:
+        # The status of the VBR associated with the Express Connect circuit. Valid values:
         # 
-        # *   **Normal**: The VBR is running as expected.
-        # *   **FinancialLocked**: The VBR is locked due to overdue payments.
+        # *   **Normal**\
+        # *   **FinancialLocked**\
         self.pconn_vbr_bussiness_status = pconn_vbr_bussiness_status
-        # The billing method of the VBR that is associated with the Express Connect circuit. Valid values:
+        # The billing method of the VBR. Valid values:
         # 
-        # *   **PrePaid**: subscription. If you choose this billing method, make sure that your Alibaba Cloud account supports balance payments or credit payments.
+        # *   **PrePaid**: subscription. If you choose this billing method, make sure that your Apsara Stack account supports balance payments or credit payments.
         # *   **PostPaid**: pay-as-you-go.
         self.pconn_vbr_charge_type = pconn_vbr_charge_type
-        # The time when the VBR that is associated with the Express Connect circuit expires.
+        # The time when the VBR associated with the Express Connect circuit expires.
         self.pconn_vbr_expire_time = pconn_vbr_expire_time
         # The IPv4 address of the gateway device on the user side.
         self.peer_gateway_ip = peer_gateway_ip
         # The IPv6 address of the gateway device on the user side.
         # 
-        # This parameter is required if you create a VBR for the owner of the Express Connect circuit. You can leave this parameter empty if you create a VBR for other Alibaba Cloud accounts.
+        # This parameter is required when you create a VBR for the owner of the Express Connect circuit. You can ignore this parameter when you create a VBR for another Alibaba Cloud account.
         self.peer_ipv_6gateway_ip = peer_ipv_6gateway_ip
         # The subnet mask for the IPv6 addresses of the gateway devices on the Alibaba Cloud side and on the user side.
         # 
         # The two IPv6 addresses must fall within the same subnet.
         self.peering_ipv_6subnet_mask = peering_ipv_6subnet_mask
-        # The subnet mask for the IPv4 addresses of the gateway devices on the Alibaba Cloud side and on the user side.
+        # The subnet mask of the IPv4 addresses configured on the user side and Alibaba Cloud side.
         # 
         # The two IPv4 addresses must fall within the same subnet.
         self.peering_subnet_mask = peering_subnet_mask
-        # The time when the status of the VBR last changed from Terminated to Active.
+        # The last time when the status of the VBR changed from Terminated to Active.
         self.recovery_time = recovery_time
         # The status of the VBR. Valid values:
         # 
-        # *   **Unconfirmed**: The VBR is pending confirmation from other users.
-        # *   **Active**: The VBR is normal.
-        # *   **Terminating**: The VBR is being disabled.
-        # *   **Terminated**: The VBR is disabled.
-        # *   **Recovering**: The VBR is being recovered.
-        # *   **Deleting**: The VBR is being deleted.
+        # *   **unconfirmed**\
+        # *   **active**\
+        # *   **terminating**\
+        # *   **terminated**\
+        # *   **recovering**\
+        # *   **deleting**\
         self.status = status
-        # The time when the VBR was last disabled.
+        # The last time when the VBR was disabled.
         self.termination_time = termination_time
-        # The type of the VBR.
+        # The VBR type.
         self.type = type
         # The VBR ID.
         self.vbr_id = vbr_id
         # The ID of the Alibaba Cloud account to which the VBR belongs.
         # 
-        # If the owner of the VBR is the same as that of the Express Connect circuit, this parameter is left empty.
+        # If the owner of the VBR is the same as that of the Express Connect circuit, this parameter is empty.
         self.vbr_owner_uid = vbr_owner_uid
-        # The virtual local area network (VLAN) ID of the VBR.
+        # The VLAN ID of the VBR.
         self.vlan_id = vlan_id
 
     def validate(self):
@@ -54106,11 +56474,11 @@ class DescribeVpcAttributeResponseBodyAssociatedCensAssociatedCen(TeaModel):
     ):
         # The ID of the CEN instance to which the VPC is attached.
         self.cen_id = cen_id
-        # The ID of the Alibaba Cloud account to which the CEN instance belongs.
+        # The ID of the account to which the CEN instance belongs.
         self.cen_owner_id = cen_owner_id
-        # The status of the CEN instance to which the VPC is attached.
+        # The status of the CEN instance.
         # 
-        # **Attached** is returned only if the VPC is attached to a CEN instance.
+        # **Attached** is returned only when the VPC is attached to a CEN instance.
         self.cen_status = cen_status
 
     def validate(self):
@@ -54185,10 +56553,24 @@ class DescribeVpcAttributeResponseBodyAssociatedPropagationSourcesAssociatedProp
         source_type: str = None,
         status: str = None,
     ):
+        # Indicates whether routes are advertised to the VPC.
         self.route_propagated = route_propagated
+        # The instance ID of the source.
         self.source_instance_id = source_instance_id
+        # The account ID of the source.
         self.source_owner_id = source_owner_id
+        # The source type.
+        # 
+        # *   **CEN**\
+        # *   **VPN**\
+        # *   **TR**\
+        # *   **ECR**\
         self.source_type = source_type
+        # The binding status.
+        # 
+        # *   **Attaching**\
+        # *   **Attached**\
+        # *   **Detaching**\
         self.status = status
 
     def validate(self):
@@ -54268,9 +56650,9 @@ class DescribeVpcAttributeResponseBodyCloudResourcesCloudResourceSetType(TeaMode
         resource_count: int = None,
         resource_type: str = None,
     ):
-        # The number of resources deployed in the VPC.
+        # The number of resources in the VPC.
         self.resource_count = resource_count
-        # The type of resources deployed in the VPC. Valid values:
+        # The type of resource deployed in the VPC. Valid values: Valid values:
         # 
         # *   **VSwitch**\
         # *   **VRouter**\
@@ -54344,14 +56726,14 @@ class DescribeVpcAttributeResponseBodyIpv6CidrBlocksIpv6CidrBlock(TeaModel):
     ):
         # The IPv6 CIDR block of the VPC.
         self.ipv_6cidr_block = ipv_6cidr_block
-        # The type of the IPv6 CIDR block. Valid values:
+        # The IPv6 CIDR block type of the VPC. Valid values:
         # 
         # *   **BGP** (default)
         # *   **ChinaMobile**\
         # *   **ChinaUnicom**\
         # *   **ChinaTelecom**\
         # 
-        # >  If your Alibaba Cloud account is allowed to activate single-ISP bandwidth, you can set this parameter to **ChinaTelecom**, **ChinaUnicom**, or **ChinaMobile**.
+        # >  If you are allowed to use single-ISP bandwidth, valid values are **ChinaTelecom**, **ChinaUnicom**, and **ChinaMobile**\
         self.ipv_6isp = ipv_6isp
 
     def validate(self):
@@ -54446,9 +56828,9 @@ class DescribeVpcAttributeResponseBodyTagsTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N added to the resource.
+        # The key of tag N.
         self.key = key
-        # The value of tag N added to the resource.
+        # The value of tag N.
         self.value = value
 
     def validate(self):
@@ -54576,6 +56958,7 @@ class DescribeVpcAttributeResponseBody(TeaModel):
         description: str = None,
         dhcp_options_set_id: str = None,
         dhcp_options_set_status: str = None,
+        enabled_ipv_6: bool = None,
         ipv_4gateway_id: str = None,
         ipv_6cidr_block: str = None,
         ipv_6cidr_blocks: DescribeVpcAttributeResponseBodyIpv6CidrBlocks = None,
@@ -54598,6 +56981,7 @@ class DescribeVpcAttributeResponseBody(TeaModel):
         # 
         # If the VPC is not attached to a CEN instance, the parameter is not returned.
         self.associated_cens = associated_cens
+        # The route source associated with the VPC.
         self.associated_propagation_sources = associated_propagation_sources
         # The IPv4 CIDR block of the VPC.
         self.cidr_block = cidr_block
@@ -54621,6 +57005,8 @@ class DescribeVpcAttributeResponseBody(TeaModel):
         # *   **Deleted**\
         # *   **Pending**\
         self.dhcp_options_set_status = dhcp_options_set_status
+        # 是否开启IPv6。
+        self.enabled_ipv_6 = enabled_ipv_6
         # The ID of the IPv4 gateway.
         self.ipv_4gateway_id = ipv_4gateway_id
         # The IPv6 CIDR block of the VPC.
@@ -54707,6 +57093,8 @@ class DescribeVpcAttributeResponseBody(TeaModel):
             result['DhcpOptionsSetId'] = self.dhcp_options_set_id
         if self.dhcp_options_set_status is not None:
             result['DhcpOptionsSetStatus'] = self.dhcp_options_set_status
+        if self.enabled_ipv_6 is not None:
+            result['EnabledIpv6'] = self.enabled_ipv_6
         if self.ipv_4gateway_id is not None:
             result['Ipv4GatewayId'] = self.ipv_4gateway_id
         if self.ipv_6cidr_block is not None:
@@ -54766,6 +57154,8 @@ class DescribeVpcAttributeResponseBody(TeaModel):
             self.dhcp_options_set_id = m.get('DhcpOptionsSetId')
         if m.get('DhcpOptionsSetStatus') is not None:
             self.dhcp_options_set_status = m.get('DhcpOptionsSetStatus')
+        if m.get('EnabledIpv6') is not None:
+            self.enabled_ipv_6 = m.get('EnabledIpv6')
         if m.get('Ipv4GatewayId') is not None:
             self.ipv_4gateway_id = m.get('Ipv4GatewayId')
         if m.get('Ipv6CidrBlock') is not None:
@@ -55319,6 +57709,7 @@ class DescribeVpcsResponseBodyVpcsVpc(TeaModel):
         description: str = None,
         dhcp_options_set_id: str = None,
         dhcp_options_set_status: str = None,
+        enabled_ipv_6: bool = None,
         ipv_6cidr_block: str = None,
         ipv_6cidr_blocks: DescribeVpcsResponseBodyVpcsVpcIpv6CidrBlocks = None,
         is_default: bool = None,
@@ -55353,6 +57744,7 @@ class DescribeVpcsResponseBodyVpcsVpc(TeaModel):
         # *   **Deleted**\
         # *   **Pending**\
         self.dhcp_options_set_status = dhcp_options_set_status
+        self.enabled_ipv_6 = enabled_ipv_6
         # The IPv6 CIDR block of the VPC.
         self.ipv_6cidr_block = ipv_6cidr_block
         # The IPv6 CIDR block of the VPC.
@@ -55428,6 +57820,8 @@ class DescribeVpcsResponseBodyVpcsVpc(TeaModel):
             result['DhcpOptionsSetId'] = self.dhcp_options_set_id
         if self.dhcp_options_set_status is not None:
             result['DhcpOptionsSetStatus'] = self.dhcp_options_set_status
+        if self.enabled_ipv_6 is not None:
+            result['EnabledIpv6'] = self.enabled_ipv_6
         if self.ipv_6cidr_block is not None:
             result['Ipv6CidrBlock'] = self.ipv_6cidr_block
         if self.ipv_6cidr_blocks is not None:
@@ -55476,6 +57870,8 @@ class DescribeVpcsResponseBodyVpcsVpc(TeaModel):
             self.dhcp_options_set_id = m.get('DhcpOptionsSetId')
         if m.get('DhcpOptionsSetStatus') is not None:
             self.dhcp_options_set_status = m.get('DhcpOptionsSetStatus')
+        if m.get('EnabledIpv6') is not None:
+            self.enabled_ipv_6 = m.get('EnabledIpv6')
         if m.get('Ipv6CidrBlock') is not None:
             self.ipv_6cidr_block = m.get('Ipv6CidrBlock')
         if m.get('Ipv6CidrBlocks') is not None:
@@ -61292,7 +63688,7 @@ class DescribeZonesRequest(TeaModel):
         resource_owner_id: int = None,
         zone_type: str = None,
     ):
-        # The language used in the **LocalName** parameter to display the zone names. Valid values:
+        # The language used in the **LocalName** parameter. Valid values:
         # 
         # *   **zh-cn**: Chinese
         # *   **en-us**: English
@@ -61300,11 +63696,11 @@ class DescribeZonesRequest(TeaModel):
         self.accept_language = accept_language
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where zones are queried. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region ID of the zone. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the zones to be queried. Default value: **AvailabilityZone**. This value indicates Alibaba Cloud zones.
+        # The zone type. Default value: **AvailabilityZone**.
         self.zone_type = zone_type
 
     def validate(self):
@@ -61358,11 +63754,11 @@ class DescribeZonesResponseBodyZonesZone(TeaModel):
         zone_id: str = None,
         zone_type: str = None,
     ):
-        # The name of the zone.
+        # The zone name.
         self.local_name = local_name
-        # The ID of the zone.
+        # The zone ID.
         self.zone_id = zone_id
-        # The type of the zones to be queried. Default value: **AvailabilityZone**. This value indicates Alibaba Cloud zones.
+        # The zone type. Default value: **AvailabilityZone**.
         self.zone_type = zone_type
 
     def validate(self):
@@ -61434,9 +63830,9 @@ class DescribeZonesResponseBody(TeaModel):
         request_id: str = None,
         zones: DescribeZonesResponseBodyZones = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The zones that are returned.
+        # The zone list.
         self.zones = zones
 
     def validate(self):
@@ -66098,12 +68494,12 @@ class GetVpcPrefixListAssociationsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries per page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The token that determines the start point of the next query. Valid values:
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If this is your first query and no next queries are to be sent, ignore this parameter.
-        # *   If a next query is to be performed, set the value to the NextToken value returned in the last call to the ListListenerCertificates operation.
+        # *   You do not need to specify this parameter for the first request.
+        # *   If a value is returned for NextToken, specify the value in the next request to retrieve a new page of results.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -66178,7 +68574,7 @@ class GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation(TeaModel):
     ):
         # The ID of the Alibaba Cloud account to which the prefix list belongs.
         self.owner_id = owner_id
-        # The ID of the prefix list.
+        # The prefix list ID.
         self.prefix_list_id = prefix_list_id
         # The reason why the association failed.
         self.reason = reason
@@ -66188,7 +68584,7 @@ class GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation(TeaModel):
         self.resource_id = resource_id
         # The type of the associated resource. Valid values:
         # 
-        # *   **vpcRouteTable** :VPC route table.
+        # *   **vpcRouteTable**: virtual private cloud (VPC) route table.
         # *   **trRouteTable**: route table of a transit router.
         self.resource_type = resource_type
         # The ID of the Alibaba Cloud account to which the resource associated with the prefix list belongs.
@@ -66260,18 +68656,18 @@ class GetVpcPrefixListAssociationsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The number of entries returned.
+        # The number of entries.
         self.count = count
-        # The token that determines the start point of the next query. Valid values:
+        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If no value is returned for **NextToken**, no next queries are sent.
-        # *   If **NextToken** is not empty, the value indicates the token that is used for the next query.
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value is returned for **NextToken**, the value is used to retrieve a new page of results.
         self.next_token = next_token
         # The information about the network instances that are associated with the prefix list.
         self.prefix_list_association = prefix_list_association
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -67727,7 +70123,13 @@ class ListDhcpOptionsSetsRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 64 characters in length and can contain digits, periods (.), underscores (\_), and hyphens (-). The tag key must start with a letter but cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length and can contain digits, periods (.), underscores (\_), and hyphens (-). The tag value must start with a letter but cannot start with `aliyun` or `acs:`. The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -67770,21 +70172,38 @@ class ListDhcpOptionsSetsRequest(TeaModel):
         resource_owner_id: int = None,
         tags: List[ListDhcpOptionsSetsRequestTags] = None,
     ):
+        # The ID of the DHCP options set. You can specify at most 20 IDs.
         self.dhcp_options_set_id = dhcp_options_set_id
         # The name of the DHCP options set.
         # 
-        # The name must be 2 to 128 characters in length and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+        # The name must be 1 to 128 characters in length and can contain digits, underscores (\_), and hyphens (-). It must start with a letter.
+        # 
+        # Valid values:
+        # 
+        # *   tf-testAccVpcDhcpOptionsSets-1585169790614573448
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     tf-testAccVpcDhcpOptionsSets-1585169790614573448
+        # 
+        #     <!-- -->
+        # 
+        #     .
         self.dhcp_options_set_name = dhcp_options_set_name
         # The root domain. For example, you can set the value to example.com.
         # 
-        # After a DHCP options set is associated with a virtual private cloud (VPC), the root domain in the DHCP options set is automatically synchronized with the Elastic Compute Service (ECS) instances in the VPC.
+        # After a DHCP options set is associated with a virtual private cloud (VPC), the root domain in the DHCP options set is automatically synchronized with the ECS instances in the VPC.
         self.domain_name = domain_name
-        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **10**.
+        # The number of entries per page. Valid values: **1** to **100**. Default value: **10**.
         self.max_results = max_results
-        # The token that is used for the next query. Valid values:
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If this is your first query or no next queries are to be sent, ignore this parameter.
-        # *   If a subsequent query is to be sent, set the value to the value of **NextToken** that is returned from the last call.
+        # *   You do not need to specify this parameter for the first request.
+        # *   You must specify the token that is obtained from the previous query as the value of the **NextToken** parameter.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -67792,9 +70211,11 @@ class ListDhcpOptionsSetsRequest(TeaModel):
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource group to which the DHCP options set belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tag list.
         self.tags = tags
 
     def validate(self):
@@ -67879,7 +70300,7 @@ class ListDhcpOptionsSetsResponseBodyDhcpOptionsSetsDhcpOptions(TeaModel):
     ):
         # The suffix of the hostname.
         self.domain_name = domain_name
-        # The DNS server IP address.
+        # The IP address of the DNS server.
         self.domain_name_servers = domain_name_servers
         # The lease time of the IPv6 addresses for the DHCP options set.
         # 
@@ -67930,7 +70351,9 @@ class ListDhcpOptionsSetsResponseBodyDhcpOptionsSetsTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N added to the resource.
         self.key = key
+        # The value of tag N added to the resource.
         self.value = value
 
     def validate(self):
@@ -67982,14 +70405,16 @@ class ListDhcpOptionsSetsResponseBodyDhcpOptionsSets(TeaModel):
         self.dhcp_options_set_name = dhcp_options_set_name
         # The ID of the Alibaba Cloud account to which the DHCP options set belongs.
         self.owner_id = owner_id
+        # The ID of the resource group to which the DHCP options set belongs.
         self.resource_group_id = resource_group_id
         # The status of the DHCP options set. Valid values:
         # 
-        # *   **Available**: available
-        # *   **InUse**: in use
-        # *   **Pending**: being configured
-        # *   **Deleted**: deleted
+        # *   **Available**\
+        # *   **InUse**\
+        # *   **Pending**\
+        # *   **Deleted**\
         self.status = status
+        # The tag list.
         self.tags = tags
 
     def validate(self):
@@ -68065,13 +70490,14 @@ class ListDhcpOptionsSetsResponseBody(TeaModel):
     ):
         # The list of the DHCP options sets.
         self.dhcp_options_sets = dhcp_options_sets
-        # The token that is used for the next query. Valid values:
+        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If **NextToken** is empty, it indicates that no next query is to be sent.
-        # *   If a value is returned for **NextToken**, the value is the token that is used for the next query.
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value is returned for **NextToken**, the value is used to retrieve a new page of results.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
+        # The number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -68161,7 +70587,11 @@ class ListEnhanhcedNatGatewayAvailableZonesRequestFilter(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The filter key. Only **PrivateLinkEnabled** is supported.
         self.key = key
+        # The value of the filter key.
+        # 
+        # >  If the filter key is set to **PrivateLinkEnabled**, you must specify a filter value. Valid values: **true** and **false**.
         self.value = value
 
     def validate(self):
@@ -68204,6 +70634,7 @@ class ListEnhanhcedNatGatewayAvailableZonesRequest(TeaModel):
         # *   **zh-CN** (default): Chinese
         # *   **en-US**: English
         self.accept_language = accept_language
+        # The filter information. You can specify a filter key and a filter value.
         self.filter = filter
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -71121,6 +73552,7 @@ class ListPrefixListsResponseBodyPrefixLists(TeaModel):
         # 
         # >  This parameter is the same as the **Status** parameter.
         self.prefix_list_status = prefix_list_status
+        # The type of the prefix list.
         self.prefix_list_type = prefix_list_type
         # The region ID of the prefix list.
         self.region_id = region_id
@@ -73472,7 +75904,7 @@ class ListTrafficMirrorSessionsRequest(TeaModel):
     ):
         # Specifies whether to enable the traffic mirror session. Valid values:
         # 
-        # *   **false** (default): does not enable the traffic mirror session.
+        # *   **false**: does not enable the traffic mirror session.
         # *   **true**: enables the traffic mirror session.
         self.enabled = enabled
         # The maximum number of entries to return. Valid values: **1** to **100**. Default value: **10**.
@@ -73494,9 +75926,11 @@ class ListTrafficMirrorSessionsRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tags of the resource.
         self.tags = tags
         # The ID of the traffic mirror filter.
         self.traffic_mirror_filter_id = traffic_mirror_filter_id
+        # The IDs of the traffic mirror session. The maximum value of N is 100, which indicates that you can query up to 100 traffic mirror sessions at a time.
         self.traffic_mirror_session_ids = traffic_mirror_session_ids
         # The name of the traffic mirror session.
         # 
@@ -73660,25 +76094,25 @@ class ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions(TeaModel):
         self.creation_time = creation_time
         # Indicates whether the traffic mirror session was enabled.
         # 
-        # *   **false**: the traffic mirror session was disabled. This is the default value.
-        # *   **true**: the traffic mirror session was enabled.
+        # *   **false**\
+        # *   **true**\
         self.enabled = enabled
-        # The maximum transmission unit (MTU).
+        # The maximum transmission unit.
         self.packet_length = packet_length
         # The priority of the traffic mirror session.
         # 
         # A smaller value indicates a higher priority.
         self.priority = priority
-        # The ID of the resource group to which the mirrored traffic belongs.
+        # The ID of the resource group to which the traffic mirror session belongs.
         self.resource_group_id = resource_group_id
-        # The list of tags.
+        # The tag list.
         self.tags = tags
-        # The ID of the traffic mirror filter.
+        # The ID of the filter.
         self.traffic_mirror_filter_id = traffic_mirror_filter_id
         # The status of the traffic mirror session.
         # 
-        # *   **Normal**: active
-        # *   **FinancialLocked**: locked due to overdue payments
+        # *   **Normal**\
+        # *   **FinancialLocked**\
         self.traffic_mirror_session_business_status = traffic_mirror_session_business_status
         # The description of the traffic mirror session.
         self.traffic_mirror_session_description = traffic_mirror_session_description
@@ -73693,14 +76127,14 @@ class ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions(TeaModel):
         # *   **Modifying**\
         # *   **Deleting**\
         self.traffic_mirror_session_status = traffic_mirror_session_status
-        # The ID of the mirror source.
+        # The ID of the traffic mirror source.
         self.traffic_mirror_source_ids = traffic_mirror_source_ids
-        # The ID of the mirror destination.
+        # The ID of the traffic mirror destination.
         self.traffic_mirror_target_id = traffic_mirror_target_id
         # The type of the traffic mirror destination. Valid values:
         # 
-        # *   **NetworkInterface**: an ENI
-        # *   **SLB**: an internal-facing SLB instance
+        # *   **NetworkInterface**: an elastic network interface (ENI)
+        # *   **SLB**: an internal-facing Server Load Balancer (SLB) instance
         self.traffic_mirror_target_type = traffic_mirror_target_type
         # You can specify VNIs to distinguish different mirrored traffic.
         self.virtual_network_id = virtual_network_id
@@ -77322,6 +79756,596 @@ class ModifyExpressCloudConnectionBandwidthResponse(TeaModel):
         return self
 
 
+class ModifyExpressConnectTrafficQosRequestAddInstanceList(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        instance_type: str = None,
+    ):
+        self.instance_id = instance_id
+        self.instance_type = instance_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        return self
+
+
+class ModifyExpressConnectTrafficQosRequestRemoveInstanceList(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        instance_type: str = None,
+    ):
+        self.instance_id = instance_id
+        self.instance_type = instance_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        return self
+
+
+class ModifyExpressConnectTrafficQosRequest(TeaModel):
+    def __init__(
+        self,
+        add_instance_list: List[ModifyExpressConnectTrafficQosRequestAddInstanceList] = None,
+        client_token: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        qos_description: str = None,
+        qos_id: str = None,
+        qos_name: str = None,
+        region_id: str = None,
+        remove_instance_list: List[ModifyExpressConnectTrafficQosRequestRemoveInstanceList] = None,
+        resource_owner_account: str = None,
+    ):
+        self.add_instance_list = add_instance_list
+        self.client_token = client_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.qos_description = qos_description
+        self.qos_id = qos_id
+        self.qos_name = qos_name
+        self.region_id = region_id
+        self.remove_instance_list = remove_instance_list
+        self.resource_owner_account = resource_owner_account
+
+    def validate(self):
+        if self.add_instance_list:
+            for k in self.add_instance_list:
+                if k:
+                    k.validate()
+        if self.remove_instance_list:
+            for k in self.remove_instance_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AddInstanceList'] = []
+        if self.add_instance_list is not None:
+            for k in self.add_instance_list:
+                result['AddInstanceList'].append(k.to_map() if k else None)
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.qos_description is not None:
+            result['QosDescription'] = self.qos_description
+        if self.qos_id is not None:
+            result['QosId'] = self.qos_id
+        if self.qos_name is not None:
+            result['QosName'] = self.qos_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        result['RemoveInstanceList'] = []
+        if self.remove_instance_list is not None:
+            for k in self.remove_instance_list:
+                result['RemoveInstanceList'].append(k.to_map() if k else None)
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.add_instance_list = []
+        if m.get('AddInstanceList') is not None:
+            for k in m.get('AddInstanceList'):
+                temp_model = ModifyExpressConnectTrafficQosRequestAddInstanceList()
+                self.add_instance_list.append(temp_model.from_map(k))
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('QosDescription') is not None:
+            self.qos_description = m.get('QosDescription')
+        if m.get('QosId') is not None:
+            self.qos_id = m.get('QosId')
+        if m.get('QosName') is not None:
+            self.qos_name = m.get('QosName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        self.remove_instance_list = []
+        if m.get('RemoveInstanceList') is not None:
+            for k in m.get('RemoveInstanceList'):
+                temp_model = ModifyExpressConnectTrafficQosRequestRemoveInstanceList()
+                self.remove_instance_list.append(temp_model.from_map(k))
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        return self
+
+
+class ModifyExpressConnectTrafficQosResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyExpressConnectTrafficQosResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyExpressConnectTrafficQosResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyExpressConnectTrafficQosResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyExpressConnectTrafficQosQueueRequest(TeaModel):
+    def __init__(
+        self,
+        bandwidth_percent: str = None,
+        client_token: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        qos_id: str = None,
+        queue_description: str = None,
+        queue_id: str = None,
+        queue_name: str = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+    ):
+        self.bandwidth_percent = bandwidth_percent
+        self.client_token = client_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.qos_id = qos_id
+        self.queue_description = queue_description
+        self.queue_id = queue_id
+        self.queue_name = queue_name
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bandwidth_percent is not None:
+            result['BandwidthPercent'] = self.bandwidth_percent
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.qos_id is not None:
+            result['QosId'] = self.qos_id
+        if self.queue_description is not None:
+            result['QueueDescription'] = self.queue_description
+        if self.queue_id is not None:
+            result['QueueId'] = self.queue_id
+        if self.queue_name is not None:
+            result['QueueName'] = self.queue_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BandwidthPercent') is not None:
+            self.bandwidth_percent = m.get('BandwidthPercent')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('QosId') is not None:
+            self.qos_id = m.get('QosId')
+        if m.get('QueueDescription') is not None:
+            self.queue_description = m.get('QueueDescription')
+        if m.get('QueueId') is not None:
+            self.queue_id = m.get('QueueId')
+        if m.get('QueueName') is not None:
+            self.queue_name = m.get('QueueName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        return self
+
+
+class ModifyExpressConnectTrafficQosQueueResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyExpressConnectTrafficQosQueueResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyExpressConnectTrafficQosQueueResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyExpressConnectTrafficQosQueueResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyExpressConnectTrafficQosRuleRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dst_cidr: str = None,
+        dst_ipv_6cidr: str = None,
+        dst_port_range: str = None,
+        match_dscp: int = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        priority: int = None,
+        protocol: str = None,
+        qos_id: str = None,
+        queue_id: str = None,
+        region_id: str = None,
+        remarking_dscp: int = None,
+        resource_owner_account: str = None,
+        rule_description: str = None,
+        rule_id: str = None,
+        rule_name: str = None,
+        src_cidr: str = None,
+        src_ipv_6cidr: str = None,
+        src_port_range: str = None,
+    ):
+        self.client_token = client_token
+        self.dst_cidr = dst_cidr
+        self.dst_ipv_6cidr = dst_ipv_6cidr
+        self.dst_port_range = dst_port_range
+        self.match_dscp = match_dscp
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.priority = priority
+        self.protocol = protocol
+        self.qos_id = qos_id
+        self.queue_id = queue_id
+        self.region_id = region_id
+        self.remarking_dscp = remarking_dscp
+        self.resource_owner_account = resource_owner_account
+        self.rule_description = rule_description
+        self.rule_id = rule_id
+        self.rule_name = rule_name
+        self.src_cidr = src_cidr
+        self.src_ipv_6cidr = src_ipv_6cidr
+        self.src_port_range = src_port_range
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dst_cidr is not None:
+            result['DstCidr'] = self.dst_cidr
+        if self.dst_ipv_6cidr is not None:
+            result['DstIPv6Cidr'] = self.dst_ipv_6cidr
+        if self.dst_port_range is not None:
+            result['DstPortRange'] = self.dst_port_range
+        if self.match_dscp is not None:
+            result['MatchDscp'] = self.match_dscp
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.qos_id is not None:
+            result['QosId'] = self.qos_id
+        if self.queue_id is not None:
+            result['QueueId'] = self.queue_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.remarking_dscp is not None:
+            result['RemarkingDscp'] = self.remarking_dscp
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.rule_description is not None:
+            result['RuleDescription'] = self.rule_description
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.src_cidr is not None:
+            result['SrcCidr'] = self.src_cidr
+        if self.src_ipv_6cidr is not None:
+            result['SrcIPv6Cidr'] = self.src_ipv_6cidr
+        if self.src_port_range is not None:
+            result['SrcPortRange'] = self.src_port_range
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DstCidr') is not None:
+            self.dst_cidr = m.get('DstCidr')
+        if m.get('DstIPv6Cidr') is not None:
+            self.dst_ipv_6cidr = m.get('DstIPv6Cidr')
+        if m.get('DstPortRange') is not None:
+            self.dst_port_range = m.get('DstPortRange')
+        if m.get('MatchDscp') is not None:
+            self.match_dscp = m.get('MatchDscp')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('QosId') is not None:
+            self.qos_id = m.get('QosId')
+        if m.get('QueueId') is not None:
+            self.queue_id = m.get('QueueId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RemarkingDscp') is not None:
+            self.remarking_dscp = m.get('RemarkingDscp')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('RuleDescription') is not None:
+            self.rule_description = m.get('RuleDescription')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('SrcCidr') is not None:
+            self.src_cidr = m.get('SrcCidr')
+        if m.get('SrcIPv6Cidr') is not None:
+            self.src_ipv_6cidr = m.get('SrcIPv6Cidr')
+        if m.get('SrcPortRange') is not None:
+            self.src_port_range = m.get('SrcPortRange')
+        return self
+
+
+class ModifyExpressConnectTrafficQosRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyExpressConnectTrafficQosRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyExpressConnectTrafficQosRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyExpressConnectTrafficQosRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyFlowLogAttributeRequest(TeaModel):
     def __init__(
         self,
@@ -80322,20 +83346,24 @@ class ModifyNetworkAclAttributesRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The description of the network ACL.
         # 
-        # The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+        # The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         self.description = description
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the network ACL.
         self.network_acl_id = network_acl_id
         # The name of the network ACL.
         # 
-        # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         self.network_acl_name = network_acl_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -80407,7 +83435,7 @@ class ModifyNetworkAclAttributesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -82536,19 +85564,19 @@ class ModifyTunnelAttributeResponseBodyTunnelIkeConfig(TeaModel):
         self.ike_enc_alg = ike_enc_alg
         # The IKE lifetime. Unit: seconds.
         self.ike_lifetime = ike_lifetime
-        # The IKE negotiation mode. Valid values:
+        # The IKE negotiation mode.
         # 
         # *   **main:** This mode offers higher security during negotiations.
-        # *   **aggressive:** This mode is faster and has a higher success rate.
+        # *   **aggressive**: This mode is faster and has a higher success rate.
         self.ike_mode = ike_mode
         # The DH group.
         self.ike_pfs = ike_pfs
-        # The IKE version. Valid values:
+        # The IKE version.
         # 
         # *   **ikev1**\
         # *   **ikev2**\
         # 
-        # Compared with IKEv1, IKEv2 simplifies the SA negotiation process and is more suitable for scenarios in which multiple CIDR blocks are used.
+        # Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for scenarios with multiple CIDR blocks.
         self.ike_version = ike_version
         # The tunnel identifier. The identifier supports FQDNs and IP addresses. The default value is the tunnel IP address.
         self.local_id = local_id
@@ -82708,7 +85736,7 @@ class ModifyTunnelAttributeResponseBody(TeaModel):
         self.tunnel_bgp_config = tunnel_bgp_config
         # The tunnel ID.
         self.tunnel_id = tunnel_id
-        # The configurations of IKE Phase 1.
+        # The Phase 1 configuration.
         self.tunnel_ike_config = tunnel_ike_config
         # The configurations of IPsec Phase 2.
         self.tunnel_ipsec_config = tunnel_ipsec_config
@@ -84048,6 +87076,7 @@ class ModifyVpcPrefixListRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The information about CIDR blocks to be added to the prefix list.
         self.add_prefix_list_entry = add_prefix_list_entry
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -84076,6 +87105,7 @@ class ModifyVpcPrefixListRequest(TeaModel):
         self.prefix_list_name = prefix_list_name
         # The region ID of the prefix list.
         self.region_id = region_id
+        # The information about CIDR blocks to be deleted to the prefix list.
         self.remove_prefix_list_entry = remove_prefix_list_entry
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -86859,14 +89889,18 @@ class ModifyVpnPbrRouteEntryAttributeRequest(TeaModel):
         # 
         # A smaller value indicates a higher priority.
         # 
-        # If you do not set this parameter, the priority of the policy-based route is not modified.
+        # If you do not specify this parameter, the priority of the policy-based route is not modified.
+        # 
+        # >  You must specify at least one of **NewPriority** and **NewWeight**.
         self.new_priority = new_priority
         # The new weight of the policy-based route. Valid values:
         # 
-        # *   **100**: The IPsec-VPN connection associated with the policy-based route serves as an active connection.
-        # *   **0**: The IPsec-VPN connection associated with the policy-based route serves as a standby connection.
+        # *   **100**: The IPsec-VPN connection associated with the policy-based route serves as the active connection.
+        # *   **0**: The IPsec-VPN connection associated with the policy-based route serves as the standby connection.
         # 
-        # If you do not set this parameter, the weight of the policy-based route is not modified.
+        # If you do not specify this parameter, the weight of the policy-based route is not modified.
+        # 
+        # >  You must specify at least one of **NewPriority** and **NewWeight**.
         self.new_weight = new_weight
         # The next hop of the policy-based route.
         self.next_hop = next_hop
@@ -89057,11 +92091,22 @@ class ReleaseIpv6AddressRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The ID of the IPv6 address.
         self.ipv_6address_id = ipv_6address_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -89119,6 +92164,7 @@ class ReleaseIpv6AddressResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -93680,6 +96726,7 @@ class UpdateGatewayRouteTableEntryAttributeRequest(TeaModel):
         # *   **true**: prechecks the request without modifying the gateway route table. The system checks the required parameters, request format, and service limits. If the request fails to pass the precheck, an error code is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
         # *   **false**: sends the request. This is the default value. If the request passes the precheck, a 2xx HTTP status code is returned and the gateway route table is modified.
         self.dry_run = dry_run
+        # The ID of the gateway route table that you want to modify.
         self.gateway_route_table_id = gateway_route_table_id
         # The ID of the gateway route table that you want to modify.
         self.ipv_4gateway_route_table_id = ipv_4gateway_route_table_id
@@ -94417,6 +97464,10 @@ class UpdateNetworkAclEntriesRequestEgressAclEntries(TeaModel):
         self.destination_cidr_ip = destination_cidr_ip
         # The type of the rule. Set the value to **custom**, which specifies custom rules.
         self.entry_type = entry_type
+        # The IP version. Valid values:
+        # 
+        # *   **IPv4** (default)
+        # *   **IPv6**\
         self.ip_version = ip_version
         # The ID of the outbound rule.
         # 
@@ -94426,7 +97477,7 @@ class UpdateNetworkAclEntriesRequestEgressAclEntries(TeaModel):
         # 
         # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.network_acl_entry_name = network_acl_entry_name
-        # The rule action that determines whether to allow outbound traffic. Valid values:
+        # The action to be performed on network traffic that matches the rule. Valid values:
         # 
         # *   **accept**\
         # *   **drop**\
@@ -94436,7 +97487,7 @@ class UpdateNetworkAclEntriesRequestEgressAclEntries(TeaModel):
         # *   If the **protocol** of the outbound rule is set to **all**, **icmp**, or **gre**, the port range is -1/-1, which specified all ports.
         # *   If the **protocol** of the outbound rule is set to **tcp** or **udp**, set the port range in the following format: **1/200** or **80/80**, which specifies port 1 to port 200 or port 80. Valid values for a port: **1** to **65535**.
         self.port = port
-        # The protocol type. Valid values:
+        # The protocol. Valid values:
         # 
         # *   **icmp**\
         # *   **gre**\
@@ -94516,6 +97567,10 @@ class UpdateNetworkAclEntriesRequestIngressAclEntries(TeaModel):
         self.description = description
         # The type of the rule. Set the value to **custom**, which specifies custom rules.
         self.entry_type = entry_type
+        # The IP version. Valid values:
+        # 
+        # *   **IPv4** (default)
+        # *   **IPv6**\
         self.ip_version = ip_version
         # The ID of the inbound rule.
         # 
@@ -94525,7 +97580,7 @@ class UpdateNetworkAclEntriesRequestIngressAclEntries(TeaModel):
         # 
         # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.network_acl_entry_name = network_acl_entry_name
-        # The rule action that determines whether to allow inbound requests. Valid values:
+        # The action to be performed on network traffic that matches the rule. Valid values:
         # 
         # *   **accept**\
         # *   **drop**\
@@ -94535,7 +97590,7 @@ class UpdateNetworkAclEntriesRequestIngressAclEntries(TeaModel):
         # *   If the **protocol** of the inbound rule is set to **all**, **icmp**, or **gre**, the port range is -1/-1, which specifies all ports.
         # *   If the **protocol** of the inbound rule is set to **tcp** or **udp**, set the port range in the following format: **1/200** or **80/80**, which specifies port 1 to port 200 or port 80. Valid ports: **1** to **65535**.
         self.port = port
-        # The protocol type. Valid values:
+        # The protocol. Valid values:
         # 
         # *   **icmp**\
         # *   **gre**\
@@ -94620,6 +97675,10 @@ class UpdateNetworkAclEntriesRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs a dry run. The system checks the request for potential issues, including the AccessKey pair, the permissions of the RAM user, and the required parameters. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The information about the outbound rules.
         self.egress_acl_entries = egress_acl_entries
@@ -95592,7 +98651,9 @@ class UpdateVirtualBorderBandwidthRequest(TeaModel):
         self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -95662,15 +98723,15 @@ class UpdateVirtualBorderBandwidthResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code.
+        # The error code.
         self.code = code
-        # The HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
         # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the maximum bandwidth value is updated.
+        # Indicates whether the operation is successful. Valid values:
         # 
         # *   **true**\
         # *   **false**\
