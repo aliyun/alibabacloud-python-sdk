@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_dyvmsapi20170525.
 
-Created on 23/02/2024
+Created on 18/04/2024
 
 @author: Alibaba Cloud SDK
 """

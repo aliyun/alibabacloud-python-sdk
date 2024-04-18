@@ -1,3 +1,19 @@
+2024-04-18 Version: 3.1.0
+- Support API ChangeMediaType.
+- Support API DegradeVideoFile.
+- Support API GetCallProgress.
+- Support API GetVideoFieldUrl.
+- Support API PauseVideoFile.
+- Support API PlayVideoFile.
+- Support API QueryVideoPlayProgress.
+- Support API ResumeVideoFile.
+- Support API SeekVideoFile.
+- Support API SingleCallByVideo.
+- Support API SkipVideoFile.
+- Support API UpgradeVideoFile.
+- Update API SmartCall: add param NoiseThreshold.
+
+
 2024-02-23 Version: 3.0.0
 - Delete API AddRtcAccount.
 - Delete API GetCallInfo.
