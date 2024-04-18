@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_foasconsole20211028.
 
-Created on 07/03/2024
+Created on 18/04/2024
 
 @author: Alibaba Cloud SDK
 """

@@ -1,3 +1,11 @@
+2024-04-18 Version: 1.0.2
+- Update API CreateInstance: add param Tag.
+- Update API QueryConvertInstancePrice: update response param.
+- Update API QueryCreateInstancePrice: update response param.
+- Update API QueryModifyInstancePrice: update response param.
+- Update API QueryRenewInstancePrice: update response param.
+
+
 2024-03-07 Version: 1.0.1
 - Update API CreateInstance: add param ArchitectureType.
 - Update API CreateInstance: add param Extra.
