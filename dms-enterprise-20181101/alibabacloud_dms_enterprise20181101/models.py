@@ -2168,6 +2168,7 @@ class ApproveOrderRequest(TeaModel):
         approval_type: str = None,
         comment: str = None,
         new_approver: int = None,
+        new_approver_list: str = None,
         old_approver: int = None,
         tid: int = None,
         workflow_instance_id: int = None,
@@ -2191,6 +2192,7 @@ class ApproveOrderRequest(TeaModel):
         self.comment = comment
         # The ID of the user to which the ticket is transferred. If ApprovalType is set to TRANSFER, you need to specify this parameter.
         self.new_approver = new_approver
+        self.new_approver_list = new_approver_list
         # The ID of the user that transfers the ticket to another user. The default value is the ID of the current user. If the current user is an administrator or a database administrator (DBA), the user can change the value of this parameter to the ID of another user.
         self.old_approver = old_approver
         # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to obtain the tenant ID.
@@ -2217,6 +2219,8 @@ class ApproveOrderRequest(TeaModel):
             result['Comment'] = self.comment
         if self.new_approver is not None:
             result['NewApprover'] = self.new_approver
+        if self.new_approver_list is not None:
+            result['NewApproverList'] = self.new_approver_list
         if self.old_approver is not None:
             result['OldApprover'] = self.old_approver
         if self.tid is not None:
@@ -2237,6 +2241,8 @@ class ApproveOrderRequest(TeaModel):
             self.comment = m.get('Comment')
         if m.get('NewApprover') is not None:
             self.new_approver = m.get('NewApprover')
+        if m.get('NewApproverList') is not None:
+            self.new_approver_list = m.get('NewApproverList')
         if m.get('OldApprover') is not None:
             self.old_approver = m.get('OldApprover')
         if m.get('Tid') is not None:
@@ -16626,6 +16632,194 @@ class GetDataCorrectOrderDetailRequest(TeaModel):
         return self
 
 
+class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailCronExtConfig(TeaModel):
+    def __init__(
+        self,
+        current_clear_task_count: int = None,
+        optimize_table_after_every_clear_times: int = None,
+    ):
+        self.current_clear_task_count = current_clear_task_count
+        self.optimize_table_after_every_clear_times = optimize_table_after_every_clear_times
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_clear_task_count is not None:
+            result['CurrentClearTaskCount'] = self.current_clear_task_count
+        if self.optimize_table_after_every_clear_times is not None:
+            result['OptimizeTableAfterEveryClearTimes'] = self.optimize_table_after_every_clear_times
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentClearTaskCount') is not None:
+            self.current_clear_task_count = m.get('CurrentClearTaskCount')
+        if m.get('OptimizeTableAfterEveryClearTimes') is not None:
+            self.optimize_table_after_every_clear_times = m.get('OptimizeTableAfterEveryClearTimes')
+        return self
+
+
+class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailImportExtConfig(TeaModel):
+    def __init__(
+        self,
+        csv_first_row_is_column_def: bool = None,
+        ignore_error: bool = None,
+        import_mode: str = None,
+        insert_type: str = None,
+    ):
+        self.csv_first_row_is_column_def = csv_first_row_is_column_def
+        self.ignore_error = ignore_error
+        self.import_mode = import_mode
+        self.insert_type = insert_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.csv_first_row_is_column_def is not None:
+            result['CsvFirstRowIsColumnDef'] = self.csv_first_row_is_column_def
+        if self.ignore_error is not None:
+            result['IgnoreError'] = self.ignore_error
+        if self.import_mode is not None:
+            result['ImportMode'] = self.import_mode
+        if self.insert_type is not None:
+            result['InsertType'] = self.insert_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CsvFirstRowIsColumnDef') is not None:
+            self.csv_first_row_is_column_def = m.get('CsvFirstRowIsColumnDef')
+        if m.get('IgnoreError') is not None:
+            self.ignore_error = m.get('IgnoreError')
+        if m.get('ImportMode') is not None:
+            self.import_mode = m.get('ImportMode')
+        if m.get('InsertType') is not None:
+            self.insert_type = m.get('InsertType')
+        return self
+
+
+class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail(TeaModel):
+    def __init__(
+        self,
+        cron: bool = None,
+        cron_call_times: int = None,
+        cron_ext_config: GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailCronExtConfig = None,
+        cron_format: str = None,
+        cron_last_call_start_time: str = None,
+        cron_next_call_time: str = None,
+        cron_status: str = None,
+        csv_table_name: str = None,
+        current_task_id: int = None,
+        detail_type: str = None,
+        duration: int = None,
+        file_encoding: str = None,
+        file_type: str = None,
+        import_ext_config: GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailImportExtConfig = None,
+    ):
+        self.cron = cron
+        self.cron_call_times = cron_call_times
+        self.cron_ext_config = cron_ext_config
+        self.cron_format = cron_format
+        self.cron_last_call_start_time = cron_last_call_start_time
+        self.cron_next_call_time = cron_next_call_time
+        self.cron_status = cron_status
+        self.csv_table_name = csv_table_name
+        self.current_task_id = current_task_id
+        self.detail_type = detail_type
+        self.duration = duration
+        self.file_encoding = file_encoding
+        self.file_type = file_type
+        self.import_ext_config = import_ext_config
+
+    def validate(self):
+        if self.cron_ext_config:
+            self.cron_ext_config.validate()
+        if self.import_ext_config:
+            self.import_ext_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cron is not None:
+            result['Cron'] = self.cron
+        if self.cron_call_times is not None:
+            result['CronCallTimes'] = self.cron_call_times
+        if self.cron_ext_config is not None:
+            result['CronExtConfig'] = self.cron_ext_config.to_map()
+        if self.cron_format is not None:
+            result['CronFormat'] = self.cron_format
+        if self.cron_last_call_start_time is not None:
+            result['CronLastCallStartTime'] = self.cron_last_call_start_time
+        if self.cron_next_call_time is not None:
+            result['CronNextCallTime'] = self.cron_next_call_time
+        if self.cron_status is not None:
+            result['CronStatus'] = self.cron_status
+        if self.csv_table_name is not None:
+            result['CsvTableName'] = self.csv_table_name
+        if self.current_task_id is not None:
+            result['CurrentTaskId'] = self.current_task_id
+        if self.detail_type is not None:
+            result['DetailType'] = self.detail_type
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.file_encoding is not None:
+            result['FileEncoding'] = self.file_encoding
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.import_ext_config is not None:
+            result['ImportExtConfig'] = self.import_ext_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cron') is not None:
+            self.cron = m.get('Cron')
+        if m.get('CronCallTimes') is not None:
+            self.cron_call_times = m.get('CronCallTimes')
+        if m.get('CronExtConfig') is not None:
+            temp_model = GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailCronExtConfig()
+            self.cron_ext_config = temp_model.from_map(m['CronExtConfig'])
+        if m.get('CronFormat') is not None:
+            self.cron_format = m.get('CronFormat')
+        if m.get('CronLastCallStartTime') is not None:
+            self.cron_last_call_start_time = m.get('CronLastCallStartTime')
+        if m.get('CronNextCallTime') is not None:
+            self.cron_next_call_time = m.get('CronNextCallTime')
+        if m.get('CronStatus') is not None:
+            self.cron_status = m.get('CronStatus')
+        if m.get('CsvTableName') is not None:
+            self.csv_table_name = m.get('CsvTableName')
+        if m.get('CurrentTaskId') is not None:
+            self.current_task_id = m.get('CurrentTaskId')
+        if m.get('DetailType') is not None:
+            self.detail_type = m.get('DetailType')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('FileEncoding') is not None:
+            self.file_encoding = m.get('FileEncoding')
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('ImportExtConfig') is not None:
+            temp_model = GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailImportExtConfig()
+            self.import_ext_config = temp_model.from_map(m['ImportExtConfig'])
+        return self
+
+
 class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailDatabaseListDatabase(TeaModel):
     def __init__(
         self,
@@ -16926,12 +17120,14 @@ class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailPreCheckDetail(
 class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail(TeaModel):
     def __init__(
         self,
+        config_detail: GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail = None,
         database_list: GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailDatabaseList = None,
         exec_mode: str = None,
         order_detail: GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailOrderDetail = None,
         pre_check_detail: GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailPreCheckDetail = None,
         status: str = None,
     ):
+        self.config_detail = config_detail
         # The information about the database in which data is changed.
         self.database_list = database_list
         # The execution mode of the ticket after the ticket is approved. Valid values:
@@ -16960,6 +17156,8 @@ class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail(TeaModel):
         self.status = status
 
     def validate(self):
+        if self.config_detail:
+            self.config_detail.validate()
         if self.database_list:
             self.database_list.validate()
         if self.order_detail:
@@ -16973,6 +17171,8 @@ class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail(TeaModel):
             return _map
 
         result = dict()
+        if self.config_detail is not None:
+            result['ConfigDetail'] = self.config_detail.to_map()
         if self.database_list is not None:
             result['DatabaseList'] = self.database_list.to_map()
         if self.exec_mode is not None:
@@ -16987,6 +17187,9 @@ class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ConfigDetail') is not None:
+            temp_model = GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail()
+            self.config_detail = temp_model.from_map(m['ConfigDetail'])
         if m.get('DatabaseList') is not None:
             temp_model = GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailDatabaseList()
             self.database_list = temp_model.from_map(m['DatabaseList'])

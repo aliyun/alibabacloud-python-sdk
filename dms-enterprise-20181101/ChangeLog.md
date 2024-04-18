@@ -1,3 +1,8 @@
+2024-04-18 Version: 1.60.1
+- Update API ApproveOrder: add param NewApproverList.
+- Update API GetDataCorrectOrderDetail: update response param.
+
+
 2024-04-16 Version: 1.60.0
 - Support API ListSensitiveColumnInfo.
 

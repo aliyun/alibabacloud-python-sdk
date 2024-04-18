@@ -786,6 +786,8 @@ class Client(OpenApiClient):
             query['Comment'] = request.comment
         if not UtilClient.is_unset(request.new_approver):
             query['NewApprover'] = request.new_approver
+        if not UtilClient.is_unset(request.new_approver_list):
+            query['NewApproverList'] = request.new_approver_list
         if not UtilClient.is_unset(request.old_approver):
             query['OldApprover'] = request.old_approver
         if not UtilClient.is_unset(request.tid):
@@ -828,6 +830,8 @@ class Client(OpenApiClient):
             query['Comment'] = request.comment
         if not UtilClient.is_unset(request.new_approver):
             query['NewApprover'] = request.new_approver
+        if not UtilClient.is_unset(request.new_approver_list):
+            query['NewApproverList'] = request.new_approver_list
         if not UtilClient.is_unset(request.old_approver):
             query['OldApprover'] = request.old_approver
         if not UtilClient.is_unset(request.tid):
