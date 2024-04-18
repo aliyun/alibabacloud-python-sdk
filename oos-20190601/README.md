@@ -28,7 +28,7 @@ pip install alibabacloud_oos20190601
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/oos-20190601/ChangeLog.md).
 
 ## References
 

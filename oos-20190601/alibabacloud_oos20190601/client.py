@@ -880,6 +880,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.constraints):
             query['Constraints'] = request.constraints
+        if not UtilClient.is_unset(request.dkmsinstance_id):
+            query['DKMSInstanceId'] = request.dkmsinstance_id
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.key_id):
@@ -930,6 +932,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.constraints):
             query['Constraints'] = request.constraints
+        if not UtilClient.is_unset(request.dkmsinstance_id):
+            query['DKMSInstanceId'] = request.dkmsinstance_id
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.key_id):
@@ -3974,6 +3978,96 @@ class Client(OpenApiClient):
     ) -> oos_20190601_models.ListExecutionsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_executions_with_options_async(request, runtime)
+
+    def list_git_repositories_with_options(
+        self,
+        request: oos_20190601_models.ListGitRepositoriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListGitRepositoriesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.org_name):
+            query['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGitRepositories',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListGitRepositoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_git_repositories_with_options_async(
+        self,
+        request: oos_20190601_models.ListGitRepositoriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListGitRepositoriesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.org_name):
+            query['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGitRepositories',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListGitRepositoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_git_repositories(
+        self,
+        request: oos_20190601_models.ListGitRepositoriesRequest,
+    ) -> oos_20190601_models.ListGitRepositoriesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_git_repositories_with_options(request, runtime)
+
+    async def list_git_repositories_async(
+        self,
+        request: oos_20190601_models.ListGitRepositoriesRequest,
+    ) -> oos_20190601_models.ListGitRepositoriesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_git_repositories_with_options_async(request, runtime)
 
     def list_instance_patch_states_with_options(
         self,

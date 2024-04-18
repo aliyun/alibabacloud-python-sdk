@@ -79,9 +79,6 @@ class CancelExecutionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -212,9 +209,6 @@ class ChangeResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -333,9 +327,6 @@ class ContinueDeployApplicationGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -668,9 +659,6 @@ class CreateApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -917,9 +905,6 @@ class CreateApplicationGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1514,9 +1499,6 @@ class CreateOpsItemResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1885,9 +1867,6 @@ class CreateParameterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2434,9 +2413,6 @@ class CreatePatchBaselineResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2471,6 +2447,7 @@ class CreateSecretParameterRequest(TeaModel):
         self,
         client_token: str = None,
         constraints: str = None,
+        dkmsinstance_id: str = None,
         description: str = None,
         key_id: str = None,
         name: str = None,
@@ -2489,6 +2466,7 @@ class CreateSecretParameterRequest(TeaModel):
         # *   MinLength: The minimum length of the encryption parameter.
         # *   MaxLength: The maximum length of the encryption parameter.
         self.constraints = constraints
+        self.dkmsinstance_id = dkmsinstance_id
         # The description of the encryption parameter. The description must be 1 to 200 characters in length.
         self.description = description
         # The key ID of Key Management Service (KMS) that is used to encrypt the parameter.
@@ -2519,6 +2497,8 @@ class CreateSecretParameterRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.constraints is not None:
             result['Constraints'] = self.constraints
+        if self.dkmsinstance_id is not None:
+            result['DKMSInstanceId'] = self.dkmsinstance_id
         if self.description is not None:
             result['Description'] = self.description
         if self.key_id is not None:
@@ -2543,6 +2523,8 @@ class CreateSecretParameterRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('Constraints') is not None:
             self.constraints = m.get('Constraints')
+        if m.get('DKMSInstanceId') is not None:
+            self.dkmsinstance_id = m.get('DKMSInstanceId')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('KeyId') is not None:
@@ -2567,6 +2549,7 @@ class CreateSecretParameterShrinkRequest(TeaModel):
         self,
         client_token: str = None,
         constraints: str = None,
+        dkmsinstance_id: str = None,
         description: str = None,
         key_id: str = None,
         name: str = None,
@@ -2585,6 +2568,7 @@ class CreateSecretParameterShrinkRequest(TeaModel):
         # *   MinLength: The minimum length of the encryption parameter.
         # *   MaxLength: The maximum length of the encryption parameter.
         self.constraints = constraints
+        self.dkmsinstance_id = dkmsinstance_id
         # The description of the encryption parameter. The description must be 1 to 200 characters in length.
         self.description = description
         # The key ID of Key Management Service (KMS) that is used to encrypt the parameter.
@@ -2615,6 +2599,8 @@ class CreateSecretParameterShrinkRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.constraints is not None:
             result['Constraints'] = self.constraints
+        if self.dkmsinstance_id is not None:
+            result['DKMSInstanceId'] = self.dkmsinstance_id
         if self.description is not None:
             result['Description'] = self.description
         if self.key_id is not None:
@@ -2639,6 +2625,8 @@ class CreateSecretParameterShrinkRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('Constraints') is not None:
             self.constraints = m.get('Constraints')
+        if m.get('DKMSInstanceId') is not None:
+            self.dkmsinstance_id = m.get('DKMSInstanceId')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('KeyId') is not None:
@@ -2664,6 +2652,7 @@ class CreateSecretParameterResponseBodyParameter(TeaModel):
         constraints: str = None,
         created_by: str = None,
         created_date: str = None,
+        dkmsinstance_id: str = None,
         description: str = None,
         id: str = None,
         key_id: str = None,
@@ -2682,6 +2671,7 @@ class CreateSecretParameterResponseBodyParameter(TeaModel):
         self.created_by = created_by
         # The time when the encryption parameter was created.
         self.created_date = created_date
+        self.dkmsinstance_id = dkmsinstance_id
         # The description of the encryption parameter.
         self.description = description
         # The ID of the encryption parameter.
@@ -2720,6 +2710,8 @@ class CreateSecretParameterResponseBodyParameter(TeaModel):
             result['CreatedBy'] = self.created_by
         if self.created_date is not None:
             result['CreatedDate'] = self.created_date
+        if self.dkmsinstance_id is not None:
+            result['DKMSInstanceId'] = self.dkmsinstance_id
         if self.description is not None:
             result['Description'] = self.description
         if self.id is not None:
@@ -2752,6 +2744,8 @@ class CreateSecretParameterResponseBodyParameter(TeaModel):
             self.created_by = m.get('CreatedBy')
         if m.get('CreatedDate') is not None:
             self.created_date = m.get('CreatedDate')
+        if m.get('DKMSInstanceId') is not None:
+            self.dkmsinstance_id = m.get('DKMSInstanceId')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('Id') is not None:
@@ -2826,9 +2820,6 @@ class CreateSecretParameterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3229,9 +3220,6 @@ class CreateStateConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3562,9 +3550,6 @@ class CreateTemplateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3688,9 +3673,6 @@ class DeleteApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3811,9 +3793,6 @@ class DeleteApplicationGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3920,9 +3899,6 @@ class DeleteExecutionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4027,9 +4003,6 @@ class DeleteParameterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4134,9 +4107,6 @@ class DeletePatchBaselineResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4241,9 +4211,6 @@ class DeleteSecretParameterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4355,9 +4322,6 @@ class DeleteStateConfigurationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4469,9 +4433,6 @@ class DeleteTemplateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4583,9 +4544,6 @@ class DeleteTemplatesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4704,9 +4662,6 @@ class DeployApplicationGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4966,9 +4921,6 @@ class DescribeApplicationGroupBillResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5133,9 +5085,6 @@ class DescribeRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5275,9 +5224,6 @@ class GenerateExecutionPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5545,9 +5491,6 @@ class GetApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5787,9 +5730,6 @@ class GetApplicationGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6015,9 +5955,6 @@ class GetExecutionTemplateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6269,9 +6206,6 @@ class GetInventorySchemaResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6525,9 +6459,6 @@ class GetOpsItemResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6774,9 +6705,6 @@ class GetParameterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7022,9 +6950,6 @@ class GetParametersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7301,9 +7226,6 @@ class GetParametersByPathResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7607,9 +7529,6 @@ class GetPatchBaselineResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7694,6 +7613,7 @@ class GetSecretParameterResponseBodyParameter(TeaModel):
         constraints: str = None,
         created_by: str = None,
         created_date: str = None,
+        dkmsinstance_id: str = None,
         description: str = None,
         id: str = None,
         key_id: str = None,
@@ -7713,6 +7633,7 @@ class GetSecretParameterResponseBodyParameter(TeaModel):
         self.created_by = created_by
         # The time when the encryption parameter was created.
         self.created_date = created_date
+        self.dkmsinstance_id = dkmsinstance_id
         # The description of the encryption parameter.
         self.description = description
         # The ID of the encryption parameter.
@@ -7753,6 +7674,8 @@ class GetSecretParameterResponseBodyParameter(TeaModel):
             result['CreatedBy'] = self.created_by
         if self.created_date is not None:
             result['CreatedDate'] = self.created_date
+        if self.dkmsinstance_id is not None:
+            result['DKMSInstanceId'] = self.dkmsinstance_id
         if self.description is not None:
             result['Description'] = self.description
         if self.id is not None:
@@ -7787,6 +7710,8 @@ class GetSecretParameterResponseBodyParameter(TeaModel):
             self.created_by = m.get('CreatedBy')
         if m.get('CreatedDate') is not None:
             self.created_date = m.get('CreatedDate')
+        if m.get('DKMSInstanceId') is not None:
+            self.dkmsinstance_id = m.get('DKMSInstanceId')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('Id') is not None:
@@ -7863,9 +7788,6 @@ class GetSecretParameterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8128,9 +8050,6 @@ class GetSecretParametersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8417,9 +8336,6 @@ class GetSecretParametersByPathResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8595,9 +8511,6 @@ class GetServiceSettingsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8858,9 +8771,6 @@ class GetTemplateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9095,9 +9005,6 @@ class ListActionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9378,9 +9285,6 @@ class ListApplicationGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9741,9 +9645,6 @@ class ListApplicationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9961,9 +9862,6 @@ class ListExecutionLogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10132,9 +10030,6 @@ class ListExecutionRiskyTasksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10947,9 +10842,6 @@ class ListExecutionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10979,6 +10871,196 @@ class ListExecutionsResponse(TeaModel):
         return self
 
 
+class ListGitRepositoriesRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        org_name: str = None,
+        owner: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        platform: str = None,
+    ):
+        self.client_token = client_token
+        self.org_name = org_name
+        self.owner = owner
+        self.page_number = page_number
+        self.page_size = page_size
+        self.platform = platform
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.org_name is not None:
+            result['OrgName'] = self.org_name
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.platform is not None:
+            result['Platform'] = self.platform
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('OrgName') is not None:
+            self.org_name = m.get('OrgName')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
+        return self
+
+
+class ListGitRepositoriesResponseBodyGitRepos(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        full_name: str = None,
+        html_url: str = None,
+        is_private: bool = None,
+    ):
+        self.description = description
+        self.full_name = full_name
+        self.html_url = html_url
+        self.is_private = is_private
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.full_name is not None:
+            result['FullName'] = self.full_name
+        if self.html_url is not None:
+            result['HtmlUrl'] = self.html_url
+        if self.is_private is not None:
+            result['IsPrivate'] = self.is_private
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FullName') is not None:
+            self.full_name = m.get('FullName')
+        if m.get('HtmlUrl') is not None:
+            self.html_url = m.get('HtmlUrl')
+        if m.get('IsPrivate') is not None:
+            self.is_private = m.get('IsPrivate')
+        return self
+
+
+class ListGitRepositoriesResponseBody(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        git_repos: List[ListGitRepositoriesResponseBodyGitRepos] = None,
+        request_id: str = None,
+    ):
+        self.count = count
+        self.git_repos = git_repos
+        self.request_id = request_id
+
+    def validate(self):
+        if self.git_repos:
+            for k in self.git_repos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        result['GitRepos'] = []
+        if self.git_repos is not None:
+            for k in self.git_repos:
+                result['GitRepos'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        self.git_repos = []
+        if m.get('GitRepos') is not None:
+            for k in m.get('GitRepos'):
+                temp_model = ListGitRepositoriesResponseBodyGitRepos()
+                self.git_repos.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListGitRepositoriesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListGitRepositoriesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListGitRepositoriesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListInstancePatchStatesRequest(TeaModel):
     def __init__(
         self,
@@ -10987,13 +11069,13 @@ class ListInstancePatchStatesRequest(TeaModel):
         next_token: str = None,
         region_id: str = None,
     ):
-        # The token that is used to retrieve the next page of results.
-        self.instance_ids = instance_ids
-        # The token that is used to retrieve the next page of results.
-        self.max_results = max_results
         # The ID of the Elastic Compute Service (ECS) instance. The value can be a JSON array that consists of up to 100 instance IDs. Separate the instance IDs with commas (,).
-        self.next_token = next_token
+        self.instance_ids = instance_ids
         # The number of entries to return on each page.
+        self.max_results = max_results
+        # The token that is used to retrieve the next page of results.
+        self.next_token = next_token
+        # The ID of the region in which the instance whose patches you want to query resides.
         self.region_id = region_id
 
     def validate(self):
@@ -11045,31 +11127,31 @@ class ListInstancePatchStatesResponseBodyInstancePatchStates(TeaModel):
         owner_information: str = None,
         patch_group: str = None,
     ):
-        # The number of patches that have been installed but require a restart to take effect.
-        self.baseline_id = baseline_id
         # The ID of the patch baseline.
-        self.failed_count = failed_count
-        # Queries patches of an instance.
-        self.installed_count = installed_count
-        # The ID of the ECS instance.
-        self.installed_other_count = installed_other_count
-        # The number of patches that are rejected by the user.
-        self.installed_pending_reboot_count = installed_pending_reboot_count
-        # The patch group.
-        self.installed_rejected_count = installed_rejected_count
-        # The operation type.
-        self.instance_id = instance_id
-        # The time when the operation ended.
-        self.missing_count = missing_count
-        # The information about the user.
-        self.operation_end_time = operation_end_time
+        self.baseline_id = baseline_id
         # The number of patches that failed to be installed.
-        self.operation_start_time = operation_start_time
-        # The time when the operation was initiated.
-        self.operation_type = operation_type
-        # The number of patches that do not meet the baseline.
-        self.owner_information = owner_information
+        self.failed_count = failed_count
         # The number of installed patches.
+        self.installed_count = installed_count
+        # The number of patches that do not meet the baseline.
+        self.installed_other_count = installed_other_count
+        # The number of patches that have been installed but require a restart to take effect.
+        self.installed_pending_reboot_count = installed_pending_reboot_count
+        # The number of patches that are rejected by the user.
+        self.installed_rejected_count = installed_rejected_count
+        # The ID of the ECS instance.
+        self.instance_id = instance_id
+        # The number of patches that are not installed.
+        self.missing_count = missing_count
+        # The time when the operation ended.
+        self.operation_end_time = operation_end_time
+        # The time when the operation was initiated.
+        self.operation_start_time = operation_start_time
+        # The operation type.
+        self.operation_type = operation_type
+        # The information about the user.
+        self.owner_information = owner_information
+        # The patch group.
         self.patch_group = patch_group
 
     def validate(self):
@@ -11148,13 +11230,13 @@ class ListInstancePatchStatesResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The number of patches that are not installed.
-        self.instance_patch_states = instance_patch_states
         # The details of patches of the instance.
-        self.max_results = max_results
-        # The ID of the request.
-        self.next_token = next_token
+        self.instance_patch_states = instance_patch_states
         # The number of entries returned on each page.
+        self.max_results = max_results
+        # The token that is used to retrieve the next page of results.
+        self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -11209,9 +11291,6 @@ class ListInstancePatchStatesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11250,15 +11329,15 @@ class ListInstancePatchesRequest(TeaModel):
         patch_statuses: str = None,
         region_id: str = None,
     ):
-        # The number of entries to return on each page.
-        self.instance_id = instance_id
-        # The token that is used to retrieve the next page of results.
-        self.max_results = max_results
-        # MTRBMDc0NjAtRUJFNy00N0NBLTk3NTctMTJDQzQ
-        self.next_token = next_token
-        # The token that is used to retrieve the next page of results.
-        self.patch_statuses = patch_statuses
         # The ID of the instance.
+        self.instance_id = instance_id
+        # The number of entries to return on each page.
+        self.max_results = max_results
+        # The token that is used to retrieve the next page of results.
+        self.next_token = next_token
+        # The status of the patches that you want to query. If you do not set this parameter, patches are not filtered.
+        self.patch_statuses = patch_statuses
+        # The ID of the region in which the instance whose patches you want to query resides.
         self.region_id = region_id
 
     def validate(self):
@@ -11307,17 +11386,17 @@ class ListInstancePatchesResponseBodyPatches(TeaModel):
         status: str = None,
         title: str = None,
     ):
-        # Queries the patches of an instance.
-        self.classification = classification
-        # The name of the patch.
-        self.installed_time = installed_time
-        # KBId
-        self.kbid = kbid
-        # The status of the installation.
-        self.severity = severity
-        # The time when the patch was installed.
-        self.status = status
         # The classification of the patch.
+        self.classification = classification
+        # The time when the patch was installed.
+        self.installed_time = installed_time
+        # The Id of KBId.
+        self.kbid = kbid
+        # The level of the severity.
+        self.severity = severity
+        # The status of the installation.
+        self.status = status
+        # The name of the patch.
         self.title = title
 
     def validate(self):
@@ -11368,13 +11447,13 @@ class ListInstancePatchesResponseBody(TeaModel):
         patches: List[ListInstancePatchesResponseBodyPatches] = None,
         request_id: str = None,
     ):
-        # The information about the patch.
-        self.max_results = max_results
-        # MTRBMDc0NjAtRUJFNy00N0NBLTk3NTctMTJDQzQ
-        self.next_token = next_token
-        # The level of the severity.
-        self.patches = patches
         # The number of entries returned on each page.
+        self.max_results = max_results
+        # The token that is used to retrieve the next page of results.
+        self.next_token = next_token
+        # The information about the patch.
+        self.patches = patches
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -11429,9 +11508,6 @@ class ListInstancePatchesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11678,9 +11754,6 @@ class ListInventoryEntriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12110,9 +12183,6 @@ class ListOpsItemsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12365,9 +12435,6 @@ class ListParameterVersionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12810,9 +12877,6 @@ class ListParametersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13343,9 +13407,6 @@ class ListPatchBaselinesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13549,9 +13610,6 @@ class ListResourceExecutionStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13811,9 +13869,6 @@ class ListSecretParameterVersionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14218,9 +14273,6 @@ class ListSecretParametersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14585,9 +14637,6 @@ class ListStateConfigurationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14727,9 +14776,6 @@ class ListTagKeysResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15011,9 +15057,6 @@ class ListTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15160,9 +15203,6 @@ class ListTagValuesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15555,9 +15595,6 @@ class ListTaskExecutionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15775,9 +15812,6 @@ class ListTemplateVersionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15847,7 +15881,7 @@ class ListTemplatesRequest(TeaModel):
         self.has_trigger = has_trigger
         # The template is favorite or not.
         self.is_favorite = is_favorite
-        # The number of entries to return on each page. Valid values: 20 to 100. Default value: 50.
+        # The number of entries to return on each page. Valid values: 10 to 100. Default value: 50.
         self.max_results = max_results
         # The token that is used to retrieve the next page of results.
         self.next_token = next_token
@@ -16013,7 +16047,7 @@ class ListTemplatesShrinkRequest(TeaModel):
         self.has_trigger = has_trigger
         # The template is favorite or not.
         self.is_favorite = is_favorite
-        # The number of entries to return on each page. Valid values: 20 to 100. Default value: 50.
+        # The number of entries to return on each page. Valid values: 10 to 100. Default value: 50.
         self.max_results = max_results
         # The token that is used to retrieve the next page of results.
         self.next_token = next_token
@@ -16164,7 +16198,7 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
         updated_by: str = None,
         updated_date: str = None,
     ):
-        # The type of the template.
+        # The template type.
         self.category = category
         # The constraints of template
         self.constraints = constraints
@@ -16172,41 +16206,42 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
         self.created_by = created_by
         # The time when the template was created.
         self.created_date = created_date
-        # The description of the template.
+        # The template description.
         self.description = description
-        # Indicates whether the template is configured with a trigger.
+        # Indicates whether the template was configured with a trigger.
         self.has_trigger = has_trigger
         # The SHA-256 value of the template content.
         self.hash = hash
         # The template is favorite or not.
         self.is_favorite = is_favorite
-        # The popularity of the public template. Valid values: **1-10**. A greater value indicates higher popularity. If the **ShareType** parameter is set to **Private**, the value of this parameter is `-1`.
+        # The popularity of the public template. Valid values: **1-10**. A greater value indicates higher popularity. If **ShareType** is set to **Private**, the value of this parameter is `-1`.
         # 
-        # **Notes** This parameter is valid only if the value of the **ShareType** parameter is set to **Public**.
+        # >  This parameter is valid only if the value of **ShareType** is set to **Public**.
         self.popularity = popularity
         # The publisher of template.
         self.publisher = publisher
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The share type of the template. The share type of the template that you create is **Private**. Valid values:
+        # The share type of the template. The share type of a template created by a user is **Private**. Valid values:
         # 
         # *   **Public**\
         # *   **Private**\
         self.share_type = share_type
         # The tag keys and values. The number of key-value pairs ranges from 1 to 20.
         self.tags = tags
-        # The format of the template. The system automatically determines whether the format is JSON or YAML.
+        # The template format. The system automatically determines whether the format is JSON or YAML.
         self.template_format = template_format
-        # The ID of the template.
+        # The template ID.
         self.template_id = template_id
-        # The name of the template.
+        # The template name.
         self.template_name = template_name
-        # The type of the template.
+        # The template type.
         self.template_type = template_type
-        # The version of the template. The name of the version consists of the letter v and a number. The number starts from 1.
+        # The template version. The name of the version consists of the letter v and a number. The number starts from 1.
         self.template_version = template_version
-        # The number of times for which the private template is executed. If the **ShareType** parameter is set to **Public**, the value of this parameter is `-1`.
-        # **Notes** This parameter is valid only if the **ShareType** parameter is set to **Private**.
+        # The number of times for which the private template is executed. If **ShareType** is set to **Public**, the value of this parameter is `-1`.
+        # 
+        # >  This parameter is valid only if the value of **ShareType** is **Private**.
         self.total_execution_count = total_execution_count
         # The user who last updated the template.
         self.updated_by = updated_by
@@ -16327,7 +16362,7 @@ class ListTemplatesResponseBody(TeaModel):
         self.next_token = next_token
         # The ID of the request.
         self.request_id = request_id
-        # The metadata of the template.
+        # The template metadata.
         self.templates = templates
 
     def validate(self):
@@ -16382,9 +16417,6 @@ class ListTemplatesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16553,9 +16585,6 @@ class NotifyExecutionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16767,9 +16796,6 @@ class RegisterDefaultPatchBaselineResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16974,9 +17000,6 @@ class SearchInventoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17194,9 +17217,6 @@ class SetServiceSettingsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17774,9 +17794,6 @@ class StartExecutionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17968,9 +17985,6 @@ class TagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18100,9 +18114,6 @@ class TriggerExecutionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18308,9 +18319,6 @@ class UntagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18622,9 +18630,6 @@ class UpdateApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18829,9 +18834,6 @@ class UpdateApplicationGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18872,7 +18874,7 @@ class UpdateExecutionRequest(TeaModel):
         resource_group_id: str = None,
         tags: str = None,
     ):
-        # The description of the execution.
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         # The description of the execution.
         self.description = description
@@ -18971,9 +18973,6 @@ class UpdateExecutionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19444,9 +19443,6 @@ class UpdateOpsItemResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19700,9 +19696,6 @@ class UpdateParameterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20217,9 +20210,6 @@ class UpdatePatchBaselineResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20543,9 +20533,6 @@ class UpdateSecretParameterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20945,9 +20932,6 @@ class UpdateStateConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21271,9 +21255,6 @@ class UpdateTemplateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21477,9 +21458,6 @@ class ValidateTemplateContentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
