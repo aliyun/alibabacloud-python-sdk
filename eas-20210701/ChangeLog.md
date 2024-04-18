@@ -1,3 +1,7 @@
+2024-04-18 Version: 4.2.0
+- Support API DescribeSpotDiscountHistory.
+
+
 2024-04-09 Version: 4.1.0
 - Support API CloneService.
 - Update API ListResourceInstanceWorker: update response param.

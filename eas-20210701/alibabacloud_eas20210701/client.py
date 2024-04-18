@@ -3400,6 +3400,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.describe_service_mirror_with_options_async(cluster_id, service_name, headers, runtime)
 
+    def describe_spot_discount_history_with_options(
+        self,
+        request: eas_20210701_models.DescribeSpotDiscountHistoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DescribeSpotDiscountHistoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.is_protect):
+            query['IsProtect'] = request.is_protect
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSpotDiscountHistory',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/public/spot_discount',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeSpotDiscountHistoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_spot_discount_history_with_options_async(
+        self,
+        request: eas_20210701_models.DescribeSpotDiscountHistoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DescribeSpotDiscountHistoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.is_protect):
+            query['IsProtect'] = request.is_protect
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSpotDiscountHistory',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/public/spot_discount',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeSpotDiscountHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_spot_discount_history(
+        self,
+        request: eas_20210701_models.DescribeSpotDiscountHistoryRequest,
+    ) -> eas_20210701_models.DescribeSpotDiscountHistoryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_spot_discount_history_with_options(request, headers, runtime)
+
+    async def describe_spot_discount_history_async(
+        self,
+        request: eas_20210701_models.DescribeSpotDiscountHistoryRequest,
+    ) -> eas_20210701_models.DescribeSpotDiscountHistoryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_spot_discount_history_with_options_async(request, headers, runtime)
+
     def develop_service_with_options(
         self,
         cluster_id: str,

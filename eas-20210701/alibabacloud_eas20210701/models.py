@@ -6444,6 +6444,166 @@ class DescribeServiceMirrorResponse(TeaModel):
         return self
 
 
+class DescribeSpotDiscountHistoryRequest(TeaModel):
+    def __init__(
+        self,
+        instance_type: str = None,
+        is_protect: bool = None,
+    ):
+        self.instance_type = instance_type
+        self.is_protect = is_protect
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.is_protect is not None:
+            result['IsProtect'] = self.is_protect
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('IsProtect') is not None:
+            self.is_protect = m.get('IsProtect')
+        return self
+
+
+class DescribeSpotDiscountHistoryResponseBodySpotDiscounts(TeaModel):
+    def __init__(
+        self,
+        instance_type: str = None,
+        spot_discount: str = None,
+        timestamp: str = None,
+        zone_id: str = None,
+    ):
+        self.instance_type = instance_type
+        self.spot_discount = spot_discount
+        self.timestamp = timestamp
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.spot_discount is not None:
+            result['SpotDiscount'] = self.spot_discount
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('SpotDiscount') is not None:
+            self.spot_discount = m.get('SpotDiscount')
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeSpotDiscountHistoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        spot_discounts: List[DescribeSpotDiscountHistoryResponseBodySpotDiscounts] = None,
+    ):
+        self.request_id = request_id
+        self.spot_discounts = spot_discounts
+
+    def validate(self):
+        if self.spot_discounts:
+            for k in self.spot_discounts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SpotDiscounts'] = []
+        if self.spot_discounts is not None:
+            for k in self.spot_discounts:
+                result['SpotDiscounts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.spot_discounts = []
+        if m.get('SpotDiscounts') is not None:
+            for k in m.get('SpotDiscounts'):
+                temp_model = DescribeSpotDiscountHistoryResponseBodySpotDiscounts()
+                self.spot_discounts.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeSpotDiscountHistoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSpotDiscountHistoryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSpotDiscountHistoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DevelopServiceRequest(TeaModel):
     def __init__(
         self,
