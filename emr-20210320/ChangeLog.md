@@ -1,3 +1,12 @@
+2024-04-18 Version: 1.6.0
+- Support API CreateApiTemplate.
+- Support API DeleteApiTemplate.
+- Support API GetApiTemplate.
+- Support API ListApiTemplates.
+- Support API RunApiTemplate.
+- Support API UpdateApiTemplate.
+
+
 2024-04-17 Version: 1.5.0
 - Support API DeleteApiTemplate.
 - Support API GetApiTemplate.
