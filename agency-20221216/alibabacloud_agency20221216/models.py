@@ -1336,8 +1336,12 @@ class GetAccountInfoResponseBodyAccountInfoListAccountInfo(TeaModel):
         aliyun_id: str = None,
         association_success_time: str = None,
         cid: int = None,
+        customer_bd: str = None,
+        delay_amount: str = None,
+        delay_status: str = None,
         email: str = None,
         mobile: str = None,
+        new_buy_status: str = None,
         remark: str = None,
         sub_account_type: int = None,
         uid: int = None,
@@ -1352,10 +1356,14 @@ class GetAccountInfoResponseBodyAccountInfoListAccountInfo(TeaModel):
         self.association_success_time = association_success_time
         # Account CID of Distribution Customer.
         self.cid = cid
+        self.customer_bd = customer_bd
+        self.delay_amount = delay_amount
+        self.delay_status = delay_status
         # The E-mail of Distribution Customer.
         self.email = email
         # Valid mobile number of Distribution Customer.
         self.mobile = mobile
+        self.new_buy_status = new_buy_status
         # Description of Distribution Customer.
         self.remark = remark
         # Account Type:
@@ -1386,10 +1394,18 @@ class GetAccountInfoResponseBodyAccountInfoListAccountInfo(TeaModel):
             result['AssociationSuccessTime'] = self.association_success_time
         if self.cid is not None:
             result['Cid'] = self.cid
+        if self.customer_bd is not None:
+            result['CustomerBd'] = self.customer_bd
+        if self.delay_amount is not None:
+            result['DelayAmount'] = self.delay_amount
+        if self.delay_status is not None:
+            result['DelayStatus'] = self.delay_status
         if self.email is not None:
             result['Email'] = self.email
         if self.mobile is not None:
             result['Mobile'] = self.mobile
+        if self.new_buy_status is not None:
+            result['NewBuyStatus'] = self.new_buy_status
         if self.remark is not None:
             result['Remark'] = self.remark
         if self.sub_account_type is not None:
@@ -1408,10 +1424,18 @@ class GetAccountInfoResponseBodyAccountInfoListAccountInfo(TeaModel):
             self.association_success_time = m.get('AssociationSuccessTime')
         if m.get('Cid') is not None:
             self.cid = m.get('Cid')
+        if m.get('CustomerBd') is not None:
+            self.customer_bd = m.get('CustomerBd')
+        if m.get('DelayAmount') is not None:
+            self.delay_amount = m.get('DelayAmount')
+        if m.get('DelayStatus') is not None:
+            self.delay_status = m.get('DelayStatus')
         if m.get('Email') is not None:
             self.email = m.get('Email')
         if m.get('Mobile') is not None:
             self.mobile = m.get('Mobile')
+        if m.get('NewBuyStatus') is not None:
+            self.new_buy_status = m.get('NewBuyStatus')
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
         if m.get('SubAccountType') is not None:
@@ -2891,6 +2915,7 @@ class InviteSubAccountRequestAccountInfoList(TeaModel):
         self,
         account_nickname: str = None,
         credit_line: str = None,
+        customer_bd: str = None,
         customer_id: str = None,
         email_address: str = None,
         new_buy_status: str = None,
@@ -2904,6 +2929,7 @@ class InviteSubAccountRequestAccountInfoList(TeaModel):
         self.account_nickname = account_nickname
         # The total budget Credit of Sub Account that distributed by Partner.
         self.credit_line = credit_line
+        self.customer_bd = customer_bd
         # Customer ID, Returning ID from CreateCustomer API.
         self.customer_id = customer_id
         # The email address of End User,  which will receive the invitation email.
@@ -2939,6 +2965,8 @@ class InviteSubAccountRequestAccountInfoList(TeaModel):
             result['AccountNickname'] = self.account_nickname
         if self.credit_line is not None:
             result['CreditLine'] = self.credit_line
+        if self.customer_bd is not None:
+            result['CustomerBd'] = self.customer_bd
         if self.customer_id is not None:
             result['CustomerId'] = self.customer_id
         if self.email_address is not None:
@@ -2959,6 +2987,8 @@ class InviteSubAccountRequestAccountInfoList(TeaModel):
             self.account_nickname = m.get('AccountNickname')
         if m.get('CreditLine') is not None:
             self.credit_line = m.get('CreditLine')
+        if m.get('CustomerBd') is not None:
+            self.customer_bd = m.get('CustomerBd')
         if m.get('CustomerId') is not None:
             self.customer_id = m.get('CustomerId')
         if m.get('EmailAddress') is not None:
@@ -3973,6 +4003,7 @@ class SetAccountInfoRequest(TeaModel):
     def __init__(
         self,
         account_nickname: str = None,
+        customer_bd: str = None,
         remark: str = None,
         uid: int = None,
     ):
@@ -3980,6 +4011,7 @@ class SetAccountInfoRequest(TeaModel):
         # * Use the official name of Company, if Sub Account is an enterprise.
         # * Use the official name of Partner, if Sub Account is a T2 reseller.
         self.account_nickname = account_nickname
+        self.customer_bd = customer_bd
         # Description of Sub Account.
         self.remark = remark
         # The UID of Sub Account.
@@ -3996,6 +4028,8 @@ class SetAccountInfoRequest(TeaModel):
         result = dict()
         if self.account_nickname is not None:
             result['AccountNickname'] = self.account_nickname
+        if self.customer_bd is not None:
+            result['CustomerBd'] = self.customer_bd
         if self.remark is not None:
             result['Remark'] = self.remark
         if self.uid is not None:
@@ -4006,6 +4040,8 @@ class SetAccountInfoRequest(TeaModel):
         m = m or dict()
         if m.get('AccountNickname') is not None:
             self.account_nickname = m.get('AccountNickname')
+        if m.get('CustomerBd') is not None:
+            self.customer_bd = m.get('CustomerBd')
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
         if m.get('Uid') is not None:

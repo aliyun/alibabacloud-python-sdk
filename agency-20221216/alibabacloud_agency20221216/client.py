@@ -1734,6 +1734,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.account_nickname):
             query['AccountNickname'] = request.account_nickname
+        if not UtilClient.is_unset(request.customer_bd):
+            query['CustomerBd'] = request.customer_bd
         if not UtilClient.is_unset(request.remark):
             query['Remark'] = request.remark
         if not UtilClient.is_unset(request.uid):
@@ -1766,6 +1768,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.account_nickname):
             query['AccountNickname'] = request.account_nickname
+        if not UtilClient.is_unset(request.customer_bd):
+            query['CustomerBd'] = request.customer_bd
         if not UtilClient.is_unset(request.remark):
             query['Remark'] = request.remark
         if not UtilClient.is_unset(request.uid):
