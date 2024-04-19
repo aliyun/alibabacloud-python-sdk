@@ -909,6 +909,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ApproveFotaUpdateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ApproveFotaUpdateResponse:
+        """
+        The cloud computers for which you want to allow image updates must be in the Running state.
+        
+        @param request: ApproveFotaUpdateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApproveFotaUpdateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_version):
@@ -941,6 +948,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ApproveFotaUpdateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ApproveFotaUpdateResponse:
+        """
+        The cloud computers for which you want to allow image updates must be in the Running state.
+        
+        @param request: ApproveFotaUpdateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApproveFotaUpdateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_version):
@@ -972,6 +986,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ApproveFotaUpdateRequest,
     ) -> ecd_20200930_models.ApproveFotaUpdateResponse:
+        """
+        The cloud computers for which you want to allow image updates must be in the Running state.
+        
+        @param request: ApproveFotaUpdateRequest
+        @return: ApproveFotaUpdateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.approve_fota_update_with_options(request, runtime)
 
@@ -979,6 +999,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ApproveFotaUpdateRequest,
     ) -> ecd_20200930_models.ApproveFotaUpdateResponse:
+        """
+        The cloud computers for which you want to allow image updates must be in the Running state.
+        
+        @param request: ApproveFotaUpdateRequest
+        @return: ApproveFotaUpdateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.approve_fota_update_with_options_async(request, runtime)
 
@@ -2116,7 +2142,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateADConnectorDirectoryResponse:
         """
-        AD directories are used to connect to enterprise AD systems and are suitable for large-scale desktop deployments. You are charged for AD directories that are used to connect to enterprise AD systems. For more information, see [Billing overview](~~188395~~).
+        An AD directory is used to connect to an enterprise\\"s existing Active Directory and is suitable for large-scale cloud computer deployment. You are charged directory fees when you connect your AD to cloud computers. For more information, see [Billing overview](~~188395~~).
         
         @param request: CreateADConnectorDirectoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2175,7 +2201,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateADConnectorDirectoryResponse:
         """
-        AD directories are used to connect to enterprise AD systems and are suitable for large-scale desktop deployments. You are charged for AD directories that are used to connect to enterprise AD systems. For more information, see [Billing overview](~~188395~~).
+        An AD directory is used to connect to an enterprise\\"s existing Active Directory and is suitable for large-scale cloud computer deployment. You are charged directory fees when you connect your AD to cloud computers. For more information, see [Billing overview](~~188395~~).
         
         @param request: CreateADConnectorDirectoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2233,7 +2259,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateADConnectorDirectoryRequest,
     ) -> ecd_20200930_models.CreateADConnectorDirectoryResponse:
         """
-        AD directories are used to connect to enterprise AD systems and are suitable for large-scale desktop deployments. You are charged for AD directories that are used to connect to enterprise AD systems. For more information, see [Billing overview](~~188395~~).
+        An AD directory is used to connect to an enterprise\\"s existing Active Directory and is suitable for large-scale cloud computer deployment. You are charged directory fees when you connect your AD to cloud computers. For more information, see [Billing overview](~~188395~~).
         
         @param request: CreateADConnectorDirectoryRequest
         @return: CreateADConnectorDirectoryResponse
@@ -2246,7 +2272,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateADConnectorDirectoryRequest,
     ) -> ecd_20200930_models.CreateADConnectorDirectoryResponse:
         """
-        AD directories are used to connect to enterprise AD systems and are suitable for large-scale desktop deployments. You are charged for AD directories that are used to connect to enterprise AD systems. For more information, see [Billing overview](~~188395~~).
+        An AD directory is used to connect to an enterprise\\"s existing Active Directory and is suitable for large-scale cloud computer deployment. You are charged directory fees when you connect your AD to cloud computers. For more information, see [Billing overview](~~188395~~).
         
         @param request: CreateADConnectorDirectoryRequest
         @return: CreateADConnectorDirectoryResponse
@@ -4542,9 +4568,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateRAMDirectoryResponse:
         """
-        Before you create a RAM directory, make sure that you have completed the following operations:
-        *   You have created a virtual private cloud (VPC) by calling the CreateVpc operation in a region where Elastic Desktop Service (EDS) is available.
-        *   You have created a vSwitch by calling the CreateVSwitch operation in a region where the VPC resides. You can call the [DescribeZones](~~196648~~) operation to obtain the zones where EDS is available in a region.
+        Before you create a RAM directory, complete the following preparations:
+        *   Call the `CreateVpc` operation to create a virtual private cloud (VPC) in a region supported by WUYING Workspace.
+        *   Call the `CreateVSwitch` operation to create a vSwitch in the VPC. The vSwitch is in a zone that is supported by WUYING Workspace. You can call the [DescribeZones](~~196648~~) operation to obtain the most recent zone list for a region supported by WUYING Workspace.
         
         @param request: CreateRAMDirectoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4589,9 +4615,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateRAMDirectoryResponse:
         """
-        Before you create a RAM directory, make sure that you have completed the following operations:
-        *   You have created a virtual private cloud (VPC) by calling the CreateVpc operation in a region where Elastic Desktop Service (EDS) is available.
-        *   You have created a vSwitch by calling the CreateVSwitch operation in a region where the VPC resides. You can call the [DescribeZones](~~196648~~) operation to obtain the zones where EDS is available in a region.
+        Before you create a RAM directory, complete the following preparations:
+        *   Call the `CreateVpc` operation to create a virtual private cloud (VPC) in a region supported by WUYING Workspace.
+        *   Call the `CreateVSwitch` operation to create a vSwitch in the VPC. The vSwitch is in a zone that is supported by WUYING Workspace. You can call the [DescribeZones](~~196648~~) operation to obtain the most recent zone list for a region supported by WUYING Workspace.
         
         @param request: CreateRAMDirectoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4635,9 +4661,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateRAMDirectoryRequest,
     ) -> ecd_20200930_models.CreateRAMDirectoryResponse:
         """
-        Before you create a RAM directory, make sure that you have completed the following operations:
-        *   You have created a virtual private cloud (VPC) by calling the CreateVpc operation in a region where Elastic Desktop Service (EDS) is available.
-        *   You have created a vSwitch by calling the CreateVSwitch operation in a region where the VPC resides. You can call the [DescribeZones](~~196648~~) operation to obtain the zones where EDS is available in a region.
+        Before you create a RAM directory, complete the following preparations:
+        *   Call the `CreateVpc` operation to create a virtual private cloud (VPC) in a region supported by WUYING Workspace.
+        *   Call the `CreateVSwitch` operation to create a vSwitch in the VPC. The vSwitch is in a zone that is supported by WUYING Workspace. You can call the [DescribeZones](~~196648~~) operation to obtain the most recent zone list for a region supported by WUYING Workspace.
         
         @param request: CreateRAMDirectoryRequest
         @return: CreateRAMDirectoryResponse
@@ -4650,9 +4676,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateRAMDirectoryRequest,
     ) -> ecd_20200930_models.CreateRAMDirectoryResponse:
         """
-        Before you create a RAM directory, make sure that you have completed the following operations:
-        *   You have created a virtual private cloud (VPC) by calling the CreateVpc operation in a region where Elastic Desktop Service (EDS) is available.
-        *   You have created a vSwitch by calling the CreateVSwitch operation in a region where the VPC resides. You can call the [DescribeZones](~~196648~~) operation to obtain the zones where EDS is available in a region.
+        Before you create a RAM directory, complete the following preparations:
+        *   Call the `CreateVpc` operation to create a virtual private cloud (VPC) in a region supported by WUYING Workspace.
+        *   Call the `CreateVSwitch` operation to create a vSwitch in the VPC. The vSwitch is in a zone that is supported by WUYING Workspace. You can call the [DescribeZones](~~196648~~) operation to obtain the most recent zone list for a region supported by WUYING Workspace.
         
         @param request: CreateRAMDirectoryRequest
         @return: CreateRAMDirectoryResponse
@@ -5580,7 +5606,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteDirectoriesResponse:
         """
-        You cannot delete directories that are used by cloud desktops.
+        You cannot delete a directory that has a cloud computer or is used by a cloud computer.
         
         @param request: DeleteDirectoriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5617,7 +5643,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteDirectoriesResponse:
         """
-        You cannot delete directories that are used by cloud desktops.
+        You cannot delete a directory that has a cloud computer or is used by a cloud computer.
         
         @param request: DeleteDirectoriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5653,7 +5679,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteDirectoriesRequest,
     ) -> ecd_20200930_models.DeleteDirectoriesResponse:
         """
-        You cannot delete directories that are used by cloud desktops.
+        You cannot delete a directory that has a cloud computer or is used by a cloud computer.
         
         @param request: DeleteDirectoriesRequest
         @return: DeleteDirectoriesResponse
@@ -5666,7 +5692,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteDirectoriesRequest,
     ) -> ecd_20200930_models.DeleteDirectoriesResponse:
         """
-        You cannot delete directories that are used by cloud desktops.
+        You cannot delete a directory that has a cloud computer or is used by a cloud computer.
         
         @param request: DeleteDirectoriesRequest
         @return: DeleteDirectoriesResponse
@@ -14005,6 +14031,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyADConnectorDirectoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyADConnectorDirectoryResponse:
+        """
+        You can modify the following domain name- and Domain Name System (DNS)-related parameters only for Active Directory (AD) directories that are in the ERROR or REGISTERING state: `DomainName`, `SubDomainName`, `DnsAddress.N`, and `SubDomainDnsAddress`.
+        
+        @param request: ModifyADConnectorDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyADConnectorDirectoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ad_hostname):
@@ -14055,6 +14088,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyADConnectorDirectoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyADConnectorDirectoryResponse:
+        """
+        You can modify the following domain name- and Domain Name System (DNS)-related parameters only for Active Directory (AD) directories that are in the ERROR or REGISTERING state: `DomainName`, `SubDomainName`, `DnsAddress.N`, and `SubDomainDnsAddress`.
+        
+        @param request: ModifyADConnectorDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyADConnectorDirectoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ad_hostname):
@@ -14104,6 +14144,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyADConnectorDirectoryRequest,
     ) -> ecd_20200930_models.ModifyADConnectorDirectoryResponse:
+        """
+        You can modify the following domain name- and Domain Name System (DNS)-related parameters only for Active Directory (AD) directories that are in the ERROR or REGISTERING state: `DomainName`, `SubDomainName`, `DnsAddress.N`, and `SubDomainDnsAddress`.
+        
+        @param request: ModifyADConnectorDirectoryRequest
+        @return: ModifyADConnectorDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_adconnector_directory_with_options(request, runtime)
 
@@ -14111,6 +14157,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyADConnectorDirectoryRequest,
     ) -> ecd_20200930_models.ModifyADConnectorDirectoryResponse:
+        """
+        You can modify the following domain name- and Domain Name System (DNS)-related parameters only for Active Directory (AD) directories that are in the ERROR or REGISTERING state: `DomainName`, `SubDomainName`, `DnsAddress.N`, and `SubDomainDnsAddress`.
+        
+        @param request: ModifyADConnectorDirectoryRequest
+        @return: ModifyADConnectorDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_adconnector_directory_with_options_async(request, runtime)
 
@@ -20603,6 +20655,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.UpdateFotaTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.UpdateFotaTaskResponse:
+        """
+        You can call this operation to manage each image update task. This operation is valid only when the auto-update switch in the image update module for global image updates is turned off. If the auto-update switch is turned on, the switches for each image update task are always turned on. If you want to turn on or off the auto-update switch, go to the WUYING Workspace console and choose *Operations > Image Updates** in the left-side navigation pane.
+        
+        @param request: UpdateFotaTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFotaTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -20635,6 +20694,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.UpdateFotaTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.UpdateFotaTaskResponse:
+        """
+        You can call this operation to manage each image update task. This operation is valid only when the auto-update switch in the image update module for global image updates is turned off. If the auto-update switch is turned on, the switches for each image update task are always turned on. If you want to turn on or off the auto-update switch, go to the WUYING Workspace console and choose *Operations > Image Updates** in the left-side navigation pane.
+        
+        @param request: UpdateFotaTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFotaTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -20666,6 +20732,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.UpdateFotaTaskRequest,
     ) -> ecd_20200930_models.UpdateFotaTaskResponse:
+        """
+        You can call this operation to manage each image update task. This operation is valid only when the auto-update switch in the image update module for global image updates is turned off. If the auto-update switch is turned on, the switches for each image update task are always turned on. If you want to turn on or off the auto-update switch, go to the WUYING Workspace console and choose *Operations > Image Updates** in the left-side navigation pane.
+        
+        @param request: UpdateFotaTaskRequest
+        @return: UpdateFotaTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_fota_task_with_options(request, runtime)
 
@@ -20673,6 +20745,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.UpdateFotaTaskRequest,
     ) -> ecd_20200930_models.UpdateFotaTaskResponse:
+        """
+        You can call this operation to manage each image update task. This operation is valid only when the auto-update switch in the image update module for global image updates is turned off. If the auto-update switch is turned on, the switches for each image update task are always turned on. If you want to turn on or off the auto-update switch, go to the WUYING Workspace console and choose *Operations > Image Updates** in the left-side navigation pane.
+        
+        @param request: UpdateFotaTaskRequest
+        @return: UpdateFotaTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_fota_task_with_options_async(request, runtime)
 

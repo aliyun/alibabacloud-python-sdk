@@ -1,3 +1,9 @@
+2024-04-19 Version: 3.6.1
+- Update API CreateCloudDriveService: update response param.
+- Update API DescribeDesktopOversoldGroup: update response param.
+- Update API DescribeDesktopOversoldUser: update param ClientToken.
+
+
 2024-04-15 Version: 3.6.0
 - Support API DescribeRecordings.
 - Update API CreateDesktopOversoldGroup: add param IdleDisconnectDuration.
