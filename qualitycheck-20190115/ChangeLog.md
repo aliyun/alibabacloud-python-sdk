@@ -1,3 +1,9 @@
+2024-04-19 Version: 5.0.0
+- Delete API GetResultCallback.
+- Delete API ListHotWordsTasks.
+- Update API TestRuleV4: update response param.
+
+
 2024-01-15 Version: 4.12.3
 - Generated python 2019-01-15 for Qualitycheck.
 
