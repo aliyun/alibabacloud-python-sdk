@@ -1717,6 +1717,74 @@ class ImageModerationRequest(TeaModel):
         return self
 
 
+class ImageModerationResponseBodyDataExtRecognition(TeaModel):
+    def __init__(
+        self,
+        classification: str = None,
+        confidence: float = None,
+    ):
+        self.classification = classification
+        self.confidence = confidence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.classification is not None:
+            result['Classification'] = self.classification
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Classification') is not None:
+            self.classification = m.get('Classification')
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        return self
+
+
+class ImageModerationResponseBodyDataExt(TeaModel):
+    def __init__(
+        self,
+        recognition: List[ImageModerationResponseBodyDataExtRecognition] = None,
+    ):
+        self.recognition = recognition
+
+    def validate(self):
+        if self.recognition:
+            for k in self.recognition:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Recognition'] = []
+        if self.recognition is not None:
+            for k in self.recognition:
+                result['Recognition'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.recognition = []
+        if m.get('Recognition') is not None:
+            for k in m.get('Recognition'):
+                temp_model = ImageModerationResponseBodyDataExtRecognition()
+                self.recognition.append(temp_model.from_map(k))
+        return self
+
+
 class ImageModerationResponseBodyDataResult(TeaModel):
     def __init__(
         self,
@@ -1754,12 +1822,16 @@ class ImageModerationResponseBodyData(TeaModel):
     def __init__(
         self,
         data_id: str = None,
+        ext: ImageModerationResponseBodyDataExt = None,
         result: List[ImageModerationResponseBodyDataResult] = None,
     ):
         self.data_id = data_id
+        self.ext = ext
         self.result = result
 
     def validate(self):
+        if self.ext:
+            self.ext.validate()
         if self.result:
             for k in self.result:
                 if k:
@@ -1773,6 +1845,8 @@ class ImageModerationResponseBodyData(TeaModel):
         result = dict()
         if self.data_id is not None:
             result['DataId'] = self.data_id
+        if self.ext is not None:
+            result['Ext'] = self.ext.to_map()
         result['Result'] = []
         if self.result is not None:
             for k in self.result:
@@ -1783,6 +1857,9 @@ class ImageModerationResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('DataId') is not None:
             self.data_id = m.get('DataId')
+        if m.get('Ext') is not None:
+            temp_model = ImageModerationResponseBodyDataExt()
+            self.ext = temp_model.from_map(m['Ext'])
         self.result = []
         if m.get('Result') is not None:
             for k in m.get('Result'):
