@@ -9803,6 +9803,7 @@ class CreateWorkitemResponseBodyWorkitem(TeaModel):
         category_identifier: str = None,
         creator: str = None,
         document: str = None,
+        document_format: str = None,
         gmt_create: int = None,
         gmt_modified: int = None,
         identifier: str = None,
@@ -9825,6 +9826,7 @@ class CreateWorkitemResponseBodyWorkitem(TeaModel):
         self.category_identifier = category_identifier
         self.creator = creator
         self.document = document
+        self.document_format = document_format
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.identifier = identifier
@@ -9860,6 +9862,8 @@ class CreateWorkitemResponseBodyWorkitem(TeaModel):
             result['creator'] = self.creator
         if self.document is not None:
             result['document'] = self.document
+        if self.document_format is not None:
+            result['documentFormat'] = self.document_format
         if self.gmt_create is not None:
             result['gmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
@@ -9906,6 +9910,8 @@ class CreateWorkitemResponseBodyWorkitem(TeaModel):
             self.creator = m.get('creator')
         if m.get('document') is not None:
             self.document = m.get('document')
+        if m.get('documentFormat') is not None:
+            self.document_format = m.get('documentFormat')
         if m.get('gmtCreate') is not None:
             self.gmt_create = m.get('gmtCreate')
         if m.get('gmtModified') is not None:
@@ -25351,6 +25357,7 @@ class GetWorkItemInfoResponseBodyWorkitem(TeaModel):
         creator: str = None,
         custom_fields: List[GetWorkItemInfoResponseBodyWorkitemCustomFields] = None,
         document: str = None,
+        document_format: str = None,
         finish_time: int = None,
         gmt_create: int = None,
         gmt_modified: int = None,
@@ -25380,6 +25387,7 @@ class GetWorkItemInfoResponseBodyWorkitem(TeaModel):
         self.creator = creator
         self.custom_fields = custom_fields
         self.document = document
+        self.document_format = document_format
         self.finish_time = finish_time
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
@@ -25432,6 +25440,8 @@ class GetWorkItemInfoResponseBodyWorkitem(TeaModel):
                 result['customFields'].append(k.to_map() if k else None)
         if self.document is not None:
             result['document'] = self.document
+        if self.document_format is not None:
+            result['documentFormat'] = self.document_format
         if self.finish_time is not None:
             result['finishTime'] = self.finish_time
         if self.gmt_create is not None:
@@ -25497,6 +25507,8 @@ class GetWorkItemInfoResponseBodyWorkitem(TeaModel):
                 self.custom_fields.append(temp_model.from_map(k))
         if m.get('document') is not None:
             self.document = m.get('document')
+        if m.get('documentFormat') is not None:
+            self.document_format = m.get('documentFormat')
         if m.get('finishTime') is not None:
             self.finish_time = m.get('finishTime')
         if m.get('gmtCreate') is not None:
@@ -53803,6 +53815,7 @@ class UpdateWorkItemResponseBodyWorkitem(TeaModel):
         category_identifier: str = None,
         creator: str = None,
         document: str = None,
+        document_format: str = None,
         gmt_create: int = None,
         gmt_modified: int = None,
         identifier: str = None,
@@ -53825,6 +53838,7 @@ class UpdateWorkItemResponseBodyWorkitem(TeaModel):
         self.category_identifier = category_identifier
         self.creator = creator
         self.document = document
+        self.document_format = document_format
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.identifier = identifier
@@ -53860,6 +53874,8 @@ class UpdateWorkItemResponseBodyWorkitem(TeaModel):
             result['creator'] = self.creator
         if self.document is not None:
             result['document'] = self.document
+        if self.document_format is not None:
+            result['documentFormat'] = self.document_format
         if self.gmt_create is not None:
             result['gmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
@@ -53906,6 +53922,8 @@ class UpdateWorkItemResponseBodyWorkitem(TeaModel):
             self.creator = m.get('creator')
         if m.get('document') is not None:
             self.document = m.get('document')
+        if m.get('documentFormat') is not None:
+            self.document_format = m.get('documentFormat')
         if m.get('gmtCreate') is not None:
             self.gmt_create = m.get('gmtCreate')
         if m.get('gmtModified') is not None:
