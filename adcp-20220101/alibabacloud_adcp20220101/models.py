@@ -106,9 +106,6 @@ class AttachClusterToHubResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -149,6 +146,7 @@ class CreateHubClusterRequest(TeaModel):
         price_limit: str = None,
         profile: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         v_switches: str = None,
         vpc_id: str = None,
         workflow_schedule_mode: str = None,
@@ -158,6 +156,10 @@ class CreateHubClusterRequest(TeaModel):
         # *   true: exposes the API server to the Internet.
         # *   false: exposes the API server to the internal network.
         self.api_server_public_eip = api_server_public_eip
+        # Specifies whether to enable the workflow instance UI. This parameter takes effect only if Profile is set to XFlow. Valid values:
+        # 
+        # *   true
+        # *   false
         self.argo_server_enabled = argo_server_enabled
         # Specifies whether to enable the audit log feature. Valid values:
         # 
@@ -168,6 +170,7 @@ class CreateHubClusterRequest(TeaModel):
         self.is_enterprise_security_group = is_enterprise_security_group
         # The name of the master instance.
         self.name = name
+        # The limit on the prices of containers in the workflow. This parameter takes effect only if the WorkflowScheduleMode parameter is set to cost-optimized.
         self.price_limit = price_limit
         # The type of scenario for which the master instance is suitable. Valid values:
         # 
@@ -178,10 +181,16 @@ class CreateHubClusterRequest(TeaModel):
         self.profile = profile
         # The ID of the region. You can call the DescribeRegions operation to query available regions.
         self.region_id = region_id
+        # The Resource Group ID.
+        self.resource_group_id = resource_group_id
         # The ID of the vSwitch.
         self.v_switches = v_switches
         # The ID of the virtual private cloud (VPC) to which the master instance belongs. You can call the DescribeVpcs operation to query available VPCs.
         self.vpc_id = vpc_id
+        # The scheduling mode of the workflow. This parameter takes effect only if Profile is set to XFlow. Valid values:
+        # 
+        # *   cost-optimized: cost-prioritized scheduling mode.
+        # *   stock-optimized: inventory-prioritized scheduling mode.
         self.workflow_schedule_mode = workflow_schedule_mode
 
     def validate(self):
@@ -209,6 +218,8 @@ class CreateHubClusterRequest(TeaModel):
             result['Profile'] = self.profile
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupID'] = self.resource_group_id
         if self.v_switches is not None:
             result['VSwitches'] = self.v_switches
         if self.vpc_id is not None:
@@ -235,6 +246,8 @@ class CreateHubClusterRequest(TeaModel):
             self.profile = m.get('Profile')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupID') is not None:
+            self.resource_group_id = m.get('ResourceGroupID')
         if m.get('VSwitches') is not None:
             self.v_switches = m.get('VSwitches')
         if m.get('VpcId') is not None:
@@ -298,9 +311,6 @@ class CreateHubClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -478,9 +488,6 @@ class DeleteHubClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -634,9 +641,6 @@ class DeletePolicyInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -741,9 +745,6 @@ class DeleteUserPermissionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -931,9 +932,6 @@ class DeployPolicyInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1036,6 +1034,222 @@ class DescribeHubClusterDetailsResponseBodyClusterApiServer(TeaModel):
         return self
 
 
+class DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneGitOps(TeaModel):
+    def __init__(
+        self,
+        access_control_list: List[str] = None,
+        enabled: bool = None,
+        haenabled: bool = None,
+        public_access_enabled: bool = None,
+    ):
+        # The Internet access control list (ACL). This parameter takes effect only if PublicAccessEnabled is set to true.
+        self.access_control_list = access_control_list
+        # Indicates whether GitOps is enabled. Valid values:
+        # 
+        # *   true: GitOps is enabled.
+        # *   false: GitOps is disabled.
+        self.enabled = enabled
+        # Indicates whether GitOps High Availability is enabled. Valid values:
+        # 
+        # *   true:  GitOps High Availability is enabled.
+        # *   false:  GitOps High Availability is disabled.
+        self.haenabled = haenabled
+        # Specifies whether to enable public domain name resolution in the Argo CD or Argo Workflow console. Valid values:
+        # 
+        # *   true
+        # *   false
+        self.public_access_enabled = public_access_enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_control_list is not None:
+            result['AccessControlList'] = self.access_control_list
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.haenabled is not None:
+            result['HAEnabled'] = self.haenabled
+        if self.public_access_enabled is not None:
+            result['PublicAccessEnabled'] = self.public_access_enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessControlList') is not None:
+            self.access_control_list = m.get('AccessControlList')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('HAEnabled') is not None:
+            self.haenabled = m.get('HAEnabled')
+        if m.get('PublicAccessEnabled') is not None:
+            self.public_access_enabled = m.get('PublicAccessEnabled')
+        return self
+
+
+class DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneWorkFlowArgoWorkflow(TeaModel):
+    def __init__(
+        self,
+        access_control_list: List[str] = None,
+        enabled: bool = None,
+        public_access_enabled: bool = None,
+        server_enabled: str = None,
+    ):
+        # The Internet access control list (ACL). This parameter takes effect only if PublicAccessEnabled is set to true.
+        self.access_control_list = access_control_list
+        # Specifies whether to enable the argo workflow. Valid values:
+        # 
+        # *   **false** (default)
+        # *   **true**\
+        self.enabled = enabled
+        # Specifies whether to enable public domain name resolution in the Argo CD or Argo Workflow console. Valid values:
+        # 
+        # *   true
+        # *   false
+        self.public_access_enabled = public_access_enabled
+        # Specifies whether to enable the argo workflow. UI Valid values:
+        # 
+        # *   **false** (default)
+        # *   **true**\
+        self.server_enabled = server_enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_control_list is not None:
+            result['AccessControlList'] = self.access_control_list
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.public_access_enabled is not None:
+            result['PublicAccessEnabled'] = self.public_access_enabled
+        if self.server_enabled is not None:
+            result['ServerEnabled'] = self.server_enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessControlList') is not None:
+            self.access_control_list = m.get('AccessControlList')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('PublicAccessEnabled') is not None:
+            self.public_access_enabled = m.get('PublicAccessEnabled')
+        if m.get('ServerEnabled') is not None:
+            self.server_enabled = m.get('ServerEnabled')
+        return self
+
+
+class DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneWorkFlow(TeaModel):
+    def __init__(
+        self,
+        argo_workflow: DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneWorkFlowArgoWorkflow = None,
+    ):
+        # The Argo workflow metadata.
+        self.argo_workflow = argo_workflow
+
+    def validate(self):
+        if self.argo_workflow:
+            self.argo_workflow.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.argo_workflow is not None:
+            result['ArgoWorkflow'] = self.argo_workflow.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ArgoWorkflow') is not None:
+            temp_model = DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneWorkFlowArgoWorkflow()
+            self.argo_workflow = temp_model.from_map(m['ArgoWorkflow'])
+        return self
+
+
+class DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOne(TeaModel):
+    def __init__(
+        self,
+        git_ops: DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneGitOps = None,
+        work_flow: DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneWorkFlow = None,
+    ):
+        # The GitOps metadata.
+        self.git_ops = git_ops
+        # The workflow metadata.
+        self.work_flow = work_flow
+
+    def validate(self):
+        if self.git_ops:
+            self.git_ops.validate()
+        if self.work_flow:
+            self.work_flow.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.git_ops is not None:
+            result['GitOps'] = self.git_ops.to_map()
+        if self.work_flow is not None:
+            result['WorkFlow'] = self.work_flow.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GitOps') is not None:
+            temp_model = DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneGitOps()
+            self.git_ops = temp_model.from_map(m['GitOps'])
+        if m.get('WorkFlow') is not None:
+            temp_model = DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneWorkFlow()
+            self.work_flow = temp_model.from_map(m['WorkFlow'])
+        return self
+
+
+class DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaData(TeaModel):
+    def __init__(
+        self,
+        ackone: DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOne = None,
+    ):
+        # The cluster metadata.
+        self.ackone = ackone
+
+    def validate(self):
+        if self.ackone:
+            self.ackone.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ackone is not None:
+            result['ACKOne'] = self.ackone.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ACKOne') is not None:
+            temp_model = DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOne()
+            self.ackone = temp_model.from_map(m['ACKOne'])
+        return self
+
+
 class DescribeHubClusterDetailsResponseBodyClusterClusterInfo(TeaModel):
     def __init__(
         self,
@@ -1043,9 +1257,11 @@ class DescribeHubClusterDetailsResponseBodyClusterClusterInfo(TeaModel):
         cluster_spec: str = None,
         creation_time: str = None,
         error_message: str = None,
+        meta_data: DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaData = None,
         name: str = None,
         profile: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         state: str = None,
         update_time: str = None,
         version: str = None,
@@ -1060,12 +1276,16 @@ class DescribeHubClusterDetailsResponseBodyClusterClusterInfo(TeaModel):
         self.creation_time = creation_time
         # The error message returned when the master instance failed to be created.
         self.error_message = error_message
+        # The cluster metadata.
+        self.meta_data = meta_data
         # The name of the master instance.
         self.name = name
         # The configurations of the master instance.
         self.profile = profile
         # The ID of the region in which the master instance resides.
         self.region_id = region_id
+        # The ID of Resource Group.
+        self.resource_group_id = resource_group_id
         # The status of the master instance. Valid values:
         # 
         # *   initial: The master instance is being initialized.
@@ -1082,7 +1302,8 @@ class DescribeHubClusterDetailsResponseBodyClusterClusterInfo(TeaModel):
         self.version = version
 
     def validate(self):
-        pass
+        if self.meta_data:
+            self.meta_data.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1098,12 +1319,16 @@ class DescribeHubClusterDetailsResponseBodyClusterClusterInfo(TeaModel):
             result['CreationTime'] = self.creation_time
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
+        if self.meta_data is not None:
+            result['MetaData'] = self.meta_data.to_map()
         if self.name is not None:
             result['Name'] = self.name
         if self.profile is not None:
             result['Profile'] = self.profile
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupID'] = self.resource_group_id
         if self.state is not None:
             result['State'] = self.state
         if self.update_time is not None:
@@ -1122,12 +1347,17 @@ class DescribeHubClusterDetailsResponseBodyClusterClusterInfo(TeaModel):
             self.creation_time = m.get('CreationTime')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
+        if m.get('MetaData') is not None:
+            temp_model = DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaData()
+            self.meta_data = temp_model.from_map(m['MetaData'])
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Profile') is not None:
             self.profile = m.get('Profile')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupID') is not None:
+            self.resource_group_id = m.get('ResourceGroupID')
         if m.get('State') is not None:
             self.state = m.get('State')
         if m.get('UpdateTime') is not None:
@@ -1374,7 +1604,11 @@ class DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnitsVSw
         vswitch_id: str = None,
         zone_id: str = None,
     ):
+        # The ID of the vSwitch.
         self.vswitch_id = vswitch_id
+        # The zone ID of the cluster.
+        # 
+        # > You can call the [DescribeRegions](~~143074~~) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1408,8 +1642,13 @@ class DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnits(Te
         v_switches: List[DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnitsVSwitches] = None,
         vpc_id: str = None,
     ):
+        # The region ID of the cluster.
+        # 
+        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The vSwitches.
         self.v_switches = v_switches
+        # The ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -1456,9 +1695,19 @@ class DescribeHubClusterDetailsResponseBodyClusterWorkflowConfig(TeaModel):
         workflow_schedule_mode: str = None,
         workflow_units: List[DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnits] = None,
     ):
+        # Specifies whether to enable the workflow instance UI. This parameter takes effect only if Profile is set to XFlow. Valid values:
+        # 
+        # *   true
+        # *   false
         self.argo_server_enabled = argo_server_enabled
+        # The limit on the prices of containers in the workflow. This parameter takes effect only if the WorkflowScheduleMode parameter is set to cost-optimized.
         self.price_limit = price_limit
+        # The scheduling mode of the workflow. This parameter takes effect only if Profile is set to XFlow. Valid values:
+        # 
+        # *   cost-optimized: cost-prioritized scheduling mode.
+        # *   stock-optimized: inventory-prioritized scheduling mode.
         self.workflow_schedule_mode = workflow_schedule_mode
+        # The Argo workflow regions  configuration.
         self.workflow_units = workflow_units
 
     def validate(self):
@@ -1527,6 +1776,7 @@ class DescribeHubClusterDetailsResponseBodyCluster(TeaModel):
         self.mesh_config = mesh_config
         # The network configurations of the master instance.
         self.network = network
+        # The Argo workflow configuration.
         self.workflow_config = workflow_config
 
     def validate(self):
@@ -1655,9 +1905,6 @@ class DescribeHubClusterDetailsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1774,9 +2021,6 @@ class DescribeHubClusterKubeconfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1938,9 +2182,6 @@ class DescribeHubClusterLogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1974,8 +2215,12 @@ class DescribeHubClustersRequest(TeaModel):
     def __init__(
         self,
         profile: str = None,
+        resource_group_id: str = None,
     ):
+        # The configurations of the cluster.
         self.profile = profile
+        # The resource group ID.
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -1988,12 +2233,16 @@ class DescribeHubClustersRequest(TeaModel):
         result = dict()
         if self.profile is not None:
             result['Profile'] = self.profile
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Profile') is not None:
             self.profile = m.get('Profile')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -2004,8 +2253,14 @@ class DescribeHubClustersResponseBodyClustersApiServer(TeaModel):
         enabled_public: bool = None,
         load_balancer_id: str = None,
     ):
+        # The elastic IP address (EIP) ID.
         self.api_server_eip_id = api_server_eip_id
+        # Indicates whether public endpoint is enabled for the API server. Valid values:
+        # 
+        # *   true
+        # *   false
         self.enabled_public = enabled_public
+        # The ID of the Server Load Balancer (SLB) instance that is associated with the cluster.
         self.load_balancer_id = load_balancer_id
 
     def validate(self):
@@ -2046,19 +2301,42 @@ class DescribeHubClustersResponseBodyClustersClusterInfo(TeaModel):
         name: str = None,
         profile: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         state: str = None,
         update_time: str = None,
         version: str = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The specification of the cluster.
+        # 
+        # *   Only ack.pro.small is returned.
         self.cluster_spec = cluster_spec
+        # The time when the cluster was created.
         self.creation_time = creation_time
+        # The error message that is returned if the cluster failed to be created.
         self.error_message = error_message
+        # The name of the cluster.
         self.name = name
+        # The configurations of the cluster.
         self.profile = profile
+        # The region ID.
         self.region_id = region_id
+        # The ID of Resource Group.
+        self.resource_group_id = resource_group_id
+        # The status of the cluster. Valid values:
+        # 
+        # *   initial: The cluster is being initialized.
+        # *   failed: The cluster failed to be created.
+        # *   running: The cluster is running
+        # *   inactive: The cluster is pending.
+        # *   deleting: The cluster is being deleted.
+        # *   delete_failed: The cluster failed to be deleted.
+        # *   deleted: The cluster is deleted.
         self.state = state
+        # The time when the cluster was last updated.
         self.update_time = update_time
+        # The Kubernetes version of the cluster.
         self.version = version
 
     def validate(self):
@@ -2084,6 +2362,8 @@ class DescribeHubClustersResponseBodyClustersClusterInfo(TeaModel):
             result['Profile'] = self.profile
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupID'] = self.resource_group_id
         if self.state is not None:
             result['State'] = self.state
         if self.update_time is not None:
@@ -2108,6 +2388,8 @@ class DescribeHubClustersResponseBodyClustersClusterInfo(TeaModel):
             self.profile = m.get('Profile')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupID') is not None:
+            self.resource_group_id = m.get('ResourceGroupID')
         if m.get('State') is not None:
             self.state = m.get('State')
         if m.get('UpdateTime') is not None:
@@ -2125,9 +2407,17 @@ class DescribeHubClustersResponseBodyClustersConditions(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # The error message that is returned.
         self.message = message
+        # The reason for the deletion condition.
         self.reason = reason
+        # The status of the cluster that the deletion condition indicates. Valid values:
+        # 
+        # *   True: The cluster cannot be deleted.
+        # *   False: The cluster can be deleted.
+        # *   Unknow: Whether the cluster can be deleted is unknown.
         self.status = status
+        # The type of deletion condition.
         self.type = type
 
     def validate(self):
@@ -2168,7 +2458,9 @@ class DescribeHubClustersResponseBodyClustersEndpoints(TeaModel):
         intranet_api_server_endpoint: str = None,
         public_api_server_endpoint: str = None,
     ):
+        # The internal endpoint of the API server.
         self.intranet_api_server_endpoint = intranet_api_server_endpoint
+        # The public endpoint of the API server.
         self.public_api_server_endpoint = public_api_server_endpoint
 
     def validate(self):
@@ -2202,8 +2494,14 @@ class DescribeHubClustersResponseBodyClustersLogConfig(TeaModel):
         log_project: str = None,
         log_store_ttl: str = None,
     ):
+        # Indicates whether the audit logging feature is enabled. Valid values:
+        # 
+        # *   true
+        # *   false
         self.enable_log = enable_log
+        # The name of the project in Simple Log Service.
         self.log_project = log_project
+        # The number of days that logs are retained by Simple Log Service.
         self.log_store_ttl = log_store_ttl
 
     def validate(self):
@@ -2240,7 +2538,12 @@ class DescribeHubClustersResponseBodyClustersMeshConfig(TeaModel):
         enable_mesh: bool = None,
         mesh_id: str = None,
     ):
+        # Indicates whether ASM is enabled. Valid values:
+        # 
+        # *   true
+        # *   false
         self.enable_mesh = enable_mesh
+        # The ASM instance ID.
         self.mesh_id = mesh_id
 
     def validate(self):
@@ -2275,9 +2578,13 @@ class DescribeHubClustersResponseBodyClustersNetwork(TeaModel):
         v_switches: List[str] = None,
         vpc_id: str = None,
     ):
+        # The domain name of the cluster.
         self.cluster_domain = cluster_domain
+        # The security group IDs.
         self.security_group_ids = security_group_ids
+        # The IDs of vSwitches to which the cluster belongs.
         self.v_switches = v_switches
+        # The ID of the virtual private cloud (VPC) to which the cluster belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -2323,12 +2630,19 @@ class DescribeHubClustersResponseBodyClusters(TeaModel):
         mesh_config: DescribeHubClustersResponseBodyClustersMeshConfig = None,
         network: DescribeHubClustersResponseBodyClustersNetwork = None,
     ):
+        # The information about the API server.
         self.api_server = api_server
+        # The details of the cluster.
         self.cluster_info = cluster_info
+        # The deletion conditions of the cluster.
         self.conditions = conditions
+        # The endpoint of the cluster.
         self.endpoints = endpoints
+        # The logging configurations.
         self.log_config = log_config
+        # The configurations of Alibaba Cloud Service Mesh (ASM).
         self.mesh_config = mesh_config
+        # The network configurations of the cluster.
         self.network = network
 
     def validate(self):
@@ -2407,7 +2721,9 @@ class DescribeHubClustersResponseBody(TeaModel):
         clusters: List[DescribeHubClustersResponseBodyClusters] = None,
         request_id: str = None,
     ):
+        # The information about clusters.
         self.clusters = clusters
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2454,9 +2770,6 @@ class DescribeHubClustersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2800,9 +3113,6 @@ class DescribeManagedClustersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2922,9 +3232,6 @@ class DescribePoliciesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2959,7 +3266,7 @@ class DescribePolicyDetailsRequest(TeaModel):
         self,
         policy_name: str = None,
     ):
-        # The name of the policy.
+        # The policy name.
         self.policy_name = policy_name
 
     def validate(self):
@@ -3011,7 +3318,7 @@ class DescribePolicyDetailsResponseBodyPolicy(TeaModel):
         # Indicates whether parameters are required. Valid values:
         # 
         # *   0: Parameters are required.
-        # *   1: Parameters are optional.
+        # *   1: Parameters are not required.
         self.no_config = no_config
         # The severity level of the policy.
         self.severity = severity
@@ -3078,7 +3385,7 @@ class DescribePolicyDetailsResponseBody(TeaModel):
         policy: DescribePolicyDetailsResponseBodyPolicy = None,
         request_id: str = None,
     ):
-        # Detailed information about the policy.
+        # The policies.
         self.policy = policy
         # The request ID.
         self.request_id = request_id
@@ -3121,9 +3428,6 @@ class DescribePolicyDetailsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3815,9 +4119,6 @@ class DescribePolicyGovernanceInClusterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4035,9 +4336,6 @@ class DescribePolicyInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4337,9 +4635,6 @@ class DescribePolicyInstancesStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4487,9 +4782,6 @@ class DescribeRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4661,9 +4953,6 @@ class DescribeUserPermissionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4794,9 +5083,6 @@ class DetachClusterFromHubResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4836,41 +5122,21 @@ class GrantUserPermissionRequest(TeaModel):
         role_type: str = None,
         user_id: str = None,
     ):
+        # The ID of the cluster.
         self.cluster_id = cluster_id
         # The entity to which the permissions are granted. A value of `true` indicates that the permissions are granted to a RAM user. A value of `false` indicates that the permissions are granted to a RAM role.
         self.is_ram_role = is_ram_role
+        # The namespace to which the permissions are scoped. By default, this parameter is empty when you set RoleType to cluster.
         self.namespace = namespace
         # The predefined role that you want to assign. Valid values:
         # 
         # *   admin: the administrator role.
         # *   dev: the developer role.
-        # 
-        # Enumerated values:
-        # 
-        # *   arms-admin
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   dev
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   admin
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.role_name = role_name
+        # The authorization type. Valid values:
+        # 
+        # *   cluster: specifies that the permissions are scoped to a master instance.
+        # *   namespace: specifies that the permissions are scoped to a namespace of a cluster.
         self.role_type = role_type
         # The ID of the RAM user or RAM role.
         self.user_id = user_id
@@ -4920,6 +5186,7 @@ class GrantUserPermissionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4954,9 +5221,6 @@ class GrantUserPermissionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4999,6 +5263,7 @@ class GrantUserPermissionsRequestPermissions(TeaModel):
         # 
         # *   When the role_type parameter is set to all-clusters, set the parameter to an empty string.
         self.cluster_id = cluster_id
+        # The entity to which the permissions are granted. A value of `true` indicates that the permissions are granted to a RAM user. A value of `false` indicates that the permissions are granted to a RAM role.
         self.is_ram_role = is_ram_role
         # The namespace to which the permissions are scoped. By default, this parameter is empty when you set RoleType to cluster.
         self.namespace = namespace
@@ -5168,9 +5433,6 @@ class GrantUserPermissionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5213,7 +5475,7 @@ class UpdateHubClusterFeatureRequest(TeaModel):
         cluster_id: str = None,
         deletion_protection: bool = None,
         enable_mesh: bool = None,
-        mseenabled: bool = None,
+        gateway_enabled: bool = None,
         monitor_enabled: bool = None,
         name: str = None,
         price_limit: str = None,
@@ -5265,7 +5527,10 @@ class UpdateHubClusterFeatureRequest(TeaModel):
         # *   true
         # *   false
         self.enable_mesh = enable_mesh
-        self.mseenabled = mseenabled
+        # Specifies whether to enable Gateway. Valid values:
+        # - true
+        # - false
+        self.gateway_enabled = gateway_enabled
         # Specifies whether to enable the monitoring dashboard feature for the workflow instance. This parameter takes effect only if Profile is set to XFlow. Valid values:
         # 
         # *   true
@@ -5322,8 +5587,8 @@ class UpdateHubClusterFeatureRequest(TeaModel):
             result['DeletionProtection'] = self.deletion_protection
         if self.enable_mesh is not None:
             result['EnableMesh'] = self.enable_mesh
-        if self.mseenabled is not None:
-            result['MSEEnabled'] = self.mseenabled
+        if self.gateway_enabled is not None:
+            result['GatewayEnabled'] = self.gateway_enabled
         if self.monitor_enabled is not None:
             result['MonitorEnabled'] = self.monitor_enabled
         if self.name is not None:
@@ -5362,8 +5627,8 @@ class UpdateHubClusterFeatureRequest(TeaModel):
             self.deletion_protection = m.get('DeletionProtection')
         if m.get('EnableMesh') is not None:
             self.enable_mesh = m.get('EnableMesh')
-        if m.get('MSEEnabled') is not None:
-            self.mseenabled = m.get('MSEEnabled')
+        if m.get('GatewayEnabled') is not None:
+            self.gateway_enabled = m.get('GatewayEnabled')
         if m.get('MonitorEnabled') is not None:
             self.monitor_enabled = m.get('MonitorEnabled')
         if m.get('Name') is not None:
@@ -5394,7 +5659,7 @@ class UpdateHubClusterFeatureShrinkRequest(TeaModel):
         cluster_id: str = None,
         deletion_protection: bool = None,
         enable_mesh: bool = None,
-        mseenabled: bool = None,
+        gateway_enabled: bool = None,
         monitor_enabled: bool = None,
         name: str = None,
         price_limit: str = None,
@@ -5446,7 +5711,10 @@ class UpdateHubClusterFeatureShrinkRequest(TeaModel):
         # *   true
         # *   false
         self.enable_mesh = enable_mesh
-        self.mseenabled = mseenabled
+        # Specifies whether to enable Gateway. Valid values:
+        # - true
+        # - false
+        self.gateway_enabled = gateway_enabled
         # Specifies whether to enable the monitoring dashboard feature for the workflow instance. This parameter takes effect only if Profile is set to XFlow. Valid values:
         # 
         # *   true
@@ -5503,8 +5771,8 @@ class UpdateHubClusterFeatureShrinkRequest(TeaModel):
             result['DeletionProtection'] = self.deletion_protection
         if self.enable_mesh is not None:
             result['EnableMesh'] = self.enable_mesh
-        if self.mseenabled is not None:
-            result['MSEEnabled'] = self.mseenabled
+        if self.gateway_enabled is not None:
+            result['GatewayEnabled'] = self.gateway_enabled
         if self.monitor_enabled is not None:
             result['MonitorEnabled'] = self.monitor_enabled
         if self.name is not None:
@@ -5543,8 +5811,8 @@ class UpdateHubClusterFeatureShrinkRequest(TeaModel):
             self.deletion_protection = m.get('DeletionProtection')
         if m.get('EnableMesh') is not None:
             self.enable_mesh = m.get('EnableMesh')
-        if m.get('MSEEnabled') is not None:
-            self.mseenabled = m.get('MSEEnabled')
+        if m.get('GatewayEnabled') is not None:
+            self.gateway_enabled = m.get('GatewayEnabled')
         if m.get('MonitorEnabled') is not None:
             self.monitor_enabled = m.get('MonitorEnabled')
         if m.get('Name') is not None:
@@ -5602,9 +5870,6 @@ class UpdateHubClusterFeatureResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5736,9 +6001,6 @@ class UpdateUserPermissionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

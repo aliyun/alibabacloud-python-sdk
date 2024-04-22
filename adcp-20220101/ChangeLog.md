@@ -1,3 +1,14 @@
+2024-04-22 Version: 3.0.0
+- Update API CreateHubCluster: add param ResourceGroupID.
+- Update API CreateHubCluster: update response param.
+- Update API DeleteHubCluster: update response param.
+- Update API DescribeHubClusterDetails: update response param.
+- Update API DescribeHubClusters: add param ResourceGroupId.
+- Update API DescribeHubClusters: update response param.
+- Update API UpdateHubClusterFeature: add param GatewayEnabled.
+- Update API UpdateHubClusterFeature: delete param MSEEnabled.
+
+
 2023-10-12 Version: 2.0.2
 - Generated python 2022-01-01 for adcp.
 
