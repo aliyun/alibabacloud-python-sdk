@@ -1,3 +1,10 @@
+2024-04-22 Version: 4.0.3
+- Update API CreateCluster: update param body.
+- Update API CreateClusterNodePool: update param body.
+- Update API DescribeClusterNodePoolDetail: update response param.
+- Update API DescribeClusterNodePools: update response param.
+
+
 2024-04-19 Version: 4.0.2
 - Update API CreateCluster: update param body.
 - Update API CreateClusterNodePool: update param body.

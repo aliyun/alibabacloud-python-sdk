@@ -2614,6 +2614,7 @@ class CreateClusterRequest(TeaModel):
         resource_group_id: str = None,
         runtime: Runtime = None,
         security_group_id: str = None,
+        security_hardening_os: bool = None,
         service_account_issuer: str = None,
         service_cidr: str = None,
         service_discovery_types: List[str] = None,
@@ -2801,7 +2802,7 @@ class CreateClusterRequest(TeaModel):
         # 
         # >  This parameter is required when you create worker nodes on existing ECS instances.
         self.instances = instances
-        # The cluster IP stack.
+        # The cluster ip_stack.
         self.ip_stack = ip_stack
         # Specifies whether to create an advanced security group. This parameter takes effect only if `security_group_id` is left empty.
         # 
@@ -2986,6 +2987,7 @@ class CreateClusterRequest(TeaModel):
         self.runtime = runtime
         # The ID of an existing security group. You need to choose between this parameter and the `is_enterprise_security_group` parameter. Cluster nodes are automatically added to the security group.
         self.security_group_id = security_group_id
+        self.security_hardening_os = security_hardening_os
         # Service accounts provide identities for pods when pods communicate with the `API server` of the cluster. `service-account-issuer` is the issuer of the `serviceaccount token`, which corresponds to the `iss` field in the `token payload`.
         # 
         # For more information about `ServiceAccount`, see [Enable service account token volume projection](~~160384~~).
@@ -3276,6 +3278,8 @@ class CreateClusterRequest(TeaModel):
             result['runtime'] = self.runtime.to_map()
         if self.security_group_id is not None:
             result['security_group_id'] = self.security_group_id
+        if self.security_hardening_os is not None:
+            result['security_hardening_os'] = self.security_hardening_os
         if self.service_account_issuer is not None:
             result['service_account_issuer'] = self.service_account_issuer
         if self.service_cidr is not None:
@@ -3473,6 +3477,8 @@ class CreateClusterRequest(TeaModel):
             self.runtime = temp_model.from_map(m['runtime'])
         if m.get('security_group_id') is not None:
             self.security_group_id = m.get('security_group_id')
+        if m.get('security_hardening_os') is not None:
+            self.security_hardening_os = m.get('security_hardening_os')
         if m.get('service_account_issuer') is not None:
             self.service_account_issuer = m.get('service_account_issuer')
         if m.get('service_cidr') is not None:
@@ -4356,6 +4362,7 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         scaling_policy: str = None,
         security_group_id: str = None,
         security_group_ids: List[str] = None,
+        security_hardening_os: bool = None,
         soc_enabled: bool = None,
         spot_instance_pools: int = None,
         spot_instance_remedy: bool = None,
@@ -4480,6 +4487,7 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         self.security_group_id = security_group_id
         # The IDs of security groups to which you want to add the node pool. You must set this parameter or `security_group_id`. We recommend that you set `security_group_ids`. If you set both `security_group_id` and `security_group_ids`, `security_group_ids` is used.
         self.security_group_ids = security_group_ids
+        self.security_hardening_os = security_hardening_os
         self.soc_enabled = soc_enabled
         # The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
         self.spot_instance_pools = spot_instance_pools
@@ -4619,6 +4627,8 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
             result['security_group_id'] = self.security_group_id
         if self.security_group_ids is not None:
             result['security_group_ids'] = self.security_group_ids
+        if self.security_hardening_os is not None:
+            result['security_hardening_os'] = self.security_hardening_os
         if self.soc_enabled is not None:
             result['soc_enabled'] = self.soc_enabled
         if self.spot_instance_pools is not None:
@@ -4717,6 +4727,8 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
             self.security_group_id = m.get('security_group_id')
         if m.get('security_group_ids') is not None:
             self.security_group_ids = m.get('security_group_ids')
+        if m.get('security_hardening_os') is not None:
+            self.security_hardening_os = m.get('security_hardening_os')
         if m.get('soc_enabled') is not None:
             self.soc_enabled = m.get('soc_enabled')
         if m.get('spot_instance_pools') is not None:
@@ -9224,6 +9236,7 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         scaling_policy: str = None,
         security_group_id: str = None,
         security_group_ids: List[str] = None,
+        security_hardening_os: bool = None,
         soc_enabled: bool = None,
         spot_instance_pools: int = None,
         spot_instance_remedy: bool = None,
@@ -9333,6 +9346,7 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         self.security_group_id = security_group_id
         # The IDs of the security groups to which the node pool is added.
         self.security_group_ids = security_group_ids
+        self.security_hardening_os = security_hardening_os
         self.soc_enabled = soc_enabled
         # The number of instance types that are available for creating preemptible instances. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
         self.spot_instance_pools = spot_instance_pools
@@ -9459,6 +9473,8 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
             result['security_group_id'] = self.security_group_id
         if self.security_group_ids is not None:
             result['security_group_ids'] = self.security_group_ids
+        if self.security_hardening_os is not None:
+            result['security_hardening_os'] = self.security_hardening_os
         if self.soc_enabled is not None:
             result['soc_enabled'] = self.soc_enabled
         if self.spot_instance_pools is not None:
@@ -9561,6 +9577,8 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
             self.security_group_id = m.get('security_group_id')
         if m.get('security_group_ids') is not None:
             self.security_group_ids = m.get('security_group_ids')
+        if m.get('security_hardening_os') is not None:
+            self.security_hardening_os = m.get('security_hardening_os')
         if m.get('soc_enabled') is not None:
             self.soc_enabled = m.get('soc_enabled')
         if m.get('spot_instance_pools') is not None:
@@ -10610,6 +10628,7 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
         scaling_policy: str = None,
         security_group_id: str = None,
         security_group_ids: List[str] = None,
+        security_hardening_os: bool = None,
         soc_enabled: bool = None,
         spot_instance_pools: int = None,
         spot_instance_remedy: bool = None,
@@ -10722,6 +10741,7 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
         self.security_group_id = security_group_id
         # The IDs of the security groups to which the node pool is added.
         self.security_group_ids = security_group_ids
+        self.security_hardening_os = security_hardening_os
         # 是否开启等保加固，仅当系统镜像选择Alibaba Cloud Linux 2或Alibaba Cloud Linux 3时，可为节点开启等保加固。阿里云为Alibaba Cloud Linux 2和Alibaba Cloud Linux 3等保2.0三级版镜像提供等保合规的基线检查标准和扫描程序。
         self.soc_enabled = soc_enabled
         # The number of instance types that are available for creating preemptible instances. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
@@ -10855,6 +10875,8 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
             result['security_group_id'] = self.security_group_id
         if self.security_group_ids is not None:
             result['security_group_ids'] = self.security_group_ids
+        if self.security_hardening_os is not None:
+            result['security_hardening_os'] = self.security_hardening_os
         if self.soc_enabled is not None:
             result['soc_enabled'] = self.soc_enabled
         if self.spot_instance_pools is not None:
@@ -10957,6 +10979,8 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
             self.security_group_id = m.get('security_group_id')
         if m.get('security_group_ids') is not None:
             self.security_group_ids = m.get('security_group_ids')
+        if m.get('security_hardening_os') is not None:
+            self.security_hardening_os = m.get('security_hardening_os')
         if m.get('soc_enabled') is not None:
             self.soc_enabled = m.get('soc_enabled')
         if m.get('spot_instance_pools') is not None:
@@ -15994,7 +16018,7 @@ class DescribePolicyInstancesStatusResponseBodyPolicyInstances(TeaModel):
         policy_name: str = None,
         policy_severity: str = None,
     ):
-        # The policy type. For more information about different types of policies and their descriptions, see [Predefined security policies of ACK](https://www.alibabacloud.com/help/doc-detail/359819.html).
+        # The policy type. For more information about different types of policies and their descriptions, see [Predefined security policies of ACK](~~359819~~).
         self.policy_category = policy_category
         # The description of the policy.
         self.policy_description = policy_description
