@@ -4649,6 +4649,7 @@ class DetectFaceResponseBodyData(TeaModel):
         face_probability_list: List[float] = None,
         face_rectangles: List[int] = None,
         landmark_count: int = None,
+        landmark_score: List[float] = None,
         landmarks: List[float] = None,
         pose_list: List[float] = None,
         pupils: List[float] = None,
@@ -4660,6 +4661,7 @@ class DetectFaceResponseBodyData(TeaModel):
         # 1
         self.face_rectangles = face_rectangles
         self.landmark_count = landmark_count
+        self.landmark_score = landmark_score
         # 1
         self.landmarks = landmarks
         # 1
@@ -4686,6 +4688,8 @@ class DetectFaceResponseBodyData(TeaModel):
             result['FaceRectangles'] = self.face_rectangles
         if self.landmark_count is not None:
             result['LandmarkCount'] = self.landmark_count
+        if self.landmark_score is not None:
+            result['LandmarkScore'] = self.landmark_score
         if self.landmarks is not None:
             result['Landmarks'] = self.landmarks
         if self.pose_list is not None:
@@ -4706,6 +4710,8 @@ class DetectFaceResponseBodyData(TeaModel):
             self.face_rectangles = m.get('FaceRectangles')
         if m.get('LandmarkCount') is not None:
             self.landmark_count = m.get('LandmarkCount')
+        if m.get('LandmarkScore') is not None:
+            self.landmark_score = m.get('LandmarkScore')
         if m.get('Landmarks') is not None:
             self.landmarks = m.get('Landmarks')
         if m.get('PoseList') is not None:

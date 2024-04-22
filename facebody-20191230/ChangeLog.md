@@ -1,3 +1,7 @@
+2024-04-22 Version: 5.1.2
+- Update API DetectFace: update response param.
+
+
 2024-03-13 Version: 5.1.1
 - Update API DetectFace: update param MaxFaceNumber.
 - Update API QueryFaceImageTemplate: add param PageNo.
