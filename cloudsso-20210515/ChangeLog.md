@@ -1,3 +1,7 @@
+2024-04-22 Version: 1.5.1
+- Update API GetDirectoryStatistics: update response param.
+
+
 2024-03-29 Version: 1.5.0
 - Support API GetLoginPreference.
 - Support API GetPasswordPolicy.

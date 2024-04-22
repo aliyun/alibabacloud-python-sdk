@@ -4153,6 +4153,7 @@ class GetDirectoryStatisticsResponseBodyDirectoryStatistics(TeaModel):
         group_count: int = None,
         group_quota: int = None,
         in_progress_task_count: int = None,
+        inline_policy_per_access_configuration_quota: int = None,
         region: str = None,
         scimserver_credential_count: int = None,
         scimsync_enabled: bool = None,
@@ -4177,6 +4178,7 @@ class GetDirectoryStatisticsResponseBodyDirectoryStatistics(TeaModel):
         self.group_quota = group_quota
         # The number of tasks that are being performed.
         self.in_progress_task_count = in_progress_task_count
+        self.inline_policy_per_access_configuration_quota = inline_policy_per_access_configuration_quota
         # The region ID of the directory.
         self.region = region
         # The number of SCIM credentials.
@@ -4223,6 +4225,8 @@ class GetDirectoryStatisticsResponseBodyDirectoryStatistics(TeaModel):
             result['GroupQuota'] = self.group_quota
         if self.in_progress_task_count is not None:
             result['InProgressTaskCount'] = self.in_progress_task_count
+        if self.inline_policy_per_access_configuration_quota is not None:
+            result['InlinePolicyPerAccessConfigurationQuota'] = self.inline_policy_per_access_configuration_quota
         if self.region is not None:
             result['Region'] = self.region
         if self.scimserver_credential_count is not None:
@@ -4257,6 +4261,8 @@ class GetDirectoryStatisticsResponseBodyDirectoryStatistics(TeaModel):
             self.group_quota = m.get('GroupQuota')
         if m.get('InProgressTaskCount') is not None:
             self.in_progress_task_count = m.get('InProgressTaskCount')
+        if m.get('InlinePolicyPerAccessConfigurationQuota') is not None:
+            self.inline_policy_per_access_configuration_quota = m.get('InlinePolicyPerAccessConfigurationQuota')
         if m.get('Region') is not None:
             self.region = m.get('Region')
         if m.get('SCIMServerCredentialCount') is not None:
