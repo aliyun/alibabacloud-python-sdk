@@ -1,3 +1,7 @@
+2024-04-22 Version: 1.2.2
+- Update API DescribeEventDetail: update response param.
+
+
 2024-04-18 Version: 1.2.1
 - Update API DescribeDataLimits: add param MemberAccount.
 - Update API DescribeDataLimits: update response param.
