@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_voicenavigator20180612.
 
-Created on 09/04/2024
+Created on 22/04/2024
 
 @author: Alibaba Cloud SDK
 """

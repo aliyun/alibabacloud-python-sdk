@@ -1,3 +1,7 @@
+2024-04-22 Version: 1.0.5
+- Update API ListConversations: update response param.
+
+
 2024-04-09 Version: 1.0.4
 - Generated python 2018-06-12 for VoiceNavigator.
 

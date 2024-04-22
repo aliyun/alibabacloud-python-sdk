@@ -4521,6 +4521,8 @@ class ListConversationsResponseBodyConversations(TeaModel):
         called_number: str = None,
         calling_number: str = None,
         conversation_id: str = None,
+        ds_report: str = None,
+        ds_report_titles: List[str] = None,
         end_reason: int = None,
         end_time: int = None,
         has_last_playback_completed: bool = None,
@@ -4533,6 +4535,8 @@ class ListConversationsResponseBodyConversations(TeaModel):
         self.called_number = called_number
         self.calling_number = calling_number
         self.conversation_id = conversation_id
+        self.ds_report = ds_report
+        self.ds_report_titles = ds_report_titles
         self.end_reason = end_reason
         self.end_time = end_time
         self.has_last_playback_completed = has_last_playback_completed
@@ -4557,6 +4561,10 @@ class ListConversationsResponseBodyConversations(TeaModel):
             result['CallingNumber'] = self.calling_number
         if self.conversation_id is not None:
             result['ConversationId'] = self.conversation_id
+        if self.ds_report is not None:
+            result['DsReport'] = self.ds_report
+        if self.ds_report_titles is not None:
+            result['DsReportTitles'] = self.ds_report_titles
         if self.end_reason is not None:
             result['EndReason'] = self.end_reason
         if self.end_time is not None:
@@ -4583,6 +4591,10 @@ class ListConversationsResponseBodyConversations(TeaModel):
             self.calling_number = m.get('CallingNumber')
         if m.get('ConversationId') is not None:
             self.conversation_id = m.get('ConversationId')
+        if m.get('DsReport') is not None:
+            self.ds_report = m.get('DsReport')
+        if m.get('DsReportTitles') is not None:
+            self.ds_report_titles = m.get('DsReportTitles')
         if m.get('EndReason') is not None:
             self.end_reason = m.get('EndReason')
         if m.get('EndTime') is not None:
