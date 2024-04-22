@@ -1168,6 +1168,125 @@ class CreateTagResponse(TeaModel):
         return self
 
 
+class CreateUserSuppressionRequest(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.address = address
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class CreateUserSuppressionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        suppression_id: str = None,
+    ):
+        self.request_id = request_id
+        self.suppression_id = suppression_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.suppression_id is not None:
+            result['SuppressionId'] = self.suppression_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SuppressionId') is not None:
+            self.suppression_id = m.get('SuppressionId')
+        return self
+
+
+class CreateUserSuppressionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateUserSuppressionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateUserSuppressionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteDomainRequest(TeaModel):
     def __init__(
         self,
@@ -2785,6 +2904,119 @@ class GetIpfilterListResponse(TeaModel):
         return self
 
 
+class GetSuppressionListLevelRequest(TeaModel):
+    def __init__(
+        self,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class GetSuppressionListLevelResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        suppression_list_level: str = None,
+    ):
+        self.request_id = request_id
+        self.suppression_list_level = suppression_list_level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.suppression_list_level is not None:
+            result['SuppressionListLevel'] = self.suppression_list_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SuppressionListLevel') is not None:
+            self.suppression_list_level = m.get('SuppressionListLevel')
+        return self
+
+
+class GetSuppressionListLevelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSuppressionListLevelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSuppressionListLevelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetTrackListRequest(TeaModel):
     def __init__(
         self,
@@ -3411,6 +3643,267 @@ class GetTrackListByMailFromAndTagNameResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetTrackListByMailFromAndTagNameResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListUserSuppressionRequest(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        end_bounce_time: int = None,
+        end_create_time: int = None,
+        owner_id: int = None,
+        page_no: int = None,
+        page_size: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        start_bounce_time: int = None,
+        start_create_time: int = None,
+    ):
+        self.address = address
+        self.end_bounce_time = end_bounce_time
+        self.end_create_time = end_create_time
+        self.owner_id = owner_id
+        self.page_no = page_no
+        self.page_size = page_size
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.start_bounce_time = start_bounce_time
+        self.start_create_time = start_create_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.end_bounce_time is not None:
+            result['EndBounceTime'] = self.end_bounce_time
+        if self.end_create_time is not None:
+            result['EndCreateTime'] = self.end_create_time
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.start_bounce_time is not None:
+            result['StartBounceTime'] = self.start_bounce_time
+        if self.start_create_time is not None:
+            result['StartCreateTime'] = self.start_create_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('EndBounceTime') is not None:
+            self.end_bounce_time = m.get('EndBounceTime')
+        if m.get('EndCreateTime') is not None:
+            self.end_create_time = m.get('EndCreateTime')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('StartBounceTime') is not None:
+            self.start_bounce_time = m.get('StartBounceTime')
+        if m.get('StartCreateTime') is not None:
+            self.start_create_time = m.get('StartCreateTime')
+        return self
+
+
+class ListUserSuppressionResponseBodyDataUserSuppressions(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        create_time: int = None,
+        last_bounce_time: int = None,
+        suppression_id: int = None,
+        type: str = None,
+    ):
+        self.address = address
+        self.create_time = create_time
+        self.last_bounce_time = last_bounce_time
+        self.suppression_id = suppression_id
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.last_bounce_time is not None:
+            result['LastBounceTime'] = self.last_bounce_time
+        if self.suppression_id is not None:
+            result['SuppressionId'] = self.suppression_id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('LastBounceTime') is not None:
+            self.last_bounce_time = m.get('LastBounceTime')
+        if m.get('SuppressionId') is not None:
+            self.suppression_id = m.get('SuppressionId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListUserSuppressionResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        user_suppressions: List[ListUserSuppressionResponseBodyDataUserSuppressions] = None,
+    ):
+        self.user_suppressions = user_suppressions
+
+    def validate(self):
+        if self.user_suppressions:
+            for k in self.user_suppressions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['UserSuppressions'] = []
+        if self.user_suppressions is not None:
+            for k in self.user_suppressions:
+                result['UserSuppressions'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.user_suppressions = []
+        if m.get('UserSuppressions') is not None:
+            for k in m.get('UserSuppressions'):
+                temp_model = ListUserSuppressionResponseBodyDataUserSuppressions()
+                self.user_suppressions.append(temp_model.from_map(k))
+        return self
+
+
+class ListUserSuppressionResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListUserSuppressionResponseBodyData = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.data = data
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ListUserSuppressionResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListUserSuppressionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListUserSuppressionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListUserSuppressionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5590,6 +6083,119 @@ class QueryTaskByParamResponse(TeaModel):
         return self
 
 
+class RemoveUserSuppressionRequest(TeaModel):
+    def __init__(
+        self,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        suppression_ids: str = None,
+    ):
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.suppression_ids = suppression_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.suppression_ids is not None:
+            result['SuppressionIds'] = self.suppression_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SuppressionIds') is not None:
+            self.suppression_ids = m.get('SuppressionIds')
+        return self
+
+
+class RemoveUserSuppressionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RemoveUserSuppressionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RemoveUserSuppressionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RemoveUserSuppressionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SaveReceiverDetailRequest(TeaModel):
     def __init__(
         self,
@@ -6280,6 +6886,7 @@ class SenderStatisticsDetailByParamResponseBodyDataMailDetail(TeaModel):
     def __init__(
         self,
         account_name: str = None,
+        error_classification: str = None,
         last_update_time: str = None,
         message: str = None,
         status: int = None,
@@ -6288,6 +6895,7 @@ class SenderStatisticsDetailByParamResponseBodyDataMailDetail(TeaModel):
         utc_last_update_time: str = None,
     ):
         self.account_name = account_name
+        self.error_classification = error_classification
         self.last_update_time = last_update_time
         self.message = message
         self.status = status
@@ -6306,6 +6914,8 @@ class SenderStatisticsDetailByParamResponseBodyDataMailDetail(TeaModel):
         result = dict()
         if self.account_name is not None:
             result['AccountName'] = self.account_name
+        if self.error_classification is not None:
+            result['ErrorClassification'] = self.error_classification
         if self.last_update_time is not None:
             result['LastUpdateTime'] = self.last_update_time
         if self.message is not None:
@@ -6324,6 +6934,8 @@ class SenderStatisticsDetailByParamResponseBodyDataMailDetail(TeaModel):
         m = m or dict()
         if m.get('AccountName') is not None:
             self.account_name = m.get('AccountName')
+        if m.get('ErrorClassification') is not None:
+            self.error_classification = m.get('ErrorClassification')
         if m.get('LastUpdateTime') is not None:
             self.last_update_time = m.get('LastUpdateTime')
         if m.get('Message') is not None:
@@ -6452,6 +7064,125 @@ class SenderStatisticsDetailByParamResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SenderStatisticsDetailByParamResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetSuppressionListLevelRequest(TeaModel):
+    def __init__(
+        self,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        suppression_list_level: str = None,
+    ):
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.suppression_list_level = suppression_list_level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.suppression_list_level is not None:
+            result['SuppressionListLevel'] = self.suppression_list_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SuppressionListLevel') is not None:
+            self.suppression_list_level = m.get('SuppressionListLevel')
+        return self
+
+
+class SetSuppressionListLevelResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        suppression_list_level: str = None,
+    ):
+        self.request_id = request_id
+        self.suppression_list_level = suppression_list_level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.suppression_list_level is not None:
+            result['SuppressionListLevel'] = self.suppression_list_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SuppressionListLevel') is not None:
+            self.suppression_list_level = m.get('SuppressionListLevel')
+        return self
+
+
+class SetSuppressionListLevelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetSuppressionListLevelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetSuppressionListLevelResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

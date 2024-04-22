@@ -1,3 +1,16 @@
+2024-04-22 Version: 1.1.0
+- Support API CreateUserSuppression.
+- Support API GetSuppressionListLevel.
+- Support API ListUserSuppression.
+- Support API RemoveUserSuppression.
+- Support API SetSuppressionListLevel.
+- Update API BatchSendMail: add param UnSubscribeFilterLevel.
+- Update API BatchSendMail: add param UnSubscribeLinkType.
+- Update API SenderStatisticsDetailByParam: update response param.
+- Update API SingleSendMail: add param UnSubscribeFilterLevel.
+- Update API SingleSendMail: add param UnSubscribeLinkType.
+
+
 2024-03-13 Version: 1.0.12
 - Update API BatchSendMail: add param UnSubscribeFilterLevel.
 - Update API BatchSendMail: add param UnSubscribeLinkType.

@@ -843,6 +843,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_tag_with_options_async(request, runtime)
 
+    def create_user_suppression_with_options(
+        self,
+        request: dm_20151123_models.CreateUserSuppressionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.CreateUserSuppressionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateUserSuppression',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.CreateUserSuppressionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_user_suppression_with_options_async(
+        self,
+        request: dm_20151123_models.CreateUserSuppressionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.CreateUserSuppressionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateUserSuppression',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.CreateUserSuppressionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_user_suppression(
+        self,
+        request: dm_20151123_models.CreateUserSuppressionRequest,
+    ) -> dm_20151123_models.CreateUserSuppressionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_user_suppression_with_options(request, runtime)
+
+    async def create_user_suppression_async(
+        self,
+        request: dm_20151123_models.CreateUserSuppressionRequest,
+    ) -> dm_20151123_models.CreateUserSuppressionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_user_suppression_with_options_async(request, runtime)
+
     def delete_domain_with_options(
         self,
         request: dm_20151123_models.DeleteDomainRequest,
@@ -1745,6 +1827,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_ipfilter_list_with_options_async(request, runtime)
 
+    def get_suppression_list_level_with_options(
+        self,
+        request: dm_20151123_models.GetSuppressionListLevelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.GetSuppressionListLevelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSuppressionListLevel',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.GetSuppressionListLevelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_suppression_list_level_with_options_async(
+        self,
+        request: dm_20151123_models.GetSuppressionListLevelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.GetSuppressionListLevelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSuppressionListLevel',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.GetSuppressionListLevelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_suppression_list_level(
+        self,
+        request: dm_20151123_models.GetSuppressionListLevelRequest,
+    ) -> dm_20151123_models.GetSuppressionListLevelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_suppression_list_level_with_options(request, runtime)
+
+    async def get_suppression_list_level_async(
+        self,
+        request: dm_20151123_models.GetSuppressionListLevelRequest,
+    ) -> dm_20151123_models.GetSuppressionListLevelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_suppression_list_level_with_options_async(request, runtime)
+
     def get_track_list_with_options(
         self,
         request: dm_20151123_models.GetTrackListRequest,
@@ -1972,6 +2132,112 @@ class Client(OpenApiClient):
     ) -> dm_20151123_models.GetTrackListByMailFromAndTagNameResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_track_list_by_mail_from_and_tag_name_with_options_async(request, runtime)
+
+    def list_user_suppression_with_options(
+        self,
+        request: dm_20151123_models.ListUserSuppressionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.ListUserSuppressionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.end_bounce_time):
+            query['EndBounceTime'] = request.end_bounce_time
+        if not UtilClient.is_unset(request.end_create_time):
+            query['EndCreateTime'] = request.end_create_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_bounce_time):
+            query['StartBounceTime'] = request.start_bounce_time
+        if not UtilClient.is_unset(request.start_create_time):
+            query['StartCreateTime'] = request.start_create_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUserSuppression',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ListUserSuppressionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_user_suppression_with_options_async(
+        self,
+        request: dm_20151123_models.ListUserSuppressionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.ListUserSuppressionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.end_bounce_time):
+            query['EndBounceTime'] = request.end_bounce_time
+        if not UtilClient.is_unset(request.end_create_time):
+            query['EndCreateTime'] = request.end_create_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_bounce_time):
+            query['StartBounceTime'] = request.start_bounce_time
+        if not UtilClient.is_unset(request.start_create_time):
+            query['StartCreateTime'] = request.start_create_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUserSuppression',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ListUserSuppressionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_user_suppression(
+        self,
+        request: dm_20151123_models.ListUserSuppressionRequest,
+    ) -> dm_20151123_models.ListUserSuppressionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_user_suppression_with_options(request, runtime)
+
+    async def list_user_suppression_async(
+        self,
+        request: dm_20151123_models.ListUserSuppressionRequest,
+    ) -> dm_20151123_models.ListUserSuppressionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_user_suppression_with_options_async(request, runtime)
 
     def modify_mail_address_with_options(
         self,
@@ -2897,6 +3163,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_task_by_param_with_options_async(request, runtime)
 
+    def remove_user_suppression_with_options(
+        self,
+        request: dm_20151123_models.RemoveUserSuppressionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.RemoveUserSuppressionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.suppression_ids):
+            query['SuppressionIds'] = request.suppression_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveUserSuppression',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.RemoveUserSuppressionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_user_suppression_with_options_async(
+        self,
+        request: dm_20151123_models.RemoveUserSuppressionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.RemoveUserSuppressionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.suppression_ids):
+            query['SuppressionIds'] = request.suppression_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveUserSuppression',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.RemoveUserSuppressionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_user_suppression(
+        self,
+        request: dm_20151123_models.RemoveUserSuppressionRequest,
+    ) -> dm_20151123_models.RemoveUserSuppressionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.remove_user_suppression_with_options(request, runtime)
+
+    async def remove_user_suppression_async(
+        self,
+        request: dm_20151123_models.RemoveUserSuppressionRequest,
+    ) -> dm_20151123_models.RemoveUserSuppressionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.remove_user_suppression_with_options_async(request, runtime)
+
     def save_receiver_detail_with_options(
         self,
         request: dm_20151123_models.SaveReceiverDetailRequest,
@@ -3296,6 +3644,88 @@ class Client(OpenApiClient):
     ) -> dm_20151123_models.SenderStatisticsDetailByParamResponse:
         runtime = util_models.RuntimeOptions()
         return await self.sender_statistics_detail_by_param_with_options_async(request, runtime)
+
+    def set_suppression_list_level_with_options(
+        self,
+        request: dm_20151123_models.SetSuppressionListLevelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.SetSuppressionListLevelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.suppression_list_level):
+            query['SuppressionListLevel'] = request.suppression_list_level
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetSuppressionListLevel',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.SetSuppressionListLevelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_suppression_list_level_with_options_async(
+        self,
+        request: dm_20151123_models.SetSuppressionListLevelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.SetSuppressionListLevelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.suppression_list_level):
+            query['SuppressionListLevel'] = request.suppression_list_level
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetSuppressionListLevel',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.SetSuppressionListLevelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_suppression_list_level(
+        self,
+        request: dm_20151123_models.SetSuppressionListLevelRequest,
+    ) -> dm_20151123_models.SetSuppressionListLevelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_suppression_list_level_with_options(request, runtime)
+
+    async def set_suppression_list_level_async(
+        self,
+        request: dm_20151123_models.SetSuppressionListLevelRequest,
+    ) -> dm_20151123_models.SetSuppressionListLevelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_suppression_list_level_with_options_async(request, runtime)
 
     def single_send_mail_with_options(
         self,
