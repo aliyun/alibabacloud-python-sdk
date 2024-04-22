@@ -1,3 +1,16 @@
+2024-04-22 Version: 2.1.7
+- Update API CreateEndpointGroups: update param EndpointGroupConfigurations.
+- Update API CreateEndpointGroups: update param EndpointGroupConfigurations.
+- Update API CreateEndpointGroups: update param EndpointGroupConfigurations.
+- Update API CreateForwardingRules: update param ForwardingRules.
+- Update API CreateForwardingRules: update param ForwardingRules.
+- Update API CreateListener: add param HttpVersion.
+- Update API DescribeListener: update response param.
+- Update API ListAvailableAccelerateAreas: update response param.
+- Update API ListListeners: update response param.
+- Update API UpdateListener: add param HttpVersion.
+
+
 2024-03-28 Version: 2.1.6
 - Update API CreateListener: add param HttpVersion.
 - Update API DescribeListener: update response param.
