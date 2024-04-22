@@ -1,3 +1,15 @@
+2024-04-22 Version: 3.5.3
+- Update API DescribeSampleData: update response param.
+- Update API QueryCollectionData: add param HybridSearch.
+- Update API QueryCollectionData: add param HybridSearchArgs.
+- Update API QueryContent: add param HybridSearch.
+- Update API QueryContent: add param HybridSearchArgs.
+- Update API QueryContent: add param IncludeVector.
+- Update API QueryContent: add param RecallWindow.
+- Update API QueryContent: add param RerankFactor.
+- Update API QueryContent: update response param.
+
+
 2024-02-19 Version: 3.5.2
 - Update API DescribeSampleData: update response param.
 - Update API QueryContent: add param IncludeVector.

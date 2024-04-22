@@ -15471,12 +15471,12 @@ class DescribeSQLLogsRequest(TeaModel):
         # 
         # > The end time must be later than the start time. The maximum time range that can be specified is seven days.
         self.end_time = end_time
-        # The execution duration of the query. Unit: seconds.
+        # The execution duration of the SQL statement. Unit: seconds.
         self.execute_cost = execute_cost
-        # The execution state of the query. Valid values:
+        # The execution status of the SQL statement. Valid values:
         # 
-        # *   **success**\
-        # *   **fail**\
+        # *   **1**: successful.
+        # *   **0**: failed.
         self.execute_state = execute_state
         # The maximum amount of time consumed by a slow query. Unit: seconds. Minimum value: 0.
         self.max_execute_cost = max_execute_cost
@@ -15618,9 +15618,9 @@ class DescribeSQLLogsResponseBodyItems(TeaModel):
         self.dbname = dbname
         # The role of the database.
         self.dbrole = dbrole
-        # The execution duration of the query.
+        # The execution duration of the SQL statement.
         self.execute_cost = execute_cost
-        # The execution state of the query. Valid values:
+        # The execution status of the SQL statement. Valid values:
         # 
         # *   **success**\
         # *   **fail**\
@@ -15845,12 +15845,12 @@ class DescribeSQLLogsV2Request(TeaModel):
         # 
         # >  The end time must be later than the start time. The interval cannot be more than 24 hours.
         self.end_time = end_time
-        # The execution duration of the query. Unit: seconds.
+        # The execution duration of the SQL statement. Unit: seconds.
         self.execute_cost = execute_cost
-        # The execution state of the query. Valid values:
+        # The execution status of the SQL statement. Valid values:
         # 
-        # *   **success**\
-        # *   **fail**\
+        # *   **1**: successful.
+        # *   **0**: failed.
         self.execute_state = execute_state
         # The maximum amount of time consumed by a slow query. Minimum value: 0. Unit: seconds.
         self.max_execute_cost = max_execute_cost
@@ -15996,9 +15996,9 @@ class DescribeSQLLogsV2ResponseBodyItems(TeaModel):
         self.dbname = dbname
         # The role of the database.
         self.dbrole = dbrole
-        # The execution duration of the query.
+        # The execution duration of the SQL statement.
         self.execute_cost = execute_cost
-        # The execution state of the query. Valid values:
+        # The execution status of the SQL statement. Valid values:
         # 
         # *   **success**\
         # *   **fail**\
@@ -17504,10 +17504,10 @@ class DownloadSQLLogsRecordsRequest(TeaModel):
         self.end_time = end_time
         # The execution duration of the SQL statement. Unit: seconds.
         self.execute_cost = execute_cost
-        # The execution state of the SQL statement.
+        # The execution status of the SQL statement.
         # 
-        # *   **success**\
-        # *   **fail**\
+        # *   **1**: successful.
+        # *   **0**: failed.
         self.execute_state = execute_state
         # The language of the file that contains the query diagnostic information. Valid values:
         # 
@@ -21681,6 +21681,8 @@ class QueryCollectionDataRequest(TeaModel):
         content: str = None,
         dbinstance_id: str = None,
         filter: str = None,
+        hybrid_search: str = None,
+        hybrid_search_args: Dict[str, dict] = None,
         include_values: bool = None,
         metrics: str = None,
         namespace: str = None,
@@ -21694,6 +21696,8 @@ class QueryCollectionDataRequest(TeaModel):
         self.content = content
         self.dbinstance_id = dbinstance_id
         self.filter = filter
+        self.hybrid_search = hybrid_search
+        self.hybrid_search_args = hybrid_search_args
         self.include_values = include_values
         self.metrics = metrics
         self.namespace = namespace
@@ -21720,6 +21724,10 @@ class QueryCollectionDataRequest(TeaModel):
             result['DBInstanceId'] = self.dbinstance_id
         if self.filter is not None:
             result['Filter'] = self.filter
+        if self.hybrid_search is not None:
+            result['HybridSearch'] = self.hybrid_search
+        if self.hybrid_search_args is not None:
+            result['HybridSearchArgs'] = self.hybrid_search_args
         if self.include_values is not None:
             result['IncludeValues'] = self.include_values
         if self.metrics is not None:
@@ -21748,6 +21756,10 @@ class QueryCollectionDataRequest(TeaModel):
             self.dbinstance_id = m.get('DBInstanceId')
         if m.get('Filter') is not None:
             self.filter = m.get('Filter')
+        if m.get('HybridSearch') is not None:
+            self.hybrid_search = m.get('HybridSearch')
+        if m.get('HybridSearchArgs') is not None:
+            self.hybrid_search_args = m.get('HybridSearchArgs')
         if m.get('IncludeValues') is not None:
             self.include_values = m.get('IncludeValues')
         if m.get('Metrics') is not None:
@@ -21774,6 +21786,8 @@ class QueryCollectionDataShrinkRequest(TeaModel):
         content: str = None,
         dbinstance_id: str = None,
         filter: str = None,
+        hybrid_search: str = None,
+        hybrid_search_args_shrink: str = None,
         include_values: bool = None,
         metrics: str = None,
         namespace: str = None,
@@ -21787,6 +21801,8 @@ class QueryCollectionDataShrinkRequest(TeaModel):
         self.content = content
         self.dbinstance_id = dbinstance_id
         self.filter = filter
+        self.hybrid_search = hybrid_search
+        self.hybrid_search_args_shrink = hybrid_search_args_shrink
         self.include_values = include_values
         self.metrics = metrics
         self.namespace = namespace
@@ -21813,6 +21829,10 @@ class QueryCollectionDataShrinkRequest(TeaModel):
             result['DBInstanceId'] = self.dbinstance_id
         if self.filter is not None:
             result['Filter'] = self.filter
+        if self.hybrid_search is not None:
+            result['HybridSearch'] = self.hybrid_search
+        if self.hybrid_search_args_shrink is not None:
+            result['HybridSearchArgs'] = self.hybrid_search_args_shrink
         if self.include_values is not None:
             result['IncludeValues'] = self.include_values
         if self.metrics is not None:
@@ -21841,6 +21861,10 @@ class QueryCollectionDataShrinkRequest(TeaModel):
             self.dbinstance_id = m.get('DBInstanceId')
         if m.get('Filter') is not None:
             self.filter = m.get('Filter')
+        if m.get('HybridSearch') is not None:
+            self.hybrid_search = m.get('HybridSearch')
+        if m.get('HybridSearchArgs') is not None:
+            self.hybrid_search_args_shrink = m.get('HybridSearchArgs')
         if m.get('IncludeValues') is not None:
             self.include_values = m.get('IncludeValues')
         if m.get('Metrics') is not None:
@@ -22066,6 +22090,8 @@ class QueryContentRequest(TeaModel):
         file_name: str = None,
         file_url: str = None,
         filter: str = None,
+        hybrid_search: str = None,
+        hybrid_search_args: Dict[str, dict] = None,
         include_vector: bool = None,
         metrics: str = None,
         namespace: str = None,
@@ -22083,6 +22109,8 @@ class QueryContentRequest(TeaModel):
         self.file_name = file_name
         self.file_url = file_url
         self.filter = filter
+        self.hybrid_search = hybrid_search
+        self.hybrid_search_args = hybrid_search_args
         self.include_vector = include_vector
         self.metrics = metrics
         self.namespace = namespace
@@ -22115,6 +22143,10 @@ class QueryContentRequest(TeaModel):
             result['FileUrl'] = self.file_url
         if self.filter is not None:
             result['Filter'] = self.filter
+        if self.hybrid_search is not None:
+            result['HybridSearch'] = self.hybrid_search
+        if self.hybrid_search_args is not None:
+            result['HybridSearchArgs'] = self.hybrid_search_args
         if self.include_vector is not None:
             result['IncludeVector'] = self.include_vector
         if self.metrics is not None:
@@ -22151,6 +22183,10 @@ class QueryContentRequest(TeaModel):
             self.file_url = m.get('FileUrl')
         if m.get('Filter') is not None:
             self.filter = m.get('Filter')
+        if m.get('HybridSearch') is not None:
+            self.hybrid_search = m.get('HybridSearch')
+        if m.get('HybridSearchArgs') is not None:
+            self.hybrid_search_args = m.get('HybridSearchArgs')
         if m.get('IncludeVector') is not None:
             self.include_vector = m.get('IncludeVector')
         if m.get('Metrics') is not None:
@@ -22183,6 +22219,8 @@ class QueryContentAdvanceRequest(TeaModel):
         file_name: str = None,
         file_url_object: BinaryIO = None,
         filter: str = None,
+        hybrid_search: str = None,
+        hybrid_search_args: Dict[str, dict] = None,
         include_vector: bool = None,
         metrics: str = None,
         namespace: str = None,
@@ -22200,6 +22238,8 @@ class QueryContentAdvanceRequest(TeaModel):
         self.file_name = file_name
         self.file_url_object = file_url_object
         self.filter = filter
+        self.hybrid_search = hybrid_search
+        self.hybrid_search_args = hybrid_search_args
         self.include_vector = include_vector
         self.metrics = metrics
         self.namespace = namespace
@@ -22232,6 +22272,10 @@ class QueryContentAdvanceRequest(TeaModel):
             result['FileUrl'] = self.file_url_object
         if self.filter is not None:
             result['Filter'] = self.filter
+        if self.hybrid_search is not None:
+            result['HybridSearch'] = self.hybrid_search
+        if self.hybrid_search_args is not None:
+            result['HybridSearchArgs'] = self.hybrid_search_args
         if self.include_vector is not None:
             result['IncludeVector'] = self.include_vector
         if self.metrics is not None:
@@ -22268,6 +22312,10 @@ class QueryContentAdvanceRequest(TeaModel):
             self.file_url_object = m.get('FileUrl')
         if m.get('Filter') is not None:
             self.filter = m.get('Filter')
+        if m.get('HybridSearch') is not None:
+            self.hybrid_search = m.get('HybridSearch')
+        if m.get('HybridSearchArgs') is not None:
+            self.hybrid_search_args = m.get('HybridSearchArgs')
         if m.get('IncludeVector') is not None:
             self.include_vector = m.get('IncludeVector')
         if m.get('Metrics') is not None:
@@ -22300,6 +22348,8 @@ class QueryContentShrinkRequest(TeaModel):
         file_name: str = None,
         file_url: str = None,
         filter: str = None,
+        hybrid_search: str = None,
+        hybrid_search_args_shrink: str = None,
         include_vector: bool = None,
         metrics: str = None,
         namespace: str = None,
@@ -22317,6 +22367,8 @@ class QueryContentShrinkRequest(TeaModel):
         self.file_name = file_name
         self.file_url = file_url
         self.filter = filter
+        self.hybrid_search = hybrid_search
+        self.hybrid_search_args_shrink = hybrid_search_args_shrink
         self.include_vector = include_vector
         self.metrics = metrics
         self.namespace = namespace
@@ -22349,6 +22401,10 @@ class QueryContentShrinkRequest(TeaModel):
             result['FileUrl'] = self.file_url
         if self.filter is not None:
             result['Filter'] = self.filter
+        if self.hybrid_search is not None:
+            result['HybridSearch'] = self.hybrid_search
+        if self.hybrid_search_args_shrink is not None:
+            result['HybridSearchArgs'] = self.hybrid_search_args_shrink
         if self.include_vector is not None:
             result['IncludeVector'] = self.include_vector
         if self.metrics is not None:
@@ -22385,6 +22441,10 @@ class QueryContentShrinkRequest(TeaModel):
             self.file_url = m.get('FileUrl')
         if m.get('Filter') is not None:
             self.filter = m.get('Filter')
+        if m.get('HybridSearch') is not None:
+            self.hybrid_search = m.get('HybridSearch')
+        if m.get('HybridSearchArgs') is not None:
+            self.hybrid_search_args_shrink = m.get('HybridSearchArgs')
         if m.get('IncludeVector') is not None:
             self.include_vector = m.get('IncludeVector')
         if m.get('Metrics') is not None:
