@@ -401,6 +401,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.attach_mode):
+            query['AttachMode'] = request.attach_mode
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbinstances):
@@ -415,6 +417,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.scaling_group_id):
             query['ScalingGroupId'] = request.scaling_group_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -452,6 +456,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.attach_mode):
+            query['AttachMode'] = request.attach_mode
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbinstances):
@@ -466,6 +472,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.scaling_group_id):
             query['ScalingGroupId'] = request.scaling_group_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2073,6 +2081,8 @@ class Client(OpenApiClient):
             query['CustomPriorities'] = request.custom_priorities
         if not UtilClient.is_unset(request.data_disks):
             query['DataDisks'] = request.data_disks
+        if not UtilClient.is_unset(request.dedicated_host_cluster_id):
+            query['DedicatedHostClusterId'] = request.dedicated_host_cluster_id
         if not UtilClient.is_unset(request.dedicated_host_id):
             query['DedicatedHostId'] = request.dedicated_host_id
         if not UtilClient.is_unset(request.deletion_protection):
@@ -2228,6 +2238,8 @@ class Client(OpenApiClient):
             query['CustomPriorities'] = request.custom_priorities
         if not UtilClient.is_unset(request.data_disks):
             query['DataDisks'] = request.data_disks
+        if not UtilClient.is_unset(request.dedicated_host_cluster_id):
+            query['DedicatedHostClusterId'] = request.dedicated_host_cluster_id
         if not UtilClient.is_unset(request.dedicated_host_id):
             query['DedicatedHostId'] = request.dedicated_host_id
         if not UtilClient.is_unset(request.deletion_protection):
@@ -2436,6 +2448,8 @@ class Client(OpenApiClient):
             query['CustomPolicyARN'] = request.custom_policy_arn
         if not UtilClient.is_unset(request.dbinstance_ids):
             query['DBInstanceIds'] = request.dbinstance_ids
+        if not UtilClient.is_unset(request.dbinstances):
+            query['DBInstances'] = request.dbinstances
         if not UtilClient.is_unset(request.default_cooldown):
             query['DefaultCooldown'] = request.default_cooldown
         if not UtilClient.is_unset(request.desired_capacity):
@@ -2578,6 +2592,8 @@ class Client(OpenApiClient):
             query['CustomPolicyARN'] = request.custom_policy_arn
         if not UtilClient.is_unset(request.dbinstance_ids):
             query['DBInstanceIds'] = request.dbinstance_ids
+        if not UtilClient.is_unset(request.dbinstances):
+            query['DBInstances'] = request.dbinstances
         if not UtilClient.is_unset(request.default_cooldown):
             query['DefaultCooldown'] = request.default_cooldown
         if not UtilClient.is_unset(request.desired_capacity):
@@ -5866,6 +5882,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.remove_security_group):
+            query['RemoveSecurityGroup'] = request.remove_security_group
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.scaling_group_id):
@@ -5906,6 +5924,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.remove_security_group):
+            query['RemoveSecurityGroup'] = request.remove_security_group
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.scaling_group_id):
@@ -8291,6 +8311,8 @@ class Client(OpenApiClient):
             query['CustomPriorities'] = request.custom_priorities
         if not UtilClient.is_unset(request.data_disks):
             query['DataDisks'] = request.data_disks
+        if not UtilClient.is_unset(request.dedicated_host_cluster_id):
+            query['DedicatedHostClusterId'] = request.dedicated_host_cluster_id
         if not UtilClient.is_unset(request.dedicated_host_id):
             query['DedicatedHostId'] = request.dedicated_host_id
         if not UtilClient.is_unset(request.deletion_protection):
@@ -8432,6 +8454,8 @@ class Client(OpenApiClient):
             query['CustomPriorities'] = request.custom_priorities
         if not UtilClient.is_unset(request.data_disks):
             query['DataDisks'] = request.data_disks
+        if not UtilClient.is_unset(request.dedicated_host_cluster_id):
+            query['DedicatedHostClusterId'] = request.dedicated_host_cluster_id
         if not UtilClient.is_unset(request.dedicated_host_id):
             query['DedicatedHostId'] = request.dedicated_host_id
         if not UtilClient.is_unset(request.deletion_protection):

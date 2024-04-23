@@ -1,3 +1,14 @@
+2024-04-23 Version: 1.5.2
+- Update API AttachDBInstances: add param AttachMode.
+- Update API AttachDBInstances: add param Type.
+- Update API CreateScalingConfiguration: add param DedicatedHostClusterId.
+- Update API CreateScalingGroup: add param DBInstances.
+- Update API DescribeScalingConfigurations: update response param.
+- Update API DescribeScalingGroups: update response param.
+- Update API DetachDBInstances: add param RemoveSecurityGroup.
+- Update API ModifyScalingConfiguration: add param DedicatedHostClusterId.
+
+
 2024-04-17 Version: 1.5.1
 - Generated python 2022-02-22 for Ess.
 
