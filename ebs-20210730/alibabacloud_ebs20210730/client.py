@@ -2915,6 +2915,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_enterprise_snapshot_policy_with_options_async(request, runtime)
 
+    def describe_events_with_options(
+        self,
+        request: ebs_20210730_models.DescribeEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribeEventsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.event_name):
+            query['EventName'] = request.event_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEvents',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_events_with_options_async(
+        self,
+        request: ebs_20210730_models.DescribeEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribeEventsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.event_name):
+            query['EventName'] = request.event_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEvents',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_events(
+        self,
+        request: ebs_20210730_models.DescribeEventsRequest,
+    ) -> ebs_20210730_models.DescribeEventsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_events_with_options(request, runtime)
+
+    async def describe_events_async(
+        self,
+        request: ebs_20210730_models.DescribeEventsRequest,
+    ) -> ebs_20210730_models.DescribeEventsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_events_with_options_async(request, runtime)
+
     def describe_lens_service_status_with_options(
         self,
         runtime: util_models.RuntimeOptions,
