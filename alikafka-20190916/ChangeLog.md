@@ -1,3 +1,12 @@
+2024-04-23 Version: 2.6.6
+- Update API CreatePostPayOrder: update param DiskSize.
+- Update API CreatePostPayOrder: update param DiskType.
+- Update API CreatePrePayOrder: update param ConfluentConfig.
+- Update API GetInstanceList: add param Series.
+- Update API GetInstanceList: update response param.
+- Update API UpgradePrePayOrder: update param ConfluentConfig.
+
+
 2024-04-11 Version: 2.6.5
 - Update API CreatePostPayOrder: add param PaidType.
 - Update API CreatePostPayOrder: add param ServerlessConfig.

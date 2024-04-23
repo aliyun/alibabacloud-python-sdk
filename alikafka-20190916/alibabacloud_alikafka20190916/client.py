@@ -2020,6 +2020,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.series):
+            query['Series'] = request.series
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
@@ -2056,6 +2058,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.series):
+            query['Series'] = request.series
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
@@ -2910,6 +2914,13 @@ class Client(OpenApiClient):
         request: alikafka_20190916_models.ReopenInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.ReopenInstanceResponse:
+        """
+        You can call this operation only if your instance is in the Stopped state.
+        
+        @param request: ReopenInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReopenInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2940,6 +2951,13 @@ class Client(OpenApiClient):
         request: alikafka_20190916_models.ReopenInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.ReopenInstanceResponse:
+        """
+        You can call this operation only if your instance is in the Stopped state.
+        
+        @param request: ReopenInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReopenInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2969,6 +2987,12 @@ class Client(OpenApiClient):
         self,
         request: alikafka_20190916_models.ReopenInstanceRequest,
     ) -> alikafka_20190916_models.ReopenInstanceResponse:
+        """
+        You can call this operation only if your instance is in the Stopped state.
+        
+        @param request: ReopenInstanceRequest
+        @return: ReopenInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reopen_instance_with_options(request, runtime)
 
@@ -2976,6 +3000,12 @@ class Client(OpenApiClient):
         self,
         request: alikafka_20190916_models.ReopenInstanceRequest,
     ) -> alikafka_20190916_models.ReopenInstanceResponse:
+        """
+        You can call this operation only if your instance is in the Stopped state.
+        
+        @param request: ReopenInstanceRequest
+        @return: ReopenInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reopen_instance_with_options_async(request, runtime)
 
@@ -3160,6 +3190,13 @@ class Client(OpenApiClient):
         request: alikafka_20190916_models.StopInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.StopInstanceResponse:
+        """
+        You cannot stop a subscription ApsaraMQ for Kafka instance. If you want to stop a subscription ApsaraMQ for Kafka instance, submit a ticket.
+        
+        @param request: StopInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3190,6 +3227,13 @@ class Client(OpenApiClient):
         request: alikafka_20190916_models.StopInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.StopInstanceResponse:
+        """
+        You cannot stop a subscription ApsaraMQ for Kafka instance. If you want to stop a subscription ApsaraMQ for Kafka instance, submit a ticket.
+        
+        @param request: StopInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3219,6 +3263,12 @@ class Client(OpenApiClient):
         self,
         request: alikafka_20190916_models.StopInstanceRequest,
     ) -> alikafka_20190916_models.StopInstanceResponse:
+        """
+        You cannot stop a subscription ApsaraMQ for Kafka instance. If you want to stop a subscription ApsaraMQ for Kafka instance, submit a ticket.
+        
+        @param request: StopInstanceRequest
+        @return: StopInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_instance_with_options(request, runtime)
 
@@ -3226,6 +3276,12 @@ class Client(OpenApiClient):
         self,
         request: alikafka_20190916_models.StopInstanceRequest,
     ) -> alikafka_20190916_models.StopInstanceResponse:
+        """
+        You cannot stop a subscription ApsaraMQ for Kafka instance. If you want to stop a subscription ApsaraMQ for Kafka instance, submit a ticket.
+        
+        @param request: StopInstanceRequest
+        @return: StopInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_instance_with_options_async(request, runtime)
 
