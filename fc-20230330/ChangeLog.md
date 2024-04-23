@@ -1,3 +1,9 @@
+2024-04-23 Version: 4.1.0
+- Support API GetAsyncTask.
+- Support API ListAsyncTasks.
+- Support API StopAsyncTask.
+
+
 2024-04-15 Version: 4.0.0
 - Delete API GetResourceTags.
 - Delete API ListTaggedResources.
