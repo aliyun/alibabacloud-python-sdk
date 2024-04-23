@@ -890,7 +890,9 @@ class BatchDeleteVpcFirewallControlPolicyRequest(TeaModel):
         acl_uuid_list: List[str] = None,
         vpc_firewall_id: str = None,
     ):
+        # The UUIDs of access control policies.
         self.acl_uuid_list = acl_uuid_list
+        # The instance ID of the VPC firewall.
         self.vpc_firewall_id = vpc_firewall_id
 
     def validate(self):
@@ -922,6 +924,7 @@ class BatchDeleteVpcFirewallControlPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1492,6 +1495,220 @@ class CreateNatFirewallControlPolicyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateNatFirewallControlPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateSecurityProxyRequestNatRouteEntryList(TeaModel):
+    def __init__(
+        self,
+        destination_cidr: str = None,
+        next_hop_id: str = None,
+        next_hop_type: str = None,
+        route_table_id: str = None,
+    ):
+        self.destination_cidr = destination_cidr
+        self.next_hop_id = next_hop_id
+        self.next_hop_type = next_hop_type
+        self.route_table_id = route_table_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_cidr is not None:
+            result['DestinationCidr'] = self.destination_cidr
+        if self.next_hop_id is not None:
+            result['NextHopId'] = self.next_hop_id
+        if self.next_hop_type is not None:
+            result['NextHopType'] = self.next_hop_type
+        if self.route_table_id is not None:
+            result['RouteTableId'] = self.route_table_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestinationCidr') is not None:
+            self.destination_cidr = m.get('DestinationCidr')
+        if m.get('NextHopId') is not None:
+            self.next_hop_id = m.get('NextHopId')
+        if m.get('NextHopType') is not None:
+            self.next_hop_type = m.get('NextHopType')
+        if m.get('RouteTableId') is not None:
+            self.route_table_id = m.get('RouteTableId')
+        return self
+
+
+class CreateSecurityProxyRequest(TeaModel):
+    def __init__(
+        self,
+        firewall_switch: str = None,
+        lang: str = None,
+        nat_gateway_id: str = None,
+        nat_route_entry_list: List[CreateSecurityProxyRequestNatRouteEntryList] = None,
+        proxy_name: str = None,
+        region_no: str = None,
+        strict_mode: int = None,
+        vpc_id: str = None,
+        vswitch_auto: str = None,
+        vswitch_cidr: str = None,
+        vswitch_id: str = None,
+    ):
+        self.firewall_switch = firewall_switch
+        self.lang = lang
+        self.nat_gateway_id = nat_gateway_id
+        self.nat_route_entry_list = nat_route_entry_list
+        self.proxy_name = proxy_name
+        self.region_no = region_no
+        self.strict_mode = strict_mode
+        self.vpc_id = vpc_id
+        self.vswitch_auto = vswitch_auto
+        self.vswitch_cidr = vswitch_cidr
+        self.vswitch_id = vswitch_id
+
+    def validate(self):
+        if self.nat_route_entry_list:
+            for k in self.nat_route_entry_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.firewall_switch is not None:
+            result['FirewallSwitch'] = self.firewall_switch
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        result['NatRouteEntryList'] = []
+        if self.nat_route_entry_list is not None:
+            for k in self.nat_route_entry_list:
+                result['NatRouteEntryList'].append(k.to_map() if k else None)
+        if self.proxy_name is not None:
+            result['ProxyName'] = self.proxy_name
+        if self.region_no is not None:
+            result['RegionNo'] = self.region_no
+        if self.strict_mode is not None:
+            result['StrictMode'] = self.strict_mode
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.vswitch_auto is not None:
+            result['VswitchAuto'] = self.vswitch_auto
+        if self.vswitch_cidr is not None:
+            result['VswitchCidr'] = self.vswitch_cidr
+        if self.vswitch_id is not None:
+            result['VswitchId'] = self.vswitch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FirewallSwitch') is not None:
+            self.firewall_switch = m.get('FirewallSwitch')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        self.nat_route_entry_list = []
+        if m.get('NatRouteEntryList') is not None:
+            for k in m.get('NatRouteEntryList'):
+                temp_model = CreateSecurityProxyRequestNatRouteEntryList()
+                self.nat_route_entry_list.append(temp_model.from_map(k))
+        if m.get('ProxyName') is not None:
+            self.proxy_name = m.get('ProxyName')
+        if m.get('RegionNo') is not None:
+            self.region_no = m.get('RegionNo')
+        if m.get('StrictMode') is not None:
+            self.strict_mode = m.get('StrictMode')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('VswitchAuto') is not None:
+            self.vswitch_auto = m.get('VswitchAuto')
+        if m.get('VswitchCidr') is not None:
+            self.vswitch_cidr = m.get('VswitchCidr')
+        if m.get('VswitchId') is not None:
+            self.vswitch_id = m.get('VswitchId')
+        return self
+
+
+class CreateSecurityProxyResponseBody(TeaModel):
+    def __init__(
+        self,
+        proxy_id: str = None,
+        request_id: str = None,
+    ):
+        self.proxy_id = proxy_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.proxy_id is not None:
+            result['ProxyId'] = self.proxy_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProxyId') is not None:
+            self.proxy_id = m.get('ProxyId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateSecurityProxyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSecurityProxyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSecurityProxyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6484,11 +6701,11 @@ class DescribeDownloadTaskResponseBodyTasks(TeaModel):
     ):
         # The time when the task was created. The value is a UNIX timestamp. Unit: seconds.
         self.create_time = create_time
-        # The expiration time of the task. The value is a UNIX timestamp. Unit: seconds.
+        # The time when the task expires. The value is a UNIX timestamp. Unit: seconds.
         self.expire_time = expire_time
         # The size of the file.
         self.file_size = file_size
-        # The URL of the OSS object.
+        # The URL of the OSS file.
         self.file_url = file_url
         # The status of the task. Valid values:
         # 
@@ -7089,9 +7306,13 @@ class DescribeInstanceRiskLevelsRequestInstances(TeaModel):
         intranet_ip: str = None,
         uuid: str = None,
     ):
+        # The instance ID of your Cloud Firewall.
         self.instance_id = instance_id
+        # The public IP addresses of instances.
         self.internet_ip = internet_ip
+        # The private IP address of the instance.
         self.intranet_ip = intranet_ip
+        # The UUID of the instance.
         self.uuid = uuid
 
     def validate(self):
@@ -7132,7 +7353,12 @@ class DescribeInstanceRiskLevelsRequest(TeaModel):
         instances: List[DescribeInstanceRiskLevelsRequestInstances] = None,
         lang: str = None,
     ):
+        # The information about the instances.
         self.instances = instances
+        # The language of the content within the response. Valid values:
+        # 
+        # *   **zh** (default): Chinese
+        # *   **en**: English
         self.lang = lang
 
     def validate(self):
@@ -7174,8 +7400,13 @@ class DescribeInstanceRiskLevelsResponseBodyInstanceRisksDetails(TeaModel):
         level: str = None,
         type: str = None,
     ):
+        # The IP addresses of servers.
         self.ip = ip
+        # The risk levels. Valid values:
+        # 
+        # *   **medium**\
         self.level = level
+        # The type.
         self.type = type
 
     def validate(self):
@@ -7213,8 +7444,13 @@ class DescribeInstanceRiskLevelsResponseBodyInstanceRisks(TeaModel):
         instance_id: str = None,
         level: str = None,
     ):
+        # The risk levels of the Elastic Compute Service (ECS) instance.
         self.details = details
+        # The instance ID of your Cloud Firewall.
         self.instance_id = instance_id
+        # The risk levels. Valid values:
+        # 
+        # *   **medium**\
         self.level = level
 
     def validate(self):
@@ -7259,7 +7495,9 @@ class DescribeInstanceRiskLevelsResponseBody(TeaModel):
         instance_risks: List[DescribeInstanceRiskLevelsResponseBodyInstanceRisks] = None,
         request_id: str = None,
     ):
+        # The information about the instances.
         self.instance_risks = instance_risks
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -10861,13 +11099,30 @@ class DescribePostpayTrafficDetailRequest(TeaModel):
         start_time: str = None,
         traffic_type: str = None,
     ):
+        # The page number. Default value: 1.
         self.current_page = current_page
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh** (default): Chinese
+        # *   **en**: English
         self.lang = lang
+        # The field based on which you want to sort the query results. Valid values:
+        # 
+        # *   **resourceId**\
+        # *   **trafficDay**\
         self.order = order
+        # The number of entries per page. Default value: 10. Maximum value: 50.
         self.page_size = page_size
+        # The instance ID or the IP address of the asset.
         self.search_item = search_item
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
+        # The traffic type. This parameter is required. Valid values:
+        # 
+        # *   **EIP_TRAFFIC**: traffic for the Internet firewall
+        # *   **NatGateway_TRAFFIC**: traffic for the NAT firewall
         self.traffic_type = traffic_type
 
     def validate(self):
@@ -10930,13 +11185,24 @@ class DescribePostpayTrafficDetailResponseBodyTrafficList(TeaModel):
         traffic_day: str = None,
         traffic_type: str = None,
     ):
+        # The inbound network throughput, which indicates the total number of bytes that are received. Unit: bytes.
         self.in_bytes = in_bytes
+        # The instance ID of the asset.
         self.instance_id = instance_id
+        # The type of the asset. This value takes effect only for the Internet firewall.
         self.instance_type = instance_type
+        # The outbound network throughput, which indicates the total number of bytes that are sent. Unit: bytes.
         self.out_bytes = out_bytes
+        # The resource ID. The resource ID for the Internet firewall is the public IP address that is protected the Internet firewall, and the resource ID for a NAT firewall is the instance ID of the NAT firewall.
         self.resource_id = resource_id
+        # The total inbound and outbound network throughput, which indicates the total number of bytes that are sent and received. Unit: bytes.
         self.total_bytes = total_bytes
+        # The date on which the statistics are collected.
         self.traffic_day = traffic_day
+        # The traffic type. Valid values:
+        # 
+        # *   **EIP_TRAFFIC**: traffic for the Internet firewall
+        # *   **NatGateway_TRAFFIC**: traffic for the NAT firewall
         self.traffic_type = traffic_type
 
     def validate(self):
@@ -10994,8 +11260,11 @@ class DescribePostpayTrafficDetailResponseBody(TeaModel):
         total_count: int = None,
         traffic_list: List[DescribePostpayTrafficDetailResponseBodyTrafficList] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
+        # The traffic statistics.
         self.traffic_list = traffic_list
 
     def validate(self):
@@ -11080,6 +11349,10 @@ class DescribePostpayTrafficTotalRequest(TeaModel):
         self,
         lang: str = None,
     ):
+        # The language of the content within the response. Valid values:
+        # 
+        # *   **zh** (default): Chinese
+        # *   **en**: English
         self.lang = lang
 
     def validate(self):
@@ -11111,10 +11384,15 @@ class DescribePostpayTrafficTotalResponseBody(TeaModel):
         total_nat_traffic: int = None,
         total_traffic: int = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of the assets that are protected by the Internet firewall.
         self.total_assets = total_assets
+        # The total number of the assets that are protected by the NAT firewall.
         self.total_nat_assets = total_nat_assets
+        # The total traffic for the NAT firewall. Unit: bytes.
         self.total_nat_traffic = total_nat_traffic
+        # The total traffic for the Internet firewall. Unit: bytes.
         self.total_traffic = total_traffic
 
     def validate(self):
@@ -12560,7 +12838,9 @@ class DescribeTrFirewallPolicyBackUpAssociationListRequestCandidateList(TeaModel
         candidate_id: str = None,
         candidate_type: str = None,
     ):
+        # The ID of the traffic redirection instance.
         self.candidate_id = candidate_id
+        # The type of the traffic redirection instance.
         self.candidate_type = candidate_type
 
     def validate(self):
@@ -12595,6 +12875,7 @@ class DescribeTrFirewallPolicyBackUpAssociationListRequest(TeaModel):
         lang: str = None,
         tr_firewall_route_policy_id: str = None,
     ):
+        # An array that consists of the details about the traffic redirection instance.
         self.candidate_list = candidate_list
         # The instance ID of the VPC firewall.
         self.firewall_id = firewall_id
@@ -12654,6 +12935,7 @@ class DescribeTrFirewallPolicyBackUpAssociationListShrinkRequest(TeaModel):
         lang: str = None,
         tr_firewall_route_policy_id: str = None,
     ):
+        # An array that consists of the details about the traffic redirection instance.
         self.candidate_list_shrink = candidate_list_shrink
         # The instance ID of the VPC firewall.
         self.firewall_id = firewall_id

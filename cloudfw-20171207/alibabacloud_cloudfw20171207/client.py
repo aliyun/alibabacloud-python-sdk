@@ -945,6 +945,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_nat_firewall_control_policy_with_options_async(request, runtime)
 
+    def create_security_proxy_with_options(
+        self,
+        request: cloudfw_20171207_models.CreateSecurityProxyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.CreateSecurityProxyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firewall_switch):
+            query['FirewallSwitch'] = request.firewall_switch
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.nat_route_entry_list):
+            query['NatRouteEntryList'] = request.nat_route_entry_list
+        if not UtilClient.is_unset(request.proxy_name):
+            query['ProxyName'] = request.proxy_name
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.strict_mode):
+            query['StrictMode'] = request.strict_mode
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.vswitch_auto):
+            query['VswitchAuto'] = request.vswitch_auto
+        if not UtilClient.is_unset(request.vswitch_cidr):
+            query['VswitchCidr'] = request.vswitch_cidr
+        if not UtilClient.is_unset(request.vswitch_id):
+            query['VswitchId'] = request.vswitch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSecurityProxy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.CreateSecurityProxyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_security_proxy_with_options_async(
+        self,
+        request: cloudfw_20171207_models.CreateSecurityProxyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.CreateSecurityProxyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firewall_switch):
+            query['FirewallSwitch'] = request.firewall_switch
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.nat_route_entry_list):
+            query['NatRouteEntryList'] = request.nat_route_entry_list
+        if not UtilClient.is_unset(request.proxy_name):
+            query['ProxyName'] = request.proxy_name
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.strict_mode):
+            query['StrictMode'] = request.strict_mode
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.vswitch_auto):
+            query['VswitchAuto'] = request.vswitch_auto
+        if not UtilClient.is_unset(request.vswitch_cidr):
+            query['VswitchCidr'] = request.vswitch_cidr
+        if not UtilClient.is_unset(request.vswitch_id):
+            query['VswitchId'] = request.vswitch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSecurityProxy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.CreateSecurityProxyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_security_proxy(
+        self,
+        request: cloudfw_20171207_models.CreateSecurityProxyRequest,
+    ) -> cloudfw_20171207_models.CreateSecurityProxyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_security_proxy_with_options(request, runtime)
+
+    async def create_security_proxy_async(
+        self,
+        request: cloudfw_20171207_models.CreateSecurityProxyRequest,
+    ) -> cloudfw_20171207_models.CreateSecurityProxyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_security_proxy_with_options_async(request, runtime)
+
     def create_tr_firewall_v2with_options(
         self,
         request: cloudfw_20171207_models.CreateTrFirewallV2Request,
