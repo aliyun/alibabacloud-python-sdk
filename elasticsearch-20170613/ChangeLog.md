@@ -1,3 +1,12 @@
+2024-04-23 Version: 2.0.0
+- Support API DisableKibanaPvlNetwork.
+- Support API EnableKibanaPvlNetwork.
+- Support API GetRegionalInstanceConfig.
+- Support API ListKibanaPvlNetwork.
+- Support API UpdateKibanaPvlNetwork.
+- Delete API CreateDataTasks.
+
+
 2024-03-07 Version: 1.4.0
 - Support API DisableKibanaPvlNetwork.
 - Support API EnableKibanaPvlNetwork.
