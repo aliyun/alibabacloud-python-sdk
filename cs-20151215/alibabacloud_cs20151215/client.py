@@ -3158,20 +3158,26 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         component_id: str,
-        version: str,
+        request: cs20151215_models.DescribeClusterAddonMetadataRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonMetadataResponse:
         """
         @deprecated
         
+        @param request: DescribeClusterAddonMetadataRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeClusterAddonMetadataResponse
         Deprecated
         """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['version'] = request.version
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeClusterAddonMetadata',
@@ -3193,20 +3199,26 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         component_id: str,
-        version: str,
+        request: cs20151215_models.DescribeClusterAddonMetadataRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonMetadataResponse:
         """
         @deprecated
         
+        @param request: DescribeClusterAddonMetadataRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeClusterAddonMetadataResponse
         Deprecated
         """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['version'] = request.version
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeClusterAddonMetadata',
@@ -3228,33 +3240,35 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         component_id: str,
-        version: str,
+        request: cs20151215_models.DescribeClusterAddonMetadataRequest,
     ) -> cs20151215_models.DescribeClusterAddonMetadataResponse:
         """
         @deprecated
         
+        @param request: DescribeClusterAddonMetadataRequest
         @return: DescribeClusterAddonMetadataResponse
         Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_cluster_addon_metadata_with_options(cluster_id, component_id, version, headers, runtime)
+        return self.describe_cluster_addon_metadata_with_options(cluster_id, component_id, request, headers, runtime)
 
     async def describe_cluster_addon_metadata_async(
         self,
         cluster_id: str,
         component_id: str,
-        version: str,
+        request: cs20151215_models.DescribeClusterAddonMetadataRequest,
     ) -> cs20151215_models.DescribeClusterAddonMetadataResponse:
         """
         @deprecated
         
+        @param request: DescribeClusterAddonMetadataRequest
         @return: DescribeClusterAddonMetadataResponse
         Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_cluster_addon_metadata_with_options_async(cluster_id, component_id, version, headers, runtime)
+        return await self.describe_cluster_addon_metadata_with_options_async(cluster_id, component_id, request, headers, runtime)
 
     def describe_cluster_addon_upgrade_status_with_options(
         self,
