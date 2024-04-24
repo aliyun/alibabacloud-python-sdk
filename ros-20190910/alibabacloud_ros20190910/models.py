@@ -1079,9 +1079,17 @@ class CreateDiagnosticRequest(TeaModel):
         product: str = None,
     ):
         # The keyword in the diagnosis.
+        # 
+        # You can specify the ID of the stack that you want to diagnose.
         self.diagnostic_key = diagnostic_key
         # The type of the item that is diagnosed. Set the value to Stack, which specifies that the stack is diagnosed.
         self.diagnostic_type = diagnostic_type
+        # The language of the diagnostic report to be generated. Only Chinese and English are supported.
+        # 
+        # Valid values:
+        # 
+        # *   zh-cn
+        # *   en
         self.lang = lang
         # The name of the product that is diagonosed.
         self.product = product
@@ -3104,11 +3112,13 @@ class CreateTemplateScratchRequestSourceResources(TeaModel):
     def __init__(
         self,
         region_id: str = None,
+        related_resource_type_filter: List[str] = None,
         resource_id: str = None,
         resource_type: str = None,
     ):
         # The region ID.
         self.region_id = region_id
+        self.related_resource_type_filter = related_resource_type_filter
         # The ID of the resource.
         self.resource_id = resource_id
         # The type of the resource.
@@ -3125,6 +3135,8 @@ class CreateTemplateScratchRequestSourceResources(TeaModel):
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.related_resource_type_filter is not None:
+            result['RelatedResourceTypeFilter'] = self.related_resource_type_filter
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_type is not None:
@@ -3135,6 +3147,8 @@ class CreateTemplateScratchRequestSourceResources(TeaModel):
         m = m or dict()
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('RelatedResourceTypeFilter') is not None:
+            self.related_resource_type_filter = m.get('RelatedResourceTypeFilter')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceType') is not None:
@@ -10462,6 +10476,12 @@ class GetStackInstanceRequest(TeaModel):
         stack_instance_account_id: str = None,
         stack_instance_region_id: str = None,
     ):
+        # Specifies whether to return the Outputs parameter. The Outputs parameter specifies the outputs of the stack. Valid values:
+        # 
+        # *   Enabled: returns the Outputs parameter.
+        # *   Disabled (default): does not return the Outputs parameter.
+        # 
+        # >  The Outputs parameter requires a long period of time to calculate. If you do not require the outputs of the stack, we recommend that you set OutputOption to Disabled to improve the response speed of the API operation.
         self.output_option = output_option
         # The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -10571,6 +10591,9 @@ class GetStackInstanceResponseBodyStackInstance(TeaModel):
         # 
         # > This parameter is returned only if drift detection is performed on the stack group.
         self.drift_detection_time = drift_detection_time
+        # The outputs of the stack.
+        # 
+        # >  This parameter is returned if OutputOption is set to Enabled.
         self.outputs = outputs
         # The parameters that are used to override specific parameters.
         self.parameter_overrides = parameter_overrides
@@ -12885,9 +12908,11 @@ class GetTemplateScratchResponseBodyTemplateScratchSourceResourceGroup(TeaModel)
 class GetTemplateScratchResponseBodyTemplateScratchSourceResources(TeaModel):
     def __init__(
         self,
+        related_resource_type_filter: List[str] = None,
         resource_id: str = None,
         resource_type: str = None,
     ):
+        self.related_resource_type_filter = related_resource_type_filter
         # The resource ID.
         self.resource_id = resource_id
         # The resource type.
@@ -12902,6 +12927,8 @@ class GetTemplateScratchResponseBodyTemplateScratchSourceResources(TeaModel):
             return _map
 
         result = dict()
+        if self.related_resource_type_filter is not None:
+            result['RelatedResourceTypeFilter'] = self.related_resource_type_filter
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_type is not None:
@@ -12910,6 +12937,8 @@ class GetTemplateScratchResponseBodyTemplateScratchSourceResources(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RelatedResourceTypeFilter') is not None:
+            self.related_resource_type_filter = m.get('RelatedResourceTypeFilter')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceType') is not None:

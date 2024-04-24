@@ -1,3 +1,9 @@
+2024-04-24 Version: 3.3.12
+- Update API CreateTemplateScratch: update param SourceResources.
+- Update API GetTemplateScratch: update response param.
+- Update API UpdateStack: update param DisableRollback.
+
+
 2024-03-22 Version: 3.3.11
 - Update API CreateDiagnostic: add param Lang.
 - Update API GetStack: update response param.
