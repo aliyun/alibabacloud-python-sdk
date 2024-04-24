@@ -1,3 +1,19 @@
+2024-04-24 Version: 5.4.0
+- Support API AddRecognizeRule.
+- Support API DeleteRecognizeRule.
+- Support API DsgRunSensIdentify.
+- Support API DsgStopSensIdentify.
+- Support API EditRecognizeRule.
+- Support API QueryDefaultTemplate.
+- Support API QueryRecognizeDataByRuleType.
+- Support API QueryRecognizeRuleDetail.
+- Support API QueryRecognizeRulesType.
+- Support API QuerySensClassification.
+- Support API QuerySensLevel.
+- Support API QuerySensNodeInfo.
+- Update API SubmitDataServiceApi: update response param.
+
+
 2024-04-17 Version: 5.3.0
 - Support API DsgQuerySensResult.
 - Update API CreateFile: update param DependentType.

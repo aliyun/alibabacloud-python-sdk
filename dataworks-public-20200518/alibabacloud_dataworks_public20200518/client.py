@@ -337,6 +337,144 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_project_member_to_role_with_options_async(request, runtime)
 
+    def add_recognize_rule_with_options(
+        self,
+        request: dataworks_public_20200518_models.AddRecognizeRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.AddRecognizeRuleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account_name):
+            body['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.col_exclude):
+            body['ColExclude'] = request.col_exclude
+        if not UtilClient.is_unset(request.col_scan):
+            body['ColScan'] = request.col_scan
+        if not UtilClient.is_unset(request.comment_scan):
+            body['CommentScan'] = request.comment_scan
+        if not UtilClient.is_unset(request.content_scan):
+            body['ContentScan'] = request.content_scan
+        if not UtilClient.is_unset(request.hit_threshold):
+            body['HitThreshold'] = request.hit_threshold
+        if not UtilClient.is_unset(request.level):
+            body['Level'] = request.level
+        if not UtilClient.is_unset(request.level_name):
+            body['LevelName'] = request.level_name
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.node_parent):
+            body['NodeParent'] = request.node_parent
+        if not UtilClient.is_unset(request.operation_type):
+            body['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.recognize_rules):
+            body['RecognizeRules'] = request.recognize_rules
+        if not UtilClient.is_unset(request.recognize_rules_type):
+            body['RecognizeRulesType'] = request.recognize_rules_type
+        if not UtilClient.is_unset(request.sensitive_description):
+            body['SensitiveDescription'] = request.sensitive_description
+        if not UtilClient.is_unset(request.sensitive_name):
+            body['SensitiveName'] = request.sensitive_name
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddRecognizeRule',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.AddRecognizeRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_recognize_rule_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.AddRecognizeRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.AddRecognizeRuleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account_name):
+            body['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.col_exclude):
+            body['ColExclude'] = request.col_exclude
+        if not UtilClient.is_unset(request.col_scan):
+            body['ColScan'] = request.col_scan
+        if not UtilClient.is_unset(request.comment_scan):
+            body['CommentScan'] = request.comment_scan
+        if not UtilClient.is_unset(request.content_scan):
+            body['ContentScan'] = request.content_scan
+        if not UtilClient.is_unset(request.hit_threshold):
+            body['HitThreshold'] = request.hit_threshold
+        if not UtilClient.is_unset(request.level):
+            body['Level'] = request.level
+        if not UtilClient.is_unset(request.level_name):
+            body['LevelName'] = request.level_name
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.node_parent):
+            body['NodeParent'] = request.node_parent
+        if not UtilClient.is_unset(request.operation_type):
+            body['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.recognize_rules):
+            body['RecognizeRules'] = request.recognize_rules
+        if not UtilClient.is_unset(request.recognize_rules_type):
+            body['RecognizeRulesType'] = request.recognize_rules_type
+        if not UtilClient.is_unset(request.sensitive_description):
+            body['SensitiveDescription'] = request.sensitive_description
+        if not UtilClient.is_unset(request.sensitive_name):
+            body['SensitiveName'] = request.sensitive_name
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddRecognizeRule',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.AddRecognizeRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_recognize_rule(
+        self,
+        request: dataworks_public_20200518_models.AddRecognizeRuleRequest,
+    ) -> dataworks_public_20200518_models.AddRecognizeRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_recognize_rule_with_options(request, runtime)
+
+    async def add_recognize_rule_async(
+        self,
+        request: dataworks_public_20200518_models.AddRecognizeRuleRequest,
+    ) -> dataworks_public_20200518_models.AddRecognizeRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_recognize_rule_with_options_async(request, runtime)
+
     def add_to_meta_category_with_options(
         self,
         request: dataworks_public_20200518_models.AddToMetaCategoryRequest,
@@ -6517,6 +6655,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_quality_rule_with_options_async(request, runtime)
 
+    def delete_recognize_rule_with_options(
+        self,
+        request: dataworks_public_20200518_models.DeleteRecognizeRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DeleteRecognizeRuleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.sensitive_id):
+            body['SensitiveId'] = request.sensitive_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteRecognizeRule',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DeleteRecognizeRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_recognize_rule_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.DeleteRecognizeRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DeleteRecognizeRuleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.sensitive_id):
+            body['SensitiveId'] = request.sensitive_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteRecognizeRule',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DeleteRecognizeRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_recognize_rule(
+        self,
+        request: dataworks_public_20200518_models.DeleteRecognizeRuleRequest,
+    ) -> dataworks_public_20200518_models.DeleteRecognizeRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_recognize_rule_with_options(request, runtime)
+
+    async def delete_recognize_rule_async(
+        self,
+        request: dataworks_public_20200518_models.DeleteRecognizeRuleRequest,
+    ) -> dataworks_public_20200518_models.DeleteRecognizeRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_recognize_rule_with_options_async(request, runtime)
+
     def delete_remind_with_options(
         self,
         request: dataworks_public_20200518_models.DeleteRemindRequest,
@@ -7176,6 +7388,304 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.DsgQuerySensResultResponse:
         runtime = util_models.RuntimeOptions()
         return await self.dsg_query_sens_result_with_options_async(request, runtime)
+
+    def dsg_run_sens_identify_with_options(
+        self,
+        tmp_req: dataworks_public_20200518_models.DsgRunSensIdentifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgRunSensIdentifyResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.DsgRunSensIdentifyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.es_meta_params):
+            request.es_meta_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.es_meta_params, 'EsMetaParams', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.es_meta_params_shrink):
+            body['EsMetaParams'] = request.es_meta_params_shrink
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DsgRunSensIdentify',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgRunSensIdentifyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dsg_run_sens_identify_with_options_async(
+        self,
+        tmp_req: dataworks_public_20200518_models.DsgRunSensIdentifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgRunSensIdentifyResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.DsgRunSensIdentifyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.es_meta_params):
+            request.es_meta_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.es_meta_params, 'EsMetaParams', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.es_meta_params_shrink):
+            body['EsMetaParams'] = request.es_meta_params_shrink
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DsgRunSensIdentify',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgRunSensIdentifyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dsg_run_sens_identify(
+        self,
+        request: dataworks_public_20200518_models.DsgRunSensIdentifyRequest,
+    ) -> dataworks_public_20200518_models.DsgRunSensIdentifyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.dsg_run_sens_identify_with_options(request, runtime)
+
+    async def dsg_run_sens_identify_async(
+        self,
+        request: dataworks_public_20200518_models.DsgRunSensIdentifyRequest,
+    ) -> dataworks_public_20200518_models.DsgRunSensIdentifyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.dsg_run_sens_identify_with_options_async(request, runtime)
+
+    def dsg_stop_sens_identify_with_options(
+        self,
+        request: dataworks_public_20200518_models.DsgStopSensIdentifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgStopSensIdentifyResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.job_id):
+            body['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DsgStopSensIdentify',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgStopSensIdentifyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dsg_stop_sens_identify_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.DsgStopSensIdentifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgStopSensIdentifyResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.job_id):
+            body['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DsgStopSensIdentify',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgStopSensIdentifyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dsg_stop_sens_identify(
+        self,
+        request: dataworks_public_20200518_models.DsgStopSensIdentifyRequest,
+    ) -> dataworks_public_20200518_models.DsgStopSensIdentifyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.dsg_stop_sens_identify_with_options(request, runtime)
+
+    async def dsg_stop_sens_identify_async(
+        self,
+        request: dataworks_public_20200518_models.DsgStopSensIdentifyRequest,
+    ) -> dataworks_public_20200518_models.DsgStopSensIdentifyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.dsg_stop_sens_identify_with_options_async(request, runtime)
+
+    def edit_recognize_rule_with_options(
+        self,
+        request: dataworks_public_20200518_models.EditRecognizeRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.EditRecognizeRuleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account_name):
+            body['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.col_exclude):
+            body['ColExclude'] = request.col_exclude
+        if not UtilClient.is_unset(request.col_scan):
+            body['ColScan'] = request.col_scan
+        if not UtilClient.is_unset(request.comment_scan):
+            body['CommentScan'] = request.comment_scan
+        if not UtilClient.is_unset(request.content_scan):
+            body['ContentScan'] = request.content_scan
+        if not UtilClient.is_unset(request.hit_threshold):
+            body['HitThreshold'] = request.hit_threshold
+        if not UtilClient.is_unset(request.level_name):
+            body['LevelName'] = request.level_name
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.node_parent):
+            body['NodeParent'] = request.node_parent
+        if not UtilClient.is_unset(request.operation_type):
+            body['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.recognize_rules):
+            body['RecognizeRules'] = request.recognize_rules
+        if not UtilClient.is_unset(request.recognize_rules_type):
+            body['RecognizeRulesType'] = request.recognize_rules_type
+        if not UtilClient.is_unset(request.sensitive_description):
+            body['SensitiveDescription'] = request.sensitive_description
+        if not UtilClient.is_unset(request.sensitive_id):
+            body['SensitiveId'] = request.sensitive_id
+        if not UtilClient.is_unset(request.sensitive_name):
+            body['SensitiveName'] = request.sensitive_name
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.level):
+            body['level'] = request.level
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EditRecognizeRule',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.EditRecognizeRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def edit_recognize_rule_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.EditRecognizeRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.EditRecognizeRuleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account_name):
+            body['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.col_exclude):
+            body['ColExclude'] = request.col_exclude
+        if not UtilClient.is_unset(request.col_scan):
+            body['ColScan'] = request.col_scan
+        if not UtilClient.is_unset(request.comment_scan):
+            body['CommentScan'] = request.comment_scan
+        if not UtilClient.is_unset(request.content_scan):
+            body['ContentScan'] = request.content_scan
+        if not UtilClient.is_unset(request.hit_threshold):
+            body['HitThreshold'] = request.hit_threshold
+        if not UtilClient.is_unset(request.level_name):
+            body['LevelName'] = request.level_name
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.node_parent):
+            body['NodeParent'] = request.node_parent
+        if not UtilClient.is_unset(request.operation_type):
+            body['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.recognize_rules):
+            body['RecognizeRules'] = request.recognize_rules
+        if not UtilClient.is_unset(request.recognize_rules_type):
+            body['RecognizeRulesType'] = request.recognize_rules_type
+        if not UtilClient.is_unset(request.sensitive_description):
+            body['SensitiveDescription'] = request.sensitive_description
+        if not UtilClient.is_unset(request.sensitive_id):
+            body['SensitiveId'] = request.sensitive_id
+        if not UtilClient.is_unset(request.sensitive_name):
+            body['SensitiveName'] = request.sensitive_name
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.level):
+            body['level'] = request.level
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EditRecognizeRule',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.EditRecognizeRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def edit_recognize_rule(
+        self,
+        request: dataworks_public_20200518_models.EditRecognizeRuleRequest,
+    ) -> dataworks_public_20200518_models.EditRecognizeRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.edit_recognize_rule_with_options(request, runtime)
+
+    async def edit_recognize_rule_async(
+        self,
+        request: dataworks_public_20200518_models.EditRecognizeRuleRequest,
+    ) -> dataworks_public_20200518_models.EditRecognizeRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.edit_recognize_rule_with_options_async(request, runtime)
 
     def establish_relation_table_to_business_with_options(
         self,
@@ -19469,6 +19979,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_disync_task_config_process_result_with_options_async(request, runtime)
 
+    def query_default_template_with_options(
+        self,
+        request: dataworks_public_20200518_models.QueryDefaultTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.QueryDefaultTemplateResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryDefaultTemplate',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.QueryDefaultTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_default_template_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.QueryDefaultTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.QueryDefaultTemplateResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryDefaultTemplate',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.QueryDefaultTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_default_template(
+        self,
+        request: dataworks_public_20200518_models.QueryDefaultTemplateRequest,
+    ) -> dataworks_public_20200518_models.QueryDefaultTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_default_template_with_options(request, runtime)
+
+    async def query_default_template_async(
+        self,
+        request: dataworks_public_20200518_models.QueryDefaultTemplateRequest,
+    ) -> dataworks_public_20200518_models.QueryDefaultTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_default_template_with_options_async(request, runtime)
+
     def query_public_model_engine_with_options(
         self,
         request: dataworks_public_20200518_models.QueryPublicModelEngineRequest,
@@ -19542,6 +20122,446 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.QueryPublicModelEngineResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_public_model_engine_with_options_async(request, runtime)
+
+    def query_recognize_data_by_rule_type_with_options(
+        self,
+        request: dataworks_public_20200518_models.QueryRecognizeDataByRuleTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.QueryRecognizeDataByRuleTypeResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.recognize_rules_type):
+            body['RecognizeRulesType'] = request.recognize_rules_type
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryRecognizeDataByRuleType',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.QueryRecognizeDataByRuleTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_recognize_data_by_rule_type_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.QueryRecognizeDataByRuleTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.QueryRecognizeDataByRuleTypeResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.recognize_rules_type):
+            body['RecognizeRulesType'] = request.recognize_rules_type
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryRecognizeDataByRuleType',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.QueryRecognizeDataByRuleTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_recognize_data_by_rule_type(
+        self,
+        request: dataworks_public_20200518_models.QueryRecognizeDataByRuleTypeRequest,
+    ) -> dataworks_public_20200518_models.QueryRecognizeDataByRuleTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_recognize_data_by_rule_type_with_options(request, runtime)
+
+    async def query_recognize_data_by_rule_type_async(
+        self,
+        request: dataworks_public_20200518_models.QueryRecognizeDataByRuleTypeRequest,
+    ) -> dataworks_public_20200518_models.QueryRecognizeDataByRuleTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_recognize_data_by_rule_type_with_options_async(request, runtime)
+
+    def query_recognize_rule_detail_with_options(
+        self,
+        request: dataworks_public_20200518_models.QueryRecognizeRuleDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.QueryRecognizeRuleDetailResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.sensitive_name):
+            body['SensitiveName'] = request.sensitive_name
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryRecognizeRuleDetail',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.QueryRecognizeRuleDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_recognize_rule_detail_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.QueryRecognizeRuleDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.QueryRecognizeRuleDetailResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.sensitive_name):
+            body['SensitiveName'] = request.sensitive_name
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryRecognizeRuleDetail',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.QueryRecognizeRuleDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_recognize_rule_detail(
+        self,
+        request: dataworks_public_20200518_models.QueryRecognizeRuleDetailRequest,
+    ) -> dataworks_public_20200518_models.QueryRecognizeRuleDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_recognize_rule_detail_with_options(request, runtime)
+
+    async def query_recognize_rule_detail_async(
+        self,
+        request: dataworks_public_20200518_models.QueryRecognizeRuleDetailRequest,
+    ) -> dataworks_public_20200518_models.QueryRecognizeRuleDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_recognize_rule_detail_with_options_async(request, runtime)
+
+    def query_recognize_rules_type_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.QueryRecognizeRulesTypeResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='QueryRecognizeRulesType',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.QueryRecognizeRulesTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_recognize_rules_type_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.QueryRecognizeRulesTypeResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='QueryRecognizeRulesType',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.QueryRecognizeRulesTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_recognize_rules_type(self) -> dataworks_public_20200518_models.QueryRecognizeRulesTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_recognize_rules_type_with_options(runtime)
+
+    async def query_recognize_rules_type_async(self) -> dataworks_public_20200518_models.QueryRecognizeRulesTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_recognize_rules_type_with_options_async(runtime)
+
+    def query_sens_classification_with_options(
+        self,
+        request: dataworks_public_20200518_models.QuerySensClassificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.QuerySensClassificationResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuerySensClassification',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.QuerySensClassificationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_sens_classification_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.QuerySensClassificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.QuerySensClassificationResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuerySensClassification',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.QuerySensClassificationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_sens_classification(
+        self,
+        request: dataworks_public_20200518_models.QuerySensClassificationRequest,
+    ) -> dataworks_public_20200518_models.QuerySensClassificationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_sens_classification_with_options(request, runtime)
+
+    async def query_sens_classification_async(
+        self,
+        request: dataworks_public_20200518_models.QuerySensClassificationRequest,
+    ) -> dataworks_public_20200518_models.QuerySensClassificationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_sens_classification_with_options_async(request, runtime)
+
+    def query_sens_level_with_options(
+        self,
+        request: dataworks_public_20200518_models.QuerySensLevelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.QuerySensLevelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['tenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuerySensLevel',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.QuerySensLevelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_sens_level_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.QuerySensLevelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.QuerySensLevelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['tenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuerySensLevel',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.QuerySensLevelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_sens_level(
+        self,
+        request: dataworks_public_20200518_models.QuerySensLevelRequest,
+    ) -> dataworks_public_20200518_models.QuerySensLevelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_sens_level_with_options(request, runtime)
+
+    async def query_sens_level_async(
+        self,
+        request: dataworks_public_20200518_models.QuerySensLevelRequest,
+    ) -> dataworks_public_20200518_models.QuerySensLevelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_sens_level_with_options_async(request, runtime)
+
+    def query_sens_node_info_with_options(
+        self,
+        request: dataworks_public_20200518_models.QuerySensNodeInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.QuerySensNodeInfoResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.page_no):
+            body['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sensitive_name):
+            body['SensitiveName'] = request.sensitive_name
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.status):
+            body['status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuerySensNodeInfo',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.QuerySensNodeInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_sens_node_info_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.QuerySensNodeInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.QuerySensNodeInfoResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.page_no):
+            body['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sensitive_name):
+            body['SensitiveName'] = request.sensitive_name
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.status):
+            body['status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuerySensNodeInfo',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.QuerySensNodeInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_sens_node_info(
+        self,
+        request: dataworks_public_20200518_models.QuerySensNodeInfoRequest,
+    ) -> dataworks_public_20200518_models.QuerySensNodeInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_sens_node_info_with_options(request, runtime)
+
+    async def query_sens_node_info_async(
+        self,
+        request: dataworks_public_20200518_models.QuerySensNodeInfoRequest,
+    ) -> dataworks_public_20200518_models.QuerySensNodeInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_sens_node_info_with_options_async(request, runtime)
 
     def register_lineage_relation_with_options(
         self,
