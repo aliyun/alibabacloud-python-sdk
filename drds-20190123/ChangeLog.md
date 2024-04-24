@@ -1,3 +1,10 @@
+2024-04-24 Version: 1.0.14
+- Update API DescribeDbInstances: update response param.
+- Update API DescribeDrdsInstances: update param RegionId.
+- Update API DescribeDrdsInstances: update response param.
+- Update API ListTagResources: add param AccessKeyId.
+
+
 2024-01-24 Version: 1.0.13
 - Generated python 2019-01-23 for Drds.
 
