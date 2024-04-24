@@ -7743,6 +7743,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.access_control_list):
             body['access_control_list'] = request.access_control_list
+        if not UtilClient.is_unset(request.api_server_custom_cert_sans):
+            body['api_server_custom_cert_sans'] = request.api_server_custom_cert_sans
         if not UtilClient.is_unset(request.api_server_eip):
             body['api_server_eip'] = request.api_server_eip
         if not UtilClient.is_unset(request.api_server_eip_id):
@@ -7798,6 +7800,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.access_control_list):
             body['access_control_list'] = request.access_control_list
+        if not UtilClient.is_unset(request.api_server_custom_cert_sans):
+            body['api_server_custom_cert_sans'] = request.api_server_custom_cert_sans
         if not UtilClient.is_unset(request.api_server_eip):
             body['api_server_eip'] = request.api_server_eip
         if not UtilClient.is_unset(request.api_server_eip_id):

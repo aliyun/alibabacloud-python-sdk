@@ -1,3 +1,7 @@
+2024-04-24 Version: 4.0.5
+- Update API ModifyCluster: update param body.
+
+
 2024-04-23 Version: 4.0.4
 - Update API DescribeClusterAddonMetadata: update param version.
 
