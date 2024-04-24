@@ -1,3 +1,23 @@
+2024-04-24 Version: 3.4.0
+- Support API CopyDefenseTemplate.
+- Support API CreatePostpaidInstance.
+- Support API DescribeCertDetail.
+- Support API DescribeDefenseResource.
+- Support API DescribeDefenseResourceGroupNames.
+- Support API DescribeDefenseResourceGroups.
+- Support API DescribeDefenseResourceNames.
+- Support API DescribeDefenseTemplateValidGroups.
+- Support API DescribePunishedDomains.
+- Support API DescribeTemplateResourceCount.
+- Support API ListTagKeys.
+- Support API ListTagResources.
+- Support API ListTagValues.
+- Support API ModifyDomainPunishStatus.
+- Support API TagResources.
+- Support API UntagResources.
+- Update API DescribeResponseCodeTrendGraph: update response param.
+
+
 2024-04-07 Version: 3.3.0
 - Support API DescribeCerts.
 - Support API DescribeCloudResources.
