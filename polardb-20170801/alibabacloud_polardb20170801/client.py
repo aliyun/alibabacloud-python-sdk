@@ -14533,6 +14533,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.reset_global_database_network_with_options_async(request, runtime)
 
+    def restart_dblink_with_options(
+        self,
+        request: polardb_20170801_models.RestartDBLinkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.RestartDBLinkResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestartDBLink',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.RestartDBLinkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def restart_dblink_with_options_async(
+        self,
+        request: polardb_20170801_models.RestartDBLinkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.RestartDBLinkResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestartDBLink',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.RestartDBLinkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def restart_dblink(
+        self,
+        request: polardb_20170801_models.RestartDBLinkRequest,
+    ) -> polardb_20170801_models.RestartDBLinkResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.restart_dblink_with_options(request, runtime)
+
+    async def restart_dblink_async(
+        self,
+        request: polardb_20170801_models.RestartDBLinkRequest,
+    ) -> polardb_20170801_models.RestartDBLinkResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.restart_dblink_with_options_async(request, runtime)
+
     def restart_dbnode_with_options(
         self,
         request: polardb_20170801_models.RestartDBNodeRequest,
