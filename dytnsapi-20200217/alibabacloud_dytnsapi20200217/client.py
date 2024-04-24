@@ -3009,6 +3009,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_phone_number_online_time_with_options_async(request, runtime)
 
+    def query_phone_twice_tel_verify_with_options(
+        self,
+        request: dytnsapi_20200217_models.QueryPhoneTwiceTelVerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dytnsapi_20200217_models.QueryPhoneTwiceTelVerifyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.input_number):
+            query['InputNumber'] = request.input_number
+        if not UtilClient.is_unset(request.mask):
+            query['Mask'] = request.mask
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryPhoneTwiceTelVerify',
+            version='2020-02-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.QueryPhoneTwiceTelVerifyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_phone_twice_tel_verify_with_options_async(
+        self,
+        request: dytnsapi_20200217_models.QueryPhoneTwiceTelVerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dytnsapi_20200217_models.QueryPhoneTwiceTelVerifyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.input_number):
+            query['InputNumber'] = request.input_number
+        if not UtilClient.is_unset(request.mask):
+            query['Mask'] = request.mask
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryPhoneTwiceTelVerify',
+            version='2020-02-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.QueryPhoneTwiceTelVerifyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_phone_twice_tel_verify(
+        self,
+        request: dytnsapi_20200217_models.QueryPhoneTwiceTelVerifyRequest,
+    ) -> dytnsapi_20200217_models.QueryPhoneTwiceTelVerifyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_phone_twice_tel_verify_with_options(request, runtime)
+
+    async def query_phone_twice_tel_verify_async(
+        self,
+        request: dytnsapi_20200217_models.QueryPhoneTwiceTelVerifyRequest,
+    ) -> dytnsapi_20200217_models.QueryPhoneTwiceTelVerifyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_phone_twice_tel_verify_with_options_async(request, runtime)
+
     def query_tag_apply_rule_with_options(
         self,
         request: dytnsapi_20200217_models.QueryTagApplyRuleRequest,

@@ -1,3 +1,7 @@
+2024-04-24 Version: 2.7.0
+- Support API QueryPhoneTwiceTelVerify.
+
+
 2024-02-02 Version: 2.6.0
 - Support API QueryPhoneNumberOnlineTime.
 
