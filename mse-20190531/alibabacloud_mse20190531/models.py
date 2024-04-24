@@ -7671,6 +7671,131 @@ class CloneNacosConfigResponse(TeaModel):
         return self
 
 
+class CloneSentinelRuleFromAhasRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        ahas_namespace: str = None,
+        app_name: str = None,
+        is_ahaspublic_region: bool = None,
+        namespace: str = None,
+    ):
+        self.accept_language = accept_language
+        self.ahas_namespace = ahas_namespace
+        self.app_name = app_name
+        self.is_ahaspublic_region = is_ahaspublic_region
+        self.namespace = namespace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.ahas_namespace is not None:
+            result['AhasNamespace'] = self.ahas_namespace
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.is_ahaspublic_region is not None:
+            result['IsAHASPublicRegion'] = self.is_ahaspublic_region
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AhasNamespace') is not None:
+            self.ahas_namespace = m.get('AhasNamespace')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('IsAHASPublicRegion') is not None:
+            self.is_ahaspublic_region = m.get('IsAHASPublicRegion')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        return self
+
+
+class CloneSentinelRuleFromAhasResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: Dict[str, List[str]] = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CloneSentinelRuleFromAhasResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CloneSentinelRuleFromAhasResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CloneSentinelRuleFromAhasResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateApplicationRequest(TeaModel):
     def __init__(
         self,

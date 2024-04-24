@@ -2182,6 +2182,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.clone_nacos_config_with_options_async(request, runtime)
 
+    def clone_sentinel_rule_from_ahas_with_options(
+        self,
+        request: mse_20190531_models.CloneSentinelRuleFromAhasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.CloneSentinelRuleFromAhasResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.ahas_namespace):
+            query['AhasNamespace'] = request.ahas_namespace
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.is_ahaspublic_region):
+            query['IsAHASPublicRegion'] = request.is_ahaspublic_region
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CloneSentinelRuleFromAhas',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.CloneSentinelRuleFromAhasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def clone_sentinel_rule_from_ahas_with_options_async(
+        self,
+        request: mse_20190531_models.CloneSentinelRuleFromAhasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.CloneSentinelRuleFromAhasResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.ahas_namespace):
+            query['AhasNamespace'] = request.ahas_namespace
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.is_ahaspublic_region):
+            query['IsAHASPublicRegion'] = request.is_ahaspublic_region
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CloneSentinelRuleFromAhas',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.CloneSentinelRuleFromAhasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def clone_sentinel_rule_from_ahas(
+        self,
+        request: mse_20190531_models.CloneSentinelRuleFromAhasRequest,
+    ) -> mse_20190531_models.CloneSentinelRuleFromAhasResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.clone_sentinel_rule_from_ahas_with_options(request, runtime)
+
+    async def clone_sentinel_rule_from_ahas_async(
+        self,
+        request: mse_20190531_models.CloneSentinelRuleFromAhasRequest,
+    ) -> mse_20190531_models.CloneSentinelRuleFromAhasResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.clone_sentinel_rule_from_ahas_with_options_async(request, runtime)
+
     def create_application_with_options(
         self,
         request: mse_20190531_models.CreateApplicationRequest,

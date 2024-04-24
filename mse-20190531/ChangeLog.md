@@ -1,3 +1,7 @@
+2024-04-24 Version: 6.6.0
+- Support API CloneSentinelRuleFromAhas.
+
+
 2024-04-17 Version: 6.5.0
 - Support API BindSentinelBlockFallbackDefinition.
 - Support API ListSentinelBlockFallbackDefinitions.
