@@ -131,6 +131,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.cluster_type):
             body['ClusterType'] = request.cluster_type
+        if not UtilClient.is_unset(request.disable_replication):
+            body['DisableReplication'] = request.disable_replication
         if not UtilClient.is_unset(request.instance_description):
             body['InstanceDescription'] = request.instance_description
         if not UtilClient.is_unset(request.instance_name):
@@ -177,6 +179,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.cluster_type):
             body['ClusterType'] = request.cluster_type
+        if not UtilClient.is_unset(request.disable_replication):
+            body['DisableReplication'] = request.disable_replication
         if not UtilClient.is_unset(request.instance_description):
             body['InstanceDescription'] = request.instance_description
         if not UtilClient.is_unset(request.instance_name):

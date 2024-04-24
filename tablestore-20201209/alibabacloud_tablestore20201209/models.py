@@ -76,9 +76,6 @@ class ChangeResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -145,6 +142,7 @@ class CreateInstanceRequest(TeaModel):
     def __init__(
         self,
         cluster_type: str = None,
+        disable_replication: bool = None,
         instance_description: str = None,
         instance_name: str = None,
         network: str = None,
@@ -155,6 +153,7 @@ class CreateInstanceRequest(TeaModel):
         tags: List[CreateInstanceRequestTags] = None,
     ):
         self.cluster_type = cluster_type
+        self.disable_replication = disable_replication
         self.instance_description = instance_description
         self.instance_name = instance_name
         self.network = network
@@ -178,6 +177,8 @@ class CreateInstanceRequest(TeaModel):
         result = dict()
         if self.cluster_type is not None:
             result['ClusterType'] = self.cluster_type
+        if self.disable_replication is not None:
+            result['DisableReplication'] = self.disable_replication
         if self.instance_description is not None:
             result['InstanceDescription'] = self.instance_description
         if self.instance_name is not None:
@@ -202,6 +203,8 @@ class CreateInstanceRequest(TeaModel):
         m = m or dict()
         if m.get('ClusterType') is not None:
             self.cluster_type = m.get('ClusterType')
+        if m.get('DisableReplication') is not None:
+            self.disable_replication = m.get('DisableReplication')
         if m.get('InstanceDescription') is not None:
             self.instance_description = m.get('InstanceDescription')
         if m.get('InstanceName') is not None:
@@ -275,9 +278,6 @@ class CreateInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -373,9 +373,6 @@ class DeleteInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -518,9 +515,6 @@ class DescribeRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -580,11 +574,15 @@ class GetInstanceRequest(TeaModel):
 class GetInstanceResponseBodyTags(TeaModel):
     def __init__(
         self,
+        key: str = None,
         tag_key: str = None,
         tag_value: str = None,
+        value: str = None,
     ):
+        self.key = key
         self.tag_key = tag_key
         self.tag_value = tag_value
+        self.value = value
 
     def validate(self):
         pass
@@ -595,18 +593,26 @@ class GetInstanceResponseBodyTags(TeaModel):
             return _map
 
         result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
         if self.tag_key is not None:
             result['TagKey'] = self.tag_key
         if self.tag_value is not None:
             result['TagValue'] = self.tag_value
+        if self.value is not None:
+            result['Value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
         if m.get('TagKey') is not None:
             self.tag_key = m.get('TagKey')
         if m.get('TagValue') is not None:
             self.tag_value = m.get('TagValue')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -777,9 +783,6 @@ class GetInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1024,9 +1027,6 @@ class ListInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1309,9 +1309,6 @@ class ListTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1460,9 +1457,6 @@ class TagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1576,9 +1570,6 @@ class UntagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1704,9 +1695,6 @@ class UpdateInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
