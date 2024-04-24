@@ -1,3 +1,6 @@
+2024-04-24 Version: 3.3.13
+- Generated python 2019-09-10 for ROS.
+
 2024-04-24 Version: 3.3.12
 - Update API CreateTemplateScratch: update param SourceResources.
 - Update API GetTemplateScratch: update response param.
