@@ -11574,6 +11574,8 @@ class Client(OpenApiClient):
             request.invitee_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.invitee_list, 'InviteeList', 'json')
         if not UtilClient.is_unset(tmp_req.tenant_context):
             request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not UtilClient.is_unset(tmp_req.phone_invitee_list):
+            request.phone_invitee_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.phone_invitee_list, 'phoneInviteeList', 'json')
         body = {}
         if not UtilClient.is_unset(request.invitee_list_shrink):
             body['InviteeList'] = request.invitee_list_shrink
@@ -11581,6 +11583,8 @@ class Client(OpenApiClient):
             body['TenantContext'] = request.tenant_context_shrink
         if not UtilClient.is_unset(request.conference_id):
             body['conferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.phone_invitee_list_shrink):
+            body['phoneInviteeList'] = request.phone_invitee_list_shrink
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -11623,6 +11627,8 @@ class Client(OpenApiClient):
             request.invitee_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.invitee_list, 'InviteeList', 'json')
         if not UtilClient.is_unset(tmp_req.tenant_context):
             request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not UtilClient.is_unset(tmp_req.phone_invitee_list):
+            request.phone_invitee_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.phone_invitee_list, 'phoneInviteeList', 'json')
         body = {}
         if not UtilClient.is_unset(request.invitee_list_shrink):
             body['InviteeList'] = request.invitee_list_shrink
@@ -11630,6 +11636,8 @@ class Client(OpenApiClient):
             body['TenantContext'] = request.tenant_context_shrink
         if not UtilClient.is_unset(request.conference_id):
             body['conferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.phone_invitee_list_shrink):
+            body['phoneInviteeList'] = request.phone_invitee_list_shrink
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -17677,6 +17685,8 @@ class Client(OpenApiClient):
             body['Language'] = request.language
         if not UtilClient.is_unset(request.process_code):
             body['ProcessCode'] = request.process_code
+        if not UtilClient.is_unset(request.process_data):
+            body['ProcessData'] = request.process_data
         if not UtilClient.is_unset(request.system_token):
             body['SystemToken'] = request.system_token
         real_headers = {}
@@ -17728,6 +17738,8 @@ class Client(OpenApiClient):
             body['Language'] = request.language
         if not UtilClient.is_unset(request.process_code):
             body['ProcessCode'] = request.process_code
+        if not UtilClient.is_unset(request.process_data):
+            body['ProcessData'] = request.process_data
         if not UtilClient.is_unset(request.system_token):
             body['SystemToken'] = request.system_token
         real_headers = {}

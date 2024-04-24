@@ -36415,16 +36415,51 @@ class InviteUsersRequestTenantContext(TeaModel):
         return self
 
 
+class InviteUsersRequestPhoneInviteeList(TeaModel):
+    def __init__(
+        self,
+        nick: str = None,
+        phone_number: str = None,
+    ):
+        self.nick = nick
+        self.phone_number = phone_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.nick is not None:
+            result['Nick'] = self.nick
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Nick') is not None:
+            self.nick = m.get('Nick')
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        return self
+
+
 class InviteUsersRequest(TeaModel):
     def __init__(
         self,
         invitee_list: List[InviteUsersRequestInviteeList] = None,
         tenant_context: InviteUsersRequestTenantContext = None,
         conference_id: str = None,
+        phone_invitee_list: List[InviteUsersRequestPhoneInviteeList] = None,
     ):
         self.invitee_list = invitee_list
         self.tenant_context = tenant_context
         self.conference_id = conference_id
+        self.phone_invitee_list = phone_invitee_list
 
     def validate(self):
         if self.invitee_list:
@@ -36433,6 +36468,10 @@ class InviteUsersRequest(TeaModel):
                     k.validate()
         if self.tenant_context:
             self.tenant_context.validate()
+        if self.phone_invitee_list:
+            for k in self.phone_invitee_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -36448,6 +36487,10 @@ class InviteUsersRequest(TeaModel):
             result['TenantContext'] = self.tenant_context.to_map()
         if self.conference_id is not None:
             result['conferenceId'] = self.conference_id
+        result['phoneInviteeList'] = []
+        if self.phone_invitee_list is not None:
+            for k in self.phone_invitee_list:
+                result['phoneInviteeList'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -36462,6 +36505,11 @@ class InviteUsersRequest(TeaModel):
             self.tenant_context = temp_model.from_map(m['TenantContext'])
         if m.get('conferenceId') is not None:
             self.conference_id = m.get('conferenceId')
+        self.phone_invitee_list = []
+        if m.get('phoneInviteeList') is not None:
+            for k in m.get('phoneInviteeList'):
+                temp_model = InviteUsersRequestPhoneInviteeList()
+                self.phone_invitee_list.append(temp_model.from_map(k))
         return self
 
 
@@ -36471,10 +36519,12 @@ class InviteUsersShrinkRequest(TeaModel):
         invitee_list_shrink: str = None,
         tenant_context_shrink: str = None,
         conference_id: str = None,
+        phone_invitee_list_shrink: str = None,
     ):
         self.invitee_list_shrink = invitee_list_shrink
         self.tenant_context_shrink = tenant_context_shrink
         self.conference_id = conference_id
+        self.phone_invitee_list_shrink = phone_invitee_list_shrink
 
     def validate(self):
         pass
@@ -36491,6 +36541,8 @@ class InviteUsersShrinkRequest(TeaModel):
             result['TenantContext'] = self.tenant_context_shrink
         if self.conference_id is not None:
             result['conferenceId'] = self.conference_id
+        if self.phone_invitee_list_shrink is not None:
+            result['phoneInviteeList'] = self.phone_invitee_list_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -36501,6 +36553,8 @@ class InviteUsersShrinkRequest(TeaModel):
             self.tenant_context_shrink = m.get('TenantContext')
         if m.get('conferenceId') is not None:
             self.conference_id = m.get('conferenceId')
+        if m.get('phoneInviteeList') is not None:
+            self.phone_invitee_list_shrink = m.get('phoneInviteeList')
         return self
 
 
@@ -58155,6 +58209,7 @@ class StartInstanceRequest(TeaModel):
         form_uuid: str = None,
         language: str = None,
         process_code: str = None,
+        process_data: str = None,
         system_token: str = None,
     ):
         self.app_type = app_type
@@ -58163,6 +58218,7 @@ class StartInstanceRequest(TeaModel):
         self.form_uuid = form_uuid
         self.language = language
         self.process_code = process_code
+        self.process_data = process_data
         self.system_token = system_token
 
     def validate(self):
@@ -58186,6 +58242,8 @@ class StartInstanceRequest(TeaModel):
             result['Language'] = self.language
         if self.process_code is not None:
             result['ProcessCode'] = self.process_code
+        if self.process_data is not None:
+            result['ProcessData'] = self.process_data
         if self.system_token is not None:
             result['SystemToken'] = self.system_token
         return result
@@ -58204,6 +58262,8 @@ class StartInstanceRequest(TeaModel):
             self.language = m.get('Language')
         if m.get('ProcessCode') is not None:
             self.process_code = m.get('ProcessCode')
+        if m.get('ProcessData') is not None:
+            self.process_data = m.get('ProcessData')
         if m.get('SystemToken') is not None:
             self.system_token = m.get('SystemToken')
         return self
@@ -61825,12 +61885,14 @@ class UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualEx
     def __init__(
         self,
         enable_chat: int = None,
+        enable_web_anonymous_join: bool = None,
         join_before_host: int = None,
         lock_media_status_mic_mute: int = None,
         lock_nick: int = None,
         waiting_room: int = None,
     ):
         self.enable_chat = enable_chat
+        self.enable_web_anonymous_join = enable_web_anonymous_join
         self.join_before_host = join_before_host
         self.lock_media_status_mic_mute = lock_media_status_mic_mute
         self.lock_nick = lock_nick
@@ -61847,6 +61909,8 @@ class UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualEx
         result = dict()
         if self.enable_chat is not None:
             result['EnableChat'] = self.enable_chat
+        if self.enable_web_anonymous_join is not None:
+            result['EnableWebAnonymousJoin'] = self.enable_web_anonymous_join
         if self.join_before_host is not None:
             result['JoinBeforeHost'] = self.join_before_host
         if self.lock_media_status_mic_mute is not None:
@@ -61861,6 +61925,8 @@ class UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualEx
         m = m or dict()
         if m.get('EnableChat') is not None:
             self.enable_chat = m.get('EnableChat')
+        if m.get('EnableWebAnonymousJoin') is not None:
+            self.enable_web_anonymous_join = m.get('EnableWebAnonymousJoin')
         if m.get('JoinBeforeHost') is not None:
             self.join_before_host = m.get('JoinBeforeHost')
         if m.get('LockMediaStatusMicMute') is not None:
