@@ -1,3 +1,7 @@
+2024-04-24 Version: 4.1.2
+- Update API DescribeInstanceTypes: update response param.
+
+
 2024-04-12 Version: 4.1.1
 - Update API DescribeDedicatedHosts: add param MaxResults.
 - Update API DescribeDedicatedHosts: add param NextToken.
