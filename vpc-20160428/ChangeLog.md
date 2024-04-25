@@ -1,3 +1,8 @@
+2024-04-25 Version: 6.6.1
+- Update API AssociateVpcCidrBlock: add param SecondaryCidrMask.
+- Update API CreateVpc: add param Ipv4CidrMask.
+
+
 2024-04-17 Version: 6.6.0
 - Support API CreateExpressConnectTrafficQos.
 - Support API CreateExpressConnectTrafficQosQueue.
