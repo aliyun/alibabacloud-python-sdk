@@ -1,3 +1,7 @@
+2024-04-25 Version: 2.8.0
+- Support API DescribeLensMonitorDisks.
+
+
 2024-04-23 Version: 2.7.0
 - Support API DescribeEvents.
 

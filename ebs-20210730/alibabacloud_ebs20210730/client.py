@@ -3017,6 +3017,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_events_with_options_async(request, runtime)
 
+    def describe_lens_monitor_disks_with_options(
+        self,
+        request: ebs_20210730_models.DescribeLensMonitorDisksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribeLensMonitorDisksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.disk_category):
+            query['DiskCategory'] = request.disk_category
+        if not UtilClient.is_unset(request.disk_ids):
+            query['DiskIds'] = request.disk_ids
+        if not UtilClient.is_unset(request.lens_tags):
+            query['LensTags'] = request.lens_tags
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLensMonitorDisks',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeLensMonitorDisksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_lens_monitor_disks_with_options_async(
+        self,
+        request: ebs_20210730_models.DescribeLensMonitorDisksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribeLensMonitorDisksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.disk_category):
+            query['DiskCategory'] = request.disk_category
+        if not UtilClient.is_unset(request.disk_ids):
+            query['DiskIds'] = request.disk_ids
+        if not UtilClient.is_unset(request.lens_tags):
+            query['LensTags'] = request.lens_tags
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLensMonitorDisks',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeLensMonitorDisksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_lens_monitor_disks(
+        self,
+        request: ebs_20210730_models.DescribeLensMonitorDisksRequest,
+    ) -> ebs_20210730_models.DescribeLensMonitorDisksResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_lens_monitor_disks_with_options(request, runtime)
+
+    async def describe_lens_monitor_disks_async(
+        self,
+        request: ebs_20210730_models.DescribeLensMonitorDisksRequest,
+    ) -> ebs_20210730_models.DescribeLensMonitorDisksResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_lens_monitor_disks_with_options_async(request, runtime)
+
     def describe_lens_service_status_with_options(
         self,
         runtime: util_models.RuntimeOptions,
