@@ -1,3 +1,10 @@
+2024-04-25 Version: 4.18.4
+- Update API CreateWorkitem: update response param.
+- Update API GetApplication: update response param.
+- Update API GetWorkItemInfo: update response param.
+- Update API UpdateWorkItem: update response param.
+
+
 2024-04-19 Version: 4.18.3
 - Update API CreateWorkitem: update response param.
 - Update API GetWorkItemInfo: update response param.
