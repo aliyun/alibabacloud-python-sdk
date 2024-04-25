@@ -1,3 +1,6 @@
+2024-04-25 Version: 1.5.2
+- Generated python 2021-05-15 for cloudsso.
+
 2024-04-22 Version: 1.5.1
 - Update API GetDirectoryStatistics: update response param.
 
