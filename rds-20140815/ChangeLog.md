@@ -1,3 +1,15 @@
+2024-04-25 Version: 4.0.5
+- Update API AttachWhitelistTemplateToInstance: add param RegionId.
+- Update API CloneParameterGroup: update param ParameterGroupDesc.
+- Update API CreateDBNodes: update param DBNode.
+- Update API DescribeAllWhitelistTemplate: add param RegionId.
+- Update API DescribeInstanceLinkedWhitelistTemplate: add param RegionId.
+- Update API DescribeWhitelistTemplate: add param RegionId.
+- Update API DescribeWhitelistTemplateLinkedInstance: add param RegionId.
+- Update API DetachWhitelistTemplateToInstance: add param RegionId.
+- Update API ModifyWhitelistTemplate: add param RegionId.
+
+
 2024-04-11 Version: 4.0.4
 - Update API DescribePrice: update response param.
 

@@ -775,6 +775,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ins_name):
             query['InsName'] = request.ins_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -821,6 +823,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ins_name):
             query['InsName'] = request.ins_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -9901,6 +9905,8 @@ class Client(OpenApiClient):
             query['MaxRecordsPerPage'] = request.max_records_per_page
         if not UtilClient.is_unset(request.page_numbers):
             query['PageNumbers'] = request.page_numbers
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -9951,6 +9957,8 @@ class Client(OpenApiClient):
             query['MaxRecordsPerPage'] = request.max_records_per_page
         if not UtilClient.is_unset(request.page_numbers):
             query['PageNumbers'] = request.page_numbers
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -10692,11 +10700,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeAvailableZonesResponse:
         """
-        ### Supported database engines
-        *   MySQL
-        *   PostgreSQL
-        *   SQL Server
-        *   MariaDB
+        ### [](#)Supported database engines
+        *   RDS MySQL
+        *   RDS PostgreSQL
+        *   RDS SQL Server
+        *   RDS MariaDB
+        > You can call this operation to query the available zones for an instance. The query result may be different from the zones available on the buy page of the ApsaraDB RDS console. The values of some parameters on the buy page vary based on the actual sales policy. The actual information on the [buy page](https://rdsbuy.console.aliyun.com/create/rds/PostgreSQL) prevails.
         
         @param request: DescribeAvailableZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10747,11 +10756,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeAvailableZonesResponse:
         """
-        ### Supported database engines
-        *   MySQL
-        *   PostgreSQL
-        *   SQL Server
-        *   MariaDB
+        ### [](#)Supported database engines
+        *   RDS MySQL
+        *   RDS PostgreSQL
+        *   RDS SQL Server
+        *   RDS MariaDB
+        > You can call this operation to query the available zones for an instance. The query result may be different from the zones available on the buy page of the ApsaraDB RDS console. The values of some parameters on the buy page vary based on the actual sales policy. The actual information on the [buy page](https://rdsbuy.console.aliyun.com/create/rds/PostgreSQL) prevails.
         
         @param request: DescribeAvailableZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10801,11 +10811,12 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeAvailableZonesRequest,
     ) -> rds_20140815_models.DescribeAvailableZonesResponse:
         """
-        ### Supported database engines
-        *   MySQL
-        *   PostgreSQL
-        *   SQL Server
-        *   MariaDB
+        ### [](#)Supported database engines
+        *   RDS MySQL
+        *   RDS PostgreSQL
+        *   RDS SQL Server
+        *   RDS MariaDB
+        > You can call this operation to query the available zones for an instance. The query result may be different from the zones available on the buy page of the ApsaraDB RDS console. The values of some parameters on the buy page vary based on the actual sales policy. The actual information on the [buy page](https://rdsbuy.console.aliyun.com/create/rds/PostgreSQL) prevails.
         
         @param request: DescribeAvailableZonesRequest
         @return: DescribeAvailableZonesResponse
@@ -10818,11 +10829,12 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeAvailableZonesRequest,
     ) -> rds_20140815_models.DescribeAvailableZonesResponse:
         """
-        ### Supported database engines
-        *   MySQL
-        *   PostgreSQL
-        *   SQL Server
-        *   MariaDB
+        ### [](#)Supported database engines
+        *   RDS MySQL
+        *   RDS PostgreSQL
+        *   RDS SQL Server
+        *   RDS MariaDB
+        > You can call this operation to query the available zones for an instance. The query result may be different from the zones available on the buy page of the ApsaraDB RDS console. The values of some parameters on the buy page vary based on the actual sales policy. The actual information on the [buy page](https://rdsbuy.console.aliyun.com/create/rds/PostgreSQL) prevails.
         
         @param request: DescribeAvailableZonesRequest
         @return: DescribeAvailableZonesResponse
@@ -19437,6 +19449,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ins_name):
             query['InsName'] = request.ins_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -19481,6 +19495,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ins_name):
             query['InsName'] = request.ins_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -19543,6 +19559,16 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeKmsAssociateResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeKmsAssociateResourcesResponse:
+        """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        
+        @param request: DescribeKmsAssociateResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeKmsAssociateResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -19591,6 +19617,16 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeKmsAssociateResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeKmsAssociateResourcesResponse:
+        """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        
+        @param request: DescribeKmsAssociateResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeKmsAssociateResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -19638,6 +19674,15 @@ class Client(OpenApiClient):
         self,
         request: rds_20140815_models.DescribeKmsAssociateResourcesRequest,
     ) -> rds_20140815_models.DescribeKmsAssociateResourcesResponse:
+        """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        
+        @param request: DescribeKmsAssociateResourcesRequest
+        @return: DescribeKmsAssociateResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_kms_associate_resources_with_options(request, runtime)
 
@@ -19645,6 +19690,15 @@ class Client(OpenApiClient):
         self,
         request: rds_20140815_models.DescribeKmsAssociateResourcesRequest,
     ) -> rds_20140815_models.DescribeKmsAssociateResourcesResponse:
+        """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        
+        @param request: DescribeKmsAssociateResourcesRequest
+        @return: DescribeKmsAssociateResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_kms_associate_resources_with_options_async(request, runtime)
 
@@ -25171,6 +25225,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -25215,6 +25271,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -25291,6 +25349,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -25337,6 +25397,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -25653,6 +25715,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ins_name):
             query['InsName'] = request.ins_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -25699,6 +25763,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ins_name):
             query['InsName'] = request.ins_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -32200,9 +32266,9 @@ class Client(OpenApiClient):
         *   RDS MySQL
         *   RDS PostgreSQL
         ### [](#)References
-        > : Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
-        *   [Enable and configure the dedicated proxy feature](~~197456~~)
-        *   [Create a database proxy terminal for an ApsaraDB RDS for PostgreSQL instance](~~418273~~)
+        >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+        *   [Configure the connection settings for a database proxy endpoint for an ApsaraDB RDS for MySQL instance](~~2621331~~)
+        *   [Configure the connection settings for a database proxy endpoint for an ApsaraDB RDS for PostgreSQL instance](~~418273~~)
         
         @param request: ModifyDBProxyEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32271,9 +32337,9 @@ class Client(OpenApiClient):
         *   RDS MySQL
         *   RDS PostgreSQL
         ### [](#)References
-        > : Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
-        *   [Enable and configure the dedicated proxy feature](~~197456~~)
-        *   [Create a database proxy terminal for an ApsaraDB RDS for PostgreSQL instance](~~418273~~)
+        >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+        *   [Configure the connection settings for a database proxy endpoint for an ApsaraDB RDS for MySQL instance](~~2621331~~)
+        *   [Configure the connection settings for a database proxy endpoint for an ApsaraDB RDS for PostgreSQL instance](~~418273~~)
         
         @param request: ModifyDBProxyEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32341,9 +32407,9 @@ class Client(OpenApiClient):
         *   RDS MySQL
         *   RDS PostgreSQL
         ### [](#)References
-        > : Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
-        *   [Enable and configure the dedicated proxy feature](~~197456~~)
-        *   [Create a database proxy terminal for an ApsaraDB RDS for PostgreSQL instance](~~418273~~)
+        >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+        *   [Configure the connection settings for a database proxy endpoint for an ApsaraDB RDS for MySQL instance](~~2621331~~)
+        *   [Configure the connection settings for a database proxy endpoint for an ApsaraDB RDS for PostgreSQL instance](~~418273~~)
         
         @param request: ModifyDBProxyEndpointRequest
         @return: ModifyDBProxyEndpointResponse
@@ -32360,9 +32426,9 @@ class Client(OpenApiClient):
         *   RDS MySQL
         *   RDS PostgreSQL
         ### [](#)References
-        > : Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
-        *   [Enable and configure the dedicated proxy feature](~~197456~~)
-        *   [Create a database proxy terminal for an ApsaraDB RDS for PostgreSQL instance](~~418273~~)
+        >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+        *   [Configure the connection settings for a database proxy endpoint for an ApsaraDB RDS for MySQL instance](~~2621331~~)
+        *   [Configure the connection settings for a database proxy endpoint for an ApsaraDB RDS for PostgreSQL instance](~~418273~~)
         
         @param request: ModifyDBProxyEndpointRequest
         @return: ModifyDBProxyEndpointResponse
@@ -35609,6 +35675,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ip_whitelist):
             query['IpWhitelist'] = request.ip_whitelist
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -35657,6 +35725,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ip_whitelist):
             query['IpWhitelist'] = request.ip_whitelist
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
