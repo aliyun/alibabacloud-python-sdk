@@ -1,3 +1,8 @@
+2024-04-25 Version: 4.0.6
+- Update API CreateDBInstance: add param WhitelistTemplateList.
+- Update API ModifyDBProxyInstance: add param VSwitchIds.
+
+
 2024-04-25 Version: 4.0.5
 - Update API AttachWhitelistTemplateToInstance: add param RegionId.
 - Update API CloneParameterGroup: update param ParameterGroupDesc.

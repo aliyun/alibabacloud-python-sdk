@@ -4401,6 +4401,7 @@ class CreateDBInstanceRequest(TeaModel):
         user_backup_id: str = None,
         vpcid: str = None,
         v_switch_id: str = None,
+        whitelist_template_list: str = None,
         zone_id: str = None,
         zone_id_slave_1: str = None,
         zone_id_slave_2: str = None,
@@ -4735,6 +4736,7 @@ class CreateDBInstanceRequest(TeaModel):
         # *   If you set **InstanceNetworkType** to **VPC**, you must also specify this parameter.
         # *   If you specify the ZoneSlaveId1 parameter, you must specify the IDs of two vSwitches for this parameter and separate the IDs with a comma (,).
         self.v_switch_id = v_switch_id
+        self.whitelist_template_list = whitelist_template_list
         # The zone ID of the primary instance.
         # 
         # *   If you specify a virtual private cloud (VPC) and a vSwitch, you must specify the ID of the zone to which the specified vSwitch belongs. Otherwise, the instance cannot be created.
@@ -4871,6 +4873,8 @@ class CreateDBInstanceRequest(TeaModel):
             result['VPCId'] = self.vpcid
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
+        if self.whitelist_template_list is not None:
+            result['WhitelistTemplateList'] = self.whitelist_template_list
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
         if self.zone_id_slave_1 is not None:
@@ -4989,6 +4993,8 @@ class CreateDBInstanceRequest(TeaModel):
             self.vpcid = m.get('VPCId')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
+        if m.get('WhitelistTemplateList') is not None:
+            self.whitelist_template_list = m.get('WhitelistTemplateList')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
         if m.get('ZoneIdSlave1') is not None:
@@ -5097,6 +5103,7 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         user_backup_id: str = None,
         vpcid: str = None,
         v_switch_id: str = None,
+        whitelist_template_list: str = None,
         zone_id: str = None,
         zone_id_slave_1: str = None,
         zone_id_slave_2: str = None,
@@ -5431,6 +5438,7 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # *   If you set **InstanceNetworkType** to **VPC**, you must also specify this parameter.
         # *   If you specify the ZoneSlaveId1 parameter, you must specify the IDs of two vSwitches for this parameter and separate the IDs with a comma (,).
         self.v_switch_id = v_switch_id
+        self.whitelist_template_list = whitelist_template_list
         # The zone ID of the primary instance.
         # 
         # *   If you specify a virtual private cloud (VPC) and a vSwitch, you must specify the ID of the zone to which the specified vSwitch belongs. Otherwise, the instance cannot be created.
@@ -5565,6 +5573,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
             result['VPCId'] = self.vpcid
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
+        if self.whitelist_template_list is not None:
+            result['WhitelistTemplateList'] = self.whitelist_template_list
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
         if self.zone_id_slave_1 is not None:
@@ -5682,6 +5692,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
             self.vpcid = m.get('VPCId')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
+        if m.get('WhitelistTemplateList') is not None:
+            self.whitelist_template_list = m.get('WhitelistTemplateList')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
         if m.get('ZoneIdSlave1') is not None:
@@ -61594,6 +61606,7 @@ class ModifyDBProxyInstanceRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        v_switch_ids: str = None,
     ):
         # The ID of the instance. You can call the [DescribeDBInstances](~~26232~~) operation to query the ID of the instance.
         self.dbinstance_id = dbinstance_id
@@ -61622,6 +61635,7 @@ class ModifyDBProxyInstanceRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.v_switch_ids = v_switch_ids
 
     def validate(self):
         pass
@@ -61652,6 +61666,8 @@ class ModifyDBProxyInstanceRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
         return result
 
     def from_map(self, m: dict = None):
@@ -61676,6 +61692,8 @@ class ModifyDBProxyInstanceRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
         return self
 
 
