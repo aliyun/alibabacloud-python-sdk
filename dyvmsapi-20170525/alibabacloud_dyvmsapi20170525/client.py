@@ -1301,6 +1301,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.execute_call_task_with_options_async(request, runtime)
 
+    def get_call_media_type_with_options(
+        self,
+        request: dyvmsapi_20170525_models.GetCallMediaTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.GetCallMediaTypeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.call_id):
+            query['CallId'] = request.call_id
+        if not UtilClient.is_unset(request.called_number):
+            query['CalledNumber'] = request.called_number
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCallMediaType',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.GetCallMediaTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_call_media_type_with_options_async(
+        self,
+        request: dyvmsapi_20170525_models.GetCallMediaTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.GetCallMediaTypeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.call_id):
+            query['CallId'] = request.call_id
+        if not UtilClient.is_unset(request.called_number):
+            query['CalledNumber'] = request.called_number
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCallMediaType',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.GetCallMediaTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_call_media_type(
+        self,
+        request: dyvmsapi_20170525_models.GetCallMediaTypeRequest,
+    ) -> dyvmsapi_20170525_models.GetCallMediaTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_call_media_type_with_options(request, runtime)
+
+    async def get_call_media_type_async(
+        self,
+        request: dyvmsapi_20170525_models.GetCallMediaTypeRequest,
+    ) -> dyvmsapi_20170525_models.GetCallMediaTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_call_media_type_with_options_async(request, runtime)
+
     def get_call_progress_with_options(
         self,
         request: dyvmsapi_20170525_models.GetCallProgressRequest,
@@ -1498,6 +1584,88 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_hotline_qualification_by_order_with_options_async(request, runtime)
+
+    def get_temporary_file_url_with_options(
+        self,
+        request: dyvmsapi_20170525_models.GetTemporaryFileUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.GetTemporaryFileUrlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTemporaryFileUrl',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.GetTemporaryFileUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_temporary_file_url_with_options_async(
+        self,
+        request: dyvmsapi_20170525_models.GetTemporaryFileUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.GetTemporaryFileUrlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTemporaryFileUrl',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.GetTemporaryFileUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_temporary_file_url(
+        self,
+        request: dyvmsapi_20170525_models.GetTemporaryFileUrlRequest,
+    ) -> dyvmsapi_20170525_models.GetTemporaryFileUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_temporary_file_url_with_options(request, runtime)
+
+    async def get_temporary_file_url_async(
+        self,
+        request: dyvmsapi_20170525_models.GetTemporaryFileUrlRequest,
+    ) -> dyvmsapi_20170525_models.GetTemporaryFileUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_temporary_file_url_with_options_async(request, runtime)
 
     def get_token_with_options(
         self,

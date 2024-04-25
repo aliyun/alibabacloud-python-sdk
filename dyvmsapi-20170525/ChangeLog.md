@@ -1,3 +1,8 @@
+2024-04-25 Version: 3.2.0
+- Support API GetCallMediaType.
+- Support API GetTemporaryFileUrl.
+
+
 2024-04-18 Version: 3.1.0
 - Support API ChangeMediaType.
 - Support API DegradeVideoFile.
