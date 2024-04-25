@@ -2545,6 +2545,10 @@ class Client(OpenApiClient):
             query['DtsJobId'] = request.dts_job_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.shard_password):
+            query['ShardPassword'] = request.shard_password
+        if not UtilClient.is_unset(request.shard_username):
+            query['ShardUsername'] = request.shard_username
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2575,6 +2579,10 @@ class Client(OpenApiClient):
             query['DtsJobId'] = request.dts_job_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.shard_password):
+            query['ShardPassword'] = request.shard_password
+        if not UtilClient.is_unset(request.shard_username):
+            query['ShardUsername'] = request.shard_username
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9019,6 +9027,8 @@ class Client(OpenApiClient):
             query['EndpointIp'] = request.endpoint_ip
         if not UtilClient.is_unset(request.endpoint_port):
             query['EndpointPort'] = request.endpoint_port
+        if not UtilClient.is_unset(request.endpoint_region_id):
+            query['EndpointRegionId'] = request.endpoint_region_id
         if not UtilClient.is_unset(request.password):
             query['Password'] = request.password
         if not UtilClient.is_unset(request.region_id):
@@ -9081,6 +9091,8 @@ class Client(OpenApiClient):
             query['EndpointIp'] = request.endpoint_ip
         if not UtilClient.is_unset(request.endpoint_port):
             query['EndpointPort'] = request.endpoint_port
+        if not UtilClient.is_unset(request.endpoint_region_id):
+            query['EndpointRegionId'] = request.endpoint_region_id
         if not UtilClient.is_unset(request.password):
             query['Password'] = request.password
         if not UtilClient.is_unset(request.region_id):
